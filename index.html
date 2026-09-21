@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Plotmaniac — Coming Soon</title>
-    <meta name="description" content="Plotmaniac is coming soon." />
+    <title>Plotmaniac — Never-Ending Internet Lore</title>
+    <meta
+      name="description"
+      content="A chronological index of publicly reported H3 / Ethan Klein internet drama beats — Frenemies, Leftovers, lawsuits, and adjacent creator feuds."
+    />
     <meta name="theme-color" content="#0c0b09" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,132 +16,12 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --bg: #0c0b09;
-        --ink: #f4efe6;
-        --muted: #9b9488;
-        --gold: #e8c47a;
-        --line: rgba(244, 239, 230, 0.12);
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-        background: var(--bg);
-        color: var(--ink);
-        min-height: 100dvh;
-        display: grid;
-        place-items: center;
-        overflow: hidden;
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background-image:
-          linear-gradient(var(--line) 1px, transparent 1px),
-          linear-gradient(90deg, var(--line) 1px, transparent 1px);
-        background-size: 72px 72px;
-        mask-image: radial-gradient(ellipse at center, black 20%, transparent 72%);
-        pointer-events: none;
-      }
-
-      main {
-        position: relative;
-        z-index: 1;
-        width: min(720px, calc(100% - 48px));
-        text-align: center;
-        padding: 48px 0;
-      }
-
-      .mark {
-        width: min(420px, 88vw);
-        height: auto;
-        margin: 0 auto 36px;
-        display: block;
-      }
-
-      .mark path.arc {
-        fill: none;
-        stroke: var(--gold);
-        stroke-width: 2.5;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-dasharray: 640;
-        stroke-dashoffset: 640;
-        animation: draw 1.8s ease-out forwards;
-      }
-
-      .mark circle {
-        fill: var(--gold);
-        opacity: 0;
-        animation: appear 0.4s ease-out 1.5s forwards;
-      }
-
-      p.status {
-        font-size: 0.72rem;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 18px;
-      }
-
-      h1 {
-        font-family: "Fraunces", Georgia, "Times New Roman", serif;
-        font-optical-sizing: auto;
-        font-weight: 500;
-        font-size: clamp(3rem, 12vw, 5.5rem);
-        letter-spacing: -0.04em;
-        line-height: 0.92;
-        margin-bottom: 18px;
-      }
-
-      p.lede {
-        color: var(--muted);
-        font-size: 0.92rem;
-        line-height: 1.7;
-        max-width: 42ch;
-        margin: 0 auto;
-      }
-
-      @keyframes draw {
-        to {
-          stroke-dashoffset: 0;
-        }
-      }
-
-      @keyframes appear {
-        to {
-          opacity: 1;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .mark path.arc,
-        .mark circle {
-          animation: none;
-          stroke-dashoffset: 0;
-          opacity: 1;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="lore.css" />
   </head>
   <body>
-    <main>
-      <p class="status">Coming soon</p>
-      <h1>Plotmaniac</h1>
+    <header class="mast">
+      <p class="status">Plotmaniac</p>
+      <h1>Never-ending<br />internet lore</h1>
       <svg class="mark" viewBox="0 0 420 88" role="img" aria-hidden="true">
         <path
           class="arc"
@@ -148,7 +31,112 @@
         <circle cx="214" cy="14" r="3.5" />
         <circle cx="412" cy="70" r="3.5" />
       </svg>
-      <p class="lede">A new site is in the works.<br />Check back soon.</p>
+      <p class="lede">
+        A field guide to the H3 orbit. Public beats, in order, with the people who keep showing up.
+      </p>
+      <ol class="how-to" aria-label="How to use this page">
+        <li><strong>Filter</strong> by era or person.</li>
+        <li><strong>Open a card</strong> for context and sources.</li>
+        <li><strong>Share the URL</strong> to keep your view.</li>
+      </ol>
+    </header>
+
+    <main class="shell">
+      <p class="disclaimer">
+        <strong>Receipts, not a verdict.</strong>
+        This is a guide to publicly reported events, not insider reporting or an exhaustive archive. Allegations remain allegations unless a source says otherwise.
+      </p>
+
+      <nav class="view-tabs" aria-label="Choose a view">
+        <button class="view-tab is-active" id="timeline-tab" type="button" data-view="timeline" aria-controls="timeline-view" aria-selected="true">
+          <span>Timeline</span><small>What happened, when</small>
+        </button>
+        <button class="view-tab" id="web-tab" type="button" data-view="web" aria-controls="web-view" aria-selected="false">
+          <span>Relationship web</span><small>Who connects to whom</small>
+        </button>
+      </nav>
+
+      <section class="filter-dock" aria-labelledby="filter-heading">
+        <div class="filter-title-row">
+          <div>
+            <p class="eyebrow" id="filter-heading">Find your thread</p>
+            <p class="filter-help" id="filter-help">Filters stay in sync across both views.</p>
+          </div>
+          <button class="clear-filters" id="clear-filters" type="button" disabled>Clear filters</button>
+        </div>
+        <div class="filter-grid">
+          <label class="filter-field filter-search">
+            <span>Search events</span>
+            <input id="event-search" type="search" placeholder="Try “lawsuit” or “Frenemies”" autocomplete="off" aria-describedby="filter-help" />
+          </label>
+          <label class="filter-field">
+            <span>Era</span>
+            <select id="era-filter"><option value="all">All eras</option></select>
+          </label>
+          <label class="filter-field">
+            <span>Person</span>
+            <select id="person-filter"><option value="all">Everyone</option></select>
+          </label>
+        </div>
+        <div class="active-filter-summary" id="active-filter-summary" aria-live="polite"></div>
+      </section>
+
+      <section id="timeline-view" class="view-panel" aria-labelledby="timeline-tab">
+        <div class="view-heading">
+          <div>
+            <p class="eyebrow">Chronology</p>
+            <h2>Public beats</h2>
+          </div>
+          <p class="timeline-meta" id="timeline-meta" aria-live="polite">Loading the lore…</p>
+        </div>
+        <ol class="event-list" id="event-list" aria-busy="true">
+          <li class="state-card loading-state"><span class="loading-dot"></span>Loading sourced events…</li>
+        </ol>
+      </section>
+
+      <section id="web-view" class="view-panel web-view" aria-labelledby="web-tab" hidden>
+        <div class="view-heading web-heading">
+          <div>
+            <p class="eyebrow">Cast of characters</p>
+            <h2>Relationship web</h2>
+            <p class="view-note">Select a person to filter both views. Select a connection to jump to its first shared event.</p>
+          </div>
+          <div class="zoom-controls" aria-label="Relationship web zoom">
+            <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+            <button id="zoom-reset" type="button">Reset</button>
+            <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+          </div>
+        </div>
+        <div class="web-stage" id="web-stage">
+          <svg id="relationship-web" role="img" aria-labelledby="web-svg-title web-svg-desc" viewBox="0 0 900 560">
+            <title id="web-svg-title">H3 relationship web</title>
+            <desc id="web-svg-desc">Ethan Klein at the center, connected to collaborators, recurring coverage subjects, and litigation opponents. Nodes and connections are interactive.</desc>
+            <g id="web-camera"></g>
+          </svg>
+          <p class="web-instruction">Drag to pan · pinch or use the controls to zoom</p>
+        </div>
+        <div class="relation-list-wrap">
+          <h3>Connections</h3>
+          <p>Compact view for smaller screens and keyboards.</p>
+          <ul class="relation-list" id="relation-list"></ul>
+        </div>
+      </section>
     </main>
+
+    <dialog class="video-dialog" id="video-dialog" aria-labelledby="video-title">
+      <div class="dialog-head">
+        <h2 id="video-title">Watch source</h2>
+        <button id="close-video" type="button" aria-label="Close video">Close</button>
+      </div>
+      <div class="video-frame" id="video-frame"></div>
+    </dialog>
+
+    <div class="toast" id="share-toast" role="status" aria-live="polite" hidden>Link copied.</div>
+
+    <footer class="site-footer">
+      <p>Plotmaniac · publicly reported events, oldest first.</p>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

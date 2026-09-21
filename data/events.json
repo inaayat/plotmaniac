@@ -1,0 +1,712 @@
+[
+  {
+    "id": "frenemies-launch",
+    "date": "2020-09-15",
+    "title": "Frenemies debuts on the H3 Podcast channel",
+    "summary": "Ethan and Trisha Paytas launch a weekly co-hosted show blending H3 commentary with Trisha's unfiltered stories. It quickly becomes one of the most watched recurring formats in the H3 universe.",
+    "era": "frenemies",
+    "people": ["ethan-klein", "trisha-paytas"],
+    "links": [
+      {
+        "label": "Watch Frenemies #1",
+        "url": "https://www.youtube.com/watch?v=Mtblz3KPYT0",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "frenemies-39-walkout",
+    "date": "2021-06-08",
+    "title": "Frenemies #39 ends in a production dispute",
+    "summary": "A disagreement over production, staffing, creative control, and revenue escalates near the end of the episode. Trisha leaves the set and announces the next day that they are stepping down.",
+    "era": "frenemies",
+    "people": ["ethan-klein", "trisha-paytas", "dan-swerdlove"],
+    "links": [
+      {
+        "label": "Watch Frenemies #39",
+        "url": "https://www.youtube.com/watch?v=poqMtuBVHU4",
+        "type": "video"
+      },
+      {
+        "label": "Business Insider timeline",
+        "url": "https://www.businessinsider.com/frenemies-trisha-paytas-quit-ethan-klein-podcast-leaving-stepping-down-2021-6",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "frenemies-cancelled",
+    "date": "2021-06-10",
+    "title": "Ethan publishes his response to the Frenemies breakup",
+    "summary": "Ethan disputes Trisha's account and explains H3's production costs, the crew's role, and the proposed business structure as both former co-hosts post competing narratives.",
+    "era": "frenemies-fallout",
+    "people": ["ethan-klein", "trisha-paytas"],
+    "links": [
+      {
+        "label": "Watch Ethan's response",
+        "url": "https://www.youtube.com/watch?v=v8YqLShLJiI",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "trisha-merch-spat",
+    "date": "2021-07-09",
+    "title": "Frenemies merchandise launches after the show ends",
+    "summary": "Teddy Fresh releases the collaboration that was already in production when Frenemies ended. The launch keeps the show's disputed finances and ownership in public view.",
+    "era": "frenemies-fallout",
+    "people": ["ethan-klein", "hila-klein", "trisha-paytas"],
+    "links": [
+      {
+        "label": "H3 launch post",
+        "url": "https://www.instagram.com/h3h3productions/p/CRHipzAjY6f/",
+        "type": "primary"
+      }
+    ]
+  },
+  {
+    "id": "leftovers-premiere",
+    "date": "2021-09-26",
+    "title": "Leftovers premieres with Hasan Piker",
+    "summary": "Ethan and Hasan launch H3's politics-and-culture spinoff. The first episode passes one million views within a day and begins a 61-episode run.",
+    "era": "leftovers",
+    "people": ["ethan-klein", "hila-klein", "hasan-piker"],
+    "links": [
+      {
+        "label": "Watch Leftovers #1",
+        "url": "https://www.youtube.com/watch?v=uASzNUFT5Dk",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "content-nuke",
+    "date": "2020-05-19",
+    "title": "Ethan publishes \"Content Nuke — Keemstar\"",
+    "summary": "Ethan publishes a 45-minute video criticizing Keemstar's reporting and treatment of other creators. Keemstar responds the next day, and the exchange expands into a sponsor-focused debate across YouTube.",
+    "era": "content-nuke",
+    "people": ["ethan-klein", "keemstar"],
+    "links": [
+      {
+        "label": "Watch the original video",
+        "url": "https://www.youtube.com/watch?v=w3gXcIifc3o",
+        "type": "video"
+      },
+      {
+        "label": "Newsweek report",
+        "url": "https://www.newsweek.com/gfuel-removes-youtuber-keemstar-website-after-h3h3-video-1505510",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "james-hoodie-parody",
+    "date": "2020-09-18",
+    "title": "The Teddy Fresh–Sisters Apparel hoodie dispute",
+    "summary": "Ethan and Hila say a pastel color-block hoodie teased by James Charles closely resembles a signature Teddy Fresh design. Charles denies personally copying it and says his team may have independently used the same colorway.",
+    "era": "beauty-wars",
+    "people": ["ethan-klein", "james-charles"],
+    "links": [
+      {
+        "label": "Business Insider report",
+        "url": "https://www.businessinsider.com/james-charles-accused-stealing-merch-designs-by-ethan-klein-2020-9",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "dobrik-safety-coverage",
+    "date": "2021-03-21",
+    "title": "Jeff Wittek calls into Frenemies during Vlog Squad coverage",
+    "summary": "Ethan and Trisha hold an emergency episode about Wittek's response to the Insider investigation and review new footage connected to the night described in the report.",
+    "era": "vlog-squad",
+    "people": ["ethan-klein", "trisha-paytas", "david-dobrik"],
+    "links": [
+      {
+        "label": "Watch Frenemies #26",
+        "url": "https://www.youtube.com/watch?v=0XCZ-t5e-fI",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "matt-hoss-lawsuit-win",
+    "date": "2017-08-23",
+    "title": "Federal court grants H3 a fair-use victory",
+    "summary": "A federal judge grants summary judgment to Ethan and Hila in Matt Hoss's copyright case, finding their reaction video was fair use. The decision becomes a major reference point in creator copyright debates.",
+    "era": "legal",
+    "people": ["ethan-klein", "hila-klein", "matt-hoss"],
+    "links": [
+      {
+        "label": "Court opinion",
+        "url": "https://storage.courtlistener.com/recap/gov.uscourts.nysd.456608.116.0.pdf",
+        "type": "legal"
+      },
+      {
+        "label": "CourtListener opinion",
+        "url": "https://www.courtlistener.com/opinion/4399688/hoss-v-klein/",
+        "type": "legal"
+      }
+    ]
+  },
+  {
+    "id": "triller-lawsuit-filed",
+    "date": "2021-05-10",
+    "title": "Triller files a $50 million copyright suit against H3",
+    "summary": "Triller Fight Club sues the H3 Podcast, Ethan, and Hila over a clip from the Jake Paul–Ben Askren broadcast and an unlisted copy of the fight. The case begins a prolonged public legal fight.",
+    "era": "legal",
+    "people": ["ethan-klein", "ryan-kavanaugh"],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/59895203/triller-fight-club-ii-llc-v-the-h3-podcast/",
+        "type": "legal"
+      },
+      {
+        "label": "Business Insider report",
+        "url": "https://www.businessinsider.com/triller-h3-ethan-klein-lawsuit-sues-distributing-jake-paul-fight-2021-5",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "triller-dismissed",
+    "date": "2022-01-12",
+    "title": "Judge tosses Triller's app-review claims against the Kleins",
+    "summary": "A Los Angeles judge grants the Kleins' anti-SLAPP motion in Triller's separate case over negative app-store reviews, finding Triller had not shown that H3 directed unlawful conduct.",
+    "era": "legal",
+    "people": ["ethan-klein", "ryan-kavanaugh"],
+    "links": [
+      {
+        "label": "Hollywood Reporter",
+        "url": "https://www.hollywoodreporter.com/business/digital/triller-troll-reviews-suit-tossed-by-judge-1235075271/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "keemstar-h3-feud-cycle",
+    "date": "2020-05-20",
+    "title": "Keemstar responds; the Content Nuke cycle escalates",
+    "summary": "Keemstar posts a response disputing Ethan's framing. Newsweek reports that G Fuel removed Keemstar from its website and that Keemstar confirmed the sponsorship had ended.",
+    "era": "drama-alert",
+    "people": ["ethan-klein", "keemstar"],
+    "links": [
+      {
+        "label": "Newsweek report",
+        "url": "https://www.newsweek.com/gfuel-removes-youtuber-keemstar-website-after-h3h3-video-1505510",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "defranco-h3-spat",
+    "date": "2016-05-25",
+    "title": "Philip DeFranco launches H3's fair-use defense fund",
+    "summary": "DeFranco opens a GoFundMe for the Kleins' defense against Matt Hoss's copyright suit. The campaign exceeds its $100,000 goal in about a day and draws support from creators across YouTube.",
+    "era": "legal",
+    "people": ["ethan-klein", "hila-klein", "philip-de-franco", "matt-hoss"],
+    "links": [
+      {
+        "label": "Original GoFundMe",
+        "url": "https://www.gofundme.com/f/h3h3defensefund",
+        "type": "primary"
+      },
+      {
+        "label": "Variety report",
+        "url": "https://variety.com/2016/digital/news/h3h3-ethan-hila-matthoss-lawsuit-1201784349/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "james-allegations-coverage",
+    "date": "2023-11-16",
+    "title": "H3 revisits James Charles after a new accusation",
+    "summary": "Off The Rails #94 devotes a segment to a new accusation involving James Charles, continuing the show's recurring coverage of the beauty creator after the 2020 merchandise dispute.",
+    "era": "beauty-wars",
+    "people": ["ethan-klein", "james-charles"],
+    "links": [
+      {
+        "label": "Watch Off The Rails #94",
+        "url": "https://www.youtube.com/live/R8IClKasNBU?t=4443",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "leftovers-israel-gaza-tension",
+    "date": "2023-10-12",
+    "title": "Leftovers #61 becomes the show's final episode",
+    "summary": "Ethan and Hasan spend nearly four hours discussing the October 7 attacks and Israel–Palestine. The show goes on indefinite hiatus after the episode and does not return.",
+    "era": "leftovers",
+    "people": ["ethan-klein", "hasan-piker"],
+    "links": [
+      {
+        "label": "Episode listing",
+        "url": "https://www.globalplayer.com/podcasts/episodes/7DrhDVV/",
+        "type": "audio"
+      }
+    ]
+  },
+  {
+    "id": "hasan-feud-2024-clips",
+    "date": "2024-10-19",
+    "title": "Ethan publishes \"Twitch Has a Major Problem\"",
+    "summary": "Ethan criticizes Twitch and a TwitchCon panel hosted by Frogan that included Denims. The panelists dispute his interpretation; Twitch suspends five participants two days later for targeted hateful conduct.",
+    "era": "hasan-feud",
+    "people": ["ethan-klein", "hasan-piker", "frogan", "denims"],
+    "links": [
+      {
+        "label": "Watch Ethan's video",
+        "url": "https://www.youtube.com/watch?v=xtFiJ8AVdW0",
+        "type": "video"
+      },
+      {
+        "label": "PC Gamer report",
+        "url": "https://www.pcgamer.com/gaming-industry/under-pressure-from-pro-israel-group-twitch-bans-several-arab-streamers-over-a-month-old-twitchcon-panel/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "hasan-donation-headline",
+    "date": "2025-01-31",
+    "title": "Ethan releases \"Content Nuke — Hasan Piker\"",
+    "summary": "Ethan publishes a feature-length video criticizing his former co-host's politics, moderation, and platforming choices. Hasan and other political streamers respond across Twitch and YouTube.",
+    "era": "hasan-feud",
+    "people": ["ethan-klein", "hasan-piker"],
+    "links": [
+      {
+        "label": "Watch Content Nuke",
+        "url": "https://www.youtube.com/watch?v=ZSUDHx-1_ww",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "dobrik-documentary-era",
+    "date": "2022-06-22",
+    "title": "Jeff Wittek sues David Dobrik over the excavator injury",
+    "summary": "Wittek files a negligence lawsuit seeking damages from Dobrik over the 2020 stunt that fractured his skull. The filing gives the accident previously covered by Frenemies a new legal chapter.",
+    "era": "vlog-squad",
+    "people": ["ethan-klein", "david-dobrik"],
+    "links": [
+      {
+        "label": "People report",
+        "url": "https://people.com/tv/jeff-wittek-sues-david-dobrik-for-10-million-over-stunt-injury/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "hasan-2025-milestone",
+    "date": "2025-05-02",
+    "title": "Ethan and Hasan debate again on the H3 Show",
+    "summary": "Hasan calls into H3 Show #143 for a long-form debate revisiting their split, Israel–Palestine, antisemitism, and their former partnership. The conversation is their first extended on-air exchange since 2023.",
+    "era": "hasan-feud",
+    "people": ["ethan-klein", "hasan-piker"],
+    "links": [
+      {
+        "label": "Watch H3 Show #143",
+        "url": "https://www.youtube.com/watch?v=knMyMxXeoDY",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "hoss-lawsuit-filed",
+    "date": "2016-04-26",
+    "title": "Matt Hoss files his copyright lawsuit against Ethan and Hila",
+    "summary": "Matt Hosseinzadeh sues the Kleins over their reaction video to his \"Bold Guy\" sketch. The case puts the cost and uncertainty of YouTube fair-use defenses in public view.",
+    "era": "legal",
+    "people": ["ethan-klein", "hila-klein", "matt-hoss"],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/4356997/hosseinzadeh-v-klein/",
+        "type": "legal"
+      }
+    ]
+  },
+  {
+    "id": "dobrik-insider-coverage",
+    "date": "2021-03-17",
+    "title": "H3 responds to reporting on the Vlog Squad",
+    "summary": "H3 Podcast #240 discusses Insider's reporting on a woman who accused a former Vlog Squad member of rape and examines Dobrik's role in filming the night described.",
+    "era": "vlog-squad",
+    "people": ["ethan-klein", "hila-klein", "david-dobrik"],
+    "links": [
+      {
+        "label": "Watch H3 Podcast #240",
+        "url": "https://www.youtube.com/watch?v=jrDi9gDSVu4",
+        "type": "video"
+      },
+      {
+        "label": "Insider investigation",
+        "url": "https://www.businessinsider.com/vlog-squad-durte-dom-rape-allegation-david-dobrik-zeglaitis-video-2021-3",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "dobrik-apology-response",
+    "date": "2021-03-23",
+    "title": "Frenemies responds to David Dobrik's apology",
+    "summary": "Ethan and Trisha convene another emergency episode after Dobrik posts a second apology addressing the allegations and the culture around his videos.",
+    "era": "vlog-squad",
+    "people": ["ethan-klein", "trisha-paytas", "david-dobrik"],
+    "links": [
+      {
+        "label": "Watch Frenemies #28",
+        "url": "https://www.youtube.com/watch?v=-QLJROolYas",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "frenemies-family-crisis",
+    "date": "2021-09-12",
+    "title": "The Frenemies fallout widens into a family crisis",
+    "summary": "Leaked messages and competing accusations involving Trisha, Moses, Ethan, and Hila move the podcast breakup into the Kleins' extended family. H3 pauses regular episodes for a week.",
+    "era": "frenemies-fallout",
+    "people": ["ethan-klein", "hila-klein", "trisha-paytas", "moses-hacmon"],
+    "links": [
+      {
+        "label": "Business Insider explainer",
+        "url": "https://www.businessinsider.com/trisha-paytas-moses-hacmon-mr-riney-riley-teacher-allegations-drama-2021-9",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jordan-peterson-episodes-removed",
+    "date": "2022-01-14",
+    "title": "Ethan removes two Jordan Peterson interviews",
+    "summary": "Ethan says he removed Peterson's two earlier H3 interviews because he no longer wanted the channel to serve as a gateway to Peterson's views. Peterson responds publicly the next day.",
+    "era": "commentary-wars",
+    "people": ["ethan-klein", "jordan-peterson"],
+    "links": [
+      {
+        "label": "Contemporary report",
+        "url": "https://dailytelegraph.co.nz/world/youtuber-in-joe-rogan-feud-deletes-interviews-with-jordan-peterson/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "leftovers-youtube-suspension",
+    "date": "2022-10-21",
+    "title": "YouTube suspends H3 after a Ben Shapiro joke",
+    "summary": "YouTube removes a Leftovers episode and suspends the channel for a week under its harassment policy after Ethan makes a Holocaust joke about Ben Shapiro.",
+    "era": "leftovers",
+    "people": ["ethan-klein", "hasan-piker", "dan-swerdlove"],
+    "links": [
+      {
+        "label": "Jewish Telegraphic Agency report",
+        "url": "https://www.jta.org/2022/10/21/culture/prominent-jewish-youtuber-ethan-klein-makes-holocaust-joke-about-ben-shapiro-leading-to-his-suspension",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "logan-paul-cryptozoo",
+    "date": "2023-01-18",
+    "title": "H3 examines the CryptoZoo fallout around Logan Paul",
+    "summary": "Off The Rails #57 discusses Coffeezilla's CryptoZoo investigation and Logan Paul's response, extending H3's years-long critical coverage of the Paul brothers.",
+    "era": "creator-feuds",
+    "people": ["ethan-klein", "logan-paul", "dan-swerdlove"],
+    "links": [
+      {
+        "label": "Watch Off The Rails #57",
+        "url": "https://www.youtube.com/live/txuivldLEzo",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "pearl-davis-debate",
+    "date": "2023-06-14",
+    "title": "Ethan debates Pearl Davis on H3",
+    "summary": "JustPearlyThings joins Off The Rails #76 for a long debate about gender roles, marriage, and her claims about women. The full exchange becomes one of H3's most-viewed debate episodes.",
+    "era": "debate-era",
+    "people": ["ethan-klein", "justpearlythings", "dan-swerdlove"],
+    "links": [
+      {
+        "label": "Watch Off The Rails #76",
+        "url": "https://www.youtube.com/live/euuma5CoFis",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "xqc-copyright-debate",
+    "date": "2023-08-07",
+    "title": "Ethan and xQc debate reaction content",
+    "summary": "xQc calls into H3TV #86 to debate whether minimally edited reaction uploads exploit smaller creators. The exchange ends without agreement and becomes a flashpoint in \"reactgate.\"",
+    "era": "debate-era",
+    "people": ["ethan-klein", "xqc", "dan-swerdlove"],
+    "links": [
+      {
+        "label": "Watch H3TV #86",
+        "url": "https://www.youtube.com/live/8UizTBc6FP8?t=2770",
+        "type": "video"
+      },
+      {
+        "label": "Kotaku report",
+        "url": "https://kotaku.com/xqc-ethan-debate-h3h3-productions-youtube-twitch-1850717631",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "ethan-hasan-twitch-debate",
+    "date": "2023-11-09",
+    "title": "Ethan and Hasan hold a second, emotional Israel–Palestine debate",
+    "summary": "Ethan joins Hasan's Twitch stream for a multi-hour discussion about Zionism, slogans, moderation, and each host's audience. The conversation confirms the depth of their post-Leftovers split.",
+    "era": "hasan-feud",
+    "people": ["ethan-klein", "hasan-piker"],
+    "links": [
+      {
+        "label": "Watch the full stream",
+        "url": "https://www.youtube.com/live/h1ZVcdERxmw",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "sneako-debate-invitation",
+    "date": "2024-03-07",
+    "title": "Sneako publicizes H3's debate invitation",
+    "summary": "Sneako shares H3's private invitation and says he will appear if Ethan completes ten push-ups. The proposed studio debate never takes place.",
+    "era": "creator-feuds",
+    "people": ["ethan-klein", "sneako"],
+    "links": [
+      {
+        "label": "Report on the invitation",
+        "url": "https://www.sportskeeda.com/esports/news-i-think-re-rded-sneako-reveals-ethan-klein-invited-h3-podcast-debate-gives-response",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "fresh-fit-debate",
+    "date": "2024-03-13",
+    "title": "Ethan debates Fresh & Fit",
+    "summary": "Myron Gaines and Walter Weekes join Off The Rails #108 for a nearly four-hour conversation spanning dating advice, platform bans, and Holocaust denial.",
+    "era": "debate-era",
+    "people": ["ethan-klein", "fresh-and-fit", "dan-swerdlove"],
+    "links": [
+      {
+        "label": "Watch Off The Rails #108",
+        "url": "https://www.youtube.com/live/lPl1XTHQsHA?t=1740",
+        "type": "video"
+      },
+      {
+        "label": "Episode listing",
+        "url": "https://www.globalplayer.com/podcasts/episodes/7Dri3gJ/",
+        "type": "audio"
+      }
+    ]
+  },
+  {
+    "id": "sneako-facetime-confrontation",
+    "date": "2024-08-13",
+    "title": "Ethan and Sneako clash by FaceTime on Raw Talk",
+    "summary": "While appearing on Bradley Martyn's podcast, Ethan takes a FaceTime call from Sneako. Their argument turns to Hila's mandatory IDF service and the Israel–Gaza war.",
+    "era": "creator-feuds",
+    "people": ["ethan-klein", "hila-klein", "sneako"],
+    "links": [
+      {
+        "label": "Report on the exchange",
+        "url": "https://www.sportskeeda.com/us/streamers/news-my-wife-killed-anybody-ethan-klein-responds-sneako-s-comments-hila-klein-former-idf-officer",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "twitchcon-panel-suspensions",
+    "date": "2024-10-21",
+    "title": "Twitch suspends Frogan, Denims, and other panelists",
+    "summary": "Twitch issues 30-day suspensions for targeted hateful conduct after renewed attention on a TwitchCon \"habibi\" tier-list panel. Panelists reject Ethan's characterization of the segment.",
+    "era": "hasan-feud",
+    "people": ["ethan-klein", "frogan", "denims"],
+    "links": [
+      {
+        "label": "Kotaku report",
+        "url": "https://kotaku.com/twitch-ban-fr0gan-denims-capri-raffoul-adl-ethan-klein-1851677969",
+        "type": "article"
+      },
+      {
+        "label": "Passionfruit report",
+        "url": "https://passionfru.it/ayyrabs-podcast-twitch-ban-94783/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "h3-twitch-content-nuke-ban",
+    "date": "2025-03-05",
+    "title": "Twitch suspends, then restores, H3's channel",
+    "summary": "Twitch issues a 30-day suspension after H3 loops the Hasan Content Nuke, citing content that encouraged or glorified extreme violence. The platform restores the channel the next day.",
+    "era": "hasan-feud",
+    "people": ["ethan-klein", "hasan-piker"],
+    "links": [
+      {
+        "label": "Dot Esports report",
+        "url": "https://dotesports.com/streaming/news/ethan-klein-h3h3productions-banned-on-twitch-for-encouraging-or-glorifying-extreme-violence-calls-platform-out-for-what-he-claims-are-double-standards-compared-to-hasan",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "idubbbz-content-cop-h3",
+    "date": "2025-04-16",
+    "title": "iDubbbz revives Content Cop with an H3 episode",
+    "summary": "iDubbbz publishes his first Content Cop since 2017, criticizing Ethan's recent conduct and featuring Anisa, Hasan, Frogan, and Denims. Ethan reacts live as the video premieres.",
+    "era": "content-nuke",
+    "people": ["ethan-klein", "idubbbz", "anisa-jomha", "hasan-piker", "frogan", "denims"],
+    "links": [
+      {
+        "label": "Watch Content Cop — H3",
+        "url": "https://www.youtube.com/watch?v=NyB85pVw-v4",
+        "type": "video"
+      },
+      {
+        "label": "Watch Ethan's first reaction",
+        "url": "https://www.youtube.com/watch?v=WZbGjnOT9Mc",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "h3-idubbbz-full-response",
+    "date": "2025-04-18",
+    "title": "H3 airs a full response to iDubbbz's Content Cop",
+    "summary": "H3 Show #137 watches the full video and disputes iDubbbz and Anisa's framing, extending the split between creators who had collaborated throughout the 2010s.",
+    "era": "content-nuke",
+    "people": ["ethan-klein", "hila-klein", "idubbbz", "anisa-jomha", "dan-swerdlove"],
+    "links": [
+      {
+        "label": "Watch H3 Show #137",
+        "url": "https://www.youtube.com/watch?v=WRyfaf8tiQ8",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "streamer-copyright-suits-filed",
+    "date": "2025-06-19",
+    "title": "H3's company sues Denims and Frogan over Content Nuke reactions",
+    "summary": "Ted Entertainment files separate copyright complaints alleging that Denims and Frogan rebroadcast nearly all of the Hasan Content Nuke without sufficiently transformative commentary. Both disputes center on fair use.",
+    "era": "legal",
+    "people": ["ethan-klein", "hila-klein", "denims", "frogan", "hasan-piker"],
+    "links": [
+      {
+        "label": "Denims case docket",
+        "url": "https://www.courtlistener.com/docket/70583148/ted-entertainment-inc-v-alexandra-marwa-saber/",
+        "type": "legal"
+      },
+      {
+        "label": "Frogan complaint",
+        "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.975247/gov.uscourts.cacd.975247.1.0.pdf",
+        "type": "legal"
+      }
+    ]
+  },
+  {
+    "id": "denims-fair-use-ruling",
+    "date": "2026-06-29",
+    "title": "Federal judge rules Denims's reaction was fair use",
+    "summary": "The district court grants Denims judgment on the pleadings, finding her livestream used the Content Nuke for transformative criticism and did not substitute for the original viewing experience.",
+    "era": "legal",
+    "people": ["ethan-klein", "hila-klein", "denims", "hasan-piker"],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/70583148/ted-entertainment-inc-v-alexandra-marwa-saber/",
+        "type": "legal"
+      },
+      {
+        "label": "Loeb & Loeb case summary",
+        "url": "https://www.loeb.com/en/insights/publications/2026/07/ted-entertainment-inc-v-saber",
+        "type": "legal"
+      }
+    ]
+  },
+  {
+    "id": "denims-ruling-appealed",
+    "date": "2026-08-04",
+    "title": "Ted Entertainment appeals the Denims ruling",
+    "summary": "The H3 production company files a notice of appeal to the Ninth Circuit. The appeal is assigned case number 26-5059, leaving the district-court fair-use judgment in place during review.",
+    "era": "legal",
+    "people": ["ethan-klein", "hila-klein", "denims"],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/70583148/ted-entertainment-inc-v-alexandra-marwa-saber/",
+        "type": "legal"
+      }
+    ]
+  },
+  {
+    "id": "frogan-suit-dismissed",
+    "date": "2026-09-08",
+    "title": "Ted Entertainment voluntarily dismisses the Frogan case",
+    "summary": "After a year of litigation, Ted Entertainment dismisses its copyright case against Frogan without prejudice. The docket closes without a ruling on whether her reaction was fair use.",
+    "era": "legal",
+    "people": ["ethan-klein", "hila-klein", "frogan", "hasan-piker"],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/70583512/ted-entertainment-inc-v-morgan-kamal-majed/",
+        "type": "legal"
+      }
+    ]
+  },
+  {
+    "id": "kavanaugh-defamation-suit",
+    "date": "2021-11-29",
+    "title": "Ryan Kavanaugh personally sues Ethan for defamation",
+    "summary": "Kavanaugh files a separate state-court case alleging that Ethan repeated a retracted accusation about his business practices. The filing begins litigation distinct from Triller's copyright claims.",
+    "era": "legal",
+    "people": ["ethan-klein", "ryan-kavanaugh"],
+    "links": [
+      {
+        "label": "California appellate opinion",
+        "url": "https://www.leagle.com/decision/incaco20250403018",
+        "type": "legal"
+      }
+    ]
+  },
+  {
+    "id": "triller-federal-case-settled",
+    "date": "2024-11-22",
+    "title": "The federal Triller copyright case settles",
+    "summary": "The parties dismiss all claims and counterclaims with prejudice, with each side bearing its own costs and fees. The settlement closes the federal case filed over the 2021 fight broadcast.",
+    "era": "legal",
+    "people": ["ethan-klein", "hila-klein", "ryan-kavanaugh"],
+    "links": [
+      {
+        "label": "Joint dismissal stipulation",
+        "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.820177/gov.uscourts.cacd.820177.82.0.pdf",
+        "type": "legal"
+      }
+    ]
+  },
+  {
+    "id": "kavanaugh-anti-slapp-appeal",
+    "date": "2025-04-03",
+    "title": "Appeals court keeps Kavanaugh's defamation case alive",
+    "summary": "A California Court of Appeal affirms the denial of Ethan's anti-SLAPP motion. The procedural ruling allows Kavanaugh's claims to continue but does not decide whether Ethan is liable for defamation.",
+    "era": "legal",
+    "people": ["ethan-klein", "ryan-kavanaugh"],
+    "links": [
+      {
+        "label": "California appellate opinion",
+        "url": "https://www.leagle.com/decision/incaco20250403018",
+        "type": "legal"
+      }
+    ]
+  }
+]
