@@ -1,6 +1,6 @@
 # Plotmaniac
 
-A dark field guide for public internet plots. The first plot is H3: an animated web of Ethan Klein’s friends and enemies, a person page for each relationship, and a left-to-right timeline of the sourced beats.
+A dark field guide for public internet plots. The first plot is H3: an animated web of Ethan Klein’s friends and enemies, a person page for each relationship, and a vertical timeline of the sourced beats.
 
 Serve the folder locally:
 

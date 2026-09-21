@@ -45,10 +45,10 @@ async function load() {
   document.title = `Plotmaniac — ${plot.title}`;
   bindChrome();
   renderCredits();
-  render();
+  render({ focusEvent: Boolean(state.eventId) });
   window.addEventListener("popstate", () => {
     state = parseState(location.href, { people: new Set(peopleById.keys()), eras });
-    render();
+    render({ focusEvent: Boolean(state.eventId) });
   });
 }
 
@@ -63,7 +63,8 @@ function bindChrome() {
   });
 }
 
-function render({ push = false, replace = false } = {}) {
+function render({ push = false, replace = false, focusEvent = false } = {}) {
+  const scrollY = replace ? window.scrollY : 0;
   document.body.dataset.view = state.view;
   $("view-web").classList.toggle("is-active", state.view === "web");
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
@@ -75,9 +76,11 @@ function render({ push = false, replace = false } = {}) {
   else if (state.view === "person") app.appendChild(renderPerson());
   else app.appendChild(renderWeb());
   if (push || replace) writeUrl(replace);
-  const selected = app.querySelector(".beat.is-selected");
-  if (selected) {
-    requestAnimationFrame(() => selected.scrollIntoView({ inline: "center", block: "nearest" }));
+  if (focusEvent && state.eventId) {
+    const selected = app.querySelector(".spine-event.is-selected");
+    if (selected) requestAnimationFrame(() => selected.scrollIntoView({ block: "center" }));
+  } else if (replace) {
+    window.scrollTo(0, scrollY);
   }
 }
 
@@ -201,10 +204,10 @@ function renderPerson() {
   const intro = document.createElement("p");
   intro.className = "rail-note";
   intro.textContent = person.id === plot.centerId
-    ? "Every sourced beat in this plot, from the first to the latest."
-    : `Public beats that include ${person.name} and ${center?.name || "the show"}. Scroll across.`;
+    ? "Every sourced beat in this plot, oldest at the top."
+    : `Public beats that include ${person.name} and ${center?.name || "the show"}.`;
 
-  section.append(back, head, intro, renderRail(theirs), renderDetail(theirs));
+  section.append(back, head, intro, renderRail(theirs, { focusId: person.id }));
   return section;
 }
 
@@ -218,10 +221,10 @@ function renderTimeline() {
   eyebrow.className = "eyebrow";
   eyebrow.textContent = "Full timeline";
   const title = document.createElement("h2");
-  title.textContent = "Left to right";
+  title.textContent = "Down the line";
   const note = document.createElement("p");
   note.className = "rail-note";
-  note.textContent = "The whole public record for this plot, oldest first. Scroll sideways.";
+  note.textContent = "The whole public record, oldest at the top. Open a beat for the sources.";
   copy.append(eyebrow, title, note);
 
   const search = document.createElement("label");
@@ -247,98 +250,123 @@ function renderTimeline() {
   head.append(copy, search);
 
   const shown = filterEvents(events, { query: state.query }, peopleById);
-  section.append(head, renderRail(shown), renderDetail(shown));
+  section.append(head, renderRail(shown));
   if (!shown.length) section.appendChild(emptyState("Nothing in this plot matches that search."));
   return section;
 }
 
-function renderRail(list) {
-  const scroller = document.createElement("div");
-  scroller.className = "rail-scroll";
-  scroller.tabIndex = 0;
-  scroller.setAttribute("aria-label", "Timeline");
+function renderRail(list, { focusId = "" } = {}) {
   const rail = document.createElement("ol");
-  rail.className = "rail";
+  rail.className = "spine";
   let year = "";
+  let step = 0;
   list.forEach((event) => {
     const nextYear = event.date.slice(0, 4);
     if (nextYear !== year) {
       year = nextYear;
       const stone = document.createElement("li");
-      stone.className = "year-stone";
+      stone.className = "spine-year";
       const text = document.createElement("span");
       text.textContent = year;
       stone.appendChild(text);
       rail.appendChild(stone);
     }
-    const item = document.createElement("li");
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "beat";
-    button.classList.toggle("is-selected", state.eventId === event.id);
-    button.id = `beat-${event.id}`;
-    const when = document.createElement("time");
-    when.dateTime = event.date;
-    when.textContent = formatDate(event.date);
-    const heading = document.createElement("strong");
-    heading.textContent = event.title;
-    const tease = document.createElement("span");
-    tease.className = "beat-tease";
-    tease.textContent = eventTease(event, 110);
-    const era = document.createElement("em");
-    era.textContent = eraLabel(event.era);
-    button.append(miniArc(), when, heading, tease, era, faceRow(event.people));
-    button.addEventListener("click", () => {
-      state.eventId = state.eventId === event.id ? "" : event.id;
-      render({ replace: true });
-    });
-    item.appendChild(button);
-    rail.appendChild(item);
+    const side = step % 2 === 0 ? "left" : "right";
+    step += 1;
+    rail.appendChild(renderSpineEvent(event, side, focusId));
   });
-  scroller.appendChild(rail);
-  return scroller;
+  return rail;
 }
 
-function renderDetail(list) {
-  const event = list.find((item) => item.id === state.eventId);
-  const detail = document.createElement("article");
-  detail.className = "beat-detail";
-  if (!event) {
-    detail.hidden = true;
-    return detail;
+function renderSpineEvent(event, side, focusId) {
+  const item = document.createElement("li");
+  item.className = `spine-event side-${side}`;
+  item.classList.toggle("is-selected", state.eventId === event.id);
+  item.id = `beat-${event.id}`;
+
+  const toggle = () => {
+    state.eventId = state.eventId === event.id ? "" : event.id;
+    render({ replace: true });
+  };
+
+  const mark = document.createElement("button");
+  mark.type = "button";
+  mark.className = "spine-mark";
+  const featured = featuredPerson(event, focusId);
+  mark.appendChild(avatar(featured, "md"));
+  mark.setAttribute("aria-label", `${formatDate(event.date)}. ${event.title}`);
+  mark.addEventListener("click", toggle);
+
+  const dot = document.createElement("span");
+  dot.className = "spine-dot";
+  dot.setAttribute("aria-hidden", "true");
+
+  const copy = document.createElement("div");
+  copy.className = "spine-copy";
+  const hit = document.createElement("button");
+  hit.type = "button";
+  hit.className = "spine-hit";
+  const when = document.createElement("time");
+  when.dateTime = event.date;
+  when.textContent = formatDate(event.date);
+  const rule = document.createElement("span");
+  rule.className = "spine-rule";
+  const heading = document.createElement("strong");
+  heading.textContent = event.title;
+  const tease = document.createElement("span");
+  tease.className = "beat-tease";
+  tease.textContent = eventTease(event, 140);
+  const era = document.createElement("em");
+  era.textContent = eraLabel(event.era);
+  hit.append(when, rule, heading, tease, era);
+  hit.addEventListener("click", toggle);
+  copy.appendChild(hit);
+
+  if (state.eventId === event.id) {
+    const more = document.createElement("div");
+    more.className = "spine-more";
+    const summary = document.createElement("p");
+    summary.textContent = event.summary;
+    const names = document.createElement("p");
+    names.className = "detail-names";
+    names.textContent = event.people.map((id) => peopleById.get(id)?.name || id).join(" · ");
+    more.append(summary, names, faceRow(event.people));
+    if (event.links?.length) {
+      const links = document.createElement("div");
+      links.className = "event-links";
+      event.links.forEach((link) => {
+        if (!/^https:\/\//.test(link.url || "")) return;
+        const anchor = document.createElement("a");
+        anchor.href = link.url;
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+        anchor.textContent = link.label || "Source";
+        const type = document.createElement("span");
+        type.className = "link-type";
+        type.textContent = link.type || "link";
+        anchor.appendChild(type);
+        links.appendChild(anchor);
+      });
+      const share = document.createElement("button");
+      share.type = "button";
+      share.textContent = "Copy link";
+      share.addEventListener("click", () => copyLink());
+      links.appendChild(share);
+      more.appendChild(links);
+    }
+    copy.appendChild(more);
   }
-  const title = document.createElement("h3");
-  title.textContent = event.title;
-  const summary = document.createElement("p");
-  summary.textContent = event.summary;
-  const names = document.createElement("p");
-  names.className = "detail-names";
-  names.textContent = event.people.map((id) => peopleById.get(id)?.name || id).join(" · ");
-  detail.append(title, summary, names);
-  if (event.links?.length) {
-    const links = document.createElement("div");
-    links.className = "event-links";
-    event.links.forEach((link) => {
-      if (!/^https:\/\//.test(link.url || "")) return;
-      const anchor = document.createElement("a");
-      anchor.href = link.url;
-      anchor.target = "_blank";
-      anchor.rel = "noopener noreferrer";
-      anchor.textContent = link.label || "Source";
-      const type = document.createElement("span");
-      type.className = "link-type";
-      type.textContent = link.type || "link";
-      anchor.appendChild(type);
-      links.appendChild(anchor);
-    });
-    const share = document.createElement("button");
-    share.type = "button";
-    share.textContent = "Copy link";
-    share.addEventListener("click", () => copyLink());
-    links.appendChild(share);
-    detail.appendChild(links);
-  }
-  return detail;
+
+  item.append(mark, dot, copy);
+  return item;
+}
+
+function featuredPerson(event, focusId) {
+  const ids = event.people || [];
+  const preferred = focusId && ids.includes(focusId)
+    ? focusId
+    : ids.find((id) => id !== plot.centerId) || ids[0];
+  return peopleById.get(preferred) || { name: "?", id: preferred || "unknown" };
 }
 
 function renderCredits() {
@@ -425,17 +453,6 @@ function faceRow(ids, size = "sm") {
     row.appendChild(more);
   }
   return row;
-}
-
-function miniArc() {
-  const svg = document.createElementNS(SVG_NS, "svg");
-  svg.setAttribute("class", "beat-arc");
-  svg.setAttribute("viewBox", "0 0 120 28");
-  svg.setAttribute("aria-hidden", "true");
-  const path = document.createElementNS(SVG_NS, "path");
-  path.setAttribute("d", "M2 22 C 28 22, 40 16, 58 10 S 92 2, 118 16");
-  svg.appendChild(path);
-  return svg;
 }
 
 function emptyState(message) {
