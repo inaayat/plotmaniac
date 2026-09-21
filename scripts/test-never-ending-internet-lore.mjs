@@ -9,6 +9,8 @@ import {
   filterEvents,
   firstLoadCountries,
   graphLayout,
+  RELATION_BLOCS,
+  relationsFieldEdges,
   relationsFieldLayout,
   initials,
   outlineFor,
@@ -379,6 +381,28 @@ assert.match(
   /country=mexico/,
 );
 
+function linkedBloc(ids, edges) {
+  if (ids.length < 2) return false;
+  const want = new Set(ids);
+  const adj = new Map(ids.map((id) => [id, []]));
+  edges.forEach((edge) => {
+    if (edge.kind !== "bloc" || !want.has(edge.from) || !want.has(edge.to)) return;
+    adj.get(edge.from).push(edge.to);
+    adj.get(edge.to).push(edge.from);
+  });
+  const seen = new Set([ids[0]]);
+  const stack = [ids[0]];
+  while (stack.length) {
+    const id = stack.pop();
+    adj.get(id).forEach((next) => {
+      if (seen.has(next)) return;
+      seen.add(next);
+      stack.push(next);
+    });
+  }
+  return seen.size === ids.length;
+}
+
 const pixelDist = (node, center) => Math.hypot(node.x - center.x, node.y - center.y);
 const meanDist = (nodes, center) => nodes.reduce((sum, node) => sum + pixelDist(node, center), 0) / nodes.length;
 const span = (nodes, key) => Math.max(...nodes.map((node) => node[key])) - Math.min(...nodes.map((node) => node[key]));
@@ -421,6 +445,39 @@ const tallBroad = tall.nodes.filter((node) => !node.first_load);
 assert.ok(span(tallBroad, "x") > 700 * 0.62);
 assert.ok(span(tallBroad, "y") > 980 * 0.55);
 assert.ok(Math.max(...tall.nodes.filter((node) => node.first_load).map((node) => pixelDist(node, tall.center))) < Math.min(...tallBroad.map((node) => pixelDist(node, tall.center))));
+
+const slugs = new Set(usCountries.map((country) => country.slug));
+for (const bloc of RELATION_BLOCS) {
+  bloc.slugs.forEach((slug) => assert.ok(slugs.has(slug), `${bloc.id} ${slug}`));
+}
+
+const majorEdges = relationsFieldEdges(majorsOnly);
+const majorSpokes = majorEdges.filter((edge) => edge.kind === "spoke");
+const majorBlocs = majorEdges.filter((edge) => edge.kind === "bloc");
+assert.equal(majorSpokes.length, majorsOnly.nodes.length);
+assert.equal(majorSpokes.every((edge) => edge.from === "united-states" && edge.scope === "major"), true);
+assert.equal(majorSpokes.filter((edge) => edge.camp === "friend").length, 24);
+assert.equal(majorSpokes.filter((edge) => edge.camp === "enemy").length, 7);
+assert.equal(majorSpokes.some((edge) => edge.camp === "neutral"), false);
+assert.ok(majorBlocs.length >= 8 && majorBlocs.length < 40, `bloc edges ${majorBlocs.length}`);
+assert.equal(majorBlocs.every((edge) => edge.scope === "major" && edge.camp === "bloc"), true);
+assert.equal(majorEdges.some((edge) => edge.to === "mexico" || edge.from === "mexico"), false);
+
+const natoMajors = RELATION_BLOCS.find((bloc) => bloc.id === "nato").slugs.filter((slug) =>
+  majorsOnly.nodes.some((node) => node.id === slug));
+assert.ok(linkedBloc(natoMajors, majorBlocs), "NATO majors form one alliance tree");
+const fiveEyes = ["australia", "canada", "new-zealand", "united-kingdom"];
+assert.ok(linkedBloc(fiveEyes, majorBlocs), "Five Eyes majors are linked");
+
+const europeEdges = relationsFieldEdges(europe);
+const europeSpokes = europeEdges.filter((edge) => edge.kind === "spoke");
+assert.equal(europeSpokes.length, europe.nodes.length);
+assert.ok(europeSpokes.some((edge) => edge.camp === "neutral" && edge.scope === "broad"));
+assert.equal(europeSpokes.filter((edge) => edge.scope === "broad").every((edge) =>
+  europeBroader.some((node) => node.id === edge.to)), true);
+assert.equal(europeEdges.some((edge) => edge.from === "mexico" || edge.to === "mexico"), false);
+const austria = europeEdges.find((edge) => edge.kind === "bloc" && (edge.from === "austria" || edge.to === "austria"));
+assert.ok(austria && austria.scope === "broad");
 
 assert.equal(stateUrl("https://plotmaniac.com/", { view: "pick" }, ""), "/");
 assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /plot=united-states/);

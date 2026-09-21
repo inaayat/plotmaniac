@@ -159,6 +159,123 @@ export function relationsFieldLayout(countries, options = {}) {
   };
 }
 
+export const RELATION_BLOCS = [
+  {
+    id: "nato",
+    label: "NATO",
+    slugs: [
+      "albania", "belgium", "bulgaria", "canada", "croatia", "czech-republic", "denmark", "estonia",
+      "finland", "france", "germany", "greece", "hungary", "iceland", "italy", "latvia", "lithuania",
+      "luxembourg", "montenegro", "netherlands", "north-macedonia", "norway", "poland", "portugal",
+      "romania", "slovakia", "slovenia", "spain", "sweden", "turkey", "united-kingdom",
+    ],
+  },
+  {
+    id: "five-eyes",
+    label: "Five Eyes",
+    slugs: ["australia", "canada", "new-zealand", "united-kingdom"],
+  },
+  {
+    id: "aukus",
+    label: "AUKUS",
+    slugs: ["australia", "united-kingdom"],
+  },
+  {
+    id: "quad",
+    label: "Quad",
+    slugs: ["australia", "india", "japan"],
+  },
+  {
+    id: "usmca",
+    label: "USMCA",
+    slugs: ["canada", "mexico"],
+  },
+  {
+    id: "gcc",
+    label: "Gulf Cooperation Council",
+    slugs: ["bahrain", "kuwait", "oman", "qatar", "saudi-arabia", "united-arab-emirates"],
+  },
+  {
+    id: "cofa",
+    label: "Compact of Free Association",
+    slugs: ["marshall-islands", "micronesia", "palau"],
+  },
+  {
+    id: "asean",
+    label: "ASEAN",
+    slugs: [
+      "brunei", "cambodia", "indonesia", "laos", "malaysia", "myanmar", "philippines",
+      "singapore", "thailand", "vietnam",
+    ],
+  },
+  {
+    id: "european-union",
+    label: "European Union",
+    slugs: [
+      "austria", "belgium", "bulgaria", "croatia", "cyprus", "czech-republic", "denmark", "estonia",
+      "finland", "france", "germany", "greece", "hungary", "ireland", "italy", "latvia", "lithuania",
+      "luxembourg", "malta", "netherlands", "poland", "portugal", "romania", "slovakia", "slovenia",
+      "spain", "sweden",
+    ],
+  },
+];
+
+function blocTree(members) {
+  if (members.length < 2) return [];
+  const inside = [members[0]];
+  const outside = members.slice(1);
+  const links = [];
+  while (outside.length) {
+    let best = 0;
+    let pair = [inside[0], outside[0]];
+    let bestDist = Infinity;
+    inside.forEach((near) => {
+      outside.forEach((far, index) => {
+        const dist = (near.x - far.x) ** 2 + (near.y - far.y) ** 2;
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = index;
+          pair = [near, far];
+        }
+      });
+    });
+    links.push(pair);
+    inside.push(outside.splice(best, 1)[0]);
+  }
+  return links;
+}
+
+export function relationsFieldEdges(layout, blocs = RELATION_BLOCS) {
+  const centerId = layout?.center?.id || "united-states";
+  const nodes = layout?.nodes || [];
+  const edges = nodes.map((node) => ({
+    from: centerId,
+    to: node.id,
+    kind: "spoke",
+    camp: node.status === "friend" ? "friend" : node.status === "foe" ? "enemy" : "neutral",
+    scope: node.first_load ? "major" : "broad",
+  }));
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const seen = new Set();
+  (blocs || []).forEach((bloc) => {
+    const members = (bloc.slugs || []).map((slug) => byId.get(slug)).filter(Boolean);
+    blocTree(members).forEach(([from, to]) => {
+      const key = [from.id, to.id].sort().join("|");
+      if (seen.has(key)) return;
+      seen.add(key);
+      edges.push({
+        from: from.id,
+        to: to.id,
+        kind: "bloc",
+        bloc: bloc.id,
+        camp: "bloc",
+        scope: from.first_load && to.first_load ? "major" : "broad",
+      });
+    });
+  });
+  return edges;
+}
+
 export function relationEvents(relation, events) {
   return events.filter((event) =>
     event.people.includes(relation.from) && event.people.includes(relation.to));

@@ -12,6 +12,7 @@ import {
   outlineFor,
   parseState,
   parseYear,
+  relationsFieldEdges,
   relationsFieldLayout,
   stateUrl,
   tiesWith,
@@ -354,6 +355,7 @@ function renderRelationLegend() {
     ["friend", "Friend"],
     ["enemy", "Foe"],
     ["neutral", "Neutral · no outline"],
+    ["bloc", "Shared alliance"],
   ].forEach(([camp, label]) => {
     const item = document.createElement("li");
     const swatch = document.createElement("i");
@@ -373,7 +375,7 @@ function renderRelationHint() {
   const foeCount = majors.filter((country) => country.status === "foe").length;
   hint.append(
     document.createTextNode(
-      `${friendCount} major allies and ${foeCount} major foes sit close to the center. Open a region and the wider set spreads across the page, including every neutral. `,
+      `${friendCount} major allies and ${foeCount} major foes sit close to the center, with a line back to the United States. Open a region and the wider set spreads across the page, including every neutral. `,
     ),
   );
   const source = document.createElement("a");
@@ -432,6 +434,7 @@ function paintRelationsField(stage) {
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);
   stage.replaceChildren();
+  stage.appendChild(renderRelationLines(layout));
   const centerPerson = peopleById.get(plot.centerId);
   const center = document.createElement("button");
   center.type = "button";
@@ -446,6 +449,10 @@ function paintRelationsField(stage) {
   centerName.textContent = centerPerson?.name || "United States";
   center.appendChild(centerName);
   center.addEventListener("click", () => selectCountry(plot.centerId));
+  center.addEventListener("pointerenter", () => lightRelation(stage, plot.centerId));
+  center.addEventListener("pointerleave", () => clearRelation(stage));
+  center.addEventListener("focus", () => lightRelation(stage, plot.centerId));
+  center.addEventListener("blur", () => clearRelation(stage));
   stage.appendChild(center);
   layout.nodes.forEach((node) => {
     const country = countryBySlug.get(node.slug);
@@ -455,9 +462,74 @@ function paintRelationsField(stage) {
     if (!country.first_load) button.classList.add("is-broad");
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
+    button.addEventListener("pointerenter", () => lightRelation(stage, country.slug));
+    button.addEventListener("pointerleave", () => clearRelation(stage));
+    button.addEventListener("focus", () => lightRelation(stage, country.slug));
+    button.addEventListener("blur", () => clearRelation(stage));
     stage.appendChild(button);
   });
   paintRelationSelection(document);
+}
+
+function renderRelationLines(layout) {
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("class", "web-lines");
+  svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
+  svg.setAttribute("aria-hidden", "true");
+  const byId = new Map(layout.nodes.map((node) => [node.id, node]));
+  byId.set(layout.center.id, layout.center);
+  relationsFieldEdges(layout).forEach((edge) => {
+    const from = byId.get(edge.from);
+    const to = byId.get(edge.to);
+    if (!from || !to) return;
+    const path = document.createElementNS(SVG_NS, "path");
+    const line = trimmedLine(from, to, edge.from === layout.center.id ? layout.centerSize * 0.42 : layout.nodeSize * 0.42, layout.nodeSize * 0.46);
+    path.setAttribute("d", `M ${line.x1} ${line.y1} L ${line.x2} ${line.y2}`);
+    path.dataset.from = edge.from;
+    path.dataset.to = edge.to;
+    path.dataset.kind = edge.kind;
+    path.dataset.camp = edge.camp;
+    path.dataset.scope = edge.scope;
+    if (edge.bloc) path.dataset.bloc = edge.bloc;
+    svg.appendChild(path);
+  });
+  return svg;
+}
+
+function trimmedLine(from, to, trimStart, trimEnd) {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const length = Math.hypot(dx, dy) || 1;
+  return {
+    x1: from.x + (dx / length) * trimStart,
+    y1: from.y + (dy / length) * trimStart,
+    x2: to.x - (dx / length) * trimEnd,
+    y2: to.y - (dy / length) * trimEnd,
+  };
+}
+
+function lightRelation(stage, id) {
+  stage.classList.add("is-hot");
+  const hub = id === plot.centerId;
+  const lit = new Set([id]);
+  stage.querySelectorAll(".web-lines path").forEach((path) => {
+    const on = hub
+      ? path.dataset.kind === "spoke" && path.dataset.scope === "major"
+      : path.dataset.from === id || path.dataset.to === id;
+    path.classList.toggle("is-lit", on);
+    if (on) {
+      lit.add(path.dataset.from);
+      lit.add(path.dataset.to);
+    }
+  });
+  stage.querySelectorAll(".country-chip").forEach((chip) => {
+    chip.classList.toggle("is-lit", lit.has(chip.dataset.id));
+  });
+}
+
+function clearRelation(stage) {
+  stage.classList.remove("is-hot");
+  stage.querySelectorAll(".is-lit").forEach((element) => element.classList.remove("is-lit"));
 }
 
 function countryChip(country) {

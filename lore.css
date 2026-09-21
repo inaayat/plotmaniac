@@ -553,6 +553,14 @@ body[data-view="web"] #footer-note {
   background: transparent;
 }
 
+.swatch.camp-bloc {
+  width: 16px;
+  height: 2px;
+  border: 0;
+  border-radius: 0;
+  background: rgba(232, 196, 122, 0.75);
+}
+
 body[data-board="regions"][data-view="web"] {
   height: 100dvh;
   overflow: hidden;
@@ -614,6 +622,57 @@ body[data-board="regions"][data-view="web"] #footer-note {
   flex: 1;
   min-height: 0;
   width: 100%;
+}
+
+.relations-stage .web-lines {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.relations-stage .web-lines path[data-camp="neutral"] {
+  stroke: rgba(244, 239, 230, 0.32);
+}
+
+.relations-stage .web-lines path[data-camp="bloc"] {
+  stroke: rgba(232, 196, 122, 0.42);
+  stroke-width: 1;
+}
+
+.relations-stage .web-lines path[data-scope="broad"] {
+  opacity: 0.32;
+}
+
+.relations-stage.is-hot .web-lines path {
+  opacity: 0.05;
+}
+
+.relations-stage.is-hot .web-lines path.is-lit {
+  opacity: 0.95;
+}
+
+.relations-stage.is-hot .web-lines path.is-lit[data-camp="friend"] {
+  stroke: rgba(125, 206, 160, 0.95);
+}
+
+.relations-stage.is-hot .web-lines path.is-lit[data-camp="enemy"] {
+  stroke: rgba(224, 106, 98, 0.95);
+}
+
+.relations-stage.is-hot .web-lines path.is-lit[data-camp="neutral"] {
+  stroke: rgba(244, 239, 230, 0.8);
+}
+
+.relations-stage.is-hot .web-lines path.is-lit[data-camp="bloc"] {
+  stroke: rgba(232, 196, 122, 0.95);
+  stroke-width: 1.6;
+}
+
+.relations-stage.is-hot .country-chip {
+  opacity: 0.28;
+}
+
+.relations-stage.is-hot .country-chip.is-lit {
+  opacity: 1;
 }
 
 .region-bar {
@@ -698,6 +757,7 @@ body[data-board="regions"][data-view="web"] #footer-note {
 
 .relations-stage .country-chip {
   position: absolute;
+  z-index: 1;
   transform: translate(-50%, -50%);
   flex-direction: column;
   gap: 3px;
