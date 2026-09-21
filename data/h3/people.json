@@ -184,7 +184,7 @@
   {
     "id": "philip-de-franco",
     "name": "Philip DeFranco",
-    "role": "News and commentary creator discussed by H3",
+    "role": "Commentary creator who organized H3's 2016 fair-use defense fund",
     "tags": [
       "subject"
     ],
@@ -333,9 +333,11 @@
   {
     "id": "denims",
     "name": "Denims",
-    "role": "Twitch political commentator recently discussed by H3",
+    "role": "Twitch commentator sued by H3's company over a Content Nuke reaction",
     "tags": [
-      "recent"
+      "recent",
+      "rival",
+      "legal"
     ],
     "links": [
       {
@@ -347,9 +349,10 @@
   {
     "id": "anisa-jomha",
     "name": "Anisa Jomha",
-    "role": "Creator whose public disputes have been discussed on H3",
+    "role": "Creator featured in iDubbbz's Content Cop, whose framing H3 disputed",
     "tags": [
-      "recent"
+      "recent",
+      "rival"
     ],
     "links": [
       {

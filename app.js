@@ -21,6 +21,11 @@ let events = [];
 let relations = [];
 let state = { view: "web", person: ALL, era: ALL, query: "", eventId: "" };
 let toastTimer = null;
+const ZOOM_MIN = 0.08;
+const ZOOM_MAX = 2.5;
+let laneZoom = 1;
+let pendingLaneScroll = null;
+let pendingLaneFocus = "";
 
 const $ = (id) => document.getElementById(id);
 
@@ -47,6 +52,19 @@ async function load() {
   bindChrome();
   renderCredits();
   render({ focusEvent: Boolean(state.eventId) });
+  let resizeTimer = 0;
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      if (state.view === "web") {
+        const stage = document.querySelector(".web-stage");
+        if (stage) paintWeb(stage);
+        return;
+      }
+      const lane = document.querySelector(".lane-view");
+      if (lane) layoutLane(lane);
+    }, 80);
+  });
   window.addEventListener("popstate", () => {
     state = parseState(location.href, { people: new Set(peopleById.keys()), eras });
     render({ focusEvent: Boolean(state.eventId) });
@@ -62,10 +80,30 @@ function bindChrome() {
       render({ push: true });
     });
   });
+  window.addEventListener("keydown", (event) => {
+    if (state.view === "web") return;
+    if (event.target.closest("input, textarea")) return;
+    const lane = document.querySelector(".lane-view");
+    if (!lane) return;
+    if (event.key === "+" || event.key === "=") {
+      event.preventDefault();
+      changeLaneZoom(lane, laneZoom * 1.2);
+    } else if (event.key === "-" || event.key === "_") {
+      event.preventDefault();
+      changeLaneZoom(lane, laneZoom / 1.2);
+    } else if (event.key === "0" && !event.metaKey && !event.ctrlKey) {
+      event.preventDefault();
+      changeLaneZoom(lane, 1);
+    }
+  });
 }
 
 function render({ push = false, replace = false, focusEvent = false } = {}) {
-  const scrollY = replace ? window.scrollY : 0;
+  const scroller = document.querySelector(".lane-scroll");
+  pendingLaneScroll = replace && scroller
+    ? { left: scroller.scrollLeft, top: scroller.scrollTop }
+    : null;
+  pendingLaneFocus = focusEvent && state.eventId ? state.eventId : "";
   document.body.dataset.view = state.view;
   $("view-web").classList.toggle("is-active", state.view === "web");
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
@@ -77,20 +115,11 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   else if (state.view === "person") app.appendChild(renderPerson());
   else app.appendChild(renderWeb());
   if (push || replace) writeUrl(replace);
-  if (focusEvent && state.eventId) {
-    const selected = app.querySelector(".spine-event.is-selected");
-    if (selected) requestAnimationFrame(() => selected.scrollIntoView({ block: "center" }));
-  } else if (replace) {
-    window.scrollTo(0, scrollY);
-  }
 }
 
 function renderWeb() {
   const section = document.createElement("section");
   section.className = "web";
-  const note = document.createElement("p");
-  note.className = "web-note";
-  note.textContent = "Hover someone to light the people tied to them. Click to open their timeline.";
   const key = document.createElement("ul");
   key.className = "web-key";
   [["friend", "Friends"], ["enemy", "Foes"]].forEach(([camp, label]) => {
@@ -100,27 +129,42 @@ function renderWeb() {
     item.append(swatch, document.createTextNode(label));
     key.appendChild(item);
   });
-  const hint = document.createElement("p");
-  hint.className = "web-hint";
-  hint.textContent = "Slide sideways if the web runs past the edge.";
   const scroller = document.createElement("div");
   scroller.className = "web-scroll";
+  const stage = document.createElement("div");
+  stage.className = "web-stage";
+  scroller.appendChild(stage);
+  section.append(key, scroller);
+  requestAnimationFrame(() => paintWeb(stage));
+  return section;
+}
+
+function paintWeb(stage) {
+  if (!stage.isConnected) return;
+  const bounds = stage.getBoundingClientRect();
+  if (bounds.width < 2 || bounds.height < 2) {
+    requestAnimationFrame(() => paintWeb(stage));
+    return;
+  }
+  const width = Math.max(320, Math.floor(bounds.width));
+  const height = Math.max(260, Math.floor(bounds.height));
   const layout = webLayout(people, relations, {
     centerId: plot.centerId,
     friendKinds: plot.friendKinds,
     enemyKinds: plot.enemyKinds,
+    width,
+    height,
   });
-  const stage = document.createElement("div");
-  stage.className = "web-stage";
-  stage.style.width = `${layout.width}px`;
-  stage.style.height = `${layout.height}px`;
-  const byId = new Map(layout.nodes.map((node) => [node.id, node]));
+  stage.style.setProperty("--node", `${layout.nodeSize}px`);
+  stage.style.setProperty("--center", `${layout.centerSize}px`);
+  stage.replaceChildren();
 
+  const byId = new Map(layout.nodes.map((node) => [node.id, node]));
   const svg = document.createElementNS(SVG_NS, "svg");
   svg.setAttribute("class", "web-lines");
-  svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   svg.setAttribute("aria-hidden", "true");
-  layout.edges.forEach((edge, index) => {
+  layout.edges.forEach((edge) => {
     const from = byId.get(edge.from);
     const to = byId.get(edge.to);
     if (!from || !to) return;
@@ -128,7 +172,6 @@ function renderWeb() {
     path.setAttribute("d", `M ${from.x} ${from.y} L ${to.x} ${to.y}`);
     path.dataset.from = edge.from;
     path.dataset.to = edge.to;
-    path.style.setProperty("--i", String(index));
     svg.appendChild(path);
   });
   stage.appendChild(svg);
@@ -168,10 +211,6 @@ function renderWeb() {
     button.addEventListener("click", () => openPerson(node.id));
     stage.appendChild(button);
   });
-
-  scroller.appendChild(stage);
-  section.append(note, key, hint, scroller);
-  return section;
 }
 
 function renderPerson() {
@@ -224,19 +263,19 @@ function renderPerson() {
   head.appendChild(copy);
 
   const theirs = events.filter((event) => event.people.includes(person.id));
-  const intro = document.createElement("p");
-  intro.className = "rail-note";
-  intro.textContent = person.id === plot.centerId
-    ? "Every sourced beat in this plot, oldest at the top."
-    : `Public beats that include ${person.name} and ${center?.name || "the show"}.`;
-
-  section.append(back, head, intro, renderRail(theirs, { focusId: person.id }));
+  section.classList.add("lane-page");
+  section.append(back, head, renderRail(theirs, {
+    focusId: person.id,
+    note: person.id === plot.centerId
+      ? "Every sourced beat, oldest on the left."
+      : `Beats with ${person.name}, oldest on the left.`,
+  }));
   return section;
 }
 
 function renderTimeline() {
   const section = document.createElement("section");
-  section.className = "focus timeline-focus";
+  section.className = "focus timeline-focus lane-page";
   const head = document.createElement("div");
   head.className = "timeline-head";
   const copy = document.createElement("div");
@@ -244,11 +283,8 @@ function renderTimeline() {
   eyebrow.className = "eyebrow";
   eyebrow.textContent = "Full timeline";
   const title = document.createElement("h2");
-  title.textContent = "Down the line";
-  const note = document.createElement("p");
-  note.className = "rail-note";
-  note.textContent = "The whole public record, oldest at the top. Open a beat for the sources.";
-  copy.append(eyebrow, title, note);
+  title.textContent = "Across the years";
+  copy.append(eyebrow, title);
 
   const search = document.createElement("label");
   search.className = "search";
@@ -273,14 +309,45 @@ function renderTimeline() {
   head.append(copy, search);
 
   const shown = filterEvents(events, { query: state.query }, peopleById);
-  section.append(head, renderRail(shown));
+  section.append(head, renderRail(shown, {
+    note: "The whole public record, oldest on the left. Open a beat for the sources.",
+  }));
   if (!shown.length) section.appendChild(emptyState("Nothing in this plot matches that search."));
   return section;
 }
 
-function renderRail(list, { focusId = "" } = {}) {
+function renderRail(list, { focusId = "", note = "" } = {}) {
+  const view = document.createElement("div");
+  view.className = "lane-view";
+
+  const tools = document.createElement("div");
+  tools.className = "lane-tools";
+  const hint = document.createElement("p");
+  hint.className = "rail-note";
+  hint.textContent = note;
+  const controls = document.createElement("div");
+  controls.className = "lane-controls";
+  controls.append(
+    laneButton("Zoom out", "−", () => changeLaneZoom(view, laneZoom / 1.2)),
+    laneSlider(view),
+    laneReadout(),
+    laneButton("Zoom in", "+", () => changeLaneZoom(view, laneZoom * 1.2)),
+    laneButton("Fit the timeline to the width", "Fit", () => fitLaneWidth(view)),
+  );
+  tools.append(hint, controls);
+
+  const scroller = document.createElement("div");
+  scroller.className = "lane-scroll";
+  scroller.tabIndex = 0;
+  scroller.setAttribute(
+    "aria-label",
+    "Timeline, oldest on the left. Drag to move. Hold Control and scroll to zoom.",
+  );
+
+  const sizer = document.createElement("div");
+  sizer.className = "lane-sizer";
   const rail = document.createElement("ol");
-  rail.className = "spine";
+  rail.className = "lane";
   let year = "";
   let step = 0;
   list.forEach((event) => {
@@ -288,22 +355,188 @@ function renderRail(list, { focusId = "" } = {}) {
     if (nextYear !== year) {
       year = nextYear;
       const stone = document.createElement("li");
-      stone.className = "spine-year";
+      stone.className = "lane-year";
       const text = document.createElement("span");
       text.textContent = year;
       stone.appendChild(text);
       rail.appendChild(stone);
     }
-    const side = step % 2 === 0 ? "left" : "right";
+    const side = step % 2 === 0 ? "above" : "below";
     step += 1;
-    rail.appendChild(renderSpineEvent(event, side, focusId));
+    rail.appendChild(renderLaneEvent(event, side, focusId));
   });
-  return rail;
+  sizer.appendChild(rail);
+  scroller.appendChild(sizer);
+  view.append(tools, scroller);
+  bindLaneGestures(view);
+  requestAnimationFrame(() => layoutLane(view));
+  return view;
 }
 
-function renderSpineEvent(event, side, focusId) {
+function laneButton(label, text, onClick) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "lane-button";
+  button.textContent = text;
+  button.setAttribute("aria-label", label);
+  button.addEventListener("click", onClick);
+  return button;
+}
+
+function laneReadout() {
+  const readout = document.createElement("span");
+  readout.className = "lane-readout";
+  readout.textContent = `${Math.round(laneZoom * 100)}%`;
+  return readout;
+}
+
+function laneSlider(view) {
+  const input = document.createElement("input");
+  input.type = "range";
+  input.className = "lane-zoom";
+  input.min = String(Math.round(ZOOM_MIN * 100));
+  input.max = String(Math.round(ZOOM_MAX * 100));
+  input.value = String(Math.round(laneZoom * 100));
+  input.setAttribute("aria-label", "Timeline zoom");
+  input.addEventListener("input", () => {
+    const scroller = view.querySelector(".lane-scroll");
+    const rect = scroller.getBoundingClientRect();
+    applyLaneZoom(view, Number(input.value) / 100, {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    });
+  });
+  return input;
+}
+
+function clampZoom(value) {
+  const next = Math.round(Number(value) * 100) / 100;
+  return Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, next));
+}
+
+function changeLaneZoom(view, zoom) {
+  const scroller = view.querySelector(".lane-scroll");
+  const rect = scroller.getBoundingClientRect();
+  applyLaneZoom(view, zoom, {
+    x: rect.left + rect.width / 2,
+    y: rect.top + rect.height / 2,
+  });
+}
+
+function fitLaneWidth(view) {
+  const scroller = view.querySelector(".lane-scroll");
+  const rail = view.querySelector(".lane");
+  rail.style.minWidth = "0px";
+  const base = rail.scrollWidth;
+  if (!base || !scroller.clientWidth) return;
+  const rect = scroller.getBoundingClientRect();
+  applyLaneZoom(view, scroller.clientWidth / base, {
+    x: rect.left,
+    y: rect.top + rect.height / 2,
+  });
+  scroller.scrollLeft = 0;
+}
+
+function layoutLane(view) {
+  if (!view.isConnected) return;
+  const scroller = view.querySelector(".lane-scroll");
+  const rail = view.querySelector(".lane");
+  const height = scroller.clientHeight;
+  if (height < 80) {
+    requestAnimationFrame(() => layoutLane(view));
+    return;
+  }
+  let needed = height;
+  rail.querySelectorAll(".lane-card").forEach((card) => {
+    needed = Math.max(needed, card.scrollHeight * 2 + 80);
+  });
+  rail.style.setProperty("--lane-h", `${needed}px`);
+  applyLaneZoom(view, laneZoom);
+  if (pendingLaneScroll) {
+    scroller.scrollLeft = pendingLaneScroll.left;
+    scroller.scrollTop = pendingLaneScroll.top;
+    pendingLaneScroll = null;
+  } else if (needed > height + 8) {
+    scroller.scrollTop = Math.max(0, (needed * laneZoom) / 2 - scroller.clientHeight / 2);
+  }
+  if (pendingLaneFocus) {
+    const selected = view.querySelector(".lane-event.is-selected");
+    pendingLaneFocus = "";
+    if (selected) selected.scrollIntoView({ inline: "center", block: "nearest" });
+  }
+}
+
+function applyLaneZoom(view, zoom, anchor) {
+  const scroller = view.querySelector(".lane-scroll");
+  const rail = view.querySelector(".lane");
+  const sizer = view.querySelector(".lane-sizer");
+  if (!scroller || !rail || !sizer) return;
+  const prev = Number(view.dataset.zoom || laneZoom || 1) || 1;
+  laneZoom = clampZoom(zoom);
+  rail.style.minWidth = "0px";
+  const contentW = rail.scrollWidth;
+  const minW = Math.max(contentW, scroller.clientWidth / laneZoom);
+  rail.style.minWidth = `${minW}px`;
+  const baseW = rail.offsetWidth;
+  const baseH = rail.offsetHeight;
+  const rect = scroller.getBoundingClientRect();
+  const originX = anchor ? anchor.x - rect.left : rect.width / 2;
+  const originY = anchor ? anchor.y - rect.top : rect.height / 2;
+  const contentX = (scroller.scrollLeft + originX) / prev;
+  const contentY = (scroller.scrollTop + originY) / prev;
+  sizer.style.width = `${Math.ceil(baseW * laneZoom)}px`;
+  sizer.style.height = `${Math.ceil(baseH * laneZoom)}px`;
+  rail.style.transform = `scale(${laneZoom})`;
+  view.dataset.zoom = String(laneZoom);
+  scroller.scrollLeft = contentX * laneZoom - originX;
+  scroller.scrollTop = contentY * laneZoom - originY;
+  const slider = view.querySelector(".lane-zoom");
+  const readout = view.querySelector(".lane-readout");
+  const percent = String(Math.round(laneZoom * 100));
+  if (slider && document.activeElement !== slider) slider.value = percent;
+  if (readout) readout.textContent = `${percent}%`;
+}
+
+function bindLaneGestures(view) {
+  const scroller = view.querySelector(".lane-scroll");
+  scroller.addEventListener("wheel", (event) => {
+    if (!(event.ctrlKey || event.metaKey)) return;
+    event.preventDefault();
+    const factor = Math.exp(-event.deltaY * 0.0016);
+    applyLaneZoom(view, laneZoom * factor, { x: event.clientX, y: event.clientY });
+  }, { passive: false });
+
+  let pan = null;
+  scroller.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0 || event.pointerType !== "mouse") return;
+    if (event.target.closest("button, a, input")) return;
+    pan = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      left: scroller.scrollLeft,
+      top: scroller.scrollTop,
+    };
+    scroller.setPointerCapture(event.pointerId);
+    scroller.classList.add("is-panning");
+  });
+  scroller.addEventListener("pointermove", (event) => {
+    if (!pan || event.pointerId !== pan.id) return;
+    scroller.scrollLeft = pan.left - (event.clientX - pan.x);
+    scroller.scrollTop = pan.top - (event.clientY - pan.y);
+  });
+  const endPan = (event) => {
+    if (!pan || event.pointerId !== pan.id) return;
+    pan = null;
+    scroller.classList.remove("is-panning");
+  };
+  scroller.addEventListener("pointerup", endPan);
+  scroller.addEventListener("pointercancel", endPan);
+}
+
+function renderLaneEvent(event, side, focusId) {
   const item = document.createElement("li");
-  item.className = `spine-event side-${side}`;
+  item.className = `lane-event side-${side}`;
   item.classList.toggle("is-selected", state.eventId === event.id);
   item.id = `beat-${event.id}`;
 
@@ -312,28 +545,25 @@ function renderSpineEvent(event, side, focusId) {
     render({ replace: true });
   };
 
+  const card = document.createElement("div");
+  card.className = "lane-card";
+
   const mark = document.createElement("button");
   mark.type = "button";
-  mark.className = "spine-mark";
+  mark.className = "lane-mark";
   const featured = featuredPerson(event, focusId);
   mark.appendChild(avatar(featured, "md"));
   mark.setAttribute("aria-label", `${formatDate(event.date)}. ${event.title}`);
   mark.addEventListener("click", toggle);
 
-  const dot = document.createElement("span");
-  dot.className = "spine-dot";
-  dot.setAttribute("aria-hidden", "true");
-
-  const copy = document.createElement("div");
-  copy.className = "spine-copy";
   const hit = document.createElement("button");
   hit.type = "button";
-  hit.className = "spine-hit";
+  hit.className = "lane-hit";
   const when = document.createElement("time");
   when.dateTime = event.date;
   when.textContent = formatDate(event.date);
   const rule = document.createElement("span");
-  rule.className = "spine-rule";
+  rule.className = "lane-rule";
   const heading = document.createElement("strong");
   heading.textContent = event.title;
   const tease = document.createElement("span");
@@ -343,11 +573,11 @@ function renderSpineEvent(event, side, focusId) {
   era.textContent = eraLabel(event.era);
   hit.append(when, rule, heading, tease, era);
   hit.addEventListener("click", toggle);
-  copy.appendChild(hit);
+  card.append(mark, hit);
 
   if (state.eventId === event.id) {
     const more = document.createElement("div");
-    more.className = "spine-more";
+    more.className = "lane-more";
     const summary = document.createElement("p");
     summary.textContent = event.summary;
     const names = document.createElement("p");
@@ -377,10 +607,13 @@ function renderSpineEvent(event, side, focusId) {
       links.appendChild(share);
       more.appendChild(links);
     }
-    copy.appendChild(more);
+    card.appendChild(more);
   }
 
-  item.append(mark, dot, copy);
+  const dot = document.createElement("span");
+  dot.className = "lane-dot";
+  dot.setAttribute("aria-hidden", "true");
+  item.append(card, dot);
   return item;
 }
 

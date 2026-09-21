@@ -100,6 +100,9 @@ assert.equal(layout.nodes.some((node) => node.camp === "orbit"), false);
 assert.equal(layout.nodes.find((node) => node.id === "david-dobrik"), undefined);
 assert.equal(layout.nodes.find((node) => node.id === "idubbbz").camp, "enemy");
 assert.equal(layout.nodes.find((node) => node.id === "matt-hoss").camp, "enemy");
+assert.equal(layout.nodes.find((node) => node.id === "denims").camp, "enemy");
+assert.equal(layout.nodes.find((node) => node.id === "anisa-jomha").camp, "enemy");
+assert.equal(layout.nodes.find((node) => node.id === "xqc"), undefined);
 assert.equal(layout.nodes.find((node) => node.id === "hila-klein").camp, "friend");
 const ethanNode = layout.nodes.find((node) => node.id === "ethan-klein");
 assert.equal(ethanNode.camp, "center");
@@ -118,6 +121,15 @@ for (let i = 0; i < layout.nodes.length; i += 1) {
   }
 }
 assert.ok(closest >= 110, `web nodes overlap (${closest})`);
+const fitted = webLayout(people, relations, {
+  centerId: h3.centerId,
+  friendKinds: h3.friendKinds,
+  enemyKinds: h3.enemyKinds,
+  width: 700,
+  height: 420,
+});
+assert.ok(fitted.nodeSize <= 72);
+assert.ok(fitted.nodes.every((node) => node.x > 16 && node.x < 684 && node.y > 16 && node.y < 404));
 
 assert.equal(parseState("https://plotmaniac.com/").view, "web");
 assert.equal(parseState("https://plotmaniac.com/?view=timeline").view, "timeline");

@@ -172,5 +172,29 @@
     "to": "frogan",
     "kind": "feud",
     "label": "Named together in the public fallout around Ethan"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "denims",
+    "kind": "litigation",
+    "label": "Ted Entertainment sued Denims over a Content Nuke reaction and appealed the fair-use ruling"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "anisa-jomha",
+    "kind": "feud",
+    "label": "Appeared in iDubbbz's Content Cop; H3 disputed her framing"
+  },
+  {
+    "from": "denims",
+    "to": "frogan",
+    "kind": "litigation",
+    "label": "Both were sued by Ted Entertainment over Content Nuke reactions"
+  },
+  {
+    "from": "hasan-piker",
+    "to": "denims",
+    "kind": "feud",
+    "label": "Named together in the TwitchCon panel dispute and the Content Nuke suits"
   }
 ]

@@ -165,10 +165,23 @@ export function webLayout(people, relations, options = {}) {
     foeIndex += 1;
   }
 
+  const count = Math.max(ordered.length, 1);
+  let nodeSize = 72;
+  let radiusX = width * 0.36;
+  let radiusY = height * 0.36;
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    const padX = nodeSize / 2 + 12;
+    const padY = nodeSize / 2 + 26;
+    radiusX = Math.max(56, width / 2 - padX);
+    radiusY = Math.max(56, height / 2 - padY);
+    const chord = 2 * Math.min(radiusX, radiusY) * Math.sin(Math.PI / count);
+    if (chord >= nodeSize * 1.2 || nodeSize <= 42) break;
+    nodeSize -= 4;
+  }
+  const centerSize = Math.round(nodeSize * 1.42);
+
   const nodes = [];
   if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center" });
-  const radiusX = Math.min(width, height) * 0.36;
-  const radiusY = radiusX * 0.9;
   ordered.forEach((person, index) => {
     const angle = -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(ordered.length, 1);
     const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds);
@@ -191,7 +204,7 @@ export function webLayout(people, relations, options = {}) {
     edges.push({ from: relation.from, to: relation.to });
   });
 
-  return { width, height, nodes, edges };
+  return { width, height, nodes, edges, nodeSize, centerSize };
 }
 
 export function youtubeId(url) {
