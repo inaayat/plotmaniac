@@ -9,6 +9,7 @@ import {
   filterEvents,
   firstLoadCountries,
   graphLayout,
+  relationsFieldLayout,
   initials,
   outlineFor,
   parseState,
@@ -377,6 +378,49 @@ assert.match(
   stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", country: "mexico" }, ""),
   /country=mexico/,
 );
+
+const pixelDist = (node, center) => Math.hypot(node.x - center.x, node.y - center.y);
+const meanDist = (nodes, center) => nodes.reduce((sum, node) => sum + pixelDist(node, center), 0) / nodes.length;
+const span = (nodes, key) => Math.max(...nodes.map((node) => node[key])) - Math.min(...nodes.map((node) => node[key]));
+
+const majorsOnly = relationsFieldLayout(usCountries, { width: 1400, height: 800 });
+assert.equal(majorsOnly.nodes.length, 31);
+assert.equal(majorsOnly.nodes.every((node) => node.first_load), true);
+assert.equal(majorsOnly.nodes.some((node) => node.status === "neutral"), false);
+assert.ok(span(majorsOnly.nodes, "x") > 1400 * 0.62, `major width ${span(majorsOnly.nodes, "x")}`);
+assert.ok(span(majorsOnly.nodes, "y") > 800 * 0.5, `major height ${span(majorsOnly.nodes, "y")}`);
+const majorMeanX = majorsOnly.nodes.reduce((sum, node) => sum + node.x, 0) / majorsOnly.nodes.length;
+const majorMeanY = majorsOnly.nodes.reduce((sum, node) => sum + node.y, 0) / majorsOnly.nodes.length;
+assert.ok(Math.abs(majorMeanX - majorsOnly.center.x) < 220);
+assert.ok(Math.abs(majorMeanY - majorsOnly.center.y) < 160);
+const beatCount = new Map(usCountries.map((country) => [country.slug, (country.timeline || []).length]));
+const byBeats = majorsOnly.nodes.slice().sort((a, b) => beatCount.get(b.slug) - beatCount.get(a.slug));
+assert.ok(pixelDist(byBeats[0], majorsOnly.center) < pixelDist(byBeats.at(-1), majorsOnly.center));
+assert.ok(majorsOnly.nodes.every((node) => node.x > 0 && node.x < 1400 && node.y > 0 && node.y < 800));
+
+const europe = relationsFieldLayout(usCountries, { width: 1400, height: 800, openRegions: ["Europe"] });
+const europeMajors = europe.nodes.filter((node) => node.first_load);
+const europeBroader = europe.nodes.filter((node) => !node.first_load);
+assert.ok(europeBroader.length > 10);
+assert.equal(europeBroader.every((node) => node.region === "Europe"), true);
+assert.ok(Math.max(...europeMajors.map((node) => pixelDist(node, europe.center))) < Math.min(...europeBroader.map((node) => pixelDist(node, europe.center))));
+assert.ok(meanDist(europeMajors, europe.center) < meanDist(majorsOnly.nodes, majorsOnly.center) * 0.72);
+assert.ok(span(europeBroader, "x") > 1400 * 0.7, `europe width ${span(europeBroader, "x")}`);
+assert.ok(span(europeBroader, "y") > 800 * 0.5, `europe height ${span(europeBroader, "y")}`);
+assert.equal(europe.nodes.some((node) => node.region === "Oceania" && !node.first_load), false);
+assert.ok(europe.nodes.filter((node) => node.status === "neutral").every((node) => node.outline === "none"));
+assert.ok(europe.nodes.filter((node) => node.status === "friend").every((node) => node.outline === "green"));
+assert.ok(europe.nodes.filter((node) => node.status === "foe").every((node) => node.outline === "red"));
+const europeMeanX = europe.nodes.reduce((sum, node) => sum + node.x, 0) / europe.nodes.length;
+const europeMeanY = europe.nodes.reduce((sum, node) => sum + node.y, 0) / europe.nodes.length;
+assert.ok(Math.abs(europeMeanX - europe.center.x) < 280);
+assert.ok(Math.abs(europeMeanY - europe.center.y) < 180);
+
+const tall = relationsFieldLayout(usCountries, { width: 700, height: 980, openRegions: ["Sub-Saharan Africa"] });
+const tallBroad = tall.nodes.filter((node) => !node.first_load);
+assert.ok(span(tallBroad, "x") > 700 * 0.62);
+assert.ok(span(tallBroad, "y") > 980 * 0.55);
+assert.ok(Math.max(...tall.nodes.filter((node) => node.first_load).map((node) => pixelDist(node, tall.center))) < Math.min(...tallBroad.map((node) => pixelDist(node, tall.center))));
 
 assert.equal(stateUrl("https://plotmaniac.com/", { view: "pick" }, ""), "/");
 assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /plot=united-states/);

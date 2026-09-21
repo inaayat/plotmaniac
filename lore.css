@@ -554,34 +554,41 @@ body[data-view="web"] #footer-note {
 }
 
 body[data-board="regions"][data-view="web"] {
-  height: auto;
-  min-height: 100dvh;
-  overflow: auto;
-  display: block;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 body[data-board="regions"][data-view="web"] .app {
-  display: block;
-  width: min(1120px, calc(100% - 32px));
-  padding: 8px 0 80px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: none;
+  padding: 0 8px 6px;
 }
 
 body[data-board="regions"][data-view="web"] .site-footer {
-  position: relative;
-  right: auto;
-  bottom: auto;
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto 28px;
-  text-align: left;
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  width: auto;
+  margin: 0;
+  text-align: right;
 }
 
 body[data-board="regions"][data-view="web"] #footer-note {
-  display: block;
+  display: none;
 }
 
 .relations {
-  width: min(1080px, 100%);
-  margin: 0 auto;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .relations-hint,
@@ -590,11 +597,11 @@ body[data-board="regions"][data-view="web"] #footer-note {
 }
 
 .relations-hint {
-  max-width: 68ch;
-  margin: 0 auto 22px;
+  max-width: 72ch;
+  margin: 0 auto 6px;
   color: var(--muted);
-  font-size: 0.75rem;
-  line-height: 1.55;
+  font-size: 0.72rem;
+  line-height: 1.45;
 }
 
 .relations-hint a,
@@ -602,29 +609,34 @@ body[data-board="regions"][data-view="web"] #footer-note {
   color: var(--gold);
 }
 
-.major-board {
-  display: grid;
-  grid-template-columns: minmax(180px, 0.8fr) 140px minmax(240px, 1.3fr);
-  gap: 18px 22px;
-  align-items: start;
-  margin-bottom: 28px;
+.relations-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
 }
 
-.major-label,
-.region-intro {
+.region-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 8px;
+  padding: 4px 8px 0;
+}
+
+.region-toggle {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
   color: var(--muted);
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
 }
 
-.major-label {
-  margin-bottom: 10px;
-}
-
-.region-intro {
-  margin: 8px 0 4px;
+.region-toggle.is-open {
+  color: var(--ink);
+  border-color: var(--line-strong);
+  background: rgba(244, 239, 230, 0.06);
 }
 
 .chip-list,
@@ -684,55 +696,45 @@ body[data-board="regions"][data-view="web"] #footer-note {
   background: rgba(232, 196, 122, 0.14);
 }
 
-.major-center {
-  display: flex;
-  justify-content: center;
-  padding-top: 22px;
-}
-
-.major-center .country-chip {
+.relations-stage .country-chip {
+  position: absolute;
+  transform: translate(-50%, -50%);
   flex-direction: column;
-  gap: 8px;
-  padding: 8px;
+  gap: 3px;
+  padding: 0;
   background: transparent;
+  width: calc(var(--node, 48px) + 28px);
 }
 
-.major-center .avatar {
-  width: 88px;
-  height: 58px;
+.relations-stage .country-chip .avatar {
+  width: var(--node, 48px);
+  height: calc(var(--node, 48px) * 0.68);
+  margin: 0 auto;
 }
 
-.region-list {
-  display: flex;
-  flex-direction: column;
+.relations-stage .chip-name {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 0.6rem;
 }
 
-.region {
-  border-top: 1px solid var(--line);
+.relations-stage .is-broad .chip-name {
+  opacity: 0;
 }
 
-.region summary {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: baseline;
-  padding: 12px 2px;
-  cursor: pointer;
-  list-style: none;
+.relations-stage .is-broad:hover .chip-name,
+.relations-stage .is-broad:focus-visible .chip-name,
+.relations-stage .is-broad.is-selected .chip-name {
+  opacity: 1;
 }
 
-.region summary::-webkit-details-marker {
-  display: none;
-}
-
-.region-meta {
-  color: var(--muted);
-  font-size: 0.66rem;
-  text-align: right;
-}
-
-.region-countries {
-  padding: 0 0 14px;
+.relations-stage .is-center-chip .avatar {
+  width: var(--center, 84px);
+  height: calc(var(--center, 84px) * 0.66);
+  border-color: rgba(232, 196, 122, 0.85);
 }
 
 .relation-drawer {
@@ -836,22 +838,15 @@ body[data-board="regions"][data-view="web"] #footer-note {
 }
 
 @media (max-width: 800px) {
-  .major-board {
-    grid-template-columns: 1fr;
+  .region-bar {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
   }
 
-  .major-center {
-    order: -1;
-    padding-top: 0;
-  }
-
-  .region summary {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .region-meta {
-    text-align: left;
+  .region-toggle {
+    flex: none;
   }
 }
 

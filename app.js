@@ -12,6 +12,7 @@ import {
   outlineFor,
   parseState,
   parseYear,
+  relationsFieldLayout,
   stateUrl,
   tiesWith,
   webLayout,
@@ -56,6 +57,8 @@ async function load() {
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
       if (state.view === "web") {
+        const field = document.querySelector(".relations-stage");
+        if (field) paintRelationsField(field);
         const stage = document.querySelector(".web-stage");
         if (stage) paintWeb(stage);
         return;
@@ -330,13 +333,16 @@ function renderWeb() {
 function renderRelations() {
   const section = document.createElement("section");
   section.className = "relations";
-  section.append(renderRelationLegend(), renderRelationHint(), renderMajorBoard(), renderRegionList());
+  const stage = document.createElement("div");
+  stage.className = "relations-stage";
+  section.append(renderRelationLegend(), renderRelationHint(), stage, renderRegionBar());
   const drawer = document.createElement("aside");
   drawer.className = "relation-drawer";
   drawer.hidden = true;
   drawer.setAttribute("role", "dialog");
   drawer.setAttribute("aria-label", "Relationship timeline");
   section.appendChild(drawer);
+  requestAnimationFrame(() => paintRelationsField(stage));
   paintRelationSelection(section);
   return section;
 }
@@ -367,7 +373,7 @@ function renderRelationHint() {
   const foeCount = majors.filter((country) => country.status === "foe").length;
   hint.append(
     document.createTextNode(
-      `${friendCount} major allies and ${foeCount} major foes are on the board. Open a region for the rest of the ${countries.length} countries, including every neutral. `,
+      `${friendCount} major allies and ${foeCount} major foes sit close to the center. Open a region and the wider set spreads across the page, including every neutral. `,
     ),
   );
   const source = document.createElement("a");
@@ -377,90 +383,81 @@ function renderRelationHint() {
   return hint;
 }
 
-function renderMajorBoard() {
-  const board = document.createElement("div");
-  board.className = "major-board";
-  const majors = firstLoadCountries(countries);
-  const byName = (a, b) => a.country.localeCompare(b.country);
-  const foes = majors.filter((country) => country.status === "foe").sort(byName);
-  const friends = majors.filter((country) => country.status === "friend").sort(byName);
-  board.append(
-    renderMajorColumn("Major foes", foes),
-    renderMajorCenter(),
-    renderMajorColumn("Major allies", friends),
-  );
-  return board;
-}
-
-function renderMajorColumn(label, list) {
-  const column = document.createElement("div");
-  column.className = "major-column";
-  const heading = document.createElement("h2");
-  heading.className = "major-label";
-  heading.textContent = label;
-  const chips = document.createElement("ul");
-  chips.className = "chip-list";
-  list.forEach((country) => {
-    const item = document.createElement("li");
-    item.appendChild(countryChip(country));
-    chips.appendChild(item);
-  });
-  column.append(heading, chips);
-  return column;
-}
-
-function renderMajorCenter() {
-  const center = document.createElement("div");
-  center.className = "major-center";
-  const person = peopleById.get(plot.centerId);
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "country-chip outline-none is-center-chip";
-  button.dataset.id = plot.centerId;
-  button.setAttribute("aria-label", "United States, the center of this plot");
-  button.append(avatar(person || { name: "United States" }, "lg"));
-  const name = document.createElement("span");
-  name.className = "chip-name";
-  name.textContent = person?.name || "United States";
-  button.appendChild(name);
-  button.addEventListener("click", () => selectCountry(plot.centerId));
-  center.appendChild(button);
-  return center;
-}
-
-function renderRegionList() {
-  const list = document.createElement("div");
-  list.className = "region-list";
-  const intro = document.createElement("h2");
-  intro.className = "region-intro";
-  intro.textContent = "All countries by region";
-  list.appendChild(intro);
+function renderRegionBar() {
+  const bar = document.createElement("div");
+  bar.className = "region-bar";
+  bar.setAttribute("aria-label", "Regions");
   countriesByRegion(countries).forEach((group) => {
-    const details = document.createElement("details");
-    details.className = "region";
-    details.dataset.region = group.region;
-    details.open = openRegions.has(group.region);
-    const summary = document.createElement("summary");
-    const title = document.createElement("span");
-    title.textContent = group.region;
-    const meta = document.createElement("span");
-    meta.className = "region-meta";
-    const friendCount = group.countries.filter((country) => country.status === "friend").length;
-    const foeCount = group.countries.filter((country) => country.status === "foe").length;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "region-toggle";
+    button.dataset.region = group.region;
+    const open = openRegions.has(group.region);
+    button.classList.toggle("is-open", open);
+    button.setAttribute("aria-expanded", String(open));
     const neutralCount = group.countries.filter((country) => country.status === "neutral").length;
-    meta.textContent = `${group.countries.length} · ${friendCount} friends · ${foeCount} foes · ${neutralCount} neutrals`;
-    summary.append(title, meta);
-    const chips = document.createElement("div");
-    chips.className = "region-countries";
-    group.countries.forEach((country) => chips.appendChild(countryChip(country)));
-    details.append(summary, chips);
-    details.addEventListener("toggle", () => {
-      if (details.open) openRegions.add(group.region);
-      else openRegions.delete(group.region);
-    });
-    list.appendChild(details);
+    button.textContent = `${group.region} · ${group.countries.length}`;
+    button.title = `${group.countries.length} countries, ${neutralCount} neutral`;
+    button.addEventListener("click", () => toggleRegion(group.region));
+    bar.appendChild(button);
   });
-  return list;
+  return bar;
+}
+
+function toggleRegion(region) {
+  if (openRegions.has(region)) openRegions.delete(region);
+  else openRegions.add(region);
+  document.querySelectorAll(".region-toggle").forEach((button) => {
+    const open = openRegions.has(button.dataset.region);
+    button.classList.toggle("is-open", open);
+    button.setAttribute("aria-expanded", String(open));
+  });
+  const stage = document.querySelector(".relations-stage");
+  if (stage) paintRelationsField(stage);
+}
+
+function paintRelationsField(stage) {
+  if (!stage?.isConnected) return;
+  const bounds = stage.getBoundingClientRect();
+  if (bounds.width < 2 || bounds.height < 2) {
+    requestAnimationFrame(() => paintRelationsField(stage));
+    return;
+  }
+  const layout = relationsFieldLayout(countries, {
+    width: Math.floor(bounds.width),
+    height: Math.floor(bounds.height),
+    openRegions: [...openRegions],
+    centerId: plot.centerId,
+  });
+  stage.style.setProperty("--node", `${layout.nodeSize}px`);
+  stage.style.setProperty("--center", `${layout.centerSize}px`);
+  stage.replaceChildren();
+  const centerPerson = peopleById.get(plot.centerId);
+  const center = document.createElement("button");
+  center.type = "button";
+  center.className = "country-chip outline-none is-center-chip is-field";
+  center.dataset.id = plot.centerId;
+  center.style.left = `${layout.center.x}px`;
+  center.style.top = `${layout.center.y}px`;
+  center.setAttribute("aria-label", "United States, the center of this plot");
+  center.append(avatar(centerPerson || { name: "United States" }, "lg"));
+  const centerName = document.createElement("span");
+  centerName.className = "chip-name";
+  centerName.textContent = centerPerson?.name || "United States";
+  center.appendChild(centerName);
+  center.addEventListener("click", () => selectCountry(plot.centerId));
+  stage.appendChild(center);
+  layout.nodes.forEach((node) => {
+    const country = countryBySlug.get(node.slug);
+    if (!country) return;
+    const button = countryChip(country);
+    button.classList.add("is-field");
+    if (!country.first_load) button.classList.add("is-broad");
+    button.style.left = `${node.x}px`;
+    button.style.top = `${node.y}px`;
+    stage.appendChild(button);
+  });
+  paintRelationSelection(document);
 }
 
 function countryChip(country) {
@@ -483,10 +480,15 @@ function selectCountry(slug) {
   if (!known) return;
   state.country = state.country === slug ? "" : slug;
   const record = countryBySlug.get(state.country);
-  if (record?.region) {
+  if (record && !record.first_load && record.region && !openRegions.has(record.region)) {
     openRegions.add(record.region);
-    const details = document.querySelector(`.region[data-region="${CSS.escape(record.region)}"]`);
-    if (details) details.open = true;
+    document.querySelectorAll(".region-toggle").forEach((button) => {
+      const open = openRegions.has(button.dataset.region);
+      button.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", String(open));
+    });
+    const stage = document.querySelector(".relations-stage");
+    if (stage) paintRelationsField(stage);
   }
   paintRelationSelection(document);
   writeUrl(false);

@@ -75,6 +75,90 @@ export function countriesByRegion(countries) {
   }));
 }
 
+const FIELD_GOLDEN = Math.PI * (3 - Math.sqrt(5));
+
+function ellipseRadius(angle, radiusX, radiusY) {
+  const cos = Math.cos(angle);
+  const sin = Math.sin(angle);
+  const denom = (cos * cos) / (radiusX * radiusX) + (sin * sin) / (radiusY * radiusY);
+  return denom === 0 ? Math.min(radiusX, radiusY) : 1 / Math.sqrt(denom);
+}
+
+function byRelevance(a, b) {
+  const beats = (b.timeline || []).length - (a.timeline || []).length;
+  if (beats) return beats;
+  return String(a.country).localeCompare(String(b.country));
+}
+
+export function relationsFieldLayout(countries, options = {}) {
+  const width = Math.max(320, Number(options.width) || 1100);
+  const height = Math.max(280, Number(options.height) || 760);
+  const open = new Set(options.openRegions || []);
+  const visible = (countries || []).filter((country) => country && (country.first_load || open.has(country.region)));
+  const majors = visible.filter((country) => country.first_load && (country.status === "friend" || country.status === "foe"));
+  const broader = visible.filter((country) => !country.first_load);
+  const count = majors.length + broader.length;
+  let nodeSize = 58;
+  if (count > 80) nodeSize = 28;
+  else if (count > 48) nodeSize = 34;
+  else if (count > 31) nodeSize = 42;
+  nodeSize = Math.min(nodeSize, Math.max(26, Math.floor(Math.min(width, height) / 14)));
+  const centerSize = Math.round(Math.min(96, Math.max(64, nodeSize * 1.7)));
+  const pad = nodeSize * 0.72 + 20;
+  const radiusX = Math.max(centerSize, width / 2 - pad);
+  const radiusY = Math.max(centerSize, height / 2 - pad);
+  const cx = width / 2;
+  const cy = height / 2;
+  const innerFloor = centerSize * 0.52 + nodeSize * 0.42;
+
+  const placeBand = (list, radiusAt, angleOffset = 0) => {
+    const ranked = list.slice().sort(byRelevance);
+    const total = ranked.length;
+    return ranked.map((country, index) => {
+      const span = total <= 1 ? 0 : Math.sqrt((index + 0.5) / total);
+      const angle = -Math.PI / 2 + angleOffset + index * FIELD_GOLDEN;
+      const dist = radiusAt(span, angle);
+      return {
+        id: country.slug,
+        slug: country.slug,
+        country: country.country,
+        status: country.status,
+        outline: country.outline,
+        region: country.region,
+        first_load: Boolean(country.first_load),
+        x: cx + Math.cos(angle) * dist,
+        y: cy + Math.sin(angle) * dist,
+        dist,
+      };
+    });
+  };
+
+  const nodes = !broader.length
+    ? placeBand(majors, (span, angle) => {
+      const rim = ellipseRadius(angle, radiusX, radiusY) * 0.97;
+      return innerFloor + span * Math.max(0, rim - innerFloor);
+    })
+    : placeBand(majors, (span) => {
+      const majorRim = Math.max(innerFloor + nodeSize * 0.35, Math.min(radiusX, radiusY) * 0.34);
+      return innerFloor + span * Math.max(8, majorRim - innerFloor);
+    }).concat(placeBand(broader, (span, angle) => {
+      const limit = Math.min(radiusX, radiusY);
+      const majorRim = Math.max(innerFloor + nodeSize * 0.35, limit * 0.34);
+      const rim = ellipseRadius(angle, radiusX, radiusY) * 0.98;
+      const start = Math.min(Math.max(majorRim + nodeSize * 0.45, limit * 0.48), Math.max(majorRim + 8, rim - 4));
+      return start + span * Math.max(0, rim - start);
+    }, FIELD_GOLDEN / 2));
+
+  return {
+    width,
+    height,
+    nodeSize,
+    centerSize,
+    nodes,
+    center: { id: options.centerId || "united-states", x: cx, y: cy },
+  };
+}
+
 export function relationEvents(relation, events) {
   return events.filter((event) =>
     event.people.includes(relation.from) && event.people.includes(relation.to));
