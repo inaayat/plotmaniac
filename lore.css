@@ -627,6 +627,7 @@ body[data-board="regions"][data-view="web"] #footer-note {
 .relations-stage .web-lines {
   z-index: 0;
   pointer-events: none;
+  animation: field-lines-in 0.35s ease both;
 }
 
 .relations-stage .web-lines path[data-camp="neutral"] {
@@ -764,6 +765,8 @@ body[data-board="regions"][data-view="web"] #footer-note {
   padding: 0;
   background: transparent;
   width: calc(var(--node, 48px) + 28px);
+  animation: field-node-in 0.35s ease both;
+  animation-delay: calc(var(--i, 0) * 12ms);
 }
 
 .relations-stage .country-chip .avatar {
@@ -786,6 +789,13 @@ body[data-board="regions"][data-view="web"] #footer-note {
   opacity: 0;
 }
 
+.relations-stage.has-region .chip-name {
+  opacity: 0;
+}
+
+.relations-stage.has-region .country-chip:hover .chip-name,
+.relations-stage.has-region .country-chip:focus-visible .chip-name,
+.relations-stage.has-region .country-chip.is-selected .chip-name,
 .relations-stage .is-broad:hover .chip-name,
 .relations-stage .is-broad:focus-visible .chip-name,
 .relations-stage .is-broad.is-selected .chip-name {
@@ -1688,6 +1698,17 @@ body[data-view="timeline"] #footer-note {
   to { opacity: 1; }
 }
 
+@keyframes field-node-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+}
+
+@keyframes field-lines-in {
+  from { opacity: 0; }
+}
+
 @keyframes spin-ring {
   from { transform: translateX(-50%) rotate(0deg); }
   to { transform: translateX(-50%) rotate(360deg); }
@@ -1747,6 +1768,8 @@ body[data-view="timeline"] #footer-note {
   .mark circle,
   .web-lines path,
   .node,
+  .relations-stage .country-chip,
+  .relations-stage .web-lines,
   .node.is-center::before,
   .lane::before,
   .loading-dot {

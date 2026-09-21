@@ -388,7 +388,8 @@ function renderRelationHint() {
 function renderRegionBar() {
   const bar = document.createElement("div");
   bar.className = "region-bar";
-  bar.setAttribute("aria-label", "Regions");
+  bar.setAttribute("role", "group");
+  bar.setAttribute("aria-label", "Show one region");
   countriesByRegion(countries).forEach((group) => {
     const button = document.createElement("button");
     button.type = "button";
@@ -397,6 +398,7 @@ function renderRegionBar() {
     const open = openRegions.has(group.region);
     button.classList.toggle("is-open", open);
     button.setAttribute("aria-expanded", String(open));
+    button.setAttribute("aria-pressed", String(open));
     const neutralCount = group.countries.filter((country) => country.status === "neutral").length;
     button.textContent = `${group.region} · ${group.countries.length}`;
     button.title = `${group.countries.length} countries, ${neutralCount} neutral`;
@@ -407,15 +409,22 @@ function renderRegionBar() {
 }
 
 function toggleRegion(region) {
-  if (openRegions.has(region)) openRegions.delete(region);
-  else openRegions.add(region);
+  const hadSelection = Boolean(state.country);
+  openRegions = openRegions.has(region) ? new Set() : new Set([region]);
+  state.country = "";
+  paintRegionButtons();
+  const stage = document.querySelector(".relations-stage");
+  if (stage) paintRelationsField(stage);
+  if (hadSelection) writeUrl(true);
+}
+
+function paintRegionButtons() {
   document.querySelectorAll(".region-toggle").forEach((button) => {
     const open = openRegions.has(button.dataset.region);
     button.classList.toggle("is-open", open);
     button.setAttribute("aria-expanded", String(open));
+    button.setAttribute("aria-pressed", String(open));
   });
-  const stage = document.querySelector(".relations-stage");
-  if (stage) paintRelationsField(stage);
 }
 
 function paintRelationsField(stage) {
@@ -433,6 +442,7 @@ function paintRelationsField(stage) {
   });
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);
+  stage.classList.toggle("has-region", Boolean(layout.selectedRegion));
   stage.replaceChildren();
   stage.appendChild(renderRelationLines(layout));
   const centerPerson = peopleById.get(plot.centerId);
@@ -454,7 +464,7 @@ function paintRelationsField(stage) {
   center.addEventListener("focus", () => lightRelation(stage, plot.centerId));
   center.addEventListener("blur", () => clearRelation(stage));
   stage.appendChild(center);
-  layout.nodes.forEach((node) => {
+  layout.nodes.forEach((node, index) => {
     const country = countryBySlug.get(node.slug);
     if (!country) return;
     const button = countryChip(country);
@@ -462,6 +472,7 @@ function paintRelationsField(stage) {
     if (!country.first_load) button.classList.add("is-broad");
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
+    button.style.setProperty("--i", String(index));
     button.addEventListener("pointerenter", () => lightRelation(stage, country.slug));
     button.addEventListener("pointerleave", () => clearRelation(stage));
     button.addEventListener("focus", () => lightRelation(stage, country.slug));
@@ -553,12 +564,8 @@ function selectCountry(slug) {
   state.country = state.country === slug ? "" : slug;
   const record = countryBySlug.get(state.country);
   if (record && !record.first_load && record.region && !openRegions.has(record.region)) {
-    openRegions.add(record.region);
-    document.querySelectorAll(".region-toggle").forEach((button) => {
-      const open = openRegions.has(button.dataset.region);
-      button.classList.toggle("is-open", open);
-      button.setAttribute("aria-expanded", String(open));
-    });
+    openRegions = new Set([record.region]);
+    paintRegionButtons();
     const stage = document.querySelector(".relations-stage");
     if (stage) paintRelationsField(stage);
   }
@@ -654,7 +661,7 @@ function renderCountryHistory(record) {
 
 function rememberCountryRegion() {
   const record = countryBySlug.get(state.country);
-  if (record?.region) openRegions.add(record.region);
+  if (record && !record.first_load && record.region) openRegions = new Set([record.region]);
 }
 
 function outlineClass(country) {

@@ -85,6 +85,8 @@ function ellipseRadius(angle, radiusX, radiusY) {
 }
 
 function byRelevance(a, b) {
+  const major = Number(Boolean(b.first_load)) - Number(Boolean(a.first_load));
+  if (major) return major;
   const beats = (b.timeline || []).length - (a.timeline || []).length;
   if (beats) return beats;
   return String(a.country).localeCompare(String(b.country));
@@ -93,15 +95,15 @@ function byRelevance(a, b) {
 export function relationsFieldLayout(countries, options = {}) {
   const width = Math.max(320, Number(options.width) || 1100);
   const height = Math.max(280, Number(options.height) || 760);
-  const open = new Set(options.openRegions || []);
-  const visible = (countries || []).filter((country) => country && (country.first_load || open.has(country.region)));
+  const selectedRegion = (options.openRegions || [])[0] || "";
+  const visible = (countries || []).filter((country) =>
+    country && (selectedRegion ? country.region === selectedRegion : country.first_load));
   const majors = visible.filter((country) => country.first_load && (country.status === "friend" || country.status === "foe"));
   const broader = visible.filter((country) => !country.first_load);
   const count = majors.length + broader.length;
   let nodeSize = 58;
-  if (count > 80) nodeSize = 28;
-  else if (count > 48) nodeSize = 34;
-  else if (count > 31) nodeSize = 42;
+  if (count > 60) nodeSize = 28;
+  else if (count > 31) nodeSize = 34;
   nodeSize = Math.min(nodeSize, Math.max(26, Math.floor(Math.min(width, height) / 14)));
   const centerSize = Math.round(Math.min(96, Math.max(64, nodeSize * 1.7)));
   const pad = nodeSize * 0.72 + 20;
@@ -133,19 +135,18 @@ export function relationsFieldLayout(countries, options = {}) {
     });
   };
 
-  const nodes = !broader.length
-    ? placeBand(majors, (span, angle) => {
-      const rim = ellipseRadius(angle, radiusX, radiusY) * 0.97;
+  const nodes = !selectedRegion || !majors.length || !broader.length
+    ? placeBand(visible, (span, angle) => {
+      const rim = ellipseRadius(angle, radiusX, radiusY) * 0.98;
       return innerFloor + span * Math.max(0, rim - innerFloor);
     })
     : placeBand(majors, (span) => {
-      const majorRim = Math.max(innerFloor + nodeSize * 0.35, Math.min(radiusX, radiusY) * 0.34);
-      return innerFloor + span * Math.max(8, majorRim - innerFloor);
+      const majorRim = Math.max(innerFloor + nodeSize, Math.min(radiusX, radiusY) * 0.55);
+      return innerFloor + span * Math.max(0, majorRim - innerFloor);
     }).concat(placeBand(broader, (span, angle) => {
-      const limit = Math.min(radiusX, radiusY);
-      const majorRim = Math.max(innerFloor + nodeSize * 0.35, limit * 0.34);
+      const majorRim = Math.max(innerFloor + nodeSize, Math.min(radiusX, radiusY) * 0.55);
+      const start = majorRim + nodeSize * 0.7;
       const rim = ellipseRadius(angle, radiusX, radiusY) * 0.98;
-      const start = Math.min(Math.max(majorRim + nodeSize * 0.45, limit * 0.48), Math.max(majorRim + 8, rim - 4));
       return start + span * Math.max(0, rim - start);
     }, FIELD_GOLDEN / 2));
 
@@ -155,6 +156,7 @@ export function relationsFieldLayout(countries, options = {}) {
     nodeSize,
     centerSize,
     nodes,
+    selectedRegion,
     center: { id: options.centerId || "united-states", x: cx, y: cy },
   };
 }

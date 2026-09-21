@@ -406,6 +406,15 @@ function linkedBloc(ids, edges) {
 const pixelDist = (node, center) => Math.hypot(node.x - center.x, node.y - center.y);
 const meanDist = (nodes, center) => nodes.reduce((sum, node) => sum + pixelDist(node, center), 0) / nodes.length;
 const span = (nodes, key) => Math.max(...nodes.map((node) => node[key])) - Math.min(...nodes.map((node) => node[key]));
+const nearestDistance = (nodes) => {
+  let nearest = Infinity;
+  for (let i = 0; i < nodes.length; i += 1) {
+    for (let j = i + 1; j < nodes.length; j += 1) {
+      nearest = Math.min(nearest, Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y));
+    }
+  }
+  return nearest;
+};
 
 const majorsOnly = relationsFieldLayout(usCountries, { width: 1400, height: 800 });
 assert.equal(majorsOnly.nodes.length, 31);
@@ -425,6 +434,9 @@ assert.ok(majorsOnly.nodes.every((node) => node.x > 0 && node.x < 1400 && node.y
 const europe = relationsFieldLayout(usCountries, { width: 1400, height: 800, openRegions: ["Europe"] });
 const europeMajors = europe.nodes.filter((node) => node.first_load);
 const europeBroader = europe.nodes.filter((node) => !node.first_load);
+assert.equal(europe.selectedRegion, "Europe");
+assert.equal(europe.nodes.length, usCountries.filter((country) => country.region === "Europe").length);
+assert.equal(europe.nodes.every((node) => node.region === "Europe"), true);
 assert.ok(europeBroader.length > 10);
 assert.equal(europeBroader.every((node) => node.region === "Europe"), true);
 assert.ok(Math.max(...europeMajors.map((node) => pixelDist(node, europe.center))) < Math.min(...europeBroader.map((node) => pixelDist(node, europe.center))));
@@ -440,8 +452,24 @@ const europeMeanY = europe.nodes.reduce((sum, node) => sum + node.y, 0) / europe
 assert.ok(Math.abs(europeMeanX - europe.center.x) < 280);
 assert.ok(Math.abs(europeMeanY - europe.center.y) < 180);
 
+const firstRegionWins = relationsFieldLayout(usCountries, {
+  width: 1400,
+  height: 800,
+  openRegions: ["Europe", "Americas"],
+});
+assert.equal(firstRegionWins.selectedRegion, "Europe");
+assert.equal(firstRegionWins.nodes.every((node) => node.region === "Europe"), true);
+
+for (const region of RELATION_REGIONS) {
+  const regional = relationsFieldLayout(usCountries, { width: 1024, height: 430, openRegions: [region] });
+  assert.equal(regional.nodes.length, usCountries.filter((country) => country.region === region).length, region);
+  assert.equal(regional.nodes.every((node) => node.region === region), true, region);
+  assert.ok(nearestDistance(regional.nodes) >= regional.nodeSize, `${region} flags do not overlap`);
+}
+
 const tall = relationsFieldLayout(usCountries, { width: 700, height: 980, openRegions: ["Sub-Saharan Africa"] });
 const tallBroad = tall.nodes.filter((node) => !node.first_load);
+assert.equal(tall.nodes.every((node) => node.region === "Sub-Saharan Africa"), true);
 assert.ok(span(tallBroad, "x") > 700 * 0.62);
 assert.ok(span(tallBroad, "y") > 980 * 0.55);
 assert.ok(Math.max(...tall.nodes.filter((node) => node.first_load).map((node) => pixelDist(node, tall.center))) < Math.min(...tallBroad.map((node) => pixelDist(node, tall.center))));
