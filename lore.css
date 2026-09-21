@@ -542,6 +542,12 @@ body[data-view="web"] #footer-note {
   border-color: #e06a62;
 }
 
+.swatch.camp-near {
+  width: 8px;
+  height: 8px;
+  border-color: var(--gold);
+}
+
 .camp-label {
   position: absolute;
   transform: translate(-50%, -50%);

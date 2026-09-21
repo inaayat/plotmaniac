@@ -272,21 +272,111 @@ export function webLayout(people, relations, options = {}) {
     nodeSize -= 4;
   }
   const centerSize = Math.round(nodeSize * 1.42);
+  const counts = beatCounts(options.events, ordered.map((person) => person.id));
+  const tally = ordered.map((person) => counts.get(person.id) || 0);
+  const fewest = tally.length ? Math.min(...tally) : 0;
+  const most = tally.length ? Math.max(...tally) : 0;
+  const weighted = Boolean(options.events) && most > fewest;
+  const minRadius = centerSize / 2 + nodeSize / 2 + 28;
+  const fitR = Math.min(radiusX, radiusY);
 
   const nodes = [];
   if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center" });
-  ordered.forEach((person, index) => {
-    const angle = -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(ordered.length, 1);
+  const placed = weighted
+    ? orderByBeats(ordered, counts)
+    : ordered.map((person, index) => ({ person, index }));
+  placed.forEach(({ person, index }) => {
+    const beats = counts.get(person.id) || 0;
+    const closeness = weighted ? (beats - fewest) / (most - fewest) : 0;
+    const angle = weighted
+      ? -Math.PI / 2 + index * Math.PI * (3 - Math.sqrt(5))
+      : -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(ordered.length, 1);
+    const dist = weighted ? minRadius + (1 - closeness) * Math.max(0, fitR - minRadius) : 0;
     const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds, options.year);
     nodes.push({
       ...person,
-      x: cx + Math.cos(angle) * radiusX,
-      y: cy + Math.sin(angle) * radiusY,
+      x: cx + Math.cos(angle) * (weighted ? dist : radiusX),
+      y: cy + Math.sin(angle) * (weighted ? dist : radiusY),
       camp,
+      beats,
+      closeness,
     });
   });
 
+  if (weighted && center) {
+    holdApart(nodes, {
+      minDist: nodeSize + 18,
+      minX: nodeSize / 2 + 8,
+      maxX: width - (nodeSize / 2 + 8),
+      minY: nodeSize / 2 + 8,
+      maxY: height - (nodeSize / 2 + 22),
+    });
+  }
+
   return { width, height, nodes, edges: edgesAmong(nodes, applicable), nodeSize, centerSize };
+}
+
+function beatCounts(events, ids) {
+  const counts = new Map(ids.map((id) => [id, 0]));
+  (events || []).forEach((event) => {
+    (event.people || []).forEach((id) => {
+      if (counts.has(id)) counts.set(id, counts.get(id) + 1);
+    });
+  });
+  return counts;
+}
+
+function orderByBeats(people, counts) {
+  return people
+    .map((person, index) => ({ person, index, beats: counts.get(person.id) || 0 }))
+    .sort((a, b) => b.beats - a.beats || a.person.name.localeCompare(b.person.name))
+    .map((entry, rank) => ({ person: entry.person, index: rank }));
+}
+
+function holdApart(nodes, bounds) {
+  const center = nodes.find((node) => node.camp === "center");
+  const orbit = nodes.filter((node) => node.camp !== "center");
+  if (!center || orbit.length < 2) return;
+  const { minDist, minX, maxX, minY, maxY } = bounds;
+  orbit.forEach((node) => {
+    node.radius = Math.hypot(node.x - center.x, node.y - center.y);
+    node.angle = Math.atan2(node.y - center.y, node.x - center.x);
+  });
+  const place = (node) => {
+    node.x = center.x + Math.cos(node.angle) * node.radius;
+    node.y = center.y + Math.sin(node.angle) * node.radius;
+  };
+  for (let pass = 0; pass < 48; pass += 1) {
+    let moved = false;
+    for (let i = 0; i < orbit.length; i += 1) {
+      for (let j = i + 1; j < orbit.length; j += 1) {
+        const a = orbit[i];
+        const b = orbit[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const dist = Math.hypot(dx, dy) || 0.001;
+        if (dist >= minDist) continue;
+        const gap = Math.atan2(Math.sin(b.angle - a.angle), Math.cos(b.angle - a.angle));
+        const sign = gap === 0 ? (i % 2 === 0 ? 1 : -1) : Math.sign(gap);
+        const nudge = ((minDist - dist) / Math.max(a.radius, b.radius, 1)) * 0.85;
+        const aShare = 1 - (a.closeness || 0);
+        const bShare = 1 - (b.closeness || 0);
+        const share = aShare + bShare || 1;
+        a.angle -= sign * nudge * (aShare / share);
+        b.angle += sign * nudge * (bShare / share);
+        place(a);
+        place(b);
+        moved = true;
+      }
+    }
+    if (!moved) break;
+  }
+  orbit.forEach((node) => {
+    node.x = Math.min(maxX, Math.max(minX, node.x));
+    node.y = Math.min(maxY, Math.max(minY, node.y));
+    delete node.angle;
+    delete node.radius;
+  });
 }
 
 export function youtubeId(url) {

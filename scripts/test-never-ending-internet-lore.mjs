@@ -133,6 +133,75 @@ const fitted = webLayout(people, relations, {
 assert.ok(fitted.nodeSize <= 72);
 assert.ok(fitted.nodes.every((node) => node.x > 16 && node.x < 684 && node.y > 16 && node.y < 404));
 
+function centerDistance(layoutNodes, id) {
+  const node = layoutNodes.find((item) => item.id === id);
+  const middle = layoutNodes.find((item) => item.camp === "center");
+  return Math.hypot(node.x - middle.x, node.y - middle.y);
+}
+const weighted = webLayout(people, relations, {
+  centerId: h3.centerId,
+  friendKinds: h3.friendKinds,
+  enemyKinds: h3.enemyKinds,
+  events,
+});
+assert.ok(centerDistance(weighted.nodes, "hila-klein") < centerDistance(weighted.nodes, "moses-hacmon"));
+assert.ok(centerDistance(weighted.nodes, "hasan-piker") < centerDistance(weighted.nodes, "philip-de-franco"));
+assert.ok(centerDistance(weighted.nodes, "trisha-paytas") < centerDistance(weighted.nodes, "james-charles"));
+for (const size of [{ width: 1100, height: 980 }, { width: 1400, height: 720 }, { width: 700, height: 420 }]) {
+  const sample = webLayout(people, relations, {
+    centerId: h3.centerId,
+    friendKinds: h3.friendKinds,
+    enemyKinds: h3.enemyKinds,
+    events,
+    ...size,
+  });
+  assert.ok(centerDistance(sample.nodes, "hila-klein") < centerDistance(sample.nodes, "moses-hacmon"), `hila closer ${size.width}`);
+  assert.ok(centerDistance(sample.nodes, "hasan-piker") < centerDistance(sample.nodes, "philip-de-franco"), `hasan closer ${size.width}`);
+  assert.ok(centerDistance(sample.nodes, "hila-klein") < centerDistance(sample.nodes, "trisha-paytas"), `hila inside trisha ${size.width}`);
+  const ranked = sample.nodes.filter((node) => node.camp !== "center");
+  for (let i = 0; i < ranked.length; i += 1) {
+    for (let j = 0; j < ranked.length; j += 1) {
+      if (ranked[i].beats <= ranked[j].beats) continue;
+      assert.ok(
+        centerDistance(sample.nodes, ranked[i].id) < centerDistance(sample.nodes, ranked[j].id),
+        `${ranked[i].id} should be closer than ${ranked[j].id} at ${size.width}x${size.height}`,
+      );
+    }
+  }
+  const orbit = sample.nodes.filter((node) => node.camp !== "center");
+  let nearest = Infinity;
+  for (let i = 0; i < sample.nodes.length; i += 1) {
+    for (let j = i + 1; j < sample.nodes.length; j += 1) {
+      nearest = Math.min(nearest, Math.hypot(sample.nodes[i].x - sample.nodes[j].x, sample.nodes[i].y - sample.nodes[j].y));
+    }
+  }
+  assert.ok(nearest >= sample.nodeSize * 0.9, `weighted overlap at ${size.width} (${nearest})`);
+  assert.ok(orbit.some((node) => node.x < sample.nodes.find((node) => node.camp === "center").x));
+  assert.ok(orbit.some((node) => node.x > sample.nodes.find((node) => node.camp === "center").x));
+}
+const weightedOthers = weighted.nodes.filter((node) => node.camp !== "center");
+assert.ok(weightedOthers.some((node) => node.x < ethanNode.x) && weightedOthers.some((node) => node.x > ethanNode.x));
+assert.ok(weightedOthers.some((node) => node.y < ethanNode.y) && weightedOthers.some((node) => node.y > ethanNode.y));
+let weightedClosest = Infinity;
+for (let i = 0; i < weighted.nodes.length; i += 1) {
+  for (let j = i + 1; j < weighted.nodes.length; j += 1) {
+    const dx = weighted.nodes[i].x - weighted.nodes[j].x;
+    const dy = weighted.nodes[i].y - weighted.nodes[j].y;
+    weightedClosest = Math.min(weightedClosest, Math.hypot(dx, dy));
+  }
+}
+assert.ok(weightedClosest >= weighted.nodeSize, `weighted nodes overlap (${weightedClosest})`);
+const weightedFit = webLayout(people, relations, {
+  centerId: h3.centerId,
+  friendKinds: h3.friendKinds,
+  enemyKinds: h3.enemyKinds,
+  events,
+  width: 700,
+  height: 420,
+});
+assert.ok(weightedFit.nodes.every((node) => node.x > 8 && node.x < 692 && node.y > 8 && node.y < 412));
+assert.ok(centerDistance(weightedFit.nodes, "hila-klein") < centerDistance(weightedFit.nodes, "sneako"));
+
 assert.equal(parseState("https://plotmaniac.com/").view, "web");
 assert.equal(parseState("https://plotmaniac.com/?view=timeline").view, "timeline");
 assert.equal(

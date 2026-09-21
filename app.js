@@ -276,7 +276,9 @@ function renderWeb() {
   section.className = "web";
   const key = document.createElement("ul");
   key.className = "web-key";
-  [["friend", "Friends"], ["enemy", "Foes"]].forEach(([camp, label]) => {
+  const keyItems = [["friend", "Friends"], ["enemy", "Foes"]];
+  if (plot.arrangement !== "camps") keyItems.push(["near", "Closer · more beats"]);
+  keyItems.forEach(([camp, label]) => {
     const item = document.createElement("li");
     const swatch = document.createElement("i");
     swatch.className = `swatch camp-${camp}`;
@@ -365,6 +367,7 @@ function paintWeb(stage, { animate = true } = {}) {
     enemyKinds: plot.enemyKinds,
     arrangement: plot.arrangement,
     year: plot.year ? state.year : undefined,
+    events,
     width,
     height,
   });
@@ -420,8 +423,9 @@ function paintWeb(stage, { animate = true } = {}) {
     button.style.setProperty("--i", String(index));
     button.append(avatar(node, node.camp === "center" ? "lg" : "md"), nameEl(node.name));
     const camp = campLabel(node.camp);
-    button.setAttribute("aria-label", camp ? `${node.name}, ${camp}` : node.name);
-    button.title = node.name;
+    const beats = node.beats ? `, ${node.beats} timeline ${node.beats === 1 ? "beat" : "beats"}` : "";
+    button.setAttribute("aria-label", `${node.name}${camp ? `, ${camp}` : ""}${beats}`);
+    button.title = node.beats ? `${node.name} · ${node.beats} beats` : node.name;
     button.addEventListener("pointerenter", () => light(node.id));
     button.addEventListener("pointerleave", clear);
     button.addEventListener("focus", () => light(node.id));

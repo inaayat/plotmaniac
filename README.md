@@ -1,6 +1,6 @@
 # Plotmaniac
 
-A dark field guide. Open the site and pick a person or a country, then read the web of friends and foes or the timeline under it. H3 is the person plot. The United States is the country plot: flags stand in for portraits, and a year dragger on the web moves each country between foe (left) and friend (right).
+A dark field guide. Open the site and pick a person or a country, then read the web of friends and foes or the timeline under it. On a person’s web, people with more timeline beats sit closer to the center, and the ring still refits when the window changes. H3 is the person plot. The United States is the country plot: flags stand in for portraits, and a year dragger on the web moves each country between foe (left) and friend (right).
 
 The timeline spans the browser width. Zoom with the slider, the + and − buttons, or Control-scroll. Fit scales the whole line into the window.
 
