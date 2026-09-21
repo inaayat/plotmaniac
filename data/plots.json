@@ -3,14 +3,43 @@
     {
       "id": "h3",
       "title": "H3",
+      "kicker": "Person",
       "lede": "Ethan Klein, the friends beside the show, and the feuds that keep circling back.",
+      "searchPlaceholder": "Lawsuit, Frenemies, a name…",
       "centerId": "ethan-klein",
       "friendKinds": ["ally", "crew", "co-host", "collaborator", "family"],
       "enemyKinds": ["feud", "litigation"],
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Ethan%20Klein%20%28cropped%29.jpg?width=240",
       "paths": {
         "people": "data/h3/people.json",
         "events": "data/h3/events.json",
         "relations": "data/h3/relations.json"
+      }
+    },
+    {
+      "id": "united-states",
+      "title": "United States",
+      "kicker": "Country",
+      "lede": "Flags for the countries that have stood with the United States or against it. Drag the year and the sides change.",
+      "searchPlaceholder": "A war, a treaty, a country…",
+      "sourceNote": "United States on Plotmaniac · drawn from the Wikipedia foreign-relations survey",
+      "centerId": "united-states",
+      "friendKinds": ["ally"],
+      "enemyKinds": ["foe"],
+      "arrangement": "camps",
+      "images": "flags",
+      "orbitLabel": "Between chapters",
+      "year": {
+        "min": 1776,
+        "max": 2026,
+        "initial": 2026,
+        "marks": [1778, 1812, 1942, 1962, 1979, 2001, 2026]
+      },
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_United_States.svg?width=320",
+      "paths": {
+        "people": "data/united-states/people.json",
+        "events": "data/united-states/events.json",
+        "relations": "data/united-states/relations.json"
       }
     }
   ]

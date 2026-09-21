@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Plotmaniac — H3</title>
+    <title>Plotmaniac</title>
     <meta
       name="description"
-      content="Plotmaniac opens on H3: Ethan Klein, his friends, and his enemies, with a left-to-right timeline of the public story."
+      content="Plotmaniac is a field guide to a person or a country: a web of friends and foes, and a timeline of the public story."
     />
     <meta name="theme-color" content="#0c0b09" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -18,10 +18,10 @@
     />
     <link rel="stylesheet" href="lore.css" />
   </head>
-  <body data-view="web">
+  <body data-view="pick">
     <header class="mast">
-      <p class="status">Plotmaniac</p>
-      <h1 id="plot-title">H3</h1>
+      <button type="button" class="status" id="home-link">Field guide</button>
+      <h1 id="plot-title">Plotmaniac</h1>
       <svg class="mark" viewBox="0 0 420 88" role="img" aria-hidden="true">
         <path
           class="arc"
@@ -31,8 +31,12 @@
         <circle cx="214" cy="14" r="3.5" />
         <circle cx="412" cy="70" r="3.5" />
       </svg>
-      <p class="lede" id="plot-lede">A field guide is loading.</p>
-      <nav class="views" aria-label="Views">
+      <p class="lede" id="plot-lede">Pick a person or a country. Then read the web of friends and foes, or the timeline under it.</p>
+      <nav class="views" aria-label="Plot and views">
+        <label class="plot-switch">
+          <span>Focus</span>
+          <select id="plot-select"></select>
+        </label>
         <button type="button" id="view-web" data-view="web">The web</button>
         <button type="button" id="view-timeline" data-view="timeline">Full timeline</button>
       </nav>
@@ -45,7 +49,7 @@
     <footer class="site-footer">
       <p id="footer-note">Plotmaniac</p>
       <details id="credits" class="credits">
-        <summary>Portrait credits</summary>
+        <summary>Image credits</summary>
         <ul id="credit-list"></ul>
       </details>
     </footer>

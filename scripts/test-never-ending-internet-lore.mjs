@@ -3,11 +3,13 @@ import fs from "node:fs";
 import {
   ALL,
   campOf,
+  coversYear,
   eventTease,
   filterEvents,
   graphLayout,
   initials,
   parseState,
+  parseYear,
   relationEvents,
   stateUrl,
   neighborhood,
@@ -152,5 +154,119 @@ assert.equal(nodes.length, people.length);
 assert.equal(nodes.find((node) => node.id === "ethan-klein").central, true);
 assert.equal(youtubeId("https://www.youtube.com/watch?v=ZSUDHx-1_ww"), "ZSUDHx-1_ww");
 assert.equal(youtubeId("https://youtu.be/8UizTBc6FP8"), "8UizTBc6FP8");
+
+const usPeople = readJson("../data/united-states/people.json");
+const usEvents = readJson("../data/united-states/events.json");
+const usRelations = readJson("../data/united-states/relations.json");
+const us = plots.plots.find((item) => item.id === "united-states");
+const usIds = new Set(usPeople.map((person) => person.id));
+assert.ok(us, "united states plot is registered");
+assert.equal(us.centerId, "united-states");
+assert.equal(us.arrangement, "camps");
+assert.equal(us.images, "flags");
+assert.deepEqual(us.year, { min: 1776, max: 2026, initial: 2026, marks: [1778, 1812, 1942, 1962, 1979, 2001, 2026] });
+assert.equal(usIds.size, usPeople.length);
+assert.ok(usEvents.length >= 24);
+assert.equal(new Set(usEvents.map((event) => event.id)).size, usEvents.length);
+
+for (const person of usPeople) {
+  assert.equal(person.portrait?.frame, "flag", person.id);
+  assert.match(person.portrait.src, /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//, person.id);
+  assert.equal(person.portrait.license, "Public domain");
+  if (person.id === "united-states") continue;
+  assert.ok(
+    usRelations.some((relation) =>
+      [relation.from, relation.to].includes("united-states") &&
+      [relation.from, relation.to].includes(person.id)),
+    `${person.id} needs a United States relationship`,
+  );
+}
+
+for (const event of usEvents) {
+  assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, event.id);
+  assert.ok(eventTease(event).length <= 140, event.id);
+  event.people.forEach((id) => assert.ok(usIds.has(id), `${event.id} references ${id}`));
+  assert.ok(event.links?.length, event.id);
+}
+
+const byPair = new Map();
+for (const relation of usRelations) {
+  assert.ok(usIds.has(relation.from) && usIds.has(relation.to));
+  assert.ok(relation.start, relation.label);
+  const key = [relation.from, relation.to].sort().join("|");
+  const start = Number(relation.start);
+  const end = relation.end == null ? 9999 : Number(relation.end);
+  for (const other of byPair.get(key) || []) {
+    assert.ok(start > other.end || end < other.start, `overlap ${key} ${relation.label}`);
+  }
+  byPair.set(key, [...(byPair.get(key) || []), { start, end }]);
+}
+
+const stance = (id, year) => campOf(id, usRelations, us.centerId, us.friendKinds, us.enemyKinds, year);
+assert.equal(stance("united-kingdom", 1779), "enemy");
+assert.equal(stance("france", 1778), "friend");
+assert.equal(stance("united-kingdom", 1812), "enemy");
+assert.equal(stance("united-kingdom", 1816), "friend");
+assert.equal(stance("germany", 1942), "enemy");
+assert.equal(stance("japan", 1942), "enemy");
+assert.equal(stance("russia", 1944), "friend");
+assert.equal(stance("russia", 1962), "enemy");
+assert.equal(stance("israel", 1942), "orbit");
+assert.equal(stance("china", 1970), "enemy");
+assert.equal(stance("taiwan", 1970), "friend");
+assert.equal(stance("china", 2010), "friend");
+assert.equal(stance("china", 2019), "enemy");
+assert.equal(stance("cuba", 1950), "friend");
+assert.equal(stance("cuba", 1962), "enemy");
+assert.equal(stance("iran", 1978), "friend");
+assert.equal(stance("iran", 1980), "enemy");
+assert.equal(stance("saudi-arabia", 1973), "enemy");
+assert.equal(stance("saudi-arabia", 2010), "friend");
+assert.equal(stance("venezuela", 2025), "enemy");
+assert.equal(stance("venezuela", 2026), "friend");
+assert.equal(stance("vietnam", 1980), "enemy");
+assert.equal(stance("vietnam", 2000), "friend");
+assert.equal(coversYear({ start: "1941", end: "1945" }, null), false);
+assert.equal(coversYear({ kind: "feud" }, null), true);
+assert.equal(parseYear("1930", us.year), 1930);
+assert.equal(parseYear("nope", us.year), 2026);
+assert.equal(parseYear("1492", us.year), 1776);
+
+const wartime = webLayout(usPeople, usRelations, {
+  centerId: us.centerId,
+  friendKinds: us.friendKinds,
+  enemyKinds: us.enemyKinds,
+  arrangement: "camps",
+  year: 1942,
+  width: 1100,
+  height: 800,
+});
+const germany = wartime.nodes.find((node) => node.id === "germany");
+const britain = wartime.nodes.find((node) => node.id === "united-kingdom");
+const america = wartime.nodes.find((node) => node.id === "united-states");
+assert.equal(germany.camp, "enemy");
+assert.equal(germany.side, "left");
+assert.equal(britain.camp, "friend");
+assert.equal(britain.side, "right");
+assert.ok(germany.x < america.x && britain.x > america.x);
+assert.equal(wartime.nodes.find((node) => node.id === "israel"), undefined);
+assert.ok(wartime.nodes.every((node) => node.y > 0 && node.y < wartime.height));
+
+const now = webLayout(usPeople, usRelations, {
+  centerId: us.centerId,
+  friendKinds: us.friendKinds,
+  enemyKinds: us.enemyKinds,
+  arrangement: "camps",
+  year: 2026,
+  width: 1100,
+  height: 800,
+});
+assert.equal(now.nodes.find((node) => node.id === "venezuela").camp, "friend");
+assert.equal(now.nodes.find((node) => node.id === "russia").camp, "enemy");
+assert.equal(now.nodes.find((node) => node.id === "japan").camp, "friend");
+
+assert.equal(stateUrl("https://plotmaniac.com/", { view: "pick" }, ""), "/");
+assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /plot=united-states/);
+assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /year=1942/);
 
 console.log("never-ending internet lore tests passed");

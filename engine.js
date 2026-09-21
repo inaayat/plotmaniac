@@ -65,15 +65,80 @@ export function parseState(urlLike, valid = {}) {
 
 export function stateUrl(currentUrl, state, eventId = "") {
   const url = new URL(currentUrl, "https://plotmaniac.com/");
-  ["view", "person", "era", "q", "plot"].forEach((key) => url.searchParams.delete(key));
+  if (state.view === "pick") {
+    url.search = "";
+    url.hash = "";
+    return url.pathname || "/";
+  }
+  ["view", "person", "era", "q", "plot", "year"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (state.view === "timeline" || state.view === "person") url.searchParams.set("view", state.view);
   else url.searchParams.set("view", "web");
   if (state.person && state.person !== ALL) url.searchParams.set("person", state.person);
   if (state.era && state.era !== ALL) url.searchParams.set("era", state.era);
   if (state.query?.trim()) url.searchParams.set("q", state.query.trim());
+  if (Number.isFinite(state.year)) url.searchParams.set("year", String(state.year));
   url.hash = eventId ? encodeURIComponent(eventId) : "";
   return `${url.pathname}${url.search}${url.hash}`;
+}
+
+function edgesAmong(nodes, relations) {
+  const visible = new Set(nodes.map((node) => node.id));
+  const seen = new Set();
+  const edges = [];
+  relations.forEach((relation) => {
+    if (!visible.has(relation.from) || !visible.has(relation.to)) return;
+    const key = [relation.from, relation.to].sort().join("|");
+    if (seen.has(key)) return;
+    seen.add(key);
+    edges.push({ from: relation.from, to: relation.to });
+  });
+  return edges;
+}
+
+function campArrangement({ center, friends, foes, relations, width, height }) {
+  const maxCount = Math.max(friends.length, foes.length, 1);
+  let nodeSize = Math.floor((height - 24) / maxCount) - 12;
+  nodeSize = Math.max(30, Math.min(64, nodeSize));
+  const usedHeight = Math.max(height, (nodeSize + 12) * maxCount + 28);
+  const centerSize = Math.round(Math.min(112, nodeSize * 1.75));
+  const nameWidth = Math.min(168, Math.max(84, width * 0.2));
+  let xFoe = nameWidth + 10 + nodeSize / 2;
+  let xFriend = width - nameWidth - 10 - nodeSize / 2;
+  let labels = "beside";
+  if (xFriend - xFoe < centerSize + nodeSize + 48) {
+    labels = "below";
+    const inset = Math.max(nodeSize, Math.min(width * 0.28, 120));
+    xFoe = inset;
+    xFriend = width - inset;
+  }
+
+  const place = (list, x, side, camp) => {
+    if (!list.length) return [];
+    const step = usedHeight / (maxCount + 1);
+    const block = step * list.length;
+    const start = (usedHeight - block) / 2 + step / 2;
+    return list.map((person, index) => ({
+      ...person,
+      x,
+      y: start + step * index,
+      camp,
+      side: labels === "beside" ? side : "",
+    }));
+  };
+
+  const nodes = [];
+  if (center) nodes.push({ ...center, x: width / 2, y: usedHeight / 2, camp: "center", side: "" });
+  nodes.push(...place(foes, xFoe, "left", "enemy"), ...place(friends, xFriend, "right", "friend"));
+  return {
+    width,
+    height: usedHeight,
+    nodes,
+    edges: edgesAmong(nodes, relations),
+    nodeSize,
+    centerSize,
+    labels,
+  };
 }
 
 export function graphLayout(people, width = 900, height = 560) {
@@ -101,12 +166,35 @@ export function initials(name) {
   return String(name || "").replace(/[^a-z0-9]/gi, "").slice(0, 2).toUpperCase() || "?";
 }
 
-export function campOf(personId, relations, centerId, friendKinds = [], enemyKinds = []) {
+export function coversYear(relation, year) {
+  const hasStart = relation.start != null && relation.start !== "";
+  const hasEnd = relation.end != null && relation.end !== "";
+  const dated = hasStart || hasEnd;
+  if (year == null || year === "") return !dated;
+  if (!dated) return true;
+  const value = Number(year);
+  if (!Number.isFinite(value)) return false;
+  const start = hasStart ? Number(String(relation.start).slice(0, 4)) : -Infinity;
+  const end = hasEnd ? Number(String(relation.end).slice(0, 4)) : Infinity;
+  return value >= start && value <= end;
+}
+
+export function parseYear(value, range) {
+  const min = Number(range.min);
+  const max = Number(range.max);
+  const fallback = range.initial == null ? max : Number(range.initial);
+  const year = Number(value);
+  if (!Number.isFinite(year)) return fallback;
+  return Math.min(max, Math.max(min, Math.round(year)));
+}
+
+export function campOf(personId, relations, centerId, friendKinds = [], enemyKinds = [], year) {
   if (personId === centerId) return "center";
   const kinds = relations
     .filter((relation) =>
-      (relation.from === personId && relation.to === centerId) ||
-      (relation.to === personId && relation.from === centerId))
+      coversYear(relation, year) &&
+      ((relation.from === personId && relation.to === centerId) ||
+        (relation.to === personId && relation.from === centerId)))
     .map((relation) => relation.kind);
   if (kinds.some((kind) => enemyKinds.includes(kind))) return "enemy";
   if (kinds.some((kind) => friendKinds.includes(kind))) return "friend";
@@ -143,12 +231,17 @@ export function webLayout(people, relations, options = {}) {
   const foes = [];
   people.forEach((person) => {
     if (!center || person.id === center.id) return;
-    const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds);
+    const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds, options.year);
     if (camp === "friend") friends.push(person);
     if (camp === "enemy") foes.push(person);
   });
   friends.sort(byName);
   foes.sort(byName);
+  const applicable = relations.filter((relation) => coversYear(relation, options.year));
+
+  if (options.arrangement === "camps") {
+    return campArrangement({ center, friends, foes, relations: applicable, width, height });
+  }
 
   const ordered = [];
   const gap = Math.max(1, Math.round(foes.length / Math.max(friends.length, 1)));
@@ -184,7 +277,7 @@ export function webLayout(people, relations, options = {}) {
   if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center" });
   ordered.forEach((person, index) => {
     const angle = -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(ordered.length, 1);
-    const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds);
+    const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds, options.year);
     nodes.push({
       ...person,
       x: cx + Math.cos(angle) * radiusX,
@@ -193,18 +286,7 @@ export function webLayout(people, relations, options = {}) {
     });
   });
 
-  const visible = new Set(nodes.map((node) => node.id));
-  const seen = new Set();
-  const edges = [];
-  relations.forEach((relation) => {
-    if (!visible.has(relation.from) || !visible.has(relation.to)) return;
-    const key = [relation.from, relation.to].sort().join("|");
-    if (seen.has(key)) return;
-    seen.add(key);
-    edges.push({ from: relation.from, to: relation.to });
-  });
-
-  return { width, height, nodes, edges, nodeSize, centerSize };
+  return { width, height, nodes, edges: edgesAmong(nodes, applicable), nodeSize, centerSize };
 }
 
 export function youtubeId(url) {

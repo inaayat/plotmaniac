@@ -1,0 +1,436 @@
+[
+  {
+    "from": "united-states",
+    "to": "united-kingdom",
+    "kind": "foe",
+    "label": "Revolutionary War, before relations opened in 1785",
+    "start": "1775",
+    "end": "1783"
+  },
+  {
+    "from": "united-states",
+    "to": "united-kingdom",
+    "kind": "ally",
+    "label": "Peace and, from 1 June 1785, formal relations",
+    "start": "1784",
+    "end": "1811"
+  },
+  {
+    "from": "united-states",
+    "to": "united-kingdom",
+    "kind": "foe",
+    "label": "War of 1812, the sharpest early breach with Britain",
+    "start": "1812",
+    "end": "1814"
+  },
+  {
+    "from": "united-states",
+    "to": "united-kingdom",
+    "kind": "ally",
+    "label": "Special Relationship, from the post-1812 peace through NATO",
+    "start": "1815"
+  },
+  {
+    "from": "united-states",
+    "to": "france",
+    "kind": "ally",
+    "label": "First ally: diplomatic relations from 6 August 1778",
+    "start": "1778"
+  },
+  {
+    "from": "united-states",
+    "to": "russia",
+    "kind": "ally",
+    "label": "Diplomatic relations from 14 July 1809, including the wartime alliance",
+    "start": "1809",
+    "end": "1949"
+  },
+  {
+    "from": "united-states",
+    "to": "russia",
+    "kind": "foe",
+    "label": "Soviet Union on the strained list, 1950\u20131991",
+    "start": "1950",
+    "end": "1991"
+  },
+  {
+    "from": "united-states",
+    "to": "russia",
+    "kind": "ally",
+    "label": "Post-Soviet partnership after the 1950\u20131991 strain",
+    "start": "1992",
+    "end": "2013"
+  },
+  {
+    "from": "united-states",
+    "to": "russia",
+    "kind": "foe",
+    "label": "On the current strained list, from the 2014 break through the war in Ukraine",
+    "start": "2014"
+  },
+  {
+    "from": "united-states",
+    "to": "germany",
+    "kind": "foe",
+    "label": "Listed strain, 1941\u20131945",
+    "start": "1941",
+    "end": "1945"
+  },
+  {
+    "from": "united-states",
+    "to": "germany",
+    "kind": "ally",
+    "label": "Ally after relations with the Federal Republic on 2 July 1951",
+    "start": "1951"
+  },
+  {
+    "from": "united-states",
+    "to": "japan",
+    "kind": "ally",
+    "label": "Relations from 29 July 1858, before the 1931 rupture",
+    "start": "1858",
+    "end": "1930"
+  },
+  {
+    "from": "united-states",
+    "to": "japan",
+    "kind": "foe",
+    "label": "From the seizure of Manchuria through the Pacific War, 1931\u20131945",
+    "start": "1931",
+    "end": "1945"
+  },
+  {
+    "from": "united-states",
+    "to": "japan",
+    "kind": "ally",
+    "label": "Security treaty ally after 1951, among the closest allies",
+    "start": "1951"
+  },
+  {
+    "from": "united-states",
+    "to": "china",
+    "kind": "foe",
+    "label": "Strained relations, 1949\u20131972",
+    "start": "1949",
+    "end": "1971"
+  },
+  {
+    "from": "united-states",
+    "to": "china",
+    "kind": "ally",
+    "label": "Opening after 1972, and diplomatic relations from 1 January 1979",
+    "start": "1972",
+    "end": "1988"
+  },
+  {
+    "from": "united-states",
+    "to": "china",
+    "kind": "foe",
+    "label": "Strained again after Tiananmen, 1989\u20132001",
+    "start": "1989",
+    "end": "2001"
+  },
+  {
+    "from": "united-states",
+    "to": "china",
+    "kind": "ally",
+    "label": "Engagement in the years the strained list leaves open",
+    "start": "2002",
+    "end": "2017"
+  },
+  {
+    "from": "united-states",
+    "to": "china",
+    "kind": "foe",
+    "label": "On the current strained list, from the trade war onward",
+    "start": "2018"
+  },
+  {
+    "from": "united-states",
+    "to": "taiwan",
+    "kind": "ally",
+    "label": "Recognized Republic of China until 1979, then a strong unofficial ally",
+    "start": "1949"
+  },
+  {
+    "from": "united-states",
+    "to": "north-korea",
+    "kind": "foe",
+    "label": "Korean War foe, with no formal relations",
+    "start": "1950"
+  },
+  {
+    "from": "united-states",
+    "to": "south-korea",
+    "kind": "ally",
+    "label": "Ally from relations on 25 March 1949 and the Korean War",
+    "start": "1949"
+  },
+  {
+    "from": "united-states",
+    "to": "vietnam",
+    "kind": "foe",
+    "label": "Strained relations, 1975\u20131994",
+    "start": "1975",
+    "end": "1994"
+  },
+  {
+    "from": "united-states",
+    "to": "vietnam",
+    "kind": "ally",
+    "label": "Normalized on 11 July 1995 and since treated as a potential ally",
+    "start": "1995"
+  },
+  {
+    "from": "united-states",
+    "to": "cuba",
+    "kind": "ally",
+    "label": "Relations from 27 May 1902, before the revolution",
+    "start": "1902",
+    "end": "1958"
+  },
+  {
+    "from": "united-states",
+    "to": "cuba",
+    "kind": "foe",
+    "label": "Foe after 1959. Embassies reopened in 2015, and Cuba stays on the strained list",
+    "start": "1959"
+  },
+  {
+    "from": "united-states",
+    "to": "iran",
+    "kind": "ally",
+    "label": "Relations from 1883 until the 1979 break",
+    "start": "1883",
+    "end": "1978"
+  },
+  {
+    "from": "united-states",
+    "to": "iran",
+    "kind": "foe",
+    "label": "Hostile since 1979, with relations severed in 1980",
+    "start": "1979"
+  },
+  {
+    "from": "united-states",
+    "to": "israel",
+    "kind": "ally",
+    "label": "Ally from recognition, with relations dated 28 March 1949",
+    "start": "1948"
+  },
+  {
+    "from": "united-states",
+    "to": "saudi-arabia",
+    "kind": "ally",
+    "label": "Ally from relations on 4 February 1940",
+    "start": "1940",
+    "end": "1972"
+  },
+  {
+    "from": "united-states",
+    "to": "saudi-arabia",
+    "kind": "foe",
+    "label": "Listed strain during the oil embargo, 1973\u20131974",
+    "start": "1973",
+    "end": "1974"
+  },
+  {
+    "from": "united-states",
+    "to": "saudi-arabia",
+    "kind": "ally",
+    "label": "Ally again after the embargo",
+    "start": "1975",
+    "end": "2000"
+  },
+  {
+    "from": "united-states",
+    "to": "saudi-arabia",
+    "kind": "foe",
+    "label": "Listed strain, 2001\u20132003",
+    "start": "2001",
+    "end": "2003"
+  },
+  {
+    "from": "united-states",
+    "to": "saudi-arabia",
+    "kind": "ally",
+    "label": "Ally again after 2003",
+    "start": "2004",
+    "end": "2020"
+  },
+  {
+    "from": "united-states",
+    "to": "saudi-arabia",
+    "kind": "foe",
+    "label": "Listed strain, 2021\u20132022",
+    "start": "2021",
+    "end": "2022"
+  },
+  {
+    "from": "united-states",
+    "to": "saudi-arabia",
+    "kind": "ally",
+    "label": "Ally again after the 2021\u20132022 strain",
+    "start": "2023"
+  },
+  {
+    "from": "united-states",
+    "to": "egypt",
+    "kind": "ally",
+    "label": "Relations from 26 April 1922",
+    "start": "1922",
+    "end": "1964"
+  },
+  {
+    "from": "united-states",
+    "to": "egypt",
+    "kind": "foe",
+    "label": "Listed strain, 1965\u20131974",
+    "start": "1965",
+    "end": "1974"
+  },
+  {
+    "from": "united-states",
+    "to": "egypt",
+    "kind": "ally",
+    "label": "Leading ally after Sadat's turn toward Washington",
+    "start": "1975"
+  },
+  {
+    "from": "united-states",
+    "to": "afghanistan",
+    "kind": "ally",
+    "label": "Relations from 4 May 1935",
+    "start": "1935",
+    "end": "1977"
+  },
+  {
+    "from": "united-states",
+    "to": "afghanistan",
+    "kind": "foe",
+    "label": "Listed strain, 1978\u20131992",
+    "start": "1978",
+    "end": "1992"
+  },
+  {
+    "from": "united-states",
+    "to": "afghanistan",
+    "kind": "ally",
+    "label": "The gap between the two listed strains",
+    "start": "1993",
+    "end": "1995"
+  },
+  {
+    "from": "united-states",
+    "to": "afghanistan",
+    "kind": "foe",
+    "label": "Taliban rule on the strained list, 1996\u20132001",
+    "start": "1996",
+    "end": "2001"
+  },
+  {
+    "from": "united-states",
+    "to": "afghanistan",
+    "kind": "ally",
+    "label": "Partnership with the republic after 2001",
+    "start": "2002",
+    "end": "2020"
+  },
+  {
+    "from": "united-states",
+    "to": "afghanistan",
+    "kind": "foe",
+    "label": "On the current strained list after the 2021 Taliban return",
+    "start": "2021"
+  },
+  {
+    "from": "united-states",
+    "to": "canada",
+    "kind": "ally",
+    "label": "Closest ally, with formal relations from 18 February 1927",
+    "start": "1927"
+  },
+  {
+    "from": "united-states",
+    "to": "mexico",
+    "kind": "ally",
+    "label": "Relations from 12 December 1822",
+    "start": "1822",
+    "end": "1845"
+  },
+  {
+    "from": "united-states",
+    "to": "mexico",
+    "kind": "foe",
+    "label": "Mexican\u2013American War",
+    "start": "1846",
+    "end": "1848"
+  },
+  {
+    "from": "united-states",
+    "to": "mexico",
+    "kind": "ally",
+    "label": "Partner again after the war, later linked by NAFTA and the USMCA",
+    "start": "1849"
+  },
+  {
+    "from": "united-states",
+    "to": "australia",
+    "kind": "ally",
+    "label": "Close ally from relations on 8 January 1940 and the Pacific War",
+    "start": "1940"
+  },
+  {
+    "from": "united-states",
+    "to": "venezuela",
+    "kind": "ally",
+    "label": "Relations from 30 June 1835",
+    "start": "1835",
+    "end": "1998"
+  },
+  {
+    "from": "united-states",
+    "to": "venezuela",
+    "kind": "foe",
+    "label": "Strained from 1999 until relations were restored in 2026",
+    "start": "1999",
+    "end": "2025"
+  },
+  {
+    "from": "united-states",
+    "to": "venezuela",
+    "kind": "ally",
+    "label": "Friend again in 2026, after diplomatic relations were re-established",
+    "start": "2026"
+  },
+  {
+    "from": "united-states",
+    "to": "ukraine",
+    "kind": "ally",
+    "label": "Partner from relations on 3 January 1992",
+    "start": "1992"
+  },
+  {
+    "from": "united-states",
+    "to": "iraq",
+    "kind": "ally",
+    "label": "Relations from 30 March 1931",
+    "start": "1931",
+    "end": "1989"
+  },
+  {
+    "from": "united-states",
+    "to": "iraq",
+    "kind": "foe",
+    "label": "Listed strain, 1990\u20132003, from the invasion of Kuwait through the 2003 war",
+    "start": "1990",
+    "end": "2003"
+  },
+  {
+    "from": "united-states",
+    "to": "iraq",
+    "kind": "ally",
+    "label": "Relations restored in 2004",
+    "start": "2004"
+  }
+]

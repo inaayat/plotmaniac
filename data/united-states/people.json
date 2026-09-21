@@ -1,0 +1,531 @@
+[
+  {
+    "id": "united-states",
+    "name": "United States",
+    "role": "Formal relations with nearly every country, and a shorter list of friends and foes that changes with the year.",
+    "tags": [
+      "country",
+      "center"
+    ],
+    "links": [
+      {
+        "label": "Foreign relations of the United States",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_United_States.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_United_States.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "united-kingdom",
+    "name": "United Kingdom",
+    "role": "Ruled the colonies until 1783, opened relations on 1 June 1785, and later the Special Relationship.",
+    "tags": [
+      "europe",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "United Kingdom\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/United_Kingdom\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_United_Kingdom.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Kingdom.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "france",
+    "name": "France",
+    "role": "The first foreign state to establish diplomatic relations with the United States, on 6 August 1778.",
+    "tags": [
+      "europe",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "France\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/France\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_France.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_France.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "russia",
+    "name": "Russia",
+    "role": "Relations from 14 July 1809, a Cold War foe from 1950 to 1991, and on the current strained list.",
+    "tags": [
+      "europe",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Russia\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Russia\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Russia.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Russia.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "germany",
+    "name": "Germany",
+    "role": "A foe in 1941\u20131945, then a central ally after relations with the Federal Republic on 2 July 1951.",
+    "tags": [
+      "europe",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Germany\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Germany\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Germany.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Germany.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "japan",
+    "name": "Japan",
+    "role": "Relations from 1858, a foe from the 1931 seizure of Manchuria through 1945, then one of the closest allies.",
+    "tags": [
+      "asia",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Japan\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Japan\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Japan.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Japan.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "china",
+    "name": "China",
+    "role": "No warmth from 1949 to 1972, another strain from 1989 to 2001, and strained again under the current list.",
+    "tags": [
+      "asia",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "China\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/China\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_People's_Republic_of_China.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_People's_Republic_of_China.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "taiwan",
+    "name": "Taiwan",
+    "role": "The Republic of China: recognized until 1979, and a strong unofficial ally since.",
+    "tags": [
+      "asia",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Taiwan\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Taiwan\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Republic_of_China.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Republic_of_China.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "north-korea",
+    "name": "North Korea",
+    "role": "No formal relations. A foe since the Korean War, and still on the strained list.",
+    "tags": [
+      "asia",
+      "foe"
+    ],
+    "links": [
+      {
+        "label": "North Korea\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/North_Korea\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_North_Korea.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_North_Korea.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "south-korea",
+    "name": "South Korea",
+    "role": "Relations from 25 March 1949, and an ally through the Korean War and after.",
+    "tags": [
+      "asia",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "South Korea\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/South_Korea\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Korea.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_South_Korea.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "vietnam",
+    "name": "Vietnam",
+    "role": "Strained from 1975 to 1994, then normalized on 11 July 1995 and treated as a potential ally.",
+    "tags": [
+      "asia",
+      "partner"
+    ],
+    "links": [
+      {
+        "label": "United States\u2013Vietnam relations",
+        "url": "https://en.wikipedia.org/wiki/United_States\u2013Vietnam_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Vietnam.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Vietnam.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "cuba",
+    "name": "Cuba",
+    "role": "Relations from 1902, then a foe after the 1959 revolution. Embassies reopened in 2015; the strain remains.",
+    "tags": [
+      "americas",
+      "foe"
+    ],
+    "links": [
+      {
+        "label": "Cuba\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Cuba\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Cuba.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Cuba.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "iran",
+    "name": "Iran",
+    "role": "Relations from 1883, severed in 1980 after the 1979 break. Still hostile, with no formal relations.",
+    "tags": [
+      "middle-east",
+      "foe"
+    ],
+    "links": [
+      {
+        "label": "Iran\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Iran\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Iran.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Iran.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "israel",
+    "name": "Israel",
+    "role": "Recognized in 1948, relations from 28 March 1949, and a leading ally and aid recipient.",
+    "tags": [
+      "middle-east",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Israel\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Israel\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Israel.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Israel.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "saudi-arabia",
+    "name": "Saudi Arabia",
+    "role": "An important Middle East ally since 1940, with short strains in 1973\u20131974, 2001\u20132003, and 2021\u20132022.",
+    "tags": [
+      "middle-east",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Saudi Arabia\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Saudi_Arabia\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Saudi_Arabia.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Saudi_Arabia.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "egypt",
+    "name": "Egypt",
+    "role": "Relations from 1922, strained from 1965 to 1974, then a leading ally after the turn toward Washington.",
+    "tags": [
+      "middle-east",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Egypt\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Egypt\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Egypt.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Egypt.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "afghanistan",
+    "name": "Afghanistan",
+    "role": "Relations from 1935. Strained under the 1978\u20131992 government and the 1996\u20132001 Taliban, and again after 2021.",
+    "tags": [
+      "asia",
+      "foe"
+    ],
+    "links": [
+      {
+        "label": "Afghanistan\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Afghanistan\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Afghanistan.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Afghanistan.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "canada",
+    "name": "Canada",
+    "role": "The closest partner: a shared border, formal relations from 18 February 1927, and the world's longest undefended border.",
+    "tags": [
+      "americas",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Canada\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Canada\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Canada.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Canada.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "mexico",
+    "name": "Mexico",
+    "role": "Relations from 12 December 1822, a foe in the Mexican\u2013American War, then a first-rank trading partner.",
+    "tags": [
+      "americas",
+      "partner"
+    ],
+    "links": [
+      {
+        "label": "Mexico\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Mexico\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Mexico.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Mexico.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "australia",
+    "name": "Australia",
+    "role": "Relations from 8 January 1940. A close ally from the Pacific War through ANZUS.",
+    "tags": [
+      "oceania",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Australia\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Australia\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Australia.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Australia.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "venezuela",
+    "name": "Venezuela",
+    "role": "Relations from 1835, strained from 1999 until ties were restored in 2026.",
+    "tags": [
+      "americas",
+      "partner"
+    ],
+    "links": [
+      {
+        "label": "Venezuela\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Venezuela\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Venezuela.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Venezuela.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "ukraine",
+    "name": "Ukraine",
+    "role": "Relations from 3 January 1992, and a partner through the war that put Russia on the strained list.",
+    "tags": [
+      "europe",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Ukraine\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Ukraine\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ukraine.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Ukraine.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  },
+  {
+    "id": "iraq",
+    "name": "Iraq",
+    "role": "Relations from 1931, a foe from 1990 to 2003, then relations again from 2004.",
+    "tags": [
+      "middle-east",
+      "partner"
+    ],
+    "links": [
+      {
+        "label": "Iraq\u2013United States relations",
+        "url": "https://en.wikipedia.org/wiki/Iraq\u2013United_States_relations"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Iraq.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Iraq.svg",
+      "author": "Public domain national flag",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "frame": "flag"
+    }
+  }
+]

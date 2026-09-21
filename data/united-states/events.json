@@ -1,0 +1,644 @@
+[
+  {
+    "id": "france-relations",
+    "date": "1778-08-06",
+    "title": "France opens diplomatic relations",
+    "tease": "France is the first foreign state to establish relations with the United States.",
+    "summary": "The recognition list dates France to 6 August 1778 and calls it the first foreign state to establish diplomatic relations. On the year dragger, France stays a friend from that year on.",
+    "era": "revolution",
+    "people": [
+      "united-states",
+      "france"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "uk-relations",
+    "date": "1785-06-01",
+    "title": "Britain and the United States open formal relations",
+    "tease": "Diplomatic relations with the United Kingdom begin on 1 June 1785.",
+    "summary": "The page dates relations with the United Kingdom to 1 June 1785 and notes that Britain governed the colonies until 1783. The dragger keeps Britain a foe through the Revolutionary War, then a friend.",
+    "era": "revolution",
+    "people": [
+      "united-states",
+      "united-kingdom"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "russia-relations",
+    "date": "1809-07-14",
+    "title": "Relations with Russia begin",
+    "tease": "The United States and Russia date diplomatic relations to 14 July 1809.",
+    "summary": "Russia is on the recognition list at 14 July 1809. The same state is later a wartime ally, a strained foe from 1950 to 1991, a post-Soviet partner, and a current strained rival.",
+    "era": "early-republic",
+    "people": [
+      "united-states",
+      "russia"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "war-of-1812",
+    "date": "1812-06-18",
+    "title": "The War of 1812 breaks the peace with Britain",
+    "tease": "The Canada note calls this the most serious early breach: an invasion of British North America.",
+    "summary": "The Canada section says the War of 1812 was the most serious breach, with an American invasion of then British North America and counter-invasions, after which the border was demilitarized. Britain is a foe again for 1812\u20131814.",
+    "era": "early-republic",
+    "people": [
+      "united-states",
+      "united-kingdom"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "mexico-relations",
+    "date": "1822-12-12",
+    "title": "Mexico is recognized",
+    "tease": "Diplomatic relations with Mexico begin on 12 December 1822.",
+    "summary": "The recognition list dates Mexico to 12 December 1822. The country note describes a complex relationship that includes the Mexican\u2013American War and, much later, NAFTA and the USMCA.",
+    "era": "early-republic",
+    "people": [
+      "united-states",
+      "mexico"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "mexican-war",
+    "date": "1846-05-13",
+    "title": "War with Mexico",
+    "tease": "The Mexico note traces armed conflict through the Mexican\u2013American War in the 1840s.",
+    "summary": "The Mexico section lists the Texas Revolution, the Mexican\u2013American War in the 1840s, and an American invasion in the 1910s. This plot marks 1846\u20131848 as foe years, then returns Mexico to the friend side.",
+    "era": "expansion",
+    "people": [
+      "united-states",
+      "mexico"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "japan-relations",
+    "date": "1858-07-29",
+    "title": "Relations with Japan begin",
+    "tease": "The recognition list dates Japan to 29 July 1858.",
+    "summary": "Japan enters the recognition list on 29 July 1858. The Japan note says the relationship began in the 1850s, soured from 1931, and became that of a close ally after the 1951 security treaty.",
+    "era": "pacific",
+    "people": [
+      "united-states",
+      "japan"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "japan-manchuria",
+    "date": "1931-09-18",
+    "title": "Japan's seizure of Manchuria starts a long foe span",
+    "tease": "The strained list puts Japan on the other side from 1931 through 1945.",
+    "summary": "The formerly strained list dates Japan to 1931\u20131945, covering Manchuria, the war in China, Indochina, and the Pacific War. The dragger keeps Japan a foe across those years.",
+    "era": "world-wars",
+    "people": [
+      "united-states",
+      "japan"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "canada-relations",
+    "date": "1927-02-18",
+    "title": "Formal relations with Canada",
+    "tease": "The recognition list dates Canada to 18 February 1927.",
+    "summary": "Canada appears on 18 February 1927. The country note calls the modern relationship one of the closest anywhere, with Canada the largest trading partner and the two sharing the world's longest undefended border.",
+    "era": "early-republic",
+    "people": [
+      "united-states",
+      "canada"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "australia-relations",
+    "date": "1940-01-08",
+    "title": "Relations with Australia",
+    "tease": "Australia enters the recognition list on 8 January 1940.",
+    "summary": "The recognition list dates Australia to 8 January 1940. The Oceania note describes a close wartime partnership in the Pacific and, later, ANZUS.",
+    "era": "world-wars",
+    "people": [
+      "united-states",
+      "australia"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "pearl-harbor",
+    "date": "1941-12-07",
+    "title": "War with Japan, and the 1941 break with Germany",
+    "tease": "Japan is already a foe; Germany joins the strained list for 1941\u20131945.",
+    "summary": "The strained list dates Germany to 1941\u20131945 and Japan to 1931\u20131945. December 1941 is the Pacific War's widening, with both countries foes and Britain, the Soviet Union, and the other allies on the friend side.",
+    "era": "world-wars",
+    "people": [
+      "united-states",
+      "japan",
+      "germany",
+      "united-kingdom",
+      "russia"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "israel-relations",
+    "date": "1949-03-28",
+    "title": "Relations with Israel",
+    "tease": "The recognition list dates Israel to 28 March 1949.",
+    "summary": "Israel is dated 28 March 1949. The Middle East section names Israel among the important allies and a leading recipient of U.S. aid.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "israel"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "south-korea-relations",
+    "date": "1949-03-25",
+    "title": "Relations with South Korea",
+    "tease": "South Korea enters the recognition list on 25 March 1949.",
+    "summary": "The recognition list dates South Korea to 25 March 1949. The East Asia note says the relationship became extensive from 1945 and that the United States led the Korean War against North Korea and China.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "south-korea"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "korean-war",
+    "date": "1950-06-25",
+    "title": "The Korean War",
+    "tease": "North Korea becomes a lasting foe. China is already on the 1949\u20131972 strained list.",
+    "summary": "The South Korea note says the United States led the UN-sponsored Korean War against North Korea and China from 1950 to 1953. North Korea has no formal relations and stays on the current strained list.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "north-korea",
+      "south-korea",
+      "china"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "germany-alliance",
+    "date": "1951-07-02",
+    "title": "Relations with West Germany",
+    "tease": "Germany returns as an ally on 2 July 1951, after the 1941\u20131945 strain.",
+    "summary": "The recognition list dates Germany to 2 July 1951. The country note says the security and prosperity of the United States and Germany depend on each other. The foe span ends in 1945; the ally span starts here.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "germany"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "japan-alliance",
+    "date": "1951-09-08",
+    "title": "The alliance with Japan",
+    "tease": "After occupation, the 1951 treaties make Japan one of the closest allies.",
+    "summary": "The Japan note says the 1951 Treaty of San Francisco and security treaty, revised in 1960, opened a period of excellent relations. Japan is described as one of the closest allies and a major non-NATO ally.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "japan"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "cuba-revolution",
+    "date": "1959-01-01",
+    "title": "The Cuban break",
+    "tease": "Relations, opened in 1902, deteriorate after the 1959 revolution.",
+    "summary": "The Cuba note says relations deteriorated substantially after the Cuban Revolution of 1959 and were marked by tension, confrontation, and an embargo. Cuba remains on the current strained list even after embassies reopened in 2015.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "cuba"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "china-opening",
+    "date": "1972-02-21",
+    "title": "The opening to China",
+    "tease": "The 1949\u20131972 strain ends. Diplomatic relations with Beijing follow on 1 January 1979.",
+    "summary": "The strained list dates the first China rupture to 1949\u20131972. The recognition list dates the People's Republic to 1 January 1979. This plot treats 1972 as the start of the friend years that run until 1989.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "china",
+      "taiwan"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "saudi-embargo",
+    "date": "1973-10-17",
+    "title": "The oil embargo strains Saudi ties",
+    "tease": "Saudi Arabia, otherwise an ally, is on the strained list for 1973\u20131974.",
+    "summary": "The formerly strained list includes Saudi Arabia for 1973\u20131974, 2001\u20132003, and 2021\u20132022. The Middle East section still names Saudi Arabia among the important allies. The dragger flips those short gaps to the foe side.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "saudi-arabia"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "egypt-turn",
+    "date": "1975-01-01",
+    "title": "Egypt leaves the strained list",
+    "tease": "Egypt is listed as strained for 1965\u20131974, then becomes a leading ally.",
+    "summary": "The Egypt note says policy shifted after the 1973 war as Sadat sought a settlement with Israel and a closer relationship with Washington. The strained list covers 1965\u20131974. From 1975 this plot draws Egypt as a friend.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "egypt",
+      "israel"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "iran-rupture",
+    "date": "1979-11-04",
+    "title": "The break with Iran",
+    "tease": "Hostile relations begin in 1979. Official relations are severed in 1980.",
+    "summary": "The Iran note says the two countries recognized each other in the 19th century, established relations in 1883, and severed them in 1980. A footnote says relations have been hostile since 1979. Iran remains on the current strained list, with no formal relations.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "iran"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "tiananmen",
+    "date": "1989-06-04",
+    "title": "China is strained again",
+    "tease": "The strained list's second China gap runs from 1989 to 2001.",
+    "summary": "The China note cites Tiananmen among the human-rights disputes, and the strained list dates a second rupture to 1989\u20132001. The dragger moves China back to the foe side for those years.",
+    "era": "cold-war",
+    "people": [
+      "united-states",
+      "china"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "gulf-war",
+    "date": "1990-08-02",
+    "title": "Iraq becomes a foe",
+    "tease": "The strained list dates Iraq to 1990\u20132003, from Kuwait through the 2003 invasion.",
+    "summary": "The Middle East section says the United States toppled Saddam Hussein's government in the 2003 invasion. The strained list covers Iraq for 1990\u20132003. Relations on the recognition list resume in 2004.",
+    "era": "after-cold-war",
+    "people": [
+      "united-states",
+      "iraq"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "soviet-end",
+    "date": "1991-12-25",
+    "title": "The Soviet strain ends",
+    "tease": "The strained list closes the Soviet Union at 1950\u20131991.",
+    "summary": "The formerly strained list dates the Soviet Union to 1950\u20131991. Russia then has a partner stretch before it returns to the current strained list. Ukraine's own relations begin days later, on 3 January 1992.",
+    "era": "after-cold-war",
+    "people": [
+      "united-states",
+      "russia",
+      "ukraine"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "vietnam-normalization",
+    "date": "1995-07-11",
+    "title": "Relations with Vietnam are normalized",
+    "tease": "President Clinton normalized relations on 11 July 1995, after a 20-year hiatus.",
+    "summary": "The Vietnam note says that after a 20-year hiatus, diplomatic relations were normalized on 11 July 1995. The strained list covers 1975\u20131994. The page now calls Vietnam a potential strategic ally in Southeast Asia.",
+    "era": "after-cold-war",
+    "people": [
+      "united-states",
+      "vietnam"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "september-11",
+    "date": "2001-09-11",
+    "title": "Afghanistan and the turn after September 11",
+    "tease": "The Taliban years are listed as strained from 1996 to 2001. A partnership follows.",
+    "summary": "The Afghanistan note describes the 2021 Taliban return and the embassy's move to Doha. The strained list covers 1978\u20131992, 1996\u20132001, and the present. This plot treats 2002\u20132020 as the partner years between the Taliban strains.",
+    "era": "since-2001",
+    "people": [
+      "united-states",
+      "afghanistan"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "iraq-war",
+    "date": "2003-03-20",
+    "title": "The invasion of Iraq",
+    "tease": "The foe span for Iraq runs through 2003. Relations are dated again in 2004.",
+    "summary": "The page says the United States toppled Saddam Hussein in 2003. Iraq's strained listing is 1990\u20132003, and the recognition chronology resumes in 2004. Saudi Arabia's separate 2001\u20132003 strain ends in the same season.",
+    "era": "since-2001",
+    "people": [
+      "united-states",
+      "iraq",
+      "saudi-arabia"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "cuba-embassies",
+    "date": "2015-07-20",
+    "title": "Embassies reopen in Havana and Washington",
+    "tease": "Cuba and the United States re-establish embassies on 20 July 2015. The strain remains.",
+    "summary": "The Cuba note says friendly relations were formally re-established on 20 July 2015 with embassies in Havana and Washington. Cuba stays on the current strained list, so the dragger keeps it a foe.",
+    "era": "since-2001",
+    "people": [
+      "united-states",
+      "cuba"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "china-trade-war",
+    "date": "2018-07-06",
+    "title": "The China trade war",
+    "tease": "The page says Trump launched a trade war, and the confrontational policy endured.",
+    "summary": "The China section says relations deteriorated sharply under Xi Jinping, that President Trump launched a trade war and named China a currency manipulator, and that the confrontational policy continued. China is on the current strained list. This plot starts that foe span in 2018.",
+    "era": "since-2001",
+    "people": [
+      "united-states",
+      "china"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "maduro-break",
+    "date": "2019-01-23",
+    "title": "Caracas cuts diplomatic ties",
+    "tease": "In January 2019, after Washington recognized Guaid\u00f3, Maduro cut ties.",
+    "summary": "The Venezuela note says that in January 2019, after the United States recognized Juan Guaid\u00f3, Nicol\u00e1s Maduro cut diplomatic ties. The strained listing itself begins in 1999. Restoration comes in 2026.",
+    "era": "since-2001",
+    "people": [
+      "united-states",
+      "venezuela"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "kabul-withdrawal",
+    "date": "2021-11-12",
+    "title": "After Kabul, Afghanistan is strained again",
+    "tease": "On 12 November 2021 Washington said an interests section would open in Kabul.",
+    "summary": "The Afghanistan note says the Taliban overthrew the U.S.-backed republic in 2021 as U.S. troops withdrew, and that on 12 November 2021 an interests section was announced at the Qatari embassy in Kabul. Afghanistan returns to the current strained list.",
+    "era": "since-2001",
+    "people": [
+      "united-states",
+      "afghanistan"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "ukraine-invasion",
+    "date": "2022-02-24",
+    "title": "Russia's invasion of Ukraine",
+    "tease": "Russia is on the current strained list. Ukraine, recognized in 1992, stays a partner.",
+    "summary": "Russia is listed among countries with strained relations. This plot dates the current foe span from 2014 and marks 24 February 2022 as the full-scale invasion. Ukraine, with relations from 3 January 1992, remains on the friend side.",
+    "era": "since-2001",
+    "people": [
+      "united-states",
+      "russia",
+      "ukraine"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "venezuela-restored",
+    "date": "2026-03-05",
+    "title": "Relations with Venezuela are restored",
+    "tease": "On 5 March 2026 the United States and Venezuela agreed to re-establish relations.",
+    "summary": "The Venezuela note says ties cut in 2019 were restored in 2026 after a military intervention and Maduro's capture. The State Department said on 5 March 2026 that the two sides had agreed to re-establish diplomatic and consular relations. The dragger draws 2026 on the friend side.",
+    "era": "since-2001",
+    "people": [
+      "united-states",
+      "venezuela"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia: foreign relations",
+        "url": "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States",
+        "type": "article"
+      },
+      {
+        "label": "State Department statement",
+        "url": "https://www.state.gov/releases/office-of-the-spokesperson/2026/03/a-statement-on-u-s-venezuela-relations",
+        "type": "primary"
+      }
+    ]
+  }
+]

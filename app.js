@@ -1,12 +1,14 @@
 import {
   ALL,
   campOf,
+  coversYear,
   eraLabel,
   eventTease,
   filterEvents,
   initials,
   neighborhood,
   parseState,
+  parseYear,
   stateUrl,
   tiesWith,
   webLayout,
@@ -19,8 +21,9 @@ let plot = null;
 let people = [];
 let events = [];
 let relations = [];
-let state = { view: "web", person: ALL, era: ALL, query: "", eventId: "" };
+let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null };
 let toastTimer = null;
+let loadToken = 0;
 const ZOOM_MIN = 0.08;
 const ZOOM_MAX = 2.5;
 let laneZoom = 1;
@@ -33,25 +36,15 @@ async function load() {
   const manifest = await fetchJson("data/plots.json");
   plots = manifest.plots || [];
   if (!plots.length) throw new Error("No plots registered");
-  const requested = new URL(location.href).searchParams.get("plot");
-  plot = plots.find((item) => item.id === requested) || plots[0];
-  const [peopleData, eventData, relationData] = await Promise.all([
-    fetchJson(plot.paths.people),
-    fetchJson(plot.paths.events),
-    fetchJson(plot.paths.relations),
-  ]);
-  people = peopleData;
-  events = eventData.slice().sort((a, b) => a.date.localeCompare(b.date));
-  relations = relationData;
-  people.forEach((person) => peopleById.set(person.id, person));
-  const eras = new Set(events.map((event) => event.era));
-  state = parseState(location.href, { people: new Set(peopleById.keys()), eras });
-  $("plot-title").textContent = plot.title;
-  $("plot-lede").textContent = plot.lede;
-  document.title = `Plotmaniac — ${plot.title}`;
   bindChrome();
-  renderCredits();
-  render({ focusEvent: Boolean(state.eventId) });
+  const requested = new URL(location.href).searchParams.get("plot");
+  if (requested && plots.some((item) => item.id === requested)) {
+    await showPlot(requested, { history: "none", fromUrl: true });
+  } else if (plots.length === 1) {
+    await showPlot(plots[0].id, { history: "none", fromUrl: true });
+  } else {
+    showPicker({ history: "none" });
+  }
   let resizeTimer = 0;
   window.addEventListener("resize", () => {
     window.clearTimeout(resizeTimer);
@@ -65,13 +58,174 @@ async function load() {
       if (lane) layoutLane(lane);
     }, 80);
   });
-  window.addEventListener("popstate", () => {
-    state = parseState(location.href, { people: new Set(peopleById.keys()), eras });
-    render({ focusEvent: Boolean(state.eventId) });
+  window.addEventListener("popstate", onPop);
+}
+
+function onPop() {
+  const requested = new URL(location.href).searchParams.get("plot");
+  if (!requested || !plots.some((item) => item.id === requested)) {
+    if (plots.length === 1) showPlot(plots[0].id, { history: "none", fromUrl: true });
+    else showPicker({ history: "none" });
+    return;
+  }
+  if (!plot || plot.id !== requested) {
+    showPlot(requested, { history: "none", fromUrl: true });
+    return;
+  }
+  const eras = new Set(events.map((event) => event.era));
+  state = {
+    ...parseState(location.href, { people: new Set(peopleById.keys()), eras }),
+    year: readYear(),
+  };
+  render({ focusEvent: Boolean(state.eventId) });
+}
+
+function readYear(url = location.href) {
+  if (!plot?.year) return null;
+  return parseYear(new URL(url).searchParams.get("year"), plot.year);
+}
+
+async function showPlot(id, { history = "push", fromUrl = false } = {}) {
+  const next = plots.find((item) => item.id === id);
+  if (!next) {
+    showPicker({ history });
+    return;
+  }
+  const token = ++loadToken;
+  plot = next;
+  $("plot-title").textContent = plot.title;
+  $("plot-lede").textContent = plot.lede;
+  $("home-link").textContent = "Plotmaniac";
+  document.title = `Plotmaniac — ${plot.title}`;
+  $("plot-select").value = plot.id;
+  document.body.dataset.images = plot.images || "";
+  const app = $("app");
+  app.replaceChildren();
+  const loading = document.createElement("p");
+  loading.className = "loading";
+  loading.textContent = "Drawing the web…";
+  app.appendChild(loading);
+  try {
+    const [peopleData, eventData, relationData] = await Promise.all([
+      fetchJson(plot.paths.people),
+      fetchJson(plot.paths.events),
+      fetchJson(plot.paths.relations),
+    ]);
+    if (token !== loadToken) return;
+    peopleById.clear();
+    people = peopleData;
+    events = eventData.slice().sort((a, b) => a.date.localeCompare(b.date));
+    relations = relationData;
+    people.forEach((person) => peopleById.set(person.id, person));
+    laneZoom = 1;
+    const eras = new Set(events.map((event) => event.era));
+    if (fromUrl) {
+      state = {
+        ...parseState(location.href, { people: new Set(peopleById.keys()), eras }),
+        year: readYear(),
+      };
+    } else {
+      state = {
+        view: "web",
+        person: ALL,
+        era: ALL,
+        query: "",
+        eventId: "",
+        year: plot.year ? parseYear(plot.year.initial, plot.year) : null,
+      };
+    }
+    renderCredits();
+    render({
+      push: history === "push",
+      replace: history === "replace",
+      focusEvent: Boolean(state.eventId),
+    });
+  } catch (error) {
+    if (token !== loadToken) return;
+    console.error(error);
+    app.replaceChildren();
+    app.appendChild(emptyState("The plot couldn’t load. Refresh to try again."));
+  }
+}
+
+function showPicker({ history = "push" } = {}) {
+  loadToken += 1;
+  plot = null;
+  people = [];
+  events = [];
+  relations = [];
+  peopleById.clear();
+  state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null };
+  document.title = "Plotmaniac";
+  $("plot-title").textContent = "Plotmaniac";
+  $("plot-lede").textContent = "Pick a person or a country. Then read the web of friends and foes, or the timeline under it.";
+  $("home-link").textContent = "Field guide";
+  $("footer-note").textContent = "Plotmaniac";
+  $("credit-list").replaceChildren();
+  $("credits").hidden = true;
+  document.body.dataset.view = "pick";
+  document.body.dataset.images = "";
+  $("plot-select").value = "";
+  $("view-web").classList.remove("is-active");
+  $("view-timeline").classList.remove("is-active");
+  renderChooser();
+  if (history === "push") writeUrl(false);
+  if (history === "replace") writeUrl(true);
+}
+
+function renderChooser() {
+  const app = $("app");
+  app.replaceChildren();
+  const list = document.createElement("ul");
+  list.className = "plot-cards";
+  plots.forEach((item) => {
+    const li = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `plot-card${item.images === "flags" ? "" : " is-person"}`;
+    const kicker = document.createElement("span");
+    kicker.className = "kicker";
+    kicker.textContent = item.kicker || "Plot";
+    button.appendChild(kicker);
+    if (item.cardImage) {
+      const image = document.createElement("img");
+      image.src = item.cardImage;
+      image.alt = "";
+      button.appendChild(image);
+    }
+    const title = document.createElement("strong");
+    title.textContent = item.title;
+    const copy = document.createElement("p");
+    copy.textContent = item.lede;
+    button.append(title, copy);
+    button.addEventListener("click", () => showPlot(item.id, { history: "push" }));
+    li.appendChild(button);
+    list.appendChild(li);
   });
+  app.appendChild(list);
 }
 
 function bindChrome() {
+  const select = $("plot-select");
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Choose";
+  select.appendChild(placeholder);
+  plots.forEach((item) => {
+    const option = document.createElement("option");
+    option.value = item.id;
+    option.textContent = item.title;
+    select.appendChild(option);
+  });
+  select.addEventListener("change", () => {
+    const id = select.value;
+    if (!id || id === plot?.id) return;
+    showPlot(id, { history: "push" });
+  });
+  $("home-link").addEventListener("click", () => {
+    if (!plot || plots.length < 2) return;
+    showPicker({ history: "push" });
+  });
   document.querySelectorAll(".views button").forEach((button) => {
     button.addEventListener("click", () => {
       state.view = button.dataset.view === "timeline" ? "timeline" : "web";
@@ -130,20 +284,77 @@ function renderWeb() {
     key.appendChild(item);
   });
   const scroller = document.createElement("div");
-  scroller.className = "web-scroll";
+  scroller.className = `web-scroll${plot.arrangement === "camps" ? " is-camps" : ""}`;
   const stage = document.createElement("div");
   stage.className = "web-stage";
   scroller.appendChild(stage);
-  section.append(key, scroller);
+  section.append(key);
+  if (plot.year) section.appendChild(renderYearBar());
+  section.append(scroller);
   requestAnimationFrame(() => paintWeb(stage));
   return section;
 }
 
-function paintWeb(stage) {
+function renderYearBar() {
+  const bar = document.createElement("div");
+  bar.className = "year-bar";
+  const readout = document.createElement("p");
+  readout.className = "year-readout";
+  readout.textContent = String(state.year);
+  const hint = document.createElement("p");
+  hint.className = "year-hint";
+  hint.textContent = "Drag the year. Foes sit on the left, friends on the right.";
+  const input = document.createElement("input");
+  input.type = "range";
+  input.className = "year-drag";
+  input.min = String(plot.year.min);
+  input.max = String(plot.year.max);
+  input.step = "1";
+  input.value = String(state.year);
+  input.setAttribute("aria-label", "Year. Drag to see who was a friend or a foe.");
+  input.setAttribute("aria-valuetext", String(state.year));
+  input.addEventListener("input", () => setYear(input.value));
+  const marks = document.createElement("div");
+  marks.className = "year-marks";
+  (plot.year.marks || []).forEach((year) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.year = String(year);
+    button.textContent = year === plot.year.max ? "Now" : String(year);
+    button.classList.toggle("is-active", year === state.year);
+    button.addEventListener("click", () => setYear(year));
+    marks.appendChild(button);
+  });
+  const counts = document.createElement("p");
+  counts.className = "year-counts";
+  counts.id = "year-counts";
+  bar.append(readout, hint, input, marks, counts);
+  return bar;
+}
+
+function setYear(year) {
+  if (!plot?.year) return;
+  state.year = parseYear(year, plot.year);
+  const readout = document.querySelector(".year-readout");
+  const input = document.querySelector(".year-drag");
+  if (readout) readout.textContent = String(state.year);
+  if (input) {
+    input.value = String(state.year);
+    input.setAttribute("aria-valuetext", String(state.year));
+  }
+  document.querySelectorAll(".year-marks button").forEach((button) => {
+    button.classList.toggle("is-active", Number(button.dataset.year) === state.year);
+  });
+  const stage = document.querySelector(".web-stage");
+  if (stage) paintWeb(stage, { animate: false });
+  writeUrl(true);
+}
+
+function paintWeb(stage, { animate = true } = {}) {
   if (!stage.isConnected) return;
   const bounds = stage.getBoundingClientRect();
   if (bounds.width < 2 || bounds.height < 2) {
-    requestAnimationFrame(() => paintWeb(stage));
+    requestAnimationFrame(() => paintWeb(stage, { animate }));
     return;
   }
   const width = Math.max(320, Math.floor(bounds.width));
@@ -152,9 +363,14 @@ function paintWeb(stage) {
     centerId: plot.centerId,
     friendKinds: plot.friendKinds,
     enemyKinds: plot.enemyKinds,
+    arrangement: plot.arrangement,
+    year: plot.year ? state.year : undefined,
     width,
     height,
   });
+  stage.classList.toggle("is-quiet", !animate);
+  if (plot.arrangement === "camps" && layout.height > height + 2) stage.style.height = `${layout.height}px`;
+  else stage.style.height = "";
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);
   stage.replaceChildren();
@@ -162,7 +378,7 @@ function paintWeb(stage) {
   const byId = new Map(layout.nodes.map((node) => [node.id, node]));
   const svg = document.createElementNS(SVG_NS, "svg");
   svg.setAttribute("class", "web-lines");
-  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
   svg.setAttribute("aria-hidden", "true");
   layout.edges.forEach((edge) => {
     const from = byId.get(edge.from);
@@ -172,6 +388,8 @@ function paintWeb(stage) {
     path.setAttribute("d", `M ${from.x} ${from.y} L ${to.x} ${to.y}`);
     path.dataset.from = edge.from;
     path.dataset.to = edge.to;
+    const camp = from.camp === "center" ? to.camp : to.camp === "center" ? from.camp : "";
+    if (camp) path.dataset.camp = camp;
     svg.appendChild(path);
   });
   stage.appendChild(svg);
@@ -195,7 +413,7 @@ function paintWeb(stage) {
   layout.nodes.forEach((node, index) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}`;
+    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.side ? ` node-${node.side}` : ""}`;
     button.dataset.id = node.id;
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
@@ -211,6 +429,12 @@ function paintWeb(stage) {
     button.addEventListener("click", () => openPerson(node.id));
     stage.appendChild(button);
   });
+  const counts = document.getElementById("year-counts");
+  if (counts) {
+    const friendCount = layout.nodes.filter((node) => node.camp === "friend").length;
+    const foeCount = layout.nodes.filter((node) => node.camp === "enemy").length;
+    counts.textContent = `${friendCount} ${friendCount === 1 ? "friend" : "friends"} · ${foeCount} ${foeCount === 1 ? "foe" : "foes"}`;
+  }
 }
 
 function renderPerson() {
@@ -236,10 +460,21 @@ function renderPerson() {
   head.className = "focus-head";
   head.appendChild(avatar(person, "lg"));
   const copy = document.createElement("div");
-  const camp = campOf(person.id, relations, plot.centerId, plot.friendKinds, plot.enemyKinds);
+  const camp = campOf(
+    person.id,
+    relations,
+    plot.centerId,
+    plot.friendKinds,
+    plot.enemyKinds,
+    plot.year ? state.year : undefined,
+  );
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
-  eyebrow.textContent = person.id === plot.centerId ? "The center of this plot" : campLabel(camp);
+  eyebrow.textContent = person.id === plot.centerId
+    ? "The center of this plot"
+    : plot.year
+      ? `${campLabel(camp)} in ${state.year}`
+      : campLabel(camp);
   const title = document.createElement("h2");
   title.id = "person-title";
   title.textContent = person.name;
@@ -255,7 +490,11 @@ function renderPerson() {
     list.className = "ties";
     ties.forEach((tie) => {
       const item = document.createElement("li");
-      item.textContent = `${eraLabel(tie.kind)} · ${tie.label}`;
+      const span = tieSpan(tie);
+      item.textContent = span
+        ? `${eraLabel(tie.kind)} · ${tie.label} · ${span}`
+        : `${eraLabel(tie.kind)} · ${tie.label}`;
+      if (plot.year && coversYear(tie, state.year)) item.classList.add("is-now");
       list.appendChild(item);
     });
     copy.appendChild(list);
@@ -293,7 +532,7 @@ function renderTimeline() {
   const input = document.createElement("input");
   input.type = "search";
   input.value = state.query;
-  input.placeholder = "Lawsuit, Frenemies, a name…";
+  input.placeholder = plot.searchPlaceholder || "Search the record…";
   input.addEventListener("input", () => {
     state.query = input.value;
     state.eventId = "";
@@ -643,7 +882,8 @@ function renderCredits() {
     item.append(name, author, document.createTextNode(" · "), license, document.createTextNode(" · "), source);
     list.appendChild(item);
   });
-  $("footer-note").textContent = `${plot.title} on Plotmaniac · publicly reported events`;
+  $("footer-note").textContent = plot.sourceNote || `${plot.title} on Plotmaniac · publicly reported events`;
+  $("credits").hidden = list.childElementCount === 0;
 }
 
 function openPerson(id) {
@@ -659,6 +899,7 @@ function avatar(person, size) {
   const wrap = document.createElement("span");
   wrap.className = `avatar avatar-${size}`;
   const portrait = person.portrait;
+  if (portrait?.frame === "flag") wrap.classList.add("is-flag");
   if (portrait?.src) {
     const image = document.createElement("img");
     image.src = portrait.src;
@@ -718,10 +959,17 @@ function emptyState(message) {
   return p;
 }
 
+function tieSpan(tie) {
+  if (tie.start == null && tie.end == null) return "";
+  const start = String(tie.start).slice(0, 4);
+  const end = tie.end ? String(tie.end).slice(0, 4) : "now";
+  return `${start}–${end}`;
+}
+
 function campLabel(camp) {
   if (camp === "friend") return "Friend";
   if (camp === "enemy") return "Foe";
-  if (camp === "orbit") return "Around the show";
+  if (camp === "orbit") return plot?.orbitLabel || "Around the show";
   return "";
 }
 
@@ -733,14 +981,14 @@ function formatDate(iso) {
 function writeUrl(replace) {
   const urlState = {
     ...state,
-    plot: plot.id === plots[0].id ? "" : plot.id,
+    plot: state.view === "pick" || !plot ? "" : plot.id,
   };
   const next = stateUrl(location.href, urlState, state.eventId);
   history[replace ? "replaceState" : "pushState"]({}, "", next);
 }
 
 async function copyLink() {
-  const href = new URL(stateUrl(location.href, { ...state, plot: plot.id === plots[0].id ? "" : plot.id }, state.eventId), location.origin).href;
+  const href = new URL(stateUrl(location.href, { ...state, plot: plot?.id || "" }, state.eventId), location.origin).href;
   try {
     await navigator.clipboard.writeText(href);
     showToast("Link copied.");
