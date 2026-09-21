@@ -1,0 +1,51 @@
+---
+description: Plotmaniac visual language. Follow this for all site UI unless the user says otherwise.
+alwaysApply: true
+---
+
+# Plotmaniac aesthetic
+
+Treat the current coming-soon page as the visual source of truth. Future pages, components, and restyles must stay in line with it unless the user explicitly asks for a different look.
+
+Do not invent a second visual system. Do not “modernize,” brighten, or add a generic SaaS/marketing UI.
+
+## Palette
+
+Use only these tokens from `styles.css`:
+
+- Background: `--bg` `#0c0b09` (warm near-black)
+- Ink: `--ink` `#f4efe6` (warm off-white)
+- Muted copy: `--muted` `#9b9488`
+- Accent: `--gold` `#e8c47a` (labels, rules, marks, focus)
+- Grid lines: `--line` `rgba(244, 239, 230, 0.12)`
+
+No pure white, no cold gray, no saturated brand colors, no large color blocks.
+
+## Type
+
+- Display / titles: Fraunces, weight 500, tight tracking (`-0.04em`), tight line-height.
+- UI, labels, body: IBM Plex Mono.
+- Eyebrows / kicker text (`.status`): gold, ~0.72rem, uppercase, `0.28em` letter-spacing.
+- Body / lede: muted, ~0.92rem, `1.7` line-height, measure around `42ch`.
+
+Do not switch to Inter, Geist, system UI sans, or heavy bold display type.
+
+## Surface and layout
+
+- Keep the faint 72px grid overlay that fades out toward the edges (`body::before` in `styles.css`).
+- Generous empty space. Centered, calm compositions. Avoid dense cards, heavy borders, drop shadows, glassmorphism, and rainbow gradients.
+- Hairline gold strokes and small gold dots are the right kind of decoration. The story-arc mark is part of the identity; reuse that language rather than adding new ornaments.
+- Content width stays modest. Prefer a single column over dashboards.
+
+## Motion
+
+- Sparse and slow. Line-draw / fade-in only, similar to the existing 1.8s arc.
+- Always honor `prefers-reduced-motion`.
+
+## Implementation
+
+- Put shared look in `styles.css`. Add page-specific layout there or in a small extra stylesheet; do not fork new color or font tokens.
+- Load Fraunces and IBM Plex Mono the same way the coming-soon page does.
+- Keep `favicon.svg` as the gold arc on warm black.
+
+Reference: `index.html` + `styles.css`.
