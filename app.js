@@ -5,6 +5,7 @@ import {
   eventTease,
   filterEvents,
   initials,
+  neighborhood,
   parseState,
   stateUrl,
   tiesWith,
@@ -89,10 +90,19 @@ function renderWeb() {
   section.className = "web";
   const note = document.createElement("p");
   note.className = "web-note";
-  note.textContent = "Choose a person. Their public story with Ethan and H3 opens across the years.";
+  note.textContent = "Hover someone to light the people tied to them. Click to open their timeline.";
+  const key = document.createElement("ul");
+  key.className = "web-key";
+  [["friend", "Friends"], ["enemy", "Foes"]].forEach(([camp, label]) => {
+    const item = document.createElement("li");
+    const swatch = document.createElement("i");
+    swatch.className = `swatch camp-${camp}`;
+    item.append(swatch, document.createTextNode(label));
+    key.appendChild(item);
+  });
   const hint = document.createElement("p");
   hint.className = "web-hint";
-  hint.textContent = "Slide sideways if someone sits past the edge.";
+  hint.textContent = "Slide sideways if the web runs past the edge.";
   const scroller = document.createElement("div");
   scroller.className = "web-scroll";
   const layout = webLayout(people, relations, {
@@ -104,37 +114,46 @@ function renderWeb() {
   stage.className = "web-stage";
   stage.style.width = `${layout.width}px`;
   stage.style.height = `${layout.height}px`;
+  const byId = new Map(layout.nodes.map((node) => [node.id, node]));
 
   const svg = document.createElementNS(SVG_NS, "svg");
   svg.setAttribute("class", "web-lines");
   svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
   svg.setAttribute("aria-hidden", "true");
-  const center = layout.nodes.find((node) => node.camp === "center");
-  layout.nodes.forEach((node, index) => {
-    if (!center || node.camp === "center") return;
+  layout.edges.forEach((edge, index) => {
+    const from = byId.get(edge.from);
+    const to = byId.get(edge.to);
+    if (!from || !to) return;
     const path = document.createElementNS(SVG_NS, "path");
-    path.setAttribute("d", `M ${center.x} ${center.y} Q ${center.x} ${node.y} ${node.x} ${node.y}`);
-    path.setAttribute("pathLength", "1");
-    path.dataset.camp = node.camp;
+    path.setAttribute("d", `M ${from.x} ${from.y} L ${to.x} ${to.y}`);
+    path.dataset.from = edge.from;
+    path.dataset.to = edge.to;
     path.style.setProperty("--i", String(index));
     svg.appendChild(path);
   });
   stage.appendChild(svg);
 
-  layout.labels.forEach((label) => {
-    if (!layout.nodes.some((node) => node.camp === label.id)) return;
-    const el = document.createElement("p");
-    el.className = `camp-label camp-${label.id}`;
-    el.textContent = label.text;
-    el.style.left = `${label.x}px`;
-    el.style.top = `${label.y}px`;
-    stage.appendChild(el);
-  });
+  const light = (personId) => {
+    const near = neighborhood(personId, relations);
+    stage.classList.add("is-hot");
+    stage.querySelectorAll(".node").forEach((node) => {
+      node.classList.toggle("is-lit", near.has(node.dataset.id));
+    });
+    stage.querySelectorAll(".web-lines path").forEach((path) => {
+      const on = near.has(path.dataset.from) && near.has(path.dataset.to);
+      path.classList.toggle("is-lit", on);
+    });
+  };
+  const clear = () => {
+    stage.classList.remove("is-hot");
+    stage.querySelectorAll(".is-lit").forEach((element) => element.classList.remove("is-lit"));
+  };
 
   layout.nodes.forEach((node, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}`;
+    button.dataset.id = node.id;
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
     button.style.setProperty("--i", String(index));
@@ -142,12 +161,16 @@ function renderWeb() {
     const camp = campLabel(node.camp);
     button.setAttribute("aria-label", camp ? `${node.name}, ${camp}` : node.name);
     button.title = node.name;
+    button.addEventListener("pointerenter", () => light(node.id));
+    button.addEventListener("pointerleave", clear);
+    button.addEventListener("focus", () => light(node.id));
+    button.addEventListener("blur", clear);
     button.addEventListener("click", () => openPerson(node.id));
     stage.appendChild(button);
   });
 
   scroller.appendChild(stage);
-  section.append(note, hint, scroller);
+  section.append(note, key, hint, scroller);
   return section;
 }
 
@@ -464,7 +487,7 @@ function emptyState(message) {
 
 function campLabel(camp) {
   if (camp === "friend") return "Friend";
-  if (camp === "enemy") return "Enemy";
+  if (camp === "enemy") return "Foe";
   if (camp === "orbit") return "Around the show";
   return "";
 }

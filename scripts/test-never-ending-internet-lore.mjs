@@ -10,6 +10,7 @@ import {
   parseState,
   relationEvents,
   stateUrl,
+  neighborhood,
   webLayout,
   youtubeId,
 } from "../engine.js";
@@ -94,12 +95,20 @@ const layout = webLayout(people, relations, {
   friendKinds: h3.friendKinds,
   enemyKinds: h3.enemyKinds,
 });
-assert.equal(layout.nodes.length, people.length);
+assert.ok(layout.nodes.length < people.length, "coverage-only people stay off the web");
+assert.equal(layout.nodes.some((node) => node.camp === "orbit"), false);
+assert.equal(layout.nodes.find((node) => node.id === "david-dobrik"), undefined);
+assert.equal(layout.nodes.find((node) => node.id === "idubbbz").camp, "enemy");
+assert.equal(layout.nodes.find((node) => node.id === "matt-hoss").camp, "enemy");
+assert.equal(layout.nodes.find((node) => node.id === "hila-klein").camp, "friend");
 const ethanNode = layout.nodes.find((node) => node.id === "ethan-klein");
 assert.equal(ethanNode.camp, "center");
-assert.ok(layout.nodes.filter((node) => node.camp === "friend").every((node) => node.x < ethanNode.x));
-assert.ok(layout.nodes.filter((node) => node.camp === "enemy").every((node) => node.x > ethanNode.x));
-assert.ok(layout.nodes.filter((node) => node.camp === "orbit").every((node) => node.y > ethanNode.y + 200));
+const others = layout.nodes.filter((node) => node.id !== "ethan-klein");
+assert.ok(others.some((node) => node.x < ethanNode.x) && others.some((node) => node.x > ethanNode.x));
+assert.ok(others.some((node) => node.y < ethanNode.y) && others.some((node) => node.y > ethanNode.y));
+const trisha = neighborhood("trisha-paytas", relations);
+["ethan-klein", "hila-klein", "moses-hacmon"].forEach((id) => assert.ok(trisha.has(id), id));
+assert.ok(layout.edges.some((edge) => edge.from === "trisha-paytas" && edge.to === "moses-hacmon" || edge.from === "moses-hacmon" && edge.to === "trisha-paytas"));
 let closest = Infinity;
 for (let i = 0; i < layout.nodes.length; i += 1) {
   for (let j = i + 1; j < layout.nodes.length; j += 1) {

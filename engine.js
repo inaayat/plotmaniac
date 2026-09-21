@@ -121,59 +121,77 @@ export function tiesWith(personId, relations, centerId) {
 
 const byName = (a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
 
+export function neighborhood(personId, relations) {
+  const ids = new Set([personId]);
+  relations.forEach((relation) => {
+    if (relation.from === personId) ids.add(relation.to);
+    if (relation.to === personId) ids.add(relation.from);
+  });
+  return ids;
+}
+
 export function webLayout(people, relations, options = {}) {
   const centerId = options.centerId || "ethan-klein";
   const friendKinds = options.friendKinds || ["ally", "crew", "co-host", "collaborator", "family"];
   const enemyKinds = options.enemyKinds || ["feud", "litigation"];
   const width = options.width || 1100;
-  const height = options.height || 940;
-  const cx = 440;
-  const cy = 360;
+  const height = options.height || 980;
+  const cx = width / 2;
+  const cy = height / 2;
   const center = people.find((person) => person.id === centerId) || people[0];
-  const groups = { friend: [], enemy: [], orbit: [] };
+  const friends = [];
+  const foes = [];
   people.forEach((person) => {
     if (!center || person.id === center.id) return;
     const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds);
-    groups[camp].push(person);
+    if (camp === "friend") friends.push(person);
+    if (camp === "enemy") foes.push(person);
   });
-  Object.values(groups).forEach((group) => group.sort(byName));
+  friends.sort(byName);
+  foes.sort(byName);
+
+  const ordered = [];
+  const gap = Math.max(1, Math.round(foes.length / Math.max(friends.length, 1)));
+  let foeIndex = 0;
+  friends.forEach((person) => {
+    ordered.push(person);
+    for (let step = 0; step < gap && foeIndex < foes.length; step += 1) {
+      ordered.push(foes[foeIndex]);
+      foeIndex += 1;
+    }
+  });
+  while (foeIndex < foes.length) {
+    ordered.push(foes[foeIndex]);
+    foeIndex += 1;
+  }
 
   const nodes = [];
   if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center" });
-
-  const friendGap = groups.friend.length <= 1 ? 0 : Math.min(170, 480 / (groups.friend.length - 1));
-  groups.friend.forEach((person, index) => {
-    nodes.push({ ...person, x: 168, y: 190 + index * friendGap, camp: "friend" });
-  });
-
-  const rows = Math.min(5, Math.max(groups.enemy.length, 1));
-  const enemyGap = rows <= 1 ? 0 : Math.min(128, 520 / (rows - 1));
-  groups.enemy.forEach((person, index) => {
-    const column = Math.floor(index / rows);
-    const row = index % rows;
+  const radiusX = Math.min(width, height) * 0.36;
+  const radiusY = radiusX * 0.9;
+  ordered.forEach((person, index) => {
+    const angle = -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(ordered.length, 1);
+    const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds);
     nodes.push({
       ...person,
-      x: 760 + column * 175,
-      y: 130 + row * enemyGap,
-      camp: "enemy",
+      x: cx + Math.cos(angle) * radiusX,
+      y: cy + Math.sin(angle) * radiusY,
+      camp,
     });
   });
 
-  groups.orbit.forEach((person, index) => {
-    const span = groups.orbit.length <= 1 ? 0 : (width - 160) / (groups.orbit.length - 1);
-    nodes.push({ ...person, x: 80 + index * span, y: 830, camp: "orbit" });
+  const visible = new Set(nodes.map((node) => node.id));
+  const seen = new Set();
+  const edges = [];
+  relations.forEach((relation) => {
+    if (!visible.has(relation.from) || !visible.has(relation.to)) return;
+    const key = [relation.from, relation.to].sort().join("|");
+    if (seen.has(key)) return;
+    seen.add(key);
+    edges.push({ from: relation.from, to: relation.to });
   });
 
-  return {
-    width,
-    height,
-    nodes,
-    labels: [
-      { id: "friend", text: "Friends", x: 168, y: 78 },
-      { id: "enemy", text: "Enemies", x: 847, y: 64 },
-      { id: "orbit", text: "Around the show", x: width / 2, y: 760 },
-    ],
-  };
+  return { width, height, nodes, edges };
 }
 
 export function youtubeId(url) {

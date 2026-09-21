@@ -231,18 +231,53 @@ h3 {
 
 .web-lines path {
   fill: none;
-  stroke: var(--gold);
-  stroke-width: 1.25;
+  stroke: rgba(244, 239, 230, 0.28);
+  stroke-width: 1.15;
   stroke-linecap: round;
-  opacity: 0.45;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: draw-line 1.3s ease forwards;
-  animation-delay: calc(var(--i) * 45ms);
+  transition: stroke 0.2s ease, stroke-width 0.2s ease, opacity 0.2s ease;
 }
 
-.web-lines path[data-camp="orbit"] {
-  opacity: 0.28;
+.web-stage.is-hot .web-lines path {
+  opacity: 0.08;
+}
+
+.web-stage.is-hot .web-lines path.is-lit {
+  opacity: 1;
+  stroke: #f4efe6;
+  stroke-width: 2.4;
+}
+
+.web-key {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  list-style: none;
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.web-key li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+}
+
+.swatch.camp-friend {
+  border-color: #7dcea0;
+}
+
+.swatch.camp-enemy {
+  border-color: #e06a62;
 }
 
 .camp-label {
@@ -278,9 +313,9 @@ h3 {
 }
 
 .node:hover .avatar,
-.node:focus-visible .avatar {
-  border-color: var(--gold);
-  transform: scale(1.04);
+.node:focus-visible .avatar,
+.web-stage.is-hot .node.is-lit .avatar {
+  transform: scale(1.05);
 }
 
 .avatar {
@@ -331,12 +366,34 @@ h3 {
   font-family: "IBM Plex Mono", monospace;
 }
 
-.node.camp-enemy .avatar {
-  border-style: dashed;
+.node.camp-friend .avatar {
+  border-color: #7dcea0;
+  border-width: 3px;
 }
 
-.node.camp-orbit .avatar {
-  border-color: rgba(244, 239, 230, 0.38);
+.node.camp-enemy .avatar {
+  border-color: #e06a62;
+  border-width: 3px;
+}
+
+.web-stage.is-hot .node {
+  opacity: 0.22;
+}
+
+.web-stage.is-hot .node.is-lit {
+  opacity: 1;
+}
+
+.web-stage.is-hot .node.is-lit.camp-friend .avatar {
+  box-shadow: 0 0 0 5px rgba(125, 206, 160, 0.35);
+}
+
+.web-stage.is-hot .node.is-lit.camp-enemy .avatar {
+  box-shadow: 0 0 0 5px rgba(224, 106, 98, 0.4);
+}
+
+.web-stage.is-hot .node.is-lit.is-center .avatar {
+  box-shadow: 0 0 0 5px rgba(232, 196, 122, 0.35);
 }
 
 .node.is-center::before {
