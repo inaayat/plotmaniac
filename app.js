@@ -1,12 +1,15 @@
 import {
   ALL,
   campOf,
+  countriesByRegion,
   coversYear,
   eraLabel,
   eventTease,
   filterEvents,
+  firstLoadCountries,
   initials,
   neighborhood,
+  outlineFor,
   parseState,
   parseYear,
   stateUrl,
@@ -21,7 +24,10 @@ let plot = null;
 let people = [];
 let events = [];
 let relations = [];
-let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null };
+let countries = [];
+let countryBySlug = new Map();
+let openRegions = new Set();
+let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "" };
 let toastTimer = null;
 let loadToken = 0;
 const ZOOM_MIN = 0.08;
@@ -73,10 +79,13 @@ function onPop() {
     return;
   }
   const eras = new Set(events.map((event) => event.era));
-  state = {
-    ...parseState(location.href, { people: new Set(peopleById.keys()), eras }),
-    year: readYear(),
-  };
+  const parsed = parseState(location.href, {
+    people: new Set(peopleById.keys()),
+    eras,
+    countries: countryBySlug,
+  });
+  state = { ...parsed, year: readYear(), country: parsed.country || "" };
+  rememberCountryRegion();
   render({ focusEvent: Boolean(state.eventId) });
 }
 
@@ -99,6 +108,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   document.title = `Plotmaniac — ${plot.title}`;
   $("plot-select").value = plot.id;
   document.body.dataset.images = plot.images || "";
+  document.body.dataset.board = plot.disclosure || "";
   const app = $("app");
   app.replaceChildren();
   const loading = document.createElement("p");
@@ -106,24 +116,32 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   loading.textContent = "Drawing the web…";
   app.appendChild(loading);
   try {
-    const [peopleData, eventData, relationData] = await Promise.all([
+    const requests = [
       fetchJson(plot.paths.people),
       fetchJson(plot.paths.events),
       fetchJson(plot.paths.relations),
-    ]);
+    ];
+    if (plot.paths.countries) requests.push(fetchJson(plot.paths.countries));
+    const [peopleData, eventData, relationData, countryData] = await Promise.all(requests);
     if (token !== loadToken) return;
     peopleById.clear();
     people = peopleData;
     events = eventData.slice().sort((a, b) => a.date.localeCompare(b.date));
     relations = relationData;
+    countries = countryData || [];
+    countryBySlug = new Map(countries.map((country) => [country.slug, country]));
+    openRegions = new Set();
     people.forEach((person) => peopleById.set(person.id, person));
     laneZoom = 1;
     const eras = new Set(events.map((event) => event.era));
     if (fromUrl) {
-      state = {
-        ...parseState(location.href, { people: new Set(peopleById.keys()), eras }),
-        year: readYear(),
-      };
+      const parsed = parseState(location.href, {
+        people: new Set(peopleById.keys()),
+        eras,
+        countries: countryBySlug,
+      });
+      state = { ...parsed, year: readYear(), country: parsed.country || "" };
+      rememberCountryRegion();
     } else {
       state = {
         view: "web",
@@ -132,6 +150,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         query: "",
         eventId: "",
         year: plot.year ? parseYear(plot.year.initial, plot.year) : null,
+        country: "",
       };
     }
     renderCredits();
@@ -154,8 +173,11 @@ function showPicker({ history = "push" } = {}) {
   people = [];
   events = [];
   relations = [];
+  countries = [];
+  countryBySlug = new Map();
+  openRegions = new Set();
   peopleById.clear();
-  state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null };
+  state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "" };
   document.title = "Plotmaniac";
   $("plot-title").textContent = "Plotmaniac";
   $("plot-lede").textContent = "Pick a person or a country. Then read the web of friends and foes, or the timeline under it.";
@@ -165,6 +187,7 @@ function showPicker({ history = "push" } = {}) {
   $("credits").hidden = true;
   document.body.dataset.view = "pick";
   document.body.dataset.images = "";
+  document.body.dataset.board = "";
   $("plot-select").value = "";
   $("view-web").classList.remove("is-active");
   $("view-timeline").classList.remove("is-active");
@@ -235,6 +258,12 @@ function bindChrome() {
     });
   });
   window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && state.country && plot?.disclosure === "regions" && state.view === "web") {
+      state.country = "";
+      paintRelationSelection();
+      writeUrl(true);
+      return;
+    }
     if (state.view === "web") return;
     if (event.target.closest("input, textarea")) return;
     const lane = document.querySelector(".lane-view");
@@ -267,6 +296,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   app.replaceChildren();
   if (state.view === "timeline") app.appendChild(renderTimeline());
   else if (state.view === "person") app.appendChild(renderPerson());
+  else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
   else app.appendChild(renderWeb());
   if (push || replace) writeUrl(replace);
 }
@@ -295,6 +325,276 @@ function renderWeb() {
   section.append(scroller);
   requestAnimationFrame(() => paintWeb(stage));
   return section;
+}
+
+function renderRelations() {
+  const section = document.createElement("section");
+  section.className = "relations";
+  section.append(renderRelationLegend(), renderRelationHint(), renderMajorBoard(), renderRegionList());
+  const drawer = document.createElement("aside");
+  drawer.className = "relation-drawer";
+  drawer.hidden = true;
+  drawer.setAttribute("role", "dialog");
+  drawer.setAttribute("aria-label", "Relationship timeline");
+  section.appendChild(drawer);
+  paintRelationSelection(section);
+  return section;
+}
+
+function renderRelationLegend() {
+  const key = document.createElement("ul");
+  key.className = "web-key";
+  [
+    ["friend", "Friend"],
+    ["enemy", "Foe"],
+    ["neutral", "Neutral · no outline"],
+  ].forEach(([camp, label]) => {
+    const item = document.createElement("li");
+    const swatch = document.createElement("i");
+    swatch.className = `swatch camp-${camp}`;
+    swatch.setAttribute("aria-hidden", "true");
+    item.append(swatch, document.createTextNode(label));
+    key.appendChild(item);
+  });
+  return key;
+}
+
+function renderRelationHint() {
+  const hint = document.createElement("p");
+  hint.className = "relations-hint";
+  const majors = firstLoadCountries(countries);
+  const friendCount = majors.filter((country) => country.status === "friend").length;
+  const foeCount = majors.filter((country) => country.status === "foe").length;
+  hint.append(
+    document.createTextNode(
+      `${friendCount} major allies and ${foeCount} major foes are on the board. Open a region for the rest of the ${countries.length} countries, including every neutral. `,
+    ),
+  );
+  const source = document.createElement("a");
+  source.href = "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States";
+  source.textContent = "English Wikipedia";
+  hint.append(document.createTextNode("Snapshot from "), source, document.createTextNode("."));
+  return hint;
+}
+
+function renderMajorBoard() {
+  const board = document.createElement("div");
+  board.className = "major-board";
+  const majors = firstLoadCountries(countries);
+  const byName = (a, b) => a.country.localeCompare(b.country);
+  const foes = majors.filter((country) => country.status === "foe").sort(byName);
+  const friends = majors.filter((country) => country.status === "friend").sort(byName);
+  board.append(
+    renderMajorColumn("Major foes", foes),
+    renderMajorCenter(),
+    renderMajorColumn("Major allies", friends),
+  );
+  return board;
+}
+
+function renderMajorColumn(label, list) {
+  const column = document.createElement("div");
+  column.className = "major-column";
+  const heading = document.createElement("h2");
+  heading.className = "major-label";
+  heading.textContent = label;
+  const chips = document.createElement("ul");
+  chips.className = "chip-list";
+  list.forEach((country) => {
+    const item = document.createElement("li");
+    item.appendChild(countryChip(country));
+    chips.appendChild(item);
+  });
+  column.append(heading, chips);
+  return column;
+}
+
+function renderMajorCenter() {
+  const center = document.createElement("div");
+  center.className = "major-center";
+  const person = peopleById.get(plot.centerId);
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "country-chip outline-none is-center-chip";
+  button.dataset.id = plot.centerId;
+  button.setAttribute("aria-label", "United States, the center of this plot");
+  button.append(avatar(person || { name: "United States" }, "lg"));
+  const name = document.createElement("span");
+  name.className = "chip-name";
+  name.textContent = person?.name || "United States";
+  button.appendChild(name);
+  button.addEventListener("click", () => selectCountry(plot.centerId));
+  center.appendChild(button);
+  return center;
+}
+
+function renderRegionList() {
+  const list = document.createElement("div");
+  list.className = "region-list";
+  const intro = document.createElement("h2");
+  intro.className = "region-intro";
+  intro.textContent = "All countries by region";
+  list.appendChild(intro);
+  countriesByRegion(countries).forEach((group) => {
+    const details = document.createElement("details");
+    details.className = "region";
+    details.dataset.region = group.region;
+    details.open = openRegions.has(group.region);
+    const summary = document.createElement("summary");
+    const title = document.createElement("span");
+    title.textContent = group.region;
+    const meta = document.createElement("span");
+    meta.className = "region-meta";
+    const friendCount = group.countries.filter((country) => country.status === "friend").length;
+    const foeCount = group.countries.filter((country) => country.status === "foe").length;
+    const neutralCount = group.countries.filter((country) => country.status === "neutral").length;
+    meta.textContent = `${group.countries.length} · ${friendCount} friends · ${foeCount} foes · ${neutralCount} neutrals`;
+    summary.append(title, meta);
+    const chips = document.createElement("div");
+    chips.className = "region-countries";
+    group.countries.forEach((country) => chips.appendChild(countryChip(country)));
+    details.append(summary, chips);
+    details.addEventListener("toggle", () => {
+      if (details.open) openRegions.add(group.region);
+      else openRegions.delete(group.region);
+    });
+    list.appendChild(details);
+  });
+  return list;
+}
+
+function countryChip(country) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = `country-chip ${outlineClass(country)}`;
+  button.dataset.id = country.slug;
+  const person = peopleById.get(country.slug) || { name: country.country };
+  const name = document.createElement("span");
+  name.className = "chip-name";
+  name.textContent = country.country;
+  button.append(avatar(person, "sm"), name);
+  button.setAttribute("aria-label", `${country.country}, ${statusLabel(country.status)}`);
+  button.addEventListener("click", () => selectCountry(country.slug));
+  return button;
+}
+
+function selectCountry(slug) {
+  const known = slug === plot?.centerId || countryBySlug.has(slug);
+  if (!known) return;
+  state.country = state.country === slug ? "" : slug;
+  const record = countryBySlug.get(state.country);
+  if (record?.region) {
+    openRegions.add(record.region);
+    const details = document.querySelector(`.region[data-region="${CSS.escape(record.region)}"]`);
+    if (details) details.open = true;
+  }
+  paintRelationSelection(document);
+  writeUrl(false);
+}
+
+function paintRelationSelection(root = document) {
+  const selected = state.country || "";
+  root.querySelectorAll(".country-chip").forEach((chip) => {
+    const on = chip.dataset.id === selected;
+    chip.classList.toggle("is-selected", on);
+    chip.setAttribute("aria-pressed", String(on));
+  });
+  const drawer = root.querySelector(".relation-drawer");
+  if (!drawer) return;
+  drawer.replaceChildren();
+  if (!selected) {
+    drawer.hidden = true;
+    return;
+  }
+  drawer.hidden = false;
+  const record = countryBySlug.get(selected);
+  const person = peopleById.get(selected);
+  drawer.classList.remove("outline-green", "outline-red", "outline-none");
+  drawer.classList.add(record ? outlineClass(record) : "outline-none");
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "drawer-close";
+  close.textContent = "Close";
+  close.addEventListener("click", () => {
+    state.country = "";
+    paintRelationSelection();
+    writeUrl(true);
+  });
+  const head = document.createElement("div");
+  head.className = "drawer-head";
+  head.appendChild(avatar(person || { name: record?.country || "United States" }, "lg"));
+  const copy = document.createElement("div");
+  const eyebrow = document.createElement("p");
+  eyebrow.className = "eyebrow";
+  eyebrow.textContent = record ? statusLabel(record.status) : "The center of this plot";
+  const title = document.createElement("h2");
+  title.id = "relation-title";
+  title.textContent = record?.country || person?.name || "United States";
+  drawer.setAttribute("aria-labelledby", "relation-title");
+  copy.append(eyebrow, title);
+  if (record && !record.formal_relations) {
+    const formal = document.createElement("p");
+    formal.className = "drawer-note";
+    formal.textContent = "No formal diplomatic relations.";
+    copy.appendChild(formal);
+  }
+  const notes = document.createElement("p");
+  notes.className = "drawer-notes";
+  notes.textContent = record?.notes_summary || person?.role || "";
+  copy.appendChild(notes);
+  head.appendChild(copy);
+  drawer.append(close, head);
+  if (record) drawer.appendChild(renderCountryHistory(record));
+  else {
+    const note = document.createElement("p");
+    note.className = "drawer-notes";
+    note.textContent = "Choose a country to read that relationship. Neutrals are in the regional lists and have no colored outline.";
+    drawer.appendChild(note);
+  }
+}
+
+function renderCountryHistory(record) {
+  const block = document.createElement("div");
+  block.className = "country-history";
+  const list = document.createElement("ol");
+  list.className = "relation-timeline";
+  (record.timeline || []).forEach((beat) => {
+    const item = document.createElement("li");
+    const year = document.createElement("span");
+    year.className = "relation-year";
+    year.textContent = String(beat.year);
+    const text = document.createElement("p");
+    text.textContent = beat.event;
+    item.append(year, text);
+    list.appendChild(item);
+  });
+  const more = document.createElement("a");
+  more.className = "drawer-more";
+  more.href = record.wiki_bilateral;
+  more.target = "_blank";
+  more.rel = "noreferrer";
+  more.textContent = "Read more on Wikipedia";
+  block.append(list, more);
+  return block;
+}
+
+function rememberCountryRegion() {
+  const record = countryBySlug.get(state.country);
+  if (record?.region) openRegions.add(record.region);
+}
+
+function outlineClass(country) {
+  const outline = outlineFor(country);
+  if (outline === "green") return "outline-green";
+  if (outline === "red") return "outline-red";
+  return "outline-none";
+}
+
+function statusLabel(status) {
+  if (status === "friend") return "Friend";
+  if (status === "foe") return "Foe";
+  if (status === "neutral") return "Neutral";
+  return "";
 }
 
 function renderYearBar() {
@@ -460,9 +760,12 @@ function renderPerson() {
     render({ push: true });
   });
 
+  const record = countryBySlug.get(person.id);
   const head = document.createElement("div");
   head.className = "focus-head";
-  head.appendChild(avatar(person, "lg"));
+  const face = avatar(person, "lg");
+  if (record) face.classList.add(outlineClass(record));
+  head.appendChild(face);
   const copy = document.createElement("div");
   const camp = campOf(
     person.id,
@@ -505,6 +808,10 @@ function renderPerson() {
   }
   head.appendChild(copy);
 
+  if (record) {
+    section.append(back, head, renderCountryHistory(record));
+    return section;
+  }
   const theirs = events.filter((event) => event.people.includes(person.id));
   section.classList.add("lane-page");
   section.append(back, head, renderRail(theirs, {
@@ -871,6 +1178,23 @@ function featuredPerson(event, focusId) {
 function renderCredits() {
   const list = $("credit-list");
   list.replaceChildren();
+  if (plot?.images === "flags") {
+    const item = document.createElement("li");
+    item.append(
+      document.createTextNode("National flags are public domain via Wikimedia Commons. Relationship notes follow "),
+    );
+    const source = document.createElement("a");
+    source.href = "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States";
+    source.textContent = "Foreign relations of the United States";
+    const license = document.createElement("a");
+    license.href = "https://creativecommons.org/publicdomain/mark/1.0/";
+    license.textContent = "Public domain";
+    item.append(source, document.createTextNode(". "), license, document.createTextNode("."));
+    list.appendChild(item);
+    $("footer-note").textContent = plot.sourceNote || `${plot.title} on Plotmaniac · publicly reported events`;
+    $("credits").hidden = false;
+    return;
+  }
   people.filter((person) => person.portrait).forEach((person) => {
     const item = document.createElement("li");
     const name = document.createElement("span");

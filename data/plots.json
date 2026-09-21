@@ -20,26 +20,21 @@
       "id": "united-states",
       "title": "United States",
       "kicker": "Country",
-      "lede": "Flags for the countries that have stood with the United States or against it. Drag the year and the sides change.",
+      "lede": "Major allies and major foes are on the board. Open a region for every other country, including neutrals.",
       "searchPlaceholder": "A war, a treaty, a country…",
-      "sourceNote": "United States on Plotmaniac · drawn from the Wikipedia foreign-relations survey",
+      "sourceNote": "United States on Plotmaniac · snapshot from the English Wikipedia foreign-relations survey",
       "centerId": "united-states",
       "friendKinds": ["ally"],
       "enemyKinds": ["foe"],
-      "arrangement": "camps",
+      "disclosure": "regions",
       "images": "flags",
-      "orbitLabel": "Between chapters",
-      "year": {
-        "min": 1776,
-        "max": 2026,
-        "initial": 2026,
-        "marks": [1778, 1812, 1942, 1962, 1979, 2001, 2026]
-      },
+      "orbitLabel": "Neutral",
       "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_United_States.svg?width=320",
       "paths": {
         "people": "data/united-states/people.json",
         "events": "data/united-states/events.json",
-        "relations": "data/united-states/relations.json"
+        "relations": "data/united-states/relations.json",
+        "countries": "data/united-states/countries.json"
       }
     }
   ]

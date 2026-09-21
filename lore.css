@@ -548,6 +548,313 @@ body[data-view="web"] #footer-note {
   border-color: var(--gold);
 }
 
+.swatch.camp-neutral {
+  border-color: rgba(244, 239, 230, 0.45);
+  background: transparent;
+}
+
+body[data-board="regions"][data-view="web"] {
+  height: auto;
+  min-height: 100dvh;
+  overflow: auto;
+  display: block;
+}
+
+body[data-board="regions"][data-view="web"] .app {
+  display: block;
+  width: min(1120px, calc(100% - 32px));
+  padding: 8px 0 80px;
+}
+
+body[data-board="regions"][data-view="web"] .site-footer {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 28px;
+  text-align: left;
+}
+
+body[data-board="regions"][data-view="web"] #footer-note {
+  display: block;
+}
+
+.relations {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+.relations-hint,
+.region-intro {
+  text-align: center;
+}
+
+.relations-hint {
+  max-width: 68ch;
+  margin: 0 auto 22px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.relations-hint a,
+.drawer-more {
+  color: var(--gold);
+}
+
+.major-board {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) 140px minmax(240px, 1.3fr);
+  gap: 18px 22px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+.major-label,
+.region-intro {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.major-label {
+  margin-bottom: 10px;
+}
+
+.region-intro {
+  margin: 8px 0 4px;
+}
+
+.chip-list,
+.region-countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.country-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 4px 10px 4px 4px;
+  border-radius: 999px;
+  background: var(--panel);
+}
+
+.country-chip .avatar {
+  width: 28px;
+  height: 22px;
+  flex: none;
+  border-radius: 3px;
+}
+
+.country-chip .avatar img {
+  padding: 0;
+}
+
+.chip-name {
+  font-size: 0.72rem;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.avatar.outline-green,
+.country-chip.outline-green .avatar {
+  border-color: #7dcea0;
+  border-width: 2px;
+}
+
+.avatar.outline-red,
+.country-chip.outline-red .avatar {
+  border-color: #e06a62;
+  border-width: 2px;
+}
+
+.avatar.outline-none,
+.country-chip.outline-none .avatar {
+  border-color: transparent;
+  border-width: 2px;
+}
+
+.country-chip.is-selected {
+  background: rgba(232, 196, 122, 0.14);
+}
+
+.major-center {
+  display: flex;
+  justify-content: center;
+  padding-top: 22px;
+}
+
+.major-center .country-chip {
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: transparent;
+}
+
+.major-center .avatar {
+  width: 88px;
+  height: 58px;
+}
+
+.region-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.region {
+  border-top: 1px solid var(--line);
+}
+
+.region summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+  padding: 12px 2px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.region summary::-webkit-details-marker {
+  display: none;
+}
+
+.region-meta {
+  color: var(--muted);
+  font-size: 0.66rem;
+  text-align: right;
+}
+
+.region-countries {
+  padding: 0 0 14px;
+}
+
+.relation-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  width: min(420px, 100%);
+  height: 100dvh;
+  overflow: auto;
+  padding: 22px 22px 48px;
+  background: #141210;
+  border-left: 1px solid var(--line-strong);
+  box-shadow: -24px 0 48px rgba(0, 0, 0, 0.35);
+}
+
+.drawer-close {
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.drawer-head {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: 16px 0 8px;
+}
+
+.drawer-head .avatar {
+  width: 72px;
+  height: 48px;
+  flex: none;
+}
+
+.relation-drawer.outline-green .drawer-head .avatar {
+  border-color: #7dcea0;
+  border-width: 3px;
+}
+
+.relation-drawer.outline-red .drawer-head .avatar {
+  border-color: #e06a62;
+  border-width: 3px;
+}
+
+.relation-drawer.outline-none .drawer-head .avatar {
+  border-color: transparent;
+}
+
+.drawer-head h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.drawer-note,
+.drawer-notes {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.drawer-notes {
+  color: var(--ink);
+}
+
+.relation-timeline {
+  list-style: none;
+  margin: 18px 0 16px;
+  padding-left: 14px;
+  border-left: 1px solid var(--line-strong);
+}
+
+.relation-timeline li {
+  margin-bottom: 14px;
+}
+
+.relation-year {
+  display: block;
+  color: var(--gold);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+}
+
+.relation-timeline p {
+  margin-top: 3px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.drawer-more {
+  font-size: 0.72rem;
+}
+
+.country-history {
+  margin-top: 8px;
+}
+
+@media (max-width: 800px) {
+  .major-board {
+    grid-template-columns: 1fr;
+  }
+
+  .major-center {
+    order: -1;
+    padding-top: 0;
+  }
+
+  .region summary {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .region-meta {
+    text-align: left;
+  }
+}
+
 .camp-label {
   position: absolute;
   transform: translate(-50%, -50%);

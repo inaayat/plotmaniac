@@ -1,0 +1,5349 @@
+[
+  {
+    "country": "Afghanistan",
+    "slug": "afghanistan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Afghanistan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Afghanistan%E2%80%93United_States_relations",
+    "recognition_date": "1935-05-04",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Taliban government unrecognized after 2021 withdrawal; US interests section via Qatar in Kabul.",
+    "timeline": [
+      {
+        "year": "1935",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1979",
+        "event": "Soviet invasion; US backs mujahideen"
+      },
+      {
+        "year": "2001",
+        "event": "US-led invasion after 9/11; ousts Taliban"
+      },
+      {
+        "year": "2021",
+        "event": "US withdrawal; Taliban returns; embassy relocated to Doha"
+      },
+      {
+        "year": "2026",
+        "event": "Taliban government unrecognized; currently strained"
+      }
+    ],
+    "region": "South Asia",
+    "first_load": true
+  },
+  {
+    "country": "Albania",
+    "slug": "albania",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Albania–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Albania%E2%80%93United_States_relations",
+    "recognition_date": "1922-12-04",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1922-12-04. NATO ally of the United States. Formerly strained: 1946–1991.",
+    "timeline": [
+      {
+        "year": "1922",
+        "event": "Diplomatic relations with the United States established (1922-12-04)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1946–1991."
+      },
+      {
+        "year": "2009",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Algeria",
+    "slug": "algeria",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Algeria–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Algeria%E2%80%93United_States_relations",
+    "recognition_date": "1962-09-29",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1962-09-29. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1967–1974.",
+    "timeline": [
+      {
+        "year": "1962",
+        "event": "Diplomatic relations with the United States established (1962-09-29)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1967–1974."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "North Africa",
+    "first_load": false
+  },
+  {
+    "country": "Andorra",
+    "slug": "andorra",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Andorra–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Andorra%E2%80%93United_States_relations",
+    "recognition_date": "1995-02-21",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1995-02-21. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1995",
+        "event": "Diplomatic relations with the United States established (1995-02-21)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Angola",
+    "slug": "angola",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Angola–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Angola%E2%80%93United_States_relations",
+    "recognition_date": "1994-07-14",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1994-07-14. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1976–1993.",
+    "timeline": [
+      {
+        "year": "1994",
+        "event": "Diplomatic relations with the United States established (1994-07-14)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1976–1993."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Antigua and Barbuda",
+    "slug": "antigua-and-barbuda",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Antigua_and_Barbuda–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Antigua_and_Barbuda%E2%80%93United_States_relations",
+    "recognition_date": "1981-11-01",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1981-11-01. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1981",
+        "event": "Diplomatic relations with the United States established (1981-11-01)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Argentina",
+    "slug": "argentina",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Argentina–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Argentina%E2%80%93United_States_relations",
+    "recognition_date": "1823-12-27",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA with cooperation on nonproliferation, counternarcotics, and regional stability.",
+    "timeline": [
+      {
+        "year": "1823",
+        "event": "Diplomatic relations with the United States established (1823-12-27)."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Armenia",
+    "slug": "armenia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Armenia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Armenia%E2%80%93United_States_relations",
+    "recognition_date": "1992-01-07",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-01-07. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-01-07)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Australia",
+    "slug": "australia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Australia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Australia%E2%80%93United_States_relations",
+    "recognition_date": "1940-01-08",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "ANZUS and AUKUS ally; Five Eyes partner; among closest US allies globally.",
+    "timeline": [
+      {
+        "year": "1940",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1941",
+        "event": "WWII Pacific alliance against Japan"
+      },
+      {
+        "year": "1951",
+        "event": "ANZUS Treaty"
+      },
+      {
+        "year": "2005",
+        "event": "Australia–US Free Trade Agreement"
+      },
+      {
+        "year": "2021",
+        "event": "AUKUS announced"
+      }
+    ],
+    "region": "Oceania",
+    "first_load": true
+  },
+  {
+    "country": "Austria",
+    "slug": "austria",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Austria–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Austria%E2%80%93United_States_relations",
+    "recognition_date": "1921-11-08",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1921-11-08. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1921",
+        "event": "Diplomatic relations with the United States established (1921-11-08)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Azerbaijan",
+    "slug": "azerbaijan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Azerbaijan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Azerbaijan%E2%80%93United_States_relations",
+    "recognition_date": "1992-02-28",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-02-28. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-02-28)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Bahamas",
+    "slug": "bahamas",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/The_Bahamas–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/The_Bahamas%E2%80%93United_States_relations",
+    "recognition_date": "1973-07-10",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1973-07-10. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1973",
+        "event": "Diplomatic relations with the United States established (1973-07-10)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Bahrain",
+    "slug": "bahrain",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Bahrain–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Bahrain%E2%80%93United_States_relations",
+    "recognition_date": "1971-09-21",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA; hosts US Navy Fifth Fleet headquarters.",
+    "timeline": [
+      {
+        "year": "1971",
+        "event": "Diplomatic relations with the United States established (1971-09-21)."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Bangladesh",
+    "slug": "bangladesh",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Bangladesh–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Bangladesh%E2%80%93United_States_relations",
+    "recognition_date": "1972-05-18",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1972-05-18. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1972",
+        "event": "Diplomatic relations with the United States established (1972-05-18)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "South Asia",
+    "first_load": false
+  },
+  {
+    "country": "Barbados",
+    "slug": "barbados",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Barbados–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Barbados%E2%80%93United_States_relations",
+    "recognition_date": "1966-11-30",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1966-11-30. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1966",
+        "event": "Diplomatic relations with the United States established (1966-11-30)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Belarus",
+    "slug": "belarus",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Belarus–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Belarus%E2%80%93United_States_relations",
+    "recognition_date": "1991-12-28",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1991-12-28. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "1991",
+        "event": "Diplomatic relations after Soviet collapse"
+      },
+      {
+        "year": "2000s",
+        "event": "Sanctions over human rights and elections"
+      },
+      {
+        "year": "2020",
+        "event": "Relations worsen after disputed election"
+      },
+      {
+        "year": "2022",
+        "event": "Belarus facilitates Russian invasion of Ukraine"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Belgium",
+    "slug": "belgium",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Belgium–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Belgium%E2%80%93United_States_relations",
+    "recognition_date": "1832-06-18",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1832-06-18. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1832",
+        "event": "Diplomatic relations with the United States established (1832-06-18)."
+      },
+      {
+        "year": "1949",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Belize",
+    "slug": "belize",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Belize–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Belize%E2%80%93United_States_relations",
+    "recognition_date": "1981-10-29",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1981-10-29. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1981",
+        "event": "Diplomatic relations with the United States established (1981-10-29)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Benin",
+    "slug": "benin",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Benin–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Benin%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-01",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-01. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1975–1990.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-08-01)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1975–1990."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Bhutan",
+    "slug": "bhutan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Bhutan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Bhutan%E2%80%93United_States_relations",
+    "recognition_date": null,
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": false,
+    "notes_summary": "No formal diplomatic relations; informal contact through US Embassy in New Delhi — classified neutral.",
+    "timeline": [
+      {
+        "year": "n/a",
+        "event": "No formal diplomatic relations; informal contact via US Embassy New Delhi"
+      },
+      {
+        "year": "2007",
+        "event": "US offers resettlement for Bhutanese refugees in Nepal"
+      }
+    ],
+    "region": "South Asia",
+    "first_load": false
+  },
+  {
+    "country": "Bolivia",
+    "slug": "bolivia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Bolivia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Bolivia%E2%80%93United_States_relations",
+    "recognition_date": "1849-01-03",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1849-01-03. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 2006–2019.",
+    "timeline": [
+      {
+        "year": "1849",
+        "event": "Diplomatic relations with the United States established (1849-01-03)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 2006–2019."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "slug": "bosnia-and-herzegovina",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Bosnia_and_Herzegovina%E2%80%93United_States_relations",
+    "recognition_date": "1992-08-06",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-08-06. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-08-06)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Botswana",
+    "slug": "botswana",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Botswana–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Botswana%E2%80%93United_States_relations",
+    "recognition_date": "1966-09-30",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1966-09-30. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1966",
+        "event": "Diplomatic relations with the United States established (1966-09-30)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Brazil",
+    "slug": "brazil",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Brazil–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Brazil%E2%80%93United_States_relations",
+    "recognition_date": "1824-05-26",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA and largest South American partner; converging interests with occasional divergences.",
+    "timeline": [
+      {
+        "year": "1824",
+        "event": "US recognizes Brazilian independence"
+      },
+      {
+        "year": "1942",
+        "event": "Brazil joins Allies in WWII"
+      },
+      {
+        "year": "1964",
+        "event": "US supports military coup (period of closer alignment)"
+      },
+      {
+        "year": "2019",
+        "event": "Designated Major Non-NATO Ally"
+      }
+    ],
+    "region": "Americas",
+    "first_load": true
+  },
+  {
+    "country": "Brunei",
+    "slug": "brunei",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Brunei–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Brunei%E2%80%93United_States_relations",
+    "recognition_date": "1984-03-10",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1984-03-10. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1984",
+        "event": "Diplomatic relations with the United States established (1984-03-10)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Bulgaria",
+    "slug": "bulgaria",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Bulgaria–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Bulgaria%E2%80%93United_States_relations",
+    "recognition_date": "1903-09-19",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1903-09-19. NATO ally of the United States. Formerly strained: 1946–1990.",
+    "timeline": [
+      {
+        "year": "1903",
+        "event": "Diplomatic relations with the United States established (1903-09-19)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1946–1990."
+      },
+      {
+        "year": "2004",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Burkina Faso",
+    "slug": "burkina-faso",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Burkina_Faso–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Burkina_Faso%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-05",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-05. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations at independence"
+      },
+      {
+        "year": "2022",
+        "event": "Coups; junta pivots from West"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained; visa services suspended"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Burundi",
+    "slug": "burundi",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Burundi–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Burundi%E2%80%93United_States_relations",
+    "recognition_date": "1962-07-01",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1962-07-01. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data). Formerly strained: 2015–2021 (again currently).",
+    "timeline": [
+      {
+        "year": "1962",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "2015",
+        "event": "Crisis after Nkurunziza third term"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Cambodia",
+    "slug": "cambodia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Cambodia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Cambodia%E2%80%93United_States_relations",
+    "recognition_date": "1950-07-11",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1950-07-11. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1965–1969, 1975–1994.",
+    "timeline": [
+      {
+        "year": "1950",
+        "event": "Diplomatic relations with the United States established (1950-07-11)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1965–1969, 1975–1994."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Cameroon",
+    "slug": "cameroon",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Cameroon–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Cameroon%E2%80%93United_States_relations",
+    "recognition_date": "1960-01-01",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-01-01. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-01-01)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Canada",
+    "slug": "canada",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Canada–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Canada%E2%80%93United_States_relations",
+    "recognition_date": "1927-02-18",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "NORAD and NATO ally; largest trading partner historically; world’s longest undefended border; USMCA partner.",
+    "timeline": [
+      {
+        "year": "1812",
+        "event": "War of 1812; US invasions of British North America"
+      },
+      {
+        "year": "1927",
+        "event": "Formal diplomatic relations established"
+      },
+      {
+        "year": "1940",
+        "event": "Ogdensburg Agreement on continental defense"
+      },
+      {
+        "year": "1949",
+        "event": "Both founding NATO members"
+      },
+      {
+        "year": "1958",
+        "event": "NORAD established"
+      },
+      {
+        "year": "1994",
+        "event": "NAFTA enters into force"
+      },
+      {
+        "year": "2020",
+        "event": "USMCA replaces NAFTA"
+      }
+    ],
+    "region": "Americas",
+    "first_load": true
+  },
+  {
+    "country": "Cape Verde",
+    "slug": "cape-verde",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Cape_Verde–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Cape_Verde%E2%80%93United_States_relations",
+    "recognition_date": "1975-07-19",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1975-07-19. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1975",
+        "event": "Diplomatic relations with the United States established (1975-07-19)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Central African Republic",
+    "slug": "central-african-republic",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Central_African_Republic–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Central_African_Republic%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-13",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-13. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations at independence"
+      },
+      {
+        "year": "2013",
+        "event": "Civil conflict; Wagner/Russian influence rises"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Chad",
+    "slug": "chad",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Chad–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Chad%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-11",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-11. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-08-11)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Chile",
+    "slug": "chile",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Chile–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Chile%E2%80%93United_States_relations",
+    "recognition_date": "1824-04-23",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1824-04-23. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1970–1973.",
+    "timeline": [
+      {
+        "year": "1824",
+        "event": "Diplomatic relations with the United States established (1824-04-23)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1970–1973."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "China",
+    "slug": "china",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/China–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/China%E2%80%93United_States_relations",
+    "recognition_date": "1979-01-01",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Complex economic interdependence alongside strategic rivalry; currently listed as strained over Taiwan, South China Sea, human rights, and trade.",
+    "timeline": [
+      {
+        "year": "1844",
+        "event": "Treaty of Wanghia with Qing China"
+      },
+      {
+        "year": "1949",
+        "event": "PRC founded; US recognizes ROC on Taiwan"
+      },
+      {
+        "year": "1972",
+        "event": "Nixon visit; Shanghai Communiqué"
+      },
+      {
+        "year": "1979",
+        "event": "Formal diplomatic relations with PRC; derecognition of ROC"
+      },
+      {
+        "year": "1989",
+        "event": "Tiananmen Square; sanctions and strained ties"
+      },
+      {
+        "year": "2001",
+        "event": "China joins WTO with US support"
+      },
+      {
+        "year": "2018",
+        "event": "US–China trade war begins"
+      },
+      {
+        "year": "2020",
+        "event": "Relations deteriorate over Hong Kong, Xinjiang, COVID, Taiwan"
+      },
+      {
+        "year": "2026",
+        "event": "Listed as currently strained with the United States"
+      }
+    ],
+    "region": "East Asia",
+    "first_load": true
+  },
+  {
+    "country": "Colombia",
+    "slug": "colombia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Colombia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Colombia%E2%80%93United_States_relations",
+    "recognition_date": "1822-06-19",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA and Plan Colombia partner against drugs and terrorism.",
+    "timeline": [
+      {
+        "year": "1822",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1903",
+        "event": "Panama secedes with US support; lasting tension then recovery"
+      },
+      {
+        "year": "2000",
+        "event": "Plan Colombia counternarcotics partnership"
+      },
+      {
+        "year": "2022",
+        "event": "Designated Major Non-NATO Ally"
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Comoros",
+    "slug": "comoros",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Comoros–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Comoros%E2%80%93United_States_relations",
+    "recognition_date": "1977-08-15",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1977-08-15. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1977",
+        "event": "Diplomatic relations with the United States established (1977-08-15)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Cook Islands",
+    "slug": "cook-islands",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Cook_Islands–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Cook_Islands%E2%80%93United_States_relations",
+    "recognition_date": "2023-09-25",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 2023-09-25. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1980",
+        "event": "Maritime boundary treaty with US"
+      },
+      {
+        "year": "2023",
+        "event": "Diplomatic relations established (25 September)"
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Costa Rica",
+    "slug": "costa-rica",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Costa_Rica–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Costa_Rica%E2%80%93United_States_relations",
+    "recognition_date": "1851-03-24",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1851-03-24. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1851",
+        "event": "Diplomatic relations with the United States established (1851-03-24)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Croatia",
+    "slug": "croatia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Croatia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Croatia%E2%80%93United_States_relations",
+    "recognition_date": "1992-08-06",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-08-06. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-08-06)."
+      },
+      {
+        "year": "2009",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Cuba",
+    "slug": "cuba",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Cuba–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Cuba%E2%80%93United_States_relations",
+    "recognition_date": "1902-05-27",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Diplomatic ties restored in 2015 but remain strained; long-running embargo and human-rights disputes continue.",
+    "timeline": [
+      {
+        "year": "1902",
+        "event": "Diplomatic relations after Cuban independence"
+      },
+      {
+        "year": "1959",
+        "event": "Cuban Revolution; relations deteriorate"
+      },
+      {
+        "year": "1961",
+        "event": "Diplomatic relations severed; Bay of Pigs"
+      },
+      {
+        "year": "1962",
+        "event": "Cuban Missile Crisis"
+      },
+      {
+        "year": "2015",
+        "event": "Diplomatic relations restored under Obama"
+      },
+      {
+        "year": "2026",
+        "event": "Relations remain strained; embargo continues"
+      }
+    ],
+    "region": "Americas",
+    "first_load": true
+  },
+  {
+    "country": "Cyprus",
+    "slug": "cyprus",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Cyprus–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Cyprus%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-16",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-16. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-08-16)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Czech Republic",
+    "slug": "czech-republic",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Czech_Republic–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Czech_Republic%E2%80%93United_States_relations",
+    "recognition_date": "1919-06-11",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1919-06-11. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1919",
+        "event": "Diplomatic relations with the United States established (1919-06-11)."
+      },
+      {
+        "year": "1999",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Democratic Republic of the Congo",
+    "slug": "democratic-republic-of-the-congo",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Democratic_Republic_of_the_Congo%E2%80%93United_States_relations",
+    "recognition_date": "1960-06-30",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-06-30. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-06-30)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Denmark",
+    "slug": "denmark",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Denmark–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Denmark%E2%80%93United_States_relations",
+    "recognition_date": "1801-10-12",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1801-10-12. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1801",
+        "event": "Diplomatic relations with the United States established (1801-10-12)."
+      },
+      {
+        "year": "1949",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Djibouti",
+    "slug": "djibouti",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Djibouti–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Djibouti%E2%80%93United_States_relations",
+    "recognition_date": "1977-06-27",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1977-06-27. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1977",
+        "event": "Diplomatic relations with the United States established (1977-06-27)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Dominica",
+    "slug": "dominica",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Dominica–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Dominica%E2%80%93United_States_relations",
+    "recognition_date": "1979-07-18",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1979-07-18. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1979",
+        "event": "Diplomatic relations with the United States established (1979-07-18)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Dominican Republic",
+    "slug": "dominican-republic",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Dominican_Republic–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Dominican_Republic%E2%80%93United_States_relations",
+    "recognition_date": "1884-03-26",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1884-03-26. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1884",
+        "event": "Diplomatic relations with the United States established (1884-03-26)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Ecuador",
+    "slug": "ecuador",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Ecuador–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Ecuador%E2%80%93United_States_relations",
+    "recognition_date": "1848-08-12",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1848-08-12. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1848",
+        "event": "Diplomatic relations with the United States established (1848-08-12)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Egypt",
+    "slug": "egypt",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Egypt–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Egypt%E2%80%93United_States_relations",
+    "recognition_date": "1922-04-26",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA and leading recipient of US military aid since Camp David Accords.",
+    "timeline": [
+      {
+        "year": "1922",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1967",
+        "event": "Relations strained after Six-Day War"
+      },
+      {
+        "year": "1974",
+        "event": "Relations restored"
+      },
+      {
+        "year": "1979",
+        "event": "Camp David Accords; major US aid begins"
+      },
+      {
+        "year": "1989",
+        "event": "Designated Major Non-NATO Ally"
+      }
+    ],
+    "region": "North Africa",
+    "first_load": false
+  },
+  {
+    "country": "El Salvador",
+    "slug": "el-salvador",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/El_Salvador–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/El_Salvador%E2%80%93United_States_relations",
+    "recognition_date": "1863-06-15",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1863-06-15. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1863",
+        "event": "Diplomatic relations with the United States established (1863-06-15)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Equatorial Guinea",
+    "slug": "equatorial-guinea",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Equatorial_Guinea–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Equatorial_Guinea%E2%80%93United_States_relations",
+    "recognition_date": "1968-11-21",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1968-11-21. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1968",
+        "event": "Diplomatic relations with the United States established (1968-11-21)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Eritrea",
+    "slug": "eritrea",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Eritrea–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Eritrea%E2%80%93United_States_relations",
+    "recognition_date": "1993-06-11",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1993-06-11. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "1993",
+        "event": "Diplomatic relations after independence"
+      },
+      {
+        "year": "2000s",
+        "event": "Sanctions and isolation"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Estonia",
+    "slug": "estonia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Estonia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Estonia%E2%80%93United_States_relations",
+    "recognition_date": "1991-09-04",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1991-09-04. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1991",
+        "event": "Diplomatic relations with the United States established (1991-09-04)."
+      },
+      {
+        "year": "2004",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Eswatini",
+    "slug": "eswatini",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Eswatini–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Eswatini%E2%80%93United_States_relations",
+    "recognition_date": "1968-09-06",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1968-09-06. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1968",
+        "event": "Diplomatic relations with the United States established (1968-09-06)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Ethiopia",
+    "slug": "ethiopia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Ethiopia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Ethiopia%E2%80%93United_States_relations",
+    "recognition_date": "1903-12-27",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1903-12-27. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1980–1992.",
+    "timeline": [
+      {
+        "year": "1903",
+        "event": "Diplomatic relations with the United States established (1903-12-27)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1980–1992."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Federated States of Micronesia",
+    "slug": "micronesia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Federated_States_of_Micronesia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Federated_States_of_Micronesia%E2%80%93United_States_relations",
+    "recognition_date": "1986-11-03",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Compact of Free Association; US responsible for defense.",
+    "timeline": [
+      {
+        "year": "1986",
+        "event": "Compact of Free Association; diplomatic relations"
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Fiji",
+    "slug": "fiji",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Fiji–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Fiji%E2%80%93United_States_relations",
+    "recognition_date": "1971-07-22",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1971-07-22. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1971",
+        "event": "Diplomatic relations with the United States established (1971-07-22)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Finland",
+    "slug": "finland",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Finland–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Finland%E2%80%93United_States_relations",
+    "recognition_date": "1919-05-27",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1919-05-27. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1919",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "2023",
+        "event": "Finland joins NATO with full US support"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "France",
+    "slug": "france",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/France–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/France%E2%80%93United_States_relations",
+    "recognition_date": "1778-08-06",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Oldest formal US ally (1778). NATO founding member and major European partner with deep cultural, economic, and security ties.",
+    "timeline": [
+      {
+        "year": "1778",
+        "event": "Treaty of Alliance; France becomes first nation to establish formal diplomatic relations with the US"
+      },
+      {
+        "year": "1783",
+        "event": "Treaty of Paris ends American Revolutionary War with French support"
+      },
+      {
+        "year": "1803",
+        "event": "Louisiana Purchase from France"
+      },
+      {
+        "year": "1917",
+        "event": "US enters World War I as ally of France"
+      },
+      {
+        "year": "1944",
+        "event": "Allied liberation of France in WWII"
+      },
+      {
+        "year": "1949",
+        "event": "Both become founding NATO members"
+      },
+      {
+        "year": "1966",
+        "event": "France withdraws from NATO integrated military command (returns 2009)"
+      },
+      {
+        "year": "2003",
+        "event": "Tensions over Iraq War; later reconciliation"
+      },
+      {
+        "year": "2015",
+        "event": "Close counterterrorism cooperation after Paris attacks"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Gabon",
+    "slug": "gabon",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Gabon–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Gabon%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-17",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-17. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-08-17)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Gambia",
+    "slug": "gambia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/The_Gambia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/The_Gambia%E2%80%93United_States_relations",
+    "recognition_date": "1965-08-09",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1965-08-09. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1965",
+        "event": "Diplomatic relations with the United States established (1965-08-09)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Georgia",
+    "slug": "georgia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Georgia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Georgia%E2%80%93United_States_relations",
+    "recognition_date": "1992-03-24",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-03-24. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-03-24)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Germany",
+    "slug": "germany",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Germany–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Germany%E2%80%93United_States_relations",
+    "recognition_date": "1951-07-02",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Central NATO and EU partner; critical US ally in Europe with major economic and security interdependence.",
+    "timeline": [
+      {
+        "year": "1797",
+        "event": "Early US relations with German states"
+      },
+      {
+        "year": "1917",
+        "event": "US declares war on Imperial Germany (WWI)"
+      },
+      {
+        "year": "1941",
+        "event": "US at war with Nazi Germany (WWII)"
+      },
+      {
+        "year": "1945",
+        "event": "Allied occupation of Germany begins"
+      },
+      {
+        "year": "1949",
+        "event": "Federal Republic of Germany founded; West Germany–US alliance"
+      },
+      {
+        "year": "1955",
+        "event": "West Germany joins NATO"
+      },
+      {
+        "year": "1990",
+        "event": "German reunification; continued US alliance"
+      },
+      {
+        "year": "2022",
+        "event": "Zeitenwende; deepened defense cooperation after Russia’s invasion of Ukraine"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Ghana",
+    "slug": "ghana",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Ghana–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Ghana%E2%80%93United_States_relations",
+    "recognition_date": "1957-03-06",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1957-03-06. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1964–1966.",
+    "timeline": [
+      {
+        "year": "1957",
+        "event": "Diplomatic relations with the United States established (1957-03-06)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1964–1966."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Greece",
+    "slug": "greece",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Greece–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Greece%E2%80%93United_States_relations",
+    "recognition_date": "1868-06-16",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1868-06-16. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1868",
+        "event": "Diplomatic relations with the United States established (1868-06-16)."
+      },
+      {
+        "year": "1952",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Grenada",
+    "slug": "grenada",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Grenada–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Grenada%E2%80%93United_States_relations",
+    "recognition_date": "1974-11-29",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1974-11-29. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1979–1983.",
+    "timeline": [
+      {
+        "year": "1974",
+        "event": "Diplomatic relations with the United States established (1974-11-29)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1979–1983."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Guatemala",
+    "slug": "guatemala",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Guatemala–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Guatemala%E2%80%93United_States_relations",
+    "recognition_date": "1824-08-04",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1824-08-04. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1824",
+        "event": "Diplomatic relations with the United States established (1824-08-04)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Guinea",
+    "slug": "guinea",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Guinea–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Guinea%E2%80%93United_States_relations",
+    "recognition_date": "1959-02-13",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1959-02-13. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1966–1984, 2021–2025.",
+    "timeline": [
+      {
+        "year": "1959",
+        "event": "Diplomatic relations with the United States established (1959-02-13)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1966–1984, 2021–2025."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Guinea-Bissau",
+    "slug": "guinea-bissau",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Guinea-Bissau–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Guinea-Bissau%E2%80%93United_States_relations",
+    "recognition_date": "1975-09-03",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1975-09-03. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1975",
+        "event": "Diplomatic relations with the United States established (1975-09-03)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Guyana",
+    "slug": "guyana",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Guyana–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Guyana%E2%80%93United_States_relations",
+    "recognition_date": "1966-05-26",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1966-05-26. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1966",
+        "event": "Diplomatic relations with the United States established (1966-05-26)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Haiti",
+    "slug": "haiti",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Haiti–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Haiti%E2%80%93United_States_relations",
+    "recognition_date": "1862-10-01",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1862-10-01. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1986, 1993–1994.",
+    "timeline": [
+      {
+        "year": "1862",
+        "event": "Diplomatic relations with the United States established (1862-10-01)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1986, 1993–1994."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Holy See",
+    "slug": "holy-see",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Holy_See–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Holy_See%E2%80%93United_States_relations",
+    "recognition_date": "1984-01-10",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Full diplomatic relations since 1984; cooperative on humanitarian and moral diplomacy issues.",
+    "timeline": [
+      {
+        "year": "1984",
+        "event": "Full diplomatic relations established"
+      },
+      {
+        "year": "2015",
+        "event": "Pope Francis addresses US Congress"
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Honduras",
+    "slug": "honduras",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Honduras–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Honduras%E2%80%93United_States_relations",
+    "recognition_date": "1853-04-19",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1853-04-19. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1853",
+        "event": "Diplomatic relations with the United States established (1853-04-19)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Hungary",
+    "slug": "hungary",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Hungary–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Hungary%E2%80%93United_States_relations",
+    "recognition_date": "1921-12-17",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1921-12-17. NATO ally of the United States. Formerly strained: 1949–1989.",
+    "timeline": [
+      {
+        "year": "1921",
+        "event": "Diplomatic relations with the United States established (1921-12-17)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1949–1989."
+      },
+      {
+        "year": "1999",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Iceland",
+    "slug": "iceland",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Iceland–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Iceland%E2%80%93United_States_relations",
+    "recognition_date": "1941-09-30",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1941-09-30. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1941",
+        "event": "Diplomatic relations with the United States established (1941-09-30)."
+      },
+      {
+        "year": "1949",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "India",
+    "slug": "india",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/India–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/India%E2%80%93United_States_relations",
+    "recognition_date": "1946-11-01",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Major Defense Partner and Quad member; expanding strategic partnership despite historical non-alignment.",
+    "timeline": [
+      {
+        "year": "1946",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1971",
+        "event": "Tensions during Bangladesh Liberation War"
+      },
+      {
+        "year": "1998",
+        "event": "Sanctions after Indian nuclear tests"
+      },
+      {
+        "year": "2008",
+        "event": "India–US Civil Nuclear Agreement"
+      },
+      {
+        "year": "2016",
+        "event": "Designated Major Defense Partner"
+      },
+      {
+        "year": "2020",
+        "event": "Quad cooperation expands"
+      }
+    ],
+    "region": "South Asia",
+    "first_load": false
+  },
+  {
+    "country": "Indonesia",
+    "slug": "indonesia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Indonesia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Indonesia%E2%80%93United_States_relations",
+    "recognition_date": "1949-12-28",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Largest ASEAN partner; cooperation on democracy, counterterrorism, and Indo-Pacific stability.",
+    "timeline": [
+      {
+        "year": "1949",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1965",
+        "event": "Relations improve after end of Guided Democracy era"
+      },
+      {
+        "year": "2000s",
+        "event": "Counterterrorism and democracy partnership expands"
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Iran",
+    "slug": "iran",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Iran–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Iran%E2%80%93United_States_relations",
+    "recognition_date": "1883-06-11",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": false,
+    "notes_summary": "No formal diplomatic relations since 1980; hostile relationship centered on nuclear program, regional proxies, and sanctions.",
+    "timeline": [
+      {
+        "year": "1850",
+        "event": "Mutual recognition"
+      },
+      {
+        "year": "1883",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1953",
+        "event": "CIA-backed coup restores Shah"
+      },
+      {
+        "year": "1979",
+        "event": "Iranian Revolution; US embassy hostage crisis"
+      },
+      {
+        "year": "1980",
+        "event": "Formal diplomatic relations severed"
+      },
+      {
+        "year": "2015",
+        "event": "JCPOA nuclear deal signed"
+      },
+      {
+        "year": "2018",
+        "event": "US withdraws from JCPOA; sanctions reimposed"
+      },
+      {
+        "year": "2026",
+        "event": "No formal relations; currently strained/hostile"
+      }
+    ],
+    "region": "Middle East",
+    "first_load": true
+  },
+  {
+    "country": "Iraq",
+    "slug": "iraq",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Iraq–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Iraq%E2%80%93United_States_relations",
+    "recognition_date": "1931-03-30",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1931-03-30. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1990–2003.",
+    "timeline": [
+      {
+        "year": "1931",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1990",
+        "event": "Gulf War; relations ruptured"
+      },
+      {
+        "year": "2003",
+        "event": "US-led invasion topples Saddam Hussein"
+      },
+      {
+        "year": "2011",
+        "event": "US combat withdrawal"
+      },
+      {
+        "year": "2014",
+        "event": "US returns to fight ISIS"
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Ireland",
+    "slug": "ireland",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Ireland–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Ireland%E2%80%93United_States_relations",
+    "recognition_date": "1924-10-07",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Strong cultural and economic ties; military neutrality — classified neutral.",
+    "timeline": [
+      {
+        "year": "1924",
+        "event": "Diplomatic relations with the United States established (1924-10-07)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Israel",
+    "slug": "israel",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Israel–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Israel%E2%80%93United_States_relations",
+    "recognition_date": "1949-03-28",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Closest Middle East ally and MNNA; extensive military aid, intelligence cooperation, and shared technology.",
+    "timeline": [
+      {
+        "year": "1948",
+        "event": "US first to recognize Israel (de facto)"
+      },
+      {
+        "year": "1949",
+        "event": "Formal diplomatic relations"
+      },
+      {
+        "year": "1967",
+        "event": "Six-Day War; US emerges as primary arms supplier"
+      },
+      {
+        "year": "1973",
+        "event": "Yom Kippur War; massive US resupply"
+      },
+      {
+        "year": "1979",
+        "event": "Camp David Accords (Egypt–Israel) brokered by US"
+      },
+      {
+        "year": "1987",
+        "event": "Designated Major Non-NATO Ally"
+      },
+      {
+        "year": "2020",
+        "event": "Abraham Accords with US mediation"
+      },
+      {
+        "year": "2023",
+        "event": "US support after October 7 Hamas attack"
+      }
+    ],
+    "region": "Middle East",
+    "first_load": true
+  },
+  {
+    "country": "Italy",
+    "slug": "italy",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Italy–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Italy%E2%80%93United_States_relations",
+    "recognition_date": "1861-04-11",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1861-04-11. NATO ally of the United States. Formerly strained: 1941–1943.",
+    "timeline": [
+      {
+        "year": "1861",
+        "event": "Diplomatic relations with Kingdom of Italy"
+      },
+      {
+        "year": "1941",
+        "event": "US at war with Fascist Italy"
+      },
+      {
+        "year": "1943",
+        "event": "Italy switches sides; Allied campaign in Italy"
+      },
+      {
+        "year": "1949",
+        "event": "Founding NATO member"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Ivory Coast",
+    "slug": "ivory-coast",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Ivory_Coast–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Ivory_Coast%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-07",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-07. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-08-07)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Jamaica",
+    "slug": "jamaica",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Jamaica–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Jamaica%E2%80%93United_States_relations",
+    "recognition_date": "1962-08-16",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1962-08-16. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1962",
+        "event": "Diplomatic relations with the United States established (1962-08-16)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Japan",
+    "slug": "japan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Japan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Japan%E2%80%93United_States_relations",
+    "recognition_date": "1858-07-29",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Major Non-NATO Ally and cornerstone of US Indo-Pacific strategy; Mutual Security Treaty and large US basing presence.",
+    "timeline": [
+      {
+        "year": "1854",
+        "event": "Treaty of Kanagawa opens Japan to US"
+      },
+      {
+        "year": "1858",
+        "event": "Treaty of Amity and Commerce; formal relations"
+      },
+      {
+        "year": "1941",
+        "event": "Pearl Harbor; Pacific War begins"
+      },
+      {
+        "year": "1945",
+        "event": "Japan surrenders; US occupation begins"
+      },
+      {
+        "year": "1951",
+        "event": "Treaty of San Francisco; Security Treaty with US"
+      },
+      {
+        "year": "1960",
+        "event": "Treaty of Mutual Cooperation and Security"
+      },
+      {
+        "year": "2015",
+        "event": "Revised Guidelines for US–Japan Defense Cooperation"
+      },
+      {
+        "year": "2024",
+        "event": "Deepened alliance amid Indo-Pacific tensions"
+      }
+    ],
+    "region": "East Asia",
+    "first_load": true
+  },
+  {
+    "country": "Jordan",
+    "slug": "jordan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Jordan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Jordan%E2%80%93United_States_relations",
+    "recognition_date": "1949-02-18",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA and key Arab partner on regional security and Israeli–Palestinian issues.",
+    "timeline": [
+      {
+        "year": "1949",
+        "event": "Diplomatic relations with the United States established (1949-02-18)."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Kazakhstan",
+    "slug": "kazakhstan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Kazakhstan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Kazakhstan%E2%80%93United_States_relations",
+    "recognition_date": "1991-12-26",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1991-12-26. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1991",
+        "event": "Diplomatic relations with the United States established (1991-12-26)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Central Asia",
+    "first_load": false
+  },
+  {
+    "country": "Kenya",
+    "slug": "kenya",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Kenya–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Kenya%E2%80%93United_States_relations",
+    "recognition_date": "1964-03-02",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1964-03-02. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1964",
+        "event": "Diplomatic relations with the United States established (1964-03-02)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Kiribati",
+    "slug": "kiribati",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Kiribati–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Kiribati%E2%80%93United_States_relations",
+    "recognition_date": "1980-08-12",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1980-08-12. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1980",
+        "event": "Diplomatic relations with the United States established (1980-08-12)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Kosovo",
+    "slug": "kosovo",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Kosovo–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Kosovo%E2%80%93United_States_relations",
+    "recognition_date": "2008-02-18",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "US among first recognizers (2008); strong supporter of Kosovo’s independence and Euro-Atlantic integration.",
+    "timeline": [
+      {
+        "year": "1999",
+        "event": "NATO intervention in Kosovo War"
+      },
+      {
+        "year": "2008",
+        "event": "US among first to recognize Kosovo independence"
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Kuwait",
+    "slug": "kuwait",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Kuwait–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Kuwait%E2%80%93United_States_relations",
+    "recognition_date": "1961-09-22",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA; close partner since Gulf War liberation.",
+    "timeline": [
+      {
+        "year": "1961",
+        "event": "Diplomatic relations with the United States established (1961-09-22)."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Kyrgyzstan",
+    "slug": "kyrgyzstan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Kyrgyzstan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Kyrgyzstan%E2%80%93United_States_relations",
+    "recognition_date": "1991-12-27",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1991-12-27. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1991",
+        "event": "Diplomatic relations with the United States established (1991-12-27)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Central Asia",
+    "first_load": false
+  },
+  {
+    "country": "Laos",
+    "slug": "laos",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Laos–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Laos%E2%80%93United_States_relations",
+    "recognition_date": "1950-07-29",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1950-07-29. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1975–1993.",
+    "timeline": [
+      {
+        "year": "1950",
+        "event": "Diplomatic relations with the United States established (1950-07-29)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1975–1993."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Latvia",
+    "slug": "latvia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Latvia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Latvia%E2%80%93United_States_relations",
+    "recognition_date": "1991-09-05",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1991-09-05. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1991",
+        "event": "Diplomatic relations with the United States established (1991-09-05)."
+      },
+      {
+        "year": "2004",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Lebanon",
+    "slug": "lebanon",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Lebanon–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Lebanon%E2%80%93United_States_relations",
+    "recognition_date": "1944-11-16",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1944-11-16. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1944",
+        "event": "Diplomatic relations with the United States established (1944-11-16)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Lesotho",
+    "slug": "lesotho",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Lesotho–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Lesotho%E2%80%93United_States_relations",
+    "recognition_date": "1966-10-04",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1966-10-04. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1966",
+        "event": "Diplomatic relations with the United States established (1966-10-04)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Liberia",
+    "slug": "liberia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Liberia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Liberia%E2%80%93United_States_relations",
+    "recognition_date": "1864-02-23",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1864-02-23. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1971–1980.",
+    "timeline": [
+      {
+        "year": "1864",
+        "event": "Diplomatic relations with the United States established (1864-02-23)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1971–1980."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Libya",
+    "slug": "libya",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Libya–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Libya%E2%80%93United_States_relations",
+    "recognition_date": "1951-12-24",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1951-12-24. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data). Formerly strained: 1969–2011 (again currently).",
+    "timeline": [
+      {
+        "year": "1951",
+        "event": "Diplomatic relations at independence"
+      },
+      {
+        "year": "1969",
+        "event": "Qaddafi coup; long strained period begins"
+      },
+      {
+        "year": "2011",
+        "event": "US supports overthrow of Qaddafi"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "North Africa",
+    "first_load": false
+  },
+  {
+    "country": "Liechtenstein",
+    "slug": "liechtenstein",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Liechtenstein–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Liechtenstein%E2%80%93United_States_relations",
+    "recognition_date": "1997-02-10",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1997-02-10. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1997",
+        "event": "Diplomatic relations with the United States established (1997-02-10)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Lithuania",
+    "slug": "lithuania",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Lithuania–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Lithuania%E2%80%93United_States_relations",
+    "recognition_date": "1991-09-06",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1991-09-06. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1991",
+        "event": "Diplomatic relations with the United States established (1991-09-06)."
+      },
+      {
+        "year": "2004",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Luxembourg",
+    "slug": "luxembourg",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Luxembourg–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Luxembourg%E2%80%93United_States_relations",
+    "recognition_date": "1903-07-17",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1903-07-17. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1903",
+        "event": "Diplomatic relations with the United States established (1903-07-17)."
+      },
+      {
+        "year": "1949",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Madagascar",
+    "slug": "madagascar",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Madagascar–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Madagascar%E2%80%93United_States_relations",
+    "recognition_date": "1960-06-25",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-06-25. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-06-25)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Malawi",
+    "slug": "malawi",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Malawi–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Malawi%E2%80%93United_States_relations",
+    "recognition_date": "1964-07-06",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1964-07-06. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1964",
+        "event": "Diplomatic relations with the United States established (1964-07-06)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Malaysia",
+    "slug": "malaysia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Malaysia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Malaysia%E2%80%93United_States_relations",
+    "recognition_date": "1957-08-31",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1957-08-31. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1957",
+        "event": "Diplomatic relations with the United States established (1957-08-31)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Maldives",
+    "slug": "maldives",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Maldives–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Maldives%E2%80%93United_States_relations",
+    "recognition_date": "1966-04-09",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1966-04-09. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1966",
+        "event": "Diplomatic relations with the United States established (1966-04-09)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "South Asia",
+    "first_load": false
+  },
+  {
+    "country": "Mali",
+    "slug": "mali",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Mali–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Mali%E2%80%93United_States_relations",
+    "recognition_date": "1960-06-20",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-06-20. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations at independence"
+      },
+      {
+        "year": "2020",
+        "event": "Coups; junta turns toward Russia"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Malta",
+    "slug": "malta",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Malta–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Malta%E2%80%93United_States_relations",
+    "recognition_date": "1964-09-21",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1964-09-21. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1964",
+        "event": "Diplomatic relations with the United States established (1964-09-21)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Marshall Islands",
+    "slug": "marshall-islands",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Marshall_Islands–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Marshall_Islands%E2%80%93United_States_relations",
+    "recognition_date": "1989-07-26",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Compact of Free Association; US responsible for defense.",
+    "timeline": [
+      {
+        "year": "1983",
+        "event": "Compact of Free Association signed"
+      },
+      {
+        "year": "1986",
+        "event": "Compact enters into force; US responsible for defense"
+      },
+      {
+        "year": "1989",
+        "event": "Diplomatic relations listed"
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Mauritania",
+    "slug": "mauritania",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Mauritania–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Mauritania%E2%80%93United_States_relations",
+    "recognition_date": "1960-11-28",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-11-28. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-11-28)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Mauritius",
+    "slug": "mauritius",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Mauritius–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Mauritius%E2%80%93United_States_relations",
+    "recognition_date": "1968-03-12",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1968-03-12. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1968",
+        "event": "Diplomatic relations with the United States established (1968-03-12)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Mexico",
+    "slug": "mexico",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Mexico–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Mexico%E2%80%93United_States_relations",
+    "recognition_date": "1822-12-12",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Deep economic integration via USMCA; complex cooperation and tension on migration, drugs, and trade.",
+    "timeline": [
+      {
+        "year": "1822",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1846",
+        "event": "Mexican–American War begins"
+      },
+      {
+        "year": "1848",
+        "event": "Treaty of Guadalupe Hidalgo"
+      },
+      {
+        "year": "1914",
+        "event": "US occupation of Veracruz"
+      },
+      {
+        "year": "1994",
+        "event": "NAFTA enters into force"
+      },
+      {
+        "year": "2020",
+        "event": "USMCA replaces NAFTA"
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Moldova",
+    "slug": "moldova",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Moldova–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Moldova%E2%80%93United_States_relations",
+    "recognition_date": "1992-02-18",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-02-18. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-02-18)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Monaco",
+    "slug": "monaco",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Monaco–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Monaco%E2%80%93United_States_relations",
+    "recognition_date": "2006-12-08",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 2006-12-08. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "2006",
+        "event": "Diplomatic relations with the United States established (2006-12-08)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Mongolia",
+    "slug": "mongolia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Mongolia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Mongolia%E2%80%93United_States_relations",
+    "recognition_date": "1987-01-27",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1987-01-27. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1987",
+        "event": "Diplomatic relations with the United States established (1987-01-27)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "East Asia",
+    "first_load": false
+  },
+  {
+    "country": "Montenegro",
+    "slug": "montenegro",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Montenegro–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Montenegro%E2%80%93United_States_relations",
+    "recognition_date": "2006-08-15",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 2006-08-15. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "2006",
+        "event": "Diplomatic relations with the United States established (2006-08-15)."
+      },
+      {
+        "year": "2017",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Morocco",
+    "slug": "morocco",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Morocco–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Morocco%E2%80%93United_States_relations",
+    "recognition_date": "1956-06-11",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Oldest unbroken US treaty relationship (1786); MNNA and key North Africa partner.",
+    "timeline": [
+      {
+        "year": "1777",
+        "event": "Morocco first sovereign nation to recognize US"
+      },
+      {
+        "year": "1786",
+        "event": "Treaty of Peace and Friendship (oldest unbroken US treaty)"
+      },
+      {
+        "year": "1956",
+        "event": "Modern diplomatic relations after independence"
+      },
+      {
+        "year": "2004",
+        "event": "Designated Major Non-NATO Ally"
+      }
+    ],
+    "region": "North Africa",
+    "first_load": false
+  },
+  {
+    "country": "Mozambique",
+    "slug": "mozambique",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Mozambique–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Mozambique%E2%80%93United_States_relations",
+    "recognition_date": "1975-09-23",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1975-09-23. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1975",
+        "event": "Diplomatic relations with the United States established (1975-09-23)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Myanmar",
+    "slug": "myanmar",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Myanmar–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Myanmar%E2%80%93United_States_relations",
+    "recognition_date": "1947-09-18",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1947-09-18. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data). Formerly strained: 1988–2011 (again currently).",
+    "timeline": [
+      {
+        "year": "1947",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1988",
+        "event": "Sanctions after military crackdown"
+      },
+      {
+        "year": "2011",
+        "event": "Partial thaw during reforms"
+      },
+      {
+        "year": "2021",
+        "event": "Coup; relations deteriorate again"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Namibia",
+    "slug": "namibia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Namibia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Namibia%E2%80%93United_States_relations",
+    "recognition_date": "1990-03-21",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1990-03-21. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1990",
+        "event": "Diplomatic relations with the United States established (1990-03-21)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Nauru",
+    "slug": "nauru",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Nauru–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Nauru%E2%80%93United_States_relations",
+    "recognition_date": "1976-10-24",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1976-10-24. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1976",
+        "event": "Diplomatic relations with the United States established (1976-10-24)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Nepal",
+    "slug": "nepal",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Nepal–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Nepal%E2%80%93United_States_relations",
+    "recognition_date": "1948-02-16",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1948-02-16. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1948",
+        "event": "Diplomatic relations with the United States established (1948-02-16)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "South Asia",
+    "first_load": false
+  },
+  {
+    "country": "Netherlands",
+    "slug": "netherlands",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Netherlands–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Netherlands%E2%80%93United_States_relations",
+    "recognition_date": "1782-04-19",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1782-04-19. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1776",
+        "event": "Sint Eustatius salutes US (informal early recognition)"
+      },
+      {
+        "year": "1782",
+        "event": "Formal diplomatic relations"
+      },
+      {
+        "year": "1949",
+        "event": "Founding NATO member"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "New Zealand",
+    "slug": "new-zealand",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/New_Zealand–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/New_Zealand%E2%80%93United_States_relations",
+    "recognition_date": "1942-02-16",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Five Eyes and MNNA; strong ties despite 1980s nuclear-policy rift.",
+    "timeline": [
+      {
+        "year": "1942",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1951",
+        "event": "ANZUS Treaty"
+      },
+      {
+        "year": "1986",
+        "event": "US suspends ANZUS obligations over nuclear-free policy"
+      },
+      {
+        "year": "1997",
+        "event": "Designated Major Non-NATO Ally"
+      },
+      {
+        "year": "2026",
+        "event": "Five Eyes partner; strong intelligence ties"
+      }
+    ],
+    "region": "Oceania",
+    "first_load": true
+  },
+  {
+    "country": "Nicaragua",
+    "slug": "nicaragua",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Nicaragua–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Nicaragua%E2%80%93United_States_relations",
+    "recognition_date": "1849-12-24",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1849-12-24. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data). Formerly strained: 1978, 1981–1990, 2016–2018 (again currently).",
+    "timeline": [
+      {
+        "year": "1849",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1912",
+        "event": "US occupation of Nicaragua begins (to 1933)"
+      },
+      {
+        "year": "1979",
+        "event": "Sandinista revolution; relations deteriorate"
+      },
+      {
+        "year": "1980s",
+        "event": "Iran–Contra; US supports Contras"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained under Ortega"
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Niger",
+    "slug": "niger",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Niger–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Niger%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-03",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-03. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations at independence"
+      },
+      {
+        "year": "2023",
+        "event": "Coup; US withdraws troops"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Nigeria",
+    "slug": "nigeria",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Nigeria–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Nigeria%E2%80%93United_States_relations",
+    "recognition_date": "1960-10-01",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-10-01. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1969–1977, 1993–1998.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-10-01)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1969–1977, 1993–1998."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Niue",
+    "slug": "niue",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Niue–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Niue%E2%80%93United_States_relations",
+    "recognition_date": "2023-09-25",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 2023-09-25. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1997",
+        "event": "Maritime boundary treaty with US"
+      },
+      {
+        "year": "2023",
+        "event": "Diplomatic relations established (25 September)"
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "North Korea",
+    "slug": "north-korea",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/North_Korea–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/North_Korea%E2%80%93United_States_relations",
+    "recognition_date": null,
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": false,
+    "notes_summary": "No formal diplomatic relations; armistice only since 1953; nuclear and missile programs drive ongoing hostility.",
+    "timeline": [
+      {
+        "year": "1882",
+        "event": "Treaty with Joseon Korea"
+      },
+      {
+        "year": "1950",
+        "event": "Korean War; US fights North Korea and China"
+      },
+      {
+        "year": "1953",
+        "event": "Armistice; no peace treaty"
+      },
+      {
+        "year": "1994",
+        "event": "Agreed Framework on nuclear program"
+      },
+      {
+        "year": "2006",
+        "event": "North Korea’s first nuclear test"
+      },
+      {
+        "year": "2018",
+        "event": "Singapore summit; no formal relations established"
+      },
+      {
+        "year": "2026",
+        "event": "No formal diplomatic relations; currently strained"
+      }
+    ],
+    "region": "East Asia",
+    "first_load": true
+  },
+  {
+    "country": "North Macedonia",
+    "slug": "north-macedonia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/North_Macedonia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/North_Macedonia%E2%80%93United_States_relations",
+    "recognition_date": "1995-09-13",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1995-09-13. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1995",
+        "event": "Diplomatic relations with the United States established (1995-09-13)."
+      },
+      {
+        "year": "2020",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Norway",
+    "slug": "norway",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Norway–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Norway%E2%80%93United_States_relations",
+    "recognition_date": "1905-10-30",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1905-10-30. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1905",
+        "event": "Diplomatic relations with the United States established (1905-10-30)."
+      },
+      {
+        "year": "1949",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Oman",
+    "slug": "oman",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Oman–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Oman%E2%80%93United_States_relations",
+    "recognition_date": "1972-04-17",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1972-04-17. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1972",
+        "event": "Diplomatic relations with the United States established (1972-04-17)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Pakistan",
+    "slug": "pakistan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Pakistan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Pakistan%E2%80%93United_States_relations",
+    "recognition_date": "1947-08-15",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Historically MNNA and Cold War partner; relations complicated after Afghanistan withdrawal and democracy concerns — classified neutral.",
+    "timeline": [
+      {
+        "year": "1947",
+        "event": "Diplomatic relations at independence"
+      },
+      {
+        "year": "1954",
+        "event": "Mutual Defense Assistance Agreement"
+      },
+      {
+        "year": "1979",
+        "event": "US aid for Afghan mujahideen via Pakistan"
+      },
+      {
+        "year": "2001",
+        "event": "Major Non-NATO Ally after 9/11"
+      },
+      {
+        "year": "2011",
+        "event": "Osama bin Laden raid strains ties"
+      },
+      {
+        "year": "2021",
+        "event": "Relations weaken after US Afghanistan withdrawal"
+      }
+    ],
+    "region": "South Asia",
+    "first_load": false
+  },
+  {
+    "country": "Palau",
+    "slug": "palau",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Palau–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Palau%E2%80%93United_States_relations",
+    "recognition_date": "1996-12-06",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Compact of Free Association; US responsible for defense.",
+    "timeline": [
+      {
+        "year": "1994",
+        "event": "Independence under Compact of Free Association"
+      },
+      {
+        "year": "1996",
+        "event": "Diplomatic relations established"
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Panama",
+    "slug": "panama",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Panama–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Panama%E2%80%93United_States_relations",
+    "recognition_date": "1903-11-13",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1903-11-13. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1988–1989.",
+    "timeline": [
+      {
+        "year": "1903",
+        "event": "Diplomatic relations with the United States established (1903-11-13)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1988–1989."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Papua New Guinea",
+    "slug": "papua-new-guinea",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Papua_New_Guinea–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Papua_New_Guinea%E2%80%93United_States_relations",
+    "recognition_date": "1975-09-16",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1975-09-16. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1975",
+        "event": "Diplomatic relations with the United States established (1975-09-16)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Paraguay",
+    "slug": "paraguay",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Paraguay–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Paraguay%E2%80%93United_States_relations",
+    "recognition_date": "1861-11-26",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1861-11-26. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1861",
+        "event": "Diplomatic relations with the United States established (1861-11-26)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Peru",
+    "slug": "peru",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Peru–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Peru%E2%80%93United_States_relations",
+    "recognition_date": "1827-05-21",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1827-05-21. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1827",
+        "event": "Diplomatic relations with the United States established (1827-05-21)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Philippines",
+    "slug": "philippines",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Philippines–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Philippines%E2%80%93United_States_relations",
+    "recognition_date": "1946-07-04",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Mutual Defense Treaty and MNNA; colonial history and deep military ties; alliance revitalized after Duterte-era strain.",
+    "timeline": [
+      {
+        "year": "1898",
+        "event": "Spain cedes Philippines to US"
+      },
+      {
+        "year": "1946",
+        "event": "Philippine independence; Treaty of Manila"
+      },
+      {
+        "year": "1951",
+        "event": "Mutual Defense Treaty"
+      },
+      {
+        "year": "2003",
+        "event": "Designated Major Non-NATO Ally"
+      },
+      {
+        "year": "2016",
+        "event": "Relations strained under Duterte (to ~2022)"
+      },
+      {
+        "year": "2023",
+        "event": "Expanded EDCA basing access; alliance revitalized"
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": true
+  },
+  {
+    "country": "Poland",
+    "slug": "poland",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Poland–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Poland%E2%80%93United_States_relations",
+    "recognition_date": "1919-05-02",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1919-05-02. NATO ally of the United States. Formerly strained: 1947–1989.",
+    "timeline": [
+      {
+        "year": "1919",
+        "event": "US recognizes Poland after WWI"
+      },
+      {
+        "year": "1945",
+        "event": "Cold War estrangement under communist rule"
+      },
+      {
+        "year": "1989",
+        "event": "Relations normalize after end of communism"
+      },
+      {
+        "year": "1999",
+        "event": "Poland joins NATO"
+      },
+      {
+        "year": "2022",
+        "event": "Major hub for US aid to Ukraine"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Portugal",
+    "slug": "portugal",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Portugal–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Portugal%E2%80%93United_States_relations",
+    "recognition_date": "1791-05-13",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1791-05-13. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1791",
+        "event": "Diplomatic relations with the United States established (1791-05-13)."
+      },
+      {
+        "year": "1949",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Qatar",
+    "slug": "qatar",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Qatar–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Qatar%E2%80%93United_States_relations",
+    "recognition_date": "1972-03-19",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA; hosts Al Udeid Air Base, largest US military facility in Middle East.",
+    "timeline": [
+      {
+        "year": "1972",
+        "event": "Diplomatic relations with the United States established (1972-03-19)."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Republic of the Congo",
+    "slug": "republic-of-the-congo",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Republic_of_the_Congo–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Republic_of_the_Congo%E2%80%93United_States_relations",
+    "recognition_date": "1960-08-15",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-08-15. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1965–1977.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-08-15)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1965–1977."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Romania",
+    "slug": "romania",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Romania–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Romania%E2%80%93United_States_relations",
+    "recognition_date": "1880-06-14",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1880-06-14. NATO ally of the United States. Formerly strained: 1947–1968.",
+    "timeline": [
+      {
+        "year": "1880",
+        "event": "Diplomatic relations with the United States established (1880-06-14)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1947–1968."
+      },
+      {
+        "year": "2004",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Russia",
+    "slug": "russia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Russia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Russia%E2%80%93United_States_relations",
+    "recognition_date": "1809-07-14",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Former Cold War adversary; relations collapsed after 2014 Crimea annexation and 2022 full-scale invasion of Ukraine.",
+    "timeline": [
+      {
+        "year": "1809",
+        "event": "Diplomatic relations with Russian Empire established"
+      },
+      {
+        "year": "1867",
+        "event": "Alaska Purchase from Russia"
+      },
+      {
+        "year": "1917",
+        "event": "Russian Revolution disrupts relations"
+      },
+      {
+        "year": "1933",
+        "event": "US recognizes Soviet Union"
+      },
+      {
+        "year": "1941",
+        "event": "WWII alliance against Nazi Germany"
+      },
+      {
+        "year": "1947",
+        "event": "Cold War begins"
+      },
+      {
+        "year": "1991",
+        "event": "Soviet collapse; relations with Russian Federation"
+      },
+      {
+        "year": "2014",
+        "event": "Crimea annexation; major sanctions"
+      },
+      {
+        "year": "2022",
+        "event": "Full-scale invasion of Ukraine; severe sanctions and rupture"
+      },
+      {
+        "year": "2026",
+        "event": "Continues as currently strained"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Rwanda",
+    "slug": "rwanda",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Rwanda–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Rwanda%E2%80%93United_States_relations",
+    "recognition_date": "1962-07-01",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1962-07-01. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1962",
+        "event": "Diplomatic relations with the United States established (1962-07-01)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Saint Kitts and Nevis",
+    "slug": "saint-kitts-and-nevis",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Saint_Kitts_and_Nevis%E2%80%93United_States_relations",
+    "recognition_date": "1983-09-20",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1983-09-20. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1983",
+        "event": "Diplomatic relations with the United States established (1983-09-20)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Saint Lucia",
+    "slug": "saint-lucia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Saint_Lucia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Saint_Lucia%E2%80%93United_States_relations",
+    "recognition_date": "1979-06-11",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1979-06-11. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1979",
+        "event": "Diplomatic relations with the United States established (1979-06-11)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Saint Vincent and the Grenadines",
+    "slug": "saint-vincent-and-the-grenadines",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Saint_Vincent_and_the_Grenadines–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Saint_Vincent_and_the_Grenadines%E2%80%93United_States_relations",
+    "recognition_date": "1981-12-08",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1981-12-08. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1981",
+        "event": "Diplomatic relations with the United States established (1981-12-08)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Samoa",
+    "slug": "samoa",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Samoa–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Samoa%E2%80%93United_States_relations",
+    "recognition_date": "1971-07-14",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1971-07-14. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1971",
+        "event": "Diplomatic relations with the United States established (1971-07-14)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "San Marino",
+    "slug": "san-marino",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/San_Marino–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/San_Marino%E2%80%93United_States_relations",
+    "recognition_date": "2006-11-22",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 2006-11-22. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "2006",
+        "event": "Diplomatic relations with the United States established (2006-11-22)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Saudi Arabia",
+    "slug": "saudi-arabia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Saudi_Arabia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Saudi_Arabia%E2%80%93United_States_relations",
+    "recognition_date": "1940-02-04",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Longstanding energy and security partner since WWII; periodic tensions but enduring strategic relationship.",
+    "timeline": [
+      {
+        "year": "1940",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1945",
+        "event": "Quincy Pact meeting (Roosevelt–Ibn Saud)"
+      },
+      {
+        "year": "1991",
+        "event": "Gulf War coalition from Saudi territory"
+      },
+      {
+        "year": "2001",
+        "event": "Tensions after 9/11; later security cooperation restored"
+      },
+      {
+        "year": "2026",
+        "event": "Major strategic energy and security partner"
+      }
+    ],
+    "region": "Middle East",
+    "first_load": true
+  },
+  {
+    "country": "Senegal",
+    "slug": "senegal",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Senegal–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Senegal%E2%80%93United_States_relations",
+    "recognition_date": "1960-09-24",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-09-24. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-09-24)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Serbia",
+    "slug": "serbia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Serbia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Serbia%E2%80%93United_States_relations",
+    "recognition_date": "1882-11-10",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1882-11-10. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1882",
+        "event": "Diplomatic relations with the United States established (1882-11-10)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Seychelles",
+    "slug": "seychelles",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Seychelles–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Seychelles%E2%80%93United_States_relations",
+    "recognition_date": "1976-07-01",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1976-07-01. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1976",
+        "event": "Diplomatic relations with the United States established (1976-07-01)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Sierra Leone",
+    "slug": "sierra-leone",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Sierra_Leone–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Sierra_Leone%E2%80%93United_States_relations",
+    "recognition_date": "1961-04-27",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1961-04-27. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1961",
+        "event": "Diplomatic relations with the United States established (1961-04-27)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Singapore",
+    "slug": "singapore",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Singapore–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Singapore%E2%80%93United_States_relations",
+    "recognition_date": "1966-04-04",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Major security and economic partner; hosts US rotational forces and logistics facilities.",
+    "timeline": [
+      {
+        "year": "1966",
+        "event": "Diplomatic relations with the United States established (1966-04-04)."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Slovakia",
+    "slug": "slovakia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Slovakia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Slovakia%E2%80%93United_States_relations",
+    "recognition_date": "1993-01-04",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1993-01-04. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1993",
+        "event": "Diplomatic relations with the United States established (1993-01-04)."
+      },
+      {
+        "year": "2004",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Slovenia",
+    "slug": "slovenia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Slovenia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Slovenia%E2%80%93United_States_relations",
+    "recognition_date": "1992-08-06",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-08-06. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-08-06)."
+      },
+      {
+        "year": "2004",
+        "event": "Joined NATO; military ally of the United States."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Solomon Islands",
+    "slug": "solomon-islands",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Solomon_Islands–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Solomon_Islands%E2%80%93United_States_relations",
+    "recognition_date": "1978-10-09",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1978-10-09. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1978",
+        "event": "Diplomatic relations with the United States established (1978-10-09)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Somalia",
+    "slug": "somalia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Somalia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Somalia%E2%80%93United_States_relations",
+    "recognition_date": "1960-07-01",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-07-01. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data). Formerly strained: 1969–1977 (again currently).",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations at independence"
+      },
+      {
+        "year": "1993",
+        "event": "Battle of Mogadishu"
+      },
+      {
+        "year": "2007",
+        "event": "US supports AMISOM / later ATMIS against al-Shabaab"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "South Africa",
+    "slug": "south-africa",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/South_Africa–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/South_Africa%E2%80%93United_States_relations",
+    "recognition_date": "1929-11-05",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1929-11-05. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1929",
+        "event": "Diplomatic relations with the United States established (1929-11-05)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "South Korea",
+    "slug": "south-korea",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/South_Korea–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/South_Korea%E2%80%93United_States_relations",
+    "recognition_date": "1949-03-25",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Mutual Defense Treaty ally and MNNA; host to major US Forces Korea presence since the Korean War.",
+    "timeline": [
+      {
+        "year": "1882",
+        "event": "US–Joseon Treaty of Peace, Amity, Commerce and Navigation"
+      },
+      {
+        "year": "1949",
+        "event": "Diplomatic relations with Republic of Korea"
+      },
+      {
+        "year": "1950",
+        "event": "Korean War; US leads UN forces"
+      },
+      {
+        "year": "1953",
+        "event": "Korean Armistice; Mutual Defense Treaty"
+      },
+      {
+        "year": "1987",
+        "event": "Support for South Korean democratization"
+      },
+      {
+        "year": "2003",
+        "event": "Designated Major Non-NATO Ally"
+      },
+      {
+        "year": "2018",
+        "event": "Renegotiated KORUS trade agreement"
+      }
+    ],
+    "region": "East Asia",
+    "first_load": true
+  },
+  {
+    "country": "South Sudan",
+    "slug": "south-sudan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/South_Sudan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/South_Sudan%E2%80%93United_States_relations",
+    "recognition_date": "2011-07-09",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 2011-07-09. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "2011",
+        "event": "US among first to recognize independence"
+      },
+      {
+        "year": "2013",
+        "event": "Civil war; US presses for peace"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained; visa services suspended"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Spain",
+    "slug": "spain",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Spain–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Spain%E2%80%93United_States_relations",
+    "recognition_date": "1783-02-20",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1783-02-20. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1783",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1898",
+        "event": "Spanish–American War"
+      },
+      {
+        "year": "1953",
+        "event": "Madrid Pacts; US bases in Spain"
+      },
+      {
+        "year": "1982",
+        "event": "Spain joins NATO"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Sri Lanka",
+    "slug": "sri-lanka",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Sri_Lanka–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Sri_Lanka%E2%80%93United_States_relations",
+    "recognition_date": "1948-10-29",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1948-10-29. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1948",
+        "event": "Diplomatic relations with the United States established (1948-10-29)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "South Asia",
+    "first_load": false
+  },
+  {
+    "country": "Sudan",
+    "slug": "sudan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Sudan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Sudan%E2%80%93United_States_relations",
+    "recognition_date": "1956-02-15",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1956-02-15. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data). Formerly strained: 1967–1971, 1974–1976, 1989–2019 (again currently).",
+    "timeline": [
+      {
+        "year": "1956",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1993",
+        "event": "Designated state sponsor of terrorism"
+      },
+      {
+        "year": "2020",
+        "event": "Removed from SST list after Abraham Accords-related deal"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained; visa services suspended"
+      }
+    ],
+    "region": "North Africa",
+    "first_load": false
+  },
+  {
+    "country": "Suriname",
+    "slug": "suriname",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Suriname–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Suriname%E2%80%93United_States_relations",
+    "recognition_date": "1975-11-25",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1975-11-25. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1975",
+        "event": "Diplomatic relations with the United States established (1975-11-25)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Sweden",
+    "slug": "sweden",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Sweden–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Sweden%E2%80%93United_States_relations",
+    "recognition_date": "1818-04-29",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1818-04-29. NATO ally of the United States.",
+    "timeline": [
+      {
+        "year": "1818",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "2024",
+        "event": "Sweden joins NATO with full US support"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Switzerland",
+    "slug": "switzerland",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Switzerland–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Switzerland%E2%80%93United_States_relations",
+    "recognition_date": "1853-06-29",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Longstanding friendly relations; Swiss neutrality; major economic partner.",
+    "timeline": [
+      {
+        "year": "1853",
+        "event": "Diplomatic relations with the United States established (1853-06-29)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Europe",
+    "first_load": false
+  },
+  {
+    "country": "Syria",
+    "slug": "syria",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Syria–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Syria%E2%80%93United_States_relations",
+    "recognition_date": "1944-11-17",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Long strained (1979–2024 per wiki formerly list); embassy closed since 2012 — treated as neutral given not on Current strained list.",
+    "timeline": [
+      {
+        "year": "1944",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1979",
+        "event": "Syria designated state sponsor of terrorism"
+      },
+      {
+        "year": "2012",
+        "event": "US closes embassy; relations severed"
+      },
+      {
+        "year": "2024",
+        "event": "Formerly strained period noted as ending 2024 on wiki"
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "São Tomé and Príncipe",
+    "slug": "sao-tome-and-principe",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/São_Tomé_and_Príncipe–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe%E2%80%93United_States_relations",
+    "recognition_date": "1975-10-10",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1975-10-10. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1975",
+        "event": "Diplomatic relations with the United States established (1975-10-10)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Taiwan",
+    "slug": "taiwan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Taiwan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Taiwan%E2%80%93United_States_relations",
+    "recognition_date": null,
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": false,
+    "notes_summary": "Unofficial but close partner under Taiwan Relations Act; major arms sales and democratic Indo-Pacific partner.",
+    "timeline": [
+      {
+        "year": "1949",
+        "event": "ROC government relocates to Taiwan; US continues recognition"
+      },
+      {
+        "year": "1954",
+        "event": "US–ROC Mutual Defense Treaty"
+      },
+      {
+        "year": "1979",
+        "event": "US switches recognition to PRC; Taiwan Relations Act passed"
+      },
+      {
+        "year": "2018",
+        "event": "Taiwan Travel Act signed"
+      },
+      {
+        "year": "2026",
+        "event": "Unofficial but close security and economic partnership via AIT"
+      }
+    ],
+    "region": "East Asia",
+    "first_load": true
+  },
+  {
+    "country": "Tajikistan",
+    "slug": "tajikistan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Tajikistan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Tajikistan%E2%80%93United_States_relations",
+    "recognition_date": "1992-02-19",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-02-19. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-02-19)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Central Asia",
+    "first_load": false
+  },
+  {
+    "country": "Tanzania",
+    "slug": "tanzania",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Tanzania–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Tanzania%E2%80%93United_States_relations",
+    "recognition_date": "1961-12-09",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1961-12-09. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1961",
+        "event": "Diplomatic relations with the United States established (1961-12-09)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Thailand",
+    "slug": "thailand",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Thailand–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Thailand%E2%80%93United_States_relations",
+    "recognition_date": "1882-10-23",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA and oldest US Asian treaty ally (1833).",
+    "timeline": [
+      {
+        "year": "1833",
+        "event": "Treaty of Amity and Commerce (oldest Asian treaty)"
+      },
+      {
+        "year": "1954",
+        "event": "SEATO member alongside US"
+      },
+      {
+        "year": "2003",
+        "event": "Designated Major Non-NATO Ally"
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Timor-Leste",
+    "slug": "timor-leste",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Timor-Leste–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Timor-Leste%E2%80%93United_States_relations",
+    "recognition_date": "2002-05-20",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 2002-05-20. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "2002",
+        "event": "Diplomatic relations with the United States established (2002-05-20)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Togo",
+    "slug": "togo",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Togo–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Togo%E2%80%93United_States_relations",
+    "recognition_date": "1960-04-27",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1960-04-27. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1960",
+        "event": "Diplomatic relations with the United States established (1960-04-27)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Tonga",
+    "slug": "tonga",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Tonga–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Tonga%E2%80%93United_States_relations",
+    "recognition_date": "1972-11-06",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1972-11-06. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1972",
+        "event": "Diplomatic relations with the United States established (1972-11-06)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Trinidad and Tobago",
+    "slug": "trinidad-and-tobago",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Trinidad_and_Tobago–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Trinidad_and_Tobago%E2%80%93United_States_relations",
+    "recognition_date": "1962-08-31",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1962-08-31. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1962",
+        "event": "Diplomatic relations with the United States established (1962-08-31)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Tunisia",
+    "slug": "tunisia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Tunisia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Tunisia%E2%80%93United_States_relations",
+    "recognition_date": "1956-06-06",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA; North African partner on counterterrorism and democratic transition.",
+    "timeline": [
+      {
+        "year": "1956",
+        "event": "Diplomatic relations with the United States established (1956-06-06)."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "North Africa",
+    "first_load": false
+  },
+  {
+    "country": "Turkey",
+    "slug": "turkey",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Turkey–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Turkey%E2%80%93United_States_relations",
+    "recognition_date": "1927-02-17",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "NATO ally since 1952; strategic but often contentious partner over Syria, S-400s, and democracy concerns.",
+    "timeline": [
+      {
+        "year": "1831",
+        "event": "Early US–Ottoman relations"
+      },
+      {
+        "year": "1927",
+        "event": "Diplomatic relations with Republic of Turkey"
+      },
+      {
+        "year": "1952",
+        "event": "Turkey joins NATO"
+      },
+      {
+        "year": "1991",
+        "event": "Gulf War cooperation"
+      },
+      {
+        "year": "2016",
+        "event": "Tensions over Gülen extradition and Syria policy"
+      },
+      {
+        "year": "2019",
+        "event": "CAATSA sanctions over S-400 purchase"
+      }
+    ],
+    "region": "Middle East",
+    "first_load": true
+  },
+  {
+    "country": "Turkmenistan",
+    "slug": "turkmenistan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Turkmenistan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Turkmenistan%E2%80%93United_States_relations",
+    "recognition_date": "1992-04-10",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-04-10. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-04-10)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Central Asia",
+    "first_load": false
+  },
+  {
+    "country": "Tuvalu",
+    "slug": "tuvalu",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Tuvalu–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Tuvalu%E2%80%93United_States_relations",
+    "recognition_date": "1979-05-10",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1979-05-10. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1979",
+        "event": "Diplomatic relations with the United States established (1979-05-10)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Uganda",
+    "slug": "uganda",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Uganda–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Uganda%E2%80%93United_States_relations",
+    "recognition_date": "1962-10-09",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1962-10-09. Maintains formal relations; neither a clear military ally nor currently listed as strained. Formerly strained: 1972–1979.",
+    "timeline": [
+      {
+        "year": "1962",
+        "event": "Diplomatic relations with the United States established (1962-10-09)."
+      },
+      {
+        "year": "see notes",
+        "event": "Period(s) of strained relations: 1972–1979."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Ukraine",
+    "slug": "ukraine",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Ukraine–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Ukraine%E2%80%93United_States_relations",
+    "recognition_date": "1992-01-03",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Major recipient of US security assistance since 2014/2022; strategic partner resisting Russian aggression.",
+    "timeline": [
+      {
+        "year": "1991",
+        "event": "US recognizes Ukraine’s independence"
+      },
+      {
+        "year": "1992",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1994",
+        "event": "Budapest Memorandum on security assurances"
+      },
+      {
+        "year": "2014",
+        "event": "US support after Crimea annexation and Donbas war"
+      },
+      {
+        "year": "2022",
+        "event": "Major US military and economic aid after full-scale Russian invasion"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "United Arab Emirates",
+    "slug": "united-arab-emirates",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/United_Arab_Emirates–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/United_Arab_Emirates%E2%80%93United_States_relations",
+    "recognition_date": "1972-03-20",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "MNNA; major defense and commercial partner; hosts frequent US Navy port calls.",
+    "timeline": [
+      {
+        "year": "1972",
+        "event": "Diplomatic relations with the United States established (1972-03-20)."
+      },
+      {
+        "year": "2026",
+        "event": "Maintains close alliance / partnership with the United States."
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "United Kingdom",
+    "slug": "united-kingdom",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/United_Kingdom–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/United_Kingdom%E2%80%93United_States_relations",
+    "recognition_date": "1785-06-01",
+    "status": "friend",
+    "outline": "green",
+    "formal_relations": true,
+    "notes_summary": "Special Relationship; Five Eyes, NATO, AUKUS, and G7 partner. Closest intelligence and nuclear-sharing ally.",
+    "timeline": [
+      {
+        "year": "1783",
+        "event": "Treaty of Paris recognizes US independence"
+      },
+      {
+        "year": "1785",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1812",
+        "event": "War of 1812 between US and Britain"
+      },
+      {
+        "year": "1814",
+        "event": "Treaty of Ghent ends War of 1812"
+      },
+      {
+        "year": "1917",
+        "event": "US enters WWI as ally of Britain"
+      },
+      {
+        "year": "1941",
+        "event": "Atlantic Charter; wartime Special Relationship begins"
+      },
+      {
+        "year": "1949",
+        "event": "Founding NATO members"
+      },
+      {
+        "year": "1958",
+        "event": "US–UK Mutual Defence Agreement (nuclear)"
+      },
+      {
+        "year": "2021",
+        "event": "AUKUS security partnership announced"
+      }
+    ],
+    "region": "Europe",
+    "first_load": true
+  },
+  {
+    "country": "Uruguay",
+    "slug": "uruguay",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Uruguay–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Uruguay%E2%80%93United_States_relations",
+    "recognition_date": "1867-10-02",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1867-10-02. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1867",
+        "event": "Diplomatic relations with the United States established (1867-10-02)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Uzbekistan",
+    "slug": "uzbekistan",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Uzbekistan–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Uzbekistan%E2%80%93United_States_relations",
+    "recognition_date": "1992-02-19",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1992-02-19. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1992",
+        "event": "Diplomatic relations with the United States established (1992-02-19)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Central Asia",
+    "first_load": false
+  },
+  {
+    "country": "Vanuatu",
+    "slug": "vanuatu",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Vanuatu–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Vanuatu%E2%80%93United_States_relations",
+    "recognition_date": "1986-09-30",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1986-09-30. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1986",
+        "event": "Diplomatic relations with the United States established (1986-09-30)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Oceania",
+    "first_load": false
+  },
+  {
+    "country": "Venezuela",
+    "slug": "venezuela",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Venezuela–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Venezuela%E2%80%93United_States_relations",
+    "recognition_date": "1835-06-30",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Long strained under Chávez/Maduro; wiki notes ties resumed in 2026 after Maduro’s capture — classified neutral post-resumption.",
+    "timeline": [
+      {
+        "year": "1835",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "1999",
+        "event": "Relations deteriorate under Chávez"
+      },
+      {
+        "year": "2019",
+        "event": "US recognizes Guaidó; Maduro severs ties"
+      },
+      {
+        "year": "2026",
+        "event": "Diplomatic ties resumed after Maduro’s capture (per wiki); formerly strained 1999–2026"
+      }
+    ],
+    "region": "Americas",
+    "first_load": false
+  },
+  {
+    "country": "Vietnam",
+    "slug": "vietnam",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Vietnam–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Vietnam%E2%80%93United_States_relations",
+    "recognition_date": "1995-07-11",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Normalized 1995; now Comprehensive Strategic Partner amid South China Sea concerns.",
+    "timeline": [
+      {
+        "year": "1950",
+        "event": "US recognizes State of Vietnam"
+      },
+      {
+        "year": "1965",
+        "event": "Major US combat role in Vietnam War"
+      },
+      {
+        "year": "1975",
+        "event": "War ends; relations severed"
+      },
+      {
+        "year": "1995",
+        "event": "Diplomatic relations normalized"
+      },
+      {
+        "year": "2023",
+        "event": "Comprehensive Strategic Partnership announced"
+      }
+    ],
+    "region": "Southeast Asia",
+    "first_load": false
+  },
+  {
+    "country": "Yemen",
+    "slug": "yemen",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/United_States–Yemen_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/United_States%E2%80%93Yemen_relations",
+    "recognition_date": "1946-03-04",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1946-03-04. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "1946",
+        "event": "Diplomatic relations established"
+      },
+      {
+        "year": "2015",
+        "event": "Civil war; US supports Saudi-led coalition"
+      },
+      {
+        "year": "2026",
+        "event": "Strained with SPC/Houthi-controlled Yemen"
+      }
+    ],
+    "region": "Middle East",
+    "first_load": false
+  },
+  {
+    "country": "Zambia",
+    "slug": "zambia",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Zambia–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Zambia%E2%80%93United_States_relations",
+    "recognition_date": "1964-10-24",
+    "status": "neutral",
+    "outline": "none",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1964-10-24. Maintains formal relations; neither a clear military ally nor currently listed as strained.",
+    "timeline": [
+      {
+        "year": "1964",
+        "event": "Diplomatic relations with the United States established (1964-10-24)."
+      },
+      {
+        "year": "2026",
+        "event": "Formal relations continue; classified neutral (neither clear ally nor currently strained)."
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  },
+  {
+    "country": "Zimbabwe",
+    "slug": "zimbabwe",
+    "wiki_bilateral": "https://en.wikipedia.org/wiki/Zimbabwe–United_States_relations",
+    "wiki_pdf": "https://en.wikipedia.org/api/rest_v1/page/pdf/Zimbabwe%E2%80%93United_States_relations",
+    "recognition_date": "1980-04-18",
+    "status": "foe",
+    "outline": "red",
+    "formal_relations": true,
+    "notes_summary": "Formal diplomatic relations with the United States established 1980-04-18. Listed under Wikipedia’s current strained relations with the United States (as of 2026 page data).",
+    "timeline": [
+      {
+        "year": "1980",
+        "event": "Diplomatic relations at independence"
+      },
+      {
+        "year": "2000s",
+        "event": "Sanctions over governance and human rights"
+      },
+      {
+        "year": "2026",
+        "event": "Currently strained"
+      }
+    ],
+    "region": "Sub-Saharan Africa",
+    "first_load": false
+  }
+]

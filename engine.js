@@ -32,6 +32,49 @@ export function eraLabel(id) {
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
+export const RELATION_REGIONS = [
+  "Americas",
+  "Europe",
+  "North Africa",
+  "Middle East",
+  "Sub-Saharan Africa",
+  "Central Asia",
+  "South Asia",
+  "East Asia",
+  "Southeast Asia",
+  "Oceania",
+];
+
+const STATUS_RANK = { friend: 0, foe: 1, neutral: 2 };
+
+export function outlineFor(country) {
+  if (country?.outline === "green" || country?.outline === "red" || country?.outline === "none") {
+    return country.outline;
+  }
+  if (country?.status === "friend") return "green";
+  if (country?.status === "foe") return "red";
+  return "none";
+}
+
+export function firstLoadCountries(countries) {
+  return (countries || []).filter((country) => country.first_load);
+}
+
+export function countriesByRegion(countries) {
+  const list = countries || [];
+  return RELATION_REGIONS.map((region) => ({
+    region,
+    countries: list
+      .filter((country) => country.region === region)
+      .slice()
+      .sort((a, b) => {
+        const rank = (STATUS_RANK[a.status] ?? 9) - (STATUS_RANK[b.status] ?? 9);
+        if (rank) return rank;
+        return String(a.country).localeCompare(String(b.country));
+      }),
+  }));
+}
+
 export function relationEvents(relation, events) {
   return events.filter((event) =>
     event.people.includes(relation.from) && event.people.includes(relation.to));
@@ -51,6 +94,9 @@ export function parseState(urlLike, valid = {}) {
   const era = valid.eras?.has(url.searchParams.get("era"))
     ? url.searchParams.get("era")
     : ALL;
+  const country = valid.countries?.has(url.searchParams.get("country"))
+    ? url.searchParams.get("country")
+    : "";
   const requested = url.searchParams.get("view");
   let view = requested === "timeline" || requested === "person" ? requested : "web";
   if (view === "person" && person === ALL) view = "web";
@@ -60,6 +106,7 @@ export function parseState(urlLike, valid = {}) {
     era,
     query: url.searchParams.get("q") || "",
     eventId,
+    country,
   };
 }
 
@@ -70,7 +117,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
     url.hash = "";
     return url.pathname || "/";
   }
-  ["view", "person", "era", "q", "plot", "year"].forEach((key) => url.searchParams.delete(key));
+  ["view", "person", "era", "q", "plot", "year", "country"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (state.view === "timeline" || state.view === "person") url.searchParams.set("view", state.view);
   else url.searchParams.set("view", "web");
@@ -78,6 +125,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (state.era && state.era !== ALL) url.searchParams.set("era", state.era);
   if (state.query?.trim()) url.searchParams.set("q", state.query.trim());
   if (Number.isFinite(state.year)) url.searchParams.set("year", String(state.year));
+  if (state.country) url.searchParams.set("country", state.country);
   url.hash = eventId ? encodeURIComponent(eventId) : "";
   return `${url.pathname}${url.search}${url.hash}`;
 }
