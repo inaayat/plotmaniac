@@ -2,19 +2,23 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import {
   ALL,
+  campOf,
   eventTease,
   filterEvents,
   graphLayout,
+  initials,
   parseState,
   relationEvents,
   stateUrl,
+  webLayout,
   youtubeId,
 } from "../engine.js";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
-const people = readJson("../data/people.json");
-const events = readJson("../data/events.json");
-const relations = readJson("../data/relations.json");
+const plots = readJson("../data/plots.json");
+const people = readJson("../data/h3/people.json");
+const events = readJson("../data/h3/events.json");
+const relations = readJson("../data/h3/relations.json");
 const ids = new Set(people.map((person) => person.id));
 const peopleById = new Map(people.map((person) => [person.id, person]));
 
@@ -66,6 +70,52 @@ assert.ok(filterEvents(events, { query: "fair use" }, peopleById).length >= 2);
 const firstRelation = relations[0];
 assert.ok(relationEvents(firstRelation, events).every((event) =>
   event.people.includes(firstRelation.from) && event.people.includes(firstRelation.to)));
+
+const h3 = plots.plots.find((item) => item.id === "h3");
+assert.ok(h3, "h3 plot is registered for further plots to sit beside");
+assert.equal(h3.centerId, "ethan-klein");
+assert.equal(initials("Hila Klein"), "HK");
+assert.equal(initials("xQc"), "XQ");
+assert.equal(campOf("hila-klein", relations, h3.centerId, h3.friendKinds, h3.enemyKinds), "friend");
+assert.equal(campOf("trisha-paytas", relations, h3.centerId, h3.friendKinds, h3.enemyKinds), "enemy");
+assert.equal(campOf("david-dobrik", relations, h3.centerId, h3.friendKinds, h3.enemyKinds), "orbit");
+
+const allowedLicenses = new Set(["CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 2.0", "CC BY-SA 3.0", "Public domain"]);
+for (const person of people) {
+  if (!person.portrait) continue;
+  assert.match(person.portrait.src, /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//, person.id);
+  assert.match(person.portrait.page, /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/, person.id);
+  assert.ok(allowedLicenses.has(person.portrait.license), `${person.id} portrait license`);
+  assert.ok(person.portrait.author && person.portrait.licenseUrl, `${person.id} portrait credit`);
+}
+
+const layout = webLayout(people, relations, {
+  centerId: h3.centerId,
+  friendKinds: h3.friendKinds,
+  enemyKinds: h3.enemyKinds,
+});
+assert.equal(layout.nodes.length, people.length);
+const ethanNode = layout.nodes.find((node) => node.id === "ethan-klein");
+assert.equal(ethanNode.camp, "center");
+assert.ok(layout.nodes.filter((node) => node.camp === "friend").every((node) => node.x < ethanNode.x));
+assert.ok(layout.nodes.filter((node) => node.camp === "enemy").every((node) => node.x > ethanNode.x));
+assert.ok(layout.nodes.filter((node) => node.camp === "orbit").every((node) => node.y > ethanNode.y + 200));
+let closest = Infinity;
+for (let i = 0; i < layout.nodes.length; i += 1) {
+  for (let j = i + 1; j < layout.nodes.length; j += 1) {
+    const dx = layout.nodes[i].x - layout.nodes[j].x;
+    const dy = layout.nodes[i].y - layout.nodes[j].y;
+    closest = Math.min(closest, Math.hypot(dx, dy));
+  }
+}
+assert.ok(closest >= 110, `web nodes overlap (${closest})`);
+
+assert.equal(parseState("https://plotmaniac.com/").view, "web");
+assert.equal(parseState("https://plotmaniac.com/?view=timeline").view, "timeline");
+assert.equal(
+  parseState("https://plotmaniac.com/?view=person&person=hila-klein", { people: ids }).view,
+  "person",
+);
 
 const parsed = parseState(
   "https://plotmaniac.com/?view=web&person=trisha-paytas&era=frenemies&q=walkout#frenemies-39-walkout",

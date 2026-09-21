@@ -1,0 +1,17 @@
+{
+  "plots": [
+    {
+      "id": "h3",
+      "title": "H3",
+      "lede": "Ethan Klein, the friends beside the show, and the feuds that keep circling back.",
+      "centerId": "ethan-klein",
+      "friendKinds": ["ally", "crew", "co-host", "collaborator", "family"],
+      "enemyKinds": ["feud", "litigation"],
+      "paths": {
+        "people": "data/h3/people.json",
+        "events": "data/h3/events.json",
+        "relations": "data/h3/relations.json"
+      }
+    }
+  ]
+}

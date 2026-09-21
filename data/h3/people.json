@@ -1,0 +1,421 @@
+[
+  {
+    "id": "ethan-klein",
+    "name": "Ethan Klein",
+    "role": "H3 Podcast host and h3h3Productions co-creator",
+    "tags": [
+      "crew",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "H3 Podcast",
+        "url": "https://www.youtube.com/@H3Podcast"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ethan%20Klein%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Ethan_Klein_(cropped).jpg",
+      "author": "Kim H",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "id": "hila-klein",
+    "name": "Hila Klein",
+    "role": "H3 co-creator, recurring co-host, and Teddy Fresh co-founder",
+    "tags": [
+      "crew",
+      "ally",
+      "family"
+    ],
+    "links": [
+      {
+        "label": "Teddy Fresh",
+        "url": "https://teddyfresh.com/pages/about-us"
+      }
+    ]
+  },
+  {
+    "id": "trisha-paytas",
+    "name": "Trisha Paytas",
+    "role": "Creator and former Frenemies co-host",
+    "tags": [
+      "rival",
+      "family"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Trisha_Paytas"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Trisha%20Paytas%20at%20the%202025%20WorldPride%20Music%20Festival.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Trisha_Paytas_at_the_2025_WorldPride_Music_Festival.jpg",
+      "author": "APK",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  {
+    "id": "hasan-piker",
+    "name": "Hasan Piker",
+    "role": "Political commentator and former Leftovers co-host",
+    "tags": [
+      "rival",
+      "recent",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Hasan_Piker"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/HasanStLouis-20260501-234558761%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:HasanStLouis-20260501-234558761_(cropped).jpg",
+      "author": "Poisonwithahawkseye",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  {
+    "id": "james-charles",
+    "name": "James Charles",
+    "role": "Beauty creator repeatedly covered by H3",
+    "tags": [
+      "subject"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/James_Charles"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/James%20Charles%20-%20GLAAD%20Media%20Awards%202024%20%28cropped%29.png?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:James_Charles_-_GLAAD_Media_Awards_2024_(cropped).png",
+      "author": "Stay Tuned",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "david-dobrik",
+    "name": "David Dobrik",
+    "role": "Vlog Squad creator repeatedly covered by H3",
+    "tags": [
+      "subject"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/DavidDobrikAMMF2019%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:DavidDobrikAMMF2019_(cropped).jpg",
+      "author": "America's Most Musical Family",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "matt-hoss",
+    "name": "Matt Hoss (MattHossZone)",
+    "role": "YouTuber and plaintiff in the Kleins' fair-use case",
+    "tags": [
+      "legal"
+    ],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/4356997/hosseinzadeh-v-klein/"
+      }
+    ]
+  },
+  {
+    "id": "ryan-kavanaugh",
+    "name": "Ryan Kavanaugh",
+    "role": "Film producer and Triller executive involved in litigation with H3",
+    "tags": [
+      "legal",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Ryan_Kavanaugh"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ryan%20Kavanaugh2.PNG?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Ryan_Kavanaugh2.PNG",
+      "author": "Relativity Media",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "keemstar",
+    "name": "Keemstar",
+    "role": "DramaAlert host with a long-running public feud with Ethan",
+    "tags": [
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Keemstar"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/KeemstarColdOnes2020.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:KeemstarColdOnes2020.jpg",
+      "author": "Cold Ones Clips",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "philip-de-franco",
+    "name": "Philip DeFranco",
+    "role": "News and commentary creator discussed by H3",
+    "tags": [
+      "subject"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Philip_DeFranco"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Philip%20DeFranco%20in%202018.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Philip_DeFranco_in_2018.jpg",
+      "author": "Philip DeFranco",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "moses-hacmon",
+    "name": "Moses Hacmon",
+    "role": "Artist, Trisha Paytas's husband, and Hila Klein's brother",
+    "tags": [
+      "rival",
+      "family"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Moses_Hacmon"
+      }
+    ]
+  },
+  {
+    "id": "logan-paul",
+    "name": "Logan Paul",
+    "role": "Creator and wrestler covered across several H3 controversy cycles",
+    "tags": [
+      "subject"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Logan_Paul"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Logan%20Paul%20RR25%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Logan_Paul_RR25_(cropped).jpg",
+      "author": "Diego Serrano",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "id": "sneako",
+    "name": "Sneako",
+    "role": "Streamer who has traded public criticism with Ethan",
+    "tags": [
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Sneako"
+      }
+    ]
+  },
+  {
+    "id": "jordan-peterson",
+    "name": "Jordan Peterson",
+    "role": "Author and commentator whose H3 appearances were later removed",
+    "tags": [
+      "subject"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Jordan_Peterson"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jordan%20Peterson%20in%202018%20%283x4%20cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jordan_Peterson_in_2018_(3x4_cropped).jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "frogan",
+    "name": "Frogan",
+    "role": "Twitch streamer involved in Ethan and Hasan's public fallout",
+    "tags": [
+      "recent",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Twitch",
+        "url": "https://www.twitch.tv/frogan"
+      }
+    ]
+  },
+  {
+    "id": "fresh-and-fit",
+    "name": "Fresh & Fit",
+    "role": "Podcast duo covered and debated by H3",
+    "tags": [
+      "subject"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Fresh_and_Fit_Podcast"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Fresh%20%26%20Fit%20logo.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Fresh_&_Fit_logo.jpg",
+      "author": "Fresh & Fit",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+  },
+  {
+    "id": "justpearlythings",
+    "name": "JustPearlyThings",
+    "role": "Commentary creator featured in H3 debate and response coverage",
+    "tags": [
+      "subject"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@JustPearlyThings"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Pearl%20Davis%20on%20James%20English%20%283x4%20cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Pearl_Davis_on_James_English_(3x4_cropped).jpg",
+      "author": "Anything Goes With James English",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "denims",
+    "name": "Denims",
+    "role": "Twitch political commentator recently discussed by H3",
+    "tags": [
+      "recent"
+    ],
+    "links": [
+      {
+        "label": "Twitch",
+        "url": "https://www.twitch.tv/denims"
+      }
+    ]
+  },
+  {
+    "id": "anisa-jomha",
+    "name": "Anisa Jomha",
+    "role": "Creator whose public disputes have been discussed on H3",
+    "tags": [
+      "recent"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@AnisaJ/videos"
+      }
+    ]
+  },
+  {
+    "id": "xqc",
+    "name": "xQc",
+    "role": "Streamer who debated Ethan during the reaction-content dispute",
+    "tags": [
+      "recent",
+      "subject"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/XQc"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/XQc%20July%204%202023.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:XQc_July_4_2023.jpg",
+      "author": "Esfand",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "dan-swerdlove",
+    "name": "Dan Swerdlove",
+    "role": "Longtime H3 Podcast executive producer and on-air crew member",
+    "tags": [
+      "crew",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "H3 Podcast",
+        "url": "https://www.youtube.com/@H3Podcast"
+      }
+    ]
+  },
+  {
+    "id": "idubbbz",
+    "name": "iDubbbz",
+    "role": "Creator and former H3 collaborator who revived Content Cop about Ethan",
+    "tags": [
+      "rival",
+      "ally",
+      "recent"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@iDubbbzTV"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/IDubbbz%20at%20the%202022%20%22Creator%20Clash%22%20Boxing%20Event.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:IDubbbz_at_the_2022_%22Creator_Clash%22_Boxing_Event.jpg",
+      "author": "Esfand",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  }
+]
