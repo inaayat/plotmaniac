@@ -718,9 +718,9 @@ body[data-board="regions"][data-view="web"] #footer-note {
 
 .country-chip .avatar {
   width: 28px;
-  height: 22px;
+  height: 28px;
   flex: none;
-  border-radius: 3px;
+  border-radius: 50%;
 }
 
 .country-chip .avatar img {
@@ -768,8 +768,9 @@ body[data-board="regions"][data-view="web"] #footer-note {
 
 .relations-stage .country-chip .avatar {
   width: var(--node, 48px);
-  height: calc(var(--node, 48px) * 0.68);
+  height: var(--node, 48px);
   margin: 0 auto;
+  border-radius: 50%;
 }
 
 .relations-stage .chip-name {
@@ -793,7 +794,8 @@ body[data-board="regions"][data-view="web"] #footer-note {
 
 .relations-stage .is-center-chip .avatar {
   width: var(--center, 84px);
-  height: calc(var(--center, 84px) * 0.66);
+  height: var(--center, 84px);
+  border-radius: 50%;
   border-color: rgba(232, 196, 122, 0.85);
 }
 
@@ -827,8 +829,9 @@ body[data-board="regions"][data-view="web"] #footer-note {
 
 .drawer-head .avatar {
   width: 72px;
-  height: 48px;
+  height: 72px;
   flex: none;
+  border-radius: 50%;
 }
 
 .relation-drawer.outline-green .drawer-head .avatar {
@@ -1005,13 +1008,14 @@ body[data-board="regions"][data-view="web"] #footer-note {
 }
 
 .avatar.is-flag {
-  border-radius: 4px;
+  border-radius: 50%;
   background: #161410;
 }
 
 .avatar.is-flag img {
-  object-fit: contain;
-  padding: 6%;
+  object-fit: cover;
+  padding: 0;
+  border-radius: 50%;
 }
 
 .web-stage .node.node-left,
