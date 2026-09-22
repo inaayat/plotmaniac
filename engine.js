@@ -400,6 +400,120 @@ function edgesAmong(nodes, relations) {
   return edges;
 }
 
+function topicArrangement({
+  center,
+  people,
+  relations,
+  topics = [],
+  events,
+  width,
+  height,
+  friendKinds,
+  enemyKinds,
+  year,
+  centerId,
+  topicId,
+}) {
+  const cx = width / 2;
+  const cy = height / 2;
+  const catalog = topics.length
+    ? topics
+    : [...new Set((people || []).map((person) => person.topic).filter(Boolean))].map((id) => ({
+      id,
+      label: id,
+    }));
+  const visible = (people || []).filter((person) => !topicId || person.topic === topicId);
+  const groups = catalog
+    .map((topic) => ({
+      ...topic,
+      members: visible.filter((person) => person.topic === topic.id),
+    }))
+    .filter((group) => group.members.length);
+  const leftovers = visible.filter((person) => !catalog.some((topic) => topic.id === person.topic));
+  if (leftovers.length) groups.push({ id: "other", label: "Other", members: leftovers });
+
+  const ids = visible.map((person) => person.id);
+  const counts = beatCounts(events, ids);
+  const tally = ids.map((id) => counts.get(id) || 0);
+  const fewest = tally.length ? Math.min(...tally) : 0;
+  const most = tally.length ? Math.max(...tally) : 0;
+  const bubbleW = Math.max(96, Math.min(132, Math.floor(width / 7)));
+  const bubbleH = 40;
+  const nodeSize = Math.round(Math.min(bubbleW, 72));
+  const centerSize = Math.round(Math.min(104, Math.max(72, Math.min(width, height) * 0.16)));
+  const padX = bubbleW / 2 + 8;
+  const padY = bubbleH / 2 + 16;
+  const radiusX = Math.max(centerSize, width / 2 - padX);
+  const radiusY = Math.max(centerSize, height / 2 - padY);
+  const innerFloor = centerSize * 0.52 + bubbleH * 0.7;
+  const n = Math.max(groups.length, 1);
+  const wedge = (Math.PI * 2) / n;
+  const spread = groups.length <= 1;
+  const nodes = [];
+  if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center" });
+  const labels = [];
+
+  groups.forEach((group, gIndex) => {
+    const mid = -Math.PI / 2 + gIndex * wedge;
+    if (!spread) {
+      const labelR = ellipseRadius(mid, radiusX, radiusY) * 0.97;
+      labels.push({
+        id: group.id,
+        text: group.label,
+        x: cx + Math.cos(mid) * labelR,
+        y: cy + Math.sin(mid) * labelR,
+      });
+    }
+    const members = group.members
+      .map((person) => ({ person, beats: counts.get(person.id) || 0 }))
+      .sort((a, b) => b.beats - a.beats || a.person.name.localeCompare(b.person.name, "en", { sensitivity: "base" }));
+    const count = members.length;
+    members.forEach((entry, index) => {
+      const closeness = most > fewest ? (entry.beats - fewest) / (most - fewest) : 0;
+      let angle;
+      let dist;
+      if (spread) {
+        angle = -Math.PI / 2 + index * Math.PI * (3 - Math.sqrt(5));
+        const rim = ellipseRadius(angle, radiusX, radiusY) * 0.9;
+        dist = innerFloor + (1 - closeness) * Math.max(0, rim - innerFloor);
+      } else {
+        const fan = count <= 1 ? 0 : ((index + 0.5) / count - 0.5);
+        angle = mid + fan * wedge * 0.74;
+        const rim = ellipseRadius(angle, radiusX, radiusY) * 0.82;
+        const ring = count <= 1 ? 0.4 : 0.16 + (index / Math.max(count - 1, 1)) * 0.84;
+        dist = innerFloor + (1 - closeness * 0.5) * Math.max(0, rim - innerFloor) * Math.min(1, 0.28 + ring);
+      }
+      nodes.push({
+        ...entry.person,
+        x: cx + Math.cos(angle) * dist,
+        y: cy + Math.sin(angle) * dist,
+        camp: campOf(entry.person.id, relations, centerId || center.id, friendKinds, enemyKinds, year),
+        beats: entry.beats,
+        closeness,
+        topic: entry.person.topic,
+      });
+    });
+  });
+
+  holdApart(nodes, {
+    minDist: Math.min(bubbleW * 0.86, 108),
+    minX: bubbleW / 2 + 6,
+    maxX: width - (bubbleW / 2 + 6),
+    minY: bubbleH / 2 + 8,
+    maxY: height - (bubbleH / 2 + 10),
+  });
+
+  return {
+    width,
+    height,
+    nodes,
+    edges: edgesAmong(nodes, relations),
+    nodeSize,
+    centerSize,
+    labels: spread ? [] : labels,
+  };
+}
+
 function campArrangement({ center, friends, foes, relations, width, height }) {
   const maxCount = Math.max(friends.length, foes.length, 1);
   let nodeSize = Math.floor((height - 24) / maxCount) - 12;
@@ -545,6 +659,24 @@ export function webLayout(people, relations, options = {}) {
 
   if (options.arrangement === "camps") {
     return campArrangement({ center, friends, foes, relations: applicable, width, height });
+  }
+
+  if (options.arrangement === "topics") {
+    const extras = people.filter((person) => center && person.id !== center.id);
+    return topicArrangement({
+      center,
+      people: extras,
+      relations,
+      topics: options.topics || [],
+      events: options.events,
+      width,
+      height,
+      friendKinds,
+      enemyKinds,
+      year: options.year,
+      centerId: center.id,
+      topicId: options.topicId || "",
+    });
   }
 
   const ordered = [];
