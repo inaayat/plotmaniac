@@ -389,7 +389,7 @@ body[data-view="pick"] .eyebrow {
 }
 
 body[data-view="pick"] h1 {
-  font-size: clamp(4rem, 14vw, 6.4rem);
+  font-size: clamp(4.6rem, 16vw, 7.2rem);
   line-height: 0.88;
 }
 
@@ -508,8 +508,8 @@ body[data-view="pick"] .site-footer {
   align-content: center;
   width: 100%;
   flex: 1 1 auto;
-  min-height: 5.6rem;
-  padding: 10px 12px;
+  min-height: 4.6rem;
+  padding: 6px 12px;
   text-align: left;
   color: inherit;
   text-decoration: none;
@@ -2681,6 +2681,11 @@ button.back:hover,
   border-radius: 50%;
 }
 
+.face-link:hover .avatar,
+.face-link:focus-visible .avatar {
+  border-color: var(--gold);
+}
+
 .face-link .avatar {
   width: 28px;
   height: 28px;
@@ -3112,7 +3117,7 @@ body[data-view="timeline"] #footer-note {
   }
 
   body[data-view="pick"] h1 {
-    font-size: clamp(3.2rem, 10vw, 4.8rem);
+    font-size: clamp(3.6rem, 11vw, 5.4rem);
   }
 
   body[data-view="pick"] .mark {
@@ -3121,7 +3126,7 @@ body[data-view="timeline"] #footer-note {
   }
 
   body[data-view="pick"] .plot-card {
-    padding: 8px 10px;
+    padding: 5px 10px;
   }
 
   body[data-view="pick"] .site-footer {
@@ -3181,7 +3186,7 @@ body[data-view="timeline"] #footer-note {
   }
 
   body[data-view="pick"] h1 {
-    font-size: clamp(3rem, 16vw, 4.8rem);
+    font-size: clamp(3.4rem, 17vw, 5.4rem);
   }
 
   body[data-view="pick"] .mark {

@@ -1012,7 +1012,8 @@ assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "deskt
 assert.match(css, /\.plot-cards > li/, "gallery items stretch so cards share a height");
 assert.match(css, /-webkit-line-clamp: 2/, "gallery titles can wrap to two lines");
 assert.equal(/\.plot-card strong \{[^}]*min-height:/.test(css), false, "gallery titles do not reserve a blank second line");
-assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?6\.4rem/, "pick view keeps the large title");
+assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?7\.2rem/, "pick view keeps the large title");
+assert.match(css, /\.plot-card \{[\s\S]*?padding: 6px 12px;/, "plot cards keep a tight vertical pad");
 assert.match(css, /body\[data-view="pick"\] \.mark \{[\s\S]*?margin: 2px auto 4px/, "homepage title sits close to the lede");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
