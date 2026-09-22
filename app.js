@@ -10,6 +10,7 @@ import {
   initials,
   neighborhood,
   outlineFor,
+  laneBands,
   parseState,
   parseYear,
   relationsFieldEdges,
@@ -1068,6 +1069,8 @@ function fitLaneWidth(view) {
   scroller.scrollLeft = 0;
 }
 
+const LANE_AXIS_PAD = 28;
+
 function layoutLane(view) {
   if (!view.isConnected) return;
   const scroller = view.querySelector(".lane-scroll");
@@ -1077,23 +1080,90 @@ function layoutLane(view) {
     requestAnimationFrame(() => layoutLane(view));
     return;
   }
-  let needed = height;
-  rail.querySelectorAll(".lane-card").forEach((card) => {
-    needed = Math.max(needed, card.scrollHeight * 2 + 80);
+  // Keep the rail inside the visible scroller. Opening a beat moves the axis
+  // and scales the other cards instead of lengthening the line off-screen.
+  rail.style.setProperty("--lane-h", `${height}px`);
+  rail.querySelectorAll(".lane-card").forEach(resetCardFit);
+
+  const selected = rail.querySelector(".lane-event.is-selected");
+  const selectedAbove = Boolean(selected?.classList.contains("side-above"));
+
+  let aboveRoom = height / 2 - LANE_AXIS_PAD;
+  let belowRoom = height / 2 - LANE_AXIS_PAD;
+  if (!selected) {
+    rail.style.setProperty("--lane-axis", "50%");
+  } else {
+    const selectedNeed = cardExtent(selected.querySelector(".lane-card"));
+    const quietSide = selectedAbove ? ".side-below" : ".side-above";
+    const quietNeed = tallestExtent(rail, quietSide);
+    const { selectedBand, quietBand } = laneBands(height, selectedNeed, quietNeed);
+    const axis = selectedAbove ? selectedBand : height - selectedBand;
+    rail.style.setProperty("--lane-axis", `${axis}px`);
+    aboveRoom = (selectedAbove ? selectedBand : quietBand) - LANE_AXIS_PAD;
+    belowRoom = (selectedAbove ? quietBand : selectedBand) - LANE_AXIS_PAD;
+  }
+
+  let restScale = 1;
+  rail.querySelectorAll(".lane-event:not(.is-selected)").forEach((event) => {
+    const natural = event.querySelector(".lane-card")?.scrollHeight || 0;
+    const room = event.classList.contains("side-above") ? aboveRoom : belowRoom;
+    restScale = Math.min(restScale, fitScale(room, natural));
   });
-  rail.style.setProperty("--lane-h", `${needed}px`);
+  rail.querySelectorAll(".lane-event").forEach((event) => {
+    const card = event.querySelector(".lane-card");
+    if (!card) return;
+    const above = event.classList.contains("side-above");
+    const room = Math.max(0, above ? aboveRoom : belowRoom);
+    if (event.classList.contains("is-selected")) {
+      card.style.maxHeight = `${room}px`;
+      return;
+    }
+    applyCardScale(card, restScale, above);
+  });
+
   applyLaneZoom(view, laneZoom);
   if (pendingLaneScroll) {
     scroller.scrollLeft = pendingLaneScroll.left;
     scroller.scrollTop = pendingLaneScroll.top;
     pendingLaneScroll = null;
-  } else if (needed > height + 8) {
-    scroller.scrollTop = Math.max(0, (needed * laneZoom) / 2 - scroller.clientHeight / 2);
   }
   if (pendingLaneFocus) {
-    const selected = view.querySelector(".lane-event.is-selected");
+    const focus = view.querySelector(".lane-event.is-selected");
     pendingLaneFocus = "";
-    if (selected) selected.scrollIntoView({ inline: "center", block: "nearest" });
+    if (focus) focus.scrollIntoView({ inline: "center", block: "nearest" });
+  }
+}
+
+function cardExtent(card) {
+  return (card?.scrollHeight || 0) + LANE_AXIS_PAD;
+}
+
+function tallestExtent(rail, selector) {
+  let tallest = 0;
+  rail.querySelectorAll(`${selector} .lane-card`).forEach((card) => {
+    tallest = Math.max(tallest, card.scrollHeight);
+  });
+  return tallest + LANE_AXIS_PAD;
+}
+
+function fitScale(room, natural) {
+  if (!(natural > 0) || natural <= room) return 1;
+  return Math.max(0.01, (room - 1) / natural);
+}
+
+function resetCardFit(card) {
+  card.style.transform = "";
+  card.style.transformOrigin = "";
+  card.style.maxHeight = "";
+  card.style.overflow = "";
+}
+
+function applyCardScale(card, scale, above) {
+  card.style.maxHeight = "none";
+  card.style.overflow = "visible";
+  if (scale < 0.999) {
+    card.style.transformOrigin = above ? "bottom center" : "top center";
+    card.style.transform = `scale(${scale.toFixed(4)})`;
   }
 }
 

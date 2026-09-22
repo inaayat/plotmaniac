@@ -13,6 +13,7 @@ import {
   relationsFieldEdges,
   relationsFieldLayout,
   initials,
+  laneBands,
   outlineFor,
   parseState,
   parseYear,
@@ -506,6 +507,27 @@ assert.equal(europeSpokes.filter((edge) => edge.scope === "broad").every((edge) 
 assert.equal(europeEdges.some((edge) => edge.from === "mexico" || edge.to === "mexico"), false);
 const austria = europeEdges.find((edge) => edge.kind === "bloc" && (edge.from === "austria" || edge.to === "austria"));
 assert.ok(austria && austria.scope === "broad");
+
+assert.deepEqual(laneBands(640, 300, 280), { selectedBand: 320, quietBand: 320 });
+{
+  const fitted = laneBands(640, 400, 180);
+  assert.equal(fitted.selectedBand + fitted.quietBand, 640);
+  assert.equal(fitted.selectedBand, 400);
+  assert.ok(fitted.quietBand >= 180);
+}
+{
+  const crowded = laneBands(640, 560, 280);
+  assert.equal(crowded.selectedBand + crowded.quietBand, 640);
+  assert.ok(crowded.quietBand >= 280 * 0.72 - 1);
+  assert.ok(crowded.selectedBand > 320 && crowded.selectedBand < 560);
+}
+assert.deepEqual(laneBands(0, 400, 200), { selectedBand: 0, quietBand: 0 });
+{
+  const short = laneBands(280, 400, 200);
+  assert.equal(short.selectedBand + short.quietBand, 280);
+  assert.ok(short.quietBand >= 140);
+  assert.ok(short.selectedBand >= 140);
+}
 
 assert.equal(stateUrl("https://plotmaniac.com/", { view: "pick" }, ""), "/");
 assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /plot=united-states/);

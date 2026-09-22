@@ -630,6 +630,30 @@ function holdApart(nodes, bounds) {
   });
 }
 
+// How much of the quiet side to keep readable when an opened beat needs the rest.
+const QUIET_KEEP = 0.72;
+
+// Split a fixed timeline height between the opened beat and the other side.
+// The lane itself does not grow, so both sides stay inside the viewport.
+export function laneBands(height, selectedNeed, quietNeed, minQuiet = 160) {
+  const span = Math.max(0, Number(height) || 0);
+  if (!(span > 0)) return { selectedBand: 0, quietBand: 0 };
+  const floor = Math.min(Math.max(0, minQuiet), span / 2);
+  const need = Math.max(0, Number(selectedNeed) || 0);
+  const quiet = Math.max(0, Number(quietNeed) || 0);
+  if (need <= span / 2 && quiet <= span / 2) {
+    return { selectedBand: span / 2, quietBand: span / 2 };
+  }
+  const readableQuiet = Math.min(span / 2, Math.max(floor, quiet * QUIET_KEEP));
+  if (need + readableQuiet <= span) {
+    const selectedBand = Math.max(need, span / 2);
+    return { selectedBand, quietBand: span - selectedBand };
+  }
+  const selectedBand = Math.min(Math.max(need, span / 2), span - readableQuiet);
+  const band = Math.round(selectedBand);
+  return { selectedBand: band, quietBand: span - band };
+}
+
 export function youtubeId(url) {
   try {
     const parsed = new URL(url);
