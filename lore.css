@@ -4613,9 +4613,16 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   font-weight: 600;
 }
 
+.gun-state-laws-filter-hint {
+  margin: 0 0 4px;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
 .gun-state-laws-toggle-explain,
 .gun-state-laws-gun-type-explain {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   line-height: 1.4;
   color: var(--muted);
   font-weight: 400;
