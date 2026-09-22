@@ -27,6 +27,9 @@ import {
   resolvePlotView,
   relationEvents,
   parseRelationTimelineYear,
+  relationMoodLabel,
+  relationRideAt,
+  relationRideLayout,
   relationSentimentChart,
   relationTimelineHasTone,
   relationToneSeries,
@@ -735,6 +738,18 @@ assert.match(appSource, /renderRelationPage/, "full-page bilateral timeline view
 assert.match(appSource, /function paintPolicySelection/, "topic plots open a policy side panel");
 assert.match(appSource, /policy-drawer/, "policy panel reuses the drawer chrome");
 assert.match(appSource, /usesPolicyPanel/, "topic-plot clicks stay on the board");
+assert.match(appSource, /renderRelationRide/, "full page scrolls a rising and falling relationship");
+const ride = relationRideLayout(mexico.timeline);
+assert.ok(ride.width > 4000, "ride is wide enough to scroll");
+assert.equal(ride.samples.length > ride.points.length, true);
+assert.ok(ride.samples.every((sample, index) => !index || sample.x >= ride.samples[index - 1].x - 0.01));
+const high = ride.points.find((point) => point.tone === 2);
+const low = ride.points.find((point) => point.tone === -2);
+assert.ok(high.y < ride.zeroY && low.y > ride.zeroY);
+const mid = relationRideAt(ride, (high.x + low.x) / 2);
+assert.ok(mid.y > Math.min(high.y, low.y) && mid.y < Math.max(high.y, low.y));
+assert.equal(relationMoodLabel(2), "Warm");
+assert.equal(relationMoodLabel(-2), "Hostile");
 
 const obamaPeople = readJson("../data/barack-obama/people.json");
 const obamaEvents = readJson("../data/barack-obama/events.json");

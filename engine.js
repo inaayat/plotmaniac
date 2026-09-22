@@ -1087,6 +1087,102 @@ export function relationSentimentChart(timeline = [], options = {}) {
   };
 }
 
+function catmull(p0, p1, p2, p3, t) {
+  const t2 = t * t;
+  const t3 = t2 * t;
+  return 0.5 * (
+    (2 * p1) +
+    (-p0 + p2) * t +
+    (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2 +
+    (-p0 + 3 * p1 - 3 * p2 + p3) * t3
+  );
+}
+
+export function relationMoodLabel(tone) {
+  if (tone >= 1.25) return "Warm";
+  if (tone >= 0.4) return "Friendly";
+  if (tone > -0.4) return "Uneasy";
+  if (tone > -1.25) return "Strained";
+  return "Hostile";
+}
+
+// Horizontal ride: beats are evenly spaced so the ups and downs read as a scroll,
+// and the path between them is a smooth curve rather than a jagged chart.
+export function relationRideLayout(timeline = [], options = {}) {
+  const series = relationToneSeries(timeline);
+  const step = Math.max(160, Number(options.step) || 280);
+  const pathHeight = Math.max(220, Number(options.pathHeight) || 320);
+  const padX = Math.max(80, Number(options.padX) || 180);
+  const padTop = 36;
+  const padBottom = 28;
+  const innerH = Math.max(40, pathHeight - padTop - padBottom);
+  const width = Math.round(padX * 2 + Math.max(0, series.length - 1) * step);
+  const yAt = (tone) => padTop + innerH / 2 - (tone / 2) * (innerH / 2);
+  const placed = series.map((point, index) => ({
+    ...point,
+    x: padX + index * step,
+    y: yAt(point.tone),
+  }));
+  const samples = [];
+  if (placed.length === 1) {
+    samples.push({ x: placed[0].x, y: placed[0].y, tone: placed[0].tone });
+  } else if (placed.length > 1) {
+    for (let index = 0; index < placed.length - 1; index += 1) {
+      const p0 = placed[Math.max(0, index - 1)];
+      const p1 = placed[index];
+      const p2 = placed[index + 1];
+      const p3 = placed[Math.min(placed.length - 1, index + 2)];
+      const pieces = 28;
+      for (let stepIndex = 0; stepIndex < pieces; stepIndex += 1) {
+        const t = stepIndex / pieces;
+        const tone = catmull(p0.tone, p1.tone, p2.tone, p3.tone, t);
+        samples.push({
+          x: catmull(p0.x, p1.x, p2.x, p3.x, t),
+          y: Math.min(pathHeight - 8, Math.max(8, yAt(tone))),
+          tone,
+        });
+      }
+    }
+    const last = placed.at(-1);
+    samples.push({ x: last.x, y: last.y, tone: last.tone });
+  }
+  const path = samples.map((sample, index) => `${index ? "L" : "M"} ${sample.x.toFixed(1)} ${sample.y.toFixed(1)}`).join(" ");
+  return {
+    width,
+    pathHeight,
+    padX,
+    zeroY: yAt(0),
+    points: placed,
+    samples,
+    path,
+    step,
+  };
+}
+
+export function relationRideAt(layout, x) {
+  const samples = layout?.samples || [];
+  if (!samples.length) return { x: 0, y: 0, tone: 0 };
+  if (x <= samples[0].x) return { ...samples[0] };
+  const last = samples.at(-1);
+  if (x >= last.x) return { ...last };
+  let low = 0;
+  let high = samples.length - 1;
+  while (low < high - 1) {
+    const mid = (low + high) >> 1;
+    if (samples[mid].x < x) low = mid;
+    else high = mid;
+  }
+  const from = samples[low];
+  const to = samples[high];
+  const span = to.x - from.x || 1;
+  const t = (x - from.x) / span;
+  return {
+    x,
+    y: from.y + (to.y - from.y) * t,
+    tone: from.tone + (to.tone - from.tone) * t,
+  };
+}
+
 export function youtubeId(url) {
   try {
     const parsed = new URL(url);

@@ -22,6 +22,9 @@ import {
   plotHubs,
   relationsFieldEdges,
   relationsFieldLayout,
+  relationMoodLabel,
+  relationRideAt,
+  relationRideLayout,
   relationSentimentChart,
   relationTimelineHasTone,
   resolvePlotView,
@@ -919,32 +922,205 @@ function renderRelationPage() {
     section.append(back, emptyState("Choose a country on the web to read its timeline."));
     return section;
   }
-  const person = peopleById.get(state.country);
   const head = document.createElement("div");
-  head.className = "focus-head";
-  head.appendChild(avatar(person || { name: record.country }, "lg"));
+  head.className = "relation-ride-head";
   const copy = document.createElement("div");
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
-  eyebrow.textContent = `${statusLabel(record.status)} · bilateral timeline`;
+  eyebrow.textContent = `${statusLabel(record.status)} · scroll sideways`;
   const title = document.createElement("h2");
   title.id = "relation-page-title";
   title.textContent = `${plot.title} ↔ ${record.country}`;
-  const notes = document.createElement("p");
-  notes.className = "role";
-  notes.textContent = record.notes_summary || "";
-  copy.append(eyebrow, title, notes);
-  head.appendChild(copy);
-  const chartWidth = Math.min(1100, Math.max(320, Math.floor(window.innerWidth - 48)));
-  section.append(back, head, renderCountryHistory(record, { variant: "page", chartWidth }));
+  copy.append(eyebrow, title);
+  head.append(back, copy);
+  section.append(head);
+  if (relationTimelineHasTone(record.timeline)) section.appendChild(renderRelationRide(record));
+  else section.appendChild(renderCountryHistory(record));
   return section;
+}
+
+function renderRelationRide(record) {
+  const layout = relationRideLayout(record.timeline);
+  const root = document.createElement("div");
+  root.className = "relation-ride";
+  const readout = document.createElement("div");
+  readout.className = "relation-ride-readout";
+  const yearEl = document.createElement("p");
+  yearEl.className = "relation-ride-year";
+  const moodEl = document.createElement("p");
+  moodEl.className = "relation-ride-mood";
+  const eventEl = document.createElement("p");
+  eventEl.className = "relation-ride-event";
+  const hint = document.createElement("p");
+  hint.className = "relation-ride-hint";
+  hint.textContent = "Scroll sideways. They rise when the relationship warms and sink when it strains.";
+  readout.append(yearEl, moodEl, eventEl, hint);
+
+  const stage = document.createElement("div");
+  stage.className = "relation-ride-stage";
+  const scale = document.createElement("div");
+  scale.className = "relation-ride-scale";
+  scale.innerHTML = "<span>Warm</span><span>Strained</span>";
+  const scroller = document.createElement("div");
+  scroller.className = "relation-ride-scroll";
+  scroller.tabIndex = 0;
+  scroller.setAttribute("aria-label", "Relationship timeline. Scroll sideways.");
+  const track = document.createElement("div");
+  const cardTop = layout.pathHeight + 16;
+  track.className = "relation-ride-track";
+  track.style.width = `${layout.width}px`;
+  track.style.height = `${cardTop + 150}px`;
+  track.style.background = `linear-gradient(180deg, rgba(125, 206, 160, 0.16), rgba(224, 106, 98, 0.16) ${layout.pathHeight}px, transparent ${layout.pathHeight}px)`;
+
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("class", "relation-ride-svg");
+  svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.pathHeight}`);
+  svg.setAttribute("width", String(layout.width));
+  svg.setAttribute("height", String(layout.pathHeight));
+  const sky = document.createElementNS(SVG_NS, "rect");
+  sky.setAttribute("class", "relation-ride-sky");
+  sky.setAttribute("width", String(layout.width));
+  sky.setAttribute("height", String(layout.pathHeight));
+  const zero = document.createElementNS(SVG_NS, "line");
+  zero.setAttribute("class", "relation-ride-zero");
+  zero.setAttribute("x1", "0");
+  zero.setAttribute("x2", String(layout.width));
+  zero.setAttribute("y1", String(layout.zeroY));
+  zero.setAttribute("y2", String(layout.zeroY));
+  const trail = document.createElementNS(SVG_NS, "path");
+  trail.setAttribute("class", "relation-ride-path");
+  trail.setAttribute("d", layout.path);
+  svg.append(sky, zero, trail);
+  layout.points.forEach((point) => {
+    const mark = document.createElementNS(SVG_NS, "circle");
+    mark.setAttribute("class", "relation-ride-mark");
+    mark.setAttribute("cx", String(point.x));
+    mark.setAttribute("cy", String(point.y));
+    mark.setAttribute("r", "4");
+    svg.appendChild(mark);
+  });
+  track.appendChild(svg);
+
+  const cards = layout.points.map((point) => {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = `relation-ride-card ${relationToneClass(point.tone)}`;
+    card.style.left = `${point.x}px`;
+    card.style.top = `${cardTop}px`;
+    card.style.setProperty("--stem", `${Math.max(18, cardTop - point.y)}px`);
+    const year = document.createElement("span");
+    year.textContent = String(record.timeline[point.index]?.year || point.year);
+    const text = document.createElement("p");
+    text.textContent = point.event;
+    card.append(year, text);
+    card.addEventListener("click", () => {
+      scroller.scrollTo({ left: point.x - scroller.clientWidth / 2, behavior: "smooth" });
+    });
+    track.appendChild(card);
+    return card;
+  });
+
+  scroller.appendChild(track);
+  const rider = renderRelationRider();
+  stage.append(scale, scroller, rider);
+  root.append(readout, stage);
+
+  const paint = () => {
+    const x = scroller.scrollLeft + scroller.clientWidth / 2;
+    const here = relationRideAt(layout, x);
+    rider.style.top = `${here.y}px`;
+    paintRelationRider(rider, here.tone);
+    let nearest = layout.points[0];
+    layout.points.forEach((point) => {
+      if (Math.abs(point.x - x) < Math.abs(nearest.x - x)) nearest = point;
+    });
+    yearEl.textContent = String(record.timeline[nearest.index]?.year || nearest.year);
+    moodEl.textContent = relationMoodLabel(here.tone);
+    moodEl.dataset.mood = relationToneClass(here.tone);
+    eventEl.textContent = nearest.event;
+    cards.forEach((card, index) => {
+      card.classList.toggle("is-now", layout.points[index] === nearest);
+    });
+  };
+  scroller.addEventListener("scroll", paint, { passive: true });
+  scroller.addEventListener("wheel", (event) => {
+    if (Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return;
+    event.preventDefault();
+    scroller.scrollLeft += event.deltaY;
+  }, { passive: false });
+  requestAnimationFrame(paint);
+  return root;
+}
+
+function renderRelationRider() {
+  const rider = document.createElement("div");
+  rider.className = "relation-rider";
+  rider.setAttribute("aria-hidden", "true");
+  rider.innerHTML = `
+    <svg viewBox="0 0 128 78" width="128" height="78">
+      <path class="rider-string" d="M34 40 Q64 48 94 40" fill="none" stroke="#e8c47a" stroke-width="2" stroke-linecap="round"/>
+      <g class="rider-mx">
+        <clipPath id="rider-mx-clip"><circle cx="34" cy="36" r="15"/></clipPath>
+        <g clip-path="url(#rider-mx-clip)">
+          <rect x="19" y="21" width="10" height="30" fill="#006847"/>
+          <rect x="29" y="21" width="10" height="30" fill="#fff"/>
+          <rect x="39" y="21" width="10" height="30" fill="#ce1126"/>
+        </g>
+        <circle cx="34" cy="36" r="15" fill="none" stroke="#1a1612" stroke-width="1.5"/>
+      </g>
+      <g class="rider-us">
+        <clipPath id="rider-us-clip"><circle cx="94" cy="36" r="15"/></clipPath>
+        <g clip-path="url(#rider-us-clip)">
+          <rect x="79" y="21" width="30" height="30" fill="#bf0a30"/>
+          <rect x="79" y="25" width="30" height="3" fill="#fff"/>
+          <rect x="79" y="31" width="30" height="3" fill="#fff"/>
+          <rect x="79" y="37" width="30" height="3" fill="#fff"/>
+          <rect x="79" y="43" width="30" height="3" fill="#fff"/>
+          <rect x="79" y="21" width="14" height="12" fill="#002868"/>
+        </g>
+        <circle cx="94" cy="36" r="15" fill="none" stroke="#1a1612" stroke-width="1.5"/>
+      </g>
+      <g class="rider-face" transform="translate(64 30)">
+        <circle r="16" fill="#f4e2c4" stroke="#1a1612" stroke-width="1.5"/>
+        <path class="rider-eye rider-eye-l" d="M-7 -1 q1.6 -2.4 3.2 0" fill="none" stroke="#1a1612" stroke-width="1.4" stroke-linecap="round"/>
+        <path class="rider-eye rider-eye-r" d="M3.8 -1 q1.6 -2.4 3.2 0" fill="none" stroke="#1a1612" stroke-width="1.4" stroke-linecap="round"/>
+        <path class="rider-mouth" d="M-6 5 Q0 11 6 5" fill="none" stroke="#1a1612" stroke-width="1.5" stroke-linecap="round"/>
+      </g>
+    </svg>
+  `;
+  return rider;
+}
+
+function paintRelationRider(rider, tone) {
+  const clamped = Math.max(-2, Math.min(2, tone));
+  const smile = clamped / 2;
+  const mouth = rider.querySelector(".rider-mouth");
+  const string = rider.querySelector(".rider-string");
+  const eyes = rider.querySelectorAll(".rider-eye");
+  if (mouth) {
+    const curve = 6 - smile * 10;
+    mouth.setAttribute("d", `M-6 5 Q0 ${curve.toFixed(1)} 6 5`);
+  }
+  if (string) {
+    const sag = 46 - smile * 22;
+    string.setAttribute("d", `M34 40 Q64 ${sag.toFixed(1)} 94 40`);
+  }
+  eyes.forEach((eye, index) => {
+    const start = index === 0 ? -7 : 3.8;
+    const lift = -1 - smile * 1.2;
+    const bend = -2.2 - smile * 1.4;
+    eye.setAttribute("d", `M${start} ${lift.toFixed(1)} q1.6 ${bend.toFixed(1)} 3.2 0`);
+  });
+  rider.dataset.mood = relationToneClass(clamped);
 }
 
 function renderCountryHistory(record, { variant = "drawer", chartWidth } = {}) {
   const block = document.createElement("div");
   block.className = `country-history${variant === "page" ? " is-page" : ""}`;
   const width = chartWidth || (variant === "page" ? 1100 : 360);
-  const chartWrap = relationTimelineHasTone(record.timeline) ? renderRelationSentimentChart(record, { width, tall: variant === "page" }) : null;
+  const chartWrap = variant === "drawer" && relationTimelineHasTone(record.timeline)
+    ? renderRelationSentimentChart(record, { width, tall: false })
+    : null;
   if (chartWrap) block.appendChild(chartWrap.root);
   const list = document.createElement("ol");
   list.className = "relation-timeline";
