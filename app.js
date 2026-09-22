@@ -706,8 +706,9 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
 function renderWeb() {
   const hubWeb = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2);
   const compactMap = isCompact() && plot.arrangement !== "camps" && plot.arrangement !== "topics";
+  const compactTopics = isCompact() && plot.arrangement === "topics";
   const section = document.createElement("section");
-  section.className = `web${compactMap ? " is-compact-map" : ""}${hubWeb ? " is-hub-field" : ""}`;
+  section.className = `web${compactMap ? " is-compact-map" : ""}${compactTopics ? " is-compact-topics" : ""}${hubWeb ? " is-hub-field" : ""}`;
   const key = document.createElement("ul");
   key.className = "web-key";
   const keyItems = [
@@ -739,6 +740,8 @@ function renderWeb() {
     "aria-label",
     compactMap
       ? "Friends and foes map. Drag to look around. Names are listed below."
+      : compactTopics
+        ? "Policies for this year, grouped by topic. Tap one to read the stance."
       : hubWeb
         ? "YouTuber web. Shared people sit in the center, hubs just outside. None shows that shared web. All shows every person on it. One hub shows only that hub's own people. The view zooms to fit the current focus."
         : "Friends and foes map",
@@ -758,7 +761,7 @@ function renderWeb() {
     section.appendChild(hint);
   }
   section.append(scroller);
-  if (compactMap) {
+  if (compactMap || compactTopics) {
     const roster = document.createElement("div");
     roster.className = "web-people";
     section.appendChild(roster);
@@ -1732,6 +1735,11 @@ function paintWeb(stage, { animate = true } = {}) {
     stage.style.width = `${size}px`;
     stage.style.height = `${size}px`;
     stage.classList.add("is-compact-map");
+  } else if (compact && topics) {
+    width = 320;
+    height = 320;
+    stage.style.width = "";
+    stage.style.height = "";
   } else {
     if (bounds.width < 2 || bounds.height < 2) {
       requestAnimationFrame(() => paintWeb(stage, { animate }));
@@ -1935,13 +1943,26 @@ function applyHubCamera(stage, layout, { animate = true } = {}) {
   hubCamera = frame;
 }
 
+function topicPeopleGroups(nodes, byName) {
+  const topics = plot.topics || [];
+  return topics.map((topic) => {
+    const list = nodes
+      .filter((node) => node.topic === topic.id && node.camp !== "topic" && node.camp !== "center")
+      .slice()
+      .sort(byName);
+    return [topic.id, topic.label, list];
+  }).filter(([, , list]) => list.length);
+}
+
 function paintWebPeople(root, layout) {
   const byName = (a, b) => String(a.name).localeCompare(String(b.name), "en", { sensitivity: "base" });
-  const groups = [
-    ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends", layout.nodes.filter((node) => node.camp === "friend").slice().sort(byName)],
-    ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes", layout.nodes.filter((node) => node.camp === "enemy").slice().sort(byName)],
-  ];
-  if (plot.includeOrbit) {
+  const groups = plot.arrangement === "topics"
+    ? topicPeopleGroups(layout.nodes, byName)
+    : [
+      ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends", layout.nodes.filter((node) => node.camp === "friend").slice().sort(byName)],
+      ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes", layout.nodes.filter((node) => node.camp === "enemy").slice().sort(byName)],
+    ];
+  if (plot.arrangement !== "topics" && plot.includeOrbit) {
     groups.push(["orbit", plot.orbitLabel || "Around the show", layout.nodes.filter((node) => node.camp === "orbit").slice().sort(byName)]);
   }
   root.replaceChildren();
@@ -1957,13 +1978,13 @@ function paintWebPeople(root, layout) {
       const item = document.createElement("li");
       const button = document.createElement("button");
       button.type = "button";
-      button.className = `web-person camp-${camp}`;
+      button.className = `web-person camp-${person.camp || camp}`;
       const name = document.createElement("span");
       name.className = "chip-name";
       name.textContent = person.name;
       button.append(avatar(person, "sm"), name);
       const beats = person.beats ? ` · ${person.beats} ${person.beats === 1 ? "beat" : "beats"}` : "";
-      button.setAttribute("aria-label", `${person.name}, ${campLabel(camp)}${beats}`);
+      button.setAttribute("aria-label", `${person.name}, ${campLabel(person.camp || camp) || label}${beats}`);
       button.addEventListener("click", () => openPerson(person.id));
       item.appendChild(button);
       chips.appendChild(item);

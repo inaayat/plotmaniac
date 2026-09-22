@@ -24,6 +24,21 @@ body[data-board="history"] h1 {
   font-size: clamp(3rem, 7vw, 4.6rem);
 }
 
+body[data-board="history"][data-view="person"] h1,
+body[data-board="history"][data-view="timeline"] h1 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+html:has(body[data-board="history"][data-view="person"]),
+html:has(body[data-board="history"][data-view="timeline"]) {
+  overflow-y: auto;
+}
+
+body[data-board="history"][data-view="person"],
+body[data-board="history"][data-view="timeline"] {
+  overflow-y: auto;
+}
+
 body[data-board="history"] .mark {
   display: block;
   width: min(280px, 72%);
@@ -31,11 +46,15 @@ body[data-board="history"] .mark {
 }
 
 body[data-board="history"] .lede,
-body[data-board="history"][data-view="timeline"] .lede,
-body[data-board="history"][data-view="person"] .lede {
+body[data-board="history"][data-view="timeline"] .lede {
   display: block;
   text-align: left;
   max-width: 62ch;
+}
+
+body[data-board="history"][data-view="person"] .lede,
+body[data-board="history"][data-view="person"] .mark {
+  display: none;
 }
 
 body[data-board="history"] .views {
@@ -518,12 +537,51 @@ body[data-board="history"][data-view="person"] #footer-note {
   padding: 0;
 }
 
+.partition-person-page {
+  width: min(860px, 100%);
+}
+
+.partition-person-page .back {
+  margin: 4px 0 18px;
+}
+
 .partition-person-head {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 16px;
-  align-items: center;
-  margin: 8px 0 16px;
+  gap: 20px 24px;
+  align-items: start;
+  margin: 0 0 28px;
+}
+
+.partition-person-page h2 {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.08;
+  margin: 6px 0 8px;
+  overflow-wrap: anywhere;
+}
+
+.partition-person-full,
+.partition-person-allegiance {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.partition-person-allegiance {
+  margin-top: 8px;
+}
+
+.partition-portrait-fallback {
+  width: 120px;
+  height: 120px;
+  display: grid;
+  place-items: center;
+}
+
+.partition-portrait-fallback .partition-monogram,
+.partition-portrait-fallback .partition-chip-photo {
+  width: 120px;
+  height: 120px;
 }
 
 .partition-portrait {
@@ -531,8 +589,8 @@ body[data-board="history"][data-view="person"] #footer-note {
 }
 
 .partition-portrait img {
-  width: 96px;
-  height: 96px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid var(--line-strong);
@@ -569,7 +627,176 @@ body[data-board="history"][data-view="person"] #footer-note {
 }
 
 .partition-person-brief {
+  max-width: none;
+  display: grid;
+  gap: 22px;
+}
+
+.partition-read,
+.partition-stances,
+.partition-stance-card,
+.partition-beat-card {
+  padding: 18px 20px 20px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.partition-read h3,
+.partition-stances h3,
+.partition-stance-card h3,
+.partition-person-timeline > h3 {
+  margin-bottom: 8px;
+}
+
+.partition-read p {
   max-width: 68ch;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.partition-stance-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.partition-stance-card.is-wanted {
+  border-color: rgba(232, 196, 122, 0.35);
+}
+
+.partition-stance-card.is-opposed {
+  border-color: rgba(224, 106, 98, 0.35);
+}
+
+.partition-stance-hint,
+.partition-empty-stance {
+  color: var(--muted);
+  font-size: 0.68rem;
+  margin-bottom: 10px;
+}
+
+.partition-stance-grid {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.4fr) minmax(0, 1fr);
+  gap: 10px 18px;
+  margin-top: 12px;
+}
+
+.partition-stance-grid dt {
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.partition-stance-grid dd {
+  color: var(--ink);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.partition-person-timeline {
+  margin-top: 36px;
+}
+
+.partition-person-spine {
+  margin-top: 18px;
+}
+
+.partition-beat-card {
+  min-width: 0;
+}
+
+.partition-beat-card > strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.partition-beat-summary,
+.partition-own-action li,
+.partition-cast-copy p {
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.partition-own-action {
+  margin-top: 14px;
+}
+
+.partition-beat-card h4,
+.partition-person-page h4 {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 16px 0 8px;
+}
+
+.partition-cast-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.partition-cast-card {
+  border: 1px solid var(--line);
+  background: rgba(12, 11, 9, 0.35);
+}
+
+.partition-cast-card.is-self {
+  border-color: rgba(232, 196, 122, 0.4);
+}
+
+.partition-cast-hit,
+.partition-cast-body {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  align-items: start;
+}
+
+.partition-cast-hit {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+.partition-cast-hit:hover,
+.partition-cast-hit:focus-visible {
+  background: rgba(232, 196, 122, 0.06);
+}
+
+.partition-cast-face .partition-chip-photo,
+.partition-cast-face .partition-monogram {
+  width: 48px;
+  height: 48px;
+}
+
+.partition-cast-copy strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.partition-cast-allegiance,
+.partition-cast-incentive {
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.partition-cast-action {
+  margin-top: 6px;
+}
+
+.partition-inline-players,
+.partition-more .partition-cast-list {
+  margin-top: 10px;
 }
 
 .partition .spine-copy time {
@@ -602,9 +829,87 @@ body[data-board="history"][data-view="person"] #footer-note {
 
 @media (max-width: 800px) {
   .partition-figure { grid-template-columns: 1fr; }
-  .partition-map { max-height: none; }
+  .partition-map { max-height: 240px; }
   .partition-now { grid-template-columns: 1fr; }
   .partition-now h2 { white-space: normal; }
-  .partition-ticks button:nth-child(odd) { display: none; }
-  body[data-board="history"] h1 { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+  body[data-board="history"] .mast {
+    width: calc(100% - 24px);
+    padding: calc(16px + var(--safe-top)) 0 4px;
+  }
+  body[data-board="history"] .mark { display: none; }
+  body[data-board="history"] .lede {
+    font-size: 0.84rem;
+    max-width: none;
+  }
+  body[data-board="history"] h1 { font-size: clamp(2rem, 10vw, 2.6rem); }
+  body[data-board="history"][data-view="person"] h1,
+  body[data-board="history"][data-view="timeline"] h1 {
+    font-size: 1.35rem;
+  }
+  body[data-board="history"] .views {
+    width: 100%;
+    gap: 6px;
+  }
+  body[data-board="history"] .app,
+  body[data-board="history"][data-view="person"] .app,
+  body[data-board="history"][data-view="timeline"] .app {
+    width: calc(100% - 24px);
+    padding-bottom: 40px;
+  }
+  .partition-ticks {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    margin-top: 8px;
+    padding-bottom: 4px;
+  }
+  .partition-ticks button {
+    position: static;
+    transform: none;
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 8px 10px;
+  }
+  .partition-ticks button:nth-child(odd) { display: inline-flex; }
+  .partition-cast {
+    grid-template-columns: 1fr;
+  }
+  .partition-card {
+    grid-template-columns: 56px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    justify-items: start;
+    align-items: center;
+    text-align: left;
+    min-height: 72px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+  }
+  .partition-card .partition-chip-photo,
+  .partition-card .partition-monogram {
+    width: 56px;
+    height: 56px;
+    grid-row: 1 / span 2;
+  }
+  .partition-person-head,
+  .partition-stance-pair,
+  .partition-stance-grid {
+    grid-template-columns: 1fr;
+  }
+  .partition-portrait img,
+  .partition-portrait-fallback,
+  .partition-portrait-fallback .partition-monogram,
+  .partition-portrait-fallback .partition-chip-photo {
+    width: 88px;
+    height: 88px;
+  }
+  .partition-read,
+  .partition-stances,
+  .partition-stance-card,
+  .partition-beat-card {
+    padding: 14px 14px 16px;
+  }
 }
