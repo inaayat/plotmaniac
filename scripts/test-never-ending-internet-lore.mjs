@@ -6,6 +6,7 @@ import {
   countriesByRegion,
   coversYear,
   eventTease,
+  expandedSummary,
   filterEvents,
   firstLoadCountries,
   graphLayout,
@@ -53,6 +54,9 @@ for (const event of events) {
     assert.ok(link.label && link.type, `${event.id} source needs label and type`);
   });
   assert.ok(eventTease(event).length <= 140, `${event.id} tease is too long`);
+  const body = expandedSummary(event);
+  assert.notEqual(body, event.title, `${event.id} opened summary repeats the title`);
+  assert.ok(body.startsWith(eventTease(event, 140).replace(/…$/, "").trim()), `${event.id} preview repeats outside the summary`);
 }
 
 assert.ok(events.some((event) => event.date.startsWith("2025-")), "needs verified 2025 coverage");
@@ -321,6 +325,7 @@ for (const country of usCountries) {
 for (const event of usEvents) {
   assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, event.id);
   assert.ok(eventTease(event).length <= 140, event.id);
+  assert.equal(expandedSummary(event), "", `${event.id} opened summary repeats the title`);
   event.people.forEach((id) => assert.ok(usIds.has(id), `${event.id} references ${id}`));
   assert.ok(event.links?.length, event.id);
 }

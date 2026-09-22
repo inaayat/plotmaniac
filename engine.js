@@ -26,6 +26,15 @@ export function eventTease(event, limit = 132) {
   return `${short.slice(0, boundary > 60 ? boundary : limit).trim()}…`;
 }
 
+// Body copy for an opened beat. The closed card already shows the title and a
+// preview of this text, so an opened card omits a summary that only repeats them.
+export function expandedSummary(event) {
+  const summary = String(event?.summary || "").trim();
+  const title = String(event?.title || "").trim();
+  if (!summary || summary === title) return "";
+  return summary;
+}
+
 export function eraLabel(id) {
   return String(id || "")
     .replace(/-/g, " ")
