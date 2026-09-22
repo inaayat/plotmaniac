@@ -252,7 +252,14 @@
         "label": "Profile",
         "url": "https://en.wikipedia.org/wiki/Sneako"
       }
-    ]
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sneako.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Sneako.jpg",
+      "author": "Unknown",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
   },
   {
     "id": "jordan-peterson",
@@ -596,7 +603,14 @@
         "label": "Profile",
         "url": "https://en.wikipedia.org/wiki/Jason_Nash"
       }
-    ]
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jason%20Nash.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jason_Nash.jpg",
+      "author": "CleftClips",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
   },
   {
     "id": "aaron-gilfoy",
@@ -705,7 +719,14 @@
         "label": "Profile",
         "url": "https://en.wikipedia.org/wiki/Tana_Mongeau"
       }
-    ]
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tana%20Mongeau.png?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tana_Mongeau.png",
+      "author": "Tanner Fox",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
   },
   {
     "id": "casey-neistat",
@@ -720,7 +741,14 @@
         "label": "Profile",
         "url": "https://en.wikipedia.org/wiki/Casey_Neistat"
       }
-    ]
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Casey%20Neistat.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Casey_Neistat.jpg",
+      "author": "Tessa Bury",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+    }
   },
   {
     "id": "seth-francois",
@@ -749,7 +777,14 @@
         "label": "Profile",
         "url": "https://en.wikipedia.org/wiki/Gabbie_Hanna"
       }
-    ]
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Gabbie%20Hanna.png?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Gabbie_Hanna.png",
+      "author": "Travis Mills",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
   },
   {
     "id": "alex-ernst",
@@ -807,7 +842,14 @@
         "label": "Profile",
         "url": "https://en.wikipedia.org/wiki/Shane_Dawson"
       }
-    ]
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Shane%20Dawson%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Shane_Dawson_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
   },
   {
     "id": "jeffree-star",
@@ -822,7 +864,14 @@
         "label": "Profile",
         "url": "https://en.wikipedia.org/wiki/Jeffree_Star"
       }
-    ]
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeffree%20Star%20crop.png?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jeffree_Star_crop.png",
+      "author": "dvsross",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
   },
   {
     "id": "colleen-ballinger",
@@ -837,7 +886,14 @@
         "label": "Profile",
         "url": "https://en.wikipedia.org/wiki/Colleen_Ballinger"
       }
-    ]
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Colleen%20Ballinger%20Waitress%202019.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Colleen_Ballinger_Waitress_2019.jpg",
+      "author": "Ssilvers",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
   },
   {
     "id": "oscar-gracey",

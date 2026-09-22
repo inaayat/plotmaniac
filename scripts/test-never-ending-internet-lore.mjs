@@ -174,7 +174,7 @@ assert.equal(campOf("oscar-gracey", relations, "trisha-paytas", youtubers.friend
 assert.equal(campOf("gabbie-hanna", relations, "trisha-paytas", youtubers.friendKinds, youtubers.enemyKinds), "enemy");
 assert.equal(campOf("oscar-gracey", relations, youtubers.centerId, youtubers.friendKinds, youtubers.enemyKinds), "orbit");
 
-const allowedLicenses = new Set(["CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 2.0", "CC BY-SA 3.0", "Public domain"]);
+const allowedLicenses = new Set(["CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 2.0", "CC BY-SA 3.0", "CC BY-SA 4.0", "CC0", "Public domain"]);
 for (const person of people) {
   if (!person.portrait) continue;
   assert.match(person.portrait.src, /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//, person.id);
@@ -182,6 +182,8 @@ for (const person of people) {
   assert.ok(allowedLicenses.has(person.portrait.license), `${person.id} portrait license`);
   assert.ok(person.portrait.author && person.portrait.licenseUrl, `${person.id} portrait credit`);
 }
+assert.ok(people.find((person) => person.id === "casey-neistat").portrait, "Casey Neistat has a Commons portrait");
+assert.ok(people.find((person) => person.id === "tana-mongeau").portrait, "Tana Mongeau has a Commons portrait");
 
 const layout = webLayout(people, relations, {
   centerId: youtubers.centerId,
