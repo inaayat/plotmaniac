@@ -12,6 +12,7 @@ import {
   firstLoadCountries,
   groupCountriesByStatus,
   hubCenterId,
+  hubFrame,
   hubOf,
   initials,
   neighborhood,
@@ -82,6 +83,7 @@ const VIEW_PREF_KEY = "plotmaniac-view";
 let laneZoom = 1;
 let pendingLaneScroll = null;
 let pendingLaneFocus = "";
+let hubCamera = null;
 
 function isCompact() {
   return window.matchMedia(COMPACT_MQ).matches;
@@ -230,6 +232,7 @@ function readYear(url = location.href) {
 }
 
 async function showPlot(id, { history = "push", fromUrl = false } = {}) {
+  hubCamera = null;
   const next = findPlot(plots, id);
   if (!next) {
     showPicker({ history });
@@ -365,6 +368,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
 }
 
 function showPicker({ history = "push" } = {}) {
+  hubCamera = null;
   loadToken += 1;
   clearPartition();
   plot = null;
@@ -537,13 +541,17 @@ function fillHubSelect() {
   none.value = "";
   none.textContent = "None";
   select.appendChild(none);
+  const everyone = document.createElement("option");
+  everyone.value = ALL;
+  everyone.textContent = "All";
+  select.appendChild(everyone);
   hubs.forEach((hub) => {
     const option = document.createElement("option");
     option.value = hub.id;
     option.textContent = hub.label;
     select.appendChild(option);
   });
-  select.value = state.hub && hubs.some((hub) => hub.id === state.hub) ? state.hub : "";
+  select.value = state.hub === ALL || (state.hub && hubs.some((hub) => hub.id === state.hub)) ? state.hub : "";
   wrap.hidden = false;
 }
 
@@ -641,7 +649,7 @@ function renderWeb() {
   const hubWeb = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2);
   const compactMap = isCompact() && plot.arrangement !== "camps" && plot.arrangement !== "topics";
   const section = document.createElement("section");
-  section.className = `web${compactMap ? " is-compact-map" : ""}`;
+  section.className = `web${compactMap ? " is-compact-map" : ""}${hubWeb ? " is-hub-field" : ""}`;
   const key = document.createElement("ul");
   key.className = "web-key";
   const keyItems = [
@@ -668,13 +676,13 @@ function renderWeb() {
     : plot.arrangement === "topics"
       ? " is-topics"
         : compactMap ? " is-map" : "";
-  scroller.className = `web-scroll${scrollKind}`;
+  scroller.className = `web-scroll${scrollKind}${hubWeb ? " is-hub-field" : ""}`;
   scroller.setAttribute(
     "aria-label",
     compactMap
       ? "Friends and foes map. Drag to look around. Names are listed below."
       : hubWeb
-        ? "YouTuber web. Shared people sit in the center, hubs just outside. None shows that shared web. One-hub people appear only while that hub is the focus."
+        ? "YouTuber web. Shared people sit in the center, hubs just outside. None shows that shared web. All shows every person on it. One hub shows only that hub's own people. The view zooms to fit the current focus."
         : "Friends and foes map",
   );
   const stage = document.createElement("div");
@@ -1645,9 +1653,20 @@ function paintWeb(stage, { animate = true } = {}) {
   const camps = plot.arrangement === "camps";
   const topics = plot.arrangement === "topics";
   const bubbles = plot.images === "bubbles";
+  const hubField = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2 && !camps && !topics);
   let width;
   let height;
-  if (compact && !camps && !topics) {
+  if (hubField) {
+    const viewW = scroller?.clientWidth || 0;
+    const viewH = scroller?.clientHeight || 0;
+    if (viewW < 2 || viewH < 2) {
+      requestAnimationFrame(() => paintWeb(stage, { animate }));
+      return;
+    }
+    width = Math.max(320, viewW);
+    height = Math.max(260, viewH);
+    stage.classList.remove("is-compact-map");
+  } else if (compact && !camps && !topics) {
     const viewport = Math.max(scroller?.clientWidth || 0, bounds.width, 320);
     const size = Math.max(1120, Math.round(viewport * 2.8));
     width = size;
@@ -1666,6 +1685,7 @@ function paintWeb(stage, { animate = true } = {}) {
   }
   const layout = webLayout(people, relations, {
     centerId: plotHubs(plot).length ? activeCenter() : (activeCenter() || plot.centerId),
+    revealAll: state.hub === ALL,
     friendKinds: plot.friendKinds,
     enemyKinds: plot.enemyKinds,
     arrangement: plot.arrangement,
@@ -1680,7 +1700,11 @@ function paintWeb(stage, { animate = true } = {}) {
     hubs: plotHubs(plot),
   });
   stage.classList.toggle("is-quiet", !animate);
-  if (layout.height > height + 2 || ((camps || topics) && layout.height >= height)) stage.style.height = `${layout.height}px`;
+  stage.classList.toggle("is-hub-field", hubField);
+  if (hubField) {
+    stage.style.width = `${layout.width}px`;
+    stage.style.height = `${layout.height}px`;
+  } else if (layout.height > height + 2 || ((camps || topics) && layout.height >= height)) stage.style.height = `${layout.height}px`;
   else if (!(compact && !camps)) stage.style.height = "";
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);
@@ -1808,13 +1832,49 @@ function paintWeb(stage, { animate = true } = {}) {
     const foeCount = layout.nodes.filter((node) => node.camp === "enemy").length;
     counts.textContent = `${friendCount} ${countWord("friend", friendCount)} · ${foeCount} ${countWord("enemy", foeCount)}`;
   }
-  if (compact && !camps && !topics && scroller) {
+  if (hubField) applyHubCamera(stage, layout, { animate });
+  else if (compact && !camps && !topics && scroller) {
     scroller.scrollLeft = Math.max(0, (stage.offsetWidth - scroller.clientWidth) / 2);
     scroller.scrollTop = Math.max(0, (stage.offsetHeight - scroller.clientHeight) / 2);
   }
   const roster = stage.closest(".web")?.querySelector(".web-people");
   if (roster) paintWebPeople(roster, layout);
   if (usesPolicyPanel(plot)) paintPolicySelection(stage.closest(".web"));
+}
+
+function applyHubCamera(stage, layout, { animate = true } = {}) {
+  const scroller = stage.parentElement;
+  const viewWidth = scroller?.clientWidth || 0;
+  const viewHeight = scroller?.clientHeight || 0;
+  const frame = hubFrame(layout.nodes, {
+    viewWidth,
+    viewHeight,
+    boxW: Math.max(layout.boxW || 0, isCompact() ? 104 : 128),
+    boxH: Math.max(layout.boxH || 0, isCompact() ? 96 : 116),
+  });
+  const transform = (camera) => `translate(${camera.x.toFixed(2)}px, ${camera.y.toFixed(2)}px) scale(${camera.scale.toFixed(4)})`;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const previous = hubCamera;
+  if (animate && !reduced && previous) {
+    stage.style.transition = "none";
+    stage.style.transform = transform(previous);
+    stage.offsetWidth;
+    stage.style.transition = "";
+    stage.style.transform = transform(frame);
+  } else if (animate && !reduced) {
+    const scale = frame.scale * 0.9;
+    const cx = (viewWidth / 2 - frame.x) / frame.scale;
+    const cy = (viewHeight / 2 - frame.y) / frame.scale;
+    stage.style.transition = "none";
+    stage.style.transform = transform({ scale, x: viewWidth / 2 - cx * scale, y: viewHeight / 2 - cy * scale });
+    stage.offsetWidth;
+    stage.style.transition = "";
+    stage.style.transform = transform(frame);
+  } else {
+    stage.style.transition = "none";
+    stage.style.transform = transform(frame);
+  }
+  hubCamera = frame;
 }
 
 function paintWebPeople(root, layout) {

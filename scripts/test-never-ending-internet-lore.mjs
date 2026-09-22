@@ -15,6 +15,7 @@ import {
   graphLayout,
   groupCountriesByStatus,
   hubCenterId,
+  hubFrame,
   hubOf,
   hubsForPerson,
   WEB_MIN_BEATS,
@@ -420,6 +421,17 @@ assert.doesNotMatch(
   /hub=/,
 );
 assert.equal(hubCenterId(youtubers, ""), "");
+assert.equal(hubOf(youtubers, "all"), null);
+assert.equal(hubCenterId(youtubers, "all"), "");
+assert.equal(
+  parseState("https://plotmaniac.com/?plot=youtubers&hub=all", { hubs: new Set(["h3", "dobrik", "trisha", "jeffree"]) }).hub,
+  "all",
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "youtubers", hub: "all" }, ""),
+  /hub=all/,
+);
+assert.equal(filterEvents(events, { hub: "all" }, peopleById).length, events.length, "All keeps every beat on the timeline");
 
 assert.equal(WEB_MIN_BEATS, 2);
 assert.deepEqual(hubsForPerson("dan-swerdlove", relations, ["ethan-klein", "david-dobrik", "trisha-paytas"]), ["ethan-klein"]);
@@ -563,6 +575,48 @@ assert.equal(openWeb.nodes.find((node) => node.id === "ethan-klein").camp, "orbi
 assert.equal(openWeb.nodes.find((node) => node.id === "jeffree-star").plotHub, true);
 assert.equal(openWeb.nodes.filter((node) => node.ring === "hub").length, 4);
 assert.equal(coreKey(sharedWeb), coreKey(openWeb), "clearing focus does not move hubs or shared people");
+const allWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "", revealAll: true });
+const ethanExclusive = sharedWeb.nodes.filter((node) => node.ring === "exclusive").map((node) => node.id).sort();
+const davidExclusive = dobrikWeb.nodes.filter((node) => node.ring === "exclusive").map((node) => node.id).sort();
+const jeffreeExclusive = jeffreeWeb.nodes.filter((node) => node.ring === "exclusive").map((node) => node.id).sort();
+const allExclusive = allWeb.nodes.filter((node) => node.ring === "exclusive").map((node) => node.id).sort();
+assert.deepEqual(allExclusive, [...ethanExclusive, ...davidExclusive, ...jeffreeExclusive].sort(), "All shows every hub's own people");
+assert.equal(allWeb.nodes.filter((node) => node.camp === "center").length, 0);
+assert.equal(allWeb.nodes.find((node) => node.id === "ethan-klein").camp, "orbit");
+assert.equal(allWeb.nodes.find((node) => node.id === "dan-swerdlove").hubId, "ethan-klein");
+assert.equal(allWeb.nodes.find((node) => node.id === "dom-zeglaitis").hubId, "david-dobrik");
+assert.equal(allWeb.nodes.find((node) => node.id === "jackie-aina").hubId, "jeffree-star");
+assert.equal(allWeb.nodes.find((node) => node.id === "nik-keswani"), undefined, "one-beat people stay off All");
+assert.equal(allWeb.nodes.find((node) => node.id === "kat-von-d"), undefined);
+assert.equal(coreKey(sharedWeb), coreKey(allWeb), "All does not move hubs or shared people");
+function frameFits(layout, view, camera) {
+  const boxW = view.boxW;
+  const boxH = view.boxH;
+  return layout.nodes.every((node) => {
+    const left = camera.x + (node.x - boxW / 2) * camera.scale;
+    const right = camera.x + (node.x + boxW / 2) * camera.scale;
+    const top = camera.y + (node.y - boxH / 2) * camera.scale;
+    const bottom = camera.y + (node.y + boxH / 2) * camera.scale;
+    return left >= -1 && top >= -1 && right <= view.viewWidth + 1 && bottom <= view.viewHeight + 1;
+  });
+}
+const wideView = { viewWidth: 1440, viewHeight: 860, boxW: 128, boxH: 116, pad: 28, maxScale: 4 };
+const shortView = { viewWidth: 900, viewHeight: 520, boxW: 128, boxH: 116, pad: 28, maxScale: 4 };
+const noneWide = hubFrame(openWeb.nodes, wideView);
+const ethanWide = hubFrame(sharedWeb.nodes, wideView);
+const allWide = hubFrame(allWeb.nodes, wideView);
+const tight = [{ x: 200, y: 200 }, { x: 260, y: 220 }];
+const wideSpread = [...tight, { x: 900, y: 200 }, { x: 200, y: 780 }];
+const zoomView = { viewWidth: 1000, viewHeight: 700, boxW: 80, boxH: 80, pad: 20, maxScale: 6 };
+assert.ok(hubFrame(tight, zoomView).scale > hubFrame(wideSpread, zoomView).scale, "a tighter focus zooms in");
+assert.ok(allWide.scale < noneWide.scale, "All zooms out to hold every person");
+assert.ok(allWide.scale <= ethanWide.scale, "All is at least as wide as one hub");
+assert.ok(hubFrame(openWeb.nodes, wideView).scale > hubFrame(openWeb.nodes, shortView).scale, "a larger page zooms in more");
+assert.equal(frameFits(openWeb, wideView, noneWide), true);
+assert.equal(frameFits(sharedWeb, wideView, ethanWide), true);
+assert.equal(frameFits(allWeb, wideView, allWide), true);
+assert.equal(frameFits(allWeb, shortView, hubFrame(allWeb.nodes, shortView)), true);
+assert.equal(frameFits({ nodes: wideSpread }, zoomView, hubFrame(wideSpread, zoomView)), true);
 
 for (const size of [{ width: 1400, height: 980 }, { width: 1024, height: 500 }, { width: 1120, height: 1120 }, { width: 390, height: 700 }]) {
   const sample = webLayout(people, relations, { ...hubFieldOpts, centerId: "ethan-klein", ...size });
@@ -581,6 +635,13 @@ for (const size of [{ width: 1400, height: 980 }, { width: 1024, height: 500 }, 
     }
   }
   assert.ok(sample.nodes.every((node) => node.x > 8 && node.x < sample.width - 8 && node.y > 8 && node.y < sample.height - 8));
+  const everyone = webLayout(people, relations, { ...hubFieldOpts, centerId: "", revealAll: true, ...size });
+  assert.ok(everyone.nodes.length > sample.nodes.length, `All keeps every circle at ${size.width}`);
+  for (let i = 0; i < everyone.nodes.length; i += 1) {
+    for (let j = i + 1; j < everyone.nodes.length; j += 1) {
+      assert.equal(boxesOverlap(everyone.nodes[i], everyone.nodes[j], everyone.boxW, everyone.boxH), false, `${everyone.nodes[i].id} overlaps ${everyone.nodes[j].id} at ${size.width}`);
+    }
+  }
 }
 
 const nodes = graphLayout(people);
@@ -911,6 +972,9 @@ assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
+assert.match(appSource, /textContent = "All"/, "focus can show every YouTuber");
+assert.match(appSource, /function applyHubCamera/, "the web eases its zoom to the current focus");
+assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");
 assert.match(appSource, /Shared people sit in the center/, "youtubers web describes the shared center");
 assert.match(css, /\.web-stage \.node-name/, "web names stay inside their node");
 assert.match(appSource, /relations-lists/, "compact country web uses a list layout");

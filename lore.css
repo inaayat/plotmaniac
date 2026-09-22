@@ -523,9 +523,18 @@ body[data-view="web"] #footer-note {
 }
 
 body[data-view="web"] .web-scroll.is-hub-field {
-  overflow: auto;
+  position: relative;
+  overflow: hidden;
   padding: 0;
-  overscroll-behavior: contain;
+}
+
+.web-stage.is-hub-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  transform-origin: 0 0;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .web-stage.is-hub-field .web-lines {
@@ -2886,10 +2895,8 @@ body[data-view="timeline"] #footer-note {
   }
 
   body[data-view="web"] .web.is-hub-field .web-scroll.is-hub-field {
-    overflow-x: hidden;
-    overflow-y: auto;
-    touch-action: pan-y;
-    padding-bottom: calc(12px + var(--safe-bottom));
+    overflow: hidden;
+    touch-action: manipulation;
   }
 
   body[data-view="web"] .web.is-hub-field .web-stage {
@@ -3169,6 +3176,10 @@ body[data-view="timeline"] #footer-note {
   .mark path.arc,
   .web-lines path {
     stroke-dashoffset: 0;
+  }
+
+  .web-stage.is-hub-field {
+    transition: none;
   }
 
   .mark circle,

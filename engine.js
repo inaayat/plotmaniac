@@ -46,7 +46,7 @@ export function filterEvents(events, filters = {}, peopleById = new Map()) {
   return events.filter((event) => {
     if (filters.person && filters.person !== ALL && !event.people.includes(filters.person)) return false;
     if (filters.era && filters.era !== ALL && event.era !== filters.era) return false;
-    if (filters.hub && !eventMatchesHub(event, filters.hub)) return false;
+    if (filters.hub && filters.hub !== ALL && !eventMatchesHub(event, filters.hub)) return false;
     return !query || eventSearchText(event, peopleById).includes(query);
   });
 }
@@ -65,7 +65,7 @@ export function plotHubs(plot) {
 
 export function hubOf(plot, hubId) {
   const hubs = plotHubs(plot);
-  if (!hubs.length || !hubId) return null;
+  if (!hubs.length || !hubId || hubId === ALL) return null;
   return hubs.find((hub) => hub.id === hubId) || hubs[0];
 }
 
@@ -399,7 +399,9 @@ export function parseState(urlLike, valid = {}) {
   const requestedHub = url.searchParams.get("hub");
   const hub = valid.hubs?.has(requestedHub)
     ? requestedHub
-    : (valid.defaultHub || "");
+    : (requestedHub === ALL && valid.hubs?.size
+      ? ALL
+      : (valid.defaultHub || ""));
   const requested = url.searchParams.get("view");
   let view = requested === "timeline" || requested === "person" || requested === "relation" ? requested : "web";
   if (view === "person" && person === ALL) view = "web";
@@ -860,6 +862,7 @@ export function webLayout(people, relations, options = {}) {
       hubIds,
       hubs: options.hubs,
       minBeats: options.minBeats ?? WEB_MIN_BEATS,
+      revealAll: Boolean(options.revealAll),
     });
   }
 
@@ -1114,6 +1117,7 @@ function hubFieldLayout({
   height,
   hubIds,
   minBeats = WEB_MIN_BEATS,
+  revealAll = false,
 }) {
   const counts = beatCounts(events, people.map((person) => person.id));
   const visible = people.filter((person) => {
@@ -1157,7 +1161,7 @@ function hubFieldLayout({
     push(visible.find((person) => person.id === id), plan?.hubSlots?.[index], { ring: "hub", hubId: id });
   });
   hubIds.forEach((id, index) => {
-    if (!focused || center.id !== id) return;
+    if (!revealAll && (!focused || center.id !== id)) return;
     placeByBeats(groups.get(id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
       push(person, slot, { ring: "exclusive", hubId: id });
     });
@@ -1172,6 +1176,39 @@ function hubFieldLayout({
     centerSize: nodeSize,
     boxW: plan?.boxW || hubBox(nodeSize).boxW,
     boxH: plan?.boxH || hubBox(nodeSize).boxH,
+  };
+}
+
+export function hubFrame(nodes, {
+  viewWidth = 0,
+  viewHeight = 0,
+  boxW = 128,
+  boxH = 112,
+  pad = 28,
+  minScale = 0.08,
+  maxScale = 2.4,
+} = {}) {
+  if (!nodes?.length || viewWidth < 2 || viewHeight < 2) return { scale: 1, x: 0, y: 0 };
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+  nodes.forEach((node) => {
+    minX = Math.min(minX, node.x - boxW / 2);
+    maxX = Math.max(maxX, node.x + boxW / 2);
+    minY = Math.min(minY, node.y - boxH / 2);
+    maxY = Math.max(maxY, node.y + boxH / 2);
+  });
+  const margin = Math.min(pad, Math.floor(Math.min(viewWidth, viewHeight) * 0.08));
+  const roomW = Math.max(1, viewWidth - margin * 2);
+  const roomH = Math.max(1, viewHeight - margin * 2);
+  const scale = Math.max(minScale, Math.min(maxScale, Math.min(roomW / Math.max(1, maxX - minX), roomH / Math.max(1, maxY - minY))));
+  const cx = (minX + maxX) / 2;
+  const cy = (minY + maxY) / 2;
+  return {
+    scale,
+    x: viewWidth / 2 - cx * scale,
+    y: viewHeight / 2 - cy * scale,
   };
 }
 
