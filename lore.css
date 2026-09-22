@@ -580,7 +580,6 @@ body[data-view="pick"] .site-footer {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  min-height: calc(1.05rem * 1.1 * 2);
   font-family: "Fraunces", Georgia, serif;
   font-size: 1.05rem;
   font-weight: 500;

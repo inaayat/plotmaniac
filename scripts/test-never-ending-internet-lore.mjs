@@ -1009,7 +1009,8 @@ assert.match(css, /max-width: 768px/, "compact layout breakpoint");
 assert.match(css, /\.gallery-search/, "homepage search is an underline field");
 assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "desktop gallery is 3 columns");
 assert.match(css, /\.plot-cards > li/, "gallery items stretch so cards share a height");
-assert.match(css, /-webkit-line-clamp: 2/, "gallery titles reserve two lines");
+assert.match(css, /-webkit-line-clamp: 2/, "gallery titles can wrap to two lines");
+assert.equal(/\.plot-card strong \{[\s\S]*?min-height:/.test(css), false, "gallery titles do not reserve a blank second line");
 assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?6\.4rem/, "pick view keeps the large title");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
@@ -1027,6 +1028,8 @@ assert.match(partitionViewSource, /Show Kashmir claims overlay/, "claims control
 assert.match(partitionViewSource, /showPerson\(/, "person pages swap in place");
 assert.match(appSource, /partitionMount\.showPerson/, "opening another person keeps the person mount");
 const partitionCss = fs.readFileSync(new URL("../partition.css", import.meta.url), "utf8");
+assert.match(partitionCss, /body\[data-board="history"\] h1 \{[\s\S]*?margin: 0 0 8px;/, "Partition title sits on the lede");
+assert.match(partitionCss, /body\[data-board="history"\] \.mark \{\s*display: none;/, "Partition drops the gold arc between title and lede");
 assert.match(partitionCss, /\.partition-beat li[\s\S]*?font-size: 0\.78rem/, "beat bullets match the moment copy");
 assert.match(partitionCss, /\.partition-person-page \{\s*width: 100%;/, "person page uses the board width");
 assert.match(partitionCss, /\.partition-person-page h2 \{\s*font-size: 2rem;/, "person headers stay one size");

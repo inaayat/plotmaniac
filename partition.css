@@ -21,6 +21,11 @@ body[data-board="history"] .mast {
 
 body[data-board="history"] h1 {
   font-size: clamp(3rem, 7vw, 4.6rem);
+  margin: 0 0 8px;
+}
+
+body[data-board="history"] .mark {
+  display: none;
 }
 
 body[data-board="history"][data-view="person"] h1 {
@@ -35,16 +40,11 @@ body[data-board="history"][data-view="person"] {
   overflow-y: auto;
 }
 
-body[data-board="history"] .mark {
-  display: block;
-  width: min(280px, 72%);
-  margin: 14px 0 10px;
-}
-
 body[data-board="history"] .lede {
   display: block;
   text-align: left;
   max-width: 62ch;
+  margin-top: 0;
 }
 
 body[data-board="history"][data-view="person"] .lede,
