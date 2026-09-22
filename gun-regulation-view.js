@@ -34,6 +34,7 @@ export function renderRegulationBoard({
   onToggleChecklist,
   onCloseChecklist,
   onYearChange,
+  onSelectBeat,
 }) {
   const section = document.createElement("section");
   section.className = "regulation-board relation-ride";
@@ -53,13 +54,26 @@ export function renderRegulationBoard({
   moodEl.className = "relation-ride-mood";
   const eventEl = document.createElement("p");
   eventEl.className = "relation-ride-event";
-  const summaryEl = document.createElement("p");
-  summaryEl.className = "regulation-ride-summary";
   const linksEl = document.createElement("div");
-  linksEl.className = "relation-ride-links";
+  linksEl.className = "relation-ride-links relation-links beat-links";
+  const changeEl = document.createElement("p");
+  changeEl.className = "regulation-change";
+  const nav = document.createElement("div");
+  nav.className = "regulation-case-nav";
+  const prev = document.createElement("button");
+  prev.type = "button";
+  prev.className = "regulation-case-step";
+  prev.textContent = "Previous case";
+  const counter = document.createElement("span");
+  counter.className = "regulation-case-count";
+  const next = document.createElement("button");
+  next.type = "button";
+  next.className = "regulation-case-step";
+  next.textContent = "Next case";
+  nav.append(prev, counter, next);
   const hint = document.createElement("p");
   hint.className = "relation-ride-hint";
-  hint.textContent = "Scroll sideways. The line rises when regulation tightens and falls when it loosens.";
+  hint.textContent = "Step case by case. The line rises when regulation tightens and falls when it loosens.";
   const tools = document.createElement("div");
   tools.className = "regulation-ride-tools";
   tools.appendChild(renderRegulationStats(board, state.year));
@@ -69,7 +83,7 @@ export function renderRegulationBoard({
   criteria.textContent = "Criteria";
   criteria.addEventListener("click", onToggleChecklist);
   tools.appendChild(criteria);
-  readout.append(yearEl, moodEl, eventEl, summaryEl, linksEl, tools, hint);
+  readout.append(yearEl, moodEl, eventEl, changeEl, linksEl, nav, tools, hint);
   section.appendChild(readout);
 
   const stage = document.createElement("div");
@@ -133,7 +147,7 @@ export function renderRegulationBoard({
     text.textContent = beat?.event || point.event;
     card.append(year, text);
     card.addEventListener("click", () => {
-      scroller.scrollTo({ left: point.x - scroller.clientWidth / 2, behavior: "smooth" });
+      show(layout.points.indexOf(point), { scroll: true });
     });
     track.appendChild(card);
     return card;
@@ -143,44 +157,76 @@ export function renderRegulationBoard({
   stage.appendChild(scroller);
   section.appendChild(stage);
 
+  let active = 0;
+  let stepping = false;
   let paintedYear = null;
+  let paintedId = "";
+
+  function show(index, { scroll = false } = {}) {
+    if (!layout.points.length) return;
+    const nextIndex = Math.max(0, Math.min(layout.points.length - 1, index));
+    const point = layout.points[nextIndex];
+    const beat = beats[point.index];
+    active = nextIndex;
+    const hereTone = typeof beat?.tone === "number" ? beat.tone : point.tone;
+    marker.style.top = `${point.y}px`;
+    marker.className = `regulation-ride-marker ${regulationToneClass(hereTone)}`;
+    yearEl.textContent = String(beat?.year || point.year);
+    moodEl.textContent = rideLabel(hereTone);
+    moodEl.dataset.mood = regulationToneClass(hereTone);
+    eventEl.textContent = beat?.event || point.event;
+    changeEl.replaceChildren();
+    const label = document.createElement("em");
+    label.textContent = "What changed";
+    changeEl.append(label, document.createTextNode(` ${beat?.changed || beat?.plainEnglish || ""}`));
+    linksEl.replaceChildren();
+    (beat?.links || []).forEach((link) => {
+      const anchor = document.createElement("a");
+      anchor.href = link.url;
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+      anchor.textContent = link.label;
+      linksEl.appendChild(anchor);
+    });
+    counter.textContent = `Case ${nextIndex + 1} of ${layout.points.length}`;
+    prev.disabled = nextIndex === 0;
+    next.disabled = nextIndex === layout.points.length - 1;
+    cards.forEach((card, cardIndex) => card.classList.toggle("is-now", cardIndex === nextIndex));
+    if (scroll) {
+      stepping = true;
+      scroller.scrollTo({ left: Math.max(0, point.x - scroller.clientWidth / 2), behavior: "smooth" });
+      window.setTimeout(() => {
+        stepping = false;
+      }, 450);
+    }
+    const year = Number(beat?.year || point.year);
+    if (Number.isFinite(year) && year !== paintedYear) {
+      paintedYear = year;
+      onYearChange?.(year);
+    }
+    if (beat?.id && beat.id !== paintedId) {
+      paintedId = beat.id;
+      onSelectBeat?.(beat.id);
+    }
+  }
+
+  prev.addEventListener("click", () => show(active - 1, { scroll: true }));
+  next.addEventListener("click", () => show(active + 1, { scroll: true }));
+
   const paint = () => {
     const x = scroller.scrollLeft + scroller.clientWidth / 2;
     const here = relationRideAt(layout, x);
     marker.style.top = `${here.y}px`;
     marker.className = `regulation-ride-marker ${regulationToneClass(here.tone)}`;
-    let nearest = layout.points[0];
-    layout.points.forEach((point) => {
-      if (!nearest || Math.abs(point.x - x) < Math.abs(nearest.x - x)) nearest = point;
+    if (stepping) return;
+    let nearestIndex = 0;
+    layout.points.forEach((point, index) => {
+      if (Math.abs(point.x - x) < Math.abs(layout.points[nearestIndex].x - x)) nearestIndex = index;
     });
-    if (!nearest) return;
-    const beat = beats[nearest.index];
-    yearEl.textContent = String(beat?.year || nearest.year);
-    moodEl.textContent = rideLabel(here.tone);
-    moodEl.dataset.mood = regulationToneClass(here.tone);
-    eventEl.textContent = beat?.event || nearest.event;
-    summaryEl.textContent = beat?.plainEnglish || "";
-    linksEl.replaceChildren();
-    if (beat?.links?.length) {
-      const chips = document.createElement("div");
-      chips.className = "relation-links beat-links";
-      beat.links.forEach((link) => {
-        const anchor = document.createElement("a");
-        anchor.href = link.url;
-        anchor.target = "_blank";
-        anchor.rel = "noopener noreferrer";
-        anchor.textContent = link.label;
-        chips.appendChild(anchor);
-      });
-      linksEl.appendChild(chips);
-    }
-    cards.forEach((card, index) => {
-      card.classList.toggle("is-now", layout.points[index] === nearest);
-    });
-    const year = Number(beat?.year || nearest.year);
-    if (Number.isFinite(year) && year !== paintedYear) {
-      paintedYear = year;
-      onYearChange?.(year);
+    if (nearestIndex !== active) show(nearestIndex);
+    else {
+      moodEl.textContent = rideLabel(here.tone);
+      moodEl.dataset.mood = regulationToneClass(here.tone);
     }
   };
 
@@ -190,13 +236,20 @@ export function renderRegulationBoard({
     event.preventDefault();
     scroller.scrollLeft += event.deltaY;
   }, { passive: false });
-
-  const anchor = layout.points.find((point) => Number(beats[point.index]?.year) >= Number(state.year))
-    || layout.points.at(-1);
-  requestAnimationFrame(() => {
-    if (anchor) scroller.scrollLeft = Math.max(0, anchor.x - scroller.clientWidth / 2);
-    paint();
+  scroller.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      show(active + 1, { scroll: true });
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      show(active - 1, { scroll: true });
+    }
   });
+
+  const fromId = layout.points.findIndex((point) => beats[point.index]?.id === state.eventId);
+  const fromYear = layout.points.findIndex((point) => Number(beats[point.index]?.year) >= Number(state.year));
+  const start = fromId >= 0 ? fromId : (fromYear >= 0 ? fromYear : Math.max(0, layout.points.length - 1));
+  requestAnimationFrame(() => show(start, { scroll: true }));
 
   const panel = renderChecklistPanel(board, state, onCloseChecklist);
   section.appendChild(panel);

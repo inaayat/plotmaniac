@@ -4095,17 +4095,51 @@ body[data-board="regulation"] .regulation-back {
   grid-template-columns: auto auto minmax(0, 1fr);
 }
 
-.regulation-ride-summary {
+.regulation-change {
   grid-column: 1 / -1;
   margin: 0;
-  max-width: 72ch;
+  max-width: 68ch;
   color: var(--ink);
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   line-height: 1.45;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+}
+
+.regulation-change em {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--gold);
+  font-style: normal;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.regulation-case-nav {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.regulation-case-step {
+  padding: 6px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.regulation-case-step:disabled {
+  opacity: 0.35;
+}
+
+.regulation-case-count {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
 }
 
 .regulation-ride-tools {

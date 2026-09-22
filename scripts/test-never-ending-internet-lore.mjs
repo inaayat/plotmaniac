@@ -2047,6 +2047,9 @@ const gunBoard = {
 assert.deepEqual(validateGunBoard(gunBoard), [], "gun board data validation");
 assert.equal(gunChecklist.rows.length, 15);
 assert.ok(gunTimeline.some((beat) => beat.id === "scotus-2022-bruen"));
+assert.ok(gunTimeline.some((beat) => beat.id === "scotus-1995-lopez"));
+assert.ok(gunTimeline.some((beat) => beat.id === "scotus-2026-wolford"));
+assert.ok(gunTimeline.every((beat) => beat.changed), "every beat says what changed");
 assert.ok(gunTimeline.some((beat) => beat.id === "scotus-2010-mcdonald"));
 assert.ok(filterRegulationBeats(gunTimeline, { kind: "scotus" }).length >= 10);
 const federal2022 = resolveChecklistAtYear(gunChecklist.rows, gunChecklist.federalKeyframes, null, 2022);

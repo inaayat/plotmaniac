@@ -14,7 +14,8 @@
         "url": "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
         "primary": true
       }
-    ]
+    ],
+    "changed": "The Constitution now includes a right of the people to keep and bear arms. It does not yet say how that right limits states, cities, or ordinary gun laws."
   },
   {
     "id": "constitutional-1868-fourteenth-amendment",
@@ -31,7 +32,8 @@
         "url": "https://www.archives.gov/milestone-documents/14th-amendment",
         "primary": true
       }
-    ]
+    ],
+    "changed": "States become bound by the Fourteenth Amendment’s liberty guarantees. That later becomes the path for applying the Second Amendment to state and city gun laws, but not in 1868 itself."
   },
   {
     "id": "scotus-1876-cruikshank",
@@ -45,14 +47,15 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/92pdf/92-1101.pdf",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-92/pdf/USREPORTS-92-542.pdf",
         "primary": true
       },
       {
         "label": "Justia case text",
         "url": "https://supreme.justia.com/cases/federal/us/92/542/"
       }
-    ]
+    ],
+    "changed": "The Second Amendment is read as a limit on the federal government, not on private people and not yet on states. Federal prosecutors cannot use it alone to charge private interference with someone else’s arms."
   },
   {
     "id": "scotus-1886-presser",
@@ -66,14 +69,15 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/116pdf/110-0310.pdf",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-116/pdf/USREPORTS-116-252.pdf",
         "primary": true
       },
       {
         "label": "Justia case text",
         "url": "https://supreme.justia.com/cases/federal/us/116/252/"
       }
-    ]
+    ],
+    "changed": "A state may ban private military parades. The Court does not treat the Amendment as a license for armed private armies, and it does not yet apply the right against ordinary state gun rules."
   },
   {
     "id": "statute-1934-nfa",
@@ -94,7 +98,8 @@
         "label": "26 U.S.C. Chapter 53 (NFA)",
         "url": "https://uscode.house.gov/view.xhtml?path=/prelim@title26/part1/chapter53&edition=prelim"
       }
-    ]
+    ],
+    "changed": "Machine guns, short-barreled rifles and shotguns, and silencers become taxed and registered weapons. Ordinary rifles and handguns stay outside that system."
   },
   {
     "id": "scotus-1939-miller",
@@ -108,14 +113,33 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/36pdf/696.pdf",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-307/pdf/USREPORTS-307-174.pdf",
         "primary": true
       },
       {
         "label": "Oyez case record",
         "url": "https://www.oyez.org/cases/1900-1940/307us174"
       }
-    ]
+    ],
+    "changed": "A short-barreled shotgun charge can stand when the record never shows the weapon is ordinary militia equipment. The case is narrow: the defendants did not appear, so it is not a full rule for every firearm."
+  },
+  {
+    "id": "state-1967-ca-mulford",
+    "year": "1967",
+    "date": "1967-07-28",
+    "tone": 2,
+    "kind": "state",
+    "scope": "ca",
+    "event": "California Mulford Act (state landmark)",
+    "plainEnglish": "California bans loaded open carry of firearms in incorporated areas—a state response that tightened public carry rules independently of federal law.",
+    "links": [
+      {
+        "label": "Cal. Penal Code § 25850 (current codification context)",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=25850",
+        "primary": true
+      }
+    ],
+    "changed": "California ends loaded open carry in cities. That is a state rule, not a change in federal law."
   },
   {
     "id": "statute-1968-gca",
@@ -136,7 +160,8 @@
         "label": "18 U.S.C. Chapter 44",
         "url": "https://uscode.house.gov/view.xhtml?path=/prelim@title18/part1/chapter44&edition=prelim"
       }
-    ]
+    ],
+    "changed": "Dealers must be federally licensed, buyers under set ages are blocked at the counter, and people in prohibited categories cannot legally receive guns through interstate commerce."
   },
   {
     "id": "statute-1986-fopa",
@@ -153,7 +178,8 @@
         "url": "https://www.govinfo.gov/content/pkg/STATUTE-100/pdf/STATUTE-100-Pg449.pdf",
         "primary": true
       }
-    ]
+    ],
+    "changed": "Civilian possession of new machine guns is cut off after 1986, while some dealer-inspection and interstate-travel rules are loosened for lawful owners."
   },
   {
     "id": "statute-1993-brady",
@@ -170,24 +196,8 @@
         "url": "https://www.govinfo.gov/content/pkg/STATUTE-107/pdf/STATUTE-107-Pg1536.pdf",
         "primary": true
       }
-    ]
-  },
-  {
-    "id": "agency-1998-nics",
-    "year": "1998",
-    "date": "1998-11-30",
-    "tone": 1,
-    "kind": "agency",
-    "scope": "federal",
-    "event": "NICS begins operating",
-    "plainEnglish": "The FBI’s National Instant Criminal Background Check System starts handling dealer checks nationwide, replacing the Brady interim waiting-period regime for most dealer sales.",
-    "links": [
-      {
-        "label": "FBI NICS overview",
-        "url": "https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/nics",
-        "primary": true
-      }
-    ]
+    ],
+    "changed": "Licensed dealers must run a background check. An interim waiting period fills the gap until a national instant-check system exists."
   },
   {
     "id": "statute-1994-awb",
@@ -203,6 +213,29 @@
         "label": "Pub. L. 103-322 (108 Stat. 1796)",
         "url": "https://www.govinfo.gov/content/pkg/STATUTE-108/pdf/STATUTE-108-Pg1796.pdf",
         "primary": true
+      }
+    ],
+    "changed": "For ten years, manufacturers cannot make the listed assault weapons or new magazines over ten rounds. State bans are a separate track and do not depend on this federal sunset."
+  },
+  {
+    "id": "scotus-1995-lopez",
+    "year": "1995",
+    "date": "1995-04-26",
+    "tone": -1,
+    "kind": "scotus",
+    "scope": "federal",
+    "event": "United States v. Lopez",
+    "changed": "Congress cannot ban gun possession near a school with no tie to its enumerated powers. The Gun-Free School Zones Act, as then written, falls; Congress later rewrites it to require a commerce connection.",
+    "plainEnglish": "The Court held the Gun-Free School Zones Act exceeded the Commerce Clause because mere possession of a gun near a school is not economic activity. Federal gun crimes still stand when Congress ties them to interstate commerce.",
+    "links": [
+      {
+        "label": "U.S. Reports opinion PDF",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-514/pdf/USREPORTS-514-549.pdf",
+        "primary": true
+      },
+      {
+        "label": "Oyez case record",
+        "url": "https://www.oyez.org/cases/1994/93-1260"
       }
     ]
   },
@@ -221,7 +254,48 @@
         "url": "https://www.govinfo.gov/content/pkg/STATUTE-110/pdf/STATUTE-110-Pg3009-365.pdf",
         "primary": true
       }
+    ],
+    "changed": "A misdemeanor domestic-violence conviction, and some protective orders, now block firearm possession the way a felony already could."
+  },
+  {
+    "id": "scotus-1997-printz",
+    "year": "1997",
+    "date": "1997-06-27",
+    "tone": -1,
+    "kind": "scotus",
+    "scope": "federal",
+    "event": "Printz v. United States",
+    "changed": "The Brady Act cannot order local sheriffs to run federal background checks. The check remains a federal duty, which the FBI’s NICS system takes over the next year.",
+    "plainEnglish": "The Court held the interim Brady provision that required local chief law-enforcement officers to perform background checks violated the Tenth Amendment. Congress may not commandeer state officers to administer a federal gun program.",
+    "links": [
+      {
+        "label": "U.S. Reports opinion PDF",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-521/pdf/USREPORTS-521-898.pdf",
+        "primary": true
+      },
+      {
+        "label": "Oyez case record",
+        "url": "https://www.oyez.org/cases/1996/95-1478"
+      }
     ]
+  },
+  {
+    "id": "agency-1998-nics",
+    "year": "1998",
+    "date": "1998-11-30",
+    "tone": 1,
+    "kind": "agency",
+    "scope": "federal",
+    "event": "NICS begins operating",
+    "plainEnglish": "The FBI’s National Instant Criminal Background Check System starts handling dealer checks nationwide, replacing the Brady interim waiting-period regime for most dealer sales.",
+    "links": [
+      {
+        "label": "FBI NICS overview",
+        "url": "https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/nics",
+        "primary": true
+      }
+    ],
+    "changed": "The FBI’s instant-check system replaces the Brady waiting period for most dealer sales. A dealer sale now clears or delays through NICS instead of a fixed federal wait."
   },
   {
     "id": "statute-2004-awb-sunset",
@@ -238,7 +312,8 @@
         "url": "https://crsreports.congress.gov/product/pdf/R/R42699",
         "primary": true
       }
-    ]
+    ],
+    "changed": "The federal assault-weapon and magazine limits expire. Those restrictions continue only where a state keeps its own law."
   },
   {
     "id": "statute-2005-plcaa",
@@ -255,7 +330,8 @@
         "url": "https://www.govinfo.gov/content/pkg/STATUTE-119/pdf/STATUTE-119-Pg2095.pdf",
         "primary": true
       }
-    ]
+    ],
+    "changed": "Gun makers and dealers are shielded from many lawsuits that blame them for a third party’s criminal misuse, with exceptions for defects and knowing legal violations."
   },
   {
     "id": "scotus-2008-heller",
@@ -269,7 +345,7 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/07pdf/07-290.pdf",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-554/pdf/USREPORTS-554-570.pdf",
         "primary": true
       },
       {
@@ -280,7 +356,8 @@
         "label": "Oyez case record",
         "url": "https://www.oyez.org/cases/2007/07-290"
       }
-    ]
+    ],
+    "changed": "The Second Amendment protects an individual right to keep a handgun at home for self-defense, at least against the federal government. The right is not unlimited: felon bans, sensitive places, and conditions on commercial sale remain presumptively lawful."
   },
   {
     "id": "scotus-2009-hayes",
@@ -294,10 +371,11 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/08pdf/07-608.pdf",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-555/pdf/USREPORTS-555-415.pdf",
         "primary": true
       }
-    ]
+    ],
+    "changed": "The domestic-violence gun ban reaches a misdemeanor even when the statute is not labeled a domestic-violence law, if the victim was a domestic partner."
   },
   {
     "id": "scotus-2010-mcdonald",
@@ -311,12 +389,53 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/09pdf/08-1521.pdf",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-561/pdf/USREPORTS-561-742.pdf",
         "primary": true
       },
       {
         "label": "Oyez case record",
         "url": "https://www.oyez.org/cases/2009/08-1521"
+      }
+    ],
+    "changed": "States and cities, not just the federal government, must respect the individual right recognized in Heller. Chicago’s handgun ban falls, and state gun laws become subject to the Second Amendment."
+  },
+  {
+    "id": "state-2013-ny-safe",
+    "year": "2013",
+    "date": "2013-01-15",
+    "tone": 2,
+    "kind": "state",
+    "scope": "ny",
+    "event": "New York SAFE Act (state landmark)",
+    "plainEnglish": "New York expands assault-weapon definitions, magazine limits, and background-check requirements beyond the expired federal ban—a major post-Sandy Hook state tightening.",
+    "links": [
+      {
+        "label": "N.Y. Senate bill text (S.2230)",
+        "url": "https://www.nysenate.gov/legislation/bills/2013/S2230",
+        "primary": true
+      }
+    ],
+    "changed": "New York tightens assault-weapon, magazine, and check rules beyond the expired federal ban."
+  },
+  {
+    "id": "scotus-2014-abramski",
+    "year": "2014",
+    "date": "2014-06-16",
+    "tone": 1,
+    "kind": "scotus",
+    "scope": "federal",
+    "event": "Abramski v. United States",
+    "changed": "Buying a gun for someone else is still a purchase by the person who fills out the form. A straw purchase stays illegal even when the real recipient could have passed a background check.",
+    "plainEnglish": "The Court held the federal form’s question about the actual buyer covers someone who buys on behalf of another person. The Gun Control Act’s background-check system looks through the straw purchaser.",
+    "links": [
+      {
+        "label": "U.S. Reports opinion PDF",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-573/pdf/USREPORTS-573-169.pdf",
+        "primary": true
+      },
+      {
+        "label": "Oyez case record",
+        "url": "https://www.oyez.org/cases/2013/12-1493"
       }
     ]
   },
@@ -332,10 +451,11 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/15pdf/14-10078_1o13.pdf",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-577/pdf/USREPORTS-577-411.pdf",
         "primary": true
       }
-    ]
+    ],
+    "changed": "A state cannot exclude a weapon from the Second Amendment merely because it did not exist in 1791. Massachusetts must reconsider its stun-gun ban under Heller."
   },
   {
     "id": "scotus-2016-voisine",
@@ -349,10 +469,11 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/15pdf/14-10154_8741.pdf",
+        "url": "https://www.govinfo.gov/content/pkg/USREPORTS-579/pdf/USREPORTS-579-686.pdf",
         "primary": true
       }
-    ]
+    ],
+    "changed": "A reckless domestic assault, not only an intentional one, can trigger the federal ban on possessing a gun after a misdemeanor domestic-violence conviction."
   },
   {
     "id": "agency-2018-bump-stock-rule",
@@ -369,7 +490,8 @@
         "url": "https://www.federalregister.gov/documents/2018/12/26/2018-27757/bump-stock-type-devices",
         "primary": true
       }
-    ]
+    ],
+    "changed": "ATF classifies bump stocks as machine guns and bans them by rule. That classification lasts until the Supreme Court rejects it in Cargill."
   },
   {
     "id": "scotus-2020-nysrpa-nyc",
@@ -383,27 +505,47 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/19pdf/18-280_f2qg.pdf",
+        "url": "https://www.supremecourt.gov/opinions/19pdf/18-280_ba7d.pdf",
         "primary": true
       }
-    ]
+    ],
+    "changed": "The Court decides nothing about the right to carry. New York City changed its transport rule, so the case is dismissed as moot and the later Bruen test is not announced here."
   },
   {
-    "id": "statute-2022-bsca",
-    "year": "2022",
-    "date": "2022-06-25",
-    "tone": 1,
-    "kind": "statute",
-    "scope": "federal",
-    "event": "Bipartisan Safer Communities Act",
-    "plainEnglish": "Congress expands background-check requirements for buyers under 21, clarifies who must register as a federally licensed dealer, and adds state funding for crisis intervention and domestic-violence records in NICS.",
+    "id": "state-2021-tx-constitutional-carry",
+    "year": "2021",
+    "date": "2021-09-01",
+    "tone": -2,
+    "kind": "state",
+    "scope": "tx",
+    "event": "Texas permitless carry (state landmark)",
+    "plainEnglish": "Texas allows eligible people to carry handguns in public without a license to carry in many places, removing a prior permit requirement for lawful carriers who meet statutory eligibility rules.",
     "links": [
       {
-        "label": "Pub. L. 117-159 (136 Stat. 1310)",
-        "url": "https://www.govinfo.gov/content/pkg/PLAW-117publ159/pdf/PLAW-117publ159.pdf",
+        "label": "Texas H.B. 1927 enrolled text",
+        "url": "https://capitol.texas.gov/tlodocs/87R/billtext/html/HB01927F.htm",
         "primary": true
       }
-    ]
+    ],
+    "changed": "Eligible adults in Texas may carry a handgun in many public places without a license. The federal prohibited-person rules still apply."
+  },
+  {
+    "id": "agency-2022-frames-rule",
+    "year": "2022",
+    "date": "2022-04-26",
+    "tone": 1,
+    "kind": "agency",
+    "scope": "federal",
+    "event": "ATF frames and receivers rule",
+    "plainEnglish": "ATF updates definitions so certain unfinished frames and receivers and related kits are treated as firearms for marking, licensing, and background-check purposes, targeting ghost-gun assembly without serial numbers.",
+    "links": [
+      {
+        "label": "Federal Register final rule",
+        "url": "https://www.federalregister.gov/documents/2022/04/26/2022-08438/definition-of-frame-or-receiver-and-identification-of-firearms",
+        "primary": true
+      }
+    ],
+    "changed": "Many unfinished frames, receivers, and kits are treated as firearms, so they need markings and a background check. Court review of that rule comes later in VanDerStok."
   },
   {
     "id": "scotus-2022-bruen",
@@ -424,41 +566,26 @@
         "label": "Cornell LII summary",
         "url": "https://www.law.cornell.edu/supremecourt/text/20-843"
       }
-    ]
+    ],
+    "changed": "States cannot demand a special need to carry a handgun in public. A gun law must fit the country’s historical tradition of firearm regulation, not a judge’s balancing of safety against the right."
   },
   {
-    "id": "agency-2022-frames-rule",
+    "id": "statute-2022-bsca",
     "year": "2022",
-    "date": "2022-04-26",
+    "date": "2022-06-25",
     "tone": 1,
-    "kind": "agency",
+    "kind": "statute",
     "scope": "federal",
-    "event": "ATF frames and receivers rule",
-    "plainEnglish": "ATF updates definitions so certain unfinished frames and receivers and related kits are treated as firearms for marking, licensing, and background-check purposes, targeting ghost-gun assembly without serial numbers.",
+    "event": "Bipartisan Safer Communities Act",
+    "plainEnglish": "Congress expands background-check requirements for buyers under 21, clarifies who must register as a federally licensed dealer, and adds state funding for crisis intervention and domestic-violence records in NICS.",
     "links": [
       {
-        "label": "Federal Register final rule",
-        "url": "https://www.federalregister.gov/documents/2022/04/26/2022-08438/definition-of-frame-or-receiver-and-identification-of-firearms",
+        "label": "Pub. L. 117-159 (136 Stat. 1310)",
+        "url": "https://www.govinfo.gov/content/pkg/PLAW-117publ159/pdf/PLAW-117publ159.pdf",
         "primary": true
       }
-    ]
-  },
-  {
-    "id": "scotus-2024-rahimi",
-    "year": "2024",
-    "date": "2024-06-21",
-    "tone": 1,
-    "kind": "scotus",
-    "scope": "federal",
-    "event": "United States v. Rahimi",
-    "plainEnglish": "The Court upheld a federal prohibition on firearm possession while a domestic-violence restraining order is in force, finding that disarmament fits within the historical tradition test announced in Bruen for this category of orders.",
-    "links": [
-      {
-        "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/23pdf/22-843_m7k0.pdf",
-        "primary": true
-      }
-    ]
+    ],
+    "changed": "Dealer checks expand for buyers under 21, more sellers must get a federal license, and dating-relationship abuse plus mental-health and juvenile records can block a purchase."
   },
   {
     "id": "scotus-2024-cargill",
@@ -472,58 +599,66 @@
     "links": [
       {
         "label": "Supreme Court opinion PDF",
-        "url": "https://www.supremecourt.gov/opinions/23pdf/22-976_d18e.pdf",
+        "url": "https://www.supremecourt.gov/opinions/23pdf/22-976_e29g.pdf",
         "primary": true
       }
-    ]
+    ],
+    "changed": "Bump stocks are not machine guns under the statute, so the ATF ban falls. Only Congress can put that restriction back."
   },
   {
-    "id": "state-1967-ca-mulford",
-    "year": "1967",
-    "date": "1967-07-28",
-    "tone": 2,
-    "kind": "state",
-    "scope": "ca",
-    "event": "California Mulford Act (state landmark)",
-    "plainEnglish": "California bans loaded open carry of firearms in incorporated areas—a state response that tightened public carry rules independently of federal law.",
+    "id": "scotus-2024-rahimi",
+    "year": "2024",
+    "date": "2024-06-21",
+    "tone": 1,
+    "kind": "scotus",
+    "scope": "federal",
+    "event": "United States v. Rahimi",
+    "plainEnglish": "The Court upheld a federal prohibition on firearm possession while a domestic-violence restraining order is in force, finding that disarmament fits within the historical tradition test announced in Bruen for this category of orders.",
     "links": [
       {
-        "label": "Cal. Penal Code § 25850 (current codification context)",
-        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=25850",
+        "label": "Supreme Court opinion PDF",
+        "url": "https://www.supremecourt.gov/opinions/23pdf/22-915_8o6b.pdf",
         "primary": true
       }
-    ]
+    ],
+    "changed": "A person subject to a domestic-violence restraining order can still be disarmed while the order is in force. Bruen does not wipe out that traditional limit."
   },
   {
-    "id": "state-2013-ny-safe",
-    "year": "2013",
-    "date": "2013-01-15",
-    "tone": 2,
-    "kind": "state",
-    "scope": "ny",
-    "event": "New York SAFE Act (state landmark)",
-    "plainEnglish": "New York expands assault-weapon definitions, magazine limits, and background-check requirements beyond the expired federal ban—a major post-Sandy Hook state tightening.",
+    "id": "scotus-2025-vanderstok",
+    "year": "2025",
+    "date": "2025-03-26",
+    "tone": 1,
+    "kind": "scotus",
+    "scope": "federal",
+    "event": "Bondi v. VanDerStok",
+    "changed": "Some weapon-parts kits and unfinished frames count as firearms. Sellers of those ghost-gun kits can be required to serialize them and run a background check.",
+    "plainEnglish": "The Court held the Gun Control Act can cover weapon parts kits and unfinished frames or receivers that are readily convertible into a working gun. The challenge to ATF’s frames-and-receivers rule fails on that reading of the statute.",
     "links": [
       {
-        "label": "N.Y. Senate bill text (S.2230)",
-        "url": "https://www.nysenate.gov/legislation/bills/2013/S2230",
+        "label": "Supreme Court opinion PDF",
+        "url": "https://www.supremecourt.gov/opinions/24pdf/23-852_o7jp.pdf",
         "primary": true
+      },
+      {
+        "label": "Oyez case record",
+        "url": "https://www.oyez.org/cases/2024/23-852"
       }
     ]
   },
   {
-    "id": "state-2021-tx-constitutional-carry",
-    "year": "2021",
-    "date": "2021-09-01",
+    "id": "scotus-2026-wolford",
+    "year": "2026",
+    "date": "2026-06-25",
     "tone": -2,
-    "kind": "state",
-    "scope": "tx",
-    "event": "Texas permitless carry (state landmark)",
-    "plainEnglish": "Texas allows eligible people to carry handguns in public without a license to carry in many places, removing a prior permit requirement for lawful carriers who meet statutory eligibility rules.",
+    "kind": "scotus",
+    "scope": "federal",
+    "event": "Wolford v. Lopez",
+    "changed": "A state cannot make licensed public carry a trespass by default on private property open to the public. Hawaii’s rule—no guns in stores, restaurants, and similar places unless the owner expressly allows them—violates the right to carry recognized in Bruen.",
+    "plainEnglish": "The Court held Hawaii’s affirmative-consent default for carrying on private property open to the public violates the Second and Fourteenth Amendments. Property owners may still ban guns, but the state may not flip the common-law default so that carry is forbidden unless the owner opts in.",
     "links": [
       {
-        "label": "Texas H.B. 1927 enrolled text",
-        "url": "https://capitol.texas.gov/tlodocs/87R/billtext/html/HB01927F.htm",
+        "label": "Supreme Court opinion PDF",
+        "url": "https://www.supremecourt.gov/opinions/25pdf/24-1046_nmio.pdf",
         "primary": true
       }
     ]

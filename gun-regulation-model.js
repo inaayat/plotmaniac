@@ -128,8 +128,9 @@ export function parseRegulationParams(urlLike, validStates) {
 }
 
 function isOfficialOpinionUrl(url) {
-  return typeof url === "string"
-    && /^https:\/\/www\.supremecourt\.gov\/opinions\/.+\.pdf/i.test(url);
+  if (typeof url !== "string") return false;
+  if (/^https:\/\/www\.supremecourt\.gov\/opinions\/.+\.pdf/i.test(url)) return true;
+  return /^https:\/\/www\.govinfo\.gov\/content\/pkg\/USREPORTS-\d+\/pdf\/USREPORTS-\d+-\d+\.pdf/i.test(url);
 }
 
 function isOfficialStatuteUrl(url) {
@@ -145,7 +146,7 @@ export function validateGunBoard(board) {
   if (rowIds.size !== rows.length) errors.push("duplicate checklist row ids");
 
   (board?.timeline || []).forEach((beat) => {
-    if (!beat.id || !beat.year || !beat.event || !beat.plainEnglish) {
+    if (!beat.id || !beat.year || !beat.event || !beat.plainEnglish || !beat.changed) {
       errors.push(`beat ${beat.id || beat.event} missing core fields`);
     }
     if (!REGULATION_KINDS.includes(beat.kind)) {

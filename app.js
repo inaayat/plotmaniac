@@ -1245,6 +1245,11 @@ function renderRegulationSection() {
       syncRegulationBoardDom(gunBoard, state);
       writeUrl(true);
     },
+    onSelectBeat: (id) => {
+      if (state.eventId === id) return;
+      state.eventId = id;
+      writeUrl(true);
+    },
   }));
   return shell;
 }
