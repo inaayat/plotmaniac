@@ -69,6 +69,8 @@ import {
   usesRegulationBoard,
   usesScotusHub,
   boardViewForPerson,
+  usesHubWebPersonFocus,
+  webCastForPersonFocus,
   COMPACT_MAX_WIDTH,
   warActive,
   warOverlapsSpan,
@@ -1805,6 +1807,24 @@ assert.equal(boardViewForPerson(vance, "person"), "web");
 assert.equal(boardViewForPerson(obama, "timeline"), "timeline");
 assert.equal(boardViewForPerson(youtubers, "person"), "person");
 assert.equal(boardViewForPerson(youtubers, "web"), "web");
+assert.equal(usesHubWebPersonFocus(marvel), true);
+assert.equal(usesHubWebPersonFocus(youtubers), false);
+assert.equal(boardViewForPerson(marvel, "person"), "web");
+const steveWebCast = webCastForPersonFocus(marvelPeople, marvelRelations, "steve-rogers");
+assert.ok(steveWebCast.people.some((person) => person.id === "steve-rogers"));
+assert.ok(steveWebCast.people.length < marvelPeople.length);
+const steveWeb = webLayout(steveWebCast.people, steveWebCast.relations, {
+  centerId: "steve-rogers",
+  hubField: false,
+  includeOrbit: true,
+  friendKinds: marvel.friendKinds,
+  enemyKinds: marvel.enemyKinds,
+  events: marvelEvents,
+  width: 1400,
+  height: 980,
+});
+assert.equal(steveWeb.nodes.find((node) => node.id === "steve-rogers")?.camp, "center");
+assert.ok(steveWeb.nodes.length >= 3 && steveWeb.nodes.length <= 40, "Steve web stays a local neighborhood");
 
 const oldObamaPerson = parseState(
   "https://plotmaniac.com/?plot=barack-obama&view=person&person=same-sex-marriage",
