@@ -31,7 +31,7 @@ No build step: the workflow uploads the repository root as a static site (`index
 
 **Vercel** was used earlier for hosting; it is deprecated for this project. You do not need a Vercel project to run or deploy Plotmaniac.
 
-First-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+First-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The workflow passes `enablement: true` to `configure-pages` so the first run can turn Pages on when the token allows it; if that step still fails, use the same Settings path once, then re-run **Deploy GitHub Pages**. Custom domain `plotmaniac.com` comes from the root `CNAME` file in the deployed artifact; if the domain is missing, set **Custom domain** to `plotmaniac.com` under **Settings → Pages** (API may return 403 for automation tokens).
 
 ## Plot templates
 
