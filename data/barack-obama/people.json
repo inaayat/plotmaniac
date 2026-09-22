@@ -1,0 +1,309 @@
+[
+  {
+    "id": "barack-obama",
+    "name": "Barack Obama",
+    "role": "Illinois state senator (1997–2004), U.S. senator (2005–2008), and 44th president (2009–2017). The board is his public stances, not every vote.",
+    "tags": ["center"],
+    "links": [
+      {
+        "label": "Political positions of Barack Obama",
+        "url": "https://en.wikipedia.org/wiki/Political_positions_of_Barack_Obama"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Barack%20Obama.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:President_Barack_Obama.jpg",
+      "author": "Pete Souza / Official White House Photo",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+  },
+  {
+    "id": "same-sex-marriage",
+    "name": "Same-sex marriage",
+    "role": "Supported it on a 1996 questionnaire, then civil unions without the word marriage, then became the first sitting president to back legalization in 2012.",
+    "tags": ["social", "evolved"],
+    "links": [
+      {
+        "label": "Social policy of the Obama administration",
+        "url": "https://en.wikipedia.org/wiki/Social_policy_of_the_Obama_administration"
+      }
+    ]
+  },
+  {
+    "id": "individual-mandate",
+    "name": "Individual mandate",
+    "role": "Attacked Hillary Clinton’s 2008 requirement that people buy insurance, then put a mandate at the center of the Affordable Care Act.",
+    "tags": ["economic", "evolved"],
+    "links": [
+      {
+        "label": "Affordable Care Act",
+        "url": "https://en.wikipedia.org/wiki/Affordable_Care_Act"
+      }
+    ]
+  },
+  {
+    "id": "nsa-surveillance",
+    "name": "NSA surveillance",
+    "role": "Criticized Bush-era warrantless wiretapping, voted to legalize the architecture in 2008, then defended and later narrowed the programs as president.",
+    "tags": ["security", "evolved"],
+    "links": [
+      {
+        "label": "Barack Obama on mass surveillance",
+        "url": "https://en.wikipedia.org/wiki/Barack_Obama_on_mass_surveillance"
+      }
+    ]
+  },
+  {
+    "id": "cuba-relations",
+    "name": "Cuba opening",
+    "role": "Kept the embargo while easing family travel, then restored diplomatic relations in 2014 and visited Havana in 2016.",
+    "tags": ["foreign", "evolved"],
+    "links": [
+      {
+        "label": "Cuban thaw",
+        "url": "https://en.wikipedia.org/wiki/Cuban_thaw"
+      }
+    ]
+  },
+  {
+    "id": "daca",
+    "name": "DACA",
+    "role": "Backed the DREAM Act in Congress, said a president could not defer deportations by fiat, then created Deferred Action for Childhood Arrivals in 2012.",
+    "tags": ["social", "evolved"],
+    "links": [
+      {
+        "label": "Deferred Action for Childhood Arrivals",
+        "url": "https://en.wikipedia.org/wiki/Deferred_Action_for_Childhood_Arrivals"
+      }
+    ]
+  },
+  {
+    "id": "medical-marijuana",
+    "name": "Medical marijuana",
+    "role": "Pledged to stop DEA raids on state-legal dispensaries, then outpaced Bush-era raids, then told prosecutors to stand down in Cole-memo states.",
+    "tags": ["social", "evolved"],
+    "links": [
+      {
+        "label": "Cole Memorandum",
+        "url": "https://en.wikipedia.org/wiki/Cole_Memorandum"
+      }
+    ]
+  },
+  {
+    "id": "afghanistan-surge",
+    "name": "Afghanistan surge",
+    "role": "Called Afghanistan the necessary war and sent 30,000 more troops in 2009, then began a drawdown that still left thousands in place.",
+    "tags": ["foreign", "evolved"],
+    "links": [
+      {
+        "label": "Foreign policy of the Obama administration",
+        "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Obama_administration"
+      }
+    ]
+  },
+  {
+    "id": "iraq-war",
+    "name": "Iraq War",
+    "role": "Opposed the 2003 invasion in a 2002 Chicago speech, ran in 2008 on a responsible end, and withdrew combat forces in 2011.",
+    "tags": ["foreign", "stable"],
+    "links": [
+      {
+        "label": "Political positions of Barack Obama",
+        "url": "https://en.wikipedia.org/wiki/Political_positions_of_Barack_Obama"
+      }
+    ]
+  },
+  {
+    "id": "affordable-care-act",
+    "name": "Affordable Care Act",
+    "role": "Signature first-term law: exchanges, a Medicaid expansion, and subsidies. Coverage rose; the uninsured rate fell from about 16% to 9%.",
+    "tags": ["economic", "stable"],
+    "links": [
+      {
+        "label": "Affordable Care Act",
+        "url": "https://en.wikipedia.org/wiki/Affordable_Care_Act"
+      }
+    ]
+  },
+  {
+    "id": "public-option",
+    "name": "Public option",
+    "role": "Wanted a government insurance plan on the exchanges, then allowed the Senate to drop it so the rest of the health law could pass.",
+    "tags": ["economic", "stable"],
+    "links": [
+      {
+        "label": "Public health insurance option",
+        "url": "https://en.wikipedia.org/wiki/Public_health_insurance_option"
+      }
+    ]
+  },
+  {
+    "id": "dont-ask-dont-tell",
+    "name": "DADT repeal",
+    "role": "Opposed the military ban on openly gay service members and signed the Don’t Ask, Don’t Tell Repeal Act in 2010.",
+    "tags": ["social", "stable"],
+    "links": [
+      {
+        "label": "Don't Ask, Don't Tell Repeal Act of 2010",
+        "url": "https://en.wikipedia.org/wiki/Don%27t_Ask,_Don%27t_Tell_Repeal_Act_of_2010"
+      }
+    ]
+  },
+  {
+    "id": "guantanamo",
+    "name": "Closing Guantanamo",
+    "role": "Ordered the prison closed within a year of taking office. Transfers cut the population sharply; 41 men were still there when he left.",
+    "tags": ["security", "stable"],
+    "links": [
+      {
+        "label": "Guantanamo Bay detention camp",
+        "url": "https://en.wikipedia.org/wiki/Guantanamo_Bay_detention_camp"
+      }
+    ]
+  },
+  {
+    "id": "iran-nuclear-deal",
+    "name": "Iran nuclear deal",
+    "role": "Pushed diplomacy over isolation, then the 2015 Joint Comprehensive Plan of Action limiting Iran’s nuclear program for sanctions relief.",
+    "tags": ["foreign", "stable"],
+    "links": [
+      {
+        "label": "Joint Comprehensive Plan of Action",
+        "url": "https://en.wikipedia.org/wiki/Joint_Comprehensive_Plan_of_Action"
+      }
+    ]
+  },
+  {
+    "id": "keystone-xl",
+    "name": "Keystone XL",
+    "role": "Sat on the border-crossing permit through a long environmental review, then rejected the tar-sands pipeline in 2015.",
+    "tags": ["energy", "stable"],
+    "links": [
+      {
+        "label": "Keystone Pipeline",
+        "url": "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+      }
+    ]
+  },
+  {
+    "id": "climate-action",
+    "name": "Climate action",
+    "role": "Wanted cap-and-trade, put clean-energy money in the stimulus, then used EPA rules and the Paris Agreement after Congress stalled.",
+    "tags": ["energy", "stable"],
+    "links": [
+      {
+        "label": "Energy policy of the Obama administration",
+        "url": "https://en.wikipedia.org/wiki/Energy_policy_of_the_Obama_administration"
+      }
+    ]
+  },
+  {
+    "id": "recovery-act",
+    "name": "Recovery Act",
+    "role": "An $800 billion blend of spending and tax cuts signed in the trough of the Great Recession, including infrastructure and clean energy.",
+    "tags": ["economic", "stable"],
+    "links": [
+      {
+        "label": "American Recovery and Reinvestment Act of 2009",
+        "url": "https://en.wikipedia.org/wiki/American_Recovery_and_Reinvestment_Act_of_2009"
+      }
+    ]
+  },
+  {
+    "id": "dodd-frank",
+    "name": "Dodd-Frank",
+    "role": "2010 financial rewrite: more bank oversight, a Consumer Financial Protection Bureau, and no full Glass–Steagall revival.",
+    "tags": ["economic", "stable"],
+    "links": [
+      {
+        "label": "Dodd–Frank Act",
+        "url": "https://en.wikipedia.org/wiki/Dodd%E2%80%93Frank_Wall_Street_Reform_and_Consumer_Protection_Act"
+      }
+    ]
+  },
+  {
+    "id": "assault-weapons-ban",
+    "name": "Assault weapons ban",
+    "role": "Favored renewing the federal assault-weapons ban and tighter gun-show rules; a 1996 questionnaire also recorded a handgun ban he later denied.",
+    "tags": ["social", "stable"],
+    "links": [
+      {
+        "label": "Social policy of the Obama administration",
+        "url": "https://en.wikipedia.org/wiki/Social_policy_of_the_Obama_administration"
+      }
+    ]
+  },
+  {
+    "id": "death-penalty",
+    "name": "Death penalty",
+    "role": "Kept capital punishment for the most heinous crimes while backing interrogation reforms in Illinois. No federal executions were carried out on his watch.",
+    "tags": ["social", "stable"],
+    "links": [
+      {
+        "label": "Social policy of the Obama administration",
+        "url": "https://en.wikipedia.org/wiki/Social_policy_of_the_Obama_administration"
+      }
+    ]
+  },
+  {
+    "id": "trans-pacific-partnership",
+    "name": "Trans-Pacific Partnership",
+    "role": "Negotiated and signed the 12-nation trade pact as a Pacific pivot. Congress never ratified it.",
+    "tags": ["economic", "stable"],
+    "links": [
+      {
+        "label": "Trans-Pacific Partnership",
+        "url": "https://en.wikipedia.org/wiki/Trans-Pacific_Partnership"
+      }
+    ]
+  },
+  {
+    "id": "minimum-wage",
+    "name": "Minimum wage",
+    "role": "Asked Congress for a federal floor that moved from $9 toward $10.10 and later $12. The Republican Congress blocked it; many states still raised theirs.",
+    "tags": ["economic", "stable"],
+    "links": [
+      {
+        "label": "Economic policy of the Obama administration",
+        "url": "https://en.wikipedia.org/wiki/Economic_policy_of_the_Obama_administration"
+      }
+    ]
+  },
+  {
+    "id": "stem-cell-research",
+    "name": "Stem-cell research",
+    "role": "Co-sponsored bills to ease Bush limits, then revoked those limits by executive order in 2009.",
+    "tags": ["social", "stable"],
+    "links": [
+      {
+        "label": "Stem Cell Research Enhancement Act",
+        "url": "https://en.wikipedia.org/wiki/Stem_Cell_Research_Enhancement_Act"
+      }
+    ]
+  },
+  {
+    "id": "auto-rescue",
+    "name": "Auto rescue",
+    "role": "Continued and expanded the Bush-era rescue of GM and Chrysler, forcing bankruptcies and new labor terms rather than liquidation.",
+    "tags": ["economic", "stable"],
+    "links": [
+      {
+        "label": "Automotive industry crisis of 2008–2010",
+        "url": "https://en.wikipedia.org/wiki/2008%E2%80%932010_automotive_industry_crisis"
+      }
+    ]
+  },
+  {
+    "id": "drone-strikes",
+    "name": "Drone strikes",
+    "role": "Made armed drones a central counterterror tool, including the 2011 strike that killed Anwar al-Awlaki, a U.S. citizen, in Yemen.",
+    "tags": ["security", "stable"],
+    "links": [
+      {
+        "label": "Foreign policy of the Obama administration",
+        "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Obama_administration"
+      }
+    ]
+  }
+]
