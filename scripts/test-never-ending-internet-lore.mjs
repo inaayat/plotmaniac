@@ -9,6 +9,7 @@ import {
   filterEvents,
   firstLoadCountries,
   graphLayout,
+  groupCountriesByStatus,
   RELATION_BLOCS,
   relationsFieldEdges,
   relationsFieldLayout,
@@ -20,8 +21,10 @@ import {
   RELATION_REGIONS,
   stateUrl,
   neighborhood,
+  visibleRelationCountries,
   webLayout,
   youtubeId,
+  COMPACT_MAX_WIDTH,
 } from "../engine.js";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
@@ -510,5 +513,25 @@ assert.ok(austria && austria.scope === "broad");
 assert.equal(stateUrl("https://plotmaniac.com/", { view: "pick" }, ""), "/");
 assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /plot=united-states/);
 assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /year=1942/);
+
+assert.equal(COMPACT_MAX_WIDTH, 768);
+assert.equal(visibleRelationCountries(usCountries).length, 31);
+assert.equal(visibleRelationCountries(usCountries, ["Europe"]).every((country) => country.region === "Europe"), true);
+const groupedStatus = groupCountriesByStatus(visibleRelationCountries(usCountries));
+assert.equal(groupedStatus.friend.length, 24);
+assert.equal(groupedStatus.foe.length, 7);
+assert.equal(groupedStatus.neutral.length, 0);
+const europeStatus = groupCountriesByStatus(visibleRelationCountries(usCountries, ["Europe"]));
+assert.ok(europeStatus.neutral.length > 0);
+assert.ok(europeStatus.friend.length > 0);
+
+const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
+assert.match(html, /viewport-fit=cover/, "mobile viewport should include safe-area");
+const css = fs.readFileSync(new URL("../lore.css", import.meta.url), "utf8");
+assert.match(css, /max-width: 768px/, "compact layout breakpoint");
+assert.match(css, /\.spine-event/, "vertical timeline cards");
+const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
+assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
+assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
 
 console.log("never-ending internet lore tests passed");

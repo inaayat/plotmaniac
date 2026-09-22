@@ -1,5 +1,6 @@
 import {
   ALL,
+  COMPACT_MAX_WIDTH,
   campOf,
   countriesByRegion,
   coversYear,
@@ -7,6 +8,7 @@ import {
   eventTease,
   filterEvents,
   firstLoadCountries,
+  groupCountriesByStatus,
   initials,
   neighborhood,
   outlineFor,
@@ -16,6 +18,7 @@ import {
   relationsFieldLayout,
   stateUrl,
   tiesWith,
+  visibleRelationCountries,
   webLayout,
 } from "./engine.js";
 
@@ -34,9 +37,21 @@ let toastTimer = null;
 let loadToken = 0;
 const ZOOM_MIN = 0.08;
 const ZOOM_MAX = 2.5;
+const COMPACT_MQ = `(max-width: ${COMPACT_MAX_WIDTH}px)`;
 let laneZoom = 1;
 let pendingLaneScroll = null;
 let pendingLaneFocus = "";
+
+function isCompact() {
+  return window.matchMedia(COMPACT_MQ).matches;
+}
+
+function syncLayoutMode() {
+  const next = isCompact() ? "compact" : "wide";
+  const prev = document.body.dataset.layout || "";
+  document.body.dataset.layout = next;
+  return prev !== next;
+}
 
 const $ = (id) => document.getElementById(id);
 
@@ -53,10 +68,16 @@ async function load() {
   } else {
     showPicker({ history: "none" });
   }
+  syncLayoutMode();
   let resizeTimer = 0;
   window.addEventListener("resize", () => {
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
+      const crossed = syncLayoutMode();
+      if (crossed && plot) {
+        render({ replace: true, focusEvent: Boolean(state.eventId) });
+        return;
+      }
       if (state.view === "web") {
         const field = document.querySelector(".relations-stage");
         if (field) paintRelationsField(field);
@@ -291,6 +312,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
     ? { left: scroller.scrollLeft, top: scroller.scrollTop }
     : null;
   pendingLaneFocus = focusEvent && state.eventId ? state.eventId : "";
+  syncLayoutMode();
   document.body.dataset.view = state.view;
   $("view-web").classList.toggle("is-active", state.view === "web");
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
@@ -303,6 +325,13 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
   else app.appendChild(renderWeb());
   if (push || replace) writeUrl(replace);
+  if (pendingLaneFocus && isCompact()) {
+    const beatId = pendingLaneFocus;
+    pendingLaneFocus = "";
+    requestAnimationFrame(() => {
+      document.getElementById(`beat-${beatId}`)?.scrollIntoView({ block: "center", inline: "nearest" });
+    });
+  }
 }
 
 function renderWeb() {
@@ -326,6 +355,14 @@ function renderWeb() {
   scroller.appendChild(stage);
   section.append(key);
   if (plot.year) section.appendChild(renderYearBar());
+  if (isCompact()) {
+    const hint = document.createElement("p");
+    hint.className = "web-hint";
+    hint.textContent = plot.arrangement === "camps"
+      ? "Foes sit on the left, friends on the right. Scroll to see everyone."
+      : "Scroll to look around. People with more beats sit closer to the center.";
+    section.appendChild(hint);
+  }
   section.append(scroller);
   requestAnimationFrame(() => paintWeb(stage));
   return section;
@@ -333,17 +370,21 @@ function renderWeb() {
 
 function renderRelations() {
   const section = document.createElement("section");
-  section.className = "relations";
-  const stage = document.createElement("div");
-  stage.className = "relations-stage";
-  section.append(renderRelationLegend(), renderRelationHint(), stage, renderRegionBar());
+  section.className = `relations${isCompact() ? " is-list" : ""}`;
+  if (isCompact()) {
+    section.append(renderRelationLegend(), renderRelationHint(), renderRelationsLists(), renderRegionBar());
+  } else {
+    const stage = document.createElement("div");
+    stage.className = "relations-stage";
+    section.append(renderRelationLegend(), renderRelationHint(), stage, renderRegionBar());
+    requestAnimationFrame(() => paintRelationsField(stage));
+  }
   const drawer = document.createElement("aside");
   drawer.className = "relation-drawer";
   drawer.hidden = true;
   drawer.setAttribute("role", "dialog");
   drawer.setAttribute("aria-label", "Relationship timeline");
   section.appendChild(drawer);
-  requestAnimationFrame(() => paintRelationsField(stage));
   paintRelationSelection(section);
   return section;
 }
@@ -373,11 +414,19 @@ function renderRelationHint() {
   const majors = firstLoadCountries(countries);
   const friendCount = majors.filter((country) => country.status === "friend").length;
   const foeCount = majors.filter((country) => country.status === "foe").length;
-  hint.append(
-    document.createTextNode(
-      `${friendCount} major allies and ${foeCount} major foes sit close to the center, with a line back to the United States. Open a region and the wider set spreads across the page, including every neutral. `,
-    ),
-  );
+  if (isCompact()) {
+    hint.append(
+      document.createTextNode(
+        `${friendCount} major allies and ${foeCount} major foes. Open a region for every other country, including neutrals. `,
+      ),
+    );
+  } else {
+    hint.append(
+      document.createTextNode(
+        `${friendCount} major allies and ${foeCount} major foes sit close to the center, with a line back to the United States. Open a region and the wider set spreads across the page, including every neutral. `,
+      ),
+    );
+  }
   const source = document.createElement("a");
   source.href = "https://en.wikipedia.org/wiki/Foreign_relations_of_the_United_States";
   source.textContent = "English Wikipedia";
@@ -408,6 +457,50 @@ function renderRegionBar() {
   return bar;
 }
 
+function renderRelationsLists() {
+  const lists = document.createElement("div");
+  lists.className = "relations-lists";
+  paintRelationsLists(lists);
+  return lists;
+}
+
+function paintRelationsLists(root) {
+  const visible = visibleRelationCountries(countries, [...openRegions]);
+  const grouped = groupCountriesByStatus(visible);
+  const selectedRegion = [...openRegions][0] || "";
+  root.replaceChildren();
+  const intro = document.createElement("p");
+  intro.className = "region-intro";
+  intro.textContent = selectedRegion
+    ? `${selectedRegion}: every friend, foe, and neutral.`
+    : "Major allies and major foes. Choose a region for the rest.";
+  root.appendChild(intro);
+  const sections = [
+    ["friend", "Friends", grouped.friend],
+    ["foe", "Foes", grouped.foe],
+  ];
+  if (selectedRegion) sections.push(["neutral", "Neutrals", grouped.neutral]);
+  sections.forEach(([status, label, list]) => {
+    const block = document.createElement("section");
+    block.className = `relations-group camp-${status === "foe" ? "enemy" : status}`;
+    const heading = document.createElement("h3");
+    heading.textContent = `${label} · ${list.length}`;
+    const chips = document.createElement("ul");
+    chips.className = "chip-list";
+    list
+      .slice()
+      .sort((a, b) => String(a.country).localeCompare(String(b.country)))
+      .forEach((country) => {
+        const item = document.createElement("li");
+        item.appendChild(countryChip(country));
+        chips.appendChild(item);
+      });
+    block.append(heading, chips);
+    root.appendChild(block);
+  });
+  paintRelationSelection(document);
+}
+
 function toggleRegion(region) {
   const hadSelection = Boolean(state.country);
   openRegions = openRegions.has(region) ? new Set() : new Set([region]);
@@ -415,6 +508,8 @@ function toggleRegion(region) {
   paintRegionButtons();
   const stage = document.querySelector(".relations-stage");
   if (stage) paintRelationsField(stage);
+  const lists = document.querySelector(".relations-lists");
+  if (lists) paintRelationsLists(lists);
   if (hadSelection) writeUrl(true);
 }
 
@@ -568,6 +663,8 @@ function selectCountry(slug) {
     paintRegionButtons();
     const stage = document.querySelector(".relations-stage");
     if (stage) paintRelationsField(stage);
+    const lists = document.querySelector(".relations-lists");
+    if (lists) paintRelationsLists(lists);
   }
   paintRelationSelection(document);
   writeUrl(false);
@@ -582,12 +679,25 @@ function paintRelationSelection(root = document) {
   });
   const drawer = root.querySelector(".relation-drawer");
   if (!drawer) return;
+  root.querySelectorAll(".drawer-scrim").forEach((scrim) => scrim.remove());
   drawer.replaceChildren();
   if (!selected) {
     drawer.hidden = true;
     return;
   }
   drawer.hidden = false;
+  if (isCompact()) {
+    const scrim = document.createElement("button");
+    scrim.type = "button";
+    scrim.className = "drawer-scrim";
+    scrim.setAttribute("aria-label", "Close relationship");
+    scrim.addEventListener("click", () => {
+      state.country = "";
+      paintRelationSelection();
+      writeUrl(true);
+    });
+    drawer.before(scrim);
+  }
   const record = countryBySlug.get(selected);
   const person = peopleById.get(selected);
   drawer.classList.remove("outline-green", "outline-red", "outline-none");
@@ -736,12 +846,26 @@ function setYear(year) {
 function paintWeb(stage, { animate = true } = {}) {
   if (!stage.isConnected) return;
   const bounds = stage.getBoundingClientRect();
-  if (bounds.width < 2 || bounds.height < 2) {
-    requestAnimationFrame(() => paintWeb(stage, { animate }));
-    return;
+  const scroller = stage.parentElement;
+  const compact = isCompact();
+  const camps = plot.arrangement === "camps";
+  let width;
+  let height;
+  if (compact && !camps) {
+    const size = Math.max(680, Math.floor(Math.max(bounds.width, bounds.height, scroller?.clientWidth || 0)));
+    width = size;
+    height = size;
+    stage.style.width = `${size}px`;
+    stage.style.height = `${size}px`;
+  } else {
+    if (bounds.width < 2 || bounds.height < 2) {
+      requestAnimationFrame(() => paintWeb(stage, { animate }));
+      return;
+    }
+    width = Math.max(320, Math.floor(bounds.width));
+    height = Math.max(260, Math.floor(bounds.height));
+    stage.style.width = "";
   }
-  const width = Math.max(320, Math.floor(bounds.width));
-  const height = Math.max(260, Math.floor(bounds.height));
   const layout = webLayout(people, relations, {
     centerId: plot.centerId,
     friendKinds: plot.friendKinds,
@@ -753,8 +877,8 @@ function paintWeb(stage, { animate = true } = {}) {
     height,
   });
   stage.classList.toggle("is-quiet", !animate);
-  if (plot.arrangement === "camps" && layout.height > height + 2) stage.style.height = `${layout.height}px`;
-  else stage.style.height = "";
+  if (camps && layout.height > height + 2) stage.style.height = `${layout.height}px`;
+  else if (!(compact && !camps)) stage.style.height = "";
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);
   stage.replaceChildren();
@@ -819,6 +943,10 @@ function paintWeb(stage, { animate = true } = {}) {
     const friendCount = layout.nodes.filter((node) => node.camp === "friend").length;
     const foeCount = layout.nodes.filter((node) => node.camp === "enemy").length;
     counts.textContent = `${friendCount} ${friendCount === 1 ? "friend" : "friends"} · ${foeCount} ${foeCount === 1 ? "foe" : "foes"}`;
+  }
+  if (compact && !camps && scroller) {
+    scroller.scrollLeft = Math.max(0, (stage.offsetWidth - scroller.clientWidth) / 2);
+    scroller.scrollTop = Math.max(0, (stage.offsetHeight - scroller.clientHeight) / 2);
   }
 }
 
@@ -898,8 +1026,10 @@ function renderPerson() {
   section.append(back, head, renderRail(theirs, {
     focusId: person.id,
     note: person.id === plot.centerId
-      ? "Every sourced beat, oldest on the left."
-      : `Beats with ${person.name}, oldest on the left.`,
+      ? (isCompact() ? "Every sourced beat, oldest at the top." : "Every sourced beat, oldest on the left.")
+      : (isCompact()
+        ? `Beats with ${person.name}, oldest at the top.`
+        : `Beats with ${person.name}, oldest on the left.`),
   }));
   return section;
 }
@@ -941,13 +1071,16 @@ function renderTimeline() {
 
   const shown = filterEvents(events, { query: state.query }, peopleById);
   section.append(head, renderRail(shown, {
-    note: "The whole public record, oldest on the left. Open a beat for the sources.",
+    note: isCompact()
+      ? "The whole public record, oldest at the top. Open a beat for the sources."
+      : "The whole public record, oldest on the left. Open a beat for the sources.",
   }));
   if (!shown.length) section.appendChild(emptyState("Nothing in this plot matches that search."));
   return section;
 }
 
 function renderRail(list, { focusId = "", note = "" } = {}) {
+  if (isCompact()) return renderSpine(list, { focusId, note });
   const view = document.createElement("div");
   view.className = "lane-view";
 
@@ -1163,6 +1296,113 @@ function bindLaneGestures(view) {
   };
   scroller.addEventListener("pointerup", endPan);
   scroller.addEventListener("pointercancel", endPan);
+}
+
+function renderSpine(list, { focusId = "", note = "" } = {}) {
+  const view = document.createElement("div");
+  view.className = "spine-view";
+  if (note) {
+    const hint = document.createElement("p");
+    hint.className = "rail-note";
+    hint.textContent = note;
+    view.appendChild(hint);
+  }
+  const rail = document.createElement("ol");
+  rail.className = "spine";
+  rail.setAttribute("aria-label", "Timeline, oldest at the top.");
+  let year = "";
+  list.forEach((event) => {
+    const nextYear = event.date.slice(0, 4);
+    if (nextYear !== year) {
+      year = nextYear;
+      const stone = document.createElement("li");
+      stone.className = "spine-year";
+      const text = document.createElement("span");
+      text.textContent = year;
+      stone.appendChild(text);
+      rail.appendChild(stone);
+    }
+    rail.appendChild(renderSpineEvent(event, focusId));
+  });
+  view.appendChild(rail);
+  return view;
+}
+
+function renderSpineEvent(event, focusId) {
+  const item = document.createElement("li");
+  item.className = "spine-event";
+  item.classList.toggle("is-selected", state.eventId === event.id);
+  item.id = `beat-${event.id}`;
+
+  const toggle = () => {
+    state.eventId = state.eventId === event.id ? "" : event.id;
+    render({ replace: true, focusEvent: Boolean(state.eventId) });
+  };
+
+  const mark = document.createElement("button");
+  mark.type = "button";
+  mark.className = "spine-mark";
+  const featured = featuredPerson(event, focusId);
+  mark.appendChild(avatar(featured, "md"));
+  mark.setAttribute("aria-label", `${formatDate(event.date)}. ${event.title}`);
+  mark.addEventListener("click", toggle);
+
+  const copy = document.createElement("div");
+  copy.className = "spine-copy";
+  const hit = document.createElement("button");
+  hit.type = "button";
+  hit.className = "spine-hit";
+  const when = document.createElement("time");
+  when.dateTime = event.date;
+  when.textContent = formatDate(event.date);
+  const heading = document.createElement("strong");
+  heading.textContent = event.title;
+  const tease = document.createElement("span");
+  tease.className = "beat-tease";
+  tease.textContent = eventTease(event, 140);
+  const era = document.createElement("em");
+  era.textContent = eraLabel(event.era);
+  hit.append(when, heading, tease, era);
+  hit.addEventListener("click", toggle);
+  copy.appendChild(hit);
+
+  if (state.eventId === event.id) {
+    const more = document.createElement("div");
+    more.className = "spine-more";
+    const summary = document.createElement("p");
+    summary.textContent = event.summary;
+    const names = document.createElement("p");
+    names.className = "detail-names";
+    names.textContent = event.people.map((id) => peopleById.get(id)?.name || id).join(" · ");
+    more.append(summary, names, faceRow(event.people));
+    if (event.links?.length) {
+      const links = document.createElement("div");
+      links.className = "event-links";
+      event.links.forEach((link) => {
+        if (!/^https:\/\//.test(link.url || "")) return;
+        const anchor = document.createElement("a");
+        anchor.href = link.url;
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+        anchor.textContent = link.label || "Source";
+        const type = document.createElement("span");
+        type.className = "link-type";
+        type.textContent = link.type || "link";
+        anchor.appendChild(type);
+        links.appendChild(anchor);
+      });
+      const share = document.createElement("button");
+      share.type = "button";
+      share.textContent = "Copy link";
+      share.addEventListener("click", () => copyLink());
+      links.appendChild(share);
+      more.appendChild(links);
+    }
+    copy.appendChild(more);
+  }
+
+  item.append(mark, copy);
+  return item;
 }
 
 function renderLaneEvent(event, side, focusId) {
