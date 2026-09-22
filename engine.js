@@ -51,6 +51,28 @@ export function filterEvents(events, filters = {}, peopleById = new Map()) {
   });
 }
 
+/** Unique film/series labels for title filter suggestions, in display order. */
+export function titleFilterLabels(events = []) {
+  const seen = new Set();
+  const labels = [];
+  (events || []).forEach((event) => {
+    const label = eventMediaLabel(event);
+    if (!label || seen.has(label)) return;
+    seen.add(label);
+    labels.push(label);
+  });
+  return labels.sort((a, b) => a.localeCompare(b, "en", { sensitivity: "base" }));
+}
+
+/** Match title labels for the custom suggestions panel (not native datalist). */
+export function filterTitleLabels(labels, query, limit = 10) {
+  const list = Array.isArray(labels) ? labels : [];
+  const cap = Math.max(1, Number(limit) || 10);
+  const q = String(query || "").trim().toLocaleLowerCase();
+  if (!q) return list.slice(0, cap);
+  return list.filter((label) => label.toLocaleLowerCase().includes(q)).slice(0, cap);
+}
+
 /** Prefer a film/series link label when the beat has one; otherwise the beat title. */
 export function eventMediaLabel(event) {
   const reference = (event?.links || []).find((link) => link.type === "reference" && link.label);

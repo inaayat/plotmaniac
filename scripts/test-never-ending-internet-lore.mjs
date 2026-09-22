@@ -22,7 +22,9 @@ import {
   eventMediaLabel,
   expandedSummary,
   filterEvents,
+  filterTitleLabels,
   peopleForTitleSearch,
+  titleFilterLabels,
   findPlot,
   plotCardFace,
   plotMatchesQuery,
@@ -1673,6 +1675,16 @@ assert.ok(marvelPortraits >= 95, `Marvel should have Commons portraits for almos
 assert.equal(marvelPeople.find((person) => person.id === "maya-lopez")?.portrait, undefined, "Echo has no free Commons still");
 assert.equal(eventMediaLabel(marvelEvents.find((event) => event.id === "iron-man")), "Iron Man");
 assert.equal(eventMediaLabel(marvelEvents.find((event) => event.id === "avengers-assemble")), "The Avengers");
+const marvelTitles = titleFilterLabels(marvelEvents);
+assert.ok(marvelTitles.includes("Iron Man"), "title labels include Iron Man");
+assert.ok(marvelTitles.indexOf("Iron Man") < marvelTitles.indexOf("The Avengers"), "title labels stay sorted");
+assert.deepEqual(
+  filterTitleLabels(marvelTitles, "iro"),
+  filterTitleLabels(marvelTitles, "iro").filter((label) => label.toLocaleLowerCase().includes("iro")),
+);
+assert.ok(filterTitleLabels(marvelTitles, "iro").includes("Iron Man"), "iro matches Iron Man");
+assert.match(fs.readFileSync(new URL("../index.html", import.meta.url), "utf8"), /title-suggestions/);
+assert.doesNotMatch(fs.readFileSync(new URL("../index.html", import.meta.url), "utf8"), /list="title-options"/);
 const ironManCast = peopleForTitleSearch(
   marvelPeople,
   marvelEvents,
