@@ -32,10 +32,13 @@ import {
   relationToneSeries,
   RELATION_REGIONS,
   stateUrl,
+  stanceHistory,
   neighborhood,
   visibleRelationCountries,
   webLayout,
   youtubeId,
+  usesPolicyPanel,
+  boardViewForPerson,
   COMPACT_MAX_WIDTH,
 } from "../engine.js";
 
@@ -729,6 +732,9 @@ assert.match(
   /view=relation.*country=mexico/,
 );
 assert.match(appSource, /renderRelationPage/, "full-page bilateral timeline view");
+assert.match(appSource, /function paintPolicySelection/, "topic plots open a policy side panel");
+assert.match(appSource, /policy-drawer/, "policy panel reuses the drawer chrome");
+assert.match(appSource, /usesPolicyPanel/, "topic-plot clicks stay on the board");
 
 const obamaPeople = readJson("../data/barack-obama/people.json");
 const obamaEvents = readJson("../data/barack-obama/events.json");
@@ -1125,5 +1131,45 @@ assert.match(
   stateUrl("https://plotmaniac.com/", { view: "web", plot: "jd-vance", year: 2024 }, ""),
   /year=2024/,
 );
+
+assert.equal(usesPolicyPanel(obama), true);
+assert.equal(usesPolicyPanel(vance), true);
+assert.equal(usesPolicyPanel(youtubers), false);
+assert.equal(boardViewForPerson(obama, "person"), "web");
+assert.equal(boardViewForPerson(vance, "person"), "web");
+assert.equal(boardViewForPerson(obama, "timeline"), "timeline");
+assert.equal(boardViewForPerson(youtubers, "person"), "person");
+assert.equal(boardViewForPerson(youtubers, "web"), "web");
+
+const oldObamaPerson = parseState(
+  "https://plotmaniac.com/?plot=barack-obama&view=person&person=same-sex-marriage",
+  { people: obamaIds },
+);
+assert.equal(oldObamaPerson.view, "person");
+assert.equal(oldObamaPerson.person, "same-sex-marriage");
+assert.equal(boardViewForPerson(obama, oldObamaPerson.view), "web");
+const policyPanelUrl = stateUrl(
+  "https://plotmaniac.com/",
+  { view: "web", plot: "barack-obama", person: "same-sex-marriage", year: 2012 },
+  "",
+);
+assert.match(policyPanelUrl, /plot=barack-obama/);
+assert.match(policyPanelUrl, /person=same-sex-marriage/);
+assert.match(policyPanelUrl, /view=web/);
+assert.equal(/view=person/.test(policyPanelUrl), false);
+
+const marriageStances = stanceHistory("same-sex-marriage", obamaRelations, obama.centerId);
+assert.equal(marriageStances.length, 3);
+assert.equal(marriageStances[0].kind, "supported");
+assert.equal(marriageStances[0].start, "1996");
+assert.equal(marriageStances[1].kind, "opposed");
+assert.equal(marriageStances.at(-1).kind, "supported");
+assert.equal(marriageStances.at(-1).start, "2012");
+const immigrationStances = stanceHistory("immigration-restriction", vanceRelations, vance.centerId);
+assert.equal(immigrationStances.length, 2);
+assert.equal(immigrationStances[0].kind, "opposed");
+assert.equal(immigrationStances[1].kind, "supported");
+assert.ok(obamaEvents.filter((event) => event.people.includes("same-sex-marriage")).length >= 2);
+assert.ok(vanceEvents.filter((event) => event.people.includes("donald-trump")).length >= 2);
 
 console.log("never-ending internet lore tests passed");

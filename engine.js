@@ -772,6 +772,23 @@ export function tiesWith(personId, relations, centerId) {
     (relation.to === personId && relation.from === centerId));
 }
 
+export function usesPolicyPanel(plot) {
+  return plot?.arrangement === "topics";
+}
+
+export function boardViewForPerson(plot, view) {
+  if (usesPolicyPanel(plot) && view === "person") return "web";
+  return view;
+}
+
+export function stanceHistory(personId, relations, centerId) {
+  return tiesWith(personId, relations, centerId)
+    .slice()
+    .sort((a, b) =>
+      String(a.start || "").localeCompare(String(b.start || "")) ||
+      String(a.end || "9999").localeCompare(String(b.end || "9999")));
+}
+
 const byName = (a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
 
 export function neighborhood(personId, relations) {

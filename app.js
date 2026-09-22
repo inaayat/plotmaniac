@@ -26,7 +26,10 @@ import {
   relationTimelineHasTone,
   resolvePlotView,
   stateUrl,
+  stanceHistory,
   tiesWith,
+  usesPolicyPanel,
+  boardViewForPerson,
   visibleRelationCountries,
   webLayout,
 } from "./engine.js";
@@ -67,7 +70,7 @@ function rememberView(view) {
 }
 
 function viewForPlot(parsed, href = location.href) {
-  return resolvePlotView(parsed, { href });
+  return boardViewForPerson(plot, resolvePlotView(parsed, { href }));
 }
 
 function syncLayoutMode() {
@@ -355,6 +358,10 @@ function bindChrome() {
       writeUrl(true);
       return;
     }
+    if (event.key === "Escape" && usesPolicyPanel(plot) && state.view === "web" && state.person !== ALL) {
+      closePolicyPanel();
+      return;
+    }
     if (state.view === "web") return;
     if (event.target.closest("input, textarea")) return;
     const lane = document.querySelector(".lane-view");
@@ -495,6 +502,14 @@ function renderWeb() {
     const roster = document.createElement("div");
     roster.className = "web-people";
     section.appendChild(roster);
+  }
+  if (usesPolicyPanel(plot)) {
+    const drawer = document.createElement("aside");
+    drawer.className = "relation-drawer policy-drawer";
+    drawer.hidden = true;
+    drawer.setAttribute("role", "dialog");
+    drawer.setAttribute("aria-label", "Policy position");
+    section.appendChild(drawer);
   }
   requestAnimationFrame(() => paintWeb(stage));
   return section;
@@ -1352,6 +1367,7 @@ function paintWeb(stage, { animate = true } = {}) {
   }
   const roster = stage.closest(".web")?.querySelector(".web-people");
   if (roster) paintWebPeople(roster, layout);
+  if (usesPolicyPanel(plot)) paintPolicySelection(stage.closest(".web"));
 }
 
 function paintWebPeople(root, layout) {
@@ -2073,11 +2089,208 @@ function renderCredits() {
 
 function openPerson(id) {
   if (!peopleById.has(id)) return;
+  if (usesPolicyPanel(plot)) {
+    if (state.person === id) {
+      closePolicyPanel();
+      return;
+    }
+    state.view = "web";
+    state.person = id;
+    state.eventId = "";
+    state.query = "";
+    paintPolicySelection();
+    writeUrl(false);
+    return;
+  }
   state.view = "person";
   state.person = id;
   state.eventId = "";
   state.query = "";
   render({ push: true });
+}
+
+function closePolicyPanel() {
+  state.person = ALL;
+  state.eventId = "";
+  paintPolicySelection();
+  writeUrl(true);
+}
+
+function paintPolicySelection(root = document) {
+  if (!usesPolicyPanel(plot)) return;
+  const selected = state.person && state.person !== ALL ? state.person : "";
+  root.querySelectorAll(".web-stage .node").forEach((node) => {
+    const on = Boolean(selected) && node.dataset.id === selected;
+    node.classList.toggle("is-selected", on);
+    if (!node.classList.contains("is-topic-hub")) {
+      node.setAttribute("aria-pressed", String(on));
+    }
+  });
+  const drawer = root.querySelector(".policy-drawer");
+  if (!drawer) return;
+  const host = root.classList?.contains("web") ? root : root.querySelector(".web") || root;
+  host.querySelectorAll(".drawer-scrim").forEach((scrim) => scrim.remove());
+  drawer.replaceChildren();
+  if (!selected) {
+    drawer.hidden = true;
+    return;
+  }
+  const person = peopleById.get(selected);
+  if (!person) {
+    drawer.hidden = true;
+    return;
+  }
+  drawer.hidden = false;
+  if (isCompact()) {
+    const scrim = document.createElement("button");
+    scrim.type = "button";
+    scrim.className = "drawer-scrim";
+    scrim.setAttribute("aria-label", "Close policy position");
+    scrim.addEventListener("click", () => closePolicyPanel());
+    drawer.before(scrim);
+  }
+  const camp = campOf(
+    person.id,
+    relations,
+    plot.centerId,
+    plot.friendKinds,
+    plot.enemyKinds,
+    plot.year ? state.year : undefined,
+  );
+  drawer.classList.remove("outline-green", "outline-red", "outline-none");
+  drawer.classList.add(camp === "friend" ? "outline-green" : camp === "enemy" ? "outline-red" : "outline-none");
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "drawer-close";
+  close.textContent = "Close";
+  close.addEventListener("click", () => closePolicyPanel());
+  const head = document.createElement("div");
+  head.className = "drawer-head";
+  head.appendChild(avatar(person, "lg"));
+  const copy = document.createElement("div");
+  const eyebrow = document.createElement("p");
+  eyebrow.className = "eyebrow";
+  eyebrow.textContent = person.id === plot.centerId
+    ? "The center of this plot"
+    : plot.year
+      ? `${campLabel(camp) || plot.orbitLabel || "No stance yet"} in ${state.year}`
+      : (campLabel(camp) || plot.orbitLabel || "No stance yet");
+  const title = document.createElement("h2");
+  title.id = "policy-title";
+  title.textContent = person.name;
+  drawer.setAttribute("aria-labelledby", "policy-title");
+  const role = document.createElement("p");
+  role.className = "drawer-notes";
+  role.textContent = person.role || "";
+  copy.append(eyebrow, title, role);
+  head.appendChild(copy);
+  drawer.append(close, head);
+
+  const ties = stanceHistory(person.id, relations, plot.centerId);
+  if (ties.length) {
+    const heading = document.createElement("h3");
+    heading.className = "drawer-heading";
+    heading.textContent = "Stance over time";
+    const list = document.createElement("ul");
+    list.className = "ties";
+    ties.forEach((tie) => {
+      const item = document.createElement("li");
+      const span = tieSpan(tie);
+      item.textContent = span
+        ? `${eraLabel(tie.kind)} · ${tie.label} · ${span}`
+        : `${eraLabel(tie.kind)} · ${tie.label}`;
+      if (plot.year && coversYear(tie, state.year)) item.classList.add("is-now");
+      list.appendChild(item);
+    });
+    drawer.append(heading, list);
+  }
+
+  if (person.links?.length) {
+    const heading = document.createElement("h3");
+    heading.className = "drawer-heading";
+    heading.textContent = "Sources";
+    drawer.append(heading, renderPolicyLinks(person.links));
+  }
+
+  const theirs = events.filter((event) => event.people.includes(person.id));
+  const heading = document.createElement("h3");
+  heading.className = "drawer-heading";
+  heading.textContent = theirs.length === 1 ? "1 timeline beat" : `${theirs.length} timeline beats`;
+  drawer.appendChild(heading);
+  if (!theirs.length) {
+    const note = document.createElement("p");
+    note.className = "drawer-note";
+    note.textContent = "No sourced beats for this position yet.";
+    drawer.appendChild(note);
+    return;
+  }
+  drawer.appendChild(renderPolicyBeats(theirs));
+}
+
+function renderPolicyLinks(links) {
+  const list = document.createElement("div");
+  list.className = "event-links drawer-links";
+  links.forEach((link) => {
+    if (!/^https:\/\//.test(link.url || "")) return;
+    const anchor = document.createElement("a");
+    anchor.href = link.url;
+    anchor.target = "_blank";
+    anchor.rel = "noopener noreferrer";
+    anchor.textContent = link.label || "Source";
+    if (link.type) {
+      const type = document.createElement("span");
+      type.className = "link-type";
+      type.textContent = link.type;
+      anchor.appendChild(type);
+    }
+    list.appendChild(anchor);
+  });
+  return list;
+}
+
+function renderPolicyBeats(list) {
+  const beats = document.createElement("ol");
+  beats.className = "relation-timeline drawer-beats";
+  list.forEach((event) => {
+    const item = document.createElement("li");
+    const open = state.eventId === event.id;
+    if (open) item.classList.add("is-active");
+    const hit = document.createElement("button");
+    hit.type = "button";
+    hit.className = "drawer-beat";
+    const when = document.createElement("time");
+    when.dateTime = event.date;
+    when.textContent = formatDate(event.date);
+    const heading = document.createElement("strong");
+    heading.textContent = event.title;
+    hit.append(when, heading);
+    if (!open) {
+      const tease = document.createElement("span");
+      tease.className = "beat-tease";
+      tease.textContent = eventTease(event, 140);
+      hit.appendChild(tease);
+    }
+    hit.addEventListener("click", () => {
+      state.eventId = open ? "" : event.id;
+      paintPolicySelection();
+      writeUrl(false);
+    });
+    item.appendChild(hit);
+    if (open) {
+      const more = document.createElement("div");
+      more.className = "drawer-more";
+      const body = expandedSummary(event);
+      if (body) {
+        const summary = document.createElement("p");
+        summary.textContent = body;
+        more.appendChild(summary);
+      }
+      if (event.links?.length) more.appendChild(renderPolicyLinks(event.links));
+      item.appendChild(more);
+    }
+    beats.appendChild(item);
+  });
+  return beats;
 }
 
 function avatar(person, size) {
