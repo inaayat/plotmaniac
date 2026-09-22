@@ -1,8 +1,10 @@
-# Country regions + bilateral timeline
+# Country regions field (foreign-relations board)
 
-**When to use:** A **country-centered** foreign-relations snapshot: major allies and foes on first load, every other relationship behind **region** disclosure, each country clickable into a bilateral timeline (stub or rich).
+**When to use:** A **country-centered** foreign-relations **board**: major allies and foes on first load, every other relationship behind **region** disclosure, each flag opening that country’s bilateral view.
 
 **Exemplar plot on main:** `united-states`
+
+**Pair with:** [country-bilateral-timeline.md](country-bilateral-timeline.md) — the **detailed** drawer/ride (Mexico, Russia, Iran) is its own template. The board and the deep timeline are two reusable elements on the same plot.
 
 ## `plots.json` fields
 
@@ -26,9 +28,9 @@ No `arrangement` — disclosure drives the board (`document.body.dataset.board` 
 - Plot **center** country with `portrait.frame: "flag"` when using Commons flag art.
 - One person record per country (slug aligns with `countries.json` `slug`) for search and timeline routing.
 
-### `countries.json` (array)
+### `countries.json` (array) — board + click target
 
-Core fields (see also [country-relation-timeline-template.md](../country-relation-timeline-template.md)):
+Every country needs board fields so it can appear on the field and open a timeline:
 
 | Field | Required | Notes |
 | --- | --- | --- |
@@ -38,27 +40,28 @@ Core fields (see also [country-relation-timeline-template.md](../country-relatio
 | `outline` | yes | `green`, `red`, or `none` |
 | `region` | yes | Region name for disclosure chips |
 | `first_load` | yes | `true` for majors on the initial board |
-| `timeline` | yes | `[{ "year", "event" }, …]` oldest first |
-| `wiki_bilateral` | recommended | Wikipedia fallback link |
-| `notes_summary` | recommended | One-sentence arc |
-| `tone` | optional per beat | −2…+2 for sentiment chart |
-| `links` | optional per beat / country | `{ "label", "url" }` chips |
+| `timeline` | yes | At minimum `[{ "year", "event" }, …]` oldest first |
 
-**Rich bilateral upgrade:** Follow the full workflow in **[country-relation-timeline-template.md](../country-relation-timeline-template.md)** (Mexico, Russia, Iran exemplars). Example sketch: [country-relation-timeline.example.json](../country-relation-timeline.example.json).
+**After click — two depths:**
 
-Thin stubs (year + event only) remain valid; the UI must not require `tone` or `links`.
+| Depth | When | Doc |
+| --- | --- | --- |
+| **Thin stub** | Neutrals and minor relationships | Few `year`/`event` rows; no `tone` or beat `links` |
+| **Detailed bilateral** | Flagship relationships | `notes_summary`, full `timeline[]` with `tone` and `links`, country-level `links` — [country-bilateral-timeline.md](country-bilateral-timeline.md) |
+
+Research workflow for rich records: [country-relation-timeline-template.md](../country-relation-timeline-template.md). Example sketch: [country-relation-timeline.example.json](../country-relation-timeline.example.json).
 
 ### `events.json` / `relations.json`
 
 Optional narrative layer for the plot center; the field view is driven primarily by `countries.json`.
 
-## UI behavior
+## UI behavior (board only)
 
 - **First load:** Only `first_load` **friends** and **foes** (green/red ring on circular flags). Neutrals hidden until a region opens.
 - **Lines:** Center to each visible country — green/red/gray by stance; sparse gold links for shared blocs (`RELATION_BLOCS`, e.g. NATO).
 - **Region pick:** **Exclusive** — replaces majors with **all** countries in that region (friends, foes, neutrals), reflowed across the stage. Toggle same region again to return to majors.
-- **Country click:** Bilateral timeline drawer / full relation page; rich `tone` enables sentiment chart (`relationTimelineHasTone`).
-- **Mobile:** Timeline-first entry; relation pages support escape/back stack.
+- **Country click:** Opens bilateral UI (stub drawer or detailed ride — see [country-bilateral-timeline.md](country-bilateral-timeline.md)).
+- **Mobile:** Timeline-first plot entry; relation pages support escape/back stack.
 
 ## Verification
 
@@ -66,9 +69,10 @@ Optional narrative layer for the plot center; the field view is driven primarily
 node scripts/test-never-ending-internet-lore.mjs
 ```
 
-Asserts US `disclosure`, `first_load` majors, Mexico/Russia/Iran tone timelines, and stub countries without `links`.
+Asserts US `disclosure`, `first_load` majors, Mexico/Russia/Iran detailed timelines, and stub countries without `links`.
 
 ## Out of scope
 
-- Time-varying ally/foe on the **field** (use [country-camps-year-scrubber.md](country-camps-year-scrubber.md) for year-scrubbed camps).
+- Authoring a flagship bilateral record (detailed template above).
+- Time-varying ally/foe on the **field** — [country-camps-year-scrubber.md](country-camps-year-scrubber.md).
 - Wars map — [wars-scrubber-map.md](wars-scrubber-map.md).

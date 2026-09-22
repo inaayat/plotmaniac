@@ -31,12 +31,13 @@ Shared gallery, search, tabs, portraits, and `paths` keys: [docs/templates/share
 | Person web + timeline | Single-center cast; friends/foes web and full timeline | [docs/templates/person-web-timeline.md](docs/templates/person-web-timeline.md) | *(base shape — copy `youtubers` files; omit `hubs` for one center)* |
 | Multi-hub focus | `hubs` + event `hubs`; None / All / named focus | [docs/templates/multi-hub-focus.md](docs/templates/multi-hub-focus.md) | `youtubers`, `marvel-universe` |
 | Policy topics bubbles | Topic wedges, stance year scrubber, side panel | [docs/templates/policy-topics-bubbles.md](docs/templates/policy-topics-bubbles.md) | `barack-obama`, `jd-vance` |
-| Country regions + bilateral timeline | `disclosure: regions`, flags, per-country timelines | [docs/templates/country-regions-bilateral-timeline.md](docs/templates/country-regions-bilateral-timeline.md) | `united-states` |
+| Country regions field | `disclosure: regions`, majors, exclusive region reveal | [docs/templates/country-regions-bilateral-timeline.md](docs/templates/country-regions-bilateral-timeline.md) | `united-states` |
+| Country bilateral timeline (detailed) | Drawer/ride beats with tone, chips, and sources per country | [docs/templates/country-bilateral-timeline.md](docs/templates/country-bilateral-timeline.md) | `mexico`, `russia`, `iran` (on `united-states`) |
 | Historical map field guide | `arrangement: historical-map`, reference + portraits | [docs/templates/historical-map-field-guide.md](docs/templates/historical-map-field-guide.md) | `partition-of-india` |
 | Wars scrubber map | World map, year span, conflict arcs | [docs/templates/wars-scrubber-map.md](docs/templates/wars-scrubber-map.md) | `wars` |
 | Country camps + year scrubber | Dated ally/foe left/right camps (engine-ready) | [docs/templates/country-camps-year-scrubber.md](docs/templates/country-camps-year-scrubber.md) | *(none on main yet)* |
 
-**Also indexed:** Rich bilateral country timelines — [docs/country-relation-timeline-template.md](docs/country-relation-timeline-template.md) (Mexico, Russia, Iran). Marvel hub design notes — [docs/marvel-universe-plot.md](docs/marvel-universe-plot.md).
+**Also indexed:** Bilateral research checklist — [docs/country-relation-timeline-template.md](docs/country-relation-timeline-template.md) (companion to the detailed country timeline template). Marvel hub design — [docs/marvel-universe-plot.md](docs/marvel-universe-plot.md).
 
 ## Add another plot
 
@@ -49,7 +50,8 @@ Quick reference (details live in the templates):
 - **Multi-hub** — `hubs` array (`id`, `label`, `centerId`); tag events with `hubs: ["h3"]`; optional `includeOrbit`, `minBeats`, `hubNoneLabel` / `hubAllLabel`. See [multi-hub-focus.md](docs/templates/multi-hub-focus.md) and [marvel-universe-plot.md](docs/marvel-universe-plot.md).
 - **Portraits** — Commons `portrait` on a person, or `paths.portraits` on historical-map plots; `portrait.frame: "flag"` with `images: "flags"` for countries.
 - **Policy topics** — `arrangement: "topics"`, `images: "bubbles"`, `topics[]`, `year` range; relations use `supported` / `opposed` with `start` / `end` years.
-- **Country regions** — `disclosure: "regions"`, `images: "flags"`, `paths.countries`; `first_load` majors; exclusive region reveal. Bilateral depth: [country-relation-timeline-template.md](docs/country-relation-timeline-template.md).
+- **Country regions field** — `disclosure: "regions"`, `images: "flags"`, `paths.countries`; `first_load` majors; exclusive region reveal — [country-regions-bilateral-timeline.md](docs/templates/country-regions-bilateral-timeline.md).
+- **Country bilateral timeline (detailed)** — per-country record in `countries.json`: `notes_summary`, `timeline[]` with `year`/`event`/`tone`/`links`, country `links` — [country-bilateral-timeline.md](docs/templates/country-bilateral-timeline.md); research depth in [country-relation-timeline-template.md](docs/country-relation-timeline-template.md).
 - **Historical map** — `arrangement: "historical-map"` (exact string), `paths.reference`, optional `paths.portraits` (Partition-style).
 - **Wars** — `arrangement: "wars"`, `year` range, `paths.conflicts` and `paths.world`; rebuild with `scripts/build-wars.py`.
 - **Camps (optional)** — `arrangement: "camps"` and dated `ally` / `foe` relations; foes left, friends right. No live plot yet — [country-camps-year-scrubber.md](docs/templates/country-camps-year-scrubber.md).
