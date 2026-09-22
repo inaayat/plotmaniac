@@ -19,8 +19,10 @@ import {
   countriesByRegion,
   coversYear,
   eventTease,
+  eventMediaLabel,
   expandedSummary,
   filterEvents,
+  peopleForTitleSearch,
   findPlot,
   plotCardFace,
   plotMatchesQuery,
@@ -1669,6 +1671,17 @@ for (const person of marvelPeople) {
 }
 assert.ok(marvelPortraits >= 95, `Marvel should have Commons portraits for almost every character, got ${marvelPortraits}`);
 assert.equal(marvelPeople.find((person) => person.id === "maya-lopez")?.portrait, undefined, "Echo has no free Commons still");
+assert.equal(eventMediaLabel(marvelEvents.find((event) => event.id === "iron-man")), "Iron Man");
+assert.equal(eventMediaLabel(marvelEvents.find((event) => event.id === "avengers-assemble")), "The Avengers");
+const ironManCast = peopleForTitleSearch(
+  marvelPeople,
+  marvelEvents,
+  marvelRelations,
+  { query: "Iron Man", hub: ALL },
+  new Map(marvelPeople.map((person) => [person.id, person])),
+);
+assert.ok(ironManCast.people.some((person) => person.id === "tony-stark"), "title search keeps Iron Man cast");
+assert.ok(ironManCast.people.length < marvelPeople.length, "title search narrows the web");
 for (const event of marvelEvents) {
   assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, event.id);
   assert.ok(event.title && event.summary && event.era, event.id);
@@ -1717,8 +1730,24 @@ assert.equal(marvelShared.nodes.find((node) => node.id === "tony-stark").plotHub
 assert.equal(marvelRaimi.nodes.find((node) => node.id === "norman-osborn-raimi").ring, "exclusive");
 assert.equal(marvelRaimi.nodes.find((node) => node.id === "otto-octavius-raimi").ring, "exclusive");
 assert.ok(marvelAll.nodes.length > marvelShared.nodes.length, "Marvel All reveals exclusive universe members");
-assert.ok(marvelAll.width / marvelAll.height >= 0.7, "Marvel All spreads across the page, not only downward");
-assert.ok(marvelAll.height / marvelAll.width <= 1.7, "Marvel All stays a field, not a tall column");
+function hubLayoutSpan(layout) {
+  const padW = layout.boxW / 2;
+  const padH = layout.boxH / 2;
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minY = Infinity;
+  let maxY = -Infinity;
+  layout.nodes.forEach((node) => {
+    minX = Math.min(minX, node.x - padW);
+    maxX = Math.max(maxX, node.x + padW);
+    minY = Math.min(minY, node.y - padH);
+    maxY = Math.max(maxY, node.y + padH);
+  });
+  return { spanX: maxX - minX, spanY: maxY - minY };
+}
+const marvelSpan = hubLayoutSpan(marvelAll);
+assert.ok(marvelSpan.spanX / marvelSpan.spanY >= 0.62, "Marvel All spreads across the page, not only downward");
+assert.ok(marvelSpan.spanY / marvelSpan.spanX <= 1.7, "Marvel All stays a field, not a tall column");
 for (let i = 0; i < marvelAll.nodes.length; i += 1) {
   for (let j = i + 1; j < marvelAll.nodes.length; j += 1) {
     assert.equal(

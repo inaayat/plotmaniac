@@ -230,6 +230,7 @@ h3 {
 }
 
 .plot-switch select,
+.plot-switch input,
 .choice-button {
   font: inherit;
   letter-spacing: 0.08em;
@@ -239,6 +240,31 @@ h3 {
   border: 1px solid var(--line-strong);
   min-height: 32px;
   padding: 4px 8px;
+}
+
+.title-filter input {
+  min-width: min(38vw, 200px);
+  max-width: min(52vw, 280px);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.title-filter input::placeholder {
+  color: var(--muted);
+  text-transform: none;
+}
+
+.web-empty {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 28ch;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  pointer-events: none;
 }
 
 .choice {
