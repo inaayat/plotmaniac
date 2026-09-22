@@ -470,7 +470,7 @@ export function mountPartition(root, reference, {
     if (action.consequences?.length) {
       addList(copy, "What followed", action.consequences, "h4");
     }
-    if (action.cast?.length) {
+    if (action.cast?.some((member) => member.id !== person.id)) {
       copy.appendChild(el("h4", "", "Who was involved"));
       copy.appendChild(castList(action.cast, person.id));
     }
@@ -515,8 +515,8 @@ export function mountPartition(root, reference, {
     const copy = el("div", "partition-cast-copy");
     copy.appendChild(el("strong", "", member.id === focusId ? `${member.name} · this person` : member.name));
     copy.appendChild(el("p", "partition-cast-allegiance", member.allegiance.line));
-    if (member.incentive) copy.appendChild(el("p", "partition-cast-incentive", `Incentive: ${member.incentive}`));
-    if (member.action) copy.appendChild(el("p", "partition-cast-action", member.action));
+    if (member.incentive) copy.appendChild(el("p", "partition-cast-incentive", `Standing aim: ${member.incentive}`));
+    if (member.action && member.id !== focusId) copy.appendChild(el("p", "partition-cast-action", member.action));
     return copy;
   }
 
