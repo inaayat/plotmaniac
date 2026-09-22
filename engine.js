@@ -956,6 +956,146 @@ export function webLayout(people, relations, options = {}) {
   return { width, height, nodes, edges: edgesAmong(nodes, applicable), nodeSize, centerSize };
 }
 
+function angleDelta(from, to) {
+  let delta = to - from;
+  while (delta <= -Math.PI) delta += Math.PI * 2;
+  while (delta > Math.PI) delta -= Math.PI * 2;
+  return delta;
+}
+
+function hubBox(nodeSize) {
+  return { nodeSize, boxW: nodeSize + 36, boxH: nodeSize + 32 };
+}
+
+function stageGrid(cx, cy, width, height, boxW, boxH, pad) {
+  const minX = pad + boxW / 2;
+  const maxX = width - pad - boxW / 2;
+  const minY = pad + boxH / 2;
+  const maxY = height - pad - boxH / 2;
+  if (maxX < minX || maxY < minY) return [];
+  const slots = [];
+  const x0 = cx - Math.floor((cx - minX) / boxW) * boxW;
+  const y0 = cy - Math.floor((cy - minY) / boxH) * boxH;
+  for (let x = x0; x <= maxX + 0.01; x += boxW) {
+    if (x < minX - 0.01) continue;
+    for (let y = y0; y <= maxY + 0.01; y += boxH) {
+      if (y < minY - 0.01) continue;
+      slots.push({ x, y });
+    }
+  }
+  return slots;
+}
+
+function pageDist(slot, cx, cy) {
+  return Math.hypot(slot.x - cx, slot.y - cy);
+}
+
+function nearestSlots(slots, origin, count) {
+  return slots
+    .slice()
+    .sort((a, b) => {
+      const da = Math.hypot(a.x - origin.x, a.y - origin.y);
+      const db = Math.hypot(b.x - origin.x, b.y - origin.y);
+      return da - db || a.x - b.x || a.y - b.y;
+    })
+    .slice(0, count);
+}
+
+function hubDirections(hubIds, groups, width, height) {
+  const ranked = hubIds
+    .map((id, index) => ({ index, count: (groups.get(id) || []).length }))
+    .sort((a, b) => b.count - a.count || a.index - b.index);
+  const cardinals = width >= height
+    ? [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }]
+    : [{ x: 0, y: -1 }, { x: 0, y: 1 }, { x: 1, y: 0 }, { x: -1, y: 0 }];
+  const directions = new Array(hubIds.length);
+  ranked.forEach((item, rank) => {
+    directions[item.index] = cardinals[rank % cardinals.length];
+  });
+  return directions;
+}
+
+function sectorIndex(slot, cx, cy, directions) {
+  const angle = Math.atan2(slot.y - cy, slot.x - cx);
+  let best = 0;
+  let bestAbs = Infinity;
+  directions.forEach((dir, index) => {
+    const abs = Math.abs(angleDelta(Math.atan2(dir.y, dir.x), angle));
+    if (abs < bestAbs - 1e-6) {
+      best = index;
+      bestAbs = abs;
+    }
+  });
+  return best;
+}
+
+function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize) {
+  const { boxW, boxH } = hubBox(nodeSize);
+  const pad = 10;
+  const cx = width / 2;
+  const cy = height / 2;
+  const grid = stageGrid(cx, cy, width, height, boxW, boxH, pad);
+  if (grid.length < sharedCount + hubIds.length) return null;
+  const sharedSlots = nearestSlots(grid, { x: cx, y: cy }, sharedCount);
+  const maxShared = sharedSlots.reduce((max, slot) => Math.max(max, pageDist(slot, cx, cy)), 0);
+  const used = new Set(sharedSlots.map((slot) => `${slot.x},${slot.y}`));
+  const directions = hubDirections(hubIds, groups, width, height);
+  const hubSlots = [];
+  for (let index = 0; index < hubIds.length; index += 1) {
+    const dir = directions[index];
+    const pick = grid
+      .filter((slot) => !used.has(`${slot.x},${slot.y}`) && pageDist(slot, cx, cy) > maxShared + 0.5)
+      .filter((slot) => sectorIndex(slot, cx, cy, directions) === index)
+      .filter((slot) => (slot.x - cx) * dir.x + (slot.y - cy) * dir.y > 0)
+      .sort((a, b) => pageDist(a, cx, cy) - pageDist(b, cx, cy) || a.x - b.x || a.y - b.y)[0];
+    if (!pick) return null;
+    used.add(`${pick.x},${pick.y}`);
+    hubSlots.push(pick);
+  }
+  const exclusiveSlots = [];
+  for (let index = 0; index < hubIds.length; index += 1) {
+    const hubSlot = hubSlots[index];
+    const dir = directions[index];
+    const hubDist = pageDist(hubSlot, cx, cy);
+    const needed = (groups.get(hubIds[index]) || []).length;
+    const outward = grid.filter((slot) => {
+      if (used.has(`${slot.x},${slot.y}`)) return false;
+      if (sectorIndex(slot, cx, cy, directions) !== index) return false;
+      if (pageDist(slot, cx, cy) <= hubDist + 0.5) return false;
+      return (slot.x - hubSlot.x) * dir.x + (slot.y - hubSlot.y) * dir.y > 0;
+    });
+    const nearest = nearestSlots(outward, hubSlot, needed);
+    if (nearest.length < needed) return null;
+    nearest.forEach((slot) => used.add(`${slot.x},${slot.y}`));
+    exclusiveSlots.push(nearest);
+  }
+  return { nodeSize, boxW, boxH, width, height, cx, cy, sharedSlots, hubSlots, exclusiveSlots };
+}
+
+function fitHubWeb(width, height, sharedCount, hubIds, groups) {
+  const attempt = (nextWidth, nextHeight, minSize) => {
+    for (let nodeSize = 56; nodeSize >= minSize; nodeSize -= 2) {
+      const plan = planHubWeb(nextWidth, nextHeight, sharedCount, hubIds, groups, nodeSize);
+      if (plan) return plan;
+    }
+    return null;
+  };
+  const fitted = attempt(width, height, 28);
+  if (fitted) return fitted;
+  for (let extra = 120; extra <= 1400; extra += 120) {
+    const grown = attempt(width, height + extra, 34);
+    if (grown) return grown;
+  }
+  return attempt(Math.max(width, 980), Math.max(height, 980), 28);
+}
+
+function placeByBeats(list, slots, counts) {
+  const ranked = list
+    .slice()
+    .sort((a, b) => (counts.get(b.id) || 0) - (counts.get(a.id) || 0) || a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+  return ranked.map((person, index) => ({ person, slot: slots[index] }));
+}
+
 function hubFieldLayout({
   people,
   relations,
@@ -967,7 +1107,6 @@ function hubFieldLayout({
   width,
   height,
   hubIds,
-  hubs = [],
   minBeats = WEB_MIN_BEATS,
 }) {
   const counts = beatCounts(events, people.map((person) => person.id));
@@ -975,175 +1114,54 @@ function hubFieldLayout({
     if (hubIds.includes(person.id)) return true;
     return (counts.get(person.id) || 0) >= minBeats;
   });
-  const labelFor = (id) =>
-    hubs.find((hub) => hub.centerId === id)?.label
-    || people.find((person) => person.id === id)?.name
-    || id;
-
   const groups = new Map(hubIds.map((id) => [id, []]));
   const shared = [];
   visible.forEach((person) => {
     if (hubIds.includes(person.id)) return;
     const affiliated = hubsForPerson(person.id, relations, hubIds);
     if (affiliated.length === 1) groups.get(affiliated[0])?.push(person);
-    else shared.push({ person, affiliated });
+    else shared.push(person);
   });
-
-  const compact = width <= COMPACT_MAX_WIDTH;
-  const gap = compact ? 12 : Math.min(24, Math.max(16, width * 0.014));
-  const inset = compact ? 10 : Math.min(30, Math.max(18, width * 0.018));
-  const nodeSize = compact ? 54 : width < 1050 ? 42 : width < 1350 ? 48 : 54;
-  const centerSize = Math.round(nodeSize * (compact ? 1.2 : 1.3));
-  const sorted = (list) => list.slice().sort((a, b) =>
-    (counts.get(b.id) || 0) - (counts.get(a.id) || 0)
-    || a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
-  hubIds.forEach((id) => groups.set(id, sorted(groups.get(id) || [])));
-  const sharedPeople = sorted(shared.map(({ person }) => person));
-
-  const regions = [];
-  if (compact) {
-    const active = center?.id;
-    const orderedIds = [active, ...hubIds.filter((id) => id !== active)];
-    const ordered = [
-      { id: orderedIds[0], kind: "hub" },
-      { id: "shared", kind: "shared" },
-      ...orderedIds.slice(1).map((id) => ({ id, kind: "hub" })),
-    ].filter((entry) => entry.id);
-    let top = inset;
-    ordered.forEach((entry) => {
-      const members = entry.kind === "shared" ? sharedPeople : groups.get(entry.id) || [];
-      const columns = Math.max(2, Math.min(3, Math.floor((width - inset * 2 - 28) / 96)));
-      const rows = Math.ceil(members.length / columns);
-      const regionHeight = entry.kind === "hub"
-        ? Math.max(170, 132 + rows * 86)
-        : Math.max(150, 76 + rows * 86);
-      regions.push({
-        id: entry.id,
-        kind: entry.kind,
-        label: entry.kind === "shared" ? "Shared orbit" : labelFor(entry.id),
-        x: inset,
-        y: top,
-        width: width - inset * 2,
-        height: regionHeight,
-        active: entry.id === active,
-      });
-      top += regionHeight + gap;
-    });
-    height = top - gap + inset;
-  } else {
-    height = Math.max(height, 640);
-    const regionWidth = (width - inset * 2 - gap) / 2;
-    const regionHeight = (height - inset * 2 - gap) / 2;
-    const cards = [
-      { id: hubIds[0], kind: "hub", col: 0, row: 0 },
-      { id: hubIds[1], kind: "hub", col: 1, row: 0 },
-      { id: hubIds[2], kind: "hub", col: 0, row: 1 },
-      { id: "shared", kind: "shared", col: 1, row: 1 },
-    ];
-    hubIds.slice(3).forEach((id, index) => {
-      cards.push({ id, kind: "hub", col: index % 2, row: 2 + Math.floor(index / 2) });
-    });
-    cards.filter((entry) => entry.id).forEach((entry) => {
-      regions.push({
-        id: entry.id,
-        kind: entry.kind,
-        label: entry.kind === "shared" ? "Shared orbit" : labelFor(entry.id),
-        x: inset + entry.col * (regionWidth + gap),
-        y: inset + entry.row * (regionHeight + gap),
-        width: regionWidth,
-        height: regionHeight,
-        active: entry.id === center?.id,
-      });
-    });
-  }
-
-  const regionOf = new Map(regions.map((region) => [region.id, region]));
-  const gridPoints = (region, memberCount, hasHub) => {
-    if (!memberCount) return [];
-    const left = region.x + (hasHub && !compact ? Math.max(116, centerSize + 54) : 22);
-    const right = region.x + region.width - 22;
-    const top = region.y + (compact ? (hasHub ? 142 : 70) : 58);
-    const bottom = region.y + region.height - 30;
-    const availableWidth = Math.max(80, right - left);
-    const availableHeight = Math.max(70, bottom - top);
-    const minCellWidth = nodeSize + (compact ? 38 : 34);
-    const maxColumns = compact ? 3 : 7;
-    const columns = Math.max(1, Math.min(memberCount, maxColumns, Math.floor(availableWidth / minCellWidth)));
-    const rows = Math.ceil(memberCount / columns);
-    const stepX = availableWidth / columns;
-    const stepY = availableHeight / Math.max(rows, 1);
-    return Array.from({ length: memberCount }, (_, index) => ({
-      x: left + stepX * (index % columns + 0.5),
-      y: top + stepY * (Math.floor(index / columns) + 0.5),
-    }));
-  };
-
+  const plan = fitHubWeb(width, height, shared.length, hubIds, groups);
   const nodes = [];
-  hubIds.forEach((id) => {
-    const person = visible.find((item) => item.id === id);
-    const region = regionOf.get(id);
-    if (!person || !region) return;
+  const push = (person, slot, extra) => {
+    if (!person || !slot) return;
     const camp = person.id === center?.id
       ? "center"
       : campOf(person.id, relations, center.id, friendKinds, enemyKinds, year);
     nodes.push({
       ...person,
-      x: compact ? region.x + region.width / 2 : region.x + Math.max(64, centerSize / 2 + 24),
-      y: compact ? region.y + 80 : region.y + region.height / 2,
+      x: slot.x,
+      y: slot.y,
       camp,
       beats: counts.get(person.id) || 0,
-      closeness: 1,
-      plotHub: true,
-      hubRegion: id,
+      closeness: extra.ring === "shared" ? 1 : extra.ring === "hub" ? 0.7 : 0.3,
+      plotHub: extra.ring === "hub",
+      ring: extra.ring,
+      hubId: extra.hubId || "",
+    });
+  };
+  placeByBeats(shared, plan?.sharedSlots || [], counts).forEach(({ person, slot }) => {
+    push(person, slot, { ring: "shared" });
+  });
+  hubIds.forEach((id, index) => {
+    push(visible.find((person) => person.id === id), plan?.hubSlots?.[index], { ring: "hub", hubId: id });
+  });
+  hubIds.forEach((id, index) => {
+    placeByBeats(groups.get(id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
+      push(person, slot, { ring: "exclusive", hubId: id });
     });
   });
-
-  hubIds.forEach((hubId) => {
-    const region = regionOf.get(hubId);
-    const members = groups.get(hubId) || [];
-    if (!region) return;
-    const points = gridPoints(region, members.length, true);
-    const most = members[0] ? counts.get(members[0].id) || 0 : 0;
-    const fewest = members.length ? Math.min(...members.map((person) => counts.get(person.id) || 0)) : 0;
-    members.forEach((person, index) => {
-      const beats = counts.get(person.id) || 0;
-      const closeness = most > fewest ? (beats - fewest) / (most - fewest) : 0.45;
-      nodes.push({
-        ...person,
-        x: points[index].x,
-        y: points[index].y,
-        camp: campOf(person.id, relations, center.id, friendKinds, enemyKinds, year),
-        beats,
-        closeness,
-        plotHub: false,
-        hubRegion: hubId,
-      });
-    });
-  });
-
-  const sharedRegion = regionOf.get("shared");
-  const sharedPoints = gridPoints(sharedRegion, sharedPeople.length, false);
-  sharedPeople.forEach((person, index) => {
-    nodes.push({
-      ...person,
-      x: sharedPoints[index].x,
-      y: sharedPoints[index].y,
-      camp: campOf(person.id, relations, center.id, friendKinds, enemyKinds, year),
-      beats: counts.get(person.id) || 0,
-      closeness: 0.75,
-      plotHub: false,
-      hubRegion: "shared",
-    });
-  });
-
+  const nodeSize = plan?.nodeSize || 28;
   return {
-    width,
-    height,
+    width: plan?.width || width,
+    height: plan?.height || height,
     nodes,
     edges: edgesAmong(nodes, relations),
     nodeSize,
-    centerSize,
-    regions,
+    centerSize: nodeSize,
+    boxW: plan?.boxW || hubBox(nodeSize).boxW,
+    boxH: plan?.boxH || hubBox(nodeSize).boxH,
   };
 }
 

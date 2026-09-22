@@ -1479,6 +1479,11 @@ body[data-view="relation"] .views button {
   width: calc(var(--node, 72px) + 24px);
 }
 
+.web-stage .node-name {
+  max-width: 100%;
+  min-width: 0;
+}
+
 .web-stage .node:not(.is-center) .avatar {
   width: var(--node, 72px);
   height: var(--node, 72px);

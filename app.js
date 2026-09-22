@@ -451,10 +451,10 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
 }
 
 function renderWeb() {
-  const hubField = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2);
-  const compactMap = isCompact() && !hubField && plot.arrangement !== "camps" && plot.arrangement !== "topics";
+  const hubWeb = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2);
+  const compactMap = isCompact() && plot.arrangement !== "camps" && plot.arrangement !== "topics";
   const section = document.createElement("section");
-  section.className = `web${compactMap ? " is-compact-map" : ""}${hubField ? " is-hub-field" : ""}`;
+  section.className = `web${compactMap ? " is-compact-map" : ""}`;
   const key = document.createElement("ul");
   key.className = "web-key";
   const keyItems = [
@@ -466,11 +466,7 @@ function renderWeb() {
     keyItems.push(["near", "Closer · more beats"]);
   } else if (plot.arrangement !== "camps") {
     if (plot.includeOrbit) keyItems.push(["orbit", plot.orbitLabel || "Around the show"]);
-    if (plot.includeOrbit && plotHubs(plot).length >= 2) {
-      keyItems.push(["near", "One hub · out in that corner"]);
-    } else {
-      keyItems.push(["near", "Closer · more beats"]);
-    }
+    keyItems.push(["near", "Closer · more beats"]);
   }
   keyItems.forEach(([camp, label]) => {
     const item = document.createElement("li");
@@ -484,15 +480,14 @@ function renderWeb() {
     ? " is-camps"
     : plot.arrangement === "topics"
       ? " is-topics"
-      : compactMap ? " is-map"
-        : hubField ? " is-hub-field" : "";
+        : compactMap ? " is-map" : "";
   scroller.className = `web-scroll${scrollKind}`;
   scroller.setAttribute(
     "aria-label",
     compactMap
       ? "Friends and foes map. Drag to look around. Names are listed below."
-      : hubField
-        ? "YouTuber hub territories and shared orbit"
+      : hubWeb
+        ? "YouTuber web. Shared people sit in the center, hubs just outside, and one-hub people farther out."
         : "Friends and foes map",
   );
   const stage = document.createElement("div");
@@ -504,9 +499,7 @@ function renderWeb() {
   if (isCompact() && !plot.year) {
     const hint = document.createElement("p");
     hint.className = "web-hint";
-    hint.textContent = hubField
-      ? "Scroll through the hub territories. People connected to multiple hubs appear in Shared orbit."
-      : plot.arrangement === "camps"
+    hint.textContent = plot.arrangement === "camps"
       ? `${plot.yearHint || "Foes sit on the left, friends on the right."} Scroll to see everyone.`
       : "Drag the map to look around. Full names sit below — tap someone to open them.";
     section.appendChild(hint);
@@ -1440,11 +1433,10 @@ function paintWeb(stage, { animate = true } = {}) {
   const compact = isCompact();
   const camps = plot.arrangement === "camps";
   const topics = plot.arrangement === "topics";
-  const hubField = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2);
   const bubbles = plot.images === "bubbles";
   let width;
   let height;
-  if (compact && !camps && !topics && !hubField) {
+  if (compact && !camps && !topics) {
     const viewport = Math.max(scroller?.clientWidth || 0, bounds.width, 320);
     const size = Math.max(1120, Math.round(viewport * 2.8));
     width = size;
@@ -1476,9 +1468,8 @@ function paintWeb(stage, { animate = true } = {}) {
     hubIds: plotHubs(plot).map((hub) => hub.centerId),
     hubs: plotHubs(plot),
   });
-  stage.classList.toggle("is-hub-field", Boolean(layout.regions));
   stage.classList.toggle("is-quiet", !animate);
-  if (layout.regions || ((camps || topics) && layout.height >= height)) stage.style.height = `${layout.height}px`;
+  if (layout.height > height + 2 || ((camps || topics) && layout.height >= height)) stage.style.height = `${layout.height}px`;
   else if (!(compact && !camps)) stage.style.height = "";
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);

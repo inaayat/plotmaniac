@@ -413,21 +413,24 @@ assert.equal(sharedWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "
 assert.ok(sharedWeb.edges.some((edge) =>
   (edge.from === "trisha-paytas" && edge.to === "jason-nash")
   || (edge.from === "jason-nash" && edge.to === "trisha-paytas")));
-assert.equal(sharedWeb.regions.length, 4);
-assert.ok(sharedWeb.regions.some((region) => /trisha/i.test(region.label)));
-assert.ok(sharedWeb.regions.some((region) => region.id === "shared" && /shared/i.test(region.label)));
-assert.equal(sharedWeb.regions.find((region) => region.id === "ethan-klein").active, true);
-for (const node of sharedWeb.nodes) {
-  const region = sharedWeb.regions.find((item) => item.id === node.hubRegion);
-  assert.ok(region, `${node.id} needs a visible territory`);
-  assert.ok(node.x >= region.x && node.x <= region.x + region.width, `${node.id} stays inside ${region.id}`);
-  assert.ok(node.y >= region.y && node.y <= region.y + region.height, `${node.id} stays inside ${region.id}`);
-}
+assert.equal(sharedWeb.regions, undefined);
+assert.equal(sharedWeb.nodes.find((node) => node.id === "trisha-paytas").ring, "hub");
+assert.equal(sharedWeb.nodes.find((node) => node.id === "jeff-wittek").ring, "shared");
+assert.equal(sharedWeb.nodes.find((node) => node.id === "dan-swerdlove").ring, "exclusive");
 
 function nodeOf(layoutNodes, id) {
   return layoutNodes.find((item) => item.id === id);
 }
-const pageMid = { x: 700, y: 490 };
+function pageDistance(layout, id) {
+  const node = nodeOf(layout.nodes, id);
+  return Math.hypot(node.x - layout.width / 2, node.y - layout.height / 2);
+}
+function boxesOverlap(a, b, boxW, boxH) {
+  return Math.abs(a.x - b.x) < boxW - 0.5 && Math.abs(a.y - b.y) < boxH - 0.5;
+}
+function positionKey(layout) {
+  return layout.nodes.map((node) => [node.id, node.x, node.y, node.ring].join(":")).sort().join("|");
+}
 const ethanOnField = nodeOf(sharedWeb.nodes, "ethan-klein");
 const davidOnField = nodeOf(sharedWeb.nodes, "david-dobrik");
 const trishaOnField = nodeOf(sharedWeb.nodes, "trisha-paytas");
@@ -435,18 +438,25 @@ const danOnField = nodeOf(sharedWeb.nodes, "dan-swerdlove");
 const natalieOnField = nodeOf(sharedWeb.nodes, "natalie-mariduena");
 const jeffOnField = nodeOf(sharedWeb.nodes, "jeff-wittek");
 const mosesOnField = nodeOf(sharedWeb.nodes, "moses-hacmon");
-assert.ok(ethanOnField.x < pageMid.x && ethanOnField.y < pageMid.y, "Ethan sits in the top-left hub corner");
-assert.ok(davidOnField.x > pageMid.x && davidOnField.y < pageMid.y, "Dobrik sits in the top-right hub corner");
-assert.ok(trishaOnField.x < pageMid.x && trishaOnField.y > pageMid.y, "Trisha sits in the bottom-left territory");
 assert.ok(danOnField, "Dan stays on the web");
-assert.equal(danOnField.hubRegion, "ethan-klein");
-assert.ok(danOnField.x < pageMid.x && danOnField.y < pageMid.y, "Dan stays inside Ethan's territory");
-assert.equal(natalieOnField.hubRegion, "david-dobrik");
-assert.ok(natalieOnField.x > pageMid.x && natalieOnField.y < pageMid.y, "Natalie stays inside Dobrik's territory");
-assert.equal(jeffOnField.hubRegion, "shared");
-assert.equal(mosesOnField.hubRegion, "shared");
-assert.ok(jeffOnField.x > pageMid.x && jeffOnField.y > pageMid.y, "multi-hub Jeff lives in Shared orbit");
-assert.equal(nodeOf(sharedWeb.nodes, "hasan-piker").hubRegion, "ethan-klein");
+assert.equal(danOnField.ring, "exclusive");
+assert.equal(danOnField.hubId, "ethan-klein");
+assert.equal(natalieOnField.ring, "exclusive");
+assert.equal(natalieOnField.hubId, "david-dobrik");
+assert.equal(jeffOnField.ring, "shared");
+assert.equal(mosesOnField.ring, "shared");
+assert.equal(nodeOf(sharedWeb.nodes, "hasan-piker").hubId, "ethan-klein");
+const maxShared = Math.max(...sharedWeb.nodes.filter((node) => node.ring === "shared").map((node) => pageDistance(sharedWeb, node.id)));
+const minHub = Math.min(pageDistance(sharedWeb, "ethan-klein"), pageDistance(sharedWeb, "david-dobrik"), pageDistance(sharedWeb, "trisha-paytas"));
+assert.ok(maxShared < minHub, "hubs sit outside the shared center");
+assert.ok(pageDistance(sharedWeb, "dan-swerdlove") > pageDistance(sharedWeb, "ethan-klein"), "Dan sits outside Ethan");
+assert.ok(pageDistance(sharedWeb, "natalie-mariduena") > pageDistance(sharedWeb, "david-dobrik"), "Natalie sits outside David");
+for (const node of sharedWeb.nodes.filter((item) => item.ring === "exclusive")) {
+  const hub = sharedWeb.nodes.find((item) => item.ring === "hub" && item.hubId === node.hubId);
+  const outward = (node.x - hub.x) * (hub.x - sharedWeb.width / 2) + (node.y - hub.y) * (hub.y - sharedWeb.height / 2);
+  assert.ok(outward > 0, `${node.id} sits on the outer side of ${hub.id}`);
+}
+assert.ok(ethanOnField.plotHub && davidOnField.plotHub && trishaOnField.plotHub);
 
 const dobrikWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "david-dobrik" });
 assert.ok(dobrikWeb.nodes.length < people.length);
@@ -470,34 +480,27 @@ assert.equal(trishaWeb.nodes.find((node) => node.id === "moses-hacmon").camp, "f
 assert.equal(trishaWeb.nodes.find((node) => node.id === "oscar-gracey"), undefined);
 assert.equal(trishaWeb.nodes.find((node) => node.id === "gabbie-hanna").camp, "enemy");
 assert.ok(trishaWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
-assert.equal(trishaWeb.regions.find((region) => region.id === "trisha-paytas").active, true);
+assert.equal(positionKey(sharedWeb), positionKey(dobrikWeb), "focus does not move the web");
+assert.equal(positionKey(sharedWeb), positionKey(trishaWeb), "Trisha focus does not move the web");
 
-const mobileHubField = webLayout(people, relations, {
-  ...hubFieldOpts,
-  centerId: "trisha-paytas",
-  width: 390,
-  height: 700,
-});
-assert.ok(mobileHubField.height > 1200, "mobile territories stack into a vertical map");
-assert.deepEqual(
-  mobileHubField.regions.map((region) => region.id),
-  ["trisha-paytas", "shared", "ethan-klein", "david-dobrik"],
-  "selected hub comes first on mobile, followed by Shared orbit",
-);
-assert.ok(mobileHubField.regions.every((region) => region.x >= 0 && region.x + region.width <= 390));
-assert.ok(mobileHubField.nodes.every((node) => node.x > 0 && node.x < 390 && node.y > 0 && node.y < mobileHubField.height));
-assert.equal(nodeOf(mobileHubField.nodes, "dan-swerdlove").hubRegion, "ethan-klein");
-assert.equal(nodeOf(mobileHubField.nodes, "jeff-wittek").hubRegion, "shared");
-
-const shortWideHubField = webLayout(people, relations, {
-  ...hubFieldOpts,
-  centerId: "david-dobrik",
-  width: 1024,
-  height: 500,
-});
-assert.ok(shortWideHubField.height >= 640, "short desktop maps gain enough vertical room to stay readable");
-assert.equal(shortWideHubField.regions.length, 4);
-assert.ok(shortWideHubField.regions.every((region) => region.x >= 0 && region.x + region.width <= 1024));
+for (const size of [{ width: 1400, height: 980 }, { width: 1024, height: 500 }, { width: 1120, height: 1120 }, { width: 390, height: 700 }]) {
+  const sample = webLayout(people, relations, { ...hubFieldOpts, centerId: "ethan-klein", ...size });
+  assert.equal(sample.nodes.length, sharedWeb.nodes.length, `same cast at ${size.width}`);
+  assert.equal(sample.centerSize, sample.nodeSize);
+  const sharedDist = Math.max(...sample.nodes.filter((node) => node.ring === "shared").map((node) => pageDistance(sample, node.id)));
+  const hubDist = Math.min(...sample.nodes.filter((node) => node.ring === "hub").map((node) => pageDistance(sample, node.id)));
+  assert.ok(sharedDist < hubDist, `hubs stay outside the center at ${size.width}`);
+  sample.nodes.filter((node) => node.ring === "exclusive").forEach((node) => {
+    const hub = sample.nodes.find((item) => item.ring === "hub" && item.id === node.hubId);
+    assert.ok(pageDistance(sample, node.id) > pageDistance(sample, hub.id), `${node.id} outside its hub at ${size.width}`);
+  });
+  for (let i = 0; i < sample.nodes.length; i += 1) {
+    for (let j = i + 1; j < sample.nodes.length; j += 1) {
+      assert.equal(boxesOverlap(sample.nodes[i], sample.nodes[j], sample.boxW, sample.boxH), false, `${sample.nodes[i].id} overlaps ${sample.nodes[j].id} at ${size.width}`);
+    }
+  }
+  assert.ok(sample.nodes.every((node) => node.x > 8 && node.x < sample.width - 8 && node.y > 8 && node.y < sample.height - 8));
+}
 
 const nodes = graphLayout(people);
 assert.equal(nodes.length, people.length);
@@ -827,10 +830,8 @@ assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
-assert.match(appSource, /hub-region/, "youtubers web labels hub corners");
-assert.match(css, /\.hub-region/, "hub corner label styles");
-assert.match(css, /\.web-stage\.is-hub-field \.web-lines path/, "hub relationships stay quiet until interaction");
-assert.match(appSource, /Scroll through the hub territories/, "mobile explains the stacked territory map");
+assert.match(appSource, /Shared people sit in the center/, "youtubers web describes the shared center");
+assert.match(css, /\.web-stage \.node-name/, "web names stay inside their node");
 assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
 assert.match(appSource, /renderRelationSentimentChart/, "country drawer can chart bilateral warmth");
 assert.match(appSource, /renderSourceChips/, "country history can show source chips");
