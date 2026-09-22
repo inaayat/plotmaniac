@@ -1277,18 +1277,30 @@ export function httpsSourceLinks(items = []) {
   });
 }
 
+/** Commons FilePath used by country portraits (`Flag_of_Russia.svg`, etc.). */
+export function commonsFlagSrc(countryName) {
+  const name = String(countryName || "").trim();
+  if (!name) return "";
+  const file = `Flag_of_${name.replace(/\s+/g, "_")}.svg`;
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=480`;
+}
+
 /** Portrait flags for the relation-ride rider: partner on the left, plot center on the right. */
 export function relationRiderFlags(record, peopleById = new Map(), { centerId = "united-states" } = {}) {
   const partner = peopleById.get(record?.slug);
   const center = peopleById.get(centerId);
+  const partnerName = record?.country || partner?.name || "";
+  const centerName = center?.name || "United States";
   return {
     partner: {
-      name: record?.country || partner?.name || "",
-      src: String(partner?.portrait?.src || ""),
+      slug: record?.slug || "",
+      name: partnerName,
+      src: String(partner?.portrait?.src || commonsFlagSrc(partnerName)),
     },
     center: {
-      name: center?.name || "",
-      src: String(center?.portrait?.src || ""),
+      slug: centerId || "",
+      name: centerName,
+      src: String(center?.portrait?.src || commonsFlagSrc(centerName)),
     },
   };
 }

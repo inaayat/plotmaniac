@@ -65,7 +65,7 @@ Every rich-history beat should have a tone so the chart has no holes. Do not put
 - Records without `links` look as they did before (Afghanistan-style stubs).
 - The full-page header and the ride rider use that country’s Commons flag (`relationRiderFlags`): partner on the left, plot center on the right. Do not hardcode Mexico stripes.
 
-Helper: `httpsSourceLinks` in `engine.js` drops non-https / unlabeled chips. `relationRiderFlags` reads Commons portraits from `people.json`.
+Helper: `httpsSourceLinks` in `engine.js` drops non-https / unlabeled chips. `relationRiderFlags` reads Commons portraits from `people.json`, then falls back to `commonsFlagSrc("Russia")` → `Flag_of_Russia.svg`.
 
 ## QA
 
