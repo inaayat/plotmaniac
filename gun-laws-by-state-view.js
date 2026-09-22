@@ -1,19 +1,20 @@
 import {
-  filterStatesByCriteria,
-  GUN_STATE_FILTER_ANY,
-  GUN_STATE_FILTER_STATUSES,
   GUN_TYPE_HANDGUN,
   GUN_TYPE_LONG_GUN,
   getStateCriterionCell,
   gunTypeLabel,
+  highlightForState,
   resolveStatusForGunType,
   statusLabel,
 } from "./gun-laws-by-state-model.js";
+
+const SVG_NS = "http://www.w3.org/2000/svg";
 
 export function renderGunStateLawsBoard({
   plot,
   snapshot,
   filterConfig,
+  mapPaths,
   filters,
   gunType,
   onFilterChange,
@@ -42,13 +43,27 @@ export function renderGunStateLawsBoard({
   head.append(title, lede, note, source);
   section.appendChild(head);
 
-  section.appendChild(renderFilterPanel(filterConfig, filters, gunType, onFilterChange, onGunTypeChange));
-
   const allStates = snapshot.states || [];
-  const matching = filterStatesByCriteria(allStates, filters, gunType);
-  section.appendChild(renderSummary(matching.length, allStates.length, gunType));
-  section.appendChild(renderMapPlaceholder(matching));
-  section.appendChild(renderStateTable(matching, selectedStateId, onSelectState, gunType));
+  const painted = allStates.map((state) => ({
+    state,
+    highlight: highlightForState(state, filters, gunType),
+  }));
+  const lit = painted.filter((row) => row.highlight === "lit").map((row) => row.state);
+  const unknownCount = painted.filter((row) => row.highlight === "unknown").length;
+
+  const split = document.createElement("div");
+  split.className = "gun-state-laws-split";
+  split.appendChild(renderFilterPanel(filterConfig, filters, gunType, onFilterChange, onGunTypeChange));
+
+  const mapColumn = document.createElement("div");
+  mapColumn.className = "gun-state-laws-map-column";
+  mapColumn.appendChild(renderSummary(lit.length, allStates.length, unknownCount, gunType, filters));
+  mapColumn.appendChild(renderLegend());
+  mapColumn.appendChild(renderStateMap(mapPaths, painted, selectedStateId, onSelectState));
+  split.appendChild(mapColumn);
+  section.appendChild(split);
+
+  section.appendChild(renderStateTable(lit, selectedStateId, onSelectState, gunType));
 
   if (selectedStateId) {
     const detail = allStates.find((s) => s.id === selectedStateId);
@@ -62,7 +77,7 @@ function renderGunTypeControl(filterConfig, gunType, onGunTypeChange) {
   const fieldset = document.createElement("fieldset");
   fieldset.className = "gun-state-laws-gun-type";
   const legend = document.createElement("legend");
-  legend.textContent = "Apply Wikipedia columns for";
+  legend.textContent = "Firearm column";
   fieldset.appendChild(legend);
   const options = filterConfig.gunTypes || [
     { id: GUN_TYPE_HANDGUN, label: "Handgun" },
@@ -89,101 +104,142 @@ function renderFilterPanel(filterConfig, filters, gunType, onFilterChange, onGun
   const panel = document.createElement("div");
   panel.className = "gun-state-laws-filters";
   const heading = document.createElement("h3");
-  heading.textContent = "Filter states";
+  heading.textContent = "Criteria";
   panel.appendChild(heading);
   panel.appendChild(renderGunTypeControl(filterConfig, gunType, onGunTypeChange));
   const hint = document.createElement("p");
   hint.className = "gun-state-laws-filter-hint";
   hint.textContent =
-    `Table and filters use the ${gunTypeLabel(gunType).toLowerCase()} column from each Wikipedia state table. “Any” skips a rule. Federal dealer checks, ages, and prohibited-person rules still apply everywhere.`;
+    `Check a rule to light only places where that ${gunTypeLabel(gunType).toLowerCase()} rule is not required. Uncheck it to stop filtering on it. Federal dealer checks, ages, and prohibited-person rules still apply everywhere.`;
   panel.appendChild(hint);
 
   const groups = [
-    { id: "ownership", title: "Purchase & possession" },
-    { id: "carry", title: "Carry (concealed & open)" },
+    { id: "ownership", title: "Own and buy" },
+    { id: "carry", title: "Carry" },
   ];
   groups.forEach((group) => {
     const rows = (filterConfig.criteria || []).filter((row) => row.group === group.id);
     if (!rows.length) return;
-    const block = document.createElement("div");
+    const block = document.createElement("fieldset");
     block.className = "gun-state-laws-filter-group";
-    const sub = document.createElement("h4");
+    const sub = document.createElement("legend");
     sub.textContent = group.title;
     block.appendChild(sub);
-    const grid = document.createElement("div");
-    grid.className = "gun-state-laws-filter-grid";
-    rows.forEach((row) => {
-      grid.appendChild(renderFilterSelect(row, filters, onFilterChange));
-    });
-    block.appendChild(grid);
+    rows.forEach((row) => block.appendChild(renderFilterToggle(row, filters, onFilterChange)));
     panel.appendChild(block);
   });
-
-  const ungrouped = (filterConfig.criteria || []).filter((row) => !row.group);
-  if (ungrouped.length) {
-    const grid = document.createElement("div");
-    grid.className = "gun-state-laws-filter-grid";
-    ungrouped.forEach((row) => grid.appendChild(renderFilterSelect(row, filters, onFilterChange)));
-    panel.appendChild(grid);
-  }
 
   return panel;
 }
 
-function renderFilterSelect(row, filters, onFilterChange) {
-  const field = document.createElement("label");
-  field.className = "gun-state-laws-filter-field";
-  const span = document.createElement("span");
-  span.textContent = row.label;
-  const select = document.createElement("select");
-  select.dataset.criterion = row.id;
-  select.setAttribute("aria-label", row.label);
-  GUN_STATE_FILTER_STATUSES.forEach((value) => {
-    const opt = document.createElement("option");
-    opt.value = value;
-    if (value === GUN_STATE_FILTER_ANY) opt.textContent = "Any";
-    else if (value === "not_required") opt.textContent = "Must be: No / not required";
-    else if (value === "required") opt.textContent = "Must be: Yes / required";
-    else if (value === "partial") opt.textContent = "Must be: Partial (includes stricter)";
-    else if (value === "not_applicable") opt.textContent = "Must be: N/A";
-    else opt.textContent = `Must be: ${statusLabel(value)}`;
-    select.appendChild(opt);
+function renderFilterToggle(row, filters, onFilterChange) {
+  const label = document.createElement("label");
+  label.className = "gun-state-laws-toggle";
+  const input = document.createElement("input");
+  input.type = "checkbox";
+  input.dataset.criterion = row.id;
+  input.checked = filters[row.id] === "not_required";
+  input.addEventListener("change", () => {
+    onFilterChange(row.id, input.checked ? "not_required" : "any");
   });
-  select.value = filters[row.id] || GUN_STATE_FILTER_ANY;
-  select.addEventListener("change", () => onFilterChange(row.id, select.value));
-  field.append(span, select);
-  return field;
+  const text = document.createElement("span");
+  text.textContent = row.toggleLabel || row.label;
+  label.append(input, text);
+  return label;
 }
 
-function renderSummary(matchCount, total, gunType) {
+function activeFilterCount(filters) {
+  return Object.values(filters || {}).filter((want) => want && want !== "any").length;
+}
+
+function renderSummary(litCount, total, unknownCount, gunType, filters) {
   const p = document.createElement("p");
   p.className = "gun-state-laws-summary";
-  p.textContent = `${matchCount} of ${total} jurisdictions match (${gunTypeLabel(gunType)} column · 50 states + D.C.).`;
+  const filtersOn = activeFilterCount(filters);
+  if (!filtersOn) {
+    p.textContent = `All ${total} jurisdictions are lit (${gunTypeLabel(gunType)}). Check a criterion to narrow where that extra rule is not required.`;
+    return p;
+  }
+  const unknownBit = unknownCount
+    ? ` ${unknownCount} stay dimmed because Wikipedia has no row for a rule you checked.`
+    : "";
+  p.textContent = `${litCount} of ${total} jurisdictions light up for ${gunTypeLabel(gunType).toLowerCase()}s.${unknownBit}`;
   return p;
 }
 
-function renderMapPlaceholder(states) {
-  const wrap = document.createElement("div");
-  wrap.className = "gun-state-laws-map-placeholder";
-  const title = document.createElement("h3");
-  title.textContent = "Map (coming next)";
-  const p = document.createElement("p");
-  p.textContent =
-    "Choropleth map will highlight matching states. For now, use the table below — selected filters apply to the same data.";
-  wrap.append(title, p);
-  const chips = document.createElement("div");
-  chips.className = "gun-state-laws-map-chips";
-  chips.setAttribute("role", "list");
-  states.forEach((state) => {
-    const chip = document.createElement("span");
-    chip.className = "gun-state-laws-chip";
-    chip.setAttribute("role", "listitem");
-    chip.textContent = state.postal;
-    chip.title = state.name;
-    chips.appendChild(chip);
+function renderLegend() {
+  const list = document.createElement("ul");
+  list.className = "gun-state-laws-legend";
+  [
+    ["is-lit", "Lights up — matches every checked rule"],
+    ["is-unknown", "Outlined — a checked rule has no Wikipedia row"],
+    ["is-dim", "Dark — does not match"],
+  ].forEach(([cls, label]) => {
+    const item = document.createElement("li");
+    const swatch = document.createElement("i");
+    swatch.className = `gun-state-laws-swatch ${cls}`;
+    swatch.setAttribute("aria-hidden", "true");
+    item.append(swatch, document.createTextNode(label));
+    list.appendChild(item);
   });
-  wrap.appendChild(chips);
+  return list;
+}
+
+function renderStateMap(mapPaths, painted, selectedStateId, onSelectState) {
+  const wrap = document.createElement("div");
+  wrap.className = "gun-state-laws-map";
+  const byId = new Map(painted.map((row) => [row.state.id, row]));
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("viewBox", mapPaths?.viewBox || "0 0 975 610");
+  svg.setAttribute("role", "group");
+  svg.setAttribute("aria-label", "United States map. Lit states match the criteria you checked.");
+  svg.classList.add("gun-state-laws-svg");
+
+  (mapPaths?.states || []).forEach((shape) => {
+    const paintedRow = byId.get(shape.id);
+    const highlight = paintedRow?.highlight || "dim";
+    const record = paintedRow?.state;
+    const path = document.createElementNS(SVG_NS, "path");
+    path.setAttribute("d", shape.d);
+    path.classList.add("gun-state-shape", `is-${highlight}`);
+    if (shape.id === selectedStateId) path.classList.add("is-selected");
+    path.dataset.state = shape.id;
+    const name = record?.name || shape.name || shape.id;
+    const postal = record?.postal || "";
+    path.setAttribute("role", "button");
+    path.setAttribute("tabindex", "0");
+    path.setAttribute("aria-pressed", shape.id === selectedStateId ? "true" : "false");
+    path.setAttribute("aria-label", `${name}${postal ? ` (${postal})` : ""}, ${highlightLabel(highlight)}`);
+    const title = document.createElementNS(SVG_NS, "title");
+    title.textContent = `${name}${postal ? ` (${postal})` : ""} — ${highlightLabel(highlight)}`;
+    path.appendChild(title);
+    const select = () => onSelectState(shape.id);
+    path.addEventListener("click", select);
+    path.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        select();
+      }
+    });
+    svg.appendChild(path);
+  });
+
+  if (!mapPaths?.states?.length) {
+    const missing = document.createElement("p");
+    missing.className = "gun-state-laws-note";
+    missing.textContent = "State map shapes did not load.";
+    wrap.appendChild(missing);
+    return wrap;
+  }
+
+  wrap.appendChild(svg);
   return wrap;
+}
+
+function highlightLabel(highlight) {
+  if (highlight === "lit") return "matches your criteria";
+  if (highlight === "unknown") return "Wikipedia row missing for a checked rule";
+  return "does not match";
 }
 
 function cellLabel(state, criterionId, gunType) {
@@ -192,6 +248,11 @@ function cellLabel(state, criterionId, gunType) {
 }
 
 function renderStateTable(states, selectedStateId, onSelectState, gunType) {
+  const wrap = document.createElement("div");
+  wrap.className = "gun-state-laws-table-wrap";
+  const heading = document.createElement("h3");
+  heading.textContent = "Lit jurisdictions";
+  wrap.appendChild(heading);
   const table = document.createElement("table");
   table.className = "gun-state-laws-table";
   const gt = gunTypeLabel(gunType);
@@ -246,7 +307,8 @@ function renderStateTable(states, selectedStateId, onSelectState, gunType) {
     tbody.appendChild(tr);
   });
   table.appendChild(tbody);
-  return table;
+  wrap.appendChild(table);
+  return wrap;
 }
 
 function renderStateDetail(state, filterConfig, gunType) {
@@ -260,7 +322,7 @@ function renderStateDetail(state, filterConfig, gunType) {
   (filterConfig.criteria || []).forEach((row) => {
     const cell = getStateCriterionCell(state, row.id);
     const dt = document.createElement("dt");
-    dt.textContent = row.label;
+    dt.textContent = row.toggleLabel || row.label;
     const dd = document.createElement("dd");
     const status = resolveStatusForGunType(cell, gunType, row.id);
     dd.textContent = cell

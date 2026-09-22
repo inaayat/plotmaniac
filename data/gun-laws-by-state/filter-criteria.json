@@ -8,6 +8,7 @@
     {
       "id": "purchase-permit",
       "label": "Purchase permit",
+      "toggleLabel": "No purchase permit",
       "question": "Must you get a permit before buying?",
       "wikiSubject": "State permit required to purchase?",
       "group": "ownership"
@@ -15,6 +16,7 @@
     {
       "id": "private-sale-check",
       "label": "Private-sale background check",
+      "toggleLabel": "No private-sale background check",
       "question": "Must private transfers use a background check?",
       "wikiSubject": "Background checks required for private sales?",
       "group": "ownership"
@@ -22,6 +24,7 @@
     {
       "id": "waiting-period",
       "label": "Waiting period",
+      "toggleLabel": "No waiting period",
       "question": "Is there a mandatory waiting period?",
       "wikiSubject": "Waiting period?",
       "group": "ownership"
@@ -29,6 +32,7 @@
     {
       "id": "handgun-registration",
       "label": "Firearm registration",
+      "toggleLabel": "No firearm registration",
       "question": "Must firearms be registered?",
       "wikiSubject": "Firearm registration?",
       "group": "ownership"
@@ -36,6 +40,7 @@
     {
       "id": "assault-weapons-restriction",
       "label": "Assault-weapon restrictions",
+      "toggleLabel": "No assault-weapon ban",
       "question": "Are defined assault weapons restricted?",
       "wikiSubject": "Assault weapon law?",
       "group": "ownership"
@@ -43,6 +48,7 @@
     {
       "id": "magazine-capacity-limit",
       "label": "Magazine capacity limit",
+      "toggleLabel": "No magazine-capacity limit",
       "question": "Are large-capacity magazines restricted?",
       "wikiSubject": "Magazine capacity restriction?",
       "group": "ownership"
@@ -50,6 +56,7 @@
     {
       "id": "nfa-item-registration",
       "label": "Extra state NFA limits",
+      "toggleLabel": "No extra state NFA limits",
       "question": "Does the state add restrictions beyond federal NFA?",
       "wikiSubject": "NFA weapons restricted?",
       "group": "ownership"
@@ -57,6 +64,7 @@
     {
       "id": "ghost-gun-rules",
       "label": "Home-built / ghost guns",
+      "toggleLabel": "No home-built / ghost-gun rules",
       "question": "Are home-built or unfinished frames restricted?",
       "wikiSubject": "Home-built firearms restriction?",
       "group": "ownership"
@@ -64,6 +72,7 @@
     {
       "id": "carry-permit",
       "label": "Concealed carry license",
+      "toggleLabel": "No concealed-carry license",
       "question": "Is a license required to carry concealed?",
       "wikiSubject": "Permit required for concealed carry?",
       "group": "carry"
@@ -71,6 +80,7 @@
     {
       "id": "open-carry-permit",
       "label": "Open-carry license",
+      "toggleLabel": "No open-carry license",
       "question": "Is a license required to carry openly?",
       "wikiSubject": "Permit required for open carry?",
       "group": "carry"

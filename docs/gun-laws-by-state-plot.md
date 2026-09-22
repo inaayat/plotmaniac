@@ -51,10 +51,15 @@ node scripts/build-states-wikipedia-snapshot.mjs --input /path/to/wiki-markdown.
 
 Federal baseline (dealer NICS, ages 18/21 from FFLs, prohibited persons, NFA tax) is **not** in Wikipedia state tables; the UI notes that it applies everywhere.
 
+## Layout
+
+Desktop: criteria checkboxes on the left, U.S. map on the right. Checked rules light states where that Wikipedia cell is **not required**. Unchecking a rule stops filtering on it. On a narrow screen the criteria stack above the map.
+
+Map shapes: `data/gun-laws-by-state/us-states-paths.json` (Albers USA, 50 states + D.C.).
+
 ## Roadmap
 
-1. **Now:** filter panel + matching state table + postal chip preview.
-2. **Next:** choropleth map (US states GeoJSON) driven by the same filters.
-3. **Later:** replace Wikipedia seed with official-code keyframes (same schema as `docs/gun-regulation-board-plan.md` §3.3) and optional year scrubber.
+1. **Now:** checkbox criteria beside a choropleth that lights matching states, plus a table of lit jurisdictions.
+2. **Later:** replace Wikipedia seed with official-code keyframes (same schema as `docs/gun-regulation-board-plan.md` §3.3).
 
 See also: [gun-laws-by-state-table.md](./gun-laws-by-state-table.md), [gun-regulation-board-plan.md](./gun-regulation-board-plan.md) (SCOTUS timeline plot only).

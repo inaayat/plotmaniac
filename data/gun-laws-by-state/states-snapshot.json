@@ -59,7 +59,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -67,7 +68,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -75,7 +77,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -83,7 +86,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -91,7 +95,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -99,7 +104,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -107,17 +113,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -125,7 +133,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -133,7 +142,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -141,7 +151,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine / Stand your ground law?"
         }
       },
       "wikiSubjects": {
@@ -249,7 +260,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -257,7 +269,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -265,7 +278,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -273,7 +287,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -281,7 +296,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -289,7 +305,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -297,17 +314,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -315,7 +334,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -323,7 +343,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -331,7 +352,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -427,7 +449,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -435,7 +458,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -443,7 +467,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -451,7 +476,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -459,7 +485,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -467,7 +494,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -475,17 +503,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -493,7 +523,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -501,7 +532,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -509,7 +541,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -617,7 +650,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -625,7 +659,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -633,7 +668,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -641,7 +677,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -649,7 +686,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -657,7 +695,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -665,17 +704,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -683,7 +724,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -691,7 +733,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -699,7 +742,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -801,7 +845,8 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Partial"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "required",
@@ -809,7 +854,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -817,7 +863,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -825,7 +872,17 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
+        },
+        "carry-permit": {
+          "status": "required",
+          "plainEnglish": "\"Shall issue,\" per Attorney General's directive after the Supreme Court's decision in New York State Rifle & Pistol Association, Inc. v. Bruen eliminated the \"good cause\" requirement. CCW permits valid statewide. Out-of-state permits not valid in California. On December 4, 2023, a lawsuit challenging California's laws forbidding nonresidents' concealed carry permits and nonresidents from obtaining California's CCW permit got filed. [38] Penal Code §26045 provides an affirmative defense only to §",
+          "wiki": {
+            "longGun": "N/A",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -833,7 +890,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "waiting-period": {
           "status": "required",
@@ -841,7 +899,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Waiting period?"
         },
         "private-sale-check": {
           "status": "required",
@@ -849,7 +908,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         },
         "ghost-gun-rules": {
           "status": "required",
@@ -857,7 +917,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Home-built firearms restriction?"
         }
       },
       "extras": {
@@ -867,7 +928,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
+        },
+        "open-carry-permit": {
+          "status": "partial",
+          "plainEnglish": "Long guns and handguns may be openly carried in unincorporated rural areas where firearm discharge is not prohibited by local ordinance. In a county with a population of less than 200,000 residents, a permit to carry a handgun \"loaded and exposed\" may be issued by the county sheriff, valid only in the issuing county. A person may also open carry if he or she \"reasonably believes that any person or the property of any person is in immediate, grave danger and that the carrying of the weapon is nec",
+          "wiki": {
+            "longGun": "Partial",
+            "handgun": "Partial"
+          },
+          "sourceSubject": "Open carry allowed?"
         },
         "state-preemption": {
           "status": "required",
@@ -875,7 +946,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -883,7 +955,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -1021,7 +1094,8 @@
           "wiki": {
             "longGun": "No*",
             "handgun": "No*"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -1029,7 +1103,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -1037,7 +1112,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -1045,7 +1121,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -1053,17 +1130,28 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
+        },
+        "waiting-period": {
+          "status": "required",
+          "plainEnglish": "Effective October 1, 2023, there is a mandatory three day waiting period between initiation of a background check and taking possession on most firearms transfers. Exceptions include antique firearms and transfers between family members. HB23-1219; Colo. Rev. Stat. § 18-12-115",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Waiting Period?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -1071,7 +1159,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "partial",
@@ -1079,7 +1168,8 @@
           "wiki": {
             "longGun": "partial",
             "handgun": "partial"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -1087,7 +1177,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -1201,7 +1292,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "partial",
@@ -1209,7 +1301,17 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Partial"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
+        },
+        "assault-weapons-restriction": {
+          "status": "required",
+          "plainEnglish": "Selective fire weapons, numerous specifically named firearms, some .50 BMG variant firearms, and semiautomatic center-fire firearms with one defining cosmetic feature are banned; banned weapons lawfully possessed prior to April 4, 2013, must have been registered with DESPP prior to January 1, 2014. Registered weapons may only be sold or transferred to a licensed gun dealer, to the State Police or local police department, transferred to a recipient outside of Connecticut or willed to a designated",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Assault weapons law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -1217,7 +1319,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -1225,7 +1328,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -1233,7 +1337,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -1241,7 +1346,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
@@ -1251,7 +1357,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "required",
@@ -1259,7 +1366,8 @@
           "wiki": {
             "longGun": "Illegal",
             "handgun": "Illegal"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -1267,7 +1375,8 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -1275,7 +1384,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -1383,13 +1493,32 @@
       "name": "District of Columbia",
       "coverage": "wikipedia-seed",
       "checklist": {
+        "purchase-permit": {
+          "status": "required",
+          "plainEnglish": "The firearm registration process also serves as a permitting process. Purchases by DC residents may only be made through a federally licensed dealer (\"FFL\"), and firearms purchased through an FFL can only be physically delivered to the purchaser after MPD approves the purchase by issuing a firearm registration certificate.",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Permit required to purchase?"
+        },
         "handgun-registration": {
           "status": "required",
           "plainEnglish": "All firearms (except certain black powder firearms) must be registered with the Metropolitan Police Department as soon as they are brought into the District; for new purchases the registration must issue prior to the owner taking possession. An NCIC background check, fingerprinting, proof of address, and online training are required.",
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
+        },
+        "carry-permit": {
+          "status": "required",
+          "plainEnglish": "The Metropolitan Police Department shall issue a Concealed Pistol License to a qualified applicant. Only registered pistols may be carried. Nonresidents must register a pistol with MPD in order to apply for a Concealed Pistol License.",
+          "wiki": {
+            "longGun": "N/A",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for concealed carry?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -1397,7 +1526,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -1405,7 +1535,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -1413,7 +1544,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -1421,7 +1553,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         },
         "waiting-period": {
           "status": "required",
@@ -1429,7 +1562,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Waiting period?"
         }
       },
       "extras": {
@@ -1439,15 +1573,26 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
-        "red-flag-law": {
+        "open-carry-permit": {
           "status": "required",
-          "plainEnglish": "Red flag law?",
+          "plainEnglish": "Open carry is prohibited.",
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Open carry allowed?"
+        },
+        "red-flag-law": {
+          "status": "required",
+          "plainEnglish": "Red flag law? — long guns: Yes; handguns: Yes.",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -1549,7 +1694,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -1557,7 +1703,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -1565,7 +1712,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -1573,7 +1721,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -1581,7 +1730,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -1589,7 +1739,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -1597,17 +1748,19 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -1615,7 +1768,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "unknown",
@@ -1623,7 +1777,8 @@
           "wiki": {
             "longGun": "Yes*",
             "handgun": "Yes*"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -1631,7 +1786,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -1733,7 +1889,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "waiting-period": {
           "status": "required",
@@ -1741,7 +1898,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Waiting period?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -1749,7 +1907,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -1757,7 +1916,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -1765,7 +1925,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -1773,7 +1934,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -1781,7 +1943,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -1789,17 +1952,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -1807,15 +1972,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "Castle Doctrine/Stand Your Ground law?",
+          "plainEnglish": "Castle Doctrine/Stand Your Ground law? — long guns: Yes; handguns: Yes.",
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -1823,7 +1990,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -1937,7 +2105,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -1945,7 +2114,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -1953,7 +2123,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -1961,7 +2132,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -1969,7 +2141,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -1977,7 +2150,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -1985,17 +2159,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -2003,7 +2179,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -2011,7 +2188,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -2019,7 +2197,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -2115,7 +2294,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "required",
@@ -2123,7 +2303,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -2131,7 +2312,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -2139,7 +2321,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -2147,7 +2330,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -2155,7 +2339,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -2163,7 +2348,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
@@ -2173,7 +2359,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "required",
@@ -2181,7 +2368,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -2189,7 +2377,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -2197,7 +2386,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -2299,7 +2489,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -2307,7 +2498,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -2315,7 +2507,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -2323,7 +2516,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -2331,7 +2525,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -2339,7 +2534,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -2347,17 +2543,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -2365,7 +2563,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -2373,7 +2572,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -2481,7 +2681,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -2489,7 +2690,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -2497,7 +2699,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -2505,7 +2708,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -2513,7 +2717,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -2521,17 +2726,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -2539,7 +2746,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -2547,7 +2755,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -2555,7 +2764,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -2651,7 +2861,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "partial",
@@ -2659,7 +2870,17 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Partial"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
+        },
+        "carry-permit": {
+          "status": "required",
+          "plainEnglish": "Shall-issue with limited discretion. [81] Concealed carry licenses are issued by the state police. Licenses issued by other states are not recognized (except for vehicle carry), but nonresidents from states with \"substantially similar\" licensing requirements can apply for an Illinois nonresident license. 430 ILCS 66",
+          "wiki": {
+            "longGun": "N/A",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for concealed carry?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -2667,7 +2888,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -2675,7 +2897,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -2683,7 +2906,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -2691,7 +2915,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         },
         "waiting-period": {
           "status": "required",
@@ -2699,17 +2924,37 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Waiting period?"
+        },
+        "ghost-gun-rules": {
+          "status": "required",
+          "plainEnglish": "All firearms are required to have a serial number. 720 ILCS 5/24-1",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "\"Ghost guns\" banned?"
         }
       },
       "extras": {
+        "open-carry-permit": {
+          "status": "required",
+          "plainEnglish": "720 ILCS 5/24-1",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Open carry allowed?"
+        },
         "state-preemption": {
           "status": "partial",
           "plainEnglish": "Preemption for the regulation and transportation of handguns and handgun ammunition. Preemption for laws regulating assault weapons, unless enacted before July 20, 2013. 430 ILCS 66",
           "wiki": {
             "longGun": "Partial",
             "handgun": "Partial"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -2717,7 +2962,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -2843,7 +3089,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -2851,7 +3098,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -2859,7 +3107,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -2867,7 +3116,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -2875,7 +3125,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -2883,7 +3134,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -2891,17 +3143,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -2909,7 +3163,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -2917,7 +3172,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -2925,7 +3181,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -3033,7 +3290,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -3041,7 +3299,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -3049,7 +3308,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -3057,7 +3317,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -3065,7 +3326,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -3073,7 +3335,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -3081,17 +3344,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -3099,7 +3364,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -3107,7 +3373,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -3115,7 +3382,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -3217,7 +3485,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -3225,7 +3494,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -3233,7 +3503,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -3241,7 +3512,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -3249,7 +3521,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -3257,7 +3530,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -3265,17 +3539,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -3283,7 +3559,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -3291,7 +3568,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -3299,7 +3577,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -3401,7 +3680,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -3409,7 +3689,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -3417,7 +3698,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -3425,7 +3707,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -3433,7 +3716,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -3441,7 +3725,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -3449,17 +3734,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -3467,7 +3754,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -3475,7 +3763,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -3483,7 +3772,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -3585,7 +3875,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -3593,7 +3884,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
+        },
+        "carry-permit": {
+          "status": "required",
+          "plainEnglish": "License to Carry Firearms (LTC) required. Massachusetts is a de facto \"shall issue\" state for carry since the Supreme Court's decision in New York State Rifle & Pistol Association, Inc. v. Bruen held \"may issue\" regimes unconstitutional. The issuing authority must provide written explanation for the denial of any application, which is subject to appeal. The issuing authority is the local police chief for most jurisdictions, who issues carry licenses based on an applicant's suitability and compli",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for concealed carry?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -3601,7 +3902,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -3609,7 +3911,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -3617,7 +3920,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -3625,7 +3929,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
@@ -3635,7 +3940,17 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Owner license required?"
+        },
+        "open-carry-permit": {
+          "status": "required",
+          "plainEnglish": "License to Carry Firearms (LTC) required. Note than an individual who can lawfully carry firearms does not have to conceal a firearm in public. [93] Moreover, in 2013, the Massachusetts Supreme Judicial Court ruled (FRB v. Simkin) that such a person is not responsible for alarm caused by licensed carry of a handgun, and that a permit cannot be revoked for suitability purposes under these circumstances. [94] If police demand to see the permit, it must be produced, per G.L. c. 140, § 129C. Failure",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for open carry?"
         },
         "state-preemption": {
           "status": "not_required",
@@ -3643,7 +3958,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -3651,7 +3967,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -3741,7 +4058,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "required",
@@ -3749,7 +4067,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "carry-permit": {
           "status": "required",
@@ -3757,7 +4076,17 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
+        },
+        "assault-weapons-restriction": {
+          "status": "required",
+          "plainEnglish": "Certain models of firearms are banned as \"assault pistols\" and \"assault long guns\". It is illegal to possess an \"assault weapon\" or a copycat weapon with two or more specified features (folding stock, grenade/flare launcher, flash suppressor) unless owned before 10/1/2013, or received through inheritance from a lawful possessor and not otherwise forbidden to possess. [86] Some local counties have adopted Second Amendment sanctuary resolutions in opposition to assault weapon laws. [87] Md Crimina",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "\"Assault weapon\" law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -3765,7 +4094,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -3773,7 +4103,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -3781,17 +4112,19 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "required",
@@ -3799,7 +4132,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -3807,7 +4141,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -3815,7 +4150,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -3905,7 +4241,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -3913,7 +4250,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -3921,7 +4259,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -3929,7 +4268,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -3937,7 +4277,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -3945,7 +4286,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "unknown",
@@ -3953,17 +4295,19 @@
           "wiki": {
             "longGun": "Some",
             "handgun": "Some"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "red-flag-law": {
           "status": "required",
@@ -3971,7 +4315,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -3979,7 +4324,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "not_required",
@@ -3987,7 +4333,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -3995,7 +4342,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -4109,7 +4457,8 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "required",
@@ -4117,7 +4466,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -4125,7 +4475,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -4133,7 +4484,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -4141,7 +4493,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -4149,7 +4502,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -4157,17 +4511,19 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -4175,7 +4531,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -4183,7 +4540,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -4191,7 +4549,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -4293,7 +4652,8 @@
           "wiki": {
             "longGun": "No*",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -4301,7 +4661,26 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
+        },
+        "assault-weapons-restriction": {
+          "status": "required",
+          "plainEnglish": "Persons 18 and older may purchase assault-style weapons with a permit to purchase (or permit to carry for persons 21 and older). §624.7131",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Assault-style weapon law?"
+        },
+        "magazine-capacity-limit": {
+          "status": "not_required",
+          "plainEnglish": "Magazine Capacity Restriction? — long guns: No; handguns: No.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Magazine Capacity Restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -4309,7 +4688,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -4317,7 +4697,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -4325,17 +4706,19 @@
           "wiki": {
             "longGun": "No*",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "required",
@@ -4343,7 +4726,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         }
       },
       "wikiSubjects": {
@@ -4433,7 +4817,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -4441,7 +4826,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -4449,7 +4835,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -4457,7 +4844,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -4465,7 +4853,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -4473,7 +4862,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -4481,17 +4871,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -4499,7 +4891,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -4507,7 +4900,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -4515,7 +4909,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -4611,7 +5006,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -4619,7 +5015,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -4627,7 +5024,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -4635,7 +5033,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -4643,7 +5042,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -4651,7 +5051,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -4659,17 +5060,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -4677,7 +5080,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -4685,7 +5089,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -4693,7 +5098,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -4789,7 +5195,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -4797,7 +5204,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -4805,7 +5213,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -4813,7 +5222,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -4821,7 +5231,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -4829,7 +5240,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -4837,17 +5249,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -4855,7 +5269,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -4863,7 +5278,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -4871,7 +5287,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -4967,7 +5384,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -4975,7 +5393,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -4983,7 +5402,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -4991,7 +5411,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -4999,7 +5420,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -5007,7 +5429,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -5015,17 +5438,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -5033,7 +5458,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -5041,7 +5467,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -5049,7 +5476,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -5163,7 +5591,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -5171,7 +5600,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -5179,7 +5609,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -5187,7 +5618,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -5195,7 +5627,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -5203,7 +5636,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -5211,17 +5645,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "required",
@@ -5229,7 +5665,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -5237,7 +5674,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -5245,7 +5683,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -5353,7 +5792,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -5361,7 +5801,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -5369,7 +5810,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -5377,7 +5819,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -5385,7 +5828,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -5393,7 +5837,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -5401,17 +5846,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -5419,15 +5866,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "not_required",
-          "plainEnglish": "Castle Doctrine/Stand Your Ground law?",
+          "plainEnglish": "Castle Doctrine/Stand Your Ground law? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -5435,7 +5884,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -5543,7 +5993,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -5551,7 +6002,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -5559,7 +6011,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -5567,7 +6020,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -5575,7 +6029,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -5583,7 +6038,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -5591,17 +6047,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -5609,7 +6067,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -5617,7 +6076,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -5713,7 +6173,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "required",
@@ -5721,7 +6182,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "carry-permit": {
           "status": "required",
@@ -5729,7 +6191,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -5737,7 +6200,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -5745,7 +6209,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -5753,7 +6218,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -5761,7 +6227,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
@@ -5771,7 +6238,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "required",
@@ -5779,7 +6247,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "not_required",
@@ -5787,7 +6256,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -5795,7 +6265,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -5885,7 +6356,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -5893,7 +6365,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -5901,7 +6374,35 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
+        },
+        "magazine-capacity-limit": {
+          "status": "not_required",
+          "plainEnglish": "There is no magazine capacity restriction. [124]",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Magazine Capacity Restriction?"
+        },
+        "waiting-period": {
+          "status": "unknown",
+          "plainEnglish": "*New Mexico law imposes a 7-day waiting period for most firearms transfers, which has been ruled unconstitutional by the 10th Circuit US Court of Appeals. While the circuit court's would render the waiting period unenforceable, authorities in New Mexico have chosen to ignore the 10th Circuit's ruling and continue to enforce the 7-day waiting period on firearms transfers. [125] [126] NMSA 30-7-7.3",
+          "wiki": {
+            "longGun": "7-Days*",
+            "handgun": "7-Days*"
+          },
+          "sourceSubject": "Waiting Period for Firearms Transfers?"
+        },
+        "carry-permit": {
+          "status": "required",
+          "plainEnglish": "Shall-issue to full-time and part-time residents (who hold a valid New Mexico ID/Driver's License), with passage of a criminal history check and mental health records check, and completion of 15-hour handgun safety course that includes live-fire instruction. Active military and law enforcement members and veterans honorably discharged within 20 years of permit application are exempt from training requirement. [127] Permit required to carry concealed loaded firearm on foot. No permit needed for o",
+          "wiki": {
+            "longGun": "N/A",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -5909,7 +6410,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -5917,17 +6419,28 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
+        },
+        "open-carry-permit": {
+          "status": "not_required",
+          "plainEnglish": "It is legal to open carry a loaded rifle and/or handgun in New Mexico without a permit. [128]",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "License required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -5935,7 +6448,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine law?"
         }
       },
       "wikiSubjects": {
@@ -6079,7 +6593,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -6087,7 +6602,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "carry-permit": {
           "status": "required",
@@ -6095,7 +6611,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -6103,7 +6620,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
+        },
+        "magazine-capacity-limit": {
+          "status": "not_required",
+          "plainEnglish": "Magazine Capacity Restriction? — long guns: No; handguns: No.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Magazine Capacity Restriction?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -6111,7 +6638,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -6119,17 +6647,19 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -6137,7 +6667,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -6145,7 +6676,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -6153,7 +6685,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -6243,7 +6776,8 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "required",
@@ -6251,7 +6785,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
+        },
+        "carry-permit": {
+          "status": "required",
+          "plainEnglish": "New York counties, or the police departments in New York City and Nassau and Suffolk counties, issue unrestricted concealed carry licenses on a \"shall issue\" basis. Prior to June 23, 2022, licenses were issued on a \"may issue\" basis, but this practice was held unconstitutional by the Supreme Court. [140] Previously, discretionary issuance policies varied widely across the state. It is not a crime to carry a weapon under a Target or Hunting permit for other purposes, but if caught or reported, th",
+          "wiki": {
+            "longGun": "N/A",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for concealed carry?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -6259,7 +6803,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "required",
@@ -6267,7 +6812,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "private-sale-check": {
           "status": "required",
@@ -6275,7 +6821,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
@@ -6285,7 +6832,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Owner license required?"
+        },
+        "open-carry-permit": {
+          "status": "required",
+          "plainEnglish": "Open carry in public is not legal in most instances. While no law specifically bans open carry, a license to carry is issued to carry concealed as per penal law 400. Therefore, pistol permit holders must carry concealed. Open carry is permitted while hunting and possibly on one's own property. Open carry of unloaded long guns is not explicitly prohibited by any law, but is generally not practiced. It is illegal to transport a loaded long gun in a motor vehicle, except in some scenarios while hun",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Open carry allowed?"
         },
         "state-preemption": {
           "status": "not_required",
@@ -6293,7 +6850,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -6301,7 +6859,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -6409,7 +6968,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -6417,7 +6977,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -6425,7 +6986,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -6433,7 +6995,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -6441,7 +7004,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -6449,7 +7013,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -6457,17 +7022,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -6475,7 +7042,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -6483,7 +7051,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -6491,7 +7060,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -6605,7 +7175,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -6613,7 +7184,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -6621,7 +7193,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -6629,7 +7202,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -6637,7 +7211,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -6645,7 +7220,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -6653,17 +7229,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -6671,7 +7249,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -6679,7 +7258,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -6687,7 +7267,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -6795,7 +7376,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -6803,7 +7385,26 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
+        },
+        "assault-weapons-restriction": {
+          "status": "not_required",
+          "plainEnglish": "No Oregon state laws define or regulate assault weapons. Some local counties have adopted Second Amendment sanctuary resolutions regardless. [151] ---",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Assault weapon ban?"
+        },
+        "carry-permit": {
+          "status": "required",
+          "plainEnglish": "Oregon is a \"shall-issue\" state for residents. Technically sheriffs \"may issue\" licenses to non-residents of contiguous states; however, in practice most county sheriffs either adopt very restrictive criteria for issuance to non-residents or simply refuse to issue licenses. Carrying of a concealed firearm is prohibited by ORS 166.250, however holders of a valid Concealed Handgun License are exempt from this law. (see ORS 166.260). As of 2021, campus carry is left up each university to decide. [1",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -6811,7 +7412,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -6819,17 +7421,37 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
+        },
+        "magazine-capacity-limit": {
+          "status": "not_required",
+          "plainEnglish": "Ballot Measure 114 bans the sale, transfer, or importation of magazines that can hold more than ten rounds of ammunition. Possession of such magazines remains legal, with some restrictions. Due to litigation the new law is not currently in effect. Oregon Ballot Measure 114",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "High-capacity magazine ban"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
+        },
+        "open-carry-permit": {
+          "status": "not_required",
+          "plainEnglish": "Open carry of firearms is legal statewide without a permit. However, Oregon law allows a city or county to regulate open carry of loaded firearms in public places, but holders of concealed carry permits are exempt. (ORS 166.173) The cities of Portland, [153] Beaverton, [154] Tigard, [155] Oregon City, [156] Salem, [157] and Independence, [158] as well as Multnomah County, [159] have statutes which do not allow open carry of loaded firearms (unless one has a concealed carry permit). Or. Const. Ar",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "License required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -6837,7 +7459,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -6845,7 +7468,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -6953,7 +7577,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -6961,7 +7586,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -6969,7 +7595,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -6977,7 +7604,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -6985,7 +7613,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -6993,7 +7622,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -7001,17 +7631,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -7019,7 +7651,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -7027,7 +7660,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -7035,7 +7669,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -7131,7 +7766,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -7139,7 +7775,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -7147,7 +7784,17 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
+        },
+        "carry-permit": {
+          "status": "required",
+          "plainEnglish": "Rhode Island is a hybrid \"shall issue\" and \"may issue\" state for carry. Licenses may be granted either by local authorities or by the state's attorney general's office. Licenses granted by local authorities are \"shall issue\" while those issued by the attorney general's office are \"may issue\" under state law. Until recently, most local authorities had been deferring to the attorney general which effectively blocks most issuance, unless one is a retired law enforcement officer. The practice of not",
+          "wiki": {
+            "longGun": "N/A",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "required",
@@ -7155,7 +7802,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -7163,7 +7811,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         },
         "waiting-period": {
           "status": "required",
@@ -7171,7 +7820,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Waiting period?"
         }
       },
       "extras": {
@@ -7181,7 +7831,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
+        },
+        "open-carry-permit": {
+          "status": "required",
+          "plainEnglish": "Open carry of handguns permitted with a valid Rhode Island pistol permit. Locally issued permits do not expressly authorize open carry. Open carry of loaded long guns along public roadways is prohibited by law. RI Gen. Stat. 11–47–8 RI Gen. Stat. 11–47–11 RI Gen. Stat. 11–47–18 RI Gen. Stat. 11–47–51",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "License required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -7189,7 +7849,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -7197,7 +7858,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -7311,7 +7973,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -7319,7 +7982,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -7327,7 +7991,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -7335,7 +8000,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -7343,7 +8009,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -7351,7 +8018,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -7359,17 +8027,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -7377,7 +8047,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -7385,7 +8056,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -7393,7 +8065,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -7495,7 +8168,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -7503,7 +8177,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -7511,7 +8186,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -7519,7 +8195,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -7527,7 +8204,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -7535,25 +8213,28 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Permit required for open carry?",
+          "plainEnglish": "Permit required for open carry? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -7561,7 +8242,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -7569,7 +8251,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -7659,7 +8342,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -7667,7 +8351,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -7675,7 +8360,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -7683,7 +8369,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -7691,7 +8378,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -7699,7 +8387,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -7707,17 +8396,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -7725,7 +8416,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -7733,7 +8425,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -7741,7 +8434,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -7843,7 +8537,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -7851,7 +8546,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -7859,7 +8555,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -7867,7 +8564,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -7875,7 +8573,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -7883,7 +8582,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -7891,17 +8591,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "red-flag-law": {
           "status": "not_required",
@@ -7909,7 +8611,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -7917,7 +8620,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -7925,7 +8629,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -7933,7 +8638,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -8047,7 +8753,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -8055,7 +8762,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -8063,7 +8771,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -8071,7 +8780,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -8079,7 +8789,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "no"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -8087,7 +8798,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -8095,17 +8807,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -8113,7 +8827,8 @@
           "wiki": {
             "longGun": "n/a",
             "handgun": "no"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -8121,7 +8836,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine law?"
         },
         "state-preemption": {
           "status": "required",
@@ -8129,7 +8845,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -8237,7 +8954,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -8245,7 +8963,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "carry-permit": {
           "status": "required",
@@ -8253,7 +8972,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "assault-weapons-restriction": {
           "status": "required",
@@ -8261,7 +8981,17 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
+        },
+        "magazine-capacity-limit": {
+          "status": "not_required",
+          "plainEnglish": "Magazines capable of holding more than 20 rounds are legal but, they make the firearm an \"assault weapon\", subject to law accordingly. § 18.2-287.4 § 18.2-282.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Magazine restriction?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -8269,7 +8999,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -8277,7 +9008,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
@@ -8287,7 +9019,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -8295,7 +9028,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -8303,7 +9037,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -8311,7 +9046,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -8401,7 +9137,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -8409,7 +9146,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -8417,7 +9155,17 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
+        },
+        "magazine-capacity-limit": {
+          "status": "required",
+          "plainEnglish": "A gun control bill, passed on March 30, 2018, bans sale or possession of magazines of more than 10 rounds for long guns and 15 rounds for pistols. [165] It was signed by Governor Phil Scott on April 11. Previously owned high capacity magazines are grandfathered.",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Magazine restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -8425,7 +9173,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -8433,7 +9182,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -8441,7 +9191,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         },
         "waiting-period": {
           "status": "required",
@@ -8449,25 +9200,28 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Waiting period?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Permit required for open carry?",
+          "plainEnglish": "Permit required for open carry? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -8475,7 +9229,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "red-flag-law": {
           "status": "required",
@@ -8483,7 +9238,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -8585,7 +9341,8 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "partial",
@@ -8593,7 +9350,8 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Partial"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "carry-permit": {
           "status": "required",
@@ -8601,7 +9359,26 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
+        },
+        "assault-weapons-restriction": {
+          "status": "required",
+          "plainEnglish": "As of April 25, 2023, the sale, distribution, importation, and manufacturing of semi-automatic firearms classified as assault weapons are prohibited. Possession of assault weapons already owned remains legal.",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Assault weapons law?"
+        },
+        "magazine-capacity-limit": {
+          "status": "required",
+          "plainEnglish": "As of July 1, 2022, the manufacture, distribution, and sale of magazines that have a capacity of over 10 rounds are prohibited. The possession of such magazines, however, is not restricted. [190]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          },
+          "sourceSubject": "Magazine capacity restrictions?"
         },
         "nfa-item-registration": {
           "status": "partial",
@@ -8609,7 +9386,8 @@
           "wiki": {
             "longGun": "Partial",
             "handgun": "Partial"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "required",
@@ -8617,17 +9395,19 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -8635,7 +9415,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "state-preemption": {
           "status": "required",
@@ -8643,7 +9424,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         },
         "stand-your-ground": {
           "status": "unknown",
@@ -8651,7 +9433,8 @@
           "wiki": {
             "longGun": "Not defined - de facto",
             "handgun": ""
-          }
+          },
+          "sourceSubject": "Castle Doctrine / Stand your ground law?"
         },
         "red-flag-law": {
           "status": "required",
@@ -8659,7 +9442,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Red flag law?"
         }
       },
       "wikiSubjects": {
@@ -8767,7 +9551,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -8775,7 +9560,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -8783,7 +9569,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -8791,7 +9578,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "required",
@@ -8799,7 +9587,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -8807,7 +9596,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -8815,17 +9605,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -8833,7 +9625,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -8841,7 +9634,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -8849,7 +9643,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -8945,7 +9740,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
           "status": "not_required",
@@ -8953,7 +9749,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
           "status": "not_required",
@@ -8961,7 +9758,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
           "status": "not_required",
@@ -8969,7 +9767,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
           "status": "not_required",
@@ -8977,7 +9776,8 @@
           "wiki": {
             "longGun": "N/A",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
           "status": "not_required",
@@ -8985,7 +9785,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
           "status": "not_required",
@@ -8993,17 +9794,19 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -9011,7 +9814,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -9019,7 +9823,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -9027,7 +9832,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {
@@ -9129,65 +9935,73 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "State permit required to purchase?"
         },
         "handgun-registration": {
-          "status": "required",
-          "plainEnglish": "All firearms must be registered with the Virgin Islands Police Department.",
+          "status": "not_required",
+          "plainEnglish": "Firearm registration? — long guns: No; handguns: No.",
           "wiki": {
-            "longGun": "Yes",
-            "handgun": "Yes"
-          }
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Firearm registration?"
         },
         "assault-weapons-restriction": {
-          "status": "required",
-          "plainEnglish": "Assault weapons and .50 BMG rifles prohibited.",
+          "status": "not_required",
+          "plainEnglish": "Assault weapon law? — long guns: No; handguns: No.",
           "wiki": {
-            "longGun": "Yes",
-            "handgun": "Yes"
-          }
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Assault weapon law?"
         },
         "magazine-capacity-limit": {
-          "status": "required",
-          "plainEnglish": "Magazine capacity restriction? — long guns: Yes; handguns: Yes.",
+          "status": "not_required",
+          "plainEnglish": "Magazine capacity restriction? — long guns: No; handguns: No.",
           "wiki": {
-            "longGun": "Yes",
-            "handgun": "Yes"
-          }
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Magazine capacity restriction?"
         },
         "carry-permit": {
-          "status": "required",
-          "plainEnglish": "As of January 1, 2020, shall-issue. [216] [better source needed] Previously may-Issue according to law, but permits were rarely granted to ordinary citizens. Unrestricted concealed carry was technically allowed from June 20, 2015 to October 31, 2016 following a lawsuit challenging Puerto Rico's restrictive gun laws. The lower court ruling striking down many of the territory's laws was appealed by the government to the appeals court, which reversed the lower court's decision. The Puerto Rico Supr",
+          "status": "not_required",
+          "plainEnglish": "Wyoming is a \"shall issue\" state for citizens and permanent lawful residents who are 21 years or older. Residents of states that have reciprocity with Wyoming and who possess a permit can also apply for a Wyoming permit. Permitless carry took effect on July 1, 2011. W.S. § 6-8-104",
           "wiki": {
-            "longGun": "Yes",
-            "handgun": "Yes"
-          }
+            "longGun": "N/A",
+            "handgun": "No"
+          },
+          "sourceSubject": "Permit required for concealed carry?"
         },
         "nfa-item-registration": {
-          "status": "required",
-          "plainEnglish": "Automatic firearms and short barreled shotguns are prohibited. [10]",
+          "status": "not_required",
+          "plainEnglish": "Wyoming Firearms Freedom Act, passed in 2010, prohibits any government servant from enforcing the NFA if a personal firearm, a firearm accessory, or ammunition is owned or manufactured commercially or privately in Wyoming and remains within the borders of Wyoming. A firearm manufactured in Wyoming must have the words \"made in Wyoming\" clearly stamped on a central metallic part, such as the receiver or frame. While federal enforcement is still possible, the law penalizes federal agents from enfor",
           "wiki": {
-            "longGun": "Yes",
-            "handgun": "Yes"
-          }
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "NFA weapons restricted?"
         },
         "private-sale-check": {
-          "status": "required",
-          "plainEnglish": "Private sales transfers must be done through an FFL or the Puerto Rico Police.",
+          "status": "not_required",
+          "plainEnglish": "Background checks required for private sales? — long guns: No; handguns: No.",
           "wiki": {
-            "longGun": "Yes",
-            "handgun": "Yes"
-          }
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Background checks required for private sales?"
         }
       },
       "extras": {
         "owner-license": {
-          "status": "required",
-          "plainEnglish": "As of January 1, 2020, the owner license and carry license are the same. [216] [better source needed]",
+          "status": "not_required",
+          "plainEnglish": "Owner license required? — long guns: No; handguns: No.",
           "wiki": {
-            "longGun": "Yes",
-            "handgun": "Yes"
-          }
+            "longGun": "No",
+            "handgun": "No"
+          },
+          "sourceSubject": "Owner license required?"
         },
         "open-carry-permit": {
           "status": "not_required",
@@ -9195,7 +10009,8 @@
           "wiki": {
             "longGun": "No",
             "handgun": "No"
-          }
+          },
+          "sourceSubject": "Permit required for open carry?"
         },
         "stand-your-ground": {
           "status": "required",
@@ -9203,7 +10018,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "Castle Doctrine/Stand Your Ground law?"
         },
         "state-preemption": {
           "status": "required",
@@ -9211,7 +10027,8 @@
           "wiki": {
             "longGun": "Yes",
             "handgun": "Yes"
-          }
+          },
+          "sourceSubject": "State preemption of local restrictions?"
         }
       },
       "wikiSubjects": {

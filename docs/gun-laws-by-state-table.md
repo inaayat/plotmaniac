@@ -12,26 +12,26 @@ This plot is **`gun-laws-by-state`** (separate from the SCOTUS gun-regulation ti
 | AL Alabama | No | No | ? | No | No | No | No |
 | AR Arkansas | No | No | ? | No | No | No | No |
 | AZ Arizona | No | No | ? | No | No | No | No |
-| CA California | Partial | Yes | Yes | ? | Yes | Yes | Yes |
-| CO Colorado | Partial | ? | ? | Yes | ? | Yes | No |
-| CT Connecticut | Yes | Yes | ? | Yes | ? | Yes | Partial |
-| DC District of Columbia | ? | Yes | Yes | ? | Yes | Yes | Yes |
+| CA California | Partial | Yes | Yes | Yes | Yes | Yes | Yes |
+| CO Colorado | Partial | ? | Yes | Yes | ? | Yes | No |
+| CT Connecticut | Yes | Yes | ? | Yes | Yes | Yes | Partial |
+| DC District of Columbia | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | DE Delaware | Yes | Yes | ? | Yes | Yes | Yes | No |
 | FL Florida | No | No | Yes | No | No | No | No |
 | GA Georgia | No | No | ? | No | No | No | No |
 | HI Hawaii | Yes | Yes | ? | Yes | Yes | Yes | Yes |
 | IA Iowa | No | No | ? | No | No | No | No |
 | ID Idaho | No | No | ? | No | ? | No | No |
-| IL Illinois | Yes | Yes | Yes | ? | Yes | Yes | Partial |
+| IL Illinois | Yes | Yes | Yes | Yes | Yes | Yes | Partial |
 | IN Indiana | No | No | ? | No | No | No | No |
 | KS Kansas | No | No | ? | No | No | No | No |
 | KY Kentucky | No | No | ? | No | No | No | No |
 | LA Louisiana | No | No | ? | No | No | No | No |
-| MA Massachusetts | Yes | Yes | ? | ? | Yes | Yes | No |
-| MD Maryland | Yes | Yes | ? | Yes | ? | Yes | Yes |
+| MA Massachusetts | Yes | Yes | ? | Yes | Yes | Yes | No |
+| MD Maryland | Yes | Yes | ? | Yes | Yes | Yes | Yes |
 | ME Maine | No | ? | ? | No | No | No | No |
 | MI Michigan | Yes | Yes | ? | Yes | No | No | Yes |
-| MN Minnesota | Yes | Yes | ? | Yes | ? | ? | No |
+| MN Minnesota | Yes | Yes | ? | Yes | Yes | No | No |
 | MO Missouri | No | No | ? | No | No | No | No |
 | MS Mississippi | No | No | ? | No | No | No | No |
 | MT Montana | No | No | ? | No | No | No | No |
@@ -40,25 +40,25 @@ This plot is **`gun-laws-by-state`** (separate from the SCOTUS gun-regulation ti
 | NE Nebraska | Yes | Yes | ? | No | No | No | No |
 | NH New Hampshire | No | No | ? | No | No | No | No |
 | NJ New Jersey | Yes | Yes | ? | Yes | Yes | Yes | Yes |
-| NM New Mexico | No | Yes | ? | ? | No | ? | No |
-| NV Nevada | No | Yes | ? | Yes | No | ? | No |
-| NY New York | Yes | Yes | ? | ? | Yes | Yes | Yes |
+| NM New Mexico | No | Yes | ? | Yes | No | No | No |
+| NV Nevada | No | Yes | ? | Yes | No | No | No |
+| NY New York | Yes | Yes | ? | Yes | Yes | Yes | Yes |
 | OH Ohio | No | No | ? | No | No | No | No |
 | OK Oklahoma | No | No | ? | No | No | No | No |
-| OR Oregon | No | Yes | ? | ? | ? | ? | No |
+| OR Oregon | No | Yes | ? | Yes | No | No | No |
 | PA Pennsylvania | No | Yes | ? | Yes | No | No | No |
-| RI Rhode Island | Yes | Yes | Yes | ? | Yes | ? | No |
+| RI Rhode Island | Yes | Yes | Yes | Yes | Yes | ? | No |
 | SC South Carolina | No | No | ? | No | No | No | No |
 | SD South Dakota | No | No | ? | No | ? | No | No |
 | TN Tennessee | No | No | ? | No | No | No | No |
 | TX Texas | No | No | ? | No | No | No | No |
 | UT Utah | No | No | ? | No | No | No | No |
-| VA Virginia | No | Yes | ? | Yes | Yes | ? | No |
-| VT Vermont | No | Yes | Yes | No | No | ? | No |
-| WA Washington | Yes | Yes | ? | Yes | ? | ? | Partial |
+| VA Virginia | No | Yes | ? | Yes | Yes | No | No |
+| VT Vermont | No | Yes | Yes | No | No | Yes | No |
+| WA Washington | Yes | Yes | ? | Yes | Yes | Yes | Partial |
 | WI Wisconsin | No | No | ? | Yes | No | No | No |
 | WV West Virginia | No | No | ? | No | No | No | No |
-| WY Wyoming | No | Yes | ? | Yes | Yes | Yes | Yes |
+| WY Wyoming | No | No | ? | No | No | No | No |
 
 ## Wikipedia row → filter criterion
 

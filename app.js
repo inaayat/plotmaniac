@@ -460,12 +460,13 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       };
     }
     if (usesGunStateLawsPlot(plot) && plot.paths.statesSnapshot) {
-      const [snapshot, filterConfig] = await Promise.all([
+      const [snapshot, filterConfig, mapPaths] = await Promise.all([
         fetchJson(plot.paths.statesSnapshot),
         fetchJson(plot.paths.filterCriteria),
+        plot.paths.stateMap ? fetchJson(plot.paths.stateMap) : Promise.resolve(null),
       ]);
       if (token !== loadToken) return;
-      gunStatePack = { snapshot, filterConfig };
+      gunStatePack = { snapshot, filterConfig, mapPaths };
     }
     setLaneZoom(1);
     hubCamera = null;
@@ -1252,6 +1253,7 @@ function renderGunStateLawsSection() {
     plot,
     snapshot: gunStatePack.snapshot,
     filterConfig: gunStatePack.filterConfig,
+    mapPaths: gunStatePack.mapPaths,
     filters: state.gunLawFilters || {},
     gunType: state.gunLawGunType || "handgun",
     selectedStateId: state.gunLawState || "",

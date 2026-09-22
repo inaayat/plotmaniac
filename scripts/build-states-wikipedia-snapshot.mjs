@@ -91,6 +91,25 @@ const SUBJECT_TO_CRITERION = {
   "Home-built firearms restriction?": "ghost-gun-rules",
 };
 
+/**
+ * Alternate Wikipedia headings. `invert` rows ask whether something is allowed;
+ * Yes means the restriction is not required.
+ */
+const SUBJECT_ALIASES = [
+  { pattern: /^(state )?permit required to purchase\?$|^owner permit required\?$/i, id: "purchase-permit", bucket: "checklist" },
+  { pattern: /^firearm registration\?$/i, id: "handgun-registration", bucket: "checklist" },
+  { pattern: /assault/i, id: "assault-weapons-restriction", bucket: "checklist" },
+  { pattern: /magazine/i, id: "magazine-capacity-limit", bucket: "checklist" },
+  { pattern: /^background checks required for private sales\?$/i, id: "private-sale-check", bucket: "checklist" },
+  { pattern: /waiting period/i, id: "waiting-period", bucket: "checklist" },
+  { pattern: /^nfa weapons restricted\?$/i, id: "nfa-item-registration", bucket: "checklist" },
+  { pattern: /home-built|ghost/i, id: "ghost-gun-rules", bucket: "checklist" },
+  { pattern: /(permit|license) required for concealed carry\?$/i, id: "carry-permit", bucket: "checklist" },
+  { pattern: /^concealed carry allowed\?$/i, id: "carry-permit", bucket: "checklist", invert: true },
+  { pattern: /(permit|license) required for open carry\?$/i, id: "open-carry-permit", bucket: "extra" },
+  { pattern: /^open carry allowed\?$/i, id: "open-carry-permit", bucket: "extra", invert: true },
+];
+
 /** Extra wiki rows useful for map filters but not in the 15-row checklist. */
 const SUBJECT_TO_EXTRA = {
   "Permit required for open carry?": "open-carry-permit",
@@ -101,6 +120,31 @@ const SUBJECT_TO_EXTRA = {
   "Castle Doctrine law?": "stand-your-ground",
   "State preemption of local restrictions?": "state-preemption",
 };
+
+function matchSubject(subject) {
+  const directCriterion = SUBJECT_TO_CRITERION[subject];
+  const directExtra = SUBJECT_TO_EXTRA[subject];
+  if (directCriterion) return { id: directCriterion, bucket: "checklist", invert: false, rank: 2 };
+  if (directExtra) return { id: directExtra, bucket: "extra", invert: false, rank: 2 };
+  const alias = SUBJECT_ALIASES.find((row) => row.pattern.test(subject));
+  if (!alias) return null;
+  return { id: alias.id, bucket: alias.bucket, invert: Boolean(alias.invert), rank: alias.invert ? 1 : 2 };
+}
+
+function invertStatus(status) {
+  if (status === "required") return "not_required";
+  if (status === "not_required") return "required";
+  return status;
+}
+
+function invertedCell(cell) {
+  const status = invertStatus(wikiCellToStatus(cell));
+  if (status === "required") return "Yes";
+  if (status === "not_required") return "No";
+  if (status === "partial") return "Partial";
+  if (status === "not_applicable") return "N/A";
+  return cell;
+}
 
 function normalizeSubject(label) {
   return label.replace(/\s+/g, " ").trim();
@@ -188,26 +232,29 @@ function buildStateRecord(name, { rows }) {
       statutes: row.statutes,
       notes: row.notes,
     };
-    const criterion = SUBJECT_TO_CRITERION[row.subject];
-    const extra = SUBJECT_TO_EXTRA[row.subject];
+    const match = matchSubject(row.subject);
     const preferHandgun =
-      criterion === "carry-permit" || criterion === "handgun-registration";
-    const status = combineCells(row.longGun, row.handgun, { preferHandgun });
-    const plainEnglish = [row.notes, row.statutes].filter(Boolean).join(" ").slice(0, 500);
-
-    if (criterion) {
-      checklist[criterion] = {
-        status,
-        plainEnglish: plainEnglish || `${row.subject} — long guns: ${row.longGun}; handguns: ${row.handgun}.`,
-        wiki: { longGun: row.longGun, handgun: row.handgun },
-      };
+      match?.id === "carry-permit"
+      || match?.id === "open-carry-permit"
+      || match?.id === "handgun-registration";
+    let status = combineCells(row.longGun, row.handgun, { preferHandgun });
+    let longGun = row.longGun;
+    let handgun = row.handgun;
+    if (match?.invert) {
+      status = invertStatus(status);
+      longGun = invertedCell(row.longGun);
+      handgun = invertedCell(row.handgun);
     }
-    if (extra) {
-      extras[extra] = {
-        status: combineCells(row.longGun, row.handgun, { preferHandgun: extra === "open-carry-permit" }),
-        plainEnglish: plainEnglish || row.subject,
-        wiki: { longGun: row.longGun, handgun: row.handgun },
-      };
+    const plainEnglish = [row.notes, row.statutes].filter(Boolean).join(" ").slice(0, 500);
+    const cell = {
+      status,
+      plainEnglish: plainEnglish || `${row.subject} — long guns: ${row.longGun}; handguns: ${row.handgun}.`,
+      wiki: { longGun, handgun },
+      sourceSubject: row.subject,
+    };
+    const target = match?.bucket === "checklist" ? checklist : match?.bucket === "extra" ? extras : null;
+    if (target && (!target[match.id] || (target[match.id].rank || 0) < match.rank)) {
+      target[match.id] = { ...cell, rank: match.rank };
     }
   }
 
@@ -216,10 +263,17 @@ function buildStateRecord(name, { rows }) {
     postal: meta.postal,
     name,
     coverage: "wikipedia-seed",
-    checklist,
-    extras,
+    checklist: stripRank(checklist),
+    extras: stripRank(extras),
     wikiSubjects,
   };
+}
+
+function stripRank(map) {
+  return Object.fromEntries(Object.entries(map).map(([key, value]) => {
+    const { rank, ...rest } = value;
+    return [key, rest];
+  }));
 }
 
 async function loadWikiText(inputPath) {

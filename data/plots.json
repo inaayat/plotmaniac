@@ -187,7 +187,7 @@
       "title": "Gun laws by state",
       "kicker": "Reference",
       "cardLine": "Filter states by ownership rules",
-      "lede": "Compare what each state and D.C. require today to buy, register, or carry firearms. Choose handgun or long-gun columns from Wikipedia, filter by ownership and carry rules, and see matching jurisdictions. Not legal advice.",
+      "lede": "Check the rules you want to avoid. The map lights the states and D.C. where Wikipedia’s current table says that rule is not required, for handguns or long guns. Not legal advice.",
       "searchPlaceholder": "Texas, concealed carry, waiting period…",
       "sourceNote": "Gun laws by state on Plotmaniac · English Wikipedia state tables · seed snapshot 2026-09-22",
       "centerId": "gun-laws-by-state",
@@ -200,7 +200,8 @@
         "events": "data/gun-laws-by-state/events.json",
         "relations": "data/gun-laws-by-state/relations.json",
         "statesSnapshot": "data/gun-laws-by-state/states-snapshot.json",
-        "filterCriteria": "data/gun-laws-by-state/filter-criteria.json"
+        "filterCriteria": "data/gun-laws-by-state/filter-criteria.json",
+        "stateMap": "data/gun-laws-by-state/us-states-paths.json"
       }
     },
     {

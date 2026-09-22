@@ -122,6 +122,37 @@ export function filterStatesByCriteria(states, filters, gunType = GUN_TYPE_HANDG
   );
 }
 
+function statusSatisfies(status, want) {
+  if (want === "partial") return status === "partial" || status === "required";
+  if (want === "not_applicable") return status === "not_applicable";
+  return status === want;
+}
+
+/**
+ * Map paint for one state given active filters.
+ * lit = every selected rule is confirmed on Wikipedia.
+ * unknown = no contradicting rule, but a selected row is missing.
+ * dim = at least one selected rule fails.
+ * With no filters, every state is lit.
+ */
+export function highlightForState(state, filters, gunType = GUN_TYPE_HANDGUN) {
+  const active = Object.entries(filters || {}).filter(
+    ([, want]) => want && want !== GUN_STATE_FILTER_ANY,
+  );
+  if (!active.length) return "lit";
+  let unknown = false;
+  for (const [criterionId, want] of active) {
+    const cell = getStateCriterionCell(state, criterionId);
+    const status = resolveStatusForGunType(cell, gunType, criterionId);
+    if (!cell || status === "unknown") {
+      unknown = true;
+      continue;
+    }
+    if (!statusSatisfies(status, want)) return "dim";
+  }
+  return unknown ? "unknown" : "lit";
+}
+
 export function validateGunStateSnapshot(snapshot) {
   const errors = [];
   if (snapshot?.schema !== "plotmaniac-gun-state-wikipedia-snapshot") {
