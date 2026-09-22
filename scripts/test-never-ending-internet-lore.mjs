@@ -62,6 +62,7 @@ import {
   webLayout,
   youtubeId,
   usesPolicyPanel,
+  usesRegulationBoard,
   boardViewForPerson,
   COMPACT_MAX_WIDTH,
   warActive,
@@ -79,6 +80,12 @@ import {
   warMapSize,
   countryAnchors,
 } from "../engine.js";
+import {
+  validateGunBoard,
+  resolveChecklistAtYear,
+  statsReadoutAtYear,
+  filterRegulationBeats,
+} from "../gun-regulation-model.js";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
 const plots = readJson("../data/plots.json");
@@ -192,6 +199,7 @@ assert.deepEqual(plots.plots.map((item) => item.id), [
   "jd-vance",
   "united-states",
   "partition-of-india",
+  "gun-regulation",
   "wars",
 ], "homepage gallery order");
 for (const item of plots.plots) {
@@ -1949,5 +1957,44 @@ const moscow = anchors.get("RU");
 assert.ok(moscow.lon > 30 && moscow.lon < 45 && moscow.lat > 50 && moscow.lat < 60);
 assert.ok(mapIsos.has("PS") && mapIsos.has("TW"));
 assert.ok(anchors.has("BH"));
+
+const gunPlot = plots.plots.find((item) => item.id === "gun-regulation");
+assert.ok(gunPlot, "gun-regulation plot is registered");
+assert.equal(gunPlot.arrangement, "regulation-board");
+assert.equal(usesRegulationBoard(gunPlot), true);
+assert.equal(findPlot(plots.plots, "guns")?.id, "gun-regulation");
+const gunTimeline = readJson("../data/gun-regulation/timeline.json");
+const gunChecklist = readJson("../data/gun-regulation/checklist.json");
+const gunStates = readJson("../data/gun-regulation/states-exemplars.json");
+const gunStats = readJson("../data/gun-regulation/stats.json");
+const gunBoard = {
+  timeline: gunTimeline,
+  checklistRows: gunChecklist.rows,
+  federalKeyframes: gunChecklist.federalKeyframes,
+  banners: gunChecklist.banners,
+  states: gunStates,
+  stats: gunStats.series,
+};
+assert.deepEqual(validateGunBoard(gunBoard), [], "gun board data validation");
+assert.equal(gunChecklist.rows.length, 15);
+assert.ok(gunTimeline.some((beat) => beat.id === "scotus-2022-bruen"));
+assert.ok(gunTimeline.some((beat) => beat.id === "scotus-2010-mcdonald"));
+assert.ok(filterRegulationBeats(gunTimeline, { kind: "scotus" }).length >= 10);
+const federal2022 = resolveChecklistAtYear(gunChecklist.rows, gunChecklist.federalKeyframes, null, 2022);
+assert.equal(federal2022.length, 15);
+assert.ok(federal2022.some(({ cell }) => cell.status === "varies_by_state"));
+const stock1940 = statsReadoutAtYear(gunStats.series, 1940);
+assert.ok(stock1940.every((row) => row.missing), "stats before coverage stay empty");
+const stock2021 = statsReadoutAtYear(gunStats.series, 2021);
+assert.ok(stock2021.some((row) => !row.missing));
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "gun-regulation", year: 2022, regKind: "scotus" }, ""),
+  /kind=scotus/,
+);
+assert.equal(
+  fs.readFileSync(new URL("../app.js", import.meta.url), "utf8").includes("50-state picker"),
+  false,
+  "V1 must not ship a 50-state picker implementation",
+);
 
 console.log("never-ending internet lore tests passed");

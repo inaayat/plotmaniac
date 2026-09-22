@@ -1,7 +1,8 @@
 # Plotmaniac gun-regulation board plan
 
-Status: planning only. This document is the handoff for a later V1 build; it does
-not add a plot, route, UI, or production data in this change.
+Status: V1 implemented on plot `gun-regulation` (`?plot=gun-regulation`). This
+document remains the schema and rollout reference; the live board loads data from
+`data/gun-regulation/`.
 
 The product brief is authoritative. The central editorial choice is to show
 regulation intensity over time, not to label people or jurisdictions as

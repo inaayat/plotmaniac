@@ -1,0 +1,186 @@
+{
+  "ca": {
+    "id": "ca",
+    "postal": "CA",
+    "name": "California",
+    "coverage": "v1-exemplar",
+    "checklistKeyframes": [
+      {
+        "year": "1991",
+        "changes": [
+          {
+            "criterion": "private-sale-check",
+            "status": "required",
+            "plainEnglish": "California generally requires private and gun-show transfers to go through a licensed dealer.",
+            "links": [
+              {
+                "label": "Cal. Penal Code § 28050",
+                "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=28050"
+              }
+            ]
+          },
+          {
+            "criterion": "waiting-period",
+            "status": "required",
+            "plainEnglish": "California imposes a state waiting period before delivery (ten days in current form)."
+          }
+        ]
+      },
+      {
+        "year": "1989",
+        "changes": [
+          {
+            "criterion": "assault-weapons-restriction",
+            "status": "required",
+            "plainEnglish": "California bans listed assault weapons and later expands to feature-based definitions.",
+            "links": [
+              {
+                "label": "Cal. Penal Code § 30510",
+                "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=30510"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "year": "2000",
+        "changes": [
+          {
+            "criterion": "magazine-capacity-limit",
+            "status": "required",
+            "plainEnglish": "California restricts large-capacity magazines (ten-round limit in current form, with litigation post-Bruen).",
+            "links": [
+              {
+                "label": "Cal. Penal Code § 32310",
+                "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=32310"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "year": "2001",
+        "changes": [
+          {
+            "criterion": "handgun-registration",
+            "status": "required",
+            "plainEnglish": "Dealer Record of Sale (DROS) and the handgun roster track new handgun transfers in California."
+          }
+        ]
+      },
+      {
+        "year": "2016",
+        "changes": [
+          {
+            "criterion": "ghost-gun-rules",
+            "status": "required",
+            "plainEnglish": "California requires serial numbers and dealer pathways for certain unfinished frames and self-built firearms."
+          }
+        ]
+      },
+      {
+        "year": "2022",
+        "changes": [
+          {
+            "criterion": "carry-permit",
+            "status": "required",
+            "plainEnglish": "Public carry still requires a license after Bruen, but “good cause” special-need tests are unconstitutional; training and objective criteria remain."
+          }
+        ]
+      }
+    ]
+  },
+  "ny": {
+    "id": "ny",
+    "postal": "NY",
+    "name": "New York",
+    "coverage": "v1-exemplar",
+    "checklistKeyframes": [
+      {
+        "year": "2013",
+        "changes": [
+          {
+            "criterion": "assault-weapons-restriction",
+            "status": "required",
+            "plainEnglish": "The SAFE Act expands New York’s assault-weapon ban and registration requirements beyond the expired federal ban.",
+            "links": [
+              {
+                "label": "N.Y. Penal Law Article 265 (navigation)",
+                "url": "https://www.nysenate.gov/legislation/laws/PEN/265.00"
+              }
+            ]
+          },
+          {
+            "criterion": "magazine-capacity-limit",
+            "status": "required",
+            "plainEnglish": "New York generally limits magazines to ten rounds with limited exceptions."
+          },
+          {
+            "criterion": "private-sale-check",
+            "status": "required",
+            "plainEnglish": "Private transfers must go through a dealer background check under state law."
+          }
+        ]
+      },
+      {
+        "year": "2022",
+        "changes": [
+          {
+            "criterion": "carry-permit",
+            "status": "required",
+            "plainEnglish": "After Bruen, New York replaced “proper cause” carry licensing with a shall-issue style regime while adding sensitive-place restrictions—still heavily litigated."
+          },
+          {
+            "criterion": "purchase-permit",
+            "status": "required",
+            "plainEnglish": "Many handgun purchases still require a state pistol permit or license outside New York City’s separate regime."
+          }
+        ]
+      }
+    ]
+  },
+  "tx": {
+    "id": "tx",
+    "postal": "TX",
+    "name": "Texas",
+    "coverage": "v1-exemplar",
+    "checklistKeyframes": [
+      {
+        "year": "2021",
+        "changes": [
+          {
+            "criterion": "carry-permit",
+            "status": "not_required",
+            "plainEnglish": "Eligible Texans may carry handguns in many public places without a license to carry, subject to location and eligibility restrictions.",
+            "links": [
+              {
+                "label": "Texas H.B. 1927",
+                "url": "https://capitol.texas.gov/tlodocs/87R/billtext/html/HB01927F.htm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "year": "2022",
+        "changes": [
+          {
+            "criterion": "assault-weapons-restriction",
+            "status": "not_required",
+            "plainEnglish": "Texas does not ban assault weapons at the state level."
+          },
+          {
+            "criterion": "magazine-capacity-limit",
+            "status": "not_required",
+            "plainEnglish": "Texas does not cap magazine capacity statewide."
+          },
+          {
+            "criterion": "waiting-period",
+            "status": "not_required",
+            "plainEnglish": "Texas has no general state waiting period after a dealer background check clears."
+          }
+        ]
+      }
+    ]
+  }
+}

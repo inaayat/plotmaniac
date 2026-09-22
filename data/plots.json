@@ -181,6 +181,37 @@
       }
     },
     {
+      "id": "gun-regulation",
+      "aliases": ["guns", "second-amendment"],
+      "title": "Gun regulation in the United States",
+      "kicker": "Policy",
+      "cardLine": "Federal timeline · ownership checklist · CA/NY/TX",
+      "lede": "Federal baseline from 1791, with regulation-intensity beats, a scrubber-synced ownership checklist, neutral statistics, and California, New York, and Texas as sourced exemplars—not legal advice.",
+      "searchPlaceholder": "Heller, Bruen, Brady, NFA…",
+      "sourceNote": "Gun regulation board on Plotmaniac · federal-first timeline with sourced SCOTUS, statute, and agency links · data snapshot 2026-09-22",
+      "centerId": "gun-regulation",
+      "friendKinds": [],
+      "enemyKinds": [],
+      "arrangement": "regulation-board",
+      "yearHint": "Drag the year. The checklist, statistics ribbon, and state exemplars follow the same year.",
+      "year": {
+        "min": 1791,
+        "max": 2026,
+        "initial": 2022,
+        "marks": [1791, 1868, 1934, 1968, 1986, 1993, 1994, 2008, 2010, 2022, 2026]
+      },
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_United_States.svg?width=320",
+      "paths": {
+        "people": "data/gun-regulation/people.json",
+        "events": "data/gun-regulation/events.json",
+        "relations": "data/gun-regulation/relations.json",
+        "timeline": "data/gun-regulation/timeline.json",
+        "checklist": "data/gun-regulation/checklist.json",
+        "statesExemplars": "data/gun-regulation/states-exemplars.json",
+        "stats": "data/gun-regulation/stats.json"
+      }
+    },
+    {
       "id": "wars",
       "title": "Wars",
       "kicker": "Map",

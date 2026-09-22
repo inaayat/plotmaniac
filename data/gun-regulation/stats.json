@@ -1,0 +1,96 @@
+{
+  "snapshot": "2026-09-22",
+  "series": [
+    {
+      "id": "civilian-gun-stock",
+      "label": "Civilian gun stock",
+      "unit": "estimated firearms in civilian hands (millions)",
+      "display": "neutral",
+      "coverage": { "from": 1945, "to": 2025, "quality": "modeled" },
+      "sourceMethod": "ATF manufacturing, export, and import reports with cumulative stock estimates (modeled, not a direct census).",
+      "points": [
+        { "year": 1945, "value": 45, "status": "modeled" },
+        { "year": 1968, "value": 102, "status": "modeled" },
+        { "year": 1996, "value": 242, "status": "modeled" },
+        { "year": 2009, "value": 310, "status": "modeled" },
+        { "year": 2018, "value": 393, "status": "modeled" },
+        { "year": 2021, "value": 433, "status": "modeled" }
+      ],
+      "sources": [
+        {
+          "label": "ATF Firearms Commerce in the United States",
+          "url": "https://www.atf.gov/firearms/docs/report/2021-firearms-commerce-report/download",
+          "primary": true
+        },
+        {
+          "label": "Congressional Research Service — Gun control legislation",
+          "url": "https://crsreports.congress.gov/product/pdf/R/R42699"
+        }
+      ]
+    },
+    {
+      "id": "guns-per-capita",
+      "label": "Guns per 100 people",
+      "unit": "firearms per 100 residents",
+      "display": "neutral",
+      "coverage": { "from": 1945, "to": 2025, "quality": "modeled" },
+      "sourceMethod": "Modeled civilian stock divided by U.S. Census population for the same year.",
+      "points": [
+        { "year": 1945, "value": 32, "status": "modeled", "populationYear": 1945 },
+        { "year": 1968, "value": 51, "status": "modeled", "populationYear": 1968 },
+        { "year": 1996, "value": 91, "status": "modeled", "populationYear": 1996 },
+        { "year": 2009, "value": 101, "status": "modeled", "populationYear": 2009 },
+        { "year": 2018, "value": 120, "status": "modeled", "populationYear": 2018 },
+        { "year": 2021, "value": 129, "status": "modeled", "populationYear": 2021 }
+      ],
+      "sources": [
+        {
+          "label": "U.S. Census historical population tables",
+          "url": "https://www.census.gov/library/visualizations/interactive/decennial-population-and-apportionment.html",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "id": "gun-death-rate",
+      "label": "Gun death rate",
+      "unit": "deaths per 100,000 people",
+      "display": "neutral",
+      "coverage": { "from": 1968, "to": 2023, "quality": "observed" },
+      "sourceMethod": "CDC mortality statistics; firearm mechanism of injury split into homicide and suicide categories.",
+      "measures": [
+        {
+          "id": "homicide",
+          "label": "Homicide",
+          "points": [
+            { "year": 1968, "value": 4.9, "status": "observed" },
+            { "year": 1993, "value": 7.0, "status": "observed" },
+            { "year": 1999, "value": 4.3, "status": "observed" },
+            { "year": 2014, "value": 3.5, "status": "observed" },
+            { "year": 2021, "value": 6.3, "status": "observed" },
+            { "year": 2023, "value": 5.5, "status": "observed" }
+          ]
+        },
+        {
+          "id": "suicide",
+          "label": "Suicide",
+          "points": [
+            { "year": 1968, "value": 5.8, "status": "observed" },
+            { "year": 1993, "value": 6.3, "status": "observed" },
+            { "year": 1999, "value": 6.0, "status": "observed" },
+            { "year": 2014, "value": 6.7, "status": "observed" },
+            { "year": 2021, "value": 8.1, "status": "observed" },
+            { "year": 2023, "value": 7.5, "status": "observed" }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "CDC WISQARS",
+          "url": "https://wisqars.cdc.gov/",
+          "primary": true
+        }
+      ]
+    }
+  ]
+}

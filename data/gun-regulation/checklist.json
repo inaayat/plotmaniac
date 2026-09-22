@@ -1,0 +1,316 @@
+{
+  "rows": [
+    {
+      "id": "min-age-long-gun",
+      "label": "Minimum age — long gun",
+      "question": "Is there a minimum age to buy or receive a long gun from a dealer?",
+      "order": 1
+    },
+    {
+      "id": "min-age-handgun",
+      "label": "Minimum age — handgun",
+      "question": "Is there a minimum age to buy or receive a handgun from a dealer?",
+      "order": 2
+    },
+    {
+      "id": "dealer-background-check",
+      "label": "Dealer background check",
+      "question": "Must a licensed dealer run a background check before completing the sale?",
+      "order": 3
+    },
+    {
+      "id": "private-sale-check",
+      "label": "Private-sale background check",
+      "question": "Must private, non-dealer transfers go through a background check?",
+      "order": 4
+    },
+    {
+      "id": "waiting-period",
+      "label": "Waiting period",
+      "question": "Is there a mandatory waiting period before taking possession?",
+      "order": 5
+    },
+    {
+      "id": "purchase-permit",
+      "label": "Purchase permit",
+      "question": "Must a buyer obtain a permit or license before purchasing a firearm?",
+      "order": 6
+    },
+    {
+      "id": "carry-permit",
+      "label": "Carry permit",
+      "question": "Is a license required to carry a handgun in public?",
+      "order": 7
+    },
+    {
+      "id": "felony-prohibition",
+      "label": "Felony prohibition",
+      "question": "Are people convicted of felonies generally prohibited from possessing firearms?",
+      "order": 8
+    },
+    {
+      "id": "dv-prohibition",
+      "label": "Domestic violence prohibition",
+      "question": "Do qualifying domestic-violence convictions or orders prohibit firearm possession?",
+      "order": 9
+    },
+    {
+      "id": "mental-health-prohibition",
+      "label": "Mental health adjudication",
+      "question": "Do certain mental-health adjudications or commitments trigger a firearm prohibition?",
+      "order": 10
+    },
+    {
+      "id": "handgun-registration",
+      "label": "Handgun registration",
+      "question": "Must handguns be registered with government authorities?",
+      "order": 11
+    },
+    {
+      "id": "assault-weapons-restriction",
+      "label": "Assault-weapons restriction",
+      "question": "Are defined assault weapons restricted or banned?",
+      "order": 12
+    },
+    {
+      "id": "magazine-capacity-limit",
+      "label": "Magazine capacity limit",
+      "question": "Are large-capacity magazines restricted?",
+      "order": 13
+    },
+    {
+      "id": "nfa-item-registration",
+      "label": "NFA items",
+      "question": "Are machine guns, short-barreled rifles, silencers, and similar NFA items taxed and registered?",
+      "order": 14
+    },
+    {
+      "id": "ghost-gun-rules",
+      "label": "Ghost guns / frames",
+      "question": "Are unfinished frames, receivers, or ghost-gun kits regulated like firearms?",
+      "order": 15
+    }
+  ],
+  "federalKeyframes": [
+    {
+      "year": "1791",
+      "changes": [
+        {
+          "criterion": "min-age-long-gun",
+          "status": "varies_by_state",
+          "plainEnglish": "No modern federal dealer age floor yet; colonial and early state rules differ."
+        },
+        {
+          "criterion": "min-age-handgun",
+          "status": "varies_by_state",
+          "plainEnglish": "No federal minimum age for handguns until twentieth-century commerce rules."
+        },
+        {
+          "criterion": "dealer-background-check",
+          "status": "not_required",
+          "plainEnglish": "There is no federally licensed dealer system or instant background check in 1791."
+        },
+        {
+          "criterion": "private-sale-check",
+          "status": "not_required",
+          "plainEnglish": "Private transfers are not federally regulated."
+        },
+        {
+          "criterion": "waiting-period",
+          "status": "varies_by_state",
+          "plainEnglish": "Any waiting rules are local or state, not a federal baseline."
+        },
+        {
+          "criterion": "purchase-permit",
+          "status": "varies_by_state",
+          "plainEnglish": "Purchase permits are a state or local policy, not federal."
+        },
+        {
+          "criterion": "carry-permit",
+          "status": "varies_by_state",
+          "plainEnglish": "Public carry rules are almost entirely state and local."
+        },
+        {
+          "criterion": "felony-prohibition",
+          "status": "partial",
+          "plainEnglish": "Some state felon-in-possession rules exist, but there is not yet a comprehensive federal prohibition framework."
+        },
+        {
+          "criterion": "dv-prohibition",
+          "status": "not_required",
+          "plainEnglish": "Federal domestic-violence firearm prohibitions arrive in the late twentieth century."
+        },
+        {
+          "criterion": "mental-health-prohibition",
+          "status": "not_required",
+          "plainEnglish": "Federal mental-health adjudication categories are not yet codified for firearms."
+        },
+        {
+          "criterion": "handgun-registration",
+          "status": "varies_by_state",
+          "plainEnglish": "Registration is a state or local choice; no federal registry of ordinary guns."
+        },
+        {
+          "criterion": "assault-weapons-restriction",
+          "status": "not_required",
+          "plainEnglish": "No federal assault-weapon category exists yet."
+        },
+        {
+          "criterion": "magazine-capacity-limit",
+          "status": "not_required",
+          "plainEnglish": "No federal magazine-capacity limit."
+        },
+        {
+          "criterion": "nfa-item-registration",
+          "status": "not_applicable",
+          "plainEnglish": "NFA categories and taxes begin in 1934."
+        },
+        {
+          "criterion": "ghost-gun-rules",
+          "status": "not_applicable",
+          "plainEnglish": "Modern frame-and-receiver rules are twentieth- and twenty-first-century agency actions."
+        }
+      ]
+    },
+    {
+      "year": "1934",
+      "changes": [
+        {
+          "criterion": "nfa-item-registration",
+          "status": "required",
+          "plainEnglish": "Machine guns, short-barreled rifles and shotguns, silencers, and related items must be registered and taxed under the National Firearms Act.",
+          "links": [
+            {
+              "label": "26 U.S.C. Chapter 53",
+              "url": "https://uscode.house.gov/view.xhtml?path=/prelim@title26/part1/chapter53&edition=prelim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "year": "1968",
+      "changes": [
+        {
+          "criterion": "min-age-long-gun",
+          "status": "required",
+          "plainEnglish": "Licensed dealers may not sell long guns to buyers under 18."
+        },
+        {
+          "criterion": "min-age-handgun",
+          "status": "required",
+          "plainEnglish": "Licensed dealers may not sell handguns to buyers under 21."
+        },
+        {
+          "criterion": "dealer-background-check",
+          "status": "partial",
+          "plainEnglish": "Dealers must follow federal Form 4473 and prohibited-person rules, but the instant NICS system does not exist until 1998."
+        },
+        {
+          "criterion": "felony-prohibition",
+          "status": "required",
+          "plainEnglish": "Federal law broadly prohibits firearm possession by people convicted of crimes punishable by more than one year, with limited exceptions."
+        },
+        {
+          "criterion": "mental-health-prohibition",
+          "status": "required",
+          "plainEnglish": "Certain mental-health adjudications and involuntary commitments trigger federal prohibited-person status."
+        }
+      ]
+    },
+    {
+      "year": "1993",
+      "changes": [
+        {
+          "criterion": "dealer-background-check",
+          "status": "required",
+          "plainEnglish": "The Brady Act requires licensed dealers to run background checks (with an interim waiting period until NICS is online)."
+        },
+        {
+          "criterion": "waiting-period",
+          "status": "partial",
+          "plainEnglish": "A federal interim waiting period applies until NICS replaces it for most dealer sales in 1998."
+        }
+      ]
+    },
+    {
+      "year": "1994",
+      "changes": [
+        {
+          "criterion": "assault-weapons-restriction",
+          "status": "partial",
+          "plainEnglish": "A ten-year federal ban restricts manufacturing certain semi-automatic rifles with listed features; state bans are separate."
+        },
+        {
+          "criterion": "magazine-capacity-limit",
+          "status": "partial",
+          "plainEnglish": "The federal ban limits manufacture of new magazines over ten rounds for ten years."
+        }
+      ]
+    },
+    {
+      "year": "1996",
+      "changes": [
+        {
+          "criterion": "dv-prohibition",
+          "status": "required",
+          "plainEnglish": "Misdemeanor crimes of domestic violence and qualifying protective orders trigger federal firearm prohibitions."
+        }
+      ]
+    },
+    {
+      "year": "1998",
+      "changes": [
+        {
+          "criterion": "waiting-period",
+          "status": "not_required",
+          "plainEnglish": "The Brady interim waiting period ends for dealer sales once NICS is operational; any waiting rules afterward are mostly state law."
+        }
+      ]
+    },
+    {
+      "year": "2004",
+      "changes": [
+        {
+          "criterion": "assault-weapons-restriction",
+          "status": "not_required",
+          "plainEnglish": "The federal assault-weapons ban sunsets; only state and local restrictions remain unless Congress acts again."
+        },
+        {
+          "criterion": "magazine-capacity-limit",
+          "status": "not_required",
+          "plainEnglish": "Federal limits on new large-capacity magazines expire with the 1994 ban."
+        }
+      ]
+    },
+    {
+      "year": "2022",
+      "changes": [
+        {
+          "criterion": "private-sale-check",
+          "status": "varies_by_state",
+          "plainEnglish": "Federal law still has no universal private-sale check, though some states require one and BSCA expands dealer coverage for certain sellers."
+        },
+        {
+          "criterion": "ghost-gun-rules",
+          "status": "partial",
+          "plainEnglish": "ATF’s frames-and-receivers rule treats many kits and unfinished parts as firearms, subject to litigation."
+        }
+      ]
+    }
+  ],
+  "banners": [
+    {
+      "id": "mcdonald-context",
+      "fromYear": 2010,
+      "title": "After McDonald (2010)",
+      "plainEnglish": "Second Amendment limits now apply to state and local gun laws. State divergence on carry, registration, and sales rules becomes a central story—not a single federal yes/no."
+    },
+    {
+      "id": "bruen-context",
+      "fromYear": 2022,
+      "title": "After Bruen (2022)",
+      "plainEnglish": "Courts ask whether a regulation fits a historical tradition of firearm regulation. Licensing, sensitive places, and feature bans face new litigation; federal baselines and state responses can diverge sharply."
+    }
+  ]
+}
