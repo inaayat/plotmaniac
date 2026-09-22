@@ -8,9 +8,12 @@ import {
   eventTease,
   expandedSummary,
   filterEvents,
+  findPlot,
   firstLoadCountries,
   graphLayout,
   groupCountriesByStatus,
+  hubCenterId,
+  hubOf,
   RELATION_BLOCS,
   relationsFieldEdges,
   relationsFieldLayout,
@@ -38,14 +41,21 @@ import {
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
 const plots = readJson("../data/plots.json");
-const people = readJson("../data/h3/people.json");
-const events = readJson("../data/h3/events.json");
-const relations = readJson("../data/h3/relations.json");
+const people = readJson("../data/youtubers/people.json");
+const events = readJson("../data/youtubers/events.json");
+const relations = readJson("../data/youtubers/relations.json");
 const ids = new Set(people.map((person) => person.id));
 const peopleById = new Map(people.map((person) => [person.id, person]));
+const h3Events = filterEvents(events, { hub: "h3" }, peopleById);
+const dobrikEvents = filterEvents(events, { hub: "dobrik" }, peopleById);
 
 assert.equal(ids.size, people.length, "person ids must be unique");
-assert.ok(events.length >= 35 && events.length <= 50, "timeline should contain 35–50 events");
+assert.equal(people.filter((person) => person.id === "trisha-paytas").length, 1, "Trisha is one person");
+assert.equal(people.filter((person) => person.id === "ethan-klein").length, 1);
+assert.equal(people.filter((person) => person.id === "david-dobrik").length, 1);
+assert.equal(people.filter((person) => person.id === "jason-nash").length, 1);
+assert.ok(h3Events.length >= 35 && h3Events.length <= 55, `H3 hub should contain 35–55 events, got ${h3Events.length}`);
+assert.ok(dobrikEvents.length >= 20 && dobrikEvents.length <= 50, `Dobrik hub should contain 20–50 events, got ${dobrikEvents.length}`);
 assert.equal(new Set(events.map((event) => event.id)).size, events.length, "event ids must be unique");
 
 for (const person of people) {
@@ -57,6 +67,8 @@ for (const event of events) {
   assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, `${event.id} needs an ISO date`);
   assert.ok(event.title && event.summary && event.era, `${event.id} is missing core copy`);
   assert.ok(event.people.length >= 1, `${event.id} needs people`);
+  assert.ok(event.hubs?.length, `${event.id} needs hubs`);
+  event.hubs.forEach((hub) => assert.ok(["h3", "dobrik"].includes(hub), `${event.id} unknown hub ${hub}`));
   event.people.forEach((id) => assert.ok(ids.has(id), `${event.id} references unknown person ${id}`));
   assert.ok(event.links?.length, `${event.id} needs at least one source`);
   event.links.forEach((link) => {
@@ -78,12 +90,13 @@ for (const relation of relations) {
   assert.ok(relation.kind && relation.label, "relations need kind and label");
 }
 
-for (const person of people.filter((person) => person.id !== "ethan-klein")) {
+const hubCenters = new Set(["ethan-klein", "david-dobrik"]);
+for (const person of people.filter((person) => !hubCenters.has(person.id))) {
   assert.ok(
     relations.some((relation) =>
-      [relation.from, relation.to].includes("ethan-klein") &&
-      [relation.from, relation.to].includes(person.id)),
-    `${person.id} needs an Ethan relationship`,
+      hubCenters.has(relation.from) && relation.to === person.id
+      || hubCenters.has(relation.to) && relation.from === person.id),
+    `${person.id} needs a relationship to Ethan or David`,
   );
 }
 
@@ -91,19 +104,38 @@ const frenemies = filterEvents(events, { person: "trisha-paytas", era: "frenemie
 assert.ok(frenemies.length >= 2);
 assert.deepEqual(filterEvents(events, { person: ALL, era: ALL }, peopleById), events);
 assert.ok(filterEvents(events, { query: "fair use" }, peopleById).length >= 2);
+assert.ok(h3Events.some((event) => event.id === "frenemies-launch"));
+assert.equal(h3Events.some((event) => event.id === "utah-excavator-accident"), false);
+assert.ok(dobrikEvents.some((event) => event.id === "utah-excavator-accident"));
+const livestream = events.find((event) => event.id === "dobrik-safety-coverage");
+assert.deepEqual(livestream.hubs.slice().sort(), ["dobrik", "h3"]);
+assert.ok(livestream.people.includes("jeff-wittek"));
+assert.ok(livestream.people.includes("trisha-paytas"));
+assert.ok(h3Events.some((event) => event.id === "dobrik-safety-coverage"));
+assert.ok(dobrikEvents.some((event) => event.id === "dobrik-safety-coverage"));
 
 const firstRelation = relations[0];
 assert.ok(relationEvents(firstRelation, events).every((event) =>
   event.people.includes(firstRelation.from) && event.people.includes(firstRelation.to)));
 
-const h3 = plots.plots.find((item) => item.id === "h3");
-assert.ok(h3, "h3 plot is registered for further plots to sit beside");
-assert.equal(h3.centerId, "ethan-klein");
+const youtubers = plots.plots.find((item) => item.id === "youtubers");
+assert.ok(youtubers, "youtubers plot is registered");
+assert.equal(findPlot(plots.plots, "h3")?.id, "youtubers");
+assert.equal(findPlot(plots.plots, "youtubers")?.id, "youtubers");
+assert.equal(youtubers.centerId, "ethan-klein");
+assert.equal(youtubers.includeOrbit, true);
+assert.equal(hubOf(youtubers, "h3").centerId, "ethan-klein");
+assert.equal(hubOf(youtubers, "dobrik").centerId, "david-dobrik");
+assert.equal(hubCenterId(youtubers, "dobrik"), "david-dobrik");
 assert.equal(initials("Hila Klein"), "HK");
 assert.equal(initials("xQc"), "XQ");
-assert.equal(campOf("hila-klein", relations, h3.centerId, h3.friendKinds, h3.enemyKinds), "friend");
-assert.equal(campOf("trisha-paytas", relations, h3.centerId, h3.friendKinds, h3.enemyKinds), "enemy");
-assert.equal(campOf("david-dobrik", relations, h3.centerId, h3.friendKinds, h3.enemyKinds), "orbit");
+assert.equal(campOf("hila-klein", relations, youtubers.centerId, youtubers.friendKinds, youtubers.enemyKinds), "friend");
+assert.equal(campOf("trisha-paytas", relations, youtubers.centerId, youtubers.friendKinds, youtubers.enemyKinds), "enemy");
+assert.equal(campOf("david-dobrik", relations, youtubers.centerId, youtubers.friendKinds, youtubers.enemyKinds), "orbit");
+assert.equal(campOf("jeff-wittek", relations, "david-dobrik", youtubers.friendKinds, youtubers.enemyKinds), "enemy");
+assert.equal(campOf("natalie-mariduena", relations, "david-dobrik", youtubers.friendKinds, youtubers.enemyKinds), "friend");
+assert.equal(campOf("trisha-paytas", relations, "david-dobrik", youtubers.friendKinds, youtubers.enemyKinds), "enemy");
+assert.equal(campOf("ethan-klein", relations, "david-dobrik", youtubers.friendKinds, youtubers.enemyKinds), "orbit");
 
 const allowedLicenses = new Set(["CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 2.0", "CC BY-SA 3.0", "Public domain"]);
 for (const person of people) {
@@ -115,9 +147,9 @@ for (const person of people) {
 }
 
 const layout = webLayout(people, relations, {
-  centerId: h3.centerId,
-  friendKinds: h3.friendKinds,
-  enemyKinds: h3.enemyKinds,
+  centerId: youtubers.centerId,
+  friendKinds: youtubers.friendKinds,
+  enemyKinds: youtubers.enemyKinds,
 });
 assert.ok(layout.nodes.length < people.length, "coverage-only people stay off the web");
 assert.equal(layout.nodes.some((node) => node.camp === "orbit"), false);
@@ -139,7 +171,7 @@ const others = layout.nodes.filter((node) => node.id !== "ethan-klein");
 assert.ok(others.some((node) => node.x < ethanNode.x) && others.some((node) => node.x > ethanNode.x));
 assert.ok(others.some((node) => node.y < ethanNode.y) && others.some((node) => node.y > ethanNode.y));
 const trisha = neighborhood("trisha-paytas", relations);
-["ethan-klein", "hila-klein", "moses-hacmon"].forEach((id) => assert.ok(trisha.has(id), id));
+["ethan-klein", "hila-klein", "moses-hacmon", "jason-nash", "david-dobrik"].forEach((id) => assert.ok(trisha.has(id), id));
 assert.ok(layout.edges.some((edge) => edge.from === "trisha-paytas" && edge.to === "moses-hacmon" || edge.from === "moses-hacmon" && edge.to === "trisha-paytas"));
 let closest = Infinity;
 for (let i = 0; i < layout.nodes.length; i += 1) {
@@ -151,9 +183,9 @@ for (let i = 0; i < layout.nodes.length; i += 1) {
 }
 assert.ok(closest >= 110, `web nodes overlap (${closest})`);
 const fitted = webLayout(people, relations, {
-  centerId: h3.centerId,
-  friendKinds: h3.friendKinds,
-  enemyKinds: h3.enemyKinds,
+  centerId: youtubers.centerId,
+  friendKinds: youtubers.friendKinds,
+  enemyKinds: youtubers.enemyKinds,
   width: 700,
   height: 420,
 });
@@ -166,20 +198,20 @@ function centerDistance(layoutNodes, id) {
   return Math.hypot(node.x - middle.x, node.y - middle.y);
 }
 const weighted = webLayout(people, relations, {
-  centerId: h3.centerId,
-  friendKinds: h3.friendKinds,
-  enemyKinds: h3.enemyKinds,
-  events,
+  centerId: youtubers.centerId,
+  friendKinds: youtubers.friendKinds,
+  enemyKinds: youtubers.enemyKinds,
+  events: h3Events,
 });
 assert.ok(centerDistance(weighted.nodes, "hila-klein") < centerDistance(weighted.nodes, "moses-hacmon"));
 assert.ok(centerDistance(weighted.nodes, "hasan-piker") < centerDistance(weighted.nodes, "philip-de-franco"));
 assert.ok(centerDistance(weighted.nodes, "trisha-paytas") < centerDistance(weighted.nodes, "james-charles"));
 for (const size of [{ width: 1100, height: 980 }, { width: 1400, height: 720 }, { width: 700, height: 420 }]) {
   const sample = webLayout(people, relations, {
-    centerId: h3.centerId,
-    friendKinds: h3.friendKinds,
-    enemyKinds: h3.enemyKinds,
-    events,
+    centerId: youtubers.centerId,
+    friendKinds: youtubers.friendKinds,
+    enemyKinds: youtubers.enemyKinds,
+    events: h3Events,
     ...size,
   });
   assert.ok(centerDistance(sample.nodes, "hila-klein") < centerDistance(sample.nodes, "moses-hacmon"), `hila closer ${size.width}`);
@@ -219,10 +251,10 @@ for (let i = 0; i < weighted.nodes.length; i += 1) {
 }
 assert.ok(weightedClosest >= weighted.nodeSize, `weighted nodes overlap (${weightedClosest})`);
 const weightedFit = webLayout(people, relations, {
-  centerId: h3.centerId,
-  friendKinds: h3.friendKinds,
-  enemyKinds: h3.enemyKinds,
-  events,
+  centerId: youtubers.centerId,
+  friendKinds: youtubers.friendKinds,
+  enemyKinds: youtubers.enemyKinds,
+  events: h3Events,
   width: 700,
   height: 420,
 });
@@ -267,10 +299,10 @@ assert.equal(
   "timeline",
 );
 const compactMap = webLayout(people, relations, {
-  centerId: h3.centerId,
-  friendKinds: h3.friendKinds,
-  enemyKinds: h3.enemyKinds,
-  events,
+  centerId: youtubers.centerId,
+  friendKinds: youtubers.friendKinds,
+  enemyKinds: youtubers.enemyKinds,
+  events: h3Events,
   width: 1120,
   height: 1120,
 });
@@ -288,6 +320,63 @@ assert.equal(parsed.view, "web");
 assert.equal(parsed.person, "trisha-paytas");
 assert.equal(parsed.eventId, "frenemies-39-walkout");
 assert.match(stateUrl("https://plotmaniac.com/", parsed, parsed.eventId), /view=web/);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "timeline", plot: "youtubers", hub: "dobrik" }, ""),
+  /plot=youtubers/,
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "timeline", plot: "youtubers", hub: "dobrik" }, ""),
+  /hub=dobrik/,
+);
+const hubState = parseState("https://plotmaniac.com/?plot=youtubers&hub=dobrik&view=timeline", {
+  hubs: new Set(["h3", "dobrik"]),
+  defaultHub: "h3",
+});
+assert.equal(hubState.hub, "dobrik");
+assert.equal(hubState.view, "timeline");
+assert.equal(
+  parseState("https://plotmaniac.com/?plot=youtubers", { hubs: new Set(["h3", "dobrik"]), defaultHub: "h3" }).hub,
+  "h3",
+);
+
+const sharedWeb = webLayout(people, relations, {
+  centerId: "ethan-klein",
+  friendKinds: youtubers.friendKinds,
+  enemyKinds: youtubers.enemyKinds,
+  events: h3Events,
+  includeOrbit: true,
+  hubIds: ["ethan-klein", "david-dobrik"],
+  width: 1400,
+  height: 980,
+});
+assert.equal(sharedWeb.nodes.length, people.length, "shared web shows every YouTuber-sphere person once");
+assert.equal(sharedWeb.nodes.filter((node) => node.id === "trisha-paytas").length, 1);
+assert.equal(sharedWeb.nodes.find((node) => node.id === "ethan-klein").camp, "center");
+assert.equal(sharedWeb.nodes.find((node) => node.id === "david-dobrik").camp, "orbit");
+assert.equal(sharedWeb.nodes.find((node) => node.id === "david-dobrik").plotHub, true);
+assert.equal(sharedWeb.nodes.find((node) => node.id === "jeff-wittek").camp, "orbit");
+assert.equal(sharedWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "enemy");
+assert.ok(sharedWeb.edges.some((edge) =>
+  (edge.from === "trisha-paytas" && edge.to === "jason-nash")
+  || (edge.from === "jason-nash" && edge.to === "trisha-paytas")));
+
+const dobrikWeb = webLayout(people, relations, {
+  centerId: "david-dobrik",
+  friendKinds: youtubers.friendKinds,
+  enemyKinds: youtubers.enemyKinds,
+  events: dobrikEvents,
+  includeOrbit: true,
+  hubIds: ["ethan-klein", "david-dobrik"],
+  width: 1400,
+  height: 980,
+});
+assert.equal(dobrikWeb.nodes.length, people.length);
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "david-dobrik").camp, "center");
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "ethan-klein").camp, "orbit");
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "jeff-wittek").camp, "enemy");
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "natalie-mariduena").camp, "friend");
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "enemy");
+assert.ok(dobrikWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
 
 const nodes = graphLayout(people);
 assert.equal(nodes.length, people.length);
@@ -610,11 +699,13 @@ assert.ok(europeStatus.friend.length > 0);
 
 const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
 assert.match(html, /viewport-fit=cover/, "mobile viewport should include safe-area");
+assert.match(html, /id="hub-select"/, "hub focus control");
 const css = fs.readFileSync(new URL("../lore.css", import.meta.url), "utf8");
 assert.match(css, /max-width: 768px/, "compact layout breakpoint");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
+assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
 assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
 assert.match(appSource, /renderRelationSentimentChart/, "country drawer can chart bilateral warmth");
 assert.match(css, /\.relation-sentiment/, "relationship warmth chart styles");

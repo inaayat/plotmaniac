@@ -40,7 +40,7 @@
   {
     "id": "trisha-paytas",
     "name": "Trisha Paytas",
-    "role": "Creator and former Frenemies co-host",
+    "role": "Creator, former Frenemies co-host, and Vlog Squad orbit through Jason Nash",
     "tags": [
       "rival",
       "family"
@@ -106,8 +106,9 @@
   {
     "id": "david-dobrik",
     "name": "David Dobrik",
-    "role": "Vlog Squad creator repeatedly covered by H3",
+    "role": "Vlog Squad center; Slovak-born YouTuber later covered by H3",
     "tags": [
+      "crew",
       "subject"
     ],
     "links": [
@@ -506,5 +507,289 @@
       "license": "CC BY 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
     }
+  },
+  {
+    "id": "jeff-wittek",
+    "name": "Jeff Wittek",
+    "role": "Barber and YouTuber; Vlog Squad member injured in the 2020 excavator stunt",
+    "tags": [
+      "crew",
+      "legal",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Jeff_Wittek"
+      }
+    ]
+  },
+  {
+    "id": "natalie-mariduena",
+    "name": "Natalie Mariduena",
+    "role": "David's high-school friend, later assistant and president of David Dobrik LLC",
+    "tags": [
+      "crew",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Vlog Squad overview",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)"
+      }
+    ]
+  },
+  {
+    "id": "toddy-smith",
+    "name": "Toddy Smith",
+    "role": "Vlog Squad member who introduced Jeff Wittek to David Dobrik",
+    "tags": [
+      "crew",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Vlog Squad overview",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)"
+      }
+    ]
+  },
+  {
+    "id": "zane-hijazi",
+    "name": "Zane Hijazi",
+    "role": "Vlog Squad member and Unfiltered co-host with Heath Hussar",
+    "tags": [
+      "crew"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@ZaneHijazi"
+      }
+    ]
+  },
+  {
+    "id": "heath-hussar",
+    "name": "Heath Hussar",
+    "role": "Vlog Squad member and Unfiltered co-host; injured his shoulder on the Utah trip",
+    "tags": [
+      "crew"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@heathhussar"
+      }
+    ]
+  },
+  {
+    "id": "jason-nash",
+    "name": "Jason Nash",
+    "role": "Comedian, Views co-host, and Vlog Squad 'old man' character; dated Trisha Paytas",
+    "tags": [
+      "crew",
+      "family"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Jason_Nash"
+      }
+    ]
+  },
+  {
+    "id": "aaron-gilfoy",
+    "name": "Aaron Gilfoy",
+    "role": "Vlog Squad member; married Carly Incontro and later stepped back from the group",
+    "tags": [
+      "crew"
+    ],
+    "links": [
+      {
+        "label": "Vlog Squad overview",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)"
+      }
+    ]
+  },
+  {
+    "id": "carly-incontro",
+    "name": "Carly Incontro",
+    "role": "Vlog Squad member and Aaron Gilfoy's partner; later disconnected from the drama",
+    "tags": [
+      "crew"
+    ],
+    "links": [
+      {
+        "label": "Vlog Squad overview",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)"
+      }
+    ]
+  },
+  {
+    "id": "scotty-sire",
+    "name": "Scotty Sire",
+    "role": "Musician and Vlog Squad member who publicly defended David after the 2021 fallout",
+    "tags": [
+      "crew",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@ScottySire"
+      }
+    ]
+  },
+  {
+    "id": "nick-antonyan",
+    "name": "Nick Antonyan",
+    "role": "Vlog Squad member nicknamed Jonah; close with Jeff Wittek before siding with David",
+    "tags": [
+      "crew"
+    ],
+    "links": [
+      {
+        "label": "Vlog Squad overview",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)"
+      }
+    ]
+  },
+  {
+    "id": "dom-zeglaitis",
+    "name": "Dominykas Zeglaitis",
+    "role": "Former Vlog Squad member known as Durte Dom; accused of sexual assault in 2021 reporting",
+    "tags": [
+      "crew",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Insider investigation",
+        "url": "https://www.businessinsider.com/vlog-squad-durte-dom-rape-allegation-david-dobrik-zeglaitis-video-2021-3"
+      }
+    ]
+  },
+  {
+    "id": "liza-koshy",
+    "name": "Liza Koshy",
+    "role": "Creator and David's former partner who left the Vlog Squad orbit after their breakup",
+    "tags": [
+      "crew",
+      "family"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Liza_Koshy"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Liza%20Koshy%20on%20Refinery29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Liza_Koshy_on_Refinery29.jpg",
+      "author": "Refinery29",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "tana-mongeau",
+    "name": "Tana Mongeau",
+    "role": "Creator in David's orbit who later sided with Jeff Wittek after the Vlog Squad fallout",
+    "tags": [
+      "crew",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Tana_Mongeau"
+      }
+    ]
+  },
+  {
+    "id": "casey-neistat",
+    "name": "Casey Neistat",
+    "role": "Filmmaker who shot the unreleased SXSW documentary Under the Influence about David",
+    "tags": [
+      "subject",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Casey_Neistat"
+      }
+    ]
+  },
+  {
+    "id": "seth-francois",
+    "name": "Seth Francois",
+    "role": "Former Vlog Squad member who said a 2017 kissing prank was non-consensual",
+    "tags": [
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "BuzzFeed News report",
+        "url": "https://www.buzzfeednews.com/article/tanyachen/seth-david-dobrik-prank-sexual-assault"
+      }
+    ]
+  },
+  {
+    "id": "gabbie-hanna",
+    "name": "Gabbie Hanna",
+    "role": "Early Vlog Squad / Vine collaborator from the formation era",
+    "tags": [
+      "crew"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Gabbie_Hanna"
+      }
+    ]
+  },
+  {
+    "id": "alex-ernst",
+    "name": "Alex Ernst",
+    "role": "Early Vlog Squad collaborator from the Vine-to-YouTube years",
+    "tags": [
+      "crew"
+    ],
+    "links": [
+      {
+        "label": "Vlog Squad overview",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)"
+      }
+    ]
+  },
+  {
+    "id": "nik-keswani",
+    "name": "Nik Keswani",
+    "role": "Former Vlog Squad member known as Big Nick; later described the group as cult-like",
+    "tags": [
+      "crew",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html"
+      }
+    ]
+  },
+  {
+    "id": "mariah-amato",
+    "name": "Mariah Amato",
+    "role": "Heath Hussar's partner; Vlog Squad adjacent during the later split",
+    "tags": [
+      "crew"
+    ],
+    "links": [
+      {
+        "label": "Vlog Squad overview",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)"
+      }
+    ]
   }
 ]
