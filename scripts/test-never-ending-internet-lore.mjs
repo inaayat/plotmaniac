@@ -1001,6 +1001,31 @@ const vanceMeanAngle = (list) => {
 };
 assert.ok(Math.abs(vanceMeanAngle(social2024) - vanceMeanAngle(foreign2024)) > 0.4, "topics occupy different wedges");
 assert.ok(vance2024.nodes.every((node) => node.x > 8 && node.x < 1092 && node.y > 8 && node.y < 792));
+const vanceCompact = webLayout(vancePeople, vanceRelations, {
+  ...vanceLayoutOpts,
+  year: 2024,
+  width: 390,
+  height: 720,
+});
+const vanceViewport = webLayout(vancePeople, vanceRelations, {
+  ...vanceLayoutOpts,
+  year: 2024,
+  width: 1280,
+  height: 500,
+});
+assertNoTopicOverlap(vance2024, "vance desktop topic layout");
+assertNoTopicOverlap(vanceViewport, "vance desktop viewport topic layout");
+assertNoTopicOverlap(vanceForeign, "vance focused topic layout");
+assertNoTopicOverlap(vanceCompact, "vance compact topic layout");
+assert.ok(vanceCompact.height > 720, "vance compact topic layout grows vertically instead of stacking bubbles");
+assert.ok(
+  vanceCompact.nodes.every((node) =>
+    node.x - node.boxWidth / 2 >= 0 &&
+    node.x + node.boxWidth / 2 <= vanceCompact.width &&
+    node.y - node.boxHeight / 2 >= 0 &&
+    node.y + node.boxHeight / 2 <= vanceCompact.height),
+  "vance compact topic bubbles stay inside the field",
+);
 assert.match(
   stateUrl("https://plotmaniac.com/", { view: "web", plot: "jd-vance", year: 2024 }, ""),
   /plot=jd-vance/,
