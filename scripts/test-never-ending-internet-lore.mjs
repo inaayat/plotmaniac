@@ -154,6 +154,7 @@ assert.equal(youtubers.centerId, "ethan-klein");
 assert.equal(youtubers.includeOrbit, true);
 assert.equal(youtubers.hubs.length, 3);
 assert.equal(hubOf(youtubers, "h3").centerId, "ethan-klein");
+assert.equal(hubOf(youtubers, "h3").label, "Ethan Klein");
 assert.equal(hubOf(youtubers, "dobrik").centerId, "david-dobrik");
 assert.equal(hubOf(youtubers, "trisha").centerId, "trisha-paytas");
 assert.equal(hubCenterId(youtubers, "dobrik"), "david-dobrik");

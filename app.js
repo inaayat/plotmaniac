@@ -287,6 +287,8 @@ function renderChooser() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = `plot-card${item.images === "flags" ? "" : " is-person"}`;
+    button.title = item.lede;
+    button.setAttribute("aria-label", `${item.title}. ${item.lede}`);
     const kicker = document.createElement("span");
     kicker.className = "kicker";
     kicker.textContent = item.kicker || "Plot";
