@@ -519,6 +519,10 @@ body[data-view="web"] #footer-note {
   stroke: rgba(224, 106, 98, 0.55);
 }
 
+.web-lines path[data-camp="orbit"] {
+  stroke: rgba(232, 196, 122, 0.28);
+}
+
 .web-stage.is-hot .web-lines path {
   opacity: 0.08;
 }
@@ -566,6 +570,10 @@ body[data-view="web"] #footer-note {
   width: 8px;
   height: 8px;
   border-color: var(--gold);
+}
+
+.swatch.camp-orbit {
+  border-color: rgba(232, 196, 122, 0.45);
 }
 
 .swatch.camp-neutral {
@@ -1098,6 +1106,57 @@ body[data-board="regions"][data-view="web"] #footer-note {
   border-width: 3px;
 }
 
+.node.is-bubble {
+  width: auto;
+  max-width: 128px;
+  gap: 0;
+}
+
+.node-bubble {
+  display: block;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(232, 196, 122, 0.5);
+  background: rgba(18, 16, 13, 0.94);
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.node.camp-friend .node-bubble {
+  border-color: #7dcea0;
+}
+
+.node.camp-enemy .node-bubble {
+  border-color: #e06a62;
+}
+
+.node.camp-orbit .node-bubble {
+  border-color: rgba(232, 196, 122, 0.38);
+  color: var(--muted);
+}
+
+.topic-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: var(--gold);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.topic-bar {
+  margin: 0 0 8px;
+}
+
 .web-stage.is-hot .node {
   opacity: 0.22;
 }
@@ -1106,11 +1165,13 @@ body[data-board="regions"][data-view="web"] #footer-note {
   opacity: 1;
 }
 
-.web-stage.is-hot .node.is-lit.camp-friend .avatar {
+.web-stage.is-hot .node.is-lit.camp-friend .avatar,
+.web-stage.is-hot .node.is-lit.camp-friend .node-bubble {
   box-shadow: 0 0 0 5px rgba(125, 206, 160, 0.35);
 }
 
-.web-stage.is-hot .node.is-lit.camp-enemy .avatar {
+.web-stage.is-hot .node.is-lit.camp-enemy .avatar,
+.web-stage.is-hot .node.is-lit.camp-enemy .node-bubble {
   box-shadow: 0 0 0 5px rgba(224, 106, 98, 0.4);
 }
 
@@ -2072,6 +2133,20 @@ body[data-view="timeline"] #footer-note {
   body[data-view="web"] .web-stage .node.node-left,
   body[data-view="web"] .web-stage .node.node-right {
     width: calc(var(--node, 72px) + 24px);
+  }
+
+  body[data-view="web"] .web-stage.is-bubbles .node.is-bubble {
+    width: auto;
+    max-width: 108px;
+  }
+
+  body[data-view="web"] .web-stage.is-bubbles .node-bubble {
+    font-size: 0.62rem;
+    padding: 6px 8px;
+  }
+
+  body[data-view="web"] .topic-label {
+    font-size: 0.5rem;
   }
 
   body[data-view="web"] .site-footer,

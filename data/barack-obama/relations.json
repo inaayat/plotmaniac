@@ -73,7 +73,7 @@
     "kind": "opposed",
     "start": "2011",
     "end": "2011",
-    "label": "Said a president could not defer deportations by executive action — “I am not king”"
+    "label": "Said a president could not defer deportations by executive action \u2014 \u201cI am not king\u201d"
   },
   {
     "from": "barack-obama",
@@ -111,7 +111,7 @@
     "kind": "supported",
     "start": "2008",
     "end": "2010",
-    "label": "The “necessary war”: extra troops to break the Taliban’s momentum"
+    "label": "The \u201cnecessary war\u201d: extra troops to break the Taliban\u2019s momentum"
   },
   {
     "from": "barack-obama",
@@ -125,7 +125,7 @@
     "to": "iraq-war",
     "kind": "opposed",
     "start": "2002",
-    "label": "October 2002 Chicago speech against a “dumb war,” then a 2011 withdrawal"
+    "label": "October 2002 Chicago speech against a \u201cdumb war,\u201d then a 2011 withdrawal"
   },
   {
     "from": "barack-obama",
@@ -238,5 +238,113 @@
     "kind": "supported",
     "start": "2009",
     "label": "Expanded armed drones against al-Qaeda, including a U.S. citizen in Yemen"
+  },
+  {
+    "from": "barack-obama",
+    "to": "high-earner-taxes",
+    "kind": "supported",
+    "start": "2008",
+    "label": "Let Bush-era cuts expire for high earners; signed ATRA in 2013"
+  },
+  {
+    "from": "barack-obama",
+    "to": "abortion-rights",
+    "kind": "supported",
+    "start": "1996",
+    "label": "Roe v. Wade, contraception funding, and health exceptions on late-term limits"
+  },
+  {
+    "from": "barack-obama",
+    "to": "education",
+    "kind": "supported",
+    "start": "2008",
+    "label": "Race to the Top competitive grants for state school reform"
+  },
+  {
+    "from": "barack-obama",
+    "to": "libya-intervention",
+    "kind": "supported",
+    "start": "2011",
+    "label": "NATO-led 2011 intervention, no large U.S. ground force"
+  },
+  {
+    "from": "barack-obama",
+    "to": "syria-strike",
+    "kind": "supported",
+    "start": "2012",
+    "end": "2012",
+    "label": "Chemical-weapons red line implied a strike if Assad used gas"
+  },
+  {
+    "from": "barack-obama",
+    "to": "syria-strike",
+    "kind": "opposed",
+    "start": "2013",
+    "label": "Asked Congress and took a Russia-brokered stockpile deal instead of striking"
+  },
+  {
+    "from": "barack-obama",
+    "to": "israel",
+    "kind": "supported",
+    "start": "2007",
+    "label": "Military aid and a two-state frame, with later fights over settlements and Iran"
+  },
+  {
+    "from": "barack-obama",
+    "to": "immigration-reform",
+    "kind": "supported",
+    "start": "2007",
+    "label": "Comprehensive reform and the DREAM Act through Congress"
+  },
+  {
+    "from": "barack-obama",
+    "to": "offshore-drilling",
+    "kind": "supported",
+    "start": "2008",
+    "end": "2009",
+    "label": "All-of-the-above energy mix that included some new offshore leases"
+  },
+  {
+    "from": "barack-obama",
+    "to": "offshore-drilling",
+    "kind": "opposed",
+    "start": "2010",
+    "end": "2010",
+    "label": "Deepwater moratorium after the BP spill"
+  },
+  {
+    "from": "barack-obama",
+    "to": "offshore-drilling",
+    "kind": "supported",
+    "start": "2011",
+    "label": "Returned to limited leasing inside an all-of-the-above frame"
+  },
+  {
+    "from": "barack-obama",
+    "to": "disability-rights",
+    "kind": "supported",
+    "start": "2008",
+    "label": "ADA Restoration Act and the UN disability convention"
+  },
+  {
+    "from": "barack-obama",
+    "to": "hate-crimes",
+    "kind": "supported",
+    "start": "2007",
+    "label": "Expand federal hate-crime law to LGBT people and disability"
+  },
+  {
+    "from": "barack-obama",
+    "to": "russia-sanctions",
+    "kind": "supported",
+    "start": "2014",
+    "label": "Crimea-era sanctions with European partners"
+  },
+  {
+    "from": "barack-obama",
+    "to": "military-end-strength",
+    "kind": "supported",
+    "start": "2007",
+    "label": "65,000 more soldiers and 27,000 more Marines"
   }
 ]

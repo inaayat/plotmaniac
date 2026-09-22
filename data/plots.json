@@ -41,7 +41,7 @@
       "id": "barack-obama",
       "title": "Barack Obama",
       "kicker": "Person",
-      "lede": "Political positions from the Illinois Senate through the White House. Drag the year to see what he supported, and what he opposed.",
+      "lede": "All the public positions, bundled by topic. Drag the year to watch the color of each bubble change.",
       "searchPlaceholder": "Marriage, Iraq, a law…",
       "sourceNote": "Barack Obama on Plotmaniac · English Wikipedia political-positions survey and linked policy articles",
       "centerId": "barack-obama",
@@ -53,8 +53,17 @@
       "friendCountMany": "supported",
       "enemyCountOne": "opposed",
       "enemyCountMany": "opposed",
-      "yearHint": "Drag the year. Opposed sits on the left, supported on the right.",
-      "arrangement": "camps",
+      "orbitLabel": "No stance yet",
+      "yearHint": "Drag the year. Green supported, red opposed. Open a topic to give it the whole field.",
+      "arrangement": "topics",
+      "images": "bubbles",
+      "topics": [
+        { "id": "economy", "label": "Economy" },
+        { "id": "energy", "label": "Energy & climate" },
+        { "id": "social", "label": "Social policy" },
+        { "id": "foreign", "label": "Foreign policy" },
+        { "id": "security", "label": "Law & security" }
+      ],
       "year": {
         "min": 1996,
         "max": 2017,

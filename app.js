@@ -32,6 +32,7 @@ let relations = [];
 let countries = [];
 let countryBySlug = new Map();
 let openRegions = new Set();
+let openTopic = "";
 let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "" };
 let toastTimer = null;
 let loadToken = 0;
@@ -156,6 +157,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     countries = countryData || [];
     countryBySlug = new Map(countries.map((country) => [country.slug, country]));
     openRegions = new Set();
+    openTopic = "";
     people.forEach((person) => peopleById.set(person.id, person));
     laneZoom = 1;
     const eras = new Set(events.map((event) => event.era));
@@ -201,6 +203,7 @@ function showPicker({ history = "push" } = {}) {
   countries = [];
   countryBySlug = new Map();
   openRegions = new Set();
+  openTopic = "";
   peopleById.clear();
   state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "" };
   document.title = "Plotmaniac";
@@ -343,7 +346,12 @@ function renderWeb() {
     ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends"],
     ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes"],
   ];
-  if (plot.arrangement !== "camps") keyItems.push(["near", "Closer · more beats"]);
+  if (plot.arrangement === "topics") {
+    keyItems.push(["orbit", plot.orbitLabel || "No stance yet"]);
+    keyItems.push(["near", "Closer · more beats"]);
+  } else if (plot.arrangement !== "camps") {
+    keyItems.push(["near", "Closer · more beats"]);
+  }
   keyItems.forEach(([camp, label]) => {
     const item = document.createElement("li");
     const swatch = document.createElement("i");
@@ -352,18 +360,17 @@ function renderWeb() {
     key.appendChild(item);
   });
   const scroller = document.createElement("div");
-  scroller.className = `web-scroll${plot.arrangement === "camps" ? " is-camps" : ""}`;
+  scroller.className = `web-scroll${plot.arrangement === "camps" ? " is-camps" : ""}${plot.arrangement === "topics" ? " is-topics" : ""}`;
   const stage = document.createElement("div");
-  stage.className = "web-stage";
+  stage.className = `web-stage${plot.images === "bubbles" ? " is-bubbles" : ""}`;
   scroller.appendChild(stage);
   section.append(key);
   if (plot.year) section.appendChild(renderYearBar());
-  if (isCompact()) {
+  if (plot.arrangement === "topics" && plot.topics?.length) section.appendChild(renderTopicBar());
+  if (isCompact() && !plot.year) {
     const hint = document.createElement("p");
     hint.className = "web-hint";
-    hint.textContent = plot.arrangement === "camps"
-      ? `${plot.yearHint || "Foes sit on the left, friends on the right."} Scroll to see everyone.`
-      : "Scroll to look around. People with more beats sit closer to the center.";
+    hint.textContent = "Scroll to look around. People with more beats sit closer to the center.";
     section.appendChild(hint);
   }
   section.append(scroller);
@@ -828,6 +835,38 @@ function renderYearBar() {
   return bar;
 }
 
+function renderTopicBar() {
+  const bar = document.createElement("div");
+  bar.className = "region-bar topic-bar";
+  bar.setAttribute("role", "group");
+  bar.setAttribute("aria-label", "Show one policy topic");
+  (plot.topics || []).forEach((topic) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "region-toggle";
+    button.dataset.topic = topic.id;
+    const count = people.filter((person) => person.topic === topic.id).length;
+    const open = openTopic === topic.id;
+    button.classList.toggle("is-open", open);
+    button.setAttribute("aria-pressed", String(open));
+    button.textContent = `${topic.label} · ${count}`;
+    button.addEventListener("click", () => toggleTopic(topic.id));
+    bar.appendChild(button);
+  });
+  return bar;
+}
+
+function toggleTopic(id) {
+  openTopic = openTopic === id ? "" : id;
+  document.querySelectorAll(".topic-bar .region-toggle").forEach((button) => {
+    const open = button.dataset.topic === openTopic;
+    button.classList.toggle("is-open", open);
+    button.setAttribute("aria-pressed", String(open));
+  });
+  const stage = document.querySelector(".web-stage");
+  if (stage) paintWeb(stage, { animate: false });
+}
+
 function setYear(year) {
   if (!plot?.year) return;
   state.year = parseYear(year, plot.year);
@@ -852,9 +891,11 @@ function paintWeb(stage, { animate = true } = {}) {
   const scroller = stage.parentElement;
   const compact = isCompact();
   const camps = plot.arrangement === "camps";
+  const topics = plot.arrangement === "topics";
+  const bubbles = plot.images === "bubbles";
   let width;
   let height;
-  if (compact && !camps) {
+  if (compact && !camps && !topics) {
     const size = Math.max(680, Math.floor(Math.max(bounds.width, bounds.height, scroller?.clientWidth || 0)));
     width = size;
     height = size;
@@ -866,7 +907,7 @@ function paintWeb(stage, { animate = true } = {}) {
       return;
     }
     width = Math.max(320, Math.floor(bounds.width));
-    height = Math.max(260, Math.floor(bounds.height));
+    height = Math.max(topics ? 360 : 260, Math.floor(bounds.height));
     stage.style.width = "";
   }
   const layout = webLayout(people, relations, {
@@ -878,6 +919,8 @@ function paintWeb(stage, { animate = true } = {}) {
     events,
     width,
     height,
+    topics: plot.topics,
+    topicId: openTopic,
   });
   stage.classList.toggle("is-quiet", !animate);
   if (camps && layout.height > height + 2) stage.style.height = `${layout.height}px`;
@@ -905,6 +948,15 @@ function paintWeb(stage, { animate = true } = {}) {
   });
   stage.appendChild(svg);
 
+  (layout.labels || []).forEach((label) => {
+    const el = document.createElement("div");
+    el.className = "topic-label";
+    el.textContent = label.text;
+    el.style.left = `${label.x}px`;
+    el.style.top = `${label.y}px`;
+    stage.appendChild(el);
+  });
+
   const light = (personId) => {
     const near = neighborhood(personId, relations);
     stage.classList.add("is-hot");
@@ -929,7 +981,15 @@ function paintWeb(stage, { animate = true } = {}) {
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
     button.style.setProperty("--i", String(index));
-    button.append(avatar(node, node.camp === "center" ? "lg" : "md"), nameEl(node.name));
+    if (bubbles && node.camp !== "center") {
+      button.classList.add("is-bubble");
+      const chip = document.createElement("span");
+      chip.className = "node-bubble";
+      chip.textContent = node.name;
+      button.appendChild(chip);
+    } else {
+      button.append(avatar(node, node.camp === "center" ? "lg" : "md"), nameEl(node.name));
+    }
     const camp = campLabel(node.camp);
     const beats = node.beats ? `, ${node.beats} timeline ${node.beats === 1 ? "beat" : "beats"}` : "";
     button.setAttribute("aria-label", `${node.name}${camp ? `, ${camp}` : ""}${beats}`);
@@ -947,7 +1007,7 @@ function paintWeb(stage, { animate = true } = {}) {
     const foeCount = layout.nodes.filter((node) => node.camp === "enemy").length;
     counts.textContent = `${friendCount} ${countWord("friend", friendCount)} · ${foeCount} ${countWord("enemy", foeCount)}`;
   }
-  if (compact && !camps && scroller) {
+  if (compact && !camps && !topics && scroller) {
     scroller.scrollLeft = Math.max(0, (stage.offsetWidth - scroller.clientWidth) / 2);
     scroller.scrollTop = Math.max(0, (stage.offsetHeight - scroller.clientHeight) / 2);
   }

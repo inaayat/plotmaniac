@@ -546,7 +546,10 @@ const obama = plots.plots.find((item) => item.id === "barack-obama");
 const obamaIds = new Set(obamaPeople.map((person) => person.id));
 assert.ok(obama, "barack obama plot is registered");
 assert.equal(obama.centerId, "barack-obama");
-assert.equal(obama.arrangement, "camps");
+assert.equal(obama.arrangement, "topics");
+assert.equal(obama.images, "bubbles");
+assert.ok(obama.topics?.length >= 5);
+const obamaTopicIds = new Set(obama.topics.map((topic) => topic.id));
 assert.deepEqual(obama.friendKinds, ["supported"]);
 assert.deepEqual(obama.enemyKinds, ["opposed"]);
 assert.equal(obama.year.min, 1996);
@@ -560,6 +563,9 @@ const obamaById = new Map(obamaPeople.map((person) => [person.id, person]));
 for (const person of obamaPeople) {
   assert.ok(person.name && person.role, `${person.id} needs a name and role`);
   assert.ok(Array.isArray(person.tags) && person.tags.length, `${person.id} needs filter tags`);
+  if (person.id !== "barack-obama") {
+    assert.ok(obamaTopicIds.has(person.topic), `${person.id} needs a known topic`);
+  }
 }
 const obamaPortrait = obamaById.get("barack-obama").portrait;
 assert.match(obamaPortrait.src, /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//);
@@ -625,25 +631,28 @@ assert.equal(obamaStance("iraq-war", 2011), "enemy");
 assert.equal(obamaStance("affordable-care-act", 2010), "friend");
 assert.equal(obamaStance("keystone-xl", 2015), "enemy");
 assert.equal(obamaStance("trans-pacific-partnership", 2008), "orbit");
+assert.equal(obamaStance("syria-strike", 2012), "friend");
+assert.equal(obamaStance("syria-strike", 2014), "enemy");
+assert.equal(obamaStance("abortion-rights", 2008), "friend");
 
-const obama2008 = webLayout(obamaPeople, obamaRelations, {
+const obamaLayoutOpts = {
   centerId: obama.centerId,
   friendKinds: obama.friendKinds,
   enemyKinds: obama.enemyKinds,
-  arrangement: "camps",
-  year: 2008,
+  arrangement: "topics",
+  topics: obama.topics,
+  events: obamaEvents,
   width: 1100,
   height: 800,
-});
-const obama2012 = webLayout(obamaPeople, obamaRelations, {
-  centerId: obama.centerId,
-  friendKinds: obama.friendKinds,
-  enemyKinds: obama.enemyKinds,
-  arrangement: "camps",
-  year: 2012,
-  width: 1100,
-  height: 800,
-});
+};
+const obama2008 = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2008 });
+const obama2012 = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2012 });
+const obamaEconomy = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2012, topicId: "economy" });
+assert.equal(obama2012.nodes.length, obamaPeople.length, "every policy sits on the board");
+assert.ok(obama2012.labels?.length >= 5, "topic labels mark the field");
+assert.equal(obamaEconomy.nodes.every((node) => node.camp === "center" || node.topic === "economy"), true);
+assert.ok(obamaEconomy.nodes.length < obama2012.nodes.length);
+assert.ok(obamaEconomy.nodes.length > 5);
 const marriage2008 = obama2008.nodes.find((node) => node.id === "same-sex-marriage");
 const marriage2012 = obama2012.nodes.find((node) => node.id === "same-sex-marriage");
 const mandate2008 = obama2008.nodes.find((node) => node.id === "individual-mandate");
@@ -651,14 +660,21 @@ const mandate2012 = obama2012.nodes.find((node) => node.id === "individual-manda
 const iraq2008 = obama2008.nodes.find((node) => node.id === "iraq-war");
 const center2008 = obama2008.nodes.find((node) => node.id === "barack-obama");
 assert.equal(marriage2008.camp, "enemy");
-assert.equal(marriage2008.side, "left");
 assert.equal(marriage2012.camp, "friend");
-assert.equal(marriage2012.side, "right");
 assert.equal(mandate2008.camp, "enemy");
 assert.equal(mandate2012.camp, "friend");
 assert.equal(iraq2008.camp, "enemy");
-assert.ok(marriage2008.x < center2008.x && marriage2012.x > center2008.x);
-assert.ok(iraq2008.x < center2008.x);
+const around2008 = obama2008.nodes.filter((node) => node.camp !== "center");
+assert.ok(around2008.some((node) => node.x < center2008.x) && around2008.some((node) => node.x > center2008.x));
+assert.ok(around2008.some((node) => node.y < center2008.y) && around2008.some((node) => node.y > center2008.y));
+const social2012 = obama2012.nodes.filter((node) => node.topic === "social");
+const foreign2012 = obama2012.nodes.filter((node) => node.topic === "foreign");
+const meanAngle = (list) => {
+  const mid = obama2012.nodes.find((node) => node.camp === "center");
+  return list.reduce((sum, node) => sum + Math.atan2(node.y - mid.y, node.x - mid.x), 0) / list.length;
+};
+assert.ok(Math.abs(meanAngle(social2012) - meanAngle(foreign2012)) > 0.4, "topics occupy different wedges");
+assert.ok(obama2012.nodes.every((node) => node.x > 8 && node.x < 1092 && node.y > 8 && node.y < 792));
 assert.match(
   stateUrl("https://plotmaniac.com/", { view: "web", plot: "barack-obama", year: 2012 }, ""),
   /plot=barack-obama/,
