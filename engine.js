@@ -456,7 +456,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (Number.isFinite(state.to)) url.searchParams.set("to", String(state.to));
   if (state.country) url.searchParams.set("country", state.country);
   if (state.hub) url.searchParams.set("hub", state.hub);
-  url.hash = eventId ? encodeURIComponent(eventId) : "";
+  url.hash = state.view === "person" || !eventId ? "" : encodeURIComponent(eventId);
   return `${url.pathname}${url.search}${url.hash}`;
 }
 

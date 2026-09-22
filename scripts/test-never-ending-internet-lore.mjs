@@ -5,8 +5,10 @@ import {
   chronoKey,
   eventCast,
   playerAllegiance,
+  decisionMakers,
   playerDisplayName,
   playerIncentives,
+  playerAgreements,
   sourceRecords,
   statedPositions,
 } from "../partition-model.js";
@@ -1008,6 +1010,7 @@ assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "deskt
 assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?6\.4rem/, "pick view keeps the large title");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
+const partitionViewSource = fs.readFileSync(new URL("../partition-view.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
 assert.match(appSource, /function filterGallery/, "homepage search filters plot cards");
@@ -1015,6 +1018,9 @@ assert.match(appSource, /function enhanceSelect/, "plot and focus use themed cho
 assert.match(css, /\.choice-menu/, "choice menus match the ink and gold chrome");
 assert.match(appSource, /textContent = "All"/, "focus can show every YouTuber");
 assert.match(appSource, /function applyHubCamera/, "the web eases its zoom to the current focus");
+assert.match(appSource, /Map \+ people/, "Partition navigation names its map and people view");
+assert.match(partitionViewSource, /Who wanted what — and who made the call/, "Partition overview explains decision-makers");
+assert.match(partitionViewSource, /Show Kashmir claims overlay/, "claims control explains its effect");
 assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");
 assert.match(appSource, /Shared people sit in the center/, "youtubers web describes the shared center");
 assert.match(css, /\.web-stage \.node-name/, "web names stay inside their node");
@@ -1618,6 +1624,7 @@ assert.ok(vanceEvents.filter((event) => event.people.includes("donald-trump")).l
 
 const partition = plots.plots.find((item) => item.id === "partition-of-india");
 assert.equal(partition.arrangement, "historical-map");
+assert.match(partition.lede, /Click a region.*year slider/i);
 const partitionRef = readJson("../data/partition-of-india/reference.json");
 assert.equal(partitionRef.schemaVersion, "1.1.0");
 assert.equal(partitionRef.keyPlayers.length, 36);
@@ -1670,6 +1677,10 @@ assert.equal(reunited.visual.fills["bengal-east"], "raj");
 assert.equal(partitionFrames.every((frame) => frame.visual.camera === "all"), true);
 const curzon = partitionRef.keyPlayers.find((player) => player.id === "curzon");
 const jinnah = partitionRef.keyPlayers.find((player) => player.id === "jinnah");
+const decisionIds = decisionMakers(partitionRef, partitionRef.keyPlayers);
+assert.deepEqual(decisionIds, ["mountbatten", "patel", "nehru", "jinnah", "radcliffe", "tara"]);
+assert.ok(playerAgreements(partitionRef.keyPlayers.find((player) => player.id === "patel"), partitionRef.keyPlayers)
+  .some((person) => person.id === "nehru"), "Patel should show an aligned Congress colleague");
 assert.equal(playerDisplayName(curzon), "George Nathaniel Curzon");
 assert.equal(playerAllegiance(curzon).faction, "British Raj");
 assert.match(playerAllegiance(curzon).line, /British Raj/);

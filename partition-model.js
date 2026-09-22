@@ -66,6 +66,18 @@ export function playerIncentives(person) {
   };
 }
 
+const PARTITION_DECISION_MAKER_IDS = ["mountbatten", "patel", "nehru", "jinnah", "radcliffe", "tara"];
+
+export function decisionMakers(reference, players) {
+  const causalChain = reference?.rolesDelineationAndLegacyToPresent?.causalChain || [];
+  const settlementStep = causalChain.find((step) => step.period === "June–Aug 1947");
+  if (!settlementStep) return [];
+  const available = players instanceof Map
+    ? new Set(players.keys())
+    : new Set((players || []).map((player) => player?.id).filter(Boolean));
+  return PARTITION_DECISION_MAKER_IDS.filter((id) => available.has(id));
+}
+
 export function statedPositions(person) {
   const positions = person?.positions || {};
   return Object.entries(POSITION_LABELS)
@@ -74,6 +86,61 @@ export function statedPositions(person) {
       return { key, label, value };
     })
     .filter((row) => row.value && !NA_RE.test(row.value.replace(/\s*\(.*\)\s*$/, "").trim()));
+}
+
+export function factionCamp(person) {
+  const raw = String(person?.faction || "").toLowerCase();
+  if (/congress/.test(raw)) return "congress";
+  if (/muslim league|krishak praja/.test(raw)) return "muslim-league";
+  if (/british|raj|labour|uk /.test(raw)) return "british";
+  if (/scheduled|depressed|ambedkar/.test(raw)) return "scheduled-castes";
+  if (/akhali|sikh/.test(raw)) return "sikh";
+  if (/hindu mahasabha|rss|hindu/.test(raw) && !/congress/.test(raw)) return "hindu-right";
+  return raw.replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "";
+}
+
+export function stancePolarity(value) {
+  const text = String(value || "").toLowerCase();
+  if (!text || NA_RE.test(text.replace(/\s*\(.*\)\s*$/, "").trim())) return "";
+  const no = /\b(reject|opposed|against|never|refused|lost cause|impossible|overruled)\b/.test(text);
+  const yes = /\b(accept|support|prefer|preferred|wanted|favoured|favored|chose|implement)\b/.test(text);
+  if (no && yes) return "mixed";
+  if (no) return "no";
+  if (yes) return "yes";
+  return "note";
+}
+
+export function playerAgreements(person, players = []) {
+  const selfId = person?.id;
+  const camp = factionCamp(person);
+  const mine = statedPositions(person);
+  return players
+    .filter((other) => other?.id && other.id !== selfId)
+    .map((other) => {
+      const reasons = [];
+      if (camp && factionCamp(other) === camp) {
+        reasons.push(other.faction || person.faction || "Same camp");
+      }
+      const shared = [];
+      mine.forEach((row) => {
+        const theirs = statedPositions(other).find((item) => item.key === row.key);
+        if (!theirs) return;
+        const a = stancePolarity(row.value);
+        const b = stancePolarity(theirs.value);
+        if (a && b && a === b && a !== "mixed" && a !== "note") shared.push(row.label);
+      });
+      if (shared.length) reasons.push(shared.join(" · "));
+      return {
+        id: other.id,
+        name: playerDisplayName(other),
+        fullName: other.name,
+        faction: other.faction || "",
+        reasons,
+        score: (camp && factionCamp(other) === camp ? 2 : 0) + shared.length,
+      };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name, "en"));
 }
 
 export function eventCast(event, players, focusId = "") {
