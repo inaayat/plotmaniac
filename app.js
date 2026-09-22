@@ -1616,6 +1616,7 @@ function renderPerson() {
   const record = countryBySlug.get(person.id);
   const head = document.createElement("div");
   head.className = "focus-head";
+  head.appendChild(back);
   const face = avatar(person, "lg");
   if (record) face.classList.add(outlineClass(record));
   head.appendChild(face);
@@ -1663,12 +1664,13 @@ function renderPerson() {
   head.appendChild(copy);
 
   if (record) {
-    section.append(back, head, renderCountryHistory(record));
+    section.classList.add("lane-page");
+    section.append(head, renderCountryHistory(record));
     return section;
   }
   const theirs = events.filter((event) => event.people.includes(person.id));
   section.classList.add("lane-page");
-  section.append(back, head, renderRail(theirs, {
+  section.append(head, renderRail(theirs, {
     focusId: person.id,
     note: person.id === centerId
       ? (isCompact() ? "Every sourced beat, oldest at the top." : "Every sourced beat, oldest on the left.")

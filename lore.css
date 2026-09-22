@@ -1693,9 +1693,16 @@ body[data-view="relation"] .views button {
   flex-direction: column;
 }
 
-.lane-page .back {
+.lane-page .back,
+.focus-head .back,
+.relation-ride-head .back,
+button.back {
+  display: block;
+  width: max-content;
+  max-width: 100%;
   align-self: flex-start;
-  margin: 0 18px 4px;
+  margin: 0 0 6px;
+  text-align: left;
 }
 
 .lane-page .focus-head,
@@ -1735,7 +1742,10 @@ button.back,
 }
 
 button.back {
-  margin: 0 0 8px;
+  display: block;
+  width: max-content;
+  margin: 0 0 6px;
+  text-align: left;
 }
 
 button.back:hover,
@@ -1748,9 +1758,17 @@ button.back:hover,
 .focus-head,
 .timeline-head {
   display: flex;
+  flex-wrap: wrap;
   gap: 22px;
   align-items: center;
+  justify-content: flex-start;
   margin-bottom: 22px;
+  text-align: left;
+}
+
+.focus-head .back,
+.timeline-head .back {
+  flex: 1 0 100%;
 }
 
 .role {
@@ -2801,11 +2819,15 @@ body[data-view="timeline"] #footer-note {
   }
 
   body[data-view="person"] .back,
-  body[data-view="relation"] .back {
+  body[data-view="relation"] .back,
+  .drawer-close {
     position: static;
+    display: block;
+    width: max-content;
     margin: 0 0 4px;
     padding: 0;
     min-height: 0;
+    text-align: left;
     background: transparent;
   }
 
