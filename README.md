@@ -20,6 +20,19 @@ Check the archive with:
 node scripts/test-never-ending-internet-lore.mjs
 ```
 
+## Hosting
+
+Production is **GitHub Pages**, deployed from `main` by [`.github/workflows/pages.yml`](.github/workflows/pages.yml) (GitHub Actions only — feature branches do not publish).
+
+- **Custom domain:** [https://plotmaniac.com](https://plotmaniac.com) (`CNAME` in the repo root)
+- **Fallback until DNS points here:** [https://inaayat.github.io/plotmaniac/](https://inaayat.github.io/plotmaniac/)
+
+No build step: the workflow uploads the repository root as a static site (`index.html`, assets, and `data/`). Query-string routes such as `?plot=` work without server rewrites.
+
+**Vercel** was used earlier for hosting; it is deprecated for this project. You do not need a Vercel project to run or deploy Plotmaniac.
+
+First-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
 ## Plot templates
 
 Start here when adding a plot. Each template lists the `data/plots.json` fields the loader reads today, the files under `data/<id>/`, JSON shapes with short examples, UI behavior, and how to verify with the test script above.
