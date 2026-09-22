@@ -52,6 +52,7 @@ import {
   relationMoodLabel,
   relationRideAt,
   relationRideLayout,
+  relationRideLayoutForViewport,
   relationSentimentChart,
   relationTimelineHasTone,
   relationToneSeries,
@@ -1121,6 +1122,13 @@ assert.doesNotMatch(appSource, /rider-mx/, "ride rider is not hard-coded to Mexi
 assert.doesNotMatch(appSource, /#006847/, "ride rider does not paint Mexico green stripes");
 const ride = relationRideLayout(mexico.timeline);
 assert.ok(ride.width > 4000, "ride is wide enough to scroll");
+const wideRide = relationRideLayoutForViewport(mexico.timeline, 1400);
+const wideHalf = 700;
+const wideMax = wideRide.width - 1400;
+const wideFirst = Math.max(0, wideRide.points[0].x - wideHalf);
+const wideLast = Math.min(wideMax, wideRide.points.at(-1).x - wideHalf);
+assert.ok(Math.abs(wideFirst + wideHalf - wideRide.points[0].x) < 1, "ride can scroll to the first beat");
+assert.ok(Math.abs(wideLast + wideHalf - wideRide.points.at(-1).x) < 1, "ride can scroll to the last beat");
 assert.equal(ride.samples.length > ride.points.length, true);
 assert.ok(ride.samples.every((sample, index) => !index || sample.x >= ride.samples[index - 1].x - 0.01));
 const high = ride.points.find((point) => point.tone === 2);
@@ -2094,7 +2102,13 @@ assert.equal(
 );
 const gunView = fs.readFileSync(new URL("../gun-regulation-view.js", import.meta.url), "utf8");
 assert.equal(gunView.includes("State divergence"), false, "state divergence grid stays off the gun page");
-assert.equal(gunView.includes("relationRideLayout"), true, "gun board uses the relation timeline ride");
+assert.equal(gunView.includes("relationRideLayoutForViewport"), true, "gun board uses the relation timeline ride");
+assert.match(appSource, /relationRideLayoutForViewport/, "country timelines pad to the first and last beats");
+const hubSource = fs.readFileSync(new URL("../scotus-hub-view.js", import.meta.url), "utf8");
+assert.match(hubSource, /scotus-topic-icon/, "SCOTUS topics include an icon");
+scotusPlot.topics.forEach((topic) => {
+  assert.match(hubSource, new RegExp(`["']${topic.id}["']`), `${topic.id} has a topic icon`);
+});
 assert.match(css, /\.scotus-hub\s*\{[^}]*width:\s*100%/, "SCOTUS hub uses the page width");
 assert.match(
   css,

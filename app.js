@@ -31,7 +31,7 @@ import {
   relationRiderFlags,
   relationMoodLabel,
   relationRideAt,
-  relationRideLayout,
+  relationRideLayoutForViewport,
   relationSentimentChart,
   relationTimelineHasTone,
   resolvePlotView,
@@ -76,9 +76,11 @@ import {
 } from "./lane.js";
 import { parseRegulationParams } from "./gun-regulation-model.js";
 import { renderRegulationBoard, syncRegulationBoardDom } from "./gun-regulation-view.js";
+import { paintRelationRideFrame } from "./relation-ride-frame.js";
 import {
   renderScotusTopicHub,
   scotusTopicFromPlotAlias,
+  scotusTopicIcon,
   SCOTUS_GUN_TOPIC_ID,
 } from "./scotus-hub-view.js";
 
@@ -1218,7 +1220,7 @@ function renderRegulationSection() {
   const back = document.createElement("button");
   back.type = "button";
   back.className = "back regulation-back";
-  back.textContent = "← SCOTUS topics";
+  back.append(scotusTopicIcon("topics"), document.createTextNode("SCOTUS topics"));
   back.addEventListener("click", () => {
     state.topic = "";
     state.eventId = "";
@@ -1770,7 +1772,7 @@ function renderRelationPage() {
 }
 
 function renderRelationRide(record) {
-  const layout = relationRideLayout(record.timeline);
+  let layout = relationRideLayoutForViewport(record.timeline, window.innerWidth);
   const root = document.createElement("div");
   root.className = "relation-ride";
   const readout = document.createElement("div");
@@ -1796,9 +1798,8 @@ function renderRelationRide(record) {
   scroller.setAttribute("aria-label", "Relationship timeline. Scroll sideways.");
   const track = document.createElement("div");
   const cardTop = layout.pathHeight + 16;
+  const cardBand = 150;
   track.className = "relation-ride-track";
-  track.style.width = `${layout.width}px`;
-  track.style.height = `${cardTop + 150}px`;
   track.style.background = `linear-gradient(180deg, rgba(125, 206, 160, 0.16), rgba(224, 106, 98, 0.16) ${layout.pathHeight}px, transparent ${layout.pathHeight}px)`;
 
   const svg = document.createElementNS(SVG_NS, "svg");
@@ -1830,24 +1831,25 @@ function renderRelationRide(record) {
   });
   track.appendChild(svg);
 
-  const cards = layout.points.map((point) => {
+  const cards = layout.points.map((point, index) => {
     const card = document.createElement("button");
     card.type = "button";
     card.className = `relation-ride-card ${relationToneClass(point.tone)}`;
-    card.style.left = `${point.x}px`;
-    card.style.top = `${cardTop}px`;
-    card.style.setProperty("--stem", `${Math.max(18, cardTop - point.y)}px`);
     const year = document.createElement("span");
     year.textContent = String(record.timeline[point.index]?.year || point.year);
     const text = document.createElement("p");
     text.textContent = point.event;
     card.append(year, text);
     card.addEventListener("click", () => {
-      scroller.scrollTo({ left: point.x - scroller.clientWidth / 2, behavior: "smooth" });
+      const here = layout.points[index];
+      scroller.scrollTo({ left: Math.max(0, here.x - scroller.clientWidth / 2), behavior: "smooth" });
     });
     track.appendChild(card);
     return card;
   });
+  const marks = [...svg.querySelectorAll(".relation-ride-mark")];
+  const frame = { track, svg, sky, zero, trail, marks, cards, cardTop, cardBand };
+  paintRelationRideFrame({ ...frame, layout });
 
   scroller.appendChild(track);
   const rider = renderRelationRider(record);
@@ -1880,7 +1882,41 @@ function renderRelationRide(record) {
     event.preventDefault();
     scroller.scrollLeft += event.deltaY;
   }, { passive: false });
-  requestAnimationFrame(paint);
+  const refit = () => {
+    if (!scroller.isConnected) return;
+    const clientWidth = scroller.clientWidth || window.innerWidth;
+    const tallest = cards.reduce((max, card) => Math.max(max, card.offsetHeight), 0);
+    const available = scroller.clientHeight;
+    const pathHeight = available && tallest
+      ? Math.max(140, Math.min(320, available - tallest - 36))
+      : 320;
+    const next = relationRideLayoutForViewport(record.timeline, clientWidth, { pathHeight });
+    frame.cardTop = next.pathHeight + 16;
+    if (next.padX === layout.padX && next.width === layout.width && next.pathHeight === layout.pathHeight) return;
+    const focusX = scroller.scrollLeft + clientWidth / 2;
+    let nearest = 0;
+    layout.points.forEach((point, index) => {
+      if (Math.abs(point.x - focusX) < Math.abs(layout.points[nearest].x - focusX)) nearest = index;
+    });
+    layout = next;
+    track.style.background = `linear-gradient(180deg, rgba(125, 206, 160, 0.16), rgba(224, 106, 98, 0.16) ${layout.pathHeight}px, transparent ${layout.pathHeight}px)`;
+    paintRelationRideFrame({ ...frame, layout });
+    const point = layout.points[nearest];
+    if (point) scroller.scrollLeft = Math.max(0, point.x - clientWidth / 2);
+  };
+  const onResize = () => {
+    if (!scroller.isConnected) {
+      window.removeEventListener("resize", onResize);
+      return;
+    }
+    refit();
+    paint();
+  };
+  window.addEventListener("resize", onResize);
+  requestAnimationFrame(() => {
+    refit();
+    paint();
+  });
   const sources = renderCountrySources(record);
   if (sources) root.appendChild(sources);
   return root;

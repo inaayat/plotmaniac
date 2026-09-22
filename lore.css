@@ -4083,12 +4083,68 @@ body[data-board="regulation"] .regulation-board.relation-ride {
   min-height: 0;
 }
 
+body[data-board="regulation"][data-view="web"] .mast {
+  padding-top: 6px;
+}
+
+body[data-board="regulation"][data-view="web"] h1 {
+  font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+}
+
+body[data-board="regulation"][data-view="web"] .views {
+  margin-top: 4px;
+}
+
 body[data-board="regulation"] .regulation-back {
-  margin: 0 18px 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  margin: 0 18px 2px;
+  padding: 4px 10px;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body[data-board="regulation"] .regulation-back svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  color: var(--gold);
 }
 
 .regulation-kind-bar {
-  padding: 0 18px 6px;
+  padding: 0 18px 4px;
+}
+
+body[data-board="regulation"] .relation-ride-readout {
+  gap: 2px 12px;
+  padding-bottom: 4px;
+}
+
+body[data-board="regulation"] .relation-ride-year {
+  font-size: 1.35rem;
+}
+
+body[data-board="regulation"] .regulation-change {
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+body[data-board="regulation"] .relation-ride-stage {
+  min-height: 0;
+}
+
+body[data-board="regulation"] .relation-ride-card {
+  width: 236px;
+  margin-left: -118px;
+  overflow: visible;
+}
+
+body[data-board="regulation"] .relation-ride-card p {
+  white-space: normal;
+  overflow: visible;
 }
 
 .regulation-ride-readout {
@@ -4339,19 +4395,37 @@ body[data-board="scotus"][data-view="web"] .app {
 
 .scotus-topic-tile {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
   width: 100%;
   min-width: 0;
   text-align: left;
   white-space: normal;
-  padding: 14px 16px;
+  padding: 8px 12px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.02);
-  min-height: 88px;
+}
+
+.scotus-topic-icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+}
+
+.scotus-topic-tile.is-soon .scotus-topic-icon {
+  color: var(--muted);
+}
+
+.scotus-topic-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .scotus-topic-tile.is-live {
@@ -4372,10 +4446,11 @@ body[data-board="scotus"][data-view="web"] .app {
 
 .scotus-topic-label {
   min-width: 0;
-  font-size: 0.82rem;
-  line-height: 1.35;
+  font-size: 0.78rem;
+  line-height: 1.3;
   color: var(--ink);
-  overflow-wrap: anywhere;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 @media (min-width: 980px) {
