@@ -9,6 +9,8 @@ import {
   expandedSummary,
   filterEvents,
   findPlot,
+  plotCardFace,
+  plotMatchesQuery,
   firstLoadCountries,
   groupCountriesByStatus,
   hubCenterId,
@@ -41,6 +43,7 @@ import {
   warOverlapsSpan,
   warsInSpan,
   warsForCountry,
+  compareWarsByStart,
   warCountryNote,
   parseWarSpan,
   warPartyLine,
@@ -80,6 +83,7 @@ const ZOOM_MIN = 0.08;
 const ZOOM_MAX = 2.5;
 const COMPACT_MQ = `(max-width: ${COMPACT_MAX_WIDTH}px)`;
 const VIEW_PREF_KEY = "plotmaniac-view";
+const PICK_LEDE = "Turn rabbit holes into clickable plots: maps, webs, lists, timelines.";
 let laneZoom = 1;
 let pendingLaneScroll = null;
 let pendingLaneFocus = "";
@@ -111,7 +115,7 @@ function labelViews() {
   const web = $("view-web");
   const timeline = $("view-timeline");
   if (!web || !timeline) return;
-  web.textContent = history ? "People" : "The web";
+  web.textContent = history ? "Map + people" : "The web";
   timeline.textContent = "Full timeline";
 }
 
@@ -245,6 +249,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   $("home-link").textContent = "Plotmaniac";
   document.title = `Plotmaniac — ${plot.title}`;
   $("plot-select").value = plot.id;
+  $("plot-select").choicePaint?.();
   fillHubSelect();
   document.body.dataset.images = plot.images || "";
   document.body.dataset.board = plot.arrangement === "historical-map"
@@ -387,8 +392,10 @@ function showPicker({ history = "push" } = {}) {
   state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
   document.title = "Plotmaniac";
   $("plot-title").textContent = "Plotmaniac";
-  $("plot-lede").textContent = "Pick a person, a country, a history, or the map of wars.";
+  $("plot-lede").textContent = PICK_LEDE;
   $("home-link").textContent = "Field guide";
+  const search = $("plot-search");
+  if (search) search.value = "";
   $("footer-note").textContent = "Plotmaniac";
   $("credit-list").replaceChildren();
   $("credits").hidden = true;
@@ -396,6 +403,7 @@ function showPicker({ history = "push" } = {}) {
   document.body.dataset.images = "";
   document.body.dataset.board = "";
   $("plot-select").value = "";
+  $("plot-select").choicePaint?.();
   fillHubSelect();
   $("view-web").classList.remove("is-active");
   $("view-timeline").classList.remove("is-active");
@@ -410,33 +418,214 @@ function renderChooser() {
   app.replaceChildren();
   const list = document.createElement("ul");
   list.className = "plot-cards";
+  list.setAttribute("aria-label", "Plots");
   plots.forEach((item) => {
     const li = document.createElement("li");
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `plot-card${item.images === "flags" ? "" : " is-person"}`;
-    button.title = item.lede;
-    button.setAttribute("aria-label", `${item.title}. ${item.lede}`);
+    const face = plotCardFace(item);
+    const card = document.createElement("a");
+    card.className = `plot-card${face === "person" ? " is-person" : face === "map" ? " is-map" : ""}`;
+    card.href = `?plot=${encodeURIComponent(item.id)}`;
+    card.dataset.plot = item.id;
+    card.title = item.lede;
+    card.setAttribute("aria-label", `${item.kicker || "Plot"}: ${item.title}. ${item.cardLine || item.lede}`);
     const kicker = document.createElement("span");
     kicker.className = "kicker";
     kicker.textContent = item.kicker || "Plot";
-    button.appendChild(kicker);
     if (item.cardImage) {
       const image = document.createElement("img");
       image.src = item.cardImage;
       image.alt = "";
-      button.appendChild(image);
+      card.appendChild(image);
+    } else {
+      const mono = document.createElement("span");
+      mono.className = "mono";
+      mono.setAttribute("aria-hidden", "true");
+      mono.textContent = (item.title || "?").replace(/[^a-z0-9]/gi, "").slice(0, 1).toUpperCase() || "?";
+      card.appendChild(mono);
     }
     const title = document.createElement("strong");
     title.textContent = item.title;
     const copy = document.createElement("p");
-    copy.textContent = item.lede;
-    button.append(title, copy);
-    button.addEventListener("click", () => showPlot(item.id, { history: "push" }));
-    li.appendChild(button);
+    copy.textContent = item.cardLine || item.lede;
+    card.append(kicker, title, copy);
+    card.addEventListener("click", (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button) return;
+      event.preventDefault();
+      showPlot(item.id, { history: "push" });
+    });
+    li.appendChild(card);
     list.appendChild(li);
   });
+  const empty = document.createElement("li");
+  empty.className = "gallery-empty";
+  empty.id = "gallery-empty";
+  empty.hidden = true;
+  empty.textContent = "No plots match.";
+  list.appendChild(empty);
   app.appendChild(list);
+  filterGallery();
+}
+
+function filterGallery() {
+  const input = $("plot-search");
+  const empty = $("gallery-empty");
+  const cards = [...document.querySelectorAll(".plot-card[data-plot]")];
+  if (!input || !cards.length) return;
+  let visible = 0;
+  cards.forEach((card) => {
+    const item = findPlot(plots, card.dataset.plot);
+    const match = item ? plotMatchesQuery(item, input.value) : false;
+    card.hidden = !match;
+    if (card.parentElement) card.parentElement.hidden = !match;
+    if (match) visible += 1;
+  });
+  if (empty) empty.hidden = visible !== 0;
+}
+
+const openChoices = new Set();
+let choiceChromeBound = false;
+
+function closeChoices(except) {
+  openChoices.forEach((close) => {
+    if (close !== except) close();
+  });
+}
+
+function bindChoiceChrome() {
+  if (choiceChromeBound) return;
+  choiceChromeBound = true;
+  document.addEventListener("pointerdown", (event) => {
+    if (event.target.closest(".choice")) return;
+    closeChoices();
+  });
+}
+
+function enhanceSelect(select) {
+  if (!select || select.dataset.enhanced) return;
+  select.dataset.enhanced = "true";
+  bindChoiceChrome();
+  const wrap = select.closest(".plot-switch") || select.parentElement;
+  wrap.classList.add("choice");
+  select.classList.add("choice-native");
+  select.setAttribute("tabindex", "-1");
+  select.setAttribute("aria-hidden", "true");
+  const button = document.createElement("button");
+  button.type = "button";
+  button.id = `${select.id || "choice"}-button`;
+  button.className = "choice-button";
+  button.setAttribute("aria-haspopup", "listbox");
+  button.setAttribute("aria-expanded", "false");
+  const menu = document.createElement("ul");
+  menu.id = `${select.id || "choice"}-menu`;
+  menu.className = "choice-menu";
+  menu.setAttribute("role", "listbox");
+  menu.hidden = true;
+  button.setAttribute("aria-controls", menu.id);
+  wrap.htmlFor = button.id;
+  const frame = document.createElement("span");
+  frame.className = "choice-frame";
+  select.after(frame);
+  frame.append(select, button, menu);
+
+  const optionsOf = () => [...select.options].map((option) => ({
+    value: option.value,
+    label: option.textContent,
+    disabled: option.disabled,
+  }));
+
+  const currentLabel = () => {
+    const chosen = select.selectedOptions[0];
+    return chosen?.textContent || optionsOf()[0]?.label || "Choose";
+  };
+
+  const paint = () => {
+    const items = optionsOf();
+    button.textContent = currentLabel();
+    button.disabled = !items.length || wrap.hidden;
+    menu.replaceChildren();
+    items.forEach((item, index) => {
+      const row = document.createElement("li");
+      const choice = document.createElement("button");
+      choice.type = "button";
+      choice.className = "choice-option";
+      choice.setAttribute("role", "option");
+      choice.dataset.value = item.value;
+      choice.setAttribute("aria-selected", String(item.value === select.value));
+      choice.textContent = item.label;
+      choice.disabled = item.disabled;
+      choice.addEventListener("click", () => pick(item.value));
+      row.appendChild(choice);
+      menu.appendChild(row);
+      if (item.value === select.value) menu.dataset.active = String(index);
+    });
+  };
+
+  const close = () => {
+    menu.hidden = true;
+    button.setAttribute("aria-expanded", "false");
+    wrap.classList.remove("is-open");
+    openChoices.delete(close);
+  };
+
+  const open = () => {
+    if (button.disabled) return;
+    closeChoices(close);
+    paint();
+    menu.hidden = false;
+    button.setAttribute("aria-expanded", "true");
+    wrap.classList.add("is-open");
+    openChoices.add(close);
+    const current = menu.querySelector('[aria-selected="true"]');
+    current?.focus();
+  };
+
+  const pick = (value) => {
+    if (select.value !== value) {
+      select.value = value;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    paint();
+    close();
+    button.focus();
+  };
+
+  button.addEventListener("click", () => {
+    if (menu.hidden) open();
+    else close();
+  });
+  button.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      open();
+    }
+  });
+  menu.addEventListener("keydown", (event) => {
+    const rows = [...menu.querySelectorAll(".choice-option")];
+    const at = rows.indexOf(document.activeElement);
+    if (event.key === "Escape") {
+      event.preventDefault();
+      close();
+      button.focus();
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      rows[Math.min(rows.length - 1, at + 1)]?.focus();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      rows[Math.max(0, at - 1)]?.focus();
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      rows[0]?.focus();
+    } else if (event.key === "End") {
+      event.preventDefault();
+      rows.at(-1)?.focus();
+    }
+  });
+  select.addEventListener("change", paint);
+  const watch = new MutationObserver(paint);
+  watch.observe(select, { childList: true, subtree: true, characterData: true });
+  watch.observe(wrap, { attributes: true, attributeFilter: ["hidden"] });
+  select.choicePaint = paint;
+  paint();
 }
 
 function bindChrome() {
@@ -457,6 +646,8 @@ function bindChrome() {
     showPlot(id, { history: "push" });
   });
   const hubSelect = $("hub-select");
+  enhanceSelect(select);
+  enhanceSelect(hubSelect);
   hubSelect.addEventListener("change", () => {
     const id = hubSelect.value;
     if (!plot || id === state.hub) return;
@@ -472,7 +663,9 @@ function bindChrome() {
     if (!plot || plots.length < 2) return;
     showPicker({ history: "push" });
   });
-  document.querySelectorAll(".views button").forEach((button) => {
+  const plotSearch = $("plot-search");
+  if (plotSearch) plotSearch.addEventListener("input", filterGallery);
+  document.querySelectorAll(".views > button[data-view]").forEach((button) => {
     button.addEventListener("click", () => {
       if (plot?.arrangement === "historical-map") {
         state.view = button.dataset.view === "timeline" ? "timeline" : "web";
@@ -489,6 +682,26 @@ function bindChrome() {
     });
   });
   window.addEventListener("keydown", (event) => {
+    if (state.view === "pick") {
+      const input = $("plot-search");
+      if (input && event.key === "/" && document.activeElement !== input && !event.metaKey && !event.ctrlKey && !event.altKey) {
+        event.preventDefault();
+        input.focus();
+        return;
+      }
+      if (input && event.key === "Escape" && document.activeElement === input) {
+        event.preventDefault();
+        input.value = "";
+        filterGallery();
+        input.blur();
+        return;
+      }
+    }
+    if (event.key === "Escape" && openChoices.size) {
+      closeChoices();
+      event.preventDefault();
+      return;
+    }
     if (event.key === "Escape" && plot?.arrangement === "historical-map" && state.view === "person") {
       state.view = "web";
       state.person = ALL;
@@ -535,6 +748,7 @@ function fillHubSelect() {
   select.replaceChildren();
   if (!hubs.length) {
     wrap.hidden = true;
+    select.choicePaint?.();
     return;
   }
   const none = document.createElement("option");
@@ -553,6 +767,7 @@ function fillHubSelect() {
   });
   select.value = state.hub === ALL || (state.hub && hubs.some((hub) => hub.id === state.hub)) ? state.hub : "";
   wrap.hidden = false;
+  select.choicePaint?.();
 }
 
 function activeHub() {
@@ -607,6 +822,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
           state.view = "person";
           state.person = id;
           render({ push: true });
+          window.scrollTo(0, 0);
         },
         onOpenTimeline(id) {
           state.view = "timeline";
@@ -624,6 +840,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
     } else {
       partitionMount.goTo(state.eventId);
     }
+    if (state.view === "person") window.scrollTo(0, 0);
     if (push || replace) writeUrl(replace);
     return;
   }
@@ -648,8 +865,9 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
 function renderWeb() {
   const hubWeb = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2);
   const compactMap = isCompact() && plot.arrangement !== "camps" && plot.arrangement !== "topics";
+  const compactTopics = isCompact() && plot.arrangement === "topics";
   const section = document.createElement("section");
-  section.className = `web${compactMap ? " is-compact-map" : ""}${hubWeb ? " is-hub-field" : ""}`;
+  section.className = `web${compactMap ? " is-compact-map" : ""}${compactTopics ? " is-compact-topics" : ""}${hubWeb ? " is-hub-field" : ""}`;
   const key = document.createElement("ul");
   key.className = "web-key";
   const keyItems = [
@@ -681,6 +899,8 @@ function renderWeb() {
     "aria-label",
     compactMap
       ? "Friends and foes map. Drag to look around. Names are listed below."
+      : compactTopics
+        ? "Policies for this year, grouped by topic. Tap one to read the stance."
       : hubWeb
         ? (plot.hubAriaLabel || "Hub web. Shared people sit in the center, hubs just outside. None shows that shared web. All shows every person on it. One hub shows only that hub's own people. The view zooms to fit the current focus.")
         : "Friends and foes map",
@@ -700,7 +920,7 @@ function renderWeb() {
     section.appendChild(hint);
   }
   section.append(scroller);
-  if (compactMap) {
+  if (compactMap || compactTopics) {
     const roster = document.createElement("div");
     roster.className = "web-people";
     section.appendChild(roster);
@@ -1674,6 +1894,11 @@ function paintWeb(stage, { animate = true } = {}) {
     stage.style.width = `${size}px`;
     stage.style.height = `${size}px`;
     stage.classList.add("is-compact-map");
+  } else if (compact && topics) {
+    width = 320;
+    height = 320;
+    stage.style.width = "";
+    stage.style.height = "";
   } else {
     if (bounds.width < 2 || bounds.height < 2) {
       requestAnimationFrame(() => paintWeb(stage, { animate }));
@@ -1878,13 +2103,26 @@ function applyHubCamera(stage, layout, { animate = true } = {}) {
   hubCamera = frame;
 }
 
+function topicPeopleGroups(nodes, byName) {
+  const topics = plot.topics || [];
+  return topics.map((topic) => {
+    const list = nodes
+      .filter((node) => node.topic === topic.id && node.camp !== "topic" && node.camp !== "center")
+      .slice()
+      .sort(byName);
+    return [topic.id, topic.label, list];
+  }).filter(([, , list]) => list.length);
+}
+
 function paintWebPeople(root, layout) {
   const byName = (a, b) => String(a.name).localeCompare(String(b.name), "en", { sensitivity: "base" });
-  const groups = [
-    ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends", layout.nodes.filter((node) => node.camp === "friend").slice().sort(byName)],
-    ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes", layout.nodes.filter((node) => node.camp === "enemy").slice().sort(byName)],
-  ];
-  if (plot.includeOrbit) {
+  const groups = plot.arrangement === "topics"
+    ? topicPeopleGroups(layout.nodes, byName)
+    : [
+      ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends", layout.nodes.filter((node) => node.camp === "friend").slice().sort(byName)],
+      ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes", layout.nodes.filter((node) => node.camp === "enemy").slice().sort(byName)],
+    ];
+  if (plot.arrangement !== "topics" && plot.includeOrbit) {
     groups.push(["orbit", plot.orbitLabel || "Around the show", layout.nodes.filter((node) => node.camp === "orbit").slice().sort(byName)]);
   }
   root.replaceChildren();
@@ -1900,13 +2138,13 @@ function paintWebPeople(root, layout) {
       const item = document.createElement("li");
       const button = document.createElement("button");
       button.type = "button";
-      button.className = `web-person camp-${camp}`;
+      button.className = `web-person camp-${person.camp || camp}`;
       const name = document.createElement("span");
       name.className = "chip-name";
       name.textContent = person.name;
       button.append(avatar(person, "sm"), name);
       const beats = person.beats ? ` · ${person.beats} ${person.beats === 1 ? "beat" : "beats"}` : "";
-      button.setAttribute("aria-label", `${person.name}, ${campLabel(camp)}${beats}`);
+      button.setAttribute("aria-label", `${person.name}, ${campLabel(person.camp || camp) || label}${beats}`);
       button.addEventListener("click", () => openPerson(person.id));
       item.appendChild(button);
       chips.appendChild(item);
@@ -2872,7 +3110,7 @@ function paintWars() {
   header.appendChild(sources);
   const stack = document.createElement("div");
   stack.className = "wars-cards";
-  const ordered = chosenWars.slice().sort((a, b) => a.name.localeCompare(b.name, "en"));
+  const ordered = chosenWars.slice().sort(compareWarsByStart);
   if (!ordered.length) {
     const empty = document.createElement("p");
     empty.className = "wars-empty";

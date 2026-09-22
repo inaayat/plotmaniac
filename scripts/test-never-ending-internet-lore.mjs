@@ -1,6 +1,17 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { buildFrames, chronoKey, sourceRecords } from "../partition-model.js";
+import {
+  buildFrames,
+  chronoKey,
+  eventCast,
+  playerAllegiance,
+  decisionMakers,
+  playerDisplayName,
+  playerIncentives,
+  playerAgreements,
+  sourceRecords,
+  statedPositions,
+} from "../partition-model.js";
 import { flows, markers, outlines, regions, seams } from "../partition-geography.js";
 import {
   ALL,
@@ -11,6 +22,8 @@ import {
   expandedSummary,
   filterEvents,
   findPlot,
+  plotCardFace,
+  plotMatchesQuery,
   firstLoadCountries,
   graphLayout,
   groupCountriesByStatus,
@@ -56,6 +69,7 @@ import {
   parseWarSpan,
   warsInSpan,
   warsForCountry,
+  compareWarsByStart,
   warCountryNote,
   opposingPairs,
   warsInYear,
@@ -171,6 +185,26 @@ assert.ok(relationEvents(firstRelation, events).every((event) =>
 
 const youtubers = plots.plots.find((item) => item.id === "youtubers");
 assert.ok(youtubers, "youtubers plot is registered");
+assert.deepEqual(plots.plots.map((item) => item.id), [
+  "youtubers",
+  "barack-obama",
+  "jd-vance",
+  "united-states",
+  "partition-of-india",
+  "wars",
+], "homepage gallery order");
+for (const item of plots.plots) {
+  assert.ok(item.kicker, `${item.id} needs a gallery kicker`);
+  assert.ok(item.cardLine, `${item.id} needs a compact card line`);
+}
+assert.equal(plotCardFace(youtubers), "person");
+assert.equal(plotCardFace(plots.plots.find((item) => item.id === "united-states")), "flag");
+assert.equal(plotCardFace(plots.plots.find((item) => item.id === "partition-of-india")), "mono");
+assert.equal(plotCardFace(plots.plots.find((item) => item.id === "wars")), "map");
+assert.equal(plotMatchesQuery(youtubers, ""), true);
+assert.equal(plotMatchesQuery(youtubers, "Jeffree"), true);
+assert.equal(plotMatchesQuery(youtubers, "pakistan"), false);
+assert.equal(plotMatchesQuery(plots.plots.find((item) => item.id === "partition-of-india"), "1947"), true);
 assert.equal(findPlot(plots.plots, "h3")?.id, "youtubers");
 assert.equal(findPlot(plots.plots, "youtubers")?.id, "youtubers");
 assert.equal(youtubers.centerId, "ethan-klein");
@@ -966,14 +1000,27 @@ assert.ok(europeStatus.friend.length > 0);
 const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
 assert.match(html, /viewport-fit=cover/, "mobile viewport should include safe-area");
 assert.match(html, /id="hub-select"/, "hub focus control");
+assert.match(html, /Gallery of obsessions/, "pick view eyebrow");
+assert.match(html, /id="plot-search"/, "homepage plot search");
+assert.match(html, /Turn rabbit holes into clickable plots: maps, webs, lists, timelines\./, "homepage tagline");
 const css = fs.readFileSync(new URL("../lore.css", import.meta.url), "utf8");
 assert.match(css, /max-width: 768px/, "compact layout breakpoint");
+assert.match(css, /\.gallery-search/, "homepage search is an underline field");
+assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "desktop gallery is 3 columns");
+assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?6\.4rem/, "pick view keeps the large title");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
+const partitionViewSource = fs.readFileSync(new URL("../partition-view.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
+assert.match(appSource, /function filterGallery/, "homepage search filters plot cards");
+assert.match(appSource, /function enhanceSelect/, "plot and focus use themed choice menus");
+assert.match(css, /\.choice-menu/, "choice menus match the ink and gold chrome");
 assert.match(appSource, /textContent = "All"/, "focus can show every YouTuber");
 assert.match(appSource, /function applyHubCamera/, "the web eases its zoom to the current focus");
+assert.match(appSource, /Map \+ people/, "Partition navigation names its map and people view");
+assert.match(partitionViewSource, /Who wanted what — and who made the call/, "Partition overview explains decision-makers");
+assert.match(partitionViewSource, /Show Kashmir claims overlay/, "claims control explains its effect");
 assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");
 assert.match(appSource, /Shared people sit in the center/, "youtubers web describes the shared center");
 assert.match(css, /\.web-stage \.node-name/, "web names stay inside their node");
@@ -1647,6 +1694,7 @@ assert.ok(vanceEvents.filter((event) => event.people.includes("donald-trump")).l
 
 const partition = plots.plots.find((item) => item.id === "partition-of-india");
 assert.equal(partition.arrangement, "historical-map");
+assert.match(partition.lede, /Click a region.*year slider/i);
 const partitionRef = readJson("../data/partition-of-india/reference.json");
 assert.equal(partitionRef.schemaVersion, "1.1.0");
 assert.equal(partitionRef.keyPlayers.length, 36);
@@ -1697,6 +1745,25 @@ const reunited = partitionFrames.find((frame) => frame.id === "evt-1911-bengal-r
 assert.equal(reunited.visual.seams.bengal, "off");
 assert.equal(reunited.visual.fills["bengal-east"], "raj");
 assert.equal(partitionFrames.every((frame) => frame.visual.camera === "all"), true);
+const curzon = partitionRef.keyPlayers.find((player) => player.id === "curzon");
+const jinnah = partitionRef.keyPlayers.find((player) => player.id === "jinnah");
+const decisionIds = decisionMakers(partitionRef, partitionRef.keyPlayers);
+assert.deepEqual(decisionIds, ["mountbatten", "patel", "nehru", "jinnah", "radcliffe", "tara"]);
+assert.ok(playerAgreements(partitionRef.keyPlayers.find((player) => player.id === "patel"), partitionRef.keyPlayers)
+  .some((person) => person.id === "nehru"), "Patel should show an aligned Congress colleague");
+assert.equal(playerDisplayName(curzon), "George Nathaniel Curzon");
+assert.equal(playerAllegiance(curzon).faction, "British Raj");
+assert.match(playerAllegiance(curzon).line, /British Raj/);
+assert.equal(playerIncentives(curzon).wanted.includes("Administrative reform"), true);
+assert.equal(statedPositions(curzon).some((row) => /N\/A/i.test(row.value)), false);
+assert.ok(statedPositions(curzon).some((row) => row.key === "punjabAndBengalDivision"));
+const bengal = partitionFrames.find((frame) => frame.id === "evt-1905-bengal");
+const playersById = new Map(partitionRef.keyPlayers.map((player) => [player.id, player]));
+const bengalCast = eventCast(bengal, playersById, "curzon");
+assert.equal(bengalCast[0].id, "curzon");
+assert.equal(bengalCast[0].focus, true);
+assert.match(bengalCast[0].action, /Eastern Bengal/);
+assert.match(playerIncentives(jinnah).line, /\S/);
 
 function ringSpan(polygons) {
   const points = polygons.flat(2);
@@ -1759,6 +1826,14 @@ assert.deepEqual(parseWarSpan(null, null, warsPlot.year, ""), { from: 2026, to: 
 const early = warsInSpan(warArchive.conflicts, 2003, 2011);
 assert.ok(early.wars.some((war) => war.id === iraq.id));
 assert.equal(early.wars.some((war) => war.name === "Russian invasion of Ukraine"), false);
+const listed = early.wars.slice().sort(compareWarsByStart);
+assert.ok(listed.every((war, index) => index === 0 || war.start <= listed[index - 1].start));
+assert.deepEqual(
+  [{ name: "Beta", start: 2004 }, { name: "Alpha", start: 2004 }, { name: "Zed", start: 2008 }]
+    .sort(compareWarsByStart)
+    .map((war) => war.name),
+  ["Zed", "Alpha", "Beta"],
+);
 const american = warsForCountry(early.wars, "US");
 assert.ok(american.some((war) => war.id === iraq.id));
 assert.match(warCountryNote(iraq, "US", warArchive.countries), /Against Iraq/);

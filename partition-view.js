@@ -13,7 +13,20 @@ import {
   ringPath,
   seams,
 } from "./partition-geography.js";
-import { buildFrames, chronoKey, kashmirClaimsNote, regionCaption, sourceRecords } from "./partition-model.js";
+import {
+  buildFrames,
+  chronoKey,
+  eventCast,
+  kashmirClaimsNote,
+  playerAllegiance,
+  playerDisplayName,
+  playerIncentives,
+  regionCaption,
+  sourceRecords,
+  statedPositions,
+  playerAgreements,
+  decisionMakers,
+} from "./partition-model.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const POLICY_STATES = new Set(["ps-mountbatten-advice", "ps-patel-menon-integration"]);
@@ -30,14 +43,6 @@ const TICKS = [
   ["frame-bangladesh", "1971"],
   ["frame-present", "Now"],
 ];
-
-const POSITION_LABELS = {
-  unitedIndia: "United India",
-  pakistanOrMuslimState: "Pakistan or a Muslim state",
-  populationExchange: "Population exchange",
-  punjabAndBengalDivision: "Punjab and Bengal",
-  twoNationTheory: "Two-nation theory",
-};
 
 function el(name, className, text) {
   const node = document.createElement(name);
@@ -65,7 +70,6 @@ export function mountPartition(root, reference, {
   const frames = buildFrames(reference);
   const players = new Map(reference.keyPlayers.map((player) => [player.id, player]));
   const princes = reference.princelyStateActors.filter((entry) => !POLICY_STATES.has(entry.id));
-  const authors = reference.rolesDelineationAndLegacyToPresent?.attributionGuide?.playerIdCrosswalk?.mainAuthorsKeyPlayerIds || [];
   let index = Math.max(0, frames.findIndex((frame) => frame.id === frameId));
   let selectedRegion = "";
   let claimsOn = false;
@@ -74,7 +78,10 @@ export function mountPartition(root, reference, {
   shell.setAttribute("aria-label", "Partition of India");
   root.appendChild(shell);
 
-  if (view === "person" && players.has(personId)) renderPerson(players.get(personId));
+  if (view === "person" && players.has(personId)) {
+    renderPerson(players.get(personId));
+    revealPersonTop();
+  }
   else if (view === "timeline") renderTimeline();
   else renderOverview();
 
@@ -114,8 +121,9 @@ export function mountPartition(root, reference, {
     const mapWrap = el("div", "partition-map-wrap");
     const svg = buildMap();
     const legend = buildLegend();
+    const instruction = el("p", "partition-map-instruction", "Click a region to inspect it. Use the year slider to replay the map; the people and decisions are below.");
     const note = el("p", "partition-legend-note", "Coastlines follow the modern outlines of India, Pakistan, and Bangladesh. Nepal and Bhutan stay on the map so the land does not look broken.");
-    mapWrap.append(svg, legend, note);
+    mapWrap.append(svg, instruction, legend, note);
 
     const beat = el("div", "partition-beat");
     const scrubber = buildScrubber();
@@ -158,18 +166,20 @@ export function mountPartition(root, reference, {
 
   function paintCast(cast) {
     cast.replaceChildren();
-    cast.appendChild(el("p", "eyebrow", "Key players"));
-    cast.appendChild(el("h2", "", "Everyone who shaped the decision"));
-    cast.appendChild(el("p", "rail-note", "All of them are on this page. Open a person to read the timeline of what they did."));
-    const authorIds = authors.filter((id) => players.has(id));
-    const rest = [...players.keys()].filter((id) => !authorIds.includes(id));
+    cast.appendChild(el("p", "eyebrow", "The decision"));
+    cast.appendChild(el("h2", "", "Who wanted what — and who made the call"));
+    cast.appendChild(el("p", "rail-note", "There was no single decider. These six actors set, accepted, negotiated, or drew the June–August 1947 settlement. Open a person for their full record."));
+    const decisionIds = decisionMakers(reference, players);
+    const decisionSet = new Set(decisionIds);
+    const rest = [...players.keys()].filter((id) => !decisionSet.has(id));
     rest.sort((a, b) => players.get(a).name.localeCompare(players.get(b).name, "en"));
-    cast.appendChild(playerBlock("Who drew the map", authorIds));
-    cast.appendChild(playerBlock("Also in the record", rest));
+    cast.appendChild(playerBlock("Who made the call", decisionIds, { showWanted: true }));
+    cast.appendChild(playerBlock("Other voices in the record", rest));
   }
 
-  function playerBlock(heading, ids) {
+  function playerBlock(heading, ids, { showWanted = false } = {}) {
     const block = el("section", "partition-player-block");
+    block.classList.toggle("has-wants", showWanted);
     block.appendChild(el("h3", "", heading));
     const grid = el("ul", "partition-cast");
     const acting = new Set(frame().playerIds);
@@ -180,10 +190,18 @@ export function mountPartition(root, reference, {
       const button = el("button", `partition-card${acting.has(id) ? " is-acting" : ""}`);
       button.type = "button";
       button.dataset.player = id;
-      button.append(
-        portraitMark(person.name, portraits[id]),
+      const copy = el("span", "partition-card-copy");
+      copy.append(
         el("strong", "", person.name),
         el("em", "", person.faction || person.roles?.[0] || ""),
+      );
+      if (showWanted) {
+        const wanted = playerIncentives(person).wanted[0] || "No separate aim is recorded.";
+        copy.appendChild(el("span", "partition-card-want", `Wanted: ${wanted}`));
+      }
+      button.append(
+        portraitMark(person.name, portraits[id]),
+        copy,
       );
       button.addEventListener("click", () => onOpenPlayer?.(id));
       item.appendChild(button);
@@ -320,17 +338,8 @@ export function mountPartition(root, reference, {
       });
       more.appendChild(list);
     }
-    if (item.playerIds.length) {
-      const rowPlayers = el("div", "partition-inline-players");
-      item.playerIds.forEach((id) => {
-        const person = players.get(id);
-        const button = el("button", "", person?.name || id);
-        button.type = "button";
-        button.addEventListener("click", () => onOpenPlayer?.(id));
-        rowPlayers.appendChild(button);
-      });
-      more.appendChild(rowPlayers);
-    }
+    const cast = eventCast(item, players);
+    if (cast.length) more.appendChild(castList(cast));
     const mapButton = el("button", "partition-text-button", "Show this moment on the map");
     mapButton.type = "button";
     mapButton.addEventListener("click", () => onShowMap?.(item.id));
@@ -359,76 +368,163 @@ export function mountPartition(root, reference, {
     });
   }
 
+  function revealPersonTop() {
+    const html = document.documentElement;
+    const previous = html.style.scrollBehavior;
+    html.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    html.scrollTop = 0;
+    document.body.scrollTop = 0;
+    html.style.scrollBehavior = previous;
+    requestAnimationFrame(() => {
+      html.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+      html.style.scrollBehavior = previous;
+    });
+  }
+
   function renderPerson(person) {
-    shell.classList.add("partition-record");
-    const back = el("button", "back", "All players");
+    shell.classList.add("partition-record", "partition-person-page");
+    const back = el("button", "back", "Back to map & people");
     back.type = "button";
     back.addEventListener("click", () => onShowMap?.(frame().id));
+    const allegiance = playerAllegiance(person);
+    const incentives = playerIncentives(person);
+    const shortName = playerDisplayName(person);
     const head = el("header", "partition-person-head");
     const portrait = portraits[person.id];
-    if (portrait?.src) head.appendChild(portraitFigure(person.name, portrait));
-    else head.appendChild(portraitMark(person.name));
-    const identity = el("div");
-    identity.append(
-      el("p", "eyebrow", person.faction || "Key player"),
-      el("h2", "", person.name),
-      el("p", "partition-date", person.roles?.join(" · ") || ""),
-    );
-    head.appendChild(identity);
-    const brief = el("div", "partition-person-brief");
-    brief.appendChild(el("p", "", person.pointOfView));
-    brief.appendChild(el("p", "", person.impactSummary));
-    addList(brief, "Wanted", person.desiresAndGoals);
-    addList(brief, "Feared or opposed", person.fearsAndOppositions);
-    if (person.positions) {
-      const list = el("ul", "partition-points");
-      Object.entries(POSITION_LABELS).forEach(([key, label]) => {
-        if (!person.positions[key]) return;
-        const item = el("li");
-        item.append(el("strong", "", label), document.createTextNode(` — ${person.positions[key]}`));
-        list.appendChild(item);
-      });
-      brief.appendChild(list);
+    if (portrait?.src) {
+      head.appendChild(portraitFigure(person.name, portrait));
+    } else {
+      const mark = el("div", "partition-portrait-fallback");
+      mark.appendChild(portraitMark(person.name));
+      head.appendChild(mark);
     }
+    const identity = el("div", "partition-person-identity");
+    identity.append(
+      el("p", "eyebrow", allegiance.faction),
+      el("h2", "", shortName),
+    );
+    if (shortName !== person.name) identity.appendChild(el("p", "partition-person-full", person.name));
+    if (person.roles?.length) identity.appendChild(el("p", "partition-person-role", person.roles.join(" · ")));
+    if (allegiance.nationality || allegiance.community) {
+      identity.appendChild(el("p", "partition-person-allegiance", [allegiance.nationality, allegiance.community].filter(Boolean).join(" · ")));
+    }
+    head.appendChild(identity);
+
+    const allies = playerAgreements(person, [...players.values()]).slice(0, 8);
+    const allyBlock = allies.length ? allySection(allies) : null;
+
+    const brief = el("div", "partition-person-brief");
+    if (person.pointOfView) {
+      const saw = el("section", "partition-read");
+      saw.append(el("h3", "", "How they saw it"), el("p", "", person.pointOfView));
+      brief.appendChild(saw);
+    }
+    if (person.impactSummary) {
+      const changed = el("section", "partition-read");
+      changed.append(el("h3", "", "What changed because of them"), el("p", "", person.impactSummary));
+      brief.appendChild(changed);
+    }
+    brief.appendChild(stancePair(incentives));
+    const stances = statedPositions(person);
+    if (stances.length) brief.appendChild(settlementList(stances));
+
     const actions = playerActions(person);
-    const record = el("div", "spine-view");
+    const record = el("section", "partition-person-timeline");
     record.appendChild(el("h3", "", "What they did"));
     if (!actions.length) {
       record.appendChild(el("p", "rail-note", "The research names this person, and does not give them a separate list of actions."));
     } else {
-      record.appendChild(el("p", "rail-note", "Their actions, oldest at the top. Each one can open the map at that moment."));
-      const rail = el("ol", "spine");
-      let year = "";
-      actions.forEach((action) => {
-        const yearText = String(action.sortKey).slice(0, 4);
-        if (yearText !== year) {
-          year = yearText;
-          const stone = el("li", "spine-year");
-          stone.appendChild(el("span", "", year));
-          rail.appendChild(stone);
-        }
-        rail.appendChild(actionBeat(person, action));
-      });
+      record.appendChild(el("p", "rail-note", "Oldest first."));
+      const rail = el("ol", "partition-person-beats");
+      actions.forEach((action) => rail.appendChild(actionBeat(person, action)));
       record.appendChild(rail);
     }
     const sources = sourceRecords(reference.sourcesCatalog, person.sourceIds);
-    shell.append(back, head, brief, record);
+    shell.append(back, head);
+    if (allyBlock) shell.appendChild(allyBlock);
+    shell.append(brief, record);
     if (sources.length) shell.appendChild(sourceList(sources));
   }
 
+  function allySection(allies) {
+    const block = el("section", "partition-allies");
+    block.append(
+      el("h3", "", "Who agreed with them"),
+      el("p", "rail-note", "Same camp, or the same call on the settlement."),
+    );
+    const list = el("ul", "partition-ally-list");
+    allies.forEach((ally) => {
+      const item = el("li");
+      const button = el("button", "partition-ally");
+      button.type = "button";
+      button.append(
+        portraitMark(ally.fullName, portraits[ally.id]),
+        el("strong", "", ally.name),
+        el("span", "", ally.reasons[0] || ally.faction),
+      );
+      button.addEventListener("click", () => onOpenPlayer?.(ally.id));
+      item.appendChild(button);
+      list.appendChild(item);
+    });
+    block.appendChild(list);
+    return block;
+  }
+
+  function settlementList(stances) {
+    const block = el("section", "partition-stances");
+    block.appendChild(el("h3", "", "On the settlement"));
+    const list = el("ol", "partition-stance-list");
+    stances.forEach((row) => {
+      const item = el("li");
+      item.append(el("h4", "", row.label), el("p", "", row.value));
+      list.appendChild(item);
+    });
+    block.appendChild(list);
+    return block;
+  }
+
+  function stancePair(incentives) {
+    const pair = el("div", "partition-stance-pair");
+    pair.appendChild(stanceCard("Wanted", "What they were working toward.", incentives.wanted, "wanted"));
+    pair.appendChild(stanceCard("Feared or opposed", "What they were working against.", incentives.opposed, "opposed"));
+    return pair;
+  }
+
+  function stanceCard(title, hint, items, kind) {
+    const card = el("section", `partition-stance-card is-${kind}`);
+    card.append(el("h3", "", title), el("p", "partition-stance-hint", hint));
+    if (!items.length) {
+      card.appendChild(el("p", "partition-empty-stance", "Nothing separate is written down."));
+      return card;
+    }
+    const list = el("ul", "partition-points");
+    items.forEach((item) => list.appendChild(el("li", "", item)));
+    card.appendChild(list);
+    return card;
+  }
+
   function actionBeat(person, action) {
-    const row = el("li", "spine-event");
-    const mark = el("div", "spine-mark");
-    mark.appendChild(portraitMark(person.name, portraits[person.id]));
-    const copy = el("div", "spine-copy");
+    const row = el("li", "partition-person-beat");
+    const copy = el("article", "partition-beat-card");
     copy.append(el("time", "", action.dateDisplay), el("strong", "", action.title));
+    if (action.summary) copy.appendChild(el("p", "partition-beat-summary", action.summary));
     const lines = action.playerSpecificActions?.filter(Boolean) || [];
     if (lines.length) {
+      const own = el("div", "partition-own-action");
+      own.appendChild(el("p", "eyebrow", "Their move"));
       const list = el("ul", "partition-points");
       lines.forEach((line) => list.appendChild(el("li", "", line)));
-      copy.appendChild(list);
-    } else {
-      copy.appendChild(el("p", "partition-date", "Named on this decision, with no separate action written down."));
+      own.appendChild(list);
+      copy.appendChild(own);
+    }
+    if (action.consequences?.length) {
+      addList(copy, "What followed", action.consequences, "h4");
+    }
+    if (action.cast?.some((member) => member.id !== person.id)) {
+      copy.appendChild(el("h4", "", "Who was involved"));
+      copy.appendChild(castList(action.cast, person.id));
     }
     if (action.eventId && frames.some((item) => item.id === action.eventId)) {
       const mapButton = el("button", "partition-text-button", "Show this moment on the map");
@@ -436,16 +532,61 @@ export function mountPartition(root, reference, {
       mapButton.addEventListener("click", () => onShowMap?.(action.eventId));
       copy.appendChild(mapButton);
     }
-    row.append(mark, copy);
+    row.appendChild(copy);
     return row;
   }
 
+  function castList(cast, focusId = "") {
+    const list = el("ul", "partition-cast-list");
+    cast.forEach((member) => {
+      const item = el("li", `partition-cast-card${member.id === focusId ? " is-self" : ""}`);
+      if (member.id === focusId || !onOpenPlayer) {
+        const body = el("div", "partition-cast-body");
+        body.appendChild(castFace(member));
+        body.appendChild(castCopy(member, focusId));
+        item.appendChild(body);
+      } else {
+        const button = el("button", "partition-cast-hit");
+        button.type = "button";
+        button.append(castFace(member), castCopy(member, focusId));
+        button.addEventListener("click", () => onOpenPlayer(member.id));
+        item.appendChild(button);
+      }
+      list.appendChild(item);
+    });
+    return list;
+  }
+
+  function castFace(member) {
+    const face = el("div", "partition-cast-face");
+    face.appendChild(portraitMark(member.fullName, portraits[member.id]));
+    return face;
+  }
+
+  function castCopy(member, focusId) {
+    const copy = el("div", "partition-cast-copy");
+    copy.appendChild(el("strong", "", member.id === focusId ? `${member.name} · this person` : member.name));
+    copy.appendChild(el("p", "partition-cast-allegiance", member.allegiance.line));
+    if (member.incentive) copy.appendChild(el("p", "partition-cast-incentive", `Standing aim: ${member.incentive}`));
+    if (member.action && member.id !== focusId) copy.appendChild(el("p", "partition-cast-action", member.action));
+    return copy;
+  }
+
   function playerActions(person) {
-    const own = (person.timelineActions || []).map((action) => ({ ...action, sortKey: action.sortKey }));
+    const enrich = (action, event) => ({
+      ...action,
+      summary: event?.summary || action.summary || "",
+      consequences: event?.consequences || action.consequences || [],
+      cast: event ? eventCast(event, players, person.id) : action.cast || [],
+    });
+    const own = (person.timelineActions || []).map((action) => {
+      const event = frames.find((item) => item.id === action.eventId);
+      return enrich(action, event);
+    });
     if (own.length) return own.slice().sort((a, b) => chronoKey(a.sortKey) - chronoKey(b.sortKey));
     return frames
       .filter((item) => item.playerIds.includes(person.id))
-      .map((item) => ({
+      .map((item) => enrich({
         eventId: item.id,
         sortKey: item.sortKey,
         dateDisplay: item.dateDisplay,
@@ -453,7 +594,7 @@ export function mountPartition(root, reference, {
         playerSpecificActions: item.actions
           .filter((action) => action.playerId === person.id)
           .map((action) => action.description),
-      }));
+      }, item));
   }
 
   function buildMap() {
@@ -596,7 +737,7 @@ export function mountPartition(root, reference, {
     const claimsLabel = el("label", "partition-claims");
     const claimsInput = document.createElement("input");
     claimsInput.type = "checkbox";
-    claimsLabel.append(claimsInput, document.createTextNode("Kashmir claims"));
+    claimsLabel.append(claimsInput, document.createTextNode("Show Kashmir claims overlay"));
     controls.appendChild(claimsLabel);
     now.append(kicker, title, controls);
     const range = document.createElement("input");
@@ -739,9 +880,9 @@ function sourceList(sources) {
   return list;
 }
 
-function addList(parent, heading, items = []) {
+function addList(parent, heading, items = [], headingTag = "h3") {
   if (!items?.length) return;
-  parent.appendChild(el("h3", "", heading));
+  parent.appendChild(el(headingTag, "", heading));
   const list = el("ul", "partition-points");
   items.forEach((item) => list.appendChild(el("li", "", item)));
   parent.appendChild(list);

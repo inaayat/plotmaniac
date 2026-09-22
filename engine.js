@@ -59,6 +59,23 @@ export function findPlot(plots, id) {
     || null;
 }
 
+export function plotCardFace(plot) {
+  if (!plot?.cardImage) return "mono";
+  if (plot.arrangement === "wars") return "map";
+  if (plot.images === "flags") return "flag";
+  return "person";
+}
+
+export function plotMatchesQuery(plot, query) {
+  const q = String(query || "").trim().toLowerCase();
+  if (!q) return true;
+  const hay = [plot?.title, plot?.kicker, plot?.cardLine, plot?.lede]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return hay.includes(q);
+}
+
 export function plotHubs(plot) {
   return Array.isArray(plot?.hubs) ? plot.hubs : [];
 }
@@ -439,7 +456,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (Number.isFinite(state.to)) url.searchParams.set("to", String(state.to));
   if (state.country) url.searchParams.set("country", state.country);
   if (state.hub) url.searchParams.set("hub", state.hub);
-  url.hash = eventId ? encodeURIComponent(eventId) : "";
+  url.hash = state.view === "person" || !eventId ? "" : encodeURIComponent(eventId);
   return `${url.pathname}${url.search}${url.hash}`;
 }
 
@@ -1558,6 +1575,12 @@ export function warOverlapsSpan(war, from, to) {
 export function warsForCountry(wars, iso) {
   return (wars || []).filter((war) =>
     (war.sides || []).some((side) => (side.states || []).includes(iso)));
+}
+
+export function compareWarsByStart(a, b) {
+  const start = Number(b.start) - Number(a.start);
+  if (start) return start;
+  return String(a.name || "").localeCompare(String(b.name || ""), "en");
 }
 
 export function warCountryNote(war, iso, countryNames = {}) {
