@@ -829,14 +829,70 @@ body[data-board="history"][data-view="person"] #footer-note {
 
 @media (max-width: 800px) {
   .partition-figure { grid-template-columns: 1fr; }
-  .partition-map { max-height: none; }
+  .partition-map { max-height: 240px; }
   .partition-now { grid-template-columns: 1fr; }
   .partition-now h2 { white-space: normal; }
-  .partition-ticks button:nth-child(odd) { display: none; }
-  body[data-board="history"] h1 { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+  body[data-board="history"] .mast {
+    width: calc(100% - 24px);
+    padding: calc(16px + var(--safe-top)) 0 4px;
+  }
+  body[data-board="history"] .mark { display: none; }
+  body[data-board="history"] .lede {
+    font-size: 0.84rem;
+    max-width: none;
+  }
+  body[data-board="history"] h1 { font-size: clamp(2rem, 10vw, 2.6rem); }
   body[data-board="history"][data-view="person"] h1,
   body[data-board="history"][data-view="timeline"] h1 {
-    font-size: clamp(1.4rem, 7vw, 1.8rem);
+    font-size: 1.35rem;
+  }
+  body[data-board="history"] .views {
+    width: 100%;
+    gap: 6px;
+  }
+  body[data-board="history"] .app,
+  body[data-board="history"][data-view="person"] .app,
+  body[data-board="history"][data-view="timeline"] .app {
+    width: calc(100% - 24px);
+    padding-bottom: 40px;
+  }
+  .partition-ticks {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    margin-top: 8px;
+    padding-bottom: 4px;
+  }
+  .partition-ticks button {
+    position: static;
+    transform: none;
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 8px 10px;
+  }
+  .partition-ticks button:nth-child(odd) { display: inline-flex; }
+  .partition-cast {
+    grid-template-columns: 1fr;
+  }
+  .partition-card {
+    grid-template-columns: 56px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    justify-items: start;
+    align-items: center;
+    text-align: left;
+    min-height: 72px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+  }
+  .partition-card .partition-chip-photo,
+  .partition-card .partition-monogram {
+    width: 56px;
+    height: 56px;
+    grid-row: 1 / span 2;
   }
   .partition-person-head,
   .partition-stance-pair,
@@ -849,5 +905,11 @@ body[data-board="history"][data-view="person"] #footer-note {
   .partition-portrait-fallback .partition-chip-photo {
     width: 88px;
     height: 88px;
+  }
+  .partition-read,
+  .partition-stances,
+  .partition-stance-card,
+  .partition-beat-card {
+    padding: 14px 14px 16px;
   }
 }
