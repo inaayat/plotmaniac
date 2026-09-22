@@ -94,6 +94,7 @@ summary:focus-visible {
 }
 
 .mast {
+  z-index: 6;
   width: min(760px, calc(100% - 48px));
   margin: 0 auto;
   padding: 64px 0 12px;
@@ -195,7 +196,7 @@ h3 {
   margin-top: 26px;
 }
 
-.views button,
+.views > button,
 .back,
 .event-links a,
 .event-links button,
@@ -205,14 +206,14 @@ h3 {
   padding: 8px 14px;
 }
 
-.views button {
+.views > button {
   color: var(--muted);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 0.66rem;
 }
 
-.views button.is-active {
+.views > button.is-active {
   color: var(--ink);
   box-shadow: inset 0 -2px 0 var(--gold);
 }
@@ -228,15 +229,137 @@ h3 {
   text-transform: uppercase;
 }
 
-.plot-switch select {
+.plot-switch select,
+.choice-button {
   font: inherit;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
-  background: transparent;
+  background: var(--bg);
   border: 1px solid var(--line-strong);
   min-height: 32px;
   padding: 4px 8px;
+}
+
+.choice {
+  z-index: 2;
+}
+
+.choice.is-open {
+  z-index: 8;
+}
+
+.choice-frame {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.choice-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  max-width: min(52vw, 280px);
+  padding-right: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.choice-button::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.choice-button:hover {
+  border-color: var(--gold);
+}
+
+.choice.is-open .choice-button {
+  color: var(--ink);
+  border-color: var(--gold);
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
+
+.choice.is-open .choice-button::after {
+  transform: translateY(-20%) rotate(225deg);
+}
+
+.choice-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 8;
+  min-width: max(100%, 16rem);
+  max-width: min(92vw, 22rem);
+  max-height: min(60vh, 360px);
+  overflow: auto;
+  list-style: none;
+  padding: 4px;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  box-shadow:
+    0 0 0 1px rgba(232, 196, 122, 0.08),
+    0 22px 40px rgba(0, 0, 0, 0.55);
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.choice-menu li {
+  list-style: none;
+}
+
+.choice-option {
+  display: block;
+  width: 100%;
+  min-height: 34px;
+  padding: 8px 12px;
+  text-align: left;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+  line-height: 1.35;
+  border: 0;
+  background: transparent;
+}
+
+.choice-option:hover,
+.choice-option:focus-visible {
+  color: var(--ink);
+  background: var(--panel);
+  outline: none;
+}
+
+.choice-option[aria-selected="true"] {
+  color: var(--bg);
+  background: var(--gold);
+}
+
+.choice-option[aria-selected="true"]:hover,
+.choice-option[aria-selected="true"]:focus-visible {
+  color: var(--bg);
+  background: var(--gold);
+  box-shadow: inset 0 0 0 1px rgba(12, 11, 9, 0.18);
 }
 
 body[data-view="pick"] {
@@ -591,7 +714,7 @@ body[data-view="web"] .views {
   margin-top: 8px;
 }
 
-body[data-view="web"] .views button {
+body[data-view="web"] .views > button {
   min-height: 32px;
   padding: 4px 12px;
 }
@@ -1620,7 +1743,7 @@ body[data-board="regions"][data-view="web"] #footer-note {
   }
 }
 
-body[data-view="relation"] .views button {
+body[data-view="relation"] .views > button {
   opacity: 0.55;
 }
 
@@ -2518,7 +2641,7 @@ button.back:hover,
 .event-links a:hover,
 .event-links button:hover,
 .back:hover,
-.views button:hover {
+.views > button:hover {
   border-color: var(--gold);
   color: var(--gold);
 }
@@ -2817,9 +2940,9 @@ body[data-view="timeline"] .views {
   margin-top: 6px;
 }
 
-body[data-view="person"] .views button,
-body[data-view="relation"] .views button,
-body[data-view="timeline"] .views button {
+body[data-view="person"] .views > button,
+body[data-view="relation"] .views > button,
+body[data-view="timeline"] .views > button {
   min-height: 32px;
   padding: 4px 12px;
 }
@@ -2973,8 +3096,10 @@ body[data-view="timeline"] #footer-note {
     margin-right: 0;
   }
 
-  .views button,
+  .views > button,
   .plot-switch select,
+  .choice-button,
+  .choice-option,
   .back,
   .search input,
   .event-links a,
@@ -2985,7 +3110,7 @@ body[data-view="timeline"] #footer-note {
     min-height: 44px;
   }
 
-  .views button {
+  .views > button {
     padding: 8px 12px;
   }
 
@@ -3074,9 +3199,9 @@ body[data-view="timeline"] #footer-note {
     margin-top: 8px;
   }
 
-  body[data-view="web"] .views button,
-  body[data-view="person"] .views button,
-  body[data-view="timeline"] .views button {
+  body[data-view="web"] .views > button,
+  body[data-view="person"] .views > button,
+  body[data-view="timeline"] .views > button {
     min-height: 44px;
     padding: 8px 12px;
   }
@@ -3409,7 +3534,7 @@ body[data-view="timeline"] #footer-note {
   }
 }
 
-body[data-board="wars"] .views button {
+body[data-board="wars"] .views > button {
   display: none;
 }
 
