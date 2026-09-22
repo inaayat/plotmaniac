@@ -988,6 +988,47 @@ body[data-board="regions"][data-view="web"] #footer-note {
   margin-top: 8px;
 }
 
+.relation-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.relation-links a {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  font-size: 0.62rem;
+  line-height: 1.3;
+  color: var(--gold);
+  text-decoration: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.relation-links a:hover {
+  border-color: var(--gold);
+}
+
+.country-sources {
+  margin-top: 4px;
+}
+
+.country-sources-label {
+  margin: 0 0 6px;
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.country-sources .drawer-more {
+  display: inline-block;
+  margin-top: 10px;
+}
+
 .relation-sentiment {
   margin: 4px 0 14px;
   padding: 12px 10px 10px;
@@ -1103,6 +1144,10 @@ body[data-board="regions"][data-view="web"] #footer-note {
 .country-history.is-page .relation-timeline p {
   font-size: 0.88rem;
   line-height: 1.55;
+}
+
+.country-history.is-page .relation-links a {
+  font-size: 0.68rem;
 }
 
 @media (min-width: 900px) {

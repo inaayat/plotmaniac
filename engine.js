@@ -868,6 +868,15 @@ export function relationTimelineHasTone(timeline = []) {
   return (timeline || []).some((beat) => typeof beat?.tone === "number");
 }
 
+/** Keep only https source chips; plots without `links` stay empty. */
+export function httpsSourceLinks(items = []) {
+  return (items || []).filter((link) => {
+    const url = String(link?.url || "").trim();
+    const label = String(link?.label || "").trim();
+    return Boolean(label) && /^https:\/\//.test(url);
+  });
+}
+
 export function relationToneSeries(timeline = []) {
   return (timeline || [])
     .map((beat, index) => {

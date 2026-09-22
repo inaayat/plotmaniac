@@ -1,0 +1,38 @@
+{
+  "country": "Exampleland",
+  "slug": "exampleland",
+  "wiki_bilateral": "https://en.wikipedia.org/wiki/Exampleland–United_States_relations",
+  "status": "neutral",
+  "outline": "none",
+  "notes_summary": "One sentence covering recognition through the present fight or partnership.",
+  "links": [
+    {
+      "label": "Office of the Historian: Exampleland",
+      "url": "https://history.state.gov/countries/exampleland"
+    },
+    {
+      "label": "Wikipedia: Exampleland–United States relations",
+      "url": "https://en.wikipedia.org/wiki/Exampleland–United_States_relations"
+    }
+  ],
+  "timeline": [
+    {
+      "year": "1822",
+      "tone": 1,
+      "event": "The United States recognizes Exampleland and opens diplomatic relations.",
+      "links": [
+        {
+          "label": "Office of the Historian: recognition",
+          "url": "https://history.state.gov/countries/exampleland"
+        }
+      ]
+    },
+    {
+      "year": "2026",
+      "tone": 0,
+      "event": "The relationship is still formal, but trust swings with each election and headline."
+    }
+  ],
+  "region": "Americas",
+  "first_load": false
+}

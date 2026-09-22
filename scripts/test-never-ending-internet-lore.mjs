@@ -27,6 +27,7 @@ import {
   relationSentimentChart,
   relationTimelineHasTone,
   relationToneSeries,
+  httpsSourceLinks,
   RELATION_REGIONS,
   stateUrl,
   neighborhood,
@@ -617,7 +618,22 @@ const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8")
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
 assert.match(appSource, /renderRelationSentimentChart/, "country drawer can chart bilateral warmth");
+assert.match(appSource, /renderSourceChips/, "country history can show source chips");
+assert.match(appSource, /beat\.links/, "per-beat source links render in the country panel");
+assert.match(appSource, /country-sources-label/, "country-level sources are labeled");
 assert.match(css, /\.relation-sentiment/, "relationship warmth chart styles");
+assert.match(css, /\.relation-links/, "source chip styles");
+
+assert.deepEqual(
+  httpsSourceLinks([
+    { label: "Keep", url: "https://history.state.gov/countries/russia" },
+    { label: "Skip http", url: "http://example.com/old" },
+    { label: "Skip empty", url: "" },
+    { url: "https://example.com/no-label" },
+    { label: "Skip relative", url: "/local" },
+  ]).map((link) => link.label),
+  ["Keep"],
+);
 
 const mexico = usCountries.find((country) => country.slug === "mexico");
 assert.ok(mexico, "mexico country record");
@@ -638,6 +654,63 @@ assert.match(
   /view=relation.*country=mexico/,
 );
 assert.match(appSource, /renderRelationPage/, "full-page bilateral timeline view");
+assert.match(
+  mexico.timeline[0].event,
+  /recognizes independent Mexico/,
+  "mexico narrative beats stay intact while sources are added",
+);
+
+const russia = usCountries.find((country) => country.slug === "russia");
+assert.ok(russia, "russia country record");
+assert.equal(russia.status, "foe");
+assert.equal(russia.outline, "red");
+assert.equal(russia.first_load, true);
+assert.ok(relationTimelineHasTone(russia.timeline), "russia timeline carries warmth scores");
+assert.ok(russia.timeline.length >= 20, "russia timeline is detailed");
+assert.ok(russia.timeline.length <= 40, "russia timeline stays a readable country drawer, not an encyclopedia");
+const rusSeries = relationToneSeries(russia.timeline);
+assert.equal(rusSeries.length, russia.timeline.length);
+assert.ok(rusSeries.every((point) => point.year >= 1800 && point.year <= 2030));
+assert.ok(rusSeries.every((point) => point.tone >= -2 && point.tone <= 2));
+const rusChart = relationSentimentChart(russia.timeline);
+assert.ok(rusChart.linePath.startsWith("M"));
+assert.ok(rusChart.points.length >= 20);
+assert.match(russia.notes_summary, /Cold War/);
+assert.match(russia.notes_summary, /Ukraine/);
+const rusYears = russia.timeline.map((beat) => String(beat.year));
+["1809", "1867", "1933", "1941", "1962", "1991", "2014", "2016", "2022"].forEach((year) => {
+  assert.ok(rusYears.includes(year), `russia timeline covers ${year}`);
+});
+
+const assertCountrySourceLinks = (country, { minShare = 0.5 } = {}) => {
+  assert.ok(Array.isArray(country.links) && country.links.length, `${country.slug} needs country-level sources`);
+  country.links.forEach((link) => {
+    assert.match(link.url, /^https:\/\//, `${country.slug} country source must use https`);
+    assert.ok(link.label, `${country.slug} country source needs a label`);
+  });
+  const beats = country.timeline || [];
+  const withLinks = beats.filter((beat) => Array.isArray(beat.links) && beat.links.length);
+  assert.ok(withLinks.length / beats.length >= minShare, `${country.slug} should source most beats`);
+  beats.forEach((beat, index) => {
+    assert.equal(typeof beat.tone, "number", `${country.slug} beat ${index} needs a tone`);
+    assert.ok(beat.year && beat.event, `${country.slug} beat ${index} needs year and event`);
+    (beat.links || []).forEach((link) => {
+      assert.match(link.url, /^https:\/\//, `${country.slug} ${beat.year} source must use https`);
+      assert.ok(link.label, `${country.slug} ${beat.year} source needs a label`);
+    });
+  });
+};
+assertCountrySourceLinks(mexico);
+assertCountrySourceLinks(russia);
+
+const afghanistan = usCountries.find((country) => country.slug === "afghanistan");
+assert.equal(afghanistan.links, undefined, "thin country records may omit links");
+assert.equal(
+  afghanistan.timeline.every((beat) => !beat.links),
+  true,
+  "plots without beat links still have valid timelines",
+);
+assert.equal(httpsSourceLinks(afghanistan.timeline[0]?.links).length, 0);
 
 const obamaPeople = readJson("../data/barack-obama/people.json");
 const obamaEvents = readJson("../data/barack-obama/events.json");
