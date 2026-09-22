@@ -196,5 +196,41 @@
     "to": "denims",
     "kind": "feud",
     "label": "Named together in the TwitchCon panel dispute and the Content Nuke suits"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "rich-lux",
+    "kind": "ally",
+    "label": "Recurring H3 guest from the beauty community"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "nicol-concilio",
+    "kind": "ally",
+    "label": "Makeup artist and friend of the show"
+  },
+  {
+    "from": "rich-lux",
+    "to": "nicol-concilio",
+    "kind": "ally",
+    "label": "Beauty-community creators who overlap in H3's studio orbit"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "hutch",
+    "kind": "ally",
+    "label": "Political commentator who has appeared with Ethan and publicly backed him"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "harley-morenstein",
+    "kind": "crew",
+    "label": "H3 After Dark co-host and longtime YouTube friend"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "oliver-tree",
+    "kind": "collaborator",
+    "label": "Recurring guest whose on-air feud with Ethan was a long-running bit"
   }
 ]

@@ -36,7 +36,7 @@ const ids = new Set(people.map((person) => person.id));
 const peopleById = new Map(people.map((person) => [person.id, person]));
 
 assert.equal(ids.size, people.length, "person ids must be unique");
-assert.ok(events.length >= 35 && events.length <= 45, "timeline should contain 35–45 events");
+assert.ok(events.length >= 35 && events.length <= 50, "timeline should contain 35–50 events");
 assert.equal(new Set(events.map((event) => event.id)).size, events.length, "event ids must be unique");
 
 for (const person of people) {
@@ -116,6 +116,11 @@ assert.equal(layout.nodes.find((node) => node.id === "denims").camp, "enemy");
 assert.equal(layout.nodes.find((node) => node.id === "anisa-jomha").camp, "enemy");
 assert.equal(layout.nodes.find((node) => node.id === "xqc"), undefined);
 assert.equal(layout.nodes.find((node) => node.id === "hila-klein").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "rich-lux").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "nicol-concilio").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "hutch").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "harley-morenstein").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "oliver-tree").camp, "friend");
 const ethanNode = layout.nodes.find((node) => node.id === "ethan-klein");
 assert.equal(ethanNode.camp, "center");
 const others = layout.nodes.filter((node) => node.id !== "ethan-klein");
