@@ -18,6 +18,8 @@ import {
   parseYear,
   relationsFieldEdges,
   relationsFieldLayout,
+  relationSentimentChart,
+  relationTimelineHasTone,
   resolvePlotView,
   stateUrl,
   tiesWith,
@@ -818,10 +820,14 @@ function paintRelationSelection(root = document) {
 function renderCountryHistory(record) {
   const block = document.createElement("div");
   block.className = "country-history";
+  const chartWrap = relationTimelineHasTone(record.timeline) ? renderRelationSentimentChart(record) : null;
+  if (chartWrap) block.appendChild(chartWrap.root);
   const list = document.createElement("ol");
   list.className = "relation-timeline";
-  (record.timeline || []).forEach((beat) => {
+  (record.timeline || []).forEach((beat, index) => {
     const item = document.createElement("li");
+    item.dataset.beat = String(index);
+    if (typeof beat.tone === "number") item.classList.add(relationToneClass(beat.tone));
     const year = document.createElement("span");
     year.className = "relation-year";
     year.textContent = String(beat.year);
@@ -830,6 +836,7 @@ function renderCountryHistory(record) {
     item.append(year, text);
     list.appendChild(item);
   });
+  if (chartWrap) wireRelationSentimentChart(chartWrap, list);
   const more = document.createElement("a");
   more.className = "drawer-more";
   more.href = record.wiki_bilateral;
@@ -838,6 +845,135 @@ function renderCountryHistory(record) {
   more.textContent = "Read more on Wikipedia";
   block.append(list, more);
   return block;
+}
+
+function relationToneClass(tone) {
+  if (tone >= 1.5) return "tone-strong-warm";
+  if (tone >= 0.5) return "tone-warm";
+  if (tone <= -1.5) return "tone-strong-strained";
+  if (tone <= -0.5) return "tone-strained";
+  return "tone-mixed";
+}
+
+function renderRelationSentimentChart(record) {
+  const layout = relationSentimentChart(record.timeline, { width: 360, height: 132 });
+  const root = document.createElement("div");
+  root.className = "relation-sentiment";
+  const title = document.createElement("p");
+  title.className = "relation-sentiment-title";
+  title.textContent = "Relationship warmth over time";
+  const hint = document.createElement("p");
+  hint.className = "relation-sentiment-hint";
+  hint.textContent = "Above the line reads warmer; below reads more strained. Hover a point or beat to match.";
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("class", "relation-sentiment-chart");
+  svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "Chart of United States–Mexico relationship warmth by year");
+  const defs = document.createElementNS(SVG_NS, "defs");
+  const warm = document.createElementNS(SVG_NS, "linearGradient");
+  warm.setAttribute("id", "relation-warm");
+  warm.setAttribute("x1", "0");
+  warm.setAttribute("y1", "0");
+  warm.setAttribute("x2", "0");
+  warm.setAttribute("y2", "1");
+  [["0%", "#7dcea0", "0.55"], ["100%", "#7dcea0", "0"]].forEach(([offset, color, opacity]) => {
+    const stop = document.createElementNS(SVG_NS, "stop");
+    stop.setAttribute("offset", offset);
+    stop.setAttribute("stop-color", color);
+    stop.setAttribute("stop-opacity", opacity);
+    warm.appendChild(stop);
+  });
+  const cool = document.createElementNS(SVG_NS, "linearGradient");
+  cool.setAttribute("id", "relation-cool");
+  cool.setAttribute("x1", "0");
+  cool.setAttribute("y1", "0");
+  cool.setAttribute("x2", "0");
+  cool.setAttribute("y2", "1");
+  [["0%", "#e06a62", "0"], ["100%", "#e06a62", "0.5"]].forEach(([offset, color, opacity]) => {
+    const stop = document.createElementNS(SVG_NS, "stop");
+    stop.setAttribute("offset", offset);
+    stop.setAttribute("stop-color", color);
+    stop.setAttribute("stop-opacity", opacity);
+    cool.appendChild(stop);
+  });
+  defs.append(warm, cool);
+  svg.appendChild(defs);
+  const axis = document.createElementNS(SVG_NS, "line");
+  axis.setAttribute("class", "relation-sentiment-zero");
+  axis.setAttribute("x1", String(layout.pad.left));
+  axis.setAttribute("x2", String(layout.width - layout.pad.right));
+  axis.setAttribute("y1", String(layout.zeroY));
+  axis.setAttribute("y2", String(layout.zeroY));
+  svg.appendChild(axis);
+  const area = document.createElementNS(SVG_NS, "path");
+  area.setAttribute("class", "relation-sentiment-area");
+  area.setAttribute("d", layout.areaPath);
+  area.setAttribute("fill", "url(#relation-warm)");
+  svg.appendChild(area);
+  const line = document.createElementNS(SVG_NS, "path");
+  line.setAttribute("class", "relation-sentiment-line");
+  line.setAttribute("d", layout.linePath);
+  svg.appendChild(line);
+  layout.ticks.forEach((tick) => {
+    const label = document.createElementNS(SVG_NS, "text");
+    label.setAttribute("class", "relation-sentiment-tick");
+    label.setAttribute("x", String(tick.x));
+    label.setAttribute("y", String(layout.height - 6));
+    label.textContent = String(tick.year);
+    svg.appendChild(label);
+  });
+  const dots = [];
+  layout.points.forEach((point) => {
+    const dot = document.createElementNS(SVG_NS, "circle");
+    dot.setAttribute("class", "relation-sentiment-dot");
+    dot.setAttribute("cx", String(point.x));
+    dot.setAttribute("cy", String(point.y));
+    dot.setAttribute("r", "4.5");
+    dot.dataset.beat = String(point.index);
+    dot.dataset.tone = String(point.tone);
+    svg.appendChild(dot);
+    dots.push(dot);
+  });
+  const labels = document.createElement("div");
+  labels.className = "relation-sentiment-labels";
+  labels.innerHTML = "<span>Strained</span><span>Warm</span>";
+  root.append(title, hint, svg, labels);
+  return { root, svg, dots, layout };
+}
+
+function wireRelationSentimentChart(chartWrap, list) {
+  const items = [...list.querySelectorAll("li")];
+  const clear = () => {
+    chartWrap.dots.forEach((dot) => dot.classList.remove("is-active"));
+    items.forEach((item) => item.classList.remove("is-active"));
+  };
+  chartWrap.dots.forEach((dot) => {
+    dot.addEventListener("pointerenter", () => {
+      clear();
+      dot.classList.add("is-active");
+      const item = list.querySelector(`li[data-beat="${dot.dataset.beat}"]`);
+      item?.classList.add("is-active");
+      item?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    });
+    dot.addEventListener("pointerleave", clear);
+    dot.addEventListener("focus", () => {
+      clear();
+      dot.classList.add("is-active");
+      list.querySelector(`li[data-beat="${dot.dataset.beat}"]`)?.classList.add("is-active");
+    });
+    dot.addEventListener("blur", clear);
+    dot.setAttribute("tabindex", "0");
+    dot.setAttribute("role", "button");
+  });
+  items.forEach((item) => {
+    item.addEventListener("pointerenter", () => {
+      clear();
+      item.classList.add("is-active");
+      chartWrap.dots.find((dot) => dot.dataset.beat === item.dataset.beat)?.classList.add("is-active");
+    });
+    item.addEventListener("pointerleave", clear);
+  });
 }
 
 function rememberCountryRegion() {

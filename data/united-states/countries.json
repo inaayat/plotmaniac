@@ -3020,31 +3020,147 @@
     "status": "neutral",
     "outline": "none",
     "formal_relations": true,
-    "notes_summary": "Deep economic integration via USMCA; complex cooperation and tension on migration, drugs, and trade.",
+    "notes_summary": "Neighbors bound by trade (USMCA), migration, and security—but scarred by the 1840s war, repeated interventions, and recurring tariff and border fights.",
     "timeline": [
       {
         "year": "1822",
-        "event": "Diplomatic relations established"
+        "tone": 1,
+        "event": "The United States recognizes independent Mexico and opens diplomatic relations (1822-12-12)."
+      },
+      {
+        "year": "1836",
+        "tone": -2,
+        "event": "Texas rebels break from Mexico; the U.S. later backs Texan independence, opening a long border dispute."
       },
       {
         "year": "1846",
-        "event": "Mexican–American War begins"
+        "tone": -2,
+        "event": "Mexican–American War begins after U.S. annexation of Texas and a clash in disputed territory."
       },
       {
         "year": "1848",
-        "event": "Treaty of Guadalupe Hidalgo"
+        "tone": -1,
+        "event": "Treaty of Guadalupe Hidalgo ends the war; Mexico cedes roughly half its territory while peace returns."
+      },
+      {
+        "year": "1853",
+        "tone": -1,
+        "event": "Gadsden Purchase transfers more borderland to the U.S., adjusting the boundary again in Washington’s favor."
+      },
+      {
+        "year": "1867",
+        "tone": 1,
+        "event": "U.S. pressure helps end the French intervention in Mexico after the Second Empire collapses."
+      },
+      {
+        "year": "1910",
+        "tone": -1,
+        "event": "Mexican Revolution convulses the country; Washington watches and intervenes as factions fight for power."
       },
       {
         "year": "1914",
-        "event": "US occupation of Veracruz"
+        "tone": -2,
+        "event": "U.S. Navy occupies Veracruz after the Tampico Affair, one of the sharpest pre–World War I clashes."
+      },
+      {
+        "year": "1916",
+        "tone": -2,
+        "event": "Pershing’s punitive expedition chases Pancho Villa deep into northern Mexico, straining sovereignty."
+      },
+      {
+        "year": "1942",
+        "tone": 2,
+        "event": "Mexico enters World War II on the Allied side; wartime partnership rebuilds trust after decades of friction."
+      },
+      {
+        "year": "1948",
+        "tone": 2,
+        "event": "President Truman returns captured Mexican battle flags from the 1846–48 war, a symbolic reconciliation."
+      },
+      {
+        "year": "1942–1964",
+        "tone": 1,
+        "event": "Bracero Program brings millions of Mexican guest workers north, tying labor markets together."
+      },
+      {
+        "year": "1964",
+        "tone": 2,
+        "event": "Chamizal Treaty settles a century-old El Paso–Juárez border dispute; land is swapped peacefully."
+      },
+      {
+        "year": "1970",
+        "tone": 1,
+        "event": "Boundary Treaty of 1970 resolves remaining Rio Grande channel shifts and sets rules for future changes."
+      },
+      {
+        "year": "1982",
+        "tone": 0,
+        "event": "Mexico’s debt crisis and peso collapse roil the economy; the U.S. helps stabilize its major trading partner."
       },
       {
         "year": "1994",
-        "event": "NAFTA enters into force"
+        "tone": 2,
+        "event": "NAFTA enters into force, locking Canada, Mexico, and the U.S. into a shared North American market."
+      },
+      {
+        "year": "1995",
+        "tone": 1,
+        "event": "Clinton arranges a $20 billion rescue package after the peso crisis, repaid ahead of schedule in 1997."
+      },
+      {
+        "year": "2001",
+        "tone": 1,
+        "event": "Mexico condemns the 9/11 attacks and aids U.S. hurricane relief, but stays out of the Iraq War."
+      },
+      {
+        "year": "2008",
+        "tone": 1,
+        "event": "Mérida Initiative launches deep U.S.–Mexico security cooperation against drug cartels and arms trafficking."
+      },
+      {
+        "year": "2017",
+        "tone": -2,
+        "event": "Border-wall rhetoric and tariff threats under Trump; Pew finds Mexican confidence in the U.S. plunges."
+      },
+      {
+        "year": "2018",
+        "tone": 1,
+        "event": "Washington and Mexico City agree on an updated NAFTA framework alongside Canada (later USMCA)."
+      },
+      {
+        "year": "2019",
+        "tone": 0,
+        "event": "Tariff standoff over migration is averted when Mexico steps up asylum and enforcement measures."
       },
       {
         "year": "2020",
-        "event": "USMCA replaces NAFTA"
+        "tone": 2,
+        "event": "USMCA replaces NAFTA on July 1, modernizing rules for autos, agriculture, and digital trade."
+      },
+      {
+        "year": "2021",
+        "tone": 1,
+        "event": "Biden administration renews Mérida-style security and migration talks with President López Obrador."
+      },
+      {
+        "year": "2023",
+        "tone": 1,
+        "event": "North American Leaders’ Summit in Mexico City highlights joint supply chains and migration management."
+      },
+      {
+        "year": "2024",
+        "tone": -1,
+        "event": "López Obrador pauses relations after U.S. criticism of judicial reforms, a rare diplomatic freeze."
+      },
+      {
+        "year": "2025",
+        "tone": -2,
+        "event": "U.S. imposes 25% tariffs on Mexican goods amid fights over fentanyl, migration, and Rio Grande water deliveries."
+      },
+      {
+        "year": "2026",
+        "tone": 0,
+        "event": "Still each other’s top trading partner, but trust swings with every election, cartel crackdown, and tariff headline."
       }
     ],
     "region": "Americas",

@@ -839,6 +839,74 @@ export function laneBands(height, selectedNeed, quietNeed, minQuiet = 160) {
   return { selectedBand: band, quietBand: span - band };
 }
 
+export const RELATION_TONE_MIN = -2;
+export const RELATION_TONE_MAX = 2;
+
+export function relationTimelineHasTone(timeline = []) {
+  return (timeline || []).some((beat) => typeof beat?.tone === "number");
+}
+
+export function relationToneSeries(timeline = []) {
+  return (timeline || [])
+    .map((beat, index) => {
+      const year = Number.parseInt(String(beat?.year || "").replace(/[^\d-]/g, ""), 10);
+      return {
+        index,
+        year: Number.isFinite(year) ? year : 0,
+        tone: typeof beat?.tone === "number" ? beat.tone : 0,
+        event: String(beat?.event || ""),
+        hasTone: typeof beat?.tone === "number",
+      };
+    })
+    .filter((point) => point.year > 0 && point.hasTone)
+    .sort((a, b) => a.year - b.year || a.index - b.index);
+}
+
+export function relationSentimentChart(timeline = [], options = {}) {
+  const points = relationToneSeries(timeline);
+  const width = Math.max(280, Number(options.width) || 360);
+  const height = Math.max(96, Number(options.height) || 128);
+  const pad = { top: 10, right: 10, bottom: 24, left: 34 };
+  const innerW = Math.max(1, width - pad.left - pad.right);
+  const innerH = Math.max(1, height - pad.top - pad.bottom);
+  if (!points.length) {
+    return { width, height, pad, points: [], linePath: "", areaPath: "", zeroY: pad.top + innerH / 2, minYear: 0, maxYear: 0 };
+  }
+  const years = points.map((point) => point.year);
+  const minYear = Math.min(...years);
+  const maxYear = Math.max(...years);
+  const yearSpan = Math.max(1, maxYear - minYear);
+  const toneScale = Math.max(Math.abs(RELATION_TONE_MIN), Math.abs(RELATION_TONE_MAX));
+  const xAt = (year) => pad.left + ((year - minYear) / yearSpan) * innerW;
+  const yAt = (tone) => pad.top + innerH / 2 - (tone / toneScale) * (innerH / 2);
+  const zeroY = yAt(0);
+  const plotted = points.map((point) => ({
+    ...point,
+    x: xAt(point.year),
+    y: yAt(point.tone),
+  }));
+  const linePath = plotted.map((point, index) => `${index ? "L" : "M"} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(" ");
+  const areaPath = `${linePath} L ${plotted.at(-1).x.toFixed(2)} ${zeroY.toFixed(2)} L ${plotted[0].x.toFixed(2)} ${zeroY.toFixed(2)} Z`;
+  const ticks = [];
+  const markCount = Math.min(5, yearSpan <= 4 ? yearSpan + 1 : 5);
+  for (let i = 0; i < markCount; i += 1) {
+    const year = Math.round(minYear + (yearSpan * i) / Math.max(1, markCount - 1));
+    ticks.push({ year, x: xAt(year) });
+  }
+  return {
+    width,
+    height,
+    pad,
+    points: plotted,
+    linePath,
+    areaPath,
+    zeroY,
+    minYear,
+    maxYear,
+    ticks,
+  };
+}
+
 export function youtubeId(url) {
   try {
     const parsed = new URL(url);

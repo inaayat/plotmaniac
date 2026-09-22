@@ -23,6 +23,9 @@ import {
   defaultPlotView,
   resolvePlotView,
   relationEvents,
+  relationSentimentChart,
+  relationTimelineHasTone,
+  relationToneSeries,
   RELATION_REGIONS,
   stateUrl,
   neighborhood,
@@ -621,6 +624,20 @@ assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
+assert.match(appSource, /renderRelationSentimentChart/, "country drawer can chart bilateral warmth");
+assert.match(css, /\.relation-sentiment/, "relationship warmth chart styles");
+
+const mexico = usCountries.find((country) => country.slug === "mexico");
+assert.ok(mexico, "mexico country record");
+assert.ok(relationTimelineHasTone(mexico.timeline), "mexico timeline carries warmth scores");
+assert.ok(mexico.timeline.length >= 24, "mexico timeline is detailed");
+const mexSeries = relationToneSeries(mexico.timeline);
+assert.equal(mexSeries.length, mexico.timeline.length);
+assert.ok(mexSeries.every((point) => point.year > 1700));
+const mexChart = relationSentimentChart(mexico.timeline);
+assert.ok(mexChart.linePath.startsWith("M"));
+assert.ok(mexChart.areaPath.endsWith("Z"));
+assert.ok(mexChart.points.length >= 24);
 
 const obamaPeople = readJson("../data/barack-obama/people.json");
 const obamaEvents = readJson("../data/barack-obama/events.json");
