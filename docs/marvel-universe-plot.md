@@ -30,7 +30,9 @@ The relation ontology is intentionally small:
 - `enemy`, `rival`, `conflict`, `betrayal`, and `murderer` are in `enemyKinds`; the engine’s enemy precedence keeps an active feud readable when an older alliance also exists.
 - `universe-member` and `variant-of` are neutral orbit relations. `universe-member` encodes focusable universe membership; `variant-of` makes same-mantle links explicit without pretending that two variants are the same person. `organization` is used only for story relationships, while hub membership remains neutral.
 
-The data prioritizes founding Avengers bonds and the Civil War fracture, the Guardians crew, Wakanda, Strange–Wanda–Wong, Daredevil–Kingpin–Punisher, Loki–Sylvie–Mobius and the TVA, the Thunderbolts cluster, and cross-universe Spider-Man, X-Men, Fantastic Four, and Venom variant links. No new rendering arrangement is required; the only engine-facing change is passing the already-supported minimum-beat option from plot metadata.
+The data prioritizes founding Avengers bonds and the Civil War fracture, the Guardians crew, Wakanda, Strange–Wanda–Wong, Daredevil–Kingpin–Punisher, Loki–Sylvie–Mobius and the TVA, the Thunderbolts cluster, and cross-universe Spider-Man, X-Men, Fantastic Four, and Venom variant links. No new rendering arrangement is required; the only engine-facing changes are passing the already-supported minimum-beat option from plot metadata and giving the seven-hub layout unique radial sectors instead of reusing the four cardinal slots.
+
+The Marvel plot specializes the hub chrome slightly: its focus options read `Shared web` and `All characters`, and its accessible web description explains universe focus rather than calling the board a YouTuber web. Other plots keep their existing labels and copy.
 
 ### Timeline
 

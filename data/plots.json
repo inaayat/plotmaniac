@@ -38,6 +38,9 @@
       "includeOrbit": true,
       "minBeats": 1,
       "orbitLabel": "Across universes",
+      "hubNoneLabel": "Shared web",
+      "hubAllLabel": "All characters",
+      "hubAriaLabel": "Marvel character web. Universe hubs sit around the shared field. Shared web keeps the common cast, All characters reveals every scoped variant, and a universe focus reveals that universe's members.",
       "friendKinds": ["ally", "team", "mentor", "protégé", "family", "romance", "organization"],
       "enemyKinds": ["enemy", "rival", "conflict", "betrayal", "murderer"],
       "hubs": [

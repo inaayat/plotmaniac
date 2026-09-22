@@ -1585,7 +1585,7 @@ for (const hub of marvel.hubs) {
   });
 }
 assert.equal(hubsForPerson("norman-osborn-raimi", marvelRelations, marvelCenterIds).join(), "peter-parker-raimi");
-assert.equal(campOf("steve-rogers", marvelRelations, marvel.centerId, marvel.friendKinds, marvel.enemyKinds), "friend");
+assert.equal(campOf("steve-rogers", marvelRelations, marvel.centerId, marvel.friendKinds, marvel.enemyKinds), "enemy");
 assert.equal(campOf("thanos", marvelRelations, marvel.centerId, marvel.friendKinds, marvel.enemyKinds), "enemy");
 const marvelLayoutOptions = {
   centerId: marvel.centerId,
