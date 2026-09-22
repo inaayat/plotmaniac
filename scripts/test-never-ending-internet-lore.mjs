@@ -412,14 +412,13 @@ assert.equal(sharedWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "
 assert.ok(sharedWeb.edges.some((edge) =>
   (edge.from === "trisha-paytas" && edge.to === "jason-nash")
   || (edge.from === "jason-nash" && edge.to === "trisha-paytas")));
-assert.equal(sharedWeb.regions.length, 3);
+assert.equal(sharedWeb.regions.length, 4);
 assert.ok(sharedWeb.regions.some((region) => /trisha/i.test(region.label)));
+assert.ok(sharedWeb.regions.some((region) => region.id === "shared" && /shared/i.test(region.label)));
+assert.equal(sharedWeb.regions.find((region) => region.id === "ethan-klein").active, true);
 
 function nodeOf(layoutNodes, id) {
   return layoutNodes.find((item) => item.id === id);
-}
-function distNodes(a, b) {
-  return Math.hypot(a.x - b.x, a.y - b.y);
 }
 const pageMid = { x: 700, y: 490 };
 const ethanOnField = nodeOf(sharedWeb.nodes, "ethan-klein");
@@ -431,15 +430,15 @@ const jeffOnField = nodeOf(sharedWeb.nodes, "jeff-wittek");
 const mosesOnField = nodeOf(sharedWeb.nodes, "moses-hacmon");
 assert.ok(ethanOnField.x < pageMid.x && ethanOnField.y < pageMid.y, "Ethan sits in the top-left hub corner");
 assert.ok(davidOnField.x > pageMid.x && davidOnField.y < pageMid.y, "Dobrik sits in the top-right hub corner");
-assert.ok(trishaOnField.y > pageMid.y, "Trisha sits in the bottom hub corner");
+assert.ok(trishaOnField.x < pageMid.x && trishaOnField.y > pageMid.y, "Trisha sits in the bottom-left territory");
 assert.ok(danOnField, "Dan stays on the web");
 assert.equal(danOnField.hubRegion, "ethan-klein");
-assert.ok(distNodes(danOnField, ethanOnField) < distNodes(danOnField, davidOnField), "Dan stays on Ethan's side");
-assert.ok(distNodes(danOnField, ethanOnField) < distNodes(danOnField, trishaOnField), "Dan is not pulled into Trisha's corner");
-assert.ok(distNodes(danOnField, pageMid) > distNodes(jeffOnField, pageMid), "single-hub Dan sits farther from the middle than multi-hub Jeff");
-assert.ok(distNodes(danOnField, pageMid) > distNodes(mosesOnField, pageMid), "single-hub Dan sits farther from the middle than Moses");
+assert.ok(danOnField.x < pageMid.x && danOnField.y < pageMid.y, "Dan stays inside Ethan's territory");
 assert.equal(natalieOnField.hubRegion, "david-dobrik");
-assert.ok(distNodes(natalieOnField, davidOnField) < distNodes(natalieOnField, ethanOnField), "Natalie stays in Dobrik's corner");
+assert.ok(natalieOnField.x > pageMid.x && natalieOnField.y < pageMid.y, "Natalie stays inside Dobrik's territory");
+assert.equal(jeffOnField.hubRegion, "shared");
+assert.equal(mosesOnField.hubRegion, "shared");
+assert.ok(jeffOnField.x > pageMid.x && jeffOnField.y > pageMid.y, "multi-hub Jeff lives in Shared orbit");
 assert.equal(nodeOf(sharedWeb.nodes, "hasan-piker").hubRegion, "ethan-klein");
 
 const dobrikWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "david-dobrik" });
@@ -464,6 +463,24 @@ assert.equal(trishaWeb.nodes.find((node) => node.id === "moses-hacmon").camp, "f
 assert.equal(trishaWeb.nodes.find((node) => node.id === "oscar-gracey"), undefined);
 assert.equal(trishaWeb.nodes.find((node) => node.id === "gabbie-hanna").camp, "enemy");
 assert.ok(trishaWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
+assert.equal(trishaWeb.regions.find((region) => region.id === "trisha-paytas").active, true);
+
+const mobileHubField = webLayout(people, relations, {
+  ...hubFieldOpts,
+  centerId: "trisha-paytas",
+  width: 390,
+  height: 700,
+});
+assert.ok(mobileHubField.height > 1200, "mobile territories stack into a vertical map");
+assert.deepEqual(
+  mobileHubField.regions.map((region) => region.id),
+  ["trisha-paytas", "shared", "ethan-klein", "david-dobrik"],
+  "selected hub comes first on mobile, followed by Shared orbit",
+);
+assert.ok(mobileHubField.regions.every((region) => region.x >= 0 && region.x + region.width <= 390));
+assert.ok(mobileHubField.nodes.every((node) => node.x > 0 && node.x < 390 && node.y > 0 && node.y < mobileHubField.height));
+assert.equal(nodeOf(mobileHubField.nodes, "dan-swerdlove").hubRegion, "ethan-klein");
+assert.equal(nodeOf(mobileHubField.nodes, "jeff-wittek").hubRegion, "shared");
 
 const nodes = graphLayout(people);
 assert.equal(nodes.length, people.length);

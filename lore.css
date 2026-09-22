@@ -518,6 +518,25 @@ body[data-view="web"] #footer-note {
   transition: stroke 0.2s ease, stroke-width 0.2s ease, opacity 0.2s ease;
 }
 
+body[data-view="web"] .web-scroll.is-hub-field {
+  overflow: auto;
+  padding: 0;
+  overscroll-behavior: contain;
+}
+
+.web-stage.is-hub-field .web-lines {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.web-stage.is-hub-field .web-lines path {
+  opacity: 0;
+}
+
+.web-stage.is-hub-field.is-hot .web-lines path.is-lit {
+  opacity: 0.9;
+}
+
 .web-lines path[data-camp="friend"] {
   stroke: rgba(125, 206, 160, 0.55);
 }
@@ -1353,6 +1372,10 @@ body[data-view="relation"] .views button {
   animation-delay: calc(var(--i) * 35ms);
 }
 
+.web-stage.is-hub-field .node {
+  z-index: 2;
+}
+
 .node-name {
   max-width: 112px;
   overflow: hidden;
@@ -1621,15 +1644,46 @@ body[data-view="relation"] .views button {
 
 .hub-region {
   position: absolute;
-  transform: translate(-50%, -50%);
-  color: var(--gold);
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid rgba(232, 196, 122, 0.18);
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(232, 196, 122, 0.045), transparent 44%),
+    rgba(18, 16, 12, 0.52);
   pointer-events: none;
-  opacity: 0.55;
-  white-space: nowrap;
-  z-index: 1;
+  z-index: 0;
+}
+
+.hub-region[data-kind="shared"] {
+  border-style: dashed;
+  background:
+    radial-gradient(circle at center, rgba(232, 196, 122, 0.07), transparent 68%),
+    rgba(18, 16, 12, 0.34);
+}
+
+.hub-region.is-active {
+  border-color: rgba(232, 196, 122, 0.62);
+  box-shadow: inset 0 0 0 1px rgba(232, 196, 122, 0.12);
+}
+
+.hub-region h2 {
+  margin: 0;
+  color: var(--gold);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hub-region span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
 }
 
 .topic-bar {
@@ -2666,6 +2720,31 @@ body[data-view="timeline"] #footer-note {
 
   body[data-view="web"] .web-stage {
     min-width: 100%;
+  }
+
+  body[data-view="web"] .web.is-hub-field .web-scroll.is-hub-field {
+    overflow-x: hidden;
+    overflow-y: auto;
+    touch-action: pan-y;
+    padding-bottom: calc(12px + var(--safe-bottom));
+  }
+
+  body[data-view="web"] .web.is-hub-field .web-stage {
+    min-width: 0;
+  }
+
+  body[data-view="web"] .web.is-hub-field .hub-region {
+    padding: 12px 14px;
+    border-radius: 18px;
+  }
+
+  body[data-view="web"] .web.is-hub-field .node-name {
+    max-width: 94px;
+    overflow: visible;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    text-overflow: unset;
+    white-space: normal;
   }
 
   body[data-view="web"] .web.is-compact-map .web-scroll.is-map {

@@ -956,35 +956,6 @@ export function webLayout(people, relations, options = {}) {
   return { width, height, nodes, edges: edgesAmong(nodes, applicable), nodeSize, centerSize };
 }
 
-function lerp(a, b, t) {
-  return a + (b - a) * t;
-}
-
-function hubCornerSlots(hubIds, width, height) {
-  const count = hubIds.length;
-  const corners = count === 2
-    ? [{ x: 0.16, y: 0.42 }, { x: 0.84, y: 0.42 }]
-    : count === 3
-      ? [{ x: 0.14, y: 0.16 }, { x: 0.86, y: 0.16 }, { x: 0.50, y: 0.88 }]
-      : hubIds.map((_, index) => {
-        const angle = -Math.PI / 2 + (Math.PI * 2 * index) / count;
-        return { x: 0.5 + Math.cos(angle) * 0.38, y: 0.5 + Math.sin(angle) * 0.38 };
-      });
-  const page = { x: width / 2, y: height / 2 };
-  return hubIds.map((id, index) => {
-    const corner = corners[index] || corners[0];
-    const cornerX = corner.x * width;
-    const cornerY = corner.y * height;
-    return {
-      id,
-      cornerX,
-      cornerY,
-      x: lerp(page.x, cornerX, 0.40),
-      y: lerp(page.y, cornerY, 0.40),
-    };
-  });
-}
-
 function hubFieldLayout({
   people,
   relations,
@@ -999,25 +970,11 @@ function hubFieldLayout({
   hubs = [],
   minBeats = WEB_MIN_BEATS,
 }) {
-  const page = { x: width / 2, y: height / 2 };
   const counts = beatCounts(events, people.map((person) => person.id));
   const visible = people.filter((person) => {
     if (hubIds.includes(person.id)) return true;
     return (counts.get(person.id) || 0) >= minBeats;
   });
-  const count = Math.max(visible.length, 1);
-  let nodeSize = 72;
-  const minNode = count > 28 ? 28 : 42;
-  for (let attempt = 0; attempt < 16; attempt += 1) {
-    const pad = nodeSize / 2 + 14;
-    const span = Math.min(width, height) - pad * 2;
-    const chord = span * 0.9 / Math.sqrt(count);
-    if (chord >= nodeSize * 1.15 || nodeSize <= minNode) break;
-    nodeSize -= 4;
-  }
-  const centerSize = Math.round(nodeSize * 1.42);
-  const slots = hubCornerSlots(hubIds, width, height);
-  const slotOf = new Map(slots.map((slot) => [slot.id, slot]));
   const labelFor = (id) =>
     hubs.find((hub) => hub.centerId === id)?.label
     || people.find((person) => person.id === id)?.name
@@ -1032,18 +989,107 @@ function hubFieldLayout({
     else shared.push({ person, affiliated });
   });
 
+  const compact = width <= COMPACT_MAX_WIDTH;
+  const gap = compact ? 12 : Math.min(24, Math.max(16, width * 0.014));
+  const inset = compact ? 10 : Math.min(30, Math.max(18, width * 0.018));
+  const nodeSize = compact ? 54 : width < 1050 ? 42 : width < 1350 ? 48 : 54;
+  const centerSize = Math.round(nodeSize * (compact ? 1.2 : 1.3));
+  const sorted = (list) => list.slice().sort((a, b) =>
+    (counts.get(b.id) || 0) - (counts.get(a.id) || 0)
+    || a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+  hubIds.forEach((id) => groups.set(id, sorted(groups.get(id) || [])));
+  const sharedPeople = sorted(shared.map(({ person }) => person));
+
+  const regions = [];
+  if (compact) {
+    const active = center?.id;
+    const orderedIds = [active, ...hubIds.filter((id) => id !== active)];
+    const ordered = [
+      { id: orderedIds[0], kind: "hub" },
+      { id: "shared", kind: "shared" },
+      ...orderedIds.slice(1).map((id) => ({ id, kind: "hub" })),
+    ].filter((entry) => entry.id);
+    let top = inset;
+    ordered.forEach((entry) => {
+      const members = entry.kind === "shared" ? sharedPeople : groups.get(entry.id) || [];
+      const columns = Math.max(2, Math.min(3, Math.floor((width - inset * 2 - 28) / 96)));
+      const rows = Math.ceil(members.length / columns);
+      const regionHeight = entry.kind === "hub"
+        ? Math.max(170, 132 + rows * 86)
+        : Math.max(150, 76 + rows * 86);
+      regions.push({
+        id: entry.id,
+        kind: entry.kind,
+        label: entry.kind === "shared" ? "Shared orbit" : labelFor(entry.id),
+        x: inset,
+        y: top,
+        width: width - inset * 2,
+        height: regionHeight,
+        active: entry.id === active,
+      });
+      top += regionHeight + gap;
+    });
+    height = top - gap + inset;
+  } else {
+    height = Math.max(height, 640);
+    const regionWidth = (width - inset * 2 - gap) / 2;
+    const regionHeight = (height - inset * 2 - gap) / 2;
+    const cards = [
+      { id: hubIds[0], kind: "hub", col: 0, row: 0 },
+      { id: hubIds[1], kind: "hub", col: 1, row: 0 },
+      { id: hubIds[2], kind: "hub", col: 0, row: 1 },
+      { id: "shared", kind: "shared", col: 1, row: 1 },
+    ];
+    hubIds.slice(3).forEach((id, index) => {
+      cards.push({ id, kind: "hub", col: index % 2, row: 2 + Math.floor(index / 2) });
+    });
+    cards.filter((entry) => entry.id).forEach((entry) => {
+      regions.push({
+        id: entry.id,
+        kind: entry.kind,
+        label: entry.kind === "shared" ? "Shared orbit" : labelFor(entry.id),
+        x: inset + entry.col * (regionWidth + gap),
+        y: inset + entry.row * (regionHeight + gap),
+        width: regionWidth,
+        height: regionHeight,
+        active: entry.id === center?.id,
+      });
+    });
+  }
+
+  const regionOf = new Map(regions.map((region) => [region.id, region]));
+  const gridPoints = (region, memberCount, hasHub) => {
+    if (!memberCount) return [];
+    const left = region.x + (hasHub && !compact ? Math.max(116, centerSize + 54) : 22);
+    const right = region.x + region.width - 22;
+    const top = region.y + (compact ? (hasHub ? 142 : 70) : 58);
+    const bottom = region.y + region.height - 30;
+    const availableWidth = Math.max(80, right - left);
+    const availableHeight = Math.max(70, bottom - top);
+    const minCellWidth = nodeSize + (compact ? 38 : 34);
+    const maxColumns = compact ? 3 : 7;
+    const columns = Math.max(1, Math.min(memberCount, maxColumns, Math.floor(availableWidth / minCellWidth)));
+    const rows = Math.ceil(memberCount / columns);
+    const stepX = availableWidth / columns;
+    const stepY = availableHeight / Math.max(rows, 1);
+    return Array.from({ length: memberCount }, (_, index) => ({
+      x: left + stepX * (index % columns + 0.5),
+      y: top + stepY * (Math.floor(index / columns) + 0.5),
+    }));
+  };
+
   const nodes = [];
   hubIds.forEach((id) => {
     const person = visible.find((item) => item.id === id);
-    const slot = slotOf.get(id);
-    if (!person || !slot) return;
+    const region = regionOf.get(id);
+    if (!person || !region) return;
     const camp = person.id === center?.id
       ? "center"
       : campOf(person.id, relations, center.id, friendKinds, enemyKinds, year);
     nodes.push({
       ...person,
-      x: slot.x,
-      y: slot.y,
+      x: compact ? region.x + region.width / 2 : region.x + Math.max(64, centerSize / 2 + 24),
+      y: compact ? region.y + 80 : region.y + region.height / 2,
       camp,
       beats: counts.get(person.id) || 0,
       closeness: 1,
@@ -1053,26 +1099,19 @@ function hubFieldLayout({
   });
 
   hubIds.forEach((hubId) => {
-    const slot = slotOf.get(hubId);
-    const members = (groups.get(hubId) || []).slice().sort((a, b) =>
-      (counts.get(b.id) || 0) - (counts.get(a.id) || 0) || a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+    const region = regionOf.get(hubId);
+    const members = groups.get(hubId) || [];
+    if (!region) return;
+    const points = gridPoints(region, members.length, true);
     const most = members[0] ? counts.get(members[0].id) || 0 : 0;
     const fewest = members.length ? Math.min(...members.map((person) => counts.get(person.id) || 0)) : 0;
-    const outX = slot.cornerX - slot.x;
-    const outY = slot.cornerY - slot.y;
-    const outLen = Math.hypot(outX, outY) || 1;
-    const nx = -outY / outLen;
-    const ny = outX / outLen;
     members.forEach((person, index) => {
       const beats = counts.get(person.id) || 0;
       const closeness = most > fewest ? (beats - fewest) / (most - fewest) : 0.45;
-      const along = 0.22 + (1 - closeness) * 0.72;
-      const fan = members.length === 1 ? 0 : (index - (members.length - 1) / 2) / Math.max(members.length - 1, 1);
-      const side = fan * Math.min(width, height) * 0.11;
       nodes.push({
         ...person,
-        x: lerp(slot.x, slot.cornerX, along) + nx * side,
-        y: lerp(slot.y, slot.cornerY, along) + ny * side,
+        x: points[index].x,
+        y: points[index].y,
         camp: campOf(person.id, relations, center.id, friendKinds, enemyKinds, year),
         beats,
         closeness,
@@ -1082,17 +1121,13 @@ function hubFieldLayout({
     });
   });
 
-  shared.forEach(({ person, affiliated }, index) => {
-    const spots = affiliated.map((id) => slotOf.get(id)).filter(Boolean);
-    const mx = spots.length ? spots.reduce((sum, slot) => sum + slot.x, 0) / spots.length : page.x;
-    const my = spots.length ? spots.reduce((sum, slot) => sum + slot.y, 0) / spots.length : page.y;
-    const pull = affiliated.length >= 3 ? 0.55 : 0.28;
-    const angle = (index * Math.PI * (3 - Math.sqrt(5))) - Math.PI / 2;
-    const jitter = 18 + (index % 5) * 7;
+  const sharedRegion = regionOf.get("shared");
+  const sharedPoints = gridPoints(sharedRegion, sharedPeople.length, false);
+  sharedPeople.forEach((person, index) => {
     nodes.push({
       ...person,
-      x: lerp(mx, page.x, pull) + Math.cos(angle) * jitter,
-      y: lerp(my, page.y, pull) + Math.sin(angle) * jitter,
+      x: sharedPoints[index].x,
+      y: sharedPoints[index].y,
       camp: campOf(person.id, relations, center.id, friendKinds, enemyKinds, year),
       beats: counts.get(person.id) || 0,
       closeness: 0.75,
@@ -1100,22 +1135,6 @@ function hubFieldLayout({
       hubRegion: "shared",
     });
   });
-
-  spreadField(nodes, {
-    pins: slots.map((slot) => ({ id: slot.id, x: slot.x, y: slot.y })),
-    minDist: Math.max(nodeSize * 0.95, 36),
-    minX: nodeSize / 2 + 10,
-    maxX: width - (nodeSize / 2 + 10),
-    minY: nodeSize / 2 + 10,
-    maxY: height - (nodeSize / 2 + 24),
-  });
-
-  const regions = slots.map((slot) => ({
-    id: slot.id,
-    label: labelFor(slot.id),
-    x: slot.cornerX,
-    y: slot.cornerY,
-  }));
 
   return {
     width,
@@ -1126,48 +1145,6 @@ function hubFieldLayout({
     centerSize,
     regions,
   };
-}
-
-function spreadField(nodes, bounds) {
-  const { minDist, minX, maxX, minY, maxY } = bounds;
-  const pins = new Map((bounds.pins || []).map((pin) => [pin.id, pin]));
-  const clamp = (node) => {
-    node.x = Math.min(maxX, Math.max(minX, node.x));
-    node.y = Math.min(maxY, Math.max(minY, node.y));
-  };
-  for (let pass = 0; pass < 64; pass += 1) {
-    let moved = false;
-    for (let i = 0; i < nodes.length; i += 1) {
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const a = nodes[i];
-        const b = nodes[j];
-        const dx = b.x - a.x;
-        const dy = b.y - a.y;
-        const dist = Math.hypot(dx, dy) || 0.001;
-        if (dist >= minDist) continue;
-        const push = (minDist - dist) / 2;
-        const ux = dx / dist;
-        const uy = dy / dist;
-        const aPin = pins.has(a.id);
-        const bPin = pins.has(b.id);
-        const aMove = aPin && !bPin ? 0.15 : aPin && bPin ? 0.2 : 1;
-        const bMove = bPin && !aPin ? 0.15 : aPin && bPin ? 0.2 : 1;
-        a.x -= ux * push * aMove;
-        a.y -= uy * push * aMove;
-        b.x += ux * push * bMove;
-        b.y += uy * push * bMove;
-        moved = true;
-      }
-    }
-    pins.forEach((pin, id) => {
-      const node = nodes.find((item) => item.id === id);
-      if (!node) return;
-      node.x += (pin.x - node.x) * 0.45;
-      node.y += (pin.y - node.y) * 0.45;
-    });
-    nodes.forEach(clamp);
-    if (!moved && pass > 4) break;
-  }
 }
 
 function beatCounts(events, ids) {

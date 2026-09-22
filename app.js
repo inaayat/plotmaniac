@@ -450,9 +450,10 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
 }
 
 function renderWeb() {
-  const compactMap = isCompact() && plot.arrangement !== "camps" && plot.arrangement !== "topics";
+  const hubField = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2);
+  const compactMap = isCompact() && !hubField && plot.arrangement !== "camps" && plot.arrangement !== "topics";
   const section = document.createElement("section");
-  section.className = compactMap ? "web is-compact-map" : "web";
+  section.className = `web${compactMap ? " is-compact-map" : ""}${hubField ? " is-hub-field" : ""}`;
   const key = document.createElement("ul");
   key.className = "web-key";
   const keyItems = [
@@ -482,13 +483,16 @@ function renderWeb() {
     ? " is-camps"
     : plot.arrangement === "topics"
       ? " is-topics"
-      : compactMap ? " is-map" : "";
+      : compactMap ? " is-map"
+        : hubField ? " is-hub-field" : "";
   scroller.className = `web-scroll${scrollKind}`;
   scroller.setAttribute(
     "aria-label",
     compactMap
       ? "Friends and foes map. Drag to look around. Names are listed below."
-      : "Friends and foes map",
+      : hubField
+        ? "YouTuber hub territories and shared orbit"
+        : "Friends and foes map",
   );
   const stage = document.createElement("div");
   stage.className = `web-stage${plot.images === "bubbles" ? " is-bubbles" : ""}`;
@@ -499,7 +503,9 @@ function renderWeb() {
   if (isCompact() && !plot.year) {
     const hint = document.createElement("p");
     hint.className = "web-hint";
-    hint.textContent = plot.arrangement === "camps"
+    hint.textContent = hubField
+      ? "Scroll through the hub territories. People connected to multiple hubs appear in Shared orbit."
+      : plot.arrangement === "camps"
       ? `${plot.yearHint || "Foes sit on the left, friends on the right."} Scroll to see everyone.`
       : "Drag the map to look around. Full names sit below — tap someone to open them.";
     section.appendChild(hint);
@@ -1390,10 +1396,11 @@ function paintWeb(stage, { animate = true } = {}) {
   const compact = isCompact();
   const camps = plot.arrangement === "camps";
   const topics = plot.arrangement === "topics";
+  const hubField = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2);
   const bubbles = plot.images === "bubbles";
   let width;
   let height;
-  if (compact && !camps && !topics) {
+  if (compact && !camps && !topics && !hubField) {
     const viewport = Math.max(scroller?.clientWidth || 0, bounds.width, 320);
     const size = Math.max(1120, Math.round(viewport * 2.8));
     width = size;
@@ -1425,8 +1432,9 @@ function paintWeb(stage, { animate = true } = {}) {
     hubIds: plotHubs(plot).map((hub) => hub.centerId),
     hubs: plotHubs(plot),
   });
+  stage.classList.toggle("is-hub-field", Boolean(layout.regions));
   stage.classList.toggle("is-quiet", !animate);
-  if ((camps || topics) && layout.height >= height) stage.style.height = `${layout.height}px`;
+  if (layout.regions || ((camps || topics) && layout.height >= height)) stage.style.height = `${layout.height}px`;
   else if (!(compact && !camps)) stage.style.height = "";
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);
@@ -1435,6 +1443,22 @@ function paintWeb(stage, { animate = true } = {}) {
   stage.replaceChildren();
 
   const byId = new Map(layout.nodes.map((node) => [node.id, node]));
+  (layout.regions || []).forEach((region) => {
+    const el = document.createElement("section");
+    el.className = `hub-region${region.active ? " is-active" : ""}`;
+    el.dataset.kind = region.kind;
+    el.style.left = `${region.x}px`;
+    el.style.top = `${region.y}px`;
+    el.style.width = `${region.width}px`;
+    el.style.height = `${region.height}px`;
+    const heading = document.createElement("h2");
+    heading.textContent = region.label;
+    const count = layout.nodes.filter((node) => node.hubRegion === region.id && node.id !== region.id).length;
+    const note = document.createElement("span");
+    note.textContent = `${count} ${count === 1 ? "person" : "people"}`;
+    el.append(heading, note);
+    stage.appendChild(el);
+  });
   const svg = document.createElementNS(SVG_NS, "svg");
   svg.setAttribute("class", "web-lines");
   svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
@@ -1466,15 +1490,6 @@ function paintWeb(stage, { animate = true } = {}) {
     el.style.top = `${label.y}px`;
     stage.appendChild(el);
   });
-  (layout.regions || []).forEach((region) => {
-    const el = document.createElement("div");
-    el.className = "hub-region";
-    el.textContent = region.label;
-    el.style.left = `${region.x}px`;
-    el.style.top = `${region.y}px`;
-    stage.appendChild(el);
-  });
-
   const light = (nodeId) => {
     const near = new Set(neighborhood(nodeId, relations));
     if (nodeId.startsWith("topic:")) {
