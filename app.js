@@ -115,7 +115,7 @@ function labelViews() {
   const web = $("view-web");
   const timeline = $("view-timeline");
   if (!web || !timeline) return;
-  web.textContent = history ? "People" : "The web";
+  web.textContent = history ? "Map + people" : "The web";
   timeline.textContent = "Full timeline";
 }
 
@@ -822,6 +822,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
           state.view = "person";
           state.person = id;
           render({ push: true });
+          window.scrollTo(0, 0);
         },
         onOpenTimeline(id) {
           state.view = "timeline";
@@ -839,6 +840,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
     } else {
       partitionMount.goTo(state.eventId);
     }
+    if (state.view === "person") window.scrollTo(0, 0);
     if (push || replace) writeUrl(replace);
     return;
   }
