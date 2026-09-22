@@ -490,6 +490,12 @@ body[data-view="pick"] .site-footer {
   list-style: none;
   width: 100%;
   margin: 0 auto;
+  align-items: stretch;
+}
+
+.plot-cards > li {
+  display: flex;
+  min-height: 0;
 }
 
 .plot-card {
@@ -499,8 +505,10 @@ body[data-view="pick"] .site-footer {
   column-gap: 10px;
   row-gap: 1px;
   align-items: center;
+  align-content: center;
   width: 100%;
-  min-height: 0;
+  flex: 1 1 auto;
+  min-height: 5.6rem;
   padding: 10px 12px;
   text-align: left;
   color: inherit;
@@ -568,6 +576,11 @@ body[data-view="pick"] .site-footer {
 
 .plot-card strong {
   grid-column: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: calc(1.05rem * 1.1 * 2);
   font-family: "Fraunces", Georgia, serif;
   font-size: 1.05rem;
   font-weight: 500;
@@ -578,6 +591,8 @@ body[data-view="pick"] .site-footer {
 .plot-card p {
   grid-column: 2;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: var(--muted);
   font-size: 0.66rem;
   line-height: 1.3;

@@ -3,7 +3,7 @@
 ## Design
 
 - **Plot id:** `marvel-universe`
-- **Title:** Marvel Cinematic Universe / Multiverse
+- **Title:** Marvel Cinematic Universe
 - **Kicker:** `Marvel`
 - **Card line:** `Heroes, villains, timelines, and variant worlds`
 - **Lede:** `Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Follow the character web, read the MCU in story order, or focus a universe to see who belongs there. MCU main means the shared Sacred Timeline / Earth-616 screen continuity (often called Earth-199999 by fans); guest worlds remain separate.`
