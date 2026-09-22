@@ -152,7 +152,7 @@
       "friendKinds": [],
       "enemyKinds": [],
       "arrangement": "wars",
-      "yearHint": "Drag the year. Every opposing pair is drawn. Open a name for its Wikipedia article.",
+      "yearHint": "Drag each end of the span. The map keeps every war in those years. Click a country to read its wars.",
       "year": {
         "min": 2003,
         "max": 2026,

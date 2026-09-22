@@ -37,8 +37,11 @@ import {
   boardViewForPerson,
   visibleRelationCountries,
   webLayout,
-  warActive,
-  warsInYear,
+  warOverlapsSpan,
+  warsInSpan,
+  warsForCountry,
+  warCountryNote,
+  parseWarSpan,
   warPartyLine,
   warMatchesFocus,
   warMapSize,
@@ -192,6 +195,7 @@ function onPop() {
     country: parsed.country || "",
     hub: parsed.hub || plotHubs(plot)[0]?.id || "",
   };
+  applyWarSpan(state);
   rememberCountryRegion();
   render({ focusEvent: Boolean(state.eventId) });
 }
@@ -304,6 +308,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         country: parsed.country || "",
         hub: parsed.hub || hubs[0]?.id || "",
       };
+      applyWarSpan(state);
       rememberCountryRegion();
     } else {
       state = {
@@ -316,6 +321,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         country: "",
         hub: hubs[0]?.id || "",
       };
+      applyWarSpan(state, "");
     }
     renderCredits();
     render({
@@ -2427,10 +2433,118 @@ function featuredPerson(event, focusId) {
   return peopleById.get(preferred) || { name: "?", id: preferred || "unknown" };
 }
 
+function applyWarSpan(target, url = location.href) {
+  if (plot?.arrangement !== "wars" || !plot.year) {
+    target.from = null;
+    target.to = null;
+    return target;
+  }
+  const params = url ? new URL(url, "https://plotmaniac.com/").searchParams : new URLSearchParams();
+  const yearParam = params.get("year");
+  const fallback = yearParam == null || yearParam === "" ? plot.year.initial : target.year;
+  const span = parseWarSpan(params.get("from"), params.get("to"), plot.year, fallback);
+  target.from = span.from;
+  target.to = span.to;
+  target.year = span.to;
+  return target;
+}
+
+function warSpanLabel(from, to) {
+  return from === to ? String(from) : `${from}–${to}`;
+}
+
+function renderWarSpanBar() {
+  const bar = document.createElement("div");
+  bar.className = "year-bar wars-span";
+  const readout = document.createElement("p");
+  readout.className = "year-readout";
+  readout.textContent = warSpanLabel(state.from, state.to);
+  const hint = document.createElement("p");
+  hint.className = "year-hint";
+  hint.textContent = plot.yearHint || "Drag each end of the span. Click a country to read its wars.";
+  const fromRow = document.createElement("label");
+  fromRow.className = "span-row";
+  const fromName = document.createElement("span");
+  fromName.textContent = "From";
+  const fromInput = document.createElement("input");
+  fromInput.type = "range";
+  fromInput.className = "year-drag";
+  fromInput.dataset.bound = "from";
+  fromInput.min = String(plot.year.min);
+  fromInput.max = String(plot.year.max);
+  fromInput.step = "1";
+  fromInput.value = String(state.from);
+  fromInput.setAttribute("aria-label", "First year of the time frame");
+  fromInput.addEventListener("input", () => setWarSpan(fromInput.value, state.to));
+  fromRow.append(fromName, fromInput);
+  const toRow = document.createElement("label");
+  toRow.className = "span-row";
+  const toName = document.createElement("span");
+  toName.textContent = "To";
+  const toInput = document.createElement("input");
+  toInput.type = "range";
+  toInput.className = "year-drag";
+  toInput.dataset.bound = "to";
+  toInput.min = String(plot.year.min);
+  toInput.max = String(plot.year.max);
+  toInput.step = "1";
+  toInput.value = String(state.to);
+  toInput.setAttribute("aria-label", "Last year of the time frame");
+  toInput.addEventListener("input", () => setWarSpan(state.from, toInput.value));
+  toRow.append(toName, toInput);
+  const marks = document.createElement("div");
+  marks.className = "year-marks";
+  const all = document.createElement("button");
+  all.type = "button";
+  all.dataset.span = "all";
+  all.textContent = "All";
+  all.classList.toggle("is-active", state.from === plot.year.min && state.to === plot.year.max);
+  all.addEventListener("click", () => setWarSpan(plot.year.min, plot.year.max));
+  marks.appendChild(all);
+  (plot.year.marks || []).forEach((year) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.year = String(year);
+    button.textContent = year === plot.year.max ? "Now" : String(year);
+    button.classList.toggle("is-active", state.from === year && state.to === year);
+    button.addEventListener("click", () => setWarSpan(year, year));
+    marks.appendChild(button);
+  });
+  const counts = document.createElement("p");
+  counts.className = "year-counts";
+  counts.id = "year-counts";
+  bar.append(readout, hint, fromRow, toRow, marks, counts);
+  return bar;
+}
+
+function setWarSpan(from, to) {
+  if (plot?.arrangement !== "wars" || !plot.year) return;
+  const span = parseWarSpan(from, to, plot.year, state.year);
+  state.from = span.from;
+  state.to = span.to;
+  state.year = span.to;
+  const readout = document.querySelector(".wars-span .year-readout");
+  if (readout) readout.textContent = warSpanLabel(span.from, span.to);
+  document.querySelectorAll(".wars-span .year-drag").forEach((input) => {
+    input.value = String(input.dataset.bound === "from" ? span.from : span.to);
+  });
+  document.querySelectorAll(".wars-span .year-marks button").forEach((button) => {
+    if (button.dataset.span === "all") {
+      button.classList.toggle("is-active", span.from === plot.year.min && span.to === plot.year.max);
+      return;
+    }
+    const year = Number(button.dataset.year);
+    button.classList.toggle("is-active", span.from === year && span.to === year);
+  });
+  warHover = "";
+  paintWars();
+  writeUrl(true);
+}
+
 function renderWars() {
   const section = document.createElement("section");
   section.className = "wars-board";
-  section.appendChild(renderYearBar());
+  section.appendChild(renderWarSpanBar());
   const stage = document.createElement("div");
   stage.className = "wars-stage";
   const mapWrap = document.createElement("div");
@@ -2447,6 +2561,14 @@ function renderWars() {
   section.appendChild(stage);
   requestAnimationFrame(() => paintWars());
   return section;
+}
+
+function selectWarCountry(iso) {
+  if (!iso) return;
+  const next = `country:${iso}`;
+  warFocus = warFocus === next ? "" : next;
+  warHover = "";
+  paintWars();
 }
 
 function warSpan(war) {
@@ -2476,13 +2598,14 @@ function paintWars() {
       const title = document.createElementNS(SVG_NS, "title");
       title.textContent = feature.properties.name || iso;
       path.appendChild(title);
+      path.addEventListener("click", () => selectWarCountry(iso));
       lands.appendChild(path);
     });
     svg.appendChild(lands);
     svg.dataset.lands = "1";
   }
-  const snapshot = warsInYear(warsData.conflicts, state.year);
-  if (warFocus && !snapshot.wars.some((war) => warMatchesFocus(war, warFocus))) warFocus = "";
+  const snapshot = warsInSpan(warsData.conflicts, state.from, state.to);
+  if (warFocus && !warFocus.startsWith("country:") && !snapshot.wars.some((war) => war.id === warFocus)) warFocus = "";
   const counts = document.getElementById("year-counts");
   if (counts) {
     const warsLabel = snapshot.wars.length === 1 ? "war" : "wars";
@@ -2560,18 +2683,39 @@ function paintWars() {
       warHover = "";
       applyWarFocus();
     });
-    mark.addEventListener("click", () => {
-      const next = `country:${dot.iso}`;
-      warFocus = warFocus === next ? "" : next;
-      applyWarFocus();
-    });
+    mark.addEventListener("click", () => selectWarCountry(dot.iso));
     svg.appendChild(mark);
   });
+  const chosenIso = (warFocus || "").startsWith("country:") ? warFocus.slice("country:".length) : "";
+  const chosenWars = chosenIso ? warsForCountry(snapshot.wars, chosenIso) : snapshot.wars;
+  const chosenName = chosenIso
+    ? (warsData.countries[chosenIso]?.name || svg.querySelector(`.land[data-iso="${chosenIso}"] title`)?.textContent || chosenIso)
+    : "";
   const header = document.createElement("div");
   header.className = "wars-list-head";
   const kicker = document.createElement("p");
-  kicker.className = "wars-kicker";
-  kicker.textContent = "Wars active this year";
+  kicker.className = chosenIso ? "wars-country" : "wars-kicker";
+  kicker.textContent = chosenIso ? chosenName : "Wars in this span";
+  header.appendChild(kicker);
+  const frame = document.createElement("p");
+  frame.className = "wars-frame";
+  const frameLabel = warSpanLabel(state.from, state.to);
+  const shownCount = chosenWars.length;
+  frame.textContent = chosenIso
+    ? `${frameLabel} · ${shownCount} ${shownCount === 1 ? "war" : "wars"}`
+    : frameLabel;
+  header.appendChild(frame);
+  if (chosenIso) {
+    const back = document.createElement("button");
+    back.type = "button";
+    back.className = "wars-back";
+    back.textContent = "All wars in this span";
+    back.addEventListener("click", () => {
+      warFocus = "";
+      paintWars();
+    });
+    header.appendChild(back);
+  }
   const sources = document.createElement("p");
   sources.className = "wars-sources";
   const first = document.createElement("a");
@@ -2585,14 +2729,16 @@ function paintWars() {
   second.rel = "noreferrer";
   second.textContent = "List of wars: 2020–present";
   sources.append(first, document.createTextNode(" · "), second);
-  header.append(kicker, sources);
+  header.appendChild(sources);
   const stack = document.createElement("div");
   stack.className = "wars-cards";
-  const ordered = snapshot.wars.slice().sort((a, b) => a.name.localeCompare(b.name, "en"));
+  const ordered = chosenWars.slice().sort((a, b) => a.name.localeCompare(b.name, "en"));
   if (!ordered.length) {
     const empty = document.createElement("p");
     empty.className = "wars-empty";
-    empty.textContent = "No war from these lists was active in this year.";
+    empty.textContent = chosenIso
+      ? `No war from these lists names ${chosenName} in ${frameLabel}.`
+      : `No war from these lists overlaps ${frameLabel}.`;
     stack.appendChild(empty);
   }
   ordered.forEach((war) => {
@@ -2610,8 +2756,16 @@ function paintWars() {
     years.textContent = warSpan(war);
     const parties = document.createElement("p");
     parties.className = "war-parties";
-    parties.textContent = warPartyLine(war, warsData.countries);
+    parties.textContent = chosenIso
+      ? warCountryNote(war, chosenIso, warsData.countries)
+      : warPartyLine(war, warsData.countries);
     card.append(title, years, parties);
+    if (chosenIso) {
+      const sides = document.createElement("p");
+      sides.className = "war-parties";
+      sides.textContent = warPartyLine(war, warsData.countries);
+      card.appendChild(sides);
+    }
     const focusCard = () => {
       warHover = war.id;
       applyWarFocus();
@@ -2628,7 +2782,11 @@ function paintWars() {
     });
     card.addEventListener("click", (event) => {
       if (event.target.closest("a")) return;
-      warFocus = warFocus === war.id ? "" : war.id;
+      if (chosenIso) {
+        warFocus = warFocus === war.id ? `country:${chosenIso}` : war.id;
+      } else {
+        warFocus = warFocus === war.id ? "" : war.id;
+      }
       applyWarFocus();
     });
     stack.appendChild(card);
@@ -2641,7 +2799,7 @@ function applyWarFocus() {
   const svg = document.querySelector(".wars-map");
   const focus = warHover || warFocus;
   if (svg) svg.classList.toggle("is-focused", Boolean(focus));
-  const wars = (warsData.conflicts || []).filter((war) => warActive(war, state.year));
+  const wars = (warsData.conflicts || []).filter((war) => warOverlapsSpan(war, state.from, state.to));
   const litWar = (id) => warMatchesFocus(wars.find((war) => war.id === id), focus);
   svg?.querySelectorAll(".war-arc").forEach((path) => {
     const ids = (path.dataset.wars || "").split(" ").filter(Boolean);
@@ -2656,6 +2814,7 @@ function applyWarFocus() {
     const countryHit = focus === `country:${path.dataset.iso}`;
     const involved = wars.some((war) => warMatchesFocus(war, focus) && (war.sides || []).some((side) => (side.states || []).includes(path.dataset.iso)));
     path.classList.toggle("is-lit", Boolean(focus) && (countryHit || involved));
+    path.classList.toggle("is-chosen", warFocus === `country:${path.dataset.iso}`);
   });
   document.querySelectorAll(".war-card").forEach((card) => {
     const war = wars.find((item) => item.id === card.dataset.war);

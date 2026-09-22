@@ -51,6 +51,11 @@ import {
   boardViewForPerson,
   COMPACT_MAX_WIDTH,
   warActive,
+  warOverlapsSpan,
+  parseWarSpan,
+  warsInSpan,
+  warsForCountry,
+  warCountryNote,
   opposingPairs,
   warsInYear,
   warPartyLine,
@@ -1578,6 +1583,19 @@ assert.equal(iraqPairs.some(([left, right]) => [left, right].includes("US") && [
 assert.equal(warActive(iraq, 2003), true);
 assert.equal(warActive(iraq, 2011), true);
 assert.equal(warActive(iraq, 2012), false);
+assert.equal(warOverlapsSpan(iraq, 2010, 2014), true);
+assert.equal(warOverlapsSpan(iraq, 2015, 2018), false);
+assert.deepEqual(parseWarSpan("2014", "2008", warsPlot.year, 2026), { from: 2008, to: 2014 });
+assert.deepEqual(parseWarSpan(null, null, warsPlot.year, ""), { from: 2026, to: 2026 });
+const early = warsInSpan(warArchive.conflicts, 2003, 2011);
+assert.ok(early.wars.some((war) => war.id === iraq.id));
+assert.equal(early.wars.some((war) => war.name === "Russian invasion of Ukraine"), false);
+const american = warsForCountry(early.wars, "US");
+assert.ok(american.some((war) => war.id === iraq.id));
+assert.match(warCountryNote(iraq, "US", warArchive.countries), /Against Iraq/);
+const spanUrl = stateUrl("https://plotmaniac.com/", { view: "web", plot: "wars", year: 2011, from: 2003, to: 2011 }, "");
+assert.match(spanUrl, /from=2003/);
+assert.match(spanUrl, /to=2011/);
 const invasion = warArchive.conflicts.find((war) => war.name === "Russian invasion of Ukraine");
 assert.ok(opposingPairs(invasion).some(([left, right]) => left === "RU" && right === "UA"));
 assert.match(invasion.wikipedia, /Russian_invasion_of_Ukraine/);

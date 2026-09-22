@@ -3177,6 +3177,12 @@ body[data-board="wars"][data-view="web"] .wars-board {
   stroke: rgba(244, 239, 230, 0.16);
   stroke-width: 0.6;
   vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
+.wars-map .land.is-chosen {
+  stroke: var(--gold);
+  stroke-width: 1.4;
 }
 
 .wars-map .land.is-fighting {
@@ -3236,11 +3242,51 @@ body[data-board="wars"][data-view="web"] .wars-board {
   border-left: 1px solid var(--line);
 }
 
-.wars-kicker {
+.span-row {
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0, 1fr);
+  align-items: center;
+  width: min(760px, calc(100% - 24px));
+  gap: 8px;
+}
+
+.span-row span {
+  color: var(--gold);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.span-row .year-drag {
+  width: 100%;
+}
+
+.wars-kicker,
+.wars-back {
   color: var(--gold);
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+.wars-country {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.wars-frame {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.wars-back {
+  margin-top: 8px;
+  padding: 0;
 }
 
 .wars-sources {

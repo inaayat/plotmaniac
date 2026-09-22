@@ -421,7 +421,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
     url.hash = "";
     return url.pathname || "/";
   }
-  ["view", "person", "era", "q", "plot", "year", "country", "hub"].forEach((key) => url.searchParams.delete(key));
+  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (state.view === "timeline" || state.view === "person" || state.view === "relation") {
     url.searchParams.set("view", state.view);
@@ -432,6 +432,8 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (state.era && state.era !== ALL) url.searchParams.set("era", state.era);
   if (state.query?.trim()) url.searchParams.set("q", state.query.trim());
   if (Number.isFinite(state.year)) url.searchParams.set("year", String(state.year));
+  if (Number.isFinite(state.from)) url.searchParams.set("from", String(state.from));
+  if (Number.isFinite(state.to)) url.searchParams.set("to", String(state.to));
   if (state.country) url.searchParams.set("country", state.country);
   if (state.hub) url.searchParams.set("hub", state.hub);
   url.hash = eventId ? encodeURIComponent(eventId) : "";
@@ -1465,11 +1467,71 @@ export function relationRideAt(layout, x) {
 }
 
 export function warActive(war, year) {
-  const value = Number(year);
-  if (!war || !Number.isFinite(value)) return false;
-  if (value < Number(war.start)) return false;
+  return warOverlapsSpan(war, year, year);
+}
+
+function finiteYear(value) {
+  if (value == null || value === "") return NaN;
+  const number = Number(value);
+  return Number.isFinite(number) ? number : NaN;
+}
+
+export function parseWarSpan(valueFrom, valueTo, range, fallbackYear) {
+  const min = Number(range.min);
+  const max = Number(range.max);
+  const year = finiteYear(fallbackYear);
+  const initial = Number.isFinite(year) ? year : (range.initial == null ? max : Number(range.initial));
+  let from = finiteYear(valueFrom);
+  let to = finiteYear(valueTo);
+  if (!Number.isFinite(from)) from = initial;
+  if (!Number.isFinite(to)) to = from;
+  from = Math.min(max, Math.max(min, Math.round(from)));
+  to = Math.min(max, Math.max(min, Math.round(to)));
+  if (from > to) return { from: to, to: from };
+  return { from, to };
+}
+
+export function warOverlapsSpan(war, from, to) {
+  const start = Number(from);
+  const end = Number(to);
+  if (!war || !Number.isFinite(start) || !Number.isFinite(end)) return false;
+  const lo = Math.min(start, end);
+  const hi = Math.max(start, end);
+  if (Number(war.start) > hi) return false;
   if (war.end == null || war.end === "") return true;
-  return value <= Number(war.end);
+  return Number(war.end) >= lo;
+}
+
+export function warsForCountry(wars, iso) {
+  return (wars || []).filter((war) =>
+    (war.sides || []).some((side) => (side.states || []).includes(iso)));
+}
+
+export function warCountryNote(war, iso, countryNames = {}) {
+  const nameOf = (id) => countryNames[id]?.name || id;
+  const sides = war?.sides || [];
+  const others = sides.filter((side) => !(side.states || []).includes(iso));
+  const opponents = [];
+  others.forEach((side) => {
+    (side.states || []).forEach((id) => {
+      if (!opponents.includes(nameOf(id))) opponents.push(nameOf(id));
+    });
+    (side.groups || []).slice(0, 3).forEach((group) => {
+      if (!opponents.includes(group)) opponents.push(group);
+    });
+  });
+  if (opponents.length) {
+    const shown = opponents.slice(0, 4).join(", ");
+    return opponents.length > 4 ? `Against ${shown}, and ${opponents.length - 4} more` : `Against ${shown}`;
+  }
+  const allies = [...new Set(sides.flatMap((side) => (side.states || []).filter((id) => id !== iso)))].map(nameOf);
+  if (allies.length) {
+    const shown = allies.slice(0, 3).join(", ");
+    return allies.length > 3 ? `With ${shown}, and ${allies.length - 3} more` : `With ${shown}`;
+  }
+  const groups = [...new Set(others.flatMap((side) => side.groups || []))].slice(0, 3);
+  if (groups.length) return `Inside the country · ${groups.join(", ")}`;
+  return "Inside the country";
 }
 
 export function exclusiveWarSides(war) {
@@ -1503,8 +1565,8 @@ export function opposingPairs(war) {
   return pairs;
 }
 
-export function warsInYear(conflicts, year) {
-  const active = (conflicts || []).filter((war) => warActive(war, year));
+export function warsInSpan(conflicts, from, to) {
+  const active = (conflicts || []).filter((war) => warOverlapsSpan(war, from, to));
   const pairMap = new Map();
   const countryIds = new Set();
   active.forEach((war) => {
@@ -1522,6 +1584,10 @@ export function warsInYear(conflicts, year) {
     pairs: [...pairMap.values()],
     countries: [...countryIds],
   };
+}
+
+export function warsInYear(conflicts, year) {
+  return warsInSpan(conflicts, year, year);
 }
 
 export function warPartyLine(war, countryNames = {}) {
