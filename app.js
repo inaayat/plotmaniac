@@ -2167,11 +2167,17 @@ function webCameraTransform(camera) {
 
 function fittedWebCamera(stage, layout) {
   const scroller = stage.parentElement;
+  const wideHubReveal = Boolean(
+    plot?.includeOrbit
+    && plotHubs(plot).length >= 5
+    && state.hub === ALL,
+  );
   return hubFrame(layout.nodes, {
     viewWidth: scroller?.clientWidth || 0,
     viewHeight: scroller?.clientHeight || 0,
     boxW: Math.max(layout.boxW || 0, isCompact() ? 104 : 128),
     boxH: Math.max(layout.boxH || 0, isCompact() ? 96 : 116),
+    preferWidth: wideHubReveal,
   });
 }
 

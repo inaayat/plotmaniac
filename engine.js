@@ -1053,26 +1053,76 @@ function shiftHubNodesIntoView(nodes, boxW, boxH, width, height, pad) {
   });
 }
 
-/** Spread a hub web across the viewport so labels are not stacked in a narrow column. */
+function hubBoxesOverlap(a, b, boxW, boxH) {
+  return Math.abs(a.x - b.x) < boxW && Math.abs(a.y - b.y) < boxH;
+}
+
+function hubLayoutHasOverlaps(nodes, boxW, boxH) {
+  for (let i = 0; i < nodes.length; i += 1) {
+    for (let j = i + 1; j < nodes.length; j += 1) {
+      if (hubBoxesOverlap(nodes[i], nodes[j], boxW, boxH)) return true;
+    }
+  }
+  return false;
+}
+
+/** Push hub nodes apart after non-uniform scaling so label cells keep minimum separation. */
+export function resolveHubBoxOverlaps(nodes, boxW, boxH, {
+  minX = -Infinity,
+  maxX = Infinity,
+  minY = -Infinity,
+  maxY = Infinity,
+  passes = 72,
+} = {}) {
+  const halfW = boxW / 2;
+  const halfH = boxH / 2;
+  const clampNode = (node) => {
+    node.x = Math.min(maxX - halfW, Math.max(minX + halfW, node.x));
+    node.y = Math.min(maxY - halfH, Math.max(minY + halfH, node.y));
+  };
+  for (let pass = 0; pass < passes; pass += 1) {
+    let moved = false;
+    for (let i = 0; i < nodes.length; i += 1) {
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const gapX = boxW - Math.abs(b.x - a.x);
+        const gapY = boxH - Math.abs(b.y - a.y);
+        if (gapX <= 0 || gapY <= 0) continue;
+        const overlap = Math.min(gapX, gapY);
+        const dx = b.x - a.x || (i % 2 === 0 ? 1 : -1);
+        const dy = b.y - a.y || (j % 2 === 0 ? -1 : 1);
+        const dist = Math.hypot(dx, dy) || 1;
+        const push = overlap * 0.52;
+        a.x -= (dx / dist) * push;
+        a.y -= (dy / dist) * push;
+        b.x += (dx / dist) * push;
+        b.y += (dy / dist) * push;
+        clampNode(a);
+        clampNode(b);
+        moved = true;
+      }
+    }
+    if (!moved) break;
+  }
+}
+
+/** Fit the cast footprint to the viewport width without squashing vertical spacing. */
 export function spreadHubFieldToView(nodes, boxW, boxH, targetWidth, targetHeight) {
   if (!nodes.length) return { width: targetWidth, height: targetHeight };
   const pad = 36;
   const goalX = Math.max(boxW, targetWidth - pad * 2);
-  const goalY = Math.max(boxH, targetHeight - pad * 2);
-  const scaleFromCenter = (scaleX, scaleY) => {
-    const bounds = hubNodeBounds(nodes, boxW, boxH);
-    const cx = (bounds.minX + bounds.maxX) / 2;
-    const cy = (bounds.minY + bounds.maxY) / 2;
-    nodes.forEach((node) => {
-      node.x = targetWidth / 2 + (node.x - cx) * scaleX;
-      node.y = targetHeight / 2 + (node.y - cy) * scaleY;
-    });
-  };
-  const bounds = hubNodeBounds(nodes, boxW, boxH);
+  let bounds = hubNodeBounds(nodes, boxW, boxH);
   const spanX = Math.max(1, bounds.maxX - bounds.minX);
-  if (spanX < goalX * 0.88) scaleFromCenter(goalX / spanX, 1);
-  const after = hubNodeBounds(nodes, boxW, boxH);
-  const height = Math.max(targetHeight, after.maxY - after.minY + pad * 2);
+  const cx = (bounds.minX + bounds.maxX) / 2;
+  const cy = (bounds.minY + bounds.maxY) / 2;
+  const sx = goalX / spanX;
+  nodes.forEach((node) => {
+    node.x = targetWidth / 2 + (node.x - cx) * sx;
+    node.y = targetHeight / 2 + (node.y - cy);
+  });
+  bounds = hubNodeBounds(nodes, boxW, boxH);
+  const height = Math.max(targetHeight, bounds.maxY - bounds.minY + pad * 2);
   shiftHubNodesIntoView(nodes, boxW, boxH, targetWidth, height, pad);
   return { width: targetWidth, height };
 }
@@ -1149,7 +1199,7 @@ function sectorIndex(slot, cx, cy, directions) {
   return best;
 }
 
-function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize, spacious = false) {
+function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize, spacious = false, batchExclusive = false) {
   const { boxW, boxH } = hubBox(nodeSize, spacious);
   const pad = 10;
   const cx = width / 2;
@@ -1173,29 +1223,79 @@ function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize, spacio
     hubSlots.push(pick);
   }
   const exclusiveSlots = [];
+  let exclusiveBand = null;
+  const sectorDistance = (slot, sector) => {
+    const angle = Math.atan2(slot.y - cy, slot.x - cx);
+    const hubAngle = Math.atan2(directions[sector].y, directions[sector].x);
+    return Math.abs(angleDelta(hubAngle, angle));
+  };
+  if (batchExclusive) {
+    const totalExclusive = hubIds.reduce((sum, id) => sum + (groups.get(id)?.length || 0), 0);
+    const band = grid
+      .filter((slot) => !used.has(`${slot.x},${slot.y}`))
+      .sort((a, b) => a.y - b.y || a.x - b.x)
+      .slice(0, totalExclusive);
+    if (band.length < totalExclusive) return null;
+    band.forEach((slot) => used.add(`${slot.x},${slot.y}`));
+    exclusiveBand = band;
+  }
   for (let index = 0; index < hubIds.length; index += 1) {
+    if (batchExclusive) break;
     const hubSlot = hubSlots[index];
     const dir = directions[index];
     const hubDist = pageDist(hubSlot, cx, cy);
     const needed = (groups.get(hubIds[index]) || []).length;
-    const outward = grid.filter((slot) => {
-      if (used.has(`${slot.x},${slot.y}`)) return false;
-      if (sectorIndex(slot, cx, cy, directions) !== index) return false;
-      if (pageDist(slot, cx, cy) <= hubDist + 0.5) return false;
-      return (slot.x - hubSlot.x) * dir.x + (slot.y - hubSlot.y) * dir.y > 0;
-    });
-    const nearest = nearestSlots(outward, hubSlot, needed);
+    const sectorStep = (Math.PI * 2) / Math.max(hubIds.length, 1);
+    const sectorSlack = spacious && needed > 20 ? sectorStep * 1.35 : 0;
+    let outward;
+    if (spacious && needed > 20) {
+      outward = grid.filter((slot) => {
+        if (used.has(`${slot.x},${slot.y}`)) return false;
+        return pageDist(slot, cx, cy) > hubDist + 0.5;
+      }).sort((a, b) => a.y - b.y || a.x - b.x);
+    } else {
+      outward = grid.filter((slot) => {
+        if (used.has(`${slot.x},${slot.y}`)) return false;
+        if (sectorIndex(slot, cx, cy, directions) !== index) return false;
+        if (pageDist(slot, cx, cy) <= hubDist + 0.5) return false;
+        return (slot.x - hubSlot.x) * dir.x + (slot.y - hubSlot.y) * dir.y > 0;
+      });
+    }
+    const nearest = spacious && needed > 20
+      ? outward.slice(0, needed)
+      : nearestSlots(outward, hubSlot, needed);
     if (nearest.length < needed) return null;
     nearest.forEach((slot) => used.add(`${slot.x},${slot.y}`));
     exclusiveSlots.push(nearest);
   }
-  return { nodeSize, boxW, boxH, width, height, cx, cy, sharedSlots, hubSlots, exclusiveSlots };
+  return {
+    nodeSize,
+    boxW,
+    boxH,
+    width,
+    height,
+    cx,
+    cy,
+    sharedSlots,
+    hubSlots,
+    exclusiveSlots,
+    exclusiveBand,
+  };
 }
 
-function fitHubWeb(width, height, sharedCount, hubIds, groups, spacious = false) {
+function fitHubWeb(width, height, sharedCount, hubIds, groups, spacious = false, batchExclusive = false) {
   const attempt = (nextWidth, nextHeight, minSize) => {
     for (let nodeSize = 56; nodeSize >= minSize; nodeSize -= 2) {
-      const plan = planHubWeb(nextWidth, nextHeight, sharedCount, hubIds, groups, nodeSize, spacious);
+      const plan = planHubWeb(
+        nextWidth,
+        nextHeight,
+        sharedCount,
+        hubIds,
+        groups,
+        nodeSize,
+        spacious,
+        batchExclusive,
+      );
       if (plan) return plan;
     }
     return null;
@@ -1205,11 +1305,11 @@ function fitHubWeb(width, height, sharedCount, hubIds, groups, spacious = false)
   if (fitted) return fitted;
   const aspect = width / Math.max(height, 1);
   const maxExtra = spacious ? 3600 : 2400;
-  for (let extra = 120; extra <= maxExtra; extra += 120) {
+  for (let extra = 0; extra <= maxExtra; extra += 120) {
     const addH = extra;
-    const addW = Math.max(120, Math.round(extra * Math.min(aspect, spacious ? 0.55 : 1)));
+    const addW = Math.max(120, Math.round(extra * (spacious ? 0 : 1)));
     const grown = spacious
-      ? (attempt(width, height + addH, 26) || attempt(width + addW, height + addH, 26))
+      ? attempt(width, height + addH, 24)
       : (attempt(width + addW, height + addH, 32));
     if (grown) return grown;
   }
@@ -1252,7 +1352,8 @@ function hubFieldLayout({
     else shared.push(person);
   });
   const spacious = hubIds.length >= 5;
-  const plan = fitHubWeb(width, height, shared.length, hubIds, groups, spacious);
+  const batchExclusive = spacious && revealAll;
+  const plan = fitHubWeb(width, height, shared.length, hubIds, groups, spacious, batchExclusive);
   const nodes = [];
   const focused = Boolean(center && hubIds.includes(center.id));
   const push = (person, slot, extra) => {
@@ -1280,12 +1381,24 @@ function hubFieldLayout({
   hubIds.forEach((id, index) => {
     push(visible.find((person) => person.id === id), plan?.hubSlots?.[index], { ring: "hub", hubId: id });
   });
-  hubIds.forEach((id, index) => {
-    if (!revealAll && (!focused || center.id !== id)) return;
-    placeByBeats(groups.get(id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
-      push(person, slot, { ring: "exclusive", hubId: id });
+  if (batchExclusive && plan?.exclusiveBand?.length) {
+    let slotAt = 0;
+    hubIds.forEach((id) => {
+      const group = groups.get(id) || [];
+      const slots = plan.exclusiveBand.slice(slotAt, slotAt + group.length);
+      slotAt += group.length;
+      placeByBeats(group, slots, counts).forEach(({ person, slot }) => {
+        push(person, slot, { ring: "exclusive", hubId: id });
+      });
     });
-  });
+  } else {
+    hubIds.forEach((id, index) => {
+      if (!revealAll && (!focused || center.id !== id)) return;
+      placeByBeats(groups.get(id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
+        push(person, slot, { ring: "exclusive", hubId: id });
+      });
+    });
+  }
   const nodeSize = plan?.nodeSize || 28;
   const boxW = plan?.boxW || hubBox(nodeSize).boxW;
   const boxH = plan?.boxH || hubBox(nodeSize).boxH;
@@ -1312,6 +1425,7 @@ export function hubFrame(nodes, {
   pad = 28,
   minScale = 0.08,
   maxScale = 2.4,
+  preferWidth = false,
 } = {}) {
   if (!nodes?.length || viewWidth < 2 || viewHeight < 2) return { scale: 1, x: 0, y: 0 };
   let minX = Infinity;
@@ -1327,7 +1441,12 @@ export function hubFrame(nodes, {
   const margin = Math.min(pad, Math.floor(Math.min(viewWidth, viewHeight) * 0.08));
   const roomW = Math.max(1, viewWidth - margin * 2);
   const roomH = Math.max(1, viewHeight - margin * 2);
-  const scale = Math.max(minScale, Math.min(maxScale, Math.min(roomW / Math.max(1, maxX - minX), roomH / Math.max(1, maxY - minY))));
+  const scaleW = roomW / Math.max(1, maxX - minX);
+  const scaleH = roomH / Math.max(1, maxY - minY);
+  const scale = Math.max(
+    minScale,
+    Math.min(maxScale, preferWidth ? scaleW : Math.min(scaleW, scaleH)),
+  );
   const cx = (minX + maxX) / 2;
   const cy = (minY + maxY) / 2;
   return {

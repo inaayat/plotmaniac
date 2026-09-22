@@ -1746,8 +1746,29 @@ function hubLayoutSpan(layout) {
   return { spanX: maxX - minX, spanY: maxY - minY };
 }
 const marvelSpan = hubLayoutSpan(marvelAll);
-assert.ok(marvelSpan.spanX / marvelSpan.spanY >= 0.62, "Marvel All spreads across the page, not only downward");
-assert.ok(marvelSpan.spanY / marvelSpan.spanX <= 1.7, "Marvel All stays a field, not a tall column");
+assert.ok(marvelSpan.spanX / marvelSpan.spanY >= 0.62, "Marvel All keeps a readable footprint at 1400px");
+const marvelAllWide = webLayout(marvelPeople, marvelRelations, {
+  ...marvelLayoutOptions,
+  centerId: "",
+  revealAll: true,
+  width: 1920,
+  height: 980,
+});
+const marvelWideSpan = hubLayoutSpan(marvelAllWide);
+assert.ok(
+  marvelWideSpan.spanX / marvelWideSpan.spanY >= 1.08,
+  "Marvel All on a desktop-width viewport is wider than tall",
+);
+const marvelFit = hubFrame(marvelAllWide.nodes, {
+  viewWidth: 1920,
+  viewHeight: 980,
+  boxW: marvelAllWide.boxW,
+  boxH: marvelAllWide.boxH,
+  pad: 28,
+  maxScale: 2.4,
+  preferWidth: true,
+});
+assert.ok(marvelFit.scale >= 0.82, "Marvel All Fit fills the width instead of shrinking into side gutters");
 for (let i = 0; i < marvelAll.nodes.length; i += 1) {
   for (let j = i + 1; j < marvelAll.nodes.length; j += 1) {
     assert.equal(
