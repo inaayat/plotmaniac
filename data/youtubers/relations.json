@@ -502,5 +502,41 @@
     "to": "tana-mongeau",
     "kind": "collaborator",
     "label": "Just Trish guest and later co-host of Not Loveline"
+  },
+  {
+    "from": "jeffree-star",
+    "to": "shane-dawson",
+    "kind": "collaborator",
+    "label": "Docuseries and the 2019 Jeffree Star Cosmetics collaboration"
+  },
+  {
+    "from": "jeffree-star",
+    "to": "james-charles",
+    "kind": "feud",
+    "label": "2019 tweets calling Charles a danger to society"
+  },
+  {
+    "from": "jeffree-star",
+    "to": "jackie-aina",
+    "kind": "feud",
+    "label": "Anti-haul, leaked racist texts, and Aina's public letter"
+  },
+  {
+    "from": "jeffree-star",
+    "to": "tati-westbrook",
+    "kind": "feud",
+    "label": "Allies in 2019; Westbrook later said Star pushed Bye Sister"
+  },
+  {
+    "from": "jeffree-star",
+    "to": "kat-von-d",
+    "kind": "feud",
+    "label": "2016 callout over an unpaid artist and resurfaced racist footage"
+  },
+  {
+    "from": "jeffree-star",
+    "to": "makeup-shayla",
+    "kind": "feud",
+    "label": "May 2016 Twitter threats after a Las Vegas beauty event"
   }
 ]

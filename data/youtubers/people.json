@@ -854,7 +854,7 @@
   {
     "id": "jeffree-star",
     "name": "Jeffree Star",
-    "role": "Beauty creator; Paytas alleged body-shaming on a Vegas trip",
+    "role": "Beauty creator and Jeffree Star Cosmetics founder; hub for the beauty-community controversies",
     "tags": [
       "subject",
       "rival"
@@ -907,6 +907,66 @@
       {
         "label": "Just Trish",
         "url": "https://www.youtube.com/@justtrishpodcast"
+      }
+    ]
+  },
+  {
+    "id": "jackie-aina",
+    "name": "Jackie Aina",
+    "role": "Beauty creator who publicly refused Jeffree Star Cosmetics over his racist record",
+    "tags": [
+      "subject",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Jackie_Aina"
+      }
+    ]
+  },
+  {
+    "id": "tati-westbrook",
+    "name": "Tati Westbrook",
+    "role": "Beauty creator; later said Jeffree Star and Shane Dawson pushed her James Charles video",
+    "tags": [
+      "subject",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Tati_Westbrook"
+      }
+    ]
+  },
+  {
+    "id": "kat-von-d",
+    "name": "Kat Von D",
+    "role": "Tattoo artist and former friend who accused Jeffree Star of racism and bullying",
+    "tags": [
+      "subject",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Kat_Von_D"
+      }
+    ]
+  },
+  {
+    "id": "makeup-shayla",
+    "name": "Makeup Shayla",
+    "role": "Beauty creator Shayla Mitchell; Jeffree Star threatened her on Twitter in 2016",
+    "tags": [
+      "subject",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Jeffree Star drama timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html"
       }
     ]
   }

@@ -564,7 +564,7 @@ function renderWeb() {
     compactMap
       ? "Friends and foes map. Drag to look around. Names are listed below."
       : hubWeb
-        ? "YouTuber web. Shared people sit in the center, hubs just outside, and one-hub people farther out."
+        ? "YouTuber web. Shared people sit in the center, hubs just outside. One-hub people appear only while that hub is the focus."
         : "Friends and foes map",
   );
   const stage = document.createElement("div");

@@ -1148,6 +1148,7 @@ function hubFieldLayout({
     push(visible.find((person) => person.id === id), plan?.hubSlots?.[index], { ring: "hub", hubId: id });
   });
   hubIds.forEach((id, index) => {
+    if (center?.id !== id) return;
     placeByBeats(groups.get(id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
       push(person, slot, { ring: "exclusive", hubId: id });
     });

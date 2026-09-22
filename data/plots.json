@@ -5,8 +5,8 @@
       "aliases": ["h3"],
       "title": "YouTubers",
       "kicker": "People",
-      "lede": "One web for the YouTuber sphere. Shared people sit in the center, the hubs sit just outside, and one-hub people sit farther out. Pick Ethan Klein, David Dobrik, or Trisha Paytas to read that timeline.",
-      "searchPlaceholder": "Lawsuit, Frenemies, Just Trish, Vlog Squad, a name…",
+      "lede": "One web for the YouTuber sphere. Shared people sit in the center and the hubs sit just outside. One-hub people appear only when that hub is the focus. Pick Ethan Klein, David Dobrik, Trisha Paytas, or Jeffree Star.",
+      "searchPlaceholder": "Lawsuit, Frenemies, Jeffree Star, Vlog Squad, a name…",
       "centerId": "ethan-klein",
       "includeOrbit": true,
       "orbitLabel": "Around the sphere",
@@ -15,7 +15,8 @@
       "hubs": [
         { "id": "h3", "label": "Ethan Klein", "centerId": "ethan-klein" },
         { "id": "dobrik", "label": "David Dobrik", "centerId": "david-dobrik" },
-        { "id": "trisha", "label": "Trisha Paytas", "centerId": "trisha-paytas" }
+        { "id": "trisha", "label": "Trisha Paytas", "centerId": "trisha-paytas" },
+        { "id": "jeffree", "label": "Jeffree Star", "centerId": "jeffree-star" }
       ],
       "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Ethan%20Klein%20%28cropped%29.jpg?width=240",
       "paths": {

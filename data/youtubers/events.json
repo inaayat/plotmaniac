@@ -2137,7 +2137,8 @@
       "shane-dawson"
     ],
     "hubs": [
-      "trisha"
+      "trisha",
+      "jeffree"
     ],
     "links": [
       {
@@ -2500,6 +2501,549 @@
       {
         "label": "Entertainment Weekly",
         "url": "https://ew.com/youtuber-trisha-paytas-welcomes-baby-aquaman-joining-siblings-malibu-barbie-elvis-11777161",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-myspace-fame",
+    "date": "2006-04-11",
+    "title": "Jeffree Star is already a MySpace celebrity",
+    "summary": "Star, born Jeffrey Lynn Steininger Jr. in 1985, grows up in Orange County and uses MySpace for music, fashion, and photoshoots that draw huge comment counts. Wikipedia dates the public career to 2003.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-racial-slur-footage",
+    "date": "2005-06-01",
+    "title": "Footage shows Jeffree Star using racial slurs",
+    "summary": "Clips later traced to about 2004–2006 show Star shouting racial slurs at women on the street. A 2006 MySpace skit jokes about throwing battery acid on a Black woman to lighten her skin. He later says he regrets the videos.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-beauty-killer",
+    "date": "2009-09-22",
+    "title": "Beauty Killer is Jeffree Star's only studio album",
+    "summary": "Beauty Killer comes out on September 22, 2009, and peaks at number seven on Billboard's Top Electronic Albums chart. Star tours, including Warped Tour, then leaves music in 2013.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-dahvie-vanity",
+    "date": "2010-08-01",
+    "title": "Jeffree Star says he saw Dahvie Vanity with underage girls",
+    "summary": "Star tweets that he saw Blood on the Dance Floor's Dahvie Vanity bring underage girls to hotel rooms and calls it illegal. Later posts promote Vanity anyway. In 2020 he tells Chris Hansen the tweets were based on hearsay.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-cosmetics-launch",
+    "date": "2014-11-01",
+    "title": "Jeffree Star Cosmetics launches liquid lipsticks",
+    "summary": "Star founds Jeffree Star Cosmetics in November 2014 and posts YouTube videos to sell velour liquid lipsticks. He later says the end of his music career had left him nearly broke.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-makeup-shayla",
+    "date": "2016-05-15",
+    "title": "Jeffree Star threatens Makeup Shayla on Twitter",
+    "summary": "After a Las Vegas beauty event, Star attacks Shayla Mitchell on Twitter and threatens to beat her. Mitchell denies his account of what she said about another influencer. Vulture dates the fight to May 2016.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "makeup-shayla"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-kat-von-d",
+    "date": "2016-07-15",
+    "title": "Kat Von D calls out Jeffree Star as old footage resurfaces",
+    "summary": "Kat Von D accuses her former friend of not paying an artist she introduced, and of racism and bullying. The fight pulls mid-2000s slur footage back into view. Star tweets that he regrets the videos.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "kat-von-d"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-too-faced",
+    "date": "2017-04-23",
+    "title": "Jeffree Star feuds with Too Faced's Jerrod Blandino",
+    "summary": "Star attacks Too Faced co-founder Jerrod Blandino in a public fight about a unicorn palette. Wikipedia records the quarrel alongside his other beauty-industry fights.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-jackie-antihaul",
+    "date": "2017-06-16",
+    "title": "Jackie Aina anti-hauls Jeffree Star Cosmetics",
+    "summary": "Aina says she will not support the brand because of Star's racist record and the attack on Shayla Mitchell. Star blocks her, calls her an irrelevant rat, and tweets about her taxes.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "jackie-aina"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Seventeen",
+        "url": "https://www.seventeen.com/beauty/makeup-skincare/a23549739/jackie-aina-jeffree-star-feud/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-racism-apology",
+    "date": "2017-06-20",
+    "title": "Jeffree Star posts an apology video titled Racism",
+    "summary": "Four days after Aina's anti-haul, Star says on camera that the person who made the old remarks was depressed and seeking attention. Critics say the video does not offer amends.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "jackie-aina"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-secret-world",
+    "date": "2018-08-01",
+    "title": "Shane Dawson starts The Secret World of Jeffree Star",
+    "summary": "Dawson's five-part series begins on August 1, 2018, following Star through the beauty business and his old controversies. James Charles and Tati Westbrook are part of the circle the series shows.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "shane-dawson",
+      "james-charles",
+      "tati-westbrook"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-dramageddon",
+    "date": "2018-08-12",
+    "title": "Dramageddon splits Jeffree Star from Manny MUA's circle",
+    "summary": "Days after the docuseries, Gabriel Zamora posts a photo with Manny Gutierrez, Laura Lee, and Nikita Dragun that fans read as a shot at Star. Apology videos follow, and subscriber counts drop.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-jackie-letter",
+    "date": "2018-09-29",
+    "title": "Leaked texts draw a public letter from Jackie Aina",
+    "summary": "Star's former hairstylist posts messages in which Star uses racial slurs, including one about Jackie Aina. Aina writes that she will not excuse the slurs or the campaign against people of color. The same month he is criticized for wearing cornrows and brushing it off.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "jackie-aina"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Seventeen",
+        "url": "https://www.seventeen.com/beauty/makeup-skincare/a23549739/jackie-aina-jeffree-star-feud/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-james-predator-tweets",
+    "date": "2019-05-13",
+    "title": "Jeffree Star calls James Charles a danger to society",
+    "summary": "After Tati Westbrook's Bye Sister video, Star tweets that Nathan banned Charles from their home and that Charles is a danger to society. He also tweets at Charles's teenage brother. Vulture notes that he offers no proof.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "james-charles",
+      "tati-westbrook"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Seventeen",
+        "url": "https://www.seventeen.com/beauty/a27467953/james-charles-jeffree-star-feud-timeline/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-no-more-lies",
+    "date": "2019-05-18",
+    "title": "James Charles posts Jeffree Star's texts in No More Lies",
+    "summary": "Charles's May 18 video shows messages in which Star accuses him of sexual misconduct. Charles says those relationships were consensual and that Star was threatening to make the claims public.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "james-charles"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Seventeen",
+        "url": "https://www.seventeen.com/beauty/a27467953/james-charles-jeffree-star-feud-timeline/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-beautiful-world",
+    "date": "2019-10-01",
+    "title": "Shane Dawson films a Jeffree Star Cosmetics collaboration",
+    "summary": "In October 2019 Dawson starts The Beautiful World of Jeffree Star, a series about launching a makeup line with Star. The collaboration later becomes a Morphe product.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "shane-dawson"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-lipstick-nazi",
+    "date": "2020-06-08",
+    "title": "Jeffree Star apologizes for a Lipstick Nazi website",
+    "summary": "An archive of Star's old Lipstick Nazi site, including swastikas, resurfaces in June 2020. He apologizes after the images spread. Wikipedia records the site and the apology.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-tati-silence",
+    "date": "2020-06-30",
+    "title": "Tati Westbrook says Jeffree Star pushed Bye Sister",
+    "summary": "In Breaking My Silence, Westbrook says Star and Shane Dawson fed her allegations about James Charles and that Dawson offered to help film the video. She also apologizes to Jackie Aina for defending Star.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "tati-westbrook",
+      "shane-dawson",
+      "james-charles",
+      "jackie-aina"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-morphe-dropped",
+    "date": "2020-07-10",
+    "title": "Morphe stops selling Jeffree Star Cosmetics",
+    "summary": "About ten days after dropping Shane Dawson, Morphe says it will cease commercial activity with Jeffree Star. A cosmetics-account statement says the company is shocked.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "shane-dawson"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-doing-whats-right",
+    "date": "2020-07-18",
+    "title": "Jeffree Star posts Doing What's Right",
+    "summary": "After weeks of silence, Star apologizes to James Charles for joining the hype and does not address the racism allegations. The video points at other news and ends on a product launch, with comments turned off.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star",
+      "james-charles"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/2020/09/shane-dawson-jeffree-star-youtube-drama-explained.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-assault-allegations",
+    "date": "2020-10-01",
+    "title": "A report accuses Jeffree Star of assault and hush money",
+    "summary": "Journalist Kat Tenbarge reports accusations of sexual assault, physical violence, and hush-money offers. An attorney for Star denies the allegations. Wikipedia later notes documents that appear to show a payment to one accuser.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-pronoun-comments",
+    "date": "2023-02-14",
+    "title": "Jeffree Star attacks they/them pronouns on a podcast",
+    "summary": "On Bussin' With the Boys, Star calls they/them pronouns made up and says conservatives like him because he is real. He later tweets that he said what he said. Newsweek covers the defense.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Newsweek",
+        "url": "https://www.newsweek.com/jeffree-star-pronouns-twitter-they-them-non-binary-1783423",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-kirk-livestream",
+    "date": "2025-09-10",
+    "title": "Jeffree Star defends Charlie Kirk on a livestream",
+    "summary": "After Charlie Kirk is killed, Star says on a TikTok Live that Kirk fought for the truth and tells viewers who believe in they/them identities to unfollow. Out.com reports the rant.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Out",
+        "url": "https://www.out.com/media/jeffree-star-charlie-kirk-nonbinary",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-lgbtq-letters",
+    "date": "2025-11-15",
+    "title": "Jeffree Star says T and Q should leave LGBTQ",
+    "summary": "On The Skinny Confidential in November 2025, Star says he is not gay, just open, and that T and Q should not be grouped with LGB. Out.com reports the comments.",
+    "era": "beauty-wars",
+    "people": [
+      "jeffree-star"
+    ],
+    "hubs": [
+      "jeffree"
+    ],
+    "links": [
+      {
+        "label": "Out",
+        "url": "https://www.out.com/media/jeffree-star-not-gay",
         "type": "article"
       }
     ]

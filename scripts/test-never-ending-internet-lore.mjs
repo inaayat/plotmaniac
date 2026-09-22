@@ -62,7 +62,7 @@ const peopleById = new Map(people.map((person) => [person.id, person]));
 const h3Events = filterEvents(events, { hub: "h3" }, peopleById);
 const dobrikEvents = filterEvents(events, { hub: "dobrik" }, peopleById);
 const trishaEvents = filterEvents(events, { hub: "trisha" }, peopleById);
-const knownHubs = new Set(["h3", "dobrik", "trisha"]);
+const knownHubs = new Set(["h3", "dobrik", "trisha", "jeffree"]);
 
 assert.equal(ids.size, people.length, "person ids must be unique");
 assert.equal(people.filter((person) => person.id === "trisha-paytas").length, 1, "Trisha is one person");
@@ -73,6 +73,11 @@ assert.equal(people.filter((person) => person.id === "oscar-gracey").length, 1);
 assert.ok(h3Events.length >= 35 && h3Events.length <= 70, `H3 hub should contain 35–70 events, got ${h3Events.length}`);
 assert.ok(dobrikEvents.length >= 20 && dobrikEvents.length <= 55, `Dobrik hub should contain 20–55 events, got ${dobrikEvents.length}`);
 assert.ok(trishaEvents.length >= 25 && trishaEvents.length <= 55, `Trisha hub should contain 25–55 events, got ${trishaEvents.length}`);
+const jeffreeEvents = filterEvents(events, { hub: "jeffree" }, peopleById);
+assert.ok(jeffreeEvents.length >= 12 && jeffreeEvents.length <= 40, `Jeffree hub should contain 12–40 events, got ${jeffreeEvents.length}`);
+assert.ok(jeffreeEvents.some((event) => event.id === "jeffree-racial-slur-footage"));
+assert.ok(jeffreeEvents.some((event) => event.id === "jeffree-james-predator-tweets"));
+assert.equal(jeffreeEvents.some((event) => event.id === "dobrik-early-life"), false);
 assert.equal(new Set(events.map((event) => event.id)).size, events.length, "event ids must be unique");
 
 for (const person of people) {
@@ -107,13 +112,13 @@ for (const relation of relations) {
   assert.ok(relation.kind && relation.label, "relations need kind and label");
 }
 
-const hubCenters = new Set(["ethan-klein", "david-dobrik", "trisha-paytas"]);
+const hubCenters = new Set(["ethan-klein", "david-dobrik", "trisha-paytas", "jeffree-star"]);
 for (const person of people.filter((person) => !hubCenters.has(person.id))) {
   assert.ok(
     relations.some((relation) =>
       hubCenters.has(relation.from) && relation.to === person.id
       || hubCenters.has(relation.to) && relation.from === person.id),
-    `${person.id} needs a relationship to Ethan, David, or Trisha`,
+    `${person.id} needs a relationship to Ethan, David, Trisha, or Jeffree`,
   );
 }
 
@@ -155,11 +160,13 @@ assert.equal(findPlot(plots.plots, "h3")?.id, "youtubers");
 assert.equal(findPlot(plots.plots, "youtubers")?.id, "youtubers");
 assert.equal(youtubers.centerId, "ethan-klein");
 assert.equal(youtubers.includeOrbit, true);
-assert.equal(youtubers.hubs.length, 3);
+assert.equal(youtubers.hubs.length, 4);
 assert.equal(hubOf(youtubers, "h3").centerId, "ethan-klein");
 assert.equal(hubOf(youtubers, "h3").label, "Ethan Klein");
 assert.equal(hubOf(youtubers, "dobrik").centerId, "david-dobrik");
 assert.equal(hubOf(youtubers, "trisha").centerId, "trisha-paytas");
+assert.equal(hubOf(youtubers, "jeffree").centerId, "jeffree-star");
+assert.equal(hubOf(youtubers, "jeffree").label, "Jeffree Star");
 assert.equal(hubCenterId(youtubers, "dobrik"), "david-dobrik");
 assert.equal(hubCenterId(youtubers, "trisha"), "trisha-paytas");
 assert.equal(initials("Hila Klein"), "HK");
@@ -401,7 +408,7 @@ const hubFieldOpts = {
   enemyKinds: youtubers.enemyKinds,
   events,
   includeOrbit: true,
-  hubIds: ["ethan-klein", "david-dobrik", "trisha-paytas"],
+  hubIds: youtubers.hubs.map((hub) => hub.centerId),
   hubs: youtubers.hubs,
   width: 1400,
   height: 980,
@@ -415,7 +422,7 @@ assert.equal(sharedWeb.nodes.find((node) => node.id === "nik-keswani"), undefine
 assert.equal(sharedWeb.nodes.find((node) => node.id === "alex-ernst"), undefined);
 assert.ok(sharedWeb.nodes.every((node) => node.plotHub || node.beats >= WEB_MIN_BEATS));
 assert.equal(people.find((person) => person.id === "dom-zeglaitis").name, "Durte Dom");
-assert.ok(sharedWeb.nodes.some((node) => node.id === "dom-zeglaitis" && node.name === "Durte Dom"));
+assert.equal(sharedWeb.nodes.find((node) => node.id === "dom-zeglaitis"), undefined, "David-only people wait for David's focus");
 assert.equal(sharedWeb.nodes.filter((node) => node.id === "trisha-paytas").length, 1);
 assert.equal(sharedWeb.nodes.find((node) => node.id === "ethan-klein").camp, "center");
 assert.equal(sharedWeb.nodes.find((node) => node.id === "david-dobrik").camp, "orbit");
@@ -444,32 +451,41 @@ function boxesOverlap(a, b, boxW, boxH) {
 function positionKey(layout) {
   return layout.nodes.map((node) => [node.id, node.x, node.y, node.ring].join(":")).sort().join("|");
 }
+function coreKey(layout) {
+  return layout.nodes
+    .filter((node) => node.ring !== "exclusive")
+    .map((node) => [node.id, node.x, node.y, node.ring].join(":"))
+    .sort()
+    .join("|");
+}
 const ethanOnField = nodeOf(sharedWeb.nodes, "ethan-klein");
 const davidOnField = nodeOf(sharedWeb.nodes, "david-dobrik");
 const trishaOnField = nodeOf(sharedWeb.nodes, "trisha-paytas");
+const jeffreeOnField = nodeOf(sharedWeb.nodes, "jeffree-star");
 const danOnField = nodeOf(sharedWeb.nodes, "dan-swerdlove");
-const natalieOnField = nodeOf(sharedWeb.nodes, "natalie-mariduena");
 const jeffOnField = nodeOf(sharedWeb.nodes, "jeff-wittek");
 const mosesOnField = nodeOf(sharedWeb.nodes, "moses-hacmon");
-assert.ok(danOnField, "Dan stays on the web");
+assert.ok(danOnField, "Dan stays on the web while Ethan is the focus");
 assert.equal(danOnField.ring, "exclusive");
 assert.equal(danOnField.hubId, "ethan-klein");
-assert.equal(natalieOnField.ring, "exclusive");
-assert.equal(natalieOnField.hubId, "david-dobrik");
+assert.equal(nodeOf(sharedWeb.nodes, "natalie-mariduena"), undefined, "David-only people stay hidden on Ethan's focus");
+assert.equal(nodeOf(sharedWeb.nodes, "jackie-aina"), undefined, "Jeffree-only people stay hidden on Ethan's focus");
 assert.equal(jeffOnField.ring, "shared");
 assert.equal(mosesOnField.ring, "shared");
+assert.equal(nodeOf(sharedWeb.nodes, "james-charles").ring, "shared");
+assert.equal(nodeOf(sharedWeb.nodes, "shane-dawson").ring, "shared");
 assert.equal(nodeOf(sharedWeb.nodes, "hasan-piker").hubId, "ethan-klein");
+assert.ok(sharedWeb.nodes.filter((node) => node.ring === "exclusive").every((node) => node.hubId === "ethan-klein"));
 const maxShared = Math.max(...sharedWeb.nodes.filter((node) => node.ring === "shared").map((node) => pageDistance(sharedWeb, node.id)));
-const minHub = Math.min(pageDistance(sharedWeb, "ethan-klein"), pageDistance(sharedWeb, "david-dobrik"), pageDistance(sharedWeb, "trisha-paytas"));
+const minHub = Math.min(...sharedWeb.nodes.filter((node) => node.ring === "hub").map((node) => pageDistance(sharedWeb, node.id)));
 assert.ok(maxShared < minHub, "hubs sit outside the shared center");
 assert.ok(pageDistance(sharedWeb, "dan-swerdlove") > pageDistance(sharedWeb, "ethan-klein"), "Dan sits outside Ethan");
-assert.ok(pageDistance(sharedWeb, "natalie-mariduena") > pageDistance(sharedWeb, "david-dobrik"), "Natalie sits outside David");
 for (const node of sharedWeb.nodes.filter((item) => item.ring === "exclusive")) {
   const hub = sharedWeb.nodes.find((item) => item.ring === "hub" && item.hubId === node.hubId);
   const outward = (node.x - hub.x) * (hub.x - sharedWeb.width / 2) + (node.y - hub.y) * (hub.y - sharedWeb.height / 2);
   assert.ok(outward > 0, `${node.id} sits on the outer side of ${hub.id}`);
 }
-assert.ok(ethanOnField.plotHub && davidOnField.plotHub && trishaOnField.plotHub);
+assert.ok(ethanOnField.plotHub && davidOnField.plotHub && trishaOnField.plotHub && jeffreeOnField.plotHub);
 
 const dobrikWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "david-dobrik" });
 assert.ok(dobrikWeb.nodes.length < people.length);
@@ -478,8 +494,14 @@ assert.equal(dobrikWeb.nodes.find((node) => node.id === "david-dobrik").camp, "c
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "ethan-klein").camp, "orbit");
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "jeff-wittek").camp, "enemy");
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "natalie-mariduena").camp, "friend");
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "natalie-mariduena").ring, "exclusive");
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "natalie-mariduena").hubId, "david-dobrik");
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "dan-swerdlove"), undefined);
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "dom-zeglaitis").name, "Durte Dom");
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "dom-zeglaitis").hubId, "david-dobrik");
+assert.ok(pageDistance(dobrikWeb, "natalie-mariduena") > pageDistance(dobrikWeb, "david-dobrik"), "Natalie sits outside David");
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "enemy");
-assert.ok(dobrikWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "hasan-piker"), undefined);
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "trisha-paytas").plotHub, true);
 
 const trishaWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "trisha-paytas" });
@@ -492,9 +514,24 @@ assert.equal(trishaWeb.nodes.find((node) => node.id === "david-dobrik").plotHub,
 assert.equal(trishaWeb.nodes.find((node) => node.id === "moses-hacmon").camp, "friend");
 assert.equal(trishaWeb.nodes.find((node) => node.id === "oscar-gracey"), undefined);
 assert.equal(trishaWeb.nodes.find((node) => node.id === "gabbie-hanna").camp, "enemy");
-assert.ok(trishaWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
-assert.equal(positionKey(sharedWeb), positionKey(dobrikWeb), "focus does not move the web");
-assert.equal(positionKey(sharedWeb), positionKey(trishaWeb), "Trisha focus does not move the web");
+assert.equal(trishaWeb.nodes.find((node) => node.id === "hasan-piker"), undefined);
+assert.equal(trishaWeb.nodes.find((node) => node.id === "dan-swerdlove"), undefined);
+assert.equal(trishaWeb.nodes.filter((node) => node.ring === "exclusive").length, 0, "Trisha has no exclusive people");
+const jeffreeWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "jeffree-star" });
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "jeffree-star").camp, "center");
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "jeffree-star").ring, "hub");
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "jackie-aina").ring, "exclusive");
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "jackie-aina").hubId, "jeffree-star");
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "tati-westbrook").hubId, "jeffree-star");
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "kat-von-d"), undefined, "one-beat people stay off Jeffree's web");
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "makeup-shayla"), undefined);
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "dan-swerdlove"), undefined);
+assert.equal(jeffreeWeb.nodes.find((node) => node.id === "natalie-mariduena"), undefined);
+assert.ok(jeffreeWeb.nodes.filter((node) => node.ring === "exclusive").every((node) => node.hubId === "jeffree-star"));
+assert.equal(coreKey(sharedWeb), coreKey(dobrikWeb), "focus does not move hubs or shared people");
+assert.equal(coreKey(sharedWeb), coreKey(trishaWeb), "Trisha focus does not move hubs or shared people");
+assert.equal(coreKey(sharedWeb), coreKey(jeffreeWeb), "Jeffree focus does not move hubs or shared people");
+assert.notEqual(positionKey(sharedWeb), positionKey(jeffreeWeb), "the focused hub's own people appear");
 
 for (const size of [{ width: 1400, height: 980 }, { width: 1024, height: 500 }, { width: 1120, height: 1120 }, { width: 390, height: 700 }]) {
   const sample = webLayout(people, relations, { ...hubFieldOpts, centerId: "ethan-klein", ...size });
