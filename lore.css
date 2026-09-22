@@ -3137,3 +3137,189 @@ body[data-view="timeline"] #footer-note {
     opacity: 1;
   }
 }
+
+body[data-board="wars"] .views button {
+  display: none;
+}
+
+body[data-board="wars"][data-view="web"] .wars-board {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wars-stage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  gap: 8px 18px;
+  padding: 0 16px 10px;
+}
+
+.wars-map-wrap {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wars-map {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wars-map .land {
+  fill: rgba(244, 239, 230, 0.045);
+  stroke: rgba(244, 239, 230, 0.16);
+  stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.wars-map .land.is-fighting {
+  fill: rgba(224, 106, 98, 0.22);
+  stroke: rgba(224, 106, 98, 0.7);
+}
+
+.wars-map.is-focused .land.is-fighting {
+  fill: rgba(244, 239, 230, 0.04);
+  stroke: rgba(244, 239, 230, 0.14);
+}
+
+.wars-map.is-focused .land.is-lit {
+  fill: rgba(224, 106, 98, 0.38);
+  stroke: #e06a62;
+}
+
+.war-arc {
+  fill: none;
+  stroke: rgba(224, 106, 98, 0.72);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+
+.wars-map.is-focused .war-arc {
+  stroke: rgba(224, 106, 98, 0.12);
+}
+
+.wars-map.is-focused .war-arc.is-lit {
+  stroke: #e06a62;
+  stroke-width: 2.1;
+}
+
+.war-dot {
+  fill: var(--gold);
+  stroke: #0c0b09;
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
+.wars-map.is-focused .war-dot {
+  opacity: 0.28;
+}
+
+.wars-map.is-focused .war-dot.is-lit {
+  opacity: 1;
+}
+
+.wars-list {
+  min-height: 0;
+  overflow: auto;
+  padding: 2px 4px 28px 14px;
+  border-left: 1px solid var(--line);
+}
+
+.wars-kicker {
+  color: var(--gold);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.wars-sources {
+  margin: 6px 0 12px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.wars-sources a {
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.wars-sources a:hover {
+  color: var(--gold);
+}
+
+.wars-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.war-card {
+  padding: 8px 8px 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+
+.war-card.is-lit {
+  border-color: var(--line-strong);
+  background: var(--panel);
+}
+
+.war-card a {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.war-card a:hover,
+.war-card.is-lit a {
+  color: var(--gold);
+}
+
+.war-years,
+.war-parties,
+.wars-empty {
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.war-years {
+  margin-top: 3px;
+  letter-spacing: 0.04em;
+}
+
+.war-parties {
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .wars-stage {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(220px, 46dvh) minmax(0, 1fr);
+    padding: 0 12px 8px;
+  }
+
+  .wars-list {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 10px 2px 24px;
+  }
+}
