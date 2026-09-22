@@ -1,4 +1,5 @@
-import { initials } from "./engine.js";
+import { COMPACT_MAX_WIDTH, initials } from "./engine.js";
+import { buildLaneChrome, laneYear, layoutLane, queueLaneFocus } from "./lane.js";
 import {
   cameraBox,
   claimsRing,
@@ -43,6 +44,10 @@ const TICKS = [
   ["frame-bangladesh", "1971"],
   ["frame-present", "Now"],
 ];
+
+function isCompactLayout() {
+  return window.matchMedia(`(max-width: ${COMPACT_MAX_WIDTH}px)`).matches;
+}
 
 function el(name, className, text) {
   const node = document.createElement(name);
@@ -99,7 +104,7 @@ export function mountPartition(root, reference, {
   window.addEventListener("keydown", onKey);
 
   return {
-    modeKey: () => view,
+    modeKey: () => `${view}:${isCompactLayout() ? "compact" : "wide"}`,
     goTo(id) {
       const next = frames.findIndex((item) => item.id === id);
       if (next < 0) return;
@@ -273,7 +278,7 @@ export function mountPartition(root, reference, {
   }
 
   function renderTimeline() {
-    shell.classList.add("partition-record");
+    shell.classList.add("partition-record", "lane-page");
     const head = el("div", "timeline-head");
     const copy = el("div");
     copy.append(el("p", "eyebrow", "Full timeline"), el("h2", "", "Across the years"));
@@ -288,101 +293,179 @@ export function mountPartition(root, reference, {
     });
     search.appendChild(input);
     head.append(copy, search);
-    const note = el("p", "rail-note", "Every researched decision, oldest at the top. Open a beat for what changed, then open a person for their own actions.");
-    const listWrap = el("div", "spine-view");
-    shell.append(head, note, listWrap);
+    const host = el("div", "partition-timeline-host");
+    shell.append(head, host);
+    let openId = frame().id;
     paintTimelineList();
+
+    function timelineNote() {
+      return isCompactLayout()
+        ? "Every researched decision, oldest at the top. Open a beat for what changed, then open a person for their own actions."
+        : "Every researched decision, oldest on the left. Open a beat for what changed, then open a person for their own actions.";
+    }
 
     function paintTimelineList() {
       const shown = frames.filter((item) => frameMatches(item, query, players));
-      listWrap.replaceChildren();
+      host.replaceChildren();
       if (!shown.length) {
-        listWrap.appendChild(el("p", "empty", "Nothing in this timeline matches that search."));
+        host.appendChild(el("p", "empty", "Nothing in this timeline matches that search."));
         return;
       }
-      const rail = el("ol", "spine");
-      rail.setAttribute("aria-label", "Partition timeline, oldest at the top.");
+      if (!shown.some((item) => item.id === openId)) openId = "";
+      if (isCompactLayout()) {
+        const listWrap = el("div", "spine-view");
+        const hint = el("p", "rail-note", timelineNote());
+        const rail = el("ol", "spine");
+        rail.setAttribute("aria-label", "Partition timeline, oldest at the top.");
+        let year = "";
+        shown.forEach((item) => {
+          const nextYear = String(item.sortKey).slice(0, 4);
+          if (nextYear !== year) {
+            year = nextYear;
+            const stone = el("li", "spine-year");
+            stone.appendChild(el("span", "", year));
+            rail.appendChild(stone);
+          }
+          rail.appendChild(timelineBeat(item, openId));
+        });
+        listWrap.append(hint, rail);
+        host.appendChild(listWrap);
+        const selected = listWrap.querySelector(".spine-event.is-selected");
+        selected?.scrollIntoView({ block: "nearest" });
+        return;
+      }
+      const { view, rail } = buildLaneChrome(timelineNote(), {
+        ariaLabel: "Partition timeline, oldest on the left. Drag to move. Hold Control and scroll to zoom.",
+      });
+      rail.setAttribute("aria-label", "Partition timeline, oldest on the left.");
       let year = "";
+      let step = 0;
       shown.forEach((item) => {
         const nextYear = String(item.sortKey).slice(0, 4);
         if (nextYear !== year) {
           year = nextYear;
-          const stone = el("li", "spine-year");
-          stone.appendChild(el("span", "", year));
-          rail.appendChild(stone);
+          rail.appendChild(laneYear(year));
         }
-        rail.appendChild(timelineBeat(item));
+        const side = step % 2 === 0 ? "above" : "below";
+        step += 1;
+        rail.appendChild(laneBeat(item, side, openId));
       });
-      listWrap.appendChild(rail);
-      const selected = listWrap.querySelector(".spine-event.is-selected");
-      selected?.scrollIntoView({ block: "nearest" });
+      host.appendChild(view);
+      if (openId) queueLaneFocus(openId);
+      requestAnimationFrame(() => layoutLane(view));
     }
-    shell.paintTimelineList = paintTimelineList;
-    shell.paintTimelineSelection = paintTimelineSelection;
-  }
 
-  function timelineBeat(item) {
-    const row = el("li", "spine-event");
-    row.id = `beat-${item.id}`;
-    row.classList.toggle("is-selected", item.id === frame().id);
-    const mark = el("button", "spine-mark");
-    mark.type = "button";
-    const leadId = item.playerIds.find((id) => portraits[id]) || item.playerIds[0];
-    const lead = players.get(leadId);
-    mark.appendChild(portraitMark(lead?.name || item.dateDisplay, portraits[leadId]));
-    const copy = el("div", "spine-copy");
-    const hit = el("button", "spine-hit");
-    hit.type = "button";
-    const when = el("time", "", item.dateDisplay);
-    const heading = el("strong", "", item.title);
-    const tease = el("span", "beat-tease", clip(item.summary, 180));
-    hit.append(when, heading, tease);
-    const more = el("div", "spine-more");
-    more.hidden = item.id !== frame().id;
-    more.appendChild(el("p", "", item.summary));
-    if (item.consequences.length) {
-      const list = el("ul", "partition-points");
-      item.consequences.forEach((point) => list.appendChild(el("li", "", point)));
-      more.appendChild(list);
-    }
-    if (item.actions.length) {
-      const list = el("ul", "partition-actions");
-      item.actions.forEach((action) => {
-        const person = players.get(action.playerId);
-        const line = el("li");
-        line.append(el("strong", "", person?.name || action.playerId), document.createTextNode(` ${action.description}`));
-        list.appendChild(line);
-      });
-      more.appendChild(list);
-    }
-    const cast = eventCast(item, players);
-    if (cast.length) more.appendChild(castList(cast));
-    const mapButton = el("button", "partition-text-button", "Show this moment on the map");
-    mapButton.type = "button";
-    mapButton.addEventListener("click", () => onShowMap?.(item.id));
-    more.appendChild(mapButton);
-    const sources = sourceRecords(reference.sourcesCatalog, item.sourceIds);
-    if (sources.length) more.appendChild(sourceList(sources));
-    const toggle = () => {
-      const opening = more.hidden;
-      more.hidden = !opening;
-      row.classList.toggle("is-selected", opening);
-      if (opening) {
+    function toggleBeat(item) {
+      openId = openId === item.id ? "" : item.id;
+      if (openId) {
         index = frames.findIndex((candidate) => candidate.id === item.id);
         onFrame?.(item.id, { historyMode: "replace" });
       }
-    };
-    mark.addEventListener("click", toggle);
-    hit.addEventListener("click", toggle);
-    copy.append(hit, more);
-    row.append(mark, copy);
-    return row;
-  }
+      paintTimelineList();
+    }
 
-  function paintTimelineSelection() {
-    shell.querySelectorAll(".spine-event").forEach((row) => {
-      row.classList.toggle("is-selected", row.id === `beat-${frame().id}`);
-    });
+    function timelineBeat(item, selectedId) {
+      const row = el("li", "spine-event");
+      row.id = `beat-${item.id}`;
+      const open = item.id === selectedId;
+      row.classList.toggle("is-selected", open);
+      const mark = el("button", "spine-mark");
+      mark.type = "button";
+      const lead = leadPlayer(item);
+      mark.appendChild(portraitMark(lead.name, lead.portrait));
+      mark.setAttribute("aria-label", `${item.dateDisplay}. ${item.title}`);
+      const copy = el("div", "spine-copy");
+      const hit = el("button", "spine-hit");
+      hit.type = "button";
+      hit.append(el("time", "", item.dateDisplay), el("strong", "", item.title));
+      if (!open) hit.appendChild(el("span", "beat-tease", clip(item.summary, 140)));
+      const more = el("div", "spine-more");
+      if (open) fillBeatMore(more, item);
+      else more.hidden = true;
+      mark.addEventListener("click", () => toggleBeat(item));
+      hit.addEventListener("click", () => toggleBeat(item));
+      copy.append(hit, more);
+      row.append(mark, copy);
+      return row;
+    }
+
+    function laneBeat(item, side, selectedId) {
+      const row = el("li", `lane-event side-${side}`);
+      row.id = `beat-${item.id}`;
+      const open = item.id === selectedId;
+      row.classList.toggle("is-selected", open);
+      const card = el("div", "lane-card");
+      const mark = el("button", "lane-mark");
+      mark.type = "button";
+      const lead = leadPlayer(item);
+      mark.appendChild(portraitMark(lead.name, lead.portrait));
+      mark.setAttribute("aria-label", `${item.dateDisplay}. ${item.title}`);
+      const hit = el("button", "lane-hit");
+      hit.type = "button";
+      hit.append(el("time", "", item.dateDisplay), el("span", "lane-rule"), el("strong", "", item.title));
+      if (!open) hit.appendChild(el("span", "beat-tease", clip(item.summary, 140)));
+      mark.addEventListener("click", () => toggleBeat(item));
+      hit.addEventListener("click", () => toggleBeat(item));
+      card.append(mark, hit);
+      if (open) {
+        const more = el("div", "lane-more");
+        fillBeatMore(more, item);
+        card.appendChild(more);
+      }
+      const dot = el("span", "lane-dot");
+      dot.setAttribute("aria-hidden", "true");
+      row.append(card, dot);
+      return row;
+    }
+
+    function leadPlayer(item) {
+      const leadId = item.playerIds.find((id) => portraits[id]) || item.playerIds[0];
+      const lead = players.get(leadId);
+      return {
+        name: playerDisplayName(lead) || item.dateDisplay,
+        portrait: portraits[leadId],
+      };
+    }
+
+    function fillBeatMore(more, item) {
+      more.appendChild(el("p", "", item.summary));
+      if (item.consequences.length) {
+        const list = el("ul", "partition-points");
+        item.consequences.forEach((point) => list.appendChild(el("li", "", point)));
+        more.appendChild(list);
+      }
+      if (item.actions.length) {
+        const list = el("ul", "partition-actions");
+        item.actions.forEach((action) => {
+          const person = players.get(action.playerId);
+          const line = el("li");
+          line.append(
+            el("strong", "", playerDisplayName(person) || action.playerId),
+            document.createTextNode(` ${action.description}`),
+          );
+          list.appendChild(line);
+        });
+        more.appendChild(list);
+      }
+      const cast = eventCast(item, players);
+      if (cast.length) more.appendChild(castList(cast));
+      const mapButton = el("button", "partition-text-button", "Show this moment on the map");
+      mapButton.type = "button";
+      mapButton.addEventListener("click", () => onShowMap?.(item.id));
+      more.appendChild(mapButton);
+      const sources = sourceRecords(reference.sourcesCatalog, item.sourceIds);
+      if (sources.length) more.appendChild(sourceList(sources));
+    }
+
+    function paintTimelineSelection() {
+      const next = frame().id;
+      if (openId === next) return;
+      openId = next;
+      paintTimelineList();
+    }
+
+    shell.paintTimelineList = paintTimelineList;
+    shell.paintTimelineSelection = paintTimelineSelection;
   }
 
   function revealPersonTop() {

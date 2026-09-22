@@ -19,7 +19,6 @@ import {
   initials,
   neighborhood,
   outlineFor,
-  laneBands,
   parseState,
   parseYear,
   plotHubs,
@@ -57,6 +56,17 @@ import {
 } from "./engine.js";
 import { buildFrames } from "./partition-model.js";
 import { mountPartition } from "./partition-view.js";
+import {
+  buildLaneChrome,
+  changeLaneZoom,
+  getLaneZoom,
+  laneYear,
+  layoutLane,
+  queueLaneFocus,
+  queueLaneScroll,
+  setLaneZoom,
+  takeLaneFocus,
+} from "./lane.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const peopleById = new Map();
@@ -79,14 +89,9 @@ let loadToken = 0;
 let partitionReference = null;
 let partitionPortraits = {};
 let partitionMount = null;
-const ZOOM_MIN = 0.08;
-const ZOOM_MAX = 2.5;
 const COMPACT_MQ = `(max-width: ${COMPACT_MAX_WIDTH}px)`;
 const VIEW_PREF_KEY = "plotmaniac-view";
 const PICK_LEDE = "Turn rabbit holes into clickable plots: maps, webs, lists, timelines.";
-let laneZoom = 1;
-let pendingLaneScroll = null;
-let pendingLaneFocus = "";
 let hubCamera = null;
 
 function isCompact() {
@@ -329,7 +334,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     openRegions = new Set();
     openTopic = "";
     people.forEach((person) => peopleById.set(person.id, person));
-    laneZoom = 1;
+    setLaneZoom(1);
     const eras = new Set(events.map((event) => event.era));
     const hubs = plotHubs(plot);
     if (fromUrl) {
@@ -735,10 +740,10 @@ function bindChrome() {
     if (!lane) return;
     if (event.key === "+" || event.key === "=") {
       event.preventDefault();
-      changeLaneZoom(lane, laneZoom * 1.2);
+      changeLaneZoom(lane, getLaneZoom() * 1.2);
     } else if (event.key === "-" || event.key === "_") {
       event.preventDefault();
-      changeLaneZoom(lane, laneZoom / 1.2);
+      changeLaneZoom(lane, getLaneZoom() / 1.2);
     } else if (event.key === "0" && !event.metaKey && !event.ctrlKey) {
       event.preventDefault();
       changeLaneZoom(lane, 1);
@@ -792,10 +797,10 @@ function hubEvents() {
 
 function render({ push = false, replace = false, focusEvent = false } = {}) {
   const scroller = document.querySelector(".lane-scroll");
-  pendingLaneScroll = replace && scroller
+  queueLaneScroll(replace && scroller
     ? { left: scroller.scrollLeft, top: scroller.scrollTop }
-    : null;
-  pendingLaneFocus = focusEvent && state.eventId ? state.eventId : "";
+    : null);
+  queueLaneFocus(focusEvent && state.eventId ? state.eventId : "");
   syncLayoutMode();
   labelViews();
   document.body.dataset.view = state.view;
@@ -812,7 +817,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   if (plot?.arrangement === "historical-map" && partitionReference) {
     document.body.dataset.board = "history";
     labelViews();
-    const modeKey = state.view;
+    const modeKey = `${state.view}:${isCompact() ? "compact" : "wide"}`;
     if (!partitionMount || partitionMount.modeKey() !== modeKey) {
       app.replaceChildren();
       partitionMount = mountPartition(app, partitionReference, {
@@ -859,12 +864,13 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
   else app.appendChild(renderWeb());
   if (push || replace) writeUrl(replace);
-  if (pendingLaneFocus && isCompact()) {
-    const beatId = pendingLaneFocus;
-    pendingLaneFocus = "";
-    requestAnimationFrame(() => {
-      document.getElementById(`beat-${beatId}`)?.scrollIntoView({ block: "center", inline: "nearest" });
-    });
+  if (isCompact()) {
+    const beatId = takeLaneFocus();
+    if (beatId) {
+      requestAnimationFrame(() => {
+        document.getElementById(`beat-${beatId}`)?.scrollIntoView({ block: "center", inline: "nearest" });
+      });
+    }
   }
 }
 
@@ -2299,299 +2305,21 @@ function renderTimeline() {
 
 function renderRail(list, { focusId = "", note = "" } = {}) {
   if (isCompact()) return renderSpine(list, { focusId, note });
-  const view = document.createElement("div");
-  view.className = "lane-view";
-
-  const tools = document.createElement("div");
-  tools.className = "lane-tools";
-  const hint = document.createElement("p");
-  hint.className = "rail-note";
-  hint.textContent = note;
-  const controls = document.createElement("div");
-  controls.className = "lane-controls";
-  controls.append(
-    laneButton("Zoom out", "−", () => changeLaneZoom(view, laneZoom / 1.2)),
-    laneSlider(view),
-    laneReadout(),
-    laneButton("Zoom in", "+", () => changeLaneZoom(view, laneZoom * 1.2)),
-    laneButton("Fit the timeline to the width", "Fit", () => fitLaneWidth(view)),
-  );
-  tools.append(hint, controls);
-
-  const scroller = document.createElement("div");
-  scroller.className = "lane-scroll";
-  scroller.tabIndex = 0;
-  scroller.setAttribute(
-    "aria-label",
-    "Timeline, oldest on the left. Drag to move. Hold Control and scroll to zoom.",
-  );
-
-  const sizer = document.createElement("div");
-  sizer.className = "lane-sizer";
-  const rail = document.createElement("ol");
-  rail.className = "lane";
+  const { view, rail } = buildLaneChrome(note);
   let year = "";
   let step = 0;
   list.forEach((event) => {
     const nextYear = event.date.slice(0, 4);
     if (nextYear !== year) {
       year = nextYear;
-      const stone = document.createElement("li");
-      stone.className = "lane-year";
-      const text = document.createElement("span");
-      text.textContent = year;
-      stone.appendChild(text);
-      rail.appendChild(stone);
+      rail.appendChild(laneYear(year));
     }
     const side = step % 2 === 0 ? "above" : "below";
     step += 1;
     rail.appendChild(renderLaneEvent(event, side, focusId));
   });
-  sizer.appendChild(rail);
-  scroller.appendChild(sizer);
-  view.append(tools, scroller);
-  bindLaneGestures(view);
   requestAnimationFrame(() => layoutLane(view));
   return view;
-}
-
-function laneButton(label, text, onClick) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "lane-button";
-  button.textContent = text;
-  button.setAttribute("aria-label", label);
-  button.addEventListener("click", onClick);
-  return button;
-}
-
-function laneReadout() {
-  const readout = document.createElement("span");
-  readout.className = "lane-readout";
-  readout.textContent = `${Math.round(laneZoom * 100)}%`;
-  return readout;
-}
-
-function laneSlider(view) {
-  const input = document.createElement("input");
-  input.type = "range";
-  input.className = "lane-zoom";
-  input.min = String(Math.round(ZOOM_MIN * 100));
-  input.max = String(Math.round(ZOOM_MAX * 100));
-  input.value = String(Math.round(laneZoom * 100));
-  input.setAttribute("aria-label", "Timeline zoom");
-  input.addEventListener("input", () => {
-    const scroller = view.querySelector(".lane-scroll");
-    const rect = scroller.getBoundingClientRect();
-    applyLaneZoom(view, Number(input.value) / 100, {
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-    });
-  });
-  return input;
-}
-
-function clampZoom(value) {
-  const next = Math.round(Number(value) * 100) / 100;
-  return Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, next));
-}
-
-function changeLaneZoom(view, zoom) {
-  const scroller = view.querySelector(".lane-scroll");
-  const rect = scroller.getBoundingClientRect();
-  applyLaneZoom(view, zoom, {
-    x: rect.left + rect.width / 2,
-    y: rect.top + rect.height / 2,
-  });
-}
-
-function fitLaneWidth(view) {
-  const scroller = view.querySelector(".lane-scroll");
-  const rail = view.querySelector(".lane");
-  rail.style.minWidth = "0px";
-  const base = rail.scrollWidth;
-  if (!base || !scroller.clientWidth) return;
-  const rect = scroller.getBoundingClientRect();
-  applyLaneZoom(view, scroller.clientWidth / base, {
-    x: rect.left,
-    y: rect.top + rect.height / 2,
-  });
-  scroller.scrollLeft = 0;
-}
-
-const LANE_AXIS_PAD = 28;
-
-function layoutLane(view) {
-  if (!view.isConnected) return;
-  const scroller = view.querySelector(".lane-scroll");
-  const rail = view.querySelector(".lane");
-  const height = scroller.clientHeight;
-  if (height < 80) {
-    requestAnimationFrame(() => layoutLane(view));
-    return;
-  }
-  // Keep the rail inside the visible scroller. Opening a beat moves the axis
-  // and scales every card, including the open one, so the summary and sources
-  // stay on screen instead of scrolling inside the beat.
-  rail.style.setProperty("--lane-h", `${height}px`);
-  rail.querySelectorAll(".lane-card").forEach(resetCardFit);
-
-  const selected = rail.querySelector(".lane-event.is-selected");
-  const selectedAbove = Boolean(selected?.classList.contains("side-above"));
-
-  let aboveRoom = height / 2 - LANE_AXIS_PAD;
-  let belowRoom = height / 2 - LANE_AXIS_PAD;
-  if (!selected) {
-    rail.style.setProperty("--lane-axis", "50%");
-  } else {
-    const selectedNeed = cardExtent(selected.querySelector(".lane-card"));
-    const quietSide = selectedAbove ? ".side-below" : ".side-above";
-    const quietNeed = tallestExtent(rail, quietSide);
-    const { selectedBand, quietBand } = laneBands(height, selectedNeed, quietNeed);
-    const axis = selectedAbove ? selectedBand : height - selectedBand;
-    rail.style.setProperty("--lane-axis", `${axis}px`);
-    aboveRoom = (selectedAbove ? selectedBand : quietBand) - LANE_AXIS_PAD;
-    belowRoom = (selectedAbove ? quietBand : selectedBand) - LANE_AXIS_PAD;
-  }
-
-  let restScale = 1;
-  rail.querySelectorAll(".lane-event:not(.is-selected)").forEach((event) => {
-    const natural = event.querySelector(".lane-card")?.scrollHeight || 0;
-    const room = event.classList.contains("side-above") ? aboveRoom : belowRoom;
-    restScale = Math.min(restScale, fitScale(room, natural));
-  });
-  rail.querySelectorAll(".lane-event").forEach((event) => {
-    const card = event.querySelector(".lane-card");
-    if (!card) return;
-    const above = event.classList.contains("side-above");
-    const room = Math.max(0, above ? aboveRoom : belowRoom);
-    if (event.classList.contains("is-selected")) {
-      applyCardScale(card, fitScale(room, naturalHeight(card)), above);
-      return;
-    }
-    applyCardScale(card, restScale, above);
-  });
-
-  applyLaneZoom(view, laneZoom);
-  if (pendingLaneScroll) {
-    scroller.scrollLeft = pendingLaneScroll.left;
-    scroller.scrollTop = pendingLaneScroll.top;
-    pendingLaneScroll = null;
-  }
-  if (pendingLaneFocus) {
-    const focus = view.querySelector(".lane-event.is-selected");
-    pendingLaneFocus = "";
-    if (focus) focus.scrollIntoView({ inline: "center", block: "nearest" });
-  }
-}
-
-function naturalHeight(card) {
-  if (!card) return 0;
-  card.style.maxHeight = "none";
-  card.style.overflow = "visible";
-  card.style.transform = "none";
-  return card.scrollHeight;
-}
-
-function cardExtent(card) {
-  return naturalHeight(card) + LANE_AXIS_PAD;
-}
-
-function tallestExtent(rail, selector) {
-  let tallest = 0;
-  rail.querySelectorAll(`${selector} .lane-card`).forEach((card) => {
-    tallest = Math.max(tallest, card.scrollHeight);
-  });
-  return tallest + LANE_AXIS_PAD;
-}
-
-function fitScale(room, natural) {
-  if (!(natural > 0) || natural <= room) return 1;
-  return Math.max(0.01, (room - 1) / natural);
-}
-
-function resetCardFit(card) {
-  card.style.transform = "";
-  card.style.transformOrigin = "";
-  card.style.maxHeight = "";
-  card.style.overflow = "";
-}
-
-function applyCardScale(card, scale, above) {
-  card.style.maxHeight = "none";
-  card.style.overflow = "visible";
-  if (scale < 0.999) {
-    card.style.transformOrigin = above ? "bottom center" : "top center";
-    card.style.transform = `scale(${scale.toFixed(4)})`;
-  }
-}
-
-function applyLaneZoom(view, zoom, anchor) {
-  const scroller = view.querySelector(".lane-scroll");
-  const rail = view.querySelector(".lane");
-  const sizer = view.querySelector(".lane-sizer");
-  if (!scroller || !rail || !sizer) return;
-  const prev = Number(view.dataset.zoom || laneZoom || 1) || 1;
-  laneZoom = clampZoom(zoom);
-  rail.style.minWidth = "0px";
-  const contentW = rail.scrollWidth;
-  const minW = Math.max(contentW, scroller.clientWidth / laneZoom);
-  rail.style.minWidth = `${minW}px`;
-  const baseW = rail.offsetWidth;
-  const baseH = rail.offsetHeight;
-  const rect = scroller.getBoundingClientRect();
-  const originX = anchor ? anchor.x - rect.left : rect.width / 2;
-  const originY = anchor ? anchor.y - rect.top : rect.height / 2;
-  const contentX = (scroller.scrollLeft + originX) / prev;
-  const contentY = (scroller.scrollTop + originY) / prev;
-  sizer.style.width = `${Math.ceil(baseW * laneZoom)}px`;
-  sizer.style.height = `${Math.ceil(baseH * laneZoom)}px`;
-  rail.style.transform = `scale(${laneZoom})`;
-  view.dataset.zoom = String(laneZoom);
-  scroller.scrollLeft = contentX * laneZoom - originX;
-  scroller.scrollTop = contentY * laneZoom - originY;
-  const slider = view.querySelector(".lane-zoom");
-  const readout = view.querySelector(".lane-readout");
-  const percent = String(Math.round(laneZoom * 100));
-  if (slider && document.activeElement !== slider) slider.value = percent;
-  if (readout) readout.textContent = `${percent}%`;
-}
-
-function bindLaneGestures(view) {
-  const scroller = view.querySelector(".lane-scroll");
-  scroller.addEventListener("wheel", (event) => {
-    if (!(event.ctrlKey || event.metaKey)) return;
-    event.preventDefault();
-    const factor = Math.exp(-event.deltaY * 0.0016);
-    applyLaneZoom(view, laneZoom * factor, { x: event.clientX, y: event.clientY });
-  }, { passive: false });
-
-  let pan = null;
-  scroller.addEventListener("pointerdown", (event) => {
-    if (event.button !== 0 || event.pointerType !== "mouse") return;
-    if (event.target.closest("button, a, input")) return;
-    pan = {
-      id: event.pointerId,
-      x: event.clientX,
-      y: event.clientY,
-      left: scroller.scrollLeft,
-      top: scroller.scrollTop,
-    };
-    scroller.setPointerCapture(event.pointerId);
-    scroller.classList.add("is-panning");
-  });
-  scroller.addEventListener("pointermove", (event) => {
-    if (!pan || event.pointerId !== pan.id) return;
-    scroller.scrollLeft = pan.left - (event.clientX - pan.x);
-    scroller.scrollTop = pan.top - (event.clientY - pan.y);
-  });
-  const endPan = (event) => {
-    if (!pan || event.pointerId !== pan.id) return;
-    pan = null;
-    scroller.classList.remove("is-panning");
-  };
-  scroller.addEventListener("pointerup", endPan);
-  scroller.addEventListener("pointercancel", endPan);
 }
 
 function renderSpine(list, { focusId = "", note = "" } = {}) {

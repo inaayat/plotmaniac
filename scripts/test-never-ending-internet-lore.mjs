@@ -1030,6 +1030,15 @@ const partitionCss = fs.readFileSync(new URL("../partition.css", import.meta.url
 assert.match(partitionCss, /\.partition-beat li[\s\S]*?font-size: 0\.78rem/, "beat bullets match the moment copy");
 assert.match(partitionCss, /\.partition-person-page \{\s*width: 100%;/, "person page uses the board width");
 assert.match(partitionCss, /\.partition-person-page h2 \{\s*font-size: 2rem;/, "person headers stay one size");
+assert.match(partitionCss, /body\[data-board="history"\]\[data-view="timeline"\] \.app \{[\s\S]*?width: 100%;/, "Partition full timeline uses the page width");
+assert.match(partitionCss, /\.partition-actions strong \{[\s\S]*?font-size: inherit/, "action names stay body size");
+assert.match(partitionViewSource, /buildLaneChrome/, "Partition full timeline uses the shared horizontal lane");
+assert.match(partitionViewSource, /oldest on the left/, "Partition desktop timeline reads left to right");
+assert.match(partitionViewSource, /playerDisplayName\(person\) \|\| action\.playerId/, "timeline action lines use short names");
+assert.match(partitionViewSource, /COMPACT_MAX_WIDTH/, "Partition timeline follows the compact breakpoint");
+const laneSource = fs.readFileSync(new URL("../lane.js", import.meta.url), "utf8");
+assert.match(laneSource, /export function buildLaneChrome/, "shared lane chrome builds the horizontal rail");
+assert.match(appSource, /from "\.\/lane\.js"/, "other plots share the same lane chrome");
 assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");
 assert.match(appSource, /Shared people sit in the center/, "youtubers web describes the shared center");
 assert.match(css, /\.web-stage \.node-name/, "web names stay inside their node");

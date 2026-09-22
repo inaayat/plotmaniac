@@ -3,7 +3,6 @@
 
 body[data-board="history"],
 body[data-board="history"][data-view="web"],
-body[data-board="history"][data-view="timeline"],
 body[data-board="history"][data-view="person"] {
   height: auto;
   min-height: 100dvh;
@@ -24,18 +23,15 @@ body[data-board="history"] h1 {
   font-size: clamp(3rem, 7vw, 4.6rem);
 }
 
-body[data-board="history"][data-view="person"] h1,
-body[data-board="history"][data-view="timeline"] h1 {
+body[data-board="history"][data-view="person"] h1 {
   font-size: clamp(1.6rem, 3vw, 2.1rem);
 }
 
-html:has(body[data-board="history"][data-view="person"]),
-html:has(body[data-board="history"][data-view="timeline"]) {
+html:has(body[data-board="history"][data-view="person"]) {
   overflow-y: auto;
 }
 
-body[data-board="history"][data-view="person"],
-body[data-board="history"][data-view="timeline"] {
+body[data-board="history"][data-view="person"] {
   overflow-y: auto;
 }
 
@@ -45,8 +41,7 @@ body[data-board="history"] .mark {
   margin: 14px 0 10px;
 }
 
-body[data-board="history"] .lede,
-body[data-board="history"][data-view="timeline"] .lede {
+body[data-board="history"] .lede {
   display: block;
   text-align: left;
   max-width: 62ch;
@@ -63,7 +58,6 @@ body[data-board="history"] .views {
 }
 
 body[data-board="history"] .app,
-body[data-board="history"][data-view="timeline"] .app,
 body[data-board="history"][data-view="person"] .app {
   display: block;
   flex: none;
@@ -76,7 +70,6 @@ body[data-board="history"][data-view="person"] .app {
 }
 
 body[data-board="history"] .site-footer,
-body[data-board="history"][data-view="timeline"] .site-footer,
 body[data-board="history"][data-view="person"] .site-footer {
   display: block;
   position: static;
@@ -87,9 +80,67 @@ body[data-board="history"][data-view="person"] .site-footer {
 }
 
 body[data-board="history"] #footer-note,
-body[data-board="history"][data-view="timeline"] #footer-note,
 body[data-board="history"][data-view="person"] #footer-note {
   display: block;
+}
+
+body[data-board="history"][data-view="timeline"] {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+html:has(body[data-board="history"][data-view="timeline"]) {
+  overflow: hidden;
+}
+
+body[data-board="history"][data-view="timeline"] .mast {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 10px 18px 0;
+}
+
+body[data-board="history"][data-view="timeline"] h1 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+body[data-board="history"][data-view="timeline"] .mark,
+body[data-board="history"][data-view="timeline"] .lede {
+  display: none;
+}
+
+body[data-board="history"][data-view="timeline"] .views {
+  margin-top: 6px;
+}
+
+body[data-board="history"][data-view="timeline"] .app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+body[data-board="history"][data-view="timeline"] .site-footer {
+  display: block;
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+body[data-board="history"][data-view="timeline"] #footer-note {
+  display: none;
 }
 
 .partition h2,
@@ -586,10 +637,116 @@ body[data-board="history"][data-view="person"] #footer-note {
   margin-bottom: 8px;
 }
 
+.partition.lane-page {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.partition.lane-page h2 {
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  margin: 4px 0 0;
+}
+
+.partition.lane-page .timeline-head {
+  width: 100%;
+  margin: 0;
+  padding: 8px 18px 0;
+}
+
+.partition-timeline-host {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .partition-record .spine-view {
   width: min(760px, 100%);
   margin: 8px 0 0;
   padding: 0;
+}
+
+.partition .lane-mark .partition-chip-photo,
+.partition .lane-mark .partition-monogram {
+  width: 76px;
+  height: 76px;
+  border-width: 3px;
+}
+
+.partition .lane-event.is-selected .lane-mark .partition-chip-photo,
+.partition .lane-event.is-selected .lane-mark .partition-monogram {
+  width: 56px;
+  height: 56px;
+}
+
+.partition-actions {
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.partition-actions strong {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.partition .lane-more {
+  text-align: left;
+}
+
+.partition .lane-more .partition-points,
+.partition .lane-more .partition-actions,
+.partition .lane-more .partition-sources {
+  margin: 6px 0 0;
+  padding-left: 1rem;
+}
+
+.partition .lane-more .partition-points li,
+.partition .lane-more .partition-actions li,
+.partition .lane-more .partition-sources li,
+.partition .lane-more p {
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.partition .lane-more .partition-cast-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.partition .lane-more .partition-cast-card {
+  width: auto;
+  max-width: 100%;
+}
+
+.partition .lane-more .partition-cast-copy strong {
+  font-family: inherit;
+  font-size: 0.72rem;
+}
+
+.partition .lane-more .partition-cast-allegiance,
+.partition .lane-more .partition-cast-incentive {
+  display: none;
+}
+
+.partition .lane-more .partition-cast-action {
+  font-size: 0.66rem;
+  margin-top: 2px;
+}
+
+.partition .lane-more .partition-text-button {
+  margin-top: 8px;
+  min-height: 0;
+  padding: 5px 8px;
 }
 
 .partition-person-page {
@@ -963,9 +1120,10 @@ body[data-board="history"][data-view="person"] #footer-note {
   margin-bottom: 2px;
 }
 
-.partition .spine-copy > strong {
+.partition .spine-copy > strong,
+.partition .spine-hit strong {
   font-family: "Fraunces", Georgia, serif;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 500;
 }
 
@@ -999,8 +1157,7 @@ body[data-board="history"][data-view="person"] #footer-note {
     max-width: none;
   }
   body[data-board="history"] h1 { font-size: clamp(2rem, 10vw, 2.6rem); }
-  body[data-board="history"][data-view="person"] h1,
-  body[data-board="history"][data-view="timeline"] h1 {
+  body[data-board="history"][data-view="person"] h1 {
     font-size: 1.35rem;
   }
   body[data-board="history"] .views {
@@ -1008,8 +1165,7 @@ body[data-board="history"][data-view="person"] #footer-note {
     gap: 6px;
   }
   body[data-board="history"] .app,
-  body[data-board="history"][data-view="person"] .app,
-  body[data-board="history"][data-view="timeline"] .app {
+  body[data-board="history"][data-view="person"] .app {
     width: calc(100% - 24px);
     padding-bottom: 40px;
   }
@@ -1083,5 +1239,50 @@ body[data-board="history"][data-view="person"] #footer-note {
   .partition-stance-card,
   .partition-beat-card {
     padding: 14px 14px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  html:has(body[data-board="history"][data-view="timeline"]) {
+    overflow-y: auto;
+  }
+  body[data-board="history"][data-view="timeline"] {
+    height: auto;
+    max-height: none;
+    overflow-x: clip;
+    overflow-y: auto;
+    display: block;
+  }
+  body[data-board="history"][data-view="timeline"] .mast {
+    width: calc(100% - 24px);
+    padding: calc(16px + var(--safe-top)) 0 4px;
+  }
+  body[data-board="history"][data-view="timeline"] h1 {
+    font-size: 1.35rem;
+  }
+  body[data-board="history"][data-view="timeline"] .app {
+    display: block;
+    flex: none;
+    width: calc(100% - 24px);
+    margin: 0 auto;
+    padding: 12px 0 40px;
+  }
+  body[data-board="history"][data-view="timeline"] .site-footer {
+    position: static;
+    width: min(760px, calc(100% - 24px));
+    margin: 12px auto 28px;
+    text-align: left;
+  }
+  body[data-board="history"][data-view="timeline"] #footer-note {
+    display: block;
+  }
+  .partition.lane-page,
+  .partition-timeline-host {
+    display: block;
+    flex: none;
+    min-height: 0;
+  }
+  .partition.lane-page .timeline-head {
+    padding: 8px 0 10px;
   }
 }
