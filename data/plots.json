@@ -5,16 +5,17 @@
       "aliases": ["h3"],
       "title": "YouTubers",
       "kicker": "People",
-      "lede": "One web for the YouTuber sphere. Pick Ethan Klein or David Dobrik to read that hub's timeline.",
+      "lede": "One web for the YouTuber sphere. Pick Ethan Klein, David Dobrik, or Trisha Paytas to read that hub's timeline.",
       "searchPlaceholder": "Lawsuit, Frenemies, Vlog Squad, a name…",
       "centerId": "ethan-klein",
-      "includeOrbit": true,
+      "arrangement": "hubs",
       "orbitLabel": "Around the sphere",
       "friendKinds": ["ally", "crew", "co-host", "collaborator", "family"],
       "enemyKinds": ["feud", "litigation"],
       "hubs": [
         { "id": "h3", "label": "Ethan Klein / H3", "centerId": "ethan-klein" },
-        { "id": "dobrik", "label": "David Dobrik", "centerId": "david-dobrik" }
+        { "id": "dobrik", "label": "David Dobrik", "centerId": "david-dobrik" },
+        { "id": "trisha", "label": "Trisha Paytas", "centerId": "trisha-paytas" }
       ],
       "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Ethan%20Klein%20%28cropped%29.jpg?width=240",
       "paths": {

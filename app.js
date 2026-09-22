@@ -453,7 +453,10 @@ function renderWeb() {
     keyItems.push(["orbit", plot.orbitLabel || "No stance yet"]);
     keyItems.push(["near", "Closer · more beats"]);
   } else if (plot.arrangement !== "camps") {
-    if (plot.includeOrbit) keyItems.push(["orbit", plot.orbitLabel || "Around the show"]);
+    if (plot.arrangement === "hubs" || plot.includeOrbit) {
+      keyItems.push(["orbit", plot.orbitLabel || "Around the show"]);
+    }
+    if (plot.arrangement === "hubs") keyItems.push(["hub", "Hubs"]);
     keyItems.push(["near", "Closer · more beats"]);
   }
   keyItems.forEach(([camp, label]) => {
@@ -1224,13 +1227,13 @@ function paintWeb(stage, { animate = true } = {}) {
     enemyKinds: plot.enemyKinds,
     arrangement: plot.arrangement,
     year: plot.year ? state.year : undefined,
-    events: hubEvents(),
+    events: plot.arrangement === "hubs" ? events : hubEvents(),
     width,
     height,
     topics: plot.topics,
     topicId: openTopic,
     includeOrbit: Boolean(plot.includeOrbit),
-    hubIds: plotHubs(plot).map((hub) => hub.centerId),
+    hubs: plot.hubs,
   });
   stage.classList.toggle("is-quiet", !animate);
   if (camps && layout.height > height + 2) stage.style.height = `${layout.height}px`;
@@ -1253,11 +1256,13 @@ function paintWeb(stage, { animate = true } = {}) {
     path.dataset.from = edge.from;
     path.dataset.to = edge.to;
     let camp = "";
-    if (from.camp === "center") camp = to.camp;
+    const activeEnd = from.active ? to : to.active ? from : null;
+    if (activeEnd && activeEnd.camp !== "hub" && activeEnd.camp !== "center") camp = activeEnd.camp;
+    else if (from.camp === "center") camp = to.camp;
     else if (to.camp === "center") camp = from.camp;
     else if (from.camp === "topic") camp = to.camp;
     else if (to.camp === "topic") camp = from.camp;
-    if (camp && camp !== "topic") path.dataset.camp = camp;
+    if (camp && camp !== "topic" && camp !== "hub") path.dataset.camp = camp;
     if (edge.kind === "topic") path.dataset.kind = "topic";
     svg.appendChild(path);
   });
@@ -1301,7 +1306,7 @@ function paintWeb(stage, { animate = true } = {}) {
   layout.nodes.forEach((node, index) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.hub ? " is-topic-hub" : ""}${node.plotHub && node.camp !== "center" ? " is-plot-hub" : ""}${node.side ? ` node-${node.side}` : ""}`;
+    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.hub ? " is-topic-hub" : ""}${node.plotHub ? " is-plot-hub" : ""}${node.active ? " is-active-hub" : ""}${node.side ? ` node-${node.side}` : ""}`;
     button.dataset.id = node.id;
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
@@ -1355,10 +1360,11 @@ function paintWeb(stage, { animate = true } = {}) {
 function paintWebPeople(root, layout) {
   const byName = (a, b) => String(a.name).localeCompare(String(b.name), "en", { sensitivity: "base" });
   const groups = [
+    ["hub", "Hubs", layout.nodes.filter((node) => node.plotHub).slice().sort(byName)],
     ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends", layout.nodes.filter((node) => node.camp === "friend").slice().sort(byName)],
     ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes", layout.nodes.filter((node) => node.camp === "enemy").slice().sort(byName)],
   ];
-  if (plot.includeOrbit) {
+  if (plot.arrangement === "hubs" || plot.includeOrbit) {
     groups.push(["orbit", plot.orbitLabel || "Around the show", layout.nodes.filter((node) => node.camp === "orbit").slice().sort(byName)]);
   }
   root.replaceChildren();
@@ -2153,6 +2159,7 @@ function campLabel(camp) {
   if (camp === "friend") return plot?.friendLabel || "Friend";
   if (camp === "enemy") return plot?.enemyLabel || "Foe";
   if (camp === "orbit") return plot?.orbitLabel || "Around the show";
+  if (camp === "hub") return "Hub";
   return "";
 }
 

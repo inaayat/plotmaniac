@@ -68,7 +68,7 @@ for (const event of events) {
   assert.ok(event.title && event.summary && event.era, `${event.id} is missing core copy`);
   assert.ok(event.people.length >= 1, `${event.id} needs people`);
   assert.ok(event.hubs?.length, `${event.id} needs hubs`);
-  event.hubs.forEach((hub) => assert.ok(["h3", "dobrik"].includes(hub), `${event.id} unknown hub ${hub}`));
+  event.hubs.forEach((hub) => assert.ok(["h3", "dobrik", "trisha"].includes(hub), `${event.id} unknown hub ${hub}`));
   event.people.forEach((id) => assert.ok(ids.has(id), `${event.id} references unknown person ${id}`));
   assert.ok(event.links?.length, `${event.id} needs at least one source`);
   event.links.forEach((link) => {
@@ -90,13 +90,13 @@ for (const relation of relations) {
   assert.ok(relation.kind && relation.label, "relations need kind and label");
 }
 
-const hubCenters = new Set(["ethan-klein", "david-dobrik"]);
+const hubCenters = new Set(["ethan-klein", "david-dobrik", "trisha-paytas"]);
 for (const person of people.filter((person) => !hubCenters.has(person.id))) {
   assert.ok(
     relations.some((relation) =>
       hubCenters.has(relation.from) && relation.to === person.id
       || hubCenters.has(relation.to) && relation.from === person.id),
-    `${person.id} needs a relationship to Ethan or David`,
+    `${person.id} needs a relationship to Ethan, David, or Trisha`,
   );
 }
 
@@ -107,8 +107,13 @@ assert.ok(filterEvents(events, { query: "fair use" }, peopleById).length >= 2);
 assert.ok(h3Events.some((event) => event.id === "frenemies-launch"));
 assert.equal(h3Events.some((event) => event.id === "utah-excavator-accident"), false);
 assert.ok(dobrikEvents.some((event) => event.id === "utah-excavator-accident"));
+const trishaEvents = filterEvents(events, { hub: "trisha" }, peopleById);
+assert.ok(trishaEvents.length >= 8 && trishaEvents.length <= 20, `Trisha hub should contain 8–20 events, got ${trishaEvents.length}`);
+assert.ok(trishaEvents.some((event) => event.id === "frenemies-launch"));
+assert.ok(trishaEvents.some((event) => event.id === "paytas-hotel-filming"));
+assert.equal(trishaEvents.some((event) => event.id === "utah-excavator-accident"), false);
 const livestream = events.find((event) => event.id === "dobrik-safety-coverage");
-assert.deepEqual(livestream.hubs.slice().sort(), ["dobrik", "h3"]);
+assert.deepEqual(livestream.hubs.slice().sort(), ["dobrik", "h3", "trisha"]);
 assert.ok(livestream.people.includes("jeff-wittek"));
 assert.ok(livestream.people.includes("trisha-paytas"));
 assert.ok(h3Events.some((event) => event.id === "dobrik-safety-coverage"));
@@ -123,10 +128,13 @@ assert.ok(youtubers, "youtubers plot is registered");
 assert.equal(findPlot(plots.plots, "h3")?.id, "youtubers");
 assert.equal(findPlot(plots.plots, "youtubers")?.id, "youtubers");
 assert.equal(youtubers.centerId, "ethan-klein");
-assert.equal(youtubers.includeOrbit, true);
+assert.equal(youtubers.arrangement, "hubs");
+assert.equal(youtubers.hubs.length, 3);
 assert.equal(hubOf(youtubers, "h3").centerId, "ethan-klein");
 assert.equal(hubOf(youtubers, "dobrik").centerId, "david-dobrik");
+assert.equal(hubOf(youtubers, "trisha").centerId, "trisha-paytas");
 assert.equal(hubCenterId(youtubers, "dobrik"), "david-dobrik");
+assert.equal(hubCenterId(youtubers, "trisha"), "trisha-paytas");
 assert.equal(initials("Hila Klein"), "HK");
 assert.equal(initials("xQc"), "XQ");
 assert.equal(campOf("hila-klein", relations, youtubers.centerId, youtubers.friendKinds, youtubers.enemyKinds), "friend");
@@ -335,8 +343,12 @@ const hubState = parseState("https://plotmaniac.com/?plot=youtubers&hub=dobrik&v
 assert.equal(hubState.hub, "dobrik");
 assert.equal(hubState.view, "timeline");
 assert.equal(
-  parseState("https://plotmaniac.com/?plot=youtubers", { hubs: new Set(["h3", "dobrik"]), defaultHub: "h3" }).hub,
+  parseState("https://plotmaniac.com/?plot=youtubers", { hubs: new Set(["h3", "dobrik", "trisha"]), defaultHub: "h3" }).hub,
   "h3",
+);
+assert.equal(
+  parseState("https://plotmaniac.com/?plot=youtubers&hub=trisha", { hubs: new Set(["h3", "dobrik", "trisha"]), defaultHub: "h3" }).hub,
+  "trisha",
 );
 
 const sharedWeb = webLayout(people, relations, {
@@ -359,6 +371,81 @@ assert.equal(sharedWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "
 assert.ok(sharedWeb.edges.some((edge) =>
   (edge.from === "trisha-paytas" && edge.to === "jason-nash")
   || (edge.from === "jason-nash" && edge.to === "trisha-paytas")));
+
+function pageDistance(nodes, id, width, height) {
+  const node = nodes.find((item) => item.id === id);
+  return Math.hypot(node.x - width / 2, node.y - height / 2);
+}
+
+function boxesOverlap(a, b, boxW, boxH) {
+  return Math.abs(a.x - b.x) < boxW - 0.5 && Math.abs(a.y - b.y) < boxH - 0.5;
+}
+
+function positionKey(layout) {
+  return layout.nodes
+    .map((node) => [node.id, node.x, node.y, node.ring, node.hubId].join(":"))
+    .sort()
+    .join("|");
+}
+
+for (const size of [{ width: 1100, height: 980 }, { width: 1400, height: 720 }, { width: 700, height: 420 }, { width: 1120, height: 1120 }]) {
+  const ethanFocus = webLayout(people, relations, {
+    centerId: "ethan-klein",
+    friendKinds: youtubers.friendKinds,
+    enemyKinds: youtubers.enemyKinds,
+    arrangement: "hubs",
+    hubs: youtubers.hubs,
+    events,
+    ...size,
+  });
+  const davidFocus = webLayout(people, relations, {
+    centerId: "david-dobrik",
+    friendKinds: youtubers.friendKinds,
+    enemyKinds: youtubers.enemyKinds,
+    arrangement: "hubs",
+    hubs: youtubers.hubs,
+    events,
+    ...size,
+  });
+  assert.equal(ethanFocus.nodes.length, people.length, `hub web keeps every person at ${size.width}`);
+  assert.equal(ethanFocus.nodes.filter((node) => node.id === "trisha-paytas").length, 1);
+  assert.equal(ethanFocus.centerSize, ethanFocus.nodeSize);
+  assert.equal(positionKey(ethanFocus), positionKey(davidFocus), `focus does not move the web at ${size.width}`);
+  const trishaNode = ethanFocus.nodes.find((node) => node.id === "trisha-paytas");
+  const ethanHub = ethanFocus.nodes.find((node) => node.id === "ethan-klein");
+  const davidHub = ethanFocus.nodes.find((node) => node.id === "david-dobrik");
+  assert.equal(trishaNode.ring, "hub");
+  assert.equal(trishaNode.plotHub, true);
+  assert.equal(ethanHub.ring, "hub");
+  assert.equal(davidHub.ring, "hub");
+  assert.equal(ethanHub.active, true);
+  assert.equal(davidFocus.nodes.find((node) => node.id === "david-dobrik").active, true);
+  assert.equal(davidFocus.nodes.find((node) => node.id === "trisha-paytas").camp, "hub");
+  const sharedNodes = ethanFocus.nodes.filter((node) => node.ring === "shared");
+  const hubNodes = ethanFocus.nodes.filter((node) => node.ring === "hub");
+  assert.ok(sharedNodes.length >= 4, "shared orbit sits in the center");
+  const maxShared = Math.max(...sharedNodes.map((node) => pageDistance(ethanFocus.nodes, node.id, size.width, size.height)));
+  const minHub = Math.min(...hubNodes.map((node) => pageDistance(ethanFocus.nodes, node.id, size.width, size.height)));
+  assert.ok(maxShared < minHub, `hubs sit outside the shared center at ${size.width} (${maxShared} vs ${minHub})`);
+  ethanFocus.nodes.filter((node) => node.ring === "exclusive").forEach((node) => {
+    const hub = ethanFocus.nodes.find((item) => item.ring === "hub" && item.hubId === node.hubId);
+    const nodeDist = pageDistance(ethanFocus.nodes, node.id, size.width, size.height);
+    const hubDist = pageDistance(ethanFocus.nodes, hub.id, size.width, size.height);
+    assert.ok(nodeDist > hubDist, `${node.id} should sit outside ${hub.id} at ${size.width}`);
+    const outward = (node.x - hub.x) * (hub.x - size.width / 2) + (node.y - hub.y) * (hub.y - size.height / 2);
+    assert.ok(outward > 0, `${node.id} should sit on the outer side of ${hub.id}`);
+  });
+  for (let i = 0; i < ethanFocus.nodes.length; i += 1) {
+    for (let j = i + 1; j < ethanFocus.nodes.length; j += 1) {
+      assert.equal(
+        boxesOverlap(ethanFocus.nodes[i], ethanFocus.nodes[j], ethanFocus.boxW, ethanFocus.boxH),
+        false,
+        `${ethanFocus.nodes[i].id} overlaps ${ethanFocus.nodes[j].id} at ${size.width}`,
+      );
+    }
+  }
+  assert.ok(ethanFocus.nodes.every((node) => node.x > 8 && node.x < size.width - 8 && node.y > 8 && node.y < size.height - 8));
+}
 
 const dobrikWeb = webLayout(people, relations, {
   centerId: "david-dobrik",

@@ -1283,12 +1283,24 @@ body[data-view="relation"] .views button {
   border-color: rgba(232, 196, 122, 0.45);
 }
 
-.node.is-plot-hub {
-  z-index: 3;
+.web-stage .node-name {
+  max-width: 100%;
+  min-width: 0;
 }
 
+.node.camp-hub .avatar,
 .node.is-plot-hub .avatar {
-  box-shadow: 0 0 0 3px rgba(232, 196, 122, 0.45);
+  border-color: rgba(232, 196, 122, 0.95);
+  border-width: 3px;
+}
+
+.node.is-active-hub .avatar {
+  box-shadow: 0 0 0 4px rgba(232, 196, 122, 0.55);
+}
+
+.swatch.camp-hub {
+  border-color: rgba(232, 196, 122, 0.95);
+  background: rgba(232, 196, 122, 0.35);
 }
 
 .node.is-bubble {

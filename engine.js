@@ -685,6 +685,222 @@ export function neighborhood(personId, relations) {
   return ids;
 }
 
+export function hubGroups(people, relations, hubs = []) {
+  const centerToHub = new Map(hubs.map((hub) => [hub.centerId, hub.id]));
+  const touch = new Map((people || []).map((person) => [person.id, new Set()]));
+  (relations || []).forEach((relation) => {
+    if (centerToHub.has(relation.from)) touch.get(relation.to)?.add(centerToHub.get(relation.from));
+    if (centerToHub.has(relation.to)) touch.get(relation.from)?.add(centerToHub.get(relation.to));
+  });
+  const shared = [];
+  const exclusive = new Map(hubs.map((hub) => [hub.id, []]));
+  const hubPeople = [];
+  (people || []).forEach((person) => {
+    const hubId = centerToHub.get(person.id);
+    if (hubId) {
+      hubPeople.push({ person, hubId });
+      return;
+    }
+    const tags = [...(touch.get(person.id) || [])];
+    if (tags.length === 1 && exclusive.has(tags[0])) exclusive.get(tags[0]).push(person);
+    else shared.push(person);
+  });
+  return { shared, exclusive, hubPeople };
+}
+
+function hubPitch(nodeSize) {
+  return {
+    nodeSize,
+    boxW: nodeSize + 28,
+    boxH: nodeSize + 26,
+  };
+}
+
+function angleDelta(from, to) {
+  let delta = to - from;
+  while (delta <= -Math.PI) delta += Math.PI * 2;
+  while (delta > Math.PI) delta -= Math.PI * 2;
+  return delta;
+}
+
+function stageGrid(cx, cy, width, height, boxW, boxH, pad) {
+  const minX = pad + boxW / 2;
+  const maxX = width - pad - boxW / 2;
+  const minY = pad + boxH / 2;
+  const maxY = height - pad - boxH / 2;
+  if (maxX < minX || maxY < minY) return [];
+  const slots = [];
+  const x0 = cx - Math.floor((cx - minX) / boxW) * boxW;
+  const y0 = cy - Math.floor((cy - minY) / boxH) * boxH;
+  for (let x = x0; x <= maxX + 0.01; x += boxW) {
+    if (x < minX - 0.01) continue;
+    for (let y = y0; y <= maxY + 0.01; y += boxH) {
+      if (y < minY - 0.01) continue;
+      slots.push({ x, y });
+    }
+  }
+  return slots;
+}
+
+function nearestSlots(slots, origin, count) {
+  return slots
+    .slice()
+    .sort((a, b) => {
+      const da = Math.hypot(a.x - origin.x, a.y - origin.y);
+      const db = Math.hypot(b.x - origin.x, b.y - origin.y);
+      return da - db || a.x - b.x || a.y - b.y;
+    })
+    .slice(0, count);
+}
+
+function placeByBeats(list, slots, counts) {
+  const ranked = list
+    .slice()
+    .sort((a, b) => (counts.get(b.id) || 0) - (counts.get(a.id) || 0) || a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+  return ranked.map((person, index) => ({ person, slot: slots[index], beats: counts.get(person.id) || 0 }));
+}
+
+function slotKey(slot) {
+  return `${slot.x},${slot.y}`;
+}
+
+function pageDist(slot, cx, cy) {
+  return Math.hypot(slot.x - cx, slot.y - cy);
+}
+
+function hubDirections(hubs, exclusive, width, height) {
+  const ranked = hubs
+    .map((hub, index) => ({ index, count: (exclusive.get(hub.id) || []).length }))
+    .sort((a, b) => b.count - a.count || a.index - b.index);
+  const cardinals = width >= height
+    ? [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }]
+    : [{ x: 0, y: -1 }, { x: 0, y: 1 }, { x: 1, y: 0 }, { x: -1, y: 0 }];
+  const directions = new Array(hubs.length);
+  ranked.forEach((item, rank) => {
+    directions[item.index] = cardinals[rank % cardinals.length];
+  });
+  return directions;
+}
+
+function sectorIndex(slot, cx, cy, directions) {
+  const angle = Math.atan2(slot.y - cy, slot.x - cx);
+  let best = 0;
+  let bestAbs = Infinity;
+  directions.forEach((dir, index) => {
+    const abs = Math.abs(angleDelta(Math.atan2(dir.y, dir.x), angle));
+    if (abs < bestAbs - 1e-6) {
+      best = index;
+      bestAbs = abs;
+    }
+  });
+  return best;
+}
+
+function planHubConstellation(width, height, sharedCount, hubs, exclusive, nodeSize) {
+  const { boxW, boxH } = hubPitch(nodeSize);
+  const pad = 8;
+  const cx = width / 2;
+  const cy = height / 2;
+  const grid = stageGrid(cx, cy, width, height, boxW, boxH, pad);
+  if (grid.length < sharedCount + hubs.length) return null;
+  const sharedSlots = nearestSlots(grid, { x: cx, y: cy }, sharedCount);
+  const maxShared = sharedSlots.reduce((max, slot) => Math.max(max, pageDist(slot, cx, cy)), 0);
+  const used = new Set(sharedSlots.map(slotKey));
+  const directions = hubDirections(hubs, exclusive, width, height);
+  const hubSlots = [];
+  for (let index = 0; index < hubs.length; index += 1) {
+    const dir = directions[index];
+    const pick = grid
+      .filter((slot) => !used.has(slotKey(slot)) && pageDist(slot, cx, cy) > maxShared + 0.5)
+      .filter((slot) => sectorIndex(slot, cx, cy, directions) === index)
+      .filter((slot) => (slot.x - cx) * dir.x + (slot.y - cy) * dir.y > 0)
+      .sort((a, b) => pageDist(a, cx, cy) - pageDist(b, cx, cy) || a.x - b.x || a.y - b.y)[0];
+    if (!pick) return null;
+    used.add(slotKey(pick));
+    hubSlots.push(pick);
+  }
+  const exclusiveSlots = [];
+  for (let index = 0; index < hubs.length; index += 1) {
+    const hubSlot = hubSlots[index];
+    const dir = directions[index];
+    const hubDist = pageDist(hubSlot, cx, cy);
+    const needed = (exclusive.get(hubs[index].id) || []).length;
+    const outward = grid.filter((slot) => {
+      if (used.has(slotKey(slot))) return false;
+      if (sectorIndex(slot, cx, cy, directions) !== index) return false;
+      if (pageDist(slot, cx, cy) <= hubDist + 0.5) return false;
+      return (slot.x - hubSlot.x) * dir.x + (slot.y - hubSlot.y) * dir.y > 0;
+    });
+    const nearest = nearestSlots(outward, hubSlot, needed);
+    if (nearest.length < needed) return null;
+    nearest.forEach((slot) => used.add(slotKey(slot)));
+    exclusiveSlots.push(nearest);
+  }
+  return { nodeSize, boxW, boxH, cx, cy, sharedSlots, hubSlots, exclusiveSlots };
+}
+
+function fitHubConstellation(width, height, sharedCount, hubs, exclusive) {
+  for (let nodeSize = 64; nodeSize >= 22; nodeSize -= 2) {
+    const plan = planHubConstellation(width, height, sharedCount, hubs, exclusive, nodeSize);
+    if (plan) return plan;
+  }
+  return planHubConstellation(width, height, sharedCount, hubs, exclusive, 22);
+}
+
+function hubWebLayout({ people, relations, events, hubs, friendKinds, enemyKinds, year, width, height, focusId }) {
+  const { shared, exclusive } = hubGroups(people, relations, hubs);
+  const plan = fitHubConstellation(width, height, shared.length, hubs, exclusive);
+  const counts = beatCounts(events, people.map((person) => person.id));
+  const applicable = (relations || []).filter((relation) => coversYear(relation, year));
+  const focus = focusId || hubs[0]?.centerId;
+  const nodes = [];
+  const push = (person, slot, extra) => {
+    if (!person || !slot) return;
+    const hubPerson = extra.ring === "hub";
+    const camp = person.id === focus
+      ? "center"
+      : hubPerson
+        ? "hub"
+        : campOf(person.id, relations, focus, friendKinds, enemyKinds, year);
+    nodes.push({
+      ...person,
+      x: slot.x,
+      y: slot.y,
+      camp,
+      beats: counts.get(person.id) || 0,
+      plotHub: hubPerson,
+      active: person.id === focus,
+      ring: extra.ring,
+      hubId: extra.hubId || "",
+    });
+  };
+
+  placeByBeats(shared, plan?.sharedSlots || [], counts).forEach(({ person, slot }) => {
+    push(person, slot, { ring: "shared" });
+  });
+  hubs.forEach((hub, index) => {
+    const person = people.find((item) => item.id === hub.centerId);
+    push(person, plan?.hubSlots?.[index], { ring: "hub", hubId: hub.id });
+  });
+  hubs.forEach((hub, index) => {
+    placeByBeats(exclusive.get(hub.id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
+      push(person, slot, { ring: "exclusive", hubId: hub.id });
+    });
+  });
+
+  const pitch = hubPitch(plan?.nodeSize || 22);
+  return {
+    width,
+    height,
+    nodes,
+    edges: edgesAmong(nodes, applicable),
+    nodeSize: plan?.nodeSize || pitch.nodeSize,
+    centerSize: plan?.nodeSize || pitch.nodeSize,
+    boxW: plan?.boxW || pitch.boxW,
+    boxH: plan?.boxH || pitch.boxH,
+  };
+}
+
 export function webLayout(people, relations, options = {}) {
   const centerId = options.centerId || "ethan-klein";
   const friendKinds = options.friendKinds || ["ally", "crew", "co-host", "collaborator", "family"];
@@ -708,6 +924,21 @@ export function webLayout(people, relations, options = {}) {
   foes.sort(byName);
   orbit.sort(byName);
   const applicable = relations.filter((relation) => coversYear(relation, options.year));
+
+  if (options.arrangement === "hubs" && Array.isArray(options.hubs) && options.hubs.length >= 2) {
+    return hubWebLayout({
+      people,
+      relations,
+      events: options.events,
+      hubs: options.hubs,
+      friendKinds,
+      enemyKinds,
+      year: options.year,
+      width,
+      height,
+      focusId: center.id,
+    });
+  }
 
   if (options.arrangement === "camps") {
     return campArrangement({ center, friends, foes, relations: applicable, width, height });
