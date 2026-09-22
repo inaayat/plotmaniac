@@ -10,6 +10,7 @@ import {
   filterEvents,
   firstLoadCountries,
   graphLayout,
+  groupCountriesByStatus,
   RELATION_BLOCS,
   relationsFieldEdges,
   relationsFieldLayout,
@@ -18,12 +19,17 @@ import {
   outlineFor,
   parseState,
   parseYear,
+  requestedView,
+  defaultPlotView,
+  resolvePlotView,
   relationEvents,
   RELATION_REGIONS,
   stateUrl,
   neighborhood,
+  visibleRelationCountries,
   webLayout,
   youtubeId,
+  COMPACT_MAX_WIDTH,
 } from "../engine.js";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
@@ -35,7 +41,7 @@ const ids = new Set(people.map((person) => person.id));
 const peopleById = new Map(people.map((person) => [person.id, person]));
 
 assert.equal(ids.size, people.length, "person ids must be unique");
-assert.ok(events.length >= 35 && events.length <= 45, "timeline should contain 35–45 events");
+assert.ok(events.length >= 35 && events.length <= 50, "timeline should contain 35–50 events");
 assert.equal(new Set(events.map((event) => event.id)).size, events.length, "event ids must be unique");
 
 for (const person of people) {
@@ -118,6 +124,11 @@ assert.equal(layout.nodes.find((node) => node.id === "denims").camp, "enemy");
 assert.equal(layout.nodes.find((node) => node.id === "anisa-jomha").camp, "enemy");
 assert.equal(layout.nodes.find((node) => node.id === "xqc"), undefined);
 assert.equal(layout.nodes.find((node) => node.id === "hila-klein").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "rich-lux").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "nicol-concilio").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "hutch").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "harley-morenstein").camp, "friend");
+assert.equal(layout.nodes.find((node) => node.id === "oliver-tree").camp, "friend");
 const ethanNode = layout.nodes.find((node) => node.id === "ethan-klein");
 assert.equal(ethanNode.camp, "center");
 const others = layout.nodes.filter((node) => node.id !== "ethan-klein");
@@ -220,6 +231,59 @@ assert.equal(
   parseState("https://plotmaniac.com/?view=person&person=hila-klein", { people: ids }).view,
   "person",
 );
+assert.equal(requestedView("https://plotmaniac.com/"), "");
+assert.equal(requestedView("https://plotmaniac.com/?plot=h3"), "");
+assert.equal(requestedView("https://plotmaniac.com/?view=web"), "web");
+assert.equal(requestedView("https://plotmaniac.com/?view=timeline"), "timeline");
+assert.equal(requestedView("https://plotmaniac.com/?view=nope"), "");
+assert.equal(defaultPlotView({ compact: false }), "web");
+assert.equal(defaultPlotView({ compact: true }), "timeline");
+assert.equal(defaultPlotView({ compact: true, requested: "web" }), "web");
+assert.equal(defaultPlotView({ compact: false, requested: "timeline" }), "timeline");
+assert.equal(defaultPlotView({ compact: true, stored: "web" }), "web");
+assert.equal(defaultPlotView({ compact: false, stored: "timeline" }), "timeline");
+assert.equal(defaultPlotView({ compact: true, requested: "web", stored: "timeline" }), "web");
+assert.equal(defaultPlotView({ compact: false, eventId: "frenemies-39-walkout" }), "timeline");
+assert.equal(defaultPlotView({ compact: true, requested: "web", eventId: "frenemies-39-walkout" }), "web");
+
+const phoneH3 = "https://plotmaniac.com/?plot=h3";
+assert.equal(resolvePlotView(parseState(phoneH3), { compact: true, href: phoneH3 }), "timeline");
+assert.equal(resolvePlotView(parseState(phoneH3), { compact: false, href: phoneH3 }), "web");
+assert.equal(
+  resolvePlotView(parseState("https://plotmaniac.com/?plot=h3&view=web"), {
+    compact: true,
+    href: "https://plotmaniac.com/?plot=h3&view=web",
+  }),
+  "web",
+);
+assert.equal(
+  resolvePlotView(parseState("https://plotmaniac.com/?plot=h3&view=timeline"), {
+    compact: false,
+    href: "https://plotmaniac.com/?plot=h3&view=timeline",
+  }),
+  "timeline",
+);
+assert.equal(resolvePlotView(parseState(phoneH3), { compact: true, stored: "web", href: phoneH3 }), "web");
+assert.equal(
+  resolvePlotView(parseState("https://plotmaniac.com/?plot=h3#frenemies-39-walkout", { people: ids, eras: new Set(events.map((event) => event.era)) }), {
+    compact: false,
+    href: "https://plotmaniac.com/?plot=h3#frenemies-39-walkout",
+  }),
+  "timeline",
+);
+const compactMap = webLayout(people, relations, {
+  centerId: h3.centerId,
+  friendKinds: h3.friendKinds,
+  enemyKinds: h3.enemyKinds,
+  events,
+  width: 1120,
+  height: 1120,
+});
+assert.ok(compactMap.nodes.some((node) => node.name === "Harley Morenstein"));
+assert.ok(compactMap.nodes.some((node) => node.name === "Nicol Concilio"));
+assert.equal(compactMap.nodes.some((node) => String(node.name).includes("…")), false);
+assert.ok(compactMap.nodes.filter((node) => node.camp === "friend").length >= 2);
+assert.ok(compactMap.nodes.filter((node) => node.camp === "enemy").length >= 2);
 
 const parsed = parseState(
   "https://plotmaniac.com/?view=web&person=trisha-paytas&era=frenemies&q=walkout#frenemies-39-walkout",
@@ -537,5 +601,154 @@ assert.deepEqual(laneBands(0, 400, 200), { selectedBand: 0, quietBand: 0 });
 assert.equal(stateUrl("https://plotmaniac.com/", { view: "pick" }, ""), "/");
 assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /plot=united-states/);
 assert.match(stateUrl("https://plotmaniac.com/", { view: "web", plot: "united-states", year: 1942 }, ""), /year=1942/);
+
+assert.equal(COMPACT_MAX_WIDTH, 768);
+assert.equal(visibleRelationCountries(usCountries).length, 31);
+assert.equal(visibleRelationCountries(usCountries, ["Europe"]).every((country) => country.region === "Europe"), true);
+const groupedStatus = groupCountriesByStatus(visibleRelationCountries(usCountries));
+assert.equal(groupedStatus.friend.length, 24);
+assert.equal(groupedStatus.foe.length, 7);
+assert.equal(groupedStatus.neutral.length, 0);
+const europeStatus = groupCountriesByStatus(visibleRelationCountries(usCountries, ["Europe"]));
+assert.ok(europeStatus.neutral.length > 0);
+assert.ok(europeStatus.friend.length > 0);
+
+const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
+assert.match(html, /viewport-fit=cover/, "mobile viewport should include safe-area");
+const css = fs.readFileSync(new URL("../lore.css", import.meta.url), "utf8");
+assert.match(css, /max-width: 768px/, "compact layout breakpoint");
+assert.match(css, /\.spine-event/, "vertical timeline cards");
+const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
+assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
+assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
+
+const obamaPeople = readJson("../data/barack-obama/people.json");
+const obamaEvents = readJson("../data/barack-obama/events.json");
+const obamaRelations = readJson("../data/barack-obama/relations.json");
+const obama = plots.plots.find((item) => item.id === "barack-obama");
+const obamaIds = new Set(obamaPeople.map((person) => person.id));
+assert.ok(obama, "barack obama plot is registered");
+assert.equal(obama.centerId, "barack-obama");
+assert.equal(obama.arrangement, "camps");
+assert.deepEqual(obama.friendKinds, ["supported"]);
+assert.deepEqual(obama.enemyKinds, ["opposed"]);
+assert.equal(obama.year.min, 1996);
+assert.equal(obama.year.max, 2017);
+assert.equal(obama.year.initial, 2012);
+assert.equal(obamaIds.size, obamaPeople.length);
+assert.ok(obamaEvents.length >= 35, `obama timeline should be dense, got ${obamaEvents.length}`);
+assert.equal(new Set(obamaEvents.map((event) => event.id)).size, obamaEvents.length);
+
+const obamaById = new Map(obamaPeople.map((person) => [person.id, person]));
+for (const person of obamaPeople) {
+  assert.ok(person.name && person.role, `${person.id} needs a name and role`);
+  assert.ok(Array.isArray(person.tags) && person.tags.length, `${person.id} needs filter tags`);
+}
+const obamaPortrait = obamaById.get("barack-obama").portrait;
+assert.match(obamaPortrait.src, /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//);
+assert.equal(obamaPortrait.license, "Public domain");
+assert.ok(obamaPortrait.author && obamaPortrait.licenseUrl);
+
+for (const event of obamaEvents) {
+  assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, event.id);
+  assert.ok(event.title && event.summary && event.era, event.id);
+  assert.ok(event.people.includes("barack-obama"), event.id);
+  event.people.forEach((id) => assert.ok(obamaIds.has(id), `${event.id} references ${id}`));
+  assert.ok(event.links?.length, event.id);
+  event.links.forEach((link) => {
+    assert.match(link.url, /^https:\/\//, event.id);
+    assert.ok(link.label && link.type, event.id);
+  });
+  assert.ok(eventTease(event).length <= 140, `${event.id} tease is too long`);
+}
+
+const obamaEras = new Set(obamaEvents.map((event) => event.era));
+["illinois", "senate", "first-term", "second-term"].forEach((era) => {
+  assert.ok(obamaEras.has(era), era);
+});
+
+for (const relation of obamaRelations) {
+  assert.ok(obamaIds.has(relation.from) && obamaIds.has(relation.to), `${relation.from}→${relation.to}`);
+  assert.ok(relation.kind && relation.label, "obama relations need kind and label");
+  assert.ok(["supported", "opposed"].includes(relation.kind), relation.kind);
+}
+for (const person of obamaPeople.filter((person) => person.id !== "barack-obama")) {
+  assert.ok(
+    obamaRelations.some((relation) =>
+      [relation.from, relation.to].includes("barack-obama") &&
+      [relation.from, relation.to].includes(person.id)),
+    `${person.id} needs an Obama stance`,
+  );
+  assert.ok(
+    obamaEvents.some((event) => event.people.includes(person.id)),
+    `${person.id} needs a timeline beat`,
+  );
+}
+
+const obamaStance = (id, year) => campOf(id, obamaRelations, obama.centerId, obama.friendKinds, obama.enemyKinds, year);
+assert.equal(obamaStance("same-sex-marriage", 1996), "friend");
+assert.equal(obamaStance("same-sex-marriage", 2008), "enemy");
+assert.equal(obamaStance("same-sex-marriage", 2011), "enemy");
+assert.equal(obamaStance("same-sex-marriage", 2012), "friend");
+assert.equal(obamaStance("individual-mandate", 2008), "enemy");
+assert.equal(obamaStance("individual-mandate", 2010), "friend");
+assert.equal(obamaStance("nsa-surveillance", 2007), "enemy");
+assert.equal(obamaStance("nsa-surveillance", 2009), "friend");
+assert.equal(obamaStance("daca", 2011), "enemy");
+assert.equal(obamaStance("daca", 2012), "friend");
+assert.equal(obamaStance("cuba-relations", 2010), "enemy");
+assert.equal(obamaStance("cuba-relations", 2015), "friend");
+assert.equal(obamaStance("medical-marijuana", 2008), "friend");
+assert.equal(obamaStance("medical-marijuana", 2012), "enemy");
+assert.equal(obamaStance("medical-marijuana", 2014), "friend");
+assert.equal(obamaStance("afghanistan-surge", 2009), "friend");
+assert.equal(obamaStance("afghanistan-surge", 2014), "enemy");
+assert.equal(obamaStance("iraq-war", 2008), "enemy");
+assert.equal(obamaStance("iraq-war", 2011), "enemy");
+assert.equal(obamaStance("affordable-care-act", 2010), "friend");
+assert.equal(obamaStance("keystone-xl", 2015), "enemy");
+assert.equal(obamaStance("trans-pacific-partnership", 2008), "orbit");
+
+const obama2008 = webLayout(obamaPeople, obamaRelations, {
+  centerId: obama.centerId,
+  friendKinds: obama.friendKinds,
+  enemyKinds: obama.enemyKinds,
+  arrangement: "camps",
+  year: 2008,
+  width: 1100,
+  height: 800,
+});
+const obama2012 = webLayout(obamaPeople, obamaRelations, {
+  centerId: obama.centerId,
+  friendKinds: obama.friendKinds,
+  enemyKinds: obama.enemyKinds,
+  arrangement: "camps",
+  year: 2012,
+  width: 1100,
+  height: 800,
+});
+const marriage2008 = obama2008.nodes.find((node) => node.id === "same-sex-marriage");
+const marriage2012 = obama2012.nodes.find((node) => node.id === "same-sex-marriage");
+const mandate2008 = obama2008.nodes.find((node) => node.id === "individual-mandate");
+const mandate2012 = obama2012.nodes.find((node) => node.id === "individual-mandate");
+const iraq2008 = obama2008.nodes.find((node) => node.id === "iraq-war");
+const center2008 = obama2008.nodes.find((node) => node.id === "barack-obama");
+assert.equal(marriage2008.camp, "enemy");
+assert.equal(marriage2008.side, "left");
+assert.equal(marriage2012.camp, "friend");
+assert.equal(marriage2012.side, "right");
+assert.equal(mandate2008.camp, "enemy");
+assert.equal(mandate2012.camp, "friend");
+assert.equal(iraq2008.camp, "enemy");
+assert.ok(marriage2008.x < center2008.x && marriage2012.x > center2008.x);
+assert.ok(iraq2008.x < center2008.x);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "barack-obama", year: 2012 }, ""),
+  /plot=barack-obama/,
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "barack-obama", year: 2012 }, ""),
+  /year=2012/,
+);
 
 console.log("never-ending internet lore tests passed");

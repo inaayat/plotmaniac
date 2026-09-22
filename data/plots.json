@@ -36,6 +36,37 @@
         "relations": "data/united-states/relations.json",
         "countries": "data/united-states/countries.json"
       }
+    },
+    {
+      "id": "barack-obama",
+      "title": "Barack Obama",
+      "kicker": "Person",
+      "lede": "Political positions from the Illinois Senate through the White House. Drag the year to see what he supported, and what he opposed.",
+      "searchPlaceholder": "Marriage, Iraq, a law…",
+      "sourceNote": "Barack Obama on Plotmaniac · English Wikipedia political-positions survey and linked policy articles",
+      "centerId": "barack-obama",
+      "friendKinds": ["supported"],
+      "enemyKinds": ["opposed"],
+      "friendLabel": "Supported",
+      "enemyLabel": "Opposed",
+      "friendCountOne": "supported",
+      "friendCountMany": "supported",
+      "enemyCountOne": "opposed",
+      "enemyCountMany": "opposed",
+      "yearHint": "Drag the year. Opposed sits on the left, supported on the right.",
+      "arrangement": "camps",
+      "year": {
+        "min": 1996,
+        "max": 2017,
+        "initial": 2012,
+        "marks": [1996, 2004, 2008, 2012, 2017]
+      },
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Barack%20Obama.jpg?width=240",
+      "paths": {
+        "people": "data/barack-obama/people.json",
+        "events": "data/barack-obama/events.json",
+        "relations": "data/barack-obama/relations.json"
+      }
     }
   ]
 }

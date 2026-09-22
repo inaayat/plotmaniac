@@ -1,4 +1,33 @@
 export const ALL = "all";
+export const COMPACT_MAX_WIDTH = 768;
+
+export function requestedView(urlLike) {
+  try {
+    const url = new URL(urlLike, "https://plotmaniac.com/");
+    const value = url.searchParams.get("view");
+    if (value === "timeline" || value === "web" || value === "person") return value;
+  } catch {
+    return "";
+  }
+  return "";
+}
+
+export function defaultPlotView({ compact = false, requested = "", stored = "", eventId = "" } = {}) {
+  if (requested === "timeline" || requested === "web" || requested === "person") return requested;
+  if (eventId) return "timeline";
+  if (stored === "timeline" || stored === "web") return stored;
+  return compact ? "timeline" : "web";
+}
+
+export function resolvePlotView(parsed, { compact = false, stored = "", href = "" } = {}) {
+  const requested = requestedView(href);
+  if (requested) return parsed.view;
+  return defaultPlotView({
+    compact,
+    stored,
+    eventId: parsed?.eventId || "",
+  });
+}
 
 export function eventSearchText(event, peopleById = new Map()) {
   const people = (event.people || []).map((id) => peopleById.get(id)?.name || id);
@@ -69,6 +98,22 @@ export function firstLoadCountries(countries) {
   return (countries || []).filter((country) => country.first_load);
 }
 
+export function visibleRelationCountries(countries, openRegions = []) {
+  const selectedRegion = (openRegions || [])[0] || "";
+  return (countries || []).filter((country) =>
+    country && (selectedRegion ? country.region === selectedRegion : country.first_load));
+}
+
+export function groupCountriesByStatus(countries) {
+  const groups = { friend: [], foe: [], neutral: [] };
+  (countries || []).forEach((country) => {
+    if (country?.status === "friend") groups.friend.push(country);
+    else if (country?.status === "foe") groups.foe.push(country);
+    else if (country?.status === "neutral") groups.neutral.push(country);
+  });
+  return groups;
+}
+
 export function countriesByRegion(countries) {
   const list = countries || [];
   return RELATION_REGIONS.map((region) => ({
@@ -105,8 +150,7 @@ export function relationsFieldLayout(countries, options = {}) {
   const width = Math.max(320, Number(options.width) || 1100);
   const height = Math.max(280, Number(options.height) || 760);
   const selectedRegion = (options.openRegions || [])[0] || "";
-  const visible = (countries || []).filter((country) =>
-    country && (selectedRegion ? country.region === selectedRegion : country.first_load));
+  const visible = visibleRelationCountries(countries, options.openRegions);
   const majors = visible.filter((country) => country.first_load && (country.status === "friend" || country.status === "foe"));
   const broader = visible.filter((country) => !country.first_load);
   const count = majors.length + broader.length;
