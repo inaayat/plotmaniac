@@ -9,6 +9,8 @@ import {
   expandedSummary,
   filterEvents,
   findPlot,
+  plotCardFace,
+  plotMatchesQuery,
   firstLoadCountries,
   groupCountriesByStatus,
   hubCenterId,
@@ -80,6 +82,7 @@ const ZOOM_MIN = 0.08;
 const ZOOM_MAX = 2.5;
 const COMPACT_MQ = `(max-width: ${COMPACT_MAX_WIDTH}px)`;
 const VIEW_PREF_KEY = "plotmaniac-view";
+const PICK_LEDE = "Turn rabbit holes into clickable plots: maps, webs, lists, timelines.";
 let laneZoom = 1;
 let pendingLaneScroll = null;
 let pendingLaneFocus = "";
@@ -387,8 +390,10 @@ function showPicker({ history = "push" } = {}) {
   state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
   document.title = "Plotmaniac";
   $("plot-title").textContent = "Plotmaniac";
-  $("plot-lede").textContent = "Pick a person, a country, a history, or the map of wars.";
+  $("plot-lede").textContent = PICK_LEDE;
   $("home-link").textContent = "Field guide";
+  const search = $("plot-search");
+  if (search) search.value = "";
   $("footer-note").textContent = "Plotmaniac";
   $("credit-list").replaceChildren();
   $("credits").hidden = true;
@@ -410,33 +415,68 @@ function renderChooser() {
   app.replaceChildren();
   const list = document.createElement("ul");
   list.className = "plot-cards";
+  list.setAttribute("aria-label", "Plots");
   plots.forEach((item) => {
     const li = document.createElement("li");
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `plot-card${item.images === "flags" ? "" : " is-person"}`;
-    button.title = item.lede;
-    button.setAttribute("aria-label", `${item.title}. ${item.lede}`);
+    const face = plotCardFace(item);
+    const card = document.createElement("a");
+    card.className = `plot-card${face === "person" ? " is-person" : face === "map" ? " is-map" : ""}`;
+    card.href = `?plot=${encodeURIComponent(item.id)}`;
+    card.dataset.plot = item.id;
+    card.title = item.lede;
+    card.setAttribute("aria-label", `${item.kicker || "Plot"}: ${item.title}. ${item.cardLine || item.lede}`);
     const kicker = document.createElement("span");
     kicker.className = "kicker";
     kicker.textContent = item.kicker || "Plot";
-    button.appendChild(kicker);
     if (item.cardImage) {
       const image = document.createElement("img");
       image.src = item.cardImage;
       image.alt = "";
-      button.appendChild(image);
+      card.appendChild(image);
+    } else {
+      const mono = document.createElement("span");
+      mono.className = "mono";
+      mono.setAttribute("aria-hidden", "true");
+      mono.textContent = (item.title || "?").replace(/[^a-z0-9]/gi, "").slice(0, 1).toUpperCase() || "?";
+      card.appendChild(mono);
     }
     const title = document.createElement("strong");
     title.textContent = item.title;
     const copy = document.createElement("p");
-    copy.textContent = item.lede;
-    button.append(title, copy);
-    button.addEventListener("click", () => showPlot(item.id, { history: "push" }));
-    li.appendChild(button);
+    copy.textContent = item.cardLine || item.lede;
+    card.append(kicker, title, copy);
+    card.addEventListener("click", (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button) return;
+      event.preventDefault();
+      showPlot(item.id, { history: "push" });
+    });
+    li.appendChild(card);
     list.appendChild(li);
   });
+  const empty = document.createElement("li");
+  empty.className = "gallery-empty";
+  empty.id = "gallery-empty";
+  empty.hidden = true;
+  empty.textContent = "No plots match.";
+  list.appendChild(empty);
   app.appendChild(list);
+  filterGallery();
+}
+
+function filterGallery() {
+  const input = $("plot-search");
+  const empty = $("gallery-empty");
+  const cards = [...document.querySelectorAll(".plot-card[data-plot]")];
+  if (!input || !cards.length) return;
+  let visible = 0;
+  cards.forEach((card) => {
+    const item = findPlot(plots, card.dataset.plot);
+    const match = item ? plotMatchesQuery(item, input.value) : false;
+    card.hidden = !match;
+    if (card.parentElement) card.parentElement.hidden = !match;
+    if (match) visible += 1;
+  });
+  if (empty) empty.hidden = visible !== 0;
 }
 
 function bindChrome() {
@@ -472,6 +512,8 @@ function bindChrome() {
     if (!plot || plots.length < 2) return;
     showPicker({ history: "push" });
   });
+  const plotSearch = $("plot-search");
+  if (plotSearch) plotSearch.addEventListener("input", filterGallery);
   document.querySelectorAll(".views button").forEach((button) => {
     button.addEventListener("click", () => {
       if (plot?.arrangement === "historical-map") {
@@ -489,6 +531,21 @@ function bindChrome() {
     });
   });
   window.addEventListener("keydown", (event) => {
+    if (state.view === "pick") {
+      const input = $("plot-search");
+      if (input && event.key === "/" && document.activeElement !== input && !event.metaKey && !event.ctrlKey && !event.altKey) {
+        event.preventDefault();
+        input.focus();
+        return;
+      }
+      if (input && event.key === "Escape" && document.activeElement === input) {
+        event.preventDefault();
+        input.value = "";
+        filterGallery();
+        input.blur();
+        return;
+      }
+    }
     if (event.key === "Escape" && plot?.arrangement === "historical-map" && state.view === "person") {
       state.view = "web";
       state.person = ALL;

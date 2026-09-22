@@ -59,6 +59,23 @@ export function findPlot(plots, id) {
     || null;
 }
 
+export function plotCardFace(plot) {
+  if (!plot?.cardImage) return "mono";
+  if (plot.arrangement === "wars") return "map";
+  if (plot.images === "flags") return "flag";
+  return "person";
+}
+
+export function plotMatchesQuery(plot, query) {
+  const q = String(query || "").trim().toLowerCase();
+  if (!q) return true;
+  const hay = [plot?.title, plot?.kicker, plot?.cardLine, plot?.lede]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return hay.includes(q);
+}
+
 export function plotHubs(plot) {
   return Array.isArray(plot?.hubs) ? plot.hubs : [];
 }

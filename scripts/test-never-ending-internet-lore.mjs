@@ -11,6 +11,8 @@ import {
   expandedSummary,
   filterEvents,
   findPlot,
+  plotCardFace,
+  plotMatchesQuery,
   firstLoadCountries,
   graphLayout,
   groupCountriesByStatus,
@@ -171,6 +173,26 @@ assert.ok(relationEvents(firstRelation, events).every((event) =>
 
 const youtubers = plots.plots.find((item) => item.id === "youtubers");
 assert.ok(youtubers, "youtubers plot is registered");
+assert.deepEqual(plots.plots.map((item) => item.id), [
+  "youtubers",
+  "barack-obama",
+  "jd-vance",
+  "united-states",
+  "partition-of-india",
+  "wars",
+], "homepage gallery order");
+for (const item of plots.plots) {
+  assert.ok(item.kicker, `${item.id} needs a gallery kicker`);
+  assert.ok(item.cardLine, `${item.id} needs a compact card line`);
+}
+assert.equal(plotCardFace(youtubers), "person");
+assert.equal(plotCardFace(plots.plots.find((item) => item.id === "united-states")), "flag");
+assert.equal(plotCardFace(plots.plots.find((item) => item.id === "partition-of-india")), "mono");
+assert.equal(plotCardFace(plots.plots.find((item) => item.id === "wars")), "map");
+assert.equal(plotMatchesQuery(youtubers, ""), true);
+assert.equal(plotMatchesQuery(youtubers, "Jeffree"), true);
+assert.equal(plotMatchesQuery(youtubers, "pakistan"), false);
+assert.equal(plotMatchesQuery(plots.plots.find((item) => item.id === "partition-of-india"), "1947"), true);
 assert.equal(findPlot(plots.plots, "h3")?.id, "youtubers");
 assert.equal(findPlot(plots.plots, "youtubers")?.id, "youtubers");
 assert.equal(youtubers.centerId, "ethan-klein");
@@ -966,12 +988,18 @@ assert.ok(europeStatus.friend.length > 0);
 const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
 assert.match(html, /viewport-fit=cover/, "mobile viewport should include safe-area");
 assert.match(html, /id="hub-select"/, "hub focus control");
+assert.match(html, /Gallery of obsessions/, "pick view eyebrow");
+assert.match(html, /id="plot-search"/, "homepage plot search");
+assert.match(html, /Turn rabbit holes into clickable plots: maps, webs, lists, timelines\./, "homepage tagline");
 const css = fs.readFileSync(new URL("../lore.css", import.meta.url), "utf8");
 assert.match(css, /max-width: 768px/, "compact layout breakpoint");
+assert.match(css, /\.gallery-search/, "homepage search is an underline field");
+assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "desktop gallery is 3 columns");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
+assert.match(appSource, /function filterGallery/, "homepage search filters plot cards");
 assert.match(appSource, /textContent = "All"/, "focus can show every YouTuber");
 assert.match(appSource, /function applyHubCamera/, "the web eases its zoom to the current focus");
 assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");

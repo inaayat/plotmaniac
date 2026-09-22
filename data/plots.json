@@ -5,6 +5,7 @@
       "aliases": ["h3"],
       "title": "YouTubers",
       "kicker": "People",
+      "cardLine": "H3 · Vlog Squad · Trisha · Jeffree",
       "lede": "One web for the YouTuber sphere. Shared people sit in the center and the hubs sit just outside. All shows every person on the web. Focus on a hub to see only their people. None keeps just the shared web.",
       "searchPlaceholder": "Lawsuit, Frenemies, Jeffree Star, Vlog Squad, a name…",
       "centerId": "ethan-klein",
@@ -26,30 +27,10 @@
       }
     },
     {
-      "id": "united-states",
-      "title": "United States",
-      "kicker": "Country",
-      "lede": "Major allies and major foes are on the board. Open a region for every other country, including neutrals.",
-      "searchPlaceholder": "A war, a treaty, a country…",
-      "sourceNote": "United States on Plotmaniac · snapshot from the English Wikipedia foreign-relations survey",
-      "centerId": "united-states",
-      "friendKinds": ["ally"],
-      "enemyKinds": ["foe"],
-      "disclosure": "regions",
-      "images": "flags",
-      "orbitLabel": "Neutral",
-      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_United_States.svg?width=320",
-      "paths": {
-        "people": "data/united-states/people.json",
-        "events": "data/united-states/events.json",
-        "relations": "data/united-states/relations.json",
-        "countries": "data/united-states/countries.json"
-      }
-    },
-    {
       "id": "barack-obama",
       "title": "Barack Obama",
       "kicker": "Person",
+      "cardLine": "Positions by topic & year",
       "lede": "All the public positions, bundled by topic. Drag the year to watch the color of each bubble change.",
       "searchPlaceholder": "Marriage, Iraq, a law…",
       "sourceNote": "Barack Obama on Plotmaniac · English Wikipedia political-positions survey and linked policy articles",
@@ -90,6 +71,7 @@
       "id": "jd-vance",
       "title": "JD Vance",
       "kicker": "Person",
+      "cardLine": "Policy bubbles by year",
       "lede": "All the public positions, bundled by topic. Drag the year to watch the color of each bubble change.",
       "searchPlaceholder": "Trump, Ukraine, abortion…",
       "sourceNote": "JD Vance on Plotmaniac · English Wikipedia political-positions survey and linked reporting",
@@ -127,9 +109,32 @@
       }
     },
     {
+      "id": "united-states",
+      "title": "United States",
+      "kicker": "Country",
+      "cardLine": "Allies, foes, every region",
+      "lede": "Major allies and major foes are on the board. Open a region for every other country, including neutrals.",
+      "searchPlaceholder": "A war, a treaty, a country…",
+      "sourceNote": "United States on Plotmaniac · snapshot from the English Wikipedia foreign-relations survey",
+      "centerId": "united-states",
+      "friendKinds": ["ally"],
+      "enemyKinds": ["foe"],
+      "disclosure": "regions",
+      "images": "flags",
+      "orbitLabel": "Neutral",
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_United_States.svg?width=320",
+      "paths": {
+        "people": "data/united-states/people.json",
+        "events": "data/united-states/events.json",
+        "relations": "data/united-states/relations.json",
+        "countries": "data/united-states/countries.json"
+      }
+    },
+    {
       "id": "partition-of-india",
       "title": "Partition of India",
       "kicker": "History",
+      "cardLine": "Who drew the 1947 borders",
       "lede": "The people who drew the 1947 borders, what each of them did, and the map those decisions left: India, Pakistan, and Bangladesh.",
       "sourceNote": "Partition of India on Plotmaniac · research file of players, timeline, princely accessions, and the legacy to the present",
       "centerId": "jinnah",
@@ -145,6 +150,7 @@
       "id": "wars",
       "title": "Wars",
       "kicker": "Map",
+      "cardLine": "Conflicts since 1900",
       "lede": "Every war that began in 1900 or later. Drag the span to see which countries were fighting, and who they were fighting.",
       "searchPlaceholder": "A war, a country…",
       "sourceNote": "Wars on Plotmaniac · English Wikipedia lists of wars, 1900–present",
