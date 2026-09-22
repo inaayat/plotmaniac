@@ -485,6 +485,10 @@ body[data-view="web"] #footer-note {
   display: none;
 }
 
+.web-people {
+  display: none;
+}
+
 .web-scroll {
   overflow-x: auto;
   padding-bottom: 12px;
@@ -2061,17 +2065,97 @@ body[data-view="timeline"] #footer-note {
     min-width: 100%;
   }
 
-  body[data-view="web"] .web-stage .node-name {
-    position: static;
-    transform: none;
-    max-width: 100%;
-    white-space: nowrap;
-    text-align: center;
+  body[data-view="web"] .web.is-compact-map .web-scroll.is-map {
+    flex: 0 0 min(46dvh, 380px);
+    min-height: 220px;
+    max-height: min(46dvh, 380px);
+    margin: 0 8px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background:
+      radial-gradient(ellipse at center, transparent 42%, rgba(12, 11, 9, 0.4) 100%);
   }
 
-  body[data-view="web"] .web-stage .node.node-left,
-  body[data-view="web"] .web-stage .node.node-right {
-    width: calc(var(--node, 72px) + 24px);
+  body[data-view="web"] .web.is-compact-map .web-stage .node {
+    width: var(--node, 72px);
+    gap: 0;
+  }
+
+  body[data-view="web"] .web.is-compact-map .web-people {
+    display: grid;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 12px calc(16px + var(--safe-bottom));
+  }
+
+  body[data-view="web"] .web.is-compact-map .web-people-group h3 {
+    font-size: 0.92rem;
+    margin-bottom: 8px;
+  }
+
+  body[data-view="web"] .web.is-compact-map .chip-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .web-person {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 48px;
+    padding: 8px 12px 8px 8px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    text-align: left;
+  }
+
+  .web-person .avatar {
+    width: 40px;
+    height: 40px;
+    flex: none;
+  }
+
+  .web-person.camp-friend .avatar {
+    border-color: #7dcea0;
+    border-width: 2px;
+  }
+
+  .web-person.camp-enemy .avatar {
+    border-color: #e06a62;
+    border-width: 2px;
+  }
+
+  .web-person .chip-name {
+    font-size: 0.92rem;
+    white-space: normal;
+    line-height: 1.3;
+  }
+
+  body[data-view="web"] .web-scroll.is-camps .node-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    max-width: min(42vw, 148px);
+    line-height: 1.25;
+  }
+
+  body[data-view="web"] .web-scroll.is-camps .node.node-left,
+  body[data-view="web"] .web-scroll.is-camps .node.node-right {
+    width: var(--node, 72px);
+  }
+
+  body[data-view="web"] .web-scroll.is-camps .node.node-left .node-name,
+  body[data-view="web"] .web-scroll.is-camps .node.node-right .node-name {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: normal;
   }
 
   body[data-view="web"] .site-footer,

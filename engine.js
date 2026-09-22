@@ -1,6 +1,24 @@
 export const ALL = "all";
 export const COMPACT_MAX_WIDTH = 768;
 
+export function requestedView(urlLike) {
+  try {
+    const url = new URL(urlLike, "https://plotmaniac.com/");
+    const value = url.searchParams.get("view");
+    if (value === "timeline" || value === "web" || value === "person") return value;
+  } catch {
+    return "";
+  }
+  return "";
+}
+
+export function defaultPlotView({ compact = false, requested = "", stored = "", eventId = "" } = {}) {
+  if (requested === "timeline" || requested === "web" || requested === "person") return requested;
+  if (eventId) return "timeline";
+  if (stored === "timeline" || stored === "web") return stored;
+  return compact ? "timeline" : "web";
+}
+
 export function eventSearchText(event, peopleById = new Map()) {
   const people = (event.people || []).map((id) => peopleById.get(id)?.name || id);
   return [event.title, event.tease, event.summary, event.era, ...people]

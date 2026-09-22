@@ -17,6 +17,8 @@ import {
   outlineFor,
   parseState,
   parseYear,
+  requestedView,
+  defaultPlotView,
   relationEvents,
   RELATION_REGIONS,
   stateUrl,
@@ -223,6 +225,20 @@ assert.equal(
   parseState("https://plotmaniac.com/?view=person&person=hila-klein", { people: ids }).view,
   "person",
 );
+assert.equal(requestedView("https://plotmaniac.com/"), "");
+assert.equal(requestedView("https://plotmaniac.com/?plot=h3"), "");
+assert.equal(requestedView("https://plotmaniac.com/?view=web"), "web");
+assert.equal(requestedView("https://plotmaniac.com/?view=timeline"), "timeline");
+assert.equal(requestedView("https://plotmaniac.com/?view=nope"), "");
+assert.equal(defaultPlotView({ compact: false }), "web");
+assert.equal(defaultPlotView({ compact: true }), "timeline");
+assert.equal(defaultPlotView({ compact: true, requested: "web" }), "web");
+assert.equal(defaultPlotView({ compact: false, requested: "timeline" }), "timeline");
+assert.equal(defaultPlotView({ compact: true, stored: "web" }), "web");
+assert.equal(defaultPlotView({ compact: false, stored: "timeline" }), "timeline");
+assert.equal(defaultPlotView({ compact: true, requested: "web", stored: "timeline" }), "web");
+assert.equal(defaultPlotView({ compact: false, eventId: "frenemies-39-walkout" }), "timeline");
+assert.equal(defaultPlotView({ compact: true, requested: "web", eventId: "frenemies-39-walkout" }), "web");
 
 const parsed = parseState(
   "https://plotmaniac.com/?view=web&person=trisha-paytas&era=frenemies&q=walkout#frenemies-39-walkout",
