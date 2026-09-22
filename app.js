@@ -39,6 +39,8 @@ import {
   stanceHistory,
   tiesWith,
   usesPolicyPanel,
+  usesHubWebPersonFocus,
+  webCastForPersonFocus,
   boardViewForPerson,
   visibleRelationCountries,
   webLayout,
@@ -795,6 +797,7 @@ function bindChrome() {
     state.hub = id;
     state.eventId = "";
     webFitToken = "";
+    if (usesHubWebPersonFocus()) state.person = ALL;
     if (state.view === "person") {
       state.view = "web";
       state.person = ALL;
@@ -864,6 +867,13 @@ function bindChrome() {
     }
     if (event.key === "Escape" && usesPolicyPanel(plot) && state.view === "web" && state.person !== ALL) {
       closePolicyPanel();
+      return;
+    }
+    if (event.key === "Escape" && usesHubWebPersonFocus() && state.view === "web" && state.person !== ALL) {
+      state.person = ALL;
+      hubCamera = null;
+      webFitToken = "";
+      render({ push: true });
       return;
     }
     if (state.view === "web") {
@@ -2055,10 +2065,12 @@ function paintWeb(stage, { animate = true } = {}) {
   const camps = plot.arrangement === "camps";
   const topics = plot.arrangement === "topics";
   const bubbles = plot.images === "bubbles";
-  const hubField = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2 && !camps && !topics);
+  const personWebFocus = usesHubWebPersonFocus() && state.person && state.person !== ALL;
+  const hubField = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2 && !camps && !topics && !personWebFocus);
+  const hubCameraField = hubField || personWebFocus;
   let width;
   let height;
-  if (hubField) {
+  if (hubCameraField) {
     const viewW = scroller?.clientWidth || 0;
     const viewH = scroller?.clientHeight || 0;
     if (viewW < 2 || viewH < 2) {
@@ -2093,9 +2105,15 @@ function paintWeb(stage, { animate = true } = {}) {
   const titleScoped = usesTitleFilter()
     ? peopleForTitleSearch(people, events, relations, { query: state.query, hub: state.hub }, peopleById)
     : { people, relations };
-  const layout = webLayout(titleScoped.people, titleScoped.relations, {
-    centerId: plotHubs(plot).length ? activeCenter() : (activeCenter() || plot.centerId),
-    revealAll: state.hub === ALL,
+  const cast = personWebFocus
+    ? webCastForPersonFocus(titleScoped.people, titleScoped.relations, state.person)
+    : titleScoped;
+  const layout = webLayout(cast.people, cast.relations, {
+    centerId: personWebFocus
+      ? state.person
+      : (plotHubs(plot).length ? activeCenter() : (activeCenter() || plot.centerId)),
+    revealAll: state.hub === ALL && !personWebFocus,
+    hubField: !personWebFocus,
     friendKinds: plot.friendKinds,
     enemyKinds: plot.enemyKinds,
     arrangement: plot.arrangement,
@@ -2111,8 +2129,8 @@ function paintWeb(stage, { animate = true } = {}) {
     hubs: plotHubs(plot),
   });
   stage.classList.toggle("is-quiet", !animate);
-  stage.classList.toggle("is-hub-field", hubField);
-  if (hubField) {
+  stage.classList.toggle("is-hub-field", hubCameraField);
+  if (hubCameraField) {
     stage.style.width = `${layout.width}px`;
     stage.style.height = `${layout.height}px`;
   } else if (layout.height > height + 2 || ((camps || topics) && layout.height >= height)) stage.style.height = `${layout.height}px`;
@@ -2200,7 +2218,7 @@ function paintWeb(stage, { animate = true } = {}) {
   layout.nodes.forEach((node, index) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.hub ? " is-topic-hub" : ""}${node.plotHub && node.camp !== "center" ? " is-plot-hub" : ""}${node.side ? ` node-${node.side}` : ""}`;
+    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.hub ? " is-topic-hub" : ""}${node.plotHub && node.camp !== "center" ? " is-plot-hub" : ""}${node.side ? ` node-${node.side}` : ""}${personWebFocus && node.id === state.person ? " is-selected" : ""}`;
     button.dataset.id = node.id;
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
@@ -2249,9 +2267,9 @@ function paintWeb(stage, { animate = true } = {}) {
     note.textContent = "No one on this web matches that title in the current focus.";
     stage.appendChild(note);
   }
-  if (hubField) {
+  if (hubCameraField) {
     stage.webLayout = layout;
-    const token = `${plot.id}:${state.hub}:${state.query}:${layout.nodes.map((node) => node.id).sort().join(",")}`;
+    const token = `${plot.id}:${state.hub}:${state.person}:${state.query}:${layout.nodes.map((node) => node.id).sort().join(",")}`;
     const shouldFit = webFitToken !== token;
     webFitToken = token;
     applyHubCamera(stage, layout, { animate, fit: shouldFit });
@@ -2279,7 +2297,8 @@ function fittedWebCamera(stage, layout) {
   const wideHubReveal = Boolean(
     plot?.includeOrbit
     && plotHubs(plot).length >= 5
-    && state.hub === ALL,
+    && state.hub === ALL
+    && !(state.person && state.person !== ALL),
   );
   return hubFrame(layout.nodes, {
     viewWidth: scroller?.clientWidth || 0,
@@ -3299,6 +3318,22 @@ function renderCredits() {
 
 function openPerson(id) {
   if (!peopleById.has(id)) return;
+  if (usesHubWebPersonFocus()) {
+    if (state.view === "web" && state.person === id) {
+      state.person = ALL;
+      hubCamera = null;
+      webFitToken = "";
+      render({ push: true });
+      return;
+    }
+    hubCamera = null;
+    webFitToken = "";
+    state.view = "web";
+    state.person = id;
+    state.eventId = "";
+    render({ push: true });
+    return;
+  }
   if (usesPolicyPanel(plot)) {
     if (state.person === id) {
       closePolicyPanel();

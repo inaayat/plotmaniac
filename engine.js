@@ -861,9 +861,22 @@ export function usesPolicyPanel(plot) {
   return plot?.arrangement === "topics";
 }
 
+export function usesHubWebPersonFocus(plot) {
+  return Boolean(plot?.titleFilter && plot?.includeOrbit && plotHubs(plot).length >= 2);
+}
+
+export function webCastForPersonFocus(people, relations, personId) {
+  const near = neighborhood(personId, relations);
+  return {
+    people: (people || []).filter((person) => near.has(person.id)),
+    relations: (relations || []).filter((relation) => near.has(relation.from) && near.has(relation.to)),
+  };
+}
+
 export function boardViewForPerson(plot, view) {
   if (plot?.arrangement === "wars") return "web";
   if (usesPolicyPanel(plot) && view === "person") return "web";
+  if (usesHubWebPersonFocus(plot) && view === "person") return "web";
   return view;
 }
 
@@ -894,7 +907,8 @@ export function webLayout(people, relations, options = {}) {
   const cx = width / 2;
   const cy = height / 2;
   const hubIds = Array.isArray(options.hubIds) ? options.hubIds.filter(Boolean) : [];
-  const hubField = Boolean(options.includeOrbit) && hubIds.length >= 2
+  const hubField = options.hubField !== false
+    && Boolean(options.includeOrbit) && hubIds.length >= 2
     && options.arrangement !== "camps" && options.arrangement !== "topics";
   const centerId = options.centerId || (hubField ? "" : "ethan-klein");
   const center = people.find((person) => person.id === centerId) || (hubField ? null : people[0]);
