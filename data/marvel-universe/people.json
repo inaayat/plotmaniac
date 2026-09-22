@@ -79,7 +79,6 @@
   { "id": "talos", "name": "Talos", "role": "Skrull leader and Fury ally", "tags": ["skrull", "cosmic"], "universes": ["mcu-main"] },
   { "id": "sersi", "name": "Sersi", "role": "Matter-transforming Eternal", "tags": ["eternal", "cosmic"], "universes": ["mcu-main"] },
   { "id": "thena", "name": "Thena", "role": "Warrior Eternal", "tags": ["eternal", "cosmic"], "universes": ["mcu-main"] },
-  { "id": "phastos", "name": "Phastos", "role": "Inventor Eternal", "tags": ["eternal", "cosmic"], "universes": ["mcu-main"] },
   { "id": "peter-parker-raimi", "name": "Peter Parker / Spider-Man (Raimi)", "role": "Spider-Man variant from the Raimi universe", "tags": ["spider-man", "variant"], "universes": ["raimi"] },
   { "id": "norman-osborn-raimi", "name": "Norman Osborn / Green Goblin (Raimi)", "role": "Raimi-universe Spider-Man antagonist", "tags": ["spider-man", "villain"], "universes": ["raimi"] },
   { "id": "otto-octavius-raimi", "name": "Otto Octavius / Doctor Octopus (Raimi)", "role": "Raimi-universe Spider-Man antagonist", "tags": ["spider-man", "villain"], "universes": ["raimi"] },

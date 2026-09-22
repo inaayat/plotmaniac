@@ -305,7 +305,7 @@
     "title": "The Eternals stop the Emergence",
     "summary": "Sersi, Thena, and Phastos turn against the Celestial plan, using the Uni-Mind to save Earth while their family splits across the cosmos.",
     "era": "post-endgame",
-    "people": ["sersi", "thena", "phastos"],
+    "people": ["sersi", "thena"],
     "hubs": ["mcu-main"],
     "links": [{ "label": "Eternals", "url": "https://en.wikipedia.org/wiki/Eternals_(film)", "type": "reference" }]
   },
