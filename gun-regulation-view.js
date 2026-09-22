@@ -4,16 +4,26 @@ import {
   checklistStatusLabel,
   filterRegulationBeats,
   regulationToneClass,
-  regulationToneLabel,
   resolveChecklistAtYear,
   statsReadoutAtYear,
 } from "./gun-regulation-model.js";
-import {
-  buildLaneChrome,
-  layoutLane,
-} from "./lane.js";
+import { relationRideAt, relationRideLayout } from "./engine.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
+
+function rideLabel(tone) {
+  if (tone >= 1.25) return "Tight";
+  if (tone >= 0.4) return "Tighter";
+  if (tone > -0.4) return "Mixed";
+  if (tone > -1.25) return "Looser";
+  return "Loose";
+}
+
+function formatStat(value) {
+  if (value == null || Number.isNaN(Number(value))) return "—";
+  const number = Number(value);
+  return Number.isInteger(number) ? String(number) : String(number);
+}
 
 export function renderRegulationBoard({
   plot,
@@ -23,133 +33,183 @@ export function renderRegulationBoard({
   onKindFilter,
   onToggleChecklist,
   onCloseChecklist,
-  onBeatToggle,
+  onYearChange,
 }) {
   const section = document.createElement("section");
-  section.className = "regulation-board web";
+  section.className = "regulation-board relation-ride";
 
-  section.appendChild(renderRegulationHeader(plot, board));
-  section.appendChild(renderRegulationLegend());
-
-  const stats = renderRegulationStats(board, state.year);
-  stats.classList.add("regulation-stats");
-  section.appendChild(stats);
+  const beats = filterRegulationBeats(board.timeline, { kind: state.regKind || "" })
+    .slice()
+    .sort((a, b) => Number(a.year) - Number(b.year) || a.id.localeCompare(b.id));
+  const layout = relationRideLayout(beats, { step: 260, pathHeight: 280, padX: 160 });
 
   section.appendChild(renderKindFilters(state.regKind, onKindFilter));
 
-  const main = document.createElement("div");
-  main.className = "regulation-main";
+  const readout = document.createElement("div");
+  readout.className = "relation-ride-readout regulation-ride-readout";
+  const yearEl = document.createElement("p");
+  yearEl.className = "relation-ride-year";
+  const moodEl = document.createElement("p");
+  moodEl.className = "relation-ride-mood";
+  const eventEl = document.createElement("p");
+  eventEl.className = "relation-ride-event";
+  const summaryEl = document.createElement("p");
+  summaryEl.className = "regulation-ride-summary";
+  const linksEl = document.createElement("div");
+  linksEl.className = "relation-ride-links";
+  const hint = document.createElement("p");
+  hint.className = "relation-ride-hint";
+  hint.textContent = "Scroll sideways. The line rises when regulation tightens and falls when it loosens.";
+  const tools = document.createElement("div");
+  tools.className = "regulation-ride-tools";
+  tools.appendChild(renderRegulationStats(board, state.year));
+  const criteria = document.createElement("button");
+  criteria.type = "button";
+  criteria.className = "regulation-checklist-open";
+  criteria.textContent = "Criteria";
+  criteria.addEventListener("click", onToggleChecklist);
+  tools.appendChild(criteria);
+  readout.append(yearEl, moodEl, eventEl, summaryEl, linksEl, tools, hint);
+  section.appendChild(readout);
 
-  const railWrap = document.createElement("div");
-  railWrap.className = "regulation-rail-wrap";
-  railWrap.appendChild(renderRegulationRail(board, state, onBeatToggle, isCompact));
-  main.appendChild(railWrap);
+  const stage = document.createElement("div");
+  stage.className = "relation-ride-stage";
+  const scroller = document.createElement("div");
+  scroller.className = "relation-ride-scroll";
+  scroller.tabIndex = 0;
+  scroller.setAttribute("aria-label", "Gun regulation timeline. Scroll sideways.");
+  const track = document.createElement("div");
+  const cardTop = layout.pathHeight + 16;
+  track.className = "relation-ride-track";
+  track.style.width = `${Math.max(layout.width, 640)}px`;
+  track.style.height = `${cardTop + 132}px`;
+  track.style.background = `linear-gradient(180deg, rgba(74, 127, 212, 0.18), rgba(212, 160, 23, 0.16) ${layout.pathHeight}px, transparent ${layout.pathHeight}px)`;
 
-  if (isCompact) {
-    const open = document.createElement("button");
-    open.type = "button";
-    open.className = "regulation-checklist-open";
-    open.textContent = "Ownership criteria checklist";
-    open.addEventListener("click", onToggleChecklist);
-    main.appendChild(open);
-  }
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("class", "relation-ride-svg");
+  svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.pathHeight}`);
+  svg.setAttribute("width", String(layout.width));
+  svg.setAttribute("height", String(layout.pathHeight));
+  const sky = document.createElementNS(SVG_NS, "rect");
+  sky.setAttribute("class", "relation-ride-sky");
+  sky.setAttribute("width", String(layout.width));
+  sky.setAttribute("height", String(layout.pathHeight));
+  const zero = document.createElementNS(SVG_NS, "line");
+  zero.setAttribute("class", "relation-ride-zero");
+  zero.setAttribute("x1", "0");
+  zero.setAttribute("x2", String(layout.width));
+  zero.setAttribute("y1", String(layout.zeroY));
+  zero.setAttribute("y2", String(layout.zeroY));
+  const trail = document.createElementNS(SVG_NS, "path");
+  trail.setAttribute("class", "relation-ride-path");
+  trail.setAttribute("d", layout.path);
+  svg.append(sky, zero, trail);
+  layout.points.forEach((point) => {
+    const mark = document.createElementNS(SVG_NS, "circle");
+    mark.setAttribute("class", "relation-ride-mark");
+    mark.setAttribute("cx", String(point.x));
+    mark.setAttribute("cy", String(point.y));
+    mark.setAttribute("r", "4");
+    svg.appendChild(mark);
+  });
+  track.appendChild(svg);
 
-  const side = renderChecklistPanel(board, state, isCompact, onCloseChecklist);
-  main.appendChild(side);
-  section.appendChild(main);
+  const marker = document.createElement("div");
+  marker.className = "regulation-ride-marker";
+  marker.setAttribute("aria-hidden", "true");
+  stage.appendChild(marker);
 
-  section.appendChild(renderExemplarGrid(board, state));
-  section.appendChild(renderComingSoonCta());
+  const cards = layout.points.map((point) => {
+    const beat = beats[point.index];
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = `relation-ride-card ${regulationToneClass(point.tone)}`;
+    card.style.left = `${point.x}px`;
+    card.style.top = `${cardTop}px`;
+    card.style.setProperty("--stem", `${Math.max(18, cardTop - point.y)}px`);
+    const year = document.createElement("span");
+    year.textContent = String(beat?.year || point.year);
+    const text = document.createElement("p");
+    text.textContent = beat?.event || point.event;
+    card.append(year, text);
+    card.addEventListener("click", () => {
+      scroller.scrollTo({ left: point.x - scroller.clientWidth / 2, behavior: "smooth" });
+    });
+    track.appendChild(card);
+    return card;
+  });
 
-  if (isCompact && state.checklistOpen) {
+  scroller.appendChild(track);
+  stage.appendChild(scroller);
+  section.appendChild(stage);
+
+  let paintedYear = null;
+  const paint = () => {
+    const x = scroller.scrollLeft + scroller.clientWidth / 2;
+    const here = relationRideAt(layout, x);
+    marker.style.top = `${here.y}px`;
+    marker.className = `regulation-ride-marker ${regulationToneClass(here.tone)}`;
+    let nearest = layout.points[0];
+    layout.points.forEach((point) => {
+      if (!nearest || Math.abs(point.x - x) < Math.abs(nearest.x - x)) nearest = point;
+    });
+    if (!nearest) return;
+    const beat = beats[nearest.index];
+    yearEl.textContent = String(beat?.year || nearest.year);
+    moodEl.textContent = rideLabel(here.tone);
+    moodEl.dataset.mood = regulationToneClass(here.tone);
+    eventEl.textContent = beat?.event || nearest.event;
+    summaryEl.textContent = beat?.plainEnglish || "";
+    linksEl.replaceChildren();
+    if (beat?.links?.length) {
+      const chips = document.createElement("div");
+      chips.className = "relation-links beat-links";
+      beat.links.forEach((link) => {
+        const anchor = document.createElement("a");
+        anchor.href = link.url;
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+        anchor.textContent = link.label;
+        chips.appendChild(anchor);
+      });
+      linksEl.appendChild(chips);
+    }
+    cards.forEach((card, index) => {
+      card.classList.toggle("is-now", layout.points[index] === nearest);
+    });
+    const year = Number(beat?.year || nearest.year);
+    if (Number.isFinite(year) && year !== paintedYear) {
+      paintedYear = year;
+      onYearChange?.(year);
+    }
+  };
+
+  scroller.addEventListener("scroll", paint, { passive: true });
+  scroller.addEventListener("wheel", (event) => {
+    if (Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return;
+    event.preventDefault();
+    scroller.scrollLeft += event.deltaY;
+  }, { passive: false });
+
+  const anchor = layout.points.find((point) => Number(beats[point.index]?.year) >= Number(state.year))
+    || layout.points.at(-1);
+  requestAnimationFrame(() => {
+    if (anchor) scroller.scrollLeft = Math.max(0, anchor.x - scroller.clientWidth / 2);
+    paint();
+  });
+
+  const panel = renderChecklistPanel(board, state, onCloseChecklist);
+  section.appendChild(panel);
+  if (state.checklistOpen) {
     const scrim = document.createElement("button");
     scrim.type = "button";
     scrim.className = "drawer-scrim";
     scrim.setAttribute("aria-label", "Close checklist");
     scrim.addEventListener("click", onCloseChecklist);
-    side.before(scrim);
+    panel.before(scrim);
   }
 
   return section;
-}
-
-function renderRegulationHeader(plot, board) {
-  const head = document.createElement("header");
-  head.className = "regulation-head";
-  const title = document.createElement("h2");
-  title.textContent = plot.title || "Gun regulation in the United States";
-  const lede = document.createElement("p");
-  lede.className = "regulation-lede";
-  lede.textContent = plot.lede;
-  const snap = document.createElement("p");
-  snap.className = "regulation-snapshot";
-  snap.textContent = board.statsMeta?.snapshot
-    ? `Data snapshot · ${board.statsMeta.snapshot}`
-    : "";
-  head.append(title, lede, snap);
-  return head;
-}
-
-function renderRegulationLegend() {
-  const key = document.createElement("ul");
-  key.className = "regulation-key web-key";
-  [
-    ["tone-reg-tight", "Tighter / higher regulation (blue)"],
-    ["tone-reg-loose", "Looser / lower regulation (yellow)"],
-    ["tone-reg-mixed", "Mixed or varies by state (amber/gray)"],
-    ["reg-stat-neutral", "Statistics stay neutral — not moral colors"],
-  ].forEach(([cls, label]) => {
-    const item = document.createElement("li");
-    const swatch = document.createElement("i");
-    swatch.className = `swatch ${cls}`;
-    item.append(swatch, document.createTextNode(label));
-    key.appendChild(item);
-  });
-  return key;
-}
-
-export function renderRegulationStats(board, year) {
-  const wrap = document.createElement("div");
-  wrap.className = "regulation-stats-grid";
-  const readouts = statsReadoutAtYear(board.stats, year);
-  readouts.forEach(({ series, point, measures, missing }) => {
-    const card = document.createElement("article");
-    card.className = "regulation-stat-card";
-    card.classList.toggle("is-empty", missing);
-    const label = document.createElement("h3");
-    label.textContent = series.label;
-    const value = document.createElement("p");
-    value.className = "regulation-stat-value";
-    if (missing) {
-      value.textContent = "No comparable series yet";
-    } else if (measures) {
-      value.textContent = measures
-        .map(({ measure, point: pt }) => (pt ? `${measure.label}: ${pt.value}` : `${measure.label}: —`))
-        .join(" · ");
-    } else if (point) {
-      const badge = series.coverage?.quality === "modeled" ? " (modeled)" : "";
-      value.textContent = `${point.value}${series.unit ? ` ${series.unit}` : ""}${badge}`;
-    }
-    const meta = document.createElement("p");
-    meta.className = "regulation-stat-meta";
-    meta.textContent = series.sourceMethod || "";
-    card.append(label, value, meta);
-    if (series.sources?.length) {
-      const links = document.createElement("div");
-      links.className = "relation-links beat-links";
-      series.sources.forEach((link) => {
-        const a = document.createElement("a");
-        a.href = link.url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.textContent = link.label;
-        links.appendChild(a);
-      });
-      card.appendChild(links);
-    }
-    wrap.appendChild(card);
-  });
-  return wrap;
 }
 
 function renderKindFilters(activeKind, onKindFilter) {
@@ -160,7 +220,7 @@ function renderKindFilters(activeKind, onKindFilter) {
   const all = document.createElement("button");
   all.type = "button";
   all.className = "region-toggle";
-  all.textContent = "All beats";
+  all.textContent = "All";
   all.classList.toggle("is-open", !activeKind);
   all.setAttribute("aria-pressed", String(!activeKind));
   all.addEventListener("click", () => onKindFilter(""));
@@ -169,7 +229,7 @@ function renderKindFilters(activeKind, onKindFilter) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "region-toggle";
-    button.textContent = kind.toUpperCase();
+    button.textContent = kind === "scotus" ? "SCOTUS" : kind[0].toUpperCase() + kind.slice(1);
     button.classList.toggle("is-open", activeKind === kind);
     button.setAttribute("aria-pressed", String(activeKind === kind));
     button.addEventListener("click", () => onKindFilter(kind));
@@ -178,149 +238,44 @@ function renderKindFilters(activeKind, onKindFilter) {
   return bar;
 }
 
-function renderRegulationRail(board, state, onBeatToggle, isCompact) {
-  const beats = filterRegulationBeats(board.timeline, { kind: state.regKind || "" })
-    .slice()
-    .sort((a, b) => Number(a.year) - Number(b.year) || a.id.localeCompare(b.id));
-
-  if (isCompact) {
-    const view = document.createElement("div");
-    view.className = "spine-view regulation-spine";
-    const hint = document.createElement("p");
-    hint.className = "rail-note";
-    hint.textContent = "Federal regulation timeline from 1791. Open a beat for plain-English context and sources.";
-    view.appendChild(hint);
-    const rail = document.createElement("ol");
-    rail.className = "spine";
-    let year = "";
-    beats.forEach((beat) => {
-      if (beat.year !== year) {
-        year = beat.year;
-        const stone = document.createElement("li");
-        stone.className = "spine-year";
-        stone.textContent = year;
-        rail.appendChild(stone);
-      }
-      rail.appendChild(regulationSpineBeat(beat, state, onBeatToggle));
-    });
-    view.appendChild(rail);
-    return view;
-  }
-
-  const { view, rail } = buildLaneChrome(
-    "Federal regulation timeline from 1791. Drag to pan; Control-scroll or use Fit to zoom.",
-    { ariaLabel: "Gun regulation timeline from 1791. Drag to move. Control-scroll to zoom." },
-  );
-  view.classList.add("regulation-lane");
-  let year = "";
-  let step = 0;
-  beats.forEach((beat) => {
-    if (beat.year !== year) {
-      year = beat.year;
-      rail.appendChild(laneYearLabel(year));
+export function renderRegulationStats(board, year) {
+  const wrap = document.createElement("div");
+  wrap.className = "regulation-stats-grid";
+  const readouts = statsReadoutAtYear(board.stats, year);
+  readouts.forEach(({ series, point, measures, missing }) => {
+    if (measures) {
+      measures.forEach(({ measure, point: pt }) => {
+        wrap.appendChild(statFigure(
+          missing || !pt ? null : pt.value,
+          measure.id === "homicide" ? "hom" : "sui",
+          `${measure.label} per 100,000`,
+        ));
+      });
+      return;
     }
-    const side = step % 2 === 0 ? "above" : "below";
-    step += 1;
-    rail.appendChild(regulationLaneBeat(beat, side, state, onBeatToggle));
+    const caption = series.id === "guns-per-capita" ? "/100" : "guns";
+    wrap.appendChild(statFigure(missing || !point ? null : point.value, caption, series.label));
   });
-  requestAnimationFrame(() => layoutLane(view));
-  return view;
+  return wrap;
 }
 
-function laneYearLabel(year) {
-  const stone = document.createElement("li");
-  stone.className = "lane-year";
-  const text = document.createElement("span");
-  text.textContent = year;
-  stone.appendChild(text);
-  return stone;
+function statFigure(value, caption, title) {
+  const figure = document.createElement("p");
+  figure.className = "regulation-stat-figure";
+  figure.classList.toggle("is-empty", value == null);
+  figure.title = title;
+  const number = document.createElement("span");
+  number.textContent = formatStat(value);
+  const label = document.createElement("em");
+  label.textContent = caption;
+  figure.append(number, label);
+  return figure;
 }
 
-function regulationLaneBeat(beat, side, state, onBeatToggle) {
-  const item = document.createElement("li");
-  item.className = `lane-event side-${side} ${regulationToneClass(beat.tone)}`;
-  item.classList.toggle("is-selected", state.eventId === beat.id);
-  item.id = `beat-${beat.id}`;
-  const card = document.createElement("div");
-  card.className = "lane-card";
-  const mark = document.createElement("button");
-  mark.type = "button";
-  mark.className = "lane-mark regulation-kind-mark";
-  mark.textContent = beat.kind;
-  mark.setAttribute("aria-label", `${beat.year}. ${beat.event}`);
-  mark.addEventListener("click", () => onBeatToggle(beat.id));
-  const hit = document.createElement("button");
-  hit.type = "button";
-  hit.className = "lane-hit";
-  const when = document.createElement("time");
-  when.dateTime = beat.date || `${beat.year}-01-01`;
-  when.textContent = beat.year;
-  const heading = document.createElement("strong");
-  heading.textContent = beat.event;
-  const tone = document.createElement("em");
-  tone.textContent = regulationToneLabel(beat.tone);
-  hit.append(when, heading);
-  if (state.eventId !== beat.id) {
-    const tease = document.createElement("span");
-    tease.className = "beat-tease";
-    tease.textContent = beat.plainEnglish.slice(0, 140) + (beat.plainEnglish.length > 140 ? "…" : "");
-    hit.appendChild(tease);
-  }
-  hit.appendChild(tone);
-  hit.addEventListener("click", () => onBeatToggle(beat.id));
-  card.append(mark, hit);
-  if (state.eventId === beat.id) {
-    card.appendChild(regulationBeatMore(beat));
-  }
-  item.appendChild(card);
-  return item;
-}
-
-function regulationSpineBeat(beat, state, onBeatToggle) {
-  const item = document.createElement("li");
-  item.className = `spine-event ${regulationToneClass(beat.tone)}`;
-  item.classList.toggle("is-selected", state.eventId === beat.id);
-  item.id = `beat-${beat.id}`;
-  const hit = document.createElement("button");
-  hit.type = "button";
-  hit.className = "spine-hit";
-  const when = document.createElement("time");
-  when.textContent = beat.year;
-  const heading = document.createElement("strong");
-  heading.textContent = beat.event;
-  hit.append(when, heading);
-  hit.addEventListener("click", () => onBeatToggle(beat.id));
-  item.appendChild(hit);
-  if (state.eventId === beat.id) item.appendChild(regulationBeatMore(beat));
-  return item;
-}
-
-function regulationBeatMore(beat) {
-  const more = document.createElement("div");
-  more.className = "lane-more";
-  const summary = document.createElement("p");
-  summary.textContent = beat.plainEnglish;
-  more.appendChild(summary);
-  if (beat.links?.length) {
-    const links = document.createElement("div");
-    links.className = "relation-links beat-links";
-    beat.links.forEach((link) => {
-      const a = document.createElement("a");
-      a.href = link.url;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = link.label;
-      links.appendChild(a);
-    });
-    more.appendChild(links);
-  }
-  return more;
-}
-
-function renderChecklistPanel(board, state, isCompact, onCloseChecklist) {
+function renderChecklistPanel(board, state, onCloseChecklist) {
   const panel = document.createElement("aside");
   panel.className = "relation-drawer regulation-checklist";
-  panel.hidden = isCompact && !state.checklistOpen;
+  panel.hidden = !state.checklistOpen;
   panel.setAttribute("role", "dialog");
   panel.setAttribute("aria-label", "Ownership criteria checklist");
 
@@ -340,24 +295,22 @@ function renderChecklistPanel(board, state, isCompact, onCloseChecklist) {
   title.textContent = "Ownership criteria";
   copy.append(eyebrow, title);
   head.appendChild(copy);
-
   panel.append(close, head);
 
   activeRegulationBanners(board.banners, state.year).forEach((banner) => {
     const box = document.createElement("div");
     box.className = "regulation-banner";
-    const h = document.createElement("h3");
-    h.textContent = banner.title;
-    const p = document.createElement("p");
-    p.textContent = banner.plainEnglish;
-    box.append(h, p);
+    const heading = document.createElement("h3");
+    heading.textContent = banner.title;
+    const text = document.createElement("p");
+    text.textContent = banner.plainEnglish;
+    box.append(heading, text);
     panel.appendChild(box);
   });
 
   const list = document.createElement("ol");
   list.className = "regulation-checklist-rows";
-  const rows = resolveChecklistAtYear(board.checklistRows, board.federalKeyframes, null, state.year);
-  rows.forEach(({ row, cell }) => {
+  resolveChecklistAtYear(board.checklistRows, board.federalKeyframes, null, state.year).forEach(({ row, cell }) => {
     const item = document.createElement("li");
     item.className = checklistStatusClass(cell.status);
     const label = document.createElement("strong");
@@ -374,109 +327,40 @@ function renderChecklistPanel(board, state, isCompact, onCloseChecklist) {
   return panel;
 }
 
-function renderExemplarGrid(board, state) {
-  const wrap = document.createElement("section");
-  wrap.className = "regulation-exemplars";
-  const title = document.createElement("h3");
-  title.textContent = `State divergence · ${state.year}`;
-  wrap.appendChild(title);
-  const grid = document.createElement("div");
-  grid.className = "regulation-exemplar-grid";
-  ["ca", "ny", "tx"].forEach((id) => {
-    const record = board.states[id];
-    if (!record) return;
-    const col = document.createElement("article");
-    col.className = "regulation-exemplar-col";
-    const heading = document.createElement("h4");
-    heading.textContent = record.name;
-    col.appendChild(heading);
-    const table = document.createElement("dl");
-    table.className = "regulation-exemplar-rows";
-    const rows = resolveChecklistAtYear(board.checklistRows, board.federalKeyframes, record, state.year);
-    rows.forEach(({ row, cell }) => {
-      const dt = document.createElement("dt");
-      dt.textContent = row.label;
-      const dd = document.createElement("dd");
-      dd.className = checklistStatusClass(cell.status);
-      dd.textContent = `${checklistStatusLabel(cell.status)} — ${cell.plainEnglish}`;
-      table.append(dt, dd);
-    });
-    col.appendChild(table);
-    grid.appendChild(col);
-  });
-  wrap.appendChild(grid);
-  return wrap;
-}
-
-function renderComingSoonCta() {
-  const cta = document.createElement("div");
-  cta.className = "regulation-coming-soon";
-  const p = document.createElement("p");
-  p.textContent = "Explore all 50 states — coming soon";
-  const note = document.createElement("p");
-  note.className = "regulation-coming-note";
-  note.textContent = "V1 shows California, New York, and Texas only. A searchable state picker will reuse this checklist and timeline schema.";
-  cta.append(p, note);
-  return cta;
-}
-
 export function syncRegulationBoardDom(board, state, root = document) {
   const stats = root.querySelector(".regulation-stats-grid");
-  if (stats) {
-    const next = renderRegulationStats(board, state.year);
-    stats.replaceWith(next);
-    next.classList.add("regulation-stats");
-  }
+  if (stats) stats.replaceWith(renderRegulationStats(board, state.year));
   const panel = root.querySelector(".regulation-checklist");
-  if (panel) {
-    const list = panel.querySelector(".regulation-checklist-rows");
-    if (list) {
-      list.replaceChildren();
-      resolveChecklistAtYear(board.checklistRows, board.federalKeyframes, null, state.year).forEach(({ row, cell }) => {
-        const item = document.createElement("li");
-        item.className = checklistStatusClass(cell.status);
-        const label = document.createElement("strong");
-        label.textContent = row.label;
-        const status = document.createElement("span");
-        status.className = "regulation-check-status";
-        status.textContent = checklistStatusLabel(cell.status);
-        const note = document.createElement("p");
-        note.textContent = cell.plainEnglish;
-        item.append(label, status, note);
-        list.appendChild(item);
-      });
-    }
-    panel.querySelector(".eyebrow").textContent = `Federal baseline · ${state.year}`;
-    panel.querySelectorAll(".regulation-banner").forEach((node) => node.remove());
-    const anchor = panel.querySelector(".regulation-checklist-rows");
-    activeRegulationBanners(board.banners, state.year).forEach((banner) => {
-      const box = document.createElement("div");
-      box.className = "regulation-banner";
-      box.innerHTML = `<h3></h3><p></p>`;
-      box.querySelector("h3").textContent = banner.title;
-      box.querySelector("p").textContent = banner.plainEnglish;
-      anchor.before(box);
+  if (!panel) return;
+  const list = panel.querySelector(".regulation-checklist-rows");
+  if (list) {
+    list.replaceChildren();
+    resolveChecklistAtYear(board.checklistRows, board.federalKeyframes, null, state.year).forEach(({ row, cell }) => {
+      const item = document.createElement("li");
+      item.className = checklistStatusClass(cell.status);
+      const label = document.createElement("strong");
+      label.textContent = row.label;
+      const status = document.createElement("span");
+      status.className = "regulation-check-status";
+      status.textContent = checklistStatusLabel(cell.status);
+      const note = document.createElement("p");
+      note.textContent = cell.plainEnglish;
+      item.append(label, status, note);
+      list.appendChild(item);
     });
   }
-  const exemplar = root.querySelector(".regulation-exemplar-grid");
-  if (exemplar) {
-    exemplar.replaceChildren();
-    ["ca", "ny", "tx"].forEach((id) => {
-      const record = board.states[id];
-      if (!record) return;
-      const col = document.createElement("article");
-      col.className = "regulation-exemplar-col";
-      col.innerHTML = `<h4>${record.name}</h4><dl class="regulation-exemplar-rows"></dl>`;
-      const table = col.querySelector("dl");
-      resolveChecklistAtYear(board.checklistRows, board.federalKeyframes, record, state.year).forEach(({ row, cell }) => {
-        const dt = document.createElement("dt");
-        dt.textContent = row.label;
-        const dd = document.createElement("dd");
-        dd.className = checklistStatusClass(cell.status);
-        dd.textContent = `${checklistStatusLabel(cell.status)} — ${cell.plainEnglish}`;
-        table.append(dt, dd);
-      });
-      exemplar.appendChild(col);
-    });
-  }
+  const eyebrow = panel.querySelector(".eyebrow");
+  if (eyebrow) eyebrow.textContent = `Federal baseline · ${state.year}`;
+  panel.querySelectorAll(".regulation-banner").forEach((node) => node.remove());
+  const anchor = panel.querySelector(".regulation-checklist-rows");
+  activeRegulationBanners(board.banners, state.year).forEach((banner) => {
+    const box = document.createElement("div");
+    box.className = "regulation-banner";
+    const heading = document.createElement("h3");
+    heading.textContent = banner.title;
+    const text = document.createElement("p");
+    text.textContent = banner.plainEnglish;
+    box.append(heading, text);
+    anchor?.before(box);
+  });
 }

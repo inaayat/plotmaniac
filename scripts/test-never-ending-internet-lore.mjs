@@ -2069,5 +2069,8 @@ assert.equal(
   false,
   "V1 must not ship a 50-state picker implementation",
 );
+const gunView = fs.readFileSync(new URL("../gun-regulation-view.js", import.meta.url), "utf8");
+assert.equal(gunView.includes("State divergence"), false, "state divergence grid stays off the gun page");
+assert.equal(gunView.includes("relationRideLayout"), true, "gun board uses the relation timeline ride");
 
 console.log("never-ending internet lore tests passed");
