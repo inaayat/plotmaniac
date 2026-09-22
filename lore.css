@@ -862,6 +862,24 @@ body[data-board="regions"][data-view="web"] #footer-note {
   text-transform: uppercase;
 }
 
+.drawer-expand {
+  display: block;
+  width: 100%;
+  margin: 10px 0 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(232, 196, 122, 0.08);
+}
+
+.drawer-expand:hover {
+  border-color: var(--gold);
+}
+
 .drawer-head {
   display: flex;
   gap: 14px;
@@ -1057,6 +1075,45 @@ body[data-board="regions"][data-view="web"] #footer-note {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.relation-focus.lane-page {
+  width: min(1100px, 100%);
+}
+
+.country-history.is-page {
+  margin-top: 12px;
+}
+
+.country-history.is-page .relation-sentiment {
+  padding: 16px 14px 14px;
+}
+
+.country-history.is-page .relation-timeline {
+  margin-top: 24px;
+  padding-left: 18px;
+  columns: 1;
+}
+
+.country-history.is-page .relation-timeline li {
+  break-inside: avoid;
+  margin-bottom: 18px;
+}
+
+.country-history.is-page .relation-timeline p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 900px) {
+  .country-history.is-page .relation-timeline {
+    columns: 2;
+    column-gap: 28px;
+  }
+}
+
+body[data-view="relation"] .views button {
+  opacity: 0.55;
 }
 
 @media (max-width: 800px) {

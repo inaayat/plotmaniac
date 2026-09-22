@@ -23,6 +23,7 @@ import {
   defaultPlotView,
   resolvePlotView,
   relationEvents,
+  parseRelationTimelineYear,
   relationSentimentChart,
   relationTimelineHasTone,
   relationToneSeries,
@@ -629,6 +630,14 @@ const mexChart = relationSentimentChart(mexico.timeline);
 assert.ok(mexChart.linePath.startsWith("M"));
 assert.ok(mexChart.areaPath.endsWith("Z"));
 assert.ok(mexChart.points.length >= 24);
+assert.equal(parseRelationTimelineYear("1942–1964"), 1942);
+assert.equal(parseRelationTimelineYear("1822"), 1822);
+assert.ok(mexChart.maxYear <= 2030 && mexChart.minYear >= 1800, "chart years stay in human range");
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "relation", plot: "united-states", country: "mexico" }, ""),
+  /view=relation.*country=mexico/,
+);
+assert.match(appSource, /renderRelationPage/, "full-page bilateral timeline view");
 
 const obamaPeople = readJson("../data/barack-obama/people.json");
 const obamaEvents = readJson("../data/barack-obama/events.json");

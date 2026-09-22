@@ -5,7 +5,7 @@ export function requestedView(urlLike) {
   try {
     const url = new URL(urlLike, "https://plotmaniac.com/");
     const value = url.searchParams.get("view");
-    if (value === "timeline" || value === "web" || value === "person") return value;
+    if (value === "timeline" || value === "web" || value === "person" || value === "relation") return value;
   } catch {
     return "";
   }
@@ -351,8 +351,9 @@ export function parseState(urlLike, valid = {}) {
     ? url.searchParams.get("country")
     : "";
   const requested = url.searchParams.get("view");
-  let view = requested === "timeline" || requested === "person" ? requested : "web";
+  let view = requested === "timeline" || requested === "person" || requested === "relation" ? requested : "web";
   if (view === "person" && person === ALL) view = "web";
+  if (view === "relation" && !country) view = "web";
   return {
     view,
     person,
@@ -372,8 +373,11 @@ export function stateUrl(currentUrl, state, eventId = "") {
   }
   ["view", "person", "era", "q", "plot", "year", "country"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
-  if (state.view === "timeline" || state.view === "person") url.searchParams.set("view", state.view);
-  else url.searchParams.set("view", "web");
+  if (state.view === "timeline" || state.view === "person" || state.view === "relation") {
+    url.searchParams.set("view", state.view);
+  } else {
+    url.searchParams.set("view", "web");
+  }
   if (state.person && state.person !== ALL) url.searchParams.set("person", state.person);
   if (state.era && state.era !== ALL) url.searchParams.set("era", state.era);
   if (state.query?.trim()) url.searchParams.set("q", state.query.trim());
@@ -851,6 +855,15 @@ export function laneBands(height, selectedNeed, quietNeed, minQuiet = 160) {
 export const RELATION_TONE_MIN = -2;
 export const RELATION_TONE_MAX = 2;
 
+/** First calendar year from a beat label (handles ranges like 1942–1964). */
+export function parseRelationTimelineYear(raw) {
+  const text = String(raw || "").trim();
+  const match = text.match(/^(-?\d{1,4})/);
+  if (!match) return 0;
+  const year = Number.parseInt(match[1], 10);
+  return Number.isFinite(year) ? year : 0;
+}
+
 export function relationTimelineHasTone(timeline = []) {
   return (timeline || []).some((beat) => typeof beat?.tone === "number");
 }
@@ -858,7 +871,7 @@ export function relationTimelineHasTone(timeline = []) {
 export function relationToneSeries(timeline = []) {
   return (timeline || [])
     .map((beat, index) => {
-      const year = Number.parseInt(String(beat?.year || "").replace(/[^\d-]/g, ""), 10);
+      const year = parseRelationTimelineYear(beat?.year);
       return {
         index,
         year: Number.isFinite(year) ? year : 0,

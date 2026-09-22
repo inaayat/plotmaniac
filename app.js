@@ -316,6 +316,11 @@ function bindChrome() {
     });
   });
   window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && state.view === "relation" && plot?.disclosure === "regions") {
+      state.view = "web";
+      render({ push: true });
+      return;
+    }
     if (event.key === "Escape" && state.country && plot?.disclosure === "regions" && state.view === "web") {
       state.country = "";
       paintRelationSelection();
@@ -357,6 +362,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   app.replaceChildren();
   if (state.view === "timeline") app.appendChild(renderTimeline());
   else if (state.view === "person") app.appendChild(renderPerson());
+  else if (state.view === "relation" && plot?.disclosure === "regions") app.appendChild(renderRelationPage());
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
   else app.appendChild(renderWeb());
   if (push || replace) writeUrl(replace);
@@ -796,8 +802,20 @@ function paintRelationSelection(root = document) {
   copy.appendChild(notes);
   head.appendChild(copy);
   drawer.append(close, head);
-  if (record) drawer.appendChild(renderCountryHistory(record));
-  else {
+  if (record) {
+    if ((record.timeline || []).length >= 3) {
+      const expand = document.createElement("button");
+      expand.type = "button";
+      expand.className = "drawer-expand";
+      expand.textContent = "Expand full timeline";
+      expand.addEventListener("click", () => {
+        state.view = "relation";
+        render({ push: true });
+      });
+      drawer.appendChild(expand);
+    }
+    drawer.appendChild(renderCountryHistory(record, { variant: "drawer" }));
+  } else {
     const note = document.createElement("p");
     note.className = "drawer-notes";
     note.textContent = "Choose a country to read that relationship. Neutrals are in the regional lists and have no colored outline.";
@@ -805,10 +823,48 @@ function paintRelationSelection(root = document) {
   }
 }
 
-function renderCountryHistory(record) {
+function renderRelationPage() {
+  const record = countryBySlug.get(state.country);
+  const section = document.createElement("section");
+  section.className = "focus relation-focus lane-page";
+  const back = document.createElement("button");
+  back.type = "button";
+  back.className = "back";
+  back.textContent = "← Relations web";
+  back.addEventListener("click", () => {
+    state.view = "web";
+    render({ push: true });
+  });
+  if (!record) {
+    section.append(back, emptyState("Choose a country on the web to read its timeline."));
+    return section;
+  }
+  const person = peopleById.get(state.country);
+  const head = document.createElement("div");
+  head.className = "focus-head";
+  head.appendChild(avatar(person || { name: record.country }, "lg"));
+  const copy = document.createElement("div");
+  const eyebrow = document.createElement("p");
+  eyebrow.className = "eyebrow";
+  eyebrow.textContent = `${statusLabel(record.status)} · bilateral timeline`;
+  const title = document.createElement("h2");
+  title.id = "relation-page-title";
+  title.textContent = `${plot.title} ↔ ${record.country}`;
+  const notes = document.createElement("p");
+  notes.className = "role";
+  notes.textContent = record.notes_summary || "";
+  copy.append(eyebrow, title, notes);
+  head.appendChild(copy);
+  const chartWidth = Math.min(1100, Math.max(320, Math.floor(window.innerWidth - 48)));
+  section.append(back, head, renderCountryHistory(record, { variant: "page", chartWidth }));
+  return section;
+}
+
+function renderCountryHistory(record, { variant = "drawer", chartWidth } = {}) {
   const block = document.createElement("div");
-  block.className = "country-history";
-  const chartWrap = relationTimelineHasTone(record.timeline) ? renderRelationSentimentChart(record) : null;
+  block.className = `country-history${variant === "page" ? " is-page" : ""}`;
+  const width = chartWidth || (variant === "page" ? 1100 : 360);
+  const chartWrap = relationTimelineHasTone(record.timeline) ? renderRelationSentimentChart(record, { width, tall: variant === "page" }) : null;
   if (chartWrap) block.appendChild(chartWrap.root);
   const list = document.createElement("ol");
   list.className = "relation-timeline";
@@ -843,8 +899,8 @@ function relationToneClass(tone) {
   return "tone-mixed";
 }
 
-function renderRelationSentimentChart(record) {
-  const layout = relationSentimentChart(record.timeline, { width: 360, height: 132 });
+function renderRelationSentimentChart(record, { width = 360, tall = false } = {}) {
+  const layout = relationSentimentChart(record.timeline, { width, height: tall ? 200 : 132 });
   const root = document.createElement("div");
   root.className = "relation-sentiment";
   const title = document.createElement("p");
