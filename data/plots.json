@@ -182,6 +182,28 @@
       }
     },
     {
+      "id": "gun-laws-by-state",
+      "aliases": ["state-gun-laws", "gun-laws-map", "gun-laws-states"],
+      "title": "Gun laws by state",
+      "kicker": "Reference",
+      "cardLine": "Filter states by ownership rules",
+      "lede": "Compare what each state requires to buy, register, or carry firearms. Pick filter criteria to see matching states; choropleth map follows in a later pass. Wikipedia tables are the seed — verify official code before relying on this for decisions.",
+      "searchPlaceholder": "Texas, concealed carry, waiting period…",
+      "sourceNote": "Gun laws by state on Plotmaniac · English Wikipedia state tables · seed snapshot 2026-09-22",
+      "centerId": "gun-laws-by-state",
+      "friendKinds": [],
+      "enemyKinds": [],
+      "arrangement": "gun-state-laws",
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/BlankMap-US-states.svg?width=320",
+      "paths": {
+        "people": "data/gun-laws-by-state/people.json",
+        "events": "data/gun-laws-by-state/events.json",
+        "relations": "data/gun-laws-by-state/relations.json",
+        "statesSnapshot": "data/gun-laws-by-state/states-snapshot.json",
+        "filterCriteria": "data/gun-laws-by-state/filter-criteria.json"
+      }
+    },
+    {
       "id": "scotus",
       "aliases": ["supreme-court", "gun-regulation", "guns", "second-amendment"],
       "title": "U.S. Supreme Court",

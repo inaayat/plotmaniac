@@ -41,6 +41,7 @@ import {
   usesPolicyPanel,
   usesRegulationBoard,
   usesScotusHub,
+  usesGunStateLawsPlot,
   boardViewForPerson,
   visibleRelationCountries,
   webLayout,
@@ -79,6 +80,12 @@ import {
   scotusTopicFromPlotAlias,
   SCOTUS_GUN_TOPIC_ID,
 } from "./scotus-hub-view.js";
+import {
+  filterStatesByCriteria,
+  parseGunStateLawFilters,
+  serializeGunStateLawFilters,
+} from "./gun-laws-by-state-model.js";
+import { renderGunStateLawsBoard } from "./gun-laws-by-state-view.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const peopleById = new Map();
@@ -96,6 +103,7 @@ let warHover = "";
 let openRegions = new Set();
 let openTopic = "";
 let gunBoard = null;
+let gunStatePack = null;
 let state = {
   view: "pick",
   person: ALL,
@@ -110,6 +118,9 @@ let state = {
   exemplarState: "",
   checklistOpen: false,
   topic: "",
+  gunLawFilters: {},
+  gunLawState: "",
+  gunLawCriteria: "",
 };
 let toastTimer = null;
 let loadToken = 0;
@@ -344,9 +355,11 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     ? "history"
     : (plot.arrangement === "wars"
       ? "wars"
-      : (usesRegulationBoard(plot, bootTopic)
-        ? "regulation"
-        : (usesScotusHub(plot) ? "scotus" : (plot.disclosure || ""))));
+      : (usesGunStateLawsPlot(plot)
+        ? "gun-state-laws"
+        : (usesRegulationBoard(plot, bootTopic)
+          ? "regulation"
+          : (usesScotusHub(plot) ? "scotus" : (plot.disclosure || "")))));
   clearPartition();
   const app = $("app");
   app.replaceChildren();
@@ -354,9 +367,11 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   loading.className = "loading";
   loading.textContent = plot.arrangement === "historical-map"
     ? "Drawing the map…"
-    : (usesScotusHub(plot)
-      ? (usesRegulationBoard(plot, bootTopic) ? "Loading the board…" : "Loading topics…")
-      : "Drawing the web…");
+    : (usesGunStateLawsPlot(plot)
+      ? "Loading state tables…"
+      : (usesScotusHub(plot)
+        ? (usesRegulationBoard(plot, bootTopic) ? "Loading the board…" : "Loading topics…")
+        : "Drawing the web…"));
   app.appendChild(loading);
   try {
     if (plot.arrangement === "historical-map") {
@@ -423,6 +438,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     openTopic = "";
     people.forEach((person) => peopleById.set(person.id, person));
     gunBoard = null;
+    gunStatePack = null;
     if (usesScotusHub(plot) && plot.paths.timeline) {
       const [timeline, checklist, statesEx, statsPack] = await Promise.all([
         fetchJson(plot.paths.timeline),
@@ -440,6 +456,14 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         stats: statsPack.series,
         statsMeta: statsPack,
       };
+    }
+    if (usesGunStateLawsPlot(plot) && plot.paths.statesSnapshot) {
+      const [snapshot, filterConfig] = await Promise.all([
+        fetchJson(plot.paths.statesSnapshot),
+        fetchJson(plot.paths.filterCriteria),
+      ]);
+      if (token !== loadToken) return;
+      gunStatePack = { snapshot, filterConfig };
     }
     setLaneZoom(1);
     hubCamera = null;
@@ -461,6 +485,10 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       });
       const topic = parsed.topic || resolveScotusTopic(location.href, requestedPlotParam);
       const reg = parseRegulationParams(location.href, exemplarStates);
+      const criteriaIds = new Set(gunStatePack?.filterConfig?.criteria?.map((row) => row.id) || []);
+      const gunLawFilters = parseGunStateLawFilters(location.href, criteriaIds);
+      const stateParam = new URL(location.href).searchParams.get("state") || "";
+      const validGunStates = new Set(gunStatePack?.snapshot?.states?.map((row) => row.id) || []);
       state = {
         ...parsed,
         view: viewForPlot(parsed),
@@ -472,6 +500,9 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         exemplarState: reg.exemplarState,
         checklistOpen: false,
         topic,
+        gunLawFilters,
+        gunLawState: validGunStates.has(stateParam) ? stateParam : "",
+        gunLawCriteria: serializeGunStateLawFilters(gunLawFilters),
       };
       applyWarSpan(state);
       rememberCountryRegion();
@@ -490,6 +521,9 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         exemplarState: "",
         checklistOpen: false,
         topic: "",
+        gunLawFilters: {},
+        gunLawState: "",
+        gunLawCriteria: "",
       };
       applyWarSpan(state, "");
     }
@@ -1166,10 +1200,13 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
     ? "history"
     : (plot?.arrangement === "wars"
       ? "wars"
-      : (isGunBoardActive()
-        ? "regulation"
-        : (usesScotusHub(plot) ? "scotus" : (plot?.disclosure || ""))));
-  if (usesScotusHub(plot)) {
+      : (usesGunStateLawsPlot(plot)
+        ? "gun-state-laws"
+        : (isGunBoardActive()
+          ? "regulation"
+          : (usesScotusHub(plot) ? "scotus" : (plot?.disclosure || "")))));
+  if (usesGunStateLawsPlot(plot)) app.appendChild(renderGunStateLawsSection());
+  else if (usesScotusHub(plot)) {
     if (isGunBoardActive()) app.appendChild(renderRegulationSection());
     else app.appendChild(renderScotusHubSection());
   } else if (plot?.arrangement === "wars") app.appendChild(renderWars());
@@ -1187,6 +1224,31 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
       });
     }
   }
+}
+
+function renderGunStateLawsSection() {
+  if (!gunStatePack) {
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = "State law data is loading…";
+    return empty;
+  }
+  return renderGunStateLawsBoard({
+    plot,
+    snapshot: gunStatePack.snapshot,
+    filterConfig: gunStatePack.filterConfig,
+    filters: state.gunLawFilters || {},
+    selectedStateId: state.gunLawState || "",
+    onFilterChange: (criterionId, value) => {
+      state.gunLawFilters = { ...state.gunLawFilters, [criterionId]: value };
+      state.gunLawCriteria = serializeGunStateLawFilters(state.gunLawFilters);
+      render({ replace: true });
+    },
+    onSelectState: (id) => {
+      state.gunLawState = state.gunLawState === id ? "" : id;
+      render({ replace: true });
+    },
+  });
 }
 
 function renderScotusHubSection() {
@@ -3818,6 +3880,7 @@ function writeUrl(replace) {
   const urlState = {
     ...state,
     plot: state.view === "pick" || !plot ? "" : plot.id,
+    gunLawCriteria: serializeGunStateLawFilters(state.gunLawFilters),
   };
   const next = stateUrl(location.href, urlState, state.eventId);
   history[replace ? "replaceState" : "pushState"]({}, "", next);

@@ -91,6 +91,11 @@ import {
   statsReadoutAtYear,
   filterRegulationBeats,
 } from "../gun-regulation-model.js";
+import {
+  filterStatesByCriteria,
+  parseGunStateLawFilters,
+  validateGunStateSnapshot,
+} from "../gun-laws-by-state-model.js";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
 const plots = readJson("../data/plots.json");
@@ -204,6 +209,7 @@ assert.deepEqual(plots.plots.map((item) => item.id), [
   "jd-vance",
   "united-states",
   "partition-of-india",
+  "gun-laws-by-state",
   "scotus",
   "wars",
 ], "homepage gallery order");
@@ -2069,5 +2075,20 @@ assert.equal(
   false,
   "V1 must not ship a 50-state picker implementation",
 );
+
+const gunStatePlot = findPlot(plots.plots, "gun-laws-by-state");
+assert.equal(gunStatePlot?.arrangement, "gun-state-laws");
+assert.notEqual(findPlot(plots.plots, "gun-laws-by-state")?.id, "scotus");
+const gunStateSnapshot = readJson("../data/gun-laws-by-state/states-snapshot.json");
+assert.deepEqual(validateGunStateSnapshot(gunStateSnapshot), []);
+assert.ok(gunStateSnapshot.states.length >= 51);
+const tx = gunStateSnapshot.states.find((row) => row.id === "tx");
+assert.equal(tx?.checklist?.["carry-permit"]?.status, "not_required");
+const criteriaIds = new Set(["carry-permit", "waiting-period"]);
+const filters = parseGunStateLawFilters("https://plotmaniac.com/?criteria=carry-permit:not_required,waiting-period:not_required", criteriaIds);
+assert.equal(filters["carry-permit"], "not_required");
+const permitless = filterStatesByCriteria(gunStateSnapshot.states, filters);
+assert.ok(permitless.some((row) => row.id === "tx"));
+assert.ok(permitless.length > 10);
 
 console.log("never-ending internet lore tests passed");
