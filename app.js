@@ -958,9 +958,6 @@ function renderRelationRide(record) {
 
   const stage = document.createElement("div");
   stage.className = "relation-ride-stage";
-  const scale = document.createElement("div");
-  scale.className = "relation-ride-scale";
-  scale.innerHTML = "<span>Warm</span><span>Strained</span>";
   const scroller = document.createElement("div");
   scroller.className = "relation-ride-scroll";
   scroller.tabIndex = 0;
@@ -1022,7 +1019,7 @@ function renderRelationRide(record) {
 
   scroller.appendChild(track);
   const rider = renderRelationRider();
-  stage.append(scale, scroller, rider);
+  stage.append(scroller, rider);
   root.append(readout, stage);
 
   const paint = () => {
@@ -1098,7 +1095,7 @@ function paintRelationRider(rider, tone) {
   const string = rider.querySelector(".rider-string");
   const eyes = rider.querySelectorAll(".rider-eye");
   if (mouth) {
-    const curve = 6 - smile * 10;
+    const curve = 6 + smile * 10;
     mouth.setAttribute("d", `M-6 5 Q0 ${curve.toFixed(1)} 6 5`);
   }
   if (string) {
@@ -1108,7 +1105,7 @@ function paintRelationRider(rider, tone) {
   eyes.forEach((eye, index) => {
     const start = index === 0 ? -7 : 3.8;
     const lift = -1 - smile * 1.2;
-    const bend = -2.2 - smile * 1.4;
+    const bend = -1.2 - smile * 2.6;
     eye.setAttribute("d", `M${start} ${lift.toFixed(1)} q1.6 ${bend.toFixed(1)} 3.2 0`);
   });
   rider.dataset.mood = relationToneClass(clamped);

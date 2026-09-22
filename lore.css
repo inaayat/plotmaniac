@@ -1160,30 +1160,6 @@ body[data-board="regions"][data-view="web"] #footer-note {
   min-height: 420px;
 }
 
-.relation-ride-scale {
-  position: absolute;
-  z-index: 3;
-  top: 12px;
-  bottom: 168px;
-  left: 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  pointer-events: none;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.relation-ride-scale span:first-child {
-  color: #7dcea0;
-}
-
-.relation-ride-scale span:last-child {
-  color: #e06a62;
-}
-
 .relation-ride-scroll {
   height: 100%;
   overflow-x: auto;
