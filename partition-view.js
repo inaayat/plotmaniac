@@ -1,4 +1,4 @@
-import { ALL, initials } from "./engine.js";
+import { initials } from "./engine.js";
 import {
   cameraBox,
   claimsRing,
@@ -99,13 +99,30 @@ export function mountPartition(root, reference, {
   window.addEventListener("keydown", onKey);
 
   return {
-    modeKey: () => `${view}:${personId || ALL}`,
+    modeKey: () => view,
     goTo(id) {
       const next = frames.findIndex((item) => item.id === id);
       if (next < 0) return;
       index = next;
       if (view === "web") shell.paintOverview?.();
       if (view === "timeline") shell.paintTimelineSelection?.();
+    },
+    showPerson(id) {
+      const person = players.get(id);
+      if (!person || view !== "person") return;
+      const swap = () => {
+        paintPerson(person);
+        revealPersonTop();
+      };
+      if (typeof document.startViewTransition === "function") {
+        document.startViewTransition(swap);
+        return;
+      }
+      shell.classList.add("is-person-swap");
+      requestAnimationFrame(() => {
+        swap();
+        requestAnimationFrame(() => shell.classList.remove("is-person-swap"));
+      });
     },
     destroy() {
       window.removeEventListener("keydown", onKey);
@@ -388,32 +405,51 @@ export function mountPartition(root, reference, {
     const back = el("button", "back", "Back to map & people");
     back.type = "button";
     back.addEventListener("click", () => onShowMap?.(frame().id));
+    const stage = el("div", "partition-person-stage");
+    shell.append(back, stage);
+    paintPerson(person);
+  }
+
+  function paintPerson(person) {
+    const stage = shell.querySelector(".partition-person-stage") || shell;
     const allegiance = playerAllegiance(person);
     const incentives = playerIncentives(person);
     const shortName = playerDisplayName(person);
     const head = el("header", "partition-person-head");
+    const face = el("div", "partition-person-face");
     const portrait = portraits[person.id];
     if (portrait?.src) {
-      head.appendChild(portraitFigure(person.name, portrait));
+      const image = document.createElement("img");
+      image.className = "partition-chip-photo";
+      image.src = portrait.src;
+      image.alt = `Portrait of ${person.name}`;
+      face.appendChild(image);
     } else {
-      const mark = el("div", "partition-portrait-fallback");
-      mark.appendChild(portraitMark(person.name));
-      head.appendChild(mark);
+      face.appendChild(portraitMark(person.name));
     }
+    head.appendChild(face);
     const identity = el("div", "partition-person-identity");
+    const title = el("h2", "", shortName);
+    title.title = person.name;
     identity.append(
       el("p", "eyebrow", allegiance.faction),
-      el("h2", "", shortName),
+      title,
     );
-    if (shortName !== person.name) identity.appendChild(el("p", "partition-person-full", person.name));
-    if (person.roles?.length) identity.appendChild(el("p", "partition-person-role", person.roles.join(" · ")));
-    if (allegiance.nationality || allegiance.community) {
-      identity.appendChild(el("p", "partition-person-allegiance", [allegiance.nationality, allegiance.community].filter(Boolean).join(" · ")));
-    }
+    const roleLine = person.roles?.length ? person.roles.join(" · ") : "Role not separately recorded";
+    const role = el("p", "partition-person-role", roleLine);
+    role.title = roleLine;
+    identity.appendChild(role);
+    const allegianceLine = [allegiance.nationality, allegiance.community].filter(Boolean).join(" · ") || "Standing not separately recorded";
+    const note = el("p", "partition-person-allegiance", allegianceLine);
+    note.title = allegianceLine;
+    identity.appendChild(note);
     head.appendChild(identity);
 
     const allies = playerAgreements(person, [...players.values()]).slice(0, 8);
-    const allyBlock = allies.length ? allySection(allies) : null;
+    if (allies.length) {
+      head.classList.add("has-allies");
+      head.appendChild(allySection(allies));
+    }
 
     const brief = el("div", "partition-person-brief");
     if (person.pointOfView) {
@@ -442,18 +478,15 @@ export function mountPartition(root, reference, {
       record.appendChild(rail);
     }
     const sources = sourceRecords(reference.sourcesCatalog, person.sourceIds);
-    shell.append(back, head);
-    if (allyBlock) shell.appendChild(allyBlock);
-    shell.append(brief, record);
-    if (sources.length) shell.appendChild(sourceList(sources));
+    const extras = [head, brief, record];
+    if (sources.length) extras.push(sourceList(sources));
+    if (portrait) extras.push(personCredit(person, portrait));
+    stage.replaceChildren(...extras);
   }
 
   function allySection(allies) {
     const block = el("section", "partition-allies");
-    block.append(
-      el("h3", "", "Who agreed with them"),
-      el("p", "rail-note", "Same camp, or the same call on the settlement."),
-    );
+    block.appendChild(el("p", "eyebrow", "Agreed with them"));
     const list = el("ul", "partition-ally-list");
     allies.forEach((ally) => {
       const item = el("li");
@@ -815,13 +848,9 @@ function portraitMark(name, portrait) {
   return el("span", "partition-monogram", initials(name));
 }
 
-function portraitFigure(name, portrait) {
-  const figure = el("figure", "partition-portrait");
-  const image = document.createElement("img");
-  image.src = portrait.src;
-  image.alt = `Portrait of ${name}`;
-  const caption = el("figcaption");
-  caption.append(document.createTextNode(`${portrait.author} · `));
+function personCredit(person, portrait) {
+  const note = el("p", "partition-person-credit");
+  note.append(document.createTextNode(`${person.name}: ${portrait.author} · `));
   const license = el("a", "", portrait.license);
   license.href = portrait.licenseUrl;
   const source = el("a", "", "Wikimedia Commons");
@@ -830,9 +859,8 @@ function portraitFigure(name, portrait) {
     link.target = "_blank";
     link.rel = "noreferrer";
   });
-  caption.append(license, document.createTextNode(" · "), source);
-  figure.append(image, caption);
-  return figure;
+  note.append(license, document.createTextNode(" · "), source);
+  return note;
 }
 
 function imageCredits(portraits, players) {

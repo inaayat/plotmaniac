@@ -309,6 +309,8 @@ body[data-board="history"][data-view="person"] #footer-note {
 .partition-legend-note,
 .partition-casualty,
 .partition-beat p,
+.partition-beat li,
+.partition-points li,
 .partition-person-brief p,
 .partition-person-brief li,
 .partition-prince-detail {
@@ -591,7 +593,16 @@ body[data-board="history"][data-view="person"] #footer-note {
 }
 
 .partition-person-page {
-  width: min(720px, 100%);
+  width: 100%;
+}
+
+.partition-person-stage {
+  min-height: 48vh;
+  transition: opacity 140ms ease;
+}
+
+.partition-person-page.is-person-swap .partition-person-stage {
+  opacity: 0.45;
 }
 
 .partition-person-page .back {
@@ -601,57 +612,60 @@ body[data-board="history"][data-view="person"] #footer-note {
 .partition-person-head {
   display: grid;
   grid-template-columns: 96px minmax(0, 1fr);
-  gap: 16px 20px;
-  align-items: start;
+  gap: 12px 20px;
+  align-items: center;
+  min-height: 112px;
   margin: 0 0 20px;
 }
 
-.partition-person-page h2 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  line-height: 1.08;
-  margin: 4px 0 8px;
-  overflow-wrap: anywhere;
+.partition-person-head.has-allies {
+  grid-template-columns: 96px minmax(220px, 0.85fr) minmax(0, 1.25fr);
 }
 
-.partition-person-full,
+.partition-person-face,
+.partition-person-face .partition-chip-photo,
+.partition-person-face .partition-monogram {
+  width: 96px;
+  height: 96px;
+}
+
+.partition-person-identity {
+  min-width: 0;
+  min-height: 96px;
+  display: grid;
+  align-content: center;
+}
+
+.partition-person-page h2 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 2px 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.partition-person-identity .eyebrow,
+.partition-person-role,
+.partition-person-allegiance {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .partition-person-role,
 .partition-person-allegiance {
   color: var(--muted);
   font-size: 0.8rem;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .partition-person-role {
-  margin-top: 6px;
-}
-
-.partition-person-allegiance {
   margin-top: 4px;
 }
 
-.partition-portrait-fallback {
-  width: 96px;
-  height: 96px;
-  display: grid;
-  place-items: center;
-}
-
-.partition-portrait-fallback .partition-monogram,
-.partition-portrait-fallback .partition-chip-photo {
-  width: 96px;
-  height: 96px;
-}
-
-.partition-portrait {
-  margin: 0;
-}
-
-.partition-person-page .partition-portrait img {
-  width: 96px;
-  height: 96px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 1px solid var(--line-strong);
+.partition-person-allegiance {
+  margin-top: 2px;
 }
 
 .partition-portrait figcaption,
@@ -680,18 +694,38 @@ body[data-board="history"][data-view="person"] #footer-note {
 
 .partition-credits a,
 .partition-portrait a,
-.partition-sources a {
+.partition-sources a,
+.partition-person-credit a {
   color: var(--gold);
+}
+
+.partition-person-credit {
+  color: var(--muted);
+  font-size: 0.66rem;
+  line-height: 1.4;
+  margin-top: 18px;
 }
 
 .partition-person-brief {
   max-width: none;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
+.partition-person-brief .partition-stance-pair,
+.partition-person-brief .partition-stances {
+  grid-column: 1 / -1;
+}
+
 .partition-allies {
-  margin: 0 0 20px;
+  min-width: 0;
+  margin: 0;
+}
+
+.partition-person-head .partition-ally-list {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin: 8px 0 0;
 }
 
 .partition-allies h3,
@@ -741,12 +775,18 @@ body[data-board="history"][data-view="person"] #footer-note {
   font-family: "Fraunces", Georgia, serif;
   font-size: 1rem;
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .partition-ally span {
   color: var(--muted);
   font-size: 0.66rem;
   line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .partition-read,
@@ -759,9 +799,9 @@ body[data-board="history"][data-view="person"] #footer-note {
 }
 
 .partition-read p {
-  max-width: 62ch;
-  font-size: 0.92rem;
-  line-height: 1.65;
+  max-width: none;
+  font-size: 0.86rem;
+  line-height: 1.55;
 }
 
 .partition-stance-pair {
@@ -788,7 +828,8 @@ body[data-board="history"][data-view="person"] #footer-note {
 .partition-stance-list {
   list-style: none;
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px 18px;
   margin: 12px 0 0;
 }
 
@@ -813,6 +854,7 @@ body[data-board="history"][data-view="person"] #footer-note {
 .partition-person-beats {
   list-style: none;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin: 14px 0 0;
 }
@@ -1019,14 +1061,20 @@ body[data-board="history"][data-view="person"] #footer-note {
     grid-row: 1 / span 2;
   }
   .partition-person-head,
+  .partition-person-head.has-allies,
+  .partition-person-brief,
+  .partition-person-beats,
   .partition-stance-pair,
-  .partition-stance-grid {
+  .partition-stance-grid,
+  .partition-stance-list {
     grid-template-columns: 1fr;
   }
-  .partition-portrait img,
-  .partition-portrait-fallback,
-  .partition-portrait-fallback .partition-monogram,
-  .partition-portrait-fallback .partition-chip-photo {
+  .partition-person-page h2 {
+    font-size: 1.7rem;
+  }
+  .partition-person-face,
+  .partition-person-face .partition-chip-photo,
+  .partition-person-face .partition-monogram {
     width: 88px;
     height: 88px;
   }
