@@ -12,19 +12,16 @@ export function requestedView(urlLike) {
   return "";
 }
 
-export function defaultPlotView({ compact = false, requested = "", stored = "", eventId = "" } = {}) {
+export function defaultPlotView({ requested = "", eventId = "" } = {}) {
   if (requested === "timeline" || requested === "web" || requested === "person") return requested;
   if (eventId) return "timeline";
-  if (stored === "timeline" || stored === "web") return stored;
-  return compact ? "timeline" : "web";
+  return "web";
 }
 
-export function resolvePlotView(parsed, { compact = false, stored = "", href = "" } = {}) {
+export function resolvePlotView(parsed, { href = "" } = {}) {
   const requested = requestedView(href);
   if (requested) return parsed.view;
   return defaultPlotView({
-    compact,
-    stored,
     eventId: parsed?.eventId || "",
   });
 }
@@ -450,20 +447,30 @@ function topicArrangement({
   const wedge = (Math.PI * 2) / n;
   const spread = groups.length <= 1;
   const nodes = [];
+  const edges = [];
   if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center" });
-  const labels = [];
 
   groups.forEach((group, gIndex) => {
-    const mid = -Math.PI / 2 + gIndex * wedge;
-    if (!spread) {
-      const labelR = ellipseRadius(mid, radiusX, radiusY) * 0.97;
-      labels.push({
-        id: group.id,
-        text: group.label,
-        x: cx + Math.cos(mid) * labelR,
-        y: cy + Math.sin(mid) * labelR,
-      });
-    }
+    const mid = spread
+      ? -Math.PI / 2
+      : -Math.PI / 2 + gIndex * wedge;
+    const hubId = `topic:${group.id}`;
+    const hubAngle = mid;
+    const hubRim = ellipseRadius(hubAngle, radiusX, radiusY) * (spread ? 0.55 : 0.48);
+    const hubDist = innerFloor + Math.max(0, hubRim - innerFloor) * 0.42;
+    const hubX = cx + Math.cos(hubAngle) * hubDist;
+    const hubY = cy + Math.sin(hubAngle) * hubDist;
+    nodes.push({
+      id: hubId,
+      name: group.label,
+      x: hubX,
+      y: hubY,
+      camp: "topic",
+      topic: group.id,
+      hub: true,
+    });
+    if (center) edges.push({ from: center.id, to: hubId, kind: "topic" });
+
     const members = group.members
       .map((person) => ({ person, beats: counts.get(person.id) || 0 }))
       .sort((a, b) => b.beats - a.beats || a.person.name.localeCompare(b.person.name, "en", { sensitivity: "base" }));
@@ -483,15 +490,17 @@ function topicArrangement({
         const ring = count <= 1 ? 0.4 : 0.16 + (index / Math.max(count - 1, 1)) * 0.84;
         dist = innerFloor + (1 - closeness * 0.5) * Math.max(0, rim - innerFloor) * Math.min(1, 0.28 + ring);
       }
+      const policyId = entry.person.id;
       nodes.push({
         ...entry.person,
         x: cx + Math.cos(angle) * dist,
         y: cy + Math.sin(angle) * dist,
-        camp: campOf(entry.person.id, relations, centerId || center.id, friendKinds, enemyKinds, year),
+        camp: campOf(policyId, relations, centerId || center.id, friendKinds, enemyKinds, year),
         beats: entry.beats,
         closeness,
         topic: entry.person.topic,
       });
+      edges.push({ from: hubId, to: policyId, kind: "topic" });
     });
   });
 
@@ -507,10 +516,10 @@ function topicArrangement({
     width,
     height,
     nodes,
-    edges: edgesAmong(nodes, relations),
+    edges,
     nodeSize,
     centerSize,
-    labels: spread ? [] : labels,
+    labels: [],
   };
 }
 

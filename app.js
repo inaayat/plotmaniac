@@ -53,16 +53,6 @@ function isCompact() {
   return window.matchMedia(COMPACT_MQ).matches;
 }
 
-function readStoredView() {
-  try {
-    const value = localStorage.getItem(VIEW_PREF_KEY);
-    if (value === "timeline" || value === "web") return value;
-  } catch {
-    return "";
-  }
-  return "";
-}
-
 function rememberView(view) {
   if (view !== "timeline" && view !== "web") return;
   try {
@@ -73,11 +63,7 @@ function rememberView(view) {
 }
 
 function viewForPlot(parsed, href = location.href) {
-  return resolvePlotView(parsed, {
-    compact: isCompact(),
-    stored: readStoredView(),
-    href,
-  });
+  return resolvePlotView(parsed, { href });
 }
 
 function syncLayoutMode() {
@@ -214,7 +200,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       rememberCountryRegion();
     } else {
       state = {
-        view: viewForPlot({ view: "", eventId: "" }),
+        view: "web",
         person: ALL,
         era: ALL,
         query: "",
@@ -365,6 +351,8 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
   $("view-web").setAttribute("aria-pressed", String(state.view === "web"));
   $("view-timeline").setAttribute("aria-pressed", String(state.view === "timeline"));
+  const plotSelect = $("plot-select");
+  if (plotSelect && document.activeElement === plotSelect) plotSelect.blur();
   const app = $("app");
   app.replaceChildren();
   if (state.view === "timeline") app.appendChild(renderTimeline());
@@ -1141,8 +1129,13 @@ function paintWeb(stage, { animate = true } = {}) {
     path.setAttribute("d", `M ${from.x} ${from.y} L ${to.x} ${to.y}`);
     path.dataset.from = edge.from;
     path.dataset.to = edge.to;
-    const camp = from.camp === "center" ? to.camp : to.camp === "center" ? from.camp : "";
-    if (camp) path.dataset.camp = camp;
+    let camp = "";
+    if (from.camp === "center") camp = to.camp;
+    else if (to.camp === "center") camp = from.camp;
+    else if (from.camp === "topic") camp = to.camp;
+    else if (to.camp === "topic") camp = from.camp;
+    if (camp && camp !== "topic") path.dataset.camp = camp;
+    if (edge.kind === "topic") path.dataset.kind = "topic";
     svg.appendChild(path);
   });
   stage.appendChild(svg);
@@ -1156,8 +1149,17 @@ function paintWeb(stage, { animate = true } = {}) {
     stage.appendChild(el);
   });
 
-  const light = (personId) => {
-    const near = neighborhood(personId, relations);
+  const light = (nodeId) => {
+    const near = new Set(neighborhood(nodeId, relations));
+    if (nodeId.startsWith("topic:")) {
+      layout.nodes.forEach((item) => {
+        if (item.topic === nodeId.slice(6) && item.camp !== "topic") near.add(item.id);
+      });
+      if (plot.centerId) near.add(plot.centerId);
+    } else {
+      const person = peopleById.get(nodeId);
+      if (person?.topic) near.add(`topic:${person.topic}`);
+    }
     stage.classList.add("is-hot");
     stage.querySelectorAll(".node").forEach((node) => {
       node.classList.toggle("is-lit", near.has(node.dataset.id));
@@ -1175,12 +1177,21 @@ function paintWeb(stage, { animate = true } = {}) {
   layout.nodes.forEach((node, index) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.side ? ` node-${node.side}` : ""}`;
+    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.hub ? " is-topic-hub" : ""}${node.side ? ` node-${node.side}` : ""}`;
     button.dataset.id = node.id;
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
     button.style.setProperty("--i", String(index));
-    if (bubbles && node.camp !== "center") {
+    if (node.camp === "topic") {
+      button.classList.add("is-bubble");
+      const chip = document.createElement("span");
+      chip.className = "node-bubble topic-hub";
+      chip.textContent = node.name;
+      button.appendChild(chip);
+      button.setAttribute("aria-label", `${node.name}, policy topic`);
+      button.title = node.name;
+      button.addEventListener("click", () => toggleTopic(node.topic));
+    } else if (bubbles && node.camp !== "center") {
       button.classList.add("is-bubble");
       const chip = document.createElement("span");
       chip.className = "node-bubble";
@@ -1190,15 +1201,17 @@ function paintWeb(stage, { animate = true } = {}) {
       button.append(avatar(node, node.camp === "center" ? "lg" : "md"));
       if (!(compact && !camps)) button.append(nameEl(node.name));
     }
-    const camp = campLabel(node.camp);
-    const beats = node.beats ? `, ${node.beats} timeline ${node.beats === 1 ? "beat" : "beats"}` : "";
-    button.setAttribute("aria-label", `${node.name}${camp ? `, ${camp}` : ""}${beats}`);
-    button.title = node.beats ? `${node.name} · ${node.beats} beats` : node.name;
+    if (node.camp !== "topic") {
+      const camp = campLabel(node.camp);
+      const beats = node.beats ? `, ${node.beats} timeline ${node.beats === 1 ? "beat" : "beats"}` : "";
+      button.setAttribute("aria-label", `${node.name}${camp ? `, ${camp}` : ""}${beats}`);
+      button.title = node.beats ? `${node.name} · ${node.beats} beats` : node.name;
+      button.addEventListener("click", () => openPerson(node.id));
+    }
     button.addEventListener("pointerenter", () => light(node.id));
     button.addEventListener("pointerleave", clear);
     button.addEventListener("focus", () => light(node.id));
     button.addEventListener("blur", clear);
-    button.addEventListener("click", () => openPerson(node.id));
     stage.appendChild(button);
   });
   const counts = document.getElementById("year-counts");

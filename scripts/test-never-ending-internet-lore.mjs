@@ -239,37 +239,28 @@ assert.equal(requestedView("https://plotmaniac.com/?plot=h3"), "");
 assert.equal(requestedView("https://plotmaniac.com/?view=web"), "web");
 assert.equal(requestedView("https://plotmaniac.com/?view=timeline"), "timeline");
 assert.equal(requestedView("https://plotmaniac.com/?view=nope"), "");
-assert.equal(defaultPlotView({ compact: false }), "web");
-assert.equal(defaultPlotView({ compact: true }), "timeline");
-assert.equal(defaultPlotView({ compact: true, requested: "web" }), "web");
-assert.equal(defaultPlotView({ compact: false, requested: "timeline" }), "timeline");
-assert.equal(defaultPlotView({ compact: true, stored: "web" }), "web");
-assert.equal(defaultPlotView({ compact: false, stored: "timeline" }), "timeline");
-assert.equal(defaultPlotView({ compact: true, requested: "web", stored: "timeline" }), "web");
-assert.equal(defaultPlotView({ compact: false, eventId: "frenemies-39-walkout" }), "timeline");
-assert.equal(defaultPlotView({ compact: true, requested: "web", eventId: "frenemies-39-walkout" }), "web");
+assert.equal(defaultPlotView(), "web");
+assert.equal(defaultPlotView({ requested: "web" }), "web");
+assert.equal(defaultPlotView({ requested: "timeline" }), "timeline");
+assert.equal(defaultPlotView({ eventId: "frenemies-39-walkout" }), "timeline");
+assert.equal(defaultPlotView({ requested: "web", eventId: "frenemies-39-walkout" }), "web");
 
 const phoneH3 = "https://plotmaniac.com/?plot=h3";
-assert.equal(resolvePlotView(parseState(phoneH3), { compact: true, href: phoneH3 }), "timeline");
-assert.equal(resolvePlotView(parseState(phoneH3), { compact: false, href: phoneH3 }), "web");
+assert.equal(resolvePlotView(parseState(phoneH3), { href: phoneH3 }), "web");
 assert.equal(
   resolvePlotView(parseState("https://plotmaniac.com/?plot=h3&view=web"), {
-    compact: true,
     href: "https://plotmaniac.com/?plot=h3&view=web",
   }),
   "web",
 );
 assert.equal(
   resolvePlotView(parseState("https://plotmaniac.com/?plot=h3&view=timeline"), {
-    compact: false,
     href: "https://plotmaniac.com/?plot=h3&view=timeline",
   }),
   "timeline",
 );
-assert.equal(resolvePlotView(parseState(phoneH3), { compact: true, stored: "web", href: phoneH3 }), "web");
 assert.equal(
   resolvePlotView(parseState("https://plotmaniac.com/?plot=h3#frenemies-39-walkout", { people: ids, eras: new Set(events.map((event) => event.era)) }), {
-    compact: false,
     href: "https://plotmaniac.com/?plot=h3#frenemies-39-walkout",
   }),
   "timeline",
@@ -748,9 +739,22 @@ const obamaLayoutOpts = {
 const obama2008 = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2008 });
 const obama2012 = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2012 });
 const obamaEconomy = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2012, topicId: "economy" });
-assert.equal(obama2012.nodes.length, obamaPeople.length, "every policy sits on the board");
-assert.ok(obama2012.labels?.length >= 5, "topic labels mark the field");
-assert.equal(obamaEconomy.nodes.every((node) => node.camp === "center" || node.topic === "economy"), true);
+assert.equal(
+  obama2012.nodes.length,
+  obamaPeople.length + obama.topics.length,
+  "policies and topic hubs sit on the board",
+);
+const obamaHubs = obama2012.nodes.filter((node) => node.camp === "topic");
+assert.equal(obamaHubs.length, obama.topics.length, "each topic category is a hub on the web");
+assert.ok(
+  obama2012.edges.some((edge) => edge.from === "barack-obama" && edge.to === "topic:economy"),
+  "center links to topic hubs",
+);
+assert.ok(
+  obama2012.edges.some((edge) => edge.from === "topic:social" && edge.to === "same-sex-marriage"),
+  "policies branch from their topic hub",
+);
+assert.equal(obamaEconomy.nodes.every((node) => node.camp === "center" || node.camp === "topic" || node.topic === "economy"), true);
 assert.ok(obamaEconomy.nodes.length < obama2012.nodes.length);
 assert.ok(obamaEconomy.nodes.length > 5);
 const marriage2008 = obama2008.nodes.find((node) => node.id === "same-sex-marriage");
