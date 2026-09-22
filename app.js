@@ -464,7 +464,11 @@ function renderWeb() {
     keyItems.push(["near", "Closer · more beats"]);
   } else if (plot.arrangement !== "camps") {
     if (plot.includeOrbit) keyItems.push(["orbit", plot.orbitLabel || "Around the show"]);
-    keyItems.push(["near", "Closer · more beats"]);
+    if (plot.includeOrbit && plotHubs(plot).length >= 2) {
+      keyItems.push(["near", "One hub · out in that corner"]);
+    } else {
+      keyItems.push(["near", "Closer · more beats"]);
+    }
   }
   keyItems.forEach(([camp, label]) => {
     const item = document.createElement("li");
@@ -1412,13 +1416,14 @@ function paintWeb(stage, { animate = true } = {}) {
     enemyKinds: plot.enemyKinds,
     arrangement: plot.arrangement,
     year: plot.year ? state.year : undefined,
-    events: hubEvents(),
+    events,
     width,
     height,
     topics: plot.topics,
     topicId: openTopic,
     includeOrbit: Boolean(plot.includeOrbit),
     hubIds: plotHubs(plot).map((hub) => hub.centerId),
+    hubs: plotHubs(plot),
   });
   stage.classList.toggle("is-quiet", !animate);
   if ((camps || topics) && layout.height >= height) stage.style.height = `${layout.height}px`;
@@ -1459,6 +1464,14 @@ function paintWeb(stage, { animate = true } = {}) {
     el.textContent = label.text;
     el.style.left = `${label.x}px`;
     el.style.top = `${label.y}px`;
+    stage.appendChild(el);
+  });
+  (layout.regions || []).forEach((region) => {
+    const el = document.createElement("div");
+    el.className = "hub-region";
+    el.textContent = region.label;
+    el.style.left = `${region.x}px`;
+    el.style.top = `${region.y}px`;
     stage.appendChild(el);
   });
 

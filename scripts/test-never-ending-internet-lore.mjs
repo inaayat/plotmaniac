@@ -14,6 +14,8 @@ import {
   groupCountriesByStatus,
   hubCenterId,
   hubOf,
+  hubsForPerson,
+  WEB_MIN_BEATS,
   RELATION_BLOCS,
   relationsFieldEdges,
   relationsFieldLayout,
@@ -381,17 +383,25 @@ assert.match(
   /hub=trisha/,
 );
 
-const sharedWeb = webLayout(people, relations, {
-  centerId: "ethan-klein",
+assert.equal(WEB_MIN_BEATS, 2);
+assert.deepEqual(hubsForPerson("dan-swerdlove", relations, ["ethan-klein", "david-dobrik", "trisha-paytas"]), ["ethan-klein"]);
+assert.deepEqual(hubsForPerson("natalie-mariduena", relations, ["ethan-klein", "david-dobrik", "trisha-paytas"]), ["david-dobrik"]);
+assert.ok(hubsForPerson("jeff-wittek", relations, ["ethan-klein", "david-dobrik", "trisha-paytas"]).length >= 2);
+
+const hubFieldOpts = {
   friendKinds: youtubers.friendKinds,
   enemyKinds: youtubers.enemyKinds,
-  events: h3Events,
+  events,
   includeOrbit: true,
   hubIds: ["ethan-klein", "david-dobrik", "trisha-paytas"],
+  hubs: youtubers.hubs,
   width: 1400,
   height: 980,
-});
-assert.equal(sharedWeb.nodes.length, people.length, "shared web shows every YouTuber-sphere person once");
+};
+const sharedWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "ethan-klein" });
+assert.ok(sharedWeb.nodes.length < people.length, "one-beat people stay off the shared web");
+assert.equal(sharedWeb.nodes.find((node) => node.id === "oliver-tree"), undefined);
+assert.equal(sharedWeb.nodes.find((node) => node.id === "oscar-gracey"), undefined);
 assert.equal(sharedWeb.nodes.filter((node) => node.id === "trisha-paytas").length, 1);
 assert.equal(sharedWeb.nodes.find((node) => node.id === "ethan-klein").camp, "center");
 assert.equal(sharedWeb.nodes.find((node) => node.id === "david-dobrik").camp, "orbit");
@@ -402,18 +412,39 @@ assert.equal(sharedWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "
 assert.ok(sharedWeb.edges.some((edge) =>
   (edge.from === "trisha-paytas" && edge.to === "jason-nash")
   || (edge.from === "jason-nash" && edge.to === "trisha-paytas")));
+assert.equal(sharedWeb.regions.length, 3);
+assert.ok(sharedWeb.regions.some((region) => /trisha/i.test(region.label)));
 
-const dobrikWeb = webLayout(people, relations, {
-  centerId: "david-dobrik",
-  friendKinds: youtubers.friendKinds,
-  enemyKinds: youtubers.enemyKinds,
-  events: dobrikEvents,
-  includeOrbit: true,
-  hubIds: ["ethan-klein", "david-dobrik", "trisha-paytas"],
-  width: 1400,
-  height: 980,
-});
-assert.equal(dobrikWeb.nodes.length, people.length);
+function nodeOf(layoutNodes, id) {
+  return layoutNodes.find((item) => item.id === id);
+}
+function distNodes(a, b) {
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+const pageMid = { x: 700, y: 490 };
+const ethanOnField = nodeOf(sharedWeb.nodes, "ethan-klein");
+const davidOnField = nodeOf(sharedWeb.nodes, "david-dobrik");
+const trishaOnField = nodeOf(sharedWeb.nodes, "trisha-paytas");
+const danOnField = nodeOf(sharedWeb.nodes, "dan-swerdlove");
+const natalieOnField = nodeOf(sharedWeb.nodes, "natalie-mariduena");
+const jeffOnField = nodeOf(sharedWeb.nodes, "jeff-wittek");
+const mosesOnField = nodeOf(sharedWeb.nodes, "moses-hacmon");
+assert.ok(ethanOnField.x < pageMid.x && ethanOnField.y < pageMid.y, "Ethan sits in the top-left hub corner");
+assert.ok(davidOnField.x > pageMid.x && davidOnField.y < pageMid.y, "Dobrik sits in the top-right hub corner");
+assert.ok(trishaOnField.y > pageMid.y, "Trisha sits in the bottom hub corner");
+assert.ok(danOnField, "Dan stays on the web");
+assert.equal(danOnField.hubRegion, "ethan-klein");
+assert.ok(distNodes(danOnField, ethanOnField) < distNodes(danOnField, davidOnField), "Dan stays on Ethan's side");
+assert.ok(distNodes(danOnField, ethanOnField) < distNodes(danOnField, trishaOnField), "Dan is not pulled into Trisha's corner");
+assert.ok(distNodes(danOnField, pageMid) > distNodes(jeffOnField, pageMid), "single-hub Dan sits farther from the middle than multi-hub Jeff");
+assert.ok(distNodes(danOnField, pageMid) > distNodes(mosesOnField, pageMid), "single-hub Dan sits farther from the middle than Moses");
+assert.equal(natalieOnField.hubRegion, "david-dobrik");
+assert.ok(distNodes(natalieOnField, davidOnField) < distNodes(natalieOnField, ethanOnField), "Natalie stays in Dobrik's corner");
+assert.equal(nodeOf(sharedWeb.nodes, "hasan-piker").hubRegion, "ethan-klein");
+
+const dobrikWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "david-dobrik" });
+assert.ok(dobrikWeb.nodes.length < people.length);
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "oliver-tree"), undefined);
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "david-dobrik").camp, "center");
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "ethan-klein").camp, "orbit");
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "jeff-wittek").camp, "enemy");
@@ -422,24 +453,15 @@ assert.equal(dobrikWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "
 assert.ok(dobrikWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "trisha-paytas").plotHub, true);
 
-const trishaWeb = webLayout(people, relations, {
-  centerId: "trisha-paytas",
-  friendKinds: youtubers.friendKinds,
-  enemyKinds: youtubers.enemyKinds,
-  events: trishaEvents,
-  includeOrbit: true,
-  hubIds: ["ethan-klein", "david-dobrik", "trisha-paytas"],
-  width: 1400,
-  height: 980,
-});
-assert.equal(trishaWeb.nodes.length, people.length);
+const trishaWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "trisha-paytas" });
+assert.ok(trishaWeb.nodes.length < people.length);
 assert.equal(trishaWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "center");
 assert.equal(trishaWeb.nodes.find((node) => node.id === "ethan-klein").camp, "enemy");
 assert.equal(trishaWeb.nodes.find((node) => node.id === "ethan-klein").plotHub, true);
 assert.equal(trishaWeb.nodes.find((node) => node.id === "david-dobrik").camp, "enemy");
 assert.equal(trishaWeb.nodes.find((node) => node.id === "david-dobrik").plotHub, true);
 assert.equal(trishaWeb.nodes.find((node) => node.id === "moses-hacmon").camp, "friend");
-assert.equal(trishaWeb.nodes.find((node) => node.id === "oscar-gracey").camp, "friend");
+assert.equal(trishaWeb.nodes.find((node) => node.id === "oscar-gracey"), undefined);
 assert.equal(trishaWeb.nodes.find((node) => node.id === "gabbie-hanna").camp, "enemy");
 assert.ok(trishaWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
 
@@ -771,6 +793,8 @@ assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
+assert.match(appSource, /hub-region/, "youtubers web labels hub corners");
+assert.match(css, /\.hub-region/, "hub corner label styles");
 assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
 assert.match(appSource, /renderRelationSentimentChart/, "country drawer can chart bilateral warmth");
 assert.match(css, /\.relation-sentiment/, "relationship warmth chart styles");

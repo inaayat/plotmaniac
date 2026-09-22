@@ -73,6 +73,21 @@ export function hubCenterId(plot, hubId) {
   return hubOf(plot, hubId)?.centerId || plot?.centerId || "";
 }
 
+export const WEB_MIN_BEATS = 2;
+
+export function hubsForPerson(personId, relations, hubIds = []) {
+  const hubs = new Set();
+  const known = new Set(hubIds);
+  if (known.has(personId)) hubs.add(personId);
+  (relations || []).forEach((relation) => {
+    const other = relation.from === personId ? relation.to
+      : relation.to === personId ? relation.from
+        : "";
+    if (other && known.has(other)) hubs.add(other);
+  });
+  return [...hubs];
+}
+
 export function eventTease(event, limit = 132) {
   if (event.tease) return event.tease;
   const summary = String(event.summary || "").trim();
@@ -823,6 +838,24 @@ export function webLayout(people, relations, options = {}) {
   foes.sort(byName);
   orbit.sort(byName);
   const applicable = relations.filter((relation) => coversYear(relation, options.year));
+  const hubIds = Array.isArray(options.hubIds) ? options.hubIds.filter(Boolean) : [];
+
+  if (options.includeOrbit && hubIds.length >= 2 && options.arrangement !== "camps" && options.arrangement !== "topics") {
+    return hubFieldLayout({
+      people,
+      relations: applicable,
+      center,
+      friendKinds,
+      enemyKinds,
+      year: options.year,
+      events: options.events,
+      width,
+      height,
+      hubIds,
+      hubs: options.hubs,
+      minBeats: options.minBeats ?? WEB_MIN_BEATS,
+    });
+  }
 
   if (options.arrangement === "camps") {
     return campArrangement({ center, friends, foes, relations: applicable, width, height });
@@ -885,9 +918,9 @@ export function webLayout(people, relations, options = {}) {
   const minRadius = centerSize / 2 + nodeSize / 2 + 28;
   const fitR = Math.min(radiusX, radiusY);
 
-  const hubIds = new Set(options.hubIds || []);
+  const hubIdSet = new Set(hubIds);
   const nodes = [];
-  if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center", plotHub: hubIds.has(center.id) });
+  if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center", plotHub: hubIdSet.has(center.id) });
   const placed = weighted
     ? orderByBeats(ordered, counts)
     : ordered.map((person, index) => ({ person, index }));
@@ -906,7 +939,7 @@ export function webLayout(people, relations, options = {}) {
       camp,
       beats,
       closeness,
-      plotHub: hubIds.has(person.id),
+      plotHub: hubIdSet.has(person.id),
     });
   });
 
@@ -921,6 +954,220 @@ export function webLayout(people, relations, options = {}) {
   }
 
   return { width, height, nodes, edges: edgesAmong(nodes, applicable), nodeSize, centerSize };
+}
+
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function hubCornerSlots(hubIds, width, height) {
+  const count = hubIds.length;
+  const corners = count === 2
+    ? [{ x: 0.16, y: 0.42 }, { x: 0.84, y: 0.42 }]
+    : count === 3
+      ? [{ x: 0.14, y: 0.16 }, { x: 0.86, y: 0.16 }, { x: 0.50, y: 0.88 }]
+      : hubIds.map((_, index) => {
+        const angle = -Math.PI / 2 + (Math.PI * 2 * index) / count;
+        return { x: 0.5 + Math.cos(angle) * 0.38, y: 0.5 + Math.sin(angle) * 0.38 };
+      });
+  const page = { x: width / 2, y: height / 2 };
+  return hubIds.map((id, index) => {
+    const corner = corners[index] || corners[0];
+    const cornerX = corner.x * width;
+    const cornerY = corner.y * height;
+    return {
+      id,
+      cornerX,
+      cornerY,
+      x: lerp(page.x, cornerX, 0.40),
+      y: lerp(page.y, cornerY, 0.40),
+    };
+  });
+}
+
+function hubFieldLayout({
+  people,
+  relations,
+  center,
+  friendKinds,
+  enemyKinds,
+  year,
+  events,
+  width,
+  height,
+  hubIds,
+  hubs = [],
+  minBeats = WEB_MIN_BEATS,
+}) {
+  const page = { x: width / 2, y: height / 2 };
+  const counts = beatCounts(events, people.map((person) => person.id));
+  const visible = people.filter((person) => {
+    if (hubIds.includes(person.id)) return true;
+    return (counts.get(person.id) || 0) >= minBeats;
+  });
+  const count = Math.max(visible.length, 1);
+  let nodeSize = 72;
+  const minNode = count > 28 ? 28 : 42;
+  for (let attempt = 0; attempt < 16; attempt += 1) {
+    const pad = nodeSize / 2 + 14;
+    const span = Math.min(width, height) - pad * 2;
+    const chord = span * 0.9 / Math.sqrt(count);
+    if (chord >= nodeSize * 1.15 || nodeSize <= minNode) break;
+    nodeSize -= 4;
+  }
+  const centerSize = Math.round(nodeSize * 1.42);
+  const slots = hubCornerSlots(hubIds, width, height);
+  const slotOf = new Map(slots.map((slot) => [slot.id, slot]));
+  const labelFor = (id) =>
+    hubs.find((hub) => hub.centerId === id)?.label
+    || people.find((person) => person.id === id)?.name
+    || id;
+
+  const groups = new Map(hubIds.map((id) => [id, []]));
+  const shared = [];
+  visible.forEach((person) => {
+    if (hubIds.includes(person.id)) return;
+    const affiliated = hubsForPerson(person.id, relations, hubIds);
+    if (affiliated.length === 1) groups.get(affiliated[0])?.push(person);
+    else shared.push({ person, affiliated });
+  });
+
+  const nodes = [];
+  hubIds.forEach((id) => {
+    const person = visible.find((item) => item.id === id);
+    const slot = slotOf.get(id);
+    if (!person || !slot) return;
+    const camp = person.id === center?.id
+      ? "center"
+      : campOf(person.id, relations, center.id, friendKinds, enemyKinds, year);
+    nodes.push({
+      ...person,
+      x: slot.x,
+      y: slot.y,
+      camp,
+      beats: counts.get(person.id) || 0,
+      closeness: 1,
+      plotHub: true,
+      hubRegion: id,
+    });
+  });
+
+  hubIds.forEach((hubId) => {
+    const slot = slotOf.get(hubId);
+    const members = (groups.get(hubId) || []).slice().sort((a, b) =>
+      (counts.get(b.id) || 0) - (counts.get(a.id) || 0) || a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+    const most = members[0] ? counts.get(members[0].id) || 0 : 0;
+    const fewest = members.length ? Math.min(...members.map((person) => counts.get(person.id) || 0)) : 0;
+    const outX = slot.cornerX - slot.x;
+    const outY = slot.cornerY - slot.y;
+    const outLen = Math.hypot(outX, outY) || 1;
+    const nx = -outY / outLen;
+    const ny = outX / outLen;
+    members.forEach((person, index) => {
+      const beats = counts.get(person.id) || 0;
+      const closeness = most > fewest ? (beats - fewest) / (most - fewest) : 0.45;
+      const along = 0.22 + (1 - closeness) * 0.72;
+      const fan = members.length === 1 ? 0 : (index - (members.length - 1) / 2) / Math.max(members.length - 1, 1);
+      const side = fan * Math.min(width, height) * 0.11;
+      nodes.push({
+        ...person,
+        x: lerp(slot.x, slot.cornerX, along) + nx * side,
+        y: lerp(slot.y, slot.cornerY, along) + ny * side,
+        camp: campOf(person.id, relations, center.id, friendKinds, enemyKinds, year),
+        beats,
+        closeness,
+        plotHub: false,
+        hubRegion: hubId,
+      });
+    });
+  });
+
+  shared.forEach(({ person, affiliated }, index) => {
+    const spots = affiliated.map((id) => slotOf.get(id)).filter(Boolean);
+    const mx = spots.length ? spots.reduce((sum, slot) => sum + slot.x, 0) / spots.length : page.x;
+    const my = spots.length ? spots.reduce((sum, slot) => sum + slot.y, 0) / spots.length : page.y;
+    const pull = affiliated.length >= 3 ? 0.55 : 0.28;
+    const angle = (index * Math.PI * (3 - Math.sqrt(5))) - Math.PI / 2;
+    const jitter = 18 + (index % 5) * 7;
+    nodes.push({
+      ...person,
+      x: lerp(mx, page.x, pull) + Math.cos(angle) * jitter,
+      y: lerp(my, page.y, pull) + Math.sin(angle) * jitter,
+      camp: campOf(person.id, relations, center.id, friendKinds, enemyKinds, year),
+      beats: counts.get(person.id) || 0,
+      closeness: 0.75,
+      plotHub: false,
+      hubRegion: "shared",
+    });
+  });
+
+  spreadField(nodes, {
+    pins: slots.map((slot) => ({ id: slot.id, x: slot.x, y: slot.y })),
+    minDist: Math.max(nodeSize * 0.95, 36),
+    minX: nodeSize / 2 + 10,
+    maxX: width - (nodeSize / 2 + 10),
+    minY: nodeSize / 2 + 10,
+    maxY: height - (nodeSize / 2 + 24),
+  });
+
+  const regions = slots.map((slot) => ({
+    id: slot.id,
+    label: labelFor(slot.id),
+    x: slot.cornerX,
+    y: slot.cornerY,
+  }));
+
+  return {
+    width,
+    height,
+    nodes,
+    edges: edgesAmong(nodes, relations),
+    nodeSize,
+    centerSize,
+    regions,
+  };
+}
+
+function spreadField(nodes, bounds) {
+  const { minDist, minX, maxX, minY, maxY } = bounds;
+  const pins = new Map((bounds.pins || []).map((pin) => [pin.id, pin]));
+  const clamp = (node) => {
+    node.x = Math.min(maxX, Math.max(minX, node.x));
+    node.y = Math.min(maxY, Math.max(minY, node.y));
+  };
+  for (let pass = 0; pass < 64; pass += 1) {
+    let moved = false;
+    for (let i = 0; i < nodes.length; i += 1) {
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const dist = Math.hypot(dx, dy) || 0.001;
+        if (dist >= minDist) continue;
+        const push = (minDist - dist) / 2;
+        const ux = dx / dist;
+        const uy = dy / dist;
+        const aPin = pins.has(a.id);
+        const bPin = pins.has(b.id);
+        const aMove = aPin && !bPin ? 0.15 : aPin && bPin ? 0.2 : 1;
+        const bMove = bPin && !aPin ? 0.15 : aPin && bPin ? 0.2 : 1;
+        a.x -= ux * push * aMove;
+        a.y -= uy * push * aMove;
+        b.x += ux * push * bMove;
+        b.y += uy * push * bMove;
+        moved = true;
+      }
+    }
+    pins.forEach((pin, id) => {
+      const node = nodes.find((item) => item.id === id);
+      if (!node) return;
+      node.x += (pin.x - node.x) * 0.45;
+      node.y += (pin.y - node.y) * 0.45;
+    });
+    nodes.forEach(clamp);
+    if (!moved && pass > 4) break;
+  }
 }
 
 function beatCounts(events, ids) {
