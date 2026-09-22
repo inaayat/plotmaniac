@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { buildFrames, chronoKey, sourceRecords } from "../partition-model.js";
-import { flows, markers, regions, seams } from "../partition-geography.js";
+import { flows, markers, outlines, regions, seams } from "../partition-geography.js";
 import {
   ALL,
   campOf,
@@ -1557,6 +1557,22 @@ assert.equal(june.visual.seams.punjab, "proposed");
 const reunited = partitionFrames.find((frame) => frame.id === "evt-1911-bengal-reunite");
 assert.equal(reunited.visual.seams.bengal, "off");
 assert.equal(reunited.visual.fills["bengal-east"], "raj");
+assert.equal(partitionFrames.every((frame) => frame.visual.camera === "all"), true);
+
+function ringSpan(polygons) {
+  const points = polygons.flat(2);
+  const lons = points.map((point) => point[0]);
+  const lats = points.map((point) => point[1]);
+  return [Math.max(...lons) - Math.min(...lons), Math.max(...lats) - Math.min(...lats)];
+}
+const [pakistanWidth, pakistanHeight] = ringSpan(outlines.pakistan);
+const [bangladeshWidth, bangladeshHeight] = ringSpan(outlines.bangladesh);
+assert.ok(pakistanWidth > 12 && pakistanHeight > 8, "Pakistan outline keeps the full west wing");
+assert.ok(bangladeshWidth > 3 && bangladeshHeight > 4, "Bangladesh outline keeps the full east wing");
+for (const region of regions) {
+  assert.ok(region.polygons?.length, `${region.id} has a coastline`);
+  assert.ok(region.polygons[0][0].length >= 3, `${region.id} ring`);
+}
 
 const portraits = readJson("../data/partition-of-india/portraits.json");
 const portraitLicenses = new Set(["Public domain", "CC0", "CC BY 3.0", "CC BY-SA 3.0", "GODL-India"]);

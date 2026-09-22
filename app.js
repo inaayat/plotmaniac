@@ -101,6 +101,15 @@ function partitionFrameId(frames) {
   return frames.includes(requested) ? requested : frames[0];
 }
 
+function labelViews() {
+  const history = plot?.arrangement === "historical-map";
+  const web = $("view-web");
+  const timeline = $("view-timeline");
+  if (!web || !timeline) return;
+  web.textContent = history ? "People" : "The web";
+  timeline.textContent = "Full timeline";
+}
+
 function rememberView(view) {
   if (view !== "timeline" && view !== "web") return;
   try {
@@ -177,6 +186,22 @@ function onPop() {
     showPlot(matched.id, { history: "none", fromUrl: true });
     return;
   }
+  if (plot.arrangement === "historical-map" && partitionReference) {
+    const playerIds = new Set(partitionReference.keyPlayers.map((player) => player.id));
+    const parsed = parseState(location.href, { people: playerIds });
+    state = {
+      view: parsed.view === "timeline" || parsed.view === "person" ? parsed.view : "web",
+      person: parsed.view === "person" ? parsed.person : ALL,
+      era: ALL,
+      query: "",
+      eventId: partitionFrameId(buildFrames(partitionReference).map((frame) => frame.id)),
+      year: null,
+      country: "",
+      hub: "",
+    };
+    render();
+    return;
+  }
   const eras = new Set(events.map((event) => event.era));
   const parsed = parseState(location.href, {
     people: new Set(peopleById.keys()),
@@ -234,9 +259,13 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       partitionReference = reference;
       partitionPortraits = portraits || {};
       const frames = buildFrames(reference).map((frame) => frame.id);
+      const playerIds = new Set(reference.keyPlayers.map((player) => player.id));
+      const parsed = fromUrl
+        ? parseState(location.href, { people: playerIds })
+        : { view: "web", person: ALL };
       state = {
-        view: "web",
-        person: ALL,
+        view: parsed.view === "timeline" || parsed.view === "person" ? parsed.view : "web",
+        person: parsed.view === "person" ? parsed.person : ALL,
         era: ALL,
         query: "",
         eventId: partitionFrameId(frames),
@@ -360,6 +389,7 @@ function showPicker({ history = "push" } = {}) {
   fillHubSelect();
   $("view-web").classList.remove("is-active");
   $("view-timeline").classList.remove("is-active");
+  labelViews();
   renderChooser();
   if (history === "push") writeUrl(false);
   if (history === "replace") writeUrl(true);
@@ -434,7 +464,13 @@ function bindChrome() {
   });
   document.querySelectorAll(".views button").forEach((button) => {
     button.addEventListener("click", () => {
-      if (plot?.arrangement === "historical-map") return;
+      if (plot?.arrangement === "historical-map") {
+        state.view = button.dataset.view === "timeline" ? "timeline" : "web";
+        state.person = ALL;
+        rememberView(state.view);
+        render({ push: true });
+        return;
+      }
       state.view = button.dataset.view === "timeline" ? "timeline" : "web";
       state.person = ALL;
       state.eventId = "";
@@ -443,6 +479,12 @@ function bindChrome() {
     });
   });
   window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && plot?.arrangement === "historical-map" && state.view === "person") {
+      state.view = "web";
+      state.person = ALL;
+      render({ push: true });
+      return;
+    }
     if (event.key === "Escape" && state.view === "relation" && plot?.disclosure === "regions") {
       state.view = "web";
       render({ push: true });
@@ -520,6 +562,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
     : null;
   pendingLaneFocus = focusEvent && state.eventId ? state.eventId : "";
   syncLayoutMode();
+  labelViews();
   document.body.dataset.view = state.view;
   $("view-web").classList.toggle("is-active", state.view === "web");
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
@@ -532,18 +575,36 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   if (hubSelect && document.activeElement === hubSelect) hubSelect.blur();
   const app = $("app");
   if (plot?.arrangement === "historical-map" && partitionReference) {
-    document.body.dataset.view = "web";
     document.body.dataset.board = "history";
-    state.view = "web";
-    if (!partitionMount || !app.querySelector(".partition")) {
+    labelViews();
+    const modeKey = `${state.view}:${state.person}`;
+    if (!partitionMount || partitionMount.modeKey() !== modeKey) {
       app.replaceChildren();
       partitionMount = mountPartition(app, partitionReference, {
         frameId: state.eventId,
+        view: state.view,
+        personId: state.person,
         portraits: partitionPortraits,
         onFrame(id, { historyMode } = {}) {
           state.eventId = id;
-          state.view = "web";
           writeUrl(historyMode !== "push");
+        },
+        onOpenPlayer(id) {
+          state.view = "person";
+          state.person = id;
+          render({ push: true });
+        },
+        onOpenTimeline(id) {
+          state.view = "timeline";
+          state.person = ALL;
+          if (id) state.eventId = id;
+          render({ push: true });
+        },
+        onShowMap(id) {
+          state.view = "web";
+          state.person = ALL;
+          if (id) state.eventId = id;
+          render({ push: true });
         },
       });
     } else {

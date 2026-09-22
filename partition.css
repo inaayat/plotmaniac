@@ -1,102 +1,174 @@
-body[data-board="history"] {
-  height: 100dvh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+/* Partition sits in the same field guide: Fraunces, IBM Plex Mono, gold on ink.
+   The map is a figure. The players and the timelines are the page. */
+
+body[data-board="history"],
+body[data-board="history"][data-view="web"],
+body[data-board="history"][data-view="timeline"],
+body[data-board="history"][data-view="person"] {
+  height: auto;
+  min-height: 100dvh;
+  overflow-x: clip;
+  overflow-y: visible;
+  display: block;
 }
 
 body[data-board="history"] .mast {
-  width: auto;
+  width: min(1120px, calc(100% - 32px));
   max-width: none;
-  margin: 0 18px;
-  padding: 8px 0 0;
+  margin: 0 auto;
+  padding: 36px 0 8px;
   text-align: left;
 }
 
 body[data-board="history"] h1 {
-  font-size: clamp(1.7rem, 2.4vw, 2.3rem);
+  font-size: clamp(3rem, 7vw, 4.6rem);
 }
 
-body[data-board="history"] .mark,
+body[data-board="history"] .mark {
+  display: block;
+  width: min(280px, 72%);
+  margin: 14px 0 10px;
+}
+
 body[data-board="history"] .lede,
-body[data-board="history"] #view-web,
-body[data-board="history"] #view-timeline {
-  display: none;
+body[data-board="history"][data-view="timeline"] .lede,
+body[data-board="history"][data-view="person"] .lede {
+  display: block;
+  text-align: left;
+  max-width: 62ch;
 }
 
 body[data-board="history"] .views {
   justify-content: flex-start;
-  margin-top: 4px;
+  margin-top: 16px;
 }
 
-body[data-board="history"] .app {
-  flex: 1;
-  min-height: 0;
-  width: 100%;
+body[data-board="history"] .app,
+body[data-board="history"][data-view="timeline"] .app,
+body[data-board="history"][data-view="person"] .app {
+  display: block;
+  flex: none;
+  width: min(1120px, calc(100% - 32px));
   max-width: none;
-  margin: 0;
+  height: auto;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 12px 0 72px;
+}
+
+body[data-board="history"] .site-footer,
+body[data-board="history"][data-view="timeline"] .site-footer,
+body[data-board="history"][data-view="person"] .site-footer {
+  display: block;
+  position: static;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 28px;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  text-align: left;
 }
 
-body[data-board="history"] .site-footer { display: none; }
-
-.partition {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+body[data-board="history"] #footer-note,
+body[data-board="history"][data-view="timeline"] #footer-note,
+body[data-board="history"][data-view="person"] #footer-note {
+  display: block;
 }
 
-.partition-stage {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  width: 100%;
+.partition h2,
+.partition h3,
+.partition .country-label {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.partition h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.05;
+  margin: 4px 0 10px;
+}
+
+.partition h3 {
+  font-size: 1.15rem;
+  margin: 0 0 10px;
+}
+
+.partition-figure {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  gap: 22px 28px;
+  align-items: start;
+}
+
+.partition-map-wrap {
+  min-width: 0;
 }
 
 .partition-map {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 340px;
   display: block;
-  background: #10161c;
+  background: var(--bg);
 }
 
-.partition-ocean {
-  fill: #10161c;
-}
+.partition-ocean { fill: var(--bg); }
 
 .region {
-  stroke: rgba(244, 239, 230, 0.28);
+  stroke: rgba(244, 239, 230, 0.22);
   stroke-width: 1;
   cursor: pointer;
   vector-effect: non-scaling-stroke;
-  transition: fill 700ms ease, stroke 700ms ease, stroke-width 700ms ease;
+  transition: fill 700ms ease, stroke 700ms ease;
 }
 
-.region.fill-raj { fill: #3d5168; }
-.region.fill-princely { fill: #3a342c; }
-.region.fill-india { fill: #c6a15a; }
-.region.fill-pakistan { fill: #2c7a62; }
-.region.fill-eastpak { fill: #1d6a62; }
-.region.fill-bangladesh { fill: #9a4e4a; }
-.region.fill-neighbor { fill: #1a1916; stroke: rgba(244, 239, 230, 0.12); }
-.region.fill-bengal-a { fill: #8ea4bc; }
-.region.fill-bengal-b { fill: #6d927c; }
-.region.fill-pending { fill: #6a5b45; }
+.region.fill-raj { fill: #2c2822; }
+.region.fill-princely { fill: #1c1914; stroke: var(--gold); stroke-dasharray: 3 2; }
+.region.fill-india { fill: #6b5430; }
+.region.fill-pakistan { fill: #3c3832; }
+.region.fill-eastpak { fill: #4e463c; }
+.region.fill-bangladesh { fill: #8a6840; }
+.region.fill-neighbor { fill: #242019; stroke: rgba(244, 239, 230, 0.38); }
+.region.fill-bengal-a { fill: #3a342c; }
+.region.fill-bengal-b { fill: #52483a; }
+.region.fill-pending { fill: #3a3224; stroke: var(--gold); }
 
 .region.is-emphasis {
-  stroke: #f4efe6;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+
+.country-outline {
+  fill: none;
+  stroke: rgba(244, 239, 230, 0.78);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.country-outline.is-pakistan,
+.country-outline.is-bangladesh {
   stroke-width: 2.4;
+}
+
+.country-outline.is-ahead {
+  stroke: var(--gold);
+  stroke-dasharray: 5 4;
+}
+
+.country-outline.is-set {
+  stroke: var(--ink);
+  stroke-dasharray: none;
+}
+
+.country-outline.is-india {
+  stroke-width: 1.25;
 }
 
 .decision {
   fill: none;
-  stroke: #f4efe6;
-  stroke-width: 2.4;
+  stroke: var(--ink);
+  stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
@@ -104,7 +176,7 @@ body[data-board="history"] .site-footer { display: none; }
   stroke-dashoffset: 1;
   opacity: 0;
   pointer-events: none;
-  transition: stroke-dashoffset 760ms ease, opacity 420ms ease, stroke-width 420ms ease, stroke 420ms ease;
+  transition: stroke-dashoffset 760ms ease, opacity 420ms ease, stroke 420ms ease;
 }
 
 .decision.is-proposed,
@@ -114,22 +186,20 @@ body[data-board="history"] .site-footer { display: none; }
 }
 
 .decision.is-proposed {
-  stroke: #e8c47a;
-  stroke-width: 2.2;
+  stroke: var(--gold);
   stroke-dasharray: 0.045 0.028;
 }
 
 .decision.is-set {
-  stroke: #f4efe6;
-  stroke-width: 2.8;
+  stroke: var(--ink);
   stroke-dasharray: 1;
 }
 
 .claims {
   fill: none;
-  stroke: #e8c47a;
-  stroke-width: 2;
-  stroke-dasharray: 0.03 0.02;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
   vector-effect: non-scaling-stroke;
   opacity: 0;
   pointer-events: none;
@@ -140,19 +210,18 @@ body[data-board="history"] .site-footer { display: none; }
 
 .flow {
   fill: none;
-  stroke: #f4efe6;
-  stroke-width: 1.6;
+  stroke: var(--ink);
+  stroke-width: 1.4;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
-  stroke-dasharray: 0.018 0.014;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 4 3;
   opacity: 0;
   pointer-events: none;
   transition: opacity 600ms ease;
 }
 
 .flow.is-on {
-  opacity: 0.85;
+  opacity: 0.8;
   animation: flow-move 2.8s linear infinite;
 }
 
@@ -165,43 +234,31 @@ body[data-board="history"] .site-footer { display: none; }
 .map-marker.is-on { opacity: 1; }
 
 .map-marker circle {
-  fill: #e8c47a;
-  stroke: #0c0b09;
+  fill: var(--gold);
+  stroke: var(--bg);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
 
 .map-marker text,
-.region-label,
-.country-label {
-  fill: #f4efe6;
+.region-label {
+  fill: var(--muted);
   font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.42px;
   pointer-events: none;
 }
 
-.map-marker text,
-.region-label { font-size: 11px; }
-
 .country-label {
-  font-size: 18px;
-  letter-spacing: 0.08em;
-}
-
-.partition-legend,
-.partition-legend-note {
-  position: absolute;
-  left: 16px;
-  z-index: 2;
+  fill: var(--ink);
+  font-size: 0.95px;
   pointer-events: none;
 }
 
 .partition-legend {
-  top: 12px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 14px;
-  max-width: min(640px, 58vw);
-  margin: 0;
+  margin: 10px 0 0;
   padding: 0;
   list-style: none;
 }
@@ -211,184 +268,85 @@ body[data-board="history"] .site-footer { display: none; }
   align-items: center;
   gap: 6px;
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
 }
 
 .partition-legend .swatch {
   width: 12px;
   height: 12px;
-  border: 1px solid rgba(244, 239, 230, 0.4);
+  border: 1px solid rgba(244, 239, 230, 0.35);
   display: block;
 }
 
-.partition-legend .swatch.fill-raj { background: #3d5168; }
-.partition-legend .swatch.fill-princely { background: #3a342c; }
-.partition-legend .swatch.fill-india { background: #c6a15a; }
-.partition-legend .swatch.fill-pakistan { background: #2c7a62; }
-.partition-legend .swatch.fill-eastpak { background: #1d6a62; }
-.partition-legend .swatch.fill-bangladesh { background: #9a4e4a; }
-.partition-legend .swatch.fill-pending { background: #6a5b45; }
-.partition-legend .swatch.fill-flow { background: transparent; border-top: 2px solid #f4efe6; height: 0; }
+.partition-legend .swatch.fill-raj { background: #2c2822; }
+.partition-legend .swatch.fill-princely { background: #1c1914; }
+.partition-legend .swatch.fill-india { background: #6b5430; }
+.partition-legend .swatch.fill-pakistan { background: #3c3832; }
+.partition-legend .swatch.fill-eastpak { background: #4e463c; }
+.partition-legend .swatch.fill-bangladesh { background: #8a6840; }
+.partition-legend .swatch.fill-pending { background: #3a3224; }
+.partition-legend .swatch.fill-neighbor { background: #242019; }
 
 .partition-legend-note,
-.partition-casualty {
-  top: 42px;
-  max-width: min(460px, 42vw);
-  color: var(--muted);
-  font-size: 0.66rem;
-  line-height: 1.4;
-}
-
-.partition-casualty {
-  top: 78px;
-}
-
-.partition-inspector {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: min(380px, 34vw);
-  max-height: calc(100% - 24px);
-  overflow: auto;
-  z-index: 3;
-  padding: 14px 14px 16px;
-  background: rgba(12, 11, 9, 0.88);
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-}
-
-.partition.is-details-hidden .partition-inspector { display: none; }
-
-.partition-inspector h3,
-.partition-inspector h4 {
-  font-family: Fraunces, Georgia, serif;
-  font-weight: 560;
-  letter-spacing: 0;
-}
-
-.partition-inspector h3 { font-size: 1.25rem; margin: 4px 0 6px; }
-.partition-inspector h4 { font-size: 0.95rem; margin: 12px 0 4px; }
-
-.partition-inspector p,
-.partition-inspector li {
+.partition-casualty,
+.partition-beat p,
+.partition-person-brief p,
+.partition-person-brief li,
+.partition-prince-detail {
   color: var(--ink);
-  font-size: 0.75rem;
-  line-height: 1.45;
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 
-.partition-date { color: var(--muted) !important; margin-bottom: 8px; }
+.partition-legend-note,
+.partition-casualty,
+.partition-date {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.partition-beat {
+  min-width: 0;
+}
 
 .partition-points,
 .partition-actions,
 .partition-sources {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   padding-left: 1.1rem;
 }
 
-.partition-players {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
+.partition-points li,
+.partition-actions li,
+.partition-sources li {
+  margin: 4px 0;
 }
 
-.partition-players button,
-.partition-toggle {
+.partition-text-button,
+.partition-inline-players button,
+.partition-prince {
   border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  padding: 4px 10px;
+  padding: 6px 10px;
   font-size: 0.68rem;
 }
 
-.partition-players button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.partition-chip-photo,
-.partition-monogram {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex: none;
-}
-
-.partition-monogram {
-  display: grid;
-  place-items: center;
-  background: #2a2622;
+.partition-text-button {
+  margin-top: 14px;
   color: var(--gold);
-  font-size: 0.62rem;
 }
 
-.partition-portrait {
-  display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  gap: 8px;
-  align-items: center;
-  margin: 0 0 8px;
-}
-
-.partition-portrait img {
-  width: 88px;
-  height: 88px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.partition-portrait figcaption,
-.partition-credits {
-  color: var(--muted);
-  font-size: 0.66rem;
-  line-height: 1.35;
-}
-
-.partition-credits {
-  position: relative;
-}
-
-.partition-credits ul {
-  position: absolute;
-  right: 0;
-  bottom: calc(100% + 8px);
-  width: min(440px, 72vw);
-  max-height: 240px;
-  overflow: auto;
-  margin: 0;
-  padding: 8px 12px 8px 22px;
-  background: rgba(12, 11, 9, 0.96);
-  border: 1px solid var(--line-strong);
-  z-index: 6;
-}
-
-.partition-credits a,
-.partition-portrait a { color: var(--gold); }
-
-.partition-players button.is-selected,
-.partition-toggle[aria-expanded="true"] {
+.partition-text-button:hover,
+.partition-inline-players button:hover,
+.partition-prince:hover,
+.partition-card:hover {
   border-color: var(--gold);
   color: var(--gold);
 }
 
-.partition-player,
-.partition-extra,
-.partition-princely,
-.partition-region {
-  margin-top: 10px;
+.partition-scrubber {
+  margin: 18px 0 36px;
   padding-top: 8px;
   border-top: 1px solid var(--line);
-}
-
-.partition-sources a { color: var(--gold); }
-
-.partition-scrubber {
-  width: 100%;
-  padding: 8px 18px 16px;
-  background: rgba(12, 11, 9, 0.92);
-  border-top: 1px solid var(--line);
-  z-index: 3;
 }
 
 .partition-now {
@@ -396,31 +354,23 @@ body[data-board="history"] .site-footer { display: none; }
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 8px 16px;
   align-items: baseline;
-  width: 100%;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .partition-now h2 {
-  font-family: Fraunces, Georgia, serif;
-  font-size: clamp(1rem, 1.6vw, 1.35rem);
-  font-weight: 560;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.partition-controls {
-  display: flex;
-  gap: 12px;
-  align-items: center;
+  margin: 0;
 }
 
 .partition-claims {
   display: flex;
   gap: 6px;
   align-items: center;
-  font-size: 0.68rem;
   color: var(--muted);
+  font-size: 0.68rem;
 }
 
 .partition-range {
@@ -431,23 +381,212 @@ body[data-board="history"] .site-footer { display: none; }
 .partition-ticks {
   position: relative;
   height: 28px;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .partition-ticks button {
   position: absolute;
   top: 0;
   transform: translateX(-50%);
-  font-size: 0.62rem;
   color: var(--muted);
+  font-size: 0.62rem;
   white-space: nowrap;
 }
 
 .partition-ticks button.is-active { color: var(--gold); }
 
+.partition-cast-wrap,
+.partition-princes {
+  margin-top: 12px;
+}
+
+.partition-player-block,
+.partition-prince-group {
+  margin-top: 22px;
+}
+
+.partition-cast {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 8px 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partition-card {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 8px 12px;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.partition-card.is-acting {
+  border-color: var(--gold);
+}
+
+.partition-card strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.partition-card em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 0.6rem;
+  line-height: 1.3;
+}
+
+.partition-chip-photo,
+.partition-monogram {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line-strong);
+}
+
+.partition-monogram {
+  display: grid;
+  place-items: center;
+  background: #1c1914;
+  color: var(--gold);
+  font-size: 0.72rem;
+}
+
+.partition .spine-mark .partition-chip-photo,
+.partition .spine-mark .partition-monogram {
+  width: 56px;
+  height: 56px;
+}
+
+.partition-prince-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partition-prince {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  width: 100%;
+  text-align: left;
+  background: var(--panel);
+}
+
+.partition-prince strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.partition-prince span,
+.partition-prince-detail {
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+.partition-prince-detail {
+  margin: 6px 2px 0;
+}
+
+.partition-inline-players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.partition-record .timeline-head {
+  margin-bottom: 8px;
+}
+
+.partition-record .spine-view {
+  width: min(760px, 100%);
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.partition-person-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  margin: 8px 0 16px;
+}
+
+.partition-portrait {
+  margin: 0;
+}
+
+.partition-portrait img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+}
+
+.partition-portrait figcaption,
+.partition-credits {
+  color: var(--muted);
+  font-size: 0.66rem;
+  line-height: 1.4;
+}
+
+.partition-credits {
+  margin-top: 28px;
+}
+
+.partition-credits summary {
+  cursor: pointer;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+}
+
+.partition-credits ul {
+  margin: 10px 0 0;
+  padding-left: 1.1rem;
+}
+
+.partition-credits a,
+.partition-portrait a,
+.partition-sources a {
+  color: var(--gold);
+}
+
+.partition-person-brief {
+  max-width: 68ch;
+}
+
+.partition .spine-copy time {
+  display: block;
+  color: var(--muted);
+  font-size: 0.66rem;
+  margin-bottom: 2px;
+}
+
+.partition .spine-copy > strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
 @keyframes flow-move {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -0.2; }
+  to { stroke-dashoffset: -14; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -455,26 +594,17 @@ body[data-board="history"] .site-footer { display: none; }
   .decision,
   .claims,
   .flow,
-  .map-marker { transition: none; animation: none; }
+  .map-marker {
+    transition: none;
+    animation: none;
+  }
 }
 
-@media (max-width: 768px) {
-  body[data-board="history"] .mast { margin: 0 12px; }
-  .partition-legend { max-width: calc(100% - 24px); }
-  .partition-legend-note,
-  .partition-casualty { display: none; }
-  .partition-inspector {
-    top: auto;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    width: auto;
-    max-height: 38%;
-  }
-  .partition-now {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
+@media (max-width: 800px) {
+  .partition-figure { grid-template-columns: 1fr; }
+  .partition-map { max-height: none; }
+  .partition-now { grid-template-columns: 1fr; }
   .partition-now h2 { white-space: normal; }
   .partition-ticks button:nth-child(odd) { display: none; }
+  body[data-board="history"] h1 { font-size: clamp(2.4rem, 12vw, 3.4rem); }
 }
