@@ -93,6 +93,7 @@ summary:focus-visible {
 }
 
 .mast {
+  z-index: 6;
   width: min(760px, calc(100% - 48px));
   margin: 0 auto;
   padding: 64px 0 12px;
@@ -227,15 +228,124 @@ h3 {
   text-transform: uppercase;
 }
 
-.plot-switch select {
+.plot-switch select,
+.choice-button {
   font: inherit;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
-  background: transparent;
+  background: var(--bg);
   border: 1px solid var(--line-strong);
   min-height: 32px;
   padding: 4px 8px;
+}
+
+.choice {
+  position: relative;
+  z-index: 2;
+}
+
+.choice.is-open {
+  z-index: 8;
+}
+
+.choice-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  max-width: min(52vw, 280px);
+  padding-right: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.choice-button::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.choice.is-open .choice-button {
+  color: var(--ink);
+  border-color: var(--gold);
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
+
+.choice.is-open .choice-button::after {
+  transform: translateY(-20%) rotate(225deg);
+}
+
+.choice-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 8;
+  min-width: max(100%, 220px);
+  max-width: min(92vw, 320px);
+  max-height: min(60vh, 360px);
+  overflow: auto;
+  list-style: none;
+  padding: 6px;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.55);
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.choice-menu li {
+  list-style: none;
+}
+
+.choice-option {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+  line-height: 1.35;
+  border: 1px solid transparent;
+}
+
+.choice-option:hover,
+.choice-option:focus-visible {
+  color: var(--ink);
+  background: var(--panel);
+  outline: none;
+}
+
+.choice-option[aria-selected="true"] {
+  color: var(--bg);
+  background: var(--gold);
+}
+
+.choice-option[aria-selected="true"]:hover,
+.choice-option[aria-selected="true"]:focus-visible {
+  color: var(--bg);
+  background: var(--gold);
+  box-shadow: inset 0 0 0 1px rgba(12, 11, 9, 0.18);
 }
 
 body[data-view="pick"] .views {
@@ -2780,6 +2890,8 @@ body[data-view="timeline"] #footer-note {
 
   .views button,
   .plot-switch select,
+  .choice-button,
+  .choice-option,
   .back,
   .search input,
   .event-links a,

@@ -972,6 +972,8 @@ assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
+assert.match(appSource, /function enhanceSelect/, "plot and focus use themed choice menus");
+assert.match(css, /\.choice-menu/, "choice menus match the ink and gold chrome");
 assert.match(appSource, /textContent = "All"/, "focus can show every YouTuber");
 assert.match(appSource, /function applyHubCamera/, "the web eases its zoom to the current focus");
 assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");

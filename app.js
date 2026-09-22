@@ -245,6 +245,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   $("home-link").textContent = "Plotmaniac";
   document.title = `Plotmaniac — ${plot.title}`;
   $("plot-select").value = plot.id;
+  $("plot-select").choicePaint?.();
   fillHubSelect();
   document.body.dataset.images = plot.images || "";
   document.body.dataset.board = plot.arrangement === "historical-map"
@@ -396,6 +397,7 @@ function showPicker({ history = "push" } = {}) {
   document.body.dataset.images = "";
   document.body.dataset.board = "";
   $("plot-select").value = "";
+  $("plot-select").choicePaint?.();
   fillHubSelect();
   $("view-web").classList.remove("is-active");
   $("view-timeline").classList.remove("is-active");
@@ -439,6 +441,149 @@ function renderChooser() {
   app.appendChild(list);
 }
 
+const openChoices = new Set();
+let choiceChromeBound = false;
+
+function closeChoices(except) {
+  openChoices.forEach((close) => {
+    if (close !== except) close();
+  });
+}
+
+function bindChoiceChrome() {
+  if (choiceChromeBound) return;
+  choiceChromeBound = true;
+  document.addEventListener("pointerdown", (event) => {
+    if (event.target.closest(".choice")) return;
+    closeChoices();
+  });
+}
+
+function enhanceSelect(select) {
+  if (!select || select.dataset.enhanced) return;
+  select.dataset.enhanced = "true";
+  bindChoiceChrome();
+  const wrap = select.closest(".plot-switch") || select.parentElement;
+  wrap.classList.add("choice");
+  select.classList.add("choice-native");
+  select.setAttribute("tabindex", "-1");
+  select.setAttribute("aria-hidden", "true");
+  const button = document.createElement("button");
+  button.type = "button";
+  button.id = `${select.id || "choice"}-button`;
+  button.className = "choice-button";
+  button.setAttribute("aria-haspopup", "listbox");
+  button.setAttribute("aria-expanded", "false");
+  const menu = document.createElement("ul");
+  menu.id = `${select.id || "choice"}-menu`;
+  menu.className = "choice-menu";
+  menu.setAttribute("role", "listbox");
+  menu.hidden = true;
+  button.setAttribute("aria-controls", menu.id);
+  wrap.htmlFor = button.id;
+  wrap.append(button, menu);
+
+  const optionsOf = () => [...select.options].map((option) => ({
+    value: option.value,
+    label: option.textContent,
+    disabled: option.disabled,
+  }));
+
+  const currentLabel = () => {
+    const chosen = select.selectedOptions[0];
+    return chosen?.textContent || optionsOf()[0]?.label || "Choose";
+  };
+
+  const paint = () => {
+    const items = optionsOf();
+    button.textContent = currentLabel();
+    button.disabled = !items.length || wrap.hidden;
+    menu.replaceChildren();
+    items.forEach((item, index) => {
+      const row = document.createElement("li");
+      const choice = document.createElement("button");
+      choice.type = "button";
+      choice.className = "choice-option";
+      choice.setAttribute("role", "option");
+      choice.dataset.value = item.value;
+      choice.setAttribute("aria-selected", String(item.value === select.value));
+      choice.textContent = item.label;
+      choice.disabled = item.disabled;
+      choice.addEventListener("click", () => pick(item.value));
+      row.appendChild(choice);
+      menu.appendChild(row);
+      if (item.value === select.value) menu.dataset.active = String(index);
+    });
+  };
+
+  const close = () => {
+    menu.hidden = true;
+    button.setAttribute("aria-expanded", "false");
+    wrap.classList.remove("is-open");
+    openChoices.delete(close);
+  };
+
+  const open = () => {
+    if (button.disabled) return;
+    closeChoices(close);
+    paint();
+    menu.hidden = false;
+    button.setAttribute("aria-expanded", "true");
+    wrap.classList.add("is-open");
+    openChoices.add(close);
+    const current = menu.querySelector('[aria-selected="true"]');
+    current?.focus();
+  };
+
+  const pick = (value) => {
+    if (select.value !== value) {
+      select.value = value;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    paint();
+    close();
+    button.focus();
+  };
+
+  button.addEventListener("click", () => {
+    if (menu.hidden) open();
+    else close();
+  });
+  button.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      open();
+    }
+  });
+  menu.addEventListener("keydown", (event) => {
+    const rows = [...menu.querySelectorAll(".choice-option")];
+    const at = rows.indexOf(document.activeElement);
+    if (event.key === "Escape") {
+      event.preventDefault();
+      close();
+      button.focus();
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      rows[Math.min(rows.length - 1, at + 1)]?.focus();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      rows[Math.max(0, at - 1)]?.focus();
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      rows[0]?.focus();
+    } else if (event.key === "End") {
+      event.preventDefault();
+      rows.at(-1)?.focus();
+    }
+  });
+  select.addEventListener("change", paint);
+  const watch = new MutationObserver(paint);
+  watch.observe(select, { childList: true, subtree: true, characterData: true });
+  watch.observe(wrap, { attributes: true, attributeFilter: ["hidden"] });
+  select.choicePaint = paint;
+  paint();
+}
+
 function bindChrome() {
   const select = $("plot-select");
   const placeholder = document.createElement("option");
@@ -457,6 +602,8 @@ function bindChrome() {
     showPlot(id, { history: "push" });
   });
   const hubSelect = $("hub-select");
+  enhanceSelect(select);
+  enhanceSelect(hubSelect);
   hubSelect.addEventListener("change", () => {
     const id = hubSelect.value;
     if (!plot || id === state.hub) return;
@@ -472,7 +619,7 @@ function bindChrome() {
     if (!plot || plots.length < 2) return;
     showPicker({ history: "push" });
   });
-  document.querySelectorAll(".views button").forEach((button) => {
+  document.querySelectorAll(".views > button[data-view]").forEach((button) => {
     button.addEventListener("click", () => {
       if (plot?.arrangement === "historical-map") {
         state.view = button.dataset.view === "timeline" ? "timeline" : "web";
@@ -489,6 +636,11 @@ function bindChrome() {
     });
   });
   window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && openChoices.size) {
+      closeChoices();
+      event.preventDefault();
+      return;
+    }
     if (event.key === "Escape" && plot?.arrangement === "historical-map" && state.view === "person") {
       state.view = "web";
       state.person = ALL;
@@ -535,6 +687,7 @@ function fillHubSelect() {
   select.replaceChildren();
   if (!hubs.length) {
     wrap.hidden = true;
+    select.choicePaint?.();
     return;
   }
   const none = document.createElement("option");
@@ -553,6 +706,7 @@ function fillHubSelect() {
   });
   select.value = state.hub === ALL || (state.hub && hubs.some((hub) => hub.id === state.hub)) ? state.hub : "";
   wrap.hidden = false;
+  select.choicePaint?.();
 }
 
 function activeHub() {
