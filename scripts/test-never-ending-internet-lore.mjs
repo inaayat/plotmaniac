@@ -187,6 +187,7 @@ const youtubers = plots.plots.find((item) => item.id === "youtubers");
 assert.ok(youtubers, "youtubers plot is registered");
 assert.deepEqual(plots.plots.map((item) => item.id), [
   "youtubers",
+  "marvel-universe",
   "barack-obama",
   "jd-vance",
   "united-states",
