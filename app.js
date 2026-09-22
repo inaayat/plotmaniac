@@ -481,7 +481,10 @@ function enhanceSelect(select) {
   menu.hidden = true;
   button.setAttribute("aria-controls", menu.id);
   wrap.htmlFor = button.id;
-  wrap.append(button, menu);
+  const frame = document.createElement("span");
+  frame.className = "choice-frame";
+  select.after(frame);
+  frame.append(select, button, menu);
 
   const optionsOf = () => [...select.options].map((option) => ({
     value: option.value,
