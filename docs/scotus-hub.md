@@ -8,7 +8,7 @@ Plot id: **`scotus`** (aliases: `supreme-court`, and legacy gun links `gun-regul
    Justia-style grid of 27 landmark topic tiles. Only **Gun Rights / Gun Control** is interactive.
 
 2. **Gun regulation board (live topic)** — `?plot=scotus&topic=gun-rights`  
-   Dual-track board: federal timeline, ownership checklist, neutral stats, CA/NY/TX exemplars, filter chips. Data lives under `data/gun-regulation/`.
+   Sideways timeline in the country-relation ride style (scroll to move through years). Neutral stats are numbers only. Ownership criteria open from a Criteria control. CA/NY/TX state divergence is not on the page yet. Data still lives under `data/gun-regulation/`.
 
 3. **Legacy URLs** — `?plot=gun-regulation`, `?plot=guns`, or `?plot=second-amendment` resolve to the `scotus` plot and open `topic=gun-rights` when no other topic is set.
 

@@ -240,11 +240,7 @@ async function load() {
         return;
       }
       if (state.view === "web") {
-        if (isGunBoardActive()) {
-          const lane = document.querySelector(".regulation-lane");
-          if (lane) layoutLane(lane);
-          return;
-        }
+        if (isGunBoardActive()) return;
         if (plot?.arrangement === "wars") {
           paintWars();
           return;
@@ -1230,7 +1226,6 @@ function renderRegulationSection() {
     render({ push: true });
   });
   shell.appendChild(back);
-  if (plot.year) shell.appendChild(renderYearBar());
   const gunTopic = plot.topics?.find((item) => item.id === SCOTUS_GUN_TOPIC_ID);
   const boardPlot = {
     ...plot,
@@ -1241,7 +1236,6 @@ function renderRegulationSection() {
     plot: boardPlot,
     board: gunBoard,
     state,
-    isCompact: isCompact(),
     onKindFilter: (kind) => {
       state.regKind = kind;
       render({ replace: true });
@@ -1255,9 +1249,16 @@ function renderRegulationSection() {
       render({ replace: true });
       document.querySelector(".regulation-checklist-open")?.focus();
     },
-    onBeatToggle: (id) => {
-      state.eventId = state.eventId === id ? "" : id;
-      render({ replace: true, focusEvent: Boolean(state.eventId) });
+    onYearChange: (year) => {
+      if (state.year === year) return;
+      state.year = year;
+      syncRegulationBoardDom(gunBoard, state);
+      writeUrl(true);
+    },
+    onSelectBeat: (id) => {
+      if (state.eventId === id) return;
+      state.eventId = id;
+      writeUrl(true);
     },
   }));
   return shell;

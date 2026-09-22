@@ -2067,6 +2067,9 @@ const gunBoard = {
 assert.deepEqual(validateGunBoard(gunBoard), [], "gun board data validation");
 assert.equal(gunChecklist.rows.length, 15);
 assert.ok(gunTimeline.some((beat) => beat.id === "scotus-2022-bruen"));
+assert.ok(gunTimeline.some((beat) => beat.id === "scotus-1995-lopez"));
+assert.ok(gunTimeline.some((beat) => beat.id === "scotus-2026-wolford"));
+assert.ok(gunTimeline.every((beat) => beat.changed), "every beat says what changed");
 assert.ok(gunTimeline.some((beat) => beat.id === "scotus-2010-mcdonald"));
 assert.ok(filterRegulationBeats(gunTimeline, { kind: "scotus" }).length >= 10);
 const federal2022 = resolveChecklistAtYear(gunChecklist.rows, gunChecklist.federalKeyframes, null, 2022);
@@ -2088,6 +2091,15 @@ assert.equal(
   fs.readFileSync(new URL("../app.js", import.meta.url), "utf8").includes("50-state picker"),
   false,
   "V1 must not ship a 50-state picker implementation",
+);
+const gunView = fs.readFileSync(new URL("../gun-regulation-view.js", import.meta.url), "utf8");
+assert.equal(gunView.includes("State divergence"), false, "state divergence grid stays off the gun page");
+assert.equal(gunView.includes("relationRideLayout"), true, "gun board uses the relation timeline ride");
+assert.match(css, /\.scotus-hub\s*\{[^}]*width:\s*100%/, "SCOTUS hub uses the page width");
+assert.match(
+  css,
+  /\.scotus-topic-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/,
+  "SCOTUS topics render as a multi-column grid",
 );
 
 console.log("never-ending internet lore tests passed");
