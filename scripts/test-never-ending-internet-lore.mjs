@@ -416,6 +416,12 @@ assert.equal(sharedWeb.regions.length, 4);
 assert.ok(sharedWeb.regions.some((region) => /trisha/i.test(region.label)));
 assert.ok(sharedWeb.regions.some((region) => region.id === "shared" && /shared/i.test(region.label)));
 assert.equal(sharedWeb.regions.find((region) => region.id === "ethan-klein").active, true);
+for (const node of sharedWeb.nodes) {
+  const region = sharedWeb.regions.find((item) => item.id === node.hubRegion);
+  assert.ok(region, `${node.id} needs a visible territory`);
+  assert.ok(node.x >= region.x && node.x <= region.x + region.width, `${node.id} stays inside ${region.id}`);
+  assert.ok(node.y >= region.y && node.y <= region.y + region.height, `${node.id} stays inside ${region.id}`);
+}
 
 function nodeOf(layoutNodes, id) {
   return layoutNodes.find((item) => item.id === id);
@@ -481,6 +487,16 @@ assert.ok(mobileHubField.regions.every((region) => region.x >= 0 && region.x + r
 assert.ok(mobileHubField.nodes.every((node) => node.x > 0 && node.x < 390 && node.y > 0 && node.y < mobileHubField.height));
 assert.equal(nodeOf(mobileHubField.nodes, "dan-swerdlove").hubRegion, "ethan-klein");
 assert.equal(nodeOf(mobileHubField.nodes, "jeff-wittek").hubRegion, "shared");
+
+const shortWideHubField = webLayout(people, relations, {
+  ...hubFieldOpts,
+  centerId: "david-dobrik",
+  width: 1024,
+  height: 500,
+});
+assert.ok(shortWideHubField.height >= 640, "short desktop maps gain enough vertical room to stay readable");
+assert.equal(shortWideHubField.regions.length, 4);
+assert.ok(shortWideHubField.regions.every((region) => region.x >= 0 && region.x + region.width <= 1024));
 
 const nodes = graphLayout(people);
 assert.equal(nodes.length, people.length);
@@ -812,6 +828,8 @@ assert.match(appSource, /function renderSpine/, "compact timeline renders a vert
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
 assert.match(appSource, /hub-region/, "youtubers web labels hub corners");
 assert.match(css, /\.hub-region/, "hub corner label styles");
+assert.match(css, /\.web-stage\.is-hub-field \.web-lines path/, "hub relationships stay quiet until interaction");
+assert.match(appSource, /Scroll through the hub territories/, "mobile explains the stacked territory map");
 assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
 assert.match(appSource, /renderRelationSentimentChart/, "country drawer can chart bilateral warmth");
 assert.match(css, /\.relation-sentiment/, "relationship warmth chart styles");
