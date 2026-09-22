@@ -1005,6 +1005,7 @@ const css = fs.readFileSync(new URL("../lore.css", import.meta.url), "utf8");
 assert.match(css, /max-width: 768px/, "compact layout breakpoint");
 assert.match(css, /\.gallery-search/, "homepage search is an underline field");
 assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "desktop gallery is 3 columns");
+assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?6\.4rem/, "pick view keeps the large title");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
