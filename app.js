@@ -1150,7 +1150,7 @@ function paintWeb(stage, { animate = true } = {}) {
       return;
     }
     width = Math.max(320, Math.floor(bounds.width));
-    height = Math.max(topics ? (compact ? 720 : 620) : 260, Math.floor(bounds.height));
+    height = Math.max(topics ? (compact ? 720 : 500) : 260, Math.floor(bounds.height));
     stage.style.width = "";
   }
   const layout = webLayout(people, relations, {
@@ -1171,6 +1171,7 @@ function paintWeb(stage, { animate = true } = {}) {
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);
   stage.style.setProperty("--bubble-w", `${layout.bubbleWidth || 128}px`);
+  stage.style.setProperty("--topic-w", `${layout.topicWidth || 154}px`);
   stage.replaceChildren();
 
   const byId = new Map(layout.nodes.map((node) => [node.id, node]));

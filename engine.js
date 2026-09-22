@@ -402,56 +402,65 @@ function edgesAmong(nodes, relations) {
 }
 
 function separateTopicNodes(nodes, { width, height, gap = 10 }) {
+  const center = nodes.find((node) => node.camp === "center");
+  const hubs = nodes.filter((node) => node.hub);
+  const policies = nodes.filter((node) => node.camp !== "center" && !node.hub);
   const clamp = (node) => {
     const halfWidth = node.boxWidth / 2;
     const halfHeight = node.boxHeight / 2;
     node.x = Math.min(width - halfWidth - gap, Math.max(halfWidth + gap, node.x));
     node.y = Math.min(height - halfHeight - gap, Math.max(halfHeight + gap, node.y));
   };
+  const overlaps = (a, b) =>
+    Math.abs(a.x - b.x) < (a.boxWidth + b.boxWidth) / 2 + gap &&
+    Math.abs(a.y - b.y) < (a.boxHeight + b.boxHeight) / 2 + gap;
+  const angleDelta = (a, b) =>
+    Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
 
-  nodes.forEach(clamp);
-  for (let pass = 0; pass < 240; pass += 1) {
-    nodes.forEach((node) => {
-      if (node.fixed) return;
-      const pull = node.hub ? 0.045 : 0.012;
-      node.x += (node.anchorX - node.x) * pull;
-      node.y += (node.anchorY - node.y) * pull;
-      clamp(node);
-    });
-
-    let collided = false;
-    for (let i = 0; i < nodes.length; i += 1) {
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const a = nodes[i];
-        const b = nodes[j];
-        const dx = b.x - a.x;
-        const dy = b.y - a.y;
-        const overlapX = (a.boxWidth + b.boxWidth) / 2 + gap - Math.abs(dx);
-        const overlapY = (a.boxHeight + b.boxHeight) / 2 + gap - Math.abs(dy);
-        if (overlapX <= 0 || overlapY <= 0) continue;
-
-        const aWeight = a.fixed ? 0 : a.hub ? 0.35 : 1;
-        const bWeight = b.fixed ? 0 : b.hub ? 0.35 : 1;
-        const totalWeight = aWeight + bWeight;
-        if (!totalWeight) continue;
-        collided = true;
-
-        if (overlapX < overlapY) {
-          const direction = dx === 0 ? (a.id < b.id ? 1 : -1) : Math.sign(dx);
-          const shift = overlapX + 0.5;
-          a.x -= direction * shift * (aWeight / totalWeight);
-          b.x += direction * shift * (bWeight / totalWeight);
-        } else {
-          const direction = dy === 0 ? (a.id < b.id ? 1 : -1) : Math.sign(dy);
-          const shift = overlapY + 0.5;
-          a.y -= direction * shift * (aWeight / totalWeight);
-          b.y += direction * shift * (bWeight / totalWeight);
-        }
-        clamp(a);
-        clamp(b);
+  [center, ...hubs].filter(Boolean).forEach(clamp);
+  const sample = policies[0];
+  if (sample) {
+    const stepX = sample.boxWidth + gap;
+    const stepY = sample.boxHeight + gap;
+    const columns = Math.max(1, Math.floor((width - gap * 2) / stepX));
+    const rows = Math.max(1, Math.floor((height - gap * 2) / stepY));
+    const gridWidth = sample.boxWidth + (columns - 1) * stepX;
+    const gridHeight = sample.boxHeight + (rows - 1) * stepY;
+    const startX = (width - gridWidth) / 2 + sample.boxWidth / 2;
+    const startY = (height - gridHeight) / 2 + sample.boxHeight / 2;
+    const candidates = [];
+    for (let row = 0; row < rows; row += 1) {
+      for (let column = 0; column < columns; column += 1) {
+        candidates.push({ x: startX + column * stepX, y: startY + row * stepY });
       }
     }
-    if (!collided) break;
+
+    const placed = [center, ...hubs].filter(Boolean);
+    policies.forEach((node) => {
+      const hub = hubs.find((item) => item.topic === node.topic);
+      const hubAngle = hub && center
+        ? Math.atan2(hub.y - center.y, hub.x - center.x)
+        : Math.atan2(node.anchorY - height / 2, node.anchorX - width / 2);
+      const choices = candidates
+        .filter((candidate) => {
+          const probe = { ...node, ...candidate };
+          return !placed.some((item) => overlaps(probe, item));
+        })
+        .map((candidate) => {
+          const angle = Math.atan2(candidate.y - height / 2, candidate.x - width / 2);
+          const anchorDistance = Math.hypot(candidate.x - node.anchorX, candidate.y - node.anchorY);
+          const topicPenalty = angleDelta(angle, hubAngle) * Math.min(width, height) * 1.8;
+          return { ...candidate, score: anchorDistance + topicPenalty };
+        })
+        .sort((a, b) => a.score - b.score);
+      const choice = choices[0];
+      if (choice) {
+        node.x = choice.x;
+        node.y = choice.y;
+      }
+      clamp(node);
+      placed.push(node);
+    });
   }
 
   nodes.forEach((node) => {
@@ -499,8 +508,10 @@ function topicArrangement({
   const most = tally.length ? Math.max(...tally) : 0;
   const bubbleW = Math.max(108, Math.min(136, Math.floor(width / 7)));
   const bubbleH = 56;
+  const topicW = width < 700 ? bubbleW : 154;
+  const topicH = 46;
   const compactHeight = Math.ceil((visible.length + groups.length + 1) / 2) * (bubbleH + 12);
-  const usedHeight = Math.max(height, width < 700 ? Math.max(720, compactHeight) : 620);
+  const usedHeight = Math.max(height, width < 700 ? Math.max(720, compactHeight) : 500);
   const cy = usedHeight / 2;
   const nodeSize = Math.round(Math.min(bubbleW, 72));
   const centerSize = Math.round(Math.min(104, Math.max(72, Math.min(width, usedHeight) * 0.16)));
@@ -535,7 +546,15 @@ function topicArrangement({
     const hubId = `topic:${group.id}`;
     const hubAngle = mid;
     const hubRim = ellipseRadius(hubAngle, radiusX, radiusY) * (spread ? 0.55 : 0.48);
-    const hubDist = innerFloor + Math.max(0, hubRim - innerFloor) * 0.42;
+    const clearX = ((centerSize + 24 + topicW) / 2 + 12) / Math.max(Math.abs(Math.cos(hubAngle)), 0.001);
+    const clearY = ((centerSize + 36 + topicH) / 2 + 12) / Math.max(Math.abs(Math.sin(hubAngle)), 0.001);
+    const hubClearance = Math.min(clearX, clearY);
+    const hubRingClearance = (topicW + 12) / (2 * Math.sin(wedge / 2));
+    const hubDist = Math.max(
+      hubClearance,
+      hubRingClearance,
+      innerFloor + Math.max(0, hubRim - innerFloor) * 0.42,
+    );
     const hubX = cx + Math.cos(hubAngle) * hubDist;
     const hubY = cy + Math.sin(hubAngle) * hubDist;
     nodes.push({
@@ -545,8 +564,8 @@ function topicArrangement({
       y: hubY,
       anchorX: hubX,
       anchorY: hubY,
-      boxWidth: 154,
-      boxHeight: 46,
+      boxWidth: topicW,
+      boxHeight: topicH,
       camp: "topic",
       topic: group.id,
       hub: true,
@@ -601,6 +620,7 @@ function topicArrangement({
     centerSize,
     bubbleWidth: bubbleW,
     bubbleHeight: bubbleH,
+    topicWidth: topicW,
     labels: [],
   };
 }

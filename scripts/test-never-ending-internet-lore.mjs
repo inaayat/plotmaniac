@@ -754,6 +754,12 @@ const obamaCompact = webLayout(obamaPeople, obamaRelations, {
   width: 390,
   height: 720,
 });
+const obamaViewport = webLayout(obamaPeople, obamaRelations, {
+  ...obamaLayoutOpts,
+  year: 2012,
+  width: 1280,
+  height: 500,
+});
 const assertNoTopicOverlap = (layout, label) => {
   for (let i = 0; i < layout.nodes.length; i += 1) {
     for (let j = i + 1; j < layout.nodes.length; j += 1) {
@@ -806,6 +812,7 @@ const meanAngle = (list) => {
 assert.ok(Math.abs(meanAngle(social2012) - meanAngle(foreign2012)) > 0.4, "topics occupy different wedges");
 assert.ok(obama2012.nodes.every((node) => node.x > 8 && node.x < 1092 && node.y > 8 && node.y < 792));
 assertNoTopicOverlap(obama2012, "desktop topic layout");
+assertNoTopicOverlap(obamaViewport, "desktop viewport topic layout");
 assertNoTopicOverlap(obamaEconomy, "focused topic layout");
 assertNoTopicOverlap(obamaCompact, "compact topic layout");
 assert.ok(obamaCompact.height > 720, "compact topic layout grows vertically instead of stacking bubbles");
