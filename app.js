@@ -1523,24 +1523,33 @@ function renderSpineEvent(event, focusId) {
   when.textContent = formatDate(event.date);
   const heading = document.createElement("strong");
   heading.textContent = event.title;
-  const tease = document.createElement("span");
-  tease.className = "beat-tease";
-  tease.textContent = eventTease(event, 140);
   const era = document.createElement("em");
   era.textContent = eraLabel(event.era);
-  hit.append(when, heading, tease, era);
+  const open = state.eventId === event.id;
+  hit.append(when, heading);
+  if (!open) {
+    const tease = document.createElement("span");
+    tease.className = "beat-tease";
+    tease.textContent = eventTease(event, 140);
+    hit.appendChild(tease);
+  }
+  hit.appendChild(era);
   hit.addEventListener("click", toggle);
   copy.appendChild(hit);
 
-  if (state.eventId === event.id) {
+  if (open) {
     const more = document.createElement("div");
     more.className = "spine-more";
-    const summary = document.createElement("p");
-    summary.textContent = event.summary;
+    const body = expandedSummary(event);
+    if (body) {
+      const summary = document.createElement("p");
+      summary.textContent = body;
+      more.appendChild(summary);
+    }
     const names = document.createElement("p");
     names.className = "detail-names";
     names.textContent = event.people.map((id) => peopleById.get(id)?.name || id).join(" · ");
-    more.append(summary, names, faceRow(event.people));
+    more.append(names, faceRow(event.people));
     if (event.links?.length) {
       const links = document.createElement("div");
       links.className = "event-links";
