@@ -1,5 +1,7 @@
 # Marvel Cinematic Universe / Marvel film multiverse plot
 
+Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templates/multi-hub-focus.md](templates/multi-hub-focus.md).
+
 ## Design
 
 - **Plot id:** `marvel-universe`

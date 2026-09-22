@@ -1,5 +1,9 @@
 # Country relation timeline template
 
+**Companion doc** for the reusable plot element [templates/country-bilateral-timeline.md](templates/country-bilateral-timeline.md) (indexed in the README). That page is the quick-build entry; this file is the research workflow, tone rules, and QA checklist.
+
+The **regions board** is separate: [templates/country-regions-bilateral-timeline.md](templates/country-regions-bilateral-timeline.md).
+
 Use this when upgrading a thin United States country stub in `data/united-states/countries.json` into a Mexico-depth bilateral history. Mexico (`slug: "mexico"`), Russia (`slug: "russia"`), and Iran (`slug: "iran"`) are the current exemplars. Thin records (year + event only, no `tone` or `links`) remain valid; the UI must not require chips.
 
 A minimal JSON sketch lives beside this file: `country-relation-timeline.example.json`.
