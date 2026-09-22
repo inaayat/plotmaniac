@@ -3025,146 +3025,428 @@
       {
         "year": "1822",
         "tone": 1,
-        "event": "The United States recognizes independent Mexico and opens diplomatic relations (1822-12-12)."
+        "event": "The United States recognizes independent Mexico and opens diplomatic relations (1822-12-12).",
+        "links": [
+          {
+            "label": "Office of the Historian: Mexico",
+            "url": "https://history.state.gov/countries/mexico"
+          }
+        ]
       },
       {
         "year": "1836",
         "tone": -2,
-        "event": "Texas rebels break from Mexico; the U.S. later backs Texan independence, opening a long border dispute."
+        "event": "Texas rebels break from Mexico; the U.S. later backs Texan independence, opening a long border dispute.",
+        "links": [
+          {
+            "label": "Office of the Historian: Texas annexation",
+            "url": "https://history.state.gov/milestones/1830-1860/texas-annexation"
+          },
+          {
+            "label": "CFR: U.S.–Mexico relations",
+            "url": "https://www.cfr.org/articles/us-mexico-relations"
+          }
+        ]
       },
       {
         "year": "1846",
         "tone": -2,
-        "event": "Mexican–American War begins after U.S. annexation of Texas and a clash in disputed territory."
+        "event": "Mexican–American War begins after U.S. annexation of Texas and a clash in disputed territory.",
+        "links": [
+          {
+            "label": "Office of the Historian: territorial expansion",
+            "url": "https://history.state.gov/milestones/1830-1860/territorial-expansion"
+          },
+          {
+            "label": "Office of the Historian: Texas annexation",
+            "url": "https://history.state.gov/milestones/1830-1860/texas-annexation"
+          }
+        ]
       },
       {
         "year": "1848",
         "tone": -1,
-        "event": "Treaty of Guadalupe Hidalgo ends the war; Mexico cedes roughly half its territory while peace returns."
+        "event": "Treaty of Guadalupe Hidalgo ends the war; Mexico cedes roughly half its territory while peace returns.",
+        "links": [
+          {
+            "label": "National Archives: Treaty of Guadalupe Hidalgo",
+            "url": "https://www.archives.gov/milestone-documents/treaty-of-guadalupe-hidalgo"
+          },
+          {
+            "label": "Avalon Project: Treaty of Guadalupe Hidalgo",
+            "url": "https://avalon.law.yale.edu/19th_century/guadhida.asp"
+          }
+        ]
       },
       {
         "year": "1853",
         "tone": -1,
-        "event": "Gadsden Purchase transfers more borderland to the U.S., adjusting the boundary again in Washington’s favor."
+        "event": "Gadsden Purchase transfers more borderland to the U.S., adjusting the boundary again in Washington’s favor.",
+        "links": [
+          {
+            "label": "Office of the Historian: Gadsden Purchase",
+            "url": "https://history.state.gov/milestones/1830-1860/gadsden-purchase"
+          }
+        ]
       },
       {
         "year": "1867",
         "tone": 1,
-        "event": "U.S. pressure helps end the French intervention in Mexico after the Second Empire collapses."
+        "event": "U.S. pressure helps end the French intervention in Mexico after the Second Empire collapses.",
+        "links": [
+          {
+            "label": "Office of the Historian: French intervention in Mexico",
+            "url": "https://history.state.gov/milestones/1861-1865/french-intervention"
+          }
+        ]
       },
       {
         "year": "1910",
         "tone": -1,
-        "event": "Mexican Revolution convulses the country; Washington watches and intervenes as factions fight for power."
+        "event": "Mexican Revolution convulses the country; Washington watches and intervenes as factions fight for power.",
+        "links": [
+          {
+            "label": "Office of the Historian: Mexico",
+            "url": "https://history.state.gov/countries/mexico"
+          },
+          {
+            "label": "State Department archive: Mexico background",
+            "url": "https://2009-2017.state.gov/r/pa/ei/bgn/35749.htm"
+          }
+        ]
       },
       {
         "year": "1914",
         "tone": -2,
-        "event": "U.S. Navy occupies Veracruz after the Tampico Affair, one of the sharpest pre–World War I clashes."
+        "event": "U.S. Navy occupies Veracruz after the Tampico Affair, one of the sharpest pre–World War I clashes.",
+        "links": [
+          {
+            "label": "FRUS 1914: Tampico Affair and Veracruz",
+            "url": "https://history.state.gov/historicaldocuments/frus1914/ch91"
+          },
+          {
+            "label": "Office of the Historian: Mexico",
+            "url": "https://history.state.gov/countries/mexico"
+          }
+        ]
       },
       {
         "year": "1916",
         "tone": -2,
-        "event": "Pershing’s punitive expedition chases Pancho Villa deep into northern Mexico, straining sovereignty."
+        "event": "Pershing’s punitive expedition chases Pancho Villa deep into northern Mexico, straining sovereignty.",
+        "links": [
+          {
+            "label": "FRUS 1916: punitive expedition notes",
+            "url": "https://history.state.gov/historicaldocuments/frus1916/d640"
+          }
+        ]
       },
       {
         "year": "1942",
         "tone": 2,
-        "event": "Mexico enters World War II on the Allied side; wartime partnership rebuilds trust after decades of friction."
+        "event": "Mexico enters World War II on the Allied side; wartime partnership rebuilds trust after decades of friction.",
+        "links": [
+          {
+            "label": "Office of the Historian: Mexican oil expropriation (wartime context)",
+            "url": "https://history.state.gov/milestones/1937-1945/mexican-oil"
+          },
+          {
+            "label": "State Department archive: Mexico background",
+            "url": "https://2009-2017.state.gov/r/pa/ei/bgn/35749.htm"
+          }
+        ]
       },
       {
         "year": "1948",
         "tone": 2,
-        "event": "President Truman returns captured Mexican battle flags from the 1846–48 war, a symbolic reconciliation."
+        "event": "President Truman returns captured Mexican battle flags from the 1846–48 war, a symbolic reconciliation.",
+        "links": [
+          {
+            "label": "CFR: U.S.–Mexico relations",
+            "url": "https://www.cfr.org/articles/us-mexico-relations"
+          }
+        ]
       },
       {
         "year": "1942",
         "tone": 1,
-        "event": "Bracero Program (1942–1964) brings millions of Mexican guest workers north, tying labor markets together."
+        "event": "Bracero Program (1942–1964) brings millions of Mexican guest workers north, tying labor markets together.",
+        "links": [
+          {
+            "label": "State Department archive: Mexico background",
+            "url": "https://2009-2017.state.gov/r/pa/ei/bgn/35749.htm"
+          },
+          {
+            "label": "CFR: U.S.–Mexico relations",
+            "url": "https://www.cfr.org/articles/us-mexico-relations"
+          }
+        ]
       },
       {
         "year": "1964",
         "tone": 2,
-        "event": "Chamizal Treaty settles a century-old El Paso–Juárez border dispute; land is swapped peacefully."
+        "event": "Chamizal Treaty settles a century-old El Paso–Juárez border dispute; land is swapped peacefully.",
+        "links": [
+          {
+            "label": "FRUS 1964–68: Mexico / Chamizal",
+            "url": "https://history.state.gov/historicaldocuments/frus1964-68v32/ch3"
+          }
+        ]
       },
       {
         "year": "1970",
         "tone": 1,
-        "event": "Boundary Treaty of 1970 resolves remaining Rio Grande channel shifts and sets rules for future changes."
+        "event": "Boundary Treaty of 1970 resolves remaining Rio Grande channel shifts and sets rules for future changes.",
+        "links": [
+          {
+            "label": "Office of the Historian: Mexico",
+            "url": "https://history.state.gov/countries/mexico"
+          },
+          {
+            "label": "CFR: U.S.–Mexico relations",
+            "url": "https://www.cfr.org/articles/us-mexico-relations"
+          }
+        ]
       },
       {
         "year": "1982",
         "tone": 0,
-        "event": "Mexico’s debt crisis and peso collapse roil the economy; the U.S. helps stabilize its major trading partner."
+        "event": "Mexico’s debt crisis and peso collapse roil the economy; the U.S. helps stabilize its major trading partner.",
+        "links": [
+          {
+            "label": "State Department archive: Mexico background",
+            "url": "https://2009-2017.state.gov/r/pa/ei/bgn/35749.htm"
+          },
+          {
+            "label": "CFR: U.S.–Mexico relations",
+            "url": "https://www.cfr.org/articles/us-mexico-relations"
+          }
+        ]
       },
       {
         "year": "1994",
         "tone": 2,
-        "event": "NAFTA enters into force, locking Canada, Mexico, and the U.S. into a shared North American market."
+        "event": "NAFTA enters into force, locking Canada, Mexico, and the U.S. into a shared North American market.",
+        "links": [
+          {
+            "label": "USTR: Mexico",
+            "url": "https://ustr.gov/countries-regions/americas/mexico"
+          },
+          {
+            "label": "CFR: U.S.–Mexico relations",
+            "url": "https://www.cfr.org/articles/us-mexico-relations"
+          }
+        ]
       },
       {
         "year": "1995",
         "tone": 1,
-        "event": "Clinton arranges a $20 billion rescue package after the peso crisis, repaid ahead of schedule in 1997."
+        "event": "Clinton arranges a $20 billion rescue package after the peso crisis, repaid ahead of schedule in 1997.",
+        "links": [
+          {
+            "label": "CFR: U.S.–Mexico relations",
+            "url": "https://www.cfr.org/articles/us-mexico-relations"
+          },
+          {
+            "label": "USTR: Mexico",
+            "url": "https://ustr.gov/countries-regions/americas/mexico"
+          }
+        ]
       },
       {
         "year": "2001",
         "tone": 1,
-        "event": "Mexico condemns the 9/11 attacks and aids U.S. hurricane relief, but stays out of the Iraq War."
+        "event": "Mexico condemns the 9/11 attacks and aids U.S. hurricane relief, but stays out of the Iraq War.",
+        "links": [
+          {
+            "label": "State Department archive: Mexico background",
+            "url": "https://2009-2017.state.gov/r/pa/ei/bgn/35749.htm"
+          }
+        ]
       },
       {
         "year": "2008",
         "tone": 1,
-        "event": "Mérida Initiative launches deep U.S.–Mexico security cooperation against drug cartels and arms trafficking."
+        "event": "Mérida Initiative launches deep U.S.–Mexico security cooperation against drug cartels and arms trafficking.",
+        "links": [
+          {
+            "label": "State Department archive: Mérida Initiative",
+            "url": "https://2009-2017.state.gov/j/inl/merida/"
+          },
+          {
+            "label": "State Department archive: Mexico background",
+            "url": "https://2009-2017.state.gov/r/pa/ei/bgn/35749.htm"
+          }
+        ]
       },
       {
         "year": "2017",
         "tone": -2,
-        "event": "Border-wall rhetoric and tariff threats under Trump; Pew finds Mexican confidence in the U.S. plunges."
+        "event": "Border-wall rhetoric and tariff threats under Trump; Pew finds Mexican confidence in the U.S. plunges.",
+        "links": [
+          {
+            "label": "Pew: tarnished American brand",
+            "url": "https://www.pewglobal.org/2017/06/26/tarnished-american-brand/"
+          },
+          {
+            "label": "BBC: Mexico–U.S. tensions",
+            "url": "https://www.bbc.com/news/world-latin-america-38725966"
+          },
+          {
+            "label": "White House: border security executive order",
+            "url": "https://trumpwhitehouse.archives.gov/the-press-office/2017/01/25/executive-order-border-security-and-immigration-enforcement-improvements"
+          },
+          {
+            "label": "NYT: Peña Nieto cancels Trump meeting",
+            "url": "https://www.nytimes.com/2017/01/26/world/mexicos-president-cancels-meeting-with-trump-over-wall.html"
+          }
+        ]
       },
       {
         "year": "2018",
         "tone": 1,
-        "event": "Washington and Mexico City agree on an updated NAFTA framework alongside Canada (later USMCA)."
+        "event": "Washington and Mexico City agree on an updated NAFTA framework alongside Canada (later USMCA).",
+        "links": [
+          {
+            "label": "Los Angeles Times: NAFTA rewrite",
+            "url": "https://www.latimes.com/business/la-fi-nafta-usmex-deal-20180827-story.html"
+          },
+          {
+            "label": "USTR: USMCA",
+            "url": "https://ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement"
+          }
+        ]
       },
       {
         "year": "2019",
         "tone": 0,
-        "event": "Tariff standoff over migration is averted when Mexico steps up asylum and enforcement measures."
+        "event": "Tariff standoff over migration is averted when Mexico steps up asylum and enforcement measures.",
+        "links": [
+          {
+            "label": "BBC: U.S.–Mexico talks",
+            "url": "https://www.bbc.com/news/world-us-canada-46824649"
+          },
+          {
+            "label": "Reuters: tariffs called off after Mexico border steps",
+            "url": "https://www.reuters.com/article/us-usa-trade-mexico-talks/trump-calls-off-tariffs-after-mexico-vows-to-tighten-borders-idUSKCN1T8196"
+          }
+        ]
       },
       {
         "year": "2020",
         "tone": 2,
-        "event": "USMCA replaces NAFTA on July 1, modernizing rules for autos, agriculture, and digital trade."
+        "event": "USMCA replaces NAFTA on July 1, modernizing rules for autos, agriculture, and digital trade.",
+        "links": [
+          {
+            "label": "USTR: USMCA",
+            "url": "https://ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement"
+          },
+          {
+            "label": "USTR: Mexico",
+            "url": "https://ustr.gov/countries-regions/americas/mexico"
+          }
+        ]
       },
       {
         "year": "2021",
         "tone": 1,
-        "event": "Biden administration renews Mérida-style security and migration talks with President López Obrador."
+        "event": "Biden administration renews Mérida-style security and migration talks with President López Obrador.",
+        "links": [
+          {
+            "label": "USTR: Mexico",
+            "url": "https://ustr.gov/countries-regions/americas/mexico"
+          },
+          {
+            "label": "CFR: U.S.–Mexico relations",
+            "url": "https://www.cfr.org/articles/us-mexico-relations"
+          }
+        ]
       },
       {
         "year": "2023",
         "tone": 1,
-        "event": "North American Leaders’ Summit in Mexico City highlights joint supply chains and migration management."
+        "event": "North American Leaders’ Summit in Mexico City highlights joint supply chains and migration management.",
+        "links": [
+          {
+            "label": "AP: North American Leaders’ Summit",
+            "url": "https://apnews.com/article/biden-north-america-summit-mexico-updates-871328ff21fc6a87b698742f6e9ed3d4"
+          },
+          {
+            "label": "Census: U.S. trade in goods with Mexico",
+            "url": "https://www.census.gov/foreign-trade/balance/c2010.html"
+          }
+        ]
       },
       {
         "year": "2024",
         "tone": -1,
-        "event": "López Obrador pauses relations after U.S. criticism of judicial reforms, a rare diplomatic freeze."
+        "event": "López Obrador pauses relations after U.S. criticism of judicial reforms, a rare diplomatic freeze.",
+        "links": [
+          {
+            "label": "Los Angeles Times: AMLO pauses U.S. embassy relationship",
+            "url": "https://www.latimes.com/world-nation/story/2024-08-27/mexicos-president-announces-pause-in-relationship-with-u-s-embassy-after-criticism-from-ambassador"
+          }
+        ]
       },
       {
         "year": "2025",
         "tone": -2,
-        "event": "U.S. imposes 25% tariffs on Mexican goods amid fights over fentanyl, migration, and Rio Grande water deliveries."
+        "event": "U.S. imposes 25% tariffs on Mexican goods amid fights over fentanyl, migration, and Rio Grande water deliveries.",
+        "links": [
+          {
+            "label": "NYT: Trump tariffs on Mexico and Canada",
+            "url": "https://www.nytimes.com/2025/02/01/business/trump-tariffs-canada-mexico-china.html"
+          },
+          {
+            "label": "BBC: Sheinbaum, Trump, and tariffs",
+            "url": "https://www.bbc.com/news/articles/cvg93nn1e6go"
+          },
+          {
+            "label": "Reuters: water-treaty tariff threats",
+            "url": "https://www.reuters.com/world/us/trump-threatens-sanctions-tariffs-mexico-over-water-treaty-dispute-2025-04-10/"
+          }
+        ]
       },
       {
         "year": "2026",
         "tone": 0,
-        "event": "Still each other’s top trading partner, but trust swings with every election, cartel crackdown, and tariff headline."
+        "event": "Still each other’s top trading partner, but trust swings with every election, cartel crackdown, and tariff headline.",
+        "links": [
+          {
+            "label": "Census: U.S. trade in goods with Mexico",
+            "url": "https://www.census.gov/foreign-trade/balance/c2010.html"
+          },
+          {
+            "label": "Pew: 2026 views of U.S. partnership",
+            "url": "https://www.pewresearch.org/global/2026/06/23/trump-gets-negative-reviews-internationally-as-fewer-say-u-s-is-a-reliable-partner/"
+          },
+          {
+            "label": "USTR: Mexico",
+            "url": "https://ustr.gov/countries-regions/americas/mexico"
+          }
+        ]
       }
     ],
     "region": "Americas",
-    "first_load": false
+    "first_load": false,
+    "links": [
+      {
+        "label": "Office of the Historian: Mexico",
+        "url": "https://history.state.gov/countries/mexico"
+      },
+      {
+        "label": "CFR: U.S.–Mexico relations",
+        "url": "https://www.cfr.org/articles/us-mexico-relations"
+      },
+      {
+        "label": "USTR: Mexico",
+        "url": "https://ustr.gov/countries-regions/americas/mexico"
+      },
+      {
+        "label": "Wikipedia: Mexico–United States relations",
+        "url": "https://en.wikipedia.org/wiki/Mexico–United_States_relations"
+      }
+    ]
   },
   {
     "country": "Moldova",
@@ -4063,51 +4345,538 @@
     "status": "foe",
     "outline": "red",
     "formal_relations": true,
-    "notes_summary": "Former Cold War adversary; relations collapsed after 2014 Crimea annexation and 2022 full-scale invasion of Ukraine.",
+    "notes_summary": "From Tsarist recognition and the Alaska sale through a WWII alliance, a long Cold War, a 1990s reset, and a post-2014 rupture—now defined by Ukraine, sanctions, and broken arms-control treaties.",
     "timeline": [
       {
         "year": "1809",
-        "event": "Diplomatic relations with Russian Empire established"
+        "tone": 1,
+        "event": "The Russian Empire recognizes the United States (1803) and the two capitals exchange diplomats in 1809, opening a channel that lasts until 1917.",
+        "links": [
+          {
+            "label": "Office of the Historian: Russia",
+            "url": "https://history.state.gov/countries/russia"
+          },
+          {
+            "label": "Oxford Research Encyclopedia: U.S.–Russian relations before 1917",
+            "url": "https://oxfordre.com/americanhistory/display/10.1093/acrefore/9780199329175.001.0001/acrefore-9780199329175-e-1101"
+          }
+        ]
+      },
+      {
+        "year": "1824",
+        "tone": 1,
+        "event": "The Russo-American Treaty sets 54°40′ N as the southern edge of Russian America, cooling a Pacific boundary fight after the Ukase of 1821.",
+        "links": [
+          {
+            "label": "Oxford Research Encyclopedia: U.S.–Russian relations before 1917",
+            "url": "https://oxfordre.com/americanhistory/display/10.1093/acrefore/9780199329175.001.0001/acrefore-9780199329175-e-1101"
+          }
+        ]
+      },
+      {
+        "year": "1863",
+        "tone": 2,
+        "event": "Russian fleets winter in New York and San Francisco during the Civil War; Union crowds treat the visit as friendly solidarity against Britain and France.",
+        "links": [
+          {
+            "label": "U.S. Naval History: The Russian Navy Visits the United States",
+            "url": "https://www.history.navy.mil/research/library/online-reading-room/title-list-alphabetically/r/the-russian-navy-visits-theunited-states.html"
+          }
+        ]
       },
       {
         "year": "1867",
-        "event": "Alaska Purchase from Russia"
+        "tone": 1,
+        "event": "Alaska Purchase: Russia sells the colony to the United States for $7.2 million, exiting North America and expanding U.S. Pacific reach.",
+        "links": [
+          {
+            "label": "Archive.org: Alaska Purchase documentary collection",
+            "url": "https://archive.org/details/alaskapurchasein00frem/page/n9/mode/1up"
+          },
+          {
+            "label": "Office of the Historian: Russia",
+            "url": "https://history.state.gov/countries/russia"
+          }
+        ]
+      },
+      {
+        "year": "1905",
+        "tone": 1,
+        "event": "Theodore Roosevelt mediates the Treaty of Portsmouth ending the Russo-Japanese War and later wins the Nobel Peace Prize for the talks.",
+        "links": [
+          {
+            "label": "Office of the Historian: Treaty of Portsmouth",
+            "url": "https://history.state.gov/milestones/1899-1913/portsmouth-treaty"
+          },
+          {
+            "label": "FRUS 1905: Treaty of Portsmouth transmittal",
+            "url": "https://history.state.gov/historicaldocuments/frus1905/d915"
+          }
+        ]
+      },
+      {
+        "year": "1911",
+        "tone": -1,
+        "event": "Washington abrogates the 1832 commercial treaty to protest pogroms and discrimination against Jews, including U.S. citizens traveling in the Empire.",
+        "links": [
+          {
+            "label": "Library of Congress: Polish/Russian immigration",
+            "url": "https://www.loc.gov/classroom-materials/immigration/polish-russian/"
+          }
+        ]
       },
       {
         "year": "1917",
-        "event": "Russian Revolution disrupts relations"
+        "tone": 1,
+        "event": "After the February Revolution, the United States is first to recognize Russia’s Provisional Government and extends large wartime credits.",
+        "links": [
+          {
+            "label": "Office of the Historian: Recognition of the Soviet Union",
+            "url": "https://history.state.gov/milestones/1921-1936/ussr"
+          }
+        ]
+      },
+      {
+        "year": "1918",
+        "tone": -2,
+        "event": "U.S. troops join Allied interventions in North Russia and Siberia; the failed campaigns and Bolshevik victory lock in years of non-recognition.",
+        "links": [
+          {
+            "label": "Office of the Historian: Recognition of the Soviet Union",
+            "url": "https://history.state.gov/milestones/1921-1936/ussr"
+          }
+        ]
       },
       {
         "year": "1933",
-        "event": "US recognizes Soviet Union"
+        "tone": 1,
+        "event": "The Roosevelt–Litvinov agreements finally recognize the USSR—the last major power to do so—while debt and Comintern disputes are deferred.",
+        "links": [
+          {
+            "label": "Office of the Historian: Recognition of the Soviet Union, 1933",
+            "url": "https://history.state.gov/milestones/1921-1936/ussr"
+          },
+          {
+            "label": "NYT Learning Network: U.S. establishes relations with the USSR",
+            "url": "https://learning.blogs.nytimes.com/2011/11/16/nov-16-1933-us-establishes-diplomatic-relations-with-the-soviet-union"
+          },
+          {
+            "label": "National Security Archive: Roosevelt–Litvinov documents",
+            "url": "https://nsarchive2.gwu.edu/coldwar/documents/episode-1/fdr-ml.htm"
+          }
+        ]
       },
       {
         "year": "1941",
-        "event": "WWII alliance against Nazi Germany"
+        "tone": 2,
+        "event": "After Barbarossa and Pearl Harbor, Lend-Lease trucks, food, and aircraft make the United States and USSR wartime allies against Nazi Germany.",
+        "links": [
+          {
+            "label": "Office of the Historian: Russia",
+            "url": "https://history.state.gov/countries/russia"
+          },
+          {
+            "label": "FRUS 1943: wartime diplomacy",
+            "url": "https://history.state.gov/historicaldocuments/frus1943/d317"
+          }
+        ]
+      },
+      {
+        "year": "1945",
+        "tone": 1,
+        "event": "Yalta shapes postwar Europe while U.S. and Soviet troops meet at the Elbe; within months, arguments over Poland and Germany replace the wartime glow.",
+        "links": [
+          {
+            "label": "Office of the Historian: Russia",
+            "url": "https://history.state.gov/countries/russia"
+          }
+        ]
       },
       {
         "year": "1947",
-        "event": "Cold War begins"
+        "tone": -2,
+        "event": "The Truman Doctrine and Marshall Plan lock in containment; Moscow rejects the aid terms for its sphere and the Cold War becomes policy.",
+        "links": [
+          {
+            "label": "National Archives: Marshall Plan",
+            "url": "https://www.archives.gov/milestone-documents/marshall-plan"
+          },
+          {
+            "label": "Office of the Historian: NATO, 1949",
+            "url": "https://history.state.gov/milestones/1945-1952/nato"
+          }
+        ]
+      },
+      {
+        "year": "1948",
+        "tone": -2,
+        "event": "The Berlin Blockade and Airlift freeze Germany’s split; NATO is founded in 1949 as the Soviet atomic test ends the U.S. nuclear monopoly.",
+        "links": [
+          {
+            "label": "Office of the Historian: North Atlantic Treaty Organization, 1949",
+            "url": "https://history.state.gov/milestones/1945-1952/nato"
+          }
+        ]
+      },
+      {
+        "year": "1961",
+        "tone": -2,
+        "event": "The Berlin Crisis and the Wall seal the city’s divide; Checkpoint Charlie’s tank standoff becomes an emblem of superpower nerve.",
+        "links": [
+          {
+            "label": "Britannica: Berlin Wall",
+            "url": "https://www.britannica.com/topic/Berlin-Wall"
+          },
+          {
+            "label": "Office of the Historian: Russia",
+            "url": "https://history.state.gov/countries/russia"
+          }
+        ]
+      },
+      {
+        "year": "1962",
+        "tone": -2,
+        "event": "The Cuban Missile Crisis brings the superpowers to the nuclear brink before a quarantine, secret bargaining, and Soviet withdrawal defuse it.",
+        "links": [
+          {
+            "label": "BBC: Cuban Missile Crisis retrospective",
+            "url": "https://news.bbc.co.uk/2/hi/7064428.stm"
+          }
+        ]
+      },
+      {
+        "year": "1972",
+        "tone": 1,
+        "event": "Nixon’s Moscow Summit produces SALT I and the ABM Treaty—détente’s core arms-control architecture after years of crisis.",
+        "links": [
+          {
+            "label": "Office of the Historian: Helsinki Final Act / détente",
+            "url": "https://history.state.gov/milestones/1969-1976/helsinki"
+          }
+        ]
+      },
+      {
+        "year": "1975",
+        "tone": 1,
+        "event": "The Helsinki Final Act recognizes postwar borders while inserting human-rights baskets that dissidents later turn against Moscow.",
+        "links": [
+          {
+            "label": "Office of the Historian: Helsinki Final Act, 1975",
+            "url": "https://history.state.gov/milestones/1969-1976/helsinki"
+          }
+        ]
+      },
+      {
+        "year": "1979",
+        "tone": -2,
+        "event": "After the Soviet invasion of Afghanistan, Carter shelves SALT II, embargoes grain, and arms the mujahideen—détente collapses.",
+        "links": [
+          {
+            "label": "Politico: Carter withdraws SALT II",
+            "url": "https://www.politico.com/story/2018/01/01/carter-withdraws-salt-ii-accord-jan-2-1980-319819"
+          },
+          {
+            "label": "Office of the Historian: Russia",
+            "url": "https://history.state.gov/countries/russia"
+          }
+        ]
+      },
+      {
+        "year": "1987",
+        "tone": 2,
+        "event": "Reagan and Gorbachev sign the INF Treaty in Washington, eliminating a whole class of ground-launched missiles with on-site verification.",
+        "links": [
+          {
+            "label": "RFE/RL: INF and START nuclear context",
+            "url": "https://www.rferl.org/a/nuclear-weapons-russia-start-inf-warheads/30003088.html"
+          },
+          {
+            "label": "Office of the Historian: Russia",
+            "url": "https://history.state.gov/countries/russia"
+          }
+        ]
       },
       {
         "year": "1991",
-        "event": "Soviet collapse; relations with Russian Federation"
+        "tone": 1,
+        "event": "The USSR dissolves; Russia takes the U.N. Security Council seat and nuclear command as Bush and Yeltsin proclaim partnership and Nunn–Lugar work begins.",
+        "links": [
+          {
+            "label": "National Security Archive: Bush–Yeltsin telephone memo, Dec. 1991",
+            "url": "https://nsarchive.gwu.edu/document/27272-document-9-memorandum-telephone-conversation-bush-yeltsin-december-8-1991"
+          },
+          {
+            "label": "Office of the Historian: Clinton and Yeltsin",
+            "url": "https://history.state.gov/milestones/1993-2000/clinton-yeltsin"
+          }
+        ]
+      },
+      {
+        "year": "1994",
+        "tone": 1,
+        "event": "The Budapest Memorandum’s security assurances help Ukraine transfer Soviet nuclear weapons—later invoked after 2014 and 2022 as those assurances are tested.",
+        "links": [
+          {
+            "label": "Office of the Historian: Clinton and Yeltsin",
+            "url": "https://history.state.gov/milestones/1993-2000/clinton-yeltsin"
+          },
+          {
+            "label": "National Security Archive: Clinton–Yeltsin Helsinki memo",
+            "url": "https://nsarchive.gwu.edu/document/32237-document-14-memorandum-conversation-clinton-yeltsin-summit-helsinki-finland-subject"
+          }
+        ]
+      },
+      {
+        "year": "1999",
+        "tone": -1,
+        "event": "NATO’s Kosovo air war without a U.N. mandate outrages Yeltsin’s Russia and strains the 1990s partnership; Chechnya criticism adds a public clash.",
+        "links": [
+          {
+            "label": "The Guardian: Russia and the Kosovo war",
+            "url": "https://www.theguardian.com/world/1999/mar/25/russia"
+          },
+          {
+            "label": "Office of the Historian: Clinton and Yeltsin",
+            "url": "https://history.state.gov/milestones/1993-2000/clinton-yeltsin"
+          }
+        ]
+      },
+      {
+        "year": "2001",
+        "tone": 1,
+        "event": "After 9/11, Putin offers counterterror help and Afghanistan logistics; a brief Bush–Putin thaw hints at partnership against a common enemy.",
+        "links": [
+          {
+            "label": "State Department archive: U.S.–Russia timeline materials",
+            "url": "https://2001-2009.state.gov/r/pa/ho/pubs/fs/85739.htm"
+          }
+        ]
+      },
+      {
+        "year": "2002",
+        "tone": -1,
+        "event": "Washington withdraws from the ABM Treaty to pursue missile defense; Putin calls it a mistake even as SORT still cuts deployed warheads.",
+        "links": [
+          {
+            "label": "State Department archive: U.S.–Russia timeline materials",
+            "url": "https://2001-2009.state.gov/r/pa/ho/pubs/fs/85739.htm"
+          }
+        ]
+      },
+      {
+        "year": "2008",
+        "tone": -2,
+        "event": "The Russo-Georgian War over South Ossetia and Abkhazia freezes NATO paths for Georgia and Ukraine and resets Moscow as a military spoiler.",
+        "links": [
+          {
+            "label": "The Guardian: NATO, Georgia, and Russia",
+            "url": "https://www.theguardian.com/world/2008/apr/02/nato.georgia"
+          },
+          {
+            "label": "CNN: NATO membership controversy",
+            "url": "https://edition.cnn.com/2008/WORLD/europe/04/01/ukraine.analysis/"
+          }
+        ]
+      },
+      {
+        "year": "2009",
+        "tone": 1,
+        "event": "Obama and Medvedev try a “reset”; Clinton and Lavrov’s mistranslated button becomes the emblem of a thaw that later fades as Putin returns.",
+        "links": [
+          {
+            "label": "NYT: fresh start for U.S.–Russia relations",
+            "url": "https://www.nytimes.com/2009/04/02/world/europe/02arms.html?_r=1&hp"
+          },
+          {
+            "label": "TIME: U.S.–Russia relations need a new reset",
+            "url": "https://content.time.com/time/world/article/0,8599,1971651,00.html"
+          }
+        ]
+      },
+      {
+        "year": "2010",
+        "tone": 1,
+        "event": "New START, signed in Prague, caps deployed strategic warheads and restores verification—the last major bilateral arms treaty into the 2020s.",
+        "links": [
+          {
+            "label": "NYT: Russia and U.S. report arms breakthrough",
+            "url": "https://www.nytimes.com/2010/03/25/world/europe/25start.html"
+          },
+          {
+            "label": "CSIS: later New START suspension context",
+            "url": "https://www.csis.org/analysis/russia-suspends-new-start-and-increases-nuclear-risks"
+          }
+        ]
       },
       {
         "year": "2014",
-        "event": "Crimea annexation; major sanctions"
+        "tone": -2,
+        "event": "Russia seizes and annexes Crimea; the G8 suspends Moscow and Washington starts the sanctions era that still defines the relationship.",
+        "links": [
+          {
+            "label": "NYT: Russia ousted from the G8",
+            "url": "https://www.nytimes.com/2014/03/25/world/europe/obama-russia-crimea.html"
+          },
+          {
+            "label": "White House: Ukraine Freedom Support Act",
+            "url": "https://obamawhitehouse.archives.gov/the-press-office/2014/12/18/statement-president-ukraine-freedom-support-act"
+          },
+          {
+            "label": "Washington Post: Crimea and Kosovo precedent debate",
+            "url": "https://www.washingtonpost.com/news/volokh-conspiracy/wp/2014/03/24/crimea-kosovo-and-false-moral-equivalency/"
+          }
+        ]
+      },
+      {
+        "year": "2015",
+        "tone": -1,
+        "event": "Russian airstrikes back Assad in Syria; Washington rejects deep military coordination as the war becomes a proxy collision zone.",
+        "links": [
+          {
+            "label": "NYT: Russians strike targets in Syria",
+            "url": "https://www.nytimes.com/2015/10/01/world/europe/russia-airstrikes-syria.html"
+          },
+          {
+            "label": "Reuters: U.S. rules out military cooperation in Syria",
+            "url": "https://www.reuters.com/article/us-mideast-crisis-usa-cooperation-idUSKCN0S11EH20151007"
+          }
+        ]
+      },
+      {
+        "year": "2016",
+        "tone": -2,
+        "event": "U.S. intelligence assesses that Putin ordered a campaign to harm Clinton and help Trump; Obama expels diplomats and the finding remains politically radioactive.",
+        "links": [
+          {
+            "label": "ODNI ICA on Russian activities in U.S. elections",
+            "url": "https://www.dni.gov/files/documents/ICA_2017_01.pdf"
+          },
+          {
+            "label": "White House: December 2016 response to Russian cyber activity",
+            "url": "https://obamawhitehouse.archives.gov/the-press-office/2016/12/29/statement-president-actions-response-russian-malicious-cyber-activity"
+          },
+          {
+            "label": "Senate Intelligence Committee Volume 5 (archived)",
+            "url": "https://web.archive.org/web/20210122003727/https://www.intelligence.senate.gov/sites/default/files/documents/report_volume5.pdf"
+          },
+          {
+            "label": "NYT: CIA judgment on Russia hacking evidence",
+            "url": "https://www.nytimes.com/2016/12/11/us/politics/cia-judgment-intelligence-russia-hacking-evidence.html"
+          }
+        ]
       },
       {
         "year": "2022",
-        "event": "Full-scale invasion of Ukraine; severe sanctions and rupture"
+        "tone": -2,
+        "event": "Russia’s full-scale invasion of Ukraine brings historic U.S. and allied sanctions, weapons for Kyiv, and the sharpest rupture since 1945.",
+        "links": [
+          {
+            "label": "Reuters: Russia says the United States is directly involved",
+            "url": "https://www.reuters.com/world/europe/russia-says-united-states-is-directly-involved-ukraine-war-2022-08-02/"
+          },
+          {
+            "label": "AP News: Ukraine war coverage",
+            "url": "https://apnews.com/article/8d162f6100f23833c376f011a9298126"
+          },
+          {
+            "label": "BBC: Ukraine war reporting",
+            "url": "https://www.bbc.com/news/articles/c7435pnle0go"
+          }
+        ]
+      },
+      {
+        "year": "2023",
+        "tone": -1,
+        "event": "Putin suspends Russia’s participation in New START, the last major U.S.–Russia nuclear treaty, while claiming it will still observe numerical limits.",
+        "links": [
+          {
+            "label": "CSIS: Russia suspends New START",
+            "url": "https://www.csis.org/analysis/russia-suspends-new-start-and-increases-nuclear-risks"
+          }
+        ]
+      },
+      {
+        "year": "2024",
+        "tone": 1,
+        "event": "A multinational swap frees Evan Gershkovich, Paul Whelan, and others—the largest U.S.–Russia prisoner exchange since the Cold War, even as the Ukraine war continues.",
+        "links": [
+          {
+            "label": "AP: 2024 prisoner swap",
+            "url": "https://apnews.com/article/us-russia-prisoner-swap-gershkovich-whelan-d10fe10d630ac9c86d3a8d04b825f9a8"
+          },
+          {
+            "label": "BBC: the long road to the prisoners deal",
+            "url": "https://www.bbc.com/news/articles/c6p2p4e43lro"
+          },
+          {
+            "label": "Reuters: years of negotiations behind the swap",
+            "url": "https://www.reuters.com/world/years-us-negotiations-behind-russia-prisoner-swap-2024-08-01/"
+          }
+        ]
+      },
+      {
+        "year": "2025",
+        "tone": 0,
+        "event": "Reporting describes a Trump–Putin call, U.S.–Russia talks in Riyadh without Ukraine present, a U.S. U.N. vote shift, and later an Anchorage summit—diplomacy running alongside sanctions.",
+        "links": [
+          {
+            "label": "CNN: Trump–Putin phone call",
+            "url": "https://edition.cnn.com/2025/02/12/politics/putin-trump-phone-call/index.html"
+          },
+          {
+            "label": "NYT: U.S.–Russia talks in Saudi Arabia",
+            "url": "https://www.nytimes.com/2025/02/18/world/europe/us-russia-saudi-ukraine.html"
+          },
+          {
+            "label": "AP: Riyadh talks",
+            "url": "https://apnews.com/article/russia-ukraine-war-riyadh-talks-trump-putin-rubio-0c3beebfef5839e9d509ff58239a6bc5"
+          },
+          {
+            "label": "BBC: Trump and Putin meet in Alaska",
+            "url": "https://www.bbc.com/news/articles/crev9ep2vdgo"
+          }
+        ]
       },
       {
         "year": "2026",
-        "event": "Continues as currently strained"
+        "tone": -2,
+        "event": "The relationship remains among Washington’s most strained: the Ukraine war, sanctions, and a suspended New START treaty outweigh occasional prisoner swaps and summit theater.",
+        "links": [
+          {
+            "label": "CSIS: New START suspension and nuclear risk",
+            "url": "https://www.csis.org/analysis/russia-suspends-new-start-and-increases-nuclear-risks"
+          },
+          {
+            "label": "Office of the Historian: Russia",
+            "url": "https://history.state.gov/countries/russia"
+          }
+        ]
       }
     ],
     "region": "Europe",
-    "first_load": true
+    "first_load": true,
+    "links": [
+      {
+        "label": "Office of the Historian: Russia",
+        "url": "https://history.state.gov/countries/russia"
+      },
+      {
+        "label": "Office of the Historian: Recognition of the USSR, 1933",
+        "url": "https://history.state.gov/milestones/1921-1936/ussr"
+      },
+      {
+        "label": "Wikipedia: Russia–United States relations",
+        "url": "https://en.wikipedia.org/wiki/Russia–United_States_relations"
+      },
+      {
+        "label": "Wikipedia: Russian Empire–United States relations",
+        "url": "https://en.wikipedia.org/wiki/Russian_Empire–United_States_relations"
+      },
+      {
+        "label": "Wikipedia: Soviet Union–United States relations",
+        "url": "https://en.wikipedia.org/wiki/Soviet_Union–United_States_relations"
+      }
+    ]
   },
   {
     "country": "Rwanda",

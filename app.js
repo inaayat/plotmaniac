@@ -22,6 +22,7 @@ import {
   plotHubs,
   relationsFieldEdges,
   relationsFieldLayout,
+  httpsSourceLinks,
   relationMoodLabel,
   relationRideAt,
   relationRideLayout,
@@ -964,7 +965,9 @@ function renderRelationRide(record) {
   const hint = document.createElement("p");
   hint.className = "relation-ride-hint";
   hint.textContent = "Scroll sideways. They rise when the relationship warms and sink when it strains.";
-  readout.append(yearEl, moodEl, eventEl, hint);
+  const linksEl = document.createElement("div");
+  linksEl.className = "relation-ride-links";
+  readout.append(yearEl, moodEl, eventEl, linksEl, hint);
 
   const stage = document.createElement("div");
   stage.className = "relation-ride-stage";
@@ -1045,6 +1048,9 @@ function renderRelationRide(record) {
     moodEl.textContent = relationMoodLabel(here.tone);
     moodEl.dataset.mood = relationToneClass(here.tone);
     eventEl.textContent = nearest.event;
+    linksEl.replaceChildren();
+    const chips = renderSourceChips(record.timeline[nearest.index]?.links, "relation-links beat-links");
+    if (chips) linksEl.appendChild(chips);
     cards.forEach((card, index) => {
       card.classList.toggle("is-now", layout.points[index] === nearest);
     });
@@ -1056,6 +1062,8 @@ function renderRelationRide(record) {
     scroller.scrollLeft += event.deltaY;
   }, { passive: false });
   requestAnimationFrame(paint);
+  const sources = renderCountrySources(record);
+  if (sources) root.appendChild(sources);
   return root;
 }
 
@@ -1121,6 +1129,44 @@ function paintRelationRider(rider, tone) {
   rider.dataset.mood = relationToneClass(clamped);
 }
 
+function renderSourceChips(items, className = "relation-links") {
+  const links = httpsSourceLinks(items);
+  if (!links.length) return null;
+  const wrap = document.createElement("div");
+  wrap.className = className;
+  links.forEach((link) => {
+    const anchor = document.createElement("a");
+    anchor.href = link.url;
+    anchor.target = "_blank";
+    anchor.rel = "noreferrer";
+    anchor.textContent = link.label || "Source";
+    wrap.appendChild(anchor);
+  });
+  return wrap;
+}
+
+function renderCountrySources(record) {
+  const sources = document.createElement("div");
+  sources.className = "country-sources";
+  const countryChips = renderSourceChips(record.links, "relation-links country-links");
+  if (countryChips) {
+    const heading = document.createElement("p");
+    heading.className = "country-sources-label";
+    heading.textContent = "Sources";
+    sources.append(heading, countryChips);
+  }
+  if (record.wiki_bilateral) {
+    const more = document.createElement("a");
+    more.className = "drawer-more";
+    more.href = record.wiki_bilateral;
+    more.target = "_blank";
+    more.rel = "noreferrer";
+    more.textContent = "Read more on Wikipedia";
+    sources.appendChild(more);
+  }
+  return sources.childNodes.length ? sources : null;
+}
+
 function renderCountryHistory(record, { variant = "drawer", chartWidth } = {}) {
   const block = document.createElement("div");
   block.className = `country-history${variant === "page" ? " is-page" : ""}`;
@@ -1141,16 +1187,14 @@ function renderCountryHistory(record, { variant = "drawer", chartWidth } = {}) {
     const text = document.createElement("p");
     text.textContent = beat.event;
     item.append(year, text);
+    const beatLinks = renderSourceChips(beat.links, "relation-links beat-links");
+    if (beatLinks) item.appendChild(beatLinks);
     list.appendChild(item);
   });
   if (chartWrap) wireRelationSentimentChart(chartWrap, list);
-  const more = document.createElement("a");
-  more.className = "drawer-more";
-  more.href = record.wiki_bilateral;
-  more.target = "_blank";
-  more.rel = "noreferrer";
-  more.textContent = "Read more on Wikipedia";
-  block.append(list, more);
+  block.appendChild(list);
+  const sources = renderCountrySources(record);
+  if (sources) block.appendChild(sources);
   return block;
 }
 
@@ -1176,7 +1220,7 @@ function renderRelationSentimentChart(record, { width = 360, tall = false } = {}
   svg.setAttribute("class", "relation-sentiment-chart");
   svg.setAttribute("viewBox", `0 0 ${layout.width} ${layout.height}`);
   svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", "Chart of United States–Mexico relationship warmth by year");
+  svg.setAttribute("aria-label", `Chart of United States–${record.country} relationship warmth by year`);
   const defs = document.createElementNS(SVG_NS, "defs");
   const warm = document.createElementNS(SVG_NS, "linearGradient");
   warm.setAttribute("id", "relation-warm");
