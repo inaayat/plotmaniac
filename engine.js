@@ -1277,6 +1277,22 @@ export function httpsSourceLinks(items = []) {
   });
 }
 
+/** Portrait flags for the relation-ride rider: partner on the left, plot center on the right. */
+export function relationRiderFlags(record, peopleById = new Map(), { centerId = "united-states" } = {}) {
+  const partner = peopleById.get(record?.slug);
+  const center = peopleById.get(centerId);
+  return {
+    partner: {
+      name: record?.country || partner?.name || "",
+      src: String(partner?.portrait?.src || ""),
+    },
+    center: {
+      name: center?.name || "",
+      src: String(center?.portrait?.src || ""),
+    },
+  };
+}
+
 export function relationToneSeries(timeline = []) {
   return (timeline || [])
     .map((beat, index) => {

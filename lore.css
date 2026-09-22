@@ -1159,6 +1159,18 @@ body[data-board="regions"][data-view="web"] #footer-note {
   padding: 2px 18px 6px;
 }
 
+.relation-ride-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.relation-ride-identity .avatar {
+  flex: none;
+  width: 56px;
+  height: 56px;
+}
+
 .relation-ride-head .back {
   margin: 0;
 }
@@ -1279,6 +1291,42 @@ body[data-board="regions"][data-view="web"] #footer-note {
   margin-top: -36px;
   pointer-events: none;
   filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
+}
+
+.relation-rider svg {
+  display: block;
+}
+
+.rider-flag {
+  position: absolute;
+  top: 21px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border: 1.5px solid #1a1612;
+  border-radius: 50%;
+  background: #161410;
+  color: #f4efe6;
+  font-size: 0.48rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rider-flag-partner {
+  left: 19px;
+}
+
+.rider-flag-center {
+  left: 79px;
+}
+
+.rider-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .relation-rider[data-mood="tone-strong-warm"],
