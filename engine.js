@@ -1567,6 +1567,12 @@ export function warsForCountry(wars, iso) {
     (war.sides || []).some((side) => (side.states || []).includes(iso)));
 }
 
+export function compareWarsByStart(a, b) {
+  const start = Number(b.start) - Number(a.start);
+  if (start) return start;
+  return String(a.name || "").localeCompare(String(b.name || ""), "en");
+}
+
 export function warCountryNote(war, iso, countryNames = {}) {
   const nameOf = (id) => countryNames[id]?.name || id;
   const sides = war?.sides || [];

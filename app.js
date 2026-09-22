@@ -43,6 +43,7 @@ import {
   warOverlapsSpan,
   warsInSpan,
   warsForCountry,
+  compareWarsByStart,
   warCountryNote,
   parseWarSpan,
   warPartyLine,
@@ -2928,7 +2929,7 @@ function paintWars() {
   header.appendChild(sources);
   const stack = document.createElement("div");
   stack.className = "wars-cards";
-  const ordered = chosenWars.slice().sort((a, b) => a.name.localeCompare(b.name, "en"));
+  const ordered = chosenWars.slice().sort(compareWarsByStart);
   if (!ordered.length) {
     const empty = document.createElement("p");
     empty.className = "wars-empty";

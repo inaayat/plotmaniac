@@ -58,6 +58,7 @@ import {
   parseWarSpan,
   warsInSpan,
   warsForCountry,
+  compareWarsByStart,
   warCountryNote,
   opposingPairs,
   warsInYear,
@@ -1717,6 +1718,14 @@ assert.deepEqual(parseWarSpan(null, null, warsPlot.year, ""), { from: 2026, to: 
 const early = warsInSpan(warArchive.conflicts, 2003, 2011);
 assert.ok(early.wars.some((war) => war.id === iraq.id));
 assert.equal(early.wars.some((war) => war.name === "Russian invasion of Ukraine"), false);
+const listed = early.wars.slice().sort(compareWarsByStart);
+assert.ok(listed.every((war, index) => index === 0 || war.start <= listed[index - 1].start));
+assert.deepEqual(
+  [{ name: "Beta", start: 2004 }, { name: "Alpha", start: 2004 }, { name: "Zed", start: 2008 }]
+    .sort(compareWarsByStart)
+    .map((war) => war.name),
+  ["Zed", "Alpha", "Beta"],
+);
 const american = warsForCountry(early.wars, "US");
 assert.ok(american.some((war) => war.id === iraq.id));
 assert.match(warCountryNote(iraq, "US", warArchive.countries), /Against Iraq/);
