@@ -83,6 +83,7 @@ import {
 import {
   filterStatesByCriteria,
   parseGunStateLawFilters,
+  parseGunType,
   serializeGunStateLawFilters,
 } from "./gun-laws-by-state-model.js";
 import { renderGunStateLawsBoard } from "./gun-laws-by-state-view.js";
@@ -121,6 +122,7 @@ let state = {
   gunLawFilters: {},
   gunLawState: "",
   gunLawCriteria: "",
+  gunLawGunType: "handgun",
 };
 let toastTimer = null;
 let loadToken = 0;
@@ -485,8 +487,11 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       });
       const topic = parsed.topic || resolveScotusTopic(location.href, requestedPlotParam);
       const reg = parseRegulationParams(location.href, exemplarStates);
-      const criteriaIds = new Set(gunStatePack?.filterConfig?.criteria?.map((row) => row.id) || []);
+      const criteriaIds = new Set([
+        ...(gunStatePack?.filterConfig?.criteria?.map((row) => row.id) || []),
+      ]);
       const gunLawFilters = parseGunStateLawFilters(location.href, criteriaIds);
+      const gunLawGunType = parseGunType(location.href);
       const stateParam = new URL(location.href).searchParams.get("state") || "";
       const validGunStates = new Set(gunStatePack?.snapshot?.states?.map((row) => row.id) || []);
       state = {
@@ -503,6 +508,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         gunLawFilters,
         gunLawState: validGunStates.has(stateParam) ? stateParam : "",
         gunLawCriteria: serializeGunStateLawFilters(gunLawFilters),
+        gunLawGunType,
       };
       applyWarSpan(state);
       rememberCountryRegion();
@@ -524,6 +530,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         gunLawFilters: {},
         gunLawState: "",
         gunLawCriteria: "",
+        gunLawGunType: "handgun",
       };
       applyWarSpan(state, "");
     }
@@ -1238,10 +1245,15 @@ function renderGunStateLawsSection() {
     snapshot: gunStatePack.snapshot,
     filterConfig: gunStatePack.filterConfig,
     filters: state.gunLawFilters || {},
+    gunType: state.gunLawGunType || "handgun",
     selectedStateId: state.gunLawState || "",
     onFilterChange: (criterionId, value) => {
       state.gunLawFilters = { ...state.gunLawFilters, [criterionId]: value };
       state.gunLawCriteria = serializeGunStateLawFilters(state.gunLawFilters);
+      render({ replace: true });
+    },
+    onGunTypeChange: (gunType) => {
+      state.gunLawGunType = gunType;
       render({ replace: true });
     },
     onSelectState: (id) => {

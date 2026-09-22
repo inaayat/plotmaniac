@@ -93,7 +93,10 @@ import {
 } from "../gun-regulation-model.js";
 import {
   filterStatesByCriteria,
+  getStateCriterionCell,
   parseGunStateLawFilters,
+  parseGunType,
+  resolveStatusForGunType,
   validateGunStateSnapshot,
 } from "../gun-laws-by-state-model.js";
 
@@ -2082,9 +2085,15 @@ assert.notEqual(findPlot(plots.plots, "gun-laws-by-state")?.id, "scotus");
 const gunStateSnapshot = readJson("../data/gun-laws-by-state/states-snapshot.json");
 assert.deepEqual(validateGunStateSnapshot(gunStateSnapshot), []);
 assert.ok(gunStateSnapshot.states.length >= 51);
+assert.equal(gunStateSnapshot.states.length, 51);
 const tx = gunStateSnapshot.states.find((row) => row.id === "tx");
-assert.equal(tx?.checklist?.["carry-permit"]?.status, "not_required");
-const criteriaIds = new Set(["carry-permit", "waiting-period"]);
+assert.equal(
+  resolveStatusForGunType(getStateCriterionCell(tx, "carry-permit"), "handgun", "carry-permit"),
+  "not_required",
+);
+assert.equal(parseGunType("https://plotmaniac.com/?gun=longgun"), "longgun");
+assert.equal(parseGunType("https://plotmaniac.com/"), "handgun");
+const criteriaIds = new Set(["carry-permit", "waiting-period", "open-carry-permit"]);
 const filters = parseGunStateLawFilters("https://plotmaniac.com/?criteria=carry-permit:not_required,waiting-period:not_required", criteriaIds);
 assert.equal(filters["carry-permit"], "not_required");
 const permitless = filterStatesByCriteria(gunStateSnapshot.states, filters);

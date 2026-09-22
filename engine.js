@@ -506,7 +506,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
     url.hash = "";
     return url.pathname || "/";
   }
-  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic", "criteria"].forEach((key) => url.searchParams.delete(key));
+  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic", "criteria", "gun"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (state.view === "timeline" || state.view === "person" || state.view === "relation") {
     url.searchParams.set("view", state.view);
@@ -524,6 +524,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (state.gunLawState) url.searchParams.set("state", state.gunLawState);
   else if (state.exemplarState) url.searchParams.set("state", state.exemplarState);
   if (state.gunLawCriteria) url.searchParams.set("criteria", state.gunLawCriteria);
+  if (state.gunLawGunType === "longgun") url.searchParams.set("gun", "longgun");
   if (state.topic) url.searchParams.set("topic", state.topic);
   if (state.hub) url.searchParams.set("hub", state.hub);
   else if (state.defaultHub) url.searchParams.set("hub", "shared");

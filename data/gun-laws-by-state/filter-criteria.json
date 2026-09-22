@@ -1,63 +1,82 @@
 {
-  "disclaimer": "Wikipedia seed snapshot — not legal advice. Federal minimum ages, dealer NICS checks, and prohibited-person categories apply in every state.",
+  "disclaimer": "Current Wikipedia snapshot — not legal advice. Covers 50 states and D.C. only (no territories). Federal minimum ages, dealer NICS checks, and prohibited-person categories apply in every jurisdiction.",
+  "gunTypes": [
+    { "id": "handgun", "label": "Handgun" },
+    { "id": "longgun", "label": "Long gun" }
+  ],
   "criteria": [
     {
       "id": "purchase-permit",
       "label": "Purchase permit",
       "question": "Must you get a permit before buying?",
-      "wikiSubject": "State permit required to purchase?"
+      "wikiSubject": "State permit required to purchase?",
+      "group": "ownership"
     },
     {
       "id": "private-sale-check",
       "label": "Private-sale background check",
       "question": "Must private transfers use a background check?",
-      "wikiSubject": "Background checks required for private sales?"
+      "wikiSubject": "Background checks required for private sales?",
+      "group": "ownership"
     },
     {
       "id": "waiting-period",
       "label": "Waiting period",
       "question": "Is there a mandatory waiting period?",
-      "wikiSubject": "Waiting period?"
-    },
-    {
-      "id": "carry-permit",
-      "label": "Concealed-carry license",
-      "question": "Is a license required to carry concealed?",
-      "wikiSubject": "Permit required for concealed carry?"
+      "wikiSubject": "Waiting period?",
+      "group": "ownership"
     },
     {
       "id": "handgun-registration",
       "label": "Firearm registration",
       "question": "Must firearms be registered?",
-      "wikiSubject": "Firearm registration?"
+      "wikiSubject": "Firearm registration?",
+      "group": "ownership"
     },
     {
       "id": "assault-weapons-restriction",
       "label": "Assault-weapon restrictions",
       "question": "Are defined assault weapons restricted?",
-      "wikiSubject": "Assault weapon law?"
+      "wikiSubject": "Assault weapon law?",
+      "group": "ownership"
     },
     {
       "id": "magazine-capacity-limit",
       "label": "Magazine capacity limit",
       "question": "Are large-capacity magazines restricted?",
-      "wikiSubject": "Magazine capacity restriction?"
+      "wikiSubject": "Magazine capacity restriction?",
+      "group": "ownership"
     },
     {
       "id": "nfa-item-registration",
       "label": "Extra state NFA limits",
       "question": "Does the state add restrictions beyond federal NFA?",
-      "wikiSubject": "NFA weapons restricted?"
+      "wikiSubject": "NFA weapons restricted?",
+      "group": "ownership"
     },
     {
       "id": "ghost-gun-rules",
       "label": "Home-built / ghost guns",
       "question": "Are home-built or unfinished frames restricted?",
-      "wikiSubject": "Home-built firearms restriction?"
+      "wikiSubject": "Home-built firearms restriction?",
+      "group": "ownership"
+    },
+    {
+      "id": "carry-permit",
+      "label": "Concealed carry license",
+      "question": "Is a license required to carry concealed?",
+      "wikiSubject": "Permit required for concealed carry?",
+      "group": "carry"
+    },
+    {
+      "id": "open-carry-permit",
+      "label": "Open-carry license",
+      "question": "Is a license required to carry openly?",
+      "wikiSubject": "Permit required for open carry?",
+      "group": "carry"
     }
   ],
   "extras": [
-    { "id": "open-carry-permit", "label": "Open-carry license", "wikiSubject": "Permit required for open carry?" },
     { "id": "red-flag-law", "label": "Red flag law", "wikiSubject": "Red flag law?" }
   ]
 }

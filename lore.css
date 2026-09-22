@@ -4444,12 +4444,45 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   line-height: 1.45;
 }
 
+.gun-state-laws-gun-type {
+  border: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.gun-state-laws-gun-type legend {
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 0;
+}
+
+.gun-state-laws-gun-type-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.gun-state-laws-filter-group h4 {
+  margin: 16px 0 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .gun-state-laws-filters {
   margin: 24px 0;
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 10px;
 }
+
 
 .gun-state-laws-filter-grid {
   display: grid;

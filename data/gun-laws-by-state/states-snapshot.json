@@ -113,19 +113,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit."
+          "plainEnglish": "May carry openly without permit.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "AS 29.35.145"
+          "plainEnglish": "AS 29.35.145",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "\"A person who is justified in using nondeadly force in self-defense may use deadly force in self-defense upon another person when and to the extent, the person reasonably believes the use of deadly force is necessary for self-defense against death; serious physical injury; kidnapping except for what is described as custodial interference in the first degree in AS 11.41.320; sexual assault in the first degree; sexual assault in the second degree; sexual abuse of a minor in the first degree; or ro"
+          "plainEnglish": "\"A person who is justified in using nondeadly force in self-defense may use deadly force in self-defense upon another person when and to the extent, the person reasonably believes the use of deadly force is necessary for self-defense against death; serious physical injury; kidnapping except for what is described as custodial interference in the first degree in AS 11.41.320; sexual assault in the first degree; sexual assault in the second degree; sexual abuse of a minor in the first degree; or ro",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -287,19 +303,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit, except handgun must be secured in a holster. 13A-11-7"
+          "plainEnglish": "May carry openly without permit, except handgun must be secured in a holster. 13A-11-7",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "13A-3-23"
+          "plainEnglish": "13A-3-23",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"...the Legislature hereby occupies and preempts the entire field of regulation in this state touching in any way upon firearms, ammunition, and firearm accessories...\" 13A-11-61.3"
+          "plainEnglish": "\"...the Legislature hereby occupies and preempts the entire field of regulation in this state touching in any way upon firearms, ammunition, and firearm accessories...\" 13A-11-61.3",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -449,19 +481,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "AR Code § 5-73-120"
+          "plainEnglish": "AR Code § 5-73-120",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "AR Code §§ 5-2-601 to 5-2-621"
+          "plainEnglish": "AR Code §§ 5-2-601 to 5-2-621",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "AR Code § 14-16-504"
+          "plainEnglish": "AR Code § 14-16-504",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -623,19 +671,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit."
+          "plainEnglish": "May carry openly without permit.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "A.R.S. §§ 13-401 to 13-421"
+          "plainEnglish": "A.R.S. §§ 13-401 to 13-421",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "A.R.S. § 13-3108"
+          "plainEnglish": "A.R.S. § 13-3108",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -799,15 +863,27 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "While the Firearm Safety Certificate (FSC) is required for new purchases of firearms, ongoing possession of a firearm does not require a license or permit. [18] People moving into California are required, within 60 days, to file a New Resident Report of Firearm Ownership. [19] [20] New residents are prohibited from importing assault weapons or any other weapons prohibited by California law regardless of whether they were lawfully acquired and possessed in the residents' prior state of residence."
+          "plainEnglish": "While the Firearm Safety Certificate (FSC) is required for new purchases of firearms, ongoing possession of a firearm does not require a license or permit. [18] People moving into California are required, within 60 days, to file a New Resident Report of Firearm Ownership. [19] [20] New residents are prohibited from importing assault weapons or any other weapons prohibited by California law regardless of whether they were lawfully acquired and possessed in the residents' prior state of residence.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Most but not all local restrictions preempted. §53701 Government Code Archived July 12, 2011, at the Wayback Machine"
+          "plainEnglish": "Most but not all local restrictions preempted. §53701 Government Code Archived July 12, 2011, at the Wayback Machine",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "The police or a person's family member can ask a judge to confiscate the firearms of a person who appears to pose a threat to themselves or others for up to one year. [44] Such orders from out-of-state are also recognized. As of September 1, 2020, eligible petitioners will be expanded to include an employer, coworker, and school teacher or employee, and the maximum allowable duration will be extended to 5 years. [45]"
+          "plainEnglish": "The police or a person's family member can ask a judge to confiscate the firearms of a person who appears to pose a threat to themselves or others for up to one year. [44] Such orders from out-of-state are also recognized. As of September 1, 2020, eligible petitioners will be expanded to include an employer, coworker, and school teacher or employee, and the maximum allowable duration will be extended to 5 years. [45]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -983,19 +1059,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Legal without permit requirements except in Denver and other posted areas. Colo. Rev. Stat. § 18-12; DRMC §§ 38-117(b), 38-118"
+          "plainEnglish": "Legal without permit requirements except in Denver and other posted areas. Colo. Rev. Stat. § 18-12; DRMC §§ 38-117(b), 38-118",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "partial",
-          "plainEnglish": "Local ordinances are not preempted by state law, and Denver bans assault weapons and open carry. However, holders of concealed carry permits are exempt from most, but not all, local restrictions. Colo. Rev. Stat. § 29-11.7-103"
+          "plainEnglish": "Local ordinances are not preempted by state law, and Denver bans assault weapons and open carry. However, holders of concealed carry permits are exempt from most, but not all, local restrictions. Colo. Rev. Stat. § 29-11.7-103",
+          "wiki": {
+            "longGun": "partial",
+            "handgun": "partial"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "The police may temporarily confiscate firearms from people who are threatening to harm themselves or others or have been accused of the same by someone who resides at the same address of the subject, and then get a court order afterwards. HB 19-1177"
+          "plainEnglish": "The police may temporarily confiscate firearms from people who are threatening to harm themselves or others or have been accused of the same by someone who resides at the same address of the subject, and then get a court order afterwards. HB 19-1177",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -1155,19 +1247,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "None"
+          "plainEnglish": "None",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "required",
-          "plainEnglish": "Effective October 1, 2023, the open carry of handguns and long guns is generally prohibited in Connecticut, except on property owned or lawfully controlled by the person carrying openly, at a designated shooting range, or while hunting. [65]"
+          "plainEnglish": "Effective October 1, 2023, the open carry of handguns and long guns is generally prohibited in Connecticut, except on property owned or lawfully controlled by the person carrying openly, at a designated shooting range, or while hunting. [65]",
+          "wiki": {
+            "longGun": "Illegal",
+            "handgun": "Illegal"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "State pre-emption of local ordinances not explicitly specified in state law, but established by court precedence. Most municipalities have ordinances restricting or banning the discharge of firearms outside of firing ranges or designated hunting areas during hunting seasons. Some municipalities have restrictions or bans on carrying long guns in public places. The City of New London and the City of New Britain previously had ordinances that forbade concealed carry of handguns, which have since be"
+          "plainEnglish": "State pre-emption of local ordinances not explicitly specified in state law, but established by court precedence. Most municipalities have ordinances restricting or banning the discharge of firearms outside of firing ranges or designated hunting areas during hunting seasons. Some municipalities have restrictions or bans on carrying long guns in public places. The City of New London and the City of New Britain previously had ordinances that forbade concealed carry of handguns, which have since be",
+          "wiki": {
+            "longGun": "Partial",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "State law allows police, after investigating and determining probable cause, to get a court warrant and seize guns from anyone \"posing an imminent risk of harming themselves or someone else\"."
+          "plainEnglish": "State law allows police, after investigating and determining probable cause, to get a court warrant and seize guns from anyone \"posing an imminent risk of harming themselves or someone else\".",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -1327,11 +1435,19 @@
       "extras": {
         "owner-license": {
           "status": "required",
-          "plainEnglish": "The firearm registration process also serves as a licensing process. In the case of self-manufactured firearms, DC residents have 5 business days to file for a registration certificate after completing the self-manufacture of a firearm."
+          "plainEnglish": "The firearm registration process also serves as a licensing process. In the case of self-manufactured firearms, DC residents have 5 business days to file for a registration certificate after completing the self-manufacture of a firearm.",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "Red flag law?"
+          "plainEnglish": "Red flag law?",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -1487,19 +1603,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Open carry without a permit is generally lawful. A 2014 Delaware Supreme Court ruling recognized that open carry was a long-standing fundamental right, and could only be prohibited by local ordinances in effect prior to July 4, 1985. The city of Dover formerly required a permit from the police chief for a state concealed permit to open carry, but this was repealed in October 2015 in accordance with the ruling."
+          "plainEnglish": "Open carry without a permit is generally lawful. A 2014 Delaware Supreme Court ruling recognized that open carry was a long-standing fundamental right, and could only be prohibited by local ordinances in effect prior to July 4, 1985. The city of Dover formerly required a permit from the police chief for a state concealed permit to open carry, but this was repealed in October 2015 in accordance with the ruling.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "unknown",
-          "plainEnglish": "Municipalities may regulate only the discharge of firearms and the possession of firearms within police stations and municipal buildings, unless the ordinance was in effect prior to July 4, 1985. 22 Del.C § 111"
+          "plainEnglish": "Municipalities may regulate only the discharge of firearms and the possession of firearms within police stations and municipal buildings, unless the ordinance was in effect prior to July 4, 1985. 22 Del.C § 111",
+          "wiki": {
+            "longGun": "Yes*",
+            "handgun": "Yes*"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "If a mental health professional deems that a person is a danger to themselves or to others, the police may get a court order to temporarily seize that person's firearms. House Bill 302 (2018)"
+          "plainEnglish": "If a mental health professional deems that a person is a danger to themselves or to others, the police may get a court order to temporarily seize that person's firearms. House Bill 302 (2018)",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -1663,19 +1795,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Florida's open carry ban was declared unconstitutional by Florida First District Court of Appeal on 10 September 2025. Florida Governor Ron DeSantis and Attorney General James Uthmeier welcomed the ruling and ordered law enforcement officers to no longer enforce the ban, effectively making Florida an open carry state. Open carry is now allowed without a permit. Local restrictions preempted. [72] Fla. Stat. § 790.25(3)"
+          "plainEnglish": "Florida's open carry ban was declared unconstitutional by Florida First District Court of Appeal on 10 September 2025. Florida Governor Ron DeSantis and Attorney General James Uthmeier welcomed the ruling and ordered law enforcement officers to no longer enforce the ban, effectively making Florida an open carry state. Open carry is now allowed without a permit. Local restrictions preempted. [72] Fla. Stat. § 790.25(3)",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "Castle Doctrine/Stand Your Ground law?"
+          "plainEnglish": "Castle Doctrine/Stand Your Ground law?",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Fla. Stat. § 790.33"
+          "plainEnglish": "Fla. Stat. § 790.33",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -1843,19 +1991,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Georgia is a \"shall issue\" for Georgia residents 21 years or older. Permitless open carry took effect on April 12, 2022. O.C.G.A. § 16-11-126 O.C.G.A. § 16-11-129"
+          "plainEnglish": "Georgia is a \"shall issue\" for Georgia residents 21 years or older. Permitless open carry took effect on April 12, 2022. O.C.G.A. § 16-11-126 O.C.G.A. § 16-11-129",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "O.C.G.A. § 16-3-23.1"
+          "plainEnglish": "O.C.G.A. § 16-3-23.1",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "O.C.G.A. § 16-11-173"
+          "plainEnglish": "O.C.G.A. § 16-11-173",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -2005,19 +2169,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "No license required to own any firearms in Hawaii, but all firearms, including those brought into the state by new residents, must be registered."
+          "plainEnglish": "No license required to own any firearms in Hawaii, but all firearms, including those brought into the state by new residents, must be registered.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "required",
-          "plainEnglish": "By law, Hawaii is a Licensed Open Carry State, but since licenses are rarely issued, the state is Non-Permissive for open carry in practice. The chief of police may grant a permit \"Where the urgency or the need has been sufficiently indicated\" provided that the person \"is engaged in the protection of life and property.\" In practice, Hawaii is \"No-Issue,\" as issuing authorities rarely or never approve applications for permits. On July 24, 2018, the Ninth Circuit Court of Appeals ruled that Hawaii"
+          "plainEnglish": "By law, Hawaii is a Licensed Open Carry State, but since licenses are rarely issued, the state is Non-Permissive for open carry in practice. The chief of police may grant a permit \"Where the urgency or the need has been sufficiently indicated\" provided that the person \"is engaged in the protection of life and property.\" In practice, Hawaii is \"No-Issue,\" as issuing authorities rarely or never approve applications for permits. On July 24, 2018, the Ninth Circuit Court of Appeals ruled that Hawaii",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Municipalities may enact and enforce local regulations only if they are identical to, and provide the same penalty as, state law."
+          "plainEnglish": "Municipalities may enact and enforce local regulations only if they are identical to, and provide the same penalty as, state law.",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "Hawaii passed a red flag law in late June 2019. [79] [80]"
+          "plainEnglish": "Hawaii passed a red flag law in late June 2019. [79] [80]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -2173,15 +2353,27 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. 724.5"
+          "plainEnglish": "May carry openly without permit. 724.5",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"A political subdivision of the state shall not enact an ordinance, motion, resolution, policy, or amendment regulating the ownership, possession, carrying, legal transfer, lawful transportation, modification, registration, or licensing of firearms, firearms attachments, or other weapons when the ownership, possession, carrying, transfer, transportation, or modification is otherwise lawful under the laws of this state.\" 724.28"
+          "plainEnglish": "\"A political subdivision of the state shall not enact an ordinance, motion, resolution, policy, or amendment regulating the ownership, possession, carrying, legal transfer, lawful transportation, modification, registration, or licensing of firearms, firearms attachments, or other weapons when the ownership, possession, carrying, transfer, transportation, or modification is otherwise lawful under the laws of this state.\" 724.28",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -2335,19 +2527,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. I.C. § 18-3302"
+          "plainEnglish": "May carry openly without permit. I.C. § 18-3302",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "I.C. § 19-202A"
+          "plainEnglish": "I.C. § 19-202A",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "I.C. § 18-3302J"
+          "plainEnglish": "I.C. § 18-3302J",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -2497,11 +2705,19 @@
       "extras": {
         "state-preemption": {
           "status": "partial",
-          "plainEnglish": "Preemption for the regulation and transportation of handguns and handgun ammunition. Preemption for laws regulating assault weapons, unless enacted before July 20, 2013. 430 ILCS 66"
+          "plainEnglish": "Preemption for the regulation and transportation of handguns and handgun ammunition. Preemption for laws regulating assault weapons, unless enacted before July 20, 2013. 430 ILCS 66",
+          "wiki": {
+            "longGun": "Partial",
+            "handgun": "Partial"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "Family members, police, or state's attorneys can petition a judge to issue an order to confiscate the firearms of a person deemed an immediate and present danger to themselves or others. The person's firearms must be returned to them within one year unless the court finds grounds to renew the suspension. Law enforcement officers, school administrators, physicians, and mental health professionals can file a clear and present danger report with the Department of Human Services and Illinois State P"
+          "plainEnglish": "Family members, police, or state's attorneys can petition a judge to issue an order to confiscate the firearms of a person deemed an immediate and present danger to themselves or others. The person's firearms must be returned to them within one year unless the court finds grounds to renew the suspension. Law enforcement officers, school administrators, physicians, and mental health professionals can file a clear and present danger report with the Department of Human Services and Illinois State P",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -2681,19 +2897,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Permitless open carry took effect on July 1, 2022, for residents and non-residents 18 or older. Carry of long guns is generally permitted. On May 9, 2017, the Indiana Supreme Court ruled that detaining an individual based solely upon their possession of a handgun (in order to verify that they are licensed) violates the Fourth Amendment absent any other reasonable articulable suspicion of a crime being committed. [82] IC 35-47-2-1 IC 35-47-2-3"
+          "plainEnglish": "Permitless open carry took effect on July 1, 2022, for residents and non-residents 18 or older. Carry of long guns is generally permitted. On May 9, 2017, the Indiana Supreme Court ruled that detaining an individual based solely upon their possession of a handgun (in order to verify that they are licensed) violates the Fourth Amendment absent any other reasonable articulable suspicion of a crime being committed. [82] IC 35-47-2-1 IC 35-47-2-3",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "IC 35-41-3-2"
+          "plainEnglish": "IC 35-41-3-2",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "IC 35-47-11.1-2"
+          "plainEnglish": "IC 35-47-11.1-2",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -2855,19 +3087,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. K.S.A. § 75-7c03(a)"
+          "plainEnglish": "May carry openly without permit. K.S.A. § 75-7c03(a)",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "K.S.A. § 21-5222"
+          "plainEnglish": "K.S.A. § 21-5222",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "K.S.A. § 12-16,124 K.S.A. § 75-7c17"
+          "plainEnglish": "K.S.A. § 12-16,124 K.S.A. § 75-7c17",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -3023,19 +3271,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit."
+          "plainEnglish": "May carry openly without permit.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "KRS § 503.050"
+          "plainEnglish": "KRS § 503.050",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "No locality \"may occupy any part of the field of regulation of the manufacture, sale, purchase, taxation, transfer, ownership, possession, carrying, storage, or transportation of firearms, ammunition, components of firearms, components of ammunition, firearms accessories, or combination thereof.\" The following entities can restrict concealed carry, per law: Postsecondary educational institutions Any unit of government within the state in buildings that it owns, leases, or occupies – however, con"
+          "plainEnglish": "No locality \"may occupy any part of the field of regulation of the manufacture, sale, purchase, taxation, transfer, ownership, possession, carrying, storage, or transportation of firearms, ammunition, components of firearms, components of ammunition, firearms accessories, or combination thereof.\" The following entities can restrict concealed carry, per law: Postsecondary educational institutions Any unit of government within the state in buildings that it owns, leases, or occupies – however, con",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -3191,19 +3455,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without a permit."
+          "plainEnglish": "May carry openly without a permit.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "La. R.S. 14:19"
+          "plainEnglish": "La. R.S. 14:19",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Full firearm and bladed weapon preemption. La. R.S. 40:1796"
+          "plainEnglish": "Full firearm and bladed weapon preemption. La. R.S. 40:1796",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -3351,15 +3631,27 @@
       "extras": {
         "owner-license": {
           "status": "required",
-          "plainEnglish": "Firearms Identification Card (FID) or License to Carry Firearms (LTC) required. [89] MA Ch. 140 Sec. 129C"
+          "plainEnglish": "Firearms Identification Card (FID) or License to Carry Firearms (LTC) required. [89] MA Ch. 140 Sec. 129C",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "not_required",
-          "plainEnglish": "There is limited preemption for some laws."
+          "plainEnglish": "There is limited preemption for some laws.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "A judge may issue an extreme risk protection order (ERPO) to temporarily confiscate the firearms of a person who appears to be at risk of harming themselves or another person. MA Ch. 140 Sec. 131R"
+          "plainEnglish": "A judge may issue an extreme risk protection order (ERPO) to temporarily confiscate the firearms of a person who appears to be at risk of harming themselves or another person. MA Ch. 140 Sec. 131R",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -3495,19 +3787,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "required",
-          "plainEnglish": "Open carry is permitted with a carry license, but is not generally practiced except by uniformed private security officers. Though this is subjective with the issuance of shall-issue permits now. Long guns and antique handguns may be carried openly without a license."
+          "plainEnglish": "Open carry is permitted with a carry license, but is not generally practiced except by uniformed private security officers. Though this is subjective with the issuance of shall-issue permits now. Long guns and antique handguns may be carried openly without a license.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Maryland has state preemption for most but not all firearm laws."
+          "plainEnglish": "Maryland has state preemption for most but not all firearm laws.",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "[88]"
+          "plainEnglish": "[88]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -3651,23 +3959,43 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "34-B M.R.S. § 3862-A"
+          "plainEnglish": "34-B M.R.S. § 3862-A",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit, except in state parks and some other locations."
+          "plainEnglish": "May carry openly without permit, except in state parks and some other locations.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "not_required",
-          "plainEnglish": "17-A M.R.S. § 108"
+          "plainEnglish": "17-A M.R.S. § 108",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "25 M.R.S. § 2011"
+          "plainEnglish": "25 M.R.S. § 2011",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -3835,19 +4163,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit, except Concealed Pistol License required to carry in a vehicle. MCL § 750.227"
+          "plainEnglish": "May carry openly without permit, except Concealed Pistol License required to carry in a vehicle. MCL § 750.227",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "MCL § 780.951"
+          "plainEnglish": "MCL § 780.951",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "MCL § 123.1102"
+          "plainEnglish": "MCL § 123.1102",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -3987,11 +4331,19 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "required",
-          "plainEnglish": "Whoever carries a BB gun, rifle, or shotgun on or about the person in a public place is guilty of a gross misdemeanor. A person under the age of 21 who carries a semiautomatic military-style assault weapon on or about their person in public place is guilty of a felony. However, one may carry a pistol or a long gun openly with permit to carry a pistol because, the law states that the prohibition on carrying does not include the carrying of a BB gun, rifle, or shotgun by a person who has a permit "
+          "plainEnglish": "Whoever carries a BB gun, rifle, or shotgun on or about the person in a public place is guilty of a gross misdemeanor. A person under the age of 21 who carries a semiautomatic military-style assault weapon on or about their person in public place is guilty of a felony. However, one may carry a pistol or a long gun openly with permit to carry a pistol because, the law states that the prohibition on carrying does not include the carrying of a BB gun, rifle, or shotgun by a person who has a permit ",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -4135,19 +4487,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit, except localities can pass ordinances restricting open carry. Carry permits allow holders to carry openly anywhere in the state. RSMo 21.750 RSMo 571.037"
+          "plainEnglish": "May carry openly without permit, except localities can pass ordinances restricting open carry. Carry permits allow holders to carry openly anywhere in the state. RSMo 21.750 RSMo 571.037",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "RsMo 563"
+          "plainEnglish": "RsMo 563",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Local governments can regulate the open carry and discharge of firearms. In December 2019, St. Louis passed an ordinance forbidding the carrying of firearms in city parks, athletic fields and facilities, and recreational facilities. [97] [98] A lawsuit challenging the ordinance as a violation of the preemption law is expected. RSMo 21.750"
+          "plainEnglish": "Local governments can regulate the open carry and discharge of firearms. In December 2019, St. Louis passed an ordinance forbidding the carrying of firearms in city parks, athletic fields and facilities, and recreational facilities. [97] [98] A lawsuit challenging the ordinance as a violation of the preemption law is expected. RSMo 21.750",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -4297,19 +4665,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. Handguns must be carried in a \"a sheath, belt holster or shoulder holster\". Miss. Code Ann. § 45-9-101(14) Miss. Code Ann. § 97-37-1(4)"
+          "plainEnglish": "May carry openly without permit. Handguns must be carried in a \"a sheath, belt holster or shoulder holster\". Miss. Code Ann. § 45-9-101(14) Miss. Code Ann. § 97-37-1(4)",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "Miss. Code Ann. § 97-3-15"
+          "plainEnglish": "Miss. Code Ann. § 97-3-15",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"...no county or municipality may adopt any ordinance that restricts the possession, carrying, transportation, sale, transfer or ownership of firearms or ammunition or their components.\" However, local governments may regulate the discharge of firearms, the carrying of firearms at a public park or public meeting, or the use of firearms in cases of insurrection, riots, and natural disasters. Miss. Code Ann. § 45-9-51 Miss. Code Ann. § 45-9-53"
+          "plainEnglish": "\"...no county or municipality may adopt any ordinance that restricts the possession, carrying, transportation, sale, transfer or ownership of firearms or ammunition or their components.\" However, local governments may regulate the discharge of firearms, the carrying of firearms at a public park or public meeting, or the use of firearms in cases of insurrection, riots, and natural disasters. Miss. Code Ann. § 45-9-51 Miss. Code Ann. § 45-9-53",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -4459,19 +4843,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. MCA § 45-8-311"
+          "plainEnglish": "May carry openly without permit. MCA § 45-8-311",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "MCA § 45-3"
+          "plainEnglish": "MCA § 45-3",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Localities may regulate firearm discharge and the open or unpermitted concealed carry of weapons to a publicly owned and occupied building. MCA § 45-8-351"
+          "plainEnglish": "Localities may regulate firearm discharge and the open or unpermitted concealed carry of weapons to a publicly owned and occupied building. MCA § 45-8-351",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -4621,19 +5021,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. § 160A-189"
+          "plainEnglish": "May carry openly without permit. § 160A-189",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "§ 14-51.3"
+          "plainEnglish": "§ 14-51.3",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Municipalities may ban firearms from government buildings. § 14-409.40 § 14-415.23"
+          "plainEnglish": "Municipalities may ban firearms from government buildings. § 14-409.40 § 14-415.23",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -4801,19 +5217,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "required",
-          "plainEnglish": "May carry openly without permit. 62.1-03-01"
+          "plainEnglish": "May carry openly without permit. 62.1-03-01",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "Yes"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "12.1-05-07"
+          "plainEnglish": "12.1-05-07",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"A political subdivision, including home rule cities or counties, may not enact a zoning ordinance or any other ordinance relating to the purchase, sale, ownership, possession, transfer of ownership, registration, or licensure of firearms and ammunition which is more restrictive than state law.\" 62.1-01-03"
+          "plainEnglish": "\"A political subdivision, including home rule cities or counties, may not enact a zoning ordinance or any other ordinance relating to the purchase, sale, ownership, possession, transfer of ownership, registration, or licensure of firearms and ammunition which is more restrictive than state law.\" 62.1-01-03",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -4975,19 +5407,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. For open carry in a vehicle, the firearm must be clearly visible."
+          "plainEnglish": "May carry openly without permit. For open carry in a vehicle, the firearm must be clearly visible.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "not_required",
-          "plainEnglish": "Castle Doctrine/Stand Your Ground law?"
+          "plainEnglish": "Castle Doctrine/Stand Your Ground law?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Localities may regulate firearm discharge. Neb. Rev. Stat. § 14-102 Neb. Rev. Stat. § 15-255 Neb. Rev. Stat. § 16-227 Neb. Rev. Stat. § 17-556 Neb. Rev. Stat. § 18-1703 Neb. Rev. Stat. § 69-2425"
+          "plainEnglish": "Localities may regulate firearm discharge. Neb. Rev. Stat. § 14-102 Neb. Rev. Stat. § 15-255 Neb. Rev. Stat. § 16-227 Neb. Rev. Stat. § 17-556 Neb. Rev. Stat. § 18-1703 Neb. Rev. Stat. § 69-2425",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -5149,15 +5597,27 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. Loaded long guns prohibited in motor vehicles. NHRS XII § 159:6 NHRS XVIII § 207:7"
+          "plainEnglish": "May carry openly without permit. Loaded long guns prohibited in motor vehicles. NHRS XII § 159:6 NHRS XVIII § 207:7",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"Except as otherwise specifically provided by statute, no ordinance or regulation of a political subdivision may regulate the sale, purchase, ownership, use, possession, transportation, licensing, permitting, taxation, or other matter pertaining to firearms, firearms components, ammunition, or firearms supplies in the state. Nothing in this section shall be construed as affecting a political subdivision's right to adopt zoning ordinances for the purpose of regulating firearms or knives businesse"
+          "plainEnglish": "\"Except as otherwise specifically provided by statute, no ordinance or regulation of a political subdivision may regulate the sale, purchase, ownership, use, possession, transportation, licensing, permitting, taxation, or other matter pertaining to firearms, firearms components, ammunition, or firearms supplies in the state. Nothing in this section shall be construed as affecting a political subdivision's right to adopt zoning ordinances for the purpose of regulating firearms or knives businesse",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -5307,19 +5767,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Purchaser Identification Card required to purchase firearms in state. License is not required to own or possess firearms at exempt locations, [116] only to purchase. Firearm must be compliant and/or brought into compliance with NJ law before entering NJ."
+          "plainEnglish": "Purchaser Identification Card required to purchase firearms in state. License is not required to own or possess firearms at exempt locations, [116] only to purchase. Firearm must be compliant and/or brought into compliance with NJ law before entering NJ.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "required",
-          "plainEnglish": "Open carry is allowed only with a permit to carry a handgun and is generally not practiced except by security officers and others who carry firearms on duty. While it is technically legal to carry long guns with a valid Firearm Purchaser ID card, it is generally frowned upon by law enforcement, except when hunting. One can expect to be detained and questioned in most places if carrying in this manner. However, open carry of loaded long guns is not permitted. As of 2022 individuals that are not l"
+          "plainEnglish": "Open carry is allowed only with a permit to carry a handgun and is generally not practiced except by security officers and others who carry firearms on duty. While it is technically legal to carry long guns with a valid Firearm Purchaser ID card, it is generally frowned upon by law enforcement, except when hunting. One can expect to be detained and questioned in most places if carrying in this manner. However, open carry of loaded long guns is not permitted. As of 2022 individuals that are not l",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "not_required",
-          "plainEnglish": "There is limited state preemption for some firearm laws."
+          "plainEnglish": "There is limited state preemption for some firearm laws.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "A judge may issue a gun violence restraining order authorizing the police to confiscate a person's firearms if the judge determines that the person poses a significant risk of personal injury to himself or others. New Jersey law allows anyone to file for a Temporary Extreme Risk Protection Order on any person."
+          "plainEnglish": "A judge may issue a gun violence restraining order authorizing the police to confiscate a person's firearms if the judge determines that the person poses a significant risk of personal injury to himself or others. New Jersey law allows anyone to file for a Temporary Extreme Risk Protection Order on any person.",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -5447,11 +5923,19 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "New Mexico's self-defense statute (NMSA 30-2-7) is vaguely worded and does not specifically address Castle Doctrine or Stand Your Ground situations. [131] However, Castle Doctrine has been established on a limited basis by a 1946 New Mexico Supreme Court ruling, which states that when a person reasonably feels \"threatened with an attack need not retreat. In the exercise of his right of self defense, he may stand his ground and defend himself.\" [132] Currently, the courts have limited the scope o"
+          "plainEnglish": "New Mexico's self-defense statute (NMSA 30-2-7) is vaguely worded and does not specifically address Castle Doctrine or Stand Your Ground situations. [131] However, Castle Doctrine has been established on a limited basis by a 1946 New Mexico Supreme Court ruling, which states that when a person reasonably feels \"threatened with an attack need not retreat. In the exercise of his right of self defense, he may stand his ground and defend himself.\" [132] Currently, the courts have limited the scope o",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -5641,19 +6125,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Open carry is generally permitted throughout the state. For open carry in a vehicle, the firearm may be anywhere except concealed upon the person without a concealed firearm permit. [103] [104] Long guns carried openly in a vehicle may not have a round chambered, but may otherwise have a loaded magazine inserted or inside them. [105] NV Constitution Article 1 Section 11 NRS 503§165 - Carrying loaded rifle or shotgun in or on vehicle on or along public way unlawful; exceptions."
+          "plainEnglish": "Open carry is generally permitted throughout the state. For open carry in a vehicle, the firearm may be anywhere except concealed upon the person without a concealed firearm permit. [103] [104] Long guns carried openly in a vehicle may not have a round chambered, but may otherwise have a loaded magazine inserted or inside them. [105] NV Constitution Article 1 Section 11 NRS 503§165 - Carrying loaded rifle or shotgun in or on vehicle on or along public way unlawful; exceptions.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Local authorities may regulate the discharge of firearms. Handgun registration in Clark County was grandfathered in, until SB175 (signed into law June 2nd, 2015) removed the authority of the county to register handguns in Nevada. [106] NRS 244§364 - County of 700,000 or more NRS 268§418 - City of 700,000 or more NRS 269§222 - Town of 700,000 or more"
+          "plainEnglish": "Local authorities may regulate the discharge of firearms. Handgun registration in Clark County was grandfathered in, until SB175 (signed into law June 2nd, 2015) removed the authority of the county to register handguns in Nevada. [106] NRS 244§364 - County of 700,000 or more NRS 268§418 - City of 700,000 or more NRS 269§222 - Town of 700,000 or more",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "Police may confiscate firearms from those considered a threat. [115]"
+          "plainEnglish": "Police may confiscate firearms from those considered a threat. [115]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -5781,15 +6281,27 @@
       "extras": {
         "owner-license": {
           "status": "required",
-          "plainEnglish": "No license is required for long guns; however, New York State requires a license for handgun ownership. Handgun licenses are normally restricted to three types: residence or business premises permit, Target & Hunting, and Unrestricted Carry. Target and hunting allows carry while engaged in those activities. Unrestricted allows carry at any time. All permits issued outside of New York City are not valid in New York City except for retired police and federal law enforcement officers with that stat"
+          "plainEnglish": "No license is required for long guns; however, New York State requires a license for handgun ownership. Handgun licenses are normally restricted to three types: residence or business premises permit, Target & Hunting, and Unrestricted Carry. Target and hunting allows carry while engaged in those activities. Unrestricted allows carry at any time. All permits issued outside of New York City are not valid in New York City except for retired police and federal law enforcement officers with that stat",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "not_required",
-          "plainEnglish": "New York preempts only handgun licensing. [143] Places such as Buffalo, Rochester, Albany, and New York City have put in more restrictive gun laws, such as licensing of long guns and 5-round magazine limits. [144] [145] [146] None"
+          "plainEnglish": "New York preempts only handgun licensing. [143] Places such as Buffalo, Rochester, Albany, and New York City have put in more restrictive gun laws, such as licensing of long guns and 5-round magazine limits. [144] [145] [146] None",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "Family members, school officials or law enforcement can ask courts to temporarily block someone from buying or owning a gun. [148]"
+          "plainEnglish": "Family members, school officials or law enforcement can ask courts to temporarily block someone from buying or owning a gun. [148]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -5951,19 +6463,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. O.R.C. 2923.111 O.R.C. 2923.16"
+          "plainEnglish": "May carry openly without permit. O.R.C. 2923.111 O.R.C. 2923.16",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "O.R.C. 2901.09"
+          "plainEnglish": "O.R.C. 2901.09",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "O.R.C. 9.68"
+          "plainEnglish": "O.R.C. 9.68",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -6131,19 +6659,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit."
+          "plainEnglish": "May carry openly without permit.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "\"A person who is not engaged in an unlawful activity and who is attacked in any other place where he or she has a right to be has no duty to retreat and has the right to stand his or her ground and meet force with force, including deadly force, if he or she reasonably believes it is necessary to do so to prevent death or great bodily harm to himself or herself or another or to prevent the commission of a forcible felony.\" § 21-1289.25"
+          "plainEnglish": "\"A person who is not engaged in an unlawful activity and who is attacked in any other place where he or she has a right to be has no duty to retreat and has the right to stand his or her ground and meet force with force, including deadly force, if he or she reasonably believes it is necessary to do so to prevent death or great bodily harm to himself or herself or another or to prevent the commission of a forcible felony.\" § 21-1289.25",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"No municipality or other political subdivision of this state shall adopt any order, ordinance or regulation concerning in any way the sale, purchase, purchase delay, transfer, ownership, use, keeping, possession, carrying, bearing, transportation, licensing, permit, registration, taxation other than sales and compensating use taxes or other controls on firearms, knives, components, ammunition and supplies.\" § 21-1289.24"
+          "plainEnglish": "\"No municipality or other political subdivision of this state shall adopt any order, ordinance or regulation concerning in any way the sale, purchase, purchase delay, transfer, ownership, use, keeping, possession, carrying, bearing, transportation, licensing, permit, registration, taxation other than sales and compensating use taxes or other controls on firearms, knives, components, ammunition and supplies.\" § 21-1289.24",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -6281,15 +6825,27 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "The authority to regulate the sale, acquisition, transfer, ownership, possession, storage, transportation, or use of firearms or any element relating to firearms and firearm components, including ammunition, is vested solely in the State Legislative Assembly. Or. Const. Art. I § 27 ORS 166.170"
+          "plainEnglish": "The authority to regulate the sale, acquisition, transfer, ownership, possession, storage, transportation, or use of firearms or any element relating to firearms and firearm components, including ammunition, is vested solely in the State Legislative Assembly. Or. Const. Art. I § 27 ORS 166.170",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "If a person appears to be in imminent danger of hurting themselves or another person, a police officer or a member of the person's family or household may petition the court for a one-year order that would prohibit the person from possessing a deadly weapon. Or. Law Chp. 737 (2017)"
+          "plainEnglish": "If a person appears to be in imminent danger of hurting themselves or another person, a police officer or a member of the person's family or household may petition the court for a one-year order that would prohibit the person from possessing a deadly weapon. Or. Law Chp. 737 (2017)",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -6451,19 +7007,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit, except LTCF required in Philadelphia (City of the First Class), in a vehicle, or during a declared state of emergency. On May 31, 2019, the Supreme Court of Pennsylvania ruled that carrying a firearm is not reasonable suspicion to detain someone. [160] 18 Pa.C.S. § 6107 18 Pa.C.S. § 6108"
+          "plainEnglish": "May carry openly without permit, except LTCF required in Philadelphia (City of the First Class), in a vehicle, or during a declared state of emergency. On May 31, 2019, the Supreme Court of Pennsylvania ruled that carrying a firearm is not reasonable suspicion to detain someone. [160] 18 Pa.C.S. § 6107 18 Pa.C.S. § 6108",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "\"An actor who is not engaged in a criminal activity, who is not in illegal possession of a firearm...has no duty to retreat and has the right to stand his ground and use force, including deadly force, if: (i) the actor has a right to be in the place where he was attacked; (ii) the actor believes it is immediately necessary to do so to protect himself against death, serious bodily injury, kidnapping or sexual intercourse by force or threat; and (iii) the person against whom the force is used disp"
+          "plainEnglish": "\"An actor who is not engaged in a criminal activity, who is not in illegal possession of a firearm...has no duty to retreat and has the right to stand his ground and use force, including deadly force, if: (i) the actor has a right to be in the place where he was attacked; (ii) the actor believes it is immediately necessary to do so to protect himself against death, serious bodily injury, kidnapping or sexual intercourse by force or threat; and (iii) the person against whom the force is used disp",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"No county, municipality or township may in any manner regulate the lawful ownership, possession, transfer or transportation of firearms, ammunition or ammunition components when carried or transported for purposes not prohibited by the laws of this Commonwealth.\" 18 Pa.C.S. § 6120"
+          "plainEnglish": "\"No county, municipality or township may in any manner regulate the lawful ownership, possession, transfer or transportation of firearms, ammunition or ammunition components when carried or transported for purposes not prohibited by the laws of this Commonwealth.\" 18 Pa.C.S. § 6120",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -6605,15 +7177,27 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "“Blue card” certificate is required for purchase of ammunition and handguns, but no license is required for possession. None"
+          "plainEnglish": "“Blue card” certificate is required for purchase of ammunition and handguns, but no license is required for possession. None",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "RI Gen. Stat. 11–47–58"
+          "plainEnglish": "RI Gen. Stat. 11–47–58",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "The police may petition the Superior Court to issue an extreme risk protection order if they receive credible information of a significant and imminent risk. A judge may issue a temporary gun-removal order, but a hearing is required within 14 days to determine if a one-year ban on buying or possessing a firearm is warranted. Some localities have adopted Second Amendment sanctuary resolutions in opposition. [163] RI Gen. Stat.8–8.3"
+          "plainEnglish": "The police may petition the Superior Court to issue an extreme risk protection order if they receive credible information of a significant and imminent risk. A judge may issue a temporary gun-removal order, but a hearing is required within 14 days to determine if a one-year ban on buying or possessing a firearm is warranted. Some localities have adopted Second Amendment sanctuary resolutions in opposition. [163] RI Gen. Stat.8–8.3",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -6781,19 +7365,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. SC Code 16-23-20"
+          "plainEnglish": "May carry openly without permit. SC Code 16-23-20",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "SC Code 16-11-440"
+          "plainEnglish": "SC Code 16-11-440",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"No governing body of any county, municipality, or other political subdivision in the State may enact or promulgate any regulation or ordinance that regulates or attempts to regulate: (1) the transfer, ownership, possession, carrying, transportation, ammunition, components, or any combination of these things...\" SC Code 23-31-510 SC Code 23-31-520"
+          "plainEnglish": "\"No governing body of any county, municipality, or other political subdivision in the State may enact or promulgate any regulation or ordinance that regulates or attempts to regulate: (1) the transfer, ownership, possession, carrying, transportation, ammunition, components, or any combination of these things...\" SC Code 23-31-510 SC Code 23-31-520",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -6941,19 +7541,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Permit required for open carry?"
+          "plainEnglish": "Permit required for open carry?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "\"A person who uses or threatens to use force in accordance with this section does not have a duty to retreat before using or threatening to use force.\" SD 22-18-4"
+          "plainEnglish": "\"A person who uses or threatens to use force in accordance with this section does not have a duty to retreat before using or threatening to use force.\" SD 22-18-4",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "No county, township, or municipality \"may pass an ordinance that restricts or prohibits, or imposes any tax, licensure requirement, or licensure fee on the possession, storage, transportation, purchase, sale, transfer, ownership, manufacture, or repair of firearms or ammunition or their components.\" SD 7-18A-36 SD 8-5-13 SD 9-19-20"
+          "plainEnglish": "No county, township, or municipality \"may pass an ordinance that restricts or prohibits, or imposes any tax, licensure requirement, or licensure fee on the possession, storage, transportation, purchase, sale, transfer, ownership, manufacture, or repair of firearms or ammunition or their components.\" SD 7-18A-36 SD 8-5-13 SD 9-19-20",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -7097,19 +7713,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry handguns loaded openly without permit. Long guns may only be carried unloaded. T.C.A. § 39-17-1307 T.C.A. § 39-17-1308"
+          "plainEnglish": "May carry handguns loaded openly without permit. Long guns may only be carried unloaded. T.C.A. § 39-17-1307 T.C.A. § 39-17-1308",
+          "wiki": {
+            "longGun": "N/A",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "T.C.A. § 39-11-611"
+          "plainEnglish": "T.C.A. § 39-11-611",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Local governments may post signs to prohibit carry on government property. Local governments may not, however, prohibit firearms in locally owned/operated parks and other recreational areas. T.C.A. § 39-17-1314 T.C.A. § 39-17-1359"
+          "plainEnglish": "Local governments may post signs to prohibit carry on government property. Local governments may not, however, prohibit firearms in locally owned/operated parks and other recreational areas. T.C.A. § 39-17-1314 T.C.A. § 39-17-1359",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -7265,23 +7897,43 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "red-flag-law": {
           "status": "not_required",
-          "plainEnglish": "(Also known as the Extreme Risk law.) Texas doesn't have a red-flag law, which allows for temporary firearm removal from individuals believed to be at risk of harming themselves or others."
+          "plainEnglish": "(Also known as the Extreme Risk law.) Texas doesn't have a red-flag law, which allows for temporary firearm removal from individuals believed to be at risk of harming themselves or others.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Handguns must be carried in a holster. Open carry on college campuses is prohibited. Permitless carry took effect on September 1, 2021. Tex. Penal Code § 42.01(a)(8) Tex. Penal Code § 46.02"
+          "plainEnglish": "Handguns must be carried in a holster. Open carry on college campuses is prohibited. Permitless carry took effect on September 1, 2021. Tex. Penal Code § 42.01(a)(8) Tex. Penal Code § 46.02",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "Tex. Penal Code § 9.32"
+          "plainEnglish": "Tex. Penal Code § 9.32",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Tex. Government Code § 411.209 Tex. Local Government Code § 229.001 Tex. Local Government Code § 236.002"
+          "plainEnglish": "Tex. Government Code § 411.209 Tex. Local Government Code § 229.001 Tex. Local Government Code § 236.002",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -7449,19 +8101,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Under laws enacted in 05/07/2025, one may not open carry a loaded long gun, shotgun, or muzzleloader in a vehicle. Those above 21 years old without a permit or between 18-20 possessing a valid CWP may open carry a loaded firearm in unprohibited areas. Exceptions allow for lawfully carrying a loaded handgun in a vehicle one owns or is allowed in, and open carrying of unloaded weapons, for anyone above 18 and in legal possession of the firearm. https://le.utah.gov/xcode/Title53/Chapter5A/53-5a-S10"
+          "plainEnglish": "Under laws enacted in 05/07/2025, one may not open carry a loaded long gun, shotgun, or muzzleloader in a vehicle. Those above 21 years old without a permit or between 18-20 possessing a valid CWP may open carry a loaded firearm in unprohibited areas. Exceptions allow for lawfully carrying a loaded handgun in a vehicle one owns or is allowed in, and open carrying of unloaded weapons, for anyone above 18 and in legal possession of the firearm. https://le.utah.gov/xcode/Title53/Chapter5A/53-5a-S10",
+          "wiki": {
+            "longGun": "n/a",
+            "handgun": "no"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "Force in defense of habitation. \"(1) A person is justified in using force against another when and to the extent that he reasonably believes that the force is necessary to prevent or terminate the other's unlawful entry into or attack upon his habitation; however, he is justified in the use of force which is intended or likely to cause death or serious bodily injury only if: (a) the entry is made or attempted in a violent and tumultuous manner, surreptitiously, or by stealth, and he reasonably b"
+          "plainEnglish": "Force in defense of habitation. \"(1) A person is justified in using force against another when and to the extent that he reasonably believes that the force is necessary to prevent or terminate the other's unlawful entry into or attack upon his habitation; however, he is justified in the use of force which is intended or likely to cause death or serious bodily injury only if: (a) the entry is made or attempted in a violent and tumultuous manner, surreptitiously, or by stealth, and he reasonably b",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "UT Code § 53-5a-102 UT Code § 76-10-500"
+          "plainEnglish": "UT Code § 53-5a-102 UT Code § 76-10-500",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -7615,19 +8283,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Proof of age and citizenship required for the purchase of firearms."
+          "plainEnglish": "Proof of age and citizenship required for the purchase of firearms.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Open carry is generally allowed without a permit for people 18 years of age and older. The following cities and counties have exceptions that disallow the open carry of a loaded semi-automatic center-fire rifle or pistol that expels single or multiple projectiles by action of an explosion of a combustible material and is equipped at the time of the offense with a magazine that will hold more than 20 rounds of ammunition or designed by the manufacturer to accommodate a silencer or equipped with a"
+          "plainEnglish": "Open carry is generally allowed without a permit for people 18 years of age and older. The following cities and counties have exceptions that disallow the open carry of a loaded semi-automatic center-fire rifle or pistol that expels single or multiple projectiles by action of an explosion of a combustible material and is equipped at the time of the offense with a magazine that will hold more than 20 rounds of ammunition or designed by the manufacturer to accommodate a silencer or equipped with a",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Virginia has state preemption for most but not all firearm laws. As of July 1, 2020, local governments have expanded power to ban firearms in certain sensitive areas, such as government buildings and public events. [172] § 15.2-915"
+          "plainEnglish": "Virginia has state preemption for most but not all firearm laws. As of July 1, 2020, local governments have expanded power to ban firearms in certain sensitive areas, such as government buildings and public events. [172] § 15.2-915",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "A judge can issue an Extreme Risk Protective Order, enabling the police to temporarily confiscate the firearms of a person deemed to be at high risk of harming themselves or others. [176]"
+          "plainEnglish": "A judge can issue an Extreme Risk Protective Order, enabling the police to temporarily confiscate the firearms of a person deemed to be at high risk of harming themselves or others. [176]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -7771,19 +8455,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Permit required for open carry?"
+          "plainEnglish": "Permit required for open carry?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "24 V.S.A. § 2295"
+          "plainEnglish": "24 V.S.A. § 2295",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "[167]"
+          "plainEnglish": "[167]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -7923,23 +8623,43 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "Open carry is lawful in Washington without any permit. Open carry of a loaded handgun in a vehicle is legal only with a concealed pistol license. Open carry of a loaded long gun in a vehicle is illegal, regardless of CPL possession. On January 31, 2019, the Washington Court of Appeals ruled that the mere possession of a handgun is not sufficient for conducting a Terry stop. [184] [183] (in vehicle)"
+          "plainEnglish": "Open carry is lawful in Washington without any permit. Open carry of a loaded handgun in a vehicle is legal only with a concealed pistol license. Open carry of a loaded long gun in a vehicle is illegal, regardless of CPL possession. On January 31, 2019, the Washington Court of Appeals ruled that the mere possession of a handgun is not sufficient for conducting a Terry stop. [184] [183] (in vehicle)",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "State law does not allow more restrictive local laws. Seattle and Edmonds have passed ordinances mandating safe storage of firearms when not being carried or used. Seattle's ordinance also has reporting requirement for lost or stolen firearms within 24 hours. Both cities are being sued for violation of state preemption. [187] [188] Edmonds had its ordinance struck down in October 2019. [189] [185] [186]"
+          "plainEnglish": "State law does not allow more restrictive local laws. Seattle and Edmonds have passed ordinances mandating safe storage of firearms when not being carried or used. Seattle's ordinance also has reporting requirement for lost or stolen firearms within 24 hours. Both cities are being sued for violation of state preemption. [187] [188] Edmonds had its ordinance struck down in October 2019. [189] [185] [186]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "stand-your-ground": {
           "status": "unknown",
-          "plainEnglish": "The Washington State Supreme Court ruled \" that there is no duty to retreat when a person is assaulted in a place where he or she has a right to be.\" [201] [202] [199] [200]"
+          "plainEnglish": "The Washington State Supreme Court ruled \" that there is no duty to retreat when a person is assaulted in a place where he or she has a right to be.\" [201] [202] [199] [200]",
+          "wiki": {
+            "longGun": "Not defined - de facto",
+            "handgun": ""
+          }
         },
         "red-flag-law": {
           "status": "required",
-          "plainEnglish": "The police may temporarily take guns away from people a judge deems a threat to themselves or others without notice to the defendant. If the defendant does not appear to request the restrictions be lifted, they will remain in place. [203]"
+          "plainEnglish": "The police may temporarily take guns away from people a judge deems a threat to themselves or others without notice to the defendant. If the defendant does not appear to request the restrictions be lifted, they will remain in place. [203]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -8101,19 +8821,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit. Wis. Stat. § 947.01"
+          "plainEnglish": "May carry openly without permit. Wis. Stat. § 947.01",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "Wis. Stat. § 895.62 Wis. Stat. § 939.48"
+          "plainEnglish": "Wis. Stat. § 895.62 Wis. Stat. § 939.48",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "Wis. Stat. § 66.0409"
+          "plainEnglish": "Wis. Stat. § 66.0409",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -8263,19 +8999,35 @@
       "extras": {
         "owner-license": {
           "status": "not_required",
-          "plainEnglish": "Owner license required?"
+          "plainEnglish": "Owner license required?",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit."
+          "plainEnglish": "May carry openly without permit.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "§ 55-7-22"
+          "plainEnglish": "§ 55-7-22",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"Neither a municipality nor the governing body of any municipality may, by ordinance or otherwise, limit the right of any person to purchase, possess, transfer, own, carry, transport, sell, or store any deadly weapon, firearm, or pepper spray, or any ammunition or ammunition components to be used therewith nor to so regulate the keeping of gunpowder so as to directly or indirectly prohibit the ownership of the ammunition in any manner inconsistent with or in conflict with state law.\" § 8-12-5a"
+          "plainEnglish": "\"Neither a municipality nor the governing body of any municipality may, by ordinance or otherwise, limit the right of any person to purchase, possess, transfer, own, carry, transport, sell, or store any deadly weapon, firearm, or pepper spray, or any ammunition or ammunition components to be used therewith nor to so regulate the keeping of gunpowder so as to directly or indirectly prohibit the ownership of the ammunition in any manner inconsistent with or in conflict with state law.\" § 8-12-5a",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {
@@ -8431,19 +9183,35 @@
       "extras": {
         "owner-license": {
           "status": "required",
-          "plainEnglish": "As of January 1, 2020, the owner license and carry license are the same. [216] [better source needed]"
+          "plainEnglish": "As of January 1, 2020, the owner license and carry license are the same. [216] [better source needed]",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "open-carry-permit": {
           "status": "not_required",
-          "plainEnglish": "May carry openly without permit."
+          "plainEnglish": "May carry openly without permit.",
+          "wiki": {
+            "longGun": "No",
+            "handgun": "No"
+          }
         },
         "stand-your-ground": {
           "status": "required",
-          "plainEnglish": "\"A person who is attacked in any place where the person is lawfully present shall not have a duty to retreat before using reasonable defensive force pursuant to subsection (a) of this section provided that he is not the initial aggressor and is not engaged in illegal activity.\" W.S. § 6-2-602"
+          "plainEnglish": "\"A person who is attacked in any place where the person is lawfully present shall not have a duty to retreat before using reasonable defensive force pursuant to subsection (a) of this section provided that he is not the initial aggressor and is not engaged in illegal activity.\" W.S. § 6-2-602",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         },
         "state-preemption": {
           "status": "required",
-          "plainEnglish": "\"Except as authorized by W.S. 15-1-103(a)(xviii) and 21-3-132, no city, town, county, political subdivision or any other entity shall authorize, regulate or prohibit the sale, transfer, purchase, delivery, taxation, manufacture, ownership, transportation, storage, use, carrying or possession of firearms, weapons, accessories, components or ammunition except as specifically provided by this chapter. This section shall not affect zoning or other ordinances which encompass firearms businesses along"
+          "plainEnglish": "\"Except as authorized by W.S. 15-1-103(a)(xviii) and 21-3-132, no city, town, county, political subdivision or any other entity shall authorize, regulate or prohibit the sale, transfer, purchase, delivery, taxation, manufacture, ownership, transportation, storage, use, carrying or possession of firearms, weapons, accessories, components or ammunition except as specifically provided by this chapter. This section shall not affect zoning or other ordinances which encompass firearms businesses along",
+          "wiki": {
+            "longGun": "Yes",
+            "handgun": "Yes"
+          }
         }
       },
       "wikiSubjects": {

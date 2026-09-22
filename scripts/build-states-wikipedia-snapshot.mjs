@@ -206,6 +206,7 @@ function buildStateRecord(name, { rows }) {
       extras[extra] = {
         status: combineCells(row.longGun, row.handgun, { preferHandgun: extra === "open-carry-permit" }),
         plainEnglish: plainEnglish || row.subject,
+        wiki: { longGun: row.longGun, handgun: row.handgun },
       };
     }
   }

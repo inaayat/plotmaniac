@@ -8,12 +8,17 @@
 
 ```text
 ?plot=gun-laws-by-state
-?plot=gun-laws-by-state&criteria=carry-permit:not_required,waiting-period:not_required
+?plot=gun-laws-by-state&gun=handgun
+?plot=gun-laws-by-state&gun=longgun
+?plot=gun-laws-by-state&criteria=carry-permit:not_required,open-carry-permit:not_required
 ?plot=gun-laws-by-state&state=tx
 ```
 
+- **`gun`** — `handgun` (default) or `longgun`; filters and table use that Wikipedia column.
 - **`criteria`** — comma-separated `criterionId:status` pairs (`not_required`, `required`, `partial`, `not_applicable`).
 - **`state`** — optional selected jurisdiction for the detail panel.
+
+**Scope:** 50 states + **D.C. only** (no territories). **Time:** current Wikipedia snapshot only (no year scrubber).
 
 ## Data
 
@@ -37,6 +42,7 @@ node scripts/build-states-wikipedia-snapshot.mjs --input /path/to/wiki-markdown.
 | Background checks required for private sales? | `private-sale-check` |
 | Waiting period? | `waiting-period` |
 | Permit required for concealed carry? | `carry-permit` |
+| Permit required for open carry? | `open-carry-permit` |
 | Firearm registration? | `handgun-registration` |
 | Assault weapon law? | `assault-weapons-restriction` |
 | Magazine capacity restriction? | `magazine-capacity-limit` |
