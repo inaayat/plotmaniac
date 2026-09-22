@@ -27,6 +27,39 @@
       }
     },
     {
+      "id": "marvel-universe",
+      "aliases": ["mcu", "marvel"],
+      "title": "Marvel Cinematic Universe / Multiverse",
+      "kicker": "Marvel",
+      "cardLine": "Heroes, villains, timelines, and variant worlds",
+      "lede": "Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Follow the character web, read the MCU in story order, or focus a universe to see who belongs there. MCU main means the shared Sacred Timeline / Earth-616 screen continuity; guest worlds remain separate.",
+      "searchPlaceholder": "Avengers, TVA, Wakanda, Spider-Man, a film…",
+      "sourceNote": "Marvel Cinematic Universe / Multiverse on Plotmaniac · story-order orientation from Karan's MCU guide, updated September 22, 2026 · spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill",
+      "centerId": "tony-stark",
+      "includeOrbit": true,
+      "minBeats": 1,
+      "orbitLabel": "Across universes",
+      "hubNoneLabel": "Shared web",
+      "hubAllLabel": "All characters",
+      "hubAriaLabel": "Marvel character web. Universe hubs sit around the shared field. Shared web keeps the common cast, All characters reveals every scoped variant, and a universe focus reveals that universe's members.",
+      "friendKinds": ["ally", "team", "mentor", "protégé", "family", "romance", "organization"],
+      "enemyKinds": ["enemy", "rival", "conflict", "betrayal", "murderer"],
+      "hubs": [
+        { "id": "mcu-main", "label": "MCU main", "centerId": "tony-stark" },
+        { "id": "raimi", "label": "Raimi Spider-Man", "centerId": "peter-parker-raimi" },
+        { "id": "webb", "label": "Webb Spider-Man", "centerId": "peter-parker-webb" },
+        { "id": "fox", "label": "Fox X-Men / Deadpool", "centerId": "wade-wilson" },
+        { "id": "earth-838", "label": "Earth-838", "centerId": "reed-richards-838" },
+        { "id": "first-steps", "label": "First Steps universe", "centerId": "reed-richards-first" },
+        { "id": "venom", "label": "Sony's Venom universe", "centerId": "eddie-brock-venom" }
+      ],
+      "paths": {
+        "people": "data/marvel-universe/people.json",
+        "events": "data/marvel-universe/events.json",
+        "relations": "data/marvel-universe/relations.json"
+      }
+    },
+    {
       "id": "barack-obama",
       "title": "Barack Obama",
       "kicker": "Person",

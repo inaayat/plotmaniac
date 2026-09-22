@@ -753,11 +753,11 @@ function fillHubSelect() {
   }
   const none = document.createElement("option");
   none.value = "";
-  none.textContent = "None";
+  none.textContent = plot.hubNoneLabel || "None";
   select.appendChild(none);
   const everyone = document.createElement("option");
   everyone.value = ALL;
-  everyone.textContent = "All";
+  everyone.textContent = plot.hubAllLabel || "All";
   select.appendChild(everyone);
   hubs.forEach((hub) => {
     const option = document.createElement("option");
@@ -902,7 +902,7 @@ function renderWeb() {
       : compactTopics
         ? "Policies for this year, grouped by topic. Tap one to read the stance."
       : hubWeb
-        ? "YouTuber web. Shared people sit in the center, hubs just outside. None shows that shared web. All shows every person on it. One hub shows only that hub's own people. The view zooms to fit the current focus."
+        ? (plot.hubAriaLabel || "Hub web. Shared people sit in the center, hubs just outside. None shows that shared web. All shows every person on it. One hub shows only that hub's own people. The view zooms to fit the current focus.")
         : "Friends and foes map",
   );
   const stage = document.createElement("div");
@@ -1921,6 +1921,7 @@ function paintWeb(stage, { animate = true } = {}) {
     topics: plot.topics,
     topicId: openTopic,
     includeOrbit: Boolean(plot.includeOrbit),
+    minBeats: plot.minBeats,
     hubIds: plotHubs(plot).map((hub) => hub.centerId),
     hubs: plotHubs(plot),
   });

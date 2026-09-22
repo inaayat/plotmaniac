@@ -187,6 +187,7 @@ const youtubers = plots.plots.find((item) => item.id === "youtubers");
 assert.ok(youtubers, "youtubers plot is registered");
 assert.deepEqual(plots.plots.map((item) => item.id), [
   "youtubers",
+  "marvel-universe",
   "barack-obama",
   "jd-vance",
   "united-states",
@@ -1591,6 +1592,76 @@ assert.match(
 assert.equal(usesPolicyPanel(obama), true);
 assert.equal(usesPolicyPanel(vance), true);
 assert.equal(usesPolicyPanel(youtubers), false);
+
+const marvelPeople = readJson("../data/marvel-universe/people.json");
+const marvelEvents = readJson("../data/marvel-universe/events.json");
+const marvelRelations = readJson("../data/marvel-universe/relations.json");
+const marvel = plots.plots.find((item) => item.id === "marvel-universe");
+const marvelIds = new Set(marvelPeople.map((person) => person.id));
+const marvelHubIds = new Set(marvel.hubs.map((hub) => hub.id));
+const marvelCenterIds = marvel.hubs.map((hub) => hub.centerId);
+assert.ok(marvel, "Marvel plot is registered");
+assert.ok(marvelPeople.length >= 95 && marvelPeople.length <= 105, `Marvel cast should stay around 100, got ${marvelPeople.length}`);
+assert.ok(marvelEvents.length >= 40 && marvelEvents.length <= 70, `Marvel timeline should contain 40–70 beats, got ${marvelEvents.length}`);
+assert.equal(marvel.minBeats, 1);
+assert.equal(marvel.hubs.length, 7);
+assert.deepEqual(
+  marvel.hubs.map((hub) => hub.id),
+  ["mcu-main", "raimi", "webb", "fox", "earth-838", "first-steps", "venom"],
+);
+for (const person of marvelPeople) {
+  assert.ok(person.name && person.role && person.tags?.length, `${person.id} needs core Marvel fields`);
+  assert.ok(person.universes?.length && person.universes.every((id) => marvelHubIds.has(id)), `${person.id} needs known universe membership`);
+}
+for (const event of marvelEvents) {
+  assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, event.id);
+  assert.ok(event.title && event.summary && event.era, event.id);
+  assert.ok(event.people?.length && event.people.every((id) => marvelIds.has(id)), `${event.id} has known people`);
+  assert.ok(event.hubs?.length && event.hubs.every((id) => marvelHubIds.has(id)), `${event.id} has known hubs`);
+  assert.ok(event.links?.length, `${event.id} needs a source`);
+  event.links.forEach((link) => assert.match(link.url, /^https:\/\//, event.id));
+  assert.ok(eventTease(event).length <= 140, `${event.id} tease is too long`);
+}
+for (const relation of marvelRelations) {
+  assert.ok(marvelIds.has(relation.from) && marvelIds.has(relation.to), `${relation.from}→${relation.to}`);
+  assert.ok(relation.kind && relation.label, "Marvel relations need kind and label");
+}
+for (const hub of marvel.hubs) {
+  assert.ok(marvelIds.has(hub.centerId), `${hub.id} needs a character anchor`);
+  marvelPeople.filter((person) => person.universes.includes(hub.id) && person.id !== hub.centerId).forEach((person) => {
+    assert.ok(
+      marvelRelations.some((relation) =>
+        relation.kind === "universe-member"
+        && ((relation.from === hub.centerId && relation.to === person.id)
+          || (relation.to === hub.centerId && relation.from === person.id))),
+      `${person.id} needs a ${hub.id} membership edge`,
+    );
+  });
+}
+assert.equal(hubsForPerson("norman-osborn-raimi", marvelRelations, marvelCenterIds).join(), "peter-parker-raimi");
+assert.equal(campOf("steve-rogers", marvelRelations, marvel.centerId, marvel.friendKinds, marvel.enemyKinds), "enemy");
+assert.equal(campOf("thanos", marvelRelations, marvel.centerId, marvel.friendKinds, marvel.enemyKinds), "enemy");
+const marvelLayoutOptions = {
+  centerId: marvel.centerId,
+  friendKinds: marvel.friendKinds,
+  enemyKinds: marvel.enemyKinds,
+  includeOrbit: true,
+  minBeats: marvel.minBeats,
+  hubIds: marvelCenterIds,
+  hubs: marvel.hubs,
+  events: marvelEvents,
+  width: 1400,
+  height: 980,
+};
+const marvelShared = webLayout(marvelPeople, marvelRelations, marvelLayoutOptions);
+const marvelRaimi = webLayout(marvelPeople, marvelRelations, { ...marvelLayoutOptions, centerId: "peter-parker-raimi" });
+const marvelAll = webLayout(marvelPeople, marvelRelations, { ...marvelLayoutOptions, centerId: "", revealAll: true });
+assert.ok(marvelShared.nodes.length > 0, "seven Marvel hubs produce a web");
+assert.equal(marvelShared.nodes.find((node) => node.id === "tony-stark").plotHub, true);
+assert.equal(marvelRaimi.nodes.find((node) => node.id === "norman-osborn-raimi").ring, "exclusive");
+assert.equal(marvelRaimi.nodes.find((node) => node.id === "otto-octavius-raimi").ring, "exclusive");
+assert.ok(marvelAll.nodes.length > marvelShared.nodes.length, "Marvel All reveals exclusive universe members");
+
 assert.equal(boardViewForPerson(obama, "person"), "web");
 assert.equal(boardViewForPerson(vance, "person"), "web");
 assert.equal(boardViewForPerson(obama, "timeline"), "timeline");
