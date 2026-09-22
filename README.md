@@ -4,6 +4,8 @@ A dark field guide. Open the site and pick a person or a country, then read the 
 
 The timeline spans the browser width on a large screen. Zoom with the slider, the + and − buttons, or Control-scroll. Fit scales the whole line into the window. On a phone, the same timeline becomes a vertical chronological scroll.
 
+On a phone, opening a plot starts on the full timeline. The web is still a tap away; on a narrow screen it pans, and names sit in a list under the map so they do not clip. A wide screen still opens on the web. Shared `?view=` links and a saved tab choice keep their place.
+
 Serve the folder locally:
 
 ```bash

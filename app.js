@@ -16,6 +16,7 @@ import {
   parseYear,
   relationsFieldEdges,
   relationsFieldLayout,
+  resolvePlotView,
   stateUrl,
   tiesWith,
   visibleRelationCountries,
@@ -38,12 +39,40 @@ let loadToken = 0;
 const ZOOM_MIN = 0.08;
 const ZOOM_MAX = 2.5;
 const COMPACT_MQ = `(max-width: ${COMPACT_MAX_WIDTH}px)`;
+const VIEW_PREF_KEY = "plotmaniac-view";
 let laneZoom = 1;
 let pendingLaneScroll = null;
 let pendingLaneFocus = "";
 
 function isCompact() {
   return window.matchMedia(COMPACT_MQ).matches;
+}
+
+function readStoredView() {
+  try {
+    const value = localStorage.getItem(VIEW_PREF_KEY);
+    if (value === "timeline" || value === "web") return value;
+  } catch {
+    return "";
+  }
+  return "";
+}
+
+function rememberView(view) {
+  if (view !== "timeline" && view !== "web") return;
+  try {
+    localStorage.setItem(VIEW_PREF_KEY, view);
+  } catch {
+    /* private mode */
+  }
+}
+
+function viewForPlot(parsed, href = location.href) {
+  return resolvePlotView(parsed, {
+    compact: isCompact(),
+    stored: readStoredView(),
+    href,
+  });
 }
 
 function syncLayoutMode() {
@@ -109,7 +138,12 @@ function onPop() {
     eras,
     countries: countryBySlug,
   });
-  state = { ...parsed, year: readYear(), country: parsed.country || "" };
+  state = {
+    ...parsed,
+    view: viewForPlot(parsed),
+    year: readYear(),
+    country: parsed.country || "",
+  };
   rememberCountryRegion();
   render({ focusEvent: Boolean(state.eventId) });
 }
@@ -165,11 +199,16 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         eras,
         countries: countryBySlug,
       });
-      state = { ...parsed, year: readYear(), country: parsed.country || "" };
+      state = {
+        ...parsed,
+        view: viewForPlot(parsed),
+        year: readYear(),
+        country: parsed.country || "",
+      };
       rememberCountryRegion();
     } else {
       state = {
-        view: "web",
+        view: viewForPlot({ view: "", eventId: "" }),
         person: ALL,
         era: ALL,
         query: "",
@@ -279,6 +318,7 @@ function bindChrome() {
       state.view = button.dataset.view === "timeline" ? "timeline" : "web";
       state.person = ALL;
       state.eventId = "";
+      rememberView(state.view);
       render({ push: true });
     });
   });
@@ -335,8 +375,9 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
 }
 
 function renderWeb() {
+  const compactMap = isCompact() && plot.arrangement !== "camps";
   const section = document.createElement("section");
-  section.className = "web";
+  section.className = compactMap ? "web is-compact-map" : "web";
   const key = document.createElement("ul");
   key.className = "web-key";
   const keyItems = [
@@ -352,7 +393,13 @@ function renderWeb() {
     key.appendChild(item);
   });
   const scroller = document.createElement("div");
-  scroller.className = `web-scroll${plot.arrangement === "camps" ? " is-camps" : ""}`;
+  scroller.className = `web-scroll${plot.arrangement === "camps" ? " is-camps" : compactMap ? " is-map" : ""}`;
+  scroller.setAttribute(
+    "aria-label",
+    compactMap
+      ? "Friends and foes map. Drag to look around. Names are listed below."
+      : "Friends and foes map",
+  );
   const stage = document.createElement("div");
   stage.className = "web-stage";
   scroller.appendChild(stage);
@@ -363,10 +410,15 @@ function renderWeb() {
     hint.className = "web-hint";
     hint.textContent = plot.arrangement === "camps"
       ? `${plot.yearHint || "Foes sit on the left, friends on the right."} Scroll to see everyone.`
-      : "Scroll to look around. People with more beats sit closer to the center.";
+      : "Drag the map to look around. Full names sit below — tap someone to open them.";
     section.appendChild(hint);
   }
   section.append(scroller);
+  if (compactMap) {
+    const roster = document.createElement("div");
+    roster.className = "web-people";
+    section.appendChild(roster);
+  }
   requestAnimationFrame(() => paintWeb(stage));
   return section;
 }
@@ -855,11 +907,13 @@ function paintWeb(stage, { animate = true } = {}) {
   let width;
   let height;
   if (compact && !camps) {
-    const size = Math.max(680, Math.floor(Math.max(bounds.width, bounds.height, scroller?.clientWidth || 0)));
+    const viewport = Math.max(scroller?.clientWidth || 0, bounds.width, 320);
+    const size = Math.max(1120, Math.round(viewport * 2.8));
     width = size;
     height = size;
     stage.style.width = `${size}px`;
     stage.style.height = `${size}px`;
+    stage.classList.add("is-compact-map");
   } else {
     if (bounds.width < 2 || bounds.height < 2) {
       requestAnimationFrame(() => paintWeb(stage, { animate }));
@@ -929,7 +983,8 @@ function paintWeb(stage, { animate = true } = {}) {
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
     button.style.setProperty("--i", String(index));
-    button.append(avatar(node, node.camp === "center" ? "lg" : "md"), nameEl(node.name));
+    button.append(avatar(node, node.camp === "center" ? "lg" : "md"));
+    if (!(compact && !camps)) button.append(nameEl(node.name));
     const camp = campLabel(node.camp);
     const beats = node.beats ? `, ${node.beats} timeline ${node.beats === 1 ? "beat" : "beats"}` : "";
     button.setAttribute("aria-label", `${node.name}${camp ? `, ${camp}` : ""}${beats}`);
@@ -951,6 +1006,43 @@ function paintWeb(stage, { animate = true } = {}) {
     scroller.scrollLeft = Math.max(0, (stage.offsetWidth - scroller.clientWidth) / 2);
     scroller.scrollTop = Math.max(0, (stage.offsetHeight - scroller.clientHeight) / 2);
   }
+  const roster = stage.closest(".web")?.querySelector(".web-people");
+  if (roster) paintWebPeople(roster, layout);
+}
+
+function paintWebPeople(root, layout) {
+  const byName = (a, b) => String(a.name).localeCompare(String(b.name), "en", { sensitivity: "base" });
+  const groups = [
+    ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends", layout.nodes.filter((node) => node.camp === "friend").slice().sort(byName)],
+    ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes", layout.nodes.filter((node) => node.camp === "enemy").slice().sort(byName)],
+  ];
+  root.replaceChildren();
+  groups.forEach(([camp, label, list]) => {
+    if (!list.length) return;
+    const block = document.createElement("section");
+    block.className = `web-people-group camp-${camp}`;
+    const heading = document.createElement("h3");
+    heading.textContent = `${label} · ${list.length}`;
+    const chips = document.createElement("ul");
+    chips.className = "chip-list";
+    list.forEach((person) => {
+      const item = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `web-person camp-${camp}`;
+      const name = document.createElement("span");
+      name.className = "chip-name";
+      name.textContent = person.name;
+      button.append(avatar(person, "sm"), name);
+      const beats = person.beats ? ` · ${person.beats} ${person.beats === 1 ? "beat" : "beats"}` : "";
+      button.setAttribute("aria-label", `${person.name}, ${campLabel(camp)}${beats}`);
+      button.addEventListener("click", () => openPerson(person.id));
+      item.appendChild(button);
+      chips.appendChild(item);
+    });
+    block.append(heading, chips);
+    root.appendChild(block);
+  });
 }
 
 function renderPerson() {
