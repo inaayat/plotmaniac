@@ -63,6 +63,7 @@ import {
   youtubeId,
   usesPolicyPanel,
   usesRegulationBoard,
+  usesScotusHub,
   boardViewForPerson,
   COMPACT_MAX_WIDTH,
   warActive,
@@ -199,7 +200,7 @@ assert.deepEqual(plots.plots.map((item) => item.id), [
   "jd-vance",
   "united-states",
   "partition-of-india",
-  "gun-regulation",
+  "scotus",
   "wars",
 ], "homepage gallery order");
 for (const item of plots.plots) {
@@ -1958,11 +1959,17 @@ assert.ok(moscow.lon > 30 && moscow.lon < 45 && moscow.lat > 50 && moscow.lat < 
 assert.ok(mapIsos.has("PS") && mapIsos.has("TW"));
 assert.ok(anchors.has("BH"));
 
-const gunPlot = plots.plots.find((item) => item.id === "gun-regulation");
-assert.ok(gunPlot, "gun-regulation plot is registered");
-assert.equal(gunPlot.arrangement, "regulation-board");
-assert.equal(usesRegulationBoard(gunPlot), true);
-assert.equal(findPlot(plots.plots, "guns")?.id, "gun-regulation");
+const scotusPlot = plots.plots.find((item) => item.id === "scotus");
+assert.ok(scotusPlot, "scotus plot is registered");
+assert.equal(scotusPlot.arrangement, "scotus-hub");
+assert.equal(usesScotusHub(scotusPlot), true);
+assert.equal(usesRegulationBoard(scotusPlot, "gun-rights"), true);
+assert.equal(usesRegulationBoard(scotusPlot, ""), false);
+assert.equal(findPlot(plots.plots, "guns")?.id, "scotus");
+assert.equal(findPlot(plots.plots, "gun-regulation")?.id, "scotus");
+assert.equal(scotusPlot.topics.length, 27);
+assert.equal(scotusPlot.topics.filter((topic) => topic.status === "live").length, 1);
+assert.equal(scotusPlot.topics.find((topic) => topic.status === "live")?.id, "gun-rights");
 const gunTimeline = readJson("../data/gun-regulation/timeline.json");
 const gunChecklist = readJson("../data/gun-regulation/checklist.json");
 const gunStates = readJson("../data/gun-regulation/states-exemplars.json");
@@ -1988,7 +1995,11 @@ assert.ok(stock1940.every((row) => row.missing), "stats before coverage stay emp
 const stock2021 = statsReadoutAtYear(gunStats.series, 2021);
 assert.ok(stock2021.some((row) => !row.missing));
 assert.match(
-  stateUrl("https://plotmaniac.com/", { view: "web", plot: "gun-regulation", year: 2022, regKind: "scotus" }, ""),
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "scotus", topic: "gun-rights", year: 2022, regKind: "scotus" }, ""),
+  /topic=gun-rights/,
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "scotus", topic: "gun-rights", year: 2022, regKind: "scotus" }, ""),
   /kind=scotus/,
 );
 assert.equal(

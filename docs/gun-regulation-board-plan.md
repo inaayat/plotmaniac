@@ -1,8 +1,9 @@
 # Plotmaniac gun-regulation board plan
 
-Status: V1 implemented on plot `gun-regulation` (`?plot=gun-regulation`). This
-document remains the schema and rollout reference; the live board loads data from
-`data/gun-regulation/`.
+Status: V1 implemented as the **Gun Rights / Gun Control** topic on the SCOTUS hub
+(`?plot=scotus&topic=gun-rights`). Legacy plot aliases (`gun-regulation`, `guns`,
+`second-amendment`) still open this board. Hub overview: [scotus-hub.md](./scotus-hub.md).
+Data loads from `data/gun-regulation/`.
 
 The product brief is authoritative. The central editorial choice is to show
 regulation intensity over time, not to label people or jurisdictions as
@@ -24,11 +25,10 @@ Plotmaniac is a static, manifest-driven app. Existing plots are registered in
 `data/plots.json` and loaded through `app.js`; there is no separate page-router
 framework to introduce for this feature.
 
-The proposed canonical V1 plot identity is `gun-regulation`. In the current
-architecture it opens at `?plot=gun-regulation`. If the hosting layer later
-needs a friendly path, `/guns` can rewrite to that query without changing the
-plot data contract. Do not add a second page implementation for the friendly
-path.
+The canonical entry is the SCOTUS parent plot **`scotus`** with topic
+**`gun-rights`**. Legacy queries `?plot=gun-regulation` (and `guns`,
+`second-amendment`) alias into that topic. Do not add a standalone top-level
+gun-only plot in the gallery.
 
 Existing patterns to reuse:
 

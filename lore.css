@@ -4256,3 +4256,83 @@ body[data-layout="compact"] .regulation-checklist {
 body[data-layout="compact"] .regulation-checklist-open {
   display: block;
 }
+
+.regulation-back {
+  margin: 8px 0 4px;
+}
+
+body[data-board="scotus"][data-view="web"] .app {
+  overflow: auto;
+}
+
+.scotus-hub {
+  padding: 8px 12px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.scotus-hub-head h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 8px;
+}
+
+.scotus-hub-lede {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  max-width: 62ch;
+  margin: 0 0 16px;
+}
+
+.scotus-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.scotus-topic-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  min-height: 88px;
+}
+
+.scotus-topic-tile.is-live {
+  border-color: rgba(110, 163, 232, 0.55);
+  cursor: pointer;
+}
+
+.scotus-topic-tile.is-live:hover,
+.scotus-topic-tile.is-live:focus-visible {
+  border-color: #6ea3e8;
+  background: rgba(110, 163, 232, 0.08);
+}
+
+.scotus-topic-tile.is-soon {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.scotus-topic-label {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.scotus-topic-badge {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.scotus-topic-badge.is-live-badge {
+  color: #6ea3e8;
+}

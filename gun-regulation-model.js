@@ -8,10 +8,6 @@ export const CHECKLIST_STATUSES = [
   "unknown",
 ];
 
-export function usesRegulationBoard(plot) {
-  return plot?.arrangement === "regulation-board";
-}
-
 export function regulationToneClass(tone) {
   if (typeof tone !== "number") return "tone-reg-neutral";
   if (tone >= 2) return "tone-reg-tight-strong";

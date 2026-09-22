@@ -12,12 +12,17 @@ export function requestedView(urlLike) {
   return "";
 }
 
-export function usesRegulationBoard(plot) {
-  return plot?.arrangement === "regulation-board";
+export function usesScotusHub(plot) {
+  return plot?.arrangement === "scotus-hub";
+}
+
+export function usesRegulationBoard(plot, topicId = "") {
+  if (plot?.arrangement === "regulation-board") return true;
+  return usesScotusHub(plot) && topicId === "gun-rights";
 }
 
 export function defaultPlotView({ requested = "", eventId = "", plot = null } = {}) {
-  if (usesRegulationBoard(plot)) return "web";
+  if (usesScotusHub(plot) || usesRegulationBoard(plot)) return "web";
   if (requested === "timeline" || requested === "web" || requested === "person") return requested;
   if (eventId) return "timeline";
   return "web";
@@ -431,6 +436,8 @@ export function parseState(urlLike, valid = {}) {
   let view = requested === "timeline" || requested === "person" || requested === "relation" ? requested : "web";
   if (view === "person" && person === ALL) view = "web";
   if (view === "relation" && !country) view = "web";
+  const topicRaw = url.searchParams.get("topic") || "";
+  const topic = valid.topics?.has(topicRaw) ? topicRaw : "";
   return {
     view,
     person,
@@ -439,6 +446,7 @@ export function parseState(urlLike, valid = {}) {
     eventId,
     country,
     hub,
+    topic,
   };
 }
 
@@ -449,7 +457,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
     url.hash = "";
     return url.pathname || "/";
   }
-  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state"].forEach((key) => url.searchParams.delete(key));
+  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (state.view === "timeline" || state.view === "person" || state.view === "relation") {
     url.searchParams.set("view", state.view);
@@ -465,6 +473,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (state.country) url.searchParams.set("country", state.country);
   if (state.regKind) url.searchParams.set("kind", state.regKind);
   if (state.exemplarState) url.searchParams.set("state", state.exemplarState);
+  if (state.topic) url.searchParams.set("topic", state.topic);
   if (state.hub) url.searchParams.set("hub", state.hub);
   else if (state.defaultHub) url.searchParams.set("hub", "shared");
   url.hash = state.view === "person" || !eventId ? "" : encodeURIComponent(eventId);
@@ -826,7 +835,7 @@ export function usesPolicyPanel(plot) {
 
 export function boardViewForPerson(plot, view) {
   if (plot?.arrangement === "wars") return "web";
-  if (usesRegulationBoard(plot)) return "web";
+  if (usesScotusHub(plot) || usesRegulationBoard(plot)) return "web";
   if (usesPolicyPanel(plot) && view === "person") return "web";
   return view;
 }

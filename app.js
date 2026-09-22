@@ -37,6 +37,7 @@ import {
   tiesWith,
   usesPolicyPanel,
   usesRegulationBoard,
+  usesScotusHub,
   boardViewForPerson,
   visibleRelationCountries,
   webLayout,
@@ -70,6 +71,11 @@ import {
 } from "./lane.js";
 import { parseRegulationParams } from "./gun-regulation-model.js";
 import { renderRegulationBoard, syncRegulationBoardDom } from "./gun-regulation-view.js";
+import {
+  renderScotusTopicHub,
+  scotusTopicFromPlotAlias,
+  SCOTUS_GUN_TOPIC_ID,
+} from "./scotus-hub-view.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const peopleById = new Map();
@@ -100,6 +106,7 @@ let state = {
   regKind: "",
   exemplarState: "",
   checklistOpen: false,
+  topic: "",
 };
 let toastTimer = null;
 let loadToken = 0;
@@ -116,6 +123,37 @@ const WEB_ZOOM_MAX = 2.8;
 
 function isCompact() {
   return window.matchMedia(COMPACT_MQ).matches;
+}
+
+function scotusTopicSet() {
+  return new Set((plot?.topics || []).map((item) => item.id));
+}
+
+function isGunBoardActive() {
+  return usesRegulationBoard(plot, state.topic);
+}
+
+function resolveScotusTopic(href, plotParam = "") {
+  const url = new URL(href, "https://plotmaniac.com/");
+  const valid = scotusTopicSet();
+  const fromQuery = url.searchParams.get("topic") || "";
+  if (valid.has(fromQuery)) return fromQuery;
+  const aliasTopic = scotusTopicFromPlotAlias(plotParam || url.searchParams.get("plot") || "");
+  return valid.has(aliasTopic) ? aliasTopic : "";
+}
+
+function syncScotusChrome() {
+  if (!usesScotusHub(plot)) return;
+  const gunTopic = plot.topics?.find((item) => item.id === SCOTUS_GUN_TOPIC_ID);
+  if (isGunBoardActive()) {
+    $("plot-title").textContent = gunTopic?.boardTitle || "Gun regulation in the United States";
+    $("plot-lede").textContent = gunTopic?.boardLede || plot.lede;
+    document.title = `Plotmaniac — ${$("plot-title").textContent}`;
+  } else {
+    $("plot-title").textContent = plot.title;
+    $("plot-lede").textContent = plot.lede;
+    document.title = `Plotmaniac — ${plot.title}`;
+  }
 }
 
 function clearPartition() {
@@ -137,13 +175,13 @@ function partitionFrameId(frames) {
 
 function labelViews() {
   const history = plot?.arrangement === "historical-map";
-  const regulation = usesRegulationBoard(plot);
+  const scotus = usesScotusHub(plot);
   const web = $("view-web");
   const timeline = $("view-timeline");
   if (!web || !timeline) return;
-  web.hidden = regulation;
-  timeline.hidden = regulation;
-  if (regulation) return;
+  web.hidden = scotus;
+  timeline.hidden = scotus;
+  if (scotus) return;
   web.hidden = false;
   timeline.hidden = false;
   web.textContent = history ? "Map + people" : "The web";
@@ -197,7 +235,7 @@ async function load() {
         return;
       }
       if (state.view === "web") {
-        if (usesRegulationBoard(plot)) {
+        if (isGunBoardActive()) {
           const lane = document.querySelector(".regulation-lane");
           if (lane) layoutLane(lane);
           return;
@@ -255,8 +293,10 @@ function onPop() {
     countries: countryBySlug,
     hubs: new Set(plotHubs(plot).map((hub) => hub.id)),
     defaultHub: plot.defaultHub || "",
+    topics: scotusTopicSet(),
   });
   const reg = parseRegulationParams(location.href, new Set(Object.keys(gunBoard?.states || {})));
+  const popPlotParam = new URL(location.href).searchParams.get("plot") || plot.id;
   state = {
     ...parsed,
     view: viewForPlot(parsed),
@@ -267,6 +307,7 @@ function onPop() {
     regKind: reg.kind,
     exemplarState: reg.exemplarState,
     checklistOpen: false,
+    topic: parsed.topic || resolveScotusTopic(location.href, popPlotParam),
   };
   applyWarSpan(state);
   rememberCountryRegion();
@@ -295,11 +336,14 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   $("plot-select").choicePaint?.();
   fillHubSelect();
   document.body.dataset.images = plot.images || "";
+  const bootTopic = fromUrl ? resolveScotusTopic(location.href, id) : "";
   document.body.dataset.board = plot.arrangement === "historical-map"
     ? "history"
     : (plot.arrangement === "wars"
       ? "wars"
-      : (usesRegulationBoard(plot) ? "regulation" : (plot.disclosure || "")));
+      : (usesRegulationBoard(plot, bootTopic)
+        ? "regulation"
+        : (usesScotusHub(plot) ? "scotus" : (plot.disclosure || ""))));
   clearPartition();
   const app = $("app");
   app.replaceChildren();
@@ -307,7 +351,9 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   loading.className = "loading";
   loading.textContent = plot.arrangement === "historical-map"
     ? "Drawing the map…"
-    : (usesRegulationBoard(plot) ? "Loading the board…" : "Drawing the web…");
+    : (usesScotusHub(plot)
+      ? (usesRegulationBoard(plot, bootTopic) ? "Loading the board…" : "Loading topics…")
+      : "Drawing the web…");
   app.appendChild(loading);
   try {
     if (plot.arrangement === "historical-map") {
@@ -374,7 +420,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     openTopic = "";
     people.forEach((person) => peopleById.set(person.id, person));
     gunBoard = null;
-    if (usesRegulationBoard(plot)) {
+    if (usesScotusHub(plot) && plot.paths.timeline) {
       const [timeline, checklist, statesEx, statsPack] = await Promise.all([
         fetchJson(plot.paths.timeline),
         fetchJson(plot.paths.checklist),
@@ -398,6 +444,9 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     const eras = new Set(events.map((event) => event.era));
     const hubs = plotHubs(plot);
     const exemplarStates = new Set(Object.keys(gunBoard?.states || {}));
+    const requestedPlotParam = fromUrl
+      ? new URL(location.href).searchParams.get("plot")
+      : id;
     if (fromUrl) {
       const parsed = parseState(location.href, {
         people: new Set(peopleById.keys()),
@@ -405,7 +454,9 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         countries: countryBySlug,
         hubs: new Set(hubs.map((hub) => hub.id)),
         defaultHub: plot.defaultHub || "",
+        topics: scotusTopicSet(),
       });
+      const topic = parsed.topic || resolveScotusTopic(location.href, requestedPlotParam);
       const reg = parseRegulationParams(location.href, exemplarStates);
       state = {
         ...parsed,
@@ -417,6 +468,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         regKind: reg.kind,
         exemplarState: reg.exemplarState,
         checklistOpen: false,
+        topic,
       };
       applyWarSpan(state);
       rememberCountryRegion();
@@ -434,9 +486,11 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         regKind: "",
         exemplarState: "",
         checklistOpen: false,
+        topic: "",
       };
       applyWarSpan(state, "");
     }
+    syncScotusChrome();
     renderCredits();
     render({
       push: history === "push",
@@ -482,6 +536,7 @@ function showPicker({ history = "push" } = {}) {
     regKind: "",
     exemplarState: "",
     checklistOpen: false,
+    topic: "",
   };
   document.title = "Plotmaniac";
   $("plot-title").textContent = "Plotmaniac";
@@ -816,7 +871,7 @@ function bindChrome() {
       closePolicyPanel();
       return;
     }
-    if (event.key === "Escape" && usesRegulationBoard(plot) && state.checklistOpen) {
+    if (event.key === "Escape" && isGunBoardActive() && state.checklistOpen) {
       state.checklistOpen = false;
       render({ replace: true });
       document.querySelector(".regulation-checklist-open")?.focus();
@@ -959,8 +1014,18 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   }
   if (partitionMount) clearPartition();
   app.replaceChildren();
-  if (usesRegulationBoard(plot)) app.appendChild(renderRegulationSection());
-  else if (plot?.arrangement === "wars") app.appendChild(renderWars());
+  syncScotusChrome();
+  document.body.dataset.board = plot?.arrangement === "historical-map"
+    ? "history"
+    : (plot?.arrangement === "wars"
+      ? "wars"
+      : (isGunBoardActive()
+        ? "regulation"
+        : (usesScotusHub(plot) ? "scotus" : (plot?.disclosure || ""))));
+  if (usesScotusHub(plot)) {
+    if (isGunBoardActive()) app.appendChild(renderRegulationSection());
+    else app.appendChild(renderScotusHubSection());
+  } else if (plot?.arrangement === "wars") app.appendChild(renderWars());
   else if (state.view === "timeline") app.appendChild(renderTimeline());
   else if (state.view === "person") app.appendChild(renderPerson());
   else if (state.view === "relation" && plot?.disclosure === "regions") app.appendChild(renderRelationPage());
@@ -977,12 +1042,46 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   }
 }
 
+function renderScotusHubSection() {
+  return renderScotusTopicHub({
+    plot,
+    topics: plot.topics || [],
+    activeTopicId: state.topic,
+    onSelectTopic: (topicId) => {
+      state.topic = topicId;
+      state.eventId = "";
+      state.checklistOpen = false;
+      if (topicId === SCOTUS_GUN_TOPIC_ID && plot.year) {
+        state.year = parseYear(plot.year.initial, plot.year);
+      }
+      render({ push: true });
+    },
+  });
+}
+
 function renderRegulationSection() {
   const shell = document.createElement("div");
   shell.className = "regulation-shell";
+  const back = document.createElement("button");
+  back.type = "button";
+  back.className = "back regulation-back";
+  back.textContent = "← SCOTUS topics";
+  back.addEventListener("click", () => {
+    state.topic = "";
+    state.eventId = "";
+    state.checklistOpen = false;
+    render({ push: true });
+  });
+  shell.appendChild(back);
   if (plot.year) shell.appendChild(renderYearBar());
+  const gunTopic = plot.topics?.find((item) => item.id === SCOTUS_GUN_TOPIC_ID);
+  const boardPlot = {
+    ...plot,
+    title: gunTopic?.boardTitle || plot.title,
+    lede: gunTopic?.boardLede || plot.lede,
+  };
   shell.appendChild(renderRegulationBoard({
-    plot,
+    plot: boardPlot,
     board: gunBoard,
     state,
     isCompact: isCompact(),
@@ -2004,7 +2103,7 @@ function setYear(year) {
   document.querySelectorAll(".year-marks button").forEach((button) => {
     button.classList.toggle("is-active", Number(button.dataset.year) === state.year);
   });
-  if (usesRegulationBoard(plot)) {
+  if (isGunBoardActive()) {
     syncRegulationBoardDom(gunBoard, state);
   } else if (plot?.arrangement === "wars") {
     warHover = "";
