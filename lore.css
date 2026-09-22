@@ -4593,6 +4593,7 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .gun-state-laws-toggle {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -4615,15 +4616,41 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 
 .gun-state-laws-filter-hint {
   margin: 0 0 4px;
-  font-size: 0.68rem;
-  line-height: 1.45;
+  font-size: 0.58rem;
+  line-height: 1.4;
   color: var(--muted);
 }
 
-.gun-state-laws-toggle-explain,
+.gun-state-laws-toggle-explain {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: normal;
+}
+
+.gun-state-laws-toggle:hover .gun-state-laws-toggle-explain,
+.gun-state-laws-toggle:focus-within .gun-state-laws-toggle-explain {
+  position: static;
+  width: auto;
+  height: auto;
+  margin-top: 2px;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  font-size: 0.62rem;
+  line-height: 1.35;
+  color: var(--muted);
+  font-weight: 400;
+}
+
 .gun-state-laws-gun-type-explain {
-  font-size: 0.68rem;
-  line-height: 1.4;
+  font-size: 0.62rem;
+  line-height: 1.35;
   color: var(--muted);
   font-weight: 400;
 }
