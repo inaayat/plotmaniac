@@ -8,14 +8,18 @@ import {
   eventTease,
   expandedSummary,
   filterEvents,
+  findPlot,
   firstLoadCountries,
   groupCountriesByStatus,
+  hubCenterId,
+  hubOf,
   initials,
   neighborhood,
   outlineFor,
   laneBands,
   parseState,
   parseYear,
+  plotHubs,
   relationsFieldEdges,
   relationsFieldLayout,
   relationSentimentChart,
@@ -38,7 +42,7 @@ let countries = [];
 let countryBySlug = new Map();
 let openRegions = new Set();
 let openTopic = "";
-let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "" };
+let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
 let toastTimer = null;
 let loadToken = 0;
 const ZOOM_MIN = 0.08;
@@ -81,8 +85,9 @@ async function load() {
   if (!plots.length) throw new Error("No plots registered");
   bindChrome();
   const requested = new URL(location.href).searchParams.get("plot");
-  if (requested && plots.some((item) => item.id === requested)) {
-    await showPlot(requested, { history: "none", fromUrl: true });
+  const matched = findPlot(plots, requested);
+  if (matched) {
+    await showPlot(matched.id, { history: "none", fromUrl: true });
   } else if (plots.length === 1) {
     await showPlot(plots[0].id, { history: "none", fromUrl: true });
   } else {
@@ -114,13 +119,14 @@ async function load() {
 
 function onPop() {
   const requested = new URL(location.href).searchParams.get("plot");
-  if (!requested || !plots.some((item) => item.id === requested)) {
+  const matched = findPlot(plots, requested);
+  if (!matched) {
     if (plots.length === 1) showPlot(plots[0].id, { history: "none", fromUrl: true });
     else showPicker({ history: "none" });
     return;
   }
-  if (!plot || plot.id !== requested) {
-    showPlot(requested, { history: "none", fromUrl: true });
+  if (!plot || plot.id !== matched.id) {
+    showPlot(matched.id, { history: "none", fromUrl: true });
     return;
   }
   const eras = new Set(events.map((event) => event.era));
@@ -128,12 +134,15 @@ function onPop() {
     people: new Set(peopleById.keys()),
     eras,
     countries: countryBySlug,
+    hubs: new Set(plotHubs(plot).map((hub) => hub.id)),
+    defaultHub: plotHubs(plot)[0]?.id || "",
   });
   state = {
     ...parsed,
     view: viewForPlot(parsed),
     year: readYear(),
     country: parsed.country || "",
+    hub: parsed.hub || plotHubs(plot)[0]?.id || "",
   };
   rememberCountryRegion();
   render({ focusEvent: Boolean(state.eventId) });
@@ -145,7 +154,7 @@ function readYear(url = location.href) {
 }
 
 async function showPlot(id, { history = "push", fromUrl = false } = {}) {
-  const next = plots.find((item) => item.id === id);
+  const next = findPlot(plots, id);
   if (!next) {
     showPicker({ history });
     return;
@@ -157,6 +166,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   $("home-link").textContent = "Plotmaniac";
   document.title = `Plotmaniac — ${plot.title}`;
   $("plot-select").value = plot.id;
+  fillHubSelect();
   document.body.dataset.images = plot.images || "";
   document.body.dataset.board = plot.disclosure || "";
   const app = $("app");
@@ -185,17 +195,21 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     people.forEach((person) => peopleById.set(person.id, person));
     laneZoom = 1;
     const eras = new Set(events.map((event) => event.era));
+    const hubs = plotHubs(plot);
     if (fromUrl) {
       const parsed = parseState(location.href, {
         people: new Set(peopleById.keys()),
         eras,
         countries: countryBySlug,
+        hubs: new Set(hubs.map((hub) => hub.id)),
+        defaultHub: hubs[0]?.id || "",
       });
       state = {
         ...parsed,
         view: viewForPlot(parsed),
         year: readYear(),
         country: parsed.country || "",
+        hub: parsed.hub || hubs[0]?.id || "",
       };
       rememberCountryRegion();
     } else {
@@ -207,6 +221,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         eventId: "",
         year: plot.year ? parseYear(plot.year.initial, plot.year) : null,
         country: "",
+        hub: hubs[0]?.id || "",
       };
     }
     renderCredits();
@@ -234,7 +249,7 @@ function showPicker({ history = "push" } = {}) {
   openRegions = new Set();
   openTopic = "";
   peopleById.clear();
-  state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "" };
+  state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
   document.title = "Plotmaniac";
   $("plot-title").textContent = "Plotmaniac";
   $("plot-lede").textContent = "Pick a person or a country. Then read the web of friends and foes, or the timeline under it.";
@@ -246,6 +261,7 @@ function showPicker({ history = "push" } = {}) {
   document.body.dataset.images = "";
   document.body.dataset.board = "";
   $("plot-select").value = "";
+  fillHubSelect();
   $("view-web").classList.remove("is-active");
   $("view-timeline").classList.remove("is-active");
   renderChooser();
@@ -302,6 +318,18 @@ function bindChrome() {
     if (!id || id === plot?.id) return;
     showPlot(id, { history: "push" });
   });
+  const hubSelect = $("hub-select");
+  hubSelect.addEventListener("change", () => {
+    const id = hubSelect.value;
+    if (!plot || !id || id === state.hub) return;
+    state.hub = id;
+    state.eventId = "";
+    if (state.view === "person") {
+      state.view = "web";
+      state.person = ALL;
+    }
+    render({ push: true });
+  });
   $("home-link").addEventListener("click", () => {
     if (!plot || plots.length < 2) return;
     showPicker({ history: "push" });
@@ -344,6 +372,39 @@ function bindChrome() {
   });
 }
 
+function fillHubSelect() {
+  const wrap = $("hub-switch");
+  const select = $("hub-select");
+  if (!wrap || !select) return;
+  const hubs = plotHubs(plot);
+  select.replaceChildren();
+  if (!hubs.length) {
+    wrap.hidden = true;
+    return;
+  }
+  hubs.forEach((hub) => {
+    const option = document.createElement("option");
+    option.value = hub.id;
+    option.textContent = hub.label;
+    select.appendChild(option);
+  });
+  select.value = state.hub && hubs.some((hub) => hub.id === state.hub) ? state.hub : hubs[0].id;
+  wrap.hidden = false;
+}
+
+function activeHub() {
+  return hubOf(plot, state.hub);
+}
+
+function activeCenter() {
+  return hubCenterId(plot, state.hub) || plot?.centerId || "";
+}
+
+function hubEvents() {
+  if (!plotHubs(plot).length) return events;
+  return filterEvents(events, { hub: state.hub || plotHubs(plot)[0]?.id }, peopleById);
+}
+
 function render({ push = false, replace = false, focusEvent = false } = {}) {
   const scroller = document.querySelector(".lane-scroll");
   pendingLaneScroll = replace && scroller
@@ -356,8 +417,11 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
   $("view-web").setAttribute("aria-pressed", String(state.view === "web"));
   $("view-timeline").setAttribute("aria-pressed", String(state.view === "timeline"));
+  fillHubSelect();
   const plotSelect = $("plot-select");
   if (plotSelect && document.activeElement === plotSelect) plotSelect.blur();
+  const hubSelect = $("hub-select");
+  if (hubSelect && document.activeElement === hubSelect) hubSelect.blur();
   const app = $("app");
   app.replaceChildren();
   if (state.view === "timeline") app.appendChild(renderTimeline());
@@ -389,6 +453,7 @@ function renderWeb() {
     keyItems.push(["orbit", plot.orbitLabel || "No stance yet"]);
     keyItems.push(["near", "Closer · more beats"]);
   } else if (plot.arrangement !== "camps") {
+    if (plot.includeOrbit) keyItems.push(["orbit", plot.orbitLabel || "Around the show"]);
     keyItems.push(["near", "Closer · more beats"]);
   }
   keyItems.forEach(([camp, label]) => {
@@ -1154,16 +1219,18 @@ function paintWeb(stage, { animate = true } = {}) {
     stage.style.width = "";
   }
   const layout = webLayout(people, relations, {
-    centerId: plot.centerId,
+    centerId: activeCenter() || plot.centerId,
     friendKinds: plot.friendKinds,
     enemyKinds: plot.enemyKinds,
     arrangement: plot.arrangement,
     year: plot.year ? state.year : undefined,
-    events,
+    events: hubEvents(),
     width,
     height,
     topics: plot.topics,
     topicId: openTopic,
+    includeOrbit: Boolean(plot.includeOrbit),
+    hubIds: plotHubs(plot).map((hub) => hub.centerId),
   });
   stage.classList.toggle("is-quiet", !animate);
   if ((camps || topics) && layout.height >= height) stage.style.height = `${layout.height}px`;
@@ -1213,7 +1280,8 @@ function paintWeb(stage, { animate = true } = {}) {
       layout.nodes.forEach((item) => {
         if (item.topic === nodeId.slice(6) && item.camp !== "topic") near.add(item.id);
       });
-      if (plot.centerId) near.add(plot.centerId);
+      const centerId = activeCenter() || plot.centerId;
+      if (centerId) near.add(centerId);
     } else {
       const person = peopleById.get(nodeId);
       if (person?.topic) near.add(`topic:${person.topic}`);
@@ -1235,7 +1303,7 @@ function paintWeb(stage, { animate = true } = {}) {
   layout.nodes.forEach((node, index) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.hub ? " is-topic-hub" : ""}${node.side ? ` node-${node.side}` : ""}`;
+    button.className = `node camp-${node.camp}${node.camp === "center" ? " is-center" : ""}${node.hub ? " is-topic-hub" : ""}${node.plotHub && node.camp !== "center" ? " is-plot-hub" : ""}${node.side ? ` node-${node.side}` : ""}`;
     button.dataset.id = node.id;
     button.style.left = `${node.x}px`;
     button.style.top = `${node.y}px`;
@@ -1292,6 +1360,9 @@ function paintWebPeople(root, layout) {
     ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends", layout.nodes.filter((node) => node.camp === "friend").slice().sort(byName)],
     ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes", layout.nodes.filter((node) => node.camp === "enemy").slice().sort(byName)],
   ];
+  if (plot.includeOrbit) {
+    groups.push(["orbit", plot.orbitLabel || "Around the show", layout.nodes.filter((node) => node.camp === "orbit").slice().sort(byName)]);
+  }
   root.replaceChildren();
   groups.forEach(([camp, label, list]) => {
     if (!list.length) return;
@@ -1347,17 +1418,18 @@ function renderPerson() {
   if (record) face.classList.add(outlineClass(record));
   head.appendChild(face);
   const copy = document.createElement("div");
+  const centerId = activeCenter() || plot.centerId;
   const camp = campOf(
     person.id,
     relations,
-    plot.centerId,
+    centerId,
     plot.friendKinds,
     plot.enemyKinds,
     plot.year ? state.year : undefined,
   );
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
-  eyebrow.textContent = person.id === plot.centerId
+  eyebrow.textContent = person.id === centerId
     ? "The center of this plot"
     : plot.year
       ? `${campLabel(camp)} in ${state.year}`
@@ -1370,8 +1442,8 @@ function renderPerson() {
   role.textContent = person.role || "";
   copy.append(eyebrow, title, role);
 
-  const center = peopleById.get(plot.centerId);
-  const ties = tiesWith(person.id, relations, plot.centerId);
+  const center = peopleById.get(centerId);
+  const ties = tiesWith(person.id, relations, centerId);
   if (ties.length && center && person.id !== center.id) {
     const list = document.createElement("ul");
     list.className = "ties";
@@ -1396,7 +1468,7 @@ function renderPerson() {
   section.classList.add("lane-page");
   section.append(back, head, renderRail(theirs, {
     focusId: person.id,
-    note: person.id === plot.centerId
+    note: person.id === centerId
       ? (isCompact() ? "Every sourced beat, oldest at the top." : "Every sourced beat, oldest on the left.")
       : (isCompact()
         ? `Beats with ${person.name}, oldest at the top.`
@@ -1413,9 +1485,10 @@ function renderTimeline() {
   const copy = document.createElement("div");
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
-  eyebrow.textContent = "Full timeline";
+  const hub = activeHub();
+  eyebrow.textContent = hub ? `${hub.label} timeline` : "Full timeline";
   const title = document.createElement("h2");
-  title.textContent = "Across the years";
+  title.textContent = hub ? hub.label : "Across the years";
   copy.append(eyebrow, title);
 
   const search = document.createElement("label");
@@ -1440,11 +1513,15 @@ function renderTimeline() {
   search.append(searchLabel, input);
   head.append(copy, search);
 
-  const shown = filterEvents(events, { query: state.query }, peopleById);
+  const shown = filterEvents(events, { query: state.query, hub: state.hub }, peopleById);
   section.append(head, renderRail(shown, {
     note: isCompact()
-      ? "The whole public record, oldest at the top. Open a beat for the sources."
-      : "The whole public record, oldest on the left. Open a beat for the sources.",
+      ? hub
+        ? `${hub.label}'s public record, oldest at the top. Open a beat for the sources.`
+        : "The whole public record, oldest at the top. Open a beat for the sources."
+      : hub
+        ? `${hub.label}'s public record, oldest on the left. Open a beat for the sources.`
+        : "The whole public record, oldest on the left. Open a beat for the sources.",
   }));
   if (!shown.length) section.appendChild(emptyState("Nothing in this plot matches that search."));
   return section;
@@ -1948,9 +2025,10 @@ function renderLaneEvent(event, side, focusId) {
 
 function featuredPerson(event, focusId) {
   const ids = event.people || [];
+  const skip = activeCenter() || plot.centerId;
   const preferred = focusId && ids.includes(focusId)
     ? focusId
-    : ids.find((id) => id !== plot.centerId) || ids[0];
+    : ids.find((id) => id !== skip) || ids[0];
   return peopleById.get(preferred) || { name: "?", id: preferred || "unknown" };
 }
 

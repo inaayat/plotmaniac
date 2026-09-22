@@ -232,5 +232,227 @@
     "to": "oliver-tree",
     "kind": "collaborator",
     "label": "Recurring guest whose on-air feud with Ethan was a long-running bit"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "jeff-wittek",
+    "kind": "crew",
+    "label": "Vlog Squad cast until the excavator fallout"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "jeff-wittek",
+    "kind": "litigation",
+    "label": "Negligence lawsuit over the 2020 Utah stunt"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "natalie-mariduena",
+    "kind": "crew",
+    "label": "Childhood friend, assistant, later LLC president"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "toddy-smith",
+    "kind": "ally",
+    "label": "Vlog Squad friend who brought Jeff into the group"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "zane-hijazi",
+    "kind": "crew",
+    "label": "Core Vlog Squad / Unfiltered circle"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "heath-hussar",
+    "kind": "crew",
+    "label": "Core Vlog Squad / Unfiltered circle"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "jason-nash",
+    "kind": "co-host",
+    "label": "Views podcast co-hosts"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "aaron-gilfoy",
+    "kind": "crew",
+    "label": "Vlog Squad regular before stepping back"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "carly-incontro",
+    "kind": "crew",
+    "label": "Vlog Squad regular"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "scotty-sire",
+    "kind": "ally",
+    "label": "Publicly defended Dobrik after the 2021 allegations"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "nick-antonyan",
+    "kind": "crew",
+    "label": "Vlog Squad neighbor nicknamed Jonah"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "dom-zeglaitis",
+    "kind": "crew",
+    "label": "Close friend until Dobrik said he distanced himself"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "trisha-paytas",
+    "kind": "feud",
+    "label": "Alleged non-consensual filming and later public call-outs"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "liza-koshy",
+    "kind": "collaborator",
+    "label": "Former partners and Vine/YouTube collaborators"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "tana-mongeau",
+    "kind": "feud",
+    "label": "Alleged threesome pressure; she later sided with Jeff"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "casey-neistat",
+    "kind": "collaborator",
+    "label": "Subject of Neistat's Under the Influence documentary"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "casey-neistat",
+    "kind": "feud",
+    "label": "Reported split after the documentary and scandals"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "seth-francois",
+    "kind": "feud",
+    "label": "2017 kissing prank later described as non-consensual"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "gabbie-hanna",
+    "kind": "crew",
+    "label": "Early Vine / Vlog Squad collaborator"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "alex-ernst",
+    "kind": "crew",
+    "label": "Early Vlog Squad collaborator"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "nik-keswani",
+    "kind": "feud",
+    "label": "Keswani said the group bullied him and felt cult-like"
+  },
+  {
+    "from": "david-dobrik",
+    "to": "mariah-amato",
+    "kind": "ally",
+    "label": "Heath's partner in the later Vlog Squad circle"
+  },
+  {
+    "from": "jason-nash",
+    "to": "trisha-paytas",
+    "kind": "family",
+    "label": "Dated during the Vlog Squad years"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "jeff-wittek",
+    "kind": "related-coverage",
+    "label": "Frenemies emergency interview after My Truth"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "seth-francois",
+    "kind": "related-coverage",
+    "label": "H3 interview about the 2017 kissing prank"
+  },
+  {
+    "from": "ethan-klein",
+    "to": "nik-keswani",
+    "kind": "related-coverage",
+    "label": "H3 interview about Vlog Squad bullying"
+  },
+  {
+    "from": "jeff-wittek",
+    "to": "natalie-mariduena",
+    "kind": "feud",
+    "label": "Disputed medical bills, insurance, and documentary framing"
+  },
+  {
+    "from": "jeff-wittek",
+    "to": "tana-mongeau",
+    "kind": "ally",
+    "label": "Later podcast alliance after the fallout"
+  },
+  {
+    "from": "jeff-wittek",
+    "to": "trisha-paytas",
+    "kind": "ally",
+    "label": "Starbucks-era snub gave way to a later public alliance"
+  },
+  {
+    "from": "jeff-wittek",
+    "to": "toddy-smith",
+    "kind": "feud",
+    "label": "Introduction turned into a split when Toddy stayed with David"
+  },
+  {
+    "from": "toddy-smith",
+    "to": "tana-mongeau",
+    "kind": "feud",
+    "label": "Reported shouting after Tana sided with Jeff"
+  },
+  {
+    "from": "nick-antonyan",
+    "to": "jeff-wittek",
+    "kind": "feud",
+    "label": "Friendship dropped after Dobrik reportedly told him to"
+  },
+  {
+    "from": "zane-hijazi",
+    "to": "heath-hussar",
+    "kind": "co-host",
+    "label": "Unfiltered co-hosts"
+  },
+  {
+    "from": "heath-hussar",
+    "to": "mariah-amato",
+    "kind": "family",
+    "label": "Partners during the later Vlog Squad years"
+  },
+  {
+    "from": "aaron-gilfoy",
+    "to": "carly-incontro",
+    "kind": "family",
+    "label": "Married; later stepped back from Vlog Squad drama"
+  },
+  {
+    "from": "natalie-mariduena",
+    "to": "toddy-smith",
+    "kind": "family",
+    "label": "Dated at the time of the 2021 fallout"
+  },
+  {
+    "from": "jason-nash",
+    "to": "tana-mongeau",
+    "kind": "related-coverage",
+    "label": "Named together in alleged threesome-pressure stories"
   }
 ]

@@ -1280,9 +1280,16 @@ body[data-view="relation"] .views button {
   border-width: 3px;
 }
 
-.node.camp-enemy .avatar {
-  border-color: #e06a62;
-  border-width: 3px;
+.node.camp-orbit .avatar {
+  border-color: rgba(232, 196, 122, 0.45);
+}
+
+.node.is-plot-hub {
+  z-index: 3;
+}
+
+.node.is-plot-hub .avatar {
+  box-shadow: 0 0 0 3px rgba(232, 196, 122, 0.45);
 }
 
 .node.is-bubble {

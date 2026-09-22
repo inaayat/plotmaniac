@@ -1,0 +1,1945 @@
+[
+  {
+    "id": "frenemies-launch",
+    "date": "2020-09-15",
+    "title": "Frenemies debuts on the H3 Podcast channel",
+    "summary": "Ethan and Trisha Paytas launch a weekly co-hosted show blending H3 commentary with Trisha's unfiltered stories. It quickly becomes one of the most watched recurring formats in the H3 universe.",
+    "era": "frenemies",
+    "people": [
+      "ethan-klein",
+      "trisha-paytas"
+    ],
+    "links": [
+      {
+        "label": "Watch Frenemies #1",
+        "url": "https://www.youtube.com/watch?v=Mtblz3KPYT0",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "frenemies-39-walkout",
+    "date": "2021-06-08",
+    "title": "Frenemies #39 ends in a production dispute",
+    "summary": "A disagreement over production, staffing, creative control, and revenue escalates near the end of the episode. Trisha leaves the set and announces the next day that they are stepping down.",
+    "era": "frenemies",
+    "people": [
+      "ethan-klein",
+      "trisha-paytas",
+      "dan-swerdlove"
+    ],
+    "links": [
+      {
+        "label": "Watch Frenemies #39",
+        "url": "https://www.youtube.com/watch?v=poqMtuBVHU4",
+        "type": "video"
+      },
+      {
+        "label": "Business Insider timeline",
+        "url": "https://www.businessinsider.com/frenemies-trisha-paytas-quit-ethan-klein-podcast-leaving-stepping-down-2021-6",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "frenemies-cancelled",
+    "date": "2021-06-10",
+    "title": "Ethan publishes his response to the Frenemies breakup",
+    "summary": "Ethan disputes Trisha's account and explains H3's production costs, the crew's role, and the proposed business structure as both former co-hosts post competing narratives.",
+    "era": "frenemies-fallout",
+    "people": [
+      "ethan-klein",
+      "trisha-paytas"
+    ],
+    "links": [
+      {
+        "label": "Watch Ethan's response",
+        "url": "https://www.youtube.com/watch?v=v8YqLShLJiI",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "trisha-merch-spat",
+    "date": "2021-07-09",
+    "title": "Frenemies merchandise launches after the show ends",
+    "summary": "Teddy Fresh releases the collaboration that was already in production when Frenemies ended. The launch keeps the show's disputed finances and ownership in public view.",
+    "era": "frenemies-fallout",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "trisha-paytas"
+    ],
+    "links": [
+      {
+        "label": "H3 launch post",
+        "url": "https://www.instagram.com/h3h3productions/p/CRHipzAjY6f/",
+        "type": "primary"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "leftovers-premiere",
+    "date": "2021-09-26",
+    "title": "Leftovers premieres with Hasan Piker",
+    "summary": "Ethan and Hasan launch H3's politics-and-culture spinoff. The first episode passes one million views within a day and begins a 61-episode run.",
+    "era": "leftovers",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "Watch Leftovers #1",
+        "url": "https://www.youtube.com/watch?v=uASzNUFT5Dk",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "content-nuke",
+    "date": "2020-05-19",
+    "title": "Ethan publishes \"Content Nuke — Keemstar\"",
+    "summary": "Ethan publishes a 45-minute video criticizing Keemstar's reporting and treatment of other creators. Keemstar responds the next day, and the exchange expands into a sponsor-focused debate across YouTube.",
+    "era": "content-nuke",
+    "people": [
+      "ethan-klein",
+      "keemstar"
+    ],
+    "links": [
+      {
+        "label": "Watch the original video",
+        "url": "https://www.youtube.com/watch?v=w3gXcIifc3o",
+        "type": "video"
+      },
+      {
+        "label": "Newsweek report",
+        "url": "https://www.newsweek.com/gfuel-removes-youtuber-keemstar-website-after-h3h3-video-1505510",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "james-hoodie-parody",
+    "date": "2020-09-18",
+    "title": "The Teddy Fresh–Sisters Apparel hoodie dispute",
+    "summary": "Ethan and Hila say a pastel color-block hoodie teased by James Charles closely resembles a signature Teddy Fresh design. Charles denies personally copying it and says his team may have independently used the same colorway.",
+    "era": "beauty-wars",
+    "people": [
+      "ethan-klein",
+      "james-charles"
+    ],
+    "links": [
+      {
+        "label": "Business Insider report",
+        "url": "https://www.businessinsider.com/james-charles-accused-stealing-merch-designs-by-ethan-klein-2020-9",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "dobrik-safety-coverage",
+    "date": "2021-03-21",
+    "title": "Jeff Wittek calls into Frenemies during Vlog Squad coverage",
+    "summary": "Ethan and Trisha hold an emergency episode about Wittek's response to the Insider investigation and review new footage connected to the night described in the report.",
+    "era": "vlog-squad",
+    "people": [
+      "ethan-klein",
+      "trisha-paytas",
+      "david-dobrik",
+      "jeff-wittek"
+    ],
+    "links": [
+      {
+        "label": "Watch Frenemies #26",
+        "url": "https://www.youtube.com/watch?v=0XCZ-t5e-fI",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3",
+      "dobrik"
+    ]
+  },
+  {
+    "id": "matt-hoss-lawsuit-win",
+    "date": "2017-08-23",
+    "title": "Federal court grants H3 a fair-use victory",
+    "summary": "A federal judge grants summary judgment to Ethan and Hila in Matt Hoss's copyright case, finding their reaction video was fair use. The decision becomes a major reference point in creator copyright debates.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "matt-hoss"
+    ],
+    "links": [
+      {
+        "label": "Court opinion",
+        "url": "https://storage.courtlistener.com/recap/gov.uscourts.nysd.456608.116.0.pdf",
+        "type": "legal"
+      },
+      {
+        "label": "CourtListener opinion",
+        "url": "https://www.courtlistener.com/opinion/4399688/hoss-v-klein/",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "triller-lawsuit-filed",
+    "date": "2021-05-10",
+    "title": "Triller files a $50 million copyright suit against H3",
+    "summary": "Triller Fight Club sues the H3 Podcast, Ethan, and Hila over a clip from the Jake Paul–Ben Askren broadcast and an unlisted copy of the fight. The case begins a prolonged public legal fight.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "ryan-kavanaugh"
+    ],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/59895203/triller-fight-club-ii-llc-v-the-h3-podcast/",
+        "type": "legal"
+      },
+      {
+        "label": "Business Insider report",
+        "url": "https://www.businessinsider.com/triller-h3-ethan-klein-lawsuit-sues-distributing-jake-paul-fight-2021-5",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "triller-dismissed",
+    "date": "2022-01-12",
+    "title": "Judge tosses Triller's app-review claims against the Kleins",
+    "summary": "A Los Angeles judge grants the Kleins' anti-SLAPP motion in Triller's separate case over negative app-store reviews, finding Triller had not shown that H3 directed unlawful conduct.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "ryan-kavanaugh"
+    ],
+    "links": [
+      {
+        "label": "Hollywood Reporter",
+        "url": "https://www.hollywoodreporter.com/business/digital/triller-troll-reviews-suit-tossed-by-judge-1235075271/",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "keemstar-h3-feud-cycle",
+    "date": "2020-05-20",
+    "title": "Keemstar responds; the Content Nuke cycle escalates",
+    "summary": "Keemstar posts a response disputing Ethan's framing. Newsweek reports that G Fuel removed Keemstar from its website and that Keemstar confirmed the sponsorship had ended.",
+    "era": "drama-alert",
+    "people": [
+      "ethan-klein",
+      "keemstar"
+    ],
+    "links": [
+      {
+        "label": "Newsweek report",
+        "url": "https://www.newsweek.com/gfuel-removes-youtuber-keemstar-website-after-h3h3-video-1505510",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "defranco-h3-spat",
+    "date": "2016-05-25",
+    "title": "Philip DeFranco launches H3's fair-use defense fund",
+    "summary": "DeFranco opens a GoFundMe for the Kleins' defense against Matt Hoss's copyright suit. The campaign exceeds its $100,000 goal in about a day and draws support from creators across YouTube.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "philip-de-franco",
+      "matt-hoss"
+    ],
+    "links": [
+      {
+        "label": "Original GoFundMe",
+        "url": "https://www.gofundme.com/f/h3h3defensefund",
+        "type": "primary"
+      },
+      {
+        "label": "Variety report",
+        "url": "https://variety.com/2016/digital/news/h3h3-ethan-hila-matthoss-lawsuit-1201784349/",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "james-allegations-coverage",
+    "date": "2023-11-16",
+    "title": "H3 revisits James Charles after a new accusation",
+    "summary": "Off The Rails #94 devotes a segment to a new accusation involving James Charles, continuing the show's recurring coverage of the beauty creator after the 2020 merchandise dispute.",
+    "era": "beauty-wars",
+    "people": [
+      "ethan-klein",
+      "james-charles"
+    ],
+    "links": [
+      {
+        "label": "Watch Off The Rails #94",
+        "url": "https://www.youtube.com/live/R8IClKasNBU?t=4443",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "leftovers-israel-gaza-tension",
+    "date": "2023-10-12",
+    "title": "Leftovers #61 becomes the show's final episode",
+    "summary": "Ethan and Hasan spend nearly four hours discussing the October 7 attacks and Israel–Palestine. The show goes on indefinite hiatus after the episode and does not return.",
+    "era": "leftovers",
+    "people": [
+      "ethan-klein",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "Episode listing",
+        "url": "https://www.globalplayer.com/podcasts/episodes/7DrhDVV/",
+        "type": "audio"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "hasan-feud-2024-clips",
+    "date": "2024-10-19",
+    "title": "Ethan publishes \"Twitch Has a Major Problem\"",
+    "summary": "Ethan criticizes Twitch and a TwitchCon panel hosted by Frogan that included Denims. The panelists dispute his interpretation; Twitch suspends five participants two days later for targeted hateful conduct.",
+    "era": "hasan-feud",
+    "people": [
+      "ethan-klein",
+      "hasan-piker",
+      "frogan",
+      "denims"
+    ],
+    "links": [
+      {
+        "label": "Watch Ethan's video",
+        "url": "https://www.youtube.com/watch?v=xtFiJ8AVdW0",
+        "type": "video"
+      },
+      {
+        "label": "PC Gamer report",
+        "url": "https://www.pcgamer.com/gaming-industry/under-pressure-from-pro-israel-group-twitch-bans-several-arab-streamers-over-a-month-old-twitchcon-panel/",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "hasan-donation-headline",
+    "date": "2025-01-31",
+    "title": "Ethan releases \"Content Nuke — Hasan Piker\"",
+    "summary": "Ethan publishes a feature-length video criticizing his former co-host's politics, moderation, and platforming choices. Hasan and other political streamers respond across Twitch and YouTube.",
+    "era": "hasan-feud",
+    "people": [
+      "ethan-klein",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "Watch Content Nuke",
+        "url": "https://www.youtube.com/watch?v=ZSUDHx-1_ww",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "dobrik-documentary-era",
+    "date": "2022-06-22",
+    "title": "Jeff Wittek sues David Dobrik over the excavator injury",
+    "summary": "Wittek files a negligence lawsuit seeking damages from Dobrik over the 2020 stunt that fractured his skull. The filing gives the accident previously covered by Frenemies a new legal chapter.",
+    "era": "vlog-squad",
+    "people": [
+      "ethan-klein",
+      "david-dobrik",
+      "jeff-wittek"
+    ],
+    "links": [
+      {
+        "label": "People report",
+        "url": "https://people.com/tv/jeff-wittek-sues-david-dobrik-for-10-million-over-stunt-injury/",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3",
+      "dobrik"
+    ]
+  },
+  {
+    "id": "hasan-2025-milestone",
+    "date": "2025-05-02",
+    "title": "Ethan and Hasan debate again on the H3 Show",
+    "summary": "Hasan calls into H3 Show #143 for a long-form debate revisiting their split, Israel–Palestine, antisemitism, and their former partnership. The conversation is their first extended on-air exchange since 2023.",
+    "era": "hasan-feud",
+    "people": [
+      "ethan-klein",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "Watch H3 Show #143",
+        "url": "https://www.youtube.com/watch?v=knMyMxXeoDY",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "hoss-lawsuit-filed",
+    "date": "2016-04-26",
+    "title": "Matt Hoss files his copyright lawsuit against Ethan and Hila",
+    "summary": "Matt Hosseinzadeh sues the Kleins over their reaction video to his \"Bold Guy\" sketch. The case puts the cost and uncertainty of YouTube fair-use defenses in public view.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "matt-hoss"
+    ],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/4356997/hosseinzadeh-v-klein/",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "dobrik-insider-coverage",
+    "date": "2021-03-17",
+    "title": "H3 responds to reporting on the Vlog Squad",
+    "summary": "H3 Podcast #240 discusses Insider's reporting on a woman who accused a former Vlog Squad member of rape and examines Dobrik's role in filming the night described.",
+    "era": "vlog-squad",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "david-dobrik"
+    ],
+    "links": [
+      {
+        "label": "Watch H3 Podcast #240",
+        "url": "https://www.youtube.com/watch?v=jrDi9gDSVu4",
+        "type": "video"
+      },
+      {
+        "label": "Insider investigation",
+        "url": "https://www.businessinsider.com/vlog-squad-durte-dom-rape-allegation-david-dobrik-zeglaitis-video-2021-3",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "dobrik-apology-response",
+    "date": "2021-03-23",
+    "title": "Frenemies responds to David Dobrik's apology",
+    "summary": "Ethan and Trisha convene another emergency episode after Dobrik posts a second apology addressing the allegations and the culture around his videos.",
+    "era": "vlog-squad",
+    "people": [
+      "ethan-klein",
+      "trisha-paytas",
+      "david-dobrik"
+    ],
+    "links": [
+      {
+        "label": "Watch Frenemies #28",
+        "url": "https://www.youtube.com/watch?v=-QLJROolYas",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3",
+      "dobrik"
+    ]
+  },
+  {
+    "id": "frenemies-family-crisis",
+    "date": "2021-09-12",
+    "title": "The Frenemies fallout widens into a family crisis",
+    "summary": "Leaked messages and competing accusations involving Trisha, Moses, Ethan, and Hila move the podcast breakup into the Kleins' extended family. H3 pauses regular episodes for a week.",
+    "era": "frenemies-fallout",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "trisha-paytas",
+      "moses-hacmon"
+    ],
+    "links": [
+      {
+        "label": "Business Insider explainer",
+        "url": "https://www.businessinsider.com/trisha-paytas-moses-hacmon-mr-riney-riley-teacher-allegations-drama-2021-9",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "jordan-peterson-episodes-removed",
+    "date": "2022-01-14",
+    "title": "Ethan removes two Jordan Peterson interviews",
+    "summary": "Ethan says he removed Peterson's two earlier H3 interviews because he no longer wanted the channel to serve as a gateway to Peterson's views. Peterson responds publicly the next day.",
+    "era": "commentary-wars",
+    "people": [
+      "ethan-klein",
+      "jordan-peterson"
+    ],
+    "links": [
+      {
+        "label": "Contemporary report",
+        "url": "https://dailytelegraph.co.nz/world/youtuber-in-joe-rogan-feud-deletes-interviews-with-jordan-peterson/",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "leftovers-youtube-suspension",
+    "date": "2022-10-21",
+    "title": "YouTube suspends H3 after a Ben Shapiro joke",
+    "summary": "YouTube removes a Leftovers episode and suspends the channel for a week under its harassment policy after Ethan makes a Holocaust joke about Ben Shapiro.",
+    "era": "leftovers",
+    "people": [
+      "ethan-klein",
+      "hasan-piker",
+      "dan-swerdlove"
+    ],
+    "links": [
+      {
+        "label": "Jewish Telegraphic Agency report",
+        "url": "https://www.jta.org/2022/10/21/culture/prominent-jewish-youtuber-ethan-klein-makes-holocaust-joke-about-ben-shapiro-leading-to-his-suspension",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "logan-paul-cryptozoo",
+    "date": "2023-01-18",
+    "title": "H3 examines the CryptoZoo fallout around Logan Paul",
+    "summary": "Off The Rails #57 discusses Coffeezilla's CryptoZoo investigation and Logan Paul's response, extending H3's years-long critical coverage of the Paul brothers.",
+    "era": "creator-feuds",
+    "people": [
+      "ethan-klein",
+      "logan-paul",
+      "dan-swerdlove"
+    ],
+    "links": [
+      {
+        "label": "Watch Off The Rails #57",
+        "url": "https://www.youtube.com/live/txuivldLEzo",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "pearl-davis-debate",
+    "date": "2023-06-14",
+    "title": "Ethan debates Pearl Davis on H3",
+    "summary": "JustPearlyThings joins Off The Rails #76 for a long debate about gender roles, marriage, and her claims about women. The full exchange becomes one of H3's most-viewed debate episodes.",
+    "era": "debate-era",
+    "people": [
+      "ethan-klein",
+      "justpearlythings",
+      "dan-swerdlove"
+    ],
+    "links": [
+      {
+        "label": "Watch Off The Rails #76",
+        "url": "https://www.youtube.com/live/euuma5CoFis",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "xqc-copyright-debate",
+    "date": "2023-08-07",
+    "title": "Ethan and xQc debate reaction content",
+    "summary": "xQc calls into H3TV #86 to debate whether minimally edited reaction uploads exploit smaller creators. The exchange ends without agreement and becomes a flashpoint in \"reactgate.\"",
+    "era": "debate-era",
+    "people": [
+      "ethan-klein",
+      "xqc",
+      "dan-swerdlove"
+    ],
+    "links": [
+      {
+        "label": "Watch H3TV #86",
+        "url": "https://www.youtube.com/live/8UizTBc6FP8?t=2770",
+        "type": "video"
+      },
+      {
+        "label": "Kotaku report",
+        "url": "https://kotaku.com/xqc-ethan-debate-h3h3-productions-youtube-twitch-1850717631",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "ethan-hasan-twitch-debate",
+    "date": "2023-11-09",
+    "title": "Ethan and Hasan hold a second, emotional Israel–Palestine debate",
+    "summary": "Ethan joins Hasan's Twitch stream for a multi-hour discussion about Zionism, slogans, moderation, and each host's audience. The conversation confirms the depth of their post-Leftovers split.",
+    "era": "hasan-feud",
+    "people": [
+      "ethan-klein",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "Watch the full stream",
+        "url": "https://www.youtube.com/live/h1ZVcdERxmw",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "sneako-debate-invitation",
+    "date": "2024-03-07",
+    "title": "Sneako publicizes H3's debate invitation",
+    "summary": "Sneako shares H3's private invitation and says he will appear if Ethan completes ten push-ups. The proposed studio debate never takes place.",
+    "era": "creator-feuds",
+    "people": [
+      "ethan-klein",
+      "sneako"
+    ],
+    "links": [
+      {
+        "label": "Report on the invitation",
+        "url": "https://www.sportskeeda.com/esports/news-i-think-re-rded-sneako-reveals-ethan-klein-invited-h3-podcast-debate-gives-response",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "fresh-fit-debate",
+    "date": "2024-03-13",
+    "title": "Ethan debates Fresh & Fit",
+    "summary": "Myron Gaines and Walter Weekes join Off The Rails #108 for a nearly four-hour conversation spanning dating advice, platform bans, and Holocaust denial.",
+    "era": "debate-era",
+    "people": [
+      "ethan-klein",
+      "fresh-and-fit",
+      "dan-swerdlove"
+    ],
+    "links": [
+      {
+        "label": "Watch Off The Rails #108",
+        "url": "https://www.youtube.com/live/lPl1XTHQsHA?t=1740",
+        "type": "video"
+      },
+      {
+        "label": "Episode listing",
+        "url": "https://www.globalplayer.com/podcasts/episodes/7Dri3gJ/",
+        "type": "audio"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "sneako-facetime-confrontation",
+    "date": "2024-08-13",
+    "title": "Ethan and Sneako clash by FaceTime on Raw Talk",
+    "summary": "While appearing on Bradley Martyn's podcast, Ethan takes a FaceTime call from Sneako. Their argument turns to Hila's mandatory IDF service and the Israel–Gaza war.",
+    "era": "creator-feuds",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "sneako"
+    ],
+    "links": [
+      {
+        "label": "Report on the exchange",
+        "url": "https://www.sportskeeda.com/us/streamers/news-my-wife-killed-anybody-ethan-klein-responds-sneako-s-comments-hila-klein-former-idf-officer",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "twitchcon-panel-suspensions",
+    "date": "2024-10-21",
+    "title": "Twitch suspends Frogan, Denims, and other panelists",
+    "summary": "Twitch issues 30-day suspensions for targeted hateful conduct after renewed attention on a TwitchCon \"habibi\" tier-list panel. Panelists reject Ethan's characterization of the segment.",
+    "era": "hasan-feud",
+    "people": [
+      "ethan-klein",
+      "frogan",
+      "denims"
+    ],
+    "links": [
+      {
+        "label": "Kotaku report",
+        "url": "https://kotaku.com/twitch-ban-fr0gan-denims-capri-raffoul-adl-ethan-klein-1851677969",
+        "type": "article"
+      },
+      {
+        "label": "Passionfruit report",
+        "url": "https://passionfru.it/ayyrabs-podcast-twitch-ban-94783/",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "h3-twitch-content-nuke-ban",
+    "date": "2025-03-05",
+    "title": "Twitch suspends, then restores, H3's channel",
+    "summary": "Twitch issues a 30-day suspension after H3 loops the Hasan Content Nuke, citing content that encouraged or glorified extreme violence. The platform restores the channel the next day.",
+    "era": "hasan-feud",
+    "people": [
+      "ethan-klein",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "Dot Esports report",
+        "url": "https://dotesports.com/streaming/news/ethan-klein-h3h3productions-banned-on-twitch-for-encouraging-or-glorifying-extreme-violence-calls-platform-out-for-what-he-claims-are-double-standards-compared-to-hasan",
+        "type": "article"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "idubbbz-content-cop-h3",
+    "date": "2025-04-16",
+    "title": "iDubbbz revives Content Cop with an H3 episode",
+    "summary": "iDubbbz publishes his first Content Cop since 2017, criticizing Ethan's recent conduct and featuring Anisa, Hasan, Frogan, and Denims. Ethan reacts live as the video premieres.",
+    "era": "content-nuke",
+    "people": [
+      "ethan-klein",
+      "idubbbz",
+      "anisa-jomha",
+      "hasan-piker",
+      "frogan",
+      "denims"
+    ],
+    "links": [
+      {
+        "label": "Watch Content Cop — H3",
+        "url": "https://www.youtube.com/watch?v=NyB85pVw-v4",
+        "type": "video"
+      },
+      {
+        "label": "Watch Ethan's first reaction",
+        "url": "https://www.youtube.com/watch?v=WZbGjnOT9Mc",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "h3-idubbbz-full-response",
+    "date": "2025-04-18",
+    "title": "H3 airs a full response to iDubbbz's Content Cop",
+    "summary": "H3 Show #137 watches the full video and disputes iDubbbz and Anisa's framing, extending the split between creators who had collaborated throughout the 2010s.",
+    "era": "content-nuke",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "idubbbz",
+      "anisa-jomha",
+      "dan-swerdlove"
+    ],
+    "links": [
+      {
+        "label": "Watch H3 Show #137",
+        "url": "https://www.youtube.com/watch?v=WRyfaf8tiQ8",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "streamer-copyright-suits-filed",
+    "date": "2025-06-19",
+    "title": "H3's company sues Denims and Frogan over Content Nuke reactions",
+    "summary": "Ted Entertainment files separate copyright complaints alleging that Denims and Frogan rebroadcast nearly all of the Hasan Content Nuke without sufficiently transformative commentary. Both disputes center on fair use.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "denims",
+      "frogan",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "Denims case docket",
+        "url": "https://www.courtlistener.com/docket/70583148/ted-entertainment-inc-v-alexandra-marwa-saber/",
+        "type": "legal"
+      },
+      {
+        "label": "Frogan complaint",
+        "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.975247/gov.uscourts.cacd.975247.1.0.pdf",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "denims-fair-use-ruling",
+    "date": "2026-06-29",
+    "title": "Federal judge rules Denims's reaction was fair use",
+    "summary": "The district court grants Denims judgment on the pleadings, finding her livestream used the Content Nuke for transformative criticism and did not substitute for the original viewing experience.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "denims",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/70583148/ted-entertainment-inc-v-alexandra-marwa-saber/",
+        "type": "legal"
+      },
+      {
+        "label": "Loeb & Loeb case summary",
+        "url": "https://www.loeb.com/en/insights/publications/2026/07/ted-entertainment-inc-v-saber",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "denims-ruling-appealed",
+    "date": "2026-08-04",
+    "title": "Ted Entertainment appeals the Denims ruling",
+    "summary": "The H3 production company files a notice of appeal to the Ninth Circuit. The appeal is assigned case number 26-5059, leaving the district-court fair-use judgment in place during review.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "denims"
+    ],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/70583148/ted-entertainment-inc-v-alexandra-marwa-saber/",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "frogan-suit-dismissed",
+    "date": "2026-09-08",
+    "title": "Ted Entertainment voluntarily dismisses the Frogan case",
+    "summary": "After a year of litigation, Ted Entertainment dismisses its copyright case against Frogan without prejudice. The docket closes without a ruling on whether her reaction was fair use.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "frogan",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "CourtListener docket",
+        "url": "https://www.courtlistener.com/docket/70583512/ted-entertainment-inc-v-morgan-kamal-majed/",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "kavanaugh-defamation-suit",
+    "date": "2021-11-29",
+    "title": "Ryan Kavanaugh personally sues Ethan for defamation",
+    "summary": "Kavanaugh files a separate state-court case alleging that Ethan repeated a retracted accusation about his business practices. The filing begins litigation distinct from Triller's copyright claims.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "ryan-kavanaugh"
+    ],
+    "links": [
+      {
+        "label": "California appellate opinion",
+        "url": "https://www.leagle.com/decision/incaco20250403018",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "triller-federal-case-settled",
+    "date": "2024-11-22",
+    "title": "The federal Triller copyright case settles",
+    "summary": "The parties dismiss all claims and counterclaims with prejudice, with each side bearing its own costs and fees. The settlement closes the federal case filed over the 2021 fight broadcast.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "hila-klein",
+      "ryan-kavanaugh"
+    ],
+    "links": [
+      {
+        "label": "Joint dismissal stipulation",
+        "url": "https://storage.courtlistener.com/recap/gov.uscourts.cacd.820177/gov.uscourts.cacd.820177.82.0.pdf",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "kavanaugh-anti-slapp-appeal",
+    "date": "2025-04-03",
+    "title": "Appeals court keeps Kavanaugh's defamation case alive",
+    "summary": "A California Court of Appeal affirms the denial of Ethan's anti-SLAPP motion. The procedural ruling allows Kavanaugh's claims to continue but does not decide whether Ethan is liable for defamation.",
+    "era": "legal",
+    "people": [
+      "ethan-klein",
+      "ryan-kavanaugh"
+    ],
+    "links": [
+      {
+        "label": "California appellate opinion",
+        "url": "https://www.leagle.com/decision/incaco20250403018",
+        "type": "legal"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "oliver-tree-first-guest",
+    "date": "2019-07-12",
+    "title": "Oliver Tree's first H3 Podcast appearance",
+    "summary": "Oliver Tree joins H3 Podcast #125, the first of several studio visits. Their on-camera hostility becomes a long-running bit around a real off-camera friendship.",
+    "era": "friends-of-the-show",
+    "people": [
+      "ethan-klein",
+      "oliver-tree"
+    ],
+    "links": [
+      {
+        "label": "Watch H3 Podcast #125",
+        "url": "https://www.youtube.com/watch?v=LWRqCA1ir9k",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "hutch-hasan-doxxing-appearance",
+    "date": "2025-09-05",
+    "title": "Hutch joins Ethan to discuss a Hasan doxxing controversy",
+    "summary": "The early Call of Duty YouTuber sits down with Ethan about accusations that Hasan and others had doxxed creators tied to Progressive Victory, becoming an on-air ally in the feud.",
+    "era": "hasan-feud",
+    "people": [
+      "ethan-klein",
+      "hutch",
+      "hasan-piker"
+    ],
+    "links": [
+      {
+        "label": "Watch the episode",
+        "url": "https://www.youtube.com/watch?v=jKzuVq1Ky8I",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "harley-after-dark-host",
+    "date": "2026-01-26",
+    "title": "Harley Morenstein debuts as an H3 After Dark host",
+    "summary": "Epic Meal Time's Harley Morenstein co-hosts the relaunched H3 After Dark. Ethan had recruited him for the aftershow, turning a longtime guest into regular crew.",
+    "era": "friends-of-the-show",
+    "people": [
+      "ethan-klein",
+      "harley-morenstein"
+    ],
+    "links": [
+      {
+        "label": "Watch H3 After Dark #1",
+        "url": "https://www.youtube.com/watch?v=ejoJZr7WjuU",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "nicol-rich-studio-visit",
+    "date": "2026-09-16",
+    "title": "Nicol Concilio and Rich Lux share an H3 studio episode",
+    "summary": "Nicol Concilio asked to come in and talk with Rich Lux, so H3 brought both beauty-community regulars onto H3 Show #307. The episode keeps the makeup-world friends inside the show's orbit.",
+    "era": "friends-of-the-show",
+    "people": [
+      "ethan-klein",
+      "nicol-concilio",
+      "rich-lux"
+    ],
+    "links": [
+      {
+        "label": "Watch H3 Show #307",
+        "url": "https://www.youtube.com/watch?v=m61buG3OWd8",
+        "type": "video"
+      }
+    ],
+    "hubs": [
+      "h3"
+    ]
+  },
+  {
+    "id": "dobrik-early-life",
+    "date": "2002-09-01",
+    "title": "The Dobriks move from Slovakia to suburban Chicago",
+    "summary": "David Dobrik is born in Košice in 1996 and later grows up in Vernon Hills, Illinois. After high school he moves to Los Angeles to pursue Vine, then YouTube vlogs cut to about four minutes and twenty seconds.",
+    "era": "vlog-squad-rise",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "liza-koshy",
+      "gabbie-hanna",
+      "alex-ernst",
+      "nik-keswani"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik",
+        "type": "article"
+      },
+      {
+        "label": "Business Insider profile",
+        "url": "https://www.businessinsider.com/david-dobrik-youtube-net-worth-life-career-rise-to-fame-2020-2",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "wittek-2011-arrest",
+    "date": "2011-02-03",
+    "title": "Jeff Wittek is arrested in Miami on drug charges",
+    "summary": "Wittek, then 21, is arrested in Miami-Dade County on reported trafficking and possession charges. He later says the case was dismissed for lack of a search warrant. In Vlog Squad videos the arrest becomes part of an 'ex-convict' persona.",
+    "era": "vlog-squad-rise",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "jeff-wittek"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeff_Wittek",
+        "type": "article"
+      },
+      {
+        "label": "Insider timeline",
+        "url": "https://www.businessinsider.com/jeff-wittek-timeline-youtube-patreon-david-dobrik-2021-4",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "dobrik-youtube-launch",
+    "date": "2015-06-15",
+    "title": "Dobrik's YouTube vlog takes over from Vine",
+    "summary": "After building an audience on Vine with Liza Koshy, Gabbie Hanna, Jason Nash, and Zane and Heath, Dobrik launches a self-titled YouTube channel in 2015. Recurring friends become the Vlog Squad sitcom-vlog format.",
+    "era": "vlog-squad-rise",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "liza-koshy",
+      "gabbie-hanna",
+      "jason-nash",
+      "zane-hijazi",
+      "heath-hussar",
+      "alex-ernst"
+    ],
+    "links": [
+      {
+        "label": "The Verge profile",
+        "url": "https://www.theverge.com/2019/7/30/20747167/david-dobrik-youtube-vlog-squad-four-year-anniversary",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "vlog-squad-peak",
+    "date": "2016-09-01",
+    "title": "The Vlog Squad hits peak guest-star years",
+    "summary": "By 2016–2017 the rotating cast — David, Natalie, Jason, Zane, Heath, Aaron, Carly, Scotty, Dom, Nick, and others — is a fixture of YouTube, with celebrity drop-ins. Trisha Paytas enters the orbit through Jason Nash.",
+    "era": "vlog-squad-rise",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "natalie-mariduena",
+      "jason-nash",
+      "zane-hijazi",
+      "heath-hussar",
+      "aaron-gilfoy",
+      "carly-incontro",
+      "scotty-sire",
+      "dom-zeglaitis",
+      "nick-antonyan",
+      "trisha-paytas"
+    ],
+    "links": [
+      {
+        "label": "Seventeen Vlog Squad guide",
+        "url": "https://www.seventeen.com/celebrity/a29231624/david-dobrik-vlog-squad-members/",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "seth-kissing-prank",
+    "date": "2017-06-15",
+    "title": "A kissing prank on Seth Francois is published",
+    "summary": "Dobrik's vlog titled \"HE THOUGHT HE WAS KISSING HER!!\" shows Francois, who believed he would kiss Corinna Kopf in disguise, kissing Jason Nash instead. Francois later says he did not consent and describes the bit as sexual assault. Vlog Squad members dispute that framing at the time.",
+    "era": "vlog-squad-allegations",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "seth-francois",
+      "jason-nash"
+    ],
+    "links": [
+      {
+        "label": "BuzzFeed News",
+        "url": "https://www.buzzfeednews.com/article/tanyachen/seth-david-dobrik-prank-sexual-assault",
+        "type": "article"
+      },
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "paytas-hotel-filming",
+    "date": "2017-08-15",
+    "title": "Paytas later says a hotel-room vlog was filmed without consent",
+    "summary": "Trisha Paytas alleges that Dobrik hid in a hotel bathroom while she was with Jason Nash and posted \"I SNUCK INTO THEIR HOTEL ROOM (SURPRISE)\" after she asked him not to. Nash reportedly knew about the prank; Paytas says she did not consent to being filmed nude. Dobrik has not publicly granted her account in detail.",
+    "era": "vlog-squad-allegations",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "trisha-paytas",
+      "jason-nash"
+    ],
+    "links": [
+      {
+        "label": "Insider history",
+        "url": "https://www.businessinsider.com/trisha-paytas-david-dobrik-jason-nash-history-2021-2",
+        "type": "article"
+      },
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "koshy-dobrik-breakup",
+    "date": "2018-06-05",
+    "title": "Liza Koshy and David Dobrik announce their split",
+    "summary": "The pair, who dated from late 2015, post a joint video saying they had already separated about six months earlier. Koshy largely exits the Vlog Squad orbit and continues a mainstream career.",
+    "era": "vlog-squad-rise",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "liza-koshy"
+    ],
+    "links": [
+      {
+        "label": "BBC News",
+        "url": "https://www.bbc.com/news/newsbeat-44368581",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "dom-group-sex-vlog",
+    "date": "2018-11-15",
+    "title": "A group-sex vlog later tied to assault allegations is posted",
+    "summary": "Dobrik uploads a since-deleted vlog about Dom Zeglaitis inviting women for group sex. In 2021 a woman featured in the video tells Insider she was too drunk to consent and accuses Zeglaitis of rape. Zeglaitis declines comment; Dobrik's attorney denies wrongdoing on his behalf.",
+    "era": "vlog-squad-allegations",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "dom-zeglaitis"
+    ],
+    "links": [
+      {
+        "label": "Insider investigation",
+        "url": "https://www.businessinsider.com/vlog-squad-durte-dom-rape-allegation-david-dobrik-zeglaitis-video-2021-3",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "wittek-joins-squad",
+    "date": "2018-06-20",
+    "title": "Jeff Wittek joins the Vlog Squad through Toddy Smith",
+    "summary": "Mutual friend Toddy Smith introduces Wittek, already posting Jeff's Barbershop, into Dobrik's regular cast. Wittek becomes a central on-camera character before the Utah accident.",
+    "era": "vlog-squad-rise",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "jeff-wittek",
+      "toddy-smith"
+    ],
+    "links": [
+      {
+        "label": "Insider timeline",
+        "url": "https://www.businessinsider.com/jeff-wittek-timeline-youtube-patreon-david-dobrik-2021-4",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeff_Wittek",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "neistat-starts-documentary",
+    "date": "2019-07-30",
+    "title": "Casey Neistat begins filming Under the Influence",
+    "summary": "As Dobrik's posting slows and a Netflix-style pitch is reportedly declined, Neistat starts a feature documentary about the younger YouTuber's fame. The project later absorbs the 2020 accident and 2021 allegations.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "casey-neistat"
+    ],
+    "links": [
+      {
+        "label": "The Verge profile",
+        "url": "https://www.theverge.com/2019/7/30/20747167/david-dobrik-youtube-vlog-squad-four-year-anniversary",
+        "type": "article"
+      },
+      {
+        "label": "Filmmaker Magazine",
+        "url": "https://filmmakermagazine.com/113691-casey-neistat-under-the-influence/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "utah-excavator-accident",
+    "date": "2020-06-15",
+    "title": "Jeff Wittek is catastrophically injured on an excavator stunt",
+    "summary": "While filming a comeback vlog in Utah, Dobrik operates an excavator that swings Wittek on a rope. Wittek collides with the machine and later reports a fractured skull, facial breaks, and lasting eye damage. Heath Hussar injures a shoulder on the trip. Public accounts of a cover story and a Kourtney Kardashian call remain alleged.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "jeff-wittek",
+      "heath-hussar",
+      "casey-neistat",
+      "natalie-mariduena"
+    ],
+    "links": [
+      {
+        "label": "People report",
+        "url": "https://people.com/tv/vlogger-jeff-wittek-opens-up-about-accident-involving-david-dobrik-that-almost-killed-him/",
+        "type": "article"
+      },
+      {
+        "label": "Insider report",
+        "url": "https://www.businessinsider.com/jeff-wittek-eye-injury-david-dobrik-documentary-2021-4",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "keswani-h3-interview",
+    "date": "2021-02-05",
+    "title": "Nik Keswani tells H3 the Vlog Squad felt like a punching bag",
+    "summary": "Keswani, known as Big Nick, appears on the H3 Podcast and says mockery of his height and disability during Vlog Squad videos damaged his mental health. He had previously compared the group to a cult.",
+    "era": "vlog-squad-allegations",
+    "hubs": [
+      "h3",
+      "dobrik"
+    ],
+    "people": [
+      "nik-keswani",
+      "ethan-klein",
+      "hila-klein",
+      "david-dobrik"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "seth-h3-interview",
+    "date": "2021-02-12",
+    "title": "Seth Francois tells H3 the kissing prank was non-consensual",
+    "summary": "Francois appears on the H3 Podcast and says that after Jason Nash removed the disguise, he realized he had been touched by someone he did not consent to. The interview helps pull the 2017 vlog back into public view.",
+    "era": "vlog-squad-allegations",
+    "hubs": [
+      "h3",
+      "dobrik"
+    ],
+    "people": [
+      "seth-francois",
+      "ethan-klein",
+      "hila-klein",
+      "david-dobrik",
+      "jason-nash"
+    ],
+    "links": [
+      {
+        "label": "BuzzFeed News",
+        "url": "https://www.buzzfeednews.com/article/tanyachen/seth-david-dobrik-prank-sexual-assault",
+        "type": "article"
+      },
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "paytas-frenemies-dobrik-allegations",
+    "date": "2021-02-16",
+    "title": "On Frenemies, Paytas details alleged hotel filming and control",
+    "summary": "Trisha Paytas tells Ethan she did not consent to the hotel-room vlog and that Dobrik pressured the end of her relationship with Jason Nash. The episode sits in both the H3 and Vlog Squad records.",
+    "era": "vlog-squad-allegations",
+    "hubs": [
+      "h3",
+      "dobrik"
+    ],
+    "people": [
+      "trisha-paytas",
+      "ethan-klein",
+      "david-dobrik",
+      "jason-nash"
+    ],
+    "links": [
+      {
+        "label": "Insider history",
+        "url": "https://www.businessinsider.com/trisha-paytas-david-dobrik-jason-nash-history-2021-2",
+        "type": "article"
+      },
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "scotty-sire-defense",
+    "date": "2021-03-04",
+    "title": "Scotty Sire posts, then pulls, a defense of Dobrik",
+    "summary": "Sire uploads a video defending Dobrik that includes private messages with Francois and is widely called tone-deaf. He later apologizes to anyone who felt he invalidated their story and removes the video.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "scotty-sire",
+      "david-dobrik",
+      "seth-francois"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "insider-vlog-squad-investigation",
+    "date": "2021-03-16",
+    "title": "Insider publishes the Durte Dom investigation",
+    "summary": "Kat Tenbarge reports that a woman in a 2018 Vlog Squad video accuses Dom Zeglaitis of raping her while she was too intoxicated to consent. The article also describes alleged underage alcohol at the party. Zeglaitis declines to comment; Dobrik's lawyer denies wrongdoing.",
+    "era": "vlog-squad-allegations",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "dom-zeglaitis",
+      "jeff-wittek",
+      "toddy-smith",
+      "trisha-paytas"
+    ],
+    "links": [
+      {
+        "label": "Insider investigation",
+        "url": "https://www.businessinsider.com/vlog-squad-durte-dom-rape-allegation-david-dobrik-zeglaitis-video-2021-3",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "dobrik-lets-talk",
+    "date": "2021-03-16",
+    "title": "Dobrik posts a first apology that skips the new allegation",
+    "summary": "The same day as the Insider report, Dobrik releases \"Let's talk\" on the Views channel. He apologizes to Seth Francois and says he has distanced himself from some former friends, without directly addressing the rape allegation against Zeglaitis.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "seth-francois",
+      "dom-zeglaitis",
+      "jason-nash"
+    ],
+    "links": [
+      {
+        "label": "Yahoo / Vulture coverage",
+        "url": "https://www.vulture.com/2021/03/david-dobrik-says-he-doesnt-stand-for-any-misconduct.html",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/David_Dobrik",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "sponsors-drop-dispo",
+    "date": "2021-03-19",
+    "title": "Sponsors exit and Dobrik steps down from Dispo",
+    "summary": "Dollar Shave Club, SeatGeek, Chipotle, and others cut ties. The New York Times reports Dobrik leaving the photo app he co-founded. Venture backers say they will sever connections to Dispo over the allegations.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik"
+    ],
+    "links": [
+      {
+        "label": "New York Times",
+        "url": "https://www.nytimes.com/2021/03/19/style/david-dobrik-dispo.html",
+        "type": "article"
+      },
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeff-my-truth",
+    "date": "2021-03-21",
+    "title": "Jeff Wittek posts \"My Truth\"",
+    "summary": "Wittek tries to distance himself from the Insider report, denies buying alcohol for underage guests, and shares a call with reporter Kat Tenbarge. Tenbarge says the video misrepresents their conversation and stands by the reporting.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "jeff-wittek",
+      "david-dobrik",
+      "trisha-paytas",
+      "toddy-smith"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "youtube-demonetizes-dobrik",
+    "date": "2021-03-26",
+    "title": "YouTube temporarily demonetizes Dobrik and Zeglaitis",
+    "summary": "YouTube cites its creator-responsibility policy after the sexual-assault reporting. Dobrik's channels and Zeglaitis's channel lose monetization. Dobrik later returns to posting after a hiatus.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "dom-zeglaitis"
+    ],
+    "links": [
+      {
+        "label": "The Verge",
+        "url": "https://www.theverge.com/2021/3/26/22352263/youtube-demonetize-david-dobrik-durte-dom-vlog-squad-allegations",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "tana-threesome-comment",
+    "date": "2021-05-07",
+    "title": "Tana Mongeau says she is in therapy over an alleged threesome push",
+    "summary": "Responding to Paytas, Mongeau writes that Dobrik repeatedly tried to set up group sex involving her, Jason Nash, and Paytas when she was 19. She says she is staying out of drama and is now in therapy. Dobrik has not issued a detailed public reply to that claim.",
+    "era": "vlog-squad-allegations",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "tana-mongeau",
+      "david-dobrik",
+      "trisha-paytas",
+      "jason-nash"
+    ],
+    "links": [
+      {
+        "label": "Insider report",
+        "url": "https://www.businessinsider.com/tana-mongeau-trisha-paytas-david-dobrik-threesome-jason-nash-therapy-2021-5",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "wittek-dont-try-this",
+    "date": "2021-04-22",
+    "title": "Wittek releases Don't Try This at Home",
+    "summary": "The documentary shows the excavator accident and, in Jeff's telling, still covers for Dobrik. Later he says the series sugarcoated the story and disputes how Natalie Mariduena framed medical bills and insurance.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "jeff-wittek",
+      "david-dobrik",
+      "natalie-mariduena",
+      "casey-neistat"
+    ],
+    "links": [
+      {
+        "label": "Insider report",
+        "url": "https://www.businessinsider.com/jeff-wittek-eye-injury-david-dobrik-documentary-2021-4",
+        "type": "article"
+      },
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "squad-splits-after-wedding",
+    "date": "2021-07-15",
+    "title": "The remaining squad splits over loyalty, vaccines, and silence",
+    "summary": "Around Aaron and Carly's wedding, Zane, Heath, and Mariah are reported to skip testing or vaccination requirements. Nick Antonyan later says he ended his friendship with Wittek after Dobrik told him to. Public posts about Wittek's eye are called tone-deaf.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "jeff-wittek",
+      "aaron-gilfoy",
+      "carly-incontro",
+      "zane-hijazi",
+      "heath-hussar",
+      "mariah-amato",
+      "nick-antonyan"
+    ],
+    "links": [
+      {
+        "label": "Vulture later recap",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeff_Wittek",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "dobrik-returns-without-jeff",
+    "date": "2022-02-28",
+    "title": "Dobrik returns to vlogs without Jeff Wittek",
+    "summary": "Wittek says on a Patreon livestream that he has not heard from Dobrik after another eye surgery. The absence from new vlogs marks a public break after years of appearing as a core cast member.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "jeff-wittek"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeff-dear-david",
+    "date": "2022-03-01",
+    "title": "Wittek airs \"Dear David\" and alleges unpaid care",
+    "summary": "On his podcast Wittek calls Dobrik a fake friend, says medical bills were not handled as promised, and claims Natalie texted in ways that framed him as the problem. Dobrik's camp has said costs were covered and the stunt had been Wittek's idea.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "jeff-wittek",
+      "david-dobrik",
+      "natalie-mariduena"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "views-accident-response",
+    "date": "2022-03-08",
+    "title": "Views answers the accident with Jason Nash",
+    "summary": "Dobrik tells Views the Utah day is the worst thing that ever happened to him, takes most of the responsibility, and says he paid tens of thousands in medical costs. He also says Wittek asked him to keep the stunt's origin quiet. Wittek denies that account the next day.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "jason-nash",
+      "jeff-wittek",
+      "natalie-mariduena"
+    ],
+    "links": [
+      {
+        "label": "People on the later lawsuit",
+        "url": "https://people.com/tv/jeff-wittek-sues-david-dobrik-for-10-million-over-stunt-injury/",
+        "type": "article"
+      },
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "neistat-sxsw-premiere",
+    "date": "2022-03-12",
+    "title": "Under the Influence premieres at SXSW",
+    "summary": "Casey Neistat's documentary, reshaped after the Insider investigation and the excavator footage, premieres in Austin. It is not widely released afterward. Reporting later describes Neistat as no longer speaking with Dobrik.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "casey-neistat",
+      "david-dobrik",
+      "jeff-wittek"
+    ],
+    "links": [
+      {
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2022/03/12/david-dobrik-documentary-premieres-sxsw-casey-neistat-reveals-youtube-dangers/",
+        "type": "article"
+      },
+      {
+        "label": "Filmmaker Magazine",
+        "url": "https://filmmakermagazine.com/113691-casey-neistat-under-the-influence/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "tana-sides-with-jeff",
+    "date": "2022-06-15",
+    "title": "Tana Mongeau publicly sides with Jeff Wittek",
+    "summary": "After the lawsuit news cycle, Mongeau talks with Wittek on Friends with Benefits and chooses his side of the split. Toddy Smith is reported to have screamed at her for doing so. The alignment also pulls Trisha Paytas closer to Wittek.",
+    "era": "vlog-squad-fallout",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "tana-mongeau",
+      "jeff-wittek",
+      "toddy-smith",
+      "trisha-paytas",
+      "david-dobrik"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeff_Wittek",
+        "type": "article"
+      },
+      {
+        "label": "Vulture timeline",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "doughbricks-opens",
+    "date": "2022-11-14",
+    "title": "Dobrik opens Doughbrik's Pizza in Los Angeles",
+    "summary": "The restaurant opening draws crowds even after the Vlog Squad controversies. Dobrik later leans on Snapchat and the pizza brand as his main public work instead of daily vlogs.",
+    "era": "vlog-squad-aftermath",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "natalie-mariduena"
+    ],
+    "links": [
+      {
+        "label": "NBC News",
+        "url": "https://www.nbcnews.com/news/us-news/david-dobriks-la-pizza-restaurant-opening-draws-massive-weekend-crowds-rcna56896",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jeff-trisha-tana-podcast",
+    "date": "2023-06-15",
+    "title": "Jeff, Trisha, and Tana record a public alliance episode",
+    "summary": "The three creators, once on different sides of Vlog Squad drama, appear together to discuss Dobrik, the accident aftermath, and their overlapping histories. It is a late-era snapshot of who remained aligned against him.",
+    "era": "vlog-squad-aftermath",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "jeff-wittek",
+      "trisha-paytas",
+      "tana-mongeau",
+      "david-dobrik"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Jeff_Wittek",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "wittek-trial-date-reported",
+    "date": "2023-10-15",
+    "title": "Reporting puts a Wittek–Dobrik trial on the 2024 calendar",
+    "summary": "Coverage in late 2023 describes a trial window in summer 2024 for Wittek's negligence and intentional-tort claims. The date later slips as the case continues.",
+    "era": "vlog-squad-aftermath",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "jeff-wittek",
+      "david-dobrik"
+    ],
+    "links": [
+      {
+        "label": "People lawsuit report",
+        "url": "https://people.com/tv/jeff-wittek-sues-david-dobrik-for-10-million-over-stunt-injury/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "dobrik-youtube-return-2025",
+    "date": "2025-01-09",
+    "title": "Dobrik returns to YouTube after a long gap",
+    "summary": "He posts a body-transformation surprise vlog and revives Views with Jason Nash. SeatGeek appears again as a sponsor in the comeback coverage.",
+    "era": "vlog-squad-aftermath",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "david-dobrik",
+      "jason-nash"
+    ],
+    "links": [
+      {
+        "label": "Vulture timeline update",
+        "url": "https://www.vulture.com/article/david-dobrik-allegations-controversies-timeline.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "wittek-dobrik-lawsuit-settled",
+    "date": "2026-05-17",
+    "title": "Wittek and Dobrik dismiss the excavator lawsuit",
+    "summary": "TMZ reports the $10 million case is over. Wittek later says a former team member failed to tell him that Dobrik's company had already covered a large share of medical bills, and he apologizes for the public confusion. Settlement terms are not disclosed.",
+    "era": "vlog-squad-aftermath",
+    "hubs": [
+      "dobrik"
+    ],
+    "people": [
+      "jeff-wittek",
+      "david-dobrik",
+      "natalie-mariduena"
+    ],
+    "links": [
+      {
+        "label": "TMZ",
+        "url": "https://www.tmz.com/2026/05/17/jeff-wittek-david-dobrik-lawsuit-settled/",
+        "type": "article"
+      },
+      {
+        "label": "Dexerto",
+        "url": "https://www.dexerto.com/youtube/jeff-wittek-ends-legal-battle-with-david-dobrik-due-to-miscommunication-over-medical-expenses-3365035/",
+        "type": "article"
+      }
+    ]
+  }
+]

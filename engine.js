@@ -34,13 +34,43 @@ export function eventSearchText(event, peopleById = new Map()) {
     .toLocaleLowerCase();
 }
 
+export function eventMatchesHub(event, hubId) {
+  if (!hubId || hubId === ALL) return true;
+  const hubs = event?.hubs;
+  if (!Array.isArray(hubs) || !hubs.length) return true;
+  return hubs.includes(hubId);
+}
+
 export function filterEvents(events, filters = {}, peopleById = new Map()) {
   const query = (filters.query || "").trim().toLocaleLowerCase();
   return events.filter((event) => {
     if (filters.person && filters.person !== ALL && !event.people.includes(filters.person)) return false;
     if (filters.era && filters.era !== ALL && event.era !== filters.era) return false;
+    if (filters.hub && !eventMatchesHub(event, filters.hub)) return false;
     return !query || eventSearchText(event, peopleById).includes(query);
   });
+}
+
+export function findPlot(plots, id) {
+  const list = plots || [];
+  if (!id) return null;
+  return list.find((plot) => plot.id === id)
+    || list.find((plot) => (plot.aliases || []).includes(id))
+    || null;
+}
+
+export function plotHubs(plot) {
+  return Array.isArray(plot?.hubs) ? plot.hubs : [];
+}
+
+export function hubOf(plot, hubId) {
+  const hubs = plotHubs(plot);
+  if (!hubs.length) return null;
+  return hubs.find((hub) => hub.id === hubId) || hubs[0];
+}
+
+export function hubCenterId(plot, hubId) {
+  return hubOf(plot, hubId)?.centerId || plot?.centerId || "";
 }
 
 export function eventTease(event, limit = 132) {
@@ -350,6 +380,10 @@ export function parseState(urlLike, valid = {}) {
   const country = valid.countries?.has(url.searchParams.get("country"))
     ? url.searchParams.get("country")
     : "";
+  const requestedHub = url.searchParams.get("hub");
+  const hub = valid.hubs?.has(requestedHub)
+    ? requestedHub
+    : (valid.defaultHub || "");
   const requested = url.searchParams.get("view");
   let view = requested === "timeline" || requested === "person" || requested === "relation" ? requested : "web";
   if (view === "person" && person === ALL) view = "web";
@@ -361,6 +395,7 @@ export function parseState(urlLike, valid = {}) {
     query: url.searchParams.get("q") || "",
     eventId,
     country,
+    hub,
   };
 }
 
@@ -371,7 +406,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
     url.hash = "";
     return url.pathname || "/";
   }
-  ["view", "person", "era", "q", "plot", "year", "country"].forEach((key) => url.searchParams.delete(key));
+  ["view", "person", "era", "q", "plot", "year", "country", "hub"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (state.view === "timeline" || state.view === "person" || state.view === "relation") {
     url.searchParams.set("view", state.view);
@@ -383,6 +418,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (state.query?.trim()) url.searchParams.set("q", state.query.trim());
   if (Number.isFinite(state.year)) url.searchParams.set("year", String(state.year));
   if (state.country) url.searchParams.set("country", state.country);
+  if (state.hub) url.searchParams.set("hub", state.hub);
   url.hash = eventId ? encodeURIComponent(eventId) : "";
   return `${url.pathname}${url.search}${url.hash}`;
 }
@@ -758,14 +794,17 @@ export function webLayout(people, relations, options = {}) {
   const center = people.find((person) => person.id === centerId) || people[0];
   const friends = [];
   const foes = [];
+  const orbit = [];
   people.forEach((person) => {
     if (!center || person.id === center.id) return;
     const camp = campOf(person.id, relations, center.id, friendKinds, enemyKinds, options.year);
     if (camp === "friend") friends.push(person);
-    if (camp === "enemy") foes.push(person);
+    else if (camp === "enemy") foes.push(person);
+    else if (options.includeOrbit) orbit.push(person);
   });
   friends.sort(byName);
   foes.sort(byName);
+  orbit.sort(byName);
   const applicable = relations.filter((relation) => coversYear(relation, options.year));
 
   if (options.arrangement === "camps") {
@@ -804,18 +843,20 @@ export function webLayout(people, relations, options = {}) {
     ordered.push(foes[foeIndex]);
     foeIndex += 1;
   }
+  orbit.forEach((person) => ordered.push(person));
 
   const count = Math.max(ordered.length, 1);
   let nodeSize = 72;
   let radiusX = width * 0.36;
   let radiusY = height * 0.36;
-  for (let attempt = 0; attempt < 12; attempt += 1) {
+  const minNode = count > 28 ? 28 : 42;
+  for (let attempt = 0; attempt < 16; attempt += 1) {
     const padX = nodeSize / 2 + 12;
     const padY = nodeSize / 2 + 26;
     radiusX = Math.max(56, width / 2 - padX);
     radiusY = Math.max(56, height / 2 - padY);
     const chord = 2 * Math.min(radiusX, radiusY) * Math.sin(Math.PI / count);
-    if (chord >= nodeSize * 1.2 || nodeSize <= 42) break;
+    if (chord >= nodeSize * 1.2 || nodeSize <= minNode) break;
     nodeSize -= 4;
   }
   const centerSize = Math.round(nodeSize * 1.42);
@@ -827,8 +868,9 @@ export function webLayout(people, relations, options = {}) {
   const minRadius = centerSize / 2 + nodeSize / 2 + 28;
   const fitR = Math.min(radiusX, radiusY);
 
+  const hubIds = new Set(options.hubIds || []);
   const nodes = [];
-  if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center" });
+  if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center", plotHub: hubIds.has(center.id) });
   const placed = weighted
     ? orderByBeats(ordered, counts)
     : ordered.map((person, index) => ({ person, index }));
@@ -847,12 +889,13 @@ export function webLayout(people, relations, options = {}) {
       camp,
       beats,
       closeness,
+      plotHub: hubIds.has(person.id),
     });
   });
 
-  if (weighted && center) {
+  if ((weighted || options.includeOrbit) && center) {
     holdApart(nodes, {
-      minDist: nodeSize + 18,
+      minDist: options.includeOrbit ? Math.max(nodeSize * 0.92, 32) : nodeSize + 18,
       minX: nodeSize / 2 + 8,
       maxX: width - (nodeSize / 2 + 8),
       minY: nodeSize / 2 + 8,

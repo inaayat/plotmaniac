@@ -1,19 +1,26 @@
 {
   "plots": [
     {
-      "id": "h3",
-      "title": "H3",
-      "kicker": "Person",
-      "lede": "Ethan Klein, the friends beside the show, and the feuds that keep circling back.",
-      "searchPlaceholder": "Lawsuit, Frenemies, a name…",
+      "id": "youtubers",
+      "aliases": ["h3"],
+      "title": "YouTubers",
+      "kicker": "People",
+      "lede": "One web for the YouTuber sphere. Pick Ethan Klein or David Dobrik to read that hub's timeline.",
+      "searchPlaceholder": "Lawsuit, Frenemies, Vlog Squad, a name…",
       "centerId": "ethan-klein",
+      "includeOrbit": true,
+      "orbitLabel": "Around the sphere",
       "friendKinds": ["ally", "crew", "co-host", "collaborator", "family"],
       "enemyKinds": ["feud", "litigation"],
+      "hubs": [
+        { "id": "h3", "label": "Ethan Klein / H3", "centerId": "ethan-klein" },
+        { "id": "dobrik", "label": "David Dobrik", "centerId": "david-dobrik" }
+      ],
       "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Ethan%20Klein%20%28cropped%29.jpg?width=240",
       "paths": {
-        "people": "data/h3/people.json",
-        "events": "data/h3/events.json",
-        "relations": "data/h3/relations.json"
+        "people": "data/youtubers/people.json",
+        "events": "data/youtubers/events.json",
+        "relations": "data/youtubers/relations.json"
       }
     },
     {
