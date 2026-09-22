@@ -2075,5 +2075,11 @@ assert.equal(
 const gunView = fs.readFileSync(new URL("../gun-regulation-view.js", import.meta.url), "utf8");
 assert.equal(gunView.includes("State divergence"), false, "state divergence grid stays off the gun page");
 assert.equal(gunView.includes("relationRideLayout"), true, "gun board uses the relation timeline ride");
+assert.match(css, /\.scotus-hub\s*\{[^}]*width:\s*100%/, "SCOTUS hub uses the page width");
+assert.match(
+  css,
+  /\.scotus-topic-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/,
+  "SCOTUS topics render as a multi-column grid",
+);
 
 console.log("never-ending internet lore tests passed");

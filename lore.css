@@ -4305,12 +4305,15 @@ body[data-board="regulation"] .regulation-back {
 
 body[data-board="scotus"][data-view="web"] .app {
   overflow: auto;
+  align-items: stretch;
 }
 
 .scotus-hub {
-  padding: 8px 12px 24px;
-  max-width: 1100px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  align-self: stretch;
+  padding: 16px clamp(20px, 3vw, 48px) 32px;
 }
 
 .scotus-hub-head h2 {
@@ -4323,22 +4326,27 @@ body[data-board="scotus"][data-view="web"] .app {
   color: var(--muted);
   font-size: 0.78rem;
   line-height: 1.55;
-  max-width: 62ch;
-  margin: 0 0 16px;
+  max-width: 72ch;
+  margin: 0 0 18px;
 }
 
 .scotus-topic-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 10px;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .scotus-topic-tile {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
   gap: 8px;
+  width: 100%;
+  min-width: 0;
   text-align: left;
+  white-space: normal;
   padding: 14px 16px;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -4363,9 +4371,35 @@ body[data-board="scotus"][data-view="web"] .app {
 }
 
 .scotus-topic-label {
+  min-width: 0;
   font-size: 0.82rem;
   line-height: 1.35;
   color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 980px) {
+  .scotus-topic-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .scotus-topic-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1680px) {
+  .scotus-topic-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .scotus-topic-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .scotus-topic-badge {
