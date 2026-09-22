@@ -1012,7 +1012,8 @@ assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "deskt
 assert.match(css, /\.plot-cards > li/, "gallery items stretch so cards share a height");
 assert.match(css, /-webkit-line-clamp: 2/, "gallery titles can wrap to two lines");
 assert.equal(/\.plot-card strong \{[^}]*min-height:/.test(css), false, "gallery titles do not reserve a blank second line");
-assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?6\.4rem/, "pick view keeps the large title");
+assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?7\.2rem/, "pick view keeps the large title");
+assert.match(css, /\.plot-card \{[\s\S]*?padding: 6px 12px;/, "plot cards keep a tight vertical pad");
 assert.match(css, /body\[data-view="pick"\] \.mark \{[\s\S]*?margin: 2px auto 4px/, "homepage title sits close to the lede");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
@@ -1024,6 +1025,10 @@ assert.match(appSource, /function enhanceSelect/, "plot and focus use themed cho
 assert.match(css, /\.choice-menu/, "choice menus match the ink and gold chrome");
 assert.match(appSource, /textContent = "All"/, "focus can show every YouTuber");
 assert.match(appSource, /function applyHubCamera/, "the web eases its zoom to the current focus");
+assert.match(appSource, /function changeWebZoom/, "hub webs can zoom in and out");
+assert.match(appSource, /function bindWebGestures/, "hub webs can be dragged");
+assert.match(appSource, /className = "face-link"/, "timeline faces open a person");
+assert.match(css, /\.web-stage\.is-hub-field\.is-web-small \.node-name/, "tiny hub names hide until hover");
 assert.match(appSource, /Map \+ people/, "Partition navigation names its map and people view");
 assert.match(partitionViewSource, /Who wanted what — and who made the call/, "Partition overview explains decision-makers");
 assert.match(partitionViewSource, /Show Kashmir claims overlay/, "claims control explains its effect");
@@ -1039,7 +1044,10 @@ assert.match(partitionCss, /body\[data-board="history"\]\[data-view="timeline"\]
 assert.match(partitionCss, /\.partition-actions strong \{[\s\S]*?font-size: inherit/, "action names stay body size");
 assert.match(partitionViewSource, /buildLaneChrome/, "Partition full timeline uses the shared horizontal lane");
 assert.match(partitionViewSource, /oldest on the left/, "Partition desktop timeline reads left to right");
-assert.match(partitionViewSource, /playerDisplayName\(person\) \|\| action\.playerId/, "timeline action lines use short names");
+assert.match(partitionViewSource, /partition-faces/, "timeline people are a row of circle icons");
+assert.match(partitionViewSource, /partition-face-tip/, "hovering a face shows that person's move");
+assert.match(partitionViewSource, /onOpenPlayer\?\.\(member\.id\)/, "a face click opens the person page");
+assert.match(partitionCss, /\.partition-face \{[\s\S]*?width: 28px;/, "timeline faces stay small circle icons");
 assert.match(partitionViewSource, /COMPACT_MAX_WIDTH/, "Partition timeline follows the compact breakpoint");
 const laneSource = fs.readFileSync(new URL("../lane.js", import.meta.url), "utf8");
 assert.match(laneSource, /export function buildLaneChrome/, "shared lane chrome builds the horizontal rail");
@@ -1709,6 +1717,17 @@ assert.equal(marvelShared.nodes.find((node) => node.id === "tony-stark").plotHub
 assert.equal(marvelRaimi.nodes.find((node) => node.id === "norman-osborn-raimi").ring, "exclusive");
 assert.equal(marvelRaimi.nodes.find((node) => node.id === "otto-octavius-raimi").ring, "exclusive");
 assert.ok(marvelAll.nodes.length > marvelShared.nodes.length, "Marvel All reveals exclusive universe members");
+assert.ok(marvelAll.width / marvelAll.height >= 0.7, "Marvel All spreads across the page, not only downward");
+assert.ok(marvelAll.height / marvelAll.width <= 1.7, "Marvel All stays a field, not a tall column");
+for (let i = 0; i < marvelAll.nodes.length; i += 1) {
+  for (let j = i + 1; j < marvelAll.nodes.length; j += 1) {
+    assert.equal(
+      boxesOverlap(marvelAll.nodes[i], marvelAll.nodes[j], marvelAll.boxW, marvelAll.boxH),
+      false,
+      `${marvelAll.nodes[i].id} overlaps ${marvelAll.nodes[j].id} on Marvel All`,
+    );
+  }
+}
 
 assert.equal(boardViewForPerson(obama, "person"), "web");
 assert.equal(boardViewForPerson(vance, "person"), "web");

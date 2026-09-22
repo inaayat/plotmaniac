@@ -699,48 +699,104 @@ body[data-board="history"][data-view="timeline"] #footer-note {
 }
 
 .partition .lane-more .partition-points,
-.partition .lane-more .partition-actions,
 .partition .lane-more .partition-sources {
   margin: 6px 0 0;
   padding-left: 1rem;
 }
 
 .partition .lane-more .partition-points li,
-.partition .lane-more .partition-actions li,
 .partition .lane-more .partition-sources li,
 .partition .lane-more p {
   font-size: 0.68rem;
   line-height: 1.35;
 }
 
-.partition .lane-more .partition-cast-list {
+.partition .lane-card {
+  overflow: visible;
+}
+
+.partition-faces {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 5px;
+  width: 100%;
+  margin: 6px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.partition .lane-more .partition-cast-card {
-  width: auto;
-  max-width: 100%;
+.partition .spine-copy .partition-faces {
+  justify-content: flex-start;
 }
 
-.partition .lane-more .partition-cast-copy strong {
-  font-family: inherit;
-  font-size: 0.72rem;
+.partition-face {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+  border-radius: 50%;
 }
 
-.partition .lane-more .partition-cast-allegiance,
-.partition .lane-more .partition-cast-incentive {
-  display: none;
+.partition-face .partition-chip-photo,
+.partition-face .partition-monogram {
+  width: 28px;
+  height: 28px;
+  border-width: 1px;
 }
 
-.partition .lane-more .partition-cast-action {
-  font-size: 0.66rem;
-  margin-top: 2px;
+.partition-face:hover .partition-chip-photo,
+.partition-face:hover .partition-monogram,
+.partition-face:focus-visible .partition-chip-photo,
+.partition-face:focus-visible .partition-monogram {
+  border-color: var(--gold);
+}
+
+.partition-face-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  z-index: 8;
+  width: max-content;
+  max-width: 220px;
+  padding: 7px 8px 8px;
+  border: 1px solid var(--line-strong);
+  background: #16130f;
+  color: var(--ink);
+  text-align: left;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.partition-face-tip strong {
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.partition-face-tip span {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.64rem;
+  line-height: 1.35;
+}
+
+.side-above .partition-face-tip {
+  top: calc(100% + 8px);
+  bottom: auto;
+}
+
+.partition-face:hover .partition-face-tip,
+.partition-face:focus-visible .partition-face-tip {
+  opacity: 1;
+  visibility: visible;
 }
 
 .partition .lane-more .partition-text-button {
