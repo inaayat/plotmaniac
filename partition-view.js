@@ -384,7 +384,7 @@ export function mountPartition(root, reference, {
       else more.hidden = true;
       mark.addEventListener("click", () => toggleBeat(item));
       hit.addEventListener("click", () => toggleBeat(item));
-      copy.append(hit, more);
+      copy.append(hit, peopleRow(item), more);
       row.append(mark, copy);
       return row;
     }
@@ -406,7 +406,7 @@ export function mountPartition(root, reference, {
       if (!open) hit.appendChild(el("span", "beat-tease", clip(item.summary, 140)));
       mark.addEventListener("click", () => toggleBeat(item));
       hit.addEventListener("click", () => toggleBeat(item));
-      card.append(mark, hit);
+      card.append(mark, hit, peopleRow(item));
       if (open) {
         const more = el("div", "lane-more");
         fillBeatMore(more, item);
@@ -427,6 +427,36 @@ export function mountPartition(root, reference, {
       };
     }
 
+    function peopleRow(item) {
+      const cast = eventCast(item, players);
+      const row = el("ul", "partition-faces");
+      row.setAttribute("aria-label", "People in this moment");
+      if (!cast.length) {
+        row.hidden = true;
+        return row;
+      }
+      cast.forEach((member) => {
+        const chip = el("li");
+        const button = el("button", "partition-face");
+        button.type = "button";
+        button.appendChild(portraitMark(member.name, portraits[member.id]));
+        const tip = el("span", "partition-face-tip");
+        tip.appendChild(el("strong", "", member.name));
+        if (member.action) tip.appendChild(el("span", "", member.action));
+        if (member.allegiance?.line) tip.appendChild(el("span", "", member.allegiance.line));
+        button.appendChild(tip);
+        const label = [member.name, member.action, member.allegiance?.line].filter(Boolean).join(". ");
+        button.setAttribute("aria-label", `${label}. Open their page.`);
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (member.id) onOpenPlayer?.(member.id);
+        });
+        chip.appendChild(button);
+        row.appendChild(chip);
+      });
+      return row;
+    }
+
     function fillBeatMore(more, item) {
       more.appendChild(el("p", "", item.summary));
       if (item.consequences.length) {
@@ -434,21 +464,6 @@ export function mountPartition(root, reference, {
         item.consequences.forEach((point) => list.appendChild(el("li", "", point)));
         more.appendChild(list);
       }
-      if (item.actions.length) {
-        const list = el("ul", "partition-actions");
-        item.actions.forEach((action) => {
-          const person = players.get(action.playerId);
-          const line = el("li");
-          line.append(
-            el("strong", "", playerDisplayName(person) || action.playerId),
-            document.createTextNode(` ${action.description}`),
-          );
-          list.appendChild(line);
-        });
-        more.appendChild(list);
-      }
-      const cast = eventCast(item, players);
-      if (cast.length) more.appendChild(castList(cast));
       const mapButton = el("button", "partition-text-button", "Show this moment on the map");
       mapButton.type = "button";
       mapButton.addEventListener("click", () => onShowMap?.(item.id));

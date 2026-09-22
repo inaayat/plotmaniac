@@ -1039,7 +1039,10 @@ assert.match(partitionCss, /body\[data-board="history"\]\[data-view="timeline"\]
 assert.match(partitionCss, /\.partition-actions strong \{[\s\S]*?font-size: inherit/, "action names stay body size");
 assert.match(partitionViewSource, /buildLaneChrome/, "Partition full timeline uses the shared horizontal lane");
 assert.match(partitionViewSource, /oldest on the left/, "Partition desktop timeline reads left to right");
-assert.match(partitionViewSource, /playerDisplayName\(person\) \|\| action\.playerId/, "timeline action lines use short names");
+assert.match(partitionViewSource, /partition-faces/, "timeline people are a row of circle icons");
+assert.match(partitionViewSource, /partition-face-tip/, "hovering a face shows that person's move");
+assert.match(partitionViewSource, /onOpenPlayer\?\.\(member\.id\)/, "a face click opens the person page");
+assert.match(partitionCss, /\.partition-face \{[\s\S]*?width: 28px;/, "timeline faces stay small circle icons");
 assert.match(partitionViewSource, /COMPACT_MAX_WIDTH/, "Partition timeline follows the compact breakpoint");
 const laneSource = fs.readFileSync(new URL("../lane.js", import.meta.url), "utf8");
 assert.match(laneSource, /export function buildLaneChrome/, "shared lane chrome builds the horizontal rail");
