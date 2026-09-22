@@ -7,7 +7,8 @@ import {
   resolveChecklistAtYear,
   statsReadoutAtYear,
 } from "./gun-regulation-model.js";
-import { relationRideAt, relationRideLayout } from "./engine.js";
+import { relationRideAt, relationRideLayoutForViewport } from "./engine.js";
+import { paintRelationRideFrame } from "./relation-ride-frame.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -42,7 +43,8 @@ export function renderRegulationBoard({
   const beats = filterRegulationBeats(board.timeline, { kind: state.regKind || "" })
     .slice()
     .sort((a, b) => Number(a.year) - Number(b.year) || a.id.localeCompare(b.id));
-  const layout = relationRideLayout(beats, { step: 260, pathHeight: 280, padX: 160 });
+  const rideOptions = { step: 260, pathHeight: 176, padX: 160 };
+  let layout = relationRideLayoutForViewport(beats, window.innerWidth, rideOptions);
 
   section.appendChild(renderKindFilters(state.regKind, onKindFilter));
 
@@ -93,10 +95,9 @@ export function renderRegulationBoard({
   scroller.tabIndex = 0;
   scroller.setAttribute("aria-label", "Gun regulation timeline. Scroll sideways.");
   const track = document.createElement("div");
-  const cardTop = layout.pathHeight + 16;
+  const cardTop = layout.pathHeight + 8;
+  const cardBand = 124;
   track.className = "relation-ride-track";
-  track.style.width = `${Math.max(layout.width, 640)}px`;
-  track.style.height = `${cardTop + 132}px`;
   track.style.background = `linear-gradient(180deg, rgba(74, 127, 212, 0.18), rgba(212, 160, 23, 0.16) ${layout.pathHeight}px, transparent ${layout.pathHeight}px)`;
 
   const svg = document.createElementNS(SVG_NS, "svg");
@@ -133,25 +134,25 @@ export function renderRegulationBoard({
   marker.setAttribute("aria-hidden", "true");
   stage.appendChild(marker);
 
-  const cards = layout.points.map((point) => {
+  const cards = layout.points.map((point, index) => {
     const beat = beats[point.index];
     const card = document.createElement("button");
     card.type = "button";
     card.className = `relation-ride-card ${regulationToneClass(point.tone)}`;
-    card.style.left = `${point.x}px`;
-    card.style.top = `${cardTop}px`;
-    card.style.setProperty("--stem", `${Math.max(18, cardTop - point.y)}px`);
     const year = document.createElement("span");
     year.textContent = String(beat?.year || point.year);
     const text = document.createElement("p");
     text.textContent = beat?.event || point.event;
     card.append(year, text);
     card.addEventListener("click", () => {
-      show(layout.points.indexOf(point), { scroll: true });
+      show(index, { scroll: true });
     });
     track.appendChild(card);
     return card;
   });
+  const marks = [...svg.querySelectorAll(".relation-ride-mark")];
+  const frame = { track, svg, sky, zero, trail, marks, cards, cardTop, cardBand };
+  paintRelationRideFrame({ ...frame, layout });
 
   scroller.appendChild(track);
   stage.appendChild(scroller);
@@ -249,7 +250,42 @@ export function renderRegulationBoard({
   const fromId = layout.points.findIndex((point) => beats[point.index]?.id === state.eventId);
   const fromYear = layout.points.findIndex((point) => Number(beats[point.index]?.year) >= Number(state.year));
   const start = fromId >= 0 ? fromId : (fromYear >= 0 ? fromYear : Math.max(0, layout.points.length - 1));
-  requestAnimationFrame(() => show(start, { scroll: true }));
+
+  function refit() {
+    if (!scroller.isConnected) return;
+    const clientWidth = scroller.clientWidth || window.innerWidth;
+    const tallest = cards.reduce((max, card) => Math.max(max, card.offsetHeight), 0);
+    const available = scroller.clientHeight;
+    const pathHeight = available && tallest
+      ? Math.max(120, Math.min(rideOptions.pathHeight, available - tallest - 16))
+      : rideOptions.pathHeight;
+    const next = relationRideLayoutForViewport(beats, clientWidth, { ...rideOptions, pathHeight });
+    frame.cardTop = next.pathHeight + 8;
+    if (next.padX === layout.padX && next.width === layout.width && next.pathHeight === layout.pathHeight) return;
+    layout = next;
+    track.style.background = `linear-gradient(180deg, rgba(74, 127, 212, 0.18), rgba(212, 160, 23, 0.16) ${layout.pathHeight}px, transparent ${layout.pathHeight}px)`;
+    paintRelationRideFrame({ ...frame, layout });
+    const point = layout.points[active];
+    if (!point) return;
+    stepping = true;
+    scroller.scrollLeft = Math.max(0, point.x - clientWidth / 2);
+    window.setTimeout(() => {
+      stepping = false;
+    }, 60);
+  }
+
+  const onResize = () => {
+    if (!scroller.isConnected) {
+      window.removeEventListener("resize", onResize);
+      return;
+    }
+    refit();
+  };
+  window.addEventListener("resize", onResize);
+  requestAnimationFrame(() => {
+    refit();
+    show(start, { scroll: true });
+  });
 
   const panel = renderChecklistPanel(board, state, onCloseChecklist);
   section.appendChild(panel);

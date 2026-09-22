@@ -1735,7 +1735,7 @@ export function relationMoodLabel(tone) {
 export function relationRideLayout(timeline = [], options = {}) {
   const series = relationToneSeries(timeline);
   const step = Math.max(160, Number(options.step) || 280);
-  const pathHeight = Math.max(220, Number(options.pathHeight) || 320);
+  const pathHeight = Math.max(140, Number(options.pathHeight) || 320);
   const padX = Math.max(80, Number(options.padX) || 180);
   const padTop = 36;
   const padBottom = 28;
@@ -1781,6 +1781,14 @@ export function relationRideLayout(timeline = [], options = {}) {
     path,
     step,
   };
+}
+
+// The ride selects whichever beat is under the center of the scroller.
+// Pad at least half the viewport so the first and last beats can reach that center.
+export function relationRideLayoutForViewport(timeline = [], clientWidth = 0, options = {}) {
+  const minimum = Math.max(80, Number(options.padX) || 180);
+  const half = Math.ceil(Math.max(0, Number(clientWidth) || 0) / 2);
+  return relationRideLayout(timeline, { ...options, padX: Math.max(minimum, half) });
 }
 
 export function relationRideAt(layout, x) {
