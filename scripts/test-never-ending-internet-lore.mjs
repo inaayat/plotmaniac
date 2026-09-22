@@ -1010,7 +1010,7 @@ assert.match(css, /\.gallery-search/, "homepage search is an underline field");
 assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "desktop gallery is 3 columns");
 assert.match(css, /\.plot-cards > li/, "gallery items stretch so cards share a height");
 assert.match(css, /-webkit-line-clamp: 2/, "gallery titles can wrap to two lines");
-assert.equal(/\.plot-card strong \{[\s\S]*?min-height:/.test(css), false, "gallery titles do not reserve a blank second line");
+assert.equal(/\.plot-card strong \{[^}]*min-height:/.test(css), false, "gallery titles do not reserve a blank second line");
 assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?6\.4rem/, "pick view keeps the large title");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
