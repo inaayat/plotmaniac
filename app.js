@@ -1677,6 +1677,11 @@ function paintWeb(stage, { animate = true } = {}) {
     stage.style.width = `${size}px`;
     stage.style.height = `${size}px`;
     stage.classList.add("is-compact-map");
+  } else if (compact && topics) {
+    width = 320;
+    height = 320;
+    stage.style.width = "";
+    stage.style.height = "";
   } else {
     if (bounds.width < 2 || bounds.height < 2) {
       requestAnimationFrame(() => paintWeb(stage, { animate }));

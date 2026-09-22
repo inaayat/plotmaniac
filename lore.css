@@ -3536,6 +3536,16 @@ body[data-board="wars"][data-view="web"] .wars-board {
     padding: 4px 12px calc(20px + var(--safe-bottom));
   }
 
+  .web.is-compact-topics .chip-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .web.is-compact-topics .web-person {
+    width: 100%;
+  }
+
   .policy-drawer {
     max-height: min(86dvh, 100%);
   }
