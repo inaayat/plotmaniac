@@ -1850,6 +1850,19 @@ body[data-view="relation"] .views > button {
   min-width: 0;
 }
 
+.web-stage.is-hub-field .node {
+  width: max(calc(var(--node, 72px) + 36px), 8.5rem);
+}
+
+.web-stage.is-hub-field .node-name {
+  max-width: 100%;
+  overflow: visible;
+  text-overflow: unset;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+}
+
 .web-stage .node:not(.is-center) .avatar {
   width: var(--node, 72px);
   height: var(--node, 72px);

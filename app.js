@@ -73,7 +73,7 @@ let warFocus = "";
 let warHover = "";
 let openRegions = new Set();
 let openTopic = "";
-let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
+let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "", defaultHub: "" };
 let toastTimer = null;
 let loadToken = 0;
 let partitionReference = null;
@@ -207,6 +207,7 @@ function onPop() {
       year: null,
       country: "",
       hub: "",
+      defaultHub: "",
     };
     render();
     return;
@@ -217,13 +218,15 @@ function onPop() {
     eras,
     countries: countryBySlug,
     hubs: new Set(plotHubs(plot).map((hub) => hub.id)),
+    defaultHub: plot.defaultHub || "",
   });
   state = {
     ...parsed,
     view: viewForPlot(parsed),
     year: readYear(),
     country: parsed.country || "",
-    hub: parsed.hub || "",
+    hub: parsed.hub || plot.defaultHub || "",
+    defaultHub: plot.defaultHub || "",
   };
   applyWarSpan(state);
   rememberCountryRegion();
@@ -335,13 +338,15 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         eras,
         countries: countryBySlug,
         hubs: new Set(hubs.map((hub) => hub.id)),
+        defaultHub: plot.defaultHub || "",
       });
       state = {
         ...parsed,
         view: viewForPlot(parsed),
         year: readYear(),
         country: parsed.country || "",
-        hub: parsed.hub || "",
+        hub: parsed.hub || plot.defaultHub || "",
+        defaultHub: plot.defaultHub || "",
       };
       applyWarSpan(state);
       rememberCountryRegion();
@@ -354,7 +359,8 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         eventId: "",
         year: plot.year ? parseYear(plot.year.initial, plot.year) : null,
         country: "",
-        hub: "",
+        hub: plot.defaultHub || "",
+        defaultHub: plot.defaultHub || "",
       };
       applyWarSpan(state, "");
     }
@@ -389,7 +395,7 @@ function showPicker({ history = "push" } = {}) {
   openRegions = new Set();
   openTopic = "";
   peopleById.clear();
-  state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
+  state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "", defaultHub: "" };
   document.title = "Plotmaniac";
   $("plot-title").textContent = "Plotmaniac";
   $("plot-lede").textContent = PICK_LEDE;
@@ -3492,6 +3498,7 @@ function nameEl(name) {
   const el = document.createElement("span");
   el.className = "node-name";
   el.textContent = name;
+  el.title = name;
   return el;
 }
 

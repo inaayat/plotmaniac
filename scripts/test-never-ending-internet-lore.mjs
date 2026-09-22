@@ -1033,6 +1033,7 @@ assert.match(partitionCss, /\.partition-person-page h2 \{\s*font-size: 2rem;/, "
 assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");
 assert.match(appSource, /Shared people sit in the center/, "youtubers web describes the shared center");
 assert.match(css, /\.web-stage \.node-name/, "web names stay inside their node");
+assert.match(css, /\.web-stage\.is-hub-field \.node-name \{[\s\S]*?white-space: normal/, "hub names stay fully readable when the camera zooms");
 assert.match(appSource, /relations-lists/, "compact country web uses a list layout");
 assert.match(appSource, /renderRelationSentimentChart/, "country drawer can chart bilateral warmth");
 assert.match(appSource, /renderSourceChips/, "country history can show source chips");
@@ -1604,6 +1605,26 @@ const marvelHubIds = new Set(marvel.hubs.map((hub) => hub.id));
 const marvelCenterIds = marvel.hubs.map((hub) => hub.centerId);
 assert.ok(marvel, "Marvel plot is registered");
 assert.equal(marvel.title, "Marvel Cinematic Universe");
+assert.equal(marvel.defaultHub, "all");
+assert.equal(marvel.hubAllLabel, "All");
+assert.equal(
+  parseState("https://plotmaniac.com/?plot=marvel-universe", {
+    hubs: new Set(marvel.hubs.map((hub) => hub.id)),
+    defaultHub: marvel.defaultHub,
+  }).hub,
+  "all",
+);
+assert.equal(
+  parseState("https://plotmaniac.com/?plot=marvel-universe&hub=shared", {
+    hubs: new Set(marvel.hubs.map((hub) => hub.id)),
+    defaultHub: marvel.defaultHub,
+  }).hub,
+  "",
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "marvel-universe", hub: "", defaultHub: "all" }, ""),
+  /hub=shared/,
+);
 assert.ok(marvelPeople.length >= 95 && marvelPeople.length <= 105, `Marvel cast should stay around 100, got ${marvelPeople.length}`);
 assert.ok(marvelEvents.length >= 40 && marvelEvents.length <= 70, `Marvel timeline should contain 40–70 beats, got ${marvelEvents.length}`);
 assert.equal(marvel.minBeats, 1);
@@ -1612,10 +1633,20 @@ assert.deepEqual(
   marvel.hubs.map((hub) => hub.id),
   ["mcu-main", "raimi", "webb", "fox", "earth-838", "first-steps", "venom"],
 );
+const marvelPortraitLicenses = new Set(["Public domain", "CC0", "CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 2.0", "CC BY-SA 3.0", "CC BY-SA 4.0"]);
+let marvelPortraits = 0;
 for (const person of marvelPeople) {
   assert.ok(person.name && person.role && person.tags?.length, `${person.id} needs core Marvel fields`);
   assert.ok(person.universes?.length && person.universes.every((id) => marvelHubIds.has(id)), `${person.id} needs known universe membership`);
+  if (!person.portrait) continue;
+  marvelPortraits += 1;
+  assert.match(person.portrait.src, /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//, person.id);
+  assert.match(person.portrait.page, /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/, person.id);
+  assert.ok(marvelPortraitLicenses.has(person.portrait.license), `${person.id} portrait license`);
+  assert.ok(person.portrait.author && person.portrait.licenseUrl, `${person.id} portrait credit`);
 }
+assert.ok(marvelPortraits >= 95, `Marvel should have Commons portraits for almost every character, got ${marvelPortraits}`);
+assert.equal(marvelPeople.find((person) => person.id === "maya-lopez")?.portrait, undefined, "Echo has no free Commons still");
 for (const event of marvelEvents) {
   assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, event.id);
   assert.ok(event.title && event.summary && event.era, event.id);

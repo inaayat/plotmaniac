@@ -414,11 +414,13 @@ export function parseState(urlLike, valid = {}) {
     ? url.searchParams.get("country")
     : "";
   const requestedHub = url.searchParams.get("hub");
-  const hub = valid.hubs?.has(requestedHub)
-    ? requestedHub
-    : (requestedHub === ALL && valid.hubs?.size
-      ? ALL
-      : (valid.defaultHub || ""));
+  const hub = requestedHub === "shared" || requestedHub === "none"
+    ? ""
+    : (valid.hubs?.has(requestedHub)
+      ? requestedHub
+      : (requestedHub === ALL && valid.hubs?.size
+        ? ALL
+        : (valid.defaultHub || "")));
   const requested = url.searchParams.get("view");
   let view = requested === "timeline" || requested === "person" || requested === "relation" ? requested : "web";
   if (view === "person" && person === ALL) view = "web";
@@ -456,6 +458,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (Number.isFinite(state.to)) url.searchParams.set("to", String(state.to));
   if (state.country) url.searchParams.set("country", state.country);
   if (state.hub) url.searchParams.set("hub", state.hub);
+  else if (state.defaultHub) url.searchParams.set("hub", "shared");
   url.hash = state.view === "person" || !eventId ? "" : encodeURIComponent(eventId);
   return `${url.pathname}${url.search}${url.hash}`;
 }

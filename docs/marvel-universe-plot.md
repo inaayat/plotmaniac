@@ -32,7 +32,9 @@ The relation ontology is intentionally small:
 
 The data prioritizes founding Avengers bonds and the Civil War fracture, the Guardians crew, Wakanda, Strange–Wanda–Wong, Daredevil–Kingpin–Punisher, Loki–Sylvie–Mobius and the TVA, the Thunderbolts cluster, and cross-universe Spider-Man, X-Men, Fantastic Four, and Venom variant links. No new rendering arrangement is required; the only engine-facing changes are passing the already-supported minimum-beat option from plot metadata and giving the seven-hub layout unique radial sectors instead of reusing the four cardinal slots.
 
-The Marvel plot specializes the hub chrome slightly: its focus options read `Shared web` and `All characters`, and its accessible web description explains universe focus rather than calling the board a YouTuber web. Other plots keep their existing labels and copy.
+The Marvel plot specializes the hub chrome slightly: Focus opens on `All`, with `Shared web` still available for the common cast, and its accessible web description explains universe focus rather than calling the board a YouTuber web. Other plots keep their existing labels and copy. Hub names wrap in full, including after the camera zooms.
+
+Character faces use freely licensed Wikimedia Commons portraits (often event photos of the actor). A person without a free Commons file keeps a monogram.
 
 ### Timeline
 
@@ -46,4 +48,4 @@ The lede and source note carry the guide’s spoiler boundary. The source note a
 - Every Defenders supporting character, One-Shot, and background cameo.
 - A full cast directory for legacy Fox, Sony, or earlier Fantastic Four films.
 - Exact episode-by-episode dates, release-order viewing advice, and a complete Infinity Stone inventory.
-- A portrait for every character: copyrighted studio stills are skipped, and only fully attributed Wikimedia Commons images are eligible.
+- Copyrighted studio stills: only fully attributed Wikimedia Commons images are used for portraits.
