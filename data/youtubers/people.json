@@ -40,10 +40,11 @@
   {
     "id": "trisha-paytas",
     "name": "Trisha Paytas",
-    "role": "Creator, former Frenemies co-host, and Vlog Squad orbit through Jason Nash",
+    "role": "Creator, former Frenemies co-host, Just Trish host, and Vlog Squad orbit through Jason Nash",
     "tags": [
       "rival",
-      "family"
+      "family",
+      "crew"
     ],
     "links": [
       {
@@ -738,9 +739,10 @@
   {
     "id": "gabbie-hanna",
     "name": "Gabbie Hanna",
-    "role": "Early Vlog Squad / Vine collaborator from the formation era",
+    "role": "Early Vlog Squad / Vine collaborator and later in a public feud with Trisha Paytas",
     "tags": [
-      "crew"
+      "crew",
+      "rival"
     ],
     "links": [
       {
@@ -789,6 +791,66 @@
       {
         "label": "Vlog Squad overview",
         "url": "https://en.wikipedia.org/wiki/David_Dobrik#Cast_(%22The_Vlog_Squad%22)"
+      }
+    ]
+  },
+  {
+    "id": "shane-dawson",
+    "name": "Shane Dawson",
+    "role": "Former close friend of Paytas; friendship ended in the Jeffree Star / Dramageddon orbit",
+    "tags": [
+      "subject",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Shane_Dawson"
+      }
+    ]
+  },
+  {
+    "id": "jeffree-star",
+    "name": "Jeffree Star",
+    "role": "Beauty creator; Paytas alleged body-shaming on a Vegas trip",
+    "tags": [
+      "subject",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Jeffree_Star"
+      }
+    ]
+  },
+  {
+    "id": "colleen-ballinger",
+    "name": "Colleen Ballinger",
+    "role": "Brief Oversharing co-host with Paytas; podcast ended amid public allegations",
+    "tags": [
+      "subject",
+      "rival"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Colleen_Ballinger"
+      }
+    ]
+  },
+  {
+    "id": "oscar-gracey",
+    "name": "Oscar Gracey",
+    "role": "Just Trish co-host",
+    "tags": [
+      "crew",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Just Trish",
+        "url": "https://www.youtube.com/@justtrishpodcast"
       }
     ]
   }

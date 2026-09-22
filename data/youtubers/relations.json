@@ -454,5 +454,53 @@
     "to": "tana-mongeau",
     "kind": "related-coverage",
     "label": "Named together in alleged threesome-pressure stories"
+  },
+  {
+    "from": "trisha-paytas",
+    "to": "oscar-gracey",
+    "kind": "co-host",
+    "label": "Just Trish podcast co-hosts"
+  },
+  {
+    "from": "trisha-paytas",
+    "to": "gabbie-hanna",
+    "kind": "feud",
+    "label": "Multi-year public feud beginning in 2019"
+  },
+  {
+    "from": "trisha-paytas",
+    "to": "shane-dawson",
+    "kind": "collaborator",
+    "label": "Close friendship through the 2010s"
+  },
+  {
+    "from": "trisha-paytas",
+    "to": "shane-dawson",
+    "kind": "feud",
+    "label": "Friendship ended amid Shane's loyalty to Jeffree Star"
+  },
+  {
+    "from": "trisha-paytas",
+    "to": "jeffree-star",
+    "kind": "feud",
+    "label": "Alleged Vegas body-shaming; later public apology coverage"
+  },
+  {
+    "from": "trisha-paytas",
+    "to": "colleen-ballinger",
+    "kind": "collaborator",
+    "label": "Oversharing with Colleen & Trish (2023)"
+  },
+  {
+    "from": "trisha-paytas",
+    "to": "colleen-ballinger",
+    "kind": "feud",
+    "label": "Podcast ended after leaked messages and allegations against Ballinger"
+  },
+  {
+    "from": "trisha-paytas",
+    "to": "tana-mongeau",
+    "kind": "collaborator",
+    "label": "Just Trish guest and later co-host of Not Loveline"
   }
 ]

@@ -7,7 +7,8 @@
     "era": "frenemies",
     "people": [
       "ethan-klein",
-      "trisha-paytas"
+      "trisha-paytas",
+      "hila-klein"
     ],
     "links": [
       {
@@ -17,19 +18,21 @@
       }
     ],
     "hubs": [
-      "h3"
+      "h3",
+      "trisha"
     ]
   },
   {
     "id": "frenemies-39-walkout",
     "date": "2021-06-08",
     "title": "Frenemies #39 ends in a production dispute",
-    "summary": "A disagreement over production, staffing, creative control, and revenue escalates near the end of the episode. Trisha leaves the set and announces the next day that they are stepping down.",
+    "summary": "Frenemies #39 (Talking About Gabbie Hanna) ends in a fight over Q&A production, staffing, creative control, and revenue. Reporting describes a dispute over whether Paytas was talent versus a 50/50 partner. Paytas leaves the set and announces they are stepping down.",
     "era": "frenemies",
     "people": [
       "ethan-klein",
       "trisha-paytas",
-      "dan-swerdlove"
+      "dan-swerdlove",
+      "gabbie-hanna"
     ],
     "links": [
       {
@@ -41,17 +44,23 @@
         "label": "Business Insider timeline",
         "url": "https://www.businessinsider.com/frenemies-trisha-paytas-quit-ethan-klein-podcast-leaving-stepping-down-2021-6",
         "type": "article"
+      },
+      {
+        "label": "Vulture",
+        "url": "https://www.vulture.com/2021/06/trisha-paytas-quits-frenemies-podcast-with-h3s-ethan-klein.html",
+        "type": "article"
       }
     ],
     "hubs": [
-      "h3"
+      "h3",
+      "trisha"
     ]
   },
   {
     "id": "frenemies-cancelled",
     "date": "2021-06-10",
     "title": "Ethan publishes his response to the Frenemies breakup",
-    "summary": "Ethan disputes Trisha's account and explains H3's production costs, the crew's role, and the proposed business structure as both former co-hosts post competing narratives.",
+    "summary": "Ethan disputes Paytas's account and explains H3's production costs, the crew's role, and the proposed business structure. Paytas posts rebuttals. Leaked texts from the breakup include antisemitic language (\"Jew-y\"); Paytas later apologizes. News coverage treats money, ownership, and creative control as the primary public frame.",
     "era": "frenemies-fallout",
     "people": [
       "ethan-klein",
@@ -62,10 +71,21 @@
         "label": "Watch Ethan's response",
         "url": "https://www.youtube.com/watch?v=v8YqLShLJiI",
         "type": "video"
+      },
+      {
+        "label": "Slate explainer",
+        "url": "https://slate.com/culture/2021/06/trisha-paytas-frenemies-podcast-ethan-klein.html",
+        "type": "article"
+      },
+      {
+        "label": "Business Insider on leaked texts",
+        "url": "https://www.businessinsider.com/trisha-paytas-ethan-klein-jewy-antisemitic-texts-frenemies-2021-6",
+        "type": "article"
       }
     ],
     "hubs": [
-      "h3"
+      "h3",
+      "trisha"
     ]
   },
   {
@@ -87,7 +107,8 @@
       }
     ],
     "hubs": [
-      "h3"
+      "h3",
+      "trisha"
     ]
   },
   {
@@ -180,7 +201,8 @@
     ],
     "hubs": [
       "h3",
-      "dobrik"
+      "dobrik",
+      "trisha"
     ]
   },
   {
@@ -510,14 +532,15 @@
     ],
     "hubs": [
       "h3",
-      "dobrik"
+      "dobrik",
+      "trisha"
     ]
   },
   {
     "id": "frenemies-family-crisis",
     "date": "2021-09-12",
     "title": "The Frenemies fallout widens into a family crisis",
-    "summary": "Leaked messages and competing accusations involving Trisha, Moses, Ethan, and Hila move the podcast breakup into the Kleins' extended family. H3 pauses regular episodes for a week.",
+    "summary": "Leaked messages and competing accusations involving Trisha, Moses, Ethan, and Hila move the podcast breakup into the Kleins' extended family. Reporting documents a concurrent family rupture around alleged stealthing claims Moses denied; it does not include an on-record Ethan or Hila statement that they cut contact because of those claims. H3 pauses regular episodes for a week.",
     "era": "frenemies-fallout",
     "people": [
       "ethan-klein",
@@ -530,10 +553,16 @@
         "label": "Business Insider explainer",
         "url": "https://www.businessinsider.com/trisha-paytas-moses-hacmon-mr-riney-riley-teacher-allegations-drama-2021-9",
         "type": "article"
+      },
+      {
+        "label": "Dexerto on the episode removal",
+        "url": "https://www.dexerto.com/entertainment/trisha-paytas-h3h3-frenemies-episode-removal-1651923/",
+        "type": "article"
       }
     ],
     "hubs": [
-      "h3"
+      "h3",
+      "trisha"
     ]
   },
   {
@@ -1187,7 +1216,8 @@
     "summary": "By 2016–2017 the rotating cast — David, Natalie, Jason, Zane, Heath, Aaron, Carly, Scotty, Dom, Nick, and others — is a fixture of YouTube, with celebrity drop-ins. Trisha Paytas enters the orbit through Jason Nash.",
     "era": "vlog-squad-rise",
     "hubs": [
-      "dobrik"
+      "dobrik",
+      "trisha"
     ],
     "people": [
       "david-dobrik",
@@ -1249,7 +1279,8 @@
     "summary": "Trisha Paytas alleges that Dobrik hid in a hotel bathroom while she was with Jason Nash and posted \"I SNUCK INTO THEIR HOTEL ROOM (SURPRISE)\" after she asked him not to. Nash reportedly knew about the prank; Paytas says she did not consent to being filmed nude. Dobrik has not publicly granted her account in detail.",
     "era": "vlog-squad-allegations",
     "hubs": [
-      "dobrik"
+      "dobrik",
+      "trisha"
     ],
     "people": [
       "david-dobrik",
@@ -1455,7 +1486,8 @@
     "era": "vlog-squad-allegations",
     "hubs": [
       "h3",
-      "dobrik"
+      "dobrik",
+      "trisha"
     ],
     "people": [
       "trisha-paytas",
@@ -1505,7 +1537,8 @@
     "summary": "Kat Tenbarge reports that a woman in a 2018 Vlog Squad video accuses Dom Zeglaitis of raping her while she was too intoxicated to consent. The article also describes alleged underage alcohol at the party. Zeglaitis declines to comment; Dobrik's lawyer denies wrongdoing.",
     "era": "vlog-squad-allegations",
     "hubs": [
-      "dobrik"
+      "dobrik",
+      "trisha"
     ],
     "people": [
       "david-dobrik",
@@ -1582,7 +1615,8 @@
     "summary": "Wittek tries to distance himself from the Insider report, denies buying alcohol for underage guests, and shares a call with reporter Kat Tenbarge. Tenbarge says the video misrepresents their conversation and stands by the reporting.",
     "era": "vlog-squad-fallout",
     "hubs": [
-      "dobrik"
+      "dobrik",
+      "trisha"
     ],
     "people": [
       "jeff-wittek",
@@ -1626,7 +1660,8 @@
     "summary": "Responding to Paytas, Mongeau writes that Dobrik repeatedly tried to set up group sex involving her, Jason Nash, and Paytas when she was 19. She says she is staying out of drama and is now in therapy. Dobrik has not issued a detailed public reply to that claim.",
     "era": "vlog-squad-allegations",
     "hubs": [
-      "dobrik"
+      "dobrik",
+      "trisha"
     ],
     "people": [
       "tana-mongeau",
@@ -1807,7 +1842,8 @@
     "summary": "After the lawsuit news cycle, Mongeau talks with Wittek on Friends with Benefits and chooses his side of the split. Toddy Smith is reported to have screamed at her for doing so. The alignment also pulls Trisha Paytas closer to Wittek.",
     "era": "vlog-squad-fallout",
     "hubs": [
-      "dobrik"
+      "dobrik",
+      "trisha"
     ],
     "people": [
       "tana-mongeau",
@@ -1857,7 +1893,8 @@
     "summary": "The three creators, once on different sides of Vlog Squad drama, appear together to discuss Dobrik, the accident aftermath, and their overlapping histories. It is a late-era snapshot of who remained aligned against him.",
     "era": "vlog-squad-aftermath",
     "hubs": [
-      "dobrik"
+      "dobrik",
+      "trisha"
     ],
     "people": [
       "jeff-wittek",
@@ -1938,6 +1975,560 @@
       {
         "label": "Dexerto",
         "url": "https://www.dexerto.com/youtube/jeff-wittek-ends-legal-battle-with-david-dobrik-due-to-miscommunication-over-medical-expenses-3365035/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "trisha-youtube-start",
+    "date": "2007-06-15",
+    "title": "Paytas registers a YouTube channel",
+    "summary": "Paytas registers the channel later known as blndsundoll4mj in 2007. Wikipedia says it began as a Quentin Tarantino fan account before shifting into fashion, beauty, and relationship vlogs.",
+    "era": "early-career",
+    "people": [
+      "trisha-paytas"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Trisha_Paytas",
+        "type": "article"
+      },
+      {
+        "label": "Forbes profile",
+        "url": "https://www.forbes.com/sites/jemimamcevoy/2021/06/13/why-trisha-paytas-was-youtubes-most-disliked-personality-this-week/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "trisha-cbb-quit",
+    "date": "2017-08-12",
+    "title": "Paytas quits Celebrity Big Brother",
+    "summary": "Paytas leaves the UK Celebrity Big Brother house after 11 days, calling the environment extremely unhealthy. The BBC reports the walkout as the first voluntary exit of that series.",
+    "era": "early-career",
+    "people": [
+      "trisha-paytas"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "BBC News",
+        "url": "https://www.bbc.com/news/entertainment-arts-40914220",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jason-nash-relationship",
+    "date": "2017-06-15",
+    "title": "Paytas begins a public relationship with Jason Nash",
+    "summary": "Paytas dates Nash, a Vlog Squad regular, from 2017 into 2019. The relationship pulls Paytas into David Dobrik's orbit and later into reported boundary conflicts over filming and other creators.",
+    "era": "vlog-squad-rise",
+    "people": [
+      "trisha-paytas",
+      "jason-nash",
+      "david-dobrik"
+    ],
+    "hubs": [
+      "trisha",
+      "dobrik"
+    ],
+    "links": [
+      {
+        "label": "Business Insider history",
+        "url": "https://www.businessinsider.com/trisha-paytas-david-dobrik-jason-nash-history-2021-2",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Trisha_Paytas",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "jason-nash-final-breakup",
+    "date": "2019-02-15",
+    "title": "Paytas posts a breakup video naming Nash and Dobrik",
+    "summary": "After Dobrik posts videos in which Nash jokes about Tana Mongeau, Paytas uploads an emotional call-out. In a June 2019 Entertainment Tonight interview she says she has not heard from Dobrik and describes the split as explosive.",
+    "era": "vlog-squad-rise",
+    "people": [
+      "trisha-paytas",
+      "jason-nash",
+      "david-dobrik",
+      "tana-mongeau"
+    ],
+    "hubs": [
+      "trisha",
+      "dobrik"
+    ],
+    "links": [
+      {
+        "label": "Entertainment Tonight",
+        "url": "https://www.etonline.com/trisha-paytas-dishes-on-her-breakup-with-jason-nash-exclusive-126797",
+        "type": "article"
+      },
+      {
+        "label": "Newsweek callout",
+        "url": "https://www.newsweek.com/trisha-paytas-david-dobrik-twitter-jason-nash-1317335",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "trisha-identity-announcement",
+    "date": "2019-10-07",
+    "title": "Paytas makes a public gender-identity announcement",
+    "summary": "In October 2019 Paytas says they are a trans man while also saying they still identify with the gender assigned at birth. Coverage is mixed. In 2021 Paytas says they identify as non-binary and use she/they pronouns, later telling Vulture they had lacked vocabulary in 2019.",
+    "era": "early-career",
+    "people": [
+      "trisha-paytas"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Newsweek report",
+        "url": "https://www.newsweek.com/youtube-star-trisha-paytas-says-she-transgender-despite-identifying-1000-birth-gender-1463716",
+        "type": "article"
+      },
+      {
+        "label": "Vulture profile",
+        "url": "https://www.vulture.com/article/trisha-paytas-youtube-drama-queen.html",
+        "type": "article"
+      },
+      {
+        "label": "Insider on non-binary identity",
+        "url": "https://www.businessinsider.com/trisha-paytas-non-binary-they-them-pronouns-2021-4",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "gabbie-hanna-feud-public",
+    "date": "2019-06-15",
+    "title": "Paytas and Gabbie Hanna's feud goes public",
+    "summary": "Metro dates the public feud to a 2019 YouTube video. Reported claims include gossip about Paytas's then-boyfriend and later a failed 2021 podcast sit-down. After Frenemies ends, Hanna posts unused podcast tape and the hashtag #ApologizeToGabbieHanna spreads.",
+    "era": "beauty-wars",
+    "people": [
+      "trisha-paytas",
+      "gabbie-hanna"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Metro timeline",
+        "url": "https://metro.co.uk/2021/06/18/youtube-timeline-of-trisha-paytas-and-gabbie-hannas-feud-14790857/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "paytas-klein-2019-feud",
+    "date": "2019-05-15",
+    "title": "Paytas and Ethan Klein trade public insults before Frenemies",
+    "summary": "Business Insider traces a 2019 feud to Klein criticizing Paytas's appearance and photo editing, and Paytas calling him out for fat-shaming. The pair later appear together on H3 in 2020, which leads into the Bach3lorette bit and Frenemies.",
+    "era": "frenemies",
+    "people": [
+      "trisha-paytas",
+      "ethan-klein"
+    ],
+    "hubs": [
+      "trisha",
+      "h3"
+    ],
+    "links": [
+      {
+        "label": "Business Insider timeline",
+        "url": "https://www.businessinsider.com/trisha-paytas-h3h3-ethan-klein-drama-timeline-what-happened-2020-4",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "shane-jeffree-vegas-fallout",
+    "date": "2020-07-15",
+    "title": "Jeffree Star apologizes after alleged Vegas comments",
+    "summary": "Paytas alleged body-shaming and bullying on a Las Vegas hang with Jeffree Star's circle. Business Insider reports Star later apologized. The trip sits inside a longer friendship fracture with Shane Dawson after Star's hairstylist attacked Paytas and Dawson stayed loyal to Star.",
+    "era": "beauty-wars",
+    "people": [
+      "trisha-paytas",
+      "jeffree-star",
+      "shane-dawson"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Business Insider on Star's apology",
+        "url": "https://www.businessinsider.com/jeffree-star-trisha-paytas-apologized-insulting-her-vegas-tab-david-2020-7",
+        "type": "article"
+      },
+      {
+        "label": "Business Insider Shane/Jeffree/Trisha timeline",
+        "url": "https://www.businessinsider.com/trisha-paytas-shane-dawson-timeline-jeffree-star-trevi-moran-oscar-2021-1",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "bach3lorette-meets-moses",
+    "date": "2020-03-14",
+    "title": "Paytas meets Moses Hacmon on H3's Bach3lorette bit",
+    "summary": "After a February 2020 H3 appearance, the Kleins run a Bachelorette-style segment to find Paytas a date. On March 14 Paytas expresses interest in Hila's brother Moses. Lockdown then moves the pair off-camera; they later quarantine together, which Ethan says he learned about from social media.",
+    "era": "frenemies",
+    "people": [
+      "trisha-paytas",
+      "moses-hacmon",
+      "ethan-klein",
+      "hila-klein"
+    ],
+    "hubs": [
+      "trisha",
+      "h3"
+    ],
+    "links": [
+      {
+        "label": "Business Insider relationship timeline",
+        "url": "https://www.businessinsider.com/trisha-paytas-moses-hacmon-engagement-relationship-marriage-boyfriend-instagram-breakup-2021-1",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "moses-bruise-on-air",
+    "date": "2020-09-15",
+    "title": "Alleged Moses bruise photos are said to have been discussed on Frenemies (episode number unpinned)",
+    "summary": "It is alleged that Paytas struck Moses early in the relationship, leaving bruises, and that Ethan raised private DMs or photos on Frenemies. The episode number is still unpinned: fan threads point to #1; a Cheese Mukbang #9 transcript shows a relationship fight without a clear bruise-photo segment. The podcast continued through #39. Moses's contemporaneous on-record response was not located in the news packet used here.",
+    "era": "frenemies",
+    "people": [
+      "trisha-paytas",
+      "moses-hacmon",
+      "ethan-klein"
+    ],
+    "hubs": [
+      "trisha",
+      "h3"
+    ],
+    "links": [
+      {
+        "label": "TVDB Frenemies catalog",
+        "url": "https://www.thetvdb.com/series/frenemies-podcast/allseasons/official",
+        "type": "catalog"
+      },
+      {
+        "label": "Rosetta transcript of Frenemies #9",
+        "url": "https://rosetta.to/u/h3podcast/cheese-mukbang-disaster-frenemies-9",
+        "type": "article"
+      },
+      {
+        "label": "Rolling Stone 2024 (separate early-relationship beat)",
+        "url": "https://www.rollingstone.com/culture/culture-features/trisha-paytas-past-drama-mom-life-1234983378/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "moses-engagement",
+    "date": "2020-12-25",
+    "title": "Paytas announces an engagement to Moses Hacmon",
+    "summary": "On Christmas 2020 Paytas says Hacmon proposed at California's Imperial Sand Dunes during an Aladdin and Jasmine photoshoot, reported as December 18. The announcement is widely covered as they buy a house together.",
+    "era": "frenemies",
+    "people": [
+      "trisha-paytas",
+      "moses-hacmon"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Business Insider relationship timeline",
+        "url": "https://www.businessinsider.com/trisha-paytas-moses-hacmon-engagement-relationship-marriage-boyfriend-instagram-breakup-2021-1",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "frenemies-ep17-teacher-allegation",
+    "date": "2021-01-19",
+    "title": "On Frenemies #17, Paytas alleges abuse by a middle-school teacher",
+    "summary": "In Trisha Was Bullied & It's Not OK, Paytas names a Byron, Illinois, teacher, alleges molestation in middle school, and claims the teacher was later arrested over child sexual abuse material. TikToks urge viewers to Google the name. The arrest detail is later contested; this beat records the on-air allegation, not a later records dispute.",
+    "era": "frenemies",
+    "people": [
+      "trisha-paytas",
+      "ethan-klein"
+    ],
+    "hubs": [
+      "trisha",
+      "h3"
+    ],
+    "links": [
+      {
+        "label": "Business Insider (ep17 claims and later records review)",
+        "url": "https://www.businessinsider.com/trisha-paytas-moses-hacmon-mr-riney-riley-teacher-allegations-drama-2021-9",
+        "type": "article"
+      },
+      {
+        "label": "TVDB air date",
+        "url": "https://www.thetvdb.com/series/frenemies-podcast/allseasons/official",
+        "type": "catalog"
+      }
+    ]
+  },
+  {
+    "id": "frenemies-ep17-unlist",
+    "date": "2021-09-11",
+    "title": "Ethan Klein unlists Frenemies #17 pending clarification",
+    "summary": "After a September 2021 exposé reported no public arrest record matching the on-air claim and said the named teacher appeared to have died in 2019, Klein tweets that some claims seem to contradict available evidence and unlists the episode, citing stress on the deceased teacher's family. He says he does not believe Paytas would lie and wants clarification. Business Insider also reports no arrest records found. Paytas later says they misspoke about the arrest after being given inaccurate information. That dispute is not a verdict on the abuse allegation itself.",
+    "era": "frenemies-fallout",
+    "people": [
+      "trisha-paytas",
+      "ethan-klein"
+    ],
+    "hubs": [
+      "trisha",
+      "h3"
+    ],
+    "links": [
+      {
+        "label": "Dexerto unlist coverage",
+        "url": "https://www.dexerto.com/entertainment/ethan-klein-removes-frenemies-episode-with-unproven-claims-made-by-trisha-paytas-1651239/",
+        "type": "article"
+      },
+      {
+        "label": "Ethan Klein tweet",
+        "url": "https://twitter.com/h3h3productions/status/1436521321576292355",
+        "type": "primary"
+      },
+      {
+        "label": "Business Insider",
+        "url": "https://www.businessinsider.com/trisha-paytas-moses-hacmon-mr-riney-riley-teacher-allegations-drama-2021-9",
+        "type": "article"
+      },
+      {
+        "label": "Dexerto on Paytas's response",
+        "url": "https://www.dexerto.com/entertainment/trisha-paytas-h3h3-frenemies-episode-removal-1651923/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "moses-wedding",
+    "date": "2021-12-11",
+    "title": "Paytas marries Moses Hacmon",
+    "summary": "The couple marry at the Four Seasons Westlake Village. Coverage describes a black gown and walking down the aisle to My Chemical Romance. Paytas posts announcement vlogs the next day.",
+    "era": "family",
+    "people": [
+      "trisha-paytas",
+      "moses-hacmon"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Business Insider wedding report",
+        "url": "https://www.businessinsider.com/trisha-paytas-moses-hacmon-engagement-relationship-marriage-boyfriend-instagram-breakup-2021-1",
+        "type": "article"
+      },
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Trisha_Paytas",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "malibu-born",
+    "date": "2022-09-14",
+    "title": "Daughter Malibu Barbie is born",
+    "summary": "Paytas and Hacmon announce the birth of their first child, a daughter named Malibu Barbie. CNN reports the Instagram announcement the next day. Paytas had previously said doctors told her she could not conceive naturally.",
+    "era": "family",
+    "people": [
+      "trisha-paytas",
+      "moses-hacmon"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "CNN",
+        "url": "https://www.cnn.com/2022/09/15/entertainment/trisha-paytas-baby-malibu-barbie/index.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "oversharing-colleen",
+    "date": "2023-07-09",
+    "title": "Oversharing with Colleen & Trish is cancelled",
+    "summary": "Paytas and Colleen Ballinger's short-lived podcast ends after about three episodes. Paytas says leaked messages showed Ballinger sharing Paytas's OnlyFans material to mock her, amid separate grooming allegations against Ballinger that Ballinger denied when Paytas asked.",
+    "era": "podcasts",
+    "people": [
+      "trisha-paytas",
+      "colleen-ballinger"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "E! News",
+        "url": "https://www.eonline.com/news/1381000/trisha-paytas-announces-end-of-podcast-with-colleen-ballinger-amid-controversy",
+        "type": "article"
+      },
+      {
+        "label": "TIME on the Ballinger allegations",
+        "url": "https://time.com/6290947/colleen-ballinger-allegations-explained/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "just-trish-launch",
+    "date": "2023-07-15",
+    "title": "Just Trish launches with Oscar Gracey",
+    "summary": "Paytas begins Just Trish, co-hosted with Oscar Gracey. Wikipedia says an August 2023 Tana Mongeau episode is the first to pass one million YouTube views, and the show becomes Paytas's main late-career format.",
+    "era": "podcasts",
+    "people": [
+      "trisha-paytas",
+      "oscar-gracey",
+      "tana-mongeau"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Trisha_Paytas",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "rolling-stone-porch",
+    "date": "2024-03-19",
+    "title": "Paytas describes early-relationship crises to Rolling Stone",
+    "summary": "In a March 2024 profile Paytas says that early in the relationship with Moses she drove to his house high, stood naked on his porch, and threatened to kill herself, and that his love motivated later self-work. The passage is a self-description, separate from the unpinned Frenemies bruise-photo beat.",
+    "era": "family",
+    "people": [
+      "trisha-paytas",
+      "moses-hacmon"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Rolling Stone",
+        "url": "https://www.rollingstone.com/culture/culture-features/trisha-paytas-past-drama-mom-life-1234983378/",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "elvis-born",
+    "date": "2024-05-24",
+    "title": "Daughter Elvis is born",
+    "summary": "Paytas and Hacmon welcome a second daughter, Elvis. The Independent reports the name in early June 2024.",
+    "era": "family",
+    "people": [
+      "trisha-paytas",
+      "moses-hacmon"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "The Independent",
+        "url": "https://www.independent.co.uk/life-style/health-and-families/trisha-paytas-baby-elvis-name-b2556606.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "snl-appearance",
+    "date": "2024-12-07",
+    "title": "Paytas appears on Saturday Night Live",
+    "summary": "Paytas makes a surprise cameo as herself in a Spotify Wrapped parody on the Paul Mescal episode. Coverage notes the appearance years after Ethan Klein joked on Frenemies that he would cut his arm off if she ever made the show.",
+    "era": "mainstream",
+    "people": [
+      "trisha-paytas",
+      "ethan-klein"
+    ],
+    "hubs": [
+      "trisha",
+      "h3"
+    ],
+    "links": [
+      {
+        "label": "Deadline",
+        "url": "https://deadline.com/2024/12/snl-trisha-paytas-skit-spotify-wrapped-paul-mescal-1236197498/",
+        "type": "article"
+      },
+      {
+        "label": "Vulture",
+        "url": "https://www.vulture.com/article/trisha-paytas-saturday-night-live.html",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "broadway-debut",
+    "date": "2025-02-03",
+    "title": "Trisha Paytas' Big Broadway Dream plays the St. James",
+    "summary": "Paytas stars in a one-night benefit at the St. James Theatre with Sutton Foster, Ben Platt, Joy Woods, and Rachel Zegler. Playbill reports the show also streams live.",
+    "era": "mainstream",
+    "people": [
+      "trisha-paytas"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "Playbill",
+        "url": "https://playbill.com/article/trisha-paytas-big-broadway-dream-plays-broadway-february-3",
+        "type": "article"
+      }
+    ]
+  },
+  {
+    "id": "aquaman-born",
+    "date": "2025-07-12",
+    "title": "Son Aquaman Moses Paytas-Hacmon is born",
+    "summary": "Paytas and Hacmon welcome a third child, a son named Aquaman Moses, on July 12, 2025. People and Entertainment Weekly report the name reveal on Just Trish later that month.",
+    "era": "family",
+    "people": [
+      "trisha-paytas",
+      "moses-hacmon"
+    ],
+    "hubs": [
+      "trisha"
+    ],
+    "links": [
+      {
+        "label": "People",
+        "url": "https://people.com/trisha-paytas-welcomes-her-third-baby-with-husband-moses-hacmon-11764850",
+        "type": "article"
+      },
+      {
+        "label": "Entertainment Weekly",
+        "url": "https://ew.com/youtuber-trisha-paytas-welcomes-baby-aquaman-joining-siblings-malibu-barbie-elvis-11777161",
         "type": "article"
       }
     ]

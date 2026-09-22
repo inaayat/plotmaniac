@@ -54,14 +54,18 @@ const ids = new Set(people.map((person) => person.id));
 const peopleById = new Map(people.map((person) => [person.id, person]));
 const h3Events = filterEvents(events, { hub: "h3" }, peopleById);
 const dobrikEvents = filterEvents(events, { hub: "dobrik" }, peopleById);
+const trishaEvents = filterEvents(events, { hub: "trisha" }, peopleById);
+const knownHubs = new Set(["h3", "dobrik", "trisha"]);
 
 assert.equal(ids.size, people.length, "person ids must be unique");
 assert.equal(people.filter((person) => person.id === "trisha-paytas").length, 1, "Trisha is one person");
 assert.equal(people.filter((person) => person.id === "ethan-klein").length, 1);
 assert.equal(people.filter((person) => person.id === "david-dobrik").length, 1);
 assert.equal(people.filter((person) => person.id === "jason-nash").length, 1);
-assert.ok(h3Events.length >= 35 && h3Events.length <= 55, `H3 hub should contain 35–55 events, got ${h3Events.length}`);
-assert.ok(dobrikEvents.length >= 20 && dobrikEvents.length <= 50, `Dobrik hub should contain 20–50 events, got ${dobrikEvents.length}`);
+assert.equal(people.filter((person) => person.id === "oscar-gracey").length, 1);
+assert.ok(h3Events.length >= 35 && h3Events.length <= 70, `H3 hub should contain 35–70 events, got ${h3Events.length}`);
+assert.ok(dobrikEvents.length >= 20 && dobrikEvents.length <= 55, `Dobrik hub should contain 20–55 events, got ${dobrikEvents.length}`);
+assert.ok(trishaEvents.length >= 25 && trishaEvents.length <= 55, `Trisha hub should contain 25–55 events, got ${trishaEvents.length}`);
 assert.equal(new Set(events.map((event) => event.id)).size, events.length, "event ids must be unique");
 
 for (const person of people) {
@@ -74,7 +78,7 @@ for (const event of events) {
   assert.ok(event.title && event.summary && event.era, `${event.id} is missing core copy`);
   assert.ok(event.people.length >= 1, `${event.id} needs people`);
   assert.ok(event.hubs?.length, `${event.id} needs hubs`);
-  event.hubs.forEach((hub) => assert.ok(["h3", "dobrik"].includes(hub), `${event.id} unknown hub ${hub}`));
+  event.hubs.forEach((hub) => assert.ok(knownHubs.has(hub), `${event.id} unknown hub ${hub}`));
   event.people.forEach((id) => assert.ok(ids.has(id), `${event.id} references unknown person ${id}`));
   assert.ok(event.links?.length, `${event.id} needs at least one source`);
   event.links.forEach((link) => {
@@ -96,13 +100,13 @@ for (const relation of relations) {
   assert.ok(relation.kind && relation.label, "relations need kind and label");
 }
 
-const hubCenters = new Set(["ethan-klein", "david-dobrik"]);
+const hubCenters = new Set(["ethan-klein", "david-dobrik", "trisha-paytas"]);
 for (const person of people.filter((person) => !hubCenters.has(person.id))) {
   assert.ok(
     relations.some((relation) =>
       hubCenters.has(relation.from) && relation.to === person.id
       || hubCenters.has(relation.to) && relation.from === person.id),
-    `${person.id} needs a relationship to Ethan or David`,
+    `${person.id} needs a relationship to Ethan, David, or Trisha`,
   );
 }
 
@@ -111,14 +115,28 @@ assert.ok(frenemies.length >= 2);
 assert.deepEqual(filterEvents(events, { person: ALL, era: ALL }, peopleById), events);
 assert.ok(filterEvents(events, { query: "fair use" }, peopleById).length >= 2);
 assert.ok(h3Events.some((event) => event.id === "frenemies-launch"));
+assert.ok(trishaEvents.some((event) => event.id === "frenemies-launch"));
 assert.equal(h3Events.some((event) => event.id === "utah-excavator-accident"), false);
+assert.equal(trishaEvents.some((event) => event.id === "utah-excavator-accident"), false);
 assert.ok(dobrikEvents.some((event) => event.id === "utah-excavator-accident"));
+assert.ok(trishaEvents.some((event) => event.id === "just-trish-launch"));
+assert.ok(trishaEvents.some((event) => event.id === "frenemies-ep17-teacher-allegation"));
+assert.ok(trishaEvents.some((event) => event.id === "frenemies-ep17-unlist"));
+assert.ok(trishaEvents.some((event) => event.id === "moses-bruise-on-air"));
+assert.ok(h3Events.some((event) => event.id === "frenemies-ep17-teacher-allegation"));
+assert.ok(h3Events.some((event) => event.id === "frenemies-ep17-unlist"));
+assert.equal(h3Events.some((event) => event.id === "just-trish-launch"), false);
 const livestream = events.find((event) => event.id === "dobrik-safety-coverage");
-assert.deepEqual(livestream.hubs.slice().sort(), ["dobrik", "h3"]);
+assert.deepEqual(livestream.hubs.slice().sort(), ["dobrik", "h3", "trisha"]);
 assert.ok(livestream.people.includes("jeff-wittek"));
 assert.ok(livestream.people.includes("trisha-paytas"));
 assert.ok(h3Events.some((event) => event.id === "dobrik-safety-coverage"));
 assert.ok(dobrikEvents.some((event) => event.id === "dobrik-safety-coverage"));
+assert.ok(trishaEvents.some((event) => event.id === "dobrik-safety-coverage"));
+const hotel = events.find((event) => event.id === "paytas-hotel-filming");
+assert.deepEqual(hotel.hubs.slice().sort(), ["dobrik", "trisha"]);
+assert.ok(events.find((event) => event.id === "moses-bruise-on-air").title.toLowerCase().includes("unpinned")
+  || events.find((event) => event.id === "moses-bruise-on-air").summary.toLowerCase().includes("unpinned"));
 
 const firstRelation = relations[0];
 assert.ok(relationEvents(firstRelation, events).every((event) =>
@@ -130,9 +148,12 @@ assert.equal(findPlot(plots.plots, "h3")?.id, "youtubers");
 assert.equal(findPlot(plots.plots, "youtubers")?.id, "youtubers");
 assert.equal(youtubers.centerId, "ethan-klein");
 assert.equal(youtubers.includeOrbit, true);
+assert.equal(youtubers.hubs.length, 3);
 assert.equal(hubOf(youtubers, "h3").centerId, "ethan-klein");
 assert.equal(hubOf(youtubers, "dobrik").centerId, "david-dobrik");
+assert.equal(hubOf(youtubers, "trisha").centerId, "trisha-paytas");
 assert.equal(hubCenterId(youtubers, "dobrik"), "david-dobrik");
+assert.equal(hubCenterId(youtubers, "trisha"), "trisha-paytas");
 assert.equal(initials("Hila Klein"), "HK");
 assert.equal(initials("xQc"), "XQ");
 assert.equal(campOf("hila-klein", relations, youtubers.centerId, youtubers.friendKinds, youtubers.enemyKinds), "friend");
@@ -142,6 +163,13 @@ assert.equal(campOf("jeff-wittek", relations, "david-dobrik", youtubers.friendKi
 assert.equal(campOf("natalie-mariduena", relations, "david-dobrik", youtubers.friendKinds, youtubers.enemyKinds), "friend");
 assert.equal(campOf("trisha-paytas", relations, "david-dobrik", youtubers.friendKinds, youtubers.enemyKinds), "enemy");
 assert.equal(campOf("ethan-klein", relations, "david-dobrik", youtubers.friendKinds, youtubers.enemyKinds), "orbit");
+assert.equal(campOf("ethan-klein", relations, "trisha-paytas", youtubers.friendKinds, youtubers.enemyKinds), "enemy");
+assert.equal(campOf("hila-klein", relations, "trisha-paytas", youtubers.friendKinds, youtubers.enemyKinds), "enemy");
+assert.equal(campOf("moses-hacmon", relations, "trisha-paytas", youtubers.friendKinds, youtubers.enemyKinds), "friend");
+assert.equal(campOf("david-dobrik", relations, "trisha-paytas", youtubers.friendKinds, youtubers.enemyKinds), "enemy");
+assert.equal(campOf("oscar-gracey", relations, "trisha-paytas", youtubers.friendKinds, youtubers.enemyKinds), "friend");
+assert.equal(campOf("gabbie-hanna", relations, "trisha-paytas", youtubers.friendKinds, youtubers.enemyKinds), "enemy");
+assert.equal(campOf("oscar-gracey", relations, youtubers.centerId, youtubers.friendKinds, youtubers.enemyKinds), "orbit");
 
 const allowedLicenses = new Set(["CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "CC BY-SA 2.0", "CC BY-SA 3.0", "Public domain"]);
 for (const person of people) {
@@ -177,7 +205,7 @@ const others = layout.nodes.filter((node) => node.id !== "ethan-klein");
 assert.ok(others.some((node) => node.x < ethanNode.x) && others.some((node) => node.x > ethanNode.x));
 assert.ok(others.some((node) => node.y < ethanNode.y) && others.some((node) => node.y > ethanNode.y));
 const trisha = neighborhood("trisha-paytas", relations);
-["ethan-klein", "hila-klein", "moses-hacmon", "jason-nash", "david-dobrik"].forEach((id) => assert.ok(trisha.has(id), id));
+["ethan-klein", "hila-klein", "moses-hacmon", "jason-nash", "david-dobrik", "oscar-gracey"].forEach((id) => assert.ok(trisha.has(id), id));
 assert.ok(layout.edges.some((edge) => edge.from === "trisha-paytas" && edge.to === "moses-hacmon" || edge.from === "moses-hacmon" && edge.to === "trisha-paytas"));
 let closest = Infinity;
 for (let i = 0; i < layout.nodes.length; i += 1) {
@@ -335,14 +363,22 @@ assert.match(
   /hub=dobrik/,
 );
 const hubState = parseState("https://plotmaniac.com/?plot=youtubers&hub=dobrik&view=timeline", {
-  hubs: new Set(["h3", "dobrik"]),
+  hubs: new Set(["h3", "dobrik", "trisha"]),
   defaultHub: "h3",
 });
 assert.equal(hubState.hub, "dobrik");
 assert.equal(hubState.view, "timeline");
 assert.equal(
-  parseState("https://plotmaniac.com/?plot=youtubers", { hubs: new Set(["h3", "dobrik"]), defaultHub: "h3" }).hub,
+  parseState("https://plotmaniac.com/?plot=youtubers", { hubs: new Set(["h3", "dobrik", "trisha"]), defaultHub: "h3" }).hub,
   "h3",
+);
+assert.equal(
+  parseState("https://plotmaniac.com/?plot=youtubers&hub=trisha", { hubs: new Set(["h3", "dobrik", "trisha"]), defaultHub: "h3" }).hub,
+  "trisha",
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "timeline", plot: "youtubers", hub: "trisha" }, ""),
+  /hub=trisha/,
 );
 
 const sharedWeb = webLayout(people, relations, {
@@ -351,7 +387,7 @@ const sharedWeb = webLayout(people, relations, {
   enemyKinds: youtubers.enemyKinds,
   events: h3Events,
   includeOrbit: true,
-  hubIds: ["ethan-klein", "david-dobrik"],
+  hubIds: ["ethan-klein", "david-dobrik", "trisha-paytas"],
   width: 1400,
   height: 980,
 });
@@ -360,6 +396,7 @@ assert.equal(sharedWeb.nodes.filter((node) => node.id === "trisha-paytas").lengt
 assert.equal(sharedWeb.nodes.find((node) => node.id === "ethan-klein").camp, "center");
 assert.equal(sharedWeb.nodes.find((node) => node.id === "david-dobrik").camp, "orbit");
 assert.equal(sharedWeb.nodes.find((node) => node.id === "david-dobrik").plotHub, true);
+assert.equal(sharedWeb.nodes.find((node) => node.id === "trisha-paytas").plotHub, true);
 assert.equal(sharedWeb.nodes.find((node) => node.id === "jeff-wittek").camp, "orbit");
 assert.equal(sharedWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "enemy");
 assert.ok(sharedWeb.edges.some((edge) =>
@@ -372,7 +409,7 @@ const dobrikWeb = webLayout(people, relations, {
   enemyKinds: youtubers.enemyKinds,
   events: dobrikEvents,
   includeOrbit: true,
-  hubIds: ["ethan-klein", "david-dobrik"],
+  hubIds: ["ethan-klein", "david-dobrik", "trisha-paytas"],
   width: 1400,
   height: 980,
 });
@@ -383,6 +420,28 @@ assert.equal(dobrikWeb.nodes.find((node) => node.id === "jeff-wittek").camp, "en
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "natalie-mariduena").camp, "friend");
 assert.equal(dobrikWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "enemy");
 assert.ok(dobrikWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
+assert.equal(dobrikWeb.nodes.find((node) => node.id === "trisha-paytas").plotHub, true);
+
+const trishaWeb = webLayout(people, relations, {
+  centerId: "trisha-paytas",
+  friendKinds: youtubers.friendKinds,
+  enemyKinds: youtubers.enemyKinds,
+  events: trishaEvents,
+  includeOrbit: true,
+  hubIds: ["ethan-klein", "david-dobrik", "trisha-paytas"],
+  width: 1400,
+  height: 980,
+});
+assert.equal(trishaWeb.nodes.length, people.length);
+assert.equal(trishaWeb.nodes.find((node) => node.id === "trisha-paytas").camp, "center");
+assert.equal(trishaWeb.nodes.find((node) => node.id === "ethan-klein").camp, "enemy");
+assert.equal(trishaWeb.nodes.find((node) => node.id === "ethan-klein").plotHub, true);
+assert.equal(trishaWeb.nodes.find((node) => node.id === "david-dobrik").camp, "enemy");
+assert.equal(trishaWeb.nodes.find((node) => node.id === "david-dobrik").plotHub, true);
+assert.equal(trishaWeb.nodes.find((node) => node.id === "moses-hacmon").camp, "friend");
+assert.equal(trishaWeb.nodes.find((node) => node.id === "oscar-gracey").camp, "friend");
+assert.equal(trishaWeb.nodes.find((node) => node.id === "gabbie-hanna").camp, "enemy");
+assert.ok(trishaWeb.nodes.some((node) => node.id === "hasan-piker" && node.camp === "orbit"));
 
 const nodes = graphLayout(people);
 assert.equal(nodes.length, people.length);
