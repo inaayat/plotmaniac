@@ -1,6 +1,15 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { buildFrames, chronoKey, sourceRecords } from "../partition-model.js";
+import {
+  buildFrames,
+  chronoKey,
+  eventCast,
+  playerAllegiance,
+  playerDisplayName,
+  playerIncentives,
+  sourceRecords,
+  statedPositions,
+} from "../partition-model.js";
 import { flows, markers, outlines, regions, seams } from "../partition-geography.js";
 import {
   ALL,
@@ -1627,6 +1636,21 @@ const reunited = partitionFrames.find((frame) => frame.id === "evt-1911-bengal-r
 assert.equal(reunited.visual.seams.bengal, "off");
 assert.equal(reunited.visual.fills["bengal-east"], "raj");
 assert.equal(partitionFrames.every((frame) => frame.visual.camera === "all"), true);
+const curzon = partitionRef.keyPlayers.find((player) => player.id === "curzon");
+const jinnah = partitionRef.keyPlayers.find((player) => player.id === "jinnah");
+assert.equal(playerDisplayName(curzon), "George Nathaniel Curzon");
+assert.equal(playerAllegiance(curzon).faction, "British Raj");
+assert.match(playerAllegiance(curzon).line, /British Raj/);
+assert.equal(playerIncentives(curzon).wanted.includes("Administrative reform"), true);
+assert.equal(statedPositions(curzon).some((row) => /N\/A/i.test(row.value)), false);
+assert.ok(statedPositions(curzon).some((row) => row.key === "punjabAndBengalDivision"));
+const bengal = partitionFrames.find((frame) => frame.id === "evt-1905-bengal");
+const playersById = new Map(partitionRef.keyPlayers.map((player) => [player.id, player]));
+const bengalCast = eventCast(bengal, playersById, "curzon");
+assert.equal(bengalCast[0].id, "curzon");
+assert.equal(bengalCast[0].focus, true);
+assert.match(bengalCast[0].action, /Eastern Bengal/);
+assert.match(playerIncentives(jinnah).line, /\S/);
 
 function ringSpan(polygons) {
   const points = polygons.flat(2);

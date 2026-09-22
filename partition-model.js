@@ -26,6 +26,76 @@ export function sourceRecords(catalog, ids = []) {
   return (ids || []).map((id) => catalog?.[id]).filter(Boolean);
 }
 
+const NA_RE = /^(n\/a|na|none|—|-)$/i;
+
+export const POSITION_LABELS = {
+  unitedIndia: "United India",
+  pakistanOrMuslimState: "Pakistan or a Muslim state",
+  populationExchange: "Population exchange",
+  punjabAndBengalDivision: "Punjab and Bengal",
+  twoNationTheory: "Two-nation theory",
+};
+
+export function playerDisplayName(person) {
+  const name = String(person?.name || "").trim();
+  const comma = name.indexOf(",");
+  if (comma > 8) return name.slice(0, comma).trim();
+  return name;
+}
+
+export function playerAllegiance(person) {
+  const faction = String(person?.faction || "").trim();
+  const nationality = String(person?.nationality?.primary || "").trim();
+  const community = String(person?.nationality?.ethnicOrRegionalIdentity || "").trim();
+  const parts = [faction, nationality, community].filter(Boolean);
+  return {
+    faction: faction || "Unaligned in this record",
+    nationality,
+    community,
+    line: parts.join(" · ") || "Unaligned in this record",
+  };
+}
+
+export function playerIncentives(person) {
+  const wanted = (person?.desiresAndGoals || []).map((item) => String(item).trim()).filter(Boolean);
+  const opposed = (person?.fearsAndOppositions || []).map((item) => String(item).trim()).filter(Boolean);
+  return {
+    wanted,
+    opposed,
+    line: wanted[0] || opposed[0] || person?.pointOfView || "",
+  };
+}
+
+export function statedPositions(person) {
+  const positions = person?.positions || {};
+  return Object.entries(POSITION_LABELS)
+    .map(([key, label]) => {
+      const value = String(positions[key] || "").trim();
+      return { key, label, value };
+    })
+    .filter((row) => row.value && !NA_RE.test(row.value.replace(/\s*\(.*\)\s*$/, "").trim()));
+}
+
+export function eventCast(event, players, focusId = "") {
+  const actions = new Map((event?.actions || []).map((action) => [action.playerId, action.description]));
+  const ids = [...new Set([...(event?.playerIds || []), ...actions.keys()])];
+  return ids.map((id) => {
+    const person = players.get(id);
+    const incentives = playerIncentives(person);
+    return {
+      id,
+      name: playerDisplayName(person) || id,
+      fullName: person?.name || id,
+      focus: id === focusId,
+      allegiance: playerAllegiance(person),
+      incentive: incentives.line,
+      wanted: incentives.wanted,
+      opposed: incentives.opposed,
+      action: actions.get(id) || "",
+    };
+  });
+}
+
 function baseFills() {
   const fills = {};
   REGION_IDS.forEach((id) => {
