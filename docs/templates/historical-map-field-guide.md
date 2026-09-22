@@ -38,7 +38,7 @@ JSON object keyed by player `id` → Commons attribution objects (`src`, `page`,
 
 - **Web tab:** Compact coastline map, regions, year slider, princely states, optional Kashmir claims overlay. Pakistan and Bangladesh keep full outlines.
 - **People:** Opens a **full-width reading page** — identity header, who agreed beside it, wanted/feared/positions/actions; switching players updates in place.
-- **Full timeline:** Researched chronology across the width; beats name other players and incentives.
+- **Full timeline:** Researched chronology on the same full-width horizontal lane as other plots (oldest left, zoom and fit). People on a beat are small circle portraits: hover for their move, click for their page. Beats name other players and incentives.
 - **Mobile:** Short title, full-width player rows, sideways-scroll year ticks.
 - Loading copy: “Drawing the map…”
 
