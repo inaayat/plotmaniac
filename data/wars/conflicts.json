@@ -1,0 +1,3067 @@
+{
+  "countries": {
+    "AE": {
+      "name": "United Arab Emirates"
+    },
+    "AF": {
+      "name": "Afghanistan"
+    },
+    "AM": {
+      "name": "Armenia"
+    },
+    "AO": {
+      "name": "Angola"
+    },
+    "AU": {
+      "name": "Australia"
+    },
+    "AZ": {
+      "name": "Azerbaijan"
+    },
+    "BD": {
+      "name": "Bangladesh"
+    },
+    "BF": {
+      "name": "Burkina Faso"
+    },
+    "BH": {
+      "name": "Bahrain"
+    },
+    "BJ": {
+      "name": "Benin"
+    },
+    "BW": {
+      "name": "Botswana"
+    },
+    "BY": {
+      "name": "Belarus"
+    },
+    "CA": {
+      "name": "Canada"
+    },
+    "CD": {
+      "name": "Democratic Republic of the Congo"
+    },
+    "CF": {
+      "name": "Central African Republic"
+    },
+    "CG": {
+      "name": "Republic of the Congo"
+    },
+    "CI": {
+      "name": "Ivory Coast"
+    },
+    "CM": {
+      "name": "Cameroon"
+    },
+    "CN": {
+      "name": "China"
+    },
+    "CO": {
+      "name": "Colombia"
+    },
+    "DJ": {
+      "name": "Djibouti"
+    },
+    "DK": {
+      "name": "Denmark"
+    },
+    "DZ": {
+      "name": "Algeria"
+    },
+    "EG": {
+      "name": "Egypt"
+    },
+    "EH": {
+      "name": "Western Sahara"
+    },
+    "ER": {
+      "name": "Eritrea"
+    },
+    "ET": {
+      "name": "Ethiopia"
+    },
+    "FI": {
+      "name": "Finland"
+    },
+    "FR": {
+      "name": "France"
+    },
+    "GB": {
+      "name": "United Kingdom"
+    },
+    "GE": {
+      "name": "Georgia"
+    },
+    "GH": {
+      "name": "Ghana"
+    },
+    "HT": {
+      "name": "Haiti"
+    },
+    "IL": {
+      "name": "Israel"
+    },
+    "IN": {
+      "name": "India"
+    },
+    "IQ": {
+      "name": "Iraq"
+    },
+    "IR": {
+      "name": "Iran"
+    },
+    "IT": {
+      "name": "Italy"
+    },
+    "JM": {
+      "name": "Jamaica"
+    },
+    "JO": {
+      "name": "Jordan"
+    },
+    "KE": {
+      "name": "Kenya"
+    },
+    "KG": {
+      "name": "Kyrgyzstan"
+    },
+    "KH": {
+      "name": "Cambodia"
+    },
+    "KM": {
+      "name": "Comoros"
+    },
+    "KP": {
+      "name": "North Korea"
+    },
+    "KW": {
+      "name": "Kuwait"
+    },
+    "LB": {
+      "name": "Lebanon"
+    },
+    "LK": {
+      "name": "Sri Lanka"
+    },
+    "LS": {
+      "name": "Lesotho"
+    },
+    "LY": {
+      "name": "Libya"
+    },
+    "MA": {
+      "name": "Morocco"
+    },
+    "ML": {
+      "name": "Mali"
+    },
+    "MM": {
+      "name": "Myanmar"
+    },
+    "MR": {
+      "name": "Mauritania"
+    },
+    "MW": {
+      "name": "Malawi"
+    },
+    "MY": {
+      "name": "Malaysia"
+    },
+    "MZ": {
+      "name": "Mozambique"
+    },
+    "NA": {
+      "name": "Namibia"
+    },
+    "NE": {
+      "name": "Niger"
+    },
+    "NG": {
+      "name": "Nigeria"
+    },
+    "NL": {
+      "name": "Netherlands"
+    },
+    "NZ": {
+      "name": "New Zealand"
+    },
+    "OM": {
+      "name": "Oman"
+    },
+    "PH": {
+      "name": "Philippines"
+    },
+    "PK": {
+      "name": "Pakistan"
+    },
+    "PL": {
+      "name": "Poland"
+    },
+    "PS": {
+      "name": "Palestine"
+    },
+    "PT": {
+      "name": "Portugal"
+    },
+    "PY": {
+      "name": "Paraguay"
+    },
+    "QA": {
+      "name": "Qatar"
+    },
+    "RS": {
+      "name": "Serbia"
+    },
+    "RU": {
+      "name": "Russia"
+    },
+    "RW": {
+      "name": "Rwanda"
+    },
+    "SA": {
+      "name": "Saudi Arabia"
+    },
+    "SD": {
+      "name": "Sudan"
+    },
+    "SN": {
+      "name": "Senegal"
+    },
+    "SO": {
+      "name": "Somalia"
+    },
+    "SS": {
+      "name": "South Sudan"
+    },
+    "SY": {
+      "name": "Syria"
+    },
+    "TD": {
+      "name": "Chad"
+    },
+    "TG": {
+      "name": "Togo"
+    },
+    "TH": {
+      "name": "Thailand"
+    },
+    "TJ": {
+      "name": "Tajikistan"
+    },
+    "TL": {
+      "name": "Timor-Leste"
+    },
+    "TN": {
+      "name": "Tunisia"
+    },
+    "TR": {
+      "name": "Turkey"
+    },
+    "TZ": {
+      "name": "Tanzania"
+    },
+    "UA": {
+      "name": "Ukraine"
+    },
+    "UG": {
+      "name": "Uganda"
+    },
+    "US": {
+      "name": "United States"
+    },
+    "UZ": {
+      "name": "Uzbekistan"
+    },
+    "VE": {
+      "name": "Venezuela"
+    },
+    "XK": {
+      "name": "Kosovo"
+    },
+    "YE": {
+      "name": "Yemen"
+    },
+    "ZA": {
+      "name": "South Africa"
+    },
+    "ZM": {
+      "name": "Zambia"
+    }
+  },
+  "conflicts": [
+    {
+      "id": "conflict-in-the-niger-delta",
+      "name": "Conflict in the Niger Delta",
+      "start": 2003,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Conflict_in_the_Niger_Delta",
+      "sides": []
+    },
+    {
+      "id": "iraq-war",
+      "name": "Iraq War",
+      "start": 2003,
+      "end": 2011,
+      "wikipedia": "https://en.wikipedia.org/wiki/Iraq_War",
+      "sides": [
+        {
+          "states": [
+            "US",
+            "GB",
+            "AU",
+            "PL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "IQ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "war-in-darfur",
+      "name": "War in Darfur",
+      "start": 2003,
+      "end": 2020,
+      "wikipedia": "https://en.wikipedia.org/wiki/War_in_Darfur",
+      "sides": [
+        {
+          "states": [
+            "SD"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "central-african-bush-war",
+      "name": "Central African Bush War",
+      "start": 2004,
+      "end": 2007,
+      "wikipedia": "https://en.wikipedia.org/wiki/Central_African_Bush_War",
+      "sides": [
+        {
+          "states": [
+            "CF",
+            "TD"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "houthi-insurgency",
+      "name": "Houthi insurgency",
+      "start": 2004,
+      "end": 2014,
+      "wikipedia": "https://en.wikipedia.org/wiki/Houthi_insurgency",
+      "sides": [
+        {
+          "states": [
+            "YE"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "YE",
+            "SA"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "insurgency-in-khyber-pakhtunkhwa",
+      "name": "Insurgency in Khyber Pakhtunkhwa",
+      "start": 2004,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_Khyber_Pakhtunkhwa",
+      "sides": [
+        {
+          "states": [
+            "PK",
+            "US"
+          ],
+          "groups": [
+            "PAK"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iran-pjak-conflict",
+      "name": "Iran\u2013PJAK conflict",
+      "start": 2004,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Iran%E2%80%93PJAK_conflict",
+      "sides": [
+        {
+          "states": [
+            "IR"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "kivu-conflict",
+      "name": "Kivu conflict",
+      "start": 2004,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Kivu_conflict",
+      "sides": [
+        {
+          "states": [
+            "CD"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "RW",
+            "UG"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "sinaloa-cartel-gulf-cartel-conflict",
+      "name": "Sinaloa Cartel\u2013Gulf Cartel conflict",
+      "start": 2004,
+      "end": 2010,
+      "wikipedia": "https://en.wikipedia.org/wiki/Sinaloa_Cartel%E2%80%93Gulf_Cartel_conflict",
+      "sides": []
+    },
+    {
+      "id": "sistan-and-baluchestan-insurgency",
+      "name": "Sistan and Baluchestan insurgency",
+      "start": 2004,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Sistan_and_Baluchestan_insurgency",
+      "sides": [
+        {
+          "states": [
+            "IR"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "south-thailand-insurgency",
+      "name": "South Thailand insurgency",
+      "start": 2004,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/South_Thailand_insurgency",
+      "sides": [
+        {
+          "states": [
+            "TH"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "chadian-civil-war-2005-2010",
+      "name": "Chadian Civil War (2005\u20132010)",
+      "start": 2005,
+      "end": 2010,
+      "wikipedia": "https://en.wikipedia.org/wiki/Chadian_Civil_War_(2005%E2%80%932010)",
+      "sides": [
+        {
+          "states": [
+            "TD",
+            "FR"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "insurgency-in-paraguay",
+      "name": "Insurgency in Paraguay",
+      "start": 2005,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_Paraguay",
+      "sides": [
+        {
+          "states": [
+            "PY"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "mount-elgon-insurgency",
+      "name": "Mount Elgon insurgency",
+      "start": 2005,
+      "end": 2008,
+      "wikipedia": "https://en.wikipedia.org/wiki/Mount_Elgon_insurgency",
+      "sides": []
+    },
+    {
+      "id": "2006-lebanon-war",
+      "name": "2006 Lebanon War",
+      "start": 2006,
+      "end": 2006,
+      "wikipedia": "https://en.wikipedia.org/wiki/2006_Lebanon_War",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "LB"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bakassi-conflict",
+      "name": "Bakassi conflict",
+      "start": 2006,
+      "end": 2018,
+      "wikipedia": "https://en.wikipedia.org/wiki/Bakassi_conflict",
+      "sides": [
+        {
+          "states": [
+            "CM"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "eelam-war-iv",
+      "name": "Eelam War IV",
+      "start": 2006,
+      "end": 2009,
+      "wikipedia": "https://en.wikipedia.org/wiki/Eelam_War_IV",
+      "sides": [
+        {
+          "states": [
+            "LK"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "fatah-hamas-conflict",
+      "name": "Fatah\u2013Hamas conflict",
+      "start": 2006,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Fatah%E2%80%93Hamas_conflict",
+      "sides": [
+        {
+          "states": [
+            "PS"
+          ],
+          "groups": [
+            "Hamas"
+          ]
+        },
+        {
+          "states": [],
+          "groups": [
+            "Fatah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iraqi-civil-war-2006-2008",
+      "name": "Iraqi civil war (2006\u20132008)",
+      "start": 2006,
+      "end": 2008,
+      "wikipedia": "https://en.wikipedia.org/wiki/Iraqi_civil_war_(2006%E2%80%932008)",
+      "sides": [
+        {
+          "states": [
+            "IQ"
+          ],
+          "groups": []
+        },
+        {
+          "states": [],
+          "groups": [
+            "Al-Qaeda"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mexican-drug-war",
+      "name": "Mexican drug war",
+      "start": 2006,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Mexican_drug_war",
+      "sides": []
+    },
+    {
+      "id": "operation-astute",
+      "name": "Operation Astute",
+      "start": 2006,
+      "end": 2013,
+      "wikipedia": "https://en.wikipedia.org/wiki/Operation_Astute",
+      "sides": [
+        {
+          "states": [
+            "AU",
+            "NZ",
+            "MY",
+            "PT",
+            "TL"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "war-in-somalia-2006-2009",
+      "name": "War in Somalia (2006\u20132009)",
+      "start": 2006,
+      "end": 2009,
+      "wikipedia": "https://en.wikipedia.org/wiki/War_in_Somalia_(2006%E2%80%932009)",
+      "sides": [
+        {
+          "states": [
+            "ET",
+            "US"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2007-lebanon-conflict",
+      "name": "2007 Lebanon conflict",
+      "start": 2007,
+      "end": 2007,
+      "wikipedia": "https://en.wikipedia.org/wiki/2007_Lebanon_conflict",
+      "sides": []
+    },
+    {
+      "id": "battle-of-gaza-2007",
+      "name": "Battle of Gaza (2007)",
+      "start": 2007,
+      "end": 2007,
+      "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Gaza_(2007)",
+      "sides": []
+    },
+    {
+      "id": "insurgency-in-ingushetia",
+      "name": "Insurgency in Ingushetia",
+      "start": 2007,
+      "end": 2015,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_Ingushetia",
+      "sides": []
+    },
+    {
+      "id": "operation-juniper-shield",
+      "name": "Operation Juniper Shield",
+      "start": 2007,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Operation_Juniper_Shield",
+      "sides": []
+    },
+    {
+      "id": "tuareg-rebellion-2007-2009",
+      "name": "Tuareg rebellion (2007\u20132009)",
+      "start": 2007,
+      "end": 2009,
+      "wikipedia": "https://en.wikipedia.org/wiki/Tuareg_rebellion_(2007%E2%80%932009)",
+      "sides": [
+        {
+          "states": [
+            "NE",
+            "ML"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2008-invasion-of-anjouan",
+      "name": "2008 invasion of Anjouan",
+      "start": 2008,
+      "end": 2008,
+      "wikipedia": "https://en.wikipedia.org/wiki/2008_invasion_of_Anjouan",
+      "sides": [
+        {
+          "states": [
+            "KM",
+            "SN",
+            "SD",
+            "TZ"
+          ],
+          "groups": []
+        },
+        {
+          "states": [],
+          "groups": [
+            "Anjouan"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2008-kufra-conflict",
+      "name": "2008 Kufra conflict",
+      "start": 2008,
+      "end": 2008,
+      "wikipedia": "https://en.wikipedia.org/wiki/2008_Kufra_conflict",
+      "sides": []
+    },
+    {
+      "id": "2008-lebanon-conflict",
+      "name": "2008 Lebanon conflict",
+      "start": 2008,
+      "end": 2008,
+      "wikipedia": "https://en.wikipedia.org/wiki/2008_Lebanon_conflict",
+      "sides": [
+        {
+          "states": [
+            "LB"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2008-2011-cambodian-thai-border-crisis",
+      "name": "2008\u20132011 Cambodian\u2013Thai border crisis",
+      "start": 2008,
+      "end": 2011,
+      "wikipedia": "https://en.wikipedia.org/wiki/2008%E2%80%932011_Cambodian%E2%80%93Thai_border_crisis",
+      "sides": [
+        {
+          "states": [
+            "KH"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "TH"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "djiboutian-eritrean-border-conflict",
+      "name": "Djiboutian\u2013Eritrean border conflict",
+      "start": 2008,
+      "end": 2008,
+      "wikipedia": "https://en.wikipedia.org/wiki/Djiboutian%E2%80%93Eritrean_border_conflict",
+      "sides": [
+        {
+          "states": [
+            "ER"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "DJ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "gaza-war-2008-2009",
+      "name": "Gaza War",
+      "start": 2008,
+      "end": 2009,
+      "wikipedia": "https://en.wikipedia.org/wiki/Gaza_War_(2008%E2%80%932009)",
+      "sides": [
+        {
+          "states": [
+            "PS"
+          ],
+          "groups": [
+            "Hamas",
+            "Popular Front for the Liberation of Palestine",
+            "Islamic Jihad Movement in Palestine",
+            "Fatah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "russo-georgian-war",
+      "name": "Russo-Georgian War",
+      "start": 2008,
+      "end": 2008,
+      "wikipedia": "https://en.wikipedia.org/wiki/Russo-Georgian_War",
+      "sides": [
+        {
+          "states": [
+            "RU"
+          ],
+          "groups": [
+            "South Ossetia",
+            "Abkhazia"
+          ]
+        },
+        {
+          "states": [
+            "GE"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "sudanese-nomadic-conflicts",
+      "name": "Sudanese nomadic conflicts",
+      "start": 2008,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Sudanese_nomadic_conflicts",
+      "sides": []
+    },
+    {
+      "id": "2009-boko-haram-uprising",
+      "name": "2009 Boko Haram uprising",
+      "start": 2009,
+      "end": 2009,
+      "wikipedia": "https://en.wikipedia.org/wiki/2009_Boko_Haram_uprising",
+      "sides": [
+        {
+          "states": [
+            "NG"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2009-peruvian-political-crisis",
+      "name": "2009 Peruvian political crisis",
+      "start": 2009,
+      "end": 2009,
+      "wikipedia": "https://en.wikipedia.org/wiki/2009_Peruvian_political_crisis",
+      "sides": []
+    },
+    {
+      "id": "boko-haram-insurgency",
+      "name": "Boko Haram insurgency",
+      "start": 2009,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Boko_Haram_insurgency",
+      "sides": [
+        {
+          "states": [
+            "NG"
+          ],
+          "groups": []
+        },
+        {
+          "states": [],
+          "groups": [
+            "Islamic State"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dongo-conflict",
+      "name": "Dongo conflict",
+      "start": 2009,
+      "end": 2009,
+      "wikipedia": "https://en.wikipedia.org/wiki/Dongo_conflict",
+      "sides": [
+        {
+          "states": [
+            "CD"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "insurgency-in-the-north-caucasus",
+      "name": "Insurgency in the North Caucasus",
+      "start": 2009,
+      "end": 2017,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_the_North_Caucasus",
+      "sides": [
+        {
+          "states": [
+            "RU"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "operation-scorched-earth",
+      "name": "Operation Scorched Earth",
+      "start": 2009,
+      "end": 2010,
+      "wikipedia": "https://en.wikipedia.org/wiki/Operation_Scorched_Earth",
+      "sides": [
+        {
+          "states": [
+            "YE",
+            "SA"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "somali-civil-war-2009-present",
+      "name": "Somali Civil War (2009\u2013present)",
+      "start": 2009,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Somali_Civil_War_(2009%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "SO"
+          ],
+          "groups": [
+            "Al-Shabaab"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-yemen-insurgency",
+      "name": "South Yemen insurgency",
+      "start": 2009,
+      "end": 2026,
+      "wikipedia": "https://en.wikipedia.org/wiki/South_Yemen_insurgency",
+      "sides": [
+        {
+          "states": [
+            "YE"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2010-kingston-unrest",
+      "name": "2010 Kingston unrest",
+      "start": 2010,
+      "end": 2010,
+      "wikipedia": "https://en.wikipedia.org/wiki/2010_Kingston_unrest",
+      "sides": [
+        {
+          "states": [
+            "JM"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2010-south-kyrgyzstan-ethnic-clashes",
+      "name": "2010 South Kyrgyzstan ethnic clashes",
+      "start": 2010,
+      "end": 2010,
+      "wikipedia": "https://en.wikipedia.org/wiki/2010_South_Kyrgyzstan_ethnic_clashes",
+      "sides": [
+        {
+          "states": [
+            "KG"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "UZ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "insurgency-in-gorno-badakhshan-2010-2015",
+      "name": "Insurgency in Gorno-Badakhshan (2010\u20132015)",
+      "start": 2010,
+      "end": 2015,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_Gorno-Badakhshan_(2010%E2%80%932015)",
+      "sides": []
+    },
+    {
+      "id": "second-ivorian-civil-war",
+      "name": "Second Ivorian Civil War",
+      "start": 2010,
+      "end": 2011,
+      "wikipedia": "https://en.wikipedia.org/wiki/Second_Ivorian_Civil_War",
+      "sides": [
+        {
+          "states": [
+            "FR"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "ethnic-violence-in-south-sudan",
+      "name": "Ethnic violence in South Sudan",
+      "start": 2011,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Ethnic_violence_in_South_Sudan",
+      "sides": []
+    },
+    {
+      "id": "factional-violence-in-libya-2011-2014",
+      "name": "Factional violence in Libya (2011\u20132014)",
+      "start": 2011,
+      "end": 2014,
+      "wikipedia": "https://en.wikipedia.org/wiki/Factional_violence_in_Libya_(2011%E2%80%932014)",
+      "sides": []
+    },
+    {
+      "id": "insurgency-in-bahrain",
+      "name": "Insurgency in Bahrain",
+      "start": 2011,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_Bahrain",
+      "sides": [
+        {
+          "states": [
+            "BH"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "BH"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "iraqi-insurgency-2011-2013",
+      "name": "Iraqi insurgency (2011\u20132013)",
+      "start": 2011,
+      "end": 2013,
+      "wikipedia": "https://en.wikipedia.org/wiki/Iraqi_insurgency_(2011%E2%80%932013)",
+      "sides": [
+        {
+          "states": [],
+          "groups": [
+            "Iraqi Kurdistan"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "libyan-civil-war-2011",
+      "name": "Libyan civil war (2011)",
+      "start": 2011,
+      "end": 2011,
+      "wikipedia": "https://en.wikipedia.org/wiki/Libyan_civil_war_(2011)",
+      "sides": [
+        {
+          "states": [
+            "QA",
+            "TN"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "nigerian-bandit-conflict",
+      "name": "Nigerian bandit conflict",
+      "start": 2011,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Nigerian_bandit_conflict",
+      "sides": []
+    },
+    {
+      "id": "operation-linda-nchi",
+      "name": "Operation Linda Nchi",
+      "start": 2011,
+      "end": 2012,
+      "wikipedia": "https://en.wikipedia.org/wiki/Operation_Linda_Nchi",
+      "sides": [
+        {
+          "states": [
+            "KE"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "sinai-insurgency",
+      "name": "Sinai insurgency",
+      "start": 2011,
+      "end": 2023,
+      "wikipedia": "https://en.wikipedia.org/wiki/Sinai_insurgency",
+      "sides": []
+    },
+    {
+      "id": "sudanese-conflict-in-south-kordofan-and-blue-nile",
+      "name": "Sudanese conflict in South Kordofan and Blue Nile",
+      "start": 2011,
+      "end": 2020,
+      "wikipedia": "https://en.wikipedia.org/wiki/Sudanese_conflict_in_South_Kordofan_and_Blue_Nile",
+      "sides": [
+        {
+          "states": [
+            "SD"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "syrian-civil-war",
+      "name": "Syrian civil war",
+      "start": 2011,
+      "end": 2024,
+      "wikipedia": "https://en.wikipedia.org/wiki/Syrian_civil_war",
+      "sides": [
+        {
+          "states": [
+            "SY",
+            "IR",
+            "RU"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        },
+        {
+          "states": [
+            "TR"
+          ],
+          "groups": [
+            "ISIL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "syrian-civil-war-spillover-in-lebanon",
+      "name": "Syrian civil war spillover in Lebanon",
+      "start": 2011,
+      "end": 2017,
+      "wikipedia": "https://en.wikipedia.org/wiki/Syrian_civil_war_spillover_in_Lebanon",
+      "sides": [
+        {
+          "states": [
+            "LB"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        },
+        {
+          "states": [],
+          "groups": [
+            "Islamic State"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2012-abyan-offensive",
+      "name": "2012 Abyan offensive",
+      "start": 2012,
+      "end": 2012,
+      "wikipedia": "https://en.wikipedia.org/wiki/2012_Abyan_offensive",
+      "sides": [
+        {
+          "states": [
+            "YE"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "baragoi-clashes",
+      "name": "Baragoi clashes",
+      "start": 2012,
+      "end": 2012,
+      "wikipedia": "https://en.wikipedia.org/wiki/Baragoi_clashes",
+      "sides": []
+    },
+    {
+      "id": "central-african-republic-civil-war",
+      "name": "Central African Republic Civil War",
+      "start": 2012,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Central_African_Republic_Civil_War",
+      "sides": [
+        {
+          "states": [
+            "CF",
+            "RW",
+            "RU",
+            "ZA",
+            "FR"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "CF"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "heglig-crisis",
+      "name": "Heglig Crisis",
+      "start": 2012,
+      "end": 2012,
+      "wikipedia": "https://en.wikipedia.org/wiki/Heglig_Crisis",
+      "sides": [
+        {
+          "states": [
+            "SD"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "SS"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "m23-rebellion-2012-2013",
+      "name": "M23 rebellion",
+      "start": 2012,
+      "end": 2013,
+      "wikipedia": "https://en.wikipedia.org/wiki/M23_rebellion_(2012%E2%80%932013)",
+      "sides": [
+        {
+          "states": [
+            "CD",
+            "ZA",
+            "TZ",
+            "MW"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "mali-war",
+      "name": "Mali War",
+      "start": 2012,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Mali_War",
+      "sides": [
+        {
+          "states": [
+            "ML",
+            "RU",
+            "FR"
+          ],
+          "groups": []
+        },
+        {
+          "states": [],
+          "groups": [
+            "Boko Haram"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "war-in-the-sahel",
+      "name": "War in the Sahel",
+      "start": 2012,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/War_in_the_Sahel",
+      "sides": [
+        {
+          "states": [
+            "ML",
+            "NE",
+            "BF",
+            "BJ",
+            "TG",
+            "CI",
+            "DZ",
+            "MR",
+            "NG"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "batwa-luba-clashes",
+      "name": "Batwa\u2013Luba clashes",
+      "start": 2013,
+      "end": 2018,
+      "wikipedia": "https://en.wikipedia.org/wiki/Batwa%E2%80%93Luba_clashes",
+      "sides": []
+    },
+    {
+      "id": "2013-lahad-datu-standoff",
+      "name": "Lahad Datu standoff",
+      "start": 2013,
+      "end": 2013,
+      "wikipedia": "https://en.wikipedia.org/wiki/2013_Lahad_Datu_standoff",
+      "sides": [
+        {
+          "states": [
+            "MY"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "renamo-insurgency-2013-2021",
+      "name": "RENAMO insurgency (2013\u20132021)",
+      "start": 2013,
+      "end": 2021,
+      "wikipedia": "https://en.wikipedia.org/wiki/RENAMO_insurgency_(2013%E2%80%932021)",
+      "sides": [
+        {
+          "states": [
+            "MZ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "south-sudanese-civil-war",
+      "name": "South Sudanese Civil War",
+      "start": 2013,
+      "end": 2020,
+      "wikipedia": "https://en.wikipedia.org/wiki/South_Sudanese_Civil_War",
+      "sides": [
+        {
+          "states": [
+            "SS",
+            "UG"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "war-in-iraq-2013-2017",
+      "name": "War in Iraq (2013\u20132017)",
+      "start": 2013,
+      "end": 2017,
+      "wikipedia": "https://en.wikipedia.org/wiki/War_in_Iraq_(2013%E2%80%932017)",
+      "sides": [
+        {
+          "states": [
+            "IQ",
+            "IR",
+            "US",
+            "GB",
+            "CA",
+            "AU",
+            "FR",
+            "IT",
+            "NL",
+            "NZ",
+            "FI",
+            "DK"
+          ],
+          "groups": [
+            "Rojava",
+            "Iraqi Turkmen Front",
+            "Hezbollah"
+          ]
+        },
+        {
+          "states": [
+            "IQ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "zamboanga-city-crisis",
+      "name": "Zamboanga City crisis",
+      "start": 2013,
+      "end": 2013,
+      "wikipedia": "https://en.wikipedia.org/wiki/Zamboanga_City_crisis",
+      "sides": [
+        {
+          "states": [
+            "PH"
+          ],
+          "groups": []
+        },
+        {
+          "states": [],
+          "groups": [
+            "Bangsamoro Republik"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2014-aswan-tribal-clashes",
+      "name": "2014 Aswan tribal clashes",
+      "start": 2014,
+      "end": 2014,
+      "wikipedia": "https://en.wikipedia.org/wiki/2014_Aswan_tribal_clashes",
+      "sides": []
+    },
+    {
+      "id": "2014-gaza-war",
+      "name": "2014 Gaza War",
+      "start": 2014,
+      "end": 2014,
+      "wikipedia": "https://en.wikipedia.org/wiki/2014_Gaza_War",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "PS"
+          ],
+          "groups": [
+            "Hamas",
+            "Palestinian Islamic Jihad",
+            "Popular Front for the Liberation of Palestine",
+            "Democratic Front for the Liberation of Palestine",
+            "Popular Resistance Committees",
+            "Fatah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "houthi-takeover-in-yemen",
+      "name": "Houthi takeover in Yemen",
+      "start": 2014,
+      "end": 2015,
+      "wikipedia": "https://en.wikipedia.org/wiki/Houthi_takeover_in_Yemen",
+      "sides": [
+        {
+          "states": [],
+          "groups": [
+            "Houthis"
+          ]
+        },
+        {
+          "states": [
+            "US",
+            "SA"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "libyan-civil-war-2014-2020",
+      "name": "Libyan civil war (2014\u20132020)",
+      "start": 2014,
+      "end": 2020,
+      "wikipedia": "https://en.wikipedia.org/wiki/Libyan_civil_war_(2014%E2%80%932020)",
+      "sides": [
+        {
+          "states": [
+            "LY",
+            "EG",
+            "AE"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "TR"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "russo-ukrainian-war",
+      "name": "Russo-Ukrainian War",
+      "start": 2014,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Russo-Ukrainian_War",
+      "sides": [
+        {
+          "states": [
+            "RU"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "UA"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "war-against-the-islamic-state",
+      "name": "War against the Islamic State",
+      "start": 2014,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/War_against_the_Islamic_State",
+      "sides": []
+    },
+    {
+      "id": "yemeni-civil-war-2014-present",
+      "name": "Yemeni civil war (2014\u2013present)",
+      "start": 2014,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Yemeni_civil_war_(2014%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "YE",
+            "SA",
+            "AE"
+          ],
+          "groups": []
+        },
+        {
+          "states": [],
+          "groups": [
+            "Houthis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "islamic-state-insurgency-in-tunisia",
+      "name": "Islamic State insurgency in Tunisia",
+      "start": 2015,
+      "end": 2022,
+      "wikipedia": "https://en.wikipedia.org/wiki/Islamic_State_insurgency_in_Tunisia",
+      "sides": [
+        {
+          "states": [
+            "TN"
+          ],
+          "groups": []
+        },
+        {
+          "states": [],
+          "groups": [
+            "Islamic State"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "islamic-state-taliban-conflict",
+      "name": "Islamic State\u2013Taliban conflict",
+      "start": 2015,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Islamic_State%E2%80%93Taliban_conflict",
+      "sides": [
+        {
+          "states": [
+            "AF"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "kurdistan-workers-party-insurgency",
+      "name": "Kurdistan Workers' Party insurgency",
+      "start": 2015,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/Kurdistan_Workers'_Party_insurgency",
+      "sides": [
+        {
+          "states": [
+            "TR"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2016-nagorno-karabakh-conflict",
+      "name": "2016 Nagorno-Karabakh conflict",
+      "start": 2016,
+      "end": 2016,
+      "wikipedia": "https://en.wikipedia.org/wiki/2016_Nagorno-Karabakh_conflict",
+      "sides": [
+        {
+          "states": [
+            "AM"
+          ],
+          "groups": [
+            "Artsakh"
+          ]
+        },
+        {
+          "states": [
+            "AZ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2016-niger-delta-conflict",
+      "name": "2016 Niger Delta conflict",
+      "start": 2016,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/2016_Niger_Delta_conflict",
+      "sides": []
+    },
+    {
+      "id": "conflict-in-rakhine-state-2016-present",
+      "name": "Conflict in Rakhine State",
+      "start": 2016,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Conflict_in_Rakhine_State_(2016%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "MM"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "insurgency-in-chad-2016-present",
+      "name": "Insurgency in Chad (2016\u2013present)",
+      "start": 2016,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_Chad_(2016%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "TD",
+            "FR",
+            "CF"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "kamwina-nsapu-rebellion",
+      "name": "Kamwina Nsapu rebellion",
+      "start": 2016,
+      "end": 2019,
+      "wikipedia": "https://en.wikipedia.org/wiki/Kamwina_Nsapu_rebellion",
+      "sides": [
+        {
+          "states": [
+            "CD"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "kasese-clashes",
+      "name": "Kasese clashes",
+      "start": 2016,
+      "end": 2016,
+      "wikipedia": "https://en.wikipedia.org/wiki/Kasese_clashes",
+      "sides": [
+        {
+          "states": [
+            "UG"
+          ],
+          "groups": []
+        },
+        {
+          "states": [],
+          "groups": [
+            "Rwenzururu"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philippine-drug-war",
+      "name": "Philippine drug war",
+      "start": 2016,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Philippine_drug_war",
+      "sides": []
+    },
+    {
+      "id": "pool-war",
+      "name": "Pool War",
+      "start": 2016,
+      "end": 2017,
+      "wikipedia": "https://en.wikipedia.org/wiki/Pool_War",
+      "sides": [
+        {
+          "states": [
+            "CG"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2017-afghanistan-pakistan-border-skirmish",
+      "name": "2017 Afghanistan\u2013Pakistan border skirmish",
+      "start": 2017,
+      "end": 2017,
+      "wikipedia": "https://en.wikipedia.org/wiki/2017_Afghanistan%E2%80%93Pakistan_border_skirmish",
+      "sides": []
+    },
+    {
+      "id": "2017-iraqi-kurdish-conflict",
+      "name": "2017 Iraqi\u2013Kurdish conflict",
+      "start": 2017,
+      "end": 2017,
+      "wikipedia": "https://en.wikipedia.org/wiki/2017_Iraqi%E2%80%93Kurdish_conflict",
+      "sides": [
+        {
+          "states": [
+            "IQ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2017-2020-qatif-unrest",
+      "name": "2017\u20132020 Qatif unrest",
+      "start": 2017,
+      "end": 2020,
+      "wikipedia": "https://en.wikipedia.org/wiki/2017%E2%80%932020_Qatif_unrest",
+      "sides": [
+        {
+          "states": [
+            "SA"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "anglophone-crisis",
+      "name": "Anglophone Crisis",
+      "start": 2017,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Anglophone_Crisis",
+      "sides": [
+        {
+          "states": [
+            "CM"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "insurgency-in-cabo-delgado",
+      "name": "Insurgency in Cabo Delgado",
+      "start": 2017,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_Cabo_Delgado",
+      "sides": [
+        {
+          "states": [
+            "MZ",
+            "RW",
+            "ZA",
+            "BW",
+            "LS",
+            "TZ",
+            "AO",
+            "ZM",
+            "MW",
+            "CD",
+            "NA"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "islamic-state-insurgency-in-iraq-2017-present",
+      "name": "Islamic State insurgency in Iraq (2017\u2013present)",
+      "start": 2017,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Islamic_State_insurgency_in_Iraq_(2017%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "IQ",
+            "IR"
+          ],
+          "groups": [
+            "Kurdistan Region"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "siege-of-marawi",
+      "name": "Siege of Marawi",
+      "start": 2017,
+      "end": 2017,
+      "wikipedia": "https://en.wikipedia.org/wiki/Siege_of_Marawi",
+      "sides": []
+    },
+    {
+      "id": "2018-armenian-azerbaijani-clashes",
+      "name": "2018 Armenian\u2013Azerbaijani clashes",
+      "start": 2018,
+      "end": 2018,
+      "wikipedia": "https://en.wikipedia.org/wiki/2018_Armenian%E2%80%93Azerbaijani_clashes",
+      "sides": [
+        {
+          "states": [
+            "AZ"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "AM"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "catatumbo-campaign",
+      "name": "Catatumbo campaign",
+      "start": 2018,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Catatumbo_campaign",
+      "sides": [
+        {
+          "states": [
+            "CO"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "november-2018-gaza-israel-clashes",
+      "name": "November 2018 Gaza\u2013Israel clashes",
+      "start": 2018,
+      "end": 2018,
+      "wikipedia": "https://en.wikipedia.org/wiki/November_2018_Gaza%E2%80%93Israel_clashes",
+      "sides": [
+        {
+          "states": [
+            "PS"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "ola-insurgency",
+      "name": "OLA insurgency",
+      "start": 2018,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/OLA_insurgency",
+      "sides": [
+        {
+          "states": [
+            "ET"
+          ],
+          "groups": [
+            "Oromia"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "war-on-drugs-in-ecuador",
+      "name": "War on drugs in Ecuador",
+      "start": 2018,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/War_on_drugs_in_Ecuador",
+      "sides": []
+    },
+    {
+      "id": "2019-india-pakistan-border-skirmishes",
+      "name": "2019 India\u2013Pakistan border skirmishes",
+      "start": 2019,
+      "end": 2019,
+      "wikipedia": "https://en.wikipedia.org/wiki/2019_India%E2%80%93Pakistan_border_skirmishes",
+      "sides": [
+        {
+          "states": [
+            "IN"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "PK"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "benishangul-gumuz-conflict",
+      "name": "Benishangul-Gumuz conflict",
+      "start": 2019,
+      "end": 2022,
+      "wikipedia": "https://en.wikipedia.org/wiki/Benishangul-Gumuz_conflict",
+      "sides": [
+        {
+          "states": [
+            "ET"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "may-2019-gaza-israel-clashes",
+      "name": "May 2019 Gaza\u2013Israel clashes",
+      "start": 2019,
+      "end": 2019,
+      "wikipedia": "https://en.wikipedia.org/wiki/May_2019_Gaza%E2%80%93Israel_clashes",
+      "sides": [
+        {
+          "states": [
+            "PS"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "november-2019-gaza-israel-clashes",
+      "name": "November 2019 Gaza\u2013Israel clashes",
+      "start": 2019,
+      "end": 2019,
+      "wikipedia": "https://en.wikipedia.org/wiki/November_2019_Gaza%E2%80%93Israel_clashes",
+      "sides": []
+    },
+    {
+      "id": "2020-2021-china-india-skirmishes",
+      "name": "2020\u20132021 China\u2013India skirmishes",
+      "start": 2020,
+      "end": 2021,
+      "wikipedia": "https://en.wikipedia.org/wiki/2020%E2%80%932021_China%E2%80%93India_skirmishes",
+      "sides": [
+        {
+          "states": [
+            "CN"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "IN"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "afar-somali-clashes",
+      "name": "Afar\u2013Somali clashes",
+      "start": 2020,
+      "end": 2024,
+      "wikipedia": "https://en.wikipedia.org/wiki/Afar%E2%80%93Somali_clashes",
+      "sides": []
+    },
+    {
+      "id": "al-fashaga-conflict",
+      "name": "Al-Fashaga conflict",
+      "start": 2020,
+      "end": 2022,
+      "wikipedia": "https://en.wikipedia.org/wiki/Al-Fashaga_conflict",
+      "sides": [
+        {
+          "states": [
+            "SD"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "ET",
+            "ER"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "belarusian-partisan-movement-2020-present",
+      "name": "Belarusian partisan movement",
+      "start": 2020,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Belarusian_partisan_movement_(2020%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "BY"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "gang-war-in-haiti",
+      "name": "Gang war in Haiti",
+      "start": 2020,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Gang_war_in_Haiti",
+      "sides": [
+        {
+          "states": [
+            "HT"
+          ],
+          "groups": [
+            "Armed gangs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "second-nagorno-karabakh-war",
+      "name": "Second Nagorno-Karabakh War",
+      "start": 2020,
+      "end": 2020,
+      "wikipedia": "https://en.wikipedia.org/wiki/Second_Nagorno-Karabakh_War",
+      "sides": [
+        {
+          "states": [
+            "AZ",
+            "TR"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "AM"
+          ],
+          "groups": [
+            "Artsakh"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tigray-war",
+      "name": "Tigray war",
+      "start": 2020,
+      "end": 2022,
+      "wikipedia": "https://en.wikipedia.org/wiki/Tigray_war",
+      "sides": [
+        {
+          "states": [],
+          "groups": [
+            "Tigray"
+          ]
+        },
+        {
+          "states": [
+            "ET"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "western-saharan-clashes-2020-present",
+      "name": "Western Saharan clashes",
+      "start": 2020,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Western_Saharan_clashes_(2020%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "MA"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "EH"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "western-togoland-rebellion",
+      "name": "Western Togoland Rebellion",
+      "start": 2020,
+      "end": 2024,
+      "wikipedia": "https://en.wikipedia.org/wiki/Western_Togoland_Rebellion",
+      "sides": [
+        {
+          "states": [
+            "GH"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2021-afghanistan-iran-clashes",
+      "name": "2021 Afghanistan\u2013Iran clashes",
+      "start": 2021,
+      "end": 2021,
+      "wikipedia": "https://en.wikipedia.org/wiki/2021_Afghanistan%E2%80%93Iran_clashes",
+      "sides": [
+        {
+          "states": [
+            "AF"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "IR"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2021-israel-palestine-crisis",
+      "name": "2021 Israel\u2013Palestine crisis",
+      "start": 2021,
+      "end": 2021,
+      "wikipedia": "https://en.wikipedia.org/wiki/2021_Israel%E2%80%93Palestine_crisis",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "PS"
+          ],
+          "groups": [
+            "Popular Front for the Liberation of Palestine",
+            "Fatah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2021-kyrgyzstan-tajikistan-clashes",
+      "name": "2021 Kyrgyzstan\u2013Tajikistan clashes",
+      "start": 2021,
+      "end": 2021,
+      "wikipedia": "https://en.wikipedia.org/wiki/2021_Kyrgyzstan%E2%80%93Tajikistan_clashes",
+      "sides": [
+        {
+          "states": [
+            "KG"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "TJ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "armenia-azerbaijan-border-crisis-2021-present",
+      "name": "Armenia\u2013Azerbaijan border crisis",
+      "start": 2021,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Armenia%E2%80%93Azerbaijan_border_crisis_(2021%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "AM"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "AZ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "insurgency-in-southeastern-nigeria",
+      "name": "Insurgency in Southeastern Nigeria",
+      "start": 2021,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Insurgency_in_Southeastern_Nigeria",
+      "sides": [
+        {
+          "states": [
+            "NG",
+            "CM"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "myanmar-civil-war-2021-present",
+      "name": "Myanmar civil war",
+      "start": 2021,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Myanmar_civil_war_(2021%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "MM"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "republican-insurgency-in-afghanistan",
+      "name": "Republican insurgency in Afghanistan",
+      "start": 2021,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Republican_insurgency_in_Afghanistan",
+      "sides": [
+        {
+          "states": [
+            "AF"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "AF"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2022-gaza-israel-clashes",
+      "name": "2022 Gaza\u2013Israel clashes",
+      "start": 2022,
+      "end": 2022,
+      "wikipedia": "https://en.wikipedia.org/wiki/2022_Gaza%E2%80%93Israel_clashes",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2022-kyrgyzstan-tajikistan-clashes",
+      "name": "2022 Kyrgyzstan\u2013Tajikistan clashes",
+      "start": 2022,
+      "end": 2022,
+      "wikipedia": "https://en.wikipedia.org/wiki/2022_Kyrgyzstan%E2%80%93Tajikistan_clashes",
+      "sides": [
+        {
+          "states": [
+            "KG"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "TJ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "al-shabaab-invasion-of-ethiopia",
+      "name": "al-Shabaab invasion of Ethiopia",
+      "start": 2022,
+      "end": 2022,
+      "wikipedia": "https://en.wikipedia.org/wiki/al-Shabaab_invasion_of_Ethiopia",
+      "sides": [
+        {
+          "states": [
+            "ET"
+          ],
+          "groups": [
+            "Somali Region"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chittagong-hill-tracts-conflict",
+      "name": "Chittagong Hill Tracts conflict",
+      "start": 2022,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Chittagong_Hill_Tracts_conflict",
+      "sides": [
+        {
+          "states": [
+            "BD"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "m23-campaign-2022-present",
+      "name": "M23 campaign",
+      "start": 2022,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "RW"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "CD"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "north-kosovo-crisis-2022-2025",
+      "name": "North Kosovo crisis",
+      "start": 2022,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/North_Kosovo_crisis_(2022%E2%80%932025)",
+      "sides": [
+        {
+          "states": [
+            "XK"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "RS"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "russian-invasion-of-ukraine",
+      "name": "Russian invasion of Ukraine",
+      "start": 2022,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine",
+      "sides": [
+        {
+          "states": [
+            "RU",
+            "BY",
+            "KP"
+          ],
+          "groups": [
+            "Donetsk People's Republic",
+            "Luhansk People's Republic"
+          ]
+        },
+        {
+          "states": [
+            "UA"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "russian-partisan-movement-2022-present",
+      "name": "Russian partisan movement",
+      "start": 2022,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Russian_partisan_movement_(2022%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "RU"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "september-2022-armenia-azerbaijan-clashes",
+      "name": "September 2022 Armenia\u2013Azerbaijan clashes",
+      "start": 2022,
+      "end": 2022,
+      "wikipedia": "https://en.wikipedia.org/wiki/September_2022_Armenia%E2%80%93Azerbaijan_clashes",
+      "sides": [
+        {
+          "states": [
+            "AM"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "AZ"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "western-dr-congo-clashes",
+      "name": "Western DR Congo clashes",
+      "start": 2022,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Western_DR_Congo_clashes",
+      "sides": [
+        {
+          "states": [
+            "CD"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2023-afghanistan-iran-clash",
+      "name": "2023 Afghanistan\u2013Iran clash",
+      "start": 2023,
+      "end": 2023,
+      "wikipedia": "https://en.wikipedia.org/wiki/2023_Afghanistan%E2%80%93Iran_clash",
+      "sides": [
+        {
+          "states": [
+            "AF"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "IR"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2023-azerbaijani-offensive-in-nagorno-karabakh",
+      "name": "2023 Azerbaijani offensive in Nagorno-Karabakh",
+      "start": 2023,
+      "end": 2023,
+      "wikipedia": "https://en.wikipedia.org/wiki/2023_Azerbaijani_offensive_in_Nagorno-Karabakh",
+      "sides": []
+    },
+    {
+      "id": "attacks-on-us-bases-during-the-gaza-war",
+      "name": "Attacks on US bases during the Gaza war",
+      "start": 2023,
+      "end": 2024,
+      "wikipedia": "https://en.wikipedia.org/wiki/Attacks_on_US_bases_during_the_Gaza_war",
+      "sides": [
+        {
+          "states": [
+            "US",
+            "GB"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "IR",
+            "SY"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "gaza-war",
+      "name": "Gaza war",
+      "start": 2023,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Gaza_war",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "PS"
+          ],
+          "groups": [
+            "Hamas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "israel-hezbollah-conflict-2023-present",
+      "name": "Israel\u2013Hezbollah conflict",
+      "start": 2023,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Israel%E2%80%93Hezbollah_conflict_(2023%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "LB"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "las-anod-conflict-2023",
+      "name": "Las Anod conflict",
+      "start": 2023,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Las_Anod_conflict_(2023)",
+      "sides": [
+        {
+          "states": [],
+          "groups": [
+            "Somaliland"
+          ]
+        },
+        {
+          "states": [],
+          "groups": [
+            "Khatumo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sudanese-civil-war-2023-present",
+      "name": "Sudanese civil war",
+      "start": 2023,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)",
+      "sides": []
+    },
+    {
+      "id": "wagner-group-rebellion",
+      "name": "Wagner Group rebellion",
+      "start": 2023,
+      "end": 2023,
+      "wikipedia": "https://en.wikipedia.org/wiki/Wagner_Group_rebellion",
+      "sides": [
+        {
+          "states": [
+            "RU"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "war-in-amhara",
+      "name": "War in Amhara",
+      "start": 2023,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/War_in_Amhara",
+      "sides": [
+        {
+          "states": [
+            "ET"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2024-iran-pakistan-border-skirmishes",
+      "name": "2024 Iran\u2013Pakistan border skirmishes",
+      "start": 2024,
+      "end": 2024,
+      "wikipedia": "https://en.wikipedia.org/wiki/2024_Iran%E2%80%93Pakistan_border_skirmishes",
+      "sides": [
+        {
+          "states": [
+            "IR"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "PK"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2024-israeli-invasion-of-lebanon",
+      "name": "2024 Israeli invasion of Lebanon",
+      "start": 2024,
+      "end": 2024,
+      "wikipedia": "https://en.wikipedia.org/wiki/2024_Israeli_invasion_of_Lebanon",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "LB"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2024-syrian-opposition-offensives",
+      "name": "2024 Syrian opposition offensives",
+      "start": 2024,
+      "end": 2024,
+      "wikipedia": "https://en.wikipedia.org/wiki/2024_Syrian_opposition_offensives",
+      "sides": [
+        {
+          "states": [],
+          "groups": [
+            "Syrian opposition"
+          ]
+        },
+        {
+          "states": [
+            "SY",
+            "RU",
+            "IR"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "western-syria-clashes",
+      "name": "Assadist Insurgency in Syria",
+      "start": 2024,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Western_Syria_clashes",
+      "sides": [
+        {
+          "states": [
+            "LB"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ecuadorian-conflict-2024-present",
+      "name": "Ecuadorian conflict",
+      "start": 2024,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Ecuadorian_conflict_(2024%E2%80%93present)",
+      "sides": []
+    },
+    {
+      "id": "hamas-popular-forces-conflict",
+      "name": "Hamas\u2013Popular Forces conflict",
+      "start": 2024,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Hamas%E2%80%93Popular_Forces_conflict",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "PS"
+          ],
+          "groups": [
+            "Hamas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "israeli-invasion-of-syria-2024-present",
+      "name": "Israeli invasion of Syria",
+      "start": 2024,
+      "end": 2026,
+      "wikipedia": "https://en.wikipedia.org/wiki/Israeli_invasion_of_Syria_(2024%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "SY"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "jubaland-crisis",
+      "name": "Jubaland crisis",
+      "start": 2024,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Jubaland_crisis",
+      "sides": [
+        {
+          "states": [],
+          "groups": [
+            "Jubaland"
+          ]
+        },
+        {
+          "states": [
+            "SO"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "kursk-offensive-2024-2025",
+      "name": "Kursk offensive",
+      "start": 2024,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/Kursk_offensive_(2024%E2%80%932025)",
+      "sides": [
+        {
+          "states": [
+            "RU",
+            "KP"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "UA"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2025-afghanistan-pakistan-conflict",
+      "name": "2025 Afghanistan\u2013Pakistan conflict",
+      "start": 2025,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/2025_Afghanistan%E2%80%93Pakistan_conflict",
+      "sides": []
+    },
+    {
+      "id": "2025-cambodian-thai-border-crisis",
+      "name": "2025 Cambodian\u2013Thai border crisis",
+      "start": 2025,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/2025_Cambodian%E2%80%93Thai_border_crisis",
+      "sides": [
+        {
+          "states": [
+            "TH"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "KH"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2025-goma-offensive",
+      "name": "2025 Goma offensive",
+      "start": 2025,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/2025_Goma_offensive",
+      "sides": [
+        {
+          "states": [
+            "RW"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "CD"
+          ],
+          "groups": [
+            "SADC"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2025-india-pakistan-conflict",
+      "name": "2025 India\u2013Pakistan conflict",
+      "start": 2025,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/2025_India%E2%80%93Pakistan_conflict",
+      "sides": [
+        {
+          "states": [
+            "IN"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "PK"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2025-nasir-clashes",
+      "name": "2025 Nasir clashes",
+      "start": 2025,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/2025_Nasir_clashes",
+      "sides": [
+        {
+          "states": [
+            "SS",
+            "UG"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "2025-tripoli-clashes",
+      "name": "2025 Tripoli clashes",
+      "start": 2025,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/2025_Tripoli_clashes",
+      "sides": []
+    },
+    {
+      "id": "jonglei-clashes-2025-present",
+      "name": "Jonglei clashes",
+      "start": 2025,
+      "end": 2026,
+      "wikipedia": "https://en.wikipedia.org/wiki/Jonglei_clashes_(2025-present)",
+      "sides": [
+        {
+          "states": [
+            "SS"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "operation-southern-spear",
+      "name": "Operation Southern Spear",
+      "start": 2025,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Operation_Southern_Spear",
+      "sides": [
+        {
+          "states": [
+            "US"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "VE"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "southern-syria-clashes-july-2025-present",
+      "name": "Southern Syria clashes",
+      "start": 2025,
+      "end": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/Southern_Syria_clashes_(July_2025%E2%80%93present)",
+      "sides": [
+        {
+          "states": [
+            "IL"
+          ],
+          "groups": [
+            "Druze"
+          ]
+        },
+        {
+          "states": [
+            "SY"
+          ],
+          "groups": []
+        }
+      ]
+    },
+    {
+      "id": "twelve-day-war",
+      "name": "Twelve-Day War",
+      "start": 2025,
+      "end": 2025,
+      "wikipedia": "https://en.wikipedia.org/wiki/Twelve-Day_War",
+      "sides": [
+        {
+          "states": [
+            "IL",
+            "US"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "IR"
+          ],
+          "groups": [
+            "Houthis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-afghanistan-pakistan-war",
+      "name": "2026 Afghanistan\u2013Pakistan war",
+      "start": 2026,
+      "end": 2026,
+      "wikipedia": "https://en.wikipedia.org/wiki/2026_Afghanistan%E2%80%93Pakistan_war",
+      "sides": [
+        {
+          "states": [
+            "PK"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "AF"
+          ],
+          "groups": [
+            "Pakistani Taliban"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-iran-war",
+      "name": "2026 Iran war",
+      "start": 2026,
+      "end": 2026,
+      "wikipedia": "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "sides": [
+        {
+          "states": [
+            "IL",
+            "US",
+            "BH",
+            "KW",
+            "OM",
+            "QA",
+            "AE",
+            "JO",
+            "SA",
+            "IQ"
+          ],
+          "groups": [
+            "Akrotiri and Dhekelia"
+          ]
+        },
+        {
+          "states": [
+            "IR"
+          ],
+          "groups": [
+            "Popular Mobilization Forces",
+            "Hezbollah",
+            "Houthis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2026-lebanon-war",
+      "name": "2026 Lebanon war",
+      "start": 2026,
+      "end": 2026,
+      "wikipedia": "https://en.wikipedia.org/wiki/2026_Lebanon_war",
+      "sides": [
+        {
+          "states": [
+            "IL",
+            "LB"
+          ],
+          "groups": []
+        },
+        {
+          "states": [
+            "LB"
+          ],
+          "groups": [
+            "Hezbollah"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -48,6 +48,14 @@ import {
   usesPolicyPanel,
   boardViewForPerson,
   COMPACT_MAX_WIDTH,
+  warActive,
+  opposingPairs,
+  warsInYear,
+  warPartyLine,
+  warMatchesFocus,
+  projectWarPoint,
+  warMapSize,
+  countryAnchors,
 } from "../engine.js";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
@@ -1440,5 +1448,52 @@ assert.equal(immigrationStances[0].kind, "opposed");
 assert.equal(immigrationStances[1].kind, "supported");
 assert.ok(obamaEvents.filter((event) => event.people.includes("same-sex-marriage")).length >= 2);
 assert.ok(vanceEvents.filter((event) => event.people.includes("donald-trump")).length >= 2);
+
+const warsPlot = plots.plots.find((item) => item.id === "wars");
+const warArchive = readJson("../data/wars/conflicts.json");
+const world = readJson("../data/world-countries.json");
+assert.equal(warsPlot.arrangement, "wars");
+assert.equal(warsPlot.year.min, 2003);
+assert.equal(warsPlot.year.max, 2026);
+assert.equal(boardViewForPerson(warsPlot, "timeline"), "web");
+assert.equal(new Set(warArchive.conflicts.map((war) => war.id)).size, warArchive.conflicts.length);
+const mapIsos = new Set(world.features.map((feature) => feature.properties.iso));
+for (const war of warArchive.conflicts) {
+  assert.match(war.wikipedia, /^https:\/\/en\.wikipedia\.org\/wiki\//, war.name);
+  assert.ok(war.start >= 2003, war.name);
+  assert.ok(war.end == null || war.end >= war.start, war.name);
+  for (const side of war.sides) {
+    for (const iso of side.states) assert.ok(warArchive.countries[iso], `${war.name} ${iso}`);
+  }
+}
+const iraq = warArchive.conflicts.find((war) => war.name === "Iraq War");
+const iraqPairs = opposingPairs(iraq);
+assert.ok(iraqPairs.some(([left, right]) => left === "IQ" && right === "US"));
+assert.equal(iraqPairs.some(([left, right]) => [left, right].includes("US") && [left, right].includes("GB")), false);
+assert.equal(warActive(iraq, 2003), true);
+assert.equal(warActive(iraq, 2011), true);
+assert.equal(warActive(iraq, 2012), false);
+const invasion = warArchive.conflicts.find((war) => war.name === "Russian invasion of Ukraine");
+assert.ok(opposingPairs(invasion).some(([left, right]) => left === "RU" && right === "UA"));
+assert.match(invasion.wikipedia, /Russian_invasion_of_Ukraine/);
+const gaza = warArchive.conflicts.find((war) => war.name === "Gaza war");
+assert.ok(opposingPairs(gaza).some(([left, right]) => left === "IL" && right === "PS"));
+assert.match(warPartyLine(iraq, warArchive.countries), /United States/);
+assert.match(warPartyLine(iraq, warArchive.countries), /against/);
+assert.equal(warMatchesFocus(gaza, "country:IL"), true);
+assert.equal(warMatchesFocus(gaza, "iraq-war"), false);
+const year2022 = warsInYear(warArchive.conflicts, 2022);
+assert.ok(year2022.wars.some((war) => war.id === invasion.id));
+assert.ok(year2022.pairs.length > 5 && year2022.pairs.length < 80);
+const frame = warMapSize();
+assert.ok(frame.width / frame.height > 2.3 && frame.width / frame.height < 2.7);
+const origin = projectWarPoint(0, 0);
+assert.ok(origin.x > frame.width * 0.45 && origin.x < frame.width * 0.55);
+const anchors = countryAnchors(world);
+assert.ok(anchors.has("US") && anchors.has("FR") && anchors.has("UA"));
+const moscow = anchors.get("RU");
+assert.ok(moscow.lon > 30 && moscow.lon < 45 && moscow.lat > 50 && moscow.lat < 60);
+assert.ok(mapIsos.has("PS") && mapIsos.has("TW"));
+assert.ok(anchors.has("BH"));
 
 console.log("never-ending internet lore tests passed");

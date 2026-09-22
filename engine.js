@@ -792,6 +792,7 @@ export function usesPolicyPanel(plot) {
 }
 
 export function boardViewForPerson(plot, view) {
+  if (plot?.arrangement === "wars") return "web";
   if (usesPolicyPanel(plot) && view === "person") return "web";
   return view;
 }
@@ -1460,6 +1461,244 @@ export function relationRideAt(layout, x) {
     y: from.y + (to.y - from.y) * t,
     tone: from.tone + (to.tone - from.tone) * t,
   };
+}
+
+export function warActive(war, year) {
+  const value = Number(year);
+  if (!war || !Number.isFinite(value)) return false;
+  if (value < Number(war.start)) return false;
+  if (war.end == null || war.end === "") return true;
+  return value <= Number(war.end);
+}
+
+export function exclusiveWarSides(war) {
+  const counts = new Map();
+  (war?.sides || []).forEach((side) => {
+    (side.states || []).forEach((iso) => counts.set(iso, (counts.get(iso) || 0) + 1));
+  });
+  return (war?.sides || []).map((side) => ({
+    states: (side.states || []).filter((iso) => counts.get(iso) === 1),
+    groups: side.groups || [],
+  }));
+}
+
+export function opposingPairs(war) {
+  const sides = exclusiveWarSides(war).map((side) => side.states);
+  const pairs = [];
+  const seen = new Set();
+  for (let i = 0; i < sides.length; i += 1) {
+    for (let j = i + 1; j < sides.length; j += 1) {
+      sides[i].forEach((left) => {
+        sides[j].forEach((right) => {
+          if (!left || !right || left === right) return;
+          const key = left < right ? `${left}|${right}` : `${right}|${left}`;
+          if (seen.has(key)) return;
+          seen.add(key);
+          pairs.push(left < right ? [left, right] : [right, left]);
+        });
+      });
+    }
+  }
+  return pairs;
+}
+
+export function warsInYear(conflicts, year) {
+  const active = (conflicts || []).filter((war) => warActive(war, year));
+  const pairMap = new Map();
+  const countryIds = new Set();
+  active.forEach((war) => {
+    (war.sides || []).forEach((side) => {
+      (side.states || []).forEach((iso) => countryIds.add(iso));
+    });
+    opposingPairs(war).forEach(([left, right]) => {
+      const key = `${left}|${right}`;
+      if (!pairMap.has(key)) pairMap.set(key, { a: left, b: right, warIds: [] });
+      pairMap.get(key).warIds.push(war.id);
+    });
+  });
+  return {
+    wars: active,
+    pairs: [...pairMap.values()],
+    countries: [...countryIds],
+  };
+}
+
+export function warPartyLine(war, countryNames = {}) {
+  const nameOf = (iso) => countryNames[iso]?.name || iso;
+  const pairs = opposingPairs(war);
+  const sides = exclusiveWarSides(war);
+  const labelSide = (side) => {
+    const parts = [...side.states.map(nameOf), ...(side.groups || []).slice(0, 3)];
+    if (!parts.length) return "";
+    if (parts.length <= 4) return parts.join(", ");
+    return `${parts.slice(0, 3).join(", ")} and ${parts.length - 3} more`;
+  };
+  if (pairs.length) return sides.map(labelSide).filter(Boolean).join(" against ");
+  const states = [...new Set((war.sides || []).flatMap((side) => side.states || []))].map(nameOf);
+  const groups = [...new Set((war.sides || []).flatMap((side) => side.groups || []))].slice(0, 3);
+  if (states.length === 1) {
+    return groups.length ? `Inside ${states[0]} · ${groups.join(", ")}` : `Inside ${states[0]}`;
+  }
+  if (states.length) return groups.length ? `${states.join(", ")} · ${groups.join(", ")}` : states.join(", ");
+  if (groups.length) return groups.join(", ");
+  return "Parties are listed on the Wikipedia article";
+}
+
+export function warMatchesFocus(war, focus) {
+  if (!focus || !war) return false;
+  if (focus.startsWith("country:")) {
+    const iso = focus.slice("country:".length);
+    return (war.sides || []).some((side) => (side.states || []).includes(iso));
+  }
+  return war.id === focus;
+}
+
+const WAR_CAPITALS = {
+  AE: [54.37, 24.47], AF: [69.17, 34.53], AM: [44.51, 40.18], AO: [13.23, -8.84],
+  AU: [149.13, -35.28], AZ: [49.87, 40.41], BD: [90.41, 23.81], BF: [-1.53, 12.37],
+  BH: [50.58, 26.23], BJ: [2.63, 6.5], BW: [25.91, -24.65], BY: [27.57, 53.9],
+  CA: [-75.7, 45.42], CD: [15.31, -4.32], CF: [18.56, 4.36], CG: [15.27, -4.27],
+  CI: [-5.36, 6.83], CM: [11.52, 3.87], CN: [116.41, 39.9], CO: [-74.07, 4.71],
+  DJ: [43.15, 11.59], DK: [12.57, 55.68], DZ: [3.06, 36.75], EG: [31.24, 30.04],
+  EH: [-13.2, 27.15], ER: [38.93, 15.34], ET: [38.75, 9.03], FI: [24.94, 60.17],
+  FR: [2.35, 48.86], GB: [-0.13, 51.51], GE: [44.83, 41.69], GH: [-0.19, 5.56],
+  HT: [-72.33, 18.54], IL: [35.22, 31.77], IN: [77.21, 28.61], IQ: [44.37, 33.31],
+  IR: [51.39, 35.69], IT: [12.5, 41.9], JM: [-76.79, 18.02], JO: [35.93, 31.95],
+  KE: [36.82, -1.29], KG: [74.59, 42.87], KH: [104.93, 11.56], KM: [43.26, -11.7],
+  KP: [125.76, 39.04], KW: [47.98, 29.38], LB: [35.5, 33.89], LK: [79.86, 6.93],
+  LS: [27.48, -29.31], LY: [13.18, 32.89], MA: [-6.85, 34.02], ML: [-8.0, 12.65],
+  MM: [96.16, 16.84], MR: [-15.98, 18.07], MW: [33.77, -13.96], MY: [101.69, 3.14],
+  MZ: [32.57, -25.97], NA: [17.08, -22.56], NE: [2.11, 13.51], NG: [7.49, 9.06],
+  NL: [4.9, 52.37], NZ: [174.78, -41.29], OM: [58.41, 23.59], PH: [120.98, 14.6],
+  PK: [73.05, 33.69], PL: [21.01, 52.23], PS: [35.2, 31.9], PT: [-9.14, 38.72],
+  PY: [-57.58, -25.26], QA: [51.53, 25.29], RS: [20.46, 44.79], RU: [37.62, 55.75],
+  RW: [30.06, -1.94], SA: [46.72, 24.71], SD: [32.56, 15.5], SN: [-17.47, 14.72],
+  SO: [45.32, 2.05], SS: [31.58, 4.85], SY: [36.28, 33.51], TD: [15.04, 12.13],
+  TG: [1.22, 6.14], TH: [100.5, 13.76], TJ: [68.77, 38.56], TL: [125.58, -8.56],
+  TN: [10.18, 36.81], TR: [32.86, 39.93], TZ: [35.75, -6.16], UA: [30.52, 50.45],
+  UG: [32.58, 0.35], US: [-77.04, 38.91], UZ: [69.24, 41.3], VE: [-66.9, 10.48],
+  XK: [21.17, 42.67], YE: [44.21, 15.35], ZA: [28.19, -25.75], ZM: [28.28, -15.39],
+};
+
+export const WAR_MAP = { west: -180, east: 180, south: -58, north: 84 };
+
+export function warMapSize(frame = WAR_MAP) {
+  const width = 960;
+  const height = width * ((frame.north - frame.south) / (frame.east - frame.west));
+  return { width, height };
+}
+
+export function projectWarPoint(lon, lat, frame = WAR_MAP) {
+  const { width, height } = warMapSize(frame);
+  return {
+    x: ((lon - frame.west) / (frame.east - frame.west)) * width,
+    y: ((frame.north - lat) / (frame.north - frame.south)) * height,
+    width,
+    height,
+  };
+}
+
+function ringBounds(ring) {
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+  (ring || []).forEach(([lon, lat]) => {
+    if (lon < minX) minX = lon;
+    if (lat < minY) minY = lat;
+    if (lon > maxX) maxX = lon;
+    if (lat > maxY) maxY = lat;
+  });
+  if (!Number.isFinite(minX)) return null;
+  return { lon: (minX + maxX) / 2, lat: (minY + maxY) / 2, area: Math.abs((maxX - minX) * (maxY - minY)) };
+}
+
+function largestRingCenter(geometry) {
+  const rings = [];
+  if (geometry?.type === "Polygon") rings.push(geometry.coordinates[0]);
+  else if (geometry?.type === "MultiPolygon") geometry.coordinates.forEach((poly) => rings.push(poly[0]));
+  let best = null;
+  rings.forEach((ring) => {
+    const bounds = ringBounds(ring);
+    if (!bounds) return;
+    if (!best || bounds.area > best.area) best = bounds;
+  });
+  return best ? { lon: best.lon, lat: best.lat } : null;
+}
+
+export function countryAnchors(featureCollection) {
+  const anchors = new Map();
+  (featureCollection?.features || []).forEach((feature) => {
+    const iso = feature.properties?.iso;
+    const center = largestRingCenter(feature.geometry);
+    if (!iso || !center) return;
+    anchors.set(iso, { iso, name: feature.properties.name, ...center });
+  });
+  Object.entries(WAR_CAPITALS).forEach(([iso, [lon, lat]]) => {
+    const current = anchors.get(iso);
+    anchors.set(iso, { iso, name: current?.name || iso, lon, lat });
+  });
+  return anchors;
+}
+
+export function geometryOutline(geometry, project) {
+  const commands = [];
+  const pushRing = (ring) => {
+    if (!ring?.length) return;
+    const drawn = ring.map(([lon, lat], index) => {
+      const point = project(lon, lat);
+      return `${index ? "L" : "M"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`;
+    });
+    commands.push(`${drawn.join(" ")} Z`);
+  };
+  if (geometry?.type === "Polygon") pushRing(geometry.coordinates[0]);
+  else if (geometry?.type === "MultiPolygon") geometry.coordinates.forEach((poly) => pushRing(poly[0]));
+  return commands.join(" ");
+}
+
+export function warArcPath(x1, y1, x2, y2) {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.hypot(dx, dy) || 1;
+  let px = -dy / len;
+  let py = dx / len;
+  if (py > 0) {
+    px = -px;
+    py = -py;
+  }
+  const bow = Math.max(18, Math.min(78, len * 0.2));
+  const cx = (x1 + x2) / 2 + px * bow;
+  const cy = (y1 + y2) / 2 + py * bow;
+  return `M ${x1.toFixed(1)} ${y1.toFixed(1)} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+}
+
+export function spreadWarDots(points, minDist = 14) {
+  const placed = points.map((point) => ({ ...point }));
+  for (let pass = 0; pass < 8; pass += 1) {
+    for (let i = 0; i < placed.length; i += 1) {
+      for (let j = i + 1; j < placed.length; j += 1) {
+        const left = placed[i];
+        const right = placed[j];
+        let dx = right.x - left.x;
+        let dy = right.y - left.y;
+        let dist = Math.hypot(dx, dy);
+        if (dist >= minDist) continue;
+        if (dist < 0.01) {
+          dx = 1;
+          dy = 0;
+          dist = 1;
+        }
+        const push = (minDist - dist) / 2;
+        const ux = dx / dist;
+        const uy = dy / dist;
+        left.x -= ux * push;
+        left.y -= uy * push;
+        right.x += ux * push;
+        right.y += uy * push;
+      }
+    }
+  }
+  return placed;
 }
 
 export function youtubeId(url) {

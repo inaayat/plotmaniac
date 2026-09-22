@@ -124,6 +124,33 @@
         "events": "data/jd-vance/events.json",
         "relations": "data/jd-vance/relations.json"
       }
+    },
+    {
+      "id": "wars",
+      "title": "Wars",
+      "kicker": "Map",
+      "lede": "Every war that began in 2003 or later. Drag the year to see which countries are fighting, and who they are fighting.",
+      "searchPlaceholder": "A war, a country…",
+      "sourceNote": "Wars on Plotmaniac · English Wikipedia lists of wars, 2003–present",
+      "centerId": "wars",
+      "friendKinds": [],
+      "enemyKinds": [],
+      "arrangement": "wars",
+      "yearHint": "Drag the year. Every opposing pair is drawn. Open a name for its Wikipedia article.",
+      "year": {
+        "min": 2003,
+        "max": 2026,
+        "initial": 2026,
+        "marks": [2003, 2011, 2014, 2020, 2022, 2026]
+      },
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/BlankMap-World.svg?width=320",
+      "paths": {
+        "people": "data/wars/people.json",
+        "events": "data/wars/events.json",
+        "relations": "data/wars/relations.json",
+        "conflicts": "data/wars/conflicts.json",
+        "world": "data/world-countries.json"
+      }
     }
   ]
 }

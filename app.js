@@ -37,6 +37,16 @@ import {
   boardViewForPerson,
   visibleRelationCountries,
   webLayout,
+  warActive,
+  warsInYear,
+  warPartyLine,
+  warMatchesFocus,
+  warMapSize,
+  projectWarPoint,
+  countryAnchors,
+  geometryOutline,
+  warArcPath,
+  spreadWarDots,
 } from "./engine.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -48,6 +58,10 @@ let events = [];
 let relations = [];
 let countries = [];
 let countryBySlug = new Map();
+let warsData = { countries: {}, conflicts: [] };
+let worldMap = null;
+let warFocus = "";
+let warHover = "";
 let openRegions = new Set();
 let openTopic = "";
 let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
@@ -112,6 +126,10 @@ async function load() {
         return;
       }
       if (state.view === "web") {
+        if (plot?.arrangement === "wars") {
+          paintWars();
+          return;
+        }
         const field = document.querySelector(".relations-stage");
         if (field) paintRelationsField(field);
         const stage = document.querySelector(".web-stage");
@@ -176,7 +194,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   $("plot-select").value = plot.id;
   fillHubSelect();
   document.body.dataset.images = plot.images || "";
-  document.body.dataset.board = plot.disclosure || "";
+  document.body.dataset.board = plot.disclosure || (plot.arrangement === "wars" ? "wars" : "");
   const app = $("app");
   app.replaceChildren();
   const loading = document.createElement("p");
@@ -190,13 +208,28 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       fetchJson(plot.paths.relations),
     ];
     if (plot.paths.countries) requests.push(fetchJson(plot.paths.countries));
-    const [peopleData, eventData, relationData, countryData] = await Promise.all(requests);
+    if (plot.paths.conflicts) requests.push(fetchJson(plot.paths.conflicts));
+    if (plot.paths.world) requests.push(fetchJson(plot.paths.world));
+    const loaded = await Promise.all(requests);
     if (token !== loadToken) return;
+    const [peopleData, eventData, relationData, ...rest] = loaded;
+    let countryData = [];
+    let conflictData = null;
+    let worldData = null;
+    rest.forEach((payload) => {
+      if (payload?.conflicts && payload?.countries) conflictData = payload;
+      else if (payload?.type === "FeatureCollection") worldData = payload;
+      else if (Array.isArray(payload)) countryData = payload;
+    });
     peopleById.clear();
     people = peopleData;
     events = eventData.slice().sort((a, b) => a.date.localeCompare(b.date));
     relations = relationData;
     countries = countryData || [];
+    warsData = conflictData || { countries: {}, conflicts: [] };
+    worldMap = worldData;
+    warFocus = "";
+    warHover = "";
     countryBySlug = new Map(countries.map((country) => [country.slug, country]));
     openRegions = new Set();
     openTopic = "";
@@ -254,13 +287,17 @@ function showPicker({ history = "push" } = {}) {
   relations = [];
   countries = [];
   countryBySlug = new Map();
+  warsData = { countries: {}, conflicts: [] };
+  worldMap = null;
+  warFocus = "";
+  warHover = "";
   openRegions = new Set();
   openTopic = "";
   peopleById.clear();
   state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
   document.title = "Plotmaniac";
   $("plot-title").textContent = "Plotmaniac";
-  $("plot-lede").textContent = "Pick a person or a country. Then read the web of friends and foes, or the timeline under it.";
+  $("plot-lede").textContent = "Pick a person, a country, or the map of wars.";
   $("home-link").textContent = "Field guide";
   $("footer-note").textContent = "Plotmaniac";
   $("credit-list").replaceChildren();
@@ -438,7 +475,8 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   if (hubSelect && document.activeElement === hubSelect) hubSelect.blur();
   const app = $("app");
   app.replaceChildren();
-  if (state.view === "timeline") app.appendChild(renderTimeline());
+  if (plot?.arrangement === "wars") app.appendChild(renderWars());
+  else if (state.view === "timeline") app.appendChild(renderTimeline());
   else if (state.view === "person") app.appendChild(renderPerson());
   else if (state.view === "relation" && plot?.disclosure === "regions") app.appendChild(renderRelationPage());
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
@@ -1443,8 +1481,13 @@ function setYear(year) {
   document.querySelectorAll(".year-marks button").forEach((button) => {
     button.classList.toggle("is-active", Number(button.dataset.year) === state.year);
   });
-  const stage = document.querySelector(".web-stage");
-  if (stage) paintWeb(stage, { animate: false });
+  if (plot?.arrangement === "wars") {
+    warHover = "";
+    paintWars();
+  } else {
+    const stage = document.querySelector(".web-stage");
+    if (stage) paintWeb(stage, { animate: false });
+  }
   writeUrl(true);
 }
 
@@ -2308,9 +2351,262 @@ function featuredPerson(event, focusId) {
   return peopleById.get(preferred) || { name: "?", id: preferred || "unknown" };
 }
 
+function renderWars() {
+  const section = document.createElement("section");
+  section.className = "wars-board";
+  section.appendChild(renderYearBar());
+  const stage = document.createElement("div");
+  stage.className = "wars-stage";
+  const mapWrap = document.createElement("div");
+  mapWrap.className = "wars-map-wrap";
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.classList.add("wars-map");
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "World map of countries at war in the selected year");
+  mapWrap.appendChild(svg);
+  const list = document.createElement("div");
+  list.className = "wars-list";
+  list.id = "wars-list";
+  stage.append(mapWrap, list);
+  section.appendChild(stage);
+  requestAnimationFrame(() => paintWars());
+  return section;
+}
+
+function warSpan(war) {
+  if (war.end == null || war.end === "") return `${war.start}–now`;
+  if (Number(war.end) === Number(war.start)) return String(war.start);
+  return `${war.start}–${war.end}`;
+}
+
+function paintWars() {
+  const svg = document.querySelector(".wars-map");
+  const list = document.getElementById("wars-list");
+  if (!svg || !list || !worldMap) return;
+  const size = warMapSize();
+  svg.setAttribute("viewBox", `0 0 ${size.width.toFixed(1)} ${size.height.toFixed(1)}`);
+  svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+  if (!svg.dataset.lands) {
+    const lands = document.createElementNS(SVG_NS, "g");
+    lands.classList.add("lands");
+    worldMap.features.forEach((feature) => {
+      const iso = feature.properties?.iso;
+      const outline = geometryOutline(feature.geometry, (lon, lat) => projectWarPoint(lon, lat));
+      if (!iso || !outline) return;
+      const path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute("d", outline);
+      path.classList.add("land");
+      path.dataset.iso = iso;
+      const title = document.createElementNS(SVG_NS, "title");
+      title.textContent = feature.properties.name || iso;
+      path.appendChild(title);
+      lands.appendChild(path);
+    });
+    svg.appendChild(lands);
+    svg.dataset.lands = "1";
+  }
+  const snapshot = warsInYear(warsData.conflicts, state.year);
+  if (warFocus && !snapshot.wars.some((war) => warMatchesFocus(war, warFocus))) warFocus = "";
+  const counts = document.getElementById("year-counts");
+  if (counts) {
+    const warsLabel = snapshot.wars.length === 1 ? "war" : "wars";
+    const pairsLabel = snapshot.pairs.length === 1 ? "pair" : "pairs";
+    counts.textContent = `${snapshot.wars.length} ${warsLabel} · ${snapshot.pairs.length} ${pairsLabel}`;
+  }
+  const fighting = new Set(snapshot.countries);
+  svg.querySelectorAll(".land").forEach((path) => {
+    path.classList.toggle("is-fighting", fighting.has(path.dataset.iso));
+  });
+  svg.querySelectorAll(".war-arc, .war-dot").forEach((node) => node.remove());
+  const anchors = countryAnchors(worldMap);
+  const dots = spreadWarDots(snapshot.countries.map((iso) => {
+    const anchor = anchors.get(iso);
+    if (!anchor) return null;
+    const point = projectWarPoint(anchor.lon, anchor.lat);
+    const warIds = snapshot.wars
+      .filter((war) => (war.sides || []).some((side) => (side.states || []).includes(iso)))
+      .map((war) => war.id);
+    return {
+      iso,
+      x: point.x,
+      y: point.y,
+      name: warsData.countries[iso]?.name || anchor.name,
+      warIds,
+    };
+  }).filter(Boolean));
+  const byIso = new Map(dots.map((dot) => [dot.iso, dot]));
+  const focus = warHover || warFocus;
+  snapshot.pairs.forEach((pair) => {
+    const from = byIso.get(pair.a);
+    const to = byIso.get(pair.b);
+    if (!from || !to) return;
+    const path = document.createElementNS(SVG_NS, "path");
+    path.setAttribute("d", warArcPath(from.x, from.y, to.x, to.y));
+    path.classList.add("war-arc");
+    path.dataset.wars = pair.warIds.join(" ");
+    const names = pair.warIds
+      .map((id) => snapshot.wars.find((war) => war.id === id)?.name)
+      .filter(Boolean);
+    const title = document.createElementNS(SVG_NS, "title");
+    title.textContent = names.join(", ");
+    path.appendChild(title);
+    path.addEventListener("mouseenter", () => {
+      warHover = pair.warIds[0] || "";
+      applyWarFocus();
+    });
+    path.addEventListener("mouseleave", () => {
+      warHover = "";
+      applyWarFocus();
+    });
+    path.addEventListener("click", () => {
+      const next = pair.warIds[0] || "";
+      warFocus = warFocus === next ? "" : next;
+      applyWarFocus();
+    });
+    svg.appendChild(path);
+  });
+  dots.forEach((dot) => {
+    const mark = document.createElementNS(SVG_NS, "circle");
+    mark.classList.add("war-dot");
+    mark.setAttribute("cx", dot.x.toFixed(1));
+    mark.setAttribute("cy", dot.y.toFixed(1));
+    mark.setAttribute("r", "4.5");
+    mark.dataset.iso = dot.iso;
+    mark.dataset.wars = dot.warIds.join(" ");
+    const title = document.createElementNS(SVG_NS, "title");
+    title.textContent = dot.name;
+    mark.appendChild(title);
+    mark.addEventListener("mouseenter", () => {
+      warHover = `country:${dot.iso}`;
+      applyWarFocus();
+    });
+    mark.addEventListener("mouseleave", () => {
+      warHover = "";
+      applyWarFocus();
+    });
+    mark.addEventListener("click", () => {
+      const next = `country:${dot.iso}`;
+      warFocus = warFocus === next ? "" : next;
+      applyWarFocus();
+    });
+    svg.appendChild(mark);
+  });
+  const header = document.createElement("div");
+  header.className = "wars-list-head";
+  const kicker = document.createElement("p");
+  kicker.className = "wars-kicker";
+  kicker.textContent = "Wars active this year";
+  const sources = document.createElement("p");
+  sources.className = "wars-sources";
+  const first = document.createElement("a");
+  first.href = "https://en.wikipedia.org/wiki/List_of_wars:_2003%E2%80%932019";
+  first.target = "_blank";
+  first.rel = "noreferrer";
+  first.textContent = "List of wars: 2003–2019";
+  const second = document.createElement("a");
+  second.href = "https://en.wikipedia.org/wiki/List_of_wars:_2020%E2%80%93present";
+  second.target = "_blank";
+  second.rel = "noreferrer";
+  second.textContent = "List of wars: 2020–present";
+  sources.append(first, document.createTextNode(" · "), second);
+  header.append(kicker, sources);
+  const stack = document.createElement("div");
+  stack.className = "wars-cards";
+  const ordered = snapshot.wars.slice().sort((a, b) => a.name.localeCompare(b.name, "en"));
+  if (!ordered.length) {
+    const empty = document.createElement("p");
+    empty.className = "wars-empty";
+    empty.textContent = "No war from these lists was active in this year.";
+    stack.appendChild(empty);
+  }
+  ordered.forEach((war) => {
+    const card = document.createElement("article");
+    card.className = "war-card";
+    card.dataset.war = war.id;
+    card.tabIndex = 0;
+    const title = document.createElement("a");
+    title.href = war.wikipedia;
+    title.target = "_blank";
+    title.rel = "noreferrer";
+    title.textContent = war.name;
+    const years = document.createElement("p");
+    years.className = "war-years";
+    years.textContent = warSpan(war);
+    const parties = document.createElement("p");
+    parties.className = "war-parties";
+    parties.textContent = warPartyLine(war, warsData.countries);
+    card.append(title, years, parties);
+    const focusCard = () => {
+      warHover = war.id;
+      applyWarFocus();
+    };
+    card.addEventListener("mouseenter", focusCard);
+    card.addEventListener("focusin", focusCard);
+    card.addEventListener("mouseleave", () => {
+      warHover = "";
+      applyWarFocus();
+    });
+    card.addEventListener("focusout", () => {
+      warHover = "";
+      applyWarFocus();
+    });
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a")) return;
+      warFocus = warFocus === war.id ? "" : war.id;
+      applyWarFocus();
+    });
+    stack.appendChild(card);
+  });
+  list.replaceChildren(header, stack);
+  applyWarFocus();
+}
+
+function applyWarFocus() {
+  const svg = document.querySelector(".wars-map");
+  const focus = warHover || warFocus;
+  if (svg) svg.classList.toggle("is-focused", Boolean(focus));
+  const wars = (warsData.conflicts || []).filter((war) => warActive(war, state.year));
+  const litWar = (id) => warMatchesFocus(wars.find((war) => war.id === id), focus);
+  svg?.querySelectorAll(".war-arc").forEach((path) => {
+    const ids = (path.dataset.wars || "").split(" ").filter(Boolean);
+    path.classList.toggle("is-lit", Boolean(focus) && ids.some((id) => litWar(id)));
+  });
+  svg?.querySelectorAll(".war-dot").forEach((dot) => {
+    const ids = (dot.dataset.wars || "").split(" ").filter(Boolean);
+    const countryHit = focus === `country:${dot.dataset.iso}`;
+    dot.classList.toggle("is-lit", Boolean(focus) && (countryHit || ids.some((id) => litWar(id))));
+  });
+  svg?.querySelectorAll(".land").forEach((path) => {
+    const countryHit = focus === `country:${path.dataset.iso}`;
+    const involved = wars.some((war) => warMatchesFocus(war, focus) && (war.sides || []).some((side) => (side.states || []).includes(path.dataset.iso)));
+    path.classList.toggle("is-lit", Boolean(focus) && (countryHit || involved));
+  });
+  document.querySelectorAll(".war-card").forEach((card) => {
+    const war = wars.find((item) => item.id === card.dataset.war);
+    card.classList.toggle("is-lit", Boolean(focus) && warMatchesFocus(war, focus));
+  });
+}
+
 function renderCredits() {
   const list = $("credit-list");
   list.replaceChildren();
+  if (plot?.arrangement === "wars") {
+    const item = document.createElement("li");
+    item.append(
+      document.createTextNode("Coastlines are Natural Earth, public domain. War rows follow "),
+    );
+    const first = document.createElement("a");
+    first.href = "https://en.wikipedia.org/wiki/List_of_wars:_2003%E2%80%932019";
+    first.textContent = "List of wars: 2003–2019";
+    const second = document.createElement("a");
+    second.href = "https://en.wikipedia.org/wiki/List_of_wars:_2020%E2%80%93present";
+    second.textContent = "List of wars: 2020–present";
+    item.append(first, document.createTextNode(" and "), second, document.createTextNode("."));
+    list.appendChild(item);
+    $("footer-note").textContent = plot.sourceNote || `${plot.title} on Plotmaniac`;
+    $("credits").hidden = false;
+    return;
+  }
   if (plot?.images === "flags") {
     const item = document.createElement("li");
     item.append(
