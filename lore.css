@@ -426,8 +426,10 @@ body[data-view="web"] .views button {
 body[data-view="web"] .app {
   flex: 1;
   min-height: 0;
-  width: min(1400px, 100%);
-  padding: 0 10px 6px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 6px;
   display: flex;
   flex-direction: column;
 }
@@ -1091,9 +1093,14 @@ body[data-board="regions"][data-view="web"] #footer-note {
 
 .relation-ride-head {
   display: flex;
-  align-items: flex-end;
-  gap: 16px;
-  padding: 4px 18px 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 2px 18px 6px;
+}
+
+.relation-ride-head .back {
+  margin: 0;
 }
 
 .relation-ride-head h2 {
@@ -1680,6 +1687,13 @@ body[data-view="relation"] .views button {
   margin: 8px auto 0;
 }
 
+.focus.relation-focus,
+.focus.lane-page {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
 .lane-page {
   width: 100%;
   max-width: none;
@@ -1692,7 +1706,7 @@ body[data-view="relation"] .views button {
 
 .lane-page .back {
   align-self: flex-start;
-  margin: 8px 18px 0;
+  margin: 0 18px 4px;
 }
 
 .lane-page .focus-head,
@@ -1718,10 +1732,28 @@ body[data-view="relation"] .views button {
   margin-top: 6px;
 }
 
-.back {
-  color: var(--gold);
-  letter-spacing: 0.08em;
-  margin-bottom: 22px;
+button.back,
+.drawer-close {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  min-height: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+button.back {
+  margin: 0 0 8px;
+}
+
+button.back:hover,
+.drawer-close:hover {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
 }
 
 .focus-head,
@@ -2400,6 +2432,16 @@ body[data-view="timeline"] .views button {
   padding: 4px 12px;
 }
 
+body[data-view="relation"] .focus,
+body[data-view="relation"] .relation-ride,
+body[data-view="relation"] .relation-ride-stage,
+body[data-view="relation"] .relation-ride-scroll,
+body[data-view="timeline"] .lane-view,
+body[data-view="timeline"] .lane-scroll {
+  width: 100%;
+  max-width: none;
+}
+
 body[data-view="person"] .app,
 body[data-view="relation"] .app,
 body[data-view="timeline"] .app {
@@ -2769,13 +2811,13 @@ body[data-view="timeline"] #footer-note {
     backdrop-filter: blur(10px);
   }
 
-  body[data-view="person"] .back {
-    position: sticky;
-    top: var(--safe-top);
-    z-index: 3;
-    margin: 0;
-    padding: 8px 12px;
-    background: rgba(12, 11, 9, 0.94);
+  body[data-view="person"] .back,
+  body[data-view="relation"] .back {
+    position: static;
+    margin: 0 0 4px;
+    padding: 0;
+    min-height: 0;
+    background: transparent;
   }
 
   body[data-view="person"] .focus-head {
