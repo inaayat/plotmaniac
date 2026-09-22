@@ -708,5 +708,65 @@
         "type": "legal"
       }
     ]
+  },
+  {
+    "id": "oliver-tree-first-guest",
+    "date": "2019-07-12",
+    "title": "Oliver Tree's first H3 Podcast appearance",
+    "summary": "Oliver Tree joins H3 Podcast #125, the first of several studio visits. Their on-camera hostility becomes a long-running bit around a real off-camera friendship.",
+    "era": "friends-of-the-show",
+    "people": ["ethan-klein", "oliver-tree"],
+    "links": [
+      {
+        "label": "Watch H3 Podcast #125",
+        "url": "https://www.youtube.com/watch?v=LWRqCA1ir9k",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "hutch-hasan-doxxing-appearance",
+    "date": "2025-09-05",
+    "title": "Hutch joins Ethan to discuss a Hasan doxxing controversy",
+    "summary": "The early Call of Duty YouTuber sits down with Ethan about accusations that Hasan and others had doxxed creators tied to Progressive Victory, becoming an on-air ally in the feud.",
+    "era": "hasan-feud",
+    "people": ["ethan-klein", "hutch", "hasan-piker"],
+    "links": [
+      {
+        "label": "Watch the episode",
+        "url": "https://www.youtube.com/watch?v=jKzuVq1Ky8I",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "harley-after-dark-host",
+    "date": "2026-01-26",
+    "title": "Harley Morenstein debuts as an H3 After Dark host",
+    "summary": "Epic Meal Time's Harley Morenstein co-hosts the relaunched H3 After Dark. Ethan had recruited him for the aftershow, turning a longtime guest into regular crew.",
+    "era": "friends-of-the-show",
+    "people": ["ethan-klein", "harley-morenstein"],
+    "links": [
+      {
+        "label": "Watch H3 After Dark #1",
+        "url": "https://www.youtube.com/watch?v=ejoJZr7WjuU",
+        "type": "video"
+      }
+    ]
+  },
+  {
+    "id": "nicol-rich-studio-visit",
+    "date": "2026-09-16",
+    "title": "Nicol Concilio and Rich Lux share an H3 studio episode",
+    "summary": "Nicol Concilio asked to come in and talk with Rich Lux, so H3 brought both beauty-community regulars onto H3 Show #307. The episode keeps the makeup-world friends inside the show's orbit.",
+    "era": "friends-of-the-show",
+    "people": ["ethan-klein", "nicol-concilio", "rich-lux"],
+    "links": [
+      {
+        "label": "Watch H3 Show #307",
+        "url": "https://www.youtube.com/watch?v=m61buG3OWd8",
+        "type": "video"
+      }
+    ]
   }
 ]

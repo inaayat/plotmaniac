@@ -420,5 +420,91 @@
       "license": "CC BY 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
     }
+  },
+  {
+    "id": "rich-lux",
+    "name": "Rich Lux",
+    "role": "Beauty commentator and recurring H3 studio guest",
+    "tags": [
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@RichLux713"
+      }
+    ]
+  },
+  {
+    "id": "nicol-concilio",
+    "name": "Nicol Concilio",
+    "role": "Makeup artist and friend of the show from the beauty community",
+    "tags": [
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@nicolconcilio"
+      }
+    ]
+  },
+  {
+    "id": "hutch",
+    "name": "Hutch",
+    "role": "Early Call of Duty YouTuber turned political commentator who has defended Ethan on and off the show",
+    "tags": [
+      "ally",
+      "recent"
+    ],
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@hutch"
+      }
+    ]
+  },
+  {
+    "id": "harley-morenstein",
+    "name": "Harley Morenstein",
+    "role": "Epic Meal Time creator and H3 After Dark co-host",
+    "tags": [
+      "crew",
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Harley_Morenstein"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Harley%20Morenstein%20by%20Gage%20Skidmore%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Harley_Morenstein_by_Gage_Skidmore_(cropped).jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "oliver-tree",
+    "name": "Oliver Tree",
+    "role": "Musician and longtime H3 guest whose on-air feud with Ethan was a running bit",
+    "tags": [
+      "ally"
+    ],
+    "links": [
+      {
+        "label": "Profile",
+        "url": "https://en.wikipedia.org/wiki/Oliver_Tree"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Oliver%20Tree%20%2850118164757%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Oliver_Tree_(50118164757)_(cropped).jpg",
+      "author": "Bruce from Sydney, Australia",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
   }
 ]
