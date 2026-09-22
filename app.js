@@ -1696,6 +1696,7 @@ function paintWeb(stage, { animate = true } = {}) {
     topics: plot.topics,
     topicId: openTopic,
     includeOrbit: Boolean(plot.includeOrbit),
+    minBeats: plot.minBeats,
     hubIds: plotHubs(plot).map((hub) => hub.centerId),
     hubs: plotHubs(plot),
   });

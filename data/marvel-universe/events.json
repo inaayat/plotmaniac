@@ -1,0 +1,562 @@
+[
+  {
+    "id": "eyes-of-wakanda-history",
+    "date": "1941-01-01",
+    "title": "Eyes of Wakanda opens the historical record",
+    "summary": "Wakandan warriors protect vibranium across earlier eras, establishing Wakanda as a hidden power whose history reaches into the modern MCU.",
+    "era": "origins",
+    "people": ["tchalla", "shuri", "okoye", "nakia"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "captain-america-first-avenger",
+    "date": "1943-01-01",
+    "title": "Steve Rogers becomes Captain America",
+    "summary": "Steve Rogers receives the super-soldier serum, fights HYDRA with Peggy Carter and Bucky Barnes, and disappears while saving the world.",
+    "era": "origins",
+    "people": ["steve-rogers", "peggy-carter", "bucky-barnes", "nick-fury"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Captain America: The First Avenger", "url": "https://en.wikipedia.org/wiki/Captain_America:_The_First_Avenger", "type": "reference" }]
+  },
+  {
+    "id": "agent-carter",
+    "date": "1946-01-01",
+    "title": "Peggy Carter builds the SSR",
+    "summary": "After the war, Peggy Carter works through the SSR and the early intelligence networks that eventually lead toward S.H.I.E.L.D.",
+    "era": "origins",
+    "people": ["peggy-carter", "nick-fury"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Agent Carter", "url": "https://en.wikipedia.org/wiki/Agent_Carter_(TV_series)", "type": "reference" }]
+  },
+  {
+    "id": "captain-marvel",
+    "date": "1995-01-01",
+    "title": "Carol Danvers returns to Earth",
+    "summary": "Carol Danvers discovers the truth about the Kree–Skrull conflict, becomes Captain Marvel, and gives Nick Fury the idea for a wider hero initiative.",
+    "era": "origins",
+    "people": ["carol-danvers", "nick-fury", "talos", "monica-rambeau"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Captain Marvel", "url": "https://en.wikipedia.org/wiki/Captain_Marvel_(film)", "type": "reference" }]
+  },
+  {
+    "id": "iron-man",
+    "date": "2008-01-01",
+    "title": "Tony Stark becomes Iron Man",
+    "summary": "Tony Stark builds armor to escape captivity, turns away from weapons dealing, and becomes the first public face of the modern superhero age.",
+    "era": "avengers-initiative",
+    "people": ["tony-stark", "pepper-potts", "james-rhodes", "nick-fury"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Iron Man", "url": "https://en.wikipedia.org/wiki/Iron_Man_(2008_film)", "type": "reference" }]
+  },
+  {
+    "id": "furys-big-week",
+    "date": "2010-01-01",
+    "title": "Fury's Big Week gathers the future Avengers",
+    "summary": "Stark Industries, S.H.I.E.L.D., Asgard, and gamma science collide as Thor arrives on Earth and Bruce Banner remains a fugitive.",
+    "era": "avengers-initiative",
+    "people": ["tony-stark", "thor", "bruce-banner", "natasha-romanoff", "clint-barton", "nick-fury", "james-rhodes"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "avengers-assemble",
+    "date": "2012-01-01",
+    "title": "The Avengers form against Loki",
+    "summary": "Nick Fury's initiative finally works: Iron Man, Captain America, Thor, Hulk, Black Widow, and Hawkeye unite to stop Loki's invasion of New York.",
+    "era": "infinity-saga",
+    "people": ["tony-stark", "steve-rogers", "thor", "bruce-banner", "natasha-romanoff", "clint-barton", "nick-fury", "loki-main", "pepper-potts"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "The Avengers", "url": "https://en.wikipedia.org/wiki/The_Avengers_(2012_film)", "type": "reference" }]
+  },
+  {
+    "id": "dark-world-and-iron-man-3",
+    "date": "2013-01-01",
+    "title": "The Infinity Stones enter the open conflict",
+    "summary": "Thor and Jane Foster encounter the Aether while Tony Stark processes the Battle of New York and the Ten Rings story moves toward its hidden power.",
+    "era": "infinity-saga",
+    "people": ["thor", "loki-main", "trevor-slattery", "tony-stark", "pepper-potts"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "winter-soldier",
+    "date": "2014-01-01",
+    "title": "HYDRA falls and the Winter Soldier returns",
+    "summary": "Steve Rogers and Natasha Romanoff expose HYDRA inside S.H.I.E.L.D.; Bucky Barnes survives as the Winter Soldier and begins the road back to himself.",
+    "era": "infinity-saga",
+    "people": ["steve-rogers", "natasha-romanoff", "bucky-barnes", "sam-wilson", "nick-fury", "peggy-carter"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Captain America: The Winter Soldier", "url": "https://en.wikipedia.org/wiki/Captain_America:_The_Winter_Soldier", "type": "reference" }]
+  },
+  {
+    "id": "guardians-assemble",
+    "date": "2014-01-02",
+    "title": "The Guardians of the Galaxy assemble",
+    "summary": "Peter Quill, Gamora, Rocket, Groot, and Drax become an unlikely team around the Power Stone and the threat of Thanos.",
+    "era": "infinity-saga",
+    "people": ["peter-quill", "gamora", "rocket", "groot", "drax", "nebula", "thanos"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Guardians of the Galaxy", "url": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_(film)", "type": "reference" }]
+  },
+  {
+    "id": "guardians-vol-two",
+    "date": "2014-01-03",
+    "title": "The Guardians survive Ego",
+    "summary": "Mantis joins the Guardians, Quill meets his Celestial father Ego, and the team's found family is tested by grief, betrayal, and Yondu's sacrifice.",
+    "era": "infinity-saga",
+    "people": ["peter-quill", "gamora", "rocket", "groot", "drax", "mantis", "nebula", "yondu"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Guardians of the Galaxy Vol. 2", "url": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_Vol._2", "type": "reference" }]
+  },
+  {
+    "id": "defenders-begin",
+    "date": "2015-01-01",
+    "title": "New York's street-level heroes emerge",
+    "summary": "Daredevil and Jessica Jones establish the Defenders corner of the shared world, where law, trauma, and organized crime matter as much as cosmic threats.",
+    "era": "street-level",
+    "people": ["matt-murdock", "karen-page", "wilson-fisk", "jessica-jones", "frank-castle"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "age-of-ultron",
+    "date": "2015-02-01",
+    "title": "The Avengers defeat Ultron",
+    "summary": "The Avengers' attempt to automate global defense creates Ultron, while Wanda and Vision enter the story and the team saves Sokovia at enormous cost.",
+    "era": "infinity-saga",
+    "people": ["tony-stark", "steve-rogers", "thor", "bruce-banner", "natasha-romanoff", "clint-barton", "james-rhodes", "wanda-maximoff", "vision"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Avengers: Age of Ultron", "url": "https://en.wikipedia.org/wiki/Avengers:_Age_of_Ultron", "type": "reference" }]
+  },
+  {
+    "id": "ant-man",
+    "date": "2015-03-01",
+    "title": "Scott Lang becomes Ant-Man",
+    "summary": "Scott Lang inherits Hank Pym's shrinking technology, partners with Hope van Dyne, and opens the Quantum Realm thread that later saves the Avengers.",
+    "era": "infinity-saga",
+    "people": ["scott-lang", "hope-van-dyne", "hank-pym", "janet-van-dyne", "cassie-lang"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Ant-Man", "url": "https://en.wikipedia.org/wiki/Ant-Man_(film)", "type": "reference" }]
+  },
+  {
+    "id": "defenders-unite",
+    "date": "2016-01-01",
+    "title": "The Defenders unite against the Hand",
+    "summary": "Daredevil, Jessica Jones, Luke Cage, and Iron Fist briefly combine, pulling New York's separate vigilante stories into one MCU street-level network.",
+    "era": "street-level",
+    "people": ["matt-murdock", "jessica-jones", "luke-cage", "karen-page"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "The Defenders", "url": "https://en.wikipedia.org/wiki/The_Defenders_(miniseries)", "type": "reference" }]
+  },
+  {
+    "id": "civil-war",
+    "date": "2016-02-01",
+    "title": "The Avengers fracture in Civil War",
+    "summary": "The Sokovia Accords and Bucky's past split Steve Rogers from Tony Stark; T'Challa, Spider-Man, Black Panther, and Black Widow are pulled into the conflict.",
+    "era": "infinity-saga",
+    "people": ["tony-stark", "steve-rogers", "bucky-barnes", "sam-wilson", "natasha-romanoff", "james-rhodes", "tchalla", "peter-parker-mcu", "clint-barton"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Captain America: Civil War", "url": "https://en.wikipedia.org/wiki/Captain_America:_Civil_War", "type": "reference" }]
+  },
+  {
+    "id": "black-widow",
+    "date": "2016-03-01",
+    "title": "Natasha and Yelena dismantle the Red Room",
+    "summary": "Natasha Romanoff reunites with Yelena, Alexei, and Melina to free the surviving Black Widows and end the Red Room's control.",
+    "era": "infinity-saga",
+    "people": ["natasha-romanoff", "yelena-belova", "alexei-shostakov"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Black Widow", "url": "https://en.wikipedia.org/wiki/Black_Widow_(2021_film)", "type": "reference" }]
+  },
+  {
+    "id": "black-panther",
+    "date": "2016-04-01",
+    "title": "Wakanda opens its borders",
+    "summary": "T'Challa defeats Killmonger, chooses outreach over secrecy, and makes Wakanda's vibranium and political choices central to the wider MCU.",
+    "era": "infinity-saga",
+    "people": ["tchalla", "shuri", "okoye", "mbaku", "nakia", "ayo", "everett-ross"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Black Panther", "url": "https://en.wikipedia.org/wiki/Black_Panther_(film)", "type": "reference" }]
+  },
+  {
+    "id": "homecoming",
+    "date": "2016-05-01",
+    "title": "Spider-Man balances school and hero work",
+    "summary": "Peter Parker tries to prove himself to Tony Stark while protecting Queens, with May, MJ, and Ned anchoring his ordinary life.",
+    "era": "infinity-saga",
+    "people": ["peter-parker-mcu", "tony-stark", "may-parker", "mj-mcu", "ned-leeds"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Spider-Man: Homecoming", "url": "https://en.wikipedia.org/wiki/Spider-Man:_Homecoming", "type": "reference" }]
+  },
+  {
+    "id": "doctor-strange",
+    "date": "2016-06-01",
+    "title": "Stephen Strange enters the mystic arts",
+    "summary": "A car accident redirects Stephen Strange to Kamar-Taj, where Wong and the Ancient One teach him to defend reality from Dormammu.",
+    "era": "mystic",
+    "people": ["stephen-strange", "wong"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Doctor Strange", "url": "https://en.wikipedia.org/wiki/Doctor_Strange_(2016_film)", "type": "reference" }]
+  },
+  {
+    "id": "punisher-street-war",
+    "date": "2017-01-01",
+    "title": "Daredevil and Punisher collide",
+    "summary": "Frank Castle's lethal war on crime challenges Matt Murdock's code, while Karen Page becomes a bridge between their competing ideas of justice.",
+    "era": "street-level",
+    "people": ["matt-murdock", "frank-castle", "karen-page", "wilson-fisk"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "ragnarok",
+    "date": "2017-02-01",
+    "title": "Asgard falls and New Asgard begins",
+    "summary": "Thor, Loki, Valkyrie, and Bruce Banner survive Hela and Ragnarok, but Asgard's refugees are intercepted by Thanos.",
+    "era": "infinity-saga",
+    "people": ["thor", "loki-main", "valkyrie", "bruce-banner"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Thor: Ragnarok", "url": "https://en.wikipedia.org/wiki/Thor:_Ragnarok", "type": "reference" }]
+  },
+  {
+    "id": "ant-man-wasp",
+    "date": "2018-01-01",
+    "title": "The Quantum Realm becomes a doorway",
+    "summary": "Scott, Hope, Hank, and Janet rescue Janet from the Quantum Realm, just before the Blip interrupts their return.",
+    "era": "infinity-saga",
+    "people": ["scott-lang", "hope-van-dyne", "hank-pym", "janet-van-dyne", "cassie-lang"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Ant-Man and the Wasp", "url": "https://en.wikipedia.org/wiki/Ant-Man_and_the_Wasp", "type": "reference" }]
+  },
+  {
+    "id": "infinity-war",
+    "date": "2018-02-01",
+    "title": "Thanos collects the Infinity Stones",
+    "summary": "Thanos defeats heroes across Earth and space, kills Loki and Gamora, and uses the completed Gauntlet to erase half of all life.",
+    "era": "infinity-saga",
+    "people": ["thanos", "tony-stark", "steve-rogers", "thor", "bruce-banner", "wanda-maximoff", "vision", "stephen-strange", "peter-parker-mcu", "peter-quill", "gamora", "nebula", "rocket", "groot", "drax", "mantis", "loki-main", "carol-danvers"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Avengers: Infinity War", "url": "https://en.wikipedia.org/wiki/Avengers:_Infinity_War", "type": "reference" }]
+  },
+  {
+    "id": "endgame",
+    "date": "2023-01-01",
+    "title": "The Avengers undo the Blip",
+    "summary": "The surviving Avengers use the Quantum Realm for a time heist, Hulk restores the vanished, and Tony Stark sacrifices himself to defeat Thanos.",
+    "era": "infinity-saga",
+    "people": ["tony-stark", "steve-rogers", "thor", "bruce-banner", "natasha-romanoff", "clint-barton", "scott-lang", "nebula", "rocket", "carol-danvers", "sam-wilson", "bucky-barnes", "peter-parker-mcu", "pepper-potts", "thanos"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Avengers: Endgame", "url": "https://en.wikipedia.org/wiki/Avengers:_Endgame", "type": "reference" }]
+  },
+  {
+    "id": "loki-season-one",
+    "date": "2023-02-01",
+    "title": "The TVA captures a branching Loki",
+    "summary": "The 2012 Loki variant meets Mobius and Sylvie, learns the TVA is built on a lie, and watches Sylvie kill He Who Remains to release branching timelines.",
+    "era": "multiverse",
+    "people": ["loki-tva", "sylvie", "mobius", "hunter-b15", "he-who-remains"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Loki", "url": "https://en.wikipedia.org/wiki/Loki_(TV_series)", "type": "reference" }]
+  },
+  {
+    "id": "wandavision",
+    "date": "2023-03-01",
+    "title": "Wanda creates and breaks Westview",
+    "summary": "Wanda Maximoff's grief reshapes a town, Vision returns in two forms, and Billy's magical family thread begins before the Hex collapses.",
+    "era": "mystic",
+    "people": ["wanda-maximoff", "vision", "billy-maximoff", "agatha-harkness", "monica-rambeau"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "WandaVision", "url": "https://en.wikipedia.org/wiki/WandaVision", "type": "reference" }]
+  },
+  {
+    "id": "shang-chi",
+    "date": "2024-01-01",
+    "title": "Shang-Chi takes the Ten Rings",
+    "summary": "Shang-Chi and Katy return to Ta Lo, defeat Wenwu's obsession, and leave Xialing in charge of the Ten Rings.",
+    "era": "post-endgame",
+    "people": ["shang-chi", "katy-chen", "xu-wenwu", "xu-xialing", "trevor-slattery"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Shang-Chi and the Legend of the Ten Rings", "url": "https://en.wikipedia.org/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings", "type": "reference" }]
+  },
+  {
+    "id": "falcon-winter-soldier",
+    "date": "2024-02-01",
+    "title": "Sam Wilson accepts the shield",
+    "summary": "Sam becomes Captain America, Bucky confronts his past, and their partnership faces a world of flagsmashers, governments, and the Power Broker.",
+    "era": "post-endgame",
+    "people": ["sam-wilson", "bucky-barnes", "yelena-belova", "valentina-fontaine", "tchalla", "shuri"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "The Falcon and the Winter Soldier", "url": "https://en.wikipedia.org/wiki/The_Falcon_and_the_Winter_Soldier", "type": "reference" }]
+  },
+  {
+    "id": "far-from-home",
+    "date": "2024-03-01",
+    "title": "Peter Parker loses his mentor",
+    "summary": "Peter and his classmates travel abroad, defeat Mysterio, and learn that the world now knows Spider-Man's identity while Talos impersonates Nick Fury.",
+    "era": "post-endgame",
+    "people": ["peter-parker-mcu", "mj-mcu", "ned-leeds", "nick-fury", "talos"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Spider-Man: Far From Home", "url": "https://en.wikipedia.org/wiki/Spider-Man:_Far_From_Home", "type": "reference" }]
+  },
+  {
+    "id": "eternals",
+    "date": "2024-04-01",
+    "title": "The Eternals stop the Emergence",
+    "summary": "Sersi, Thena, and Phastos turn against the Celestial plan, using the Uni-Mind to save Earth while their family splits across the cosmos.",
+    "era": "post-endgame",
+    "people": ["sersi", "thena", "phastos"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Eternals", "url": "https://en.wikipedia.org/wiki/Eternals_(film)", "type": "reference" }]
+  },
+  {
+    "id": "no-way-home",
+    "date": "2024-05-01",
+    "title": "Three Spider-Men share one crisis",
+    "summary": "Strange's spell pulls Peter Parker variants and their villains into the MCU main universe; Peter chooses sacrifice and sends every visitor home.",
+    "era": "multiverse",
+    "people": ["peter-parker-mcu", "peter-parker-raimi", "peter-parker-webb", "stephen-strange", "mj-mcu", "ned-leeds", "may-parker", "norman-osborn-raimi", "otto-octavius-raimi", "curt-connors-webb", "max-dillon-webb", "eddie-brock-venom"],
+    "hubs": ["mcu-main", "raimi", "webb", "venom"],
+    "links": [{ "label": "Spider-Man: No Way Home", "url": "https://en.wikipedia.org/wiki/Spider-Man:_No_Way_Home", "type": "reference" }]
+  },
+  {
+    "id": "multiverse-of-madness",
+    "date": "2024-06-01",
+    "title": "Strange crosses Earth-838",
+    "summary": "Doctor Strange and America Chavez travel between universes, meet the Earth-838 Illuminati, and confront Wanda's multiverse pursuit.",
+    "era": "multiverse",
+    "people": ["stephen-strange", "america-chavez", "wanda-maximoff", "wong", "reed-richards-838", "charles-xavier-838"],
+    "hubs": ["mcu-main", "earth-838"],
+    "links": [{ "label": "Doctor Strange in the Multiverse of Madness", "url": "https://en.wikipedia.org/wiki/Doctor_Strange_in_the_Multiverse_of_Madness", "type": "reference" }]
+  },
+  {
+    "id": "hawkeye",
+    "date": "2024-07-01",
+    "title": "Kate Bishop enters the Hawkeye legacy",
+    "summary": "Clint Barton confronts his Ronin history, Kate Bishop becomes his partner, and Maya Lopez breaks from Fisk's orbit.",
+    "era": "street-level",
+    "people": ["clint-barton", "kate-bishop", "maya-lopez", "wilson-fisk", "yelena-belova"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Hawkeye", "url": "https://en.wikipedia.org/wiki/Hawkeye_(miniseries)", "type": "reference" }]
+  },
+  {
+    "id": "moon-knight",
+    "date": "2025-01-01",
+    "title": "Moon Knight awakens the Egyptian gods",
+    "summary": "Marc Spector and Steven Grant share a body, Layla becomes Scarlet Scarab, and Khonshu's conflict pulls the MCU into an ancient supernatural pantheon.",
+    "era": "supernatural",
+    "people": ["marc-spector", "layla-el-faouly"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Moon Knight", "url": "https://en.wikipedia.org/wiki/Moon_Knight_(TV_series)", "type": "reference" }]
+  },
+  {
+    "id": "wakanda-forever",
+    "date": "2025-02-01",
+    "title": "Shuri inherits the Black Panther mantle",
+    "summary": "Wakanda mourns T'Challa, Shuri becomes Black Panther, and a conflict with Namor ends in a careful alliance between Wakanda and Talokan.",
+    "era": "post-endgame",
+    "people": ["shuri", "okoye", "mbaku", "nakia", "namor", "riri-williams", "everett-ross"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Black Panther: Wakanda Forever", "url": "https://en.wikipedia.org/wiki/Black_Panther:_Wakanda_Forever", "type": "reference" }]
+  },
+  {
+    "id": "echo",
+    "date": "2025-03-01",
+    "title": "Echo breaks from Kingpin",
+    "summary": "Maya Lopez returns home, confronts the legacy Fisk placed on her, and reconnects with Choctaw family and inherited power.",
+    "era": "street-level",
+    "people": ["maya-lopez", "wilson-fisk"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Echo", "url": "https://en.wikipedia.org/wiki/Echo_(miniseries)", "type": "reference" }]
+  },
+  {
+    "id": "she-hulk-and-ms-marvel",
+    "date": "2025-04-01",
+    "title": "The next generation expands",
+    "summary": "Jennifer Walters brings superhuman law into the everyday world while Kamala Khan's story begins the young-hero network around Captain Marvel.",
+    "era": "post-endgame",
+    "people": ["bruce-banner", "kamala-khan", "carol-danvers", "wong"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "thor-love-and-thunder",
+    "date": "2025-05-01",
+    "title": "Jane Foster wields Mjolnir",
+    "summary": "Thor faces Gorr with Jane Foster as the Mighty Thor, while Valkyrie and the Guardians connect Asgard's story to the cosmic frontier.",
+    "era": "post-endgame",
+    "people": ["thor", "valkyrie", "peter-quill", "mantis"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Thor: Love and Thunder", "url": "https://en.wikipedia.org/wiki/Thor:_Love_and_Thunder", "type": "reference" }]
+  },
+  {
+    "id": "ironheart",
+    "date": "2025-06-01",
+    "title": "Ironheart follows Wakanda's technology thread",
+    "summary": "Riri Williams turns invention into a new hero identity, extending the technology and magic tensions introduced through Wakanda Forever.",
+    "era": "post-endgame",
+    "people": ["riri-williams", "shuri"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "werewolf-by-night",
+    "date": "2025-07-01",
+    "title": "The monster underground is revealed",
+    "summary": "Jack Russell and Elsa Bloodstone survive a supernatural hunt, introducing the MCU's monster corner without leaving the shared main universe.",
+    "era": "supernatural",
+    "people": ["jack-russell", "elsa-bloodstone"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Werewolf by Night", "url": "https://en.wikipedia.org/wiki/Werewolf_by_Night_(TV_special)", "type": "reference" }]
+  },
+  {
+    "id": "guardians-holiday",
+    "date": "2025-08-01",
+    "title": "The Guardians return to Earth",
+    "summary": "The Guardians celebrate together, with Mantis and Drax trying to give Peter Quill a holiday that acknowledges his lost Earth life.",
+    "era": "cosmic",
+    "people": ["peter-quill", "mantis", "drax", "nebula", "rocket", "groot"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "The Guardians of the Galaxy Holiday Special", "url": "https://en.wikipedia.org/wiki/The_Guardians_of_the_Galaxy_Holiday_Special", "type": "reference" }]
+  },
+  {
+    "id": "quantumania",
+    "date": "2026-01-01",
+    "title": "The Ant-Man family enters the Quantum Realm",
+    "summary": "Scott, Hope, Janet, Hank, and Cassie meet Kang's larger threat in the Quantum Realm and escape with the multiverse danger still unresolved.",
+    "era": "multiverse",
+    "people": ["scott-lang", "hope-van-dyne", "janet-van-dyne", "hank-pym", "cassie-lang", "he-who-remains"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Ant-Man and the Wasp: Quantumania", "url": "https://en.wikipedia.org/wiki/Ant-Man_and_the_Wasp:_Quantumania", "type": "reference" }]
+  },
+  {
+    "id": "guardians-vol-three",
+    "date": "2026-02-01",
+    "title": "Rocket leads a new Guardians",
+    "summary": "The Guardians save Rocket from the High Evolutionary, close the old chapter, and leave Rocket, Groot, and Adam Warlock leading a new team.",
+    "era": "cosmic",
+    "people": ["rocket", "groot", "peter-quill", "gamora", "nebula", "drax", "mantis", "adam-warlock"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Guardians of the Galaxy Vol. 3", "url": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_Vol._3", "type": "reference" }]
+  },
+  {
+    "id": "secret-invasion",
+    "date": "2026-03-01",
+    "title": "Secret Invasion exposes a Skrull war",
+    "summary": "Nick Fury and Talos confront a radicalized Skrull movement, while G'iah's new powers turn the conflict into a global security crisis.",
+    "era": "cosmic",
+    "people": ["nick-fury", "talos", "carol-danvers"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Secret Invasion", "url": "https://en.wikipedia.org/wiki/Secret_Invasion_(miniseries)", "type": "reference" }]
+  },
+  {
+    "id": "the-marvels",
+    "date": "2026-04-01",
+    "title": "The Marvels link three heroes",
+    "summary": "Carol Danvers, Monica Rambeau, and Kamala Khan swap places through entangled powers, while the crisis leaves Monica in a parallel universe.",
+    "era": "multiverse",
+    "people": ["carol-danvers", "monica-rambeau", "kamala-khan", "beast-fox"],
+    "hubs": ["mcu-main", "fox"],
+    "links": [{ "label": "The Marvels", "url": "https://en.wikipedia.org/wiki/The_Marvels_(film)", "type": "reference" }]
+  },
+  {
+    "id": "loki-season-two",
+    "date": "2026-05-01",
+    "title": "Loki becomes the keeper of timelines",
+    "summary": "Loki, Sylvie, Mobius, and B-15 fight to save branching realities; Loki takes the burden of holding the timelines together.",
+    "era": "multiverse",
+    "people": ["loki-tva", "sylvie", "mobius", "hunter-b15", "he-who-remains"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Loki season 2", "url": "https://en.wikipedia.org/wiki/Loki_(season_2)", "type": "reference" }]
+  },
+  {
+    "id": "deadpool-wolverine",
+    "date": "2026-06-01",
+    "title": "Deadpool crosses the Fox corridor",
+    "summary": "Wade Wilson is pulled into the TVA and the Void, recruits a Wolverine variant, and turns Fox's X-Men and Fantastic Four legacies into a multiverse story.",
+    "era": "multiverse",
+    "people": ["wade-wilson", "logan-wolverine", "charles-xavier-fox", "beast-fox", "johnny-storm-fox", "loki-tva", "hunter-b15"],
+    "hubs": ["fox", "mcu-main"],
+    "links": [{ "label": "Deadpool & Wolverine", "url": "https://en.wikipedia.org/wiki/Deadpool_%26_Wolverine", "type": "reference" }]
+  },
+  {
+    "id": "agatha-all-along",
+    "date": "2026-07-01",
+    "title": "Agatha and Billy walk the Witches' Road",
+    "summary": "Agatha Harkness returns to magic, while Billy Maximoff's search for Tommy continues the Maximoff family story after Westview.",
+    "era": "mystic",
+    "people": ["agatha-harkness", "billy-maximoff", "wanda-maximoff"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Agatha All Along", "url": "https://en.wikipedia.org/wiki/Agatha_All_Along", "type": "reference" }]
+  },
+  {
+    "id": "born-again-season-one",
+    "date": "2026-08-01",
+    "title": "Daredevil: Born Again reopens Hell's Kitchen",
+    "summary": "Matt Murdock, Wilson Fisk, Karen Page, and Frank Castle pull the Defenders legacy into the current MCU street-level power struggle.",
+    "era": "street-level",
+    "people": ["matt-murdock", "wilson-fisk", "karen-page", "frank-castle"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Daredevil: Born Again", "url": "https://en.wikipedia.org/wiki/Daredevil:_Born_Again", "type": "reference" }]
+  },
+  {
+    "id": "brave-new-world",
+    "date": "2026-09-01",
+    "title": "Sam Wilson leads a new Captain America era",
+    "summary": "Sam Wilson faces a geopolitical crisis as Captain America, while Isaiah Bradley and the shadow of government-controlled super-soldiers remain central.",
+    "era": "new-avengers",
+    "people": ["sam-wilson", "bucky-barnes", "everett-ross", "shuri", "valentina-fontaine"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Captain America: Brave New World", "url": "https://en.wikipedia.org/wiki/Captain_America:_Brave_New_World", "type": "reference" }]
+  },
+  {
+    "id": "thunderbolts",
+    "date": "2026-10-01",
+    "title": "The Thunderbolts become a team",
+    "summary": "Yelena, Bucky, U.S. Agent, Red Guardian, Valentina, and Bob Reynolds converge, survive the Void crisis, and become an uneasy New Avengers generation.",
+    "era": "new-avengers",
+    "people": ["yelena-belova", "bucky-barnes", "alexei-shostakov", "valentina-fontaine", "bob-reynolds"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Thunderbolts*", "url": "https://en.wikipedia.org/wiki/Thunderbolts*_(film)", "type": "reference" }]
+  },
+  {
+    "id": "first-steps",
+    "date": "2026-11-01",
+    "title": "The First Steps universe faces Galactus",
+    "summary": "A retro-futuristic Fantastic Four defend their alternate universe from Galactus and his herald Shalla-Bal, distinct from Earth-838 and the MCU main continuity.",
+    "era": "multiverse",
+    "people": ["reed-richards-first", "sue-storm-first", "johnny-storm-first", "ben-grimm-first", "shalla-bal", "galactus-first"],
+    "hubs": ["first-steps"],
+    "links": [{ "label": "The Fantastic Four: First Steps", "url": "https://en.wikipedia.org/wiki/The_Fantastic_Four:_First_Steps", "type": "reference" }]
+  },
+  {
+    "id": "wonder-man",
+    "date": "2026-12-01",
+    "title": "Wonder Man widens the MCU's story",
+    "summary": "The post-Endgame MCU continues beyond the Avengers succession, adding another connected hero and Hollywood-facing corner to the main timeline.",
+    "era": "new-avengers",
+    "people": ["sam-wilson", "shuri", "yelena-belova"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "born-again-season-two",
+    "date": "2026-12-15",
+    "title": "Born Again season 2 continues the street war",
+    "summary": "Daredevil, Kingpin, Karen, and Punisher carry the guide's chronology into its most recent street-level chapter.",
+    "era": "street-level",
+    "people": ["matt-murdock", "wilson-fisk", "karen-page", "frank-castle"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  },
+  {
+    "id": "punisher-one-last-kill",
+    "date": "2026-12-20",
+    "title": "The Punisher: One Last Kill closes the guide",
+    "summary": "Frank Castle's latest story remains a street-level counterpoint to Daredevil's code and the larger MCU's succession of heroes.",
+    "era": "street-level",
+    "people": ["frank-castle", "matt-murdock", "karen-page"],
+    "hubs": ["mcu-main"],
+    "links": [{ "label": "Marvel Studios timeline", "url": "https://www.marvel.com/articles/movies/mcu-timeline-order-disney-plus", "type": "primary" }]
+  }
+]
