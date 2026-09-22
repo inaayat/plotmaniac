@@ -2007,11 +2007,14 @@ body[data-view="timeline"] #footer-note {
   body[data-view="web"] .mast,
   body[data-view="person"] .mast,
   body[data-view="timeline"] .mast {
+    width: 100%;
+    padding: calc(8px + var(--safe-top)) 12px 8px;
+  }
+
+  body[data-view="web"] .mast {
     position: sticky;
     top: 0;
     z-index: 3;
-    width: 100%;
-    padding: calc(8px + var(--safe-top)) 12px 8px;
     background: rgba(12, 11, 9, 0.94);
     backdrop-filter: blur(10px);
   }
@@ -2080,7 +2083,8 @@ body[data-view="timeline"] #footer-note {
   body[data-view="timeline"] {
     height: auto;
     min-height: 100dvh;
-    overflow: auto;
+    overflow-x: clip;
+    overflow-y: auto;
   }
 
   body[data-view="person"] .app,
@@ -2097,11 +2101,10 @@ body[data-view="timeline"] #footer-note {
     display: none;
   }
 
-  body[data-view="person"] .timeline-head,
   body[data-view="timeline"] .timeline-head,
   body[data-view="person"] .focus-head {
     position: sticky;
-    top: 6.25rem;
+    top: var(--safe-top);
     z-index: 2;
     margin: 0;
     padding: 8px 12px 10px;
@@ -2109,8 +2112,17 @@ body[data-view="timeline"] #footer-note {
     backdrop-filter: blur(10px);
   }
 
-  body[data-view="person"] .lane-page .back {
-    margin: 8px 12px 0;
+  body[data-view="person"] .back {
+    position: sticky;
+    top: var(--safe-top);
+    z-index: 3;
+    margin: 0;
+    padding: 8px 12px;
+    background: rgba(12, 11, 9, 0.94);
+  }
+
+  body[data-view="person"] .focus-head {
+    top: calc(var(--safe-top) + 2.75rem);
   }
 
   body[data-view="person"] .site-footer,
