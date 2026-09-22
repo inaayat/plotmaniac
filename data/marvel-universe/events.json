@@ -105,7 +105,7 @@
     "title": "The Guardians survive Ego",
     "summary": "Mantis joins the Guardians, Quill meets his Celestial father Ego, and the team's found family is tested by grief, betrayal, and Yondu's sacrifice.",
     "era": "infinity-saga",
-    "people": ["peter-quill", "gamora", "rocket", "groot", "drax", "mantis", "nebula", "yondu"],
+    "people": ["peter-quill", "gamora", "rocket", "groot", "drax", "mantis", "nebula"],
     "hubs": ["mcu-main"],
     "links": [{ "label": "Guardians of the Galaxy Vol. 2", "url": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_Vol._2", "type": "reference" }]
   },
