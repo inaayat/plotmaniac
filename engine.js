@@ -51,6 +51,29 @@ export function filterEvents(events, filters = {}, peopleById = new Map()) {
   });
 }
 
+/** Prefer a film/series link label when the beat has one; otherwise the beat title. */
+export function eventMediaLabel(event) {
+  const reference = (event?.links || []).find((link) => link.type === "reference" && link.label);
+  if (reference?.label) return String(reference.label).trim();
+  return String(event?.title || "").trim();
+}
+
+/** People who appear on beats that match the current title search and hub focus. */
+export function peopleForTitleSearch(people, events, relations, filters = {}, peopleById = new Map()) {
+  const query = String(filters.query || "").trim();
+  if (!query) return { people, relations };
+  const matched = filterEvents(events, filters, peopleById);
+  if (!matched.length) return { people: [], relations: [] };
+  const ids = new Set();
+  matched.forEach((event) => {
+    (event.people || []).forEach((id) => ids.add(id));
+  });
+  const cast = people.filter((person) => ids.has(person.id));
+  const visible = new Set(cast.map((person) => person.id));
+  const scoped = relations.filter((relation) => visible.has(relation.from) && visible.has(relation.to));
+  return { people: cast, relations: scoped };
+}
+
 export function findPlot(plots, id) {
   const list = plots || [];
   if (!id) return null;
@@ -992,8 +1015,66 @@ function angleDelta(from, to) {
   return delta;
 }
 
-function hubBox(nodeSize) {
+function hubBox(nodeSize, spacious = false) {
+  if (spacious) {
+    const boxW = Math.max(nodeSize + 52, 148);
+    const boxH = Math.max(nodeSize + 76, 156);
+    return { nodeSize, boxW, boxH };
+  }
   return { nodeSize, boxW: nodeSize + 48, boxH: nodeSize + 56 };
+}
+
+function hubNodeBounds(nodes, boxW, boxH) {
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minY = Infinity;
+  let maxY = -Infinity;
+  nodes.forEach((node) => {
+    minX = Math.min(minX, node.x - boxW / 2);
+    maxX = Math.max(maxX, node.x + boxW / 2);
+    minY = Math.min(minY, node.y - boxH / 2);
+    maxY = Math.max(maxY, node.y + boxH / 2);
+  });
+  return { minX, maxX, minY, maxY };
+}
+
+function shiftHubNodesIntoView(nodes, boxW, boxH, width, height, pad) {
+  const bounds = hubNodeBounds(nodes, boxW, boxH);
+  let dx = 0;
+  let dy = 0;
+  if (bounds.minX < pad) dx = pad - bounds.minX;
+  if (bounds.maxX > width - pad) dx = (width - pad) - bounds.maxX;
+  if (bounds.minY < pad) dy = pad - bounds.minY;
+  if (bounds.maxY > height - pad) dy = (height - pad) - bounds.maxY;
+  if (!dx && !dy) return;
+  nodes.forEach((node) => {
+    node.x += dx;
+    node.y += dy;
+  });
+}
+
+/** Spread a hub web across the viewport so labels are not stacked in a narrow column. */
+export function spreadHubFieldToView(nodes, boxW, boxH, targetWidth, targetHeight) {
+  if (!nodes.length) return { width: targetWidth, height: targetHeight };
+  const pad = 36;
+  const goalX = Math.max(boxW, targetWidth - pad * 2);
+  const goalY = Math.max(boxH, targetHeight - pad * 2);
+  const scaleFromCenter = (scaleX, scaleY) => {
+    const bounds = hubNodeBounds(nodes, boxW, boxH);
+    const cx = (bounds.minX + bounds.maxX) / 2;
+    const cy = (bounds.minY + bounds.maxY) / 2;
+    nodes.forEach((node) => {
+      node.x = targetWidth / 2 + (node.x - cx) * scaleX;
+      node.y = targetHeight / 2 + (node.y - cy) * scaleY;
+    });
+  };
+  const bounds = hubNodeBounds(nodes, boxW, boxH);
+  const spanX = Math.max(1, bounds.maxX - bounds.minX);
+  if (spanX < goalX * 0.88) scaleFromCenter(goalX / spanX, 1);
+  const after = hubNodeBounds(nodes, boxW, boxH);
+  const height = Math.max(targetHeight, after.maxY - after.minY + pad * 2);
+  shiftHubNodesIntoView(nodes, boxW, boxH, targetWidth, height, pad);
+  return { width: targetWidth, height };
 }
 
 function stageGrid(cx, cy, width, height, boxW, boxH, pad) {
@@ -1068,8 +1149,8 @@ function sectorIndex(slot, cx, cy, directions) {
   return best;
 }
 
-function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize) {
-  const { boxW, boxH } = hubBox(nodeSize);
+function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize, spacious = false) {
+  const { boxW, boxH } = hubBox(nodeSize, spacious);
   const pad = 10;
   const cx = width / 2;
   const cy = height / 2;
@@ -1111,25 +1192,29 @@ function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize) {
   return { nodeSize, boxW, boxH, width, height, cx, cy, sharedSlots, hubSlots, exclusiveSlots };
 }
 
-function fitHubWeb(width, height, sharedCount, hubIds, groups) {
+function fitHubWeb(width, height, sharedCount, hubIds, groups, spacious = false) {
   const attempt = (nextWidth, nextHeight, minSize) => {
     for (let nodeSize = 56; nodeSize >= minSize; nodeSize -= 2) {
-      const plan = planHubWeb(nextWidth, nextHeight, sharedCount, hubIds, groups, nodeSize);
+      const plan = planHubWeb(nextWidth, nextHeight, sharedCount, hubIds, groups, nodeSize, spacious);
       if (plan) return plan;
     }
     return null;
   };
-  const fitted = attempt(width, height, 28);
+  const minNode = spacious ? 24 : 28;
+  const fitted = attempt(width, height, minNode);
   if (fitted) return fitted;
   const aspect = width / Math.max(height, 1);
-  for (let extra = 120; extra <= 2400; extra += 120) {
+  const maxExtra = spacious ? 3600 : 2400;
+  for (let extra = 120; extra <= maxExtra; extra += 120) {
     const addH = extra;
-    const addW = Math.max(120, Math.round(extra * aspect));
-    const grown = attempt(width + addW, height + addH, 32);
+    const addW = Math.max(120, Math.round(extra * Math.min(aspect, spacious ? 0.55 : 1)));
+    const grown = spacious
+      ? (attempt(width, height + addH, 26) || attempt(width + addW, height + addH, 26))
+      : (attempt(width + addW, height + addH, 32));
     if (grown) return grown;
   }
-  const side = Math.max(width, height, 1200) + 800;
-  return attempt(side, side, 26);
+  const side = Math.max(width, height, 1200) + (spacious ? 1200 : 800);
+  return attempt(side, side, spacious ? 22 : 26);
 }
 
 function placeByBeats(list, slots, counts) {
@@ -1166,7 +1251,8 @@ function hubFieldLayout({
     if (affiliated.length === 1) groups.get(affiliated[0])?.push(person);
     else shared.push(person);
   });
-  const plan = fitHubWeb(width, height, shared.length, hubIds, groups);
+  const spacious = hubIds.length >= 5;
+  const plan = fitHubWeb(width, height, shared.length, hubIds, groups, spacious);
   const nodes = [];
   const focused = Boolean(center && hubIds.includes(center.id));
   const push = (person, slot, extra) => {
@@ -1201,15 +1287,20 @@ function hubFieldLayout({
     });
   });
   const nodeSize = plan?.nodeSize || 28;
+  const boxW = plan?.boxW || hubBox(nodeSize).boxW;
+  const boxH = plan?.boxH || hubBox(nodeSize).boxH;
+  const spread = revealAll && hubIds.length >= 5
+    ? spreadHubFieldToView(nodes, boxW, boxH, width, height)
+    : { width: plan?.width || width, height: plan?.height || height };
   return {
-    width: plan?.width || width,
-    height: plan?.height || height,
+    width: spread.width,
+    height: spread.height,
     nodes,
     edges: edgesAmong(nodes, relations),
     nodeSize,
     centerSize: nodeSize,
-    boxW: plan?.boxW || hubBox(nodeSize).boxW,
-    boxH: plan?.boxH || hubBox(nodeSize).boxH,
+    boxW,
+    boxH,
   };
 }
 

@@ -51,6 +51,18 @@
           <span>Focus</span>
           <select id="hub-select"></select>
         </label>
+        <label class="plot-switch title-filter" id="title-switch" hidden>
+          <span>Title</span>
+          <input
+            id="title-filter"
+            type="search"
+            list="title-options"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Film or series…"
+          />
+          <datalist id="title-options"></datalist>
+        </label>
         <button type="button" id="view-web" data-view="web">The web</button>
         <button type="button" id="view-timeline" data-view="timeline">Full timeline</button>
       </nav>

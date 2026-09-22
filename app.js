@@ -6,8 +6,10 @@ import {
   coversYear,
   eraLabel,
   eventTease,
+  eventMediaLabel,
   expandedSummary,
   filterEvents,
+  peopleForTitleSearch,
   findPlot,
   plotCardFace,
   plotMatchesQuery,
@@ -669,12 +671,23 @@ function bindChrome() {
     if (!plot || id === state.hub) return;
     state.hub = id;
     state.eventId = "";
+    webFitToken = "";
     if (state.view === "person") {
       state.view = "web";
       state.person = ALL;
     }
     render({ push: true });
   });
+  const titleFilter = $("title-filter");
+  if (titleFilter) {
+    titleFilter.addEventListener("input", () => {
+      if (!plot || !usesTitleFilter()) return;
+      state.query = titleFilter.value;
+      state.eventId = "";
+      webFitToken = "";
+      render({ push: true });
+    });
+  }
   $("home-link").addEventListener("click", () => {
     if (!plot || plots.length < 2) return;
     showPicker({ history: "push" });
@@ -770,6 +783,30 @@ function bindChrome() {
   });
 }
 
+function usesTitleFilter(activePlot = plot) {
+  return Boolean(activePlot?.titleFilter);
+}
+
+function fillTitleFilter() {
+  const wrap = $("title-switch");
+  const input = $("title-filter");
+  const list = $("title-options");
+  if (!wrap || !input || !list) return;
+  if (!plot || !usesTitleFilter()) {
+    wrap.hidden = true;
+    return;
+  }
+  wrap.hidden = false;
+  input.placeholder = plot.searchPlaceholder || "Film or series…";
+  if (document.activeElement !== input) input.value = state.query;
+  list.replaceChildren();
+  events.forEach((event) => {
+    const option = document.createElement("option");
+    option.value = eventMediaLabel(event);
+    list.appendChild(option);
+  });
+}
+
 function fillHubSelect() {
   const wrap = $("hub-switch");
   const select = $("hub-select");
@@ -828,6 +865,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   $("view-web").setAttribute("aria-pressed", String(state.view === "web"));
   $("view-timeline").setAttribute("aria-pressed", String(state.view === "timeline"));
   fillHubSelect();
+  fillTitleFilter();
   const plotSelect = $("plot-select");
   if (plotSelect && document.activeElement === plotSelect) plotSelect.blur();
   const hubSelect = $("hub-select");
@@ -1943,7 +1981,10 @@ function paintWeb(stage, { animate = true } = {}) {
     height = Math.max(topics ? (compact ? 720 : 500) : 260, Math.floor(bounds.height));
     stage.style.width = "";
   }
-  const layout = webLayout(people, relations, {
+  const titleScoped = usesTitleFilter()
+    ? peopleForTitleSearch(people, events, relations, { query: state.query, hub: state.hub }, peopleById)
+    : { people, relations };
+  const layout = webLayout(titleScoped.people, titleScoped.relations, {
     centerId: plotHubs(plot).length ? activeCenter() : (activeCenter() || plot.centerId),
     revealAll: state.hub === ALL,
     friendKinds: plot.friendKinds,
@@ -2093,9 +2134,15 @@ function paintWeb(stage, { animate = true } = {}) {
     const foeCount = layout.nodes.filter((node) => node.camp === "enemy").length;
     counts.textContent = `${friendCount} ${countWord("friend", friendCount)} · ${foeCount} ${countWord("enemy", foeCount)}`;
   }
+  if (hubField && usesTitleFilter() && state.query.trim() && !layout.nodes.length) {
+    const note = document.createElement("p");
+    note.className = "empty web-empty";
+    note.textContent = "No one on this web matches that title in the current focus.";
+    stage.appendChild(note);
+  }
   if (hubField) {
     stage.webLayout = layout;
-    const token = `${plot.id}:${state.hub}:${layout.nodes.map((node) => node.id).sort().join(",")}`;
+    const token = `${plot.id}:${state.hub}:${state.query}:${layout.nodes.map((node) => node.id).sort().join(",")}`;
     const shouldFit = webFitToken !== token;
     webFitToken = token;
     applyHubCamera(stage, layout, { animate, fit: shouldFit });
@@ -2413,27 +2460,31 @@ function renderTimeline() {
   title.textContent = hub ? hub.label : "Across the years";
   copy.append(eyebrow, title);
 
-  const search = document.createElement("label");
-  search.className = "search";
-  const searchLabel = document.createElement("span");
-  searchLabel.textContent = "Search";
-  const input = document.createElement("input");
-  input.type = "search";
-  input.value = state.query;
-  input.placeholder = plot.searchPlaceholder || "Search the record…";
-  input.addEventListener("input", () => {
-    state.query = input.value;
-    state.eventId = "";
-    render({ replace: true });
-    const next = $("app").querySelector("input[type=search]");
-    if (next) {
-      next.focus();
-      const end = next.value.length;
-      next.setSelectionRange(end, end);
-    }
-  });
-  search.append(searchLabel, input);
-  head.append(copy, search);
+  if (!usesTitleFilter()) {
+    const search = document.createElement("label");
+    search.className = "search";
+    const searchLabel = document.createElement("span");
+    searchLabel.textContent = "Search";
+    const input = document.createElement("input");
+    input.type = "search";
+    input.value = state.query;
+    input.placeholder = plot.searchPlaceholder || "Search the record…";
+    input.addEventListener("input", () => {
+      state.query = input.value;
+      state.eventId = "";
+      render({ replace: true });
+      const next = $("app").querySelector(".timeline-focus input[type=search]");
+      if (next) {
+        next.focus();
+        const end = next.value.length;
+        next.setSelectionRange(end, end);
+      }
+    });
+    search.append(searchLabel, input);
+    head.append(copy, search);
+  } else {
+    head.append(copy);
+  }
 
   const shown = filterEvents(events, { query: state.query, hub: state.hub }, peopleById);
   section.append(head, renderRail(shown, {
