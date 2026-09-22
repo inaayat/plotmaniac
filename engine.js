@@ -62,6 +62,51 @@ export function filterEvents(events, filters = {}, peopleById = new Map()) {
   });
 }
 
+/** Unique film/series labels for title filter suggestions, in display order. */
+export function titleFilterLabels(events = []) {
+  const seen = new Set();
+  const labels = [];
+  (events || []).forEach((event) => {
+    const label = eventMediaLabel(event);
+    if (!label || seen.has(label)) return;
+    seen.add(label);
+    labels.push(label);
+  });
+  return labels.sort((a, b) => a.localeCompare(b, "en", { sensitivity: "base" }));
+}
+
+/** Match title labels for the custom suggestions panel (not native datalist). */
+export function filterTitleLabels(labels, query, limit = 10) {
+  const list = Array.isArray(labels) ? labels : [];
+  const cap = Math.max(1, Number(limit) || 10);
+  const q = String(query || "").trim().toLocaleLowerCase();
+  if (!q) return list.slice(0, cap);
+  return list.filter((label) => label.toLocaleLowerCase().includes(q)).slice(0, cap);
+}
+
+/** Prefer a film/series link label when the beat has one; otherwise the beat title. */
+export function eventMediaLabel(event) {
+  const reference = (event?.links || []).find((link) => link.type === "reference" && link.label);
+  if (reference?.label) return String(reference.label).trim();
+  return String(event?.title || "").trim();
+}
+
+/** People who appear on beats that match the current title search and hub focus. */
+export function peopleForTitleSearch(people, events, relations, filters = {}, peopleById = new Map()) {
+  const query = String(filters.query || "").trim();
+  if (!query) return { people, relations };
+  const matched = filterEvents(events, filters, peopleById);
+  if (!matched.length) return { people: [], relations: [] };
+  const ids = new Set();
+  matched.forEach((event) => {
+    (event.people || []).forEach((id) => ids.add(id));
+  });
+  const cast = people.filter((person) => ids.has(person.id));
+  const visible = new Set(cast.map((person) => person.id));
+  const scoped = relations.filter((relation) => visible.has(relation.from) && visible.has(relation.to));
+  return { people: cast, relations: scoped };
+}
+
 export function findPlot(plots, id) {
   const list = plots || [];
   if (!id) return null;
@@ -1010,8 +1055,116 @@ function angleDelta(from, to) {
   return delta;
 }
 
-function hubBox(nodeSize) {
+function hubBox(nodeSize, spacious = false) {
+  if (spacious) {
+    const boxW = Math.max(nodeSize + 52, 148);
+    const boxH = Math.max(nodeSize + 76, 156);
+    return { nodeSize, boxW, boxH };
+  }
   return { nodeSize, boxW: nodeSize + 48, boxH: nodeSize + 56 };
+}
+
+function hubNodeBounds(nodes, boxW, boxH) {
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minY = Infinity;
+  let maxY = -Infinity;
+  nodes.forEach((node) => {
+    minX = Math.min(minX, node.x - boxW / 2);
+    maxX = Math.max(maxX, node.x + boxW / 2);
+    minY = Math.min(minY, node.y - boxH / 2);
+    maxY = Math.max(maxY, node.y + boxH / 2);
+  });
+  return { minX, maxX, minY, maxY };
+}
+
+function shiftHubNodesIntoView(nodes, boxW, boxH, width, height, pad) {
+  const bounds = hubNodeBounds(nodes, boxW, boxH);
+  let dx = 0;
+  let dy = 0;
+  if (bounds.minX < pad) dx = pad - bounds.minX;
+  if (bounds.maxX > width - pad) dx = (width - pad) - bounds.maxX;
+  if (bounds.minY < pad) dy = pad - bounds.minY;
+  if (bounds.maxY > height - pad) dy = (height - pad) - bounds.maxY;
+  if (!dx && !dy) return;
+  nodes.forEach((node) => {
+    node.x += dx;
+    node.y += dy;
+  });
+}
+
+function hubBoxesOverlap(a, b, boxW, boxH) {
+  return Math.abs(a.x - b.x) < boxW && Math.abs(a.y - b.y) < boxH;
+}
+
+function hubLayoutHasOverlaps(nodes, boxW, boxH) {
+  for (let i = 0; i < nodes.length; i += 1) {
+    for (let j = i + 1; j < nodes.length; j += 1) {
+      if (hubBoxesOverlap(nodes[i], nodes[j], boxW, boxH)) return true;
+    }
+  }
+  return false;
+}
+
+/** Push hub nodes apart after non-uniform scaling so label cells keep minimum separation. */
+export function resolveHubBoxOverlaps(nodes, boxW, boxH, {
+  minX = -Infinity,
+  maxX = Infinity,
+  minY = -Infinity,
+  maxY = Infinity,
+  passes = 72,
+} = {}) {
+  const halfW = boxW / 2;
+  const halfH = boxH / 2;
+  const clampNode = (node) => {
+    node.x = Math.min(maxX - halfW, Math.max(minX + halfW, node.x));
+    node.y = Math.min(maxY - halfH, Math.max(minY + halfH, node.y));
+  };
+  for (let pass = 0; pass < passes; pass += 1) {
+    let moved = false;
+    for (let i = 0; i < nodes.length; i += 1) {
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const gapX = boxW - Math.abs(b.x - a.x);
+        const gapY = boxH - Math.abs(b.y - a.y);
+        if (gapX <= 0 || gapY <= 0) continue;
+        const overlap = Math.min(gapX, gapY);
+        const dx = b.x - a.x || (i % 2 === 0 ? 1 : -1);
+        const dy = b.y - a.y || (j % 2 === 0 ? -1 : 1);
+        const dist = Math.hypot(dx, dy) || 1;
+        const push = overlap * 0.52;
+        a.x -= (dx / dist) * push;
+        a.y -= (dy / dist) * push;
+        b.x += (dx / dist) * push;
+        b.y += (dy / dist) * push;
+        clampNode(a);
+        clampNode(b);
+        moved = true;
+      }
+    }
+    if (!moved) break;
+  }
+}
+
+/** Fit the cast footprint to the viewport width without squashing vertical spacing. */
+export function spreadHubFieldToView(nodes, boxW, boxH, targetWidth, targetHeight) {
+  if (!nodes.length) return { width: targetWidth, height: targetHeight };
+  const pad = 36;
+  const goalX = Math.max(boxW, targetWidth - pad * 2);
+  let bounds = hubNodeBounds(nodes, boxW, boxH);
+  const spanX = Math.max(1, bounds.maxX - bounds.minX);
+  const cx = (bounds.minX + bounds.maxX) / 2;
+  const cy = (bounds.minY + bounds.maxY) / 2;
+  const sx = goalX / spanX;
+  nodes.forEach((node) => {
+    node.x = targetWidth / 2 + (node.x - cx) * sx;
+    node.y = targetHeight / 2 + (node.y - cy);
+  });
+  bounds = hubNodeBounds(nodes, boxW, boxH);
+  const height = Math.max(targetHeight, bounds.maxY - bounds.minY + pad * 2);
+  shiftHubNodesIntoView(nodes, boxW, boxH, targetWidth, height, pad);
+  return { width: targetWidth, height };
 }
 
 function stageGrid(cx, cy, width, height, boxW, boxH, pad) {
@@ -1086,8 +1239,8 @@ function sectorIndex(slot, cx, cy, directions) {
   return best;
 }
 
-function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize) {
-  const { boxW, boxH } = hubBox(nodeSize);
+function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize, spacious = false, batchExclusive = false) {
+  const { boxW, boxH } = hubBox(nodeSize, spacious);
   const pad = 10;
   const cx = width / 2;
   const cy = height / 2;
@@ -1110,44 +1263,98 @@ function planHubWeb(width, height, sharedCount, hubIds, groups, nodeSize) {
     hubSlots.push(pick);
   }
   const exclusiveSlots = [];
+  let exclusiveBand = null;
+  const sectorDistance = (slot, sector) => {
+    const angle = Math.atan2(slot.y - cy, slot.x - cx);
+    const hubAngle = Math.atan2(directions[sector].y, directions[sector].x);
+    return Math.abs(angleDelta(hubAngle, angle));
+  };
+  if (batchExclusive) {
+    const totalExclusive = hubIds.reduce((sum, id) => sum + (groups.get(id)?.length || 0), 0);
+    const band = grid
+      .filter((slot) => !used.has(`${slot.x},${slot.y}`))
+      .sort((a, b) => a.y - b.y || a.x - b.x)
+      .slice(0, totalExclusive);
+    if (band.length < totalExclusive) return null;
+    band.forEach((slot) => used.add(`${slot.x},${slot.y}`));
+    exclusiveBand = band;
+  }
   for (let index = 0; index < hubIds.length; index += 1) {
+    if (batchExclusive) break;
     const hubSlot = hubSlots[index];
     const dir = directions[index];
     const hubDist = pageDist(hubSlot, cx, cy);
     const needed = (groups.get(hubIds[index]) || []).length;
-    const outward = grid.filter((slot) => {
-      if (used.has(`${slot.x},${slot.y}`)) return false;
-      if (sectorIndex(slot, cx, cy, directions) !== index) return false;
-      if (pageDist(slot, cx, cy) <= hubDist + 0.5) return false;
-      return (slot.x - hubSlot.x) * dir.x + (slot.y - hubSlot.y) * dir.y > 0;
-    });
-    const nearest = nearestSlots(outward, hubSlot, needed);
+    const sectorStep = (Math.PI * 2) / Math.max(hubIds.length, 1);
+    const sectorSlack = spacious && needed > 20 ? sectorStep * 1.35 : 0;
+    let outward;
+    if (spacious && needed > 20) {
+      outward = grid.filter((slot) => {
+        if (used.has(`${slot.x},${slot.y}`)) return false;
+        return pageDist(slot, cx, cy) > hubDist + 0.5;
+      }).sort((a, b) => a.y - b.y || a.x - b.x);
+    } else {
+      outward = grid.filter((slot) => {
+        if (used.has(`${slot.x},${slot.y}`)) return false;
+        if (sectorIndex(slot, cx, cy, directions) !== index) return false;
+        if (pageDist(slot, cx, cy) <= hubDist + 0.5) return false;
+        return (slot.x - hubSlot.x) * dir.x + (slot.y - hubSlot.y) * dir.y > 0;
+      });
+    }
+    const nearest = spacious && needed > 20
+      ? outward.slice(0, needed)
+      : nearestSlots(outward, hubSlot, needed);
     if (nearest.length < needed) return null;
     nearest.forEach((slot) => used.add(`${slot.x},${slot.y}`));
     exclusiveSlots.push(nearest);
   }
-  return { nodeSize, boxW, boxH, width, height, cx, cy, sharedSlots, hubSlots, exclusiveSlots };
+  return {
+    nodeSize,
+    boxW,
+    boxH,
+    width,
+    height,
+    cx,
+    cy,
+    sharedSlots,
+    hubSlots,
+    exclusiveSlots,
+    exclusiveBand,
+  };
 }
 
-function fitHubWeb(width, height, sharedCount, hubIds, groups) {
+function fitHubWeb(width, height, sharedCount, hubIds, groups, spacious = false, batchExclusive = false) {
   const attempt = (nextWidth, nextHeight, minSize) => {
     for (let nodeSize = 56; nodeSize >= minSize; nodeSize -= 2) {
-      const plan = planHubWeb(nextWidth, nextHeight, sharedCount, hubIds, groups, nodeSize);
+      const plan = planHubWeb(
+        nextWidth,
+        nextHeight,
+        sharedCount,
+        hubIds,
+        groups,
+        nodeSize,
+        spacious,
+        batchExclusive,
+      );
       if (plan) return plan;
     }
     return null;
   };
-  const fitted = attempt(width, height, 28);
+  const minNode = spacious ? 24 : 28;
+  const fitted = attempt(width, height, minNode);
   if (fitted) return fitted;
   const aspect = width / Math.max(height, 1);
-  for (let extra = 120; extra <= 2400; extra += 120) {
+  const maxExtra = spacious ? 3600 : 2400;
+  for (let extra = 0; extra <= maxExtra; extra += 120) {
     const addH = extra;
-    const addW = Math.max(120, Math.round(extra * aspect));
-    const grown = attempt(width + addW, height + addH, 32);
+    const addW = Math.max(120, Math.round(extra * (spacious ? 0 : 1)));
+    const grown = spacious
+      ? attempt(width, height + addH, 24)
+      : (attempt(width + addW, height + addH, 32));
     if (grown) return grown;
   }
-  const side = Math.max(width, height, 1200) + 800;
-  return attempt(side, side, 26);
+  const side = Math.max(width, height, 1200) + (spacious ? 1200 : 800);
+  return attempt(side, side, spacious ? 22 : 26);
 }
 
 function placeByBeats(list, slots, counts) {
@@ -1184,7 +1391,9 @@ function hubFieldLayout({
     if (affiliated.length === 1) groups.get(affiliated[0])?.push(person);
     else shared.push(person);
   });
-  const plan = fitHubWeb(width, height, shared.length, hubIds, groups);
+  const spacious = hubIds.length >= 5;
+  const batchExclusive = spacious && revealAll;
+  const plan = fitHubWeb(width, height, shared.length, hubIds, groups, spacious, batchExclusive);
   const nodes = [];
   const focused = Boolean(center && hubIds.includes(center.id));
   const push = (person, slot, extra) => {
@@ -1212,22 +1421,39 @@ function hubFieldLayout({
   hubIds.forEach((id, index) => {
     push(visible.find((person) => person.id === id), plan?.hubSlots?.[index], { ring: "hub", hubId: id });
   });
-  hubIds.forEach((id, index) => {
-    if (!revealAll && (!focused || center.id !== id)) return;
-    placeByBeats(groups.get(id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
-      push(person, slot, { ring: "exclusive", hubId: id });
+  if (batchExclusive && plan?.exclusiveBand?.length) {
+    let slotAt = 0;
+    hubIds.forEach((id) => {
+      const group = groups.get(id) || [];
+      const slots = plan.exclusiveBand.slice(slotAt, slotAt + group.length);
+      slotAt += group.length;
+      placeByBeats(group, slots, counts).forEach(({ person, slot }) => {
+        push(person, slot, { ring: "exclusive", hubId: id });
+      });
     });
-  });
+  } else {
+    hubIds.forEach((id, index) => {
+      if (!revealAll && (!focused || center.id !== id)) return;
+      placeByBeats(groups.get(id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
+        push(person, slot, { ring: "exclusive", hubId: id });
+      });
+    });
+  }
   const nodeSize = plan?.nodeSize || 28;
+  const boxW = plan?.boxW || hubBox(nodeSize).boxW;
+  const boxH = plan?.boxH || hubBox(nodeSize).boxH;
+  const spread = revealAll && hubIds.length >= 5
+    ? spreadHubFieldToView(nodes, boxW, boxH, width, height)
+    : { width: plan?.width || width, height: plan?.height || height };
   return {
-    width: plan?.width || width,
-    height: plan?.height || height,
+    width: spread.width,
+    height: spread.height,
     nodes,
     edges: edgesAmong(nodes, relations),
     nodeSize,
     centerSize: nodeSize,
-    boxW: plan?.boxW || hubBox(nodeSize).boxW,
-    boxH: plan?.boxH || hubBox(nodeSize).boxH,
+    boxW,
+    boxH,
   };
 }
 
@@ -1239,6 +1465,7 @@ export function hubFrame(nodes, {
   pad = 28,
   minScale = 0.08,
   maxScale = 2.4,
+  preferWidth = false,
 } = {}) {
   if (!nodes?.length || viewWidth < 2 || viewHeight < 2) return { scale: 1, x: 0, y: 0 };
   let minX = Infinity;
@@ -1254,7 +1481,12 @@ export function hubFrame(nodes, {
   const margin = Math.min(pad, Math.floor(Math.min(viewWidth, viewHeight) * 0.08));
   const roomW = Math.max(1, viewWidth - margin * 2);
   const roomH = Math.max(1, viewHeight - margin * 2);
-  const scale = Math.max(minScale, Math.min(maxScale, Math.min(roomW / Math.max(1, maxX - minX), roomH / Math.max(1, maxY - minY))));
+  const scaleW = roomW / Math.max(1, maxX - minX);
+  const scaleH = roomH / Math.max(1, maxY - minY);
+  const scale = Math.max(
+    minScale,
+    Math.min(maxScale, preferWidth ? scaleW : Math.min(scaleW, scaleH)),
+  );
   const cx = (minX + maxX) / 2;
   const cy = (minY + maxY) / 2;
   return {

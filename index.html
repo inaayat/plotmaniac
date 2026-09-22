@@ -51,6 +51,23 @@
           <span>Focus</span>
           <select id="hub-select"></select>
         </label>
+        <label class="plot-switch title-filter" id="title-switch" hidden>
+          <span>Title</span>
+          <span class="title-filter-frame">
+            <input
+              id="title-filter"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="Film or series…"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-controls="title-suggestions"
+            />
+            <ul id="title-suggestions" class="title-suggestions" role="listbox" hidden></ul>
+          </span>
+        </label>
         <button type="button" id="view-web" data-view="web">The web</button>
         <button type="button" id="view-timeline" data-view="timeline">Full timeline</button>
       </nav>

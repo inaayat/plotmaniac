@@ -8,6 +8,9 @@ import {
   eventTease,
   expandedSummary,
   filterEvents,
+  filterTitleLabels,
+  peopleForTitleSearch,
+  titleFilterLabels,
   findPlot,
   plotCardFace,
   plotMatchesQuery,
@@ -643,8 +646,130 @@ function bindChoiceChrome() {
   if (choiceChromeBound) return;
   choiceChromeBound = true;
   document.addEventListener("pointerdown", (event) => {
-    if (event.target.closest(".choice")) return;
+    if (event.target.closest(".choice, .title-filter")) return;
     closeChoices();
+  });
+}
+
+let titleFilterReady = false;
+let titleFilterOptions = [];
+
+function initTitleFilter() {
+  const input = $("title-filter");
+  const menu = $("title-suggestions");
+  const wrap = $("title-switch");
+  if (!input || !menu || titleFilterReady) return;
+  titleFilterReady = true;
+
+  const closeMenu = () => {
+    menu.hidden = true;
+    input.setAttribute("aria-expanded", "false");
+    wrap?.classList.remove("is-open");
+    openChoices.delete(closeMenu);
+  };
+
+  const pickLabel = (label) => {
+    input.value = label;
+    if (!plot || !usesTitleFilter()) return;
+    state.query = label;
+    state.eventId = "";
+    webFitToken = "";
+    closeMenu();
+    render({ push: true });
+  };
+
+  const paintMenu = () => {
+    if (document.activeElement !== input || !usesTitleFilter()) {
+      closeMenu();
+      return;
+    }
+    const matches = filterTitleLabels(titleFilterOptions, input.value);
+    menu.replaceChildren();
+    if (!matches.length) {
+      closeMenu();
+      return;
+    }
+    matches.forEach((label) => {
+      const row = document.createElement("li");
+      const choice = document.createElement("button");
+      choice.type = "button";
+      choice.className = "title-suggestion";
+      choice.setAttribute("role", "option");
+      choice.textContent = label;
+      choice.addEventListener("mousedown", (event) => event.preventDefault());
+      choice.addEventListener("click", () => pickLabel(label));
+      row.appendChild(choice);
+      menu.appendChild(row);
+    });
+    menu.hidden = false;
+    input.setAttribute("aria-expanded", "true");
+    wrap?.classList.add("is-open");
+    openChoices.add(closeMenu);
+  };
+
+  const syncQuery = ({ pushHistory = true } = {}) => {
+    if (!plot || !usesTitleFilter()) return;
+    state.query = input.value;
+    state.eventId = "";
+    webFitToken = "";
+    paintMenu();
+    render({ push: pushHistory });
+  };
+
+  input.addEventListener("input", () => syncQuery({ pushHistory: true }));
+  input.addEventListener("focus", () => paintMenu());
+
+  input.addEventListener("keydown", (event) => {
+    const rows = [...menu.querySelectorAll(".title-suggestion")];
+    if (event.key === "Escape") {
+      if (!menu.hidden) {
+        event.preventDefault();
+        event.stopPropagation();
+        closeMenu();
+      }
+      return;
+    }
+    if (event.key === "ArrowDown") {
+      if (!rows.length) return;
+      event.preventDefault();
+      if (menu.hidden) paintMenu();
+      menu.querySelector(".title-suggestion")?.focus();
+    } else if (event.key === "Enter" && !menu.hidden) {
+      const focused = document.activeElement;
+      if (focused?.classList.contains("title-suggestion")) {
+        event.preventDefault();
+        pickLabel(focused.textContent);
+      }
+    }
+  });
+
+  menu.addEventListener("keydown", (event) => {
+    const rows = [...menu.querySelectorAll(".title-suggestion")];
+    const at = rows.indexOf(document.activeElement);
+    if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopPropagation();
+      closeMenu();
+      input.focus();
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      rows[Math.min(rows.length - 1, at + 1)]?.focus();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (at <= 0) input.focus();
+      else rows[at - 1]?.focus();
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      rows[0]?.focus();
+    } else if (event.key === "End") {
+      event.preventDefault();
+      rows.at(-1)?.focus();
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      if (document.activeElement?.classList.contains("title-suggestion")) {
+        pickLabel(document.activeElement.textContent);
+      }
+    }
   });
 }
 
@@ -801,12 +926,14 @@ function bindChrome() {
     if (!plot || id === state.hub) return;
     state.hub = id;
     state.eventId = "";
+    webFitToken = "";
     if (state.view === "person") {
       state.view = "web";
       state.person = ALL;
     }
     render({ push: true });
   });
+  initTitleFilter();
   $("home-link").addEventListener("click", () => {
     if (!plot || plots.length < 2) return;
     showPicker({ history: "push" });
@@ -908,6 +1035,25 @@ function bindChrome() {
   });
 }
 
+function usesTitleFilter(activePlot = plot) {
+  return Boolean(activePlot?.titleFilter);
+}
+
+function fillTitleFilter() {
+  const wrap = $("title-switch");
+  const input = $("title-filter");
+  if (!wrap || !input) return;
+  if (!plot || !usesTitleFilter()) {
+    wrap.hidden = true;
+    titleFilterOptions = [];
+    return;
+  }
+  wrap.hidden = false;
+  input.placeholder = plot.searchPlaceholder || "Film or series…";
+  titleFilterOptions = titleFilterLabels(events);
+  if (document.activeElement !== input) input.value = state.query;
+}
+
 function fillHubSelect() {
   const wrap = $("hub-switch");
   const select = $("hub-select");
@@ -966,6 +1112,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   $("view-web").setAttribute("aria-pressed", String(state.view === "web"));
   $("view-timeline").setAttribute("aria-pressed", String(state.view === "timeline"));
   fillHubSelect();
+  fillTitleFilter();
   const plotSelect = $("plot-select");
   if (plotSelect && document.activeElement === plotSelect) plotSelect.blur();
   const hubSelect = $("hub-select");
@@ -2158,7 +2305,10 @@ function paintWeb(stage, { animate = true } = {}) {
     height = Math.max(topics ? (compact ? 720 : 500) : 260, Math.floor(bounds.height));
     stage.style.width = "";
   }
-  const layout = webLayout(people, relations, {
+  const titleScoped = usesTitleFilter()
+    ? peopleForTitleSearch(people, events, relations, { query: state.query, hub: state.hub }, peopleById)
+    : { people, relations };
+  const layout = webLayout(titleScoped.people, titleScoped.relations, {
     centerId: plotHubs(plot).length ? activeCenter() : (activeCenter() || plot.centerId),
     revealAll: state.hub === ALL,
     friendKinds: plot.friendKinds,
@@ -2308,9 +2458,15 @@ function paintWeb(stage, { animate = true } = {}) {
     const foeCount = layout.nodes.filter((node) => node.camp === "enemy").length;
     counts.textContent = `${friendCount} ${countWord("friend", friendCount)} · ${foeCount} ${countWord("enemy", foeCount)}`;
   }
+  if (hubField && usesTitleFilter() && state.query.trim() && !layout.nodes.length) {
+    const note = document.createElement("p");
+    note.className = "empty web-empty";
+    note.textContent = "No one on this web matches that title in the current focus.";
+    stage.appendChild(note);
+  }
   if (hubField) {
     stage.webLayout = layout;
-    const token = `${plot.id}:${state.hub}:${layout.nodes.map((node) => node.id).sort().join(",")}`;
+    const token = `${plot.id}:${state.hub}:${state.query}:${layout.nodes.map((node) => node.id).sort().join(",")}`;
     const shouldFit = webFitToken !== token;
     webFitToken = token;
     applyHubCamera(stage, layout, { animate, fit: shouldFit });
@@ -2335,11 +2491,17 @@ function webCameraTransform(camera) {
 
 function fittedWebCamera(stage, layout) {
   const scroller = stage.parentElement;
+  const wideHubReveal = Boolean(
+    plot?.includeOrbit
+    && plotHubs(plot).length >= 5
+    && state.hub === ALL,
+  );
   return hubFrame(layout.nodes, {
     viewWidth: scroller?.clientWidth || 0,
     viewHeight: scroller?.clientHeight || 0,
     boxW: Math.max(layout.boxW || 0, isCompact() ? 104 : 128),
     boxH: Math.max(layout.boxH || 0, isCompact() ? 96 : 116),
+    preferWidth: wideHubReveal,
   });
 }
 
@@ -2628,27 +2790,31 @@ function renderTimeline() {
   title.textContent = hub ? hub.label : "Across the years";
   copy.append(eyebrow, title);
 
-  const search = document.createElement("label");
-  search.className = "search";
-  const searchLabel = document.createElement("span");
-  searchLabel.textContent = "Search";
-  const input = document.createElement("input");
-  input.type = "search";
-  input.value = state.query;
-  input.placeholder = plot.searchPlaceholder || "Search the record…";
-  input.addEventListener("input", () => {
-    state.query = input.value;
-    state.eventId = "";
-    render({ replace: true });
-    const next = $("app").querySelector("input[type=search]");
-    if (next) {
-      next.focus();
-      const end = next.value.length;
-      next.setSelectionRange(end, end);
-    }
-  });
-  search.append(searchLabel, input);
-  head.append(copy, search);
+  if (!usesTitleFilter()) {
+    const search = document.createElement("label");
+    search.className = "search";
+    const searchLabel = document.createElement("span");
+    searchLabel.textContent = "Search";
+    const input = document.createElement("input");
+    input.type = "search";
+    input.value = state.query;
+    input.placeholder = plot.searchPlaceholder || "Search the record…";
+    input.addEventListener("input", () => {
+      state.query = input.value;
+      state.eventId = "";
+      render({ replace: true });
+      const next = $("app").querySelector(".timeline-focus input[type=search]");
+      if (next) {
+        next.focus();
+        const end = next.value.length;
+        next.setSelectionRange(end, end);
+      }
+    });
+    search.append(searchLabel, input);
+    head.append(copy, search);
+  } else {
+    head.append(copy);
+  }
 
   const shown = filterEvents(events, { query: state.query, hub: state.hub }, peopleById);
   section.append(head, renderRail(shown, {

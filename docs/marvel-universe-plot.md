@@ -10,6 +10,7 @@ Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templat
 - **Card line:** `Heroes, villains, timelines, and variant worlds`
 - **Lede:** `Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Follow the character web, read the MCU in story order, or focus a universe to see who belongs there. MCU main means the shared Sacred Timeline / Earth-616 screen continuity (often called Earth-199999 by fans); guest worlds remain separate.`
 - **Search placeholder:** `Avengers, TVA, Wakanda, Spider-Man, a film…`
+- **Title filter:** `titleFilter: true` puts that search on the main chrome (next to Focus) and narrows the web to people on matching beats; the timeline uses the same query.
 - **Center id:** `tony-stark`
 
 The plot uses the existing YouTubers-style hub field. Hubs are universe focus controls, not extra non-character nodes; each hub is anchored by a real character who appears in that universe. The hub’s `universe-member` relations are deliberately neutral, so focusing a hub reveals its exclusive membership without turning every member into a “friend” of the anchor. The plot sets the existing layout threshold to `minBeats: 1` and wires that option through the loader so one-film multiverse variants still appear in a universe focus; other plots retain the default two-beat web threshold.
