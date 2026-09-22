@@ -36,6 +36,7 @@ import {
   relationTimelineHasTone,
   relationToneSeries,
   httpsSourceLinks,
+  relationRiderFlags,
   RELATION_REGIONS,
   stateUrl,
   stanceHistory,
@@ -875,6 +876,9 @@ assert.match(appSource, /policy-drawer/, "policy panel reuses the drawer chrome"
 assert.match(appSource, /usesPolicyPanel/, "topic-plot clicks stay on the board");
 assert.match(appSource, /renderRelationRide/, "full page scrolls a rising and falling relationship");
 assert.match(appSource, /relation-ride-links/, "ride readout can show beat sources");
+assert.match(appSource, /relation-ride-identity/, "full timeline shows the partner flag");
+assert.match(appSource, /rider-flag-partner/, "ride rider uses the partner country flag");
+assert.doesNotMatch(appSource, /rider-mx/, "ride rider is not hard-coded to Mexico");
 const ride = relationRideLayout(mexico.timeline);
 assert.ok(ride.width > 4000, "ride is wide enough to scroll");
 assert.equal(ride.samples.length > ride.points.length, true);
@@ -913,6 +917,15 @@ const rusYears = russia.timeline.map((beat) => String(beat.year));
 ["1809", "1867", "1933", "1941", "1962", "1991", "2014", "2016", "2022"].forEach((year) => {
   assert.ok(rusYears.includes(year), `russia timeline covers ${year}`);
 });
+
+const usPeopleById = new Map(usPeople.map((person) => [person.id, person]));
+const rusFlags = relationRiderFlags(russia, usPeopleById, { centerId: us.centerId });
+assert.match(rusFlags.partner.src, /Flag_of_Russia\.svg/, "russia ride uses the Russian flag");
+assert.match(rusFlags.center.src, /Flag_of_the_United_States\.svg/, "russia ride still holds the U.S. flag");
+const mexFlags = relationRiderFlags(mexico, usPeopleById, { centerId: us.centerId });
+assert.match(mexFlags.partner.src, /Flag_of_Mexico\.svg/, "mexico ride keeps the Mexican flag");
+assert.match(mexFlags.center.src, /Flag_of_the_United_States\.svg/);
+assert.equal(usPeopleById.get("russia")?.portrait?.frame, "flag");
 
 const assertCountrySourceLinks = (country, { minShare = 0.5 } = {}) => {
   assert.ok(Array.isArray(country.links) && country.links.length, `${country.slug} needs country-level sources`);

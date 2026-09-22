@@ -23,6 +23,7 @@ import {
   relationsFieldEdges,
   relationsFieldLayout,
   httpsSourceLinks,
+  relationRiderFlags,
   relationMoodLabel,
   relationRideAt,
   relationRideLayout,
@@ -926,8 +927,12 @@ function renderRelationPage() {
     section.append(back, emptyState("Choose a country on the web to read its timeline."));
     return section;
   }
+  const person = peopleById.get(record.slug);
   const head = document.createElement("div");
   head.className = "relation-ride-head";
+  const identity = document.createElement("div");
+  identity.className = "relation-ride-identity";
+  identity.appendChild(avatar(person || { name: record.country }, "md"));
   const copy = document.createElement("div");
   const eyebrow = document.createElement("p");
   eyebrow.className = "eyebrow";
@@ -936,7 +941,8 @@ function renderRelationPage() {
   title.id = "relation-page-title";
   title.textContent = `${plot.title} ↔ ${record.country}`;
   copy.append(eyebrow, title);
-  head.append(back, copy);
+  identity.appendChild(copy);
+  head.append(back, identity);
   section.append(head);
   if (relationTimelineHasTone(record.timeline)) section.appendChild(renderRelationRide(record));
   else section.appendChild(renderCountryHistory(record));
@@ -1024,7 +1030,7 @@ function renderRelationRide(record) {
   });
 
   scroller.appendChild(track);
-  const rider = renderRelationRider();
+  const rider = renderRelationRider(record);
   stage.append(scroller, rider);
   root.append(readout, stage);
 
@@ -1060,43 +1066,53 @@ function renderRelationRide(record) {
   return root;
 }
 
-function renderRelationRider() {
+function renderRelationRider(record) {
+  const flags = relationRiderFlags(record, peopleById, { centerId: plot.centerId });
   const rider = document.createElement("div");
   rider.className = "relation-rider";
   rider.setAttribute("aria-hidden", "true");
-  rider.innerHTML = `
-    <svg viewBox="0 0 128 78" width="128" height="78">
-      <path class="rider-string" d="M34 40 Q64 48 94 40" fill="none" stroke="#e8c47a" stroke-width="2" stroke-linecap="round"/>
-      <g class="rider-mx">
-        <clipPath id="rider-mx-clip"><circle cx="34" cy="36" r="15"/></clipPath>
-        <g clip-path="url(#rider-mx-clip)">
-          <rect x="19" y="21" width="10" height="30" fill="#006847"/>
-          <rect x="29" y="21" width="10" height="30" fill="#fff"/>
-          <rect x="39" y="21" width="10" height="30" fill="#ce1126"/>
-        </g>
-        <circle cx="34" cy="36" r="15" fill="none" stroke="#1a1612" stroke-width="1.5"/>
-      </g>
-      <g class="rider-us">
-        <clipPath id="rider-us-clip"><circle cx="94" cy="36" r="15"/></clipPath>
-        <g clip-path="url(#rider-us-clip)">
-          <rect x="79" y="21" width="30" height="30" fill="#bf0a30"/>
-          <rect x="79" y="25" width="30" height="3" fill="#fff"/>
-          <rect x="79" y="31" width="30" height="3" fill="#fff"/>
-          <rect x="79" y="37" width="30" height="3" fill="#fff"/>
-          <rect x="79" y="43" width="30" height="3" fill="#fff"/>
-          <rect x="79" y="21" width="14" height="12" fill="#002868"/>
-        </g>
-        <circle cx="94" cy="36" r="15" fill="none" stroke="#1a1612" stroke-width="1.5"/>
-      </g>
-      <g class="rider-face" transform="translate(64 30)">
-        <circle r="16" fill="#f4e2c4" stroke="#1a1612" stroke-width="1.5"/>
-        <path class="rider-eye rider-eye-l" d="M-7 -1 q1.6 -2.4 3.2 0" fill="none" stroke="#1a1612" stroke-width="1.4" stroke-linecap="round"/>
-        <path class="rider-eye rider-eye-r" d="M3.8 -1 q1.6 -2.4 3.2 0" fill="none" stroke="#1a1612" stroke-width="1.4" stroke-linecap="round"/>
-        <path class="rider-mouth" d="M-6 5 Q0 11 6 5" fill="none" stroke="#1a1612" stroke-width="1.5" stroke-linecap="round"/>
-      </g>
-    </svg>
-  `;
+  rider.append(
+    riderFlagBadge(flags.partner, "rider-flag-partner"),
+    riderFaceSvg(),
+    riderFlagBadge(flags.center, "rider-flag-center"),
+  );
   return rider;
+}
+
+function riderFlagBadge(flag, className) {
+  const badge = document.createElement("span");
+  badge.className = `rider-flag ${className}`;
+  if (flag.src) {
+    const image = document.createElement("img");
+    image.src = flag.src;
+    image.alt = "";
+    image.decoding = "async";
+    image.addEventListener("error", () => {
+      image.remove();
+      badge.textContent = initials(flag.name);
+    }, { once: true });
+    badge.appendChild(image);
+    return badge;
+  }
+  badge.textContent = initials(flag.name);
+  return badge;
+}
+
+function riderFaceSvg() {
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("viewBox", "0 0 128 78");
+  svg.setAttribute("width", "128");
+  svg.setAttribute("height", "78");
+  svg.innerHTML = `
+    <path class="rider-string" d="M34 40 Q64 48 94 40" fill="none" stroke="#e8c47a" stroke-width="2" stroke-linecap="round"/>
+    <g class="rider-face" transform="translate(64 30)">
+      <circle r="16" fill="#f4e2c4" stroke="#1a1612" stroke-width="1.5"/>
+      <path class="rider-eye rider-eye-l" d="M-7 -1 q1.6 -2.4 3.2 0" fill="none" stroke="#1a1612" stroke-width="1.4" stroke-linecap="round"/>
+      <path class="rider-eye rider-eye-r" d="M3.8 -1 q1.6 -2.4 3.2 0" fill="none" stroke="#1a1612" stroke-width="1.4" stroke-linecap="round"/>
+      <path class="rider-mouth" d="M-6 5 Q0 11 6 5" fill="none" stroke="#1a1612" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+  `;
+  return svg;
 }
 
 function paintRelationRider(rider, tone) {

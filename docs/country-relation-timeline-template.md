@@ -63,8 +63,9 @@ Every rich-history beat should have a tone so the chart has no holes. Do not put
 - Country-level `links` render under a **Sources** label.
 - Wikipedia “Read more” remains if `wiki_bilateral` is set.
 - Records without `links` look as they did before (Afghanistan-style stubs).
+- The full-page header and the ride rider use that country’s Commons flag (`relationRiderFlags`): partner on the left, plot center on the right. Do not hardcode Mexico stripes.
 
-Helper: `httpsSourceLinks` in `engine.js` drops non-https / unlabeled chips.
+Helper: `httpsSourceLinks` in `engine.js` drops non-https / unlabeled chips. `relationRiderFlags` reads Commons portraits from `people.json`.
 
 ## QA
 
