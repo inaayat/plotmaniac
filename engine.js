@@ -16,13 +16,17 @@ export function usesScotusHub(plot) {
   return plot?.arrangement === "scotus-hub";
 }
 
+export function usesGunStateLawsPlot(plot) {
+  return plot?.arrangement === "gun-state-laws";
+}
+
 export function usesRegulationBoard(plot, topicId = "") {
   if (plot?.arrangement === "regulation-board") return true;
   return usesScotusHub(plot) && topicId === "gun-rights";
 }
 
 export function defaultPlotView({ requested = "", eventId = "", plot = null } = {}) {
-  if (usesScotusHub(plot) || usesRegulationBoard(plot)) return "web";
+  if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot)) return "web";
   if (requested === "timeline" || requested === "web" || requested === "person") return requested;
   if (eventId) return "timeline";
   return "web";
@@ -502,7 +506,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
     url.hash = "";
     return url.pathname || "/";
   }
-  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic"].forEach((key) => url.searchParams.delete(key));
+  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic", "criteria", "gun"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (state.view === "timeline" || state.view === "person" || state.view === "relation") {
     url.searchParams.set("view", state.view);
@@ -517,7 +521,10 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (Number.isFinite(state.to)) url.searchParams.set("to", String(state.to));
   if (state.country) url.searchParams.set("country", state.country);
   if (state.regKind) url.searchParams.set("kind", state.regKind);
-  if (state.exemplarState) url.searchParams.set("state", state.exemplarState);
+  if (state.gunLawState) url.searchParams.set("state", state.gunLawState);
+  else if (state.exemplarState) url.searchParams.set("state", state.exemplarState);
+  if (state.gunLawCriteria) url.searchParams.set("criteria", state.gunLawCriteria);
+  if (state.gunLawGunType === "longgun") url.searchParams.set("gun", "longgun");
   if (state.topic) url.searchParams.set("topic", state.topic);
   if (state.hub) url.searchParams.set("hub", state.hub);
   else if (state.defaultHub) url.searchParams.set("hub", "shared");
@@ -892,7 +899,7 @@ export function webCastForPersonFocus(people, relations, personId) {
 
 export function boardViewForPerson(plot, view) {
   if (plot?.arrangement === "wars") return "web";
-  if (usesScotusHub(plot) || usesRegulationBoard(plot)) return "web";
+  if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot)) return "web";
   if (usesPolicyPanel(plot) && view === "person") return "web";
   if (usesHubWebPersonFocus(plot) && view === "person") return "web";
   return view;

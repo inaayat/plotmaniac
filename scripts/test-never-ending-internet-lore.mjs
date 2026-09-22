@@ -94,6 +94,14 @@ import {
   statsReadoutAtYear,
   filterRegulationBeats,
 } from "../gun-regulation-model.js";
+import {
+  filterStatesByCriteria,
+  getStateCriterionCell,
+  parseGunStateLawFilters,
+  parseGunType,
+  resolveStatusForGunType,
+  validateGunStateSnapshot,
+} from "../gun-laws-by-state-model.js";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
 const plots = readJson("../data/plots.json");
@@ -207,6 +215,7 @@ assert.deepEqual(plots.plots.map((item) => item.id), [
   "jd-vance",
   "united-states",
   "partition-of-india",
+  "gun-laws-by-state",
   "scotus",
   "wars",
 ], "homepage gallery order");
@@ -2115,5 +2124,26 @@ assert.match(
   /\.scotus-topic-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/,
   "SCOTUS topics render as a multi-column grid",
 );
+
+const gunStatePlot = findPlot(plots.plots, "gun-laws-by-state");
+assert.equal(gunStatePlot?.arrangement, "gun-state-laws");
+assert.notEqual(findPlot(plots.plots, "gun-laws-by-state")?.id, "scotus");
+const gunStateSnapshot = readJson("../data/gun-laws-by-state/states-snapshot.json");
+assert.deepEqual(validateGunStateSnapshot(gunStateSnapshot), []);
+assert.ok(gunStateSnapshot.states.length >= 51);
+assert.equal(gunStateSnapshot.states.length, 51);
+const tx = gunStateSnapshot.states.find((row) => row.id === "tx");
+assert.equal(
+  resolveStatusForGunType(getStateCriterionCell(tx, "carry-permit"), "handgun", "carry-permit"),
+  "not_required",
+);
+assert.equal(parseGunType("https://plotmaniac.com/?gun=longgun"), "longgun");
+assert.equal(parseGunType("https://plotmaniac.com/"), "handgun");
+const criteriaIds = new Set(["carry-permit", "waiting-period", "open-carry-permit"]);
+const filters = parseGunStateLawFilters("https://plotmaniac.com/?criteria=carry-permit:not_required,waiting-period:not_required", criteriaIds);
+assert.equal(filters["carry-permit"], "not_required");
+const permitless = filterStatesByCriteria(gunStateSnapshot.states, filters);
+assert.ok(permitless.some((row) => row.id === "tx"));
+assert.ok(permitless.length > 10);
 
 console.log("never-ending internet lore tests passed");

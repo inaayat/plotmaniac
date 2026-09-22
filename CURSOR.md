@@ -10,7 +10,9 @@ Static single-page app: `index.html` at the repo root, ES modules in `app.js`, `
 | `app.js` | Boot, routing (`?plot=`, `?view=`), gallery |
 | `engine.js` | Shared plot engine (webs, timelines, country field) |
 | `data/plots.json` | Plot registry |
-| `data/<plot-id>/` | Per-plot JSON |
+| `data/gun-regulation/` | SCOTUS gun-rights board (federal timeline, checklist, exemplars) |
+| `data/gun-laws-by-state/` | Separate state-law filter plot (`gun-laws-by-state`) |
+| `scripts/build-states-wikipedia-snapshot.mjs` | Wikipedia → `states-snapshot.json` + `docs/gun-laws-by-state-table.md` |
 | `scripts/test-never-ending-internet-lore.mjs` | Archive / UI regression checks |
 | `docs/templates/` | Plot authoring templates |
 
