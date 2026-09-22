@@ -806,7 +806,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   if (plot?.arrangement === "historical-map" && partitionReference) {
     document.body.dataset.board = "history";
     labelViews();
-    const modeKey = `${state.view}:${state.person}`;
+    const modeKey = state.view;
     if (!partitionMount || partitionMount.modeKey() !== modeKey) {
       app.replaceChildren();
       partitionMount = mountPartition(app, partitionReference, {
@@ -822,7 +822,6 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
           state.view = "person";
           state.person = id;
           render({ push: true });
-          window.scrollTo(0, 0);
         },
         onOpenTimeline(id) {
           state.view = "timeline";
@@ -837,10 +836,11 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
           render({ push: true });
         },
       });
+    } else if (state.view === "person") {
+      partitionMount.showPerson?.(state.person);
     } else {
       partitionMount.goTo(state.eventId);
     }
-    if (state.view === "person") window.scrollTo(0, 0);
     if (push || replace) writeUrl(replace);
     return;
   }

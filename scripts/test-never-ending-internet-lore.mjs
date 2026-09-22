@@ -1021,6 +1021,12 @@ assert.match(appSource, /function applyHubCamera/, "the web eases its zoom to th
 assert.match(appSource, /Map \+ people/, "Partition navigation names its map and people view");
 assert.match(partitionViewSource, /Who wanted what — and who made the call/, "Partition overview explains decision-makers");
 assert.match(partitionViewSource, /Show Kashmir claims overlay/, "claims control explains its effect");
+assert.match(partitionViewSource, /showPerson\(/, "person pages swap in place");
+assert.match(appSource, /partitionMount\.showPerson/, "opening another person keeps the person mount");
+const partitionCss = fs.readFileSync(new URL("../partition.css", import.meta.url), "utf8");
+assert.match(partitionCss, /\.partition-beat li[\s\S]*?font-size: 0\.78rem/, "beat bullets match the moment copy");
+assert.match(partitionCss, /\.partition-person-page \{\s*width: 100%;/, "person page uses the board width");
+assert.match(partitionCss, /\.partition-person-page h2 \{\s*font-size: 2rem;/, "person headers stay one size");
 assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");
 assert.match(appSource, /Shared people sit in the center/, "youtubers web describes the shared center");
 assert.match(css, /\.web-stage \.node-name/, "web names stay inside their node");
