@@ -993,7 +993,7 @@ function angleDelta(from, to) {
 }
 
 function hubBox(nodeSize) {
-  return { nodeSize, boxW: nodeSize + 36, boxH: nodeSize + 32 };
+  return { nodeSize, boxW: nodeSize + 48, boxH: nodeSize + 56 };
 }
 
 function stageGrid(cx, cy, width, height, boxW, boxH, pad) {
@@ -1121,11 +1121,15 @@ function fitHubWeb(width, height, sharedCount, hubIds, groups) {
   };
   const fitted = attempt(width, height, 28);
   if (fitted) return fitted;
-  for (let extra = 120; extra <= 1400; extra += 120) {
-    const grown = attempt(width, height + extra, 34);
+  const aspect = width / Math.max(height, 1);
+  for (let extra = 120; extra <= 2400; extra += 120) {
+    const addH = extra;
+    const addW = Math.max(120, Math.round(extra * aspect));
+    const grown = attempt(width + addW, height + addH, 32);
     if (grown) return grown;
   }
-  return attempt(Math.max(width, 980), Math.max(height, 980), 28);
+  const side = Math.max(width, height, 1200) + 800;
+  return attempt(side, side, 26);
 }
 
 function placeByBeats(list, slots, counts) {

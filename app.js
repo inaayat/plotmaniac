@@ -93,6 +93,9 @@ const COMPACT_MQ = `(max-width: ${COMPACT_MAX_WIDTH}px)`;
 const VIEW_PREF_KEY = "plotmaniac-view";
 const PICK_LEDE = "Turn rabbit holes into clickable plots: maps, webs, lists, timelines.";
 let hubCamera = null;
+let webFitToken = "";
+const WEB_ZOOM_MIN = 0.08;
+const WEB_ZOOM_MAX = 2.8;
 
 function isCompact() {
   return window.matchMedia(COMPACT_MQ).matches;
@@ -335,6 +338,8 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     openTopic = "";
     people.forEach((person) => peopleById.set(person.id, person));
     setLaneZoom(1);
+    hubCamera = null;
+    webFitToken = "";
     const eras = new Set(events.map((event) => event.era));
     const hubs = plotHubs(plot);
     if (fromUrl) {
@@ -734,7 +739,21 @@ function bindChrome() {
       closePolicyPanel();
       return;
     }
-    if (state.view === "web") return;
+    if (state.view === "web") {
+      const stage = document.querySelector(".web-stage.is-hub-field");
+      if (!stage || event.target.closest("input, textarea")) return;
+      if (event.key === "+" || event.key === "=") {
+        event.preventDefault();
+        changeWebZoom(stage, (hubCamera?.scale || 1) * 1.2);
+      } else if (event.key === "-" || event.key === "_") {
+        event.preventDefault();
+        changeWebZoom(stage, (hubCamera?.scale || 1) / 1.2);
+      } else if (event.key === "0" && !event.metaKey && !event.ctrlKey) {
+        event.preventDefault();
+        fitWebCamera(stage);
+      }
+      return;
+    }
     if (event.target.closest("input, textarea")) return;
     const lane = document.querySelector(".lane-view");
     if (!lane) return;
@@ -914,12 +933,16 @@ function renderWeb() {
       : compactTopics
         ? "Policies for this year, grouped by topic. Tap one to read the stance."
       : hubWeb
-        ? (plot.hubAriaLabel || "Hub web. Shared people sit in the center, hubs just outside. None shows that shared web. All shows every person on it. One hub shows only that hub's own people. The view zooms to fit the current focus.")
+        ? (plot.hubAriaLabel || "Hub web. Shared people sit in the center, hubs just outside. None shows that shared web. All shows every person on it. One hub shows only that hub's own people. Zoom and drag to read the field.")
         : "Friends and foes map",
   );
   const stage = document.createElement("div");
   stage.className = `web-stage${plot.images === "bubbles" ? " is-bubbles" : ""}`;
   scroller.appendChild(stage);
+  if (hubWeb) {
+    scroller.appendChild(buildWebTools(stage));
+    bindWebGestures(scroller, stage);
+  }
   section.append(key);
   if (plot.year) section.appendChild(renderYearBar());
   if (plot.arrangement === "topics" && plot.topics?.length) section.appendChild(renderTopicBar());
@@ -2070,7 +2093,13 @@ function paintWeb(stage, { animate = true } = {}) {
     const foeCount = layout.nodes.filter((node) => node.camp === "enemy").length;
     counts.textContent = `${friendCount} ${countWord("friend", friendCount)} · ${foeCount} ${countWord("enemy", foeCount)}`;
   }
-  if (hubField) applyHubCamera(stage, layout, { animate });
+  if (hubField) {
+    stage.webLayout = layout;
+    const token = `${plot.id}:${state.hub}:${layout.nodes.map((node) => node.id).sort().join(",")}`;
+    const shouldFit = webFitToken !== token;
+    webFitToken = token;
+    applyHubCamera(stage, layout, { animate, fit: shouldFit });
+  }
   else if (compact && !camps && !topics && scroller) {
     scroller.scrollLeft = Math.max(0, (stage.offsetWidth - scroller.clientWidth) / 2);
     scroller.scrollTop = Math.max(0, (stage.offsetHeight - scroller.clientHeight) / 2);
@@ -2080,39 +2109,156 @@ function paintWeb(stage, { animate = true } = {}) {
   if (usesPolicyPanel(plot)) paintPolicySelection(stage.closest(".web"));
 }
 
-function applyHubCamera(stage, layout, { animate = true } = {}) {
+function clampWebZoom(value) {
+  const next = Math.round(Number(value) * 100) / 100;
+  return Math.min(WEB_ZOOM_MAX, Math.max(WEB_ZOOM_MIN, next));
+}
+
+function webCameraTransform(camera) {
+  return `translate(${camera.x.toFixed(2)}px, ${camera.y.toFixed(2)}px) scale(${camera.scale.toFixed(4)})`;
+}
+
+function fittedWebCamera(stage, layout) {
   const scroller = stage.parentElement;
-  const viewWidth = scroller?.clientWidth || 0;
-  const viewHeight = scroller?.clientHeight || 0;
-  const frame = hubFrame(layout.nodes, {
-    viewWidth,
-    viewHeight,
+  return hubFrame(layout.nodes, {
+    viewWidth: scroller?.clientWidth || 0,
+    viewHeight: scroller?.clientHeight || 0,
     boxW: Math.max(layout.boxW || 0, isCompact() ? 104 : 128),
     boxH: Math.max(layout.boxH || 0, isCompact() ? 96 : 116),
   });
-  const transform = (camera) => `translate(${camera.x.toFixed(2)}px, ${camera.y.toFixed(2)}px) scale(${camera.scale.toFixed(4)})`;
+}
+
+function paintWebCamera(stage, camera, { animate = false } = {}) {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const previous = hubCamera;
   if (animate && !reduced && previous) {
     stage.style.transition = "none";
-    stage.style.transform = transform(previous);
+    stage.style.transform = webCameraTransform(previous);
     stage.offsetWidth;
     stage.style.transition = "";
-    stage.style.transform = transform(frame);
-  } else if (animate && !reduced) {
-    const scale = frame.scale * 0.9;
-    const cx = (viewWidth / 2 - frame.x) / frame.scale;
-    const cy = (viewHeight / 2 - frame.y) / frame.scale;
-    stage.style.transition = "none";
-    stage.style.transform = transform({ scale, x: viewWidth / 2 - cx * scale, y: viewHeight / 2 - cy * scale });
-    stage.offsetWidth;
-    stage.style.transition = "";
-    stage.style.transform = transform(frame);
+    stage.style.transform = webCameraTransform(camera);
   } else {
-    stage.style.transition = "none";
-    stage.style.transform = transform(frame);
+    stage.style.transition = animate && !reduced ? "" : "none";
+    stage.style.transform = webCameraTransform(camera);
   }
-  hubCamera = frame;
+  hubCamera = camera;
+  stage.classList.toggle("is-web-small", camera.scale < 0.55);
+  const scroller = stage.parentElement;
+  const slider = scroller?.querySelector(".web-zoom");
+  const readout = scroller?.querySelector(".web-readout");
+  const percent = String(Math.round(camera.scale * 100));
+  if (slider && document.activeElement !== slider) slider.value = percent;
+  if (readout) readout.textContent = `${percent}%`;
+}
+
+function applyHubCamera(stage, layout, { animate = true, fit = false } = {}) {
+  const frame = fittedWebCamera(stage, layout);
+  if (fit || !hubCamera) {
+    paintWebCamera(stage, frame, { animate });
+    return;
+  }
+  paintWebCamera(stage, hubCamera, { animate: false });
+}
+
+function changeWebZoom(stage, zoom, anchor) {
+  const scroller = stage.parentElement;
+  if (!scroller) return;
+  const prev = hubCamera || fittedWebCamera(stage, stage.webLayout || { nodes: [] });
+  const scale = clampWebZoom(zoom);
+  const rect = scroller.getBoundingClientRect();
+  const originX = anchor ? anchor.x - rect.left : rect.width / 2;
+  const originY = anchor ? anchor.y - rect.top : rect.height / 2;
+  const contentX = (originX - prev.x) / (prev.scale || 1);
+  const contentY = (originY - prev.y) / (prev.scale || 1);
+  paintWebCamera(stage, {
+    scale,
+    x: originX - contentX * scale,
+    y: originY - contentY * scale,
+  });
+}
+
+function fitWebCamera(stage) {
+  if (!stage.webLayout) return;
+  paintWebCamera(stage, fittedWebCamera(stage, stage.webLayout), { animate: true });
+}
+
+function buildWebTools(stage) {
+  const tools = document.createElement("div");
+  tools.className = "web-tools";
+  const zoomButton = (label, text, onClick) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "lane-button";
+    button.textContent = text;
+    button.setAttribute("aria-label", label);
+    button.addEventListener("click", onClick);
+    return button;
+  };
+  const slider = document.createElement("input");
+  slider.type = "range";
+  slider.className = "lane-zoom web-zoom";
+  slider.min = String(Math.round(WEB_ZOOM_MIN * 100));
+  slider.max = String(Math.round(WEB_ZOOM_MAX * 100));
+  slider.value = "100";
+  slider.setAttribute("aria-label", "Web zoom");
+  slider.addEventListener("input", () => {
+    const rect = stage.parentElement.getBoundingClientRect();
+    changeWebZoom(stage, Number(slider.value) / 100, {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    });
+  });
+  const readout = document.createElement("span");
+  readout.className = "lane-readout web-readout";
+  readout.textContent = "100%";
+  tools.append(
+    zoomButton("Zoom out", "−", () => changeWebZoom(stage, (hubCamera?.scale || 1) / 1.2)),
+    slider,
+    readout,
+    zoomButton("Zoom in", "+", () => changeWebZoom(stage, (hubCamera?.scale || 1) * 1.2)),
+    zoomButton("Fit the web to the page", "Fit", () => fitWebCamera(stage)),
+  );
+  return tools;
+}
+
+function bindWebGestures(scroller, stage) {
+  scroller.addEventListener("wheel", (event) => {
+    if (!(event.ctrlKey || event.metaKey)) return;
+    event.preventDefault();
+    const factor = Math.exp(-event.deltaY * 0.0016);
+    changeWebZoom(stage, (hubCamera?.scale || 1) * factor, { x: event.clientX, y: event.clientY });
+  }, { passive: false });
+
+  let pan = null;
+  scroller.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0 || event.pointerType !== "mouse") return;
+    if (event.target.closest("button, a, input")) return;
+    const camera = hubCamera || { x: 0, y: 0, scale: 1 };
+    pan = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      camX: camera.x,
+      camY: camera.y,
+    };
+    scroller.setPointerCapture(event.pointerId);
+    scroller.classList.add("is-panning");
+  });
+  scroller.addEventListener("pointermove", (event) => {
+    if (!pan || event.pointerId !== pan.id) return;
+    paintWebCamera(stage, {
+      scale: hubCamera?.scale || 1,
+      x: pan.camX + (event.clientX - pan.x),
+      y: pan.camY + (event.clientY - pan.y),
+    });
+  });
+  const endPan = (event) => {
+    if (!pan || event.pointerId !== pan.id) return;
+    pan = null;
+    scroller.classList.remove("is-panning");
+  };
+  scroller.addEventListener("pointerup", endPan);
+  scroller.addEventListener("pointercancel", endPan);
 }
 
 function topicPeopleGroups(nodes, byName) {
@@ -3233,19 +3379,21 @@ function nameEl(name) {
 function faceRow(ids, size = "sm") {
   const row = document.createElement("span");
   row.className = "faces";
-  ids.slice(0, 4).forEach((id) => {
+  ids.forEach((id) => {
     const person = peopleById.get(id);
     if (!person) return;
-    const face = avatar(person, size);
-    face.title = person.name;
-    row.appendChild(face);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "face-link";
+    button.appendChild(avatar(person, size));
+    button.title = person.name;
+    button.setAttribute("aria-label", `${person.name}. Open their timeline.`);
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openPerson(person.id);
+    });
+    row.appendChild(button);
   });
-  if (ids.length > 4) {
-    const more = document.createElement("span");
-    more.className = "more-faces";
-    more.textContent = `+${ids.length - 4}`;
-    row.appendChild(more);
-  }
   return row;
 }
 

@@ -827,6 +827,21 @@ body[data-view="web"] .web-scroll.is-hub-field {
   position: relative;
   overflow: hidden;
   padding: 0;
+  cursor: grab;
+}
+
+body[data-view="web"] .web-scroll.is-hub-field.is-panning {
+  cursor: grabbing;
+}
+
+.web-tools {
+  position: absolute;
+  z-index: 4;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .web-stage.is-hub-field {
@@ -1854,12 +1869,30 @@ body[data-view="relation"] .views > button {
 }
 
 .web-stage.is-hub-field .node-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   max-width: 100%;
-  overflow: visible;
-  text-overflow: unset;
+  max-height: 2.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: normal;
   text-align: center;
   line-height: 1.25;
+}
+
+.web-stage.is-hub-field.is-web-small .node-name {
+  opacity: 0;
+}
+
+.web-stage.is-hub-field.is-web-small .node:hover .node-name,
+.web-stage.is-hub-field.is-web-small .node:focus-visible .node-name {
+  z-index: 4;
+  max-height: none;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+  opacity: 1;
+  background: var(--bg);
 }
 
 .web-stage .node:not(.is-center) .avatar {
@@ -2634,8 +2667,23 @@ button.back:hover,
 
 .faces {
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
   margin-top: 12px;
+}
+
+.face-link {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.face-link .avatar {
+  width: 28px;
+  height: 28px;
 }
 
 .detail-names {

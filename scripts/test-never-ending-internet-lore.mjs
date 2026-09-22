@@ -1024,6 +1024,10 @@ assert.match(appSource, /function enhanceSelect/, "plot and focus use themed cho
 assert.match(css, /\.choice-menu/, "choice menus match the ink and gold chrome");
 assert.match(appSource, /textContent = "All"/, "focus can show every YouTuber");
 assert.match(appSource, /function applyHubCamera/, "the web eases its zoom to the current focus");
+assert.match(appSource, /function changeWebZoom/, "hub webs can zoom in and out");
+assert.match(appSource, /function bindWebGestures/, "hub webs can be dragged");
+assert.match(appSource, /className = "face-link"/, "timeline faces open a person");
+assert.match(css, /\.web-stage\.is-hub-field\.is-web-small \.node-name/, "tiny hub names hide until hover");
 assert.match(appSource, /Map \+ people/, "Partition navigation names its map and people view");
 assert.match(partitionViewSource, /Who wanted what — and who made the call/, "Partition overview explains decision-makers");
 assert.match(partitionViewSource, /Show Kashmir claims overlay/, "claims control explains its effect");
@@ -1709,6 +1713,17 @@ assert.equal(marvelShared.nodes.find((node) => node.id === "tony-stark").plotHub
 assert.equal(marvelRaimi.nodes.find((node) => node.id === "norman-osborn-raimi").ring, "exclusive");
 assert.equal(marvelRaimi.nodes.find((node) => node.id === "otto-octavius-raimi").ring, "exclusive");
 assert.ok(marvelAll.nodes.length > marvelShared.nodes.length, "Marvel All reveals exclusive universe members");
+assert.ok(marvelAll.width / marvelAll.height >= 0.7, "Marvel All spreads across the page, not only downward");
+assert.ok(marvelAll.height / marvelAll.width <= 1.7, "Marvel All stays a field, not a tall column");
+for (let i = 0; i < marvelAll.nodes.length; i += 1) {
+  for (let j = i + 1; j < marvelAll.nodes.length; j += 1) {
+    assert.equal(
+      boxesOverlap(marvelAll.nodes[i], marvelAll.nodes[j], marvelAll.boxW, marvelAll.boxH),
+      false,
+      `${marvelAll.nodes[i].id} overlaps ${marvelAll.nodes[j].id} on Marvel All`,
+    );
+  }
+}
 
 assert.equal(boardViewForPerson(obama, "person"), "web");
 assert.equal(boardViewForPerson(vance, "person"), "web");
