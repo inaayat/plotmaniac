@@ -310,7 +310,10 @@ function renderWeb() {
   section.className = "web";
   const key = document.createElement("ul");
   key.className = "web-key";
-  const keyItems = [["friend", "Friends"], ["enemy", "Foes"]];
+  const keyItems = [
+    ["friend", plot.friendLabelPlural || plot.friendLabel || "Friends"],
+    ["enemy", plot.enemyLabelPlural || plot.enemyLabel || "Foes"],
+  ];
   if (plot.arrangement !== "camps") keyItems.push(["near", "Closer · more beats"]);
   keyItems.forEach(([camp, label]) => {
     const item = document.createElement("li");
@@ -686,7 +689,7 @@ function renderYearBar() {
   readout.textContent = String(state.year);
   const hint = document.createElement("p");
   hint.className = "year-hint";
-  hint.textContent = "Drag the year. Foes sit on the left, friends on the right.";
+  hint.textContent = plot.yearHint || "Drag the year. Foes sit on the left, friends on the right.";
   const input = document.createElement("input");
   input.type = "range";
   input.className = "year-drag";
@@ -694,7 +697,7 @@ function renderYearBar() {
   input.max = String(plot.year.max);
   input.step = "1";
   input.value = String(state.year);
-  input.setAttribute("aria-label", "Year. Drag to see who was a friend or a foe.");
+  input.setAttribute("aria-label", plot.yearHint || "Year. Drag to see who was a friend or a foe.");
   input.setAttribute("aria-valuetext", String(state.year));
   input.addEventListener("input", () => setYear(input.value));
   const marks = document.createElement("div");
@@ -818,7 +821,7 @@ function paintWeb(stage, { animate = true } = {}) {
   if (counts) {
     const friendCount = layout.nodes.filter((node) => node.camp === "friend").length;
     const foeCount = layout.nodes.filter((node) => node.camp === "enemy").length;
-    counts.textContent = `${friendCount} ${friendCount === 1 ? "friend" : "friends"} · ${foeCount} ${foeCount === 1 ? "foe" : "foes"}`;
+    counts.textContent = `${friendCount} ${countWord("friend", friendCount)} · ${foeCount} ${countWord("enemy", foeCount)}`;
   }
 }
 
@@ -1376,10 +1379,20 @@ function tieSpan(tie) {
 }
 
 function campLabel(camp) {
-  if (camp === "friend") return "Friend";
-  if (camp === "enemy") return "Foe";
+  if (camp === "friend") return plot?.friendLabel || "Friend";
+  if (camp === "enemy") return plot?.enemyLabel || "Foe";
   if (camp === "orbit") return plot?.orbitLabel || "Around the show";
   return "";
+}
+
+function countWord(camp, count) {
+  const one = count === 1;
+  if (camp === "friend") {
+    if (one) return plot?.friendCountOne || "friend";
+    return plot?.friendCountMany || "friends";
+  }
+  if (one) return plot?.enemyCountOne || "foe";
+  return plot?.enemyCountMany || "foes";
 }
 
 function formatDate(iso) {

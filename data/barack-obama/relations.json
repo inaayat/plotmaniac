@@ -1,0 +1,242 @@
+[
+  {
+    "from": "barack-obama",
+    "to": "same-sex-marriage",
+    "kind": "supported",
+    "start": "1996",
+    "end": "1997",
+    "label": "1996 Illinois Senate questionnaire backed legalizing same-sex marriage"
+  },
+  {
+    "from": "barack-obama",
+    "to": "same-sex-marriage",
+    "kind": "opposed",
+    "start": "1998",
+    "end": "2011",
+    "label": "Undecided, then civil unions without the word marriage, through the 2008 campaign"
+  },
+  {
+    "from": "barack-obama",
+    "to": "same-sex-marriage",
+    "kind": "supported",
+    "start": "2012",
+    "label": "First sitting president to say same-sex couples should be able to marry"
+  },
+  {
+    "from": "barack-obama",
+    "to": "individual-mandate",
+    "kind": "opposed",
+    "start": "2007",
+    "end": "2008",
+    "label": "2008 primary: the problem is cost, not a requirement to buy insurance"
+  },
+  {
+    "from": "barack-obama",
+    "to": "individual-mandate",
+    "kind": "supported",
+    "start": "2009",
+    "label": "Individual mandate written into the Affordable Care Act"
+  },
+  {
+    "from": "barack-obama",
+    "to": "nsa-surveillance",
+    "kind": "opposed",
+    "start": "2005",
+    "end": "2007",
+    "label": "Attacked Bush-era warrantless wiretapping and said he would fight to end it"
+  },
+  {
+    "from": "barack-obama",
+    "to": "nsa-surveillance",
+    "kind": "supported",
+    "start": "2008",
+    "label": "Voted for the FISA Amendments Act, then defended NSA collection as president"
+  },
+  {
+    "from": "barack-obama",
+    "to": "cuba-relations",
+    "kind": "opposed",
+    "start": "2004",
+    "end": "2013",
+    "label": "Maintained the embargo while easing family travel and remittances"
+  },
+  {
+    "from": "barack-obama",
+    "to": "cuba-relations",
+    "kind": "supported",
+    "start": "2014",
+    "label": "Restored diplomatic relations and became the first sitting president to visit since 1928"
+  },
+  {
+    "from": "barack-obama",
+    "to": "daca",
+    "kind": "opposed",
+    "start": "2011",
+    "end": "2011",
+    "label": "Said a president could not defer deportations by executive action — “I am not king”"
+  },
+  {
+    "from": "barack-obama",
+    "to": "daca",
+    "kind": "supported",
+    "start": "2012",
+    "label": "Created Deferred Action for Childhood Arrivals after the DREAM Act stalled"
+  },
+  {
+    "from": "barack-obama",
+    "to": "medical-marijuana",
+    "kind": "supported",
+    "start": "2008",
+    "end": "2009",
+    "label": "Campaign pledge to end DEA raids on dispensaries that follow state law"
+  },
+  {
+    "from": "barack-obama",
+    "to": "medical-marijuana",
+    "kind": "opposed",
+    "start": "2010",
+    "end": "2012",
+    "label": "Federal raids on state-legal shops, including Oaksterdam, exceeded the Bush pace"
+  },
+  {
+    "from": "barack-obama",
+    "to": "medical-marijuana",
+    "kind": "supported",
+    "start": "2013",
+    "label": "Cole memo: do not spend federal resources on regulated state marijuana markets"
+  },
+  {
+    "from": "barack-obama",
+    "to": "afghanistan-surge",
+    "kind": "supported",
+    "start": "2008",
+    "end": "2010",
+    "label": "The “necessary war”: extra troops to break the Taliban’s momentum"
+  },
+  {
+    "from": "barack-obama",
+    "to": "afghanistan-surge",
+    "kind": "opposed",
+    "start": "2011",
+    "label": "Announced a drawdown; about 8,400 troops remained when he left office"
+  },
+  {
+    "from": "barack-obama",
+    "to": "iraq-war",
+    "kind": "opposed",
+    "start": "2002",
+    "label": "October 2002 Chicago speech against a “dumb war,” then a 2011 withdrawal"
+  },
+  {
+    "from": "barack-obama",
+    "to": "affordable-care-act",
+    "kind": "supported",
+    "start": "2007",
+    "label": "Campaign health plan became the 2010 law covering tens of millions"
+  },
+  {
+    "from": "barack-obama",
+    "to": "public-option",
+    "kind": "supported",
+    "start": "2007",
+    "label": "Preferred a public plan on the exchanges even after the Senate dropped it"
+  },
+  {
+    "from": "barack-obama",
+    "to": "dont-ask-dont-tell",
+    "kind": "supported",
+    "start": "2007",
+    "label": "Ran against the ban and signed the 2010 repeal"
+  },
+  {
+    "from": "barack-obama",
+    "to": "guantanamo",
+    "kind": "supported",
+    "start": "2008",
+    "label": "Ordered the prison closed within a year; Congress blocked a full shutdown"
+  },
+  {
+    "from": "barack-obama",
+    "to": "iran-nuclear-deal",
+    "kind": "supported",
+    "start": "2007",
+    "label": "Willing to talk without Bush-era preconditions; signed the 2015 JCPOA"
+  },
+  {
+    "from": "barack-obama",
+    "to": "keystone-xl",
+    "kind": "opposed",
+    "start": "2011",
+    "label": "Delayed, then rejected, the tar-sands border crossing"
+  },
+  {
+    "from": "barack-obama",
+    "to": "climate-action",
+    "kind": "supported",
+    "start": "2006",
+    "label": "Cap-and-trade, stimulus clean energy, Clean Power Plan, and Paris"
+  },
+  {
+    "from": "barack-obama",
+    "to": "recovery-act",
+    "kind": "supported",
+    "start": "2009",
+    "label": "Signed the $800 billion stimulus in the trough of the Great Recession"
+  },
+  {
+    "from": "barack-obama",
+    "to": "dodd-frank",
+    "kind": "supported",
+    "start": "2009",
+    "label": "Signed the 2010 bank rewrite and created the CFPB"
+  },
+  {
+    "from": "barack-obama",
+    "to": "assault-weapons-ban",
+    "kind": "supported",
+    "start": "1996",
+    "label": "Favored renewing the federal assault-weapons ban and tighter sales rules"
+  },
+  {
+    "from": "barack-obama",
+    "to": "death-penalty",
+    "kind": "supported",
+    "start": "1996",
+    "label": "Kept capital punishment for the worst crimes; no federal executions on his watch"
+  },
+  {
+    "from": "barack-obama",
+    "to": "trans-pacific-partnership",
+    "kind": "supported",
+    "start": "2011",
+    "label": "Negotiated and signed TPP; the Senate never took it up"
+  },
+  {
+    "from": "barack-obama",
+    "to": "minimum-wage",
+    "kind": "supported",
+    "start": "2007",
+    "label": "Pushed a higher federal floor; Congress said no, several states said yes"
+  },
+  {
+    "from": "barack-obama",
+    "to": "stem-cell-research",
+    "kind": "supported",
+    "start": "2005",
+    "label": "Co-sponsored Senate bills, then lifted Bush limits by executive order"
+  },
+  {
+    "from": "barack-obama",
+    "to": "auto-rescue",
+    "kind": "supported",
+    "start": "2008",
+    "label": "Continued the Bush rescue and steered GM and Chrysler through bankruptcy"
+  },
+  {
+    "from": "barack-obama",
+    "to": "drone-strikes",
+    "kind": "supported",
+    "start": "2009",
+    "label": "Expanded armed drones against al-Qaeda, including a U.S. citizen in Yemen"
+  }
+]
