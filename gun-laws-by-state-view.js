@@ -63,8 +63,6 @@ export function renderGunStateLawsBoard({
   split.appendChild(mapColumn);
   section.appendChild(split);
 
-  section.appendChild(renderStateTable(lit, selectedStateId, onSelectState, gunType));
-
   if (selectedStateId) {
     const detail = allStates.find((s) => s.id === selectedStateId);
     if (detail) section.appendChild(renderStateDetail(detail, filterConfig, gunType));
@@ -259,75 +257,6 @@ function highlightLabel(highlight) {
   if (highlight === "lit") return "matches your criteria";
   if (highlight === "unknown") return "Wikipedia row missing for a checked rule";
   return "does not match";
-}
-
-function cellLabel(state, criterionId, gunType) {
-  const cell = getStateCriterionCell(state, criterionId);
-  return statusLabel(resolveStatusForGunType(cell, gunType, criterionId));
-}
-
-function renderStateTable(states, selectedStateId, onSelectState, gunType) {
-  const wrap = document.createElement("div");
-  wrap.className = "gun-state-laws-table-wrap";
-  const heading = document.createElement("h3");
-  heading.textContent = "Lit jurisdictions";
-  wrap.appendChild(heading);
-  const table = document.createElement("table");
-  table.className = "gun-state-laws-table";
-  const gt = gunTypeLabel(gunType);
-  const thead = document.createElement("thead");
-  const headRow = document.createElement("tr");
-  [
-    "State",
-    `Purchase (${gt})`,
-    `Private check (${gt})`,
-    `Wait (${gt})`,
-    "Concealed",
-    "Open carry",
-    `AW (${gt})`,
-    `Mag (${gt})`,
-    `Reg (${gt})`,
-  ].forEach((label) => {
-    const th = document.createElement("th");
-    th.scope = "col";
-    th.textContent = label;
-    headRow.appendChild(th);
-  });
-  thead.appendChild(headRow);
-  table.appendChild(thead);
-
-  const tbody = document.createElement("tbody");
-  states.forEach((state) => {
-    const tr = document.createElement("tr");
-    tr.classList.toggle("is-selected", state.id === selectedStateId);
-    const nameCell = document.createElement("th");
-    nameCell.scope = "row";
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "gun-state-laws-row-btn";
-    btn.textContent = `${state.postal} · ${state.name}`;
-    btn.addEventListener("click", () => onSelectState(state.id));
-    nameCell.appendChild(btn);
-    tr.appendChild(nameCell);
-    [
-      "purchase-permit",
-      "private-sale-check",
-      "waiting-period",
-      "carry-permit",
-      "open-carry-permit",
-      "assault-weapons-restriction",
-      "magazine-capacity-limit",
-      "handgun-registration",
-    ].forEach((key) => {
-      const td = document.createElement("td");
-      td.textContent = cellLabel(state, key, gunType);
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
-  });
-  table.appendChild(tbody);
-  wrap.appendChild(table);
-  return wrap;
 }
 
 function renderStateDetail(state, filterConfig, gunType) {

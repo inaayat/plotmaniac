@@ -4685,15 +4685,6 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   padding: 0;
 }
 
-.gun-state-laws-table-wrap {
-  margin-top: 28px;
-}
-
-.gun-state-laws-table-wrap h3 {
-  font-size: 0.95rem;
-  margin: 0 0 8px;
-}
-
 @media (max-width: 768px) {
   .gun-state-laws-split {
     grid-template-columns: 1fr;
@@ -4803,33 +4794,6 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   border-radius: 999px;
   background: rgba(110, 163, 232, 0.15);
   border: 1px solid rgba(110, 163, 232, 0.35);
-}
-
-.gun-state-laws-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.78rem;
-}
-
-.gun-state-laws-table th,
-.gun-state-laws-table td {
-  border-bottom: 1px solid var(--line);
-  padding: 8px 6px;
-  text-align: left;
-}
-
-.gun-state-laws-table tr.is-selected {
-  background: rgba(110, 163, 232, 0.08);
-}
-
-.gun-state-laws-row-btn {
-  font: inherit;
-  color: var(--ink);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  text-align: left;
 }
 
 .gun-state-laws-detail {

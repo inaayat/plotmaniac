@@ -14,7 +14,7 @@
 ?plot=gun-laws-by-state&state=tx
 ```
 
-- **`gun`** — `handgun` (default) or `longgun`; filters and table use that Wikipedia column.
+- **`gun`** — `handgun` (default) or `longgun`; filters and the map use that Wikipedia column.
 - **`criteria`** — comma-separated `criterionId:status` pairs (`not_required`, `required`, `partial`, `not_applicable`).
 - **`state`** — optional selected jurisdiction for the detail panel.
 
@@ -59,7 +59,7 @@ Map shapes: `data/gun-laws-by-state/us-states-paths.json` (Albers USA, 50 states
 
 ## Roadmap
 
-1. **Now:** checkbox criteria beside a choropleth that lights matching states, plus a table of lit jurisdictions.
+1. **Now:** checkbox criteria beside a choropleth that lights matching states. Click a state for its detail.
 2. **Later:** replace Wikipedia seed with official-code keyframes (same schema as `docs/gun-regulation-board-plan.md` §3.3).
 
 See also: [gun-laws-by-state-table.md](./gun-laws-by-state-table.md), [gun-regulation-board-plan.md](./gun-regulation-board-plan.md) (SCOTUS timeline plot only).
