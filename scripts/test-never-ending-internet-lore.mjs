@@ -133,6 +133,7 @@ for (const person of people.filter((person) => !hubCenters.has(person.id))) {
 const frenemies = filterEvents(events, { person: "trisha-paytas", era: "frenemies" }, peopleById);
 assert.ok(frenemies.length >= 2);
 assert.deepEqual(filterEvents(events, { person: ALL, era: ALL }, peopleById), events);
+assert.equal(filterEvents(events, { hub: "" }, peopleById).length, events.length, "no hub shows every beat");
 assert.ok(filterEvents(events, { query: "fair use" }, peopleById).length >= 2);
 assert.ok(h3Events.some((event) => event.id === "frenemies-launch"));
 assert.ok(trishaEvents.some((event) => event.id === "frenemies-launch"));
@@ -405,6 +406,15 @@ assert.match(
   stateUrl("https://plotmaniac.com/", { view: "timeline", plot: "youtubers", hub: "trisha" }, ""),
   /hub=trisha/,
 );
+assert.equal(
+  parseState("https://plotmaniac.com/?plot=youtubers", { hubs: new Set(["h3", "dobrik", "trisha", "jeffree"]) }).hub,
+  "",
+);
+assert.doesNotMatch(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "youtubers", hub: "" }, ""),
+  /hub=/,
+);
+assert.equal(hubCenterId(youtubers, ""), "");
 
 assert.equal(WEB_MIN_BEATS, 2);
 assert.deepEqual(hubsForPerson("dan-swerdlove", relations, ["ethan-klein", "david-dobrik", "trisha-paytas"]), ["ethan-klein"]);
@@ -540,6 +550,14 @@ assert.equal(coreKey(sharedWeb), coreKey(dobrikWeb), "focus does not move hubs o
 assert.equal(coreKey(sharedWeb), coreKey(trishaWeb), "Trisha focus does not move hubs or shared people");
 assert.equal(coreKey(sharedWeb), coreKey(jeffreeWeb), "Jeffree focus does not move hubs or shared people");
 assert.notEqual(positionKey(sharedWeb), positionKey(jeffreeWeb), "the focused hub's own people appear");
+const openWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "" });
+assert.equal(openWeb.nodes.filter((node) => node.ring === "exclusive").length, 0, "no hub means no one-hub people");
+assert.equal(openWeb.nodes.find((node) => node.id === "dan-swerdlove"), undefined);
+assert.equal(openWeb.nodes.find((node) => node.id === "jackie-aina"), undefined);
+assert.equal(openWeb.nodes.find((node) => node.id === "ethan-klein").camp, "orbit");
+assert.equal(openWeb.nodes.find((node) => node.id === "jeffree-star").plotHub, true);
+assert.equal(openWeb.nodes.filter((node) => node.ring === "hub").length, 4);
+assert.equal(coreKey(sharedWeb), coreKey(openWeb), "clearing focus does not move hubs or shared people");
 
 for (const size of [{ width: 1400, height: 980 }, { width: 1024, height: 500 }, { width: 1120, height: 1120 }, { width: 390, height: 700 }]) {
   const sample = webLayout(people, relations, { ...hubFieldOpts, centerId: "ethan-klein", ...size });

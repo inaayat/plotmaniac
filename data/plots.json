@@ -5,7 +5,7 @@
       "aliases": ["h3"],
       "title": "YouTubers",
       "kicker": "People",
-      "lede": "One web for the YouTuber sphere. Shared people sit in the center and the hubs sit just outside. One-hub people appear only when that hub is the focus. Pick Ethan Klein, David Dobrik, Trisha Paytas, or Jeffree Star.",
+      "lede": "One web for the YouTuber sphere. Shared people sit in the center and the hubs sit just outside. Focus on a hub to see the people tied only to them. None keeps just the shared web.",
       "searchPlaceholder": "Lawsuit, Frenemies, Jeffree Star, Vlog Squad, a name…",
       "centerId": "ethan-klein",
       "includeOrbit": true,

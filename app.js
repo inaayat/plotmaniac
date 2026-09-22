@@ -183,14 +183,13 @@ function onPop() {
     eras,
     countries: countryBySlug,
     hubs: new Set(plotHubs(plot).map((hub) => hub.id)),
-    defaultHub: plotHubs(plot)[0]?.id || "",
   });
   state = {
     ...parsed,
     view: viewForPlot(parsed),
     year: readYear(),
     country: parsed.country || "",
-    hub: parsed.hub || plotHubs(plot)[0]?.id || "",
+    hub: parsed.hub || "",
   };
   rememberCountryRegion();
   render({ focusEvent: Boolean(state.eventId) });
@@ -295,14 +294,13 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         eras,
         countries: countryBySlug,
         hubs: new Set(hubs.map((hub) => hub.id)),
-        defaultHub: hubs[0]?.id || "",
       });
       state = {
         ...parsed,
         view: viewForPlot(parsed),
         year: readYear(),
         country: parsed.country || "",
-        hub: parsed.hub || hubs[0]?.id || "",
+        hub: parsed.hub || "",
       };
       rememberCountryRegion();
     } else {
@@ -314,7 +312,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         eventId: "",
         year: plot.year ? parseYear(plot.year.initial, plot.year) : null,
         country: "",
-        hub: hubs[0]?.id || "",
+        hub: "",
       };
     }
     renderCredits();
@@ -421,7 +419,7 @@ function bindChrome() {
   const hubSelect = $("hub-select");
   hubSelect.addEventListener("change", () => {
     const id = hubSelect.value;
-    if (!plot || !id || id === state.hub) return;
+    if (!plot || id === state.hub) return;
     state.hub = id;
     state.eventId = "";
     if (state.view === "person") {
@@ -487,13 +485,17 @@ function fillHubSelect() {
     wrap.hidden = true;
     return;
   }
+  const none = document.createElement("option");
+  none.value = "";
+  none.textContent = "None";
+  select.appendChild(none);
   hubs.forEach((hub) => {
     const option = document.createElement("option");
     option.value = hub.id;
     option.textContent = hub.label;
     select.appendChild(option);
   });
-  select.value = state.hub && hubs.some((hub) => hub.id === state.hub) ? state.hub : hubs[0].id;
+  select.value = state.hub && hubs.some((hub) => hub.id === state.hub) ? state.hub : "";
   wrap.hidden = false;
 }
 
@@ -502,12 +504,13 @@ function activeHub() {
 }
 
 function activeCenter() {
-  return hubCenterId(plot, state.hub) || plot?.centerId || "";
+  if (plotHubs(plot).length) return hubCenterId(plot, state.hub);
+  return plot?.centerId || "";
 }
 
 function hubEvents() {
-  if (!plotHubs(plot).length) return events;
-  return filterEvents(events, { hub: state.hub || plotHubs(plot)[0]?.id }, peopleById);
+  if (!plotHubs(plot).length || !state.hub) return events;
+  return filterEvents(events, { hub: state.hub }, peopleById);
 }
 
 function render({ push = false, replace = false, focusEvent = false } = {}) {
@@ -604,7 +607,7 @@ function renderWeb() {
     compactMap
       ? "Friends and foes map. Drag to look around. Names are listed below."
       : hubWeb
-        ? "YouTuber web. Shared people sit in the center, hubs just outside. One-hub people appear only while that hub is the focus."
+        ? "YouTuber web. Shared people sit in the center, hubs just outside. None shows that shared web. One-hub people appear only while that hub is the focus."
         : "Friends and foes map",
   );
   const stage = document.createElement("div");
@@ -1595,7 +1598,7 @@ function paintWeb(stage, { animate = true } = {}) {
     stage.style.width = "";
   }
   const layout = webLayout(people, relations, {
-    centerId: activeCenter() || plot.centerId,
+    centerId: plotHubs(plot).length ? activeCenter() : (activeCenter() || plot.centerId),
     friendKinds: plot.friendKinds,
     enemyKinds: plot.enemyKinds,
     arrangement: plot.arrangement,
@@ -1672,7 +1675,7 @@ function paintWeb(stage, { animate = true } = {}) {
       layout.nodes.forEach((item) => {
         if (item.topic === nodeId.slice(6) && item.camp !== "topic") near.add(item.id);
       });
-      const centerId = activeCenter() || plot.centerId;
+      const centerId = activeCenter();
       if (centerId) near.add(centerId);
     } else {
       const person = peopleById.get(nodeId);
@@ -1812,7 +1815,7 @@ function renderPerson() {
   if (record) face.classList.add(outlineClass(record));
   head.appendChild(face);
   const copy = document.createElement("div");
-  const centerId = activeCenter() || plot.centerId;
+  const centerId = activeCenter();
   const camp = campOf(
     person.id,
     relations,
@@ -2429,7 +2432,7 @@ function renderLaneEvent(event, side, focusId) {
 
 function featuredPerson(event, focusId) {
   const ids = event.people || [];
-  const skip = activeCenter() || plot.centerId;
+  const skip = activeCenter();
   const preferred = focusId && ids.includes(focusId)
     ? focusId
     : ids.find((id) => id !== skip) || ids[0];

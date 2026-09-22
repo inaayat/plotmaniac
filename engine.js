@@ -65,12 +65,13 @@ export function plotHubs(plot) {
 
 export function hubOf(plot, hubId) {
   const hubs = plotHubs(plot);
-  if (!hubs.length) return null;
+  if (!hubs.length || !hubId) return null;
   return hubs.find((hub) => hub.id === hubId) || hubs[0];
 }
 
 export function hubCenterId(plot, hubId) {
-  return hubOf(plot, hubId)?.centerId || plot?.centerId || "";
+  if (!hubId) return "";
+  return hubOf(plot, hubId)?.centerId || "";
 }
 
 export const WEB_MIN_BEATS = 2;
@@ -817,14 +818,17 @@ export function neighborhood(personId, relations) {
 }
 
 export function webLayout(people, relations, options = {}) {
-  const centerId = options.centerId || "ethan-klein";
   const friendKinds = options.friendKinds || ["ally", "crew", "co-host", "collaborator", "family"];
   const enemyKinds = options.enemyKinds || ["feud", "litigation"];
   const width = options.width || 1100;
   const height = options.height || 980;
   const cx = width / 2;
   const cy = height / 2;
-  const center = people.find((person) => person.id === centerId) || people[0];
+  const hubIds = Array.isArray(options.hubIds) ? options.hubIds.filter(Boolean) : [];
+  const hubField = Boolean(options.includeOrbit) && hubIds.length >= 2
+    && options.arrangement !== "camps" && options.arrangement !== "topics";
+  const centerId = options.centerId || (hubField ? "" : "ethan-klein");
+  const center = people.find((person) => person.id === centerId) || (hubField ? null : people[0]);
   const friends = [];
   const foes = [];
   const orbit = [];
@@ -839,9 +843,8 @@ export function webLayout(people, relations, options = {}) {
   foes.sort(byName);
   orbit.sort(byName);
   const applicable = relations.filter((relation) => coversYear(relation, options.year));
-  const hubIds = Array.isArray(options.hubIds) ? options.hubIds.filter(Boolean) : [];
 
-  if (options.includeOrbit && hubIds.length >= 2 && options.arrangement !== "camps" && options.arrangement !== "topics") {
+  if (hubField) {
     return hubFieldLayout({
       people,
       relations: applicable,
@@ -1125,11 +1128,14 @@ function hubFieldLayout({
   });
   const plan = fitHubWeb(width, height, shared.length, hubIds, groups);
   const nodes = [];
+  const focused = Boolean(center && hubIds.includes(center.id));
   const push = (person, slot, extra) => {
     if (!person || !slot) return;
-    const camp = person.id === center?.id
+    const camp = focused && person.id === center.id
       ? "center"
-      : campOf(person.id, relations, center.id, friendKinds, enemyKinds, year);
+      : focused
+        ? campOf(person.id, relations, center.id, friendKinds, enemyKinds, year)
+        : "orbit";
     nodes.push({
       ...person,
       x: slot.x,
@@ -1149,7 +1155,7 @@ function hubFieldLayout({
     push(visible.find((person) => person.id === id), plan?.hubSlots?.[index], { ring: "hub", hubId: id });
   });
   hubIds.forEach((id, index) => {
-    if (center?.id !== id) return;
+    if (!focused || center.id !== id) return;
     placeByBeats(groups.get(id) || [], plan?.exclusiveSlots?.[index] || [], counts).forEach(({ person, slot }) => {
       push(person, slot, { ring: "exclusive", hubId: id });
     });
