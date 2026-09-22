@@ -1,14 +1,23 @@
 {
   "disclaimer": "Current Wikipedia snapshot — not legal advice. Covers 50 states and D.C. only (no territories). Federal minimum ages, dealer NICS checks, and prohibited-person categories apply in every jurisdiction.",
   "gunTypes": [
-    { "id": "handgun", "label": "Handgun" },
-    { "id": "longgun", "label": "Long gun" }
+    {
+      "id": "handgun",
+      "label": "Handgun",
+      "explanation": "Pistols and revolvers. The map uses the handgun column from each state’s Wikipedia table."
+    },
+    {
+      "id": "longgun",
+      "label": "Long gun",
+      "explanation": "Rifles and shotguns. The map uses the long-gun column. Some carry rows are marked N/A for long guns."
+    }
   ],
   "criteria": [
     {
       "id": "purchase-permit",
       "label": "Purchase permit",
       "toggleLabel": "No purchase permit",
+      "explanation": "A state permit or license you must obtain before buying this kind of gun. Checking this lights states that do not require one. A federal dealer background check can still apply.",
       "question": "Must you get a permit before buying?",
       "wikiSubject": "State permit required to purchase?",
       "group": "ownership"
@@ -17,6 +26,7 @@
       "id": "private-sale-check",
       "label": "Private-sale background check",
       "toggleLabel": "No private-sale background check",
+      "explanation": "A background check when a private person, not a licensed dealer, sells or gives you the gun. Checking this lights states that do not require that extra check.",
       "question": "Must private transfers use a background check?",
       "wikiSubject": "Background checks required for private sales?",
       "group": "ownership"
@@ -25,6 +35,7 @@
       "id": "waiting-period",
       "label": "Waiting period",
       "toggleLabel": "No waiting period",
+      "explanation": "A required wait between the purchase and taking the gun home. Checking this lights states with no mandatory waiting period in the Wikipedia table.",
       "question": "Is there a mandatory waiting period?",
       "wikiSubject": "Waiting period?",
       "group": "ownership"
@@ -33,6 +44,7 @@
       "id": "handgun-registration",
       "label": "Firearm registration",
       "toggleLabel": "No firearm registration",
+      "explanation": "Recording the gun with the state, usually by serial number and owner. Checking this lights states that do not require registration for the gun type you selected.",
       "question": "Must firearms be registered?",
       "wikiSubject": "Firearm registration?",
       "group": "ownership"
@@ -41,6 +53,7 @@
       "id": "assault-weapons-restriction",
       "label": "Assault-weapon restrictions",
       "toggleLabel": "No assault-weapon ban",
+      "explanation": "A state ban or extra limit on guns that state defines as assault weapons, often certain semi-automatic firearms with listed features. Checking this lights states with no such ban in the table. Definitions differ by state.",
       "question": "Are defined assault weapons restricted?",
       "wikiSubject": "Assault weapon law?",
       "group": "ownership"
@@ -49,6 +62,7 @@
       "id": "magazine-capacity-limit",
       "label": "Magazine capacity limit",
       "toggleLabel": "No magazine-capacity limit",
+      "explanation": "A cap on how many rounds a magazine may hold. Checking this lights states with no magazine-capacity limit in the Wikipedia table.",
       "question": "Are large-capacity magazines restricted?",
       "wikiSubject": "Magazine capacity restriction?",
       "group": "ownership"
@@ -57,6 +71,7 @@
       "id": "nfa-item-registration",
       "label": "Extra state NFA limits",
       "toggleLabel": "No extra state NFA limits",
+      "explanation": "Extra state limits on machine guns, short-barreled rifles and shotguns, suppressors, and similar items. Federal National Firearms Act tax and registration still apply everywhere. Checking this lights states that do not add their own ban.",
       "question": "Does the state add restrictions beyond federal NFA?",
       "wikiSubject": "NFA weapons restricted?",
       "group": "ownership"
@@ -65,6 +80,7 @@
       "id": "ghost-gun-rules",
       "label": "Home-built / ghost guns",
       "toggleLabel": "No home-built / ghost-gun rules",
+      "explanation": "State rules for homemade guns or unfinished frames and receivers, often called ghost guns. Checking this lights states with no such rule in the Wikipedia table.",
       "question": "Are home-built or unfinished frames restricted?",
       "wikiSubject": "Home-built firearms restriction?",
       "group": "ownership"
@@ -73,6 +89,7 @@
       "id": "carry-permit",
       "label": "Concealed carry license",
       "toggleLabel": "No concealed-carry license",
+      "explanation": "A license to carry this kind of gun hidden in public. Checking this lights states where concealed carry does not require a license. Long guns are often marked N/A.",
       "question": "Is a license required to carry concealed?",
       "wikiSubject": "Permit required for concealed carry?",
       "group": "carry"
@@ -81,6 +98,7 @@
       "id": "open-carry-permit",
       "label": "Open-carry license",
       "toggleLabel": "No open-carry license",
+      "explanation": "A license to carry this kind of gun visible in public. Checking this lights states where open carry does not require a license. Partial means it is allowed only in some places.",
       "question": "Is a license required to carry openly?",
       "wikiSubject": "Permit required for open carry?",
       "group": "carry"

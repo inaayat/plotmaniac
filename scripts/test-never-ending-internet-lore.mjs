@@ -2155,5 +2155,8 @@ assert.equal(stateMap.states.length, 51);
 const mapIds = new Set(stateMap.states.map((row) => row.id));
 assert.ok(gunStateSnapshot.states.every((row) => mapIds.has(row.id) && row && stateMap.states.find((shape) => shape.id === row.id)?.d));
 assert.ok(fs.readFileSync(new URL("../gun-laws-by-state-view.js", import.meta.url), "utf8").includes("gun-state-laws-split"));
+const gunFilterConfig = readJson("../data/gun-laws-by-state/filter-criteria.json");
+assert.ok(gunFilterConfig.criteria.every((row) => typeof row.explanation === "string" && row.explanation.length > 40));
+assert.ok(gunFilterConfig.gunTypes.every((row) => row.explanation));
 
 console.log("never-ending internet lore tests passed");

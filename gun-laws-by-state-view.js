@@ -97,6 +97,13 @@ function renderGunTypeControl(filterConfig, gunType, onGunTypeChange) {
     label.append(input, document.createTextNode(opt.label));
     fieldset.appendChild(label);
   });
+  const selected = options.find((opt) => opt.id === gunType) || options[0];
+  if (selected?.explanation) {
+    const explain = document.createElement("p");
+    explain.className = "gun-state-laws-gun-type-explain";
+    explain.textContent = selected.explanation;
+    fieldset.appendChild(explain);
+  }
   return fieldset;
 }
 
@@ -142,9 +149,21 @@ function renderFilterToggle(row, filters, onFilterChange) {
   input.addEventListener("change", () => {
     onFilterChange(row.id, input.checked ? "not_required" : "any");
   });
+  const copy = document.createElement("span");
+  copy.className = "gun-state-laws-toggle-copy";
   const text = document.createElement("span");
+  text.className = "gun-state-laws-toggle-title";
   text.textContent = row.toggleLabel || row.label;
-  label.append(input, text);
+  copy.appendChild(text);
+  if (row.explanation) {
+    const explain = document.createElement("span");
+    explain.className = "gun-state-laws-toggle-explain";
+    explain.id = `criterion-explain-${row.id}`;
+    explain.textContent = row.explanation;
+    input.setAttribute("aria-describedby", explain.id);
+    copy.appendChild(explain);
+  }
+  label.append(input, copy);
   return label;
 }
 

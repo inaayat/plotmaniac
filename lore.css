@@ -4596,10 +4596,45 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  margin: 8px 0;
+  margin: 10px 0;
   font-size: 0.84rem;
   color: var(--ink);
   cursor: pointer;
+}
+
+.gun-state-laws-toggle-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.gun-state-laws-toggle-title {
+  font-weight: 600;
+}
+
+.gun-state-laws-toggle-explain,
+.gun-state-laws-gun-type-explain {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.gun-state-laws-gun-type-explain {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.gun-state-laws-filters {
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .gun-state-laws-filters {
+    max-height: none;
+  }
 }
 
 .gun-state-laws-filter-group {
