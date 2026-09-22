@@ -920,6 +920,31 @@ const rusYears = russia.timeline.map((beat) => String(beat.year));
   assert.ok(rusYears.includes(year), `russia timeline covers ${year}`);
 });
 
+const iran = usCountries.find((country) => country.slug === "iran");
+assert.ok(iran, "iran country record");
+assert.equal(iran.status, "foe");
+assert.equal(iran.outline, "red");
+assert.equal(iran.first_load, true);
+assert.equal(iran.formal_relations, false);
+assert.ok(relationTimelineHasTone(iran.timeline), "iran timeline carries warmth scores");
+assert.ok(iran.timeline.length >= 25, "iran timeline is detailed");
+assert.ok(iran.timeline.length <= 40, "iran timeline stays a readable country drawer, not an encyclopedia");
+const iranSeries = relationToneSeries(iran.timeline);
+assert.equal(iranSeries.length, iran.timeline.length);
+assert.ok(iranSeries.every((point) => point.year >= 1850 && point.year <= 2030));
+assert.ok(iranSeries.every((point) => point.tone >= -2 && point.tone <= 2));
+const iranChart = relationSentimentChart(iran.timeline);
+assert.ok(iranChart.linePath.startsWith("M"));
+assert.ok(iranChart.points.length >= 25);
+assert.match(iran.notes_summary, /hostage|1979/);
+assert.match(iran.notes_summary, /nuclear/);
+const iranYears = iran.timeline.map((beat) => String(beat.year));
+["1850", "1883", "1953", "1979", "1980", "2015", "2018", "2020", "2025", "2026"].forEach((year) => {
+  assert.ok(iranYears.includes(year), `iran timeline covers ${year}`);
+});
+assert.ok(iran.timeline.some((beat) => beat.tone === 2), "iran timeline includes a warm peak");
+assert.ok(iran.timeline.some((beat) => beat.tone === -2), "iran timeline includes a hostile trough");
+
 const usPeopleById = new Map(usPeople.map((person) => [person.id, person]));
 const rusFlags = relationRiderFlags(russia, usPeopleById, { centerId: us.centerId });
 assert.match(rusFlags.partner.src, /Flag_of_Russia\.svg/, "russia ride uses the Russian flag");
@@ -928,6 +953,10 @@ const mexFlags = relationRiderFlags(mexico, usPeopleById, { centerId: us.centerI
 assert.match(mexFlags.partner.src, /Flag_of_Mexico\.svg/, "mexico ride keeps the Mexican flag");
 assert.match(mexFlags.center.src, /Flag_of_the_United_States\.svg/);
 assert.equal(usPeopleById.get("russia")?.portrait?.frame, "flag");
+const iranFlags = relationRiderFlags(iran, usPeopleById, { centerId: us.centerId });
+assert.match(iranFlags.partner.src, /Flag_of_Iran\.svg/, "iran ride uses the Iranian flag");
+assert.match(iranFlags.center.src, /Flag_of_the_United_States\.svg/, "iran ride still holds the U.S. flag");
+assert.equal(usPeopleById.get("iran")?.portrait?.frame, "flag");
 
 const assertCountrySourceLinks = (country, { minShare = 0.5 } = {}) => {
   assert.ok(Array.isArray(country.links) && country.links.length, `${country.slug} needs country-level sources`);
@@ -949,6 +978,7 @@ const assertCountrySourceLinks = (country, { minShare = 0.5 } = {}) => {
 };
 assertCountrySourceLinks(mexico);
 assertCountrySourceLinks(russia);
+assertCountrySourceLinks(iran);
 
 const afghanistan = usCountries.find((country) => country.slug === "afghanistan");
 assert.equal(afghanistan.links, undefined, "thin country records may omit links");

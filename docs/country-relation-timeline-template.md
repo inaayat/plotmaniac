@@ -1,6 +1,6 @@
 # Country relation timeline template
 
-Use this when upgrading a thin United States country stub in `data/united-states/countries.json` into a Mexico-depth bilateral history. Mexico (`slug: "mexico"`) and Russia (`slug: "russia"`) are the current exemplars. Thin records (year + event only, no `tone` or `links`) remain valid; the UI must not require chips.
+Use this when upgrading a thin United States country stub in `data/united-states/countries.json` into a Mexico-depth bilateral history. Mexico (`slug: "mexico"`), Russia (`slug: "russia"`), and Iran (`slug: "iran"`) are the current exemplars. Thin records (year + event only, no `tone` or `links`) remain valid; the UI must not require chips.
 
 A minimal JSON sketch lives beside this file: `country-relation-timeline.example.json`.
 
@@ -11,7 +11,7 @@ Keep the existing country fields (`country`, `slug`, `wiki_bilateral`, `wiki_pdf
 | Field | Required | Notes |
 | --- | --- | --- |
 | `notes_summary` | yes | One vivid sentence covering the arc (neighbors/trade, Empire→Soviet→RF, etc.). |
-| `timeline` | yes | Array of beats, oldest first. Aim for **~25–40** narrative beats for a major relationship (Mexico has ~28; Russia ~35). Thin neutrals may stay at 2–5. |
+| `timeline` | yes | Array of beats, oldest first. Aim for **~25–40** narrative beats for a major relationship (Mexico has ~28; Russia ~35; Iran ~36). Thin neutrals may stay at 2–5. |
 | `timeline[].year` | yes | Display year as a string. Ranges like `"1942–1964"` are allowed; the chart uses the first year (`parseRelationTimelineYear`). |
 | `timeline[].event` | yes | One narrative sentence, Mexico style—not a telegram label. |
 | `timeline[].tone` | for rich histories | Number from **-2** (strongly strained) to **+2** (strongly warm). Typical steps: `-2, -1, 0, 1, 2`. The sentiment chart (`relationTimelineHasTone` / `renderRelationSentimentChart`) only plots beats with a numeric `tone`. |
@@ -80,4 +80,4 @@ Helper: `httpsSourceLinks` in `engine.js` drops non-https / unlabeled chips. `re
 node scripts/test-never-ending-internet-lore.mjs
 ```
 
-That script asserts Mexico/Russia tone-bearing timelines, https links on a majority of beats, and that countries without `links` still load.
+That script asserts Mexico/Russia/Iran tone-bearing timelines, https links on a majority of beats, and that countries without `links` still load.

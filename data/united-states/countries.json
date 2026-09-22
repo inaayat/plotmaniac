@@ -2133,43 +2133,517 @@
     "status": "foe",
     "outline": "red",
     "formal_relations": false,
-    "notes_summary": "No formal diplomatic relations since 1980; hostile relationship centered on nuclear program, regional proxies, and sanctions.",
+    "notes_summary": "From a 19th-century friendship and a Cold War alliance with the Shah, through the 1953 coup and the 1979 hostage crisis that still leaves no formal relations—now defined by the nuclear file, sanctions, and direct military clashes.",
     "timeline": [
       {
         "year": "1850",
-        "event": "Mutual recognition"
+        "tone": 1,
+        "event": "Secretary of State Clayton authorizes a treaty of friendship and commerce with Persia on June 28, 1850, the first formal act of recognition between the two states.",
+        "links": [
+          {
+            "label": "Office of the Historian: Iran",
+            "url": "https://history.state.gov/countries/iran"
+          }
+        ]
       },
       {
         "year": "1883",
-        "event": "Diplomatic relations established"
+        "tone": 1,
+        "event": "Chargé S. G. W. Benjamin presents his credentials on June 11, 1883, and the American Legation opens in Tehran.",
+        "links": [
+          {
+            "label": "Office of the Historian: Iran",
+            "url": "https://history.state.gov/countries/iran"
+          },
+          {
+            "label": "Office of the Historian: S. G. W. Benjamin",
+            "url": "https://history.state.gov/departmenthistory/people/benjamin-samuel-greene-wheeler"
+          }
+        ]
+      },
+      {
+        "year": "1911",
+        "tone": 0,
+        "event": "Iran’s parliament hires American Morgan Shuster as treasurer-general; Russian and British pressure forces the mission out before the reforms are finished.",
+        "links": [
+          {
+            "label": "Shuster, The Strangling of Persia (1912)",
+            "url": "https://archive.org/details/stranglingofpers00shusuoft"
+          },
+          {
+            "label": "FRUS 1912",
+            "url": "https://history.state.gov/historicaldocuments/frus1912"
+          }
+        ]
+      },
+      {
+        "year": "1941",
+        "tone": 1,
+        "event": "Britain and the Soviet Union occupy Iran and Reza Shah abdicates; Washington accepts the occupation and helps turn Iran into a corridor for war supplies to the USSR.",
+        "links": [
+          {
+            "label": "FRUS 1941, Vol. III: occupation of Iran and aid to the USSR",
+            "url": "https://history.state.gov/historicaldocuments/frus1941v03"
+          }
+        ]
+      },
+      {
+        "year": "1943",
+        "tone": 2,
+        "event": "At the Tehran Conference, Roosevelt, Churchill, and Stalin pledge to respect Iran’s independence and borders after the war.",
+        "links": [
+          {
+            "label": "Office of the Historian: the Tehran Conference, 1943",
+            "url": "https://history.state.gov/milestones/1937-1945/tehran-conf"
+          }
+        ]
+      },
+      {
+        "year": "1946",
+        "tone": 1,
+        "event": "Washington backs Iran against Soviet-sponsored separatists in Azerbaijan; U.S. diplomats later call the regime’s December collapse a victory for a firm line toward Moscow.",
+        "links": [
+          {
+            "label": "FRUS 1946: the Azerbaijan collapse",
+            "url": "https://history.state.gov/historicaldocuments/frus1946v07/d430"
+          }
+        ]
+      },
+      {
+        "year": "1951",
+        "tone": 1,
+        "event": "After Iran nationalizes the Anglo-Iranian Oil Company, Truman’s State Department tries to broker a settlement and holds Britain back from invading.",
+        "links": [
+          {
+            "label": "FRUS 1951–1954: Iran",
+            "url": "https://history.state.gov/historicaldocuments/frus1951-54Iran"
+          }
+        ]
       },
       {
         "year": "1953",
-        "event": "CIA-backed coup restores Shah"
+        "tone": -2,
+        "event": "The CIA, with MI6, organizes the coup that topples Prime Minister Mohammad Mosaddegh and restores Shah Mohammad Reza Pahlavi—a grievance Iranians still treat as the root of the rupture.",
+        "links": [
+          {
+            "label": "National Security Archive: the 1953 coup in FRUS",
+            "url": "https://nsarchive.gwu.edu/briefing-book/iran/2017-06-15/iran-1953-state-department-finally-releases-updated-official-history"
+          },
+          {
+            "label": "National Security Archive: CIA history “Zendebad, Shah!”",
+            "url": "https://nsarchive.gwu.edu/briefing-book/iran/2018-02-12/cia-declassifies-more-zendebad-shah-internal-study-1953-iran-coup"
+          }
+        ]
+      },
+      {
+        "year": "1955",
+        "tone": 1,
+        "event": "Iran joins the Baghdad Pact, later CENTO, tying the Shah’s government to the Western security system along the Soviet border.",
+        "links": [
+          {
+            "label": "FRUS 1955–1957: the Baghdad Pact",
+            "url": "https://history.state.gov/historicaldocuments/frus1955-57v12/d145"
+          }
+        ]
+      },
+      {
+        "year": "1957",
+        "tone": 1,
+        "event": "Eisenhower and the Shah sign a civil-nuclear cooperation agreement under Atoms for Peace; the United States later supplies the Tehran Research Reactor, which starts up in 1967.",
+        "links": [
+          {
+            "label": "CFR: U.S.–Iran relations timeline",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          },
+          {
+            "label": "ISIS: Tehran Research Reactor timeline",
+            "url": "https://isis-online.org/uploads/isis-reports/documents/Tehran_reactor_timeline.pdf"
+          }
+        ]
+      },
+      {
+        "year": "1972",
+        "tone": 2,
+        "event": "Nixon meets the Shah in Tehran on May 31, 1972, and asks Iran to help protect U.S. security interests in the Gulf as Britain withdraws.",
+        "links": [
+          {
+            "label": "FRUS: Nixon–Shah memorandum of conversation, May 31, 1972",
+            "url": "https://history.state.gov/historicaldocuments/frus1969-76ve04/d201"
+          },
+          {
+            "label": "CFR: Nixon’s 1972 visit",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          }
+        ]
       },
       {
         "year": "1979",
-        "event": "Iranian Revolution; US embassy hostage crisis"
+        "tone": -2,
+        "event": "The Islamic Revolution overthrows the Shah and replaces a close American ally with a government openly hostile to Washington.",
+        "links": [
+          {
+            "label": "National Security Archive: Iran–U.S. relations, 1978–2015",
+            "url": "https://nsarchive.gwu.edu/briefing-book/iran/2019-12-19/documenting-iran-us-relations-1978-2015"
+          },
+          {
+            "label": "CFR: U.S.–Iran relations timeline",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          }
+        ]
+      },
+      {
+        "year": "1979",
+        "tone": -2,
+        "event": "On November 4, students seize the U.S. embassy in Tehran and hold more than 50 Americans for 444 days; Carter freezes Iranian government assets.",
+        "links": [
+          {
+            "label": "Office of the Historian: the Iranian hostage crisis",
+            "url": "https://history.state.gov/departmenthistory/short-history/iraniancrises"
+          },
+          {
+            "label": "Executive Order 12170: blocking Iranian assets",
+            "url": "https://www.archives.gov/federal-register/codification/executive-order/12170.html"
+          }
+        ]
       },
       {
         "year": "1980",
-        "event": "Formal diplomatic relations severed"
+        "tone": -2,
+        "event": "On April 7, 1980, the United States severs diplomatic relations after Tehran fails to free the hostages. The break is still in force.",
+        "links": [
+          {
+            "label": "Office of the Historian: relations severed, 1980",
+            "url": "https://history.state.gov/countries/iran"
+          }
+        ]
+      },
+      {
+        "year": "1981",
+        "tone": -1,
+        "event": "The hostages leave on January 20, 1981, and executive orders create the Iran–United States Claims Tribunal, but Washington does not restore diplomatic relations.",
+        "links": [
+          {
+            "label": "Office of the Historian: hostages released, relations unrestored",
+            "url": "https://history.state.gov/countries/iran"
+          },
+          {
+            "label": "Executive Order 12276: Iran–United States Claims Tribunal",
+            "url": "https://www.archives.gov/federal-register/codification/executive-order/12276.html"
+          }
+        ]
+      },
+      {
+        "year": "1983",
+        "tone": -2,
+        "event": "A truck bomb destroys the Marine barracks in Beirut on October 23, killing 241 U.S. service members; the attack helps drive Iran’s 1984 designation as a state sponsor of terrorism.",
+        "links": [
+          {
+            "label": "CFR: the 1983 Beirut barracks bombing",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          },
+          {
+            "label": "CRS: Iran designated a state sponsor, January 19, 1984",
+            "url": "https://www.congress.gov/crs_external_products/R/PDF/R43835/R43835.20.pdf"
+          }
+        ]
+      },
+      {
+        "year": "1986",
+        "tone": -1,
+        "event": "Reagan confirms that officials secretly sold arms to Iran while seeking the release of hostages in Lebanon; the profits were diverted to the Nicaraguan Contras.",
+        "links": [
+          {
+            "label": "Reagan address on the Iran arms and Contra aid controversy",
+            "url": "https://www.reaganlibrary.gov/archives/speech/address-nation-iran-arms-and-contra-aid-controversy-november-13-1986"
+          },
+          {
+            "label": "CFR: the Iran–Contra affair",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          }
+        ]
+      },
+      {
+        "year": "1988",
+        "tone": -2,
+        "event": "After an Iranian mine nearly sinks a U.S. frigate, Operation Praying Mantis hits Iranian ships and platforms; on July 3 the USS Vincennes shoots down Iran Air Flight 655, killing 290 civilians.",
+        "links": [
+          {
+            "label": "CFR: Operation Praying Mantis and the airliner shootdown",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          },
+          {
+            "label": "ICJ: Aerial Incident of 3 July 1988",
+            "url": "https://www.icj-cij.org/case/79"
+          }
+        ]
+      },
+      {
+        "year": "1996",
+        "tone": -2,
+        "event": "Congress passes the Iran and Libya Sanctions Act, penalizing foreign companies that make large investments in Iranian energy.",
+        "links": [
+          {
+            "label": "Public Law 104-172: Iran and Libya Sanctions Act",
+            "url": "https://www.congress.gov/104/plaws/publ172/PLAW-104publ172.pdf"
+          }
+        ]
+      },
+      {
+        "year": "1998",
+        "tone": 1,
+        "event": "President Khatami calls for a “dialogue of civilizations” in a January CNN interview; in 2000 Secretary Albright answers by easing the ban on Iranian carpets, foodstuffs, and people-to-people contact.",
+        "links": [
+          {
+            "label": "CNN transcript: Khatami interview, January 7, 1998",
+            "url": "https://nsarchive.gwu.edu/sites/default/files/documents/racgd9-cjd83/06-19980107-CNN-transcript-of-Khatami-interview.pdf"
+          },
+          {
+            "label": "Albright remarks on American–Iranian relations, March 17, 2000",
+            "url": "https://1997-2001.state.gov/statements/2000/000317.html"
+          }
+        ]
+      },
+      {
+        "year": "2001",
+        "tone": 1,
+        "event": "After 9/11, the Bush administration opens a back channel with Iran to help coordinate the defeat of the Taliban, a shared enemy in Afghanistan.",
+        "links": [
+          {
+            "label": "CFR: the 2001 Bonn back channel",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          }
+        ]
+      },
+      {
+        "year": "2002",
+        "tone": -2,
+        "event": "Bush’s State of the Union names Iran part of an “axis of evil,” accusing it of pursuing weapons of mass destruction and closing the post-9/11 opening.",
+        "links": [
+          {
+            "label": "Bush State of the Union, January 29, 2002",
+            "url": "https://georgewbush-whitehouse.archives.gov/news/releases/2002/01/20020129-11.html"
+          },
+          {
+            "label": "CFR: the “axis of evil” speech",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          }
+        ]
+      },
+      {
+        "year": "2006",
+        "tone": -1,
+        "event": "The U.N. Security Council adopts Resolution 1737, opening a series of sanctions on Iran’s nuclear and missile programs after enrichment resumes.",
+        "links": [
+          {
+            "label": "U.N.: Security Council adopts Resolution 1737",
+            "url": "https://press.un.org/en/2006/sc8928.doc.htm"
+          }
+        ]
+      },
+      {
+        "year": "2010",
+        "tone": -2,
+        "event": "Congress passes the Comprehensive Iran Sanctions, Accountability, and Divestment Act, tightening pressure on Iran’s energy and finance. Reporting later describes a U.S.–Israeli cyber campaign, Stuxnet, against the Natanz plant.",
+        "links": [
+          {
+            "label": "Public Law 111-195: Comprehensive Iran Sanctions Act",
+            "url": "https://www.govinfo.gov/content/pkg/PLAW-111publ195/pdf/PLAW-111publ195.pdf"
+          },
+          {
+            "label": "NYT: Obama ordered cyberattacks against Iran",
+            "url": "https://www.nytimes.com/2012/06/01/world/middleeast/obama-ordered-wave-of-cyberattacks-against-iran.html"
+          }
+        ]
+      },
+      {
+        "year": "2013",
+        "tone": 1,
+        "event": "Obama and newly elected President Hassan Rouhani speak by phone on September 27—the first direct presidential contact since 1979—and tell their teams to pursue a nuclear deal.",
+        "links": [
+          {
+            "label": "White House: Obama’s call with President Rouhani",
+            "url": "https://obamawhitehouse.archives.gov/the-press-office/2013/09/27/statement-president"
+          }
+        ]
       },
       {
         "year": "2015",
-        "event": "JCPOA nuclear deal signed"
+        "tone": 2,
+        "event": "Iran and the P5+1 finalize the Joint Comprehensive Plan of Action in Vienna: nuclear limits and inspections in exchange for sanctions relief.",
+        "links": [
+          {
+            "label": "White House: statement on the Iran nuclear deal",
+            "url": "https://obamawhitehouse.archives.gov/the-press-office/2015/07/14/statement-president-iran"
+          },
+          {
+            "label": "State Department: Joint Comprehensive Plan of Action",
+            "url": "https://2009-2017.state.gov/e/eb/tfs/spi/iran/jcpoa/"
+          }
+        ]
+      },
+      {
+        "year": "2016",
+        "tone": 1,
+        "event": "On Implementation Day, January 16, the IAEA verifies Iran’s nuclear steps and Secretary Kerry confirms that U.S. nuclear-related sanctions relief is in effect.",
+        "links": [
+          {
+            "label": "Kerry: confirmation of IAEA verification, January 16, 2016",
+            "url": "https://2009-2017.state.gov/secretary/remarks/2016/01/251332.htm"
+          },
+          {
+            "label": "State Department: JCPOA Implementation Day",
+            "url": "https://2009-2017.state.gov/e/eb/tfs/spi/iran/jcpoa/"
+          }
+        ]
       },
       {
         "year": "2018",
-        "event": "US withdraws from JCPOA; sanctions reimposed"
+        "tone": -2,
+        "event": "Trump withdraws the United States from the JCPOA on May 8 and reimposes nuclear sanctions under a “maximum pressure” campaign.",
+        "links": [
+          {
+            "label": "White House: ending U.S. participation in the Iran deal",
+            "url": "https://trumpwhitehouse.archives.gov/briefings-statements/president-donald-j-trump-ending-united-states-participation-unacceptable-iran-deal/"
+          }
+        ]
+      },
+      {
+        "year": "2019",
+        "tone": -2,
+        "event": "Iran shoots down a U.S. surveillance drone over the Gulf; Trump orders a retaliatory strike and then calls it off.",
+        "links": [
+          {
+            "label": "Reuters: the Global Hawk drone Iran shot down",
+            "url": "https://www.reuters.com/article/us-mideast-iran-usa-factbox/factbox-the-global-hawk-drone-shot-down-by-iran-idUSKCN1TL29K"
+          },
+          {
+            "label": "NYT: Trump calls off a strike on Iran",
+            "url": "https://www.nytimes.com/2019/06/21/us/politics/trump-iran-attack.html"
+          }
+        ]
+      },
+      {
+        "year": "2020",
+        "tone": -2,
+        "event": "A U.S. drone strike in Baghdad kills Quds Force commander Qasem Soleimani on January 3; Iran answers with missiles at bases housing American troops in Iraq.",
+        "links": [
+          {
+            "label": "White House: remarks on the killing of Qasem Soleimani",
+            "url": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-killing-qasem-soleimani/"
+          },
+          {
+            "label": "AP: timeline of U.S.–Iran nuclear and military tensions",
+            "url": "https://apnews.com/article/iran-us-timeline-nuclear-program-uranium-tehran-118ab7924978559857cceb5a39f711f5"
+          }
+        ]
+      },
+      {
+        "year": "2022",
+        "tone": -1,
+        "event": "Indirect talks aimed at reviving the nuclear deal end without a result, and the JCPOA stays dormant.",
+        "links": [
+          {
+            "label": "Reuters: indirect U.S.–Iran talks end without a result",
+            "url": "https://www.reuters.com/world/middle-east/indirect-talks-between-iran-us-ended-without-result-tasnim-news-agency-2022-06-29/"
+          }
+        ]
+      },
+      {
+        "year": "2023",
+        "tone": 0,
+        "event": "A September prisoner swap frees five Iranian Americans after Washington waives sanctions so about $6 billion in frozen Iranian funds can be moved.",
+        "links": [
+          {
+            "label": "CFR: the 2023 prisoner swap",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          },
+          {
+            "label": "AP: U.S.–Iran prisoner deal",
+            "url": "https://apnews.com/article/us-iran-prisoners-blinken-3e834df0a845ef2cc5c52af14598c66f"
+          }
+        ]
+      },
+      {
+        "year": "2024",
+        "tone": -2,
+        "event": "Iran launches direct missile and drone attacks on Israel in April and again on October 1; a U.S.-led coalition helps shoot most of them down.",
+        "links": [
+          {
+            "label": "AP: timeline of Iran–U.S. nuclear tensions",
+            "url": "https://apnews.com/article/iran-us-timeline-nuclear-program-uranium-tehran-118ab7924978559857cceb5a39f711f5"
+          },
+          {
+            "label": "CFR: Iran’s 2024 missile salvos",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          }
+        ]
+      },
+      {
+        "year": "2025",
+        "tone": 0,
+        "event": "Trump’s second term opens nuclear talks with Iran in April—the first in seven years—while warning Tehran over its support for the Houthis.",
+        "links": [
+          {
+            "label": "CFR: April 2025 nuclear talks",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          }
+        ]
+      },
+      {
+        "year": "2025",
+        "tone": -2,
+        "event": "After those talks stall, U.S. forces strike Fordow, Natanz, and Isfahan on June 21, joining an Israeli campaign; Iran fires at Al Udeid in Qatar, and a ceasefire follows within days.",
+        "links": [
+          {
+            "label": "Brookings: the road to the 2025 Israel–Iran war",
+            "url": "https://www.brookings.edu/articles/the-road-to-the-israel-iran-war/"
+          },
+          {
+            "label": "CFR: U.S. strikes on Iranian nuclear sites, June 21, 2025",
+            "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+          }
+        ]
       },
       {
         "year": "2026",
-        "event": "No formal relations; currently strained/hostile"
+        "tone": -2,
+        "event": "On February 28 the United States and Israel open a wider war; Iranian state media confirms Supreme Leader Ali Khamenei is killed, and diplomatic relations severed in 1980 are still not restored.",
+        "links": [
+          {
+            "label": "Reuters: Khamenei killed as the U.S. and Israel strike Iran",
+            "url": "https://www.reuters.com/business/aerospace-defense/israel-us-launch-strikes-iran-2026-02-28/"
+          },
+          {
+            "label": "AP: Iran’s supreme leader killed in the attack",
+            "url": "https://apnews.com/article/iran-us-explosion-tehran-c2f11247d8a66e36929266f2c557a54c"
+          },
+          {
+            "label": "Office of the Historian: relations remain severed",
+            "url": "https://history.state.gov/countries/iran"
+          }
+        ]
       }
     ],
     "region": "Middle East",
-    "first_load": true
+    "first_load": true,
+    "links": [
+      {
+        "label": "Office of the Historian: Iran",
+        "url": "https://history.state.gov/countries/iran"
+      },
+      {
+        "label": "CFR: U.S.–Iran relations timeline",
+        "url": "https://www.cfr.org/timeline/us-relations-iran-1953-2025"
+      },
+      {
+        "label": "National Security Archive: Iran–U.S. relations, 1978–2015",
+        "url": "https://nsarchive.gwu.edu/briefing-book/iran/2019-12-19/documenting-iran-us-relations-1978-2015"
+      },
+      {
+        "label": "Wikipedia: Iran–United States relations",
+        "url": "https://en.wikipedia.org/wiki/Iran–United_States_relations"
+      }
+    ]
   },
   {
     "country": "Iraq",
