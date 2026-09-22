@@ -401,6 +401,66 @@ function edgesAmong(nodes, relations) {
   return edges;
 }
 
+function separateTopicNodes(nodes, { width, height, gap = 10 }) {
+  const clamp = (node) => {
+    const halfWidth = node.boxWidth / 2;
+    const halfHeight = node.boxHeight / 2;
+    node.x = Math.min(width - halfWidth - gap, Math.max(halfWidth + gap, node.x));
+    node.y = Math.min(height - halfHeight - gap, Math.max(halfHeight + gap, node.y));
+  };
+
+  nodes.forEach(clamp);
+  for (let pass = 0; pass < 240; pass += 1) {
+    nodes.forEach((node) => {
+      if (node.fixed) return;
+      const pull = node.hub ? 0.045 : 0.012;
+      node.x += (node.anchorX - node.x) * pull;
+      node.y += (node.anchorY - node.y) * pull;
+      clamp(node);
+    });
+
+    let collided = false;
+    for (let i = 0; i < nodes.length; i += 1) {
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const overlapX = (a.boxWidth + b.boxWidth) / 2 + gap - Math.abs(dx);
+        const overlapY = (a.boxHeight + b.boxHeight) / 2 + gap - Math.abs(dy);
+        if (overlapX <= 0 || overlapY <= 0) continue;
+
+        const aWeight = a.fixed ? 0 : a.hub ? 0.35 : 1;
+        const bWeight = b.fixed ? 0 : b.hub ? 0.35 : 1;
+        const totalWeight = aWeight + bWeight;
+        if (!totalWeight) continue;
+        collided = true;
+
+        if (overlapX < overlapY) {
+          const direction = dx === 0 ? (a.id < b.id ? 1 : -1) : Math.sign(dx);
+          const shift = overlapX + 0.5;
+          a.x -= direction * shift * (aWeight / totalWeight);
+          b.x += direction * shift * (bWeight / totalWeight);
+        } else {
+          const direction = dy === 0 ? (a.id < b.id ? 1 : -1) : Math.sign(dy);
+          const shift = overlapY + 0.5;
+          a.y -= direction * shift * (aWeight / totalWeight);
+          b.y += direction * shift * (bWeight / totalWeight);
+        }
+        clamp(a);
+        clamp(b);
+      }
+    }
+    if (!collided) break;
+  }
+
+  nodes.forEach((node) => {
+    delete node.anchorX;
+    delete node.anchorY;
+    delete node.fixed;
+  });
+}
+
 function topicArrangement({
   center,
   people,
@@ -416,7 +476,6 @@ function topicArrangement({
   topicId,
 }) {
   const cx = width / 2;
-  const cy = height / 2;
   const catalog = topics.length
     ? topics
     : [...new Set((people || []).map((person) => person.topic).filter(Boolean))].map((id) => ({
@@ -438,21 +497,36 @@ function topicArrangement({
   const tally = ids.map((id) => counts.get(id) || 0);
   const fewest = tally.length ? Math.min(...tally) : 0;
   const most = tally.length ? Math.max(...tally) : 0;
-  const bubbleW = Math.max(96, Math.min(132, Math.floor(width / 7)));
-  const bubbleH = 40;
+  const bubbleW = Math.max(108, Math.min(136, Math.floor(width / 7)));
+  const bubbleH = 56;
+  const compactHeight = Math.ceil((visible.length + groups.length + 1) / 2) * (bubbleH + 12);
+  const usedHeight = Math.max(height, width < 700 ? Math.max(720, compactHeight) : 620);
+  const cy = usedHeight / 2;
   const nodeSize = Math.round(Math.min(bubbleW, 72));
-  const centerSize = Math.round(Math.min(104, Math.max(72, Math.min(width, height) * 0.16)));
+  const centerSize = Math.round(Math.min(104, Math.max(72, Math.min(width, usedHeight) * 0.16)));
   const padX = bubbleW / 2 + 8;
   const padY = bubbleH / 2 + 16;
   const radiusX = Math.max(centerSize, width / 2 - padX);
-  const radiusY = Math.max(centerSize, height / 2 - padY);
+  const radiusY = Math.max(centerSize, usedHeight / 2 - padY);
   const innerFloor = centerSize * 0.52 + bubbleH * 0.7;
   const n = Math.max(groups.length, 1);
   const wedge = (Math.PI * 2) / n;
   const spread = groups.length <= 1;
   const nodes = [];
   const edges = [];
-  if (center) nodes.push({ ...center, x: cx, y: cy, camp: "center" });
+  if (center) {
+    nodes.push({
+      ...center,
+      x: cx,
+      y: cy,
+      anchorX: cx,
+      anchorY: cy,
+      boxWidth: centerSize + 24,
+      boxHeight: centerSize + 36,
+      camp: "center",
+      fixed: true,
+    });
+  }
 
   groups.forEach((group, gIndex) => {
     const mid = spread
@@ -469,6 +543,10 @@ function topicArrangement({
       name: group.label,
       x: hubX,
       y: hubY,
+      anchorX: hubX,
+      anchorY: hubY,
+      boxWidth: 154,
+      boxHeight: 46,
       camp: "topic",
       topic: group.id,
       hub: true,
@@ -499,6 +577,10 @@ function topicArrangement({
         ...entry.person,
         x: cx + Math.cos(angle) * dist,
         y: cy + Math.sin(angle) * dist,
+        anchorX: cx + Math.cos(angle) * dist,
+        anchorY: cy + Math.sin(angle) * dist,
+        boxWidth: bubbleW,
+        boxHeight: bubbleH,
         camp: campOf(policyId, relations, centerId || center.id, friendKinds, enemyKinds, year),
         beats: entry.beats,
         closeness,
@@ -508,21 +590,17 @@ function topicArrangement({
     });
   });
 
-  holdApart(nodes, {
-    minDist: Math.min(bubbleW * 0.86, 108),
-    minX: bubbleW / 2 + 6,
-    maxX: width - (bubbleW / 2 + 6),
-    minY: bubbleH / 2 + 8,
-    maxY: height - (bubbleH / 2 + 10),
-  });
+  separateTopicNodes(nodes, { width, height: usedHeight, gap: 12 });
 
   return {
     width,
-    height,
+    height: usedHeight,
     nodes,
     edges,
     nodeSize,
     centerSize,
+    bubbleWidth: bubbleW,
+    bubbleHeight: bubbleH,
     labels: [],
   };
 }

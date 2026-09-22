@@ -450,7 +450,8 @@ body[data-view="web"] .web-scroll {
   padding: 0;
 }
 
-body[data-view="web"] .web-scroll.is-camps {
+body[data-view="web"] .web-scroll.is-camps,
+body[data-view="web"] .web-scroll.is-topics {
   overflow: auto;
 }
 
@@ -1285,13 +1286,15 @@ body[data-view="relation"] .views button {
 }
 
 .node.is-bubble {
-  width: auto;
-  max-width: 128px;
+  width: var(--bubble-w, 128px);
+  max-width: none;
   gap: 0;
 }
 
 .node-bubble {
   display: block;
+  width: 100%;
+  box-sizing: border-box;
   padding: 7px 10px;
   border-radius: 999px;
   border: 1.5px solid rgba(232, 196, 122, 0.5);
@@ -1320,6 +1323,7 @@ body[data-view="relation"] .views button {
 }
 
 .node.is-topic-hub {
+  width: 154px;
   z-index: 2;
 }
 
@@ -1329,7 +1333,7 @@ body[data-view="relation"] .views button {
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  max-width: 148px;
+  max-width: none;
 }
 
 .web-lines path[data-kind="topic"] {
@@ -2415,8 +2419,12 @@ body[data-view="timeline"] #footer-note {
   }
 
   body[data-view="web"] .web-stage.is-bubbles .node.is-bubble {
-    width: auto;
-    max-width: 108px;
+    width: var(--bubble-w, 108px);
+    max-width: none;
+  }
+
+  body[data-view="web"] .web-stage.is-bubbles .node.is-topic-hub {
+    width: 154px;
   }
 
   body[data-view="web"] .web-stage.is-bubbles .node-bubble {

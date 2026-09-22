@@ -1150,7 +1150,7 @@ function paintWeb(stage, { animate = true } = {}) {
       return;
     }
     width = Math.max(320, Math.floor(bounds.width));
-    height = Math.max(topics ? 360 : 260, Math.floor(bounds.height));
+    height = Math.max(topics ? (compact ? 720 : 620) : 260, Math.floor(bounds.height));
     stage.style.width = "";
   }
   const layout = webLayout(people, relations, {
@@ -1166,10 +1166,11 @@ function paintWeb(stage, { animate = true } = {}) {
     topicId: openTopic,
   });
   stage.classList.toggle("is-quiet", !animate);
-  if (camps && layout.height > height + 2) stage.style.height = `${layout.height}px`;
+  if ((camps || topics) && layout.height >= height) stage.style.height = `${layout.height}px`;
   else if (!(compact && !camps)) stage.style.height = "";
   stage.style.setProperty("--node", `${layout.nodeSize}px`);
   stage.style.setProperty("--center", `${layout.centerSize}px`);
+  stage.style.setProperty("--bubble-w", `${layout.bubbleWidth || 128}px`);
   stage.replaceChildren();
 
   const byId = new Map(layout.nodes.map((node) => [node.id, node]));

@@ -748,6 +748,23 @@ const obamaLayoutOpts = {
 const obama2008 = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2008 });
 const obama2012 = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2012 });
 const obamaEconomy = webLayout(obamaPeople, obamaRelations, { ...obamaLayoutOpts, year: 2012, topicId: "economy" });
+const obamaCompact = webLayout(obamaPeople, obamaRelations, {
+  ...obamaLayoutOpts,
+  year: 2012,
+  width: 390,
+  height: 720,
+});
+const assertNoTopicOverlap = (layout, label) => {
+  for (let i = 0; i < layout.nodes.length; i += 1) {
+    for (let j = i + 1; j < layout.nodes.length; j += 1) {
+      const a = layout.nodes[i];
+      const b = layout.nodes[j];
+      const overlapX = (a.boxWidth + b.boxWidth) / 2 + 2 - Math.abs(a.x - b.x);
+      const overlapY = (a.boxHeight + b.boxHeight) / 2 + 2 - Math.abs(a.y - b.y);
+      assert.ok(overlapX <= 0 || overlapY <= 0, `${label}: ${a.id} overlaps ${b.id}`);
+    }
+  }
+};
 assert.equal(
   obama2012.nodes.length,
   obamaPeople.length + obama.topics.length,
@@ -788,6 +805,18 @@ const meanAngle = (list) => {
 };
 assert.ok(Math.abs(meanAngle(social2012) - meanAngle(foreign2012)) > 0.4, "topics occupy different wedges");
 assert.ok(obama2012.nodes.every((node) => node.x > 8 && node.x < 1092 && node.y > 8 && node.y < 792));
+assertNoTopicOverlap(obama2012, "desktop topic layout");
+assertNoTopicOverlap(obamaEconomy, "focused topic layout");
+assertNoTopicOverlap(obamaCompact, "compact topic layout");
+assert.ok(obamaCompact.height > 720, "compact topic layout grows vertically instead of stacking bubbles");
+assert.ok(
+  obamaCompact.nodes.every((node) =>
+    node.x - node.boxWidth / 2 >= 0 &&
+    node.x + node.boxWidth / 2 <= obamaCompact.width &&
+    node.y - node.boxHeight / 2 >= 0 &&
+    node.y + node.boxHeight / 2 <= obamaCompact.height),
+  "compact topic bubbles stay inside the field",
+);
 assert.match(
   stateUrl("https://plotmaniac.com/", { view: "web", plot: "barack-obama", year: 2012 }, ""),
   /plot=barack-obama/,
