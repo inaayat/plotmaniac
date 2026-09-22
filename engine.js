@@ -19,6 +19,16 @@ export function defaultPlotView({ compact = false, requested = "", stored = "", 
   return compact ? "timeline" : "web";
 }
 
+export function resolvePlotView(parsed, { compact = false, stored = "", href = "" } = {}) {
+  const requested = requestedView(href);
+  if (requested) return parsed.view;
+  return defaultPlotView({
+    compact,
+    stored,
+    eventId: parsed?.eventId || "",
+  });
+}
+
 export function eventSearchText(event, peopleById = new Map()) {
   const people = (event.people || []).map((id) => peopleById.get(id)?.name || id);
   return [event.title, event.tease, event.summary, event.era, ...people]

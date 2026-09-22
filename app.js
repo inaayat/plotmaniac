@@ -16,8 +16,7 @@ import {
   parseYear,
   relationsFieldEdges,
   relationsFieldLayout,
-  requestedView,
-  defaultPlotView,
+  resolvePlotView,
   stateUrl,
   tiesWith,
   visibleRelationCountries,
@@ -69,12 +68,10 @@ function rememberView(view) {
 }
 
 function viewForPlot(parsed, href = location.href) {
-  const requested = requestedView(href);
-  if (requested) return parsed.view;
-  return defaultPlotView({
+  return resolvePlotView(parsed, {
     compact: isCompact(),
     stored: readStoredView(),
-    eventId: parsed?.eventId || "",
+    href,
   });
 }
 
