@@ -1014,6 +1014,16 @@ function hubDirections(hubIds, groups, width, height) {
   const ranked = hubIds
     .map((id, index) => ({ index, count: (groups.get(id) || []).length }))
     .sort((a, b) => b.count - a.count || a.index - b.index);
+  if (hubIds.length > 4) {
+    const start = -Math.PI / 2;
+    const step = (Math.PI * 2) / hubIds.length;
+    const directions = new Array(hubIds.length);
+    ranked.forEach((item, rank) => {
+      const angle = start + rank * step;
+      directions[item.index] = { x: Math.cos(angle), y: Math.sin(angle) };
+    });
+    return directions;
+  }
   const cardinals = width >= height
     ? [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }]
     : [{ x: 0, y: -1 }, { x: 0, y: 1 }, { x: 1, y: 0 }, { x: -1, y: 0 }];
