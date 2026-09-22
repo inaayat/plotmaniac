@@ -104,6 +104,15 @@ function partitionFrameId(frames) {
   return frames.includes(requested) ? requested : frames[0];
 }
 
+function labelViews() {
+  const history = plot?.arrangement === "historical-map";
+  const web = $("view-web");
+  const timeline = $("view-timeline");
+  if (!web || !timeline) return;
+  web.textContent = history ? "People" : "The web";
+  timeline.textContent = "Full timeline";
+}
+
 function rememberView(view) {
   if (view !== "timeline" && view !== "web") return;
   try {
@@ -180,20 +189,35 @@ function onPop() {
     showPlot(matched.id, { history: "none", fromUrl: true });
     return;
   }
+  if (plot.arrangement === "historical-map" && partitionReference) {
+    const playerIds = new Set(partitionReference.keyPlayers.map((player) => player.id));
+    const parsed = parseState(location.href, { people: playerIds });
+    state = {
+      view: parsed.view === "timeline" || parsed.view === "person" ? parsed.view : "web",
+      person: parsed.view === "person" ? parsed.person : ALL,
+      era: ALL,
+      query: "",
+      eventId: partitionFrameId(buildFrames(partitionReference).map((frame) => frame.id)),
+      year: null,
+      country: "",
+      hub: "",
+    };
+    render();
+    return;
+  }
   const eras = new Set(events.map((event) => event.era));
   const parsed = parseState(location.href, {
     people: new Set(peopleById.keys()),
     eras,
     countries: countryBySlug,
     hubs: new Set(plotHubs(plot).map((hub) => hub.id)),
-    defaultHub: plotHubs(plot)[0]?.id || "",
   });
   state = {
     ...parsed,
     view: viewForPlot(parsed),
     year: readYear(),
     country: parsed.country || "",
-    hub: parsed.hub || plotHubs(plot)[0]?.id || "",
+    hub: parsed.hub || "",
   };
   applyWarSpan(state);
   rememberCountryRegion();
@@ -239,9 +263,13 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       partitionReference = reference;
       partitionPortraits = portraits || {};
       const frames = buildFrames(reference).map((frame) => frame.id);
+      const playerIds = new Set(reference.keyPlayers.map((player) => player.id));
+      const parsed = fromUrl
+        ? parseState(location.href, { people: playerIds })
+        : { view: "web", person: ALL };
       state = {
-        view: "web",
-        person: ALL,
+        view: parsed.view === "timeline" || parsed.view === "person" ? parsed.view : "web",
+        person: parsed.view === "person" ? parsed.person : ALL,
         era: ALL,
         query: "",
         eventId: partitionFrameId(frames),
@@ -299,14 +327,13 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         eras,
         countries: countryBySlug,
         hubs: new Set(hubs.map((hub) => hub.id)),
-        defaultHub: hubs[0]?.id || "",
       });
       state = {
         ...parsed,
         view: viewForPlot(parsed),
         year: readYear(),
         country: parsed.country || "",
-        hub: parsed.hub || hubs[0]?.id || "",
+        hub: parsed.hub || "",
       };
       applyWarSpan(state);
       rememberCountryRegion();
@@ -319,7 +346,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         eventId: "",
         year: plot.year ? parseYear(plot.year.initial, plot.year) : null,
         country: "",
-        hub: hubs[0]?.id || "",
+        hub: "",
       };
       applyWarSpan(state, "");
     }
@@ -368,6 +395,7 @@ function showPicker({ history = "push" } = {}) {
   fillHubSelect();
   $("view-web").classList.remove("is-active");
   $("view-timeline").classList.remove("is-active");
+  labelViews();
   renderChooser();
   if (history === "push") writeUrl(false);
   if (history === "replace") writeUrl(true);
@@ -427,7 +455,7 @@ function bindChrome() {
   const hubSelect = $("hub-select");
   hubSelect.addEventListener("change", () => {
     const id = hubSelect.value;
-    if (!plot || !id || id === state.hub) return;
+    if (!plot || id === state.hub) return;
     state.hub = id;
     state.eventId = "";
     if (state.view === "person") {
@@ -442,7 +470,13 @@ function bindChrome() {
   });
   document.querySelectorAll(".views button").forEach((button) => {
     button.addEventListener("click", () => {
-      if (plot?.arrangement === "historical-map") return;
+      if (plot?.arrangement === "historical-map") {
+        state.view = button.dataset.view === "timeline" ? "timeline" : "web";
+        state.person = ALL;
+        rememberView(state.view);
+        render({ push: true });
+        return;
+      }
       state.view = button.dataset.view === "timeline" ? "timeline" : "web";
       state.person = ALL;
       state.eventId = "";
@@ -451,6 +485,12 @@ function bindChrome() {
     });
   });
   window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && plot?.arrangement === "historical-map" && state.view === "person") {
+      state.view = "web";
+      state.person = ALL;
+      render({ push: true });
+      return;
+    }
     if (event.key === "Escape" && state.view === "relation" && plot?.disclosure === "regions") {
       state.view = "web";
       render({ push: true });
@@ -493,13 +533,17 @@ function fillHubSelect() {
     wrap.hidden = true;
     return;
   }
+  const none = document.createElement("option");
+  none.value = "";
+  none.textContent = "None";
+  select.appendChild(none);
   hubs.forEach((hub) => {
     const option = document.createElement("option");
     option.value = hub.id;
     option.textContent = hub.label;
     select.appendChild(option);
   });
-  select.value = state.hub && hubs.some((hub) => hub.id === state.hub) ? state.hub : hubs[0].id;
+  select.value = state.hub && hubs.some((hub) => hub.id === state.hub) ? state.hub : "";
   wrap.hidden = false;
 }
 
@@ -508,12 +552,13 @@ function activeHub() {
 }
 
 function activeCenter() {
-  return hubCenterId(plot, state.hub) || plot?.centerId || "";
+  if (plotHubs(plot).length) return hubCenterId(plot, state.hub);
+  return plot?.centerId || "";
 }
 
 function hubEvents() {
-  if (!plotHubs(plot).length) return events;
-  return filterEvents(events, { hub: state.hub || plotHubs(plot)[0]?.id }, peopleById);
+  if (!plotHubs(plot).length || !state.hub) return events;
+  return filterEvents(events, { hub: state.hub }, peopleById);
 }
 
 function render({ push = false, replace = false, focusEvent = false } = {}) {
@@ -523,6 +568,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
     : null;
   pendingLaneFocus = focusEvent && state.eventId ? state.eventId : "";
   syncLayoutMode();
+  labelViews();
   document.body.dataset.view = state.view;
   $("view-web").classList.toggle("is-active", state.view === "web");
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
@@ -535,18 +581,36 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   if (hubSelect && document.activeElement === hubSelect) hubSelect.blur();
   const app = $("app");
   if (plot?.arrangement === "historical-map" && partitionReference) {
-    document.body.dataset.view = "web";
     document.body.dataset.board = "history";
-    state.view = "web";
-    if (!partitionMount || !app.querySelector(".partition")) {
+    labelViews();
+    const modeKey = `${state.view}:${state.person}`;
+    if (!partitionMount || partitionMount.modeKey() !== modeKey) {
       app.replaceChildren();
       partitionMount = mountPartition(app, partitionReference, {
         frameId: state.eventId,
+        view: state.view,
+        personId: state.person,
         portraits: partitionPortraits,
         onFrame(id, { historyMode } = {}) {
           state.eventId = id;
-          state.view = "web";
           writeUrl(historyMode !== "push");
+        },
+        onOpenPlayer(id) {
+          state.view = "person";
+          state.person = id;
+          render({ push: true });
+        },
+        onOpenTimeline(id) {
+          state.view = "timeline";
+          state.person = ALL;
+          if (id) state.eventId = id;
+          render({ push: true });
+        },
+        onShowMap(id) {
+          state.view = "web";
+          state.person = ALL;
+          if (id) state.eventId = id;
+          render({ push: true });
         },
       });
     } else {
@@ -610,7 +674,7 @@ function renderWeb() {
     compactMap
       ? "Friends and foes map. Drag to look around. Names are listed below."
       : hubWeb
-        ? "YouTuber web. Shared people sit in the center, hubs just outside. One-hub people appear only while that hub is the focus."
+        ? "YouTuber web. Shared people sit in the center, hubs just outside. None shows that shared web. One-hub people appear only while that hub is the focus."
         : "Friends and foes map",
   );
   const stage = document.createElement("div");
@@ -1601,7 +1665,7 @@ function paintWeb(stage, { animate = true } = {}) {
     stage.style.width = "";
   }
   const layout = webLayout(people, relations, {
-    centerId: activeCenter() || plot.centerId,
+    centerId: plotHubs(plot).length ? activeCenter() : (activeCenter() || plot.centerId),
     friendKinds: plot.friendKinds,
     enemyKinds: plot.enemyKinds,
     arrangement: plot.arrangement,
@@ -1678,7 +1742,7 @@ function paintWeb(stage, { animate = true } = {}) {
       layout.nodes.forEach((item) => {
         if (item.topic === nodeId.slice(6) && item.camp !== "topic") near.add(item.id);
       });
-      const centerId = activeCenter() || plot.centerId;
+      const centerId = activeCenter();
       if (centerId) near.add(centerId);
     } else {
       const person = peopleById.get(nodeId);
@@ -1818,7 +1882,7 @@ function renderPerson() {
   if (record) face.classList.add(outlineClass(record));
   head.appendChild(face);
   const copy = document.createElement("div");
-  const centerId = activeCenter() || plot.centerId;
+  const centerId = activeCenter();
   const camp = campOf(
     person.id,
     relations,
@@ -2062,7 +2126,8 @@ function layoutLane(view) {
     return;
   }
   // Keep the rail inside the visible scroller. Opening a beat moves the axis
-  // and scales the other cards instead of lengthening the line off-screen.
+  // and scales every card, including the open one, so the summary and sources
+  // stay on screen instead of scrolling inside the beat.
   rail.style.setProperty("--lane-h", `${height}px`);
   rail.querySelectorAll(".lane-card").forEach(resetCardFit);
 
@@ -2096,7 +2161,7 @@ function layoutLane(view) {
     const above = event.classList.contains("side-above");
     const room = Math.max(0, above ? aboveRoom : belowRoom);
     if (event.classList.contains("is-selected")) {
-      card.style.maxHeight = `${room}px`;
+      applyCardScale(card, fitScale(room, naturalHeight(card)), above);
       return;
     }
     applyCardScale(card, restScale, above);
@@ -2115,8 +2180,16 @@ function layoutLane(view) {
   }
 }
 
+function naturalHeight(card) {
+  if (!card) return 0;
+  card.style.maxHeight = "none";
+  card.style.overflow = "visible";
+  card.style.transform = "none";
+  return card.scrollHeight;
+}
+
 function cardExtent(card) {
-  return (card?.scrollHeight || 0) + LANE_AXIS_PAD;
+  return naturalHeight(card) + LANE_AXIS_PAD;
 }
 
 function tallestExtent(rail, selector) {
@@ -2426,7 +2499,7 @@ function renderLaneEvent(event, side, focusId) {
 
 function featuredPerson(event, focusId) {
   const ids = event.people || [];
-  const skip = activeCenter() || plot.centerId;
+  const skip = activeCenter();
   const preferred = focusId && ids.includes(focusId)
     ? focusId
     : ids.find((id) => id !== skip) || ids[0];

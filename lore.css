@@ -2139,7 +2139,46 @@ button.back:hover,
 }
 
 .lane-event.is-selected {
-  flex-basis: 380px;
+  flex-basis: 440px;
+}
+
+.lane-event.is-selected .lane-card {
+  gap: 4px;
+  overflow: visible;
+}
+
+.lane-event.is-selected .lane-mark,
+.lane-event.is-selected .lane-mark .avatar {
+  width: 56px;
+  height: 56px;
+}
+
+.lane-event.is-selected .lane-hit {
+  gap: 3px;
+}
+
+.lane-event.is-selected .lane-hit strong {
+  font-size: 1.05rem;
+}
+
+.lane-event.is-selected .lane-more p {
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.lane-event.is-selected .faces {
+  margin-top: 6px;
+}
+
+.lane-event.is-selected .event-links {
+  margin-top: 8px;
+  gap: 6px;
+}
+
+.lane-event.is-selected .event-links a,
+.lane-event.is-selected .event-links button {
+  min-height: 0;
+  padding: 5px 8px;
 }
 
 .lane-card {

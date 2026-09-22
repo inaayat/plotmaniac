@@ -1,9 +1,22 @@
-import { initials } from "./engine.js";
-import { cameraBox, claimsRing, flows, linePath, markers, project, regions, ringPath, seams } from "./partition-geography.js";
-import { buildFrames, kashmirClaimsNote, regionCaption, sourceRecords } from "./partition-model.js";
+import { ALL, initials } from "./engine.js";
+import {
+  cameraBox,
+  claimsRing,
+  flows,
+  labelAnchors,
+  linePath,
+  markers,
+  multiPath,
+  outlines,
+  project,
+  regions,
+  ringPath,
+  seams,
+} from "./partition-geography.js";
+import { buildFrames, chronoKey, kashmirClaimsNote, regionCaption, sourceRecords } from "./partition-model.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
-const LATE = new Set(["hyderabad", "mysore", "travancore", "bhopal", "sylhet"]);
+const POLICY_STATES = new Set(["ps-mountbatten-advice", "ps-patel-menon-integration"]);
 const TICKS = [
   ["evt-1905-bengal", "1905"],
   ["evt-1911-bengal-reunite", "1911"],
@@ -39,285 +52,334 @@ function svgEl(name, attrs = {}) {
   return node;
 }
 
-export function mountPartition(root, reference, { frameId = "", onFrame, portraits = {} } = {}) {
+export function mountPartition(root, reference, {
+  frameId = "",
+  view = "web",
+  personId = "",
+  onFrame,
+  onOpenPlayer,
+  onOpenTimeline,
+  onShowMap,
+  portraits = {},
+} = {}) {
   const frames = buildFrames(reference);
   const players = new Map(reference.keyPlayers.map((player) => [player.id, player]));
-  const princes = new Map(reference.princelyStateActors.map((entry) => [entry.id, entry]));
+  const princes = reference.princelyStateActors.filter((entry) => !POLICY_STATES.has(entry.id));
+  const authors = reference.rolesDelineationAndLegacyToPresent?.attributionGuide?.playerIdCrosswalk?.mainAuthorsKeyPlayerIds || [];
   let index = Math.max(0, frames.findIndex((frame) => frame.id === frameId));
-  let selectedPlayer = "";
   let selectedRegion = "";
-  let detailsOpen = true;
   let claimsOn = false;
-  let cameraToken = 0;
-  let cameraName = "";
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+  let query = "";
   const shell = el("section", "partition");
-  shell.setAttribute("aria-label", "Partition of India map");
-  const stage = el("div", "partition-stage");
-  const svg = svgEl("svg", { class: "partition-map", role: "img" });
-  const all = cameraBox("all");
-  svg.setAttribute("viewBox", all.join(" "));
-  const ocean = svgEl("rect", {
-    class: "partition-ocean",
-    x: all[0],
-    y: all[1],
-    width: all[2],
-    height: all[3],
-  });
-  svg.appendChild(ocean);
-
-  const regionPaths = new Map();
-  [...regions].sort((a, b) => Number(LATE.has(a.id)) - Number(LATE.has(b.id))).forEach((region) => {
-    const path = svgEl("path", { class: "region", d: ringPath(region.ring) });
-    path.dataset.region = region.id;
-    path.addEventListener("click", () => {
-      selectedRegion = selectedRegion === region.id ? "" : region.id;
-      selectedPlayer = "";
-      paintInspector();
-    });
-    svg.appendChild(path);
-    regionPaths.set(region.id, path);
-  });
-
-  const seamPaths = new Map();
-  Object.entries(seams).forEach(([id, line]) => {
-    const path = svgEl("path", { class: "decision", d: linePath(line), pathLength: 1 });
-    path.dataset.seam = id;
-    svg.appendChild(path);
-    seamPaths.set(id, path);
-  });
-
-  const claims = svgEl("path", { class: "claims", d: ringPath(claimsRing), pathLength: 1 });
-  svg.appendChild(claims);
-
-  const flowPaths = new Map();
-  Object.entries(flows).forEach(([id, line]) => {
-    const path = svgEl("path", { class: "flow", d: linePath(line), pathLength: 1 });
-    path.dataset.flow = id;
-    svg.appendChild(path);
-    flowPaths.set(id, path);
-  });
-
-  const markerNodes = new Map();
-  Object.entries(markers).forEach(([id, marker]) => {
-    const [x, y] = project(marker.lon, marker.lat);
-    const group = svgEl("g", { class: "map-marker" });
-    group.appendChild(svgEl("circle", { cx: x, cy: y, r: 5 }));
-    const text = svgEl("text", { x: x + 8, y: y - 8 });
-    text.textContent = marker.label;
-    group.appendChild(text);
-    svg.appendChild(group);
-    markerNodes.set(id, group);
-  });
-
-  const labelLayer = svgEl("g", { class: "map-labels" });
-  svg.appendChild(labelLayer);
-
-  const legend = el("ul", "partition-legend");
-  [
-    ["raj", "British province"],
-    ["princely", "Princely state"],
-    ["india", "India"],
-    ["pakistan", "Pakistan"],
-    ["eastpak", "East Pakistan"],
-    ["bangladesh", "Bangladesh"],
-    ["pending", "Award pending"],
-    ["flow", "Migration"],
-  ].forEach(([kind, label]) => {
-    const item = el("li");
-    const swatch = el("i", `swatch fill-${kind}`);
-    item.append(swatch, document.createTextNode(label));
-    legend.appendChild(item);
-  });
-  const legendNote = el("p", "partition-legend-note", "Simplified map, aligned to the subcontinent. Borders draw when a decision changes them.");
-  const casualty = el("p", "partition-casualty", reference.scope?.casualtyNote || "");
-
-  const inspector = el("aside", "partition-inspector");
-  inspector.tabIndex = -1;
-
-  const scrubber = el("div", "partition-scrubber");
-  const now = el("div", "partition-now");
-  const kicker = el("p", "kicker");
-  const title = el("h2");
-  const controls = el("div", "partition-controls");
-  const detailsButton = el("button", "partition-toggle");
-  detailsButton.type = "button";
-  const claimsLabel = el("label", "partition-claims");
-  const claimsInput = document.createElement("input");
-  claimsInput.type = "checkbox";
-  claimsLabel.append(claimsInput, document.createTextNode("Kashmir claims"));
-  controls.append(detailsButton, claimsLabel, imageCredits(portraits, players));
-  now.append(kicker, title, controls);
-
-  const range = document.createElement("input");
-  range.type = "range";
-  range.className = "partition-range";
-  range.min = "0";
-  range.max = String(frames.length - 1);
-  range.step = "1";
-  range.setAttribute("aria-label", "Partition timeline");
-
-  const ticks = el("div", "partition-ticks");
-  TICKS.forEach(([id, label]) => {
-    const at = frames.findIndex((frame) => frame.id === id);
-    if (at < 0) return;
-    const button = el("button", "", label);
-    button.type = "button";
-    button.dataset.frame = id;
-    button.style.left = `${(at / (frames.length - 1)) * 100}%`;
-    button.addEventListener("click", () => goToIndex(at, { historyMode: "push" }));
-    ticks.appendChild(button);
-  });
-
-  stage.append(svg, legend, legendNote, casualty, inspector);
-  scrubber.append(now, range, ticks);
-  shell.append(stage, scrubber);
+  shell.setAttribute("aria-label", "Partition of India");
   root.appendChild(shell);
+
+  if (view === "person" && players.has(personId)) renderPerson(players.get(personId));
+  else if (view === "timeline") renderTimeline();
+  else renderOverview();
+
+  function onKey(event) {
+    if (view !== "web") return;
+    if (event.target.closest("input, textarea, select, a, button")) return;
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToIndex(index + 1, { historyMode: "push" });
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToIndex(index - 1, { historyMode: "push" });
+    }
+  }
+  window.addEventListener("keydown", onKey);
+
+  return {
+    modeKey: () => `${view}:${personId || ALL}`,
+    goTo(id) {
+      const next = frames.findIndex((item) => item.id === id);
+      if (next < 0) return;
+      index = next;
+      if (view === "web") shell.paintOverview?.();
+      if (view === "timeline") shell.paintTimelineSelection?.();
+    },
+    destroy() {
+      window.removeEventListener("keydown", onKey);
+    },
+  };
 
   function frame() {
     return frames[index];
   }
 
-  function paintMap() {
-    const visual = frame().visual;
-    regionPaths.forEach((path, id) => {
-      const fill = visual.fills[id] || "raj";
-      path.setAttribute("class", `region fill-${fill}${visual.emphasis.includes(id) ? " is-emphasis" : ""}`);
-    });
-    seamPaths.forEach((path, id) => {
-      const state = visual.seams[id] || "off";
-      path.setAttribute("class", `decision is-${state}`);
-    });
-    flowPaths.forEach((path, id) => {
-      path.classList.toggle("is-on", visual.flows.includes(id));
-    });
-    markerNodes.forEach((node, id) => {
-      node.classList.toggle("is-on", visual.markers.includes(id));
-    });
-    const showClaims = claimsOn;
-    claims.classList.toggle("is-on", showClaims);
-    svg.setAttribute("aria-label", `${frame().dateDisplay}. ${frame().title}`);
-    paintLabels();
-    const nextCamera = visual.camera || "all";
-    if (nextCamera !== cameraName) {
-      cameraName = nextCamera;
-      animateCamera(nextCamera);
+  function renderOverview() {
+    const figure = el("div", "partition-figure");
+    const mapWrap = el("div", "partition-map-wrap");
+    const svg = buildMap();
+    const legend = buildLegend();
+    const note = el("p", "partition-legend-note", "Coastlines follow the modern outlines of India, Pakistan, and Bangladesh. Nepal and Bhutan stay on the map so the land does not look broken.");
+    mapWrap.append(svg, legend, note);
+
+    const beat = el("div", "partition-beat");
+    const scrubber = buildScrubber();
+    figure.append(mapWrap, beat);
+    const cast = el("div", "partition-cast-wrap");
+    const princesBlock = el("div", "partition-princes");
+    shell.append(figure, scrubber, cast, princesBlock, imageCredits(portraits, players));
+    paintCast(cast);
+    paintPrinces(princesBlock);
+    paintOverview();
+
+    function paintOverview() {
+      paintMap(svg);
+      paintBeat(beat);
+      paintActing(cast);
+      paintScrubber(scrubber);
     }
+    shell.paintOverview = paintOverview;
   }
 
-  function paintLabels() {
-    labelLayer.replaceChildren();
-    const visual = frame().visual;
-    const ids = visual.emphasis.length
-      ? visual.emphasis
-      : regions
-        .map((region) => region.id)
-        .filter((id) => !["raj", "princely", "neighbor"].includes(visual.fills[id]));
-    ids.forEach((id) => {
-      const region = regions.find((item) => item.id === id);
-      if (!region) return;
-      const [x, y] = centroid(region.ring);
-      const text = svgEl("text", { class: "region-label", x, y });
-      text.textContent = region.name;
-      labelLayer.appendChild(text);
-    });
-    if ((visual.camera || "all") !== "all") return;
-    const countryLabels = [];
-    if (Object.values(visual.fills).includes("india")) countryLabels.push(["India", 79.2, 21.6]);
-    if (Object.values(visual.fills).includes("pakistan")) countryLabels.push(["Pakistan", 68.4, 29.2]);
-    if (visual.fills["bengal-east"] === "eastpak") countryLabels.push(["East Pakistan", 90.2, 23.4]);
-    if (visual.fills["bengal-east"] === "bangladesh") countryLabels.push(["Bangladesh", 90.2, 23.4]);
-    countryLabels.forEach(([label, lon, lat]) => {
-      const [x, y] = project(lon, lat);
-      const text = svgEl("text", { class: "country-label", x, y });
-      text.textContent = label;
-      labelLayer.appendChild(text);
-    });
-  }
-
-  function paintInspector() {
+  function paintBeat(beat) {
     const current = frame();
-    inspector.replaceChildren();
-    inspector.appendChild(el("p", "kicker", current.kind === "aftermath" ? "Aftermath" : "Timeline"));
-    inspector.appendChild(el("h3", "", current.title));
-    inspector.appendChild(el("p", "partition-date", current.dateDisplay));
-    inspector.appendChild(el("p", "", current.summary));
+    beat.replaceChildren();
+    beat.appendChild(el("p", "eyebrow", current.kind === "aftermath" ? "Aftermath" : "This moment"));
+    beat.appendChild(el("h2", "", current.title));
+    beat.appendChild(el("p", "partition-date", current.dateDisplay));
+    beat.appendChild(el("p", "", current.summary));
     if (current.consequences.length) {
       const list = el("ul", "partition-points");
-      current.consequences.forEach((item) => list.appendChild(el("li", "", item)));
-      inspector.appendChild(list);
+      current.consequences.slice(0, 3).forEach((item) => list.appendChild(el("li", "", item)));
+      beat.appendChild(list);
     }
-    if (current.actions.length) {
-      const list = el("ul", "partition-actions");
-      current.actions.forEach((action) => {
-        const person = players.get(action.playerId);
-        const item = el("li");
-        item.append(el("strong", "", person?.name || action.playerId), document.createTextNode(` ${action.description}`));
-        list.appendChild(item);
-      });
-      inspector.appendChild(list);
-    }
-    if (current.playerIds.length) {
-      const row = el("div", "partition-players");
-      current.playerIds.forEach((id) => {
-        const person = players.get(id);
-        const button = el("button", selectedPlayer === id ? "is-selected" : "");
-        button.type = "button";
-        button.append(portraitMark(person?.name || id, portraits[id]), el("span", "", person?.name || id));
-        button.addEventListener("click", () => {
-          selectedPlayer = selectedPlayer === id ? "" : id;
-          selectedRegion = "";
-          paintInspector();
-        });
-        row.appendChild(button);
-      });
-      inspector.appendChild(row);
-    }
-    if (selectedPlayer && players.get(selectedPlayer)) paintPlayer(players.get(selectedPlayer));
-    if (selectedRegion) {
-      inspector.appendChild(el("p", "partition-region", regionCaption(selectedRegion, current)));
-    }
-    current.princelyIds.forEach((id) => {
-      const entry = princes.get(id);
-      if (!entry) return;
-      const block = el("p", "partition-princely");
-      block.append(el("strong", "", entry.stateName), document.createTextNode(` — ${entry.rulerName}. ${entry.oneLineRole}`));
-      inspector.appendChild(block);
-    });
-    current.extras.forEach((extra) => {
-      if (!extra.body) return;
-      const block = el("p", "partition-extra");
-      block.append(el("strong", "", extra.heading), document.createTextNode(` ${extra.body}`));
-      inspector.appendChild(block);
-    });
-    if (claimsOn) inspector.appendChild(el("p", "partition-extra", kashmirClaimsNote(current)));
-    const sources = sourceRecords(reference.sourcesCatalog, current.sourceIds);
-    if (sources.length) {
-      const list = el("ul", "partition-sources");
-      sources.forEach((source) => {
-        const item = el("li");
-        const link = el("a", "", source.title);
-        link.href = source.url;
-        link.target = "_blank";
-        link.rel = "noreferrer";
-        item.appendChild(link);
-        list.appendChild(item);
-      });
-      inspector.appendChild(list);
-    }
-    inspector.hidden = !detailsOpen;
+    const timelineButton = el("button", "partition-text-button", "Open the full timeline");
+    timelineButton.type = "button";
+    timelineButton.addEventListener("click", () => onOpenTimeline?.(current.id));
+    beat.appendChild(timelineButton);
+    if (selectedRegion) beat.appendChild(el("p", "partition-region", regionCaption(selectedRegion, current)));
+    if (claimsOn) beat.appendChild(el("p", "partition-extra", kashmirClaimsNote(current)));
   }
 
-  function paintPlayer(person) {
-    const block = el("div", "partition-player");
+  function paintCast(cast) {
+    cast.replaceChildren();
+    cast.appendChild(el("p", "eyebrow", "Key players"));
+    cast.appendChild(el("h2", "", "Everyone who shaped the decision"));
+    cast.appendChild(el("p", "rail-note", "All of them are on this page. Open a person to read the timeline of what they did."));
+    const authorIds = authors.filter((id) => players.has(id));
+    const rest = [...players.keys()].filter((id) => !authorIds.includes(id));
+    rest.sort((a, b) => players.get(a).name.localeCompare(players.get(b).name, "en"));
+    cast.appendChild(playerBlock("Who drew the map", authorIds));
+    cast.appendChild(playerBlock("Also in the record", rest));
+  }
+
+  function playerBlock(heading, ids) {
+    const block = el("section", "partition-player-block");
+    block.appendChild(el("h3", "", heading));
+    const grid = el("ul", "partition-cast");
+    const acting = new Set(frame().playerIds);
+    ids.forEach((id) => {
+      const person = players.get(id);
+      if (!person) return;
+      const item = el("li");
+      const button = el("button", `partition-card${acting.has(id) ? " is-acting" : ""}`);
+      button.type = "button";
+      button.dataset.player = id;
+      button.append(
+        portraitMark(person.name, portraits[id]),
+        el("strong", "", person.name),
+        el("em", "", person.faction || person.roles?.[0] || ""),
+      );
+      button.addEventListener("click", () => onOpenPlayer?.(id));
+      item.appendChild(button);
+      grid.appendChild(item);
+    });
+    block.appendChild(grid);
+    return block;
+  }
+
+  function paintActing(cast) {
+    const acting = new Set(frame().playerIds);
+    cast.querySelectorAll(".partition-card").forEach((button) => {
+      button.classList.toggle("is-acting", acting.has(button.dataset.player));
+    });
+  }
+
+  function paintPrinces(block) {
+    block.replaceChildren();
+    block.appendChild(el("p", "eyebrow", "Princely states"));
+    block.appendChild(el("h2", "", "The accessions beside the provincial border"));
+    block.appendChild(el("p", "rail-note", "These states were not the Radcliffe provinces. Each outcome is the one recorded in the research."));
+    const groups = [
+      ["Disputed or delayed", princes.filter((entry) => /disputed|plebiscite|forced|Operation/i.test(entry.accessionOutcome || ""))],
+      ["Pakistan", princes.filter((entry) => /^Pakistan/i.test(entry.accessionOutcome || "") && !/disputed|plebiscite|forced|Operation/i.test(entry.accessionOutcome || ""))],
+      ["India", princes.filter((entry) => /^India/i.test(entry.accessionOutcome || "") && !/disputed|plebiscite|forced|Operation/i.test(entry.accessionOutcome || ""))],
+    ];
+    groups.forEach(([label, entries]) => {
+      if (!entries.length) return;
+      const group = el("section", "partition-prince-group");
+      group.appendChild(el("h3", "", label));
+      const list = el("ul", "partition-prince-list");
+      entries.forEach((entry) => {
+        const item = el("li");
+        const button = el("button", "partition-prince");
+        button.type = "button";
+        button.append(el("strong", "", entry.stateName), el("span", "", entry.accessionOutcome));
+        const detail = el("p", "partition-prince-detail", `${entry.rulerName}. ${entry.oneLineRole}`);
+        detail.hidden = true;
+        button.addEventListener("click", () => {
+          detail.hidden = !detail.hidden;
+          button.setAttribute("aria-expanded", String(!detail.hidden));
+        });
+        button.setAttribute("aria-expanded", "false");
+        item.append(button, detail);
+        list.appendChild(item);
+      });
+      group.appendChild(list);
+      block.appendChild(group);
+    });
+    const casualty = el("p", "partition-casualty", reference.scope?.casualtyNote || "");
+    block.appendChild(casualty);
+  }
+
+  function renderTimeline() {
+    shell.classList.add("partition-record");
+    const head = el("div", "timeline-head");
+    const copy = el("div");
+    copy.append(el("p", "eyebrow", "Full timeline"), el("h2", "", "Across the years"));
+    const search = el("label", "search");
+    search.append(el("span", "", "Search"));
+    const input = document.createElement("input");
+    input.type = "search";
+    input.placeholder = "Search players, decisions, places…";
+    input.addEventListener("input", () => {
+      query = input.value;
+      paintTimelineList();
+    });
+    search.appendChild(input);
+    head.append(copy, search);
+    const note = el("p", "rail-note", "Every researched decision, oldest at the top. Open a beat for what changed, then open a person for their own actions.");
+    const listWrap = el("div", "spine-view");
+    shell.append(head, note, listWrap);
+    paintTimelineList();
+
+    function paintTimelineList() {
+      const shown = frames.filter((item) => frameMatches(item, query, players));
+      listWrap.replaceChildren();
+      if (!shown.length) {
+        listWrap.appendChild(el("p", "empty", "Nothing in this timeline matches that search."));
+        return;
+      }
+      const rail = el("ol", "spine");
+      rail.setAttribute("aria-label", "Partition timeline, oldest at the top.");
+      let year = "";
+      shown.forEach((item) => {
+        const nextYear = String(item.sortKey).slice(0, 4);
+        if (nextYear !== year) {
+          year = nextYear;
+          const stone = el("li", "spine-year");
+          stone.appendChild(el("span", "", year));
+          rail.appendChild(stone);
+        }
+        rail.appendChild(timelineBeat(item));
+      });
+      listWrap.appendChild(rail);
+      const selected = listWrap.querySelector(".spine-event.is-selected");
+      selected?.scrollIntoView({ block: "nearest" });
+    }
+    shell.paintTimelineList = paintTimelineList;
+    shell.paintTimelineSelection = paintTimelineSelection;
+  }
+
+  function timelineBeat(item) {
+    const row = el("li", "spine-event");
+    row.id = `beat-${item.id}`;
+    row.classList.toggle("is-selected", item.id === frame().id);
+    const mark = el("button", "spine-mark");
+    mark.type = "button";
+    const leadId = item.playerIds.find((id) => portraits[id]) || item.playerIds[0];
+    const lead = players.get(leadId);
+    mark.appendChild(portraitMark(lead?.name || item.dateDisplay, portraits[leadId]));
+    const copy = el("div", "spine-copy");
+    const hit = el("button", "spine-hit");
+    hit.type = "button";
+    const when = el("time", "", item.dateDisplay);
+    const heading = el("strong", "", item.title);
+    const tease = el("span", "beat-tease", clip(item.summary, 180));
+    hit.append(when, heading, tease);
+    const more = el("div", "spine-more");
+    more.hidden = item.id !== frame().id;
+    more.appendChild(el("p", "", item.summary));
+    if (item.consequences.length) {
+      const list = el("ul", "partition-points");
+      item.consequences.forEach((point) => list.appendChild(el("li", "", point)));
+      more.appendChild(list);
+    }
+    if (item.actions.length) {
+      const list = el("ul", "partition-actions");
+      item.actions.forEach((action) => {
+        const person = players.get(action.playerId);
+        const line = el("li");
+        line.append(el("strong", "", person?.name || action.playerId), document.createTextNode(` ${action.description}`));
+        list.appendChild(line);
+      });
+      more.appendChild(list);
+    }
+    if (item.playerIds.length) {
+      const rowPlayers = el("div", "partition-inline-players");
+      item.playerIds.forEach((id) => {
+        const person = players.get(id);
+        const button = el("button", "", person?.name || id);
+        button.type = "button";
+        button.addEventListener("click", () => onOpenPlayer?.(id));
+        rowPlayers.appendChild(button);
+      });
+      more.appendChild(rowPlayers);
+    }
+    const mapButton = el("button", "partition-text-button", "Show this moment on the map");
+    mapButton.type = "button";
+    mapButton.addEventListener("click", () => onShowMap?.(item.id));
+    more.appendChild(mapButton);
+    const sources = sourceRecords(reference.sourcesCatalog, item.sourceIds);
+    if (sources.length) more.appendChild(sourceList(sources));
+    const toggle = () => {
+      const opening = more.hidden;
+      more.hidden = !opening;
+      row.classList.toggle("is-selected", opening);
+      if (opening) {
+        index = frames.findIndex((candidate) => candidate.id === item.id);
+        onFrame?.(item.id, { historyMode: "replace" });
+      }
+    };
+    mark.addEventListener("click", toggle);
+    hit.addEventListener("click", toggle);
+    copy.append(hit, more);
+    row.append(mark, copy);
+    return row;
+  }
+
+  function paintTimelineSelection() {
+    shell.querySelectorAll(".spine-event").forEach((row) => {
+      row.classList.toggle("is-selected", row.id === `beat-${frame().id}`);
+    });
+  }
+
+  function renderPerson(person) {
+    shell.classList.add("partition-record");
+    const back = el("button", "back", "All players");
+    back.type = "button";
+    back.addEventListener("click", () => onShowMap?.(frame().id));
+    const head = el("header", "partition-person-head");
     const portrait = portraits[person.id];
-    if (portrait?.src) block.appendChild(portraitFigure(person.name, portrait));
-    block.appendChild(el("h4", "", person.name));
-    if (person.roles?.length) block.appendChild(el("p", "partition-date", person.roles.join(" · ")));
-    block.appendChild(el("p", "", person.pointOfView));
-    addList(block, "Wanted", person.desiresAndGoals);
-    addList(block, "Feared or opposed", person.fearsAndOppositions);
+    if (portrait?.src) head.appendChild(portraitFigure(person.name, portrait));
+    else head.appendChild(portraitMark(person.name));
+    const identity = el("div");
+    identity.append(
+      el("p", "eyebrow", person.faction || "Key player"),
+      el("h2", "", person.name),
+      el("p", "partition-date", person.roles?.join(" · ") || ""),
+    );
+    head.appendChild(identity);
+    const brief = el("div", "partition-person-brief");
+    brief.appendChild(el("p", "", person.pointOfView));
+    brief.appendChild(el("p", "", person.impactSummary));
+    addList(brief, "Wanted", person.desiresAndGoals);
+    addList(brief, "Feared or opposed", person.fearsAndOppositions);
     if (person.positions) {
       const list = el("ul", "partition-points");
       Object.entries(POSITION_LABELS).forEach(([key, label]) => {
@@ -326,118 +388,279 @@ export function mountPartition(root, reference, { frameId = "", onFrame, portrai
         item.append(el("strong", "", label), document.createTextNode(` — ${person.positions[key]}`));
         list.appendChild(item);
       });
-      block.appendChild(list);
+      brief.appendChild(list);
     }
-    block.appendChild(el("p", "", person.impactSummary));
-    const sources = sourceRecords(reference.sourcesCatalog, person.sourceIds);
-    if (sources.length) {
-      const list = el("ul", "partition-sources");
-      sources.forEach((source) => {
-        const item = el("li");
-        const link = el("a", "", source.title);
-        link.href = source.url;
-        link.target = "_blank";
-        link.rel = "noreferrer";
-        item.appendChild(link);
-        list.appendChild(item);
+    const actions = playerActions(person);
+    const record = el("div", "spine-view");
+    record.appendChild(el("h3", "", "What they did"));
+    if (!actions.length) {
+      record.appendChild(el("p", "rail-note", "The research names this person, and does not give them a separate list of actions."));
+    } else {
+      record.appendChild(el("p", "rail-note", "Their actions, oldest at the top. Each one can open the map at that moment."));
+      const rail = el("ol", "spine");
+      let year = "";
+      actions.forEach((action) => {
+        const yearText = String(action.sortKey).slice(0, 4);
+        if (yearText !== year) {
+          year = yearText;
+          const stone = el("li", "spine-year");
+          stone.appendChild(el("span", "", year));
+          rail.appendChild(stone);
+        }
+        rail.appendChild(actionBeat(person, action));
       });
-      block.appendChild(list);
+      record.appendChild(rail);
     }
-    inspector.appendChild(block);
+    const sources = sourceRecords(reference.sourcesCatalog, person.sourceIds);
+    shell.append(back, head, brief, record);
+    if (sources.length) shell.appendChild(sourceList(sources));
   }
 
-  function paintChrome() {
+  function actionBeat(person, action) {
+    const row = el("li", "spine-event");
+    const mark = el("div", "spine-mark");
+    mark.appendChild(portraitMark(person.name, portraits[person.id]));
+    const copy = el("div", "spine-copy");
+    copy.append(el("time", "", action.dateDisplay), el("strong", "", action.title));
+    const lines = action.playerSpecificActions?.filter(Boolean) || [];
+    if (lines.length) {
+      const list = el("ul", "partition-points");
+      lines.forEach((line) => list.appendChild(el("li", "", line)));
+      copy.appendChild(list);
+    } else {
+      copy.appendChild(el("p", "partition-date", "Named on this decision, with no separate action written down."));
+    }
+    if (action.eventId && frames.some((item) => item.id === action.eventId)) {
+      const mapButton = el("button", "partition-text-button", "Show this moment on the map");
+      mapButton.type = "button";
+      mapButton.addEventListener("click", () => onShowMap?.(action.eventId));
+      copy.appendChild(mapButton);
+    }
+    row.append(mark, copy);
+    return row;
+  }
+
+  function playerActions(person) {
+    const own = (person.timelineActions || []).map((action) => ({ ...action, sortKey: action.sortKey }));
+    if (own.length) return own.slice().sort((a, b) => chronoKey(a.sortKey) - chronoKey(b.sortKey));
+    return frames
+      .filter((item) => item.playerIds.includes(person.id))
+      .map((item) => ({
+        eventId: item.id,
+        sortKey: item.sortKey,
+        dateDisplay: item.dateDisplay,
+        title: item.title,
+        playerSpecificActions: item.actions
+          .filter((action) => action.playerId === person.id)
+          .map((action) => action.description),
+      }));
+  }
+
+  function buildMap() {
+    const svg = svgEl("svg", { class: "partition-map", role: "img" });
+    const box = cameraBox();
+    svg.setAttribute("viewBox", box.join(" "));
+    svg.appendChild(svgEl("rect", {
+      class: "partition-ocean",
+      x: box[0],
+      y: box[1],
+      width: box[2],
+      height: box[3],
+    }));
+    const regionPaths = new Map();
+    regions.forEach((region) => {
+      const path = svgEl("path", {
+        class: "region",
+        d: multiPath(region.polygons),
+        "fill-rule": "evenodd",
+      });
+      path.dataset.region = region.id;
+      path.addEventListener("click", () => {
+        selectedRegion = selectedRegion === region.id ? "" : region.id;
+        shell.paintOverview?.();
+      });
+      svg.appendChild(path);
+      regionPaths.set(region.id, path);
+    });
+    const outlinePaths = new Map();
+    ["india", "pakistan", "bangladesh"].forEach((id) => {
+      const path = svgEl("path", { class: `country-outline is-${id}`, d: multiPath(outlines[id]) });
+      svg.appendChild(path);
+      outlinePaths.set(id, path);
+    });
+    const seamPaths = new Map();
+    Object.entries(seams).forEach(([id, line]) => {
+      const path = svgEl("path", { class: "decision", d: linePath(line), pathLength: 1 });
+      svg.appendChild(path);
+      seamPaths.set(id, path);
+    });
+    const claims = svgEl("path", { class: "claims", d: ringPath(claimsRing), pathLength: 1 });
+    svg.appendChild(claims);
+    const flowPaths = new Map();
+    Object.entries(flows).forEach(([id, line]) => {
+      const path = svgEl("path", { class: "flow", d: linePath(line), pathLength: 1 });
+      svg.appendChild(path);
+      flowPaths.set(id, path);
+    });
+    const markerNodes = new Map();
+    Object.entries(markers).forEach(([id, marker]) => {
+      const [x, y] = project(marker.lon, marker.lat);
+      const group = svgEl("g", { class: "map-marker" });
+      group.appendChild(svgEl("circle", { cx: x, cy: y, r: 0.18 }));
+      const text = svgEl("text", { x: x + 0.28, y: y - 0.22 });
+      text.textContent = marker.label;
+      group.appendChild(text);
+      svg.appendChild(group);
+      markerNodes.set(id, group);
+    });
+    const labelLayer = svgEl("g", { class: "map-labels" });
+    svg.appendChild(labelLayer);
+    svg.partitionMap = { regionPaths, outlinePaths, seamPaths, flowPaths, markerNodes, claims, labelLayer };
+    return svg;
+  }
+
+  function paintMap(svg) {
+    const visual = frame().visual;
+    const parts = svg.partitionMap;
+    parts.regionPaths.forEach((path, id) => {
+      const fill = visual.fills[id] || "raj";
+      path.setAttribute("class", `region fill-${fill}${visual.emphasis.includes(id) ? " is-emphasis" : ""}`);
+    });
+    const pakistanOn = Object.entries(visual.fills).some(([id, fill]) => fill === "pakistan" && id !== "bengal-east");
+    const eastOn = visual.fills["bengal-east"] === "eastpak" || visual.fills["bengal-east"] === "bangladesh";
+    const indiaOn = Object.values(visual.fills).includes("india");
+    parts.outlinePaths.get("pakistan").setAttribute("class", `country-outline is-pakistan${pakistanOn ? " is-set" : " is-ahead"}`);
+    parts.outlinePaths.get("bangladesh").setAttribute("class", `country-outline is-bangladesh${eastOn ? " is-set" : " is-ahead"}`);
+    parts.outlinePaths.get("india").setAttribute("class", `country-outline is-india${indiaOn ? " is-set" : " is-ahead"}`);
+    parts.seamPaths.forEach((path, id) => {
+      path.setAttribute("class", `decision is-${visual.seams[id] || "off"}`);
+    });
+    parts.flowPaths.forEach((path, id) => path.classList.toggle("is-on", visual.flows.includes(id)));
+    parts.markerNodes.forEach((node, id) => node.classList.toggle("is-on", visual.markers.includes(id)));
+    parts.claims.classList.toggle("is-on", claimsOn);
+    svg.setAttribute("aria-label", `${frame().dateDisplay}. ${frame().title}`);
+    paintLabels(parts.labelLayer, visual);
+  }
+
+  function paintLabels(layer, visual) {
+    layer.replaceChildren();
+    const placed = [];
+    const add = (text, lon, lat, className) => {
+      const [x, y] = project(lon, lat);
+      const node = svgEl("text", { class: className, x, y, "text-anchor": "middle" });
+      node.textContent = text;
+      layer.appendChild(node);
+      placed.push(node);
+    };
+    add("Nepal", labelAnchors.nepal[0], labelAnchors.nepal[1], "region-label");
+    add("Bhutan", labelAnchors.bhutan[0], labelAnchors.bhutan[1], "region-label");
+    if (Object.values(visual.fills).includes("india")) add("India", labelAnchors.india[0], labelAnchors.india[1], "country-label");
+    if (Object.entries(visual.fills).some(([, fill]) => fill === "pakistan")) add("Pakistan", labelAnchors.pakistan[0], labelAnchors.pakistan[1], "country-label");
+    if (visual.fills["bengal-east"] === "eastpak") add("East Pakistan", labelAnchors.bangladesh[0], labelAnchors.bangladesh[1], "country-label");
+    if (visual.fills["bengal-east"] === "bangladesh") add("Bangladesh", labelAnchors.bangladesh[0], labelAnchors.bangladesh[1], "country-label");
+    visual.emphasis.forEach((id) => {
+      if (["kashmir-ind", "kashmir-pak", "bengal-east"].includes(id) && visual.fills["bengal-east"] === "bangladesh" && id === "bengal-east") return;
+      const region = regions.find((item) => item.id === id);
+      if (!region) return;
+      const [lon, lat] = centroid(region.polygons);
+      add(region.name, lon, lat, "region-label");
+    });
+    return placed;
+  }
+
+  function buildLegend() {
+    const legend = el("ul", "partition-legend");
+    [
+      ["raj", "British province"],
+      ["princely", "Princely state"],
+      ["india", "India"],
+      ["pakistan", "Pakistan"],
+      ["eastpak", "East Pakistan"],
+      ["bangladesh", "Bangladesh"],
+      ["pending", "Award pending"],
+      ["neighbor", "Nepal and Bhutan"],
+    ].forEach(([kind, label]) => {
+      const item = el("li");
+      item.append(el("i", `swatch fill-${kind}`), document.createTextNode(label));
+      legend.appendChild(item);
+    });
+    return legend;
+  }
+
+  function buildScrubber() {
+    const scrubber = el("div", "partition-scrubber");
+    const now = el("div", "partition-now");
+    const kicker = el("p", "kicker");
+    const title = el("h2");
+    const controls = el("div", "partition-controls");
+    const claimsLabel = el("label", "partition-claims");
+    const claimsInput = document.createElement("input");
+    claimsInput.type = "checkbox";
+    claimsLabel.append(claimsInput, document.createTextNode("Kashmir claims"));
+    controls.appendChild(claimsLabel);
+    now.append(kicker, title, controls);
+    const range = document.createElement("input");
+    range.type = "range";
+    range.className = "partition-range";
+    range.min = "0";
+    range.max = String(frames.length - 1);
+    range.step = "1";
+    range.setAttribute("aria-label", "Partition timeline");
+    const ticks = el("div", "partition-ticks");
+    TICKS.forEach(([id, label]) => {
+      const at = frames.findIndex((item) => item.id === id);
+      if (at < 0) return;
+      const button = el("button", "", label);
+      button.type = "button";
+      button.dataset.frame = id;
+      button.style.left = `${(at / (frames.length - 1)) * 100}%`;
+      button.addEventListener("click", () => goToIndex(at, { historyMode: "push" }));
+      ticks.appendChild(button);
+    });
+    scrubber.append(now, range, ticks);
+    range.addEventListener("input", () => goToIndex(Number(range.value), { historyMode: "replace" }));
+    range.addEventListener("change", () => goToIndex(Number(range.value), { historyMode: "push" }));
+    claimsInput.addEventListener("change", () => {
+      claimsOn = claimsInput.checked;
+      shell.paintOverview?.();
+    });
+    scrubber.partitionScrub = { kicker, title, range, ticks, claimsInput };
+    return scrubber;
+  }
+
+  function paintScrubber(scrubber) {
     const current = frame();
-    kicker.textContent = `${current.dateDisplay} · ${current.kind === "aftermath" ? "Aftermath" : "Timeline"} · ${index + 1} of ${frames.length}`;
-    title.textContent = current.title;
-    detailsButton.textContent = detailsOpen ? "Hide details" : "Show details";
-    detailsButton.setAttribute("aria-expanded", String(detailsOpen));
-    range.value = String(index);
-    range.setAttribute("aria-valuetext", `${current.dateDisplay}. ${current.title}`);
-    ticks.querySelectorAll("button").forEach((button) => {
+    const bits = scrubber.partitionScrub;
+    bits.kicker.textContent = `${current.dateDisplay} · ${index + 1} of ${frames.length}`;
+    bits.title.textContent = current.title;
+    bits.range.value = String(index);
+    bits.range.setAttribute("aria-valuetext", `${current.dateDisplay}. ${current.title}`);
+    bits.ticks.querySelectorAll("button").forEach((button) => {
       button.classList.toggle("is-active", button.dataset.frame === current.id);
     });
-    shell.classList.toggle("is-details-hidden", !detailsOpen);
   }
 
-  function paint() {
-    if (selectedPlayer && !frame().playerIds.includes(selectedPlayer)) selectedPlayer = "";
-    paintChrome();
-    paintMap();
-    paintInspector();
+  function goToIndex(next, { historyMode = "replace" } = {}) {
+    index = Math.max(0, Math.min(frames.length - 1, next));
+    shell.paintOverview?.();
+    onFrame?.(frames[index].id, { historyMode });
   }
+}
 
-  function goToIndex(next, { historyMode = "replace", notify = true } = {}) {
-    const bounded = Math.max(0, Math.min(frames.length - 1, next));
-    if (bounded === index && notify === false) return;
-    index = bounded;
-    paint();
-    if (notify) onFrame?.(frames[index].id, { historyMode });
-  }
+function frameMatches(item, query, players) {
+  const needle = query.trim().toLocaleLowerCase();
+  if (!needle) return true;
+  const names = item.playerIds.map((id) => players.get(id)?.name || id);
+  return [item.title, item.summary, item.dateDisplay, ...item.consequences, ...names]
+    .join(" ")
+    .toLocaleLowerCase()
+    .includes(needle);
+}
 
-  function animateCamera(name) {
-    const target = cameraBox(name);
-    const token = ++cameraToken;
-    const box = svg.viewBox.baseVal;
-    const from = [box.x, box.y, box.width, box.height];
-    if (reducedMotion || sameBox(from, target)) {
-      svg.setAttribute("viewBox", target.map((value) => value.toFixed(1)).join(" "));
-      return;
-    }
-    const started = performance.now();
-    const duration = 720;
-    const step = (now) => {
-      if (token !== cameraToken) return;
-      const progress = Math.min(1, (now - started) / duration);
-      const eased = 1 - (1 - progress) ** 3;
-      const next = from.map((value, i) => value + (target[i] - value) * eased);
-      svg.setAttribute("viewBox", next.map((value) => value.toFixed(1)).join(" "));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-
-  range.addEventListener("input", () => goToIndex(Number(range.value), { historyMode: "replace" }));
-  range.addEventListener("change", () => goToIndex(Number(range.value), { historyMode: "push" }));
-  detailsButton.addEventListener("click", () => {
-    detailsOpen = !detailsOpen;
-    paintChrome();
-    inspector.hidden = !detailsOpen;
-  });
-  claimsInput.addEventListener("change", () => {
-    claimsOn = claimsInput.checked;
-    paintMap();
-    paintInspector();
-  });
-
-  function onKey(event) {
-    if (event.target.closest("input, textarea, select, a")) return;
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      goToIndex(index + 1, { historyMode: "push" });
-    } else if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      goToIndex(index - 1, { historyMode: "push" });
-    } else if (event.key === "Escape" && detailsOpen) {
-      detailsOpen = false;
-      paintChrome();
-      inspector.hidden = true;
-    }
-  }
-  window.addEventListener("keydown", onKey);
-  paint();
-
-  return {
-    goTo(id) {
-      const next = frames.findIndex((item) => item.id === id);
-      if (next < 0) return;
-      goToIndex(next, { notify: false });
-    },
-    destroy() {
-      window.removeEventListener("keydown", onKey);
-      cameraToken += 1;
-    },
-  };
+function clip(text, max) {
+  const clean = String(text || "").replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  return `${clean.slice(0, max - 1).trim()}…`;
 }
 
 function portraitMark(name, portrait) {
@@ -495,22 +718,31 @@ function imageCredits(portraits, players) {
   return credits;
 }
 
-function centroid(ring) {
-  const totals = ring.reduce((sum, point) => {
-    const [x, y] = project(point[0], point[1]);
-    return [sum[0] + x, sum[1] + y];
-  }, [0, 0]);
+function centroid(polygons) {
+  const ring = polygons[0]?.[0] || [];
+  const totals = ring.reduce((sum, point) => [sum[0] + point[0], sum[1] + point[1]], [0, 0]);
+  if (!ring.length) return [0, 0];
   return [totals[0] / ring.length, totals[1] / ring.length];
+}
+
+function sourceList(sources) {
+  const list = el("ul", "partition-sources");
+  sources.forEach((source) => {
+    const item = el("li");
+    const link = el("a", "", source.title);
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    item.appendChild(link);
+    list.appendChild(item);
+  });
+  return list;
 }
 
 function addList(parent, heading, items = []) {
   if (!items?.length) return;
-  parent.appendChild(el("h4", "", heading));
+  parent.appendChild(el("h3", "", heading));
   const list = el("ul", "partition-points");
   items.forEach((item) => list.appendChild(el("li", "", item)));
   parent.appendChild(list);
-}
-
-function sameBox(a, b) {
-  return a.every((value, index) => Math.abs(value - b[index]) < 0.5);
 }

@@ -69,7 +69,7 @@ function applyVisual(current, delta = {}) {
     flows: Object.prototype.hasOwnProperty.call(delta, "flows") ? delta.flows.slice() : current.flows.slice(),
     markers: delta.markers ? delta.markers.slice() : [],
     emphasis: delta.emphasis ? delta.emphasis.slice() : [],
-    camera: delta.camera || "all",
+    camera: "all",
     claims: current.claims,
   };
   return next;
