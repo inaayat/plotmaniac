@@ -833,4 +833,181 @@ assert.match(
   /year=2012/,
 );
 
+const vancePeople = readJson("../data/jd-vance/people.json");
+const vanceEvents = readJson("../data/jd-vance/events.json");
+const vanceRelations = readJson("../data/jd-vance/relations.json");
+const vance = plots.plots.find((item) => item.id === "jd-vance");
+const vanceIds = new Set(vancePeople.map((person) => person.id));
+assert.ok(vance, "jd vance plot is registered");
+assert.equal(vance.centerId, "jd-vance");
+assert.equal(vance.arrangement, "topics");
+assert.equal(vance.images, "bubbles");
+assert.ok(vance.topics?.length >= 5);
+const vanceTopicIds = new Set(vance.topics.map((topic) => topic.id));
+assert.deepEqual(vance.friendKinds, ["supported"]);
+assert.deepEqual(vance.enemyKinds, ["opposed"]);
+assert.equal(vance.friendLabel, "Supported");
+assert.equal(vance.enemyLabel, "Opposed");
+assert.equal(vance.orbitLabel, "No stance yet");
+assert.equal(vance.year.min, 2012);
+assert.equal(vance.year.max, 2026);
+assert.equal(vance.year.initial, 2024);
+assert.deepEqual(vance.year.marks, [2012, 2016, 2021, 2024, 2026]);
+assert.equal(vanceIds.size, vancePeople.length);
+assert.ok(vanceEvents.length >= 35, `vance timeline should be dense, got ${vanceEvents.length}`);
+assert.equal(new Set(vanceEvents.map((event) => event.id)).size, vanceEvents.length);
+
+const vanceById = new Map(vancePeople.map((person) => [person.id, person]));
+for (const person of vancePeople) {
+  assert.ok(person.name && person.role, `${person.id} needs a name and role`);
+  assert.ok(Array.isArray(person.tags) && person.tags.length, `${person.id} needs filter tags`);
+  if (person.id !== "jd-vance") {
+    assert.ok(vanceTopicIds.has(person.topic), `${person.id} needs a known topic`);
+    assert.ok(person.links?.length, `${person.id} needs at least one source`);
+    person.links.forEach((link) => {
+      assert.match(link.url, /^https:\/\//, person.id);
+      assert.ok(link.label, person.id);
+    });
+  }
+}
+const vancePortrait = vanceById.get("jd-vance").portrait;
+assert.match(vancePortrait.src, /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//);
+assert.equal(vancePortrait.license, "Public domain");
+assert.ok(vancePortrait.author && vancePortrait.licenseUrl);
+assert.match(vance.cardImage, /VancePortrait/);
+
+for (const event of vanceEvents) {
+  assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, event.id);
+  assert.ok(event.title && event.summary && event.era, event.id);
+  assert.ok(event.people.includes("jd-vance"), event.id);
+  event.people.forEach((id) => assert.ok(vanceIds.has(id), `${event.id} references ${id}`));
+  assert.ok(event.links?.length, event.id);
+  event.links.forEach((link) => {
+    assert.match(link.url, /^https:\/\//, event.id);
+    assert.ok(link.label && link.type, event.id);
+  });
+  assert.ok(eventTease(event).length <= 140, `${event.id} tease is too long`);
+}
+
+const vanceEras = new Set(vanceEvents.map((event) => event.era));
+["yale", "author", "campaign", "senate", "vice-president"].forEach((era) => {
+  assert.ok(vanceEras.has(era), era);
+});
+assert.ok(vanceEvents.some((event) => event.date.startsWith("2012-")), "needs 2012 coverage");
+assert.ok(vanceEvents.some((event) => event.date.startsWith("2026-")), "needs 2026 coverage");
+
+for (const relation of vanceRelations) {
+  assert.ok(vanceIds.has(relation.from) && vanceIds.has(relation.to), `${relation.from}→${relation.to}`);
+  assert.ok(relation.kind && relation.label, "vance relations need kind and label");
+  assert.ok(["supported", "opposed"].includes(relation.kind), relation.kind);
+  assert.ok(relation.start, `${relation.to} needs a start year`);
+}
+for (const person of vancePeople.filter((person) => person.id !== "jd-vance")) {
+  assert.ok(
+    vanceRelations.some((relation) =>
+      [relation.from, relation.to].includes("jd-vance") &&
+      [relation.from, relation.to].includes(person.id)),
+    `${person.id} needs a Vance stance`,
+  );
+  assert.ok(
+    vanceEvents.some((event) => event.people.includes(person.id)),
+    `${person.id} needs a timeline beat`,
+  );
+}
+
+const vanceStance = (id, year) => campOf(id, vanceRelations, vance.centerId, vance.friendKinds, vance.enemyKinds, year);
+assert.equal(vanceStance("immigration-restriction", 2012), "enemy");
+assert.equal(vanceStance("immigration-restriction", 2020), "enemy");
+assert.equal(vanceStance("immigration-restriction", 2021), "friend");
+assert.equal(vanceStance("immigration-restriction", 2024), "friend");
+assert.equal(vanceStance("donald-trump", 2016), "enemy");
+assert.equal(vanceStance("donald-trump", 2020), "enemy");
+assert.equal(vanceStance("donald-trump", 2021), "friend");
+assert.equal(vanceStance("donald-trump", 2024), "friend");
+assert.equal(vanceStance("climate-action", 2020), "friend");
+assert.equal(vanceStance("climate-action", 2021), "orbit");
+assert.equal(vanceStance("climate-action", 2024), "enemy");
+assert.equal(vanceStance("national-abortion-ban", 2022), "friend");
+assert.equal(vanceStance("national-abortion-ban", 2024), "enemy");
+assert.equal(vanceStance("universities", 2017), "friend");
+assert.equal(vanceStance("universities", 2024), "enemy");
+assert.equal(vanceStance("iran-military-action", 2023), "enemy");
+assert.equal(vanceStance("iran-military-action", 2024), "enemy");
+assert.equal(vanceStance("iran-military-action", 2026), "friend");
+assert.equal(vanceStance("red-flag-laws", 2018), "friend");
+assert.equal(vanceStance("red-flag-laws", 2024), "enemy");
+assert.equal(vanceStance("social-security-cuts", 2021), "friend");
+assert.equal(vanceStance("social-security-cuts", 2024), "enemy");
+assert.equal(vanceStance("parental-voting", 2021), "friend");
+assert.equal(vanceStance("parental-voting", 2024), "enemy");
+assert.equal(vanceStance("ukraine-aid", 2024), "enemy");
+assert.equal(vanceStance("israel-support", 2024), "friend");
+assert.equal(vanceStance("china-threat", 2024), "friend");
+assert.equal(vanceStance("iraq-war", 2016), "orbit");
+assert.equal(vanceStance("iraq-war", 2024), "enemy");
+assert.equal(vanceStance("gun-rights", 2024), "friend");
+assert.equal(vanceStance("lgbtq-rights", 2024), "enemy");
+
+const vanceLayoutOpts = {
+  centerId: vance.centerId,
+  friendKinds: vance.friendKinds,
+  enemyKinds: vance.enemyKinds,
+  arrangement: "topics",
+  topics: vance.topics,
+  events: vanceEvents,
+  width: 1100,
+  height: 800,
+};
+const vance2016 = webLayout(vancePeople, vanceRelations, { ...vanceLayoutOpts, year: 2016 });
+const vance2024 = webLayout(vancePeople, vanceRelations, { ...vanceLayoutOpts, year: 2024 });
+const vanceForeign = webLayout(vancePeople, vanceRelations, { ...vanceLayoutOpts, year: 2024, topicId: "foreign" });
+assert.equal(
+  vance2024.nodes.length,
+  vancePeople.length + vance.topics.length,
+  "policies and topic hubs sit on the board",
+);
+const vanceHubs = vance2024.nodes.filter((node) => node.camp === "topic");
+assert.equal(vanceHubs.length, vance.topics.length, "each topic category is a hub on the web");
+assert.ok(
+  vance2024.edges.some((edge) => edge.from === "jd-vance" && edge.to === "topic:economy"),
+  "center links to topic hubs",
+);
+assert.ok(
+  vance2024.edges.some((edge) => edge.from === "topic:immigration" && edge.to === "immigration-restriction"),
+  "policies branch from their topic hub",
+);
+assert.equal(vanceForeign.nodes.every((node) => node.camp === "center" || node.camp === "topic" || node.topic === "foreign"), true);
+assert.ok(vanceForeign.nodes.length < vance2024.nodes.length);
+assert.ok(vanceForeign.nodes.length > 5);
+const trump2016 = vance2016.nodes.find((node) => node.id === "donald-trump");
+const trump2024 = vance2024.nodes.find((node) => node.id === "donald-trump");
+const immigration2016 = vance2016.nodes.find((node) => node.id === "immigration-restriction");
+const immigration2024 = vance2024.nodes.find((node) => node.id === "immigration-restriction");
+const iran2024 = vance2024.nodes.find((node) => node.id === "iran-military-action");
+const center2016 = vance2016.nodes.find((node) => node.id === "jd-vance");
+assert.equal(trump2016.camp, "enemy");
+assert.equal(trump2024.camp, "friend");
+assert.equal(immigration2016.camp, "enemy");
+assert.equal(immigration2024.camp, "friend");
+assert.equal(iran2024.camp, "enemy");
+const around2016 = vance2016.nodes.filter((node) => node.camp !== "center");
+assert.ok(around2016.some((node) => node.x < center2016.x) && around2016.some((node) => node.x > center2016.x));
+assert.ok(around2016.some((node) => node.y < center2016.y) && around2016.some((node) => node.y > center2016.y));
+const social2024 = vance2024.nodes.filter((node) => node.topic === "social");
+const foreign2024 = vance2024.nodes.filter((node) => node.topic === "foreign");
+const vanceMeanAngle = (list) => {
+  const mid = vance2024.nodes.find((node) => node.camp === "center");
+  return list.reduce((sum, node) => sum + Math.atan2(node.y - mid.y, node.x - mid.x), 0) / list.length;
+};
+assert.ok(Math.abs(vanceMeanAngle(social2024) - vanceMeanAngle(foreign2024)) > 0.4, "topics occupy different wedges");
+assert.ok(vance2024.nodes.every((node) => node.x > 8 && node.x < 1092 && node.y > 8 && node.y < 792));
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "jd-vance", year: 2024 }, ""),
+  /plot=jd-vance/,
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "web", plot: "jd-vance", year: 2024 }, ""),
+  /year=2024/,
+);
+
 console.log("never-ending internet lore tests passed");

@@ -1,0 +1,684 @@
+[
+  {
+    "id": "jd-vance",
+    "name": "JD Vance",
+    "role": "Yale Law graduate, Hillbilly Elegy author, Ohio senator (2023–2025), and 50th vice president (2025–). The board is his public stances, not every vote.",
+    "tags": [
+      "center"
+    ],
+    "links": [
+      {
+        "label": "Political positions of JD Vance",
+        "url": "https://en.wikipedia.org/wiki/Political_positions_of_JD_Vance"
+      },
+      {
+        "label": "Washington Post profile of Vance’s radicalization",
+        "url": "https://www.washingtonpost.com/magazine/2022/01/04/jd-vance-hillbilly-elegy-radicalization/"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/VancePortrait.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:VancePortrait.jpg",
+      "author": "Daniel Torok / Official White House Photo",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    },
+    "topic": "center"
+  },
+  {
+    "id": "tariffs-industrial-policy",
+    "name": "Tariffs & industrial policy",
+    "role": "Economic nationalist: tariffs, reshoring, and a weaker-dollar openness so factories can compete. As vice president he defended Trump’s tariff program as self-reliance.",
+    "tags": [
+      "economic",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "NPR analysis of Vance’s economic policy",
+        "url": "https://www.npr.org/2024/07/17/nx-s1-5041742/examining-the-economic-policy-of-j-d-vance-trumps-vice-presidential-nominee"
+      },
+      {
+        "label": "New York Times on the dollar",
+        "url": "https://www.nytimes.com/2024/07/16/us/politics/trump-vance-us-dollar.html"
+      }
+    ],
+    "topic": "economy"
+  },
+  {
+    "id": "labor-unions",
+    "name": "Labor unions",
+    "role": "Backed the 2023 UAW strike and talks up worker councils, while opposing the PRO Act. The AFL-CIO scored his Senate record at 0%.",
+    "tags": [
+      "economic",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Politico on Vance’s labor-populist project",
+        "url": "https://www.politico.com/news/magazine/2024/03/15/mr-maga-goes-to-washington-00147054"
+      },
+      {
+        "label": "AFL-CIO legislative scorecard",
+        "url": "https://aflcio.org/scorecard/legislators/jd-vance"
+      }
+    ],
+    "topic": "economy"
+  },
+  {
+    "id": "antitrust",
+    "name": "Big Tech antitrust",
+    "role": "Wants Google broken up, implies Meta should be split, and praised Biden FTC chair Lina Khan. Co-introduced a bill to tax giant mergers.",
+    "tags": [
+      "economic",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "The Hill on praise for Lina Khan",
+        "url": "https://thehill.com/policy/technology/4491363-vance-biden-ftc-chief-is-doing-a-pretty-good-job/"
+      },
+      {
+        "label": "Stop Subsidizing Giant Mergers Act",
+        "url": "https://www.whitehouse.senate.gov/news/release/whitehouse-vance-introduce-bipartisan-legislation-to-eliminate-tax-breaks-for-corporate-consolidation/"
+      }
+    ],
+    "topic": "economy"
+  },
+  {
+    "id": "health-care",
+    "name": "Keeping the ACA",
+    "role": "Says he does not intend to repeal the Affordable Care Act, backed an insulin cap and Medicare drug negotiation, and falsely claimed Trump “salvaged Obamacare.”",
+    "tags": [
+      "economic",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Politico on Vance’s health-care record",
+        "url": "https://www.politico.com/newsletters/politico-pulse/2024/07/16/unpacking-vances-health-care-record-00168531"
+      },
+      {
+        "label": "NBC News fact-check of “salvaged Obamacare”",
+        "url": "https://www.nbcnews.com/politics/jd-vance/vance-falsely-says-trump-salvaged-obamacare-program-tried-repeal-rcna173568"
+      }
+    ],
+    "topic": "economy"
+  },
+  {
+    "id": "social-security-cuts",
+    "name": "Social Security cuts",
+    "role": "Reporting says he once backed benefit cuts, then ditched that in the Senate race. By 2024 he opposed cuts and privatization and leaned on birth rates for solvency.",
+    "tags": [
+      "economic",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "HuffPost on abandoning support for cuts",
+        "url": "https://www.huffpost.com/entry/jd-vance-ohio-senate-blake-masters-social-security_n_62cede26e4b0eef119c132fb"
+      },
+      {
+        "label": "Newsweek on his 2024 Social Security position",
+        "url": "https://www.newsweek.com/www-newsweek-com-jdvance-vice-president-what-he-said-about-social-security-1925465"
+      }
+    ],
+    "topic": "economy"
+  },
+  {
+    "id": "climate-action",
+    "name": "Climate action",
+    "role": "In 2020 he treated climate as a real problem and doubted natural gas as the answer. By 2022 he rejected a “crisis,” pushed fossil expansion, and sought to kill EV credits.",
+    "tags": [
+      "energy",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "Politico on the climate shift and oil money",
+        "url": "https://www.politico.com/newsletters/power-switch/2024/07/16/vance-changed-his-tune-on-climate-change-oil-cash-flowed-00168695"
+      },
+      {
+        "label": "The Hill on eliminating EV tax credits",
+        "url": "https://thehill.com/policy/energy-environment/4228180-vance-unveils-legislation-eliminating-ev-tax-credits/"
+      }
+    ],
+    "topic": "economy"
+  },
+  {
+    "id": "minimum-wage",
+    "name": "Higher minimum wage",
+    "role": "Broke with supply-side orthodoxy to support raising the federal minimum wage as part of an economic-nationalist worker pitch.",
+    "tags": [
+      "economic",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Washington Post on Vance and Republican business elites",
+        "url": "https://www.washingtonpost.com/business/2024/07/15/vance-trump-economy-gop/"
+      }
+    ],
+    "topic": "economy"
+  },
+  {
+    "id": "national-abortion-ban",
+    "name": "National abortion ban",
+    "role": "In 2022 he wanted abortion illegal nationally. In 2024 he backed mifepristone access, said states should decide, promised a Trump veto — then claimed he had “never” supported a national ban.",
+    "tags": [
+      "social",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "NBC News chronology of six abortion statements",
+        "url": "https://www.nbcnews.com/health/womens-health/jd-vance-abortion-stance-rcna162086"
+      },
+      {
+        "label": "CNN on the 2022 national-illegality statement",
+        "url": "https://www.cnn.com/2024/07/17/politics/kfile-jd-vance-abortion-comments/index.html"
+      },
+      {
+        "label": "NBC News on the national-ban veto",
+        "url": "https://www.nbcnews.com/politics/2024-election/jd-vance-says-trump-veto-national-abortion-ban-rcna168084"
+      }
+    ],
+    "topic": "social"
+  },
+  {
+    "id": "family-natalism",
+    "name": "Family & natalism",
+    "role": "Wants the state to push marriage and births: a $5,000 child credit, hostility to universal daycare, and a long critique of childless elites he later called sarcastic but true.",
+    "tags": [
+      "social",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "CNN review of childlessness remarks",
+        "url": "https://edition.cnn.com/2024/07/30/politics/kfile-jd-vance-history-disparaging-people-without-kids/index.html"
+      },
+      {
+        "label": "CBS News on the $5,000 child tax credit",
+        "url": "https://www.cbsnews.com/news/jd-vance-child-tax-credit-5000-what-to-know/"
+      }
+    ],
+    "topic": "social"
+  },
+  {
+    "id": "parental-voting",
+    "name": "Extra votes for parents",
+    "role": "In 2021 he floated giving children votes that parents would cast. He later called it a thought experiment and backed away during the 2024 campaign.",
+    "tags": [
+      "social",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "ABC News on tax treatment of childless adults",
+        "url": "https://abcnews.go.com/US/vance-argued-higher-tax-rate-childless-americans-2021/story?id=112284318"
+      }
+    ],
+    "topic": "social"
+  },
+  {
+    "id": "gun-rights",
+    "name": "Gun rights",
+    "role": "Favors abolishing ATF, repealing the National Firearms Act, a national stand-your-ground law, and more school security. After a Georgia shooting he called shootings a “fact of life.”",
+    "tags": [
+      "social",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Ohio Gun Owners candidate survey",
+        "url": "https://www.ohiogunowners.org/wp-content/uploads/2022/04/JD-Vance-OGO-Survey.pdf"
+      },
+      {
+        "label": "CNN on “fact of life” and school security",
+        "url": "https://www.cnn.com/2024/09/06/politics/jd-vance-school-shootings-security/index.html"
+      }
+    ],
+    "topic": "social"
+  },
+  {
+    "id": "red-flag-laws",
+    "name": "Red-flag laws",
+    "role": "In 2018 he said clearly unstable people should not have guns. In 2022 he opposed red-flag laws and letting judges or psychiatrists disarm someone as “mentally defective.”",
+    "tags": [
+      "social",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "ABC News comparison of Vance and Walz on guns",
+        "url": "https://abcnews.go.com/Politics/claim-2nd-amendment-stalwarts-vp-candidates-walz-vance/story?id=112799264"
+      }
+    ],
+    "topic": "social"
+  },
+  {
+    "id": "lgbtq-rights",
+    "name": "LGBTQ rights",
+    "role": "Opposes the Respect for Marriage Act, proposed a federal felony for specified gender-transition surgery on minors, and rejects an “X” passport marker and census gender-identity questions.",
+    "tags": [
+      "social",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "NBC News overview of LGBTQ record",
+        "url": "https://www.nbcnews.com/nbc-out/out-politics-and-policy/jd-vance-lgbtq-issues-rcna162167"
+      },
+      {
+        "label": "Cleveland.com on the minor-transition-care bill",
+        "url": "https://www.cleveland.com/news/2023/07/jd-vance-proposes-federal-ban-on-gender-transition-care-for-minors.html"
+      }
+    ],
+    "topic": "social"
+  },
+  {
+    "id": "vaccine-mask-mandates",
+    "name": "Vaccine & mask mandates",
+    "role": "Called Ohio State’s COVID vaccine rule an invasion of medical privacy and introduced a bill to bar federal mask mandates on airlines, transit, and schools.",
+    "tags": [
+      "social",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Columbus Dispatch op-ed on Ohio State’s vaccine mandate",
+        "url": "https://www.dispatch.com/story/opinion/letters/2021/08/27/j-d-vance-ohio-state-vaccine-mandate-outrageous-invasion-medical-privacy/5609943001/"
+      },
+      {
+        "label": "WLWT on the federal anti-mask-mandate bill",
+        "url": "https://www.wlwt.com/article/ohio-senator-jd-vance-ban-federal-mask-mandates/45013827"
+      }
+    ],
+    "topic": "social"
+  },
+  {
+    "id": "immigration-restriction",
+    "name": "Immigration restriction",
+    "role": "In 2012 he attacked GOP deportation talk as hostile to nonwhite voters. By 2021 he wanted a wall, no amnesty, and mass removal, including of TPS holders he called “illegal.”",
+    "tags": [
+      "immigration",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "CNN on the deleted 2012 immigration post",
+        "url": "https://edition.cnn.com/2024/09/17/politics/jd-vance-delete-2012-blog-post-attacking-gop-anti-immigrant-rhetoric/index.html"
+      },
+      {
+        "label": "New York Times on “create stories”",
+        "url": "https://www.nytimes.com/2024/09/15/us/politics/jd-vance-springfield-pets.html"
+      }
+    ],
+    "topic": "immigration"
+  },
+  {
+    "id": "official-english",
+    "name": "Official English",
+    "role": "In 2023 he introduced a bill to make English the official language of the United States. Introduction is not enactment.",
+    "tags": [
+      "immigration",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "NPR guide to Vance’s major positions",
+        "url": "https://www.npr.org/2024/07/16/g-s1-11128/jd-vance-abortion-immigration-ukraine-jan-6"
+      }
+    ],
+    "topic": "immigration"
+  },
+  {
+    "id": "china-threat",
+    "name": "China as principal threat",
+    "role": "Calls China the largest U.S. threat and wants resources, weapons, and attention pivoted to East Asia rather than open-ended European wars.",
+    "tags": [
+      "foreign",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Voice of America on “biggest threat”",
+        "url": "https://www.voanews.com/a/vice-presidential-nominee-vance-calls-china-biggest-threat-to-our-country-/7701298.html"
+      },
+      {
+        "label": "Nikkei Asia on prioritizing Taiwan over Ukraine",
+        "url": "https://asia.nikkei.com/Opinion/J.D.-Vance-pick-as-Trump-VP-signals-support-for-Taiwan-over-Ukraine"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "ukraine-aid",
+    "name": "Ukraine military aid",
+    "role": "Does not “really care” what happens to Ukraine next to fentanyl at home, voted against a 2024 aid package, and wants a freeze, neutrality, and territorial concessions.",
+    "tags": [
+      "foreign",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Vance’s New York Times essay opposing further aid",
+        "url": "https://www.nytimes.com/2024/04/12/opinion/jd-vance-ukraine.html"
+      },
+      {
+        "label": "NBC News on territorial concessions",
+        "url": "https://www.nbcnews.com/politics/congress/jd-vance-says-ukraine-cede-land-cut-deal-putin-end-war-rcna129195"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "israel-support",
+    "name": "Israel alliance",
+    "role": "Treats Israel as a values ally, wants it armed to finish the Gaza war quickly, and still said U.S. and Israeli interests can diverge — especially on a war with Iran.",
+    "tags": [
+      "foreign",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Times of Israel on ending Gaza war and Sunni alignment",
+        "url": "https://www.timesofisrael.com/trumps-vp-pick-vance-gaza-war-should-end-so-israel-and-sunni-states-can-counter-iran/"
+      },
+      {
+        "label": "Senate office statement on Biden’s Israel policy",
+        "url": "https://www.vance.senate.gov/press-releases/senator-vance-blasts-president-bidens-incoherent-handling-of-israel-hamas-war/"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "iran-military-action",
+    "name": "Iran military action",
+    "role": "In 2023 he would “absolutely not” authorize force. He later praised hitting Iran “hard,” backed 2025 nuclear-site strikes, and then defended the 2026 Iran war.",
+    "tags": [
+      "foreign",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "The Hill on opposing authorization of force in 2023",
+        "url": "https://thehill.com/policy/international/4282057-jd-vance-says-he-would-not-support-authorizing-military-action-in-iran/"
+      },
+      {
+        "label": "CBS News on defending the 2026 Iran war",
+        "url": "https://www.cbsnews.com/video/vance-defends-iran-war-years-anti-interventionism/"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "iraq-war",
+    "name": "Iraq War",
+    "role": "Supported the 2003 invasion as a young Marine, then called that support a mistake and, by 2025, a strategic disaster used to argue for European independence.",
+    "tags": [
+      "foreign",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "Politico on Republican veterans and anti-interventionism",
+        "url": "https://www.politico.com/news/magazine/2024/07/04/republican-veterans-anti-interventionists-00164026"
+      },
+      {
+        "label": "Deutsche Welle on the “strategic disaster” assessment",
+        "url": "https://www.dw.com/en/jd-vance-says-europe-should-have-done-more-to-stop-iraq-war/a-72250397"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "afghan-refugee-admissions",
+    "name": "Afghan refugee admissions",
+    "role": "During the 2021 withdrawal he objected to prioritizing Afghan admissions and alleged, without evidence, that many ostensible interpreters had helped plant bombs.",
+    "tags": [
+      "foreign",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Associated Press on the split over Afghan refugees",
+        "url": "https://apnews.com/article/immigration-151d588fd9f4b33b0a71b9a1226e589b"
+      },
+      {
+        "label": "Guardian reporting on the 2021 podcast remarks",
+        "url": "https://www.theguardian.com/us-news/article/2024/aug/31/jd-vance-podcast-feminism-immigration"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "europe-burden-sharing",
+    "name": "Europe defense burden",
+    "role": "Would keep the U.S. in NATO if Europeans spend more, called Europe a U.S. “security vassal,” and wants Washington’s focus on China instead.",
+    "tags": [
+      "foreign",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "The Hill on NATO and Europe",
+        "url": "https://thehill.com/policy/international/4477215-trump-vance-europe-nato/"
+      },
+      {
+        "label": "Deutsche Welle on European independence and Iraq",
+        "url": "https://www.dw.com/en/jd-vance-says-europe-should-have-done-more-to-stop-iraq-war/a-72250397"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "venezuela-strikes",
+    "name": "Venezuela strikes",
+    "role": "In 2025–26 he defended U.S. strikes tied to Nicolás Maduro, calling him a wanted fugitive and saying “stolen oil” must be returned.",
+    "tags": [
+      "foreign",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Barron’s on Vance, Maduro, and off-ramps",
+        "url": "https://www.barrons.com/news/trump-offered-venezuela-s-maduro-multiple-off-ramps-vance-7ea332ec"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "afd-engagement",
+    "name": "AfD engagement",
+    "role": "Says he is not endorsing Alternative for Germany, then amplifies Elon Musk’s “AfD can save Germany” line and challenges the “Nazi-lite” label.",
+    "tags": [
+      "foreign",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Independent on his response to Musk’s AfD essay",
+        "url": "https://www.independent.co.uk/news/world/americas/us-politics/jd-vance-elon-musk-germany-election-afd-b2673149.html"
+      },
+      {
+        "label": "Jerusalem Post on Vance’s AfD defense",
+        "url": "https://www.jpost.com/international/article-834635"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "uk-labour",
+    "name": "Labour-led Britain",
+    "role": "Joked that Labour Britain might be the first “truly Islamist” nuclear state. British officials rejected the line even as he stayed cordial with David Lammy.",
+    "tags": [
+      "foreign",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Politico Europe on the “Islamist country” remark",
+        "url": "https://www.politico.eu/article/donald-trump-pick-jd-vance-vice-president-republican-party-uk-islamist-country/"
+      },
+      {
+        "label": "BBC on British officials’ response",
+        "url": "https://www.bbc.com/news/articles/cn07e2ep20no"
+      }
+    ],
+    "topic": "foreign"
+  },
+  {
+    "id": "donald-trump",
+    "name": "Donald Trump",
+    "role": "In 2016 he called Trump unfit, “reprehensible,” “cultural heroin,” and privately “America’s Hitler.” By 2021 he had apologized, joined MAGA, and become the running mate.",
+    "tags": [
+      "institutions",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "Reuters on the anti-Trump-to-running-mate reversal",
+        "url": "https://www.reuters.com/world/us/jd-vance-once-compared-trump-hitler-now-they-are-running-mates-2024-07-15/"
+      }
+    ],
+    "topic": "institutions"
+  },
+  {
+    "id": "election-2020",
+    "name": "2020 election result",
+    "role": "Says Trump won, would have demanded alternate pro-Trump electors rather than certify normally, and at the 2024 debate would not say Trump lost.",
+    "tags": [
+      "institutions",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Washington Post on election denial and January 6",
+        "url": "https://www.washingtonpost.com/politics/2024/07/17/vance-trump-january-6-election-denial/"
+      },
+      {
+        "label": "NBC News on refusal to acknowledge the 2020 result",
+        "url": "https://www.nbcnews.com/politics/2024-election/damning-non-answer-vance-refuses-acknowledge-trump-lost-2020-election-rcna173569"
+      }
+    ],
+    "topic": "institutions"
+  },
+  {
+    "id": "january-6-clemency",
+    "name": "January 6 clemency",
+    "role": "Backed broad clemency for January 6 defendants as vice president, then in January 2026 mocked a vigil commemorating the attack.",
+    "tags": [
+      "institutions",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Axios on broad January 6 pardons",
+        "url": "https://www.axios.com/2025/01/22/trump-pardons-jan6-clemency"
+      }
+    ],
+    "topic": "institutions"
+  },
+  {
+    "id": "universities",
+    "name": "Universities",
+    "role": "In 2017 he praised universities’ talent and IP. By 2021 they were “the enemy”: a 35% endowment tax, funding cuts, foreign-gift probes, and Orbán-style political control.",
+    "tags": [
+      "institutions",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "Associated Press on colleges paying Vance and later attacks",
+        "url": "https://apnews.com/article/2022-midterm-elections-business-ohio-education-186ca3f092a60603891b60e199a3fa02"
+      },
+      {
+        "label": "CBS News on praise for Orbán’s university decisions",
+        "url": "https://www.cbsnews.com/news/jd-vance-viktor-orban-smart-decisions-face-the-nation/"
+      }
+    ],
+    "topic": "institutions"
+  },
+  {
+    "id": "woke-institutions",
+    "name": "Woke institutions",
+    "role": "Argues business, media, philanthropy, and government form a progressive bloc and wants a “de-woke-ification” he analogizes to denazification.",
+    "tags": [
+      "institutions",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Vance’s “Fighting Woke Capital” essay",
+        "url": "https://americanmind.org/salvo/fighting-woke-capital/"
+      },
+      {
+        "label": "Senate office release on questioning bank CEOs",
+        "url": "https://www.vance.senate.gov/press-releases/senator-vance-questions-bank-ceos-on-woke-dei-commitments/"
+      }
+    ],
+    "topic": "institutions"
+  },
+  {
+    "id": "doj-fbi",
+    "name": "DOJ & FBI leadership",
+    "role": "Treats Justice and FBI leadership as a politicized “deep state,” spread a false Trump-wiretap claim, and held Biden DOJ nominees after Trump’s indictment.",
+    "tags": [
+      "institutions",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "NBC News on holds against DOJ nominees",
+        "url": "https://www.nbcnews.com/politics/congress/ohio-republican-vance-will-hold-justice-dept-nominees-senate-trump-cas-rcna89109"
+      },
+      {
+        "label": "Business Insider on the FBI wiretap claim",
+        "url": "https://www.businessinsider.com/jd-vance-falsely-claims-fbi-illegally-wiretapped-trump-ohio-rally-2022-4"
+      }
+    ],
+    "topic": "institutions"
+  },
+  {
+    "id": "judicial-review",
+    "name": "Judicial limits on the executive",
+    "role": "Told a future Trump to fire civil servants and, if courts blocked it, invoke Jackson: the chief justice has made his ruling, now let him enforce it.",
+    "tags": [
+      "institutions",
+      "stable"
+    ],
+    "links": [
+      {
+        "label": "Guardian on the 2025 judicial-power statement",
+        "url": "https://www.theguardian.com/us-news/2025/feb/10/jd-vance-judges-trump"
+      },
+      {
+        "label": "Vox analysis of Vance’s executive ideas",
+        "url": "https://www.vox.com/politics/360283/jd-vance-trump-vp-vice-president-authoritarian"
+      }
+    ],
+    "topic": "institutions"
+  },
+  {
+    "id": "postliberal-conservatism",
+    "name": "Postliberal conservatism",
+    "role": "Moved from Never Trump conservatism to a postliberal, national-conservative program: family, industry, borders, cultural conflict, and an assertive state.",
+    "tags": [
+      "institutions",
+      "evolved"
+    ],
+    "links": [
+      {
+        "label": "Politico on postliberal theorist Patrick Deneen",
+        "url": "https://www.politico.com/news/magazine/2023/06/08/the-new-right-patrick-deneen-00100279"
+      },
+      {
+        "label": "Politico on seven key intellectual influences",
+        "url": "https://www.politico.com/news/magazine/2024/07/18/jd-vance-world-view-sources-00168984"
+      }
+    ],
+    "topic": "institutions"
+  }
+]

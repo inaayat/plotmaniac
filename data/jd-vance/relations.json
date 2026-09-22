@@ -1,0 +1,312 @@
+[
+  {
+    "from": "jd-vance",
+    "to": "tariffs-industrial-policy",
+    "kind": "supported",
+    "start": "2021",
+    "label": "Tariffs, reshoring, and industrial policy as the core of economic nationalism"
+  },
+  {
+    "from": "jd-vance",
+    "to": "labor-unions",
+    "kind": "supported",
+    "start": "2023",
+    "label": "Public UAW strike support and worker-council talk, against a 0% AFL-CIO Senate score"
+  },
+  {
+    "from": "jd-vance",
+    "to": "antitrust",
+    "kind": "supported",
+    "start": "2023",
+    "label": "Break up Google, praise Lina Khan, tax giant mergers"
+  },
+  {
+    "from": "jd-vance",
+    "to": "health-care",
+    "kind": "supported",
+    "start": "2022",
+    "label": "Keep the ACA, cap insulin, and back Medicare drug negotiation"
+  },
+  {
+    "from": "jd-vance",
+    "to": "social-security-cuts",
+    "kind": "supported",
+    "start": "2021",
+    "end": "2021",
+    "label": "Earlier support for Social Security cuts, later ditched in the Senate race"
+  },
+  {
+    "from": "jd-vance",
+    "to": "social-security-cuts",
+    "kind": "opposed",
+    "start": "2022",
+    "label": "Opposes benefit cuts and privatization; leans on work and birth rates for solvency"
+  },
+  {
+    "from": "jd-vance",
+    "to": "climate-action",
+    "kind": "supported",
+    "start": "2020",
+    "end": "2020",
+    "label": "At Ohio State, treated climate as a real problem and doubted natural gas as the fix"
+  },
+  {
+    "from": "jd-vance",
+    "to": "climate-action",
+    "kind": "opposed",
+    "start": "2022",
+    "label": "No climate “crisis”; expand fossil fuels and repeal clean-energy and EV credits"
+  },
+  {
+    "from": "jd-vance",
+    "to": "minimum-wage",
+    "kind": "supported",
+    "start": "2023",
+    "label": "Supports raising the federal minimum wage"
+  },
+  {
+    "from": "jd-vance",
+    "to": "national-abortion-ban",
+    "kind": "supported",
+    "start": "2021",
+    "end": "2023",
+    "label": "Wanted abortion illegal nationally and a federal answer if Ohioans left the state"
+  },
+  {
+    "from": "jd-vance",
+    "to": "national-abortion-ban",
+    "kind": "opposed",
+    "start": "2024",
+    "label": "States should decide; Trump should veto a congressional national ban"
+  },
+  {
+    "from": "jd-vance",
+    "to": "family-natalism",
+    "kind": "supported",
+    "start": "2019",
+    "label": "State support for marriage, births, and a $5,000 child tax credit"
+  },
+  {
+    "from": "jd-vance",
+    "to": "parental-voting",
+    "kind": "supported",
+    "start": "2021",
+    "end": "2023",
+    "label": "Floated extra votes for parents, later called a thought experiment"
+  },
+  {
+    "from": "jd-vance",
+    "to": "parental-voting",
+    "kind": "opposed",
+    "start": "2024",
+    "label": "Backed away from extra parental votes during the vice-presidential campaign"
+  },
+  {
+    "from": "jd-vance",
+    "to": "gun-rights",
+    "kind": "supported",
+    "start": "2018",
+    "label": "Broad Second Amendment program: abolish ATF, stand-your-ground, school security"
+  },
+  {
+    "from": "jd-vance",
+    "to": "red-flag-laws",
+    "kind": "supported",
+    "start": "2018",
+    "end": "2018",
+    "label": "Clearly unstable people should not have firearms"
+  },
+  {
+    "from": "jd-vance",
+    "to": "red-flag-laws",
+    "kind": "opposed",
+    "start": "2022",
+    "label": "Opposes red-flag laws and adjudicative mental-health disarmament"
+  },
+  {
+    "from": "jd-vance",
+    "to": "lgbtq-rights",
+    "kind": "opposed",
+    "start": "2021",
+    "label": "Opposes Respect for Marriage Act and gender-transition surgery for minors"
+  },
+  {
+    "from": "jd-vance",
+    "to": "vaccine-mask-mandates",
+    "kind": "opposed",
+    "start": "2021",
+    "label": "Opposes institutional COVID vaccine rules and federal mask mandates"
+  },
+  {
+    "from": "jd-vance",
+    "to": "immigration-restriction",
+    "kind": "opposed",
+    "start": "2012",
+    "end": "2020",
+    "label": "As a law student, criticized GOP mass-deportation talk as hostile to nonwhite voters"
+  },
+  {
+    "from": "jd-vance",
+    "to": "immigration-restriction",
+    "kind": "supported",
+    "start": "2021",
+    "label": "Border wall, no amnesty, mass removal, and denial that TPS makes migrants legal"
+  },
+  {
+    "from": "jd-vance",
+    "to": "official-english",
+    "kind": "supported",
+    "start": "2023",
+    "label": "Introduced a bill to make English the official U.S. language"
+  },
+  {
+    "from": "jd-vance",
+    "to": "china-threat",
+    "kind": "supported",
+    "start": "2021",
+    "label": "China as the principal threat; pivot resources to East Asia"
+  },
+  {
+    "from": "jd-vance",
+    "to": "ukraine-aid",
+    "kind": "opposed",
+    "start": "2022",
+    "label": "Opposes large-scale aid; wants a freeze, neutrality, and territorial concessions"
+  },
+  {
+    "from": "jd-vance",
+    "to": "israel-support",
+    "kind": "supported",
+    "start": "2021",
+    "label": "Arm Israel to finish Gaza quickly, then build Israel–Sunni alignment against Iran"
+  },
+  {
+    "from": "jd-vance",
+    "to": "iran-military-action",
+    "kind": "opposed",
+    "start": "2023",
+    "end": "2024",
+    "label": "Would “absolutely not” authorize force after Iran-linked militia attacks"
+  },
+  {
+    "from": "jd-vance",
+    "to": "iran-military-action",
+    "kind": "supported",
+    "start": "2025",
+    "label": "Defended 2025 nuclear-site strikes and then the 2026 Iran war"
+  },
+  {
+    "from": "jd-vance",
+    "to": "iraq-war",
+    "kind": "opposed",
+    "start": "2024",
+    "label": "Youthful support recanted as a mistake and later a strategic disaster"
+  },
+  {
+    "from": "jd-vance",
+    "to": "afghan-refugee-admissions",
+    "kind": "opposed",
+    "start": "2021",
+    "label": "Objected to prioritizing Afghan admissions over U.S. citizens"
+  },
+  {
+    "from": "jd-vance",
+    "to": "europe-burden-sharing",
+    "kind": "supported",
+    "start": "2024",
+    "label": "Stay in NATO, but Europe must spend more as Washington pivots to Asia"
+  },
+  {
+    "from": "jd-vance",
+    "to": "venezuela-strikes",
+    "kind": "supported",
+    "start": "2025",
+    "label": "Defended U.S. strikes and recovery of “stolen oil” from Maduro"
+  },
+  {
+    "from": "jd-vance",
+    "to": "afd-engagement",
+    "kind": "supported",
+    "start": "2024",
+    "label": "Not an endorsement, but defends engagement and challenges the “Nazi-lite” label"
+  },
+  {
+    "from": "jd-vance",
+    "to": "uk-labour",
+    "kind": "opposed",
+    "start": "2024",
+    "label": "Derided Labour-led Britain as potentially an “Islamist” nuclear state"
+  },
+  {
+    "from": "jd-vance",
+    "to": "donald-trump",
+    "kind": "opposed",
+    "start": "2016",
+    "end": "2020",
+    "label": "Unfit, reprehensible, cultural heroin; voted for Evan McMullin"
+  },
+  {
+    "from": "jd-vance",
+    "to": "donald-trump",
+    "kind": "supported",
+    "start": "2021",
+    "label": "Apologized, joined MAGA, won Trump’s Senate endorsement, then became running mate"
+  },
+  {
+    "from": "jd-vance",
+    "to": "election-2020",
+    "kind": "opposed",
+    "start": "2021",
+    "label": "Would have sought competing electors rather than certify the 2020 result"
+  },
+  {
+    "from": "jd-vance",
+    "to": "january-6-clemency",
+    "kind": "supported",
+    "start": "2025",
+    "label": "Backed broad clemency for January 6 defendants"
+  },
+  {
+    "from": "jd-vance",
+    "to": "universities",
+    "kind": "supported",
+    "start": "2017",
+    "end": "2020",
+    "label": "Praised universities as sources of talent and intellectual property"
+  },
+  {
+    "from": "jd-vance",
+    "to": "universities",
+    "kind": "opposed",
+    "start": "2021",
+    "label": "“The enemy”: endowment taxes, funding cuts, and Orbán-style political control"
+  },
+  {
+    "from": "jd-vance",
+    "to": "woke-institutions",
+    "kind": "opposed",
+    "start": "2021",
+    "label": "Calls for institutional “de-woke-ification” across business, media, and government"
+  },
+  {
+    "from": "jd-vance",
+    "to": "doj-fbi",
+    "kind": "opposed",
+    "start": "2022",
+    "label": "Treats DOJ and FBI leadership as politicized; held nominees after Trump’s indictment"
+  },
+  {
+    "from": "jd-vance",
+    "to": "judicial-review",
+    "kind": "opposed",
+    "start": "2021",
+    "label": "Judges cannot control “legitimate” executive power; ignore rulings that block firings"
+  },
+  {
+    "from": "jd-vance",
+    "to": "postliberal-conservatism",
+    "kind": "supported",
+    "start": "2021",
+    "label": "Postliberal national conservatism as a counterrevolutionary force"
+  }
+]

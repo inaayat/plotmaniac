@@ -76,6 +76,46 @@
         "events": "data/barack-obama/events.json",
         "relations": "data/barack-obama/relations.json"
       }
+    },
+    {
+      "id": "jd-vance",
+      "title": "JD Vance",
+      "kicker": "Person",
+      "lede": "All the public positions, bundled by topic. Drag the year to watch the color of each bubble change.",
+      "searchPlaceholder": "Trump, Ukraine, abortion…",
+      "sourceNote": "JD Vance on Plotmaniac · English Wikipedia political-positions survey and linked reporting",
+      "centerId": "jd-vance",
+      "friendKinds": ["supported"],
+      "enemyKinds": ["opposed"],
+      "friendLabel": "Supported",
+      "enemyLabel": "Opposed",
+      "friendCountOne": "supported",
+      "friendCountMany": "supported",
+      "enemyCountOne": "opposed",
+      "enemyCountMany": "opposed",
+      "orbitLabel": "No stance yet",
+      "yearHint": "Drag the year. Green supported, red opposed. Open a topic to give it the whole field.",
+      "arrangement": "topics",
+      "images": "bubbles",
+      "topics": [
+        { "id": "economy", "label": "Economy" },
+        { "id": "social", "label": "Social policy" },
+        { "id": "immigration", "label": "Immigration" },
+        { "id": "foreign", "label": "Foreign policy" },
+        { "id": "institutions", "label": "Law & institutions" }
+      ],
+      "year": {
+        "min": 2012,
+        "max": 2026,
+        "initial": 2024,
+        "marks": [2012, 2016, 2021, 2024, 2026]
+      },
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/VancePortrait.jpg?width=240",
+      "paths": {
+        "people": "data/jd-vance/people.json",
+        "events": "data/jd-vance/events.json",
+        "relations": "data/jd-vance/relations.json"
+      }
     }
   ]
 }
