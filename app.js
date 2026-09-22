@@ -2056,7 +2056,8 @@ function layoutLane(view) {
     return;
   }
   // Keep the rail inside the visible scroller. Opening a beat moves the axis
-  // and scales the other cards instead of lengthening the line off-screen.
+  // and scales every card, including the open one, so the summary and sources
+  // stay on screen instead of scrolling inside the beat.
   rail.style.setProperty("--lane-h", `${height}px`);
   rail.querySelectorAll(".lane-card").forEach(resetCardFit);
 
@@ -2090,7 +2091,7 @@ function layoutLane(view) {
     const above = event.classList.contains("side-above");
     const room = Math.max(0, above ? aboveRoom : belowRoom);
     if (event.classList.contains("is-selected")) {
-      card.style.maxHeight = `${room}px`;
+      applyCardScale(card, fitScale(room, naturalHeight(card)), above);
       return;
     }
     applyCardScale(card, restScale, above);
@@ -2109,8 +2110,16 @@ function layoutLane(view) {
   }
 }
 
+function naturalHeight(card) {
+  if (!card) return 0;
+  card.style.maxHeight = "none";
+  card.style.overflow = "visible";
+  card.style.transform = "none";
+  return card.scrollHeight;
+}
+
 function cardExtent(card) {
-  return (card?.scrollHeight || 0) + LANE_AXIS_PAD;
+  return naturalHeight(card) + LANE_AXIS_PAD;
 }
 
 function tallestExtent(rail, selector) {
