@@ -35,6 +35,7 @@ import {
   relationSentimentChart,
   relationTimelineHasTone,
   relationToneSeries,
+  commonsFlagSrc,
   httpsSourceLinks,
   relationRiderFlags,
   RELATION_REGIONS,
@@ -154,6 +155,7 @@ assert.equal(youtubers.centerId, "ethan-klein");
 assert.equal(youtubers.includeOrbit, true);
 assert.equal(youtubers.hubs.length, 3);
 assert.equal(hubOf(youtubers, "h3").centerId, "ethan-klein");
+assert.equal(hubOf(youtubers, "h3").label, "Ethan Klein");
 assert.equal(hubOf(youtubers, "dobrik").centerId, "david-dobrik");
 assert.equal(hubOf(youtubers, "trisha").centerId, "trisha-paytas");
 assert.equal(hubCenterId(youtubers, "dobrik"), "david-dobrik");
@@ -880,7 +882,9 @@ assert.match(appSource, /renderRelationRide/, "full page scrolls a rising and fa
 assert.match(appSource, /relation-ride-links/, "ride readout can show beat sources");
 assert.match(appSource, /relation-ride-identity/, "full timeline shows the partner flag");
 assert.match(appSource, /rider-flag-partner/, "ride rider uses the partner country flag");
+assert.match(appSource, /dataset\.partner/, "ride rider stamps the partner slug");
 assert.doesNotMatch(appSource, /rider-mx/, "ride rider is not hard-coded to Mexico");
+assert.doesNotMatch(appSource, /#006847/, "ride rider does not paint Mexico green stripes");
 const ride = relationRideLayout(mexico.timeline);
 assert.ok(ride.width > 4000, "ride is wide enough to scroll");
 assert.equal(ride.samples.length > ride.points.length, true);
@@ -947,9 +951,15 @@ assert.ok(iran.timeline.some((beat) => beat.tone === -2), "iran timeline include
 
 const usPeopleById = new Map(usPeople.map((person) => [person.id, person]));
 const rusFlags = relationRiderFlags(russia, usPeopleById, { centerId: us.centerId });
+assert.equal(rusFlags.partner.slug, "russia");
 assert.match(rusFlags.partner.src, /Flag_of_Russia\.svg/, "russia ride uses the Russian flag");
 assert.match(rusFlags.center.src, /Flag_of_the_United_States\.svg/, "russia ride still holds the U.S. flag");
+const rusFallback = relationRiderFlags({ slug: "russia", country: "Russia" }, new Map(), { centerId: us.centerId });
+assert.match(rusFallback.partner.src, /Flag_of_Russia\.svg/, "russia flag FilePath works without a portrait lookup");
+assert.match(commonsFlagSrc("Russia"), /Flag_of_Russia\.svg/);
+assert.notEqual(rusFlags.partner.src, rusFlags.center.src);
 const mexFlags = relationRiderFlags(mexico, usPeopleById, { centerId: us.centerId });
+assert.equal(mexFlags.partner.slug, "mexico");
 assert.match(mexFlags.partner.src, /Flag_of_Mexico\.svg/, "mexico ride keeps the Mexican flag");
 assert.match(mexFlags.center.src, /Flag_of_the_United_States\.svg/);
 assert.equal(usPeopleById.get("russia")?.portrait?.frame, "flag");

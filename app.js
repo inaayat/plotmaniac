@@ -287,6 +287,8 @@ function renderChooser() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = `plot-card${item.images === "flags" ? "" : " is-person"}`;
+    button.title = item.lede;
+    button.setAttribute("aria-label", `${item.title}. ${item.lede}`);
     const kicker = document.createElement("span");
     kicker.className = "kicker";
     kicker.textContent = item.kicker || "Plot";
@@ -1071,9 +1073,11 @@ function renderRelationRider(record) {
   const rider = document.createElement("div");
   rider.className = "relation-rider";
   rider.setAttribute("aria-hidden", "true");
+  rider.dataset.partner = flags.partner.slug;
+  rider.dataset.center = flags.center.slug;
   rider.append(
-    riderFlagBadge(flags.partner, "rider-flag-partner"),
     riderFaceSvg(),
+    riderFlagBadge(flags.partner, "rider-flag-partner"),
     riderFlagBadge(flags.center, "rider-flag-center"),
   );
   return rider;
@@ -1082,6 +1086,8 @@ function renderRelationRider(record) {
 function riderFlagBadge(flag, className) {
   const badge = document.createElement("span");
   badge.className = `rider-flag ${className}`;
+  if (flag.slug) badge.dataset.slug = flag.slug;
+  if (flag.src) badge.dataset.src = flag.src;
   if (flag.src) {
     const image = document.createElement("img");
     image.src = flag.src;

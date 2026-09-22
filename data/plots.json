@@ -13,7 +13,7 @@
       "friendKinds": ["ally", "crew", "co-host", "collaborator", "family"],
       "enemyKinds": ["feud", "litigation"],
       "hubs": [
-        { "id": "h3", "label": "Ethan Klein / H3", "centerId": "ethan-klein" },
+        { "id": "h3", "label": "Ethan Klein", "centerId": "ethan-klein" },
         { "id": "dobrik", "label": "David Dobrik", "centerId": "david-dobrik" },
         { "id": "trisha", "label": "Trisha Paytas", "centerId": "trisha-paytas" }
       ],
