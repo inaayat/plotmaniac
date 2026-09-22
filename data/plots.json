@@ -145,20 +145,27 @@
       "id": "wars",
       "title": "Wars",
       "kicker": "Map",
-      "lede": "Every war that began in 2003 or later. Drag the year to see which countries are fighting, and who they are fighting.",
+      "lede": "Every war that began in 1900 or later. Drag the span to see which countries were fighting, and who they were fighting.",
       "searchPlaceholder": "A war, a country…",
-      "sourceNote": "Wars on Plotmaniac · English Wikipedia lists of wars, 2003–present",
+      "sourceNote": "Wars on Plotmaniac · English Wikipedia lists of wars, 1900–present",
       "centerId": "wars",
       "friendKinds": [],
       "enemyKinds": [],
       "arrangement": "wars",
       "yearHint": "Drag each end of the span. The map keeps every war in those years. Click a country to read its wars.",
       "year": {
-        "min": 2003,
+        "min": 1900,
         "max": 2026,
         "initial": 2026,
-        "marks": [2003, 2011, 2014, 2020, 2022, 2026]
+        "marks": [1900, 1914, 1939, 1945, 1990, 2003, 2026]
       },
+      "sources": [
+        {"label": "List of wars: 1900–1944", "url": "https://en.wikipedia.org/wiki/List_of_wars:_1900%E2%80%931944"},
+        {"label": "List of wars: 1945–1989", "url": "https://en.wikipedia.org/wiki/List_of_wars:_1945%E2%80%931989"},
+        {"label": "List of wars: 1990–2002", "url": "https://en.wikipedia.org/wiki/List_of_wars:_1990%E2%80%932002"},
+        {"label": "List of wars: 2003–2019", "url": "https://en.wikipedia.org/wiki/List_of_wars:_2003%E2%80%932019"},
+        {"label": "List of wars: 2020–present", "url": "https://en.wikipedia.org/wiki/List_of_wars:_2020%E2%80%93present"}
+      ],
       "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/BlankMap-World.svg?width=320",
       "paths": {
         "people": "data/wars/people.json",

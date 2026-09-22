@@ -15,6 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "wars" / "conflicts.json"
 WORLD_OUT = ROOT / "data" / "world-countries.json"
 LISTS = [
+    "List of wars: 1900–1944",
+    "List of wars: 1945–1989",
+    "List of wars: 1990–2002",
     "List of wars: 2003–2019",
     "List of wars: 2020–present",
 ]
@@ -190,7 +193,104 @@ STATES = {
     "CY": ("Cyprus", []),
     "VA": ("Vatican City", ["Holy See"]),
     "TL": ("Timor-Leste", ["East Timor"]),
+    "PG": ("Papua New Guinea", []),
+    "BN": ("Brunei", []),
+    "SG": ("Singapore", ["Colony of Singapore"]),
+    "LU": ("Luxembourg", []),
+    "MC": ("Monaco", []),
+    "VU": ("Vanuatu", []),
+    "SB": ("Solomon Islands", []),
 }
+
+# Former states drawn on the modern country that holds their capital.
+# A name listed here is one state, so a civil war stays inside that country.
+HISTORICAL = {
+    "GB": ["British Empire", "United Kingdom of Great Britain and Ireland", "UKGBI"],
+    "DE": ["German Empire", "Nazi Germany", "Weimar Republic", "East Germany", "West Germany"],
+    "RU": ["Soviet Union", "USSR", "Russian Empire", "Russian Republic", "Russian SFSR"],
+    "JP": ["Empire of Japan"],
+    "IT": ["Kingdom of Italy", "Fascist Italy"],
+    "FR": ["French Third Republic", "French Fourth Republic", "Free France"],
+    "TR": ["Ottoman Empire"],
+    "CN": ["Qing Dynasty", "Qing dynasty", "Republic of China (1912–1949)"],
+    "RO": ["Kingdom of Romania", "Romanian People's Republic"],
+    "GR": ["Kingdom of Greece", "Second Hellenic Republic"],
+    "ZA": ["Union of South Africa"],
+    "IN": ["British Raj", "British India", "Dominion of India"],
+    "PT": ["First Portuguese Republic", "Estado Novo (Portugal)", "Kingdom of Portugal"],
+    "BG": ["Kingdom of Bulgaria", "People's Republic of Bulgaria"],
+    "IQ": ["Kingdom of Iraq"],
+    "AF": [
+        "Emirate of Afghanistan", "Kingdom of Afghanistan", "Republic of Afghanistan",
+        "Democratic Republic of Afghanistan", "Islamic State of Afghanistan",
+        "Republic of Afghanistan (1973–1978)", "Islamic Emirate of Afghanistan (1996–2001)",
+    ],
+    "RS": [
+        "Kingdom of Serbia", "Kingdom of Yugoslavia", "Yugoslavia",
+        "Socialist Federal Republic of Yugoslavia", "SFR Yugoslavia",
+        "Republic of Serbian Krajina", "Republika Srpska (1992–95)",
+    ],
+    "ME": ["Kingdom of Montenegro"],
+    "VN": ["North Vietnam", "Democratic Republic of Vietnam", "French Indochina"],
+    "YE": ["Mutawakkilite Kingdom of Yemen", "North Yemen", "South Yemen", "Yemen Arab Republic"],
+    "ET": ["Ethiopian Empire"],
+    "LA": ["Kingdom of Laos", "Lao PDR"],
+    "KH": [
+        "Kingdom of Cambodia (1953–1970)", "Khmer Republic", "Democratic Kampuchea",
+        "People's Republic of Kampuchea", "Coalition Government of Democratic Kampuchea",
+    ],
+    "HU": [
+        "Kingdom of Hungary", "Kingdom of Hungary (1920-1946)",
+        "Hungarian People's Republic", "Hungarian People's Republic (1918–19)", "HPR",
+    ],
+    "EG": ["Kingdom of Egypt", "United Arab Republic"],
+    "ZW": ["Rhodesia", "Southern Rhodesia", "Zimbabwe Rhodesia"],
+    "UG": ["Second Republic of Uganda"],
+    "NL": ["Dutch Empire", "The Netherlands"],
+    "MN": ["Mongolian People's Republic"],
+    "CD": ["Belgian Congo", "Republic of the Congo (Léopoldville)"],
+    "BD": ["Provisional Government of Bangladesh"],
+    "KR": ["First Republic of Korea", "Third Republic of Korea"],
+    "PL": ["Second Polish Republic", "Polish People's Republic"],
+    "ES": ["Spanish Republic", "Nationalist Spain", "Francoist Spain"],
+    "BR": ["First Brazilian Republic"],
+    "UZ": ["Emirate of Bukhara"],
+    "LY": ["Libyan Arab Republic", "Libyan Arab Jamahiriya"],
+    "PS": ["Mandatory Palestine", "All-Palestine"],
+    "JO": ["Transjordan"],
+    "BA": ["Republic of Bosnia and Herzegovina"],
+    "HR": ["Independent State of Croatia", "Herzeg-Bosnia"],
+    "AM": ["Democratic Republic of Armenia", "Armenian SSR"],
+    "AZ": ["Azerbaijan SSR"],
+    "GE": ["Democratic Republic of Georgia", "Georgian SSR"],
+    "LV": ["Latvian Socialist Soviet Republic", "Latvian SSR"],
+    "EE": ["Estonian SSR"],
+    "LT": ["Lithuanian SSR"],
+    "BY": ["Byelorussian SSR"],
+    "MD": ["Moldavian SSR"],
+    "TJ": ["Tajik SSR"],
+    "TM": ["Turkmen SSR"],
+    "AL": ["People's Socialist Republic of Albania"],
+    "LK": ["Ceylon"],
+    "EH": ["Sahrawi Republic"],
+    "MZ": ["People's Republic of Mozambique"],
+    "TL": ["Democratic Republic of East Timor (1975)"],
+    "IR": ["Pahlavi Iran", "Imperial State of Iran"],
+    "PH": ["Fourth Philippine Republic"],
+    "CU": ["Republic of Cuba (1902–1959)"],
+    "TZ": ["Sultanate of Zanzibar"],
+    "ID": ["Dutch New Guinea"],
+}
+
+# One historical name that should light more than one modern country.
+SPREAD = {
+    "austria-hungary": ["AT", "HU"],
+    "czechoslovakia": ["CZ", "SK"],
+    "czechoslovak socialist republic": ["CZ", "SK"],
+    "serbia and montenegro": ["RS", "ME"],
+}
+
+ISO_SHORT = {"CHI": "CN"}
 
 ORGS = {
     "NATO", "United Nations", "European Union", "EU", "EAC", "UAR",
@@ -208,6 +308,9 @@ def alias_index():
         index[name.lower()] = iso
         for extra in extras:
             index[extra.lower()] = iso
+    for iso, names in HISTORICAL.items():
+        for name in names:
+            index[name.lower()] = iso
     return index
 
 
@@ -342,6 +445,31 @@ GROUP_STATE = {
 }
 
 
+IMAGE_LINK_RE = re.compile(
+    r"(?:\{\{\s*flagicon image\b[^}]*\}\}|\[\[(?:File|Image):[^|\]]*flag[^|\]]*\|[^\]]*?\]\])\s*\[\[([^|\]#]+)(?:\|([^\]]+))?\]\]",
+    re.I,
+)
+
+
+def known_party(name):
+    if not name:
+        return False
+    key = name.lower()
+    return name in STATES or key in ALIASES or key in SPREAD
+
+
+def party_name(target, label):
+    target = re.sub(r"\s+", " ", (target or "")).strip()
+    label = re.sub(r"\s+", " ", (label or "")).strip()
+    for candidate in (target, label):
+        if known_party(candidate):
+            return candidate
+    shown = label or target
+    if not shown or shown.lower() in {item.lower() for item in SKIP_GROUPS}:
+        return ""
+    return shown
+
+
 def primary_flags(cell):
     text = drop_balanced(cell, r"\{\{\s*Collapsible list\b")
     text = drop_balanced(text, r"\{\{\s*collapsable list\b")
@@ -372,18 +500,31 @@ def primary_flags(cell):
                 link_target = link.group(1).strip()
             else:
                 link_target = ""
-            if kind == "flagicon" and not ALIASES.get(link_target.lower()) and not ALIASES.get(link_name.lower()):
+            link_known = known_party(link_target) or known_party(link_name)
+            if kind == "flagicon" and not known_party(name):
+                if link_known:
+                    name = link_name or link_target
+                else:
+                    label = link_name or link_target
+                    if label and label not in found:
+                        found.append(label)
+                    continue
+            if kind == "flagicon" and known_party(name) and (link_target or link_name) and not link_known:
                 label = link_name or link_target
                 if label and label not in found:
                     found.append(label)
                 continue
-            if kind in {"flagdeco", "flag decoration"} and not ALIASES.get(name.lower()):
+            if kind in {"flagdeco", "flag decoration"} and not known_party(name):
                 if ALIASES.get(link_name.lower()) or ALIASES.get(link_target.lower()):
                     name = link_name or link_target
                 else:
                     continue
             if name not in found:
                 found.append(name)
+        for image in IMAGE_LINK_RE.finditer(piece):
+            label = party_name(image.group(1), image.group(2))
+            if label and label not in found:
+                found.append(label)
     return found
 
 
@@ -391,6 +532,17 @@ def classify(names):
     states = []
     groups = []
     for name in names:
+        spread = SPREAD.get(name.lower())
+        if spread:
+            for iso in spread:
+                if iso not in states:
+                    states.append(iso)
+            continue
+        short = ISO_SHORT.get(name.upper())
+        if short:
+            if short not in states:
+                states.append(short)
+            continue
         iso = name if name in STATES else ALIASES.get(name.lower())
         if iso:
             if iso not in states:
@@ -427,7 +579,7 @@ def tables(wt):
         if not close:
             continue
         body = rest[:close.start()]
-        if "Name of conflict" in body[:1500]:
+        if re.search(r"name of conflict", body[:1800], re.I):
             found.append(body)
     return found
 
@@ -475,6 +627,18 @@ OVERRIDES = {
 }
 
 
+def conflict_link(cell):
+    """Pick the row's own title, not a leading 'Pre-[[War]]' mention or an italic aside."""
+    plain = re.sub(r"''.*?''", "", cell, flags=re.S)
+    links = list(re.finditer(r"\[\[([^|\]#]+)(?:\|([^\]]+))?\]\]", plain))
+    for link in links:
+        before = plain[max(0, link.start() - 12):link.start()]
+        if re.search(r"(?i)pre-\s*$", before):
+            continue
+        return link
+    return links[0] if links else None
+
+
 def conflicts_from(wt):
     rows = []
     for body in tables(wt):
@@ -486,7 +650,7 @@ def conflicts_from(wt):
             start_match = re.search(r"(20\d{2}|19\d{2})", cells[0])
             if not start_match:
                 continue
-            link = re.search(r"\[\[([^|\]#]+)(?:\|([^\]]+))?\]\]", cells[2])
+            link = conflict_link(cells[2])
             if not link:
                 continue
             target = link.group(1).strip()
@@ -519,14 +683,35 @@ def conflicts_from(wt):
     return rows
 
 
+def prefers(row, current):
+    """Keep the article-titled row, and the copy that actually names belligerents."""
+    def matches(item):
+        return item["name"].strip().lower() == item["wiki"].strip().lower()
+
+    def weight(item):
+        states = sum(len(side["states"]) for side in item["sides"])
+        groups = sum(len(side["groups"]) for side in item["sides"])
+        return (states, groups)
+
+    if matches(row) != matches(current):
+        return matches(row)
+    return weight(row) > weight(current)
+
+
 def dedupe(rows):
-    seen = {}
-    kept = []
+    chosen = {}
+    order = []
     for row in rows:
         key = row["wiki"].lower()
-        if key in seen:
+        if key not in chosen:
+            chosen[key] = row
+            order.append(key)
             continue
-        seen[key] = True
+        if prefers(row, chosen[key]):
+            chosen[key] = row
+    kept = []
+    for key in order:
+        row = chosen[key]
         base = slugify(row["wiki"])
         ident = base
         taken = {item["id"] for item in kept}

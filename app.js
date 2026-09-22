@@ -2541,6 +2541,22 @@ function setWarSpan(from, to) {
   writeUrl(true);
 }
 
+function warSources() {
+  return httpsSourceLinks(plot?.sources || []);
+}
+
+function appendExternalLinks(parent, links, separator) {
+  links.forEach((source, index) => {
+    if (index) parent.append(document.createTextNode(separator));
+    const link = document.createElement("a");
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.textContent = source.label;
+    parent.appendChild(link);
+  });
+}
+
 function renderWars() {
   const section = document.createElement("section");
   section.className = "wars-board";
@@ -2718,17 +2734,7 @@ function paintWars() {
   }
   const sources = document.createElement("p");
   sources.className = "wars-sources";
-  const first = document.createElement("a");
-  first.href = "https://en.wikipedia.org/wiki/List_of_wars:_2003%E2%80%932019";
-  first.target = "_blank";
-  first.rel = "noreferrer";
-  first.textContent = "List of wars: 2003–2019";
-  const second = document.createElement("a");
-  second.href = "https://en.wikipedia.org/wiki/List_of_wars:_2020%E2%80%93present";
-  second.target = "_blank";
-  second.rel = "noreferrer";
-  second.textContent = "List of wars: 2020–present";
-  sources.append(first, document.createTextNode(" · "), second);
+  appendExternalLinks(sources, warSources(), " · ");
   header.appendChild(sources);
   const stack = document.createElement("div");
   stack.className = "wars-cards";
@@ -2830,13 +2836,8 @@ function renderCredits() {
     item.append(
       document.createTextNode("Coastlines are Natural Earth, public domain. War rows follow "),
     );
-    const first = document.createElement("a");
-    first.href = "https://en.wikipedia.org/wiki/List_of_wars:_2003%E2%80%932019";
-    first.textContent = "List of wars: 2003–2019";
-    const second = document.createElement("a");
-    second.href = "https://en.wikipedia.org/wiki/List_of_wars:_2020%E2%80%93present";
-    second.textContent = "List of wars: 2020–present";
-    item.append(first, document.createTextNode(" and "), second, document.createTextNode("."));
+    appendExternalLinks(item, warSources(), ", ");
+    item.append(document.createTextNode("."));
     list.appendChild(item);
     $("footer-note").textContent = plot.sourceNote || `${plot.title} on Plotmaniac`;
     $("credits").hidden = false;
