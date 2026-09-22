@@ -124,6 +124,21 @@
         "events": "data/jd-vance/events.json",
         "relations": "data/jd-vance/relations.json"
       }
+    },
+    {
+      "id": "partition-of-india",
+      "title": "Partition of India",
+      "kicker": "History",
+      "lede": "Scrub the years. Borders draw in as British India becomes India, Pakistan, and, in 1971, Bangladesh.",
+      "sourceNote": "Partition of India on Plotmaniac · research file of players, timeline, princely accessions, and the legacy to the present",
+      "centerId": "jinnah",
+      "arrangement": "historical-map",
+      "friendKinds": [],
+      "enemyKinds": [],
+      "paths": {
+        "reference": "data/partition-of-india/reference.json",
+        "portraits": "data/partition-of-india/portraits.json"
+      }
     }
   ]
 }

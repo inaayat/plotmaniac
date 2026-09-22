@@ -38,6 +38,8 @@ import {
   visibleRelationCountries,
   webLayout,
 } from "./engine.js";
+import { buildFrames } from "./partition-model.js";
+import { mountPartition } from "./partition-view.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const peopleById = new Map();
@@ -53,6 +55,9 @@ let openTopic = "";
 let state = { view: "pick", person: ALL, era: ALL, query: "", eventId: "", year: null, country: "", hub: "" };
 let toastTimer = null;
 let loadToken = 0;
+let partitionReference = null;
+let partitionPortraits = {};
+let partitionMount = null;
 const ZOOM_MIN = 0.08;
 const ZOOM_MAX = 2.5;
 const COMPACT_MQ = `(max-width: ${COMPACT_MAX_WIDTH}px)`;
@@ -63,6 +68,23 @@ let pendingLaneFocus = "";
 
 function isCompact() {
   return window.matchMedia(COMPACT_MQ).matches;
+}
+
+function clearPartition() {
+  partitionMount?.destroy();
+  partitionMount = null;
+  partitionReference = null;
+  partitionPortraits = {};
+}
+
+function partitionFrameId(frames) {
+  let requested = "";
+  try {
+    requested = decodeURIComponent(new URL(location.href).hash.slice(1));
+  } catch {
+    requested = "";
+  }
+  return frames.includes(requested) ? requested : frames[0];
 }
 
 function rememberView(view) {
@@ -176,14 +198,42 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
   $("plot-select").value = plot.id;
   fillHubSelect();
   document.body.dataset.images = plot.images || "";
-  document.body.dataset.board = plot.disclosure || "";
+  document.body.dataset.board = plot.arrangement === "historical-map" ? "history" : (plot.disclosure || "");
+  clearPartition();
   const app = $("app");
   app.replaceChildren();
   const loading = document.createElement("p");
   loading.className = "loading";
-  loading.textContent = "Drawing the web…";
+  loading.textContent = plot.arrangement === "historical-map" ? "Drawing the map…" : "Drawing the web…";
   app.appendChild(loading);
   try {
+    if (plot.arrangement === "historical-map") {
+      const requests = [fetchJson(plot.paths.reference)];
+      if (plot.paths.portraits) requests.push(fetchJson(plot.paths.portraits));
+      const [reference, portraits] = await Promise.all(requests);
+      if (token !== loadToken) return;
+      partitionReference = reference;
+      partitionPortraits = portraits || {};
+      const frames = buildFrames(reference).map((frame) => frame.id);
+      state = {
+        view: "web",
+        person: ALL,
+        era: ALL,
+        query: "",
+        eventId: partitionFrameId(frames),
+        year: null,
+        country: "",
+        hub: "",
+      };
+      $("credit-list").replaceChildren();
+      $("credits").hidden = true;
+      $("footer-note").textContent = plot.sourceNote || "Plotmaniac";
+      render({
+        push: history === "push",
+        replace: history === "replace",
+      });
+      return;
+    }
     const requests = [
       fetchJson(plot.paths.people),
       fetchJson(plot.paths.events),
@@ -248,6 +298,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
 
 function showPicker({ history = "push" } = {}) {
   loadToken += 1;
+  clearPartition();
   plot = null;
   people = [];
   events = [];
@@ -346,6 +397,7 @@ function bindChrome() {
   });
   document.querySelectorAll(".views button").forEach((button) => {
     button.addEventListener("click", () => {
+      if (plot?.arrangement === "historical-map") return;
       state.view = button.dataset.view === "timeline" ? "timeline" : "web";
       state.person = ALL;
       state.eventId = "";
@@ -437,6 +489,28 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   const hubSelect = $("hub-select");
   if (hubSelect && document.activeElement === hubSelect) hubSelect.blur();
   const app = $("app");
+  if (plot?.arrangement === "historical-map" && partitionReference) {
+    document.body.dataset.view = "web";
+    document.body.dataset.board = "history";
+    state.view = "web";
+    if (!partitionMount || !app.querySelector(".partition")) {
+      app.replaceChildren();
+      partitionMount = mountPartition(app, partitionReference, {
+        frameId: state.eventId,
+        portraits: partitionPortraits,
+        onFrame(id, { historyMode } = {}) {
+          state.eventId = id;
+          state.view = "web";
+          writeUrl(historyMode !== "push");
+        },
+      });
+    } else {
+      partitionMount.goTo(state.eventId);
+    }
+    if (push || replace) writeUrl(replace);
+    return;
+  }
+  if (partitionMount) clearPartition();
   app.replaceChildren();
   if (state.view === "timeline") app.appendChild(renderTimeline());
   else if (state.view === "person") app.appendChild(renderPerson());

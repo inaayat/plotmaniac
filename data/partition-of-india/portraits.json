@@ -1,0 +1,233 @@
+{
+  "jinnah": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jinnah1945c.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Jinnah1945c.jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "nehru": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Nehru%20in%20the%20Netherlands%2C%201957.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Nehru_in_the_Netherlands%2C_1957.jpg",
+    "author": "Harry Pot",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "patel": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sardar%20patel%20(cropped).jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Sardar_patel_(cropped).jpg",
+    "author": "Government of India",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "gandhi": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mahatma-Gandhi%2C%20studio%2C%201931.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Mahatma-Gandhi%2C_studio%2C_1931.jpg",
+    "author": "Elliott & Fry",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "mountbatten": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lord%20Mountbatten%20Naval%20in%20colour%20Allan%20Warren%20(cropped).jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Lord_Mountbatten_Naval_in_colour_Allan_Warren_(cropped).jpg",
+    "author": "Allan Warren",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  "attlee": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Person%20attlee2.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Person_attlee2.jpg",
+    "author": "Yousuf Karsh",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "radcliffe": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Cyril-John-Radcliffe-1st-Viscount-Radcliffe.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Cyril-John-Radcliffe-1st-Viscount-Radcliffe.jpg",
+    "author": "Elliott & Fry",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  "liaquat": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Liaquat%20Ali%20Khan%201945.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Liaquat_Ali_Khan_1945.jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "suhrawardy": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Huseyn%20Shaheed%20Suhrawardy.png?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Huseyn_Shaheed_Suhrawardy.png",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "azad": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Maulana%20Abul%20Kalam%20Azad.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Maulana_Abul_Kalam_Azad.jpg",
+    "author": "National Repository of Open Educational Resources",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  "ambedkar": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Dr.%20Bhimrao%20Ambedkar.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Dr._Bhimrao_Ambedkar.jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "tara": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Master%20Tara%20Singh.png?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Master_Tara_Singh.png",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "churchill": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir%20Winston%20Churchill%20-%2019086236948%20(restored).jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Sir_Winston_Churchill_-_19086236948_(restored).jpg",
+    "author": "Yousuf Karsh",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "curzon": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/George%20Curzon2.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:George_Curzon2.jpg",
+    "author": "George Grantham Bain Collection (Library of Congress)",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "cripps": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Stafford%20Cripps%201947.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Stafford_Cripps_1947.jpg",
+    "author": "Yousuf Karsh",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "linlithgow": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Victor%20Hope%2C%202nd%20Marquess%20of%20Linlithgow.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Victor_Hope%2C_2nd_Marquess_of_Linlithgow.jpg",
+    "author": "Bassano Ltd",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "savarkar": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Swatyantra%20Vir%20Savarkar.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Swatyantra_Vir_Savarkar.jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "ghaffar": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Undated%20picture%20of%20Bacha%20Khan%201.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Undated_picture_of_Bacha_Khan_1.jpg",
+    "author": "Government of Pakistan",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "madani": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Husain%20Ahmad%20Madani%202012%20stamp%20of%20India.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Husain_Ahmad_Madani_2012_stamp_of_India.jpg",
+    "author": "India Post, Government of India",
+    "license": "GODL-India",
+    "licenseUrl": "https://data.gov.in/sites/default/files/Gazette_Notification_OGDL.pdf"
+  },
+  "hari": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hari%20Singh%201931.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Hari_Singh_1931.jpg",
+    "author": "Georges Devred",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "pethick": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/British%20Political%20Personalities%201936-1945%20HU59768.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:British_Political_Personalities_1936-1945_HU59768.jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "rahmat": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Choudhry%20Rahmat%20Ali.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Choudhry_Rahmat_Ali.jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "lajpat": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mahatma%20Lala%20Lajpat%20Rai.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Mahatma_Lala_Lajpat_Rai.jpg",
+    "author": "Punjab State Archives",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "minto": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Fourth%20Earl%20of%20Minto.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Fourth_Earl_of_Minto.jpg",
+    "author": "Unidentified photographer",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "montagu": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Edwin%20Samuel%20Montagu.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Edwin_Samuel_Montagu.jpg",
+    "author": "Central News Agency",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  "macdonald": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/J.%20Ramsay%20MacDonald%20LCCN2014715885%20(cropped).jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:J._Ramsay_MacDonald_LCCN2014715885_(cropped).jpg",
+    "author": "Walter Stoneman",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "menon": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/V.%20K.%20Krishna%20Menon%20(cropped).jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:V._K._Krishna_Menon_(cropped).jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "nishtar": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Abdul%20Rab%20Nishtar.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Abdul_Rab_Nishtar.jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "khaliqu": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chaudhry%20Khaliquzzaman.JPG?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Chaudhry_Khaliquzzaman.JPG",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "huq": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20k%20fazlul%20hoque.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:A_k_fazlul_hoque.jpg",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "sikandar": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sir%20Sikandar%20Hayat%20Khan.png?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Sir_Sikandar_Hayat_Khan.png",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "salimullah": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Salimullah.jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Salimullah.jpg",
+    "author": "Dhaka Nawab Family",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  "princes-patiala": {
+    "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Yadvinder%20Singh%20Mahendra%20Bahadur%20(1971).jpg?width=480",
+    "page": "https://commons.wikimedia.org/wiki/File:Yadvinder_Singh_Mahendra_Bahadur_(1971).jpg",
+    "author": "Rob Mieremet for Anefo",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  }
+}

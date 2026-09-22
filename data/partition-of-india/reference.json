@@ -1,0 +1,4029 @@
+{
+  "schemaVersion": "1.1.0",
+  "title": "Partition of India (1947) — players, timeline, POV, and sources",
+  "generatedAt": "2026-09-22T02:28:08.230Z",
+  "scope": {
+    "included": "Political, administrative, and communal-leadership actors who influenced the 1947 partition decision, boundary drawing, or immediate violence/migration—not post-hoc artists, filmmakers, or historians. Includes princelyStateActors roster with one-line roles and accession outcomes.",
+    "excluded": "Literary and artistic depictions; modern commemoration unless politically relevant.",
+    "geographicFocus": "British India partition into Dominion of India and Dominion of Pakistan (includes Punjab, Bengal, NWFP referendum, princely states accession crises).",
+    "casualtyNote": "Death estimates in partition violence remain disputed (~200,000 to 2 million in scholarly literature cited on Wikipedia)."
+  },
+  "nationalityGuide": {
+    "britishIndianSubject": "Legal nationality of most South Asians under the Raj until dominion independence in August 1947.",
+    "after1947": "Dominion citizenship of India (from 15 Aug 1947) or Pakistan (from 14 Aug 1947); princely rulers chose accession.",
+    "labelingConvention": "Fields use primary (colonial), afterAugust1947 (where applicable), and ethnicOrRegionalIdentity for community context—not equivalent to modern passport nationality."
+  },
+  "sourcesCatalog": {
+    "partitionWiki": {
+      "id": "partitionWiki",
+      "type": "encyclopedia",
+      "title": "Partition of India",
+      "url": "https://en.wikipedia.org/wiki/Partition_of_India",
+      "publisher": "Wikipedia"
+    },
+    "independenceAct": {
+      "id": "independenceAct",
+      "type": "encyclopedia",
+      "title": "Indian Independence Act 1947",
+      "url": "https://en.wikipedia.org/wiki/Indian_Independence_Act_1947",
+      "publisher": "Wikipedia"
+    },
+    "mountbattenPlan": {
+      "id": "mountbattenPlan",
+      "type": "encyclopedia",
+      "title": "Mountbatten Plan",
+      "url": "https://en.wikipedia.org/wiki/Mountbatten_Plan",
+      "publisher": "Wikipedia"
+    },
+    "lahore": {
+      "id": "lahore",
+      "type": "encyclopedia",
+      "title": "Lahore Resolution",
+      "url": "https://en.wikipedia.org/wiki/Lahore_Resolution",
+      "publisher": "Wikipedia"
+    },
+    "directAction": {
+      "id": "directAction",
+      "type": "encyclopedia",
+      "title": "Direct Action Day",
+      "url": "https://en.wikipedia.org/wiki/Direct_Action_Day",
+      "publisher": "Wikipedia"
+    },
+    "cabinetMission": {
+      "id": "cabinetMission",
+      "type": "encyclopedia",
+      "title": "1946 Cabinet Mission to India",
+      "url": "https://en.wikipedia.org/wiki/1946_Cabinet_Mission_to_India",
+      "publisher": "Wikipedia"
+    },
+    "radcliffe": {
+      "id": "radcliffe",
+      "type": "encyclopedia",
+      "title": "Radcliffe Line",
+      "url": "https://en.wikipedia.org/wiki/Radcliffe_Line",
+      "publisher": "Wikipedia"
+    },
+    "lucknow": {
+      "id": "lucknow",
+      "type": "encyclopedia",
+      "title": "Lucknow Pact",
+      "url": "https://en.wikipedia.org/wiki/Lucknow_Pact",
+      "publisher": "Wikipedia"
+    },
+    "quitIndia": {
+      "id": "quitIndia",
+      "type": "encyclopedia",
+      "title": "Quit India Movement",
+      "url": "https://en.wikipedia.org/wiki/Quit_India_Movement",
+      "publisher": "Wikipedia"
+    },
+    "cripps": {
+      "id": "cripps",
+      "type": "encyclopedia",
+      "title": "Cripps Mission",
+      "url": "https://en.wikipedia.org/wiki/Cripps_Mission",
+      "publisher": "Wikipedia"
+    },
+    "bengal1905": {
+      "id": "bengal1905",
+      "type": "encyclopedia",
+      "title": "Partition of Bengal (1905)",
+      "url": "https://en.wikipedia.org/wiki/Partition_of_Bengal_(1905)",
+      "publisher": "Wikipedia"
+    },
+    "muslimLeague": {
+      "id": "muslimLeague",
+      "type": "encyclopedia",
+      "title": "All-India Muslim League",
+      "url": "https://en.wikipedia.org/wiki/All-India_Muslim_League",
+      "publisher": "Wikipedia"
+    },
+    "goi1935": {
+      "id": "goi1935",
+      "type": "encyclopedia",
+      "title": "Government of India Act 1935",
+      "url": "https://en.wikipedia.org/wiki/Government_of_India_Act_1935",
+      "publisher": "Wikipedia"
+    },
+    "elections1937": {
+      "id": "elections1937",
+      "type": "encyclopedia",
+      "title": "1937 Indian provincial elections",
+      "url": "https://en.wikipedia.org/wiki/1937_Indian_provincial_elections",
+      "publisher": "Wikipedia"
+    },
+    "elections1946": {
+      "id": "elections1946",
+      "type": "encyclopedia",
+      "title": "1946 Indian provincial elections",
+      "url": "https://en.wikipedia.org/wiki/1946_Indian_provincial_elections",
+      "publisher": "Wikipedia"
+    },
+    "britannica": {
+      "id": "britannica",
+      "type": "encyclopedia",
+      "title": "Partition of Bengal",
+      "url": "https://www.britannica.com/event/Partition-of-Bengal",
+      "publisher": "Britannica"
+    },
+    "ukNatArchives": {
+      "id": "ukNatArchives",
+      "type": "archive",
+      "title": "The road to independence",
+      "url": "https://www.nationalarchives.gov.uk/education/resources/the-road-to-independence/",
+      "publisher": "UK National Archives"
+    },
+    "jalal": {
+      "id": "jalal",
+      "type": "book",
+      "title": "The Sole Spokesman: Jinnah, the Muslim League and the Demand for Pakistan",
+      "url": "https://www.cambridge.org/core/books/sole-spokesman/",
+      "author": "Ayesha Jalal",
+      "publisher": "Cambridge University Press"
+    },
+    "khanBook": {
+      "id": "khanBook",
+      "type": "book",
+      "title": "The Great Partition: The Making of India and Pakistan",
+      "url": "https://yalebooks.yale.edu/book/9780300212748/the-great-partition/",
+      "author": "Yasmin Khan",
+      "publisher": "Yale University Press"
+    },
+    "talbotSingh": {
+      "id": "talbotSingh",
+      "type": "book",
+      "title": "The Partition of India",
+      "url": "https://www.cambridge.org/core/books/partition-of-india/",
+      "author": "Ian Talbot and Gurharpal Singh",
+      "publisher": "Cambridge University Press"
+    },
+    "twoNation": {
+      "id": "twoNation",
+      "type": "encyclopedia",
+      "title": "Two-nation theory",
+      "url": "https://en.wikipedia.org/wiki/Two-nation_theory",
+      "publisher": "Wikipedia"
+    },
+    "madani": {
+      "id": "madani",
+      "type": "encyclopedia",
+      "title": "Husain Ahmad Madani",
+      "url": "https://en.wikipedia.org/wiki/Husain_Ahmad_Madani",
+      "publisher": "Wikipedia"
+    },
+    "jammu1947": {
+      "id": "jammu1947",
+      "type": "encyclopedia",
+      "title": "1947 Jammu massacres",
+      "url": "https://en.wikipedia.org/wiki/1947_Jammu_massacres",
+      "publisher": "Wikipedia"
+    },
+    "princelyStatesList": {
+      "id": "princelyStatesList",
+      "type": "encyclopedia",
+      "title": "Princely states of India",
+      "url": "https://en.wikipedia.org/wiki/List_of_princely_states_of_India",
+      "publisher": "Wikipedia"
+    },
+    "politicalIntegration": {
+      "id": "politicalIntegration",
+      "type": "encyclopedia",
+      "title": "Political integration of India",
+      "url": "https://en.wikipedia.org/wiki/Political_integration_of_India",
+      "publisher": "Wikipedia"
+    },
+    "hyderabad1948": {
+      "id": "hyderabad1948",
+      "type": "encyclopedia",
+      "title": "Operation Polo (Hyderabad)",
+      "url": "https://en.wikipedia.org/wiki/Operation_Polo",
+      "publisher": "Wikipedia"
+    },
+    "junagadh": {
+      "id": "junagadh",
+      "type": "encyclopedia",
+      "title": "Annexation of Junagadh",
+      "url": "https://en.wikipedia.org/wiki/Annexation_of_Junagadh",
+      "publisher": "Wikipedia"
+    },
+    "menonBook": {
+      "id": "menonBook",
+      "type": "book",
+      "title": "Integration of the Indian States",
+      "url": "https://en.wikipedia.org/wiki/V._P._Menon",
+      "author": "V. P. Menon",
+      "publisher": "Historical account (1956)"
+    },
+    "kashmirConflict": {
+      "id": "kashmirConflict",
+      "type": "encyclopedia",
+      "title": "Kashmir conflict",
+      "url": "https://en.wikipedia.org/wiki/Kashmir_conflict",
+      "publisher": "Wikipedia"
+    },
+    "indoPakRelations": {
+      "id": "indoPakRelations",
+      "type": "encyclopedia",
+      "title": "India–Pakistan relations",
+      "url": "https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_relations",
+      "publisher": "Wikipedia"
+    },
+    "bangladesh1971": {
+      "id": "bangladesh1971",
+      "type": "encyclopedia",
+      "title": "Bangladesh Liberation War",
+      "url": "https://en.wikipedia.org/wiki/Bangladesh_Liberation_War",
+      "publisher": "Wikipedia"
+    },
+    "partitionBengal1947": {
+      "id": "partitionBengal1947",
+      "type": "encyclopedia",
+      "title": "Partition of Bengal (1947)",
+      "url": "https://en.wikipedia.org/wiki/Partition_of_Bengal_(1947)",
+      "publisher": "Wikipedia"
+    }
+  },
+  "keyPlayers": [
+    {
+      "id": "huq",
+      "name": "A. K. Fazlul Huq",
+      "nationality": {
+        "primary": "British Indian",
+        "ethnicOrRegionalIdentity": "Bengali Muslim"
+      },
+      "faction": "Krishak Praja Party",
+      "roles": [
+        "Bengal Premier"
+      ],
+      "partitionRelevance": "contextual",
+      "pointOfView": "Peasant-based Bengali politics; coalition not identical to League.",
+      "desiresAndGoals": [
+        "Bengali Muslim peasant interests",
+        "Provincial power"
+      ],
+      "fearsAndOppositions": [
+        "Centralized Congress"
+      ],
+      "positions": {
+        "unitedIndia": "Worked in coalitions",
+        "pakistanOrMuslimState": "Regional Muslim politics pre-League surge",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "Bengal later divided",
+        "twoNationTheory": "Not primary spokesman"
+      },
+      "impactSummary": "1937 Bengal coalition alternative to League monopoly.",
+      "sourceIds": [
+        "elections1937",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1937-elections",
+          "sortKey": 193701,
+          "dateDisplay": "1937",
+          "title": "Provincial elections",
+          "playerSpecificActions": [
+            "Shared power in Bengal coalition."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "nishtar",
+      "name": "Abdur Rab Nishtar",
+      "nationality": {
+        "primary": "British Indian → Pakistani",
+        "ethnicOrRegionalIdentity": "Punjabi Muslim"
+      },
+      "faction": "Muslim League",
+      "roles": [
+        "Partition Council"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Administrative division of India for Pakistan viability.",
+      "desiresAndGoals": [
+        "Fair asset split for Pakistan"
+      ],
+      "fearsAndOppositions": [
+        "Congress monopoly on assets"
+      ],
+      "positions": {
+        "unitedIndia": "Rejected",
+        "pakistanOrMuslimState": "Supported",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "Accepted",
+        "twoNationTheory": "Supported"
+      },
+      "impactSummary": "League Partition Council representative.",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1947-partition-council",
+          "sortKey": 19470615,
+          "dateDisplay": "June 1947",
+          "title": "Partition Council and asset division",
+          "playerSpecificActions": []
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "azad",
+      "name": "Abul Kalam Azad",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Indian",
+        "ethnicOrRegionalIdentity": "Indian Muslim; scholar"
+      },
+      "faction": "Indian National Congress",
+      "roles": [
+        "Congress president",
+        "Education minister (post-1947)"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Islamic universalism and Indian nationalism compatible; partition would harm Muslims who would remain in India and betray composite culture.",
+      "desiresAndGoals": [
+        "Single secular India",
+        "Muslim participation in Congress-led state",
+        "Avoid territorial split"
+      ],
+      "fearsAndOppositions": [
+        "Two-nation theory",
+        "Communal riots",
+        "Permanent India–Pakistan hostility"
+      ],
+      "positions": {
+        "unitedIndia": "Strongly favored until end.",
+        "pakistanOrMuslimState": "Opposed.",
+        "populationExchange": "Opposed.",
+        "punjabAndBengalDivision": "Opposed.",
+        "twoNationTheory": "Opposed (aligned with Deobandi composite nationalism, unlike League)."
+      },
+      "impactSummary": "Leading Muslim voice against partition within Congress; warned Mountbatten on violence.",
+      "sourceIds": [
+        "partitionWiki",
+        "cabinetMission",
+        "madani"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1946-cabinet",
+          "sortKey": 194602,
+          "dateDisplay": "February–July 1946",
+          "title": "Cabinet Mission",
+          "playerSpecificActions": [
+            "Congress leader favoring Indian unity."
+          ]
+        },
+        {
+          "eventId": "evt-1946-interim",
+          "sortKey": 194609,
+          "dateDisplay": "September 1946",
+          "title": "Interim Government of India",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-june-plan",
+          "sortKey": 19470603,
+          "dateDisplay": "2–3 June 1947",
+          "title": "Mountbatten Plan announced and accepted",
+          "playerSpecificActions": [
+            "Warned Mountbatten of riot risk."
+          ]
+        },
+        {
+          "eventId": "evt-1948-gandhi-fast",
+          "sortKey": 19480118,
+          "dateDisplay": "January 1948",
+          "title": "Gandhi’s fast for communal peace in Delhi",
+          "playerSpecificActions": []
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "ambedkar",
+      "name": "B. R. Ambedkar",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Indian",
+        "ethnicOrRegionalIdentity": "Dalit (Mahar)"
+      },
+      "faction": "Depressed Classes / Scheduled Castes leadership",
+      "roles": [
+        "Constitutional theorist",
+        "Law minister (post-1947)"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Communal majoritarian politics threatened Dalits; partition and exchange could remove impossible minority problem—cold realism over idealism.",
+      "desiresAndGoals": [
+        "Dalit political representation",
+        "Communal peace through clear territorial separation of hostile groups",
+        "Constitutional safeguards"
+      ],
+      "fearsAndOppositions": [
+        "Majority tyranny in united India",
+        "Untouchability and caste oppression masked as nationalism"
+      ],
+      "positions": {
+        "unitedIndia": "Skeptical; wrote on Pakistan/partition options.",
+        "pakistanOrMuslimState": "Analyzed Muslim case sympathetically in “Pakistan or Partition of India.”",
+        "populationExchange": "Supported as harsh practical remedy (with Patel).",
+        "punjabAndBengalDivision": "Accepted logic of division.",
+        "twoNationTheory": "Engaged analytically rather than as Hindu nationalist."
+      },
+      "impactSummary": "Communal Award negotiations; intellectual case for exchange; later chaired Drafting Committee of Indian Constitution.",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1932-award",
+          "sortKey": 193208,
+          "dateDisplay": "August 1932",
+          "title": "Communal Award and Gandhi fast",
+          "playerSpecificActions": [
+            "Negotiated compromise after Gandhi’s fast."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "rajagopalachari",
+      "name": "C. Rajagopalachari & Rajendra Prasad",
+      "nationality": {
+        "primary": "British Indian → Indian"
+      },
+      "faction": "Congress",
+      "roles": [
+        "Partition Council",
+        "Future GG/President"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Congress institutional acceptance of partition once Patel secured vote.",
+      "desiresAndGoals": [
+        "Implement partition lawfully",
+        "Preserve Indian state legitimacy"
+      ],
+      "fearsAndOppositions": [
+        "Chaos during transfer"
+      ],
+      "positions": {
+        "unitedIndia": "Lost cause by June 1947",
+        "pakistanOrMuslimState": "Accepted",
+        "populationExchange": "Followed Nehru/Gandhi line",
+        "punjabAndBengalDivision": "Accepted",
+        "twoNationTheory": "Rejected"
+      },
+      "impactSummary": "Congress on Partition Council.",
+      "sourceIds": [
+        "mountbattenPlan",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1947-partition-council",
+          "sortKey": 19470615,
+          "dateDisplay": "June 1947",
+          "title": "Partition Council and asset division",
+          "playerSpecificActions": []
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "khaliqu",
+      "name": "Chaudhari Khaliquzzaman",
+      "nationality": {
+        "primary": "British Indian → Pakistani",
+        "ethnicOrRegionalIdentity": "UP Muslim"
+      },
+      "faction": "Muslim League",
+      "roles": [
+        "League leader"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "League orthodoxy; Pakistan as Muslim political salvation.",
+      "desiresAndGoals": [
+        "Pakistan",
+        "League dominance"
+      ],
+      "fearsAndOppositions": [
+        "Congress rule"
+      ],
+      "positions": {
+        "unitedIndia": "Rejected",
+        "pakistanOrMuslimState": "Supported",
+        "populationExchange": "League official anti-exchange rhetoric",
+        "punjabAndBengalDivision": "Accepted 1947",
+        "twoNationTheory": "Supported"
+      },
+      "impactSummary": "Seconded Lahore Resolution 1940.",
+      "sourceIds": [
+        "lahore"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1940-lahore",
+          "sortKey": 19400323,
+          "dateDisplay": "23 March 1940",
+          "title": "Lahore Resolution",
+          "playerSpecificActions": [
+            "Seconded resolution."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "rahmat",
+      "name": "Choudhry Rahmat Ali",
+      "nationality": {
+        "primary": "British Indian subject",
+        "ethnicOrRegionalIdentity": "Punjabi Muslim"
+      },
+      "faction": "Independent pamphleteer (Cambridge circle)",
+      "roles": [
+        "Coined “Pakistan”"
+      ],
+      "partitionRelevance": "contextual-naming",
+      "pointOfView": "Immediate sovereign Muslim homeland in north-west; evangelical urgency (“Now or Never”).",
+      "desiresAndGoals": [
+        "Creation of Pakistan as defined in pamphlet",
+        "Muslim political awakening"
+      ],
+      "fearsAndOppositions": [
+        "Muslim submergence in united India"
+      ],
+      "positions": {
+        "unitedIndia": "Rejected.",
+        "pakistanOrMuslimState": "Originator of name and map.",
+        "populationExchange": "Not primary focus in 1933 pamphlet.",
+        "punjabAndBengalDivision": "Envisioned Muslim bloc provinces.",
+        "twoNationTheory": "Implicit in pamphlet."
+      },
+      "impactSummary": "Named Pakistan; Jinnah/League adopted term later during mass politics.",
+      "sourceIds": [
+        "partitionWiki",
+        "lahore"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1933-pakistan-name",
+          "sortKey": 193301,
+          "dateDisplay": "1933",
+          "title": "Name “Pakistan” coined",
+          "playerSpecificActions": [
+            "Coined Pakistan as acronym for Punjab, Afghania, Kashmir, Sindh, Balochistan."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "attlee",
+      "name": "Clement Attlee",
+      "nationality": {
+        "primary": "British",
+        "ethnicOrRegionalIdentity": "English"
+      },
+      "faction": "UK Labour Party",
+      "roles": [
+        "Prime Minister of the United Kingdom (1945–51)"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Anti-imperial Labour internationalism plus fiscal realism: India must be freed; Britain cannot afford large-scale repression.",
+      "desiresAndGoals": [
+        "Orderly decolonization",
+        "Withdrawal by 1948",
+        "Maintain Commonwealth link if possible"
+      ],
+      "fearsAndOppositions": [
+        "Renewed colonial wars in Asia",
+        "US and UN pressure",
+        "Economic cost of empire"
+      ],
+      "positions": {
+        "unitedIndia": "Preferred but delegated to viceroy and missions.",
+        "pakistanOrMuslimState": "Accepted when negotiations failed.",
+        "populationExchange": "Not primary UK policy focus.",
+        "punjabAndBengalDivision": "Accepted in Independence Act framework.",
+        "twoNationTheory": "Not endorsed; outcome of deadlock."
+      },
+      "impactSummary": "Political decision to quit; appointed Mountbatten; Independence Act through Parliament.",
+      "sourceIds": [
+        "independenceAct",
+        "ukNatArchives",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1945-labour",
+          "sortKey": 194507,
+          "dateDisplay": "July 1945 – early 1947",
+          "title": "British decision to decolonize",
+          "playerSpecificActions": [
+            "Committed to transfer power by June 1948 (later accelerated)."
+          ]
+        },
+        {
+          "eventId": "evt-1947-mountbatten-arrives",
+          "sortKey": 19470324,
+          "dateDisplay": "March 1947",
+          "title": "Mountbatten sworn as last Viceroy",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-independence-act",
+          "sortKey": 19470718,
+          "dateDisplay": "18 July 1947",
+          "title": "Indian Independence Act receives Royal Assent",
+          "playerSpecificActions": [
+            "UK Parliament enacted partition law."
+          ]
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "montagu",
+      "name": "Edwin Montagu & Lord Chelmsford",
+      "nationality": {
+        "primary": "British"
+      },
+      "faction": "British Raj reforms",
+      "roles": [
+        "Secretary of State / Viceroy"
+      ],
+      "partitionRelevance": "contextual-historical",
+      "pointOfView": "Gradual responsible government with communal safeguards.",
+      "desiresAndGoals": [
+        "1919 Act implementation"
+      ],
+      "fearsAndOppositions": [
+        "Revolt"
+      ],
+      "positions": {
+        "unitedIndia": "Imperial federation path",
+        "pakistanOrMuslimState": "N/A",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "1919 reforms and communal seats.",
+      "sourceIds": [
+        "partitionWiki",
+        "lucknow"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1919-reforms",
+          "sortKey": 191912,
+          "dateDisplay": "December 1919",
+          "title": "Montagu–Chelmsford reforms",
+          "playerSpecificActions": [
+            "With Lord Chelmsford, enacted Government of India Act 1919 framework."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "pethick",
+      "name": "Frederick Pethick-Lawrence, 1st Baron Pethick-Lawrence",
+      "nationality": {
+        "primary": "British"
+      },
+      "faction": "UK Secretary of State for India",
+      "roles": [
+        "Cabinet Mission lead"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Labour decolonization; federal unity preferred.",
+      "desiresAndGoals": [
+        "Single transfer-of-power settlement"
+      ],
+      "fearsAndOppositions": [
+        "Civil war"
+      ],
+      "positions": {
+        "unitedIndia": "Strongly preferred via groupings",
+        "pakistanOrMuslimState": "Not initial goal",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Led 1946 Cabinet Mission.",
+      "sourceIds": [
+        "cabinetMission",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1945-labour",
+          "sortKey": 194507,
+          "dateDisplay": "July 1945 – early 1947",
+          "title": "British decision to decolonize",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1946-cabinet",
+          "sortKey": 194602,
+          "dateDisplay": "February–July 1946",
+          "title": "Cabinet Mission",
+          "playerSpecificActions": [
+            "Led mission proposing three-tier federation."
+          ]
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "curzon",
+      "name": "George Nathaniel Curzon, 1st Marquess Curzon of Kedleston",
+      "nationality": {
+        "primary": "British",
+        "ethnicOrRegionalIdentity": "English aristocrat"
+      },
+      "faction": "British Raj",
+      "roles": [
+        "Viceroy of India (1899–1905)"
+      ],
+      "partitionRelevance": "contextual-historical",
+      "pointOfView": "Imperial administrative efficiency and Muslim political balance in eastern Bengal.",
+      "desiresAndGoals": [
+        "Administrative reform",
+        "Muslim elite support in East Bengal"
+      ],
+      "fearsAndOppositions": [
+        "Bengali Hindu nationalist agitation"
+      ],
+      "positions": {
+        "unitedIndia": "N/A (colonial era)",
+        "pakistanOrMuslimState": "Unintentional long-term precursor via communal geography.",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "First Bengal partition 1905.",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "1905 Bengal partition as distant origin point of communal territorial politics.",
+      "sourceIds": [
+        "bengal1905",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1905-bengal",
+          "sortKey": 190510,
+          "dateDisplay": "October 1905",
+          "title": "First partition of Bengal",
+          "playerSpecificActions": [
+            "As Viceroy, partitioned Bengal into Eastern Bengal and Assam (Muslim-majority) and Western Bengal (Hindu-majority)."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "minto",
+      "name": "Gilbert Elliot-Murray-Kynynmound, 4th Earl of Minto",
+      "nationality": {
+        "primary": "British"
+      },
+      "faction": "British Raj",
+      "roles": [
+        "Viceroy"
+      ],
+      "partitionRelevance": "contextual-historical",
+      "pointOfView": "Imperial stability through Muslim elite accommodation.",
+      "desiresAndGoals": [
+        "Separate Muslim electorates",
+        "Counter Hindu nationalist pressure"
+      ],
+      "fearsAndOppositions": [
+        "Unified nationalist front against Raj"
+      ],
+      "positions": {
+        "unitedIndia": "Colonial unity under Britain",
+        "pakistanOrMuslimState": "N/A",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "1906 separate electorates memorandum context.",
+      "sourceIds": [
+        "muslimLeague",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1906-league",
+          "sortKey": 190612,
+          "dateDisplay": "December 1906",
+          "title": "All-India Muslim League founded",
+          "playerSpecificActions": [
+            "Context: Muslim memorandum to Viceroy had demanded separate electorates and proportional representation."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "suhrawardy",
+      "name": "Huseyn Shaheed Suhrawardy",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Pakistani",
+        "ethnicOrRegionalIdentity": "Bengali Muslim"
+      },
+      "faction": "Muslim League (Bengal)",
+      "roles": [
+        "Chief Minister of Bengal (1946–47)",
+        "Later PM of Pakistan (1956)"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "League militant in 1946; used Bengal government power in communal confrontation; later Pakistani politician.",
+      "desiresAndGoals": [
+        "League strength in Bengal",
+        "Pakistan including Bengal",
+        "Political survival amid violence"
+      ],
+      "fearsAndOppositions": [
+        "Congress dominance in Bengal",
+        "Hindu retaliation"
+      ],
+      "positions": {
+        "unitedIndia": "Rejected by 1946.",
+        "pakistanOrMuslimState": "Supported Direct Action for Pakistan.",
+        "populationExchange": "Bengal migration followed partition but less total exchange than Punjab.",
+        "punjabAndBengalDivision": "Bengal divided 1947.",
+        "twoNationTheory": "Supported as League CM."
+      },
+      "impactSummary": "Central figure in Direct Action Day violence in Calcutta.",
+      "sourceIds": [
+        "directAction",
+        "partitionWiki",
+        "khanBook"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1946-direct-action",
+          "sortKey": 19460816,
+          "dateDisplay": "16–19 August 1946",
+          "title": "Direct Action Day and Great Calcutta Killings",
+          "playerSpecificActions": [
+            "As Bengal CM, addressed rally; ministry accused of allowing impunity."
+          ]
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "nehru",
+      "name": "Jawaharlal Nehru",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Indian (Dominion of India)",
+        "ethnicOrRegionalIdentity": "Kashmiri Pandit"
+      },
+      "faction": "Indian National Congress",
+      "roles": [
+        "Congress leader",
+        "Interim PM (1946–47)",
+        "PM of India (1947–64)"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Secular, modernist nationalism: India as multi-religious civilization under a strong central state capable of economic planning and social reform. Saw compulsory communal groupings as threat to a unified, progressive India.",
+      "desiresAndGoals": [
+        "Independent India with strong centre",
+        "Industrial modernization and socialism",
+        "Muslims as equal citizens in secular India",
+        "Avoid population exchange that would betray pluralist vision"
+      ],
+      "fearsAndOppositions": [
+        "Cabinet Mission groupings weakening centre",
+        "Communal civil war",
+        "Permanent British divide-and-rule legacy"
+      ],
+      "positions": {
+        "unitedIndia": "Preferred until July 1946 speech; accepted partition June 1947 as lesser evil.",
+        "pakistanOrMuslimState": "Opposed; accepted only when unity deemed impossible.",
+        "populationExchange": "Strongly opposed compulsory exchange.",
+        "punjabAndBengalDivision": "Accepted under Mountbatten Plan.",
+        "twoNationTheory": "Rejected."
+      },
+      "impactSummary": "July 1946 speech undermined Cabinet Mission; led interim government; shaped independent India’s secular settlement and refusal of full exchange.",
+      "sourceIds": [
+        "cabinetMission",
+        "partitionWiki",
+        "elections1946"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1937-elections",
+          "sortKey": 193701,
+          "dateDisplay": "1937",
+          "title": "Provincial elections",
+          "playerSpecificActions": [
+            "Congress formed governments in 7 provinces; offered League coalition in UP with conditions League rejected."
+          ]
+        },
+        {
+          "eventId": "evt-1942-quit",
+          "sortKey": 194208,
+          "dateDisplay": "August 1942",
+          "title": "Quit India Movement",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1946-elections",
+          "sortKey": 194601,
+          "dateDisplay": "Early 1946",
+          "title": "Central and provincial elections",
+          "playerSpecificActions": [
+            "Congress seen as legitimate successor for most Hindus."
+          ]
+        },
+        {
+          "eventId": "evt-1946-cabinet",
+          "sortKey": 194602,
+          "dateDisplay": "February–July 1946",
+          "title": "Cabinet Mission",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1946-nehru-speech",
+          "sortKey": 19460710,
+          "dateDisplay": "10 July 1946",
+          "title": "Nehru press conference on groupings",
+          "playerSpecificActions": [
+            "Rejected compulsory grouping; plan collapsed."
+          ]
+        },
+        {
+          "eventId": "evt-1946-interim",
+          "sortKey": 194609,
+          "dateDisplay": "September 1946",
+          "title": "Interim Government of India",
+          "playerSpecificActions": [
+            "Headed interim government."
+          ]
+        },
+        {
+          "eventId": "evt-1947-june-plan",
+          "sortKey": 19470603,
+          "dateDisplay": "2–3 June 1947",
+          "title": "Mountbatten Plan announced and accepted",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-india-indep",
+          "sortKey": 19470815,
+          "dateDisplay": "15 August 1947",
+          "title": "Independence of India",
+          "playerSpecificActions": [
+            "Became first Prime Minister; “Tryst with Destiny” speech."
+          ]
+        },
+        {
+          "eventId": "evt-1948-gandhi-fast",
+          "sortKey": 19480118,
+          "dateDisplay": "January 1948",
+          "title": "Gandhi’s fast for communal peace in Delhi",
+          "playerSpecificActions": []
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "ghaffar",
+      "name": "Khan Abdul Ghaffar Khan",
+      "alsoKnownAs": [
+        "Badshah Khan",
+        "Frontier Gandhi"
+      ],
+      "nationality": {
+        "primary": "British Indian subject (NWFP)",
+        "afterAugust1947": "Pakistani citizen (often imprisoned by Pakistan)",
+        "ethnicOrRegionalIdentity": "Pashtun Muslim"
+      },
+      "faction": "Khudai Khidmatgar / Indian National Congress",
+      "roles": [
+        "Pashtun nationalist",
+        "Congress ally"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Pashtun and Muslim identity compatible with united, secular India; opposed artificial border through Pashtun lands.",
+      "desiresAndGoals": [
+        "United India including NWFP",
+        "Non-violent Pashtun autonomy within India",
+        "Opposition to League’s Pakistan"
+      ],
+      "fearsAndOppositions": [
+        "Pakistan splitting Pashtun people",
+        "Communal politics"
+      ],
+      "positions": {
+        "unitedIndia": "Strongly supported.",
+        "pakistanOrMuslimState": "Opposed NWFP joining Pakistan (lost 1947 referendum).",
+        "populationExchange": "Opposed.",
+        "punjabAndBengalDivision": "Secondary to NWFP fate.",
+        "twoNationTheory": "Rejected."
+      },
+      "impactSummary": "Mobilized “Red Shirts” with Congress; moral counterweight to League in NWFP.",
+      "sourceIds": [
+        "partitionWiki",
+        "cabinetMission"
+      ],
+      "timelineActions": [],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "salimullah",
+      "name": "Khwaja Salimullah (Nawab of Dacca)",
+      "nationality": {
+        "primary": "British Indian subject",
+        "ethnicOrRegionalIdentity": "Bengali Muslim"
+      },
+      "faction": "Muslim elite",
+      "roles": [
+        "Host of 1906 League founding"
+      ],
+      "partitionRelevance": "contextual-historical",
+      "pointOfView": "East Bengali Muslim political advancement via Curzon partition.",
+      "desiresAndGoals": [
+        "Muslim-majority province",
+        "League institutional base"
+      ],
+      "fearsAndOppositions": [
+        "Hindu majority in reunited Bengal"
+      ],
+      "positions": {
+        "unitedIndia": "N/A",
+        "pakistanOrMuslimState": "Precursor Muslim political separatism",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "Favored 1905 split",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Hosted League founding 1906.",
+      "sourceIds": [
+        "muslimLeague",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1906-league",
+          "sortKey": 190612,
+          "dateDisplay": "December 1906",
+          "title": "All-India Muslim League founded",
+          "playerSpecificActions": [
+            "Hosted founding meeting at Shahbag, Dacca."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "lajpat",
+      "name": "Lala Lajpat Rai",
+      "nationality": {
+        "primary": "British Indian subject",
+        "ethnicOrRegionalIdentity": "Punjabi Hindu"
+      },
+      "faction": "Congress / Hindu nationalist",
+      "roles": [
+        "Leader"
+      ],
+      "partitionRelevance": "contextual-ideological",
+      "pointOfView": "After Kohat riots, lost faith in Hindu–Muslim unity; territorial separation logical.",
+      "desiresAndGoals": [
+        "Safe space for Hindus in divided map"
+      ],
+      "fearsAndOppositions": [
+        "Muslim violence against Hindus in NWFP"
+      ],
+      "positions": {
+        "unitedIndia": "Earlier favored; 1924 split proposal",
+        "pakistanOrMuslimState": "Muslim India vs non-Muslim India",
+        "populationExchange": "Implicit in split rhetoric",
+        "punjabAndBengalDivision": "Anticipated communal geography",
+        "twoNationTheory": "Early Hindu-side mirror"
+      },
+      "impactSummary": "1924 articulated Muslim/non-Muslim India split.",
+      "sourceIds": [
+        "twoNation",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1924-lajpat",
+          "sortKey": 192401,
+          "dateDisplay": "1924",
+          "title": "Lala Lajpat Rai two-nation-style proposal",
+          "playerSpecificActions": [
+            "Advocated clear partition into Muslim and non-Muslim India."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "liaquat",
+      "name": "Liaquat Ali Khan",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Pakistani",
+        "ethnicOrRegionalIdentity": "Punjabi Muslim (Urdu-speaking elite)"
+      },
+      "faction": "Muslim League",
+      "roles": [
+        "League negotiator",
+        "Finance minister in interim govt",
+        "PM of Pakistan (1947–51)"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Aligned with Jinnah: Pakistan necessary; orderly division of assets and administration essential.",
+      "desiresAndGoals": [
+        "Viable Pakistani state",
+        "Fair division of military and financial assets",
+        "League dominance in Muslim politics"
+      ],
+      "fearsAndOppositions": [
+        "Congress control of centre",
+        "Unequal asset split"
+      ],
+      "positions": {
+        "unitedIndia": "Rejected without Pakistan.",
+        "pakistanOrMuslimState": "Championed.",
+        "populationExchange": "Official expectation minorities stay put except Punjab chaos.",
+        "punjabAndBengalDivision": "Accepted 1947 plan.",
+        "twoNationTheory": "Supported."
+      },
+      "impactSummary": "Lahore Resolution; Partition Council; Pakistan’s first PM.",
+      "sourceIds": [
+        "lahore",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1940-lahore",
+          "sortKey": 19400323,
+          "dateDisplay": "23 March 1940",
+          "title": "Lahore Resolution",
+          "playerSpecificActions": [
+            "Central League leadership role at Lahore."
+          ]
+        },
+        {
+          "eventId": "evt-1947-june-plan",
+          "sortKey": 19470603,
+          "dateDisplay": "2–3 June 1947",
+          "title": "Mountbatten Plan announced and accepted",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-partition-council",
+          "sortKey": 19470615,
+          "dateDisplay": "June 1947",
+          "title": "Partition Council and asset division",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-pakistan-indep",
+          "sortKey": 19470814,
+          "dateDisplay": "14 August 1947",
+          "title": "Independence of Pakistan",
+          "playerSpecificActions": [
+            "Became first Prime Minister of Pakistan."
+          ]
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "mountbatten",
+      "name": "Louis Mountbatten, 1st Earl Mountbatten of Burma",
+      "nationality": {
+        "primary": "British",
+        "afterAugust1947": "British (Governor-General of India until June 1948)",
+        "ethnicOrRegionalIdentity": "British royal family connection"
+      },
+      "faction": "British Crown",
+      "roles": [
+        "Last Viceroy",
+        "First Governor-General of independent India"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Soldier-administrator: primary duty is rapid, dignified British exit; unity desirable but civil war risk unacceptable; partition is operational solution.",
+      "desiresAndGoals": [
+        "Meet June 1948 deadline (accelerated to Aug 1947)",
+        "Preserve UK–India relations and defence ties where possible",
+        "Minimize British blame for violence"
+      ],
+      "fearsAndOppositions": [
+        "Civil war trapping British troops",
+        "Delay past monsoon/migration season",
+        "Weak boundary decisions"
+      ],
+      "positions": {
+        "unitedIndia": "Initially prioritized; abandoned by June 1947.",
+        "pakistanOrMuslimState": "Accepted as political reality.",
+        "populationExchange": "Did not plan mass transfer initially; Punjab exception emerged.",
+        "punjabAndBengalDivision": "Implemented via plan and Radcliffe.",
+        "twoNationTheory": "Treated as negotiation frame not ideology."
+      },
+      "impactSummary": "Advanced timetable; 3 June Plan; public assurance on riots (widely criticized); oversaw independence ceremonies.",
+      "sourceIds": [
+        "mountbattenPlan",
+        "partitionWiki",
+        "ukNatArchives"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1947-mountbatten-arrives",
+          "sortKey": 19470324,
+          "dateDisplay": "March 1947",
+          "title": "Mountbatten sworn as last Viceroy",
+          "playerSpecificActions": [
+            "Concluded partition necessary for orderly and rapid exit."
+          ]
+        },
+        {
+          "eventId": "evt-1947-june-plan",
+          "sortKey": 19470603,
+          "dateDisplay": "2–3 June 1947",
+          "title": "Mountbatten Plan announced and accepted",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-pakistan-indep",
+          "sortKey": 19470814,
+          "dateDisplay": "14 August 1947",
+          "title": "Independence of Pakistan",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-india-indep",
+          "sortKey": 19470815,
+          "dateDisplay": "15 August 1947",
+          "title": "Independence of India",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-radcliffe-published",
+          "sortKey": 19470817,
+          "dateDisplay": "17 August 1947",
+          "title": "Radcliffe Line published",
+          "playerSpecificActions": []
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "hari",
+      "name": "Maharaja Hari Singh",
+      "nationality": {
+        "primary": "Princely sovereign (Jammu and Kashmir)",
+        "afterAugust1947": "Acceded to India (Oct 1947)",
+        "ethnicOrRegionalIdentity": "Dogra Hindu ruler of Muslim-majority state"
+      },
+      "faction": "Princely state of Jammu and Kashmir",
+      "roles": [
+        "Maharaja"
+      ],
+      "partitionRelevance": "direct-post-partition",
+      "pointOfView": "Initially independence for Kashmir; accession under invasion pressure.",
+      "desiresAndGoals": [
+        "Preserve throne and autonomy",
+        "Delay choice between India and Pakistan",
+        "Majority-Muslim population controlled"
+      ],
+      "fearsAndOppositions": [
+        "Pakistani tribal invasion",
+        "Loss of Hindu rule in Jammu",
+        "Indian integration"
+      ],
+      "positions": {
+        "unitedIndia": "N/A",
+        "pakistanOrMuslimState": "Rejected initial accession to Pakistan; acceded to India Oct 1947.",
+        "populationExchange": "Jammu massacres and migrations 1947.",
+        "punjabAndBengalDivision": "Separate princely issue.",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Accession and 1947 Jammu violence linked Kashmir dispute to partition aftermath.",
+      "sourceIds": [
+        "partitionWiki",
+        "jammu1947"
+      ],
+      "timelineActions": [],
+      "roleLayer": "princely_ruler_alsoInKeyPlayers"
+    },
+    {
+      "id": "princes-patiala",
+      "name": "Maharaja Yadavindra Singh of Patiala (and other Sikh princes)",
+      "nationality": {
+        "primary": "Princely sovereign (Patiala State)",
+        "afterAugust1947": "Indian",
+        "ethnicOrRegionalIdentity": "Sikh ruler"
+      },
+      "faction": "Princely states (East Punjab)",
+      "roles": [
+        "Ruler; acceded to India"
+      ],
+      "partitionRelevance": "direct-violence",
+      "pointOfView": "Responded to Tara Singh’s calls; opposed Muslim Meos and Muslims in region during cleansing campaigns.",
+      "desiresAndGoals": [
+        "Sikh power in truncated Punjab",
+        "Accession to India",
+        "Elimination of Muslim minorities in states’ spheres"
+      ],
+      "fearsAndOppositions": [
+        "Pakistan absorbing Punjab",
+        "Muslim cultivators (Meos)"
+      ],
+      "positions": {
+        "unitedIndia": "Acceded to India.",
+        "pakistanOrMuslimState": "Opposed.",
+        "populationExchange": "Participated in de facto expulsion.",
+        "punjabAndBengalDivision": "Benefited from East Punjab Hindu/Sikh majority.",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Organized violence against Muslims in Patiala, Faridkot and neighboring areas per historians Copland and others. See princelyStateActors entries ps-patiala, ps-faridkot, ps-bharatpur, ps-alwar for detail.",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "timelineActions": [],
+      "relatedPrincelyStateIds": [
+        "ps-patiala",
+        "ps-faridkot",
+        "ps-bharatpur",
+        "ps-alwar"
+      ],
+      "roleLayer": "princely_aggregate"
+    },
+    {
+      "id": "tara",
+      "name": "Master Tara Singh",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Indian",
+        "ethnicOrRegionalIdentity": "Sikh Punjabi"
+      },
+      "faction": "Shiromani Akali Dal / Sikh leadership",
+      "roles": [
+        "Sikh political leader",
+        "Punjab assembly agitator"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Sikh community trapped between Muslim Pakistan and Hindu-majority India; Punjab must not be swallowed by Pakistan; Sikh rights and territory paramount.",
+      "desiresAndGoals": [
+        "Prevent all-Punjab joining Pakistan",
+        "Sikh political autonomy or safeguards",
+        "Protection of Sikh holy sites and population in divided Punjab"
+      ],
+      "fearsAndOppositions": [
+        "Muslim League rule in united Punjab",
+        "Minority status in both states",
+        "Loss of Sikh homeland districts"
+      ],
+      "positions": {
+        "unitedIndia": "Opposed Pakistan more than he built alternative unity.",
+        "pakistanOrMuslimState": "Violently opposed (“Death to Pakistan”).",
+        "populationExchange": "Punjab effectively cleansed both ways after escalation.",
+        "punjabAndBengalDivision": "Participated in June 1947 agreement representing Sikhs.",
+        "twoNationTheory": "Rejected Muslim separate nation in Punjab context."
+      },
+      "impactSummary": "March 1947 Lahore escalation; symbol of Sikh resistance; cited by princely rulers during communal cleansing.",
+      "sourceIds": [
+        "partitionWiki",
+        "radcliffe"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1947-tara-lahore",
+          "sortKey": 19470303,
+          "dateDisplay": "3 March 1947",
+          "title": "Master Tara Singh Lahore protest",
+          "playerSpecificActions": [
+            "Declared “Death to Pakistan” with kirpan at Punjab Assembly, Lahore."
+          ]
+        },
+        {
+          "eventId": "evt-1947-june-plan",
+          "sortKey": 19470603,
+          "dateDisplay": "2–3 June 1947",
+          "title": "Mountbatten Plan announced and accepted",
+          "playerSpecificActions": [
+            "Represented Sikh agreement to partition framework."
+          ]
+        }
+      ],
+      "roleLayer": "localCommunal_or_administrative"
+    },
+    {
+      "id": "madani",
+      "name": "Maulana Husain Ahmad Madani",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Indian",
+        "ethnicOrRegionalIdentity": "Deobandi scholar"
+      },
+      "faction": "Jamiat Ulema-e-Hind / Deobandi",
+      "roles": [
+        "Islamic scholar",
+        "Congress ally"
+      ],
+      "partitionRelevance": "contextual-opposition",
+      "pointOfView": "Qaum (territorial multi-religious nation) vs millat (transnational Muslim community)—Indians of all faiths one qaum; opposed Pakistan as partition of Muslim community.",
+      "desiresAndGoals": [
+        "United India",
+        "Muslim–Hindu cooperation in independent state",
+        "Opposition to League two-nation theory"
+      ],
+      "fearsAndOppositions": [
+        "Pakistan splitting Muslims",
+        "Barelvi/League politicization of Islam for statehood"
+      ],
+      "positions": {
+        "unitedIndia": "Supported.",
+        "pakistanOrMuslimState": "Opposed creation of Pakistan.",
+        "populationExchange": "Opposed.",
+        "punjabAndBengalDivision": "Opposed.",
+        "twoNationTheory": "Explicitly rejected; debated with Barelvis who favored Pakistan."
+      },
+      "impactSummary": "Major religious-intellectual opposition to Pakistan within Muslim ulema.",
+      "sourceIds": [
+        "madani",
+        "partitionWiki"
+      ],
+      "timelineActions": [],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "gandhi",
+      "name": "Mohandas Karamchand Gandhi",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Indian",
+        "ethnicOrRegionalIdentity": "Gujarati Hindu"
+      },
+      "faction": "Indian National Congress",
+      "roles": [
+        "Mass mobilizer",
+        "Moral leader",
+        "Peace missions in riot zones"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Religious pluralism and non-violence: Hindus and Muslims could coexist in one nation through truth and satyagraha; partition was moral catastrophe.",
+      "desiresAndGoals": [
+        "United independent India",
+        "Hindu–Muslim unity",
+        "Muslims remaining in India as equal citizens",
+        "Stop communal killing through personal sacrifice"
+      ],
+      "fearsAndOppositions": [
+        "Partition as victory of hatred",
+        "Forced migration",
+        "Violence against women and minorities"
+      ],
+      "positions": {
+        "unitedIndia": "Held to unity until end; did not block Congress vote.",
+        "pakistanOrMuslimState": "Opposed.",
+        "populationExchange": "Opposed as ruinous to Hinduism and humanity.",
+        "punjabAndBengalDivision": "Opposed emotionally; isolated during June 1947 decision.",
+        "twoNationTheory": "Opposed."
+      },
+      "impactSummary": "Quit India; riot-zone peace work (Noakhali, Bihar, Delhi); January 1948 fast calmed Delhi; symbol of anti-partition moral stance.",
+      "sourceIds": [
+        "partitionWiki",
+        "quitIndia"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1916-lucknow",
+          "sortKey": 191612,
+          "dateDisplay": "December 1916",
+          "title": "Lucknow Pact",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1932-award",
+          "sortKey": 193208,
+          "dateDisplay": "August 1932",
+          "title": "Communal Award and Gandhi fast",
+          "playerSpecificActions": [
+            "Fast unto death against separate Dalit electorates."
+          ]
+        },
+        {
+          "eventId": "evt-1942-cripps",
+          "sortKey": 194203,
+          "dateDisplay": "March 1942",
+          "title": "Cripps Mission",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1942-quit",
+          "sortKey": 194208,
+          "dateDisplay": "August 1942",
+          "title": "Quit India Movement",
+          "playerSpecificActions": [
+            "Led Quit India resolution strategy."
+          ]
+        },
+        {
+          "eventId": "evt-1947-june-plan",
+          "sortKey": 19470603,
+          "dateDisplay": "2–3 June 1947",
+          "title": "Mountbatten Plan announced and accepted",
+          "playerSpecificActions": [
+            "Opposed partition emotionally; did not veto AICC vote."
+          ]
+        },
+        {
+          "eventId": "evt-1948-gandhi-fast",
+          "sortKey": 19480118,
+          "dateDisplay": "January 1948",
+          "title": "Gandhi’s fast for communal peace in Delhi",
+          "playerSpecificActions": [
+            "Fast until communal leaders pledged peace."
+          ]
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "jinnah",
+      "name": "Muhammad Ali Jinnah",
+      "alsoKnownAs": [
+        "Quaid-e-Azam",
+        "MA Jinnah"
+      ],
+      "birthYear": 1876,
+      "deathYear": 1948,
+      "nationality": {
+        "primary": "British Indian subject (1876–1947)",
+        "afterAugust1947": "Pakistani (Dominion of Pakistan)",
+        "ethnicOrRegionalIdentity": "Gujarati-origin Muslim; Karachi-born",
+        "legalNote": "Under British law all subjects of the Raj until dominion citizenship from 15 Aug 1947 (India) / 14 Aug 1947 (Pakistan)."
+      },
+      "faction": "All-India Muslim League",
+      "roles": [
+        "Barrister",
+        "League president",
+        "Negotiator",
+        "Governor-General of Pakistan (1947–48)"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "By 1940, argued Muslims and Hindus were distinct nations requiring Muslim-majority sovereignty; religion defined political community for Indian Muslims. Earlier had favored unity within a federal, constitutional India with strong minority safeguards.",
+      "desiresAndGoals": [
+        "Secure a sovereign Muslim-majority state (Pakistan) in northwest and east",
+        "Prevent permanent Hindu-majority domination in a centralised independent India",
+        "Obtain League recognition as sole representative of Muslim India in negotiations",
+        "Initially (1940s) opposed dividing Punjab and Bengal in a way that displaced all minorities—wanted integrated Muslim-majority units where possible"
+      ],
+      "fearsAndOppositions": [
+        "Congress majority rule without adequate Muslim veto or grouping",
+        "Weak centre that still left Muslims as permanent minority in united India",
+        "Loss of Muslim political weight if League treated as one party among many"
+      ],
+      "positions": {
+        "unitedIndia": "Supported until late 1930s in federal form; rejected by 1946 as unworkable without Pakistan.",
+        "pakistanOrMuslimState": "Primary architect of demand from Lahore Resolution onward.",
+        "populationExchange": "Public League stance: minorities should stay where they were; Punjab became exceptional due to violence.",
+        "punjabAndBengalDivision": "Accepted 1947 plan dividing provinces; had earlier opposed partition of Punjab/Bengal that implied mass displacement.",
+        "twoNationTheory": "Embraced explicitly from 1940; called it Muslim awakening for Pakistan."
+      },
+      "impactSummary": "Transformed Muslim League into mass party during WWII; Direct Action (1946); negotiated partition; founded Pakistani state apparatus as Governor-General.",
+      "sourceIds": [
+        "lahore",
+        "directAction",
+        "partitionWiki",
+        "jalal",
+        "twoNation"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1916-lucknow",
+          "sortKey": 191612,
+          "dateDisplay": "December 1916",
+          "title": "Lucknow Pact",
+          "playerSpecificActions": [
+            "Negotiated pact; supported Hindu–Muslim constitutional cooperation."
+          ]
+        },
+        {
+          "eventId": "evt-1937-elections",
+          "sortKey": 193701,
+          "dateDisplay": "1937",
+          "title": "Provincial elections",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1940-lahore",
+          "sortKey": 19400323,
+          "dateDisplay": "23 March 1940",
+          "title": "Lahore Resolution",
+          "playerSpecificActions": [
+            "Presided; articulated two-nation argument in Lahore session."
+          ]
+        },
+        {
+          "eventId": "evt-1939-war",
+          "sortKey": 193909,
+          "dateDisplay": "September 1939",
+          "title": "Second World War in India",
+          "playerSpecificActions": [
+            "League supported British war effort and expanded organization."
+          ]
+        },
+        {
+          "eventId": "evt-1942-cripps",
+          "sortKey": 194203,
+          "dateDisplay": "March 1942",
+          "title": "Cripps Mission",
+          "playerSpecificActions": [
+            "Rejected offer because opt-out clause insufficient for Pakistan."
+          ]
+        },
+        {
+          "eventId": "evt-1942-quit",
+          "sortKey": 194208,
+          "dateDisplay": "August 1942",
+          "title": "Quit India Movement",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1946-elections",
+          "sortKey": 194601,
+          "dateDisplay": "Early 1946",
+          "title": "Central and provincial elections",
+          "playerSpecificActions": [
+            "Interpreted League victory as popular mandate for Pakistan."
+          ]
+        },
+        {
+          "eventId": "evt-1946-cabinet",
+          "sortKey": 194602,
+          "dateDisplay": "February–July 1946",
+          "title": "Cabinet Mission",
+          "playerSpecificActions": [
+            "League initially accepted plan."
+          ]
+        },
+        {
+          "eventId": "evt-1946-direct-action",
+          "sortKey": 19460816,
+          "dateDisplay": "16–19 August 1946",
+          "title": "Direct Action Day and Great Calcutta Killings",
+          "playerSpecificActions": [
+            "Proclaimed 16 August as Direct Action Day for Pakistan."
+          ]
+        },
+        {
+          "eventId": "evt-1946-interim",
+          "sortKey": 194609,
+          "dateDisplay": "September 1946",
+          "title": "Interim Government of India",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-june-plan",
+          "sortKey": 19470603,
+          "dateDisplay": "2–3 June 1947",
+          "title": "Mountbatten Plan announced and accepted",
+          "playerSpecificActions": [
+            "Accepted plan as path to Pakistan."
+          ]
+        },
+        {
+          "eventId": "evt-1947-partition-council",
+          "sortKey": 19470615,
+          "dateDisplay": "June 1947",
+          "title": "Partition Council and asset division",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-pakistan-indep",
+          "sortKey": 19470814,
+          "dateDisplay": "14 August 1947",
+          "title": "Independence of Pakistan",
+          "playerSpecificActions": [
+            "Sworn in as first Governor-General in Karachi."
+          ]
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "macdonald",
+      "name": "Ramsay MacDonald",
+      "nationality": {
+        "primary": "British"
+      },
+      "faction": "UK Labour / National Government",
+      "roles": [
+        "Prime Minister"
+      ],
+      "partitionRelevance": "contextual",
+      "pointOfView": "Communal Award as compromise on minority representation.",
+      "desiresAndGoals": [
+        "Resolve Dalit-Muslim-Hindu representation"
+      ],
+      "fearsAndOppositions": [
+        "Communal breakdown"
+      ],
+      "positions": {
+        "unitedIndia": "Colonial constitutional reform",
+        "pakistanOrMuslimState": "N/A",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "1932 Communal Award.",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1932-award",
+          "sortKey": 193208,
+          "dateDisplay": "August 1932",
+          "title": "Communal Award and Gandhi fast",
+          "playerSpecificActions": [
+            "Accepted Ambedkar demand for separate Dalit representation."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "patel",
+      "name": "Sardar Vallabhbhai Patel",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Indian",
+        "ethnicOrRegionalIdentity": "Gujarati Hindu"
+      },
+      "faction": "Indian National Congress",
+      "roles": [
+        "Congress organizer",
+        "Home Minister / Deputy PM",
+        "Princely states integration"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Pragmatic realist: partition painful but preferable to endless communal veto and civil war; Muslim League officials in government seen as obstructive.",
+      "desiresAndGoals": [
+        "Swift independence even at cost of partition",
+        "Strong integrated India in Hindu-majority areas",
+        "Optional full population exchange for lasting peace (with Ambedkar)",
+        "Rapid accession of princely states"
+      ],
+      "fearsAndOppositions": [
+        "Cabinet Mission communal veto paralyzing progress",
+        "Civil war",
+        "Fragmentation into many partitions"
+      ],
+      "positions": {
+        "unitedIndia": "Wanted until mid-1947; then chose “one division over many.”",
+        "pakistanOrMuslimState": "Accepted de jure Pakistan to make League responsible.",
+        "populationExchange": "Supported exchange idea; overruled.",
+        "punjabAndBengalDivision": "Accepted.",
+        "twoNationTheory": "Rejected but accepted territorial split."
+      },
+      "impactSummary": "Persuaded Congress to accept June 1947 plan; Partition Council; integrated states; co-authored exchange proposal with Ambedkar.",
+      "sourceIds": [
+        "mountbattenPlan",
+        "partitionWiki",
+        "independenceAct"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1947-june-plan",
+          "sortKey": 19470603,
+          "dateDisplay": "2–3 June 1947",
+          "title": "Mountbatten Plan announced and accepted",
+          "playerSpecificActions": [
+            "Lobbied Congress Working Committee to accept; spoke on Partition Council."
+          ]
+        },
+        {
+          "eventId": "evt-1947-partition-council",
+          "sortKey": 19470615,
+          "dateDisplay": "June 1947",
+          "title": "Partition Council and asset division",
+          "playerSpecificActions": []
+        },
+        {
+          "eventId": "evt-1947-india-indep",
+          "sortKey": 19470815,
+          "dateDisplay": "15 August 1947",
+          "title": "Independence of India",
+          "playerSpecificActions": [
+            "Deputy PM and Home; princely-state integration underway."
+          ]
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "sikandar",
+      "name": "Sikandar Hayat Khan",
+      "nationality": {
+        "primary": "British Indian subject",
+        "deathYear": 1942,
+        "ethnicOrRegionalIdentity": "Punjabi Muslim landlord"
+      },
+      "faction": "Unionist Party (Punjab)",
+      "roles": [
+        "Premier of Punjab"
+      ],
+      "partitionRelevance": "contextual-alternative",
+      "pointOfView": "Cross-communal Punjabi landlord coalition—Muslims, Hindus, Sikhs in pragmatic unity against communal parties.",
+      "desiresAndGoals": [
+        "United Punjab autonomy",
+        "Opposition to Congress and League extremes in Punjab"
+      ],
+      "fearsAndOppositions": [
+        "Communal partition of Punjab",
+        "League or Congress monopoly"
+      ],
+      "positions": {
+        "unitedIndia": "Supported federal India with strong Punjab.",
+        "pakistanOrMuslimState": "Did not lead Pakistan movement; died before 1947 climax.",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "Model opposed to 1947 split.",
+        "twoNationTheory": "Rejected in practice via coalition."
+      },
+      "impactSummary": "1937–42 showed non-communal Punjab governance possible until war and his death.",
+      "sourceIds": [
+        "elections1937",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1937-elections",
+          "sortKey": 193701,
+          "dateDisplay": "1937",
+          "title": "Provincial elections",
+          "playerSpecificActions": [
+            "Unionist Party ruled Punjab with Congress and Akali support."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "radcliffe",
+      "name": "Sir Cyril Radcliffe",
+      "nationality": {
+        "primary": "British",
+        "ethnicOrRegionalIdentity": "English barrister"
+      },
+      "faction": "British boundary commission",
+      "roles": [
+        "Chairman, Punjab and Bengal Boundary Commissions"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Technical jurist with no prior India experience; instructed to use district majorities and “other factors”; deadlocked judges forced his solo awards.",
+      "desiresAndGoals": [
+        "Produce defensible boundary quickly",
+        "Leave India before monsoon and violence peak (did not stay for aftermath)"
+      ],
+      "fearsAndOppositions": [
+        "Unrealistic expectations from all sides",
+        "Violence regardless of line drawn"
+      ],
+      "positions": {
+        "unitedIndia": "N/A",
+        "pakistanOrMuslimState": "Implemented politically decided split.",
+        "populationExchange": "Did not design exchange; line shaped who fled.",
+        "punjabAndBengalDivision": "Core task.",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Radcliffe Line (published 17 Aug 1947) fixed borders; controversies over Gurdaspur, Khulna, etc.",
+      "sourceIds": [
+        "radcliffe",
+        "partitionWiki",
+        "talbotSingh"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1947-partition-council",
+          "sortKey": 19470615,
+          "dateDisplay": "June 1947",
+          "title": "Partition Council and asset division",
+          "playerSpecificActions": [
+            "Chaired boundary commissions with 2–2 deadlocks on major disputes."
+          ]
+        },
+        {
+          "eventId": "evt-1947-radcliffe-published",
+          "sortKey": 19470817,
+          "dateDisplay": "17 August 1947",
+          "title": "Radcliffe Line published",
+          "playerSpecificActions": [
+            "Award demarcated Punjab and Bengal boundaries."
+          ]
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "mudie",
+      "name": "Sir Francis Mudie",
+      "nationality": {
+        "primary": "British"
+      },
+      "faction": "British Indian administration",
+      "roles": [
+        "Governor of West Punjab"
+      ],
+      "partitionRelevance": "direct-violence",
+      "pointOfView": "Administrative reportage of refugee catastrophe.",
+      "desiresAndGoals": [
+        "Stabilize West Punjab influx"
+      ],
+      "fearsAndOppositions": [
+        "Undercounting deaths"
+      ],
+      "positions": {
+        "unitedIndia": "N/A",
+        "pakistanOrMuslimState": "Pakistani Punjab administration",
+        "populationExchange": "Witness to mass Muslim refugee deaths en route",
+        "punjabAndBengalDivision": "Implemented",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "High casualty estimates cited against Mountbatten.",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "timelineActions": [],
+      "roleLayer": "localCommunal_or_administrative"
+    },
+    {
+      "id": "cripps",
+      "name": "Sir Stafford Cripps",
+      "nationality": {
+        "primary": "British"
+      },
+      "faction": "UK Labour",
+      "roles": [
+        "Cabinet Mission",
+        "Cripps Mission"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "Socialist imperial reformer seeking wartime compromise.",
+      "desiresAndGoals": [
+        "Keep India in war",
+        "Dominion status offer"
+      ],
+      "fearsAndOppositions": [
+        "Japanese victory",
+        "Congress revolt"
+      ],
+      "positions": {
+        "unitedIndia": "1946 mission last unity push",
+        "pakistanOrMuslimState": "Deferred to groupings/opt-out",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "1942 and 1946 failed settlements.",
+      "sourceIds": [
+        "cripps",
+        "cabinetMission"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1942-cripps",
+          "sortKey": 194203,
+          "dateDisplay": "March 1942",
+          "title": "Cripps Mission",
+          "playerSpecificActions": [
+            "Negotiated with Congress and League."
+          ]
+        },
+        {
+          "eventId": "evt-1946-cabinet",
+          "sortKey": 194602,
+          "dateDisplay": "February–July 1946",
+          "title": "Cabinet Mission",
+          "playerSpecificActions": []
+        }
+      ],
+      "roleLayer": "mainAuthor_provincialPartition"
+    },
+    {
+      "id": "menon",
+      "name": "V. K. Krishna Menon",
+      "nationality": {
+        "primary": "British Indian → Indian",
+        "ethnicOrRegionalIdentity": "Malayali"
+      },
+      "faction": "India League (London)",
+      "roles": [
+        "Lobbyist"
+      ],
+      "partitionRelevance": "contextual",
+      "pointOfView": "Anti-colonial nationalist in UK; accelerated independence.",
+      "desiresAndGoals": [
+        "End Raj quickly",
+        "Influence Labour on India policy"
+      ],
+      "fearsAndOppositions": [
+        "Conservative imperial revival"
+      ],
+      "positions": {
+        "unitedIndia": "Nationalist default",
+        "pakistanOrMuslimState": "Accepted outcome",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Linked to Mountbatten viceroy selection in nationalist London circles.",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1947-mountbatten-arrives",
+          "sortKey": 19470324,
+          "dateDisplay": "March 1947",
+          "title": "Mountbatten sworn as last Viceroy",
+          "playerSpecificActions": [
+            "India League circles had promoted Mountbatten candidacy."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "linlithgow",
+      "name": "Victor Hope, 2nd Marquess of Linlithgow",
+      "nationality": {
+        "primary": "British"
+      },
+      "faction": "British Raj",
+      "roles": [
+        "Viceroy (1936–1943)"
+      ],
+      "partitionRelevance": "direct",
+      "pointOfView": "War imperial priority; balance League and Congress; treat Jinnah as equal interlocutor to Gandhi.",
+      "desiresAndGoals": [
+        "Indian war mobilization",
+        "Postpone constitutional final settlement until after war",
+        "Weaken Quit India"
+      ],
+      "fearsAndOppositions": [
+        "Japanese invasion",
+        "Congress obstruction of war effort"
+      ],
+      "positions": {
+        "unitedIndia": "August Offer 1940 for post-war dominion.",
+        "pakistanOrMuslimState": "Underestimated Pakistan until late war.",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Wartime jailing of Congress and League expansion under British patronage.",
+      "sourceIds": [
+        "quitIndia",
+        "partitionWiki"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1939-war",
+          "sortKey": 193909,
+          "dateDisplay": "September 1939",
+          "title": "Second World War in India",
+          "playerSpecificActions": [
+            "Committed India to war; later jailed Quit India leaders."
+          ]
+        },
+        {
+          "eventId": "evt-1942-quit",
+          "sortKey": 194208,
+          "dateDisplay": "August 1942",
+          "title": "Quit India Movement",
+          "playerSpecificActions": [
+            "Crushed movement; left League political space."
+          ]
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "savarkar",
+      "name": "Vinayak Damodar Savarkar",
+      "nationality": {
+        "primary": "British Indian subject",
+        "afterAugust1947": "Indian",
+        "ethnicOrRegionalIdentity": "Maharashtrian Hindu"
+      },
+      "faction": "Hindu Mahasabha",
+      "roles": [
+        "Ideologue of Hindutva"
+      ],
+      "partitionRelevance": "contextual-ideological",
+      "pointOfView": "Hindus are a nation; Muslims are separate nation—mirrors League logic from Hindu side; separation can be acceptable.",
+      "desiresAndGoals": [
+        "Hindu cultural and political primacy",
+        "Legal Hindu rashtra trajectory",
+        "End of Muslim political dominance in mixed areas"
+      ],
+      "fearsAndOppositions": [
+        "Muslim separatism unless Hindus assert nationhood",
+        "Conversion and “foreign” Muslim identity"
+      ],
+      "positions": {
+        "unitedIndia": "Rejected homogeneous unity fiction.",
+        "pakistanOrMuslimState": "1943: no quarrel with Jinnah’s two-nation theory.",
+        "populationExchange": "Some Hindutva streams favored removing Muslims from India.",
+        "punjabAndBengalDivision": "Accepted separation logic.",
+        "twoNationTheory": "Declared two nations in 1937 Ahmedabad speech."
+      },
+      "impactSummary": "Ideological pressure legitimizing territorial split from Hindu nationalist side; not a 1947 negotiator.",
+      "sourceIds": [
+        "twoNation",
+        "partitionWiki"
+      ],
+      "timelineActions": [],
+      "roleLayer": "localCommunal_or_administrative"
+    },
+    {
+      "id": "churchill",
+      "name": "Winston Churchill",
+      "nationality": {
+        "primary": "British"
+      },
+      "faction": "UK Conservative / wartime coalition",
+      "roles": [
+        "Prime Minister (1940–45)"
+      ],
+      "partitionRelevance": "contextual",
+      "pointOfView": "Imperial prestige; reluctant on Indian self-rule during war.",
+      "desiresAndGoals": [
+        "Win war with Indian resources",
+        "Protect minorities and princes"
+      ],
+      "fearsAndOppositions": [
+        "Congress rebellion aiding Axis"
+      ],
+      "positions": {
+        "unitedIndia": "Delayed full independence",
+        "pakistanOrMuslimState": "Not architect",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Authorized Cripps Mission 1942.",
+      "sourceIds": [
+        "cripps"
+      ],
+      "timelineActions": [
+        {
+          "eventId": "evt-1942-cripps",
+          "sortKey": 194203,
+          "dateDisplay": "March 1942",
+          "title": "Cripps Mission",
+          "playerSpecificActions": []
+        }
+      ],
+      "roleLayer": "contextual_or_ideological"
+    },
+    {
+      "id": "vp-menon",
+      "name": "V. P. Menon",
+      "nationality": {
+        "primary": "British Indian → Indian",
+        "ethnicOrRegionalIdentity": "Malayali Hindu"
+      },
+      "faction": "Dominion of India administration",
+      "roles": [
+        "Reforms Commissioner",
+        "Secretary, States Ministry",
+        "Patel’s accession negotiator"
+      ],
+      "partitionRelevance": "direct-integration",
+      "pointOfView": "Practical unionist: princely states must merge for viable India; minimal use of force except when unavoidable.",
+      "desiresAndGoals": [
+        "Maximum states acceding to India",
+        "Avoid independent Balkanized fragments",
+        "Standstill agreements then full integration"
+      ],
+      "fearsAndOppositions": [
+        "Independent Hyderabad or Kashmir",
+        "British-era princely autocracy continuing"
+      ],
+      "positions": {
+        "unitedIndia": "Built Indian Union from princely pieces",
+        "pakistanOrMuslimState": "N/A",
+        "populationExchange": "N/A",
+        "punjabAndBengalDivision": "N/A",
+        "twoNationTheory": "N/A"
+      },
+      "impactSummary": "Architect (with Patel) of accession campaign; author of Integration of the Indian States.",
+      "sourceIds": [
+        "politicalIntegration",
+        "menonBook",
+        "partitionWiki"
+      ],
+      "timelineActions": [],
+      "roleLayer": "integrator_princelyStates"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "evt-1905-bengal",
+      "sortKey": 190510,
+      "dateDisplay": "October 1905",
+      "title": "First partition of Bengal",
+      "summary": "British split Bengal along communal-majority lines, intensifying nationalist and communal politics.",
+      "playerIds": [
+        "curzon"
+      ],
+      "actions": [
+        {
+          "playerId": "curzon",
+          "description": "As Viceroy, partitioned Bengal into Eastern Bengal and Assam (Muslim-majority) and Western Bengal (Hindu-majority)."
+        }
+      ],
+      "consequences": [
+        "Swadeshi movement and Hindu protest",
+        "Muslim elite sought separate electorates and later founded Muslim League"
+      ],
+      "sourceIds": [
+        "bengal1905",
+        "britannica",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1906-league",
+      "sortKey": 190612,
+      "dateDisplay": "December 1906",
+      "title": "All-India Muslim League founded",
+      "summary": "Formal Muslim political organization created in Dacca.",
+      "playerIds": [
+        "salimullah",
+        "minto"
+      ],
+      "actions": [
+        {
+          "playerId": "salimullah",
+          "description": "Hosted founding meeting at Shahbag, Dacca."
+        },
+        {
+          "playerId": "minto",
+          "description": "Context: Muslim memorandum to Viceroy had demanded separate electorates and proportional representation."
+        }
+      ],
+      "sourceIds": [
+        "muslimLeague",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1911-bengal-reunite",
+      "sortKey": 191112,
+      "dateDisplay": "1911",
+      "title": "Reunification of Bengal",
+      "summary": "British reversed 1905 partition; many Muslims saw this as setback.",
+      "playerIds": [],
+      "actions": [],
+      "sourceIds": [
+        "partitionWiki",
+        "bengal1905"
+      ]
+    },
+    {
+      "id": "evt-1916-lucknow",
+      "sortKey": 191612,
+      "dateDisplay": "December 1916",
+      "title": "Lucknow Pact",
+      "summary": "Congress and Muslim League jointly demanded self-government; Congress accepted separate Muslim electorates.",
+      "playerIds": [
+        "jinnah",
+        "gandhi"
+      ],
+      "actions": [
+        {
+          "playerId": "jinnah",
+          "description": "Negotiated pact; supported Hindu–Muslim constitutional cooperation."
+        }
+      ],
+      "sourceIds": [
+        "lucknow",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1919-reforms",
+      "sortKey": 191912,
+      "dateDisplay": "December 1919",
+      "title": "Montagu–Chelmsford reforms",
+      "summary": "Dyarchy and expanded communal representation in councils.",
+      "playerIds": [
+        "montagu"
+      ],
+      "actions": [
+        {
+          "playerId": "montagu",
+          "description": "With Lord Chelmsford, enacted Government of India Act 1919 framework."
+        }
+      ],
+      "sourceIds": [
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1924-lajpat",
+      "sortKey": 192401,
+      "dateDisplay": "1924",
+      "title": "Lala Lajpat Rai two-nation-style proposal",
+      "summary": "Hindu leader argued for territorial split after Kohat riots.",
+      "playerIds": [
+        "lajpat"
+      ],
+      "actions": [
+        {
+          "playerId": "lajpat",
+          "description": "Advocated clear partition into Muslim and non-Muslim India."
+        }
+      ],
+      "sourceIds": [
+        "twoNation",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1933-pakistan-name",
+      "sortKey": 193301,
+      "dateDisplay": "1933",
+      "title": "Name “Pakistan” coined",
+      "summary": "Rahmat Ali pamphlet “Now or Never” proposed northwestern Muslim state.",
+      "playerIds": [
+        "rahmat"
+      ],
+      "actions": [
+        {
+          "playerId": "rahmat",
+          "description": "Coined Pakistan as acronym for Punjab, Afghania, Kashmir, Sindh, Balochistan."
+        }
+      ],
+      "sourceIds": [
+        "partitionWiki",
+        "lahore"
+      ]
+    },
+    {
+      "id": "evt-1932-award",
+      "sortKey": 193208,
+      "dateDisplay": "August 1932",
+      "title": "Communal Award and Gandhi fast",
+      "summary": "Separate electorates for Depressed Classes; Gandhi fasted; Poona Pact followed.",
+      "playerIds": [
+        "macdonald",
+        "gandhi",
+        "ambedkar"
+      ],
+      "actions": [
+        {
+          "playerId": "macdonald",
+          "description": "Accepted Ambedkar demand for separate Dalit representation."
+        },
+        {
+          "playerId": "gandhi",
+          "description": "Fast unto death against separate Dalit electorates."
+        },
+        {
+          "playerId": "ambedkar",
+          "description": "Negotiated compromise after Gandhi’s fast."
+        }
+      ],
+      "sourceIds": [
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1935-act",
+      "sortKey": 193507,
+      "dateDisplay": "August 1935",
+      "title": "Government of India Act 1935",
+      "summary": "Provincial autonomy; 1937 elections under new system.",
+      "playerIds": [],
+      "actions": [],
+      "sourceIds": [
+        "goi1935",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1937-elections",
+      "sortKey": 193701,
+      "dateDisplay": "1937",
+      "title": "Provincial elections",
+      "summary": "Congress majorities; League weak in Punjab and Bengal; failed Congress–League coalition in UP.",
+      "playerIds": [
+        "nehru",
+        "jinnah",
+        "huq",
+        "sikandar"
+      ],
+      "actions": [
+        {
+          "playerId": "nehru",
+          "description": "Congress formed governments in 7 provinces; offered League coalition in UP with conditions League rejected."
+        },
+        {
+          "playerId": "sikandar",
+          "description": "Unionist Party ruled Punjab with Congress and Akali support."
+        },
+        {
+          "playerId": "huq",
+          "description": "Shared power in Bengal coalition."
+        }
+      ],
+      "sourceIds": [
+        "elections1937",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1940-lahore",
+      "sortKey": 19400323,
+      "dateDisplay": "23 March 1940",
+      "title": "Lahore Resolution",
+      "summary": "Muslim League demand for independent states in Muslim-majority zones.",
+      "playerIds": [
+        "jinnah",
+        "khaliqu",
+        "liaquat"
+      ],
+      "actions": [
+        {
+          "playerId": "jinnah",
+          "description": "Presided; articulated two-nation argument in Lahore session."
+        },
+        {
+          "playerId": "khaliqu",
+          "description": "Seconded resolution."
+        },
+        {
+          "playerId": "liaquat",
+          "description": "Central League leadership role at Lahore."
+        }
+      ],
+      "sourceIds": [
+        "lahore",
+        "partitionWiki",
+        "twoNation"
+      ]
+    },
+    {
+      "id": "evt-1939-war",
+      "sortKey": 193909,
+      "dateDisplay": "September 1939",
+      "title": "Second World War in India",
+      "summary": "Linlithgow declared war without consulting Indians; Congress ministries resigned.",
+      "playerIds": [
+        "linlithgow",
+        "jinnah"
+      ],
+      "actions": [
+        {
+          "playerId": "linlithgow",
+          "description": "Committed India to war; later jailed Quit India leaders."
+        },
+        {
+          "playerId": "jinnah",
+          "description": "League supported British war effort and expanded organization."
+        }
+      ],
+      "sourceIds": [
+        "partitionWiki",
+        "quitIndia"
+      ]
+    },
+    {
+      "id": "evt-1942-cripps",
+      "sortKey": 194203,
+      "dateDisplay": "March 1942",
+      "title": "Cripps Mission",
+      "summary": "Failed offer of dominion status and provincial opt-out.",
+      "playerIds": [
+        "churchill",
+        "cripps",
+        "jinnah",
+        "gandhi"
+      ],
+      "actions": [
+        {
+          "playerId": "cripps",
+          "description": "Negotiated with Congress and League."
+        },
+        {
+          "playerId": "jinnah",
+          "description": "Rejected offer because opt-out clause insufficient for Pakistan."
+        }
+      ],
+      "sourceIds": [
+        "cripps",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1942-quit",
+      "sortKey": 194208,
+      "dateDisplay": "August 1942",
+      "title": "Quit India Movement",
+      "summary": "Congress mass campaign; leaders imprisoned until 1945; League organizational surge.",
+      "playerIds": [
+        "gandhi",
+        "nehru",
+        "linlithgow",
+        "jinnah"
+      ],
+      "actions": [
+        {
+          "playerId": "gandhi",
+          "description": "Led Quit India resolution strategy."
+        },
+        {
+          "playerId": "linlithgow",
+          "description": "Crushed movement; left League political space."
+        }
+      ],
+      "sourceIds": [
+        "quitIndia",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1945-labour",
+      "sortKey": 194507,
+      "dateDisplay": "July 1945 – early 1947",
+      "title": "British decision to decolonize",
+      "summary": "Attlee government prioritized Indian independence amid post-war exhaustion.",
+      "playerIds": [
+        "attlee",
+        "pethick"
+      ],
+      "actions": [
+        {
+          "playerId": "attlee",
+          "description": "Committed to transfer power by June 1948 (later accelerated)."
+        }
+      ],
+      "sourceIds": [
+        "ukNatArchives",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1946-elections",
+      "sortKey": 194601,
+      "dateDisplay": "Early 1946",
+      "title": "Central and provincial elections",
+      "summary": "Congress won ~91% of non-Muslim vote; League won most Muslim seats—each claimed mandate.",
+      "playerIds": [
+        "nehru",
+        "jinnah"
+      ],
+      "actions": [
+        {
+          "playerId": "jinnah",
+          "description": "Interpreted League victory as popular mandate for Pakistan."
+        },
+        {
+          "playerId": "nehru",
+          "description": "Congress seen as legitimate successor for most Hindus."
+        }
+      ],
+      "sourceIds": [
+        "elections1946",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1946-cabinet",
+      "sortKey": 194602,
+      "dateDisplay": "February–July 1946",
+      "title": "Cabinet Mission",
+      "summary": "Last major plan for united India with provincial groupings.",
+      "playerIds": [
+        "pethick",
+        "cripps",
+        "jinnah",
+        "nehru",
+        "azad"
+      ],
+      "actions": [
+        {
+          "playerId": "pethick",
+          "description": "Led mission proposing three-tier federation."
+        },
+        {
+          "playerId": "jinnah",
+          "description": "League initially accepted plan."
+        },
+        {
+          "playerId": "azad",
+          "description": "Congress leader favoring Indian unity."
+        }
+      ],
+      "sourceIds": [
+        "cabinetMission",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1946-nehru-speech",
+      "sortKey": 19460710,
+      "dateDisplay": "10 July 1946",
+      "title": "Nehru press conference on groupings",
+      "summary": "Nehru said provinces must be free to join or leave groups—League withdrew acceptance.",
+      "playerIds": [
+        "nehru"
+      ],
+      "actions": [
+        {
+          "playerId": "nehru",
+          "description": "Rejected compulsory grouping; plan collapsed."
+        }
+      ],
+      "sourceIds": [
+        "cabinetMission",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1946-direct-action",
+      "sortKey": 19460816,
+      "dateDisplay": "16–19 August 1946",
+      "title": "Direct Action Day and Great Calcutta Killings",
+      "summary": "Communal massacre in Calcutta; violence spread to Bihar, Noakhali, Rawalpindi.",
+      "playerIds": [
+        "jinnah",
+        "suhrawardy"
+      ],
+      "actions": [
+        {
+          "playerId": "jinnah",
+          "description": "Proclaimed 16 August as Direct Action Day for Pakistan."
+        },
+        {
+          "playerId": "suhrawardy",
+          "description": "As Bengal CM, addressed rally; ministry accused of allowing impunity."
+        }
+      ],
+      "sourceIds": [
+        "directAction",
+        "partitionWiki",
+        "khanBook"
+      ]
+    },
+    {
+      "id": "evt-1946-interim",
+      "sortKey": 194609,
+      "dateDisplay": "September 1946",
+      "title": "Interim Government of India",
+      "summary": "Nehru prime minister; failed power-sharing with League.",
+      "playerIds": [
+        "nehru",
+        "azad",
+        "jinnah"
+      ],
+      "actions": [
+        {
+          "playerId": "nehru",
+          "description": "Headed interim government."
+        }
+      ],
+      "sourceIds": [
+        "partitionWiki",
+        "elections1946"
+      ]
+    },
+    {
+      "id": "evt-1947-tara-lahore",
+      "sortKey": 19470303,
+      "dateDisplay": "3 March 1947",
+      "title": "Master Tara Singh Lahore protest",
+      "summary": "Sikh leader’s anti-Pakistan rally escalated Punjab violence.",
+      "playerIds": [
+        "tara"
+      ],
+      "actions": [
+        {
+          "playerId": "tara",
+          "description": "Declared “Death to Pakistan” with kirpan at Punjab Assembly, Lahore."
+        }
+      ],
+      "sourceIds": [
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1947-mountbatten-arrives",
+      "sortKey": 19470324,
+      "dateDisplay": "March 1947",
+      "title": "Mountbatten sworn as last Viceroy",
+      "summary": "Mandate: transfer power by June 1948; avoid partition if possible.",
+      "playerIds": [
+        "mountbatten",
+        "attlee",
+        "menon"
+      ],
+      "actions": [
+        {
+          "playerId": "mountbatten",
+          "description": "Concluded partition necessary for orderly and rapid exit."
+        },
+        {
+          "playerId": "menon",
+          "description": "India League circles had promoted Mountbatten candidacy."
+        }
+      ],
+      "sourceIds": [
+        "mountbattenPlan",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1947-june-plan",
+      "sortKey": 19470603,
+      "dateDisplay": "2–3 June 1947",
+      "title": "Mountbatten Plan announced and accepted",
+      "summary": "Partition of Punjab and Bengal; referenda; boundary commissions.",
+      "playerIds": [
+        "mountbatten",
+        "patel",
+        "nehru",
+        "jinnah",
+        "liaquat",
+        "tara",
+        "gandhi",
+        "azad"
+      ],
+      "actions": [
+        {
+          "playerId": "patel",
+          "description": "Lobbied Congress Working Committee to accept; spoke on Partition Council."
+        },
+        {
+          "playerId": "gandhi",
+          "description": "Opposed partition emotionally; did not veto AICC vote."
+        },
+        {
+          "playerId": "jinnah",
+          "description": "Accepted plan as path to Pakistan."
+        },
+        {
+          "playerId": "tara",
+          "description": "Represented Sikh agreement to partition framework."
+        },
+        {
+          "playerId": "azad",
+          "description": "Warned Mountbatten of riot risk."
+        }
+      ],
+      "sourceIds": [
+        "mountbattenPlan",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1947-partition-council",
+      "sortKey": 19470615,
+      "dateDisplay": "June 1947",
+      "title": "Partition Council and asset division",
+      "summary": "Split of army, navy, treasury, civil service; Radcliffe commissions.",
+      "playerIds": [
+        "patel",
+        "rajagopalachari",
+        "jinnah",
+        "liaquat",
+        "nishtar",
+        "radcliffe"
+      ],
+      "actions": [
+        {
+          "playerId": "radcliffe",
+          "description": "Chaired boundary commissions with 2–2 deadlocks on major disputes."
+        }
+      ],
+      "sourceIds": [
+        "radcliffe",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1947-independence-act",
+      "sortKey": 19470718,
+      "dateDisplay": "18 July 1947",
+      "title": "Indian Independence Act receives Royal Assent",
+      "summary": "Legal creation of two dominions; end of British paramountcy over princes.",
+      "playerIds": [
+        "attlee"
+      ],
+      "actions": [
+        {
+          "playerId": "attlee",
+          "description": "UK Parliament enacted partition law."
+        }
+      ],
+      "sourceIds": [
+        "independenceAct",
+        "ukNatArchives"
+      ]
+    },
+    {
+      "id": "evt-1947-pakistan-indep",
+      "sortKey": 19470814,
+      "dateDisplay": "14 August 1947",
+      "title": "Independence of Pakistan",
+      "summary": "Dominion of Pakistan; Jinnah Governor-General.",
+      "playerIds": [
+        "jinnah",
+        "mountbatten",
+        "liaquat"
+      ],
+      "actions": [
+        {
+          "playerId": "jinnah",
+          "description": "Sworn in as first Governor-General in Karachi."
+        },
+        {
+          "playerId": "liaquat",
+          "description": "Became first Prime Minister of Pakistan."
+        }
+      ],
+      "sourceIds": [
+        "independenceAct",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1947-india-indep",
+      "sortKey": 19470815,
+      "dateDisplay": "15 August 1947",
+      "title": "Independence of India",
+      "summary": "Dominion of India; Nehru PM; Mountbatten Governor-General.",
+      "playerIds": [
+        "nehru",
+        "mountbatten",
+        "patel"
+      ],
+      "actions": [
+        {
+          "playerId": "nehru",
+          "description": "Became first Prime Minister; “Tryst with Destiny” speech."
+        },
+        {
+          "playerId": "patel",
+          "description": "Deputy PM and Home; princely-state integration underway."
+        }
+      ],
+      "sourceIds": [
+        "independenceAct",
+        "partitionWiki"
+      ]
+    },
+    {
+      "id": "evt-1947-radcliffe-published",
+      "sortKey": 19470817,
+      "dateDisplay": "17 August 1947",
+      "title": "Radcliffe Line published",
+      "summary": "Borders revealed after independence; massive displacement and violence in Punjab.",
+      "playerIds": [
+        "radcliffe",
+        "mountbatten"
+      ],
+      "actions": [
+        {
+          "playerId": "radcliffe",
+          "description": "Award demarcated Punjab and Bengal boundaries."
+        }
+      ],
+      "sourceIds": [
+        "radcliffe",
+        "partitionWiki",
+        "talbotSingh"
+      ]
+    },
+    {
+      "id": "evt-1948-gandhi-fast",
+      "sortKey": 19480118,
+      "dateDisplay": "January 1948",
+      "title": "Gandhi’s fast for communal peace in Delhi",
+      "summary": "Fast ended major Delhi killings; Gandhi assassinated later that month.",
+      "playerIds": [
+        "gandhi",
+        "nehru",
+        "azad"
+      ],
+      "actions": [
+        {
+          "playerId": "gandhi",
+          "description": "Fast until communal leaders pledged peace."
+        }
+      ],
+      "sourceIds": [
+        "partitionWiki"
+      ]
+    }
+  ],
+  "crossCuttingThemes": {
+    "twoNationTheory": {
+      "summary": "Claim that Hindus and Muslims are separate nations; foundation of Pakistan Movement; also echoed by Hindu Mahasabha figures.",
+      "proponents": [
+        "jinnah",
+        "savarkar",
+        "lajpat",
+        "khaliqu",
+        "liaquat"
+      ],
+      "opponents": [
+        "gandhi",
+        "azad",
+        "ghaffar",
+        "madani",
+        "nehru"
+      ],
+      "sourceIds": [
+        "twoNation",
+        "partitionWiki",
+        "lahore"
+      ]
+    },
+    "populationExchange": {
+      "summary": "Full exchange (all Muslims to Pakistan, all Hindus/Sikhs to India) advocated by Patel and Ambedkar; rejected by Gandhi and Nehru. Punjab saw de facto massive exchange amid violence.",
+      "advocates": [
+        "patel",
+        "ambedkar"
+      ],
+      "opponents": [
+        "gandhi",
+        "nehru"
+      ],
+      "sourceIds": [
+        "partitionWiki",
+        "talbotSingh"
+      ]
+    },
+    "britishMotivations": {
+      "summary": "Post-war exhaustion, Labour anti-imperialism, fear of civil war, and desire for quick exit; debates on whether haste increased violence.",
+      "keyActors": [
+        "attlee",
+        "mountbatten",
+        "pethick",
+        "cripps"
+      ],
+      "sourceIds": [
+        "ukNatArchives",
+        "partitionWiki",
+        "khanBook"
+      ]
+    }
+  },
+  "relatedCanvas": "/Users/inaayat/.cursor/projects/empty-window/canvases/partition-india-players-timeline.canvas.tsx",
+  "meta": {
+    "playerCount": 36,
+    "eventCount": 29,
+    "sourceCount": 28,
+    "updatedAt": "2026-09-22T02:31:28.193Z",
+    "princelyStateActorCount": 20,
+    "schemaVersion": "1.1.0"
+  },
+  "princelyStatesGuide": {
+    "definition": "Semi-autonomous kingdoms under British paramountcy—not British provinces. Rulers (maharajas, nawabs, nizams) governed internally; Britain handled external relations until paramountcy lapsed on 15 Aug 1947.",
+    "legalChange1947": "Indian Independence Act ended paramountcy; rulers were expected to accede to India or Pakistan via Instrument of Accession (defence, foreign affairs, communications to chosen dominion).",
+    "whyTheyMatterForPartition": [
+      "They were not divided by the Radcliffe Line but chose (or were pressured to choose) India or Pakistan.",
+      "Several rulers or their governments participated in communal violence or failed to stop it (especially Rajputana and Punjab border states).",
+      "Delayed or contested accessions (Kashmir, Hyderabad, Junagadh) extended 1947 crisis into wars and police actions in 1947–48."
+    ],
+    "integratorsNote": "All-India accession campaign on the Indian side was driven mainly by Sardar Patel and civil servant V. P. Menon (not princely rulers).",
+    "sourceIds": [
+      "partitionWiki",
+      "independenceAct",
+      "politicalIntegration",
+      "princelyStatesList"
+    ]
+  },
+  "princelyStateActors": [
+    {
+      "id": "ps-kashmir-hari",
+      "stateName": "Jammu and Kashmir",
+      "rulerName": "Maharaja Hari Singh",
+      "title": "Maharaja",
+      "rulerReligion": "Hindu (Dogra)",
+      "stateReligionMajority": "Muslim (roughly in Kashmir Valley; mixed in Jammu)",
+      "region": "Himalayan North",
+      "accessionOutcome": "India (disputed)",
+      "accessionDateApprox": "October 1947",
+      "oneLineRole": "Delayed accession, sought stand-alone status, then acceded to India after Pathan tribal incursion—seed of India–Pakistan Kashmir conflict.",
+      "violenceOrMigration": "1947 Jammu massacres and displacement of Muslims; later violence in Poonch/Rajouri.",
+      "partitionRelevance": "critical-post-1947",
+      "sourceIds": [
+        "partitionWiki",
+        "jammu1947",
+        "politicalIntegration"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Filled gaps the provincial partition did not settle—explains today’s disputed or delayed borders."
+    },
+    {
+      "id": "ps-hyderabad-nizam",
+      "stateName": "Hyderabad (Deccan)",
+      "rulerName": "Mir Osman Ali Khan (Asaf Jah VII)",
+      "title": "Nizam",
+      "rulerReligion": "Muslim",
+      "stateReligionMajority": "Hindu majority population",
+      "region": "South-central India (enclave in Dominion of India)",
+      "accessionOutcome": "India (after Operation Polo, Sept 1948)",
+      "accessionDateApprox": "Initially independence claim; integrated 17 Sep 1948",
+      "oneLineRole": "Richest princely state; attempted independence outside both dominions; suppressed by Indian army in 1948.",
+      "violenceOrMigration": "1947–48 communal Razakar violence and Hindu refugee flows into India.",
+      "partitionRelevance": "critical-post-1947",
+      "sourceIds": [
+        "partitionWiki",
+        "hyderabad1948",
+        "politicalIntegration"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Filled gaps the provincial partition did not settle—explains today’s disputed or delayed borders."
+    },
+    {
+      "id": "ps-junagadh",
+      "stateName": "Junagadh",
+      "rulerName": "Muhammad Mahabat Khanji III",
+      "title": "Nawab",
+      "rulerReligion": "Muslim",
+      "stateReligionMajority": "Hindu majority",
+      "region": "Kathiawar, Gujarat",
+      "accessionOutcome": "India (Nov 1947 plebiscite after Indian blockade)",
+      "accessionDateApprox": "September 1947 accession to Pakistan announced; reversed by plebiscite",
+      "oneLineRole": "Muslim ruler tried to join Pakistan despite Hindu majority and geographic link to India—preview of accession disputes.",
+      "violenceOrMigration": "Refugee and administrative crisis; plebiscite overwhelmingly for India.",
+      "partitionRelevance": "high-accession-crisis",
+      "sourceIds": [
+        "junagadh",
+        "politicalIntegration",
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-patiala",
+      "stateName": "Patiala",
+      "rulerName": "Yadavindra Singh",
+      "title": "Maharaja",
+      "rulerReligion": "Sikh",
+      "stateReligionMajority": "Mixed; significant Muslim Meo population in surrounding areas",
+      "region": "East Punjab (princely enclave in Indian Punjab)",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Acceded early to India; state forces linked to anti-Muslim cleansing; later posed as peacekeeper after Meos were driven out (per Suhrawardy–Gandhi correspondence).",
+      "violenceOrMigration": "Muslim Meo expulsion from Patiala state and adjacent British districts; refugees to Pakistan.",
+      "partitionRelevance": "direct-violence",
+      "sourceIds": [
+        "partitionWiki",
+        "politicalIntegration"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Added demographic change beyond Radcliffe—explains refugee totals and minority shrinkage."
+    },
+    {
+      "id": "ps-faridkot",
+      "stateName": "Faridkot",
+      "rulerName": "Harinder Singh Brar",
+      "title": "Maharaja",
+      "rulerReligion": "Sikh",
+      "stateReligionMajority": "Mixed",
+      "region": "East Punjab",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Acceded to India; historian Ian Copland records interest in communal massacre details and response to Tara Singh’s mobilization.",
+      "violenceOrMigration": "Participation in organized violence against Muslims in state and border areas.",
+      "partitionRelevance": "direct-violence",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Added demographic change beyond Radcliffe—explains refugee totals and minority shrinkage."
+    },
+    {
+      "id": "ps-bharatpur",
+      "stateName": "Bharatpur",
+      "rulerName": "Brijendra Singh",
+      "title": "Maharaja",
+      "rulerReligion": "Hindu (Jat)",
+      "stateReligionMajority": "Mixed; large Meo Muslim cultivator population",
+      "region": "Rajputana (modern Rajasthan)",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Acceded to India; personally linked to Meo cleansing at Khumbar and Deeg; told Muslims to “go to Jinnah.”",
+      "violenceOrMigration": "Estimated tens of thousands of Meos killed or displaced toward Pakistan (1947).",
+      "partitionRelevance": "direct-violence",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Added demographic change beyond Radcliffe—explains refugee totals and minority shrinkage."
+    },
+    {
+      "id": "ps-alwar",
+      "stateName": "Alwar",
+      "rulerName": "Tej Singh (Jai Singh lineage—Maharaja Jai Singh ruled until 1937; Tej Singh in 1947)",
+      "title": "Maharaja",
+      "rulerReligion": "Hindu",
+      "stateReligionMajority": "Mixed; Meo Muslims",
+      "region": "Rajputana",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Acceded to India; prime minister and state forces accused of planning attacks on Meo villages inside and outside state borders.",
+      "violenceOrMigration": "Part of Alwar–Bharatpur Meo catastrophe (~100k fled, ~30k killed per article estimates).",
+      "partitionRelevance": "direct-violence",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Added demographic change beyond Radcliffe—explains refugee totals and minority shrinkage."
+    },
+    {
+      "id": "ps-bikaner",
+      "stateName": "Bikaner",
+      "rulerName": "Sadul Singh",
+      "title": "Maharaja",
+      "rulerReligion": "Hindu",
+      "stateReligionMajority": "Hindu majority",
+      "region": "Rajputana",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Acceded to India; communal organization reported at lower administrative levels rather than court-centered (contrast with Alwar/Bharatpur).",
+      "violenceOrMigration": "Some border communal violence; less court-driven than neighboring states.",
+      "partitionRelevance": "moderate",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-bahawalpur",
+      "stateName": "Bahawalpur",
+      "rulerName": "Sadeq Mohammad Khan V (Nawab of Bahawalpur)",
+      "title": "Nawab",
+      "rulerReligion": "Muslim",
+      "stateReligionMajority": "Muslim majority",
+      "region": "Punjab border (present-day Pakistan Punjab)",
+      "accessionOutcome": "Pakistan",
+      "accessionDateApprox": "October 1947 (ruler cut short Europe trip; returned 1 Oct 1947)",
+      "oneLineRole": "Muslim-majority state joining Pakistan; violence in state reportedly fell when nawab returned and restrained cleansing.",
+      "violenceOrMigration": "Hindu/Sikh minorities migrated to India; relative stability after ruler’s return.",
+      "partitionRelevance": "accession-pakistan",
+      "sourceIds": [
+        "partitionWiki",
+        "politicalIntegration"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-kapurthala",
+      "stateName": "Kapurthala",
+      "rulerName": "Jagatjit Singh",
+      "title": "Maharaja",
+      "rulerReligion": "Sikh",
+      "stateReligionMajority": "Mixed",
+      "region": "East Punjab",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Acceded to India; with Jind, treated as exception where princely communal violence was less centrally organized than in Patiala or Faridkot.",
+      "violenceOrMigration": "Lower organized violence than Patiala/Faridkot per partition article exception clause.",
+      "partitionRelevance": "accession-india",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-jind",
+      "stateName": "Jind",
+      "rulerName": "Rajbir Singh",
+      "title": "Maharaja",
+      "rulerReligion": "Sikh",
+      "stateReligionMajority": "Mixed",
+      "region": "East Punjab",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Acceded to India; cited as exception where princely-state communal violence was less centrally organized than Patiala/Faridkot.",
+      "violenceOrMigration": "Localized tensions; not primary cleansing hub.",
+      "partitionRelevance": "accession-india",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-nabha",
+      "stateName": "Nabha",
+      "rulerName": "Yaduindra Singh",
+      "title": "Maharaja",
+      "rulerReligion": "Sikh",
+      "stateReligionMajority": "Mixed",
+      "region": "East Punjab",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Acceded to India; part of Phulkian Sikh states; Muslim refugees counted in Pakistan migration statistics from Nabha state.",
+      "violenceOrMigration": "Muslim refugee outflow to West Punjab documented in 1948 refugee census tables.",
+      "partitionRelevance": "accession-india",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-bhopal",
+      "stateName": "Bhopal",
+      "rulerName": "Hamidullah Khan",
+      "title": "Nawab",
+      "rulerReligion": "Muslim",
+      "stateReligionMajority": "Hindu majority",
+      "region": "Central India",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "1949 (delayed accession after initial hesitation)",
+      "oneLineRole": "Muslim ruler of Hindu-majority state; hesitated then acceded to India—shows Muslim rulers could choose Dominion of India.",
+      "violenceOrMigration": "Limited compared to Punjab/Rajputana.",
+      "partitionRelevance": "accession-india-delayed",
+      "sourceIds": [
+        "politicalIntegration",
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-travancore",
+      "stateName": "Travancore",
+      "rulerName": "Chithira Thirunal Balarama Varma",
+      "title": "Maharaja",
+      "rulerReligion": "Hindu",
+      "stateReligionMajority": "Hindu majority (significant Christian population)",
+      "region": "Malabar/South India",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "July–August 1947 (after brief independence rhetoric)",
+      "oneLineRole": "Dewan C. P. Ramaswami Iyer briefly pursued independence; acceded to India before independence day—illustrates “third option” pressure.",
+      "violenceOrMigration": "Minimal direct partition violence.",
+      "partitionRelevance": "accession-rhetoric",
+      "sourceIds": [
+        "politicalIntegration",
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-mysore",
+      "stateName": "Mysore",
+      "rulerName": "Jayachamarajendra Wadiyar",
+      "title": "Maharaja",
+      "rulerReligion": "Hindu",
+      "stateReligionMajority": "Hindu majority",
+      "region": "South India",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Large prosperous state; smooth accession to India—typical of south Indian princes accepting Patel–Menon integration.",
+      "violenceOrMigration": "Not a partition violence hotspot.",
+      "partitionRelevance": "accession-india-smooth",
+      "sourceIds": [
+        "politicalIntegration"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-khairpur",
+      "stateName": "Khairpur",
+      "rulerName": "Mir George Ali Murad Khan Talpur",
+      "title": "Mir / Amir",
+      "rulerReligion": "Muslim",
+      "stateReligionMajority": "Muslim majority",
+      "region": "Sindh (present-day Pakistan)",
+      "accessionOutcome": "Pakistan",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Sindh princely state; acceded to Pakistan—part of Pakistani territorial consolidation outside Radcliffe provincial split.",
+      "violenceOrMigration": "Hindu minority migration to India in wider Sindh exodus.",
+      "partitionRelevance": "accession-pakistan",
+      "sourceIds": [
+        "princelyStatesList",
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-kalat",
+      "stateName": "Kalat (Balochistan)",
+      "rulerName": "Ahmad Yar Khan",
+      "title": "Khan",
+      "rulerReligion": "Muslim (Baloch)",
+      "stateReligionMajority": "Muslim",
+      "region": "Balochistan (Pakistan)",
+      "accessionOutcome": "Pakistan (forced incorporation March 1948)",
+      "accessionDateApprox": "March 1948",
+      "oneLineRole": "Briefly declared independence after 1947; re-integrated into Pakistan—Baloch autonomy dispute echoing princely “third option.”",
+      "violenceOrMigration": "Military integration; not Punjab-style communal exchange.",
+      "partitionRelevance": "post-1947-pakistan",
+      "sourceIds": [
+        "politicalIntegration",
+        "princelyStatesList"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-malerkotla",
+      "stateName": "Malerkotla",
+      "rulerName": "Moinuddin Khan (last nawab lineage)",
+      "title": "Nawab",
+      "rulerReligion": "Muslim",
+      "stateReligionMajority": "Muslim majority (small state)",
+      "region": "East Punjab (India)",
+      "accessionOutcome": "India",
+      "accessionDateApprox": "August 1947",
+      "oneLineRole": "Tiny Muslim-majority state surrounded by East Punjab; acceded to India and largely avoided total Muslim depopulation unlike rest of East Punjab (noted exception in partition literature).",
+      "violenceOrMigration": "Relative Muslim survival exception in East Punjab context.",
+      "partitionRelevance": "exception-demographic",
+      "sourceIds": [
+        "partitionWiki"
+      ],
+      "roleLayer": "princely_ruler_or_state",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-mountbatten-advice",
+      "stateName": "(All princely states — Mountbatten policy)",
+      "rulerName": "Lord Mountbatten (to rulers)",
+      "title": "Viceroy",
+      "rulerReligion": "N/A",
+      "stateReligionMajority": "N/A",
+      "region": "All India",
+      "accessionOutcome": "Policy: join India or Pakistan, not independence",
+      "accessionDateApprox": "3 June 1947 plan speech",
+      "oneLineRole": "Publicly urged princes on 3 June 1947 to accede to one dominion and not remain independent—shaped accession timeline.",
+      "violenceOrMigration": "N/A",
+      "partitionRelevance": "policy",
+      "sourceIds": [
+        "mountbattenPlan",
+        "partitionWiki"
+      ],
+      "roleLayer": "policy_for_princes",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    },
+    {
+      "id": "ps-patel-menon-integration",
+      "stateName": "(Indian integration — not a princely state)",
+      "rulerName": "Sardar Patel & V. P. Menon",
+      "title": "Deputy PM / Home Minister & Reforms Secretary",
+      "rulerReligion": "N/A",
+      "stateReligionMajority": "N/A",
+      "region": "Dominion of India",
+      "accessionOutcome": "Integrated ~562 states into India (1947–50)",
+      "accessionDateApprox": "1947–1949 peak",
+      "oneLineRole": "Patel backed Menon’s accession negotiations, standstill agreements, and pressure (including Hyderabad/Junagadh)—counterpart to princely rulers’ choices.",
+      "violenceOrMigration": "Prevented balkanization; used force only in Hyderabad.",
+      "partitionRelevance": "integrators-not-rulers",
+      "sourceIds": [
+        "politicalIntegration",
+        "menonBook",
+        "partitionWiki"
+      ],
+      "roleLayer": "integrator_notPrincely",
+      "relationshipToMainAuthors": "Extended India or Pakistan territory without changing the core two-dominion decision."
+    }
+  ],
+  "princelyStateActorsIndex": [
+    {
+      "id": "ps-kashmir-hari",
+      "stateName": "Jammu and Kashmir",
+      "rulerName": "Maharaja Hari Singh",
+      "accessionOutcome": "India (disputed)",
+      "oneLineRole": "Delayed accession, sought stand-alone status, then acceded to India after Pathan tribal incursion—seed of India–Pakistan Kashmir conflict."
+    },
+    {
+      "id": "ps-hyderabad-nizam",
+      "stateName": "Hyderabad (Deccan)",
+      "rulerName": "Mir Osman Ali Khan (Asaf Jah VII)",
+      "accessionOutcome": "India (after Operation Polo, Sept 1948)",
+      "oneLineRole": "Richest princely state; attempted independence outside both dominions; suppressed by Indian army in 1948."
+    },
+    {
+      "id": "ps-junagadh",
+      "stateName": "Junagadh",
+      "rulerName": "Muhammad Mahabat Khanji III",
+      "accessionOutcome": "India (Nov 1947 plebiscite after Indian blockade)",
+      "oneLineRole": "Muslim ruler tried to join Pakistan despite Hindu majority and geographic link to India—preview of accession disputes."
+    },
+    {
+      "id": "ps-patiala",
+      "stateName": "Patiala",
+      "rulerName": "Yadavindra Singh",
+      "accessionOutcome": "India",
+      "oneLineRole": "Acceded early to India; state forces linked to anti-Muslim cleansing; later posed as peacekeeper after Meos were driven out (per Suhrawardy–Gandhi correspondence)."
+    },
+    {
+      "id": "ps-faridkot",
+      "stateName": "Faridkot",
+      "rulerName": "Harinder Singh Brar",
+      "accessionOutcome": "India",
+      "oneLineRole": "Acceded to India; historian Ian Copland records interest in communal massacre details and response to Tara Singh’s mobilization."
+    },
+    {
+      "id": "ps-bharatpur",
+      "stateName": "Bharatpur",
+      "rulerName": "Brijendra Singh",
+      "accessionOutcome": "India",
+      "oneLineRole": "Acceded to India; personally linked to Meo cleansing at Khumbar and Deeg; told Muslims to “go to Jinnah.”"
+    },
+    {
+      "id": "ps-alwar",
+      "stateName": "Alwar",
+      "rulerName": "Tej Singh (Jai Singh lineage—Maharaja Jai Singh ruled until 1937; Tej Singh in 1947)",
+      "accessionOutcome": "India",
+      "oneLineRole": "Acceded to India; prime minister and state forces accused of planning attacks on Meo villages inside and outside state borders."
+    },
+    {
+      "id": "ps-bikaner",
+      "stateName": "Bikaner",
+      "rulerName": "Sadul Singh",
+      "accessionOutcome": "India",
+      "oneLineRole": "Acceded to India; communal organization reported at lower administrative levels rather than court-centered (contrast with Alwar/Bharatpur)."
+    },
+    {
+      "id": "ps-bahawalpur",
+      "stateName": "Bahawalpur",
+      "rulerName": "Sadeq Mohammad Khan V (Nawab of Bahawalpur)",
+      "accessionOutcome": "Pakistan",
+      "oneLineRole": "Muslim-majority state joining Pakistan; violence in state reportedly fell when nawab returned and restrained cleansing."
+    },
+    {
+      "id": "ps-kapurthala",
+      "stateName": "Kapurthala",
+      "rulerName": "Jagatjit Singh",
+      "accessionOutcome": "India",
+      "oneLineRole": "Acceded to India; with Jind, treated as exception where princely communal violence was less centrally organized than in Patiala or Faridkot."
+    },
+    {
+      "id": "ps-jind",
+      "stateName": "Jind",
+      "rulerName": "Rajbir Singh",
+      "accessionOutcome": "India",
+      "oneLineRole": "Acceded to India; cited as exception where princely-state communal violence was less centrally organized than Patiala/Faridkot."
+    },
+    {
+      "id": "ps-nabha",
+      "stateName": "Nabha",
+      "rulerName": "Yaduindra Singh",
+      "accessionOutcome": "India",
+      "oneLineRole": "Acceded to India; part of Phulkian Sikh states; Muslim refugees counted in Pakistan migration statistics from Nabha state."
+    },
+    {
+      "id": "ps-bhopal",
+      "stateName": "Bhopal",
+      "rulerName": "Hamidullah Khan",
+      "accessionOutcome": "India",
+      "oneLineRole": "Muslim ruler of Hindu-majority state; hesitated then acceded to India—shows Muslim rulers could choose Dominion of India."
+    },
+    {
+      "id": "ps-travancore",
+      "stateName": "Travancore",
+      "rulerName": "Chithira Thirunal Balarama Varma",
+      "accessionOutcome": "India",
+      "oneLineRole": "Dewan C. P. Ramaswami Iyer briefly pursued independence; acceded to India before independence day—illustrates “third option” pressure."
+    },
+    {
+      "id": "ps-mysore",
+      "stateName": "Mysore",
+      "rulerName": "Jayachamarajendra Wadiyar",
+      "accessionOutcome": "India",
+      "oneLineRole": "Large prosperous state; smooth accession to India—typical of south Indian princes accepting Patel–Menon integration."
+    },
+    {
+      "id": "ps-khairpur",
+      "stateName": "Khairpur",
+      "rulerName": "Mir George Ali Murad Khan Talpur",
+      "accessionOutcome": "Pakistan",
+      "oneLineRole": "Sindh princely state; acceded to Pakistan—part of Pakistani territorial consolidation outside Radcliffe provincial split."
+    },
+    {
+      "id": "ps-kalat",
+      "stateName": "Kalat (Balochistan)",
+      "rulerName": "Ahmad Yar Khan",
+      "accessionOutcome": "Pakistan (forced incorporation March 1948)",
+      "oneLineRole": "Briefly declared independence after 1947; re-integrated into Pakistan—Baloch autonomy dispute echoing princely “third option.”"
+    },
+    {
+      "id": "ps-malerkotla",
+      "stateName": "Malerkotla",
+      "rulerName": "Moinuddin Khan (last nawab lineage)",
+      "accessionOutcome": "India",
+      "oneLineRole": "Tiny Muslim-majority state surrounded by East Punjab; acceded to India and largely avoided total Muslim depopulation unlike rest of East Punjab (noted exception in partition literature)."
+    }
+  ],
+  "rolesDelineationAndLegacyToPresent": {
+    "summary": "1947 produced today’s South Asian map through two separate mechanisms: (A) negotiators who split British provinces and created India/Pakistan dominions, and (B) princely rulers and local actors who chose which dominion to join—or resisted—plus communal violence that changed who lived where. Today’s borders, disputes, and demographic realities are the stacked result of both layers—not princely accession alone, and not the Radcliffe Line alone.",
+    "twoMechanisms": {
+      "mechanismA_provincialPartition": {
+        "label": "Main authors — provincial partition & dominion creation",
+        "whatItDetermined": [
+          "Existence of two successor states: Dominion of India and Dominion of Pakistan (later Republic of India, Islamic Republic of Pakistan, and after 1971 People's Republic of Bangladesh).",
+          "Split of Punjab and Bengal provinces along roughly communal-majority district lines (Radcliffe Line).",
+          "Referenda: NWFP to Pakistan; Sylhet (Assam) to East Pakistan.",
+          "Division of British Indian Army, treasury, railways, and civil service.",
+          "Legal end of British Raj on 14–15 August 1947."
+        ],
+        "whatItDidNotDetermine": [
+          "Borders of most princely states (they acceded as units, then merged).",
+          "Final status of Kashmir, Hyderabad, Junagadh without later accession wars/plebiscites.",
+          "Exact population mix on each side—violence and migration reshaped demographics after the legal line was drawn."
+        ],
+        "primaryActorGroups": [
+          {
+            "group": "British exit managers",
+            "playerIds": [
+              "attlee",
+              "mountbatten",
+              "pethick",
+              "cripps",
+              "radcliffe"
+            ],
+            "role": "Set timetable, failed unity plans, imposed June 1947 partition, drew boundaries, passed Independence Act."
+          },
+          {
+            "group": "Muslim League — Pakistan authors",
+            "playerIds": [
+              "jinnah",
+              "liaquat",
+              "khaliqu",
+              "nishtar",
+              "suhrawardy"
+            ],
+            "role": "Mobilized Muslim-majority areas for separate state; Direct Action; accepted Mountbatten Plan; formed Pakistan government."
+          },
+          {
+            "group": "Indian National Congress — India authors (reluctant on split)",
+            "playerIds": [
+              "nehru",
+              "patel",
+              "gandhi",
+              "azad",
+              "rajagopalachari"
+            ],
+            "role": "Sought united India with strong centre; Nehru torpedoed Cabinet Mission groupings; Patel accepted partition June 1947; built Indian dominion."
+          },
+          {
+            "group": "Opponents of partition (did not stop outcome)",
+            "playerIds": [
+              "gandhi",
+              "azad",
+              "ghaffar",
+              "madani"
+            ],
+            "role": "Articulated united/secular or composite nationalism; lost to deadlock and violence."
+          },
+          {
+            "group": "Communal boundary hardliners (not at negotiating table)",
+            "playerIds": [
+              "tara",
+              "savarkar"
+            ],
+            "role": "Escalated Punjab communal war; ideological two-nation mirror—shaped facts on ground before Radcliffe published."
+          }
+        ],
+        "sourceIds": [
+          "partitionWiki",
+          "mountbattenPlan",
+          "independenceAct",
+          "radcliffe",
+          "cabinetMission",
+          "lahore"
+        ]
+      },
+      "mechanismB_princelyAccessionAndLocalViolence": {
+        "label": "Princely states & local sovereigns — accession, integration, cleansing",
+        "whatItDetermined": [
+          "Which dominion inherited each princely territory (India vs Pakistan)—adding pieces not covered by provincial Radcliffe cuts.",
+          "Post-1947 map of Indian Union after Patel–Menon integration (~562 states into India; Pakistani states into Pakistan).",
+          "Local demographic shocks (Meo expulsions from Rajputana/Sikh states; Sindh Hindu exodus) on top of Punjab/Bengal migration.",
+          "Unresolved or disputed territories: Kashmir (Hari Singh accession + war), Hyderabad (1948), Junagadh (plebiscite), Kalat (Balochistan)."
+        ],
+        "whatItDidNotDetermine": [
+          "Creation of Pakistan as a concept—that came from League + provincial partition.",
+          "East vs West Pakistan wings—the eastern wing was Bengal province partition, not a princely state decision."
+        ],
+        "primaryActorGroups": [
+          {
+            "group": "Indian integrators (not princes)",
+            "playerIds": [
+              "patel",
+              "vp-menon",
+              "mountbatten"
+            ],
+            "princelyStateIds": [
+              "ps-patel-menon-integration",
+              "ps-mountbatten-advice"
+            ],
+            "role": "Pressed accession to India or Pakistan; standstill agreements; prevented independent Hyderabad long-term."
+          },
+          {
+            "group": "Disputed or delayed accessions",
+            "princelyStateIds": [
+              "ps-kashmir-hari",
+              "ps-hyderabad-nizam",
+              "ps-junagadh"
+            ],
+            "role": "Rulers’ hesitation or independence bids became today’s Kashmir dispute and settled but traumatic integrations."
+          },
+          {
+            "group": "Punjab/Sikh princely violence",
+            "princelyStateIds": [
+              "ps-patiala",
+              "ps-faridkot",
+              "ps-nabha"
+            ],
+            "role": "Acceded to India while participating in or enabling Muslim expulsion—reinforced near-total Muslim exit from East Punjab."
+          },
+          {
+            "group": "Rajputana Meo catastrophe",
+            "princelyStateIds": [
+              "ps-alwar",
+              "ps-bharatpur",
+              "ps-bikaner"
+            ],
+            "role": "Mass Meo Muslim flight into Pakistan from regions not drawn on Radcliffe map—shows violence ≠ only provincial border."
+          },
+          {
+            "group": "Pakistan accession blocks",
+            "princelyStateIds": [
+              "ps-bahawalpur",
+              "ps-khairpur",
+              "ps-kalat"
+            ],
+            "role": "Expanded Pakistan beyond Punjab/Sindh province lines; Kalat foreshadows Baloch grievances."
+          },
+          {
+            "group": "Demographic exceptions",
+            "princelyStateIds": [
+              "ps-malerkotla"
+            ],
+            "role": "Small Muslim-majority pocket surviving in Indian Punjab—proves map + accession ≠ uniform cleansing."
+          }
+        ],
+        "sourceIds": [
+          "politicalIntegration",
+          "princelyStatesList",
+          "partitionWiki",
+          "jammu1947",
+          "hyderabad1948",
+          "junagadh"
+        ]
+      }
+    },
+    "causalChain": [
+      {
+        "step": 1,
+        "period": "1905–1939",
+        "actors": "Curzon, Minto, League founders, Congress, communal reformers",
+        "decisionOrProcess": "Communal electorates, Bengal partition/reunion, provincial Muslim anxieties.",
+        "effectOnToday": "Institutionalized religion in politics—precondition for two-state solution later.",
+        "sourceIds": [
+          "bengal1905",
+          "muslimLeague",
+          "partitionWiki"
+        ]
+      },
+      {
+        "step": 2,
+        "period": "1940–1942",
+        "actors": "Jinnah, League; Gandhi, Nehru; Churchill, Cripps",
+        "decisionOrProcess": "Lahore Resolution; failed Cripps; Quit India vs League wartime growth.",
+        "effectOnToday": "Pakistan demand mainstreamed; Congress–League parity impossible during WWII.",
+        "sourceIds": [
+          "lahore",
+          "cripps",
+          "quitIndia"
+        ]
+      },
+      {
+        "step": 3,
+        "period": "1946",
+        "actors": "Pethick-Lawrence, Cripps, Jinnah, Nehru, Suhrawardy",
+        "decisionOrProcess": "Cabinet Mission collapse; Direct Action Day violence; interim government deadlock.",
+        "effectOnToday": "Last united-India plan dead; communal war normalized—partition seen as least bad exit.",
+        "sourceIds": [
+          "cabinetMission",
+          "directAction",
+          "khanBook"
+        ]
+      },
+      {
+        "step": 4,
+        "period": "June–Aug 1947",
+        "actors": "Mountbatten, Patel, Nehru, Jinnah, Radcliffe, Tara Singh",
+        "decisionOrProcess": "Mountbatten Plan; Independence Act; Punjab/Bengal split; Radcliffe Line published 17 Aug.",
+        "effectOnToday": "International borders India–Pakistan (west) and India–Bangladesh (east, after 1971); two-wing Pakistan until Bangladesh war.",
+        "sourceIds": [
+          "mountbattenPlan",
+          "independenceAct",
+          "radcliffe",
+          "partitionBengal1947"
+        ]
+      },
+      {
+        "step": 5,
+        "period": "Aug 1947–1949",
+        "actors": "Patel, Menon, princes, Hari Singh, Nizam, refugees/violence on all sides",
+        "decisionOrProcess": "Mass migration and killing; princely accessions; Kashmir war; Hyderabad 1948; Junagadh plebiscite.",
+        "effectOnToday": "Demographics (Muslim minority in India, tiny Hindu/Sikh share in Pakistan); Kashmir LOC; unified India minus princely patchwork.",
+        "sourceIds": [
+          "politicalIntegration",
+          "jammu1947",
+          "hyderabad1948",
+          "junagadh",
+          "partitionWiki"
+        ]
+      },
+      {
+        "step": 6,
+        "period": "1951–1971–ongoing",
+        "actors": "India, Pakistan governments; Bangladesh secession 1971",
+        "decisionOrProcess": "No full population exchange; continued migrations; wars; Bangladesh independence splits Pakistan geographically.",
+        "effectOnToday": "Three major states on subcontinent; East Pakistan became Bangladesh—NOT part of original 1947 princely logic but of 1947 Bengal cut.",
+        "sourceIds": [
+          "bangladesh1971",
+          "partitionWiki",
+          "indoPakRelations"
+        ]
+      }
+    ],
+    "todayMapExplained": {
+      "modernIndia": {
+        "territoryFrom": [
+          "Hindu-majority British provinces assigned to India in June 1947 plan.",
+          "Eastern Punjab (East Punjab), Haryana, Himachal carved later from partitioned Punjab.",
+          "West Bengal and most of Assam (minus Sylhet to East Pakistan).",
+          "Princely states that acceded to India (Patel–Menon), including Rajputana, Hyderabad (1948), Kashmir (claimed, disputed)."
+        ],
+        "key1947Choices": [
+          "Patel accepted partition",
+          "Nehru rejected exchange—large Muslim population remains",
+          "Radcliffe districts in Gurdaspur/Kapurthala corridor linked India to Kashmir"
+        ],
+        "sourceIds": [
+          "radcliffe",
+          "politicalIntegration",
+          "partitionWiki"
+        ]
+      },
+      "modernPakistan": {
+        "territoryFrom": [
+          "West: Punjab (west), Sindh, Balochistan, NWFP (referendum).",
+          "East: East Bengal (East Pakistan until 1971).",
+          "Princely accessions: Bahawalpur, Khairpur, parts of Balochistan (Kalat 1948)."
+        ],
+        "key1947Choices": [
+          "League two-nation demand",
+          "Direct Action strengthened bid",
+          "Jinnah accepted divided Punjab/Bengal though had earlier opposed splitting provinces"
+        ],
+        "sourceIds": [
+          "lahore",
+          "partitionWiki",
+          "partitionBengal1947"
+        ]
+      },
+      "modernBangladesh": {
+        "territoryFrom": [
+          "East Bengal / East Pakistan from 1947 provincial partition of Bengal—not a separate princely accession decision in 1947."
+        ],
+        "key1947Choices": [
+          "Radcliffe placed Muslim-majority eastern districts in Pakistan wing",
+          "1971 secession was later crisis of Pakistan, not second partition of India per Wikipedia scope note"
+        ],
+        "sourceIds": [
+          "partitionBengal1947",
+          "bangladesh1971",
+          "partitionWiki"
+        ]
+      },
+      "disputedOrAnomalous": [
+        {
+          "issue": "Kashmir (Jammu & Kashmir)",
+          "origin1947": "Hari Singh delayed accession; Oct 1947 accession to India; first India–Pakistan war; Line of Control",
+          "today": "Core India–Pakistan conflict; nuclear shadow",
+          "ids": [
+            "ps-kashmir-hari",
+            "hari"
+          ],
+          "sourceIds": [
+            "kashmirConflict",
+            "jammu1947"
+          ]
+        },
+        {
+          "issue": "Sir Creek / minor border anomalies",
+          "origin1947": "Radcliffe ambiguity and princely merges",
+          "today": "Maritime and border disputes",
+          "sourceIds": [
+            "radcliffe",
+            "indoPakRelations"
+          ]
+        },
+        {
+          "issue": "Enclaves (resolved 2015)",
+          "origin1947": "Bengal district patchwork",
+          "today": "Mostly resolved; symbol of arbitrary line",
+          "sourceIds": [
+            "partitionBengal1947"
+          ]
+        }
+      ]
+    },
+    "ongoingIssuesLinkedTo1947": [
+      {
+        "issue": "India–Pakistan hostility and wars",
+        "roots": [
+          "Two-nation ideology",
+          "Direct Action and Punjab genocide",
+          "Kashmir accession",
+          "No durable reconciliation mechanism at independence"
+        ],
+        "mainAuthorContribution": "Jinnah–League vs Nehru–Congress deadlock; Mountbatten hasty timeline",
+        "princelyContribution": "Kashmir (Hari Singh); optional: Junagadh as precedent for accession disputes",
+        "sourceIds": [
+          "indoPakRelations",
+          "kashmirConflict",
+          "partitionWiki"
+        ]
+      },
+      {
+        "issue": "Kashmir dispute",
+        "roots": [
+          "Princely state not partitioned by Radcliffe",
+          "Hari Singh independence then accession",
+          "1947 war"
+        ],
+        "mainAuthorContribution": "Independence Act left princes free; Mountbatten did not resolve Kashmir before August",
+        "princelyContribution": "Primary—Hari Singh choice and timing",
+        "sourceIds": [
+          "kashmirConflict",
+          "jammu1947",
+          "politicalIntegration"
+        ]
+      },
+      {
+        "issue": "Muslim minority in India (~14%+) vs Hindu/Sikh decline in Pakistan",
+        "roots": [
+          "Nehru–Gandhi rejection of full population exchange",
+          "Patel/Ambedkar exchange rejected",
+          "Punjab/Bengal violence achieved partial exchange anyway"
+        ],
+        "mainAuthorContribution": "Congress secular pluralism decision",
+        "princelyContribution": "Rajputana and Sikh state cleansing added Muslim refugees to Pakistan beyond Punjab line",
+        "sourceIds": [
+          "partitionWiki",
+          "talbotSingh"
+        ]
+      },
+      {
+        "issue": "Punjab memory, Khalistan politics, Sikh diaspora",
+        "roots": [
+          "Radcliffe cut through Sikh sacred geography",
+          "Tara Singh mobilization",
+          "East Punjab Muslim exit"
+        ],
+        "mainAuthorContribution": "Agreement to partition Punjab in June 1947",
+        "princelyContribution": "Sikh princely states aligned with India and cleansing",
+        "sourceIds": [
+          "partitionWiki",
+          "radcliffe"
+        ]
+      },
+      {
+        "issue": "Bangladesh identity (1971)",
+        "roots": [
+          "1947 East Bengal in Pakistan wing",
+          "Geographic separation from West Pakistan",
+          "Language and political marginalization"
+        ],
+        "mainAuthorContribution": "Bengal provincial partition placed East Bengal in Pakistan",
+        "princelyContribution": "Minimal—provincial not princely",
+        "sourceIds": [
+          "bangladesh1971",
+          "partitionBengal1947"
+        ]
+      },
+      {
+        "issue": "Baloch nationalist grievances",
+        "roots": [
+          "Kalat brief independence and 1948 incorporation into Pakistan"
+        ],
+        "mainAuthorContribution": "Pakistan state-building after provincial partition",
+        "princelyContribution": "Khan of Kalat accession/incorporation dispute",
+        "sourceIds": [
+          "politicalIntegration",
+          "princelyStatesList"
+        ]
+      },
+      {
+        "issue": "Communal politics and periodic riots in South Asia",
+        "roots": [
+          "Partition violence memory",
+          "Two-nation narratives on both sides",
+          "Incomplete exchange leaving minorities on each side"
+        ],
+        "mainAuthorContribution": "League and Congress communal deadlock; British divide-and-rule legacy",
+        "princelyContribution": "Local cleansing normalized expulsion as policy",
+        "sourceIds": [
+          "partitionWiki",
+          "khanBook",
+          "twoNation"
+        ]
+      }
+    ],
+    "attributionGuide": {
+      "useWhenExplaining": "When asking “who caused today’s border?” assign partial credit: provincial negotiators drew the main international line; princely accessions and wars adjusted north (Kashmir) and integration map; mass violence determined who could live where regardless of legal minority protections.",
+      "commonMisconceptions": [
+        {
+          "wrong": "Princely states were cut by Radcliffe like Punjab.",
+          "correct": "Most princes chose India or Pakistan; their territories joined as blocks."
+        },
+        {
+          "wrong": "Jinnah alone created Pakistan overnight.",
+          "correct": "Required League mass base, British exit, Congress acceptance, violence, and provincial partition machinery."
+        },
+        {
+          "wrong": "Partition fully separated Muslims and Hindus.",
+          "correct": "Large Muslim population remained in India by design; Pakistan still had minorities, later reduced by migration and persecution."
+        },
+        {
+          "wrong": "Bangladesh was part of 1947 princely accession.",
+          "correct": "Bangladesh territory was 1947 Bengal split; 1971 was Pakistan’s breakup."
+        }
+      ],
+      "playerIdCrosswalk": {
+        "mainAuthorsKeyPlayerIds": [
+          "jinnah",
+          "nehru",
+          "patel",
+          "gandhi",
+          "mountbatten",
+          "attlee",
+          "radcliffe",
+          "liaquat",
+          "suhrawardy",
+          "azad",
+          "pethick",
+          "cripps"
+        ],
+        "princelyStateEntryIds": [
+          "ps-kashmir-hari",
+          "ps-hyderabad-nizam",
+          "ps-junagadh",
+          "ps-patiala",
+          "ps-faridkot",
+          "ps-bharatpur",
+          "ps-alwar",
+          "ps-bikaner",
+          "ps-bahawalpur",
+          "ps-kapurthala",
+          "ps-jind",
+          "ps-nabha",
+          "ps-bhopal",
+          "ps-travancore",
+          "ps-mysore",
+          "ps-khairpur",
+          "ps-kalat",
+          "ps-malerkotla"
+        ],
+        "integratorsNotPrinces": [
+          "patel",
+          "vp-menon",
+          "ps-patel-menon-integration"
+        ]
+      }
+    },
+    "diagramMermaid": "flowchart TB\n    subgraph authors [Main authors 1946-47]\n      BR[Britain: Attlee Mountbatten Radcliffe]\n      LG[Muslim League: Jinnah Liaquat]\n      IN[Congress: Nehru Patel Gandhi]\n    end\n    subgraph decisions [Legal outcomes Aug 1947]\n      DOM[Two dominions India and Pakistan]\n      RAD[Radcliffe Line Punjab and Bengal]\n      ACT[Independence Act]\n    end\n    subgraph princes [Princely layer parallel]\n      ACC[Accessions to India or Pakistan]\n      VIO[Local princely and communal violence]\n      DIS[Disputed: Kashmir Hyderabad Junagadh]\n    end\n    subgraph today [South Asia today]\n      MAP[International borders and LOC]\n      DEMO[Demographics minorities diaspora]\n      CON[Kashmir wars communal memory Bangladesh 1971]\n    end\n    authors --> decisions\n    decisions --> MAP\n    princes --> MAP\n    princes --> DEMO\n    decisions --> DEMO\n    VIO --> DEMO\n    DIS --> CON\n    RAD --> MAP\n    ACT --> DOM"
+  }
+}

@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { buildFrames, chronoKey, sourceRecords } from "../partition-model.js";
+import { flows, markers, regions, seams } from "../partition-geography.js";
 import {
   ALL,
   campOf,
@@ -1440,5 +1442,71 @@ assert.equal(immigrationStances[0].kind, "opposed");
 assert.equal(immigrationStances[1].kind, "supported");
 assert.ok(obamaEvents.filter((event) => event.people.includes("same-sex-marriage")).length >= 2);
 assert.ok(vanceEvents.filter((event) => event.people.includes("donald-trump")).length >= 2);
+
+const partition = plots.plots.find((item) => item.id === "partition-of-india");
+assert.equal(partition.arrangement, "historical-map");
+const partitionRef = readJson("../data/partition-of-india/reference.json");
+assert.equal(partitionRef.schemaVersion, "1.1.0");
+assert.equal(partitionRef.keyPlayers.length, 36);
+assert.equal(partitionRef.timeline.length, 29);
+const partitionPlayers = new Set(partitionRef.keyPlayers.map((player) => player.id));
+const nameEvent = partitionRef.timeline.find((event) => event.id === "evt-1933-pakistan-name");
+assert.equal(nameEvent.sortKey, 193301);
+assert.ok(chronoKey(19400323) < chronoKey(194203));
+assert.ok(chronoKey(19400323) > chronoKey(193909));
+for (const event of partitionRef.timeline) {
+  event.playerIds.forEach((id) => assert.ok(partitionPlayers.has(id), `${event.id} player ${id}`));
+  event.sourceIds.forEach((id) => assert.ok(partitionRef.sourcesCatalog[id], `${event.id} source ${id}`));
+  assert.equal(sourceRecords(partitionRef.sourcesCatalog, event.sourceIds).length, event.sourceIds.length);
+}
+const partitionFrames = buildFrames(partitionRef);
+assert.equal(new Set(partitionFrames.map((frame) => frame.id)).size, partitionFrames.length);
+const frameIndex = (id) => partitionFrames.findIndex((frame) => frame.id === id);
+assert.ok(frameIndex("evt-1932-award") < frameIndex("evt-1933-pakistan-name"));
+assert.ok(frameIndex("evt-1939-war") < frameIndex("evt-1940-lahore"));
+assert.ok(frameIndex("evt-1940-lahore") < frameIndex("evt-1942-cripps"));
+assert.ok(frameIndex("evt-1946-nehru-speech") < frameIndex("evt-1946-direct-action"));
+assert.ok(frameIndex("evt-1947-radcliffe-published") < frameIndex("frame-kashmir"));
+assert.ok(frameIndex("frame-kashmir") < frameIndex("evt-1948-gandhi-fast"));
+assert.ok(frameIndex("frame-bangladesh") < frameIndex("frame-present"));
+const radcliffe = partitionFrames.find((frame) => frame.id === "evt-1947-radcliffe-published");
+assert.equal(radcliffe.visual.seams.punjab, "set");
+assert.equal(radcliffe.visual.seams.bengal, "set");
+assert.equal(radcliffe.visual.fills["punjab-west"], "pakistan");
+assert.equal(radcliffe.visual.fills["bengal-east"], "eastpak");
+assert.ok(radcliffe.visual.flows.includes("meo"));
+const kashmir = partitionFrames.find((frame) => frame.id === "frame-kashmir");
+assert.equal(kashmir.visual.fills["kashmir-ind"], "india");
+assert.equal(kashmir.visual.fills["kashmir-pak"], "pakistan");
+assert.equal(kashmir.visual.seams.kashmir, "set");
+const bangladesh = partitionFrames.find((frame) => frame.id === "frame-bangladesh");
+assert.equal(bangladesh.visual.fills["bengal-east"], "bangladesh");
+for (const frame of partitionFrames) {
+  Object.keys(frame.visual.fills).forEach((id) => assert.ok(regions.some((region) => region.id === id), id));
+  Object.keys(frame.visual.seams).forEach((id) => assert.ok(seams[id], id));
+  frame.visual.flows.forEach((id) => assert.ok(flows[id], id));
+  frame.visual.markers.forEach((id) => assert.ok(markers[id], id));
+  frame.playerIds.forEach((id) => assert.ok(partitionPlayers.has(id), `${frame.id} ${id}`));
+  frame.sourceIds.forEach((id) => assert.ok(partitionRef.sourcesCatalog[id], `${frame.id} ${id}`));
+}
+const june = partitionFrames.find((frame) => frame.id === "evt-1947-june-plan");
+assert.equal(june.visual.seams.punjab, "proposed");
+const reunited = partitionFrames.find((frame) => frame.id === "evt-1911-bengal-reunite");
+assert.equal(reunited.visual.seams.bengal, "off");
+assert.equal(reunited.visual.fills["bengal-east"], "raj");
+
+const portraits = readJson("../data/partition-of-india/portraits.json");
+const portraitLicenses = new Set(["Public domain", "CC0", "CC BY 3.0", "CC BY-SA 3.0", "GODL-India"]);
+assert.ok(Object.keys(portraits).length >= 30, "most partition figures have a free portrait");
+for (const [id, portrait] of Object.entries(portraits)) {
+  assert.ok(partitionPlayers.has(id), `${id} portrait is not a researched player`);
+  assert.match(portrait.src, /^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//, id);
+  assert.match(portrait.page, /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/, id);
+  assert.ok(portrait.author && portraitLicenses.has(portrait.license), `${id} license`);
+  assert.match(portrait.licenseUrl, /^https:\/\//, id);
+}
+["mudie", "vp-menon", "rajagopalachari"].forEach((id) => {
+  assert.equal(portraits[id], undefined, `${id} has no freely licensed solo portrait`);
+});
 
 console.log("never-ending internet lore tests passed");
