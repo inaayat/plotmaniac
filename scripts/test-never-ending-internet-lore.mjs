@@ -1004,6 +1004,7 @@ assert.match(html, /id="hub-select"/, "hub focus control");
 assert.match(html, /Gallery of obsessions/, "pick view eyebrow");
 assert.match(html, /id="plot-search"/, "homepage plot search");
 assert.match(html, /Turn rabbit holes into clickable plots: maps, webs, lists, timelines\./, "homepage tagline");
+assert.match(html, /viewBox="0 9 420 67"/, "homepage gold arc is cropped to the stroke");
 const css = fs.readFileSync(new URL("../lore.css", import.meta.url), "utf8");
 assert.match(css, /max-width: 768px/, "compact layout breakpoint");
 assert.match(css, /\.gallery-search/, "homepage search is an underline field");
@@ -1012,6 +1013,7 @@ assert.match(css, /\.plot-cards > li/, "gallery items stretch so cards share a h
 assert.match(css, /-webkit-line-clamp: 2/, "gallery titles can wrap to two lines");
 assert.equal(/\.plot-card strong \{[^}]*min-height:/.test(css), false, "gallery titles do not reserve a blank second line");
 assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?6\.4rem/, "pick view keeps the large title");
+assert.match(css, /body\[data-view="pick"\] \.mark \{[\s\S]*?margin: 2px auto 4px/, "homepage title sits close to the lede");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
 const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
 const partitionViewSource = fs.readFileSync(new URL("../partition-view.js", import.meta.url), "utf8");

@@ -150,9 +150,9 @@ h3 {
 
 .mark {
   display: block;
-  width: min(420px, 88vw);
+  width: min(260px, 56vw);
   height: auto;
-  margin: 22px auto 16px;
+  margin: 2px auto 4px;
 }
 
 .mark path.arc {
@@ -394,8 +394,8 @@ body[data-view="pick"] h1 {
 }
 
 body[data-view="pick"] .mark {
-  width: min(420px, 88vw);
-  margin: 22px auto 16px;
+  width: min(260px, 56vw);
+  margin: 2px auto 4px;
 }
 
 body[data-view="pick"] .lede {
@@ -3068,8 +3068,8 @@ body[data-view="timeline"] #footer-note {
   }
 
   body[data-view="pick"] .mark {
-    width: min(320px, 70vw);
-    margin: 14px auto 12px;
+    width: min(220px, 50vw);
+    margin: 2px auto 4px;
   }
 
   body[data-view="pick"] .plot-card {
@@ -3137,7 +3137,8 @@ body[data-view="timeline"] #footer-note {
   }
 
   body[data-view="pick"] .mark {
-    width: min(320px, 80vw);
+    width: min(220px, 70vw);
+    margin: 2px auto 4px;
   }
 
   body[data-view="pick"] .lede {
