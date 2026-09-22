@@ -406,8 +406,14 @@ const hubFieldOpts = {
 };
 const sharedWeb = webLayout(people, relations, { ...hubFieldOpts, centerId: "ethan-klein" });
 assert.ok(sharedWeb.nodes.length < people.length, "one-beat people stay off the shared web");
+assert.equal(events.find((event) => event.id === "dobrik-early-life"), undefined);
 assert.equal(sharedWeb.nodes.find((node) => node.id === "oliver-tree"), undefined);
 assert.equal(sharedWeb.nodes.find((node) => node.id === "oscar-gracey"), undefined);
+assert.equal(sharedWeb.nodes.find((node) => node.id === "nik-keswani"), undefined);
+assert.equal(sharedWeb.nodes.find((node) => node.id === "alex-ernst"), undefined);
+assert.ok(sharedWeb.nodes.every((node) => node.plotHub || node.beats >= WEB_MIN_BEATS));
+assert.equal(people.find((person) => person.id === "dom-zeglaitis").name, "Durte Dom");
+assert.ok(sharedWeb.nodes.some((node) => node.id === "dom-zeglaitis" && node.name === "Durte Dom"));
 assert.equal(sharedWeb.nodes.filter((node) => node.id === "trisha-paytas").length, 1);
 assert.equal(sharedWeb.nodes.find((node) => node.id === "ethan-klein").camp, "center");
 assert.equal(sharedWeb.nodes.find((node) => node.id === "david-dobrik").camp, "orbit");
