@@ -337,7 +337,7 @@ export function chronologyRailPosterSize({ count = 1, availableHeight = 560 } = 
   const usable = Math.max(96, Number(availableHeight) || 0);
   // Keep the side rails readable. Long prerequisite lists scroll inside their
   // rail instead of collapsing into postage stamps.
-  const height = Math.max(116, Math.min(144, (usable - gap * (n - 1) - caption * n) / n));
+  const height = Math.max(128, Math.min(144, (usable - gap * (n - 1) - caption * n) / n));
   return {
     count: n,
     gap,
