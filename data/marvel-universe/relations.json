@@ -1468,5 +1468,35 @@
     "to": "yukio-fox",
     "kind": "universe-member",
     "label": "Appears in fox"
+  },
+  {
+    "from": "tony-stark",
+    "to": "jean-grey-mcu",
+    "kind": "universe-member",
+    "label": "Appears in mcu-main"
+  },
+  {
+    "from": "tony-stark",
+    "to": "mac-gargan",
+    "kind": "universe-member",
+    "label": "Appears in mcu-main"
+  },
+  {
+    "from": "tony-stark",
+    "to": "jean-dewolff",
+    "kind": "universe-member",
+    "label": "Appears in mcu-main"
+  },
+  {
+    "from": "tony-stark",
+    "to": "bill-metzger",
+    "kind": "universe-member",
+    "label": "Appears in mcu-main"
+  },
+  {
+    "from": "tony-stark",
+    "to": "sara-grey",
+    "kind": "universe-member",
+    "label": "Appears in mcu-main"
   }
 ]

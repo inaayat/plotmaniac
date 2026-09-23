@@ -2732,5 +2732,63 @@
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
+  },
+  {
+    "id": "jean-grey-mcu",
+    "name": "Jean Grey / Phoenix (MCU)",
+    "role": "Young telepath introduced in Spider-Man: Brand New Day",
+    "tags": [
+      "mutant",
+      "spider-man"
+    ],
+    "universes": [
+      "mcu-main"
+    ]
+  },
+  {
+    "id": "mac-gargan",
+    "name": "Mac Gargan / Scorpion",
+    "role": "Scorpion, returning from Spider-Man: Homecoming",
+    "tags": [
+      "spider-man",
+      "villain"
+    ],
+    "universes": [
+      "mcu-main"
+    ]
+  },
+  {
+    "id": "jean-dewolff",
+    "name": "Jean DeWolff",
+    "role": "NYPD captain",
+    "tags": [
+      "spider-man",
+      "police"
+    ],
+    "universes": [
+      "mcu-main"
+    ]
+  },
+  {
+    "id": "bill-metzger",
+    "name": "Bill Metzger",
+    "role": "Department of Damage Control director",
+    "tags": [
+      "damage-control"
+    ],
+    "universes": [
+      "mcu-main"
+    ]
+  },
+  {
+    "id": "sara-grey",
+    "name": "Sara Grey",
+    "role": "Jean Grey's sister",
+    "tags": [
+      "spider-man"
+    ],
+    "universes": [
+      "mcu-main"
+    ]
   }
 ]

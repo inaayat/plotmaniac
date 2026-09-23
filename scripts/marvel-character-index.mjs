@@ -192,6 +192,9 @@ function pickPerson(candidates, titleId) {
   if (ids.has("johnny-storm-first") || ids.has("johnny-storm-fox")) {
     return candidates.find((item) => item.id === (titleId === "deadpool-wolverine" ? "johnny-storm-fox" : "johnny-storm-first"));
   }
+  if (ids.has("jean-grey-fox") || ids.has("jean-grey-mcu")) {
+    return candidates.find((item) => item.id === (titleId === "brand-new-day" ? "jean-grey-mcu" : "jean-grey-fox"));
+  }
   if (ids.has("otto-octavius-raimi") && titleId !== "no-way-home") return null;
   if (ids.has("norman-osborn-raimi") && titleId !== "no-way-home") return null;
   return candidates[0];
@@ -284,7 +287,7 @@ const MCU_FILM_IDS = new Set([
   "infinity-war", "ant-man-wasp", "captain-marvel", "endgame", "far-from-home", "black-widow",
   "shang-chi", "eternals", "no-way-home", "multiverse-madness", "love-and-thunder", "wakanda-forever",
   "quantumania", "gotg-3", "the-marvels", "deadpool-wolverine", "brave-new-world", "thunderbolts",
-  "ff-first-steps-1964", "ff-first-steps-official",
+  "ff-first-steps-1964", "brand-new-day",
 ]);
 
 /**

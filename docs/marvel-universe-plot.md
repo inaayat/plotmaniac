@@ -8,7 +8,7 @@ Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templat
 - **Title:** Marvel Cinematic Universe
 - **Kicker:** `Marvel`
 - **Card line:** `Heroes, villains, timelines, and variant worlds`
-- **Lede:** `Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Pick a title to study up: Watch Before on the left, Watch Next on the right, and the cast under the selected movie. MCU main means the shared Sacred Timeline / Earth-616 screen continuity (often called Earth-199999 by fans); guest worlds remain separate.`
+- **Lede:** `Spoilers through Spider-Man: Brand New Day. Pick a title to study up: Watch Before on the left, Watch Next on the right, and the cast under the selected movie. MCU main means the shared Sacred Timeline / Earth-616 screen continuity (often called Earth-199999 by fans); guest worlds remain separate.`
 - **Search placeholder:** `Avengers, TVA, Wakanda, Spider-Man, a film…`
 - **Title filter:** `titleFilter: true` puts that search on the main chrome and focuses a matching chronology title (`?title=`).
 - **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` or clicking Marvel on the homepage gallery lands here (`plotChooserHref` adds `view=timeline`). `?view=web` resolves to Watch Order.

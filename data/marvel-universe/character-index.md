@@ -27,7 +27,7 @@ Every character heading on both pages is included, in the order it appears on Wi
 | Real Name | Superhero / Alias Name | Actor | Movies | TV Shows |
 |---|---|---|---|---|
 | Nakia Bahadir | | Yasmeen Fletcher | | Ms. Marvel (2022) |
-| Bruce Banner | Hulk | Mark Ruffalo | The Avengers, Iron Man 3 (cameo), Avengers: Age of Ultron, Thor: Ragnarok, Avengers: Infinity War, Avengers: Endgame, Shang-Chi and the Legend of the Ten Rings (cameo) | She-Hulk: Attorney at Law |
+| Bruce Banner | Hulk | Mark Ruffalo | The Avengers, Iron Man 3 (cameo), Avengers: Age of Ultron, Thor: Ragnarok, Avengers: Infinity War, Avengers: Endgame, Shang-Chi and the Legend of the Ten Rings (cameo), Spider-Man: Brand New Day | She-Hulk: Attorney at Law |
 | Bucky Barnes | Winter Soldier / White Wolf | Sebastian Stan | Captain America: The First Avenger, Captain America: The Winter Soldier, Avengers: Age of Ultron, Captain America: Civil War, Black Panther, Avengers: Infinity War, Avengers: Endgame, Thunderbolts* | The Falcon and the Winter Soldier |
 | Clint Barton | Hawkeye / Ronin | Jeremy Renner | Thor, The Avengers, Avengers: Age of Ultron, Captain America: Civil War, Avengers: Endgame | Hawkeye |
 | Barton family | | | | |
@@ -38,7 +38,7 @@ Every character heading on both pages is included, in the order it appears on Wi
 | Georges Batroc | | Georges St-Pierre | Captain America: The Winter Soldier (2014) | The Falcon and the Winter Soldier, What If...? |
 | Ruth Bat-Seraph | | Shira Haas | Captain America: Brave New World (2025) | |
 | Quentin Beck | Mysterio | Jake Gyllenhaal | Spider-Man: Far From Home (2019) | What If...? |
-| Yelena Belova | Black Widow | Florence Pugh | Black Widow (2021), Thunderbolts* (2025) | Hawkeye |
+| Yelena Belova | Black Widow | Florence Pugh | Black Widow (2021), Thunderbolts* (2025), Spider-Man: Brand New Day | Hawkeye |
 | Kate Bishop | | Hailee Steinfeld | | Hawkeye (2021) |
 | Bishop family | | | | |
 | Derek Bishop | | Brian d'Arcy James | | Hawkeye |
@@ -85,7 +85,7 @@ Every character heading on both pages is included, in the order it appears on Wi
 | Sharon Carter | Agent 13 / Power Broker | Emily VanCamp | Captain America: Civil War, Captain America: The Winter Soldier | The Falcon and the Winter Soldier |
 | Casey | Frank Morris | | | |
 | Buck Cashman | | | | |
-| Frank Castle | Punisher | Jon Bernthal | | Daredevil |
+| Frank Castle | Punisher | Jon Bernthal | Spider-Man: Brand New Day | Daredevil |
 | Castle family | | | | |
 | Mr. Charles | | | | Daredevil: Born Again |
 | America Chavez | | Xochitl Gomez | Doctor Strange in the Multiverse of Madness | |
@@ -121,7 +121,7 @@ Every character heading on both pages is included, in the order it appears on Wi
 | Julius Dell | | | | |
 | Angela del Toro | White Tiger | | | |
 | Jacques Dernier | | | Captain America: The First Avenger | |
-| Jean DeWolff | | | | Daredevil: Born Again |
+| Jean DeWolff | | Liza Colón-Zayas | Spider-Man: Brand New Day | Daredevil: Born Again |
 | Rhomann Dey | | | Guardians of the Galaxy | |
 | Max Dillon | Electro | Jamie Foxx | | |
 | Benjamin "Big Ben" Donovan | | | | |
@@ -182,7 +182,7 @@ Every character heading on both pages is included, in the order it appears on Wi
 | John Gallo | | | | |
 | Phil Gallo | | | | |
 | Gamora | | Zoe Saldaña | Guardians of the Galaxy, Guardians of the Galaxy Vol. 2, Avengers: Infinity War, Avengers: Endgame, Guardians of the Galaxy Vol. 3 | |
-| Mac Gargan | Scorpion | Michael Mando | Spider-Man: Homecoming | |
+| Mac Gargan | Scorpion | Michael Mando | Spider-Man: Homecoming, Spider-Man: Brand New Day | |
 | G'iah | | Emilia Clarke | Secret Invasion | Secret Invasion |
 | Ted Gilbert | | | | |
 | Gilgamesh | | Don Lee | Eternals | |
@@ -194,8 +194,8 @@ Every character heading on both pages is included, in the order it appears on Wi
 | Grandmaster | | Jeff Goldblum | Thor: Ragnarok | |
 | Gravik | | Kingsley Ben-Adir | | Secret Invasion |
 | Phil Grayfield | | | | |
-| Jean Grey | | | | |
-| Sara Grey | | | | |
+| Jean Grey | Phoenix | Sadie Sink | Spider-Man: Brand New Day | |
+| Sara Grey | | Olivia Booth-Ford | Spider-Man: Brand New Day | |
 | Grills | | | | |
 | Ben Grimm | The Thing | Ebon Moss-Bachrach | The Fantastic Four: First Steps | |
 | Groot | | Vin Diesel (voice) | Guardians of the Galaxy Vol. 2, Guardians of the Galaxy Vol. 3 | |
@@ -245,7 +245,7 @@ Every character heading on both pages is included, in the order it appears on Wi
 | Jentorra | | Iman Vellani | | |
 | Gabe Jones | | | Captain America: The First Avenger | |
 | Jessica Jones | | Krysten Ritter | | Jessica Jones, The Defenders |
-| Michelle "MJ" Jones-Watson | | Zendaya | Spider-Man: Homecoming, Spider-Man: Far From Home, Spider-Man: No Way Home | |
+| Michelle "MJ" Jones-Watson | | Zendaya | Spider-Man: Homecoming, Spider-Man: Far From Home, Spider-Man: No Way Home, Spider-Man: Brand New Day | |
 | Jorani | Iron Fist | | | |
 | Josie | | | | Daredevil |
 
@@ -294,7 +294,7 @@ Every character heading on both pages is included, in the order it appears on Wi
 | Loki Laufeyson | | Tom Hiddleston | Thor, The Avengers, Thor: The Dark World, Thor: Ragnarok, Avengers: Infinity War, Avengers: Endgame | Loki |
 | Laura | X-23 | Dafne Keen | Deadpool & Wolverine | |
 | Remy LeBeau | Gambit | Channing Tatum | Deadpool & Wolverine | |
-| Ned Leeds | | Jacob Batalon | Spider-Man: Homecoming, Spider-Man: Far From Home, Spider-Man: No Way Home | The Daily Bugle |
+| Ned Leeds | | Jacob Batalon | Spider-Man: Homecoming, Spider-Man: Far From Home, Spider-Man: No Way Home, Spider-Man: Brand New Day | The Daily Bugle |
 | Erik Lehnsherr | Magneto | | | |
 | Darcy Lewis | | Kat Dennings | Thor, Thor: The Dark World | |
 | Lonnie Lincoln | Tombstone | | | |
@@ -392,8 +392,8 @@ Every character heading on both pages is included, in the order it appears on Wi
 | Pearl Pangan | | | | Ironheart |
 | Jonathan Pangborn | | | Doctor Strange | |
 | Mr. Paradox | | Jonathan Majors | | Loki |
-| May Parker | | Marisa Tomei | Spider-Man: Homecoming, Avengers: Endgame, Spider-Man: Far From Home, Spider-Man: No Way Home | |
-| Peter Parker | Spider-Man | Tom Holland | Captain America: Civil War, Spider-Man: Homecoming, Avengers: Infinity War, Avengers: Endgame, Spider-Man: Far From Home, Spider-Man: No Way Home | |
+| May Parker | | Marisa Tomei | Spider-Man: Homecoming, Avengers: Endgame, Spider-Man: Far From Home, Spider-Man: No Way Home, Spider-Man: Brand New Day | |
+| Peter Parker | Spider-Man | Tom Holland | Captain America: Civil War, Spider-Man: Homecoming, Avengers: Infinity War, Avengers: Endgame, Spider-Man: Far From Home, Spider-Man: No Way Home, Spider-Man: Brand New Day | |
 | Eugene Patilio | Leap-Frog | | | Daredevil: Born Again |
 | Vincent Patilio | | | | Daredevil: Born Again |
 | Phastos | | Brian Tyree Henry | Eternals | |
@@ -641,7 +641,7 @@ Source: Wikipedia, *[List of Marvel Cinematic Universe films](https://en.wikiped
 | 35 | Captain America: Brave New World | February 14, 2025 | Phase Five — Multiverse Saga |
 | 36 | Thunderbolts* | May 2, 2025 | Phase Five — Multiverse Saga |
 | 37 | The Fantastic Four: First Steps | July 25, 2025 | Phase Six — Multiverse Saga |
-| 38 | Spider-Man: Brand New Day | July 31, 2026 | Phase Six — Multiverse Saga (upcoming) |
+| 38 | Spider-Man: Brand New Day | July 31, 2026 | Phase Six — Multiverse Saga |
 | 39 | Avengers: Doomsday | December 18, 2026 | Phase Six — Multiverse Saga (upcoming) |
 | 40 | Avengers: Secret Wars | December 17, 2027 | Phase Six — Multiverse Saga (upcoming) |
 | 41 | Untitled X-Men Film | May 5, 2028 | Phase Seven (announced) |

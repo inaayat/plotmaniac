@@ -1,4 +1,4 @@
-/** Karan's MCU + Mutant Legacy order (94 titles). Cast ids are filled by build-marvel-chronology.mjs. */
+/** Karan's MCU + Mutant Legacy order. Cast ids are filled by build-marvel-chronology.mjs. */
 
 export const MARVEL_CHRONOLOGY_ORDER = [
   { id: "eyes-of-wakanda", title: "Eyes of Wakanda", era: "Origins" },
@@ -8,9 +8,8 @@ export const MARVEL_CHRONOLOGY_ORDER = [
   {
     id: "ff-first-steps-1964",
     title: "The Fantastic Four: First Steps",
-    filterLabel: "The Fantastic Four: First Steps (1964 chronology)",
     era: "1964",
-    note: "Story takes place in 1964 and sets up Avengers: Doomsday — Karan places this here chronologically even though Marvel also lists the film later.",
+    note: "Placed in 1964 because that is when the story is set. It also sets up Avengers: Doomsday.",
   },
   {
     id: "x-men-days-of-future-past",
@@ -106,9 +105,8 @@ export const MARVEL_CHRONOLOGY_ORDER = [
   {
     id: "logan-mid",
     title: "Logan",
-    filterLabel: "Logan (mid-list viewing)",
     era: "Mutant legacy",
-    note: "Recommended here despite the 2029 setting — Deadpool & Wolverine spoils Logan if you watch out of order.",
+    note: "Placed before Deadpool & Wolverine even though the story is set in 2029, because that film spoils Logan.",
   },
   { id: "deadpool-wolverine", title: "Deadpool & Wolverine", era: "Mutant legacy", essential: true },
   { id: "agatha", title: "Agatha All Along", era: "Multiverse Saga" },
@@ -116,21 +114,8 @@ export const MARVEL_CHRONOLOGY_ORDER = [
   { id: "born-again-s1", title: "Daredevil: Born Again S1", era: "Street level" },
   { id: "brave-new-world", title: "Captain America: Brave New World", era: "Multiverse Saga" },
   { id: "thunderbolts", title: "Thunderbolts*", era: "Multiverse Saga", essential: true },
-  {
-    id: "ff-first-steps-official",
-    title: "The Fantastic Four: First Steps",
-    filterLabel: "The Fantastic Four: First Steps (official slot)",
-    era: "Multiverse Saga",
-    note: "Official MCU timeline slot for the same First Steps story placed earlier at 1964.",
-  },
   { id: "wonder-man", title: "Wonder Man", era: "Multiverse Saga" },
   { id: "born-again-s2", title: "Daredevil: Born Again S2", era: "Street level" },
   { id: "punisher-one-last-kill", title: "The Punisher: One Last Kill", era: "Street level" },
-  {
-    id: "logan-final",
-    title: "Logan",
-    filterLabel: "Logan (final position)",
-    era: "Mutant legacy",
-    note: "Karan's closing placement — same film as the mid-list Logan entry above.",
-  },
+  { id: "brand-new-day", title: "Spider-Man: Brand New Day", era: "Multiverse Saga" },
 ];

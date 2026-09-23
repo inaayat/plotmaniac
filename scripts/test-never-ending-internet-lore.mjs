@@ -1737,7 +1737,7 @@ assert.equal(defaultPlotView({ plot: marvel }), "timeline");
 assert.equal(plotChooserHref(marvel), "?plot=marvel-universe&view=timeline");
 assert.equal(plotChooserHref(youtubers), "?plot=youtubers");
 const marvelTitles = titleFilterLabels(marvelEvents, marvelChronology);
-assert.equal(marvelTitles.length, 94);
+assert.equal(marvelTitles.length, 93);
 assert.equal(marvelTitles[0], "Eyes of Wakanda");
 assert.ok(marvelTitles.includes("Iron Man"), "title labels include Iron Man");
 const chronologyErrors = validateChronology(
@@ -1746,10 +1746,41 @@ const chronologyErrors = validateChronology(
   MARVEL_CHRONOLOGY_ORDER.map((entry) => entry.id),
 );
 assert.deepEqual(chronologyErrors, [], chronologyErrors.join("; "));
-assert.ok(
-  chronologyEntryForQuery(marvelChronology, "Logan (mid-list viewing)")?.id === "logan-mid",
-  "duplicate Logan disambiguates by filter label",
+assert.equal(
+  marvelChronology.titles.filter((entry) => entry.title === "Logan").map((entry) => entry.id).join(),
+  "logan-mid",
+  "Logan appears once, in the spoiler-safe slot",
 );
+assert.equal(
+  marvelChronology.titles.filter((entry) => entry.title === "The Fantastic Four: First Steps").map((entry) => entry.id).join(),
+  "ff-first-steps-1964",
+  "First Steps appears once, in the 1964 slot",
+);
+assert.equal(marvelChronology.titles.some((entry) => entry.id === "logan-final" || entry.id === "ff-first-steps-official"), false);
+assert.equal(chronologyEntryForQuery(marvelChronology, "Logan")?.id, "logan-mid");
+{
+  const brandNewDay = marvelChronology.titles.find((entry) => entry.id === "brand-new-day");
+  assert.ok(brandNewDay, "Spider-Man: Brand New Day is in the chronology");
+  assert.equal(brandNewDay.kind, "movie");
+  assert.equal(brandNewDay.title, "Spider-Man: Brand New Day");
+  assert.ok(brandNewDay.characters.includes("peter-parker-mcu"));
+  assert.ok(brandNewDay.characters.includes("jean-grey-mcu"));
+  assert.ok(
+    marvelChronology.titles.findIndex((entry) => entry.id === "brand-new-day")
+      > marvelChronology.titles.findIndex((entry) => entry.id === "no-way-home"),
+    "Brand New Day comes after No Way Home",
+  );
+  assert.ok(
+    marvelChronology.titles.findIndex((entry) => entry.id === "brand-new-day")
+      > marvelChronology.titles.findIndex((entry) => entry.id === "punisher-one-last-kill"),
+    "Brand New Day comes after the Punisher special",
+  );
+  const prereqTiers = new Map((brandNewDay.prereqs || []).map((item) => [item.id, item.tier]));
+  assert.equal(prereqTiers.get("no-way-home"), "must");
+  assert.equal(prereqTiers.get("punisher-one-last-kill"), "should");
+  assert.equal(prereqTiers.get("born-again-s2"), "should");
+  assert.equal(prereqTiers.get("homecoming"), "could");
+}
 const infinityFeeds = chronologyFeedsInto(marvelChronology, "infinity-war").map((entry) => entry.id);
 assert.ok(infinityFeeds.includes("endgame"), "Infinity War feeds into Endgame");
 const dawPrereqs = marvelChronology.titles.find((entry) => entry.id === "deadpool-wolverine")?.prereqs || [];
@@ -1791,7 +1822,7 @@ assert.ok(avengersBefore.includes("incredible-hulk"), "Incredible Hulk stays in 
 {
   const kinds = marvelChronology.titles.map((entry) => chronologyTitleKind(entry));
   assert.equal(kinds.filter((kind) => kind === "tv").length, 43);
-  assert.equal(kinds.filter((kind) => kind === "movie").length, 51);
+  assert.equal(kinds.filter((kind) => kind === "movie").length, 50);
   assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "eyes-of-wakanda")), "tv");
   assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "iron-man")), "movie");
   assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "loki-s1")), "tv");
@@ -1807,13 +1838,13 @@ assert.ok(avengersBefore.includes("incredible-hulk"), "Incredible Hulk stays in 
   assert.equal(guessTmdbType("Marvel Studios One Shot: Item 47"), "movie", "One-Shot posters still search TMDB as movies");
   assert.equal(chronologyTitleIsTv({ id: "daredevil-s1", title: "Daredevil S1", kind: "tv" }), true);
   const moviesOnly = filterChronology(marvelChronology, { includeTv: false });
-  assert.equal(moviesOnly.titles.length, 51);
+  assert.equal(moviesOnly.titles.length, 50);
   assert.equal(moviesOnly.titles[0].id, "captain-america-first-avenger");
   assert.equal(moviesOnly.titles.some((entry) => entry.id === "loki-s1"), false);
   assert.equal(moviesOnly.titles.some((entry) => entry.id === "one-shot-agent-carter"), false);
   assert.equal(moviesOnly.titles.some((entry) => entry.id === "werewolf-by-night"), false);
   assert.equal(moviesOnly.titles.some((entry) => entry.id === "gotg-holiday"), false);
-  assert.equal(filterChronologyTitles(marvelChronology.titles, { includeTv: true }).length, 94);
+  assert.equal(filterChronologyTitles(marvelChronology.titles, { includeTv: true }).length, 93);
   assert.equal(CHRONOLOGY_INCLUDE_TV_DEFAULT, false);
   assert.equal(parseChronologyIncludeTv("https://plotmaniac.com/?plot=marvel-universe"), false);
   assert.equal(parseChronologyIncludeTv("https://plotmaniac.com/?plot=marvel-universe&tv=1"), true);
@@ -1955,7 +1986,7 @@ assert.match(appSource, /Movie web/);
 assert.match(html, /id="view-movie-web"/);
 {
   const movieWeb = movieWebLayout(filterChronology(marvelChronology, { includeTv: false }).titles);
-  assert.ok(movieWeb.nodes.filter((node) => node.type === "title").length >= 51);
+  assert.ok(movieWeb.nodes.filter((node) => node.type === "title").length >= 50);
   assert.equal(
     movieWeb.nodes.some((node) => node.id === "one-shot-item-47"),
     false,

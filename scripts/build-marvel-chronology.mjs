@@ -138,11 +138,23 @@ const CAST_BY_ID = {
   "born-again-s1": ["matt-murdock", "wilson-fisk", "karen-page", "frank-castle"],
   "brave-new-world": ["sam-wilson", "bucky-barnes", "everett-ross", "shuri", "valentina-fontaine"],
   "thunderbolts": ["yelena-belova", "bucky-barnes", "alexei-shostakov", "valentina-fontaine", "bob-reynolds"],
-  "ff-first-steps-official": ["reed-richards-first", "sue-storm-first", "johnny-storm-first", "ben-grimm-first", "shalla-bal", "galactus-first"],
   "wonder-man": ["simon-williams", "bob-reynolds", "valentina-fontaine", "trevor-slattery"],
   "born-again-s2": ["matt-murdock", "wilson-fisk", "karen-page", "frank-castle"],
   "punisher-one-last-kill": ["frank-castle", "matt-murdock", "karen-page"],
-  "logan-final": FOX_LOGAN,
+  "brand-new-day": [
+    "peter-parker-mcu",
+    "mj-mcu",
+    "ned-leeds",
+    "frank-castle",
+    "yelena-belova",
+    "bruce-banner",
+    "may-parker",
+    "jean-grey-mcu",
+    "mac-gargan",
+    "jean-dewolff",
+    "bill-metzger",
+    "sara-grey",
+  ],
 };
 
 const orderIds = new Set(MARVEL_CHRONOLOGY_ORDER.map((entry) => entry.id));

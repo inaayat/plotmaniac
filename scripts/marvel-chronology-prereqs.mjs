@@ -42,6 +42,10 @@ export const CHRONOLOGY_PREREQ_EDGES = [
   { target: "deadpool-2", source: "deadpool", tier: "must" },
   { target: "deadpool-wolverine", source: "deadpool-2", tier: "must" },
   { target: "deadpool-wolverine", source: "logan-mid", tier: "must" },
+  { target: "brand-new-day", source: "no-way-home", tier: "must" },
+  { target: "brand-new-day", source: "punisher-one-last-kill", tier: "should" },
+  { target: "brand-new-day", source: "born-again-s2", tier: "should" },
+  { target: "brand-new-day", source: "homecoming", tier: "could" },
   { target: "deadpool-wolverine", source: "loki-s1", tier: "should" },
   // Street level / Born Again
   { target: "the-defenders", source: "daredevil-s1", tier: "should" },
@@ -52,7 +56,6 @@ export const CHRONOLOGY_PREREQ_EDGES = [
   { target: "born-again-s2", source: "born-again-s1", tier: "must" },
   { target: "punisher-one-last-kill", source: "punisher-s2", tier: "should" },
   // Doomsday setup (predicted / upcoming)
-  { target: "ff-first-steps-official", source: "ff-first-steps-1964", tier: "could" },
   { target: "thunderbolts", source: "black-widow", tier: "should" },
   { target: "thunderbolts", source: "brave-new-world", tier: "should" },
   { target: "wonder-man", source: "wandavision", tier: "unreleased" },
