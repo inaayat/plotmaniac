@@ -1906,6 +1906,7 @@ assert.match(chronoViewSource, /startViewTransition/);
 assert.match(chronoViewSource, /Full chronological list/);
 assert.match(chronoViewSource, /chrono-arrow-shape/);
 assert.match(chronoViewSource, /buildLaneChrome/);
+assert.match(laneSource, /scroller\.scrollLeft \+= delta/, "a normal wheel moves the poster timeline sideways");
 assert.match(chronoViewSource, /chrono-lane-cast/);
 assert.match(chronoViewSource, /renderChronologyLane/);
 assert.match(chronoViewSource, /renderChronologySpine/);

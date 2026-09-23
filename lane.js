@@ -278,39 +278,69 @@ export function applyLaneZoom(view, zoom, anchor) {
   if (readout) readout.textContent = `${percent}%`;
 }
 
+function laneCardCanScroll(event) {
+  const card = event.target?.closest?.(".lane-card");
+  if (!card || event.shiftKey) return false;
+  return card.scrollHeight > card.clientHeight + 4 && Math.abs(event.deltaY) >= Math.abs(event.deltaX);
+}
+
 export function bindLaneGestures(view) {
   const scroller = view.querySelector(".lane-scroll");
+  let suppressClick = false;
   scroller.addEventListener("wheel", (event) => {
-    if (!(event.ctrlKey || event.metaKey)) return;
+    if (event.ctrlKey || event.metaKey) {
+      event.preventDefault();
+      const factor = Math.exp(-event.deltaY * 0.0016);
+      applyLaneZoom(view, laneZoom * factor, { x: event.clientX, y: event.clientY });
+      return;
+    }
+    if (laneCardCanScroll(event)) return;
+    if (scroller.scrollWidth <= scroller.clientWidth + 1) return;
+    const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+    const delta = horizontal ? event.deltaX : event.deltaY;
+    if (!delta) return;
     event.preventDefault();
-    const factor = Math.exp(-event.deltaY * 0.0016);
-    applyLaneZoom(view, laneZoom * factor, { x: event.clientX, y: event.clientY });
+    scroller.scrollLeft += delta;
   }, { passive: false });
 
   let pan = null;
   scroller.addEventListener("pointerdown", (event) => {
     if (event.button !== 0 || event.pointerType !== "mouse") return;
-    if (event.target.closest("button, a, input")) return;
+    if (event.target.closest("input, a, .lane-controls")) return;
     pan = {
       id: event.pointerId,
       x: event.clientX,
       y: event.clientY,
       left: scroller.scrollLeft,
       top: scroller.scrollTop,
+      armed: false,
     };
-    scroller.setPointerCapture(event.pointerId);
-    scroller.classList.add("is-panning");
   });
   scroller.addEventListener("pointermove", (event) => {
     if (!pan || event.pointerId !== pan.id) return;
-    scroller.scrollLeft = pan.left - (event.clientX - pan.x);
-    scroller.scrollTop = pan.top - (event.clientY - pan.y);
+    const dx = event.clientX - pan.x;
+    const dy = event.clientY - pan.y;
+    if (!pan.armed) {
+      if (Math.hypot(dx, dy) < 6) return;
+      pan.armed = true;
+      scroller.setPointerCapture(event.pointerId);
+      scroller.classList.add("is-panning");
+    }
+    scroller.scrollLeft = pan.left - dx;
+    scroller.scrollTop = pan.top - dy;
   });
   const endPan = (event) => {
     if (!pan || event.pointerId !== pan.id) return;
+    if (pan.armed) suppressClick = true;
     pan = null;
     scroller.classList.remove("is-panning");
   };
   scroller.addEventListener("pointerup", endPan);
   scroller.addEventListener("pointercancel", endPan);
+  scroller.addEventListener("click", (event) => {
+    if (!suppressClick) return;
+    suppressClick = false;
+    event.preventDefault();
+    event.stopPropagation();
+  }, true);
 }

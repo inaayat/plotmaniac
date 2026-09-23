@@ -2540,6 +2540,7 @@ button.back:hover,
   min-height: 0;
   width: 100%;
   overflow: auto;
+  overscroll-behavior: contain;
   cursor: grab;
 }
 
