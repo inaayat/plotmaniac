@@ -35,6 +35,7 @@
       "lede": "Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Follow the character web, read the MCU in story order, or focus a universe to see who belongs there. MCU main means the shared Sacred Timeline / Earth-616 screen continuity; guest worlds remain separate.",
       "searchPlaceholder": "Avengers, TVA, Wakanda, Spider-Man, a film…",
       "titleFilter": true,
+      "defaultView": "timeline",
       "sourceNote": "Marvel Cinematic Universe on Plotmaniac · story-order orientation from Karan's MCU guide, updated September 22, 2026 · spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill",
       "centerId": "tony-stark",
       "includeOrbit": true,
@@ -58,7 +59,8 @@
       "paths": {
         "people": "data/marvel-universe/people.json",
         "events": "data/marvel-universe/events.json",
-        "relations": "data/marvel-universe/relations.json"
+        "relations": "data/marvel-universe/relations.json",
+        "chronology": "data/marvel-universe/chronology.json"
       }
     },
     {

@@ -1,0 +1,632 @@
+[
+  {
+    "id": "magneto-fox",
+    "name": "Erik Lehnsherr / Magneto",
+    "role": "Mutant leader in the Fox corridor",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Michael%20Fassbender%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Michael_Fassbender_(cropped).jpg",
+      "author": "Georges Biard",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "mystique-fox",
+    "name": "Raven Darkhölme / Mystique",
+    "role": "Shapeshifting mutant in the Fox corridor",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jennifer%20Lawrence%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jennifer_Lawrence_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "cyclops-fox",
+    "name": "Scott Summers / Cyclops",
+    "role": "Optic-blast mutant leader",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/James%20Marsden%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:James_Marsden_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "jean-grey-fox",
+    "name": "Jean Grey / Phoenix",
+    "role": "Telepathic mutant in the Fox corridor",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sophie%20Turner%20%28Game%20of%20Thrones%29%20Red%20Carpet%20Comic%20Con%202014.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Sophie_Turner_(Game_of_Thrones)_Red_Carpet_Comic_Con_2014.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "storm-fox",
+    "name": "Ororo Munroe / Storm",
+    "role": "Weather-controlling mutant",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Halle%20Berry%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Halle_Berry_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "rogue-fox",
+    "name": "Rogue",
+    "role": "Power-absorbing mutant",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Anna%20Paquin%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Anna_Paquin_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "iceman-fox",
+    "name": "Bobby Drake / Iceman",
+    "role": "Ice-forming mutant",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Shawn%20Ashmore%20at%20the%202019%20San%20Diego%20Comic-Con%20International.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Shawn_Ashmore_at_the_2019_San_Diego_Comic-Con_International.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "kitty-pride-fox",
+    "name": "Kitty Pryde",
+    "role": "Phasing mutant",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Elliot%20Page%20at%20TIFF%202015.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Elliot_Page_at_TIFF_2015.jpg",
+      "author": "George Pimentel",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "id": "nightcrawler-fox",
+    "name": "Kurt Wagner / Nightcrawler",
+    "role": "Teleporting mutant",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Alan%20Cumming%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Alan_Cumming_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "apocalypse-fox",
+    "name": "En Sabah Nur / Apocalypse",
+    "role": "Ancient mutant antagonist",
+    "tags": ["fox", "villain"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Oscar%20Isaac%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Oscar_Isaac_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "quicksilver-fox",
+    "name": "Pietro Maximoff / Quicksilver (Fox)",
+    "role": "Speedster in the Fox corridor",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Evan%20Peters%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Evan_Peters_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "havok-fox",
+    "name": "Alex Summers / Havok",
+    "role": "Energy-blasting mutant",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lucas%20Till%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Lucas_Till_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "emma-frost-fox",
+    "name": "Emma Frost",
+    "role": "Telepathic Hellfire Club mutant",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/January%20Jones%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:January_Jones_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "sabretooth-fox",
+    "name": "Victor Creed / Sabretooth",
+    "role": "Wolverine's feral rival",
+    "tags": ["fox", "villain"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Liev%20Schreiber%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Liev_Schreiber_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "laura-fox",
+    "name": "Laura / X-23",
+    "role": "Cloned daughter of Wolverine",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Dafne%20Keen%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Dafne_Keen_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "yukio-fox",
+    "name": "Yukio",
+    "role": "Mutant ally in Japan",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rila%20Fukushima%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Rila_Fukushima_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "vanessa-fox",
+    "name": "Vanessa Carlysle",
+    "role": "Deadpool's partner",
+    "tags": ["fox"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Morena%20Baccarin%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Morena_Baccarin_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "colossus-fox",
+    "name": "Colossus",
+    "role": "Metal-skinned X-Man ally of Deadpool",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Stefan%20Kapicic%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Stefan_Kapicic_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "negasonic-fox",
+    "name": "Negasonic Teenage Warhead",
+    "role": "Explosive mutant ally of Deadpool",
+    "tags": ["fox", "mutant"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Brianna%20Hildebrand%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Brianna_Hildebrand_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "cable-fox",
+    "name": "Cable",
+    "role": "Time-traveling soldier in Deadpool 2",
+    "tags": ["fox"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Josh%20Brolin%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Josh_Brolin_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "domino-fox",
+    "name": "Domino",
+    "role": "Luck-manipulating mercenary",
+    "tags": ["fox"],
+    "universes": ["fox"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Zazie%20Beetz%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Zazie_Beetz_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "howard-stark",
+    "name": "Howard Stark",
+    "role": "Inventor and founder of Stark Industries",
+    "tags": ["mcu-main", "founder"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/John%20Slattery%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:John_Slattery_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "phil-coulson",
+    "name": "Phil Coulson",
+    "role": "S.H.I.E.L.D. agent",
+    "tags": ["mcu-main", "shield"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Clark%20Gregg%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Clark_Gregg_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "jane-foster",
+    "name": "Jane Foster",
+    "role": "Astrophysicist and Thor ally",
+    "tags": ["mcu-main", "cosmic"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Natalie%20Portman%20Cannes%202015%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Natalie_Portman_Cannes_2015_2.jpg",
+      "author": "Georges Biard",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "odin-borson",
+    "name": "Odin",
+    "role": "King of Asgard",
+    "tags": ["mcu-main", "cosmic"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Anthony%20Hopkins%20Cannes%202019.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Anthony_Hopkins_Cannes_2019.jpg",
+      "author": "Georges Biard",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "heimdall",
+    "name": "Heimdall",
+    "role": "Asgardian sentry",
+    "tags": ["mcu-main", "cosmic"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Idris%20Elba%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Idris_Elba_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "betty-ross",
+    "name": "Betty Ross",
+    "role": "Scientist and Bruce Banner ally",
+    "tags": ["mcu-main"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Liv%20Tyler%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Liv_Tyler_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "thaddeus-ross",
+    "name": "Thaddeus Ross",
+    "role": "General and later Secretary of State",
+    "tags": ["mcu-main"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/William%20Hurt%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:William_Hurt_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "mordo",
+    "name": "Karl Mordo",
+    "role": "Master of the Mystic Arts",
+    "tags": ["mcu-main", "magic"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chiwetel%20Ejiofor%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Chiwetel_Ejiofor_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "the-ancient-one",
+    "name": "The Ancient One",
+    "role": "Sorcerer Supreme mentor",
+    "tags": ["mcu-main", "magic"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tilda%20Swinton%20Cannes%202016.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tilda_Swinton_Cannes_2016.jpg",
+      "author": "Georges Biard",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "danny-rand",
+    "name": "Danny Rand / Iron Fist",
+    "role": "K'un-Lun martial artist",
+    "tags": ["street", "defenders"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Finn%20Jones%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Finn_Jones_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "colleen-wing",
+    "name": "Colleen Wing",
+    "role": "Sword master and Iron Fist ally",
+    "tags": ["street", "defenders"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jessica%20Henwick%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jessica_Henwick_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "elektra-natchios",
+    "name": "Elektra Natchios",
+    "role": "Assassin tied to Daredevil",
+    "tags": ["street"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%89lodie%20Yung%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:%C3%89lodie_Yung_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "trish-walker",
+    "name": "Trish Walker",
+    "role": "Talk-show host and Jessica Jones ally",
+    "tags": ["street"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rachael%20Taylor%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Rachael_Taylor_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "misty-knight",
+    "name": "Misty Knight",
+    "role": "Harlem detective",
+    "tags": ["street"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Simone%20Missick%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Simone_Missick_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "claire-temple",
+    "name": "Claire Temple",
+    "role": "Night nurse connecting the street heroes",
+    "tags": ["street"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rosario%20Dawson%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Rosario_Dawson_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "microchip",
+    "name": "David Lieberman / Micro",
+    "role": "Punisher's hacker ally",
+    "tags": ["street"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ebon%20Moss-Bachrach%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Ebon_Moss-Bachrach_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "jennifer-walters",
+    "name": "Jennifer Walters / She-Hulk",
+    "role": "Lawyer and gamma-powered hero",
+    "tags": ["mcu-main"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tatiana%20Maslany%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tatiana_Maslany_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "titania",
+    "name": "Mary MacPherran / Titania",
+    "role": "Superhuman rival to She-Hulk",
+    "tags": ["mcu-main"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jameela%20Jamil%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jameela_Jamil_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "steven-grant",
+    "name": "Steven Grant",
+    "role": "Moon Knight alter",
+    "tags": ["mcu-main"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Oscar%20Isaac%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Oscar_Isaac_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "ikaris",
+    "name": "Ikaris",
+    "role": "Eternal with cosmic energy",
+    "tags": ["mcu-main", "eternals"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Richard%20Madden%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Richard_Madden_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "sprite",
+    "name": "Sprite",
+    "role": "Eternal illusionist",
+    "tags": ["mcu-main", "eternals"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lia%20McHugh%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Lia_McHugh_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "phastos",
+    "name": "Phastos",
+    "role": "Eternal inventor",
+    "tags": ["mcu-main", "eternals"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Brian%20Tyree%20Henry%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Brian_Tyree_Henry_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "kingo",
+    "name": "Kingo",
+    "role": "Eternal energy projector",
+    "tags": ["mcu-main", "eternals"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kumail%20Nanjiani%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Kumail_Nanjiani_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "simon-williams",
+    "name": "Simon Williams / Wonder Man",
+    "role": "Actor and powered hero in development",
+    "tags": ["mcu-main"],
+    "universes": ["mcu-main"],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Yahya%20Abdul-Mateen%20II%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Yahya_Abdul-Mateen_II_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  }
+]

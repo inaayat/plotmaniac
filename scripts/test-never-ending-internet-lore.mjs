@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { MARVEL_CHRONOLOGY_ORDER } from "./marvel-chronology-data.mjs";
 import {
   buildFrames,
   chronoKey,
@@ -25,6 +26,11 @@ import {
   filterTitleLabels,
   peopleForTitleSearch,
   titleFilterLabels,
+  validateChronology,
+  chronologyFeedsInto,
+  chronologyEntryForQuery,
+  chronologyFilterLabel,
+  usesPlotChronology,
   findPlot,
   plotCardFace,
   plotMatchesQuery,
@@ -1680,7 +1686,7 @@ assert.match(
   stateUrl("https://plotmaniac.com/", { view: "web", plot: "marvel-universe", hub: "", defaultHub: "all" }, ""),
   /hub=shared/,
 );
-assert.ok(marvelPeople.length >= 95 && marvelPeople.length <= 105, `Marvel cast should stay around 100, got ${marvelPeople.length}`);
+assert.ok(marvelPeople.length >= 130 && marvelPeople.length <= 160, `Marvel cast expanded for chronology, got ${marvelPeople.length}`);
 assert.ok(marvelEvents.length >= 40 && marvelEvents.length <= 70, `Marvel timeline should contain 40–70 beats, got ${marvelEvents.length}`);
 assert.equal(marvel.minBeats, 1);
 assert.equal(marvel.hubs.length, 7);
@@ -1700,13 +1706,33 @@ for (const person of marvelPeople) {
   assert.ok(marvelPortraitLicenses.has(person.portrait.license), `${person.id} portrait license`);
   assert.ok(person.portrait.author && person.portrait.licenseUrl, `${person.id} portrait credit`);
 }
-assert.ok(marvelPortraits >= 95, `Marvel should have Commons portraits for almost every character, got ${marvelPortraits}`);
+assert.ok(marvelPortraits >= 140, `Marvel should have Commons portraits for almost every character, got ${marvelPortraits}`);
 assert.equal(marvelPeople.find((person) => person.id === "maya-lopez")?.portrait, undefined, "Echo has no free Commons still");
 assert.equal(eventMediaLabel(marvelEvents.find((event) => event.id === "iron-man")), "Iron Man");
 assert.equal(eventMediaLabel(marvelEvents.find((event) => event.id === "avengers-assemble")), "The Avengers");
-const marvelTitles = titleFilterLabels(marvelEvents);
+const marvelChronology = readJson("../data/marvel-universe/chronology.json");
+assert.equal(usesPlotChronology(marvel), true);
+assert.equal(marvel.defaultView, "timeline");
+assert.equal(defaultPlotView({ plot: marvel }), "timeline");
+const marvelTitles = titleFilterLabels(marvelEvents, marvelChronology);
+assert.equal(marvelTitles.length, 94);
+assert.equal(marvelTitles[0], "Eyes of Wakanda");
 assert.ok(marvelTitles.includes("Iron Man"), "title labels include Iron Man");
-assert.ok(marvelTitles.indexOf("Iron Man") < marvelTitles.indexOf("The Avengers"), "title labels stay sorted");
+const chronologyErrors = validateChronology(
+  marvelChronology,
+  marvelIds,
+  MARVEL_CHRONOLOGY_ORDER.map((entry) => entry.id),
+);
+assert.deepEqual(chronologyErrors, [], chronologyErrors.join("; "));
+assert.ok(
+  chronologyEntryForQuery(marvelChronology, "Logan (mid-list viewing)")?.id === "logan-mid",
+  "duplicate Logan disambiguates by filter label",
+);
+const infinityFeeds = chronologyFeedsInto(marvelChronology, "infinity-war").map((entry) => entry.id);
+assert.ok(infinityFeeds.includes("endgame"), "Infinity War feeds into Endgame");
+const dawPrereqs = marvelChronology.titles.find((entry) => entry.id === "deadpool-wolverine")?.prereqs || [];
+assert.ok(dawPrereqs.some((item) => item.id === "deadpool-2" && item.tier === "must"));
+assert.ok(dawPrereqs.some((item) => item.id === "logan-mid" && item.tier === "must"));
 assert.deepEqual(
   filterTitleLabels(marvelTitles, "iro"),
   filterTitleLabels(marvelTitles, "iro").filter((label) => label.toLocaleLowerCase().includes("iro")),
@@ -1720,6 +1746,7 @@ const ironManCast = peopleForTitleSearch(
   marvelRelations,
   { query: "Iron Man", hub: ALL },
   new Map(marvelPeople.map((person) => [person.id, person])),
+  marvelChronology,
 );
 assert.ok(ironManCast.people.some((person) => person.id === "tony-stark"), "title search keeps Iron Man cast");
 assert.ok(ironManCast.people.length < marvelPeople.length, "title search narrows the web");

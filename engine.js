@@ -29,6 +29,7 @@ export function defaultPlotView({ requested = "", eventId = "", plot = null } = 
   if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot)) return "web";
   if (requested === "timeline" || requested === "web" || requested === "person") return requested;
   if (eventId) return "timeline";
+  if (plot?.defaultView === "timeline") return "timeline";
   return "web";
 }
 
@@ -67,7 +68,10 @@ export function filterEvents(events, filters = {}, peopleById = new Map()) {
 }
 
 /** Unique film/series labels for title filter suggestions, in display order. */
-export function titleFilterLabels(events = []) {
+export function titleFilterLabels(events = [], chronology = null) {
+  if (chronology?.titles?.length) {
+    return chronology.titles.map((entry) => chronologyFilterLabel(entry));
+  }
   const seen = new Set();
   const labels = [];
   (events || []).forEach((event) => {
@@ -77,6 +81,87 @@ export function titleFilterLabels(events = []) {
     labels.push(label);
   });
   return labels.sort((a, b) => a.localeCompare(b, "en", { sensitivity: "base" }));
+}
+
+export function usesPlotChronology(plot) {
+  return Boolean(plot?.paths?.chronology);
+}
+
+export function chronologyFilterLabel(entry) {
+  return String(entry?.filterLabel || entry?.title || "").trim();
+}
+
+export function chronologyTitles(chronology) {
+  return chronology?.titles || [];
+}
+
+export function chronologyById(chronology) {
+  return new Map(chronologyTitles(chronology).map((entry) => [entry.id, entry]));
+}
+
+export function chronologyEntryForQuery(chronology, query) {
+  const q = String(query || "").trim();
+  if (!q || !chronology?.titles?.length) return null;
+  const lower = q.toLocaleLowerCase();
+  const exact = chronology.titles.filter((entry) => {
+    const label = chronologyFilterLabel(entry);
+    return label === q || entry.title === q || label.toLocaleLowerCase() === lower;
+  });
+  if (exact.length === 1) return exact[0];
+  const partial = chronology.titles.filter((entry) => {
+    const label = chronologyFilterLabel(entry);
+    return label.toLocaleLowerCase().includes(lower) || entry.title.toLocaleLowerCase().includes(lower);
+  });
+  if (partial.length === 1) return partial[0];
+  return null;
+}
+
+const CHRONO_PREREQ_TIERS = ["must", "should", "could", "unreleased"];
+
+/** Group prereqs on one title by tier (must → unreleased). */
+export function chronologyPrereqsGrouped(entry, chronologyIndex) {
+  const list = entry?.prereqs || [];
+  const groups = CHRONO_PREREQ_TIERS.map((tier) => ({
+    tier,
+    items: list.filter((item) => item.tier === tier).map((item) => chronologyIndex.get(item.id)).filter(Boolean),
+  }));
+  return groups.filter((group) => group.items.length);
+}
+
+/** Direct outbound edges: titles that list this id as a prerequisite. */
+export function chronologyFeedsInto(chronology, id) {
+  const titles = chronologyTitles(chronology);
+  const index = chronologyById(chronology);
+  const out = [];
+  titles.forEach((entry) => {
+    if (!(entry.prereqs || []).some((item) => item.id === id)) return;
+    out.push(index.get(entry.id));
+  });
+  return out.filter(Boolean);
+}
+
+export function validateChronology(chronology, peopleIds, expectedOrderIds = []) {
+  const titles = chronologyTitles(chronology);
+  const index = chronologyById(chronology);
+  const errors = [];
+  if (expectedOrderIds.length && titles.length !== expectedOrderIds.length) {
+    errors.push(`expected ${expectedOrderIds.length} titles, got ${titles.length}`);
+  }
+  expectedOrderIds.forEach((id, i) => {
+    if (titles[i]?.id !== id) errors.push(`order mismatch at ${i}: ${titles[i]?.id} vs ${id}`);
+  });
+  titles.forEach((entry) => {
+    if (!entry.id || !entry.title) errors.push("title missing id/title");
+    if (!entry.characters?.length) errors.push(`${entry.id} has no characters`);
+    (entry.characters || []).forEach((personId) => {
+      if (!peopleIds.has(personId)) errors.push(`${entry.id} unknown character ${personId}`);
+    });
+    (entry.prereqs || []).forEach((item) => {
+      if (!CHRONO_PREREQ_TIERS.includes(item.tier)) errors.push(`${entry.id} bad tier ${item.tier}`);
+      if (!index.has(item.id)) errors.push(`${entry.id} prereq unknown ${item.id}`);
+    });
+  });
+  return errors;
 }
 
 /** Match title labels for the custom suggestions panel (not native datalist). */
@@ -96,9 +181,17 @@ export function eventMediaLabel(event) {
 }
 
 /** People who appear on beats that match the current title search and hub focus. */
-export function peopleForTitleSearch(people, events, relations, filters = {}, peopleById = new Map()) {
+export function peopleForTitleSearch(people, events, relations, filters = {}, peopleById = new Map(), chronology = null) {
   const query = String(filters.query || "").trim();
   if (!query) return { people, relations };
+  const chronoEntry = chronology ? chronologyEntryForQuery(chronology, query) : null;
+  if (chronoEntry?.characters?.length) {
+    const ids = new Set(chronoEntry.characters);
+    const cast = people.filter((person) => ids.has(person.id));
+    const visible = new Set(cast.map((person) => person.id));
+    const scoped = relations.filter((relation) => visible.has(relation.from) && visible.has(relation.to));
+    return { people: cast, relations: scoped };
+  }
   const matched = filterEvents(events, filters, peopleById);
   if (!matched.length) return { people: [], relations: [] };
   const ids = new Set();
@@ -487,6 +580,7 @@ export function parseState(urlLike, valid = {}) {
   if (view === "relation" && !country) view = "web";
   const topicRaw = url.searchParams.get("topic") || "";
   const topic = valid.topics?.has(topicRaw) ? topicRaw : "";
+  const chronologyTitle = url.searchParams.get("title") || "";
   return {
     view,
     person,
@@ -496,6 +590,7 @@ export function parseState(urlLike, valid = {}) {
     country,
     hub,
     topic,
+    chronologyTitle,
   };
 }
 
@@ -506,7 +601,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
     url.hash = "";
     return url.pathname || "/";
   }
-  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic", "criteria", "gun"].forEach((key) => url.searchParams.delete(key));
+  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic", "criteria", "gun", "title"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (state.view === "timeline" || state.view === "person" || state.view === "relation") {
     url.searchParams.set("view", state.view);
@@ -528,6 +623,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (state.topic) url.searchParams.set("topic", state.topic);
   if (state.hub) url.searchParams.set("hub", state.hub);
   else if (state.defaultHub) url.searchParams.set("hub", "shared");
+  if (state.chronologyTitle) url.searchParams.set("title", state.chronologyTitle);
   url.hash = state.view === "person" || !eventId ? "" : encodeURIComponent(eventId);
   return `${url.pathname}${url.search}${url.hash}`;
 }

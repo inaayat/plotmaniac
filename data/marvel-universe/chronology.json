@@ -1,0 +1,1434 @@
+{
+  "version": 1,
+  "source": "Karan MCU + Mutant Legacy chronology (September 2026)",
+  "titles": [
+    {
+      "id": "eyes-of-wakanda",
+      "title": "Eyes of Wakanda",
+      "characters": [
+        "tchalla",
+        "shuri",
+        "okoye",
+        "nakia"
+      ],
+      "era": "Origins"
+    },
+    {
+      "id": "captain-america-first-avenger",
+      "title": "Captain America: The First Avenger",
+      "characters": [
+        "steve-rogers",
+        "peggy-carter",
+        "bucky-barnes",
+        "nick-fury",
+        "howard-stark"
+      ],
+      "era": "Origins"
+    },
+    {
+      "id": "one-shot-agent-carter",
+      "title": "Marvel Studios One Shot: Agent Carter",
+      "characters": [
+        "peggy-carter",
+        "howard-stark"
+      ],
+      "era": "Origins"
+    },
+    {
+      "id": "x-men-first-class",
+      "title": "X-Men: First Class",
+      "characters": [
+        "charles-xavier-fox",
+        "magneto-fox",
+        "mystique-fox",
+        "beast-fox",
+        "logan-wolverine",
+        "cyclops-fox",
+        "storm-fox",
+        "jean-grey-fox",
+        "rogue-fox",
+        "iceman-fox",
+        "kitty-pride-fox",
+        "havok-fox",
+        "emma-frost-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "ff-first-steps-1964",
+      "title": "The Fantastic Four: First Steps",
+      "characters": [
+        "reed-richards-first",
+        "sue-storm-first",
+        "johnny-storm-first",
+        "ben-grimm-first",
+        "shalla-bal",
+        "galactus-first"
+      ],
+      "filterLabel": "The Fantastic Four: First Steps (1964 chronology)",
+      "note": "Story takes place in 1964 and sets up Avengers: Doomsday — Karan places this here chronologically even though Marvel also lists the film later.",
+      "era": "1964"
+    },
+    {
+      "id": "x-men-days-of-future-past",
+      "title": "X-Men: Days of Future Past",
+      "characters": [
+        "charles-xavier-fox",
+        "magneto-fox",
+        "mystique-fox",
+        "beast-fox",
+        "logan-wolverine",
+        "cyclops-fox",
+        "storm-fox",
+        "jean-grey-fox",
+        "rogue-fox",
+        "iceman-fox",
+        "kitty-pride-fox",
+        "nightcrawler-fox",
+        "quicksilver-fox"
+      ],
+      "note": "The X-Men timeline splits.",
+      "era": "Mutant legacy",
+      "prereqs": [
+        {
+          "id": "x-men-first-class",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "x-men-origins-wolverine",
+      "title": "X-Men Origins: Wolverine",
+      "characters": [
+        "logan-wolverine",
+        "charles-xavier-fox",
+        "cyclops-fox",
+        "storm-fox",
+        "jean-grey-fox",
+        "wade-wilson",
+        "sabretooth-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "x-men-apocalypse",
+      "title": "X-Men: Apocalypse",
+      "characters": [
+        "charles-xavier-fox",
+        "magneto-fox",
+        "mystique-fox",
+        "beast-fox",
+        "logan-wolverine",
+        "cyclops-fox",
+        "storm-fox",
+        "jean-grey-fox",
+        "rogue-fox",
+        "iceman-fox",
+        "kitty-pride-fox",
+        "nightcrawler-fox",
+        "apocalypse-fox",
+        "quicksilver-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "x-men-dark-phoenix",
+      "title": "X-Men: Dark Phoenix",
+      "characters": [
+        "charles-xavier-fox",
+        "magneto-fox",
+        "mystique-fox",
+        "beast-fox",
+        "logan-wolverine",
+        "cyclops-fox",
+        "storm-fox",
+        "jean-grey-fox",
+        "rogue-fox",
+        "iceman-fox",
+        "kitty-pride-fox",
+        "nightcrawler-fox",
+        "quicksilver-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "captain-marvel",
+      "title": "Captain Marvel",
+      "characters": [
+        "carol-danvers",
+        "nick-fury",
+        "talos",
+        "monica-rambeau"
+      ],
+      "era": "1990s"
+    },
+    {
+      "id": "x-men",
+      "title": "X-Men",
+      "characters": [
+        "charles-xavier-fox",
+        "magneto-fox",
+        "mystique-fox",
+        "beast-fox",
+        "logan-wolverine",
+        "cyclops-fox",
+        "storm-fox",
+        "jean-grey-fox",
+        "rogue-fox",
+        "iceman-fox",
+        "kitty-pride-fox",
+        "nightcrawler-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "x-men-2",
+      "title": "X-Men 2 (X2: X-Men United)",
+      "characters": [
+        "charles-xavier-fox",
+        "magneto-fox",
+        "mystique-fox",
+        "beast-fox",
+        "logan-wolverine",
+        "cyclops-fox",
+        "storm-fox",
+        "jean-grey-fox",
+        "rogue-fox",
+        "iceman-fox",
+        "kitty-pride-fox",
+        "nightcrawler-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "x-men-last-stand",
+      "title": "X-Men: The Last Stand",
+      "characters": [
+        "charles-xavier-fox",
+        "magneto-fox",
+        "mystique-fox",
+        "beast-fox",
+        "logan-wolverine",
+        "cyclops-fox",
+        "storm-fox",
+        "jean-grey-fox",
+        "rogue-fox",
+        "iceman-fox",
+        "kitty-pride-fox",
+        "nightcrawler-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "iron-man",
+      "title": "Iron Man",
+      "characters": [
+        "tony-stark",
+        "pepper-potts",
+        "james-rhodes",
+        "nick-fury"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "iron-man-2",
+      "title": "Iron Man 2",
+      "characters": [
+        "tony-stark",
+        "pepper-potts",
+        "james-rhodes",
+        "natasha-romanoff",
+        "nick-fury"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "incredible-hulk",
+      "title": "The Incredible Hulk",
+      "characters": [
+        "bruce-banner",
+        "betty-ross",
+        "thaddeus-ross"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "one-shot-funny-thing-thor",
+      "title": "Marvel Studios One Shot: A Funny Thing Happened on the Way to Thor's Hammer",
+      "characters": [
+        "phil-coulson"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "thor",
+      "title": "Thor",
+      "characters": [
+        "thor",
+        "loki-main",
+        "jane-foster",
+        "odin-borson",
+        "heimdall"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "one-shot-consultant",
+      "title": "Marvel Studios One Shot: The Consultant",
+      "characters": [
+        "phil-coulson",
+        "nick-fury",
+        "james-rhodes"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "the-avengers",
+      "title": "The Avengers",
+      "characters": [
+        "tony-stark",
+        "steve-rogers",
+        "thor",
+        "bruce-banner",
+        "natasha-romanoff",
+        "clint-barton",
+        "nick-fury",
+        "loki-main",
+        "pepper-potts"
+      ],
+      "era": "Infinity Saga",
+      "prereqs": [
+        {
+          "id": "iron-man",
+          "tier": "must"
+        },
+        {
+          "id": "thor",
+          "tier": "must"
+        },
+        {
+          "id": "captain-america-first-avenger",
+          "tier": "must"
+        },
+        {
+          "id": "iron-man-2",
+          "tier": "could"
+        },
+        {
+          "id": "incredible-hulk",
+          "tier": "could"
+        }
+      ]
+    },
+    {
+      "id": "the-wolverine",
+      "title": "The Wolverine",
+      "characters": [
+        "logan-wolverine",
+        "charles-xavier-fox",
+        "yukio-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "one-shot-item-47",
+      "title": "Marvel Studios One Shot: Item 47",
+      "characters": [
+        "nick-fury",
+        "james-rhodes"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "thor-dark-world",
+      "title": "Thor: The Dark World",
+      "characters": [
+        "thor",
+        "loki-main",
+        "jane-foster",
+        "odin-borson"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "iron-man-3",
+      "title": "Iron Man 3",
+      "characters": [
+        "tony-stark",
+        "pepper-potts",
+        "james-rhodes",
+        "trevor-slattery"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "one-shot-all-hail-king",
+      "title": "Marvel Studios One Shot: All Hail the King",
+      "characters": [
+        "trevor-slattery"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "winter-soldier",
+      "title": "Captain America: The Winter Soldier",
+      "characters": [
+        "steve-rogers",
+        "natasha-romanoff",
+        "bucky-barnes",
+        "sam-wilson",
+        "nick-fury",
+        "peggy-carter"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "guardians-1",
+      "title": "Guardians of the Galaxy",
+      "characters": [
+        "peter-quill",
+        "gamora",
+        "rocket",
+        "groot",
+        "drax",
+        "nebula",
+        "thanos"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "guardians-2",
+      "title": "Guardians of the Galaxy Vol. 2",
+      "characters": [
+        "peter-quill",
+        "gamora",
+        "rocket",
+        "groot",
+        "drax",
+        "mantis",
+        "nebula"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "i-am-groot-s1",
+      "title": "I Am Groot S1",
+      "characters": [
+        "groot"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "i-am-groot-s2",
+      "title": "I Am Groot S2",
+      "characters": [
+        "groot"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "daredevil-s1",
+      "title": "Daredevil S1",
+      "characters": [
+        "matt-murdock",
+        "karen-page",
+        "wilson-fisk",
+        "frank-castle",
+        "jessica-jones",
+        "elektra-natchios"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "jessica-jones-s1",
+      "title": "Jessica Jones S1",
+      "characters": [
+        "jessica-jones",
+        "luke-cage",
+        "trish-walker",
+        "matt-murdock"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "age-of-ultron",
+      "title": "Avengers: Age of Ultron",
+      "characters": [
+        "tony-stark",
+        "steve-rogers",
+        "thor",
+        "bruce-banner",
+        "natasha-romanoff",
+        "clint-barton",
+        "james-rhodes",
+        "wanda-maximoff",
+        "vision"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "ant-man",
+      "title": "Ant-Man",
+      "characters": [
+        "scott-lang",
+        "hope-van-dyne",
+        "hank-pym",
+        "janet-van-dyne",
+        "cassie-lang"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "daredevil-s2",
+      "title": "Daredevil S2",
+      "characters": [
+        "matt-murdock",
+        "karen-page",
+        "wilson-fisk",
+        "frank-castle",
+        "jessica-jones",
+        "elektra-natchios"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "luke-cage-s1",
+      "title": "Luke Cage S1",
+      "characters": [
+        "luke-cage",
+        "misty-knight",
+        "jessica-jones",
+        "claire-temple"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "deadpool",
+      "title": "Deadpool",
+      "characters": [
+        "wade-wilson",
+        "vanessa-fox",
+        "colossus-fox",
+        "negasonic-fox"
+      ],
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "iron-fist-s1",
+      "title": "Iron Fist S1",
+      "characters": [
+        "danny-rand",
+        "colleen-wing",
+        "luke-cage",
+        "jessica-jones"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "the-defenders",
+      "title": "The Defenders",
+      "characters": [
+        "matt-murdock",
+        "jessica-jones",
+        "luke-cage",
+        "danny-rand",
+        "karen-page"
+      ],
+      "era": "Street level",
+      "prereqs": [
+        {
+          "id": "daredevil-s1",
+          "tier": "should"
+        },
+        {
+          "id": "jessica-jones-s1",
+          "tier": "should"
+        },
+        {
+          "id": "luke-cage-s1",
+          "tier": "should"
+        },
+        {
+          "id": "iron-fist-s1",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "civil-war",
+      "title": "Captain America: Civil War",
+      "characters": [
+        "tony-stark",
+        "steve-rogers",
+        "bucky-barnes",
+        "sam-wilson",
+        "natasha-romanoff",
+        "james-rhodes",
+        "tchalla",
+        "peter-parker-mcu",
+        "clint-barton"
+      ],
+      "era": "Infinity Saga",
+      "prereqs": [
+        {
+          "id": "age-of-ultron",
+          "tier": "must"
+        },
+        {
+          "id": "winter-soldier",
+          "tier": "must"
+        },
+        {
+          "id": "ant-man",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "black-widow",
+      "title": "Black Widow",
+      "characters": [
+        "natasha-romanoff",
+        "yelena-belova",
+        "alexei-shostakov"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "black-panther",
+      "title": "Black Panther",
+      "characters": [
+        "tchalla",
+        "shuri",
+        "okoye",
+        "mbaku",
+        "nakia",
+        "ayo",
+        "everett-ross"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "homecoming",
+      "title": "Spider-Man: Homecoming",
+      "characters": [
+        "peter-parker-mcu",
+        "tony-stark",
+        "may-parker",
+        "mj-mcu",
+        "ned-leeds"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "punisher-s1",
+      "title": "The Punisher S1",
+      "characters": [
+        "frank-castle",
+        "matt-murdock",
+        "karen-page",
+        "microchip"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "doctor-strange",
+      "title": "Doctor Strange",
+      "characters": [
+        "stephen-strange",
+        "wong",
+        "mordo",
+        "the-ancient-one"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "jessica-jones-s2",
+      "title": "Jessica Jones S2",
+      "characters": [
+        "jessica-jones",
+        "luke-cage",
+        "trish-walker",
+        "matt-murdock"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "luke-cage-s2",
+      "title": "Luke Cage S2",
+      "characters": [
+        "luke-cage",
+        "misty-knight",
+        "jessica-jones",
+        "claire-temple"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "iron-fist-s2",
+      "title": "Iron Fist S2",
+      "characters": [
+        "danny-rand",
+        "colleen-wing",
+        "luke-cage",
+        "jessica-jones"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "daredevil-s3",
+      "title": "Daredevil S3",
+      "characters": [
+        "matt-murdock",
+        "karen-page",
+        "wilson-fisk",
+        "frank-castle",
+        "jessica-jones",
+        "elektra-natchios"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "ragnarok",
+      "title": "Thor: Ragnarok",
+      "characters": [
+        "thor",
+        "loki-main",
+        "valkyrie",
+        "bruce-banner",
+        "heimdall"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "punisher-s2",
+      "title": "The Punisher S2",
+      "characters": [
+        "frank-castle",
+        "matt-murdock",
+        "karen-page",
+        "microchip"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "jessica-jones-s3",
+      "title": "Jessica Jones S3",
+      "characters": [
+        "jessica-jones",
+        "luke-cage",
+        "trish-walker",
+        "matt-murdock"
+      ],
+      "era": "Street level"
+    },
+    {
+      "id": "ant-man-wasp",
+      "title": "Ant-Man and the Wasp",
+      "characters": [
+        "scott-lang",
+        "hope-van-dyne",
+        "hank-pym",
+        "janet-van-dyne",
+        "cassie-lang"
+      ],
+      "era": "Infinity Saga"
+    },
+    {
+      "id": "infinity-war",
+      "title": "Avengers: Infinity War",
+      "characters": [
+        "thanos",
+        "tony-stark",
+        "steve-rogers",
+        "thor",
+        "bruce-banner",
+        "wanda-maximoff",
+        "vision",
+        "stephen-strange",
+        "peter-parker-mcu",
+        "peter-quill",
+        "gamora",
+        "nebula",
+        "rocket",
+        "groot",
+        "drax",
+        "mantis",
+        "loki-main",
+        "carol-danvers"
+      ],
+      "era": "Infinity Saga",
+      "prereqs": [
+        {
+          "id": "civil-war",
+          "tier": "must"
+        },
+        {
+          "id": "ragnarok",
+          "tier": "must"
+        },
+        {
+          "id": "guardians-2",
+          "tier": "should"
+        },
+        {
+          "id": "doctor-strange",
+          "tier": "should"
+        },
+        {
+          "id": "homecoming",
+          "tier": "should"
+        },
+        {
+          "id": "black-panther",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "deadpool-2",
+      "title": "Deadpool 2",
+      "characters": [
+        "wade-wilson",
+        "vanessa-fox",
+        "colossus-fox",
+        "negasonic-fox",
+        "cable-fox",
+        "domino-fox"
+      ],
+      "note": "Chronologically after Infinity War; Karan still recommends watching before Infinity War + Endgame back-to-back if you prefer that pairing.",
+      "era": "Mutant legacy",
+      "prereqs": [
+        {
+          "id": "deadpool",
+          "tier": "must"
+        }
+      ]
+    },
+    {
+      "id": "endgame",
+      "title": "Avengers: Endgame",
+      "characters": [
+        "tony-stark",
+        "steve-rogers",
+        "thor",
+        "bruce-banner",
+        "natasha-romanoff",
+        "clint-barton",
+        "scott-lang",
+        "nebula",
+        "rocket",
+        "carol-danvers",
+        "sam-wilson",
+        "bucky-barnes",
+        "peter-parker-mcu",
+        "pepper-potts",
+        "thanos"
+      ],
+      "era": "Infinity Saga",
+      "prereqs": [
+        {
+          "id": "infinity-war",
+          "tier": "must"
+        },
+        {
+          "id": "ant-man-wasp",
+          "tier": "must"
+        },
+        {
+          "id": "captain-marvel",
+          "tier": "should"
+        },
+        {
+          "id": "deadpool-2",
+          "tier": "could"
+        }
+      ]
+    },
+    {
+      "id": "loki-s1",
+      "title": "Loki S1",
+      "characters": [
+        "loki-tva",
+        "sylvie",
+        "mobius",
+        "hunter-b15",
+        "he-who-remains"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "endgame",
+          "tier": "must"
+        }
+      ]
+    },
+    {
+      "id": "what-if-s1",
+      "title": "What If…? S1",
+      "characters": [
+        "loki-tva",
+        "peggy-carter",
+        "tchalla",
+        "stephen-strange",
+        "wanda-maximoff",
+        "natasha-romanoff"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "marvel-zombies",
+      "title": "Marvel Zombies",
+      "characters": [
+        "wanda-maximoff",
+        "stephen-strange",
+        "peter-parker-mcu",
+        "bruce-banner",
+        "scott-lang"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "wandavision",
+      "title": "WandaVision",
+      "characters": [
+        "wanda-maximoff",
+        "vision",
+        "billy-maximoff",
+        "agatha-harkness",
+        "monica-rambeau"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "endgame",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "shang-chi",
+      "title": "Shang-Chi and the Legend of the Ten Rings",
+      "characters": [
+        "shang-chi",
+        "katy-chen",
+        "xu-wenwu",
+        "xu-xialing",
+        "trevor-slattery"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "falcon-winter-soldier",
+      "title": "The Falcon and the Winter Soldier",
+      "characters": [
+        "sam-wilson",
+        "bucky-barnes",
+        "yelena-belova",
+        "valentina-fontaine",
+        "tchalla",
+        "shuri"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "far-from-home",
+      "title": "Spider-Man: Far From Home",
+      "characters": [
+        "peter-parker-mcu",
+        "mj-mcu",
+        "ned-leeds",
+        "nick-fury",
+        "talos"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "endgame",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "eternals",
+      "title": "Eternals",
+      "characters": [
+        "sersi",
+        "thena",
+        "ikaris",
+        "sprite",
+        "phastos",
+        "kingo"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "no-way-home",
+      "title": "Spider-Man: No Way Home",
+      "characters": [
+        "peter-parker-mcu",
+        "peter-parker-raimi",
+        "peter-parker-webb",
+        "stephen-strange",
+        "mj-mcu",
+        "ned-leeds",
+        "may-parker",
+        "norman-osborn-raimi",
+        "otto-octavius-raimi",
+        "curt-connors-webb",
+        "max-dillon-webb",
+        "eddie-brock-venom"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "far-from-home",
+          "tier": "must"
+        },
+        {
+          "id": "doctor-strange",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "multiverse-madness",
+      "title": "Doctor Strange in the Multiverse of Madness",
+      "characters": [
+        "stephen-strange",
+        "america-chavez",
+        "wanda-maximoff",
+        "wong",
+        "reed-richards-838",
+        "charles-xavier-838"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "wandavision",
+          "tier": "must"
+        },
+        {
+          "id": "no-way-home",
+          "tier": "must"
+        },
+        {
+          "id": "doctor-strange",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "hawkeye",
+      "title": "Hawkeye",
+      "characters": [
+        "clint-barton",
+        "kate-bishop",
+        "maya-lopez",
+        "wilson-fisk",
+        "yelena-belova"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "moon-knight",
+      "title": "Moon Knight",
+      "characters": [
+        "marc-spector",
+        "layla-el-faouly",
+        "steven-grant"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "wakanda-forever",
+      "title": "Black Panther: Wakanda Forever",
+      "characters": [
+        "shuri",
+        "okoye",
+        "mbaku",
+        "nakia",
+        "namor",
+        "riri-williams",
+        "everett-ross"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "echo",
+      "title": "Echo",
+      "characters": [
+        "maya-lopez",
+        "wilson-fisk"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "she-hulk",
+      "title": "She-Hulk: Attorney at Law",
+      "characters": [
+        "jennifer-walters",
+        "bruce-banner",
+        "wong",
+        "titania"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "ms-marvel",
+      "title": "Ms. Marvel",
+      "characters": [
+        "kamala-khan",
+        "monica-rambeau"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "love-and-thunder",
+      "title": "Thor: Love and Thunder",
+      "characters": [
+        "thor",
+        "valkyrie",
+        "peter-quill",
+        "mantis",
+        "jane-foster"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "ironheart",
+      "title": "Ironheart",
+      "characters": [
+        "riri-williams",
+        "shuri"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "werewolf-by-night",
+      "title": "Werewolf By Night",
+      "characters": [
+        "jack-russell",
+        "elsa-bloodstone"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "gotg-holiday",
+      "title": "The Guardians of the Galaxy Holiday Special",
+      "characters": [
+        "peter-quill",
+        "mantis",
+        "drax",
+        "nebula",
+        "rocket",
+        "groot"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "quantumania",
+      "title": "Ant-Man and the Wasp: Quantumania",
+      "characters": [
+        "scott-lang",
+        "hope-van-dyne",
+        "janet-van-dyne",
+        "hank-pym",
+        "cassie-lang",
+        "he-who-remains"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "ant-man-wasp",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "gotg-3",
+      "title": "Guardians of the Galaxy Vol. 3",
+      "characters": [
+        "rocket",
+        "groot",
+        "peter-quill",
+        "gamora",
+        "nebula",
+        "drax",
+        "mantis",
+        "adam-warlock"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "gotg-holiday",
+          "tier": "should"
+        },
+        {
+          "id": "quantumania",
+          "tier": "could"
+        }
+      ]
+    },
+    {
+      "id": "secret-invasion",
+      "title": "Secret Invasion",
+      "characters": [
+        "nick-fury",
+        "talos",
+        "carol-danvers"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "the-marvels",
+      "title": "The Marvels",
+      "characters": [
+        "carol-danvers",
+        "monica-rambeau",
+        "kamala-khan",
+        "beast-fox"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "captain-marvel",
+          "tier": "must"
+        },
+        {
+          "id": "ms-marvel",
+          "tier": "must"
+        },
+        {
+          "id": "wandavision",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "loki-s2",
+      "title": "Loki S2",
+      "characters": [
+        "loki-tva",
+        "sylvie",
+        "mobius",
+        "hunter-b15",
+        "he-who-remains"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "what-if-s2",
+      "title": "What If…? S2",
+      "characters": [
+        "loki-tva",
+        "peggy-carter",
+        "nebula",
+        "peter-quill",
+        "wanda-maximoff"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "logan-mid",
+      "title": "Logan",
+      "characters": [
+        "logan-wolverine",
+        "charles-xavier-fox",
+        "laura-fox"
+      ],
+      "filterLabel": "Logan (mid-list viewing)",
+      "note": "Recommended here despite the 2029 setting — Deadpool & Wolverine spoils Logan if you watch out of order.",
+      "era": "Mutant legacy"
+    },
+    {
+      "id": "deadpool-wolverine",
+      "title": "Deadpool & Wolverine",
+      "characters": [
+        "wade-wilson",
+        "logan-wolverine",
+        "charles-xavier-fox",
+        "beast-fox",
+        "johnny-storm-fox",
+        "loki-tva",
+        "hunter-b15"
+      ],
+      "era": "Mutant legacy",
+      "essential": true,
+      "prereqs": [
+        {
+          "id": "deadpool-2",
+          "tier": "must"
+        },
+        {
+          "id": "logan-mid",
+          "tier": "must"
+        },
+        {
+          "id": "loki-s1",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "agatha",
+      "title": "Agatha All Along",
+      "characters": [
+        "agatha-harkness",
+        "billy-maximoff",
+        "wanda-maximoff"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "what-if-s3",
+      "title": "What If…? S3",
+      "characters": [
+        "loki-tva",
+        "peggy-carter",
+        "sam-wilson",
+        "stephen-strange"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "born-again-s1",
+      "title": "Daredevil: Born Again S1",
+      "characters": [
+        "matt-murdock",
+        "wilson-fisk",
+        "karen-page",
+        "frank-castle"
+      ],
+      "era": "Street level",
+      "prereqs": [
+        {
+          "id": "daredevil-s3",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "brave-new-world",
+      "title": "Captain America: Brave New World",
+      "characters": [
+        "sam-wilson",
+        "bucky-barnes",
+        "everett-ross",
+        "shuri",
+        "valentina-fontaine"
+      ],
+      "era": "Multiverse Saga"
+    },
+    {
+      "id": "thunderbolts",
+      "title": "Thunderbolts*",
+      "characters": [
+        "yelena-belova",
+        "bucky-barnes",
+        "alexei-shostakov",
+        "valentina-fontaine",
+        "bob-reynolds"
+      ],
+      "era": "Multiverse Saga",
+      "essential": true,
+      "prereqs": [
+        {
+          "id": "black-widow",
+          "tier": "should"
+        },
+        {
+          "id": "brave-new-world",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "ff-first-steps-official",
+      "title": "The Fantastic Four: First Steps",
+      "characters": [
+        "reed-richards-first",
+        "sue-storm-first",
+        "johnny-storm-first",
+        "ben-grimm-first",
+        "shalla-bal",
+        "galactus-first"
+      ],
+      "filterLabel": "The Fantastic Four: First Steps (official slot)",
+      "note": "Official MCU timeline slot for the same First Steps story placed earlier at 1964.",
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "ff-first-steps-1964",
+          "tier": "could"
+        }
+      ]
+    },
+    {
+      "id": "wonder-man",
+      "title": "Wonder Man",
+      "characters": [
+        "simon-williams",
+        "bob-reynolds",
+        "valentina-fontaine",
+        "trevor-slattery"
+      ],
+      "era": "Multiverse Saga",
+      "prereqs": [
+        {
+          "id": "wandavision",
+          "tier": "unreleased"
+        },
+        {
+          "id": "deadpool-wolverine",
+          "tier": "unreleased"
+        }
+      ]
+    },
+    {
+      "id": "born-again-s2",
+      "title": "Daredevil: Born Again S2",
+      "characters": [
+        "matt-murdock",
+        "wilson-fisk",
+        "karen-page",
+        "frank-castle"
+      ],
+      "era": "Street level",
+      "prereqs": [
+        {
+          "id": "born-again-s1",
+          "tier": "must"
+        }
+      ]
+    },
+    {
+      "id": "punisher-one-last-kill",
+      "title": "The Punisher: One Last Kill",
+      "characters": [
+        "frank-castle",
+        "matt-murdock",
+        "karen-page"
+      ],
+      "era": "Street level",
+      "prereqs": [
+        {
+          "id": "punisher-s2",
+          "tier": "should"
+        }
+      ]
+    },
+    {
+      "id": "logan-final",
+      "title": "Logan",
+      "characters": [
+        "logan-wolverine",
+        "charles-xavier-fox",
+        "laura-fox"
+      ],
+      "filterLabel": "Logan (final position)",
+      "note": "Karan's closing placement — same film as the mid-list Logan entry above.",
+      "era": "Mutant legacy"
+    }
+  ]
+}

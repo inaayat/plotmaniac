@@ -10,6 +10,8 @@ Static single-page app: `index.html` at the repo root, ES modules in `app.js`, `
 | `app.js` | Boot, routing (`?plot=`, `?view=`), gallery |
 | `engine.js` | Shared plot engine (webs, timelines, country field) |
 | `data/plots.json` | Plot registry |
+| `data/marvel-universe/chronology.json` | MCU + Mutant Legacy watch-order titles, cast, prereqs |
+| `marvel-chronology-view.js` | Three-pane study-up timeline UI for Marvel |
 | `data/gun-regulation/` | SCOTUS gun-rights board (federal timeline, checklist, exemplars) |
 | `data/gun-laws-by-state/` | Separate state-law plot: Wikipedia snapshot, filter labels, Albers map paths |
 | `scripts/build-states-wikipedia-snapshot.mjs` | Wikipedia → `states-snapshot.json` + `docs/gun-laws-by-state-table.md` |
