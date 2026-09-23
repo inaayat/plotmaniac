@@ -1932,6 +1932,8 @@ assert.match(css, /\.chrono-arrow-shape\s*\{[^}]*fill:\s*currentColor/, "arrow h
 assert.doesNotMatch(css, /\.chrono-arrow--out\s*\{[^}]*scaleX\(-1\)/, "Watch Next arrows point at the next poster");
 assert.match(css, /\.chrono-arrow \{[^}]*flex:\s*none/, "arrows stay a short connector");
 assert.match(css, /\.chrono-lane-hit \.chrono-poster--lane\s*\{[^}]*var\(--lane-h/, "chronology posters size from the lane so titles are not cut off");
+assert.match(css, /\.chrono-lane-event \.chrono-lane-cast\s*\{[^}]*max-height:\s*92px/, "chronology casts stay a short list");
+assert.match(css, /\.chrono-lane-event \.chrono-lane-cast\s*\{[^}]*overflow-y:\s*auto/, "a long chronology cast scrolls");
 assert.match(laneSource, /layoutChronologyLane/, "chronology posters are not scaled down to fit the cast");
 assert.match(chronoViewSource, /export function renderMarvelMovieWeb/);
 assert.match(appSource, /Movie web/);

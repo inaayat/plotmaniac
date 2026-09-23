@@ -33,7 +33,7 @@ The board is one grid whose three columns share rows: a header row, a fixed band
 
 ### Chronology page
 
-`?view=chronology` (Chronology in the Marvel nav) is a scrollable story-order timeline: large posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. On the wide lane each poster sits against the axis with its title on the outer side, and its cast sits across the axis in the gap the neighbouring titles leave. Poster height follows the lane height so titles are never cut off; long titles clamp to two lines with the full name on hover. Choosing a title returns to Watch Order focused on that film.
+`?view=chronology` (Chronology in the Marvel nav) is a scrollable story-order timeline: large posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. On the wide lane each poster sits against the axis with its title on the outer side, and its cast follows the title in a short list that scrolls when a film has more people than fit. Poster height follows the lane height so titles are never cut off; long titles clamp to two lines with the full name on hover. Choosing a title returns to Watch Order focused on that film.
 
 ### Movie web
 

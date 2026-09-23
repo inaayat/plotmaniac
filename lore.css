@@ -5370,13 +5370,14 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-lane-hit {
+  flex: none;
   width: 100%;
 }
 
 .chrono-lane-hit .chrono-poster--lane {
-  /* Half the lane, less room for the number, rule, a two-line title, and
-     the era, so the outer edge of every card stays on screen. */
-  --chrono-lane-poster-h: clamp(130px, calc(var(--lane-h, 700px) / 2 - 140px), 340px);
+  /* Half the lane, less room for the title and a scrollable cast, so the
+     outer edge of every card stays on screen. */
+  --chrono-lane-poster-h: clamp(110px, calc(var(--lane-h, 700px) / 2 - 230px), 260px);
   height: var(--chrono-lane-poster-h);
   width: calc(var(--chrono-lane-poster-h) * 2 / 3);
   margin-bottom: 8px;
@@ -5394,7 +5395,8 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   -webkit-line-clamp: 2;
 }
 
-.marvel-chronology-lane .side-above .chrono-lane-hit {
+.marvel-chronology-lane .side-above .chrono-lane-hit,
+.marvel-chronology-lane .side-above .lane-card {
   flex-direction: column-reverse;
 }
 
@@ -5408,36 +5410,30 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   gap: 6px 8px;
 }
 
-.chrono-lane-event > .chrono-lane-cast {
-  position: absolute;
-  right: 12px;
-  left: 12px;
-  z-index: 1;
-  max-width: none;
+.chrono-lane-event .chrono-lane-cast {
+  flex: none;
+  width: 100%;
+  max-width: 100%;
+  max-height: 92px;
+  overflow-x: hidden;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
 }
 
-.chrono-lane-event.side-above > .chrono-lane-cast {
-  top: calc(var(--lane-axis) + 22px);
-  max-height: calc(100% - var(--lane-axis) - 40px);
-}
-
-.chrono-lane-event.side-below > .chrono-lane-cast {
-  bottom: calc(100% - var(--lane-axis) + 22px);
-  max-height: calc(var(--lane-axis) - 40px);
-  align-content: flex-end;
-}
-
 .chrono-lane-cast .chrono-cast-avatar {
-  width: 44px;
+  width: 40px;
+  min-width: 0;
+}
+
+.chrono-lane-cast .chrono-cast-name {
+  max-width: 40px;
 }
 
 .chrono-lane-cast .avatar,
 .chrono-lane-cast .chrono-cast-avatar .avatar {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
 }
 
 .chrono-lane-event {
@@ -5477,8 +5473,12 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 
 .chrono-story-card .chrono-lane-cast {
   max-width: none;
+  max-height: 132px;
   justify-content: flex-start;
   margin: 8px 0 0 122px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
 }
 
 .chrono-chip-cloud {

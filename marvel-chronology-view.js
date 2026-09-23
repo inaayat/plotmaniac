@@ -268,14 +268,12 @@ function chronologyLaneEvent(entry, { order, side, active, peopleById, onFocus, 
     hit.appendChild(era);
   }
   hit.addEventListener("click", () => onFocus(entry.id));
-  card.appendChild(hit);
+  card.append(hit, castRow(entry, { peopleById, onOpenPerson, avatar, compact: true }));
 
   const dot = document.createElement("span");
   dot.className = "lane-dot";
   dot.setAttribute("aria-hidden", "true");
-  // The cast sits across the axis from its poster, where the neighbouring
-  // columns leave room.
-  item.append(card, castRow(entry, { peopleById, onOpenPerson, avatar, compact: true }), dot);
+  item.append(card, dot);
   return item;
 }
 
