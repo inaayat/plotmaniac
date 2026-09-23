@@ -1,0 +1,119 @@
+[
+  {
+    "id": "us-presidential-doctrines",
+    "name": "U.S. presidential doctrines",
+    "role": "Named lines in American foreign policy—from hemisphere warnings through Cold War containment to post-9/11 counterterrorism.",
+    "tags": ["center", "foreign-policy"],
+    "links": [
+      {
+        "label": "United States presidential doctrines",
+        "url": "https://en.wikipedia.org/wiki/United_States_presidential_doctrines"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Seal_of_the_President_of_the_United_States.svg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Seal_of_the_President_of_the_United_States.svg",
+      "author": "U.S. Government",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+  },
+  {
+    "id": "james-monroe",
+    "name": "James Monroe",
+    "role": "5th president (1817–1825); Monroe Doctrine (1823).",
+    "tags": ["doctrine", "hemisphere"],
+    "links": [{ "label": "Monroe Doctrine", "url": "https://en.wikipedia.org/wiki/Monroe_Doctrine" }]
+  },
+  {
+    "id": "theodore-roosevelt",
+    "name": "Theodore Roosevelt",
+    "role": "26th president (1901–1909); Roosevelt Corollary (1904).",
+    "tags": ["doctrine", "hemisphere"],
+    "links": [{ "label": "Roosevelt Corollary", "url": "https://en.wikipedia.org/wiki/Roosevelt_Corollary" }]
+  },
+  {
+    "id": "harry-truman",
+    "name": "Harry S. Truman",
+    "role": "33rd president (1945–1953); Truman Doctrine (1947).",
+    "tags": ["doctrine", "cold-war"],
+    "links": [{ "label": "Truman Doctrine", "url": "https://en.wikipedia.org/wiki/Truman_Doctrine" }]
+  },
+  {
+    "id": "dwight-eisenhower",
+    "name": "Dwight D. Eisenhower",
+    "role": "34th president (1953–1961); Eisenhower Doctrine (1957).",
+    "tags": ["doctrine", "cold-war", "middle-east"],
+    "links": [{ "label": "Eisenhower Doctrine", "url": "https://en.wikipedia.org/wiki/Eisenhower_Doctrine" }]
+  },
+  {
+    "id": "john-kennedy",
+    "name": "John F. Kennedy",
+    "role": "35th president (1961–1963); Kennedy Doctrine (Western Hemisphere anti-communism).",
+    "tags": ["doctrine", "cold-war"],
+    "links": [{ "label": "Kennedy Doctrine", "url": "https://en.wikipedia.org/wiki/Kennedy_Doctrine" }]
+  },
+  {
+    "id": "lyndon-johnson",
+    "name": "Lyndon B. Johnson",
+    "role": "36th president (1963–1969); Johnson Doctrine (1965).",
+    "tags": ["doctrine", "cold-war", "hemisphere"],
+    "links": [{ "label": "Johnson Doctrine", "url": "https://en.wikipedia.org/wiki/Johnson_Doctrine" }]
+  },
+  {
+    "id": "richard-nixon",
+    "name": "Richard Nixon",
+    "role": "37th president (1969–1974); Nixon Doctrine (1969).",
+    "tags": ["doctrine", "cold-war"],
+    "links": [{ "label": "Nixon Doctrine", "url": "https://en.wikipedia.org/wiki/Nixon_Doctrine" }]
+  },
+  {
+    "id": "jimmy-carter",
+    "name": "Jimmy Carter",
+    "role": "39th president (1977–1981); Carter Doctrine (1980).",
+    "tags": ["doctrine", "cold-war", "persian-gulf"],
+    "links": [{ "label": "Carter Doctrine", "url": "https://en.wikipedia.org/wiki/Carter_Doctrine" }]
+  },
+  {
+    "id": "ronald-reagan",
+    "name": "Ronald Reagan",
+    "role": "40th president (1981–1989); Reagan Doctrine (1980s).",
+    "tags": ["doctrine", "cold-war"],
+    "links": [{ "label": "Reagan Doctrine", "url": "https://en.wikipedia.org/wiki/Reagan_Doctrine" }]
+  },
+  {
+    "id": "bill-clinton",
+    "name": "Bill Clinton",
+    "role": "42nd president (1993–2001); Clinton Doctrine (selective intervention).",
+    "tags": ["doctrine", "post-cold-war"],
+    "links": [{ "label": "Clinton Doctrine", "url": "https://en.wikipedia.org/wiki/Clinton_Doctrine" }]
+  },
+  {
+    "id": "george-w-bush",
+    "name": "George W. Bush",
+    "role": "43rd president (2001–2009); Bush Doctrine (post-9/11).",
+    "tags": ["doctrine", "post-cold-war"],
+    "links": [{ "label": "Bush Doctrine", "url": "https://en.wikipedia.org/wiki/Bush_Doctrine" }]
+  },
+  {
+    "id": "barack-obama",
+    "name": "Barack Obama",
+    "role": "44th president (2009–2017); pragmatic realism (often called the Obama Doctrine).",
+    "tags": ["doctrine", "post-cold-war"],
+    "links": [{ "label": "Obama Doctrine", "url": "https://en.wikipedia.org/wiki/Obama_Doctrine" }]
+  },
+  {
+    "id": "donald-trump",
+    "name": "Donald Trump",
+    "role": "45th president (2017–2021); America First foreign policy.",
+    "tags": ["doctrine", "post-cold-war"],
+    "links": [{ "label": "Foreign policy of the Donald Trump administration", "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Donald_Trump_administration" }]
+  },
+  {
+    "id": "joe-biden",
+    "name": "Joe Biden",
+    "role": "46th president (2021–2025); alliance repair and reduced forward deployments.",
+    "tags": ["doctrine", "post-cold-war"],
+    "links": [{ "label": "Foreign policy of the Joe Biden administration", "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Joe_Biden_administration" }]
+  }
+]

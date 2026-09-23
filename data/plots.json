@@ -273,6 +273,30 @@
       }
     },
     {
+      "id": "us-presidential-doctrines",
+      "aliases": ["presidential-doctrines", "foreign-policy-doctrines"],
+      "title": "U.S. Presidential Doctrines",
+      "kicker": "History",
+      "cardLine": "Monroe to Biden · timeline of named foreign-policy lines",
+      "lede": "Fourteen presidential doctrines on one chronological lane—from hemisphere warnings and Cold War containment to Gulf guarantees, insurgent proxy wars, and post-9/11 counterterrorism. Open any beat for context and Wikipedia sources.",
+      "searchPlaceholder": "Monroe, Truman, Carter Doctrine, Nixon, containment…",
+      "sourceNote": "U.S. Presidential Doctrines on Plotmaniac · English Wikipedia survey of United States presidential doctrines",
+      "defaultView": "timeline",
+      "centerId": "us-presidential-doctrines",
+      "includeOrbit": false,
+      "minBeats": 1,
+      "friendKinds": ["doctrine"],
+      "enemyKinds": [],
+      "friendLabel": "Doctrine",
+      "orbitLabel": "Related policy",
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Seal_of_the_President_of_the_United_States.svg?width=320",
+      "paths": {
+        "people": "data/us-presidential-doctrines/people.json",
+        "events": "data/us-presidential-doctrines/events.json",
+        "relations": "data/us-presidential-doctrines/relations.json"
+      }
+    },
+    {
       "id": "wars",
       "title": "Wars",
       "kicker": "Map",

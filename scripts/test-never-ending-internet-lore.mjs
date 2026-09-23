@@ -238,6 +238,7 @@ assert.deepEqual(plots.plots.map((item) => item.id), [
   "partition-of-india",
   "gun-laws-by-state",
   "scotus",
+  "us-presidential-doctrines",
   "wars",
 ], "homepage gallery order");
 for (const item of plots.plots) {
