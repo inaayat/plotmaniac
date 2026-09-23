@@ -11,7 +11,9 @@
         "okoye",
         "nakia"
       ],
-      "era": "Origins"
+      "era": "Origins",
+      "posterPath": "/yuOfb1MgnaGPa4guzV0n1IFYVGN.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/yuOfb1MgnaGPa4guzV0n1IFYVGN.jpg"
     },
     {
       "id": "captain-america-first-avenger",
@@ -23,7 +25,9 @@
         "nick-fury",
         "howard-stark"
       ],
-      "era": "Origins"
+      "era": "Origins",
+      "posterPath": "/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg"
     },
     {
       "id": "one-shot-agent-carter",
@@ -32,7 +36,9 @@
         "peggy-carter",
         "howard-stark"
       ],
-      "era": "Origins"
+      "era": "Origins",
+      "posterPath": "/4vFKKWPvCVDJTOWiwReBfpAMScP.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4vFKKWPvCVDJTOWiwReBfpAMScP.jpg"
     },
     {
       "id": "x-men-first-class",
@@ -52,7 +58,9 @@
         "havok-fox",
         "emma-frost-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/hNEokmUke0dazoBhttFN0o3L7Xv.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/hNEokmUke0dazoBhttFN0o3L7Xv.jpg"
     },
     {
       "id": "ff-first-steps-1964",
@@ -67,7 +75,9 @@
       ],
       "filterLabel": "The Fantastic Four: First Steps (1964 chronology)",
       "note": "Story takes place in 1964 and sets up Avengers: Doomsday — Karan places this here chronologically even though Marvel also lists the film later.",
-      "era": "1964"
+      "era": "1964",
+      "posterPath": "/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg"
     },
     {
       "id": "x-men-days-of-future-past",
@@ -94,7 +104,9 @@
           "id": "x-men-first-class",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/tYfijzolzgoMOtegh1Y7j2Enorg.jpg"
     },
     {
       "id": "x-men-origins-wolverine",
@@ -108,7 +120,9 @@
         "wade-wilson",
         "sabretooth-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/yj8LbTju1p7CUJg7US2unSBk33s.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/yj8LbTju1p7CUJg7US2unSBk33s.jpg"
     },
     {
       "id": "x-men-apocalypse",
@@ -129,7 +143,9 @@
         "apocalypse-fox",
         "quicksilver-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/ikA8UhYdTGpqbatFa93nIf6noSr.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ikA8UhYdTGpqbatFa93nIf6noSr.jpg"
     },
     {
       "id": "x-men-dark-phoenix",
@@ -149,7 +165,9 @@
         "nightcrawler-fox",
         "quicksilver-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/j9tbqv3NjNW7O6kUWrtF7jl5Hlh.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/j9tbqv3NjNW7O6kUWrtF7jl5Hlh.jpg"
     },
     {
       "id": "captain-marvel",
@@ -160,7 +178,9 @@
         "talos",
         "monica-rambeau"
       ],
-      "era": "1990s"
+      "era": "1990s",
+      "posterPath": "/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg"
     },
     {
       "id": "x-men",
@@ -179,7 +199,9 @@
         "kitty-pride-fox",
         "nightcrawler-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/bRDAc4GogyS9ci3ow7UnInOcriN.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/bRDAc4GogyS9ci3ow7UnInOcriN.jpg"
     },
     {
       "id": "x-men-2",
@@ -198,7 +220,9 @@
         "kitty-pride-fox",
         "nightcrawler-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/bst4alFUXCxISwdRUKSMhhkrX1M.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/bst4alFUXCxISwdRUKSMhhkrX1M.jpg"
     },
     {
       "id": "x-men-last-stand",
@@ -217,7 +241,9 @@
         "kitty-pride-fox",
         "nightcrawler-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg"
     },
     {
       "id": "iron-man",
@@ -228,7 +254,9 @@
         "james-rhodes",
         "nick-fury"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/78lPtwv72eTNqFW9COBYI0dWDJa.jpg"
     },
     {
       "id": "iron-man-2",
@@ -240,7 +268,9 @@
         "natasha-romanoff",
         "nick-fury"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/6WBeq4fCfn7AN0o21W9qNcRF2l9.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/6WBeq4fCfn7AN0o21W9qNcRF2l9.jpg"
     },
     {
       "id": "incredible-hulk",
@@ -250,7 +280,9 @@
         "betty-ross",
         "thaddeus-ross"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg"
     },
     {
       "id": "one-shot-funny-thing-thor",
@@ -258,7 +290,9 @@
       "characters": [
         "phil-coulson"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/njrOqsmFH4pxBrhcoslqLfw2OGk.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/njrOqsmFH4pxBrhcoslqLfw2OGk.jpg"
     },
     {
       "id": "thor",
@@ -270,7 +304,9 @@
         "odin-borson",
         "heimdall"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg"
     },
     {
       "id": "one-shot-consultant",
@@ -280,7 +316,9 @@
         "nick-fury",
         "james-rhodes"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/xqNLXUUvBnfVk6m3QFGGU0Grgs7.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/xqNLXUUvBnfVk6m3QFGGU0Grgs7.jpg"
     },
     {
       "id": "the-avengers",
@@ -318,7 +356,9 @@
           "id": "incredible-hulk",
           "tier": "could"
         }
-      ]
+      ],
+      "posterPath": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg"
     },
     {
       "id": "the-wolverine",
@@ -328,7 +368,9 @@
         "charles-xavier-fox",
         "yukio-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/t2wVAcoRlKvEIVSbiYDb8d0QqqS.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/t2wVAcoRlKvEIVSbiYDb8d0QqqS.jpg"
     },
     {
       "id": "one-shot-item-47",
@@ -337,7 +379,9 @@
         "nick-fury",
         "james-rhodes"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/hnSxG8clwLuAXEkp9emc8HCUcHD.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/hnSxG8clwLuAXEkp9emc8HCUcHD.jpg"
     },
     {
       "id": "thor-dark-world",
@@ -348,7 +392,9 @@
         "jane-foster",
         "odin-borson"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/wp6OxE4poJ4G7c0U2ZIXasTSMR7.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/wp6OxE4poJ4G7c0U2ZIXasTSMR7.jpg"
     },
     {
       "id": "iron-man-3",
@@ -359,7 +405,9 @@
         "james-rhodes",
         "trevor-slattery"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg"
     },
     {
       "id": "one-shot-all-hail-king",
@@ -367,7 +415,9 @@
       "characters": [
         "trevor-slattery"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/y0QYZPWgeGKOvyrzi6Oz3aJPxJa.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/y0QYZPWgeGKOvyrzi6Oz3aJPxJa.jpg"
     },
     {
       "id": "winter-soldier",
@@ -380,7 +430,9 @@
         "nick-fury",
         "peggy-carter"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg"
     },
     {
       "id": "guardians-1",
@@ -394,7 +446,9 @@
         "nebula",
         "thanos"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg"
     },
     {
       "id": "guardians-2",
@@ -408,7 +462,9 @@
         "mantis",
         "nebula"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg"
     },
     {
       "id": "i-am-groot-s1",
@@ -416,7 +472,9 @@
       "characters": [
         "groot"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg"
     },
     {
       "id": "i-am-groot-s2",
@@ -424,7 +482,9 @@
       "characters": [
         "groot"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg"
     },
     {
       "id": "daredevil-s1",
@@ -437,7 +497,9 @@
         "jessica-jones",
         "elektra-natchios"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg"
     },
     {
       "id": "jessica-jones-s1",
@@ -448,7 +510,9 @@
         "trish-walker",
         "matt-murdock"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg"
     },
     {
       "id": "age-of-ultron",
@@ -464,7 +528,9 @@
         "wanda-maximoff",
         "vision"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/4ssDuvEDkSArWEdyBl2X5EHvYKU.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4ssDuvEDkSArWEdyBl2X5EHvYKU.jpg"
     },
     {
       "id": "ant-man",
@@ -476,7 +542,9 @@
         "janet-van-dyne",
         "cassie-lang"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/rQRnQfUl3kfp78nCWq8Ks04vnq1.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/rQRnQfUl3kfp78nCWq8Ks04vnq1.jpg"
     },
     {
       "id": "daredevil-s2",
@@ -489,7 +557,9 @@
         "jessica-jones",
         "elektra-natchios"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg"
     },
     {
       "id": "luke-cage-s1",
@@ -500,7 +570,9 @@
         "jessica-jones",
         "claire-temple"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/yzM1hMB3PUJqbISX0f421b3xOjB.jpg"
     },
     {
       "id": "deadpool",
@@ -511,7 +583,9 @@
         "colossus-fox",
         "negasonic-fox"
       ],
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
     },
     {
       "id": "iron-fist-s1",
@@ -522,7 +596,9 @@
         "luke-cage",
         "jessica-jones"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg"
     },
     {
       "id": "the-defenders",
@@ -552,7 +628,9 @@
           "id": "iron-fist-s1",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/49XzINhH4LFsgz7cx6TOPcHUJUL.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/49XzINhH4LFsgz7cx6TOPcHUJUL.jpg"
     },
     {
       "id": "civil-war",
@@ -582,7 +660,9 @@
           "id": "ant-man",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/rAGiXaUfPzY7CDEyNKUofk3Kw2e.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/rAGiXaUfPzY7CDEyNKUofk3Kw2e.jpg"
     },
     {
       "id": "black-widow",
@@ -592,7 +672,9 @@
         "yelena-belova",
         "alexei-shostakov"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg"
     },
     {
       "id": "black-panther",
@@ -606,7 +688,9 @@
         "ayo",
         "everett-ross"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/uxzzxijgPIY7slzFvMotPv8wjKA.jpg"
     },
     {
       "id": "homecoming",
@@ -618,7 +702,9 @@
         "mj-mcu",
         "ned-leeds"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg"
     },
     {
       "id": "punisher-s1",
@@ -629,7 +715,9 @@
         "karen-page",
         "microchip"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg"
     },
     {
       "id": "doctor-strange",
@@ -640,7 +728,9 @@
         "mordo",
         "the-ancient-one"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg"
     },
     {
       "id": "jessica-jones-s2",
@@ -651,7 +741,9 @@
         "trish-walker",
         "matt-murdock"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg"
     },
     {
       "id": "luke-cage-s2",
@@ -662,7 +754,9 @@
         "jessica-jones",
         "claire-temple"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/yzM1hMB3PUJqbISX0f421b3xOjB.jpg"
     },
     {
       "id": "iron-fist-s2",
@@ -673,7 +767,9 @@
         "luke-cage",
         "jessica-jones"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg"
     },
     {
       "id": "daredevil-s3",
@@ -686,7 +782,9 @@
         "jessica-jones",
         "elektra-natchios"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg"
     },
     {
       "id": "ragnarok",
@@ -698,7 +796,9 @@
         "bruce-banner",
         "heimdall"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"
     },
     {
       "id": "punisher-s2",
@@ -709,7 +809,9 @@
         "karen-page",
         "microchip"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg"
     },
     {
       "id": "jessica-jones-s3",
@@ -720,7 +822,9 @@
         "trish-walker",
         "matt-murdock"
       ],
-      "era": "Street level"
+      "era": "Street level",
+      "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg"
     },
     {
       "id": "ant-man-wasp",
@@ -732,7 +836,9 @@
         "janet-van-dyne",
         "cassie-lang"
       ],
-      "era": "Infinity Saga"
+      "era": "Infinity Saga",
+      "posterPath": "/cFQEO687n1K6umXbInzocxcnAQz.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/cFQEO687n1K6umXbInzocxcnAQz.jpg"
     },
     {
       "id": "infinity-war",
@@ -783,7 +889,9 @@
           "id": "black-panther",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
     },
     {
       "id": "deadpool-2",
@@ -803,7 +911,9 @@
           "id": "deadpool",
           "tier": "must"
         }
-      ]
+      ],
+      "posterPath": "/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
     },
     {
       "id": "endgame",
@@ -843,7 +953,9 @@
           "id": "deadpool-2",
           "tier": "could"
         }
-      ]
+      ],
+      "posterPath": "/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg"
     },
     {
       "id": "loki-s1",
@@ -861,7 +973,9 @@
           "id": "endgame",
           "tier": "must"
         }
-      ]
+      ],
+      "posterPath": "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg"
     },
     {
       "id": "what-if-s1",
@@ -874,7 +988,9 @@
         "wanda-maximoff",
         "natasha-romanoff"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg"
     },
     {
       "id": "marvel-zombies",
@@ -886,7 +1002,9 @@
         "bruce-banner",
         "scott-lang"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/mwKj9ERGFXsWot0nXgQ5yMQf9I7.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/mwKj9ERGFXsWot0nXgQ5yMQf9I7.jpg"
     },
     {
       "id": "wandavision",
@@ -904,7 +1022,9 @@
           "id": "endgame",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/ijWWwINc8h71NQ8j1LTJMFSj5wr.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ijWWwINc8h71NQ8j1LTJMFSj5wr.jpg"
     },
     {
       "id": "shang-chi",
@@ -916,7 +1036,9 @@
         "xu-xialing",
         "trevor-slattery"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/9f2Q0U3IOsLgrI2HkvldwSABZy5.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/9f2Q0U3IOsLgrI2HkvldwSABZy5.jpg"
     },
     {
       "id": "falcon-winter-soldier",
@@ -929,7 +1051,9 @@
         "tchalla",
         "shuri"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/6kbAMLteGO8yyewYau6bJ683sw7.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/6kbAMLteGO8yyewYau6bJ683sw7.jpg"
     },
     {
       "id": "far-from-home",
@@ -947,7 +1071,9 @@
           "id": "endgame",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg"
     },
     {
       "id": "eternals",
@@ -960,7 +1086,9 @@
         "phastos",
         "kingo"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/lFByFSLV5WDJEv3KabbdAF959F2.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/lFByFSLV5WDJEv3KabbdAF959F2.jpg"
     },
     {
       "id": "no-way-home",
@@ -989,7 +1117,9 @@
           "id": "doctor-strange",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
     },
     {
       "id": "multiverse-madness",
@@ -1016,7 +1146,9 @@
           "id": "doctor-strange",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/ddJcSKbcp4rKZTmuyWaMhuwcfMz.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ddJcSKbcp4rKZTmuyWaMhuwcfMz.jpg"
     },
     {
       "id": "hawkeye",
@@ -1028,7 +1160,9 @@
         "wilson-fisk",
         "yelena-belova"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/ct5pNE5dDHryHLDnxyZPYcqO1sz.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ct5pNE5dDHryHLDnxyZPYcqO1sz.jpg"
     },
     {
       "id": "moon-knight",
@@ -1038,7 +1172,9 @@
         "layla-el-faouly",
         "steven-grant"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/x6FsYvt33846IQnDSFxla9j0RX8.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/x6FsYvt33846IQnDSFxla9j0RX8.jpg"
     },
     {
       "id": "wakanda-forever",
@@ -1052,7 +1188,9 @@
         "riri-williams",
         "everett-ross"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/sv1xJUazXeYqALzczSZ3O6nkH75.jpg"
     },
     {
       "id": "echo",
@@ -1061,7 +1199,9 @@
         "maya-lopez",
         "wilson-fisk"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/vFyJH630cF68LohVYjQW49074Sy.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/vFyJH630cF68LohVYjQW49074Sy.jpg"
     },
     {
       "id": "she-hulk",
@@ -1072,7 +1212,9 @@
         "wong",
         "titania"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/5xz2orV8f0usyrfGNshcoXHmiaV.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/5xz2orV8f0usyrfGNshcoXHmiaV.jpg"
     },
     {
       "id": "ms-marvel",
@@ -1081,7 +1223,9 @@
         "kamala-khan",
         "monica-rambeau"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/3HWWh92kZbD7odwJX7nKmXNZsYo.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/3HWWh92kZbD7odwJX7nKmXNZsYo.jpg"
     },
     {
       "id": "love-and-thunder",
@@ -1093,7 +1237,9 @@
         "mantis",
         "jane-foster"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg"
     },
     {
       "id": "ironheart",
@@ -1102,7 +1248,9 @@
         "riri-williams",
         "shuri"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/dOh6MJpdlQhYpLBhzhNQeYGKTZ5.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/dOh6MJpdlQhYpLBhzhNQeYGKTZ5.jpg"
     },
     {
       "id": "werewolf-by-night",
@@ -1111,7 +1259,9 @@
         "jack-russell",
         "elsa-bloodstone"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/mvIvNKRIJPPS7WSFarFhOAGIVnU.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/mvIvNKRIJPPS7WSFarFhOAGIVnU.jpg"
     },
     {
       "id": "gotg-holiday",
@@ -1124,7 +1274,9 @@
         "rocket",
         "groot"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg"
     },
     {
       "id": "quantumania",
@@ -1143,7 +1295,9 @@
           "id": "ant-man-wasp",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg"
     },
     {
       "id": "gotg-3",
@@ -1168,7 +1322,9 @@
           "id": "quantumania",
           "tier": "could"
         }
-      ]
+      ],
+      "posterPath": "/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg"
     },
     {
       "id": "secret-invasion",
@@ -1178,7 +1334,9 @@
         "talos",
         "carol-danvers"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/3rINdUPSy9AklJg74jWHOyUXuZd.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/3rINdUPSy9AklJg74jWHOyUXuZd.jpg"
     },
     {
       "id": "the-marvels",
@@ -1203,7 +1361,9 @@
           "id": "wandavision",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg"
     },
     {
       "id": "loki-s2",
@@ -1215,7 +1375,9 @@
         "hunter-b15",
         "he-who-remains"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg"
     },
     {
       "id": "what-if-s2",
@@ -1227,7 +1389,9 @@
         "peter-quill",
         "wanda-maximoff"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg"
     },
     {
       "id": "logan-mid",
@@ -1239,7 +1403,9 @@
       ],
       "filterLabel": "Logan (mid-list viewing)",
       "note": "Recommended here despite the 2029 setting — Deadpool & Wolverine spoils Logan if you watch out of order.",
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg"
     },
     {
       "id": "deadpool-wolverine",
@@ -1268,7 +1434,9 @@
           "id": "loki-s1",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
     },
     {
       "id": "agatha",
@@ -1278,7 +1446,9 @@
         "billy-maximoff",
         "wanda-maximoff"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/mGsxKwXUjojitRv2E9qMTbxbBRd.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/mGsxKwXUjojitRv2E9qMTbxbBRd.jpg"
     },
     {
       "id": "what-if-s3",
@@ -1289,7 +1459,9 @@
         "sam-wilson",
         "stephen-strange"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg"
     },
     {
       "id": "born-again-s1",
@@ -1306,7 +1478,9 @@
           "id": "daredevil-s3",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg"
     },
     {
       "id": "brave-new-world",
@@ -1318,7 +1492,9 @@
         "shuri",
         "valentina-fontaine"
       ],
-      "era": "Multiverse Saga"
+      "era": "Multiverse Saga",
+      "posterPath": "/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg"
     },
     {
       "id": "thunderbolts",
@@ -1341,7 +1517,9 @@
           "id": "brave-new-world",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/hqcexYHbiTBfDIdDWxrxPtVndBX.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/hqcexYHbiTBfDIdDWxrxPtVndBX.jpg"
     },
     {
       "id": "ff-first-steps-official",
@@ -1362,7 +1540,9 @@
           "id": "ff-first-steps-1964",
           "tier": "could"
         }
-      ]
+      ],
+      "posterPath": "/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg"
     },
     {
       "id": "wonder-man",
@@ -1383,7 +1563,9 @@
           "id": "deadpool-wolverine",
           "tier": "unreleased"
         }
-      ]
+      ],
+      "posterPath": "/6yy9nQlFt2l6UVWzrfhszFCaZ5C.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/6yy9nQlFt2l6UVWzrfhszFCaZ5C.jpg"
     },
     {
       "id": "born-again-s2",
@@ -1400,7 +1582,9 @@
           "id": "born-again-s1",
           "tier": "must"
         }
-      ]
+      ],
+      "posterPath": "/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg"
     },
     {
       "id": "punisher-one-last-kill",
@@ -1416,7 +1600,9 @@
           "id": "punisher-s2",
           "tier": "should"
         }
-      ]
+      ],
+      "posterPath": "/qQclTgLMDvGBuUBFGHRipxkEwWR.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/qQclTgLMDvGBuUBFGHRipxkEwWR.jpg"
     },
     {
       "id": "logan-final",
@@ -1428,7 +1614,9 @@
       ],
       "filterLabel": "Logan (final position)",
       "note": "Karan's closing placement — same film as the mid-list Logan entry above.",
-      "era": "Mutant legacy"
+      "era": "Mutant legacy",
+      "posterPath": "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+      "posterUrl": "https://image.tmdb.org/t/p/w342/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg"
     }
   ]
 }
