@@ -4854,106 +4854,48 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   line-height: 1.4;
 }
 
-/* Marvel watch-order chronology */
+/* Marvel watch-order focus layout (Watch Before / Selected / Watch Next) */
 ::view-transition-old(chrono-focus),
 ::view-transition-new(chrono-focus) {
-  animation-duration: 0.28s;
+  animation-duration: 0.32s;
 }
 
-.marvel-chronology {
+.focus.marvel-chronology {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding-bottom: 48px;
-}
-
-.chrono-head {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 24px;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.chrono-lede {
-  max-width: 42rem;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.45;
-  margin: 8px 0 0;
-}
-
-.chrono-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 12px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.chrono-legend-item {
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-}
-
-.chrono-legend-item.tier-must,
-.chrono-tier-block.tier-must,
-.chrono-poster-button.tier-must {
-  border-color: rgba(232, 106, 106, 0.65);
-  color: #f5b4b4;
-}
-
-.chrono-legend-item.tier-should,
-.chrono-tier-block.tier-should,
-.chrono-poster-button.tier-should {
-  border-color: rgba(110, 163, 232, 0.65);
-  color: #b8d4f5;
-}
-
-.chrono-legend-item.tier-could,
-.chrono-tier-block.tier-could,
-.chrono-poster-button.tier-could {
-  border-color: rgba(120, 196, 142, 0.65);
-  color: #b8e6c4;
-}
-
-.chrono-legend-item.tier-unreleased,
-.chrono-tier-block.tier-unreleased,
-.chrono-poster-button.tier-unreleased {
-  border-style: dashed;
-  border-color: rgba(180, 180, 180, 0.55);
-  color: var(--muted);
+  gap: 12px;
+  padding: 8px 20px 56px;
 }
 
 .chrono-focus-host {
-  position: sticky;
-  top: 8px;
-  z-index: 2;
+  flex: 1;
+  min-height: min(68vh, 760px);
 }
 
 .chrono-focus-layout {
   display: grid;
-  grid-template-columns: minmax(140px, 1fr) minmax(260px, 1.6fr) minmax(140px, 1fr);
-  gap: 16px;
+  grid-template-columns: minmax(150px, 1fr) minmax(240px, 1.35fr) minmax(150px, 1fr);
+  gap: 8px 4px;
   align-items: start;
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(12, 11, 9, 0.92);
-  backdrop-filter: blur(8px);
+  min-height: 100%;
+  padding: 12px 8px 20px;
 }
 
 .chrono-rail-heading {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin: 0 0 10px;
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink);
+  margin: 0 0 14px;
+  text-align: center;
 }
 
 .chrono-rail-body {
@@ -4962,53 +4904,101 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   gap: 12px;
 }
 
-.chrono-tier-block h4 {
-  margin: 0 0 6px;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.chrono-poster-list {
+.chrono-poster-stack {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 18px;
 }
 
-.chrono-poster-button {
+.chrono-poster-card {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 8px;
   width: 100%;
-  text-align: left;
-  padding: 8px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  padding: 0;
+  background: transparent;
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.22s ease;
 }
 
-.chrono-poster-button:hover,
-.chrono-poster-button:focus-visible {
-  background: rgba(255, 255, 255, 0.07);
+.chrono-poster-card--in {
+  justify-content: flex-start;
 }
 
-.chrono-poster-button.tier-outbound {
-  border-color: rgba(255, 255, 255, 0.12);
+.chrono-poster-card--out {
+  justify-content: flex-end;
+}
+
+.chrono-poster-card:hover,
+.chrono-poster-card:focus-visible {
+  transform: translateY(-2px);
+}
+
+.chrono-poster-bundle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.chrono-arrow {
+  flex: 1;
+  min-width: 28px;
+  max-width: 72px;
+  height: 1.5px;
+  background: var(--ink);
+  position: relative;
+  opacity: 0.72;
+}
+
+.chrono-arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left: 8px solid var(--ink);
+  border-right: 0;
+}
+
+.chrono-poster-stack > li:first-child:not(:last-child) .chrono-arrow {
+  transform: rotate(-16deg);
+}
+
+.chrono-poster-stack > li:last-child:not(:first-child) .chrono-arrow {
+  transform: rotate(16deg);
+}
+
+.chrono-rail--in .chrono-poster-stack > li:first-child:not(:last-child) .chrono-arrow {
+  transform-origin: left center;
+}
+
+.chrono-rail--in .chrono-poster-stack > li:last-child:not(:first-child) .chrono-arrow {
+  transform-origin: left center;
+}
+
+.chrono-rail--out .chrono-poster-stack > li:first-child:not(:last-child) .chrono-arrow {
+  transform-origin: right center;
+}
+
+.chrono-rail--out .chrono-poster-stack > li:last-child:not(:first-child) .chrono-arrow {
+  transform-origin: right center;
 }
 
 .chrono-poster {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 4px;
   background: linear-gradient(145deg, rgba(40, 36, 32, 0.95), rgba(18, 16, 14, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1.5px solid var(--ink);
   overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
 }
 
 .chrono-poster-img {
@@ -5025,15 +5015,18 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-poster--md {
-  width: 52px;
-  height: 72px;
-  font-size: 0.72rem;
+  width: 92px;
+  height: 138px;
+  font-size: 0.78rem;
 }
 
-.chrono-poster--lg {
-  width: 88px;
-  height: 120px;
-  font-size: 0.95rem;
+.chrono-poster--lg,
+.chrono-poster--xl {
+  width: min(240px, 42vw);
+  height: min(360px, 63vw);
+  max-height: 420px;
+  font-size: 1.15rem;
+  border-width: 2px;
 }
 
 .chrono-poster-acronym {
@@ -5044,27 +5037,43 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-poster-caption {
-  font-size: 0.78rem;
+  max-width: 108px;
+  font-size: 0.68rem;
   line-height: 1.25;
-  color: var(--ink);
+  color: var(--muted);
+  text-align: center;
+}
+
+.chrono-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .chrono-center-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
+  width: 100%;
 }
 
-.chrono-center-hero {
+.chrono-selected {
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: min(280px, 100%);
 }
 
-.chrono-center-copy h3 {
+.chrono-center-copy {
+  text-align: center;
+}
+
+.chrono-center-copy h2 {
   margin: 0;
-  font-size: 1.15rem;
-  line-height: 1.25;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  line-height: 1.2;
 }
 
 .chrono-center-sub,
@@ -5076,13 +5085,11 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 
 .chrono-note {
   margin: 0;
-  font-size: 0.86rem;
+  max-width: 36rem;
+  font-size: 0.82rem;
   line-height: 1.45;
   color: #d8d0c4;
-  padding: 10px 12px;
-  border-left: 3px solid rgba(110, 163, 232, 0.5);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 0 8px 8px 0;
+  text-align: center;
 }
 
 .chrono-essential {
@@ -5093,25 +5100,133 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   letter-spacing: 0.06em;
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(232, 106, 106, 0.55);
-  color: #f5b4b4;
+  border: 1px solid rgba(232, 196, 122, 0.45);
+  color: var(--gold);
 }
 
-.chrono-cast {
-  max-height: 220px;
-  overflow: auto;
+.chrono-characters {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.chrono-cast-row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 14px;
+}
+
+.chrono-cast-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 64px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.chrono-cast-row .avatar,
+.chrono-cast-avatar .avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border-width: 1.5px;
+}
+
+.chrono-cast-row .avatar img,
+.chrono-cast-avatar .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.chrono-cast-name {
+  font-size: 0.62rem;
+  line-height: 1.2;
+  color: var(--muted);
+  text-align: center;
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chrono-empty {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--muted);
   line-height: 1.4;
+  text-align: center;
+}
+
+.chrono-archive-tools {
+  margin: 0;
+  text-align: center;
+}
+
+.chrono-archive-link {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 4px 8px;
+}
+
+.chrono-archive-link:hover,
+.chrono-archive-link:focus-visible {
+  color: var(--gold);
+}
+
+.marvel-web-archive {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.marvel-web-archive-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  background: rgba(12, 11, 9, 0.92);
+}
+
+.marvel-web-archive-banner button {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.chrono-full-order {
+  margin: 8px auto 0;
+  width: min(720px, 100%);
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+.chrono-full-order summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 8px 4px;
 }
 
 .chrono-spine {
   list-style: none;
-  margin: 0;
+  margin: 8px 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -5132,8 +5247,8 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-spine-item.is-active .chrono-spine-button {
-  border-color: rgba(110, 163, 232, 0.45);
-  background: rgba(110, 163, 232, 0.08);
+  border-color: rgba(232, 196, 122, 0.45);
+  background: rgba(232, 196, 122, 0.08);
 }
 
 .chrono-spine-copy {
@@ -5157,6 +5272,7 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 @media (max-width: 768px) {
   .chrono-focus-layout {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .chrono-rail--in {
@@ -5171,7 +5287,23 @@ body[data-board="gun-state-laws"] .gun-state-laws {
     order: 3;
   }
 
-  .chrono-focus-host {
-    position: static;
+  .chrono-poster-card--in,
+  .chrono-poster-card--out {
+    justify-content: center;
+  }
+
+  .chrono-arrow {
+    display: none;
+  }
+
+  .chrono-poster--md {
+    width: 72px;
+    height: 108px;
+  }
+
+  .chrono-poster-stack {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

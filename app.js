@@ -208,6 +208,18 @@ function labelViews() {
   web.hidden = scotus;
   timeline.hidden = scotus;
   if (scotus) return;
+  if (usesPlotChronology(plot)) {
+    timeline.hidden = false;
+    timeline.textContent = "Watch order";
+    if (state.view === "web") {
+      web.hidden = false;
+      web.textContent = "Character web (archived)";
+    } else {
+      web.hidden = true;
+      web.textContent = "The web";
+    }
+    return;
+  }
   web.hidden = false;
   timeline.hidden = false;
   web.textContent = history ? "Map + people" : "The web";
@@ -381,7 +393,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       ? "Loading state tables…"
       : (usesScotusHub(plot)
         ? (usesRegulationBoard(plot, bootTopic) ? "Loading the board…" : "Loading topics…")
-        : "Drawing the web…"));
+        : (usesPlotChronology(plot) ? "Laying out the watch order…" : "Drawing the web…")));
   app.appendChild(loading);
   try {
     if (plot.arrangement === "historical-map") {
@@ -1149,7 +1161,7 @@ function fillHubSelect() {
   if (!wrap || !select) return;
   const hubs = plotHubs(plot);
   select.replaceChildren();
-  if (!hubs.length) {
+  if (!hubs.length || (usesPlotChronology(plot) && state.view !== "web")) {
     wrap.hidden = true;
     select.choicePaint?.();
     return;
@@ -1269,7 +1281,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   else if (state.view === "person") app.appendChild(renderPerson());
   else if (state.view === "relation" && plot?.disclosure === "regions") app.appendChild(renderRelationPage());
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
-  else app.appendChild(renderWeb());
+  else app.appendChild(renderMarvelWebOrDefault());
   if (push || replace) writeUrl(replace);
   if (isCompact()) {
     const beatId = takeLaneFocus();
@@ -1389,6 +1401,28 @@ function renderRegulationSection() {
     },
   }));
   return shell;
+}
+
+function renderMarvelWebOrDefault() {
+  if (!usesPlotChronology(plot)) return renderWeb();
+  const wrap = document.createElement("div");
+  wrap.className = "marvel-web-archive";
+  const banner = document.createElement("p");
+  banner.className = "marvel-web-archive-banner";
+  const note = document.createElement("span");
+  note.textContent = "Character web (archived). Watch order is the main Marvel view.";
+  const back = document.createElement("button");
+  back.type = "button";
+  back.textContent = "Watch order";
+  back.addEventListener("click", () => {
+    state.view = "timeline";
+    state.person = ALL;
+    rememberView("timeline");
+    render({ push: true });
+  });
+  banner.append(note, back);
+  wrap.append(banner, renderWeb());
+  return wrap;
 }
 
 function renderWeb() {
@@ -2968,6 +3002,12 @@ function renderTimeline() {
         writeUrl(true);
       },
       onOpenPerson: (id) => openPerson(id),
+      onOpenWeb: () => {
+        state.view = "web";
+        state.person = ALL;
+        rememberView("web");
+        render({ push: true });
+      },
       avatar,
     });
   }

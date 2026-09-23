@@ -11,8 +11,10 @@ Static single-page app: `index.html` at the repo root, ES modules in `app.js`, `
 | `engine.js` | Shared plot engine (webs, timelines, country field) |
 | `data/plots.json` | Plot registry |
 | `data/marvel-universe/chronology.json` | MCU + Mutant Legacy watch-order titles, cast, prereqs, optional TMDB `posterUrl` |
+| `data/marvel-universe/character-index.md` | Wikipedia MCU character index (appearances used to overlay chronology casts) |
+| `scripts/marvel-character-index.mjs` | Parse the index and map appearances onto chronology titles + `people.json` ids |
 | `scripts/enrich-marvel-chronology-posters.mjs` | Bakes TMDB posters into chronology (`TMDB_API_KEY` env only; CI skips) |
-| `marvel-chronology-view.js` | Three-pane study-up timeline UI for Marvel |
+| `marvel-chronology-view.js` | Marvel default: Watch Before / Selected / Watch Next focus layout with circular cast |
 | `data/gun-regulation/` | SCOTUS gun-rights board (federal timeline, checklist, exemplars) |
 | `data/gun-laws-by-state/` | Separate state-law plot: Wikipedia snapshot, filter labels, Albers map paths |
 | `scripts/build-states-wikipedia-snapshot.mjs` | Wikipedia → `states-snapshot.json` + `docs/gun-laws-by-state-table.md` |

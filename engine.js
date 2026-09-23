@@ -152,6 +152,22 @@ export function chronologyFeedsInto(chronology, id) {
   return out.filter(Boolean);
 }
 
+/** Watch Before rail: prereqs flattened in must → should → could → unreleased order. */
+export function chronologyWatchBefore(entry, chronologyIndex) {
+  return chronologyPrereqsGrouped(entry, chronologyIndex).flatMap((group) => group.items);
+}
+
+/** Watch Next rail: titles this one feeds into, or the next chronological successors. */
+export function chronologyWatchNext(chronology, id, limit = 3) {
+  const feeds = chronologyFeedsInto(chronology, id);
+  if (feeds.length) return feeds;
+  const cap = Math.max(1, Number(limit) || 3);
+  const titles = chronologyTitles(chronology);
+  const index = titles.findIndex((entry) => entry.id === id);
+  if (index < 0 || index >= titles.length - 1) return [];
+  return titles.slice(index + 1, index + 1 + cap);
+}
+
 export function validateChronology(chronology, peopleIds, expectedOrderIds = []) {
   const titles = chronologyTitles(chronology);
   const index = chronologyById(chronology);

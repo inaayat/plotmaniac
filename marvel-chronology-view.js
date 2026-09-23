@@ -1,17 +1,10 @@
 import {
   chronologyById,
-  chronologyFeedsInto,
   chronologyFilterLabel,
-  chronologyPrereqsGrouped,
   chronologyPosterUrl,
+  chronologyWatchBefore,
+  chronologyWatchNext,
 } from "./engine.js";
-
-const TIER_LABEL = {
-  must: "Must watch",
-  should: "Should watch",
-  could: "Could watch",
-  unreleased: "Unreleased / predicted",
-};
 
 function posterAcronym(title) {
   const words = String(title || "").replace(/[^\w\s]/g, " ").split(/\s+/).filter(Boolean);
@@ -20,9 +13,13 @@ function posterAcronym(title) {
   return words.slice(0, 3).map((w) => w[0]).join("").toUpperCase();
 }
 
+function prefersReducedMotion() {
+  return Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+}
+
 function swapFocusPane(root, render) {
   const pane = root.querySelector(".chrono-focus-layout");
-  if (!pane || !document.startViewTransition) {
+  if (!pane || prefersReducedMotion() || !document.startViewTransition) {
     render();
     return;
   }
@@ -35,6 +32,7 @@ export function renderMarvelChronology({
   focusId,
   onFocus,
   onOpenPerson,
+  onOpenWeb,
   avatar,
 }) {
   const section = document.createElement("section");
@@ -47,39 +45,32 @@ export function renderMarvelChronology({
     return section;
   }
 
-  const head = document.createElement("div");
-  head.className = "chrono-head";
-  const copy = document.createElement("div");
-  const eyebrow = document.createElement("p");
-  eyebrow.className = "eyebrow";
-  eyebrow.textContent = "MCU + Mutant Legacy";
-  const title = document.createElement("h2");
-  title.textContent = "Watch order";
-  const lede = document.createElement("p");
-  lede.className = "chrono-lede";
-  lede.textContent = "Scroll the full list or search a title. Study up on prerequisites before you press play.";
-  copy.append(eyebrow, title, lede);
-
-  const legend = document.createElement("ul");
-  legend.className = "chrono-legend";
-  legend.setAttribute("aria-label", "Prerequisite tiers");
-  ["must", "should", "could", "unreleased"].forEach((tier) => {
-    const item = document.createElement("li");
-    item.className = `chrono-legend-item tier-${tier}`;
-    item.textContent = TIER_LABEL[tier];
-    legend.appendChild(item);
-  });
-  head.append(copy, legend);
-  section.appendChild(head);
+  const tools = document.createElement("p");
+  tools.className = "chrono-archive-tools";
+  if (typeof onOpenWeb === "function") {
+    const archived = document.createElement("button");
+    archived.type = "button";
+    archived.className = "chrono-archive-link";
+    archived.textContent = "Character web (archived)";
+    archived.addEventListener("click", () => onOpenWeb());
+    tools.appendChild(archived);
+    section.appendChild(tools);
+  }
 
   const focusHost = document.createElement("div");
   focusHost.className = "chrono-focus-host";
   section.appendChild(focusHost);
 
+  const spineWrap = document.createElement("details");
+  spineWrap.className = "chrono-full-order";
+  const spineSummary = document.createElement("summary");
+  spineSummary.textContent = "Full chronological list";
+  spineWrap.appendChild(spineSummary);
   const spine = document.createElement("ol");
   spine.className = "chrono-spine";
   spine.setAttribute("aria-label", "Full chronological title list");
-  section.appendChild(spine);
+  spineWrap.appendChild(spine);
+  section.appendChild(spineWrap);
 
   const paintFocus = () => {
     const entry = index.get(activeId) || titles[0];
@@ -94,7 +85,10 @@ export function renderMarvelChronology({
       avatar,
     }));
     spine.querySelectorAll(".chrono-spine-item").forEach((item) => {
-      item.classList.toggle("is-active", item.dataset.id === entry.id);
+      const on = item.dataset.id === entry.id;
+      item.classList.toggle("is-active", on);
+      if (on) item.setAttribute("aria-current", "true");
+      else item.removeAttribute("aria-current");
     });
   };
 
@@ -105,8 +99,8 @@ export function renderMarvelChronology({
     swapFocusPane(focusHost, paintFocus);
     if (pushState) onFocus(id);
     if (scrollSpine) {
-      const row = spine.querySelector(`[data-id="${id}"]`);
-      row?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      const row = spine.querySelector(`[data-id="${CSS.escape(id)}"]`);
+      row?.scrollIntoView({ block: "nearest", behavior: prefersReducedMotion() ? "auto" : "smooth" });
     }
   };
 
@@ -127,18 +121,6 @@ export function renderMarvelChronology({
   });
 
   paintFocus();
-
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-    const top = visible[0]?.target?.dataset?.id;
-    if (!top || top === activeId) return;
-    setFocus(top, { scrollSpine: false, pushState: false });
-  }, { root: null, rootMargin: "-40% 0px -45% 0px", threshold: [0, 0.25, 0.5] });
-
-  spine.querySelectorAll(".chrono-spine-item").forEach((item) => observer.observe(item));
-
   return section;
 }
 
@@ -149,8 +131,13 @@ function buildFocusLayout({ entry, chronology, index, peopleById, onFocus, onOpe
 
   const inbound = document.createElement("aside");
   inbound.className = "chrono-rail chrono-rail--in";
-  inbound.appendChild(railHeading("Study up first"));
-  inbound.appendChild(prereqRail(entry, index, onFocus));
+  inbound.appendChild(railHeading("Watch Before"));
+  inbound.appendChild(watchRail({
+    items: chronologyWatchBefore(entry, index),
+    empty: "Nothing required before this title.",
+    onFocus,
+    side: "in",
+  }));
 
   const center = document.createElement("main");
   center.className = "chrono-center";
@@ -158,8 +145,13 @@ function buildFocusLayout({ entry, chronology, index, peopleById, onFocus, onOpe
 
   const outbound = document.createElement("aside");
   outbound.className = "chrono-rail chrono-rail--out";
-  outbound.appendChild(railHeading("Feeds into"));
-  outbound.appendChild(feedsRail(entry, chronology, onFocus));
+  outbound.appendChild(railHeading("Watch Next"));
+  outbound.appendChild(watchRail({
+    items: chronologyWatchNext(chronology, entry.id),
+    empty: "This is a resting point — nothing follows directly.",
+    onFocus,
+    side: "out",
+  }));
 
   layout.append(inbound, center, outbound);
   return layout;
@@ -168,10 +160,13 @@ function buildFocusLayout({ entry, chronology, index, peopleById, onFocus, onOpe
 function centerDetail(entry, { peopleById, onOpenPerson, avatar }) {
   const wrap = document.createElement("article");
   wrap.className = "chrono-center-card";
+  wrap.appendChild(railHeading("Selected Movie"));
+
   const hero = document.createElement("div");
-  hero.className = "chrono-center-hero";
-  hero.append(posterTile(entry, { size: "lg" }), centerTitles(entry));
+  hero.className = "chrono-selected";
+  hero.append(posterTile(entry, { size: "xl" }), centerTitles(entry));
   wrap.appendChild(hero);
+
   if (entry.note) {
     const note = document.createElement("p");
     note.className = "chrono-note";
@@ -184,33 +179,43 @@ function centerDetail(entry, { peopleById, onOpenPerson, avatar }) {
     badge.textContent = "Avengers: Doomsday essential";
     wrap.appendChild(badge);
   }
-  const castHead = document.createElement("h3");
-  castHead.textContent = "Cast in this title";
+
+  const castBlock = document.createElement("div");
+  castBlock.className = "chrono-characters";
+  castBlock.appendChild(railHeading("Characters"));
   const cast = document.createElement("ul");
-  cast.className = "chip-list chrono-cast";
+  cast.className = "chrono-cast-row";
   (entry.characters || []).forEach((id) => {
     const p = peopleById.get(id);
     if (!p) return;
     const li = document.createElement("li");
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "web-person";
+    button.className = "chrono-cast-avatar";
+    button.title = p.name;
+    button.setAttribute("aria-label", `${p.name}. Open their neighborhood.`);
+    button.appendChild(avatar(p, "sm"));
     const name = document.createElement("span");
-    name.className = "chip-name";
+    name.className = "chrono-cast-name";
     name.textContent = p.name;
-    button.append(avatar(p, "sm"), name);
+    button.appendChild(name);
     button.addEventListener("click", () => onOpenPerson(p.id));
     li.appendChild(button);
     cast.appendChild(li);
   });
-  wrap.append(castHead, cast);
+  if (!cast.childElementCount) {
+    castBlock.appendChild(emptyBlock("No principal cast listed."));
+  } else {
+    castBlock.appendChild(cast);
+  }
+  wrap.appendChild(castBlock);
   return wrap;
 }
 
 function centerTitles(entry) {
   const copy = document.createElement("div");
   copy.className = "chrono-center-copy";
-  const h = document.createElement("h3");
+  const h = document.createElement("h2");
   h.textContent = entry.title;
   copy.appendChild(h);
   if (entry.filterLabel && entry.filterLabel !== entry.title) {
@@ -228,54 +233,36 @@ function centerTitles(entry) {
   return copy;
 }
 
-function prereqRail(entry, index, onFocus) {
+function watchRail({ items, empty, onFocus, side }) {
   const root = document.createElement("div");
   root.className = "chrono-rail-body";
-  const groups = chronologyPrereqsGrouped(entry, index);
-  if (!groups.length) {
-    root.appendChild(emptyBlock("No chart prerequisites listed — you can start here or follow the full order above."));
-    return root;
-  }
-  groups.forEach((group) => {
-    const block = document.createElement("section");
-    block.className = `chrono-tier-block tier-${group.tier}`;
-    const label = document.createElement("h4");
-    label.textContent = TIER_LABEL[group.tier];
-    block.appendChild(label);
-    const list = document.createElement("ul");
-    list.className = "chrono-poster-list";
-    group.items.forEach((item) => {
-      list.appendChild(posterButton(item, group.tier, onFocus));
-    });
-    block.appendChild(list);
-    root.appendChild(block);
-  });
-  return root;
-}
-
-function feedsRail(entry, chronology, onFocus) {
-  const root = document.createElement("div");
-  root.className = "chrono-rail-body";
-  const feeds = chronologyFeedsInto(chronology, entry.id);
-  if (!feeds.length) {
-    root.appendChild(emptyBlock("Nothing downstream depends on this title directly in our chart subset."));
+  if (!items.length) {
+    root.appendChild(emptyBlock(empty));
     return root;
   }
   const list = document.createElement("ul");
-  list.className = "chrono-poster-list";
-  feeds.forEach((item) => {
-    list.appendChild(posterButton(item, "outbound", onFocus));
+  list.className = "chrono-poster-stack";
+  items.forEach((item) => {
+    list.appendChild(posterCard(item, onFocus, side));
   });
   root.appendChild(list);
   return root;
 }
 
-function posterButton(entry, tier, onFocus) {
+function posterCard(entry, onFocus, side) {
   const li = document.createElement("li");
   const button = document.createElement("button");
   button.type = "button";
-  button.className = `chrono-poster-button tier-${tier}`;
-  button.append(posterTile(entry, { size: "md" }), posterCaption(entry));
+  button.className = `chrono-poster-card chrono-poster-card--${side}`;
+  button.setAttribute("aria-label", `Focus ${chronologyFilterLabel(entry)}`);
+  const bundle = document.createElement("span");
+  bundle.className = "chrono-poster-bundle";
+  bundle.append(posterTile(entry, { size: "md" }), posterCaption(entry));
+  const arrow = document.createElement("span");
+  arrow.className = "chrono-arrow";
+  arrow.setAttribute("aria-hidden", "true");
+  if (side === "out") button.append(arrow, bundle);
+  else button.append(bundle, arrow);
   button.addEventListener("click", () => onFocus(entry.id));
   li.appendChild(button);
   return li;
@@ -285,7 +272,7 @@ function posterTile(entry, { size = "md" } = {}) {
   const tile = document.createElement("span");
   tile.className = `chrono-poster chrono-poster--${size}`;
   tile.setAttribute("aria-hidden", "true");
-  const imageSize = size === "lg" ? "w342" : "w154";
+  const imageSize = size === "xl" ? "w500" : size === "lg" ? "w342" : "w154";
   const url = chronologyPosterUrl(entry, imageSize);
 
   const showAcronym = () => {
