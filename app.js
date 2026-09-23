@@ -3071,7 +3071,10 @@ function renderPerson() {
 function renderChronologyPage() {
   return renderMarvelChronologyIndex({
     chronology: visibleChronology(),
+    peopleById,
     focusId: resolveChronologyTitle(state.chronologyTitle),
+    avatar,
+    onOpenPerson: (id) => openPerson(id),
     onFocus: (id) => {
       state.chronologyTitle = id;
       state.view = "timeline";

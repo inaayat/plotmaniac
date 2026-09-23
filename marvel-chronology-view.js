@@ -1,4 +1,5 @@
 import {
+  COMPACT_MAX_WIDTH,
   chronologyById,
   chronologyFilterLabel,
   chronologyPosterUrl,
@@ -6,6 +7,7 @@ import {
   chronologyWatchBefore,
   chronologyWatchNext,
 } from "./engine.js";
+import { buildLaneChrome, laneYear, layoutLane, queueLaneFocus } from "./lane.js";
 
 function posterAcronym(title) {
   const words = String(title || "").replace(/[^\w\s]/g, " ").split(/\s+/).filter(Boolean);
@@ -59,14 +61,18 @@ export function renderMarvelChronology({
     section.appendChild(tools);
   }
 
-  const strip = buildOrderStrip({
-    titles,
-    activeId: () => activeId,
-    onFocus: (id) => setFocus(id),
-    onOpenChronology,
-    variant: "compact",
-  });
-  section.appendChild(strip);
+  if (typeof onOpenChronology === "function") {
+    const linkRow = document.createElement("p");
+    linkRow.className = "chrono-order-bar chrono-order-bar--link";
+    const open = document.createElement("button");
+    open.type = "button";
+    open.className = "chrono-order-open";
+    open.textContent = "Full chronological list";
+    open.setAttribute("aria-label", "Open the full chronological list on its own page");
+    open.addEventListener("click", () => onOpenChronology());
+    linkRow.appendChild(open);
+    section.appendChild(linkRow);
+  }
 
   const focusHost = document.createElement("div");
   focusHost.className = "chrono-focus-host";
@@ -84,19 +90,8 @@ export function renderMarvelChronology({
       onOpenPerson,
       avatar,
     }));
-    strip.querySelectorAll(".chrono-chip").forEach((item) => {
-      const on = item.dataset.id === entry.id;
-      item.classList.toggle("is-active", on);
-      if (on) item.setAttribute("aria-current", "true");
-      else item.removeAttribute("aria-current");
-    });
     requestAnimationFrame(() => {
       fitChronoRails(focusHost.querySelector(".chrono-focus-layout"));
-      strip.querySelector(".chrono-chip.is-active")?.scrollIntoView({
-        block: "nearest",
-        inline: "nearest",
-        behavior: prefersReducedMotion() ? "auto" : "smooth",
-      });
     });
   };
 
@@ -119,143 +114,150 @@ export function renderMarvelChronology({
 
 export function renderMarvelChronologyIndex({
   chronology,
+  peopleById,
   focusId,
   onFocus,
+  onOpenPerson,
+  avatar,
 }) {
-  const section = document.createElement("section");
-  section.className = "focus marvel-chronology marvel-chronology-index";
   const titles = chronology?.titles || [];
+  const compact = Boolean(window.matchMedia?.(`(max-width: ${COMPACT_MAX_WIDTH}px)`)?.matches);
+  if (compact) {
+    return renderChronologySpine({ titles, peopleById, focusId, onFocus, onOpenPerson, avatar });
+  }
+  return renderChronologyLane({ titles, peopleById, focusId, onFocus, onOpenPerson, avatar });
+}
+
+function renderChronologyLane({ titles, peopleById, focusId, onFocus, onOpenPerson, avatar }) {
+  const section = document.createElement("section");
+  section.className = "focus marvel-chronology marvel-chronology-lane lane-page";
   if (!titles.length) {
     section.appendChild(emptyBlock("No chronology titles loaded."));
     return section;
   }
-
-  const head = document.createElement("header");
-  head.className = "chrono-index-head";
-  const eyebrow = document.createElement("p");
-  eyebrow.className = "eyebrow";
-  eyebrow.textContent = "MCU + Mutant Legacy";
-  const title = document.createElement("h2");
-  title.textContent = "Full chronological list";
-  const lede = document.createElement("p");
-  lede.className = "chrono-index-lede";
-  lede.textContent = "Story order across the shared MCU and guest-world titles. Pick a row to open Watch Order for that film.";
-  head.append(eyebrow, title, lede);
-  section.appendChild(head);
-  section.appendChild(buildOrderStrip({
-    titles,
-    activeId: () => focusId,
-    onFocus,
-    variant: "page",
-  }));
+  const { view, rail } = buildLaneChrome(
+    "MCU + Mutant Legacy, oldest on the left. Scroll or drag. Pick a title to open it in Watch Order.",
+    { ariaLabel: "Full chronological list, oldest on the left. Drag to move. Hold Control and scroll to zoom." },
+  );
+  let era = "";
+  let step = 0;
+  titles.forEach((entry, order) => {
+    if (entry.era && entry.era !== era) {
+      era = entry.era;
+      rail.appendChild(laneYear(entry.era));
+    }
+    const side = step % 2 === 0 ? "above" : "below";
+    step += 1;
+    rail.appendChild(chronologyLaneEvent(entry, {
+      order: order + 1,
+      side,
+      active: entry.id === focusId,
+      peopleById,
+      onFocus,
+      onOpenPerson,
+      avatar,
+    }));
+  });
+  section.appendChild(view);
+  if (focusId) queueLaneFocus(focusId);
+  requestAnimationFrame(() => layoutLane(view));
   return section;
 }
 
-function currentFocusId(activeId) {
-  return typeof activeId === "function" ? activeId() : activeId;
-}
-
-function buildOrderStrip({ titles, activeId, onFocus, onOpenChronology, variant = "compact" }) {
-  const wrap = document.createElement("div");
-  wrap.className = `chrono-order-strip chrono-order-strip--${variant}`;
-
-  const bar = document.createElement("div");
-  bar.className = "chrono-order-bar";
-  const heading = document.createElement("h3");
-  heading.className = "chrono-order-heading";
-  heading.textContent = variant === "page" ? "Story order" : "Full chronological list";
-  bar.appendChild(heading);
-  if (variant === "compact" && typeof onOpenChronology === "function") {
-    const open = document.createElement("button");
-    open.type = "button";
-    open.className = "chrono-order-open";
-    open.textContent = "Open full list";
-    open.setAttribute("aria-label", "Open the full chronological list page");
-    open.addEventListener("click", () => onOpenChronology());
-    bar.appendChild(open);
-  }
-  wrap.appendChild(bar);
-
-  if (variant === "page") {
-    wrap.appendChild(buildIndexGroups(titles, currentFocusId(activeId), onFocus));
-    return wrap;
-  }
-
-  const list = document.createElement("div");
-  list.className = "chrono-chip-cloud";
-  list.setAttribute("aria-label", "Full chronological title list");
-  let lastEra = "";
-  titles.forEach((entry, order) => {
-    if (entry.era && entry.era !== lastEra) {
-      lastEra = entry.era;
-      const era = document.createElement("span");
-      era.className = "chrono-era-label";
-      era.textContent = entry.era;
-      list.appendChild(era);
-    }
-    const chip = document.createElement("button");
-    chip.type = "button";
-    chip.className = "chrono-chip";
-    chip.dataset.id = entry.id;
-    chip.title = chronologyFilterLabel(entry);
-    const num = document.createElement("span");
-    num.className = "chrono-chip-num";
-    num.textContent = String(order + 1);
-    const name = document.createElement("span");
-    name.className = "chrono-chip-title";
-    name.textContent = chronologyFilterLabel(entry);
-    chip.append(num, name);
-    if (currentFocusId(activeId) === entry.id) {
-      chip.classList.add("is-active");
-      chip.setAttribute("aria-current", "true");
-    }
-    chip.addEventListener("click", () => onFocus(entry.id));
-    list.appendChild(chip);
-  });
-  wrap.appendChild(list);
-  return wrap;
-}
-
-function buildIndexGroups(titles, focusId, onFocus) {
-  const root = document.createElement("div");
-  root.className = "chrono-index-list";
-  root.setAttribute("aria-label", "Full chronological title list");
-  let group = null;
-  let list = null;
-  titles.forEach((entry, order) => {
-    if (!group || entry.era !== group.dataset.era) {
-      group = document.createElement("section");
-      group.className = "chrono-index-group";
-      group.dataset.era = entry.era || "";
-      const era = document.createElement("h4");
-      era.className = "chrono-era-label";
-      era.textContent = entry.era || "Chronology";
-      list = document.createElement("ol");
-      list.className = "chrono-index-ol";
-      list.start = order + 1;
-      group.append(era, list);
-      root.appendChild(group);
-    }
-    list.appendChild(indexRow(entry, order + 1, focusId === entry.id, onFocus));
-  });
-  return root;
-}
-
-function indexRow(entry, order, active, onFocus) {
+function chronologyLaneEvent(entry, { order, side, active, peopleById, onFocus, onOpenPerson, avatar }) {
   const item = document.createElement("li");
-  item.className = `chrono-index-item${active ? " is-active" : ""}`;
+  item.className = `lane-event side-${side} chrono-lane-event${active ? " is-selected" : ""}`;
+  item.id = `beat-${entry.id}`;
   item.dataset.id = entry.id;
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "chrono-index-button";
-  button.setAttribute("aria-label", `Focus ${chronologyFilterLabel(entry)} in Watch Order`);
-  if (active) button.setAttribute("aria-current", "true");
-  button.append(
-    posterTile(entry, { size: "sm" }),
-    spineCopy(entry, order),
-  );
-  button.addEventListener("click", () => onFocus(entry.id));
-  item.appendChild(button);
+
+  const card = document.createElement("div");
+  card.className = "lane-card";
+
+  const hit = document.createElement("button");
+  hit.type = "button";
+  hit.className = "lane-hit chrono-lane-hit";
+  hit.setAttribute("aria-label", `Focus ${chronologyFilterLabel(entry)} in Watch Order`);
+  if (active) hit.setAttribute("aria-current", "true");
+  const num = document.createElement("em");
+  num.textContent = String(order);
+  const rule = document.createElement("span");
+  rule.className = "lane-rule";
+  const heading = document.createElement("strong");
+  heading.textContent = chronologyFilterLabel(entry);
+  hit.append(posterTile(entry, { size: "md" }), num, rule, heading);
+  if (entry.era) {
+    const era = document.createElement("em");
+    era.textContent = entry.era;
+    hit.appendChild(era);
+  }
+  hit.addEventListener("click", () => onFocus(entry.id));
+  card.appendChild(hit);
+  card.appendChild(castRow(entry, { peopleById, onOpenPerson, avatar, compact: true }));
+
+  const dot = document.createElement("span");
+  dot.className = "lane-dot";
+  dot.setAttribute("aria-hidden", "true");
+  item.append(card, dot);
+  return item;
+}
+
+function renderChronologySpine({ titles, peopleById, focusId, onFocus, onOpenPerson, avatar }) {
+  const section = document.createElement("section");
+  section.className = "focus marvel-chronology marvel-chronology-lane";
+  const view = document.createElement("div");
+  view.className = "spine-view";
+  const hint = document.createElement("p");
+  hint.className = "rail-note";
+  hint.textContent = "MCU + Mutant Legacy, oldest at the top. Pick a title to open it in Watch Order.";
+  const rail = document.createElement("ol");
+  rail.className = "spine chrono-story";
+  rail.setAttribute("aria-label", "Full chronological list, oldest at the top.");
+  let era = "";
+  titles.forEach((entry, order) => {
+    if (entry.era && entry.era !== era) {
+      era = entry.era;
+      const stone = document.createElement("li");
+      stone.className = "spine-year";
+      const text = document.createElement("span");
+      text.textContent = entry.era;
+      stone.appendChild(text);
+      rail.appendChild(stone);
+    }
+    rail.appendChild(chronologySpineEvent(entry, {
+      order: order + 1,
+      active: entry.id === focusId,
+      peopleById,
+      onFocus,
+      onOpenPerson,
+      avatar,
+    }));
+  });
+  view.append(hint, rail);
+  section.appendChild(view);
+  return section;
+}
+
+function chronologySpineEvent(entry, { order, active, peopleById, onFocus, onOpenPerson, avatar }) {
+  const item = document.createElement("li");
+  item.className = `chrono-story-card${active ? " is-active" : ""}`;
+  item.dataset.id = entry.id;
+  const hit = document.createElement("button");
+  hit.type = "button";
+  hit.className = "chrono-story-hit";
+  hit.setAttribute("aria-label", `Focus ${chronologyFilterLabel(entry)} in Watch Order`);
+  if (active) hit.setAttribute("aria-current", "true");
+  const copy = document.createElement("span");
+  copy.className = "chrono-spine-copy";
+  const num = document.createElement("span");
+  num.className = "chrono-spine-num";
+  num.textContent = String(order);
+  const name = document.createElement("span");
+  name.className = "chrono-spine-title";
+  name.textContent = chronologyFilterLabel(entry);
+  copy.append(num, name);
+  hit.append(posterTile(entry, { size: "md" }), copy);
+  hit.addEventListener("click", () => onFocus(entry.id));
+  item.append(hit, castRow(entry, { peopleById, onOpenPerson, avatar, compact: true }));
   return item;
 }
 
@@ -343,31 +345,7 @@ function centerDetail(entry, { peopleById, onOpenPerson, avatar }) {
   const castBlock = document.createElement("div");
   castBlock.className = "chrono-characters";
   castBlock.appendChild(railHeading("Characters"));
-  const cast = document.createElement("ul");
-  cast.className = "chrono-cast-row";
-  (entry.characters || []).forEach((id) => {
-    const p = peopleById.get(id);
-    if (!p) return;
-    const li = document.createElement("li");
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "chrono-cast-avatar";
-    button.title = p.name;
-    button.setAttribute("aria-label", `${p.name}. Open their neighborhood.`);
-    button.appendChild(avatar(p, "sm"));
-    const name = document.createElement("span");
-    name.className = "chrono-cast-name";
-    name.textContent = p.name;
-    button.appendChild(name);
-    button.addEventListener("click", () => onOpenPerson(p.id));
-    li.appendChild(button);
-    cast.appendChild(li);
-  });
-  if (!cast.childElementCount) {
-    castBlock.appendChild(emptyBlock("No principal cast listed."));
-  } else {
-    castBlock.appendChild(cast);
-  }
+  castBlock.appendChild(castRow(entry, { peopleById, onOpenPerson, avatar }));
   wrap.appendChild(castBlock);
   return wrap;
 }
@@ -433,27 +411,51 @@ function arrowBend(index, total) {
   return 0;
 }
 
+function castRow(entry, { peopleById, onOpenPerson, avatar, compact = false }) {
+  const cast = document.createElement("ul");
+  cast.className = `chrono-cast-row${compact ? " chrono-lane-cast" : ""}`;
+  (entry.characters || []).forEach((id) => {
+    const person = peopleById?.get(id);
+    if (!person) return;
+    const li = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "chrono-cast-avatar";
+    button.title = person.name;
+    button.setAttribute("aria-label", `${person.name}. Open their neighborhood.`);
+    if (typeof avatar === "function") button.appendChild(avatar(person, "sm"));
+    const name = document.createElement("span");
+    name.className = "chrono-cast-name";
+    name.textContent = person.name;
+    button.appendChild(name);
+    if (typeof onOpenPerson === "function") {
+      button.addEventListener("click", () => onOpenPerson(person.id));
+    }
+    li.appendChild(button);
+    cast.appendChild(li);
+  });
+  if (!cast.childElementCount) return emptyBlock("No principal cast listed.");
+  return cast;
+}
+
 function roundedArrow(side, bend) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("class", `chrono-arrow chrono-arrow--${side}${bend ? ` chrono-arrow--bend-${bend < 0 ? "up" : "down"}` : ""}`);
-  svg.setAttribute("viewBox", "0 0 56 28");
+  svg.setAttribute("viewBox", "0 0 96 72");
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("focusable", "false");
-  const shaft = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  shaft.setAttribute("class", "chrono-arrow-shaft");
-  const head = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  head.setAttribute("class", "chrono-arrow-head");
+  const shape = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  shape.setAttribute("class", "chrono-arrow-shape");
+  // Filled curved arrow, head on the right. Watch Next keeps this direction
+  // so the head points at the next poster; Watch Before points at the selected movie.
   if (bend > 0) {
-    shaft.setAttribute("d", "M5 9 C 18 9, 30 16, 38 18");
-    head.setAttribute("d", "M30 12 C 38 16, 44 18, 48 19 C 44 21, 36 23, 28 24");
+    shape.setAttribute("d", "M8 64 C28 66 42 54 54 40 L88 34 L52 12 L50 34 C38 46 24 56 8 52 Z");
   } else if (bend < 0) {
-    shaft.setAttribute("d", "M5 19 C 18 19, 30 12, 38 10");
-    head.setAttribute("d", "M30 16 C 38 12, 44 10, 48 9 C 44 7, 36 5, 28 4");
+    shape.setAttribute("d", "M8 8 C28 6 42 18 54 32 L88 38 L52 60 L50 38 C38 26 24 16 8 20 Z");
   } else {
-    shaft.setAttribute("d", "M5 14 H 38");
-    head.setAttribute("d", "M32 7 C 40 11, 45 13.5, 49 14 C 45 14.5, 40 17, 32 21");
+    shape.setAttribute("d", "M6 46 C24 50 40 44 52 36 L90 32 L50 12 L48 32 C34 38 22 44 6 36 Z");
   }
-  svg.append(shaft, head);
+  svg.appendChild(shape);
   return svg;
 }
 
@@ -492,19 +494,6 @@ function posterCaption(entry) {
   cap.className = "chrono-poster-caption";
   cap.textContent = chronologyFilterLabel(entry);
   return cap;
-}
-
-function spineCopy(entry, order) {
-  const copy = document.createElement("span");
-  copy.className = "chrono-spine-copy";
-  const num = document.createElement("span");
-  num.className = "chrono-spine-num";
-  num.textContent = String(order);
-  const name = document.createElement("span");
-  name.className = "chrono-spine-title";
-  name.textContent = chronologyFilterLabel(entry);
-  copy.append(num, name);
-  return copy;
 }
 
 function railHeading(text) {

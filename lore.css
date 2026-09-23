@@ -4923,11 +4923,14 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   --chrono-md-w: calc(var(--chrono-md-h) * 2 / 3);
   --chrono-rail-gap: 8px;
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr) max-content;
-  column-gap: 10px;
+  grid-template-columns: max-content max-content max-content;
+  column-gap: 0;
   row-gap: 8px;
   align-items: start;
   justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
   min-height: 100%;
   height: 100%;
   padding: 4px 0 8px;
@@ -5002,24 +5005,14 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 
 .chrono-arrow {
   flex: none;
-  width: 44px;
-  height: 22px;
+  width: 52px;
+  height: 40px;
   overflow: visible;
-  color: color-mix(in srgb, var(--ink) 72%, var(--gold) 28%);
-  opacity: 0.92;
+  color: var(--ink);
 }
 
-.chrono-arrow-shaft,
-.chrono-arrow-head {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.75;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.chrono-arrow--out {
-  transform: scaleX(-1);
+.chrono-arrow-shape {
+  fill: currentColor;
 }
 
 .chrono-poster-card:hover .chrono-arrow,
@@ -5085,6 +5078,8 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: max-content;
+  max-width: min(280px, 42vw);
   min-width: 0;
 }
 
@@ -5093,7 +5088,8 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  width: 100%;
+  width: max-content;
+  max-width: 100%;
 }
 
 .chrono-selected {
@@ -5143,7 +5139,7 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-characters {
-  width: 100%;
+  width: min(280px, 42vw);
   margin-top: 4px;
 }
 
@@ -5280,6 +5276,83 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   text-decoration: underline;
   text-underline-offset: 3px;
   padding: 2px 4px;
+}
+
+.chrono-order-bar--link {
+  margin: 0;
+  justify-content: flex-start;
+}
+
+.marvel-chronology-lane.focus.marvel-chronology {
+  padding: 0 0 36px;
+  overflow: hidden;
+}
+
+.chrono-lane-hit {
+  width: 100%;
+}
+
+.chrono-lane-hit .chrono-poster--md {
+  width: 92px;
+  height: 138px;
+  margin-bottom: 4px;
+}
+
+.chrono-lane-cast {
+  max-width: 210px;
+  justify-content: center;
+  gap: 6px 8px;
+}
+
+.chrono-lane-cast .chrono-cast-avatar {
+  width: 44px;
+}
+
+.chrono-lane-cast .avatar,
+.chrono-lane-cast .chrono-cast-avatar .avatar {
+  width: 36px;
+  height: 36px;
+}
+
+.chrono-lane-event {
+  flex-basis: 230px;
+}
+
+.chrono-lane-event.is-selected {
+  flex-basis: 280px;
+}
+
+.chrono-story-card {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 22px;
+  padding-left: 48px;
+}
+
+.chrono-story-hit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.chrono-story-card.is-active .chrono-story-hit {
+  border: 1px solid rgba(232, 196, 122, 0.45);
+  background: rgba(232, 196, 122, 0.08);
+}
+
+.chrono-story-card .chrono-poster--md {
+  width: 72px;
+  height: 108px;
+}
+
+.chrono-story-card .chrono-lane-cast {
+  max-width: none;
+  justify-content: flex-start;
+  margin: 8px 0 0 90px;
 }
 
 .chrono-chip-cloud {
@@ -5475,5 +5548,10 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 
   .chrono-chip-cloud {
     max-height: none;
+  }
+
+  .marvel-chronology-lane.focus.marvel-chronology {
+    overflow: visible;
+    padding: 8px 12px 48px;
   }
 }
