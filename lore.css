@@ -4998,12 +4998,20 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-rail {
+  position: relative;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
   min-width: 0;
   overflow: visible;
+}
+
+.chrono-rail-content {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
 }
 
 .chrono-rail--in {
@@ -5023,6 +5031,14 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   color: var(--ink);
   margin: 0 0 10px;
   text-align: center;
+}
+
+.chrono-rail-content > .chrono-rail-heading {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  left: 0;
+  margin: 0;
 }
 
 .chrono-rail-body {
@@ -5177,30 +5193,54 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-center {
+  position: relative;
+  align-self: stretch;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-self: center;
-  width: max-content;
+  width: min(250px, 24vw);
   max-width: min(250px, 24vw);
   min-width: 0;
 }
 
 .chrono-center-card {
+  position: relative;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  width: max-content;
+  width: 100%;
   max-width: 100%;
 }
 
+.chrono-center-card > .chrono-rail-heading {
+  position: absolute;
+  top: calc(50% - 214px);
+  right: 0;
+  left: 0;
+  margin: 0;
+}
+
 .chrono-selected {
+  position: absolute;
+  top: calc(50% - 165px);
+  left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   width: min(220px, 100%);
+  transform: translateX(-50%);
+}
+
+.chrono-center-support {
+  position: absolute;
+  top: calc(50% + 225px);
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .chrono-center-copy {
@@ -5668,12 +5708,44 @@ body[data-board="gun-state-laws"] .gun-state-laws {
     gap: 20px;
   }
 
+  .chrono-rail {
+    position: static;
+    align-self: auto;
+  }
+
+  .chrono-rail-content {
+    position: static;
+    transform: none;
+  }
+
+  .chrono-rail-content > .chrono-rail-heading {
+    position: static;
+    margin: 0 0 10px;
+  }
+
   .chrono-rail--in {
     order: 2;
   }
 
   .chrono-center {
     order: 1;
+    position: static;
+    align-self: auto;
+    width: 100%;
+    max-width: none;
+  }
+
+  .chrono-center-card {
+    position: static;
+    height: auto;
+    width: 100%;
+  }
+
+  .chrono-center-card > .chrono-rail-heading,
+  .chrono-selected,
+  .chrono-center-support {
+    position: static;
+    transform: none;
   }
 
   .chrono-rail--out {

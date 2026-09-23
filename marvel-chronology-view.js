@@ -349,13 +349,16 @@ function buildFocusLayout({ entry, chronology, index, peopleById, onFocus, onOpe
 
   const inbound = document.createElement("aside");
   inbound.className = "chrono-rail chrono-rail--in";
-  inbound.appendChild(railHeading("Watch Before"));
-  inbound.appendChild(watchRail({
+  const inboundContent = document.createElement("div");
+  inboundContent.className = "chrono-rail-content";
+  inboundContent.appendChild(railHeading("Watch Before"));
+  inboundContent.appendChild(watchRail({
     items: before,
     empty: "Nothing required before this title.",
     onFocus,
     side: "in",
   }));
+  inbound.appendChild(inboundContent);
 
   const center = document.createElement("main");
   center.className = "chrono-center";
@@ -363,13 +366,16 @@ function buildFocusLayout({ entry, chronology, index, peopleById, onFocus, onOpe
 
   const outbound = document.createElement("aside");
   outbound.className = "chrono-rail chrono-rail--out";
-  outbound.appendChild(railHeading("Watch Next"));
-  outbound.appendChild(watchRail({
+  const outboundContent = document.createElement("div");
+  outboundContent.className = "chrono-rail-content";
+  outboundContent.appendChild(railHeading("Watch Next"));
+  outboundContent.appendChild(watchRail({
     items: next,
     empty: "This is a resting point — nothing follows directly.",
     onFocus,
     side: "out",
   }));
+  outbound.appendChild(outboundContent);
 
   layout.append(inbound, center, outbound);
   return layout;
@@ -405,24 +411,27 @@ function centerDetail(entry, { peopleById, onOpenPerson, avatar }) {
   hero.append(posterTile(entry, { size: "xl" }), centerTitles(entry));
   wrap.appendChild(hero);
 
+  const support = document.createElement("div");
+  support.className = "chrono-center-support";
   if (entry.note) {
     const note = document.createElement("p");
     note.className = "chrono-note";
     note.textContent = entry.note;
-    wrap.appendChild(note);
+    support.appendChild(note);
   }
   if (entry.essential) {
     const badge = document.createElement("p");
     badge.className = "chrono-essential";
     badge.textContent = "Avengers: Doomsday essential";
-    wrap.appendChild(badge);
+    support.appendChild(badge);
   }
 
   const castBlock = document.createElement("div");
   castBlock.className = "chrono-characters";
   castBlock.appendChild(railHeading("Characters"));
   castBlock.appendChild(castRow(entry, { peopleById, onOpenPerson, avatar }));
-  wrap.appendChild(castBlock);
+  support.appendChild(castBlock);
+  wrap.appendChild(support);
   return wrap;
 }
 
