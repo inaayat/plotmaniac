@@ -53,6 +53,7 @@ import {
   usesHubWebPersonFocus,
   webCastForPersonFocus,
   usesGunStateLawsPlot,
+  usesDoctrineSummaryPlot,
   boardViewForPerson,
   visibleRelationCountries,
   webLayout,
@@ -93,6 +94,7 @@ import {
   scotusTopicIcon,
   SCOTUS_GUN_TOPIC_ID,
 } from "./scotus-hub-view.js";
+import { renderPresidentialDoctrinesSummary } from "./presidential-doctrines-view.js";
 import {
   filterStatesByCriteria,
   parseGunStateLawFilters,
@@ -120,6 +122,7 @@ let openRegions = new Set();
 let openTopic = "";
 let gunBoard = null;
 let gunStatePack = null;
+let doctrineSummary = null;
 let state = {
   view: "pick",
   person: ALL,
@@ -209,14 +212,15 @@ function partitionFrameId(frames) {
 function labelViews() {
   const history = plot?.arrangement === "historical-map";
   const scotus = usesScotusHub(plot);
+  const doctrineSummaryBoard = usesDoctrineSummaryPlot(plot);
   const web = $("view-web");
   const timeline = $("view-timeline");
   const chronologyBtn = $("view-chronology");
   if (!web || !timeline) return;
-  web.hidden = scotus;
-  timeline.hidden = scotus;
-  if (chronologyBtn) chronologyBtn.hidden = scotus || !usesPlotChronology(plot);
-  if (scotus) return;
+  web.hidden = scotus || doctrineSummaryBoard;
+  timeline.hidden = scotus || doctrineSummaryBoard;
+  if (chronologyBtn) chronologyBtn.hidden = scotus || doctrineSummaryBoard || !usesPlotChronology(plot);
+  if (scotus || doctrineSummaryBoard) return;
   if (usesPlotChronology(plot)) {
     timeline.hidden = false;
     timeline.textContent = "Watch order";
@@ -405,9 +409,11 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       ? "wars"
       : (usesGunStateLawsPlot(plot)
         ? "gun-state-laws"
-        : (usesRegulationBoard(plot, bootTopic)
-          ? "regulation"
-          : (usesScotusHub(plot) ? "scotus" : (plot.disclosure || "")))));
+        : (usesDoctrineSummaryPlot(plot)
+          ? "doctrine-summary"
+          : (usesRegulationBoard(plot, bootTopic)
+            ? "regulation"
+            : (usesScotusHub(plot) ? "scotus" : (plot.disclosure || ""))))));
   clearPartition();
   const app = $("app");
   app.replaceChildren();
@@ -417,9 +423,11 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
     ? "Drawing the map…"
     : (usesGunStateLawsPlot(plot)
       ? "Loading state tables…"
-      : (usesScotusHub(plot)
-        ? (usesRegulationBoard(plot, bootTopic) ? "Loading the board…" : "Loading topics…")
-        : (usesPlotChronology(plot) ? "Laying out the watch order…" : "Drawing the web…")));
+      : (usesDoctrineSummaryPlot(plot)
+        ? "Loading summary…"
+        : (usesScotusHub(plot)
+          ? (usesRegulationBoard(plot, bootTopic) ? "Loading the board…" : "Loading topics…")
+          : (usesPlotChronology(plot) ? "Laying out the watch order…" : "Drawing the web…"))));
   app.appendChild(loading);
   try {
     if (plot.arrangement === "historical-map") {
@@ -517,6 +525,11 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       ]);
       if (token !== loadToken) return;
       gunStatePack = { snapshot, filterConfig, mapPaths };
+    }
+    doctrineSummary = null;
+    if (usesDoctrineSummaryPlot(plot) && plot.paths.summary) {
+      doctrineSummary = await fetchJson(plot.paths.summary);
+      if (token !== loadToken) return;
     }
     setLaneZoom(1);
     hubCamera = null;
@@ -1346,10 +1359,13 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
       ? "wars"
       : (usesGunStateLawsPlot(plot)
         ? "gun-state-laws"
-        : (isGunBoardActive()
-          ? "regulation"
-          : (usesScotusHub(plot) ? "scotus" : (plot?.disclosure || "")))));
+        : (usesDoctrineSummaryPlot(plot)
+          ? "doctrine-summary"
+          : (isGunBoardActive()
+            ? "regulation"
+            : (usesScotusHub(plot) ? "scotus" : (plot?.disclosure || ""))))));
   if (usesGunStateLawsPlot(plot)) app.appendChild(renderGunStateLawsSection());
+  else if (usesDoctrineSummaryPlot(plot)) app.appendChild(renderDoctrineSummarySection());
   else if (usesScotusHub(plot)) {
     if (isGunBoardActive()) app.appendChild(renderRegulationSection());
     else app.appendChild(renderScotusHubSection());
@@ -1380,6 +1396,27 @@ function scrollGunStateDetailIntoView() {
     if (!detail) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     detail.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+  });
+}
+
+function renderDoctrineSummarySection() {
+  return renderPresidentialDoctrinesSummary({
+    plot,
+    summary: doctrineSummary,
+    events,
+    peopleById,
+    query: state.query,
+    onQueryChange: (value) => {
+      state.query = value;
+      render({ replace: true });
+      requestAnimationFrame(() => {
+        const next = document.querySelector(".doctrine-summary-search input[type=search]");
+        if (!next) return;
+        next.focus();
+        const end = next.value.length;
+        next.setSelectionRange(end, end);
+      });
+    },
   });
 }
 

@@ -5510,3 +5510,210 @@ body[data-board="gun-state-laws"] .gun-state-laws {
     padding: 8px 12px 48px;
   }
 }
+
+/* U.S. Presidential Doctrines — single-page summary */
+body[data-board="doctrine-summary"][data-view="web"] {
+  height: auto;
+  min-height: 100dvh;
+  overflow-x: clip;
+  overflow-y: auto;
+}
+
+body[data-board="doctrine-summary"][data-view="web"] .app {
+  flex: none;
+  display: block;
+  height: auto;
+  overflow: visible;
+}
+
+body[data-board="doctrine-summary"][data-view="web"] .site-footer {
+  position: static;
+  width: min(1280px, calc(100% - 32px));
+  margin: 12px auto 0;
+  padding: 8px 16px calc(28px + var(--safe-bottom));
+  text-align: center;
+}
+
+body[data-board="doctrine-summary"] .doctrine-summary {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 16px 56px;
+}
+
+.doctrine-summary-head {
+  margin-bottom: 28px;
+}
+
+.doctrine-summary-page-title {
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.doctrine-summary-page-lede {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 62ch;
+}
+
+.doctrine-summary-search {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 420px;
+}
+
+.doctrine-summary-themes {
+  margin-bottom: 36px;
+  padding: 20px 0 8px;
+  border-top: 1px solid var(--line);
+}
+
+.doctrine-summary-themes > h3 {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  margin: 0 0 14px;
+}
+
+.doctrine-summary-themes-grid {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .doctrine-summary-themes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.doctrine-summary-theme-card {
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.doctrine-summary-theme-card h4 {
+  margin: 0 0 6px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.doctrine-summary-theme-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.doctrine-summary-era {
+  margin-bottom: 32px;
+}
+
+.doctrine-summary-era-title {
+  font-family: var(--display);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 14px;
+  color: var(--gold);
+}
+
+.doctrine-summary-era-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.doctrine-summary-card {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.doctrine-summary-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.doctrine-summary-card-media {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doctrine-summary-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.doctrine-summary-monogram {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.doctrine-summary-card-meta {
+  margin: 0 0 4px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.doctrine-summary-card-title {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.doctrine-summary-card-summary {
+  margin: 0 0 10px;
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.doctrine-summary-theme-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.doctrine-summary-theme-pills li {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.doctrine-summary-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  font-size: 0.85rem;
+}
+
+.doctrine-summary-links a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
