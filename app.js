@@ -38,6 +38,8 @@ import {
   relationSentimentChart,
   relationTimelineHasTone,
   resolvePlotView,
+  defaultPlotView,
+  plotChooserHref,
   stateUrl,
   stanceHistory,
   tiesWith,
@@ -94,7 +96,7 @@ import {
   serializeGunStateLawFilters,
 } from "./gun-laws-by-state-model.js";
 import { renderGunStateLawsBoard } from "./gun-laws-by-state-view.js";
-import { renderMarvelChronology } from "./marvel-chronology-view.js";
+import { renderMarvelChronology, renderMarvelChronologyIndex } from "./marvel-chronology-view.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const peopleById = new Map();
@@ -204,13 +206,19 @@ function labelViews() {
   const scotus = usesScotusHub(plot);
   const web = $("view-web");
   const timeline = $("view-timeline");
+  const chronologyBtn = $("view-chronology");
   if (!web || !timeline) return;
   web.hidden = scotus;
   timeline.hidden = scotus;
+  if (chronologyBtn) chronologyBtn.hidden = scotus || !usesPlotChronology(plot);
   if (scotus) return;
   if (usesPlotChronology(plot)) {
     timeline.hidden = false;
     timeline.textContent = "Watch order";
+    if (chronologyBtn) {
+      chronologyBtn.hidden = false;
+      chronologyBtn.textContent = "Chronology";
+    }
     if (state.view === "web") {
       web.hidden = false;
       web.textContent = "Character web (archived)";
@@ -227,7 +235,7 @@ function labelViews() {
 }
 
 function rememberView(view) {
-  if (view !== "timeline" && view !== "web") return;
+  if (view !== "timeline" && view !== "web" && view !== "chronology") return;
   try {
     localStorage.setItem(VIEW_PREF_KEY, view);
   } catch {
@@ -541,7 +549,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       rememberCountryRegion();
     } else {
       state = {
-        view: "web",
+        view: defaultPlotView({ plot }),
         person: ALL,
         era: ALL,
         query: "",
@@ -629,6 +637,7 @@ function showPicker({ history = "push" } = {}) {
   fillHubSelect();
   $("view-web").classList.remove("is-active");
   $("view-timeline").classList.remove("is-active");
+  $("view-chronology")?.classList.remove("is-active");
   labelViews();
   renderChooser();
   if (history === "push") writeUrl(false);
@@ -646,7 +655,7 @@ function renderChooser() {
     const face = plotCardFace(item);
     const card = document.createElement("a");
     card.className = `plot-card${face === "person" ? " is-person" : face === "map" ? " is-map" : ""}`;
-    card.href = `?plot=${encodeURIComponent(item.id)}`;
+    card.href = plotChooserHref(item);
     card.dataset.plot = item.id;
     card.title = item.lede;
     card.setAttribute("aria-label", `${item.kicker || "Plot"}: ${item.title}. ${item.cardLine || item.lede}`);
@@ -1027,14 +1036,17 @@ function bindChrome() {
   if (plotSearch) plotSearch.addEventListener("input", filterGallery);
   document.querySelectorAll(".views > button[data-view]").forEach((button) => {
     button.addEventListener("click", () => {
+      const nextView = button.dataset.view === "timeline" || button.dataset.view === "chronology"
+        ? button.dataset.view
+        : "web";
       if (plot?.arrangement === "historical-map") {
-        state.view = button.dataset.view === "timeline" ? "timeline" : "web";
+        state.view = nextView === "chronology" ? "timeline" : nextView;
         state.person = ALL;
         rememberView(state.view);
         render({ push: true });
         return;
       }
-      state.view = button.dataset.view === "timeline" ? "timeline" : "web";
+      state.view = nextView;
       state.person = ALL;
       state.eventId = "";
       rememberView(state.view);
@@ -1210,8 +1222,10 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   document.body.dataset.view = state.view;
   $("view-web").classList.toggle("is-active", state.view === "web");
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
+  $("view-chronology")?.classList.toggle("is-active", state.view === "chronology");
   $("view-web").setAttribute("aria-pressed", String(state.view === "web"));
   $("view-timeline").setAttribute("aria-pressed", String(state.view === "timeline"));
+  $("view-chronology")?.setAttribute("aria-pressed", String(state.view === "chronology"));
   fillHubSelect();
   fillTitleFilter();
   const plotSelect = $("plot-select");
@@ -1278,6 +1292,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
     else app.appendChild(renderScotusHubSection());
   } else if (plot?.arrangement === "wars") app.appendChild(renderWars());
   else if (state.view === "timeline") app.appendChild(renderTimeline());
+  else if (state.view === "chronology" && usesPlotChronology(plot)) app.appendChild(renderChronologyPage());
   else if (state.view === "person") app.appendChild(renderPerson());
   else if (state.view === "relation" && plot?.disclosure === "regions") app.appendChild(renderRelationPage());
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
@@ -2991,6 +3006,19 @@ function renderPerson() {
   return section;
 }
 
+function renderChronologyPage() {
+  return renderMarvelChronologyIndex({
+    chronology,
+    focusId: resolveChronologyTitle(state.chronologyTitle),
+    onFocus: (id) => {
+      state.chronologyTitle = id;
+      state.view = "timeline";
+      rememberView("timeline");
+      render({ push: true });
+    },
+  });
+}
+
 function renderTimeline() {
   if (usesPlotChronology(plot) && chronology?.titles?.length) {
     return renderMarvelChronology({
@@ -3006,6 +3034,12 @@ function renderTimeline() {
         state.view = "web";
         state.person = ALL;
         rememberView("web");
+        render({ push: true });
+      },
+      onOpenChronology: () => {
+        state.view = "chronology";
+        state.person = ALL;
+        rememberView("chronology");
         render({ push: true });
       },
       avatar,

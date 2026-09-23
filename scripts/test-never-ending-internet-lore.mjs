@@ -31,6 +31,7 @@ import {
   chronologyFeedsInto,
   chronologyWatchBefore,
   chronologyWatchNext,
+  chronologyRailPosterSize,
   chronologyById,
   chronologyEntryForQuery,
   chronologyFilterLabel,
@@ -38,6 +39,7 @@ import {
   usesPlotChronology,
   findPlot,
   plotCardFace,
+  plotChooserHref,
   plotMatchesQuery,
   firstLoadCountries,
   graphLayout,
@@ -401,6 +403,7 @@ assert.ok(centerDistance(weightedFit.nodes, "hila-klein") < centerDistance(weigh
 
 assert.equal(parseState("https://plotmaniac.com/").view, "web");
 assert.equal(parseState("https://plotmaniac.com/?view=timeline").view, "timeline");
+assert.equal(parseState("https://plotmaniac.com/?view=chronology").view, "chronology");
 assert.equal(
   parseState("https://plotmaniac.com/?view=person&person=hila-klein", { people: ids }).view,
   "person",
@@ -409,10 +412,12 @@ assert.equal(requestedView("https://plotmaniac.com/"), "");
 assert.equal(requestedView("https://plotmaniac.com/?plot=h3"), "");
 assert.equal(requestedView("https://plotmaniac.com/?view=web"), "web");
 assert.equal(requestedView("https://plotmaniac.com/?view=timeline"), "timeline");
+assert.equal(requestedView("https://plotmaniac.com/?view=chronology"), "chronology");
 assert.equal(requestedView("https://plotmaniac.com/?view=nope"), "");
 assert.equal(defaultPlotView(), "web");
 assert.equal(defaultPlotView({ requested: "web" }), "web");
 assert.equal(defaultPlotView({ requested: "timeline" }), "timeline");
+assert.equal(defaultPlotView({ requested: "chronology" }), "chronology");
 assert.equal(defaultPlotView({ eventId: "frenemies-39-walkout" }), "timeline");
 assert.equal(defaultPlotView({ requested: "web", eventId: "frenemies-39-walkout" }), "web");
 
@@ -1719,6 +1724,8 @@ const marvelChronology = readJson("../data/marvel-universe/chronology.json");
 assert.equal(usesPlotChronology(marvel), true);
 assert.equal(marvel.defaultView, "timeline");
 assert.equal(defaultPlotView({ plot: marvel }), "timeline");
+assert.equal(plotChooserHref(marvel), "?plot=marvel-universe&view=timeline");
+assert.equal(plotChooserHref(youtubers), "?plot=youtubers");
 const marvelTitles = titleFilterLabels(marvelEvents, marvelChronology);
 assert.equal(marvelTitles.length, 94);
 assert.equal(marvelTitles[0], "Eyes of Wakanda");
@@ -1757,6 +1764,20 @@ assert.deepEqual(
   marvelChronology.titles.slice(1, 4).map((entry) => entry.id),
   "Watch Next falls back to chronological successors when nothing feeds out",
 );
+const avengersBefore = chronologyWatchBefore(
+  marvelChronology.titles.find((entry) => entry.id === "the-avengers"),
+  chronoIndex,
+).map((entry) => entry.id);
+assert.equal(avengersBefore.length, 5, "The Avengers lists every Watch Before prereq, including could-tier");
+assert.ok(avengersBefore.includes("incredible-hulk"), "Incredible Hulk stays in Watch Before, not clipped by a top-N cap");
+{
+  const fitted = chronologyRailPosterSize({ count: 5, availableHeight: 520 });
+  assert.equal(fitted.count, 5);
+  assert.ok(fitted.height <= 132 && fitted.height >= 44, `rail posters shrink to fit, got ${fitted.height}`);
+  assert.ok(fitted.width < fitted.height, "poster aspect stays portrait");
+  const roomy = chronologyRailPosterSize({ count: 2, availableHeight: 520 });
+  assert.ok(roomy.height > fitted.height, "fewer rail titles get larger posters");
+}
 assert.match(marvel.lede, /Watch Before/);
 assert.doesNotMatch(marvel.lede, /Follow the character web/);
 assert.equal(
@@ -1773,6 +1794,21 @@ assert.equal(
   }),
   "web",
 );
+assert.equal(
+  resolvePlotView(parseState("https://plotmaniac.com/?plot=marvel-universe&view=chronology"), {
+    href: "https://plotmaniac.com/?plot=marvel-universe&view=chronology",
+    plot: marvel,
+  }),
+  "chronology",
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "chronology", plot: "marvel-universe", chronologyTitle: "the-avengers" }, ""),
+  /view=chronology/,
+);
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "chronology", plot: "marvel-universe", chronologyTitle: "the-avengers" }, ""),
+  /title=the-avengers/,
+);
 const chronoViewSource = fs.readFileSync(new URL("../marvel-chronology-view.js", import.meta.url), "utf8");
 assert.match(chronoViewSource, /Watch Before/);
 assert.match(chronoViewSource, /Watch Next/);
@@ -1782,12 +1818,29 @@ assert.match(chronoViewSource, /chrono-cast-row/);
 assert.match(chronoViewSource, /chrono-cast-avatar/);
 assert.match(chronoViewSource, /Character web \(archived\)/);
 assert.match(chronoViewSource, /startViewTransition/);
+assert.match(chronoViewSource, /chrono-chip-cloud/);
+assert.match(chronoViewSource, /Open full list/);
+assert.match(chronoViewSource, /roundedArrow|chrono-arrow-head/);
+assert.match(chronoViewSource, /fitChronoRails/);
+assert.match(chronoViewSource, /export function renderMarvelChronologyIndex/);
 assert.match(css, /\.chrono-cast-row \.avatar/);
 assert.match(css, /\.chrono-arrow/);
 assert.match(css, /\.chrono-poster--xl/);
+assert.match(css, /grid-template-columns:\s*max-content minmax\(0, 1fr\) max-content/, "side columns hug posters instead of stretching empty 1fr gutters");
+assert.match(css, /stroke-linecap:\s*round/, "watch-order arrows are rounded strokes");
+assert.match(css, /\.chrono-arrow \{[^}]*flex:\s*none/, "arrows stay short instead of stretching the gutter");
+assert.doesNotMatch(css, /\.chrono-arrow \{[^}]*flex:\s*1/);
+assert.match(css, /\.chrono-chip-cloud/);
+assert.match(css, /\.marvel-chronology-index/);
 assert.match(appSource, /Character web \(archived\)/);
 assert.match(appSource, /function renderMarvelWebOrDefault/);
 assert.match(appSource, /Watch order/);
+assert.match(appSource, /plotChooserHref/);
+assert.match(appSource, /view: defaultPlotView\(\{ plot \}\)/);
+assert.match(appSource, /renderMarvelChronologyIndex/);
+assert.match(appSource, /state\.view = "chronology"/);
+assert.match(html, /id="view-chronology"/);
+assert.match(html, /data-view="chronology"/);
 assert.doesNotMatch(chronoViewSource, /api\.themoviedb\.org/);
 assert.doesNotMatch(appSource, /api\.themoviedb\.org/);
 assert.doesNotMatch(appSource, /TMDB_API_KEY/);

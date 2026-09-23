@@ -1,11 +1,13 @@
 export const ALL = "all";
 export const COMPACT_MAX_WIDTH = 768;
 
+export const PLOT_VIEWS = ["web", "timeline", "person", "relation", "chronology"];
+
 export function requestedView(urlLike) {
   try {
     const url = new URL(urlLike, "https://plotmaniac.com/");
     const value = url.searchParams.get("view");
-    if (value === "timeline" || value === "web" || value === "person" || value === "relation") return value;
+    if (PLOT_VIEWS.includes(value)) return value;
   } catch {
     return "";
   }
@@ -27,10 +29,22 @@ export function usesRegulationBoard(plot, topicId = "") {
 
 export function defaultPlotView({ requested = "", eventId = "", plot = null } = {}) {
   if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot)) return "web";
-  if (requested === "timeline" || requested === "web" || requested === "person") return requested;
+  if (requested === "timeline" || requested === "web" || requested === "person" || requested === "chronology") {
+    return requested;
+  }
   if (eventId) return "timeline";
   if (plot?.defaultView === "timeline") return "timeline";
   return "web";
+}
+
+/** Gallery / plot-switcher entry URL. Marvel lands on Watch Order (`view=timeline`). */
+export function plotChooserHref(plot) {
+  if (!plot?.id) return "?";
+  const params = new URLSearchParams();
+  params.set("plot", plot.id);
+  const view = defaultPlotView({ plot });
+  if (view && view !== "web") params.set("view", view);
+  return `?${params.toString()}`;
 }
 
 export function resolvePlotView(parsed, { href = "", plot = null } = {}) {
@@ -158,14 +172,34 @@ export function chronologyWatchBefore(entry, chronologyIndex) {
 }
 
 /** Watch Next rail: titles this one feeds into, or the next chronological successors. */
-export function chronologyWatchNext(chronology, id, limit = 3) {
+export const CHRONOLOGY_WATCH_NEXT_FALLBACK = 3;
+
+export function chronologyWatchNext(chronology, id, limit = CHRONOLOGY_WATCH_NEXT_FALLBACK) {
   const feeds = chronologyFeedsInto(chronology, id);
   if (feeds.length) return feeds;
-  const cap = Math.max(1, Number(limit) || 3);
+  const cap = Math.max(1, Number(limit) || CHRONOLOGY_WATCH_NEXT_FALLBACK);
   const titles = chronologyTitles(chronology);
   const index = titles.findIndex((entry) => entry.id === id);
   if (index < 0 || index >= titles.length - 1) return [];
   return titles.slice(index + 1, index + 1 + cap);
+}
+
+/**
+ * Side-rail poster size so every Watch Before / Watch Next tile fits the host.
+ * Shrinks posters and gaps together; never drops items.
+ */
+export function chronologyRailPosterSize({ count = 1, availableHeight = 560 } = {}) {
+  const n = Math.max(1, Math.round(Number(count) || 1));
+  const caption = 18;
+  const gap = n >= 5 ? 6 : n >= 4 ? 8 : 10;
+  const usable = Math.max(96, Number(availableHeight) || 0);
+  const height = Math.max(44, Math.min(132, (usable - gap * (n - 1) - caption * n) / n));
+  return {
+    count: n,
+    gap,
+    width: Math.round(height * 2 / 3),
+    height: Math.round(height),
+  };
 }
 
 export function validateChronology(chronology, peopleIds, expectedOrderIds = []) {
@@ -603,7 +637,7 @@ export function parseState(urlLike, valid = {}) {
         ? ALL
         : (valid.defaultHub || "")));
   const requested = url.searchParams.get("view");
-  let view = requested === "timeline" || requested === "person" || requested === "relation" ? requested : "web";
+  let view = PLOT_VIEWS.includes(requested) ? requested : "web";
   if (view === "person" && person === ALL) view = "web";
   if (view === "relation" && !country) view = "web";
   const topicRaw = url.searchParams.get("topic") || "";
@@ -631,7 +665,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   }
   ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic", "criteria", "gun", "title"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
-  if (state.view === "timeline" || state.view === "person" || state.view === "relation") {
+  if (PLOT_VIEWS.includes(state.view) && state.view !== "web") {
     url.searchParams.set("view", state.view);
   } else {
     url.searchParams.set("view", "web");

@@ -11,7 +11,8 @@ Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templat
 - **Lede:** `Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Pick a title to study up: Watch Before on the left, Watch Next on the right, and the cast under the selected movie. MCU main means the shared Sacred Timeline / Earth-616 screen continuity (often called Earth-199999 by fans); guest worlds remain separate.`
 - **Search placeholder:** `Avengers, TVA, Wakanda, Spider-Man, a film…`
 - **Title filter:** `titleFilter: true` puts that search on the main chrome and focuses a matching chronology title (`?title=`).
-- **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` lands here, not on the character web.
+- **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` or clicking Marvel on the homepage gallery lands here (`plotChooserHref` adds `view=timeline`), not on the character web.
+- **Chronology view:** `?plot=marvel-universe&view=chronology` is the dedicated full story-order list. Watch Order keeps a compact chip strip of the same list at the top, with **Open full list** / the Chronology nav button.
 - **Center id:** `tony-stark`
 
 ### Primary view — watch-order focus
@@ -23,11 +24,15 @@ The main Marvel page is a three-column study-up board:
 - **Characters** (under center): a horizontal row of circular cast avatars (Commons portraits, initials if none).
 - **Watch Next** (right): titles this one feeds into, or the next chronological successors if there is no outbound edge.
 
-Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome and the collapsed “Full chronological list” also change focus.
+Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome and the compact chronological chip strip at the top also change focus. Side-rail posters scale with stack length so every Watch Before / Watch Next title stays on screen.
+
+### Chronology page
+
+`?view=chronology` (Chronology in the Marvel nav, or **Open full list** on Watch Order) is the same MCU + Mutant Legacy order as a dedicated scannable page, grouped by era. Choosing a title returns to Watch Order focused on that film.
 
 ### Archived character web
 
-The universe-membership character web is kept, but it is not the default entry and is hidden from primary nav. Open it with `?plot=marvel-universe&view=web`, or the quiet **Character web (archived)** link on the watch-order page. Hub Focus remains on that archived view only.
+The universe-membership character web is kept, but it is not the default entry and is hidden from primary nav. Open it with `?plot=marvel-universe&view=web`, or the quiet **Character web (archived)** link on the watch-order page. Hub Focus remains on that archived view only. Homepage gallery cards and the plot switcher must not land here.
 
 The web still uses the YouTubers-style hub field. Hubs are universe focus controls, not extra non-character nodes; each hub is anchored by a real character who appears in that universe. The hub’s `universe-member` relations are deliberately neutral, so focusing a hub reveals its exclusive membership without turning every member into a “friend” of the anchor. The plot sets the existing layout threshold to `minBeats: 1` and wires that option through the loader so one-film multiverse variants still appear in a universe focus; other plots retain the default two-beat web threshold.
 

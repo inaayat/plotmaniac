@@ -26,9 +26,10 @@ Inside a plot, search filters people, events, and (where relevant) countries by 
 
 ## Web vs timeline tabs
 
-- **Wide screens** default to **Web** (or the arrangement’s board: map, topics wedges, etc.).
-- **Narrow screens** default to **Full timeline** (or the arrangement’s chronological view).
-- `?view=web` or `?view=timeline` share a specific tab; the UI remembers the last tab per plot when possible.
+- **Wide screens** default to **Web** (or the arrangement’s board: map, topics wedges, etc.), unless the plot sets `defaultView` (Marvel uses `"timeline"` for Watch Order).
+- **Narrow screens** default to **Full timeline** (or the arrangement’s chronological view) for plots that still default to web.
+- Homepage gallery cards use `plotChooserHref`: `?plot=<id>` plus `view=<defaultView>` when that default is not web.
+- `?view=web`, `?view=timeline`, or `?view=chronology` share a specific tab; the UI remembers the last tab per plot when possible.
 - Policy (`arrangement: "topics"`) and wars keep policy/map on the web tab; opening a “person” on a topics plot stays on the board (`boardViewForPerson`).
 
 ## Portraits and monograms
