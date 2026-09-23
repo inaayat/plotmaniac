@@ -4994,7 +4994,7 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   --chrono-md-h: 144px;
   --chrono-md-w: calc(var(--chrono-md-h) * 2 / 3);
   --chrono-rail-gap: 8px;
-  --chrono-hero-h: clamp(240px, 36vh, 330px);
+  --chrono-hero-h: clamp(260px, 40vh, 368px);
   --chrono-reach: clamp(64px, 16vh, 140px);
   /* Rows: headers, reach above the poster, poster, the same reach below,
      then the title and cast. Rows 2–4 are fixed lengths, so the poster
@@ -5078,7 +5078,7 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 .chrono-poster-card {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
   width: 100%;
   max-width: 100%;
   padding: 0;
