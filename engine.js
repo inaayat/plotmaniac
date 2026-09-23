@@ -326,7 +326,7 @@ export function movieWebLayout(titles = [], options = {}) {
   };
 }
 
-export const CHRONOLOGY_RAIL_POSTER_MIN = 128;
+export const CHRONOLOGY_RAIL_POSTER_MIN = 120;
 
 /**
  * Side-rail poster size for the Watch Before / Watch Next stacks. Shrinks
