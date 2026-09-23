@@ -1,0 +1,16 @@
+[
+  { "from": "james-monroe", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Monroe Doctrine (1823)" },
+  { "from": "theodore-roosevelt", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Roosevelt Corollary (1904)" },
+  { "from": "harry-truman", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Truman Doctrine (1947)" },
+  { "from": "dwight-eisenhower", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Eisenhower Doctrine (1957)" },
+  { "from": "john-kennedy", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Kennedy Doctrine (1961)" },
+  { "from": "lyndon-johnson", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Johnson Doctrine (1965)" },
+  { "from": "richard-nixon", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Nixon Doctrine (1969)" },
+  { "from": "jimmy-carter", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Carter Doctrine (1980)" },
+  { "from": "ronald-reagan", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Reagan Doctrine (1985)" },
+  { "from": "bill-clinton", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Clinton Doctrine (1999)" },
+  { "from": "george-w-bush", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Bush Doctrine (2001)" },
+  { "from": "barack-obama", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Obama Doctrine (2009–2017)" },
+  { "from": "donald-trump", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Trump Doctrine (2017–2021)" },
+  { "from": "joe-biden", "to": "us-presidential-doctrines", "kind": "doctrine", "label": "Biden Doctrine (2021–2025)" }
+]
