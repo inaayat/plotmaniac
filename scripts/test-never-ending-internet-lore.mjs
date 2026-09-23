@@ -2257,6 +2257,11 @@ assert.match(
 
 const gunStatePlot = findPlot(plots.plots, "gun-laws-by-state");
 assert.equal(gunStatePlot?.arrangement, "gun-state-laws");
+assert.match(
+  gunStatePlot.cardImage,
+  /Special:FilePath\/Blank%20US%20Map%20%28states%20only%29\.svg/,
+  "gun-laws-by-state gallery uses the live Commons states-only blank map",
+);
 assert.notEqual(findPlot(plots.plots, "gun-laws-by-state")?.id, "scotus");
 const gunStateSnapshot = readJson("../data/gun-laws-by-state/states-snapshot.json");
 assert.deepEqual(validateGunStateSnapshot(gunStateSnapshot), []);

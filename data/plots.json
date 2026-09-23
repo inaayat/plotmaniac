@@ -196,7 +196,7 @@
       "friendKinds": [],
       "enemyKinds": [],
       "arrangement": "gun-state-laws",
-      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/BlankMap-US-states.svg?width=320",
+      "cardImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Blank%20US%20Map%20%28states%20only%29.svg?width=320",
       "paths": {
         "people": "data/gun-laws-by-state/people.json",
         "events": "data/gun-laws-by-state/events.json",
