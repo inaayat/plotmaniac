@@ -32,6 +32,7 @@ import {
   chronologyWatchBefore,
   chronologyWatchNext,
   chronologyRailPosterSize,
+  movieWebLayout,
   chronologyById,
   chronologyEntryForQuery,
   chronologyFilterLabel,
@@ -1919,10 +1920,29 @@ assert.match(css, /\.chrono-cast-row \.avatar/);
 assert.match(css, /\.chrono-arrow/);
 assert.match(css, /\.chrono-poster--xl/);
 assert.match(css, /grid-template-columns:\s*minmax\(0,\s*1fr\) auto minmax\(0,\s*1fr\)/, "selected movie stays centered while the rails use the width");
-assert.match(css, /\.chrono-arrow-shaft/, "watch-order arrows are block arrows");
-assert.match(css, /\.chrono-arrow-shape\s*\{[^}]*fill:\s*currentColor/, "block arrow heads are filled");
+assert.match(css, /\.chrono-arrow-shaft\s*\{[^}]*height:\s*3px/, "watch-order arrows are skinny");
+assert.match(css, /\.chrono-arrow-shape\s*\{[^}]*fill:\s*currentColor/, "arrow heads are filled");
 assert.doesNotMatch(css, /\.chrono-arrow--out\s*\{[^}]*scaleX\(-1\)/, "Watch Next arrows point at the next poster");
-assert.match(css, /\.chrono-arrow \{[^}]*flex:\s*1/, "block arrows widen between the posters");
+assert.match(css, /\.chrono-arrow \{[^}]*flex:\s*none/, "arrows stay a short connector");
+assert.match(css, /\.chrono-lane-hit \.chrono-poster--lane\s*\{[^}]*min\(360px,\s*32vh\)/, "chronology posters stay large enough to read");
+assert.match(laneSource, /layoutChronologyLane/, "chronology posters are not scaled down to fit the cast");
+assert.match(chronoViewSource, /export function renderMarvelMovieWeb/);
+assert.match(appSource, /Movie web/);
+assert.match(html, /id="view-movie-web"/);
+{
+  const movieWeb = movieWebLayout(filterChronology(marvelChronology, { includeTv: false }).titles);
+  assert.ok(movieWeb.nodes.filter((node) => node.type === "title").length >= 59);
+  assert.ok(
+    movieWeb.edges.some((edge) => edge.from === "captain-america-first-avenger" && edge.to === "the-avengers"),
+    "Movie web ties Captain America to The Avengers",
+  );
+  assert.ok(movieWeb.height < 8000, "movie web groups eras instead of leaving a sparse stack");
+  assert.equal(movieWeb.nodes.filter((node) => node.type === "era" && node.era === "Mutant legacy").length, 1);
+}
+assert.equal(
+  boardViewForPerson(marvel, "movie-web"),
+  "movie-web",
+);
 assert.match(css, /\.marvel-chronology-lane/);
 assert.match(css, /\.chrono-story-card/);
 assert.match(appSource, /onOpenPerson: \(id\) => openPerson\(id\)/);

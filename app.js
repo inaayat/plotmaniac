@@ -102,7 +102,7 @@ import {
   serializeGunStateLawFilters,
 } from "./gun-laws-by-state-model.js";
 import { renderGunStateLawsBoard } from "./gun-laws-by-state-view.js";
-import { renderMarvelChronology, renderMarvelChronologyIndex } from "./marvel-chronology-view.js";
+import { renderMarvelChronology, renderMarvelChronologyIndex, renderMarvelMovieWeb } from "./marvel-chronology-view.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const peopleById = new Map();
@@ -216,10 +216,12 @@ function labelViews() {
   const web = $("view-web");
   const timeline = $("view-timeline");
   const chronologyBtn = $("view-chronology");
+  const movieWebBtn = $("view-movie-web");
   if (!web || !timeline) return;
   web.hidden = scotus || doctrineSummaryBoard;
   timeline.hidden = scotus || doctrineSummaryBoard;
   if (chronologyBtn) chronologyBtn.hidden = scotus || doctrineSummaryBoard || !usesPlotChronology(plot);
+  if (movieWebBtn) movieWebBtn.hidden = scotus || doctrineSummaryBoard || !usesPlotChronology(plot);
   if (scotus || doctrineSummaryBoard) return;
   if (usesPlotChronology(plot)) {
     timeline.hidden = false;
@@ -227,6 +229,10 @@ function labelViews() {
     if (chronologyBtn) {
       chronologyBtn.hidden = false;
       chronologyBtn.textContent = "Chronology";
+    }
+    if (movieWebBtn) {
+      movieWebBtn.hidden = false;
+      movieWebBtn.textContent = "Movie web";
     }
     web.hidden = true;
     return;
@@ -257,7 +263,7 @@ function readTvPref() {
 }
 
 function rememberView(view) {
-  if (view !== "timeline" && view !== "web" && view !== "chronology") return;
+  if (view !== "timeline" && view !== "web" && view !== "chronology" && view !== "movie-web") return;
   try {
     localStorage.setItem(VIEW_PREF_KEY, view);
   } catch {
@@ -672,6 +678,7 @@ function showPicker({ history = "push" } = {}) {
   $("view-web").classList.remove("is-active");
   $("view-timeline").classList.remove("is-active");
   $("view-chronology")?.classList.remove("is-active");
+  $("view-movie-web")?.classList.remove("is-active");
   labelViews();
   fillIncludeTv();
   renderChooser();
@@ -1089,7 +1096,7 @@ function bindChrome() {
   if (plotSearch) plotSearch.addEventListener("input", filterGallery);
   document.querySelectorAll(".views > button[data-view]").forEach((button) => {
     button.addEventListener("click", () => {
-      const nextView = button.dataset.view === "timeline" || button.dataset.view === "chronology"
+      const nextView = button.dataset.view === "timeline" || button.dataset.view === "chronology" || button.dataset.view === "movie-web"
         ? button.dataset.view
         : "web";
       if (plot?.arrangement === "historical-map") {
@@ -1236,7 +1243,7 @@ function fillIncludeTv() {
   const wrap = $("tv-switch");
   const input = $("include-tv");
   if (!wrap || !input) return;
-  const show = Boolean(plot && usesPlotChronology(plot) && (state.view === "timeline" || state.view === "chronology"));
+  const show = Boolean(plot && usesPlotChronology(plot) && (state.view === "timeline" || state.view === "chronology" || state.view === "movie-web"));
   wrap.hidden = !show;
   if (!show) return;
   input.checked = Boolean(state.includeTv);
@@ -1298,9 +1305,11 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   $("view-web").classList.toggle("is-active", state.view === "web");
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
   $("view-chronology")?.classList.toggle("is-active", state.view === "chronology");
+  $("view-movie-web")?.classList.toggle("is-active", state.view === "movie-web");
   $("view-web").setAttribute("aria-pressed", String(state.view === "web"));
   $("view-timeline").setAttribute("aria-pressed", String(state.view === "timeline"));
   $("view-chronology")?.setAttribute("aria-pressed", String(state.view === "chronology"));
+  $("view-movie-web")?.setAttribute("aria-pressed", String(state.view === "movie-web"));
   fillHubSelect();
   fillTitleFilter();
   fillIncludeTv();
@@ -1372,6 +1381,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   } else if (plot?.arrangement === "wars") app.appendChild(renderWars());
   else if (state.view === "timeline") app.appendChild(renderTimeline());
   else if (state.view === "chronology" && usesPlotChronology(plot)) app.appendChild(renderChronologyPage());
+  else if (state.view === "movie-web" && usesPlotChronology(plot)) app.appendChild(renderMovieWebPage());
   else if (state.view === "person") app.appendChild(renderPerson());
   else if (state.view === "relation" && plot?.disclosure === "regions") app.appendChild(renderRelationPage());
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
@@ -3087,6 +3097,20 @@ function renderPerson() {
         : `Beats with ${person.name}, oldest on the left.`),
   }));
   return section;
+}
+
+function renderMovieWebPage() {
+  return renderMarvelMovieWeb({
+    chronology: visibleChronology(),
+    focusId: resolveChronologyTitle(state.chronologyTitle),
+    onFocus: (id) => {
+      state.chronologyTitle = id;
+      state.view = "timeline";
+      state.person = ALL;
+      rememberView("timeline");
+      render({ push: true });
+    },
+  });
 }
 
 function renderChronologyPage() {

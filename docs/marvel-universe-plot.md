@@ -25,11 +25,15 @@ The main Marvel page is a three-column study-up board:
 - **Characters** (under center): a horizontal row of circular cast avatars (Commons portraits, initials if none).
 - **Watch Next** (right): titles this one feeds into, or the next chronological successors if there is no outbound edge.
 
-Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome also changes focus. Chronology in the nav opens the full poster timeline. Side-rail posters scale with stack length so every Watch Before / Watch Next title stays on screen. Block arrows sit between each side poster and the selected movie (Watch Before) or the next poster (Watch Next) and widen with the screen. Cast avatars open that character’s timeline.
+Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome also changes focus. Chronology in the nav opens the full poster timeline. Side-rail posters scale with stack length so every Watch Before / Watch Next title stays on screen, and the stacks sit beside the selected poster instead of starting under the nav. Skinny arrows point from Watch Before into the selected movie and from the center toward Watch Next. Cast avatars open that character’s timeline.
 
 ### Chronology page
 
-`?view=chronology` (Chronology in the Marvel nav) is a scrollable story-order timeline: posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. Choosing a title returns to Watch Order focused on that film.
+`?view=chronology` (Chronology in the Marvel nav) is a scrollable story-order timeline: large posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. Choosing a title returns to Watch Order focused on that film.
+
+### Movie web
+
+`?view=movie-web` (Movie web in the nav) lays the same titles out as a poster board. Each era is gathered into one cluster, in the order that era first appears, so a saga stays together. A gold arrow means the earlier title is a prerequisite of the later one. Clicking a poster opens it in Watch Order. Include TV shows filters this board the same way it filters Watch Order and Chronology.
 
 ### Character timelines
 

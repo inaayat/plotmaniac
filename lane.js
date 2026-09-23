@@ -151,6 +151,12 @@ export function layoutLane(view) {
     requestAnimationFrame(() => layoutLane(view));
     return;
   }
+  // Chronology posters stay at their authored size. A long cast list scrolls
+  // inside the card instead of shrinking the artwork to fit the half-axis.
+  if (rail.querySelector(".chrono-lane-event")) {
+    layoutChronologyLane(view, scroller, rail, height);
+    return;
+  }
   // Keep the rail inside the visible scroller. Opening a beat moves the axis
   // and scales every card, including the open one, so the summary and sources
   // stay on screen instead of scrolling inside the beat.
@@ -193,6 +199,23 @@ export function layoutLane(view) {
     applyCardScale(card, restScale, above);
   });
 
+  applyLaneZoom(view, laneZoom);
+  if (pendingLaneScroll) {
+    scroller.scrollLeft = pendingLaneScroll.left;
+    scroller.scrollTop = pendingLaneScroll.top;
+    pendingLaneScroll = null;
+  }
+  if (pendingLaneFocus) {
+    const focus = view.querySelector(".lane-event.is-selected");
+    pendingLaneFocus = "";
+    if (focus) focus.scrollIntoView({ inline: "center", block: "nearest" });
+  }
+}
+
+function layoutChronologyLane(view, scroller, rail, height) {
+  rail.style.setProperty("--lane-h", `${height}px`);
+  rail.style.setProperty("--lane-axis", "50%");
+  rail.querySelectorAll(".lane-card").forEach(resetCardFit);
   applyLaneZoom(view, laneZoom);
   if (pendingLaneScroll) {
     scroller.scrollLeft = pendingLaneScroll.left;

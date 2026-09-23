@@ -1,7 +1,7 @@
 export const ALL = "all";
 export const COMPACT_MAX_WIDTH = 768;
 
-export const PLOT_VIEWS = ["web", "timeline", "person", "relation", "chronology"];
+export const PLOT_VIEWS = ["web", "timeline", "person", "relation", "chronology", "movie-web"];
 
 export function requestedView(urlLike) {
   try {
@@ -35,7 +35,7 @@ export function defaultPlotView({ requested = "", eventId = "", plot = null } = 
   if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot) || usesDoctrineSummaryPlot(plot)) {
     return "web";
   }
-  if (requested === "timeline" || requested === "web" || requested === "person" || requested === "chronology") {
+  if (requested === "timeline" || requested === "web" || requested === "person" || requested === "chronology" || requested === "movie-web") {
     return requested;
   }
   if (eventId) return "timeline";
@@ -249,6 +249,84 @@ export function chronologyWatchNext(chronology, id, limit = CHRONOLOGY_WATCH_NEX
 }
 
 /**
+ * Poster board for the Movie web. Eras are gathered into one cluster each,
+ * in the order that era first appears. Edges mark prerequisites.
+ */
+export function movieWebLayout(titles = [], options = {}) {
+  const list = Array.isArray(titles) ? titles : [];
+  const posterW = options.posterW || 188;
+  const posterH = options.posterH || 282;
+  const labelH = 58;
+  const gapX = 56;
+  const gapY = 64;
+  const columns = Math.max(2, Number(options.columns) || 5);
+  const pad = 36;
+  const eraH = 52;
+  const colW = posterW + gapX;
+  const rowStride = posterH + labelH + gapY;
+  const nodes = [];
+  const groups = [];
+  list.forEach((entry, order) => {
+    const era = entry.era || "Other";
+    let group = groups.find((item) => item.era === era);
+    if (!group) {
+      group = { era, entries: [] };
+      groups.push(group);
+    }
+    group.entries.push({ entry, order });
+  });
+  let y = pad;
+  groups.forEach((group) => {
+    nodes.push({
+      type: "era",
+      id: `era-${nodes.length}`,
+      era: group.era,
+      x: pad,
+      y,
+      w: Math.max(posterW, columns * colW - gapX),
+      h: eraH,
+    });
+    y += eraH;
+    let col = 0;
+    group.entries.forEach(({ entry, order }) => {
+      nodes.push({
+        type: "title",
+        id: entry.id,
+        title: chronologyFilterLabel(entry),
+        era: group.era,
+        order: order + 1,
+        x: pad + col * colW,
+        y,
+        w: posterW,
+        h: posterH,
+      });
+      col += 1;
+      if (col >= columns) {
+        col = 0;
+        y += rowStride;
+      }
+    });
+    y += col === 0 ? gapY : rowStride;
+  });
+  const byId = new Map(nodes.filter((node) => node.type === "title").map((node) => [node.id, node]));
+  const edges = [];
+  list.forEach((entry) => {
+    (entry.prereqs || []).forEach((item) => {
+      if (!byId.has(item.id) || !byId.has(entry.id)) return;
+      edges.push({ from: item.id, to: entry.id, tier: item.tier || "" });
+    });
+  });
+  return {
+    nodes,
+    edges,
+    width: pad * 2 + columns * colW - gapX,
+    height: y + pad,
+    posterW,
+    posterH,
+  };
+}
+
+/**
  * Side-rail poster size so every Watch Before / Watch Next tile fits the host.
  * Shrinks posters and gaps together; never drops items.
  */
@@ -257,7 +335,7 @@ export function chronologyRailPosterSize({ count = 1, availableHeight = 560 } = 
   const caption = 18;
   const gap = n >= 5 ? 6 : n >= 4 ? 8 : 10;
   const usable = Math.max(96, Number(availableHeight) || 0);
-  const height = Math.max(44, Math.min(168, (usable - gap * (n - 1) - caption * n) / n));
+  const height = Math.max(44, Math.min(132, (usable - gap * (n - 1) - caption * n) / n));
   return {
     count: n,
     gap,

@@ -6,6 +6,7 @@ import {
   chronologyRailPosterSize,
   chronologyWatchBefore,
   chronologyWatchNext,
+  movieWebLayout,
 } from "./engine.js";
 import { buildLaneChrome, laneYear, layoutLane, queueLaneFocus } from "./lane.js";
 
@@ -101,6 +102,107 @@ export function renderMarvelChronologyIndex({
   return renderChronologyLane({ titles, peopleById, focusId, onFocus, onOpenPerson, avatar });
 }
 
+export function renderMarvelMovieWeb({
+  chronology,
+  focusId,
+  onFocus,
+}) {
+  const section = document.createElement("section");
+  section.className = "movie-web";
+  const titles = chronology?.titles || [];
+  if (!titles.length) {
+    section.appendChild(emptyBlock("No chronology titles loaded."));
+    return section;
+  }
+  const narrow = Boolean(window.matchMedia?.("(max-width: 720px)")?.matches);
+  const medium = Boolean(window.matchMedia?.("(max-width: 1100px)")?.matches);
+  const columns = narrow ? 2 : medium ? 3 : 5;
+  const layout = movieWebLayout(titles, {
+    columns,
+    posterW: narrow ? 168 : 188,
+    posterH: narrow ? 252 : 282,
+  });
+  const byId = new Map(layout.nodes.filter((node) => node.type === "title").map((node) => [node.id, node]));
+  const note = document.createElement("p");
+  note.className = "movie-web-note";
+  note.textContent = "How the films tie together. A line means the earlier title sets up the later one. Click a poster to open it in Watch Order.";
+  const scroller = document.createElement("div");
+  scroller.className = "movie-web-scroll";
+  const stage = document.createElement("div");
+  stage.className = "movie-web-stage";
+  stage.style.width = `${layout.width}px`;
+  stage.style.height = `${layout.height}px`;
+  stage.style.setProperty("--movie-web-poster-h", `${layout.posterH}px`);
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "movie-web-edges");
+  svg.setAttribute("width", String(layout.width));
+  svg.setAttribute("height", String(layout.height));
+  svg.setAttribute("aria-hidden", "true");
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+  marker.setAttribute("id", "movie-web-arrow");
+  marker.setAttribute("viewBox", "0 0 10 10");
+  marker.setAttribute("markerWidth", "7");
+  marker.setAttribute("markerHeight", "7");
+  marker.setAttribute("refX", "8");
+  marker.setAttribute("refY", "5");
+  marker.setAttribute("orient", "auto");
+  const head = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  head.setAttribute("d", "M0 0 L10 5 L0 10 Z");
+  head.setAttribute("fill", "rgba(232, 196, 122, 0.92)");
+  marker.appendChild(head);
+  defs.appendChild(marker);
+  svg.appendChild(defs);
+  layout.edges.forEach((edge) => {
+    const from = byId.get(edge.from);
+    const to = byId.get(edge.to);
+    if (!from || !to) return;
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("class", "movie-web-edge");
+    const x1 = from.x + from.w / 2;
+    const y1 = from.y + from.h;
+    const x2 = to.x + to.w / 2;
+    const y2 = to.y;
+    const bend = Math.max(36, Math.abs(y2 - y1) * 0.35);
+    path.setAttribute("marker-end", "url(#movie-web-arrow)");
+    path.setAttribute("d", `M${x1} ${y1} C ${x1} ${y1 + bend}, ${x2} ${y2 - bend}, ${x2} ${y2}`);
+    svg.appendChild(path);
+  });
+  stage.appendChild(svg);
+
+  layout.nodes.forEach((node) => {
+    if (node.type === "era") {
+      const label = document.createElement("p");
+      label.className = "movie-web-era";
+      label.textContent = node.era;
+      label.style.left = `${node.x}px`;
+      label.style.top = `${node.y}px`;
+      stage.appendChild(label);
+      return;
+    }
+    const entry = titles.find((item) => item.id === node.id);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `movie-web-card${node.id === focusId ? " is-active" : ""}`;
+    button.style.left = `${node.x}px`;
+    button.style.top = `${node.y}px`;
+    button.style.width = `${node.w}px`;
+    button.setAttribute("aria-label", `Open ${node.title} in Watch Order`);
+    if (entry) button.appendChild(posterTile(entry, { size: "web" }));
+    const caption = document.createElement("span");
+    caption.className = "movie-web-title";
+    caption.textContent = node.title;
+    button.appendChild(caption);
+    button.addEventListener("click", () => onFocus(node.id));
+    stage.appendChild(button);
+  });
+
+  scroller.appendChild(stage);
+  section.append(note, scroller);
+  return section;
+}
+
 function renderChronologyLane({ titles, peopleById, focusId, onFocus, onOpenPerson, avatar }) {
   const section = document.createElement("section");
   section.className = "focus marvel-chronology marvel-chronology-lane lane-page";
@@ -157,7 +259,7 @@ function chronologyLaneEvent(entry, { order, side, active, peopleById, onFocus, 
   rule.className = "lane-rule";
   const heading = document.createElement("strong");
   heading.textContent = chronologyFilterLabel(entry);
-  hit.append(posterTile(entry, { size: "md" }), num, rule, heading);
+  hit.append(posterTile(entry, { size: "lane" }), num, rule, heading);
   if (entry.era) {
     const era = document.createElement("em");
     era.textContent = entry.era;
@@ -281,9 +383,10 @@ function fitChronoRails(layout) {
   const heading = layout.querySelector(".chrono-rail-heading");
   const headingH = heading ? heading.getBoundingClientRect().height + 10 : 28;
   const hostH = host.getBoundingClientRect().height || 0;
+  const reserve = Math.round(hostH * 0.22);
   const size = chronologyRailPosterSize({
     count,
-    availableHeight: Math.max(120, hostH - headingH),
+    availableHeight: Math.max(160, hostH - headingH - reserve),
   });
   layout.dataset.railCount = String(count);
   layout.style.setProperty("--chrono-rail-count", String(count));
@@ -412,13 +515,13 @@ function blockArrow(side) {
   shaft.className = "chrono-arrow-shaft";
   const head = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   head.setAttribute("class", "chrono-arrow-head");
-  head.setAttribute("viewBox", "0 0 48 56");
+  head.setAttribute("viewBox", "0 0 18 16");
   head.setAttribute("focusable", "false");
   const shape = document.createElementNS("http://www.w3.org/2000/svg", "path");
   shape.setAttribute("class", "chrono-arrow-shape");
   // Chubby block head, tip on the right. Both rails use this direction:
   // Watch Before points at the selected movie, Watch Next points at its poster.
-  shape.setAttribute("d", "M2 16 C2 9 8 7 13 12 L36 24 C44 28 44 30 36 34 L13 46 C8 51 2 49 2 42 Z");
+  shape.setAttribute("d", "M0 1.5 L16 8 L0 14.5 Z");
   head.appendChild(shape);
   arrow.append(shaft, head);
   return arrow;
@@ -428,7 +531,7 @@ function posterTile(entry, { size = "md" } = {}) {
   const tile = document.createElement("span");
   tile.className = `chrono-poster chrono-poster--${size}`;
   tile.setAttribute("aria-hidden", "true");
-  const imageSize = size === "xl" ? "w500" : size === "lg" ? "w342" : "w154";
+  const imageSize = size === "xl" ? "w500" : (size === "lg" || size === "web" || size === "lane") ? "w342" : "w154";
   const url = chronologyPosterUrl(entry, imageSize);
 
   const showAcronym = () => {
