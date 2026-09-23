@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source": "Karan MCU + Mutant Legacy chronology (September 2026)",
+  "source": "Karan MCU + Mutant Legacy chronology (September 2026) · cast from Wikipedia MCU character index",
   "titles": [
     {
       "id": "eyes-of-wakanda",
@@ -19,11 +19,11 @@
       "id": "captain-america-first-avenger",
       "title": "Captain America: The First Avenger",
       "characters": [
-        "steve-rogers",
-        "peggy-carter",
         "bucky-barnes",
-        "nick-fury",
-        "howard-stark"
+        "peggy-carter",
+        "steve-rogers",
+        "howard-stark",
+        "nick-fury"
       ],
       "era": "Origins",
       "posterPath": "/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg",
@@ -66,12 +66,12 @@
       "id": "ff-first-steps-1964",
       "title": "The Fantastic Four: First Steps",
       "characters": [
-        "reed-richards-first",
-        "sue-storm-first",
-        "johnny-storm-first",
+        "galactus-first",
         "ben-grimm-first",
+        "reed-richards-first",
         "shalla-bal",
-        "galactus-first"
+        "johnny-storm-first",
+        "sue-storm-first"
       ],
       "filterLabel": "The Fantastic Four: First Steps (1964 chronology)",
       "note": "Story takes place in 1964 and sets up Avengers: Doomsday — Karan places this here chronologically even though Marvel also lists the film later.",
@@ -174,9 +174,9 @@
       "title": "Captain Marvel",
       "characters": [
         "carol-danvers",
-        "nick-fury",
+        "monica-rambeau",
         "talos",
-        "monica-rambeau"
+        "nick-fury"
       ],
       "era": "1990s",
       "posterPath": "/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
@@ -249,9 +249,8 @@
       "id": "iron-man",
       "title": "Iron Man",
       "characters": [
-        "tony-stark",
         "pepper-potts",
-        "james-rhodes",
+        "tony-stark",
         "nick-fury"
       ],
       "era": "Infinity Saga",
@@ -262,10 +261,11 @@
       "id": "iron-man-2",
       "title": "Iron Man 2",
       "characters": [
-        "tony-stark",
         "pepper-potts",
         "james-rhodes",
         "natasha-romanoff",
+        "howard-stark",
+        "tony-stark",
         "nick-fury"
       ],
       "era": "Infinity Saga",
@@ -276,7 +276,6 @@
       "id": "incredible-hulk",
       "title": "The Incredible Hulk",
       "characters": [
-        "bruce-banner",
         "betty-ross",
         "thaddeus-ross"
       ],
@@ -298,11 +297,12 @@
       "id": "thor",
       "title": "Thor",
       "characters": [
-        "thor",
-        "loki-main",
-        "jane-foster",
+        "clint-barton",
         "odin-borson",
-        "heimdall"
+        "jane-foster",
+        "heimdall",
+        "loki-main",
+        "thor"
       ],
       "era": "Infinity Saga",
       "posterPath": "/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg",
@@ -324,15 +324,15 @@
       "id": "the-avengers",
       "title": "The Avengers",
       "characters": [
-        "tony-stark",
-        "steve-rogers",
-        "thor",
         "bruce-banner",
-        "natasha-romanoff",
         "clint-barton",
-        "nick-fury",
         "loki-main",
-        "pepper-potts"
+        "thor",
+        "pepper-potts",
+        "steve-rogers",
+        "natasha-romanoff",
+        "tony-stark",
+        "nick-fury"
       ],
       "era": "Infinity Saga",
       "prereqs": [
@@ -387,10 +387,11 @@
       "id": "thor-dark-world",
       "title": "Thor: The Dark World",
       "characters": [
-        "thor",
-        "loki-main",
+        "odin-borson",
         "jane-foster",
-        "odin-borson"
+        "heimdall",
+        "loki-main",
+        "thor"
       ],
       "era": "Infinity Saga",
       "posterPath": "/wp6OxE4poJ4G7c0U2ZIXasTSMR7.jpg",
@@ -400,10 +401,11 @@
       "id": "iron-man-3",
       "title": "Iron Man 3",
       "characters": [
-        "tony-stark",
+        "bruce-banner",
         "pepper-potts",
         "james-rhodes",
-        "trevor-slattery"
+        "trevor-slattery",
+        "tony-stark"
       ],
       "era": "Infinity Saga",
       "posterPath": "/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
@@ -423,12 +425,12 @@
       "id": "winter-soldier",
       "title": "Captain America: The Winter Soldier",
       "characters": [
+        "bucky-barnes",
+        "peggy-carter",
         "steve-rogers",
         "natasha-romanoff",
-        "bucky-barnes",
         "sam-wilson",
-        "nick-fury",
-        "peggy-carter"
+        "nick-fury"
       ],
       "era": "Infinity Saga",
       "posterPath": "/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg",
@@ -438,12 +440,10 @@
       "id": "guardians-1",
       "title": "Guardians of the Galaxy",
       "characters": [
-        "peter-quill",
         "gamora",
-        "rocket",
-        "groot",
-        "drax",
         "nebula",
+        "peter-quill",
+        "rocket",
         "thanos"
       ],
       "era": "Infinity Saga",
@@ -454,13 +454,13 @@
       "id": "guardians-2",
       "title": "Guardians of the Galaxy Vol. 2",
       "characters": [
-        "peter-quill",
-        "gamora",
-        "rocket",
-        "groot",
         "drax",
+        "gamora",
+        "groot",
         "mantis",
-        "nebula"
+        "nebula",
+        "peter-quill",
+        "rocket"
       ],
       "era": "Infinity Saga",
       "posterPath": "/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
@@ -490,12 +490,11 @@
       "id": "daredevil-s1",
       "title": "Daredevil S1",
       "characters": [
-        "matt-murdock",
-        "karen-page",
-        "wilson-fisk",
         "frank-castle",
-        "jessica-jones",
-        "elektra-natchios"
+        "wilson-fisk",
+        "matt-murdock",
+        "elektra-natchios",
+        "karen-page"
       ],
       "era": "Street level",
       "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
@@ -505,10 +504,7 @@
       "id": "jessica-jones-s1",
       "title": "Jessica Jones S1",
       "characters": [
-        "jessica-jones",
-        "luke-cage",
-        "trish-walker",
-        "matt-murdock"
+        "jessica-jones"
       ],
       "era": "Street level",
       "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
@@ -518,15 +514,19 @@
       "id": "age-of-ultron",
       "title": "Avengers: Age of Ultron",
       "characters": [
-        "tony-stark",
-        "steve-rogers",
-        "thor",
         "bruce-banner",
-        "natasha-romanoff",
+        "bucky-barnes",
         "clint-barton",
-        "james-rhodes",
         "wanda-maximoff",
-        "vision"
+        "thor",
+        "pepper-potts",
+        "james-rhodes",
+        "steve-rogers",
+        "natasha-romanoff",
+        "tony-stark",
+        "thanos",
+        "vision",
+        "sam-wilson"
       ],
       "era": "Infinity Saga",
       "posterPath": "/4ssDuvEDkSArWEdyBl2X5EHvYKU.jpg",
@@ -537,10 +537,8 @@
       "title": "Ant-Man",
       "characters": [
         "scott-lang",
-        "hope-van-dyne",
         "hank-pym",
-        "janet-van-dyne",
-        "cassie-lang"
+        "hope-van-dyne"
       ],
       "era": "Infinity Saga",
       "posterPath": "/rQRnQfUl3kfp78nCWq8Ks04vnq1.jpg",
@@ -550,12 +548,11 @@
       "id": "daredevil-s2",
       "title": "Daredevil S2",
       "characters": [
-        "matt-murdock",
-        "karen-page",
-        "wilson-fisk",
         "frank-castle",
-        "jessica-jones",
-        "elektra-natchios"
+        "wilson-fisk",
+        "matt-murdock",
+        "elektra-natchios",
+        "karen-page"
       ],
       "era": "Street level",
       "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
@@ -565,10 +562,7 @@
       "id": "luke-cage-s1",
       "title": "Luke Cage S1",
       "characters": [
-        "luke-cage",
-        "misty-knight",
-        "jessica-jones",
-        "claire-temple"
+        "luke-cage"
       ],
       "era": "Street level",
       "posterPath": "/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
@@ -591,10 +585,7 @@
       "id": "iron-fist-s1",
       "title": "Iron Fist S1",
       "characters": [
-        "danny-rand",
-        "colleen-wing",
-        "luke-cage",
-        "jessica-jones"
+        "danny-rand"
       ],
       "era": "Street level",
       "posterPath": "/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg",
@@ -604,11 +595,12 @@
       "id": "the-defenders",
       "title": "The Defenders",
       "characters": [
-        "matt-murdock",
         "jessica-jones",
         "luke-cage",
-        "danny-rand",
-        "karen-page"
+        "matt-murdock",
+        "elektra-natchios",
+        "karen-page",
+        "danny-rand"
       ],
       "era": "Street level",
       "prereqs": [
@@ -636,15 +628,20 @@
       "id": "civil-war",
       "title": "Captain America: Civil War",
       "characters": [
-        "tony-stark",
-        "steve-rogers",
+        "ayo",
         "bucky-barnes",
-        "sam-wilson",
-        "natasha-romanoff",
-        "james-rhodes",
-        "tchalla",
+        "clint-barton",
+        "wanda-maximoff",
         "peter-parker-mcu",
-        "clint-barton"
+        "james-rhodes",
+        "steve-rogers",
+        "natasha-romanoff",
+        "thaddeus-ross",
+        "tony-stark",
+        "tchalla",
+        "hope-van-dyne",
+        "vision",
+        "sam-wilson"
       ],
       "era": "Infinity Saga",
       "prereqs": [
@@ -668,8 +665,8 @@
       "id": "black-widow",
       "title": "Black Widow",
       "characters": [
-        "natasha-romanoff",
         "yelena-belova",
+        "natasha-romanoff",
         "alexei-shostakov"
       ],
       "era": "Infinity Saga",
@@ -680,13 +677,13 @@
       "id": "black-panther",
       "title": "Black Panther",
       "characters": [
-        "tchalla",
-        "shuri",
-        "okoye",
+        "ayo",
+        "bucky-barnes",
         "mbaku",
         "nakia",
-        "ayo",
-        "everett-ross"
+        "okoye",
+        "shuri",
+        "tchalla"
       ],
       "era": "Infinity Saga",
       "posterPath": "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
@@ -696,11 +693,11 @@
       "id": "homecoming",
       "title": "Spider-Man: Homecoming",
       "characters": [
-        "peter-parker-mcu",
-        "tony-stark",
-        "may-parker",
         "mj-mcu",
-        "ned-leeds"
+        "ned-leeds",
+        "may-parker",
+        "peter-parker-mcu",
+        "tony-stark"
       ],
       "era": "Infinity Saga",
       "posterPath": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
@@ -723,10 +720,10 @@
       "id": "doctor-strange",
       "title": "Doctor Strange",
       "characters": [
-        "stephen-strange",
-        "wong",
+        "the-ancient-one",
         "mordo",
-        "the-ancient-one"
+        "stephen-strange",
+        "wong"
       ],
       "era": "Infinity Saga",
       "posterPath": "/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg",
@@ -736,10 +733,7 @@
       "id": "jessica-jones-s2",
       "title": "Jessica Jones S2",
       "characters": [
-        "jessica-jones",
-        "luke-cage",
-        "trish-walker",
-        "matt-murdock"
+        "jessica-jones"
       ],
       "era": "Street level",
       "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
@@ -749,10 +743,7 @@
       "id": "luke-cage-s2",
       "title": "Luke Cage S2",
       "characters": [
-        "luke-cage",
-        "misty-knight",
-        "jessica-jones",
-        "claire-temple"
+        "luke-cage"
       ],
       "era": "Street level",
       "posterPath": "/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
@@ -762,10 +753,7 @@
       "id": "iron-fist-s2",
       "title": "Iron Fist S2",
       "characters": [
-        "danny-rand",
-        "colleen-wing",
-        "luke-cage",
-        "jessica-jones"
+        "danny-rand"
       ],
       "era": "Street level",
       "posterPath": "/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg",
@@ -775,12 +763,11 @@
       "id": "daredevil-s3",
       "title": "Daredevil S3",
       "characters": [
-        "matt-murdock",
-        "karen-page",
-        "wilson-fisk",
         "frank-castle",
-        "jessica-jones",
-        "elektra-natchios"
+        "wilson-fisk",
+        "matt-murdock",
+        "elektra-natchios",
+        "karen-page"
       ],
       "era": "Street level",
       "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
@@ -790,11 +777,13 @@
       "id": "ragnarok",
       "title": "Thor: Ragnarok",
       "characters": [
-        "thor",
-        "loki-main",
-        "valkyrie",
         "bruce-banner",
-        "heimdall"
+        "odin-borson",
+        "heimdall",
+        "loki-main",
+        "thor",
+        "valkyrie",
+        "wong"
       ],
       "era": "Infinity Saga",
       "posterPath": "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
@@ -817,10 +806,7 @@
       "id": "jessica-jones-s3",
       "title": "Jessica Jones S3",
       "characters": [
-        "jessica-jones",
-        "luke-cage",
-        "trish-walker",
-        "matt-murdock"
+        "jessica-jones"
       ],
       "era": "Street level",
       "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
@@ -831,10 +817,9 @@
       "title": "Ant-Man and the Wasp",
       "characters": [
         "scott-lang",
-        "hope-van-dyne",
         "hank-pym",
-        "janet-van-dyne",
-        "cassie-lang"
+        "hope-van-dyne",
+        "janet-van-dyne"
       ],
       "era": "Infinity Saga",
       "posterPath": "/cFQEO687n1K6umXbInzocxcnAQz.jpg",
@@ -844,24 +829,32 @@
       "id": "infinity-war",
       "title": "Avengers: Infinity War",
       "characters": [
-        "thanos",
-        "tony-stark",
-        "steve-rogers",
-        "thor",
+        "ayo",
         "bruce-banner",
-        "wanda-maximoff",
-        "vision",
-        "stephen-strange",
-        "peter-parker-mcu",
-        "peter-quill",
+        "bucky-barnes",
         "gamora",
-        "nebula",
-        "rocket",
-        "groot",
-        "drax",
-        "mantis",
         "loki-main",
-        "carol-danvers"
+        "mantis",
+        "wanda-maximoff",
+        "mbaku",
+        "nebula",
+        "okoye",
+        "thor",
+        "peter-parker-mcu",
+        "pepper-potts",
+        "peter-quill",
+        "rocket",
+        "james-rhodes",
+        "steve-rogers",
+        "natasha-romanoff",
+        "shuri",
+        "tony-stark",
+        "stephen-strange",
+        "tchalla",
+        "thanos",
+        "vision",
+        "sam-wilson",
+        "wong"
       ],
       "era": "Infinity Saga",
       "prereqs": [
@@ -919,21 +912,42 @@
       "id": "endgame",
       "title": "Avengers: Endgame",
       "characters": [
-        "tony-stark",
-        "steve-rogers",
-        "thor",
+        "the-ancient-one",
         "bruce-banner",
-        "natasha-romanoff",
-        "clint-barton",
-        "scott-lang",
-        "nebula",
-        "rocket",
-        "carol-danvers",
-        "sam-wilson",
         "bucky-barnes",
+        "clint-barton",
+        "peggy-carter",
+        "carol-danvers",
+        "gamora",
+        "scott-lang",
+        "loki-main",
+        "mantis",
+        "wanda-maximoff",
+        "mbaku",
+        "nebula",
+        "okoye",
+        "thor",
+        "may-parker",
         "peter-parker-mcu",
         "pepper-potts",
-        "thanos"
+        "peter-quill",
+        "rocket",
+        "james-rhodes",
+        "steve-rogers",
+        "natasha-romanoff",
+        "thaddeus-ross",
+        "shuri",
+        "howard-stark",
+        "tony-stark",
+        "stephen-strange",
+        "tchalla",
+        "thanos",
+        "valkyrie",
+        "hope-van-dyne",
+        "janet-van-dyne",
+        "vision",
+        "sam-wilson",
+        "wong"
       ],
       "era": "Infinity Saga",
       "prereqs": [
@@ -961,11 +975,11 @@
       "id": "loki-s1",
       "title": "Loki S1",
       "characters": [
-        "loki-tva",
-        "sylvie",
-        "mobius",
         "hunter-b15",
-        "he-who-remains"
+        "he-who-remains",
+        "sylvie",
+        "loki-tva",
+        "mobius"
       ],
       "era": "Multiverse Saga",
       "prereqs": [
@@ -981,12 +995,9 @@
       "id": "what-if-s1",
       "title": "What If…? S1",
       "characters": [
-        "loki-tva",
-        "peggy-carter",
-        "tchalla",
-        "stephen-strange",
-        "wanda-maximoff",
-        "natasha-romanoff"
+        "the-ancient-one",
+        "odin-borson",
+        "charles-xavier-fox"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
@@ -1010,11 +1021,11 @@
       "id": "wandavision",
       "title": "WandaVision",
       "characters": [
-        "wanda-maximoff",
-        "vision",
-        "billy-maximoff",
         "agatha-harkness",
-        "monica-rambeau"
+        "billy-maximoff",
+        "wanda-maximoff",
+        "monica-rambeau",
+        "vision"
       ],
       "era": "Multiverse Saga",
       "prereqs": [
@@ -1030,11 +1041,13 @@
       "id": "shang-chi",
       "title": "Shang-Chi and the Legend of the Ten Rings",
       "characters": [
-        "shang-chi",
+        "bruce-banner",
         "katy-chen",
+        "trevor-slattery",
+        "jennifer-walters",
+        "wong",
         "xu-wenwu",
-        "xu-xialing",
-        "trevor-slattery"
+        "xu-xialing"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/9f2Q0U3IOsLgrI2HkvldwSABZy5.jpg",
@@ -1044,12 +1057,9 @@
       "id": "falcon-winter-soldier",
       "title": "The Falcon and the Winter Soldier",
       "characters": [
-        "sam-wilson",
+        "ayo",
         "bucky-barnes",
-        "yelena-belova",
-        "valentina-fontaine",
-        "tchalla",
-        "shuri"
+        "sam-wilson"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/6kbAMLteGO8yyewYau6bJ683sw7.jpg",
@@ -1059,11 +1069,12 @@
       "id": "far-from-home",
       "title": "Spider-Man: Far From Home",
       "characters": [
-        "peter-parker-mcu",
         "mj-mcu",
         "ned-leeds",
-        "nick-fury",
-        "talos"
+        "may-parker",
+        "peter-parker-mcu",
+        "talos",
+        "nick-fury"
       ],
       "era": "Multiverse Saga",
       "prereqs": [
@@ -1079,12 +1090,12 @@
       "id": "eternals",
       "title": "Eternals",
       "characters": [
-        "sersi",
-        "thena",
         "ikaris",
-        "sprite",
+        "kingo",
         "phastos",
-        "kingo"
+        "sersi",
+        "sprite",
+        "thena"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/lFByFSLV5WDJEv3KabbdAF959F2.jpg",
@@ -1094,18 +1105,17 @@
       "id": "no-way-home",
       "title": "Spider-Man: No Way Home",
       "characters": [
-        "peter-parker-mcu",
-        "peter-parker-raimi",
-        "peter-parker-webb",
-        "stephen-strange",
+        "curt-connors-webb",
         "mj-mcu",
         "ned-leeds",
-        "may-parker",
-        "norman-osborn-raimi",
+        "matt-murdock",
         "otto-octavius-raimi",
-        "curt-connors-webb",
-        "max-dillon-webb",
-        "eddie-brock-venom"
+        "norman-osborn-raimi",
+        "may-parker",
+        "peter-parker-mcu",
+        "stephen-strange",
+        "talos",
+        "wong"
       ],
       "era": "Multiverse Saga",
       "prereqs": [
@@ -1125,12 +1135,12 @@
       "id": "multiverse-madness",
       "title": "Doctor Strange in the Multiverse of Madness",
       "characters": [
-        "stephen-strange",
         "america-chavez",
+        "billy-maximoff",
         "wanda-maximoff",
-        "wong",
-        "reed-richards-838",
-        "charles-xavier-838"
+        "mordo",
+        "stephen-strange",
+        "wong"
       ],
       "era": "Multiverse Saga",
       "prereqs": [
@@ -1155,10 +1165,10 @@
       "title": "Hawkeye",
       "characters": [
         "clint-barton",
+        "yelena-belova",
         "kate-bishop",
-        "maya-lopez",
         "wilson-fisk",
-        "yelena-belova"
+        "maya-lopez"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/ct5pNE5dDHryHLDnxyZPYcqO1sz.jpg",
@@ -1168,9 +1178,8 @@
       "id": "moon-knight",
       "title": "Moon Knight",
       "characters": [
-        "marc-spector",
         "layla-el-faouly",
-        "steven-grant"
+        "marc-spector"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/x6FsYvt33846IQnDSFxla9j0RX8.jpg",
@@ -1180,13 +1189,13 @@
       "id": "wakanda-forever",
       "title": "Black Panther: Wakanda Forever",
       "characters": [
-        "shuri",
-        "okoye",
+        "ayo",
         "mbaku",
         "nakia",
         "namor",
-        "riri-williams",
-        "everett-ross"
+        "okoye",
+        "shuri",
+        "tchalla"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
@@ -1196,8 +1205,9 @@
       "id": "echo",
       "title": "Echo",
       "characters": [
+        "wilson-fisk",
         "maya-lopez",
-        "wilson-fisk"
+        "matt-murdock"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/vFyJH630cF68LohVYjQW49074Sy.jpg",
@@ -1207,10 +1217,10 @@
       "id": "she-hulk",
       "title": "She-Hulk: Attorney at Law",
       "characters": [
-        "jennifer-walters",
         "bruce-banner",
-        "wong",
-        "titania"
+        "titania",
+        "matt-murdock",
+        "jennifer-walters"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/5xz2orV8f0usyrfGNshcoXHmiaV.jpg",
@@ -1220,8 +1230,7 @@
       "id": "ms-marvel",
       "title": "Ms. Marvel",
       "characters": [
-        "kamala-khan",
-        "monica-rambeau"
+        "kamala-khan"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/3HWWh92kZbD7odwJX7nKmXNZsYo.jpg",
@@ -1231,11 +1240,9 @@
       "id": "love-and-thunder",
       "title": "Thor: Love and Thunder",
       "characters": [
+        "jane-foster",
         "thor",
-        "valkyrie",
-        "peter-quill",
-        "mantis",
-        "jane-foster"
+        "valkyrie"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
@@ -1245,8 +1252,7 @@
       "id": "ironheart",
       "title": "Ironheart",
       "characters": [
-        "riri-williams",
-        "shuri"
+        "riri-williams"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/dOh6MJpdlQhYpLBhzhNQeYGKTZ5.jpg",
@@ -1256,8 +1262,8 @@
       "id": "werewolf-by-night",
       "title": "Werewolf By Night",
       "characters": [
-        "jack-russell",
-        "elsa-bloodstone"
+        "elsa-bloodstone",
+        "jack-russell"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/mvIvNKRIJPPS7WSFarFhOAGIVnU.jpg",
@@ -1282,12 +1288,13 @@
       "id": "quantumania",
       "title": "Ant-Man and the Wasp: Quantumania",
       "characters": [
-        "scott-lang",
-        "hope-van-dyne",
-        "janet-van-dyne",
-        "hank-pym",
+        "he-who-remains",
         "cassie-lang",
-        "he-who-remains"
+        "scott-lang",
+        "mobius",
+        "hank-pym",
+        "hope-van-dyne",
+        "janet-van-dyne"
       ],
       "era": "Multiverse Saga",
       "prereqs": [
@@ -1303,13 +1310,13 @@
       "id": "gotg-3",
       "title": "Guardians of the Galaxy Vol. 3",
       "characters": [
-        "rocket",
-        "groot",
-        "peter-quill",
-        "gamora",
-        "nebula",
         "drax",
+        "gamora",
+        "groot",
         "mantis",
+        "nebula",
+        "peter-quill",
+        "rocket",
         "adam-warlock"
       ],
       "era": "Multiverse Saga",
@@ -1331,8 +1338,7 @@
       "title": "Secret Invasion",
       "characters": [
         "nick-fury",
-        "talos",
-        "carol-danvers"
+        "talos"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/3rINdUPSy9AklJg74jWHOyUXuZd.jpg",
@@ -1343,9 +1349,11 @@
       "title": "The Marvels",
       "characters": [
         "carol-danvers",
-        "monica-rambeau",
         "kamala-khan",
-        "beast-fox"
+        "beast-fox",
+        "monica-rambeau",
+        "talos",
+        "riri-williams"
       ],
       "era": "Multiverse Saga",
       "prereqs": [
@@ -1369,11 +1377,11 @@
       "id": "loki-s2",
       "title": "Loki S2",
       "characters": [
-        "loki-tva",
-        "sylvie",
-        "mobius",
         "hunter-b15",
-        "he-who-remains"
+        "he-who-remains",
+        "sylvie",
+        "loki-tva",
+        "mobius"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
@@ -1383,11 +1391,9 @@
       "id": "what-if-s2",
       "title": "What If…? S2",
       "characters": [
-        "loki-tva",
-        "peggy-carter",
-        "nebula",
-        "peter-quill",
-        "wanda-maximoff"
+        "the-ancient-one",
+        "odin-borson",
+        "charles-xavier-fox"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
@@ -1411,13 +1417,15 @@
       "id": "deadpool-wolverine",
       "title": "Deadpool & Wolverine",
       "characters": [
-        "wade-wilson",
+        "vanessa-fox",
+        "laura-fox",
         "logan-wolverine",
-        "charles-xavier-fox",
-        "beast-fox",
-        "johnny-storm-fox",
-        "loki-tva",
-        "hunter-b15"
+        "elektra-natchios",
+        "negasonic-fox",
+        "colossus-fox",
+        "nightcrawler-fox",
+        "wade-wilson",
+        "yukio-fox"
       ],
       "era": "Mutant legacy",
       "essential": true,
@@ -1443,8 +1451,7 @@
       "title": "Agatha All Along",
       "characters": [
         "agatha-harkness",
-        "billy-maximoff",
-        "wanda-maximoff"
+        "billy-maximoff"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/mGsxKwXUjojitRv2E9qMTbxbBRd.jpg",
@@ -1454,10 +1461,9 @@
       "id": "what-if-s3",
       "title": "What If…? S3",
       "characters": [
-        "loki-tva",
-        "peggy-carter",
-        "sam-wilson",
-        "stephen-strange"
+        "the-ancient-one",
+        "odin-borson",
+        "charles-xavier-fox"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
@@ -1467,10 +1473,10 @@
       "id": "born-again-s1",
       "title": "Daredevil: Born Again S1",
       "characters": [
-        "matt-murdock",
         "wilson-fisk",
-        "karen-page",
-        "frank-castle"
+        "matt-murdock",
+        "elektra-natchios",
+        "karen-page"
       ],
       "era": "Street level",
       "prereqs": [
@@ -1486,11 +1492,7 @@
       "id": "brave-new-world",
       "title": "Captain America: Brave New World",
       "characters": [
-        "sam-wilson",
-        "bucky-barnes",
-        "everett-ross",
-        "shuri",
-        "valentina-fontaine"
+        "thaddeus-ross"
       ],
       "era": "Multiverse Saga",
       "posterPath": "/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
@@ -1500,11 +1502,10 @@
       "id": "thunderbolts",
       "title": "Thunderbolts*",
       "characters": [
-        "yelena-belova",
         "bucky-barnes",
-        "alexei-shostakov",
-        "valentina-fontaine",
-        "bob-reynolds"
+        "yelena-belova",
+        "bob-reynolds",
+        "alexei-shostakov"
       ],
       "era": "Multiverse Saga",
       "essential": true,
@@ -1525,12 +1526,12 @@
       "id": "ff-first-steps-official",
       "title": "The Fantastic Four: First Steps",
       "characters": [
-        "reed-richards-first",
-        "sue-storm-first",
-        "johnny-storm-first",
+        "galactus-first",
         "ben-grimm-first",
+        "reed-richards-first",
         "shalla-bal",
-        "galactus-first"
+        "johnny-storm-first",
+        "sue-storm-first"
       ],
       "filterLabel": "The Fantastic Four: First Steps (official slot)",
       "note": "Official MCU timeline slot for the same First Steps story placed earlier at 1964.",
@@ -1571,10 +1572,10 @@
       "id": "born-again-s2",
       "title": "Daredevil: Born Again S2",
       "characters": [
-        "matt-murdock",
         "wilson-fisk",
-        "karen-page",
-        "frank-castle"
+        "matt-murdock",
+        "elektra-natchios",
+        "karen-page"
       ],
       "era": "Street level",
       "prereqs": [

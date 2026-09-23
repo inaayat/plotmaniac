@@ -53,6 +53,10 @@ The data prioritizes founding Avengers bonds and the Civil War fracture, the Gua
 
 The Marvel plot specializes the hub chrome slightly: Focus opens on `All`, with `Shared web` still available for the common cast, and its accessible web description explains universe focus rather than calling the board a YouTuber web. Other plots keep their existing labels and copy. Hub names wrap in full, including after the camera zooms.
 
+### Cast
+
+Principal names on each watch-order title come from Karan’s Wikipedia MCU character index (`data/marvel-universe/character-index.md`): a character is attached to a chronology title when that title appears in their Movies or TV Shows cell. Title matching strips years, `Thunderbolts*`, `What If…?` ellipses, and season suffixes (`Loki` → S1 and S2). Fox X-Men films, one-shots, and other titles the index never names keep the previous principal lists. Blank appearance rows are skipped.
+
 Character faces use freely licensed Wikimedia Commons portraits (often event photos of the actor). A person without a free Commons file keeps a monogram.
 
 ### Timeline

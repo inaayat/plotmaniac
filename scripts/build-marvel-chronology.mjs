@@ -8,6 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { MARVEL_CHRONOLOGY_ORDER } from "./marvel-chronology-data.mjs";
 import { CHRONOLOGY_PREREQ_EDGES } from "./marvel-chronology-prereqs.mjs";
+import { loadCharacterIndex, overlayChronologyCast } from "./marvel-character-index.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const people = JSON.parse(fs.readFileSync(path.join(root, "data/marvel-universe/people.json"), "utf8"));
@@ -203,10 +204,15 @@ if (missing.size) {
   process.exit(1);
 }
 
+const index = loadCharacterIndex();
+const overlaid = overlayChronologyCast(titles, people, index);
+const updated = overlaid.report.updatedTitleIds;
+console.log(`Character index overlay updated ${updated.length} titles; kept ${overlaid.report.keptTitleIds.length} without index hits.`);
+
 const out = {
   version: 1,
-  source: "Karan MCU + Mutant Legacy chronology (September 2026)",
-  titles,
+  source: "Karan MCU + Mutant Legacy chronology (September 2026) · cast from Wikipedia MCU character index",
+  titles: overlaid.titles,
 };
 
 fs.writeFileSync(outPath, `${JSON.stringify(out, null, 2)}\n`);

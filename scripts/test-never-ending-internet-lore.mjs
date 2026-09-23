@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { MARVEL_CHRONOLOGY_ORDER } from "./marvel-chronology-data.mjs";
+import { loadCharacterIndex, overlayChronologyCast } from "./marvel-character-index.mjs";
 import {
   buildFrames,
   chronoKey,
@@ -1791,6 +1792,29 @@ assert.doesNotMatch(chronoViewSource, /api\.themoviedb\.org/);
 assert.doesNotMatch(appSource, /api\.themoviedb\.org/);
 assert.doesNotMatch(appSource, /TMDB_API_KEY/);
 assert.doesNotMatch(chronoViewSource, /TMDB_API_KEY/);
+const characterIndex = loadCharacterIndex();
+assert.ok(characterIndex.characters.length >= 400, `index should list Wikipedia MCU characters, got ${characterIndex.characters.length}`);
+assert.ok(characterIndex.characters.some((row) => /Thunderbolts\*/.test(row.movies.join(" "))));
+const overlaySeed = marvelChronology.titles.map((entry) => ({ ...entry, characters: ["placeholder"] }));
+const indexOverlay = overlayChronologyCast(overlaySeed, marvelPeople, characterIndex);
+assert.ok(indexOverlay.report.updatedTitleIds.includes("iron-man"), "MCU films the index names get overlay casts");
+assert.ok(indexOverlay.report.keptTitleIds.includes("x-men-first-class"), "Fox films the index never names keep prior principal casts");
+assert.ok(indexOverlay.report.keptTitleIds.includes("eyes-of-wakanda"), "titles with no index hits keep existing casts");
+const byId = (id) => marvelChronology.titles.find((entry) => entry.id === id)?.characters || [];
+assert.ok(byId("iron-man").includes("tony-stark") && byId("iron-man").includes("pepper-potts"));
+assert.ok(byId("thor").includes("loki-main") && byId("thor").includes("thor"));
+assert.ok(byId("loki-s1").includes("loki-tva") && byId("loki-s1").includes("sylvie"));
+assert.ok(byId("thunderbolts").includes("yelena-belova") && byId("thunderbolts").includes("bob-reynolds"));
+assert.equal(byId("thunderbolts").includes("valentina-fontaine"), false, "blank Wikipedia appearance rows are not invented onto Thunderbolts*");
+assert.ok(byId("falcon-winter-soldier").includes("sam-wilson"));
+assert.equal(byId("falcon-winter-soldier").includes("tchalla"), false, "index does not put T'Challa on Falcon and the Winter Soldier");
+assert.ok(byId("civil-war").includes("tchalla"));
+assert.equal(byId("civil-war").includes("shuri"), false, "shared Black Panther mantle does not put Shuri on Civil War");
+assert.ok(byId("deadpool-wolverine").includes("wade-wilson") && byId("deadpool-wolverine").includes("logan-wolverine"));
+assert.ok(byId("x-men-first-class").includes("charles-xavier-fox"));
+const indexSource = fs.readFileSync(new URL("./marvel-character-index.mjs", import.meta.url), "utf8");
+assert.doesNotMatch(indexSource, /api\.themoviedb\.org/);
+assert.doesNotMatch(indexSource, /TMDB_API_KEY/);
 let marvelPosterCount = 0;
 for (const entry of marvelChronology.titles) {
   if (entry.posterUrl) {
