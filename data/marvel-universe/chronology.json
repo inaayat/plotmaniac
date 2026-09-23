@@ -13,7 +13,8 @@
       ],
       "era": "Origins",
       "posterPath": "/yuOfb1MgnaGPa4guzV0n1IFYVGN.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/yuOfb1MgnaGPa4guzV0n1IFYVGN.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/yuOfb1MgnaGPa4guzV0n1IFYVGN.jpg",
+      "kind": "tv"
     },
     {
       "id": "captain-america-first-avenger",
@@ -27,7 +28,8 @@
       ],
       "era": "Origins",
       "posterPath": "/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg",
+      "kind": "movie"
     },
     {
       "id": "one-shot-agent-carter",
@@ -38,7 +40,8 @@
       ],
       "era": "Origins",
       "posterPath": "/4vFKKWPvCVDJTOWiwReBfpAMScP.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/4vFKKWPvCVDJTOWiwReBfpAMScP.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4vFKKWPvCVDJTOWiwReBfpAMScP.jpg",
+      "kind": "movie"
     },
     {
       "id": "x-men-first-class",
@@ -60,7 +63,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/hNEokmUke0dazoBhttFN0o3L7Xv.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/hNEokmUke0dazoBhttFN0o3L7Xv.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/hNEokmUke0dazoBhttFN0o3L7Xv.jpg",
+      "kind": "movie"
     },
     {
       "id": "ff-first-steps-1964",
@@ -77,7 +81,8 @@
       "note": "Story takes place in 1964 and sets up Avengers: Doomsday — Karan places this here chronologically even though Marvel also lists the film later.",
       "era": "1964",
       "posterPath": "/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg",
+      "kind": "movie"
     },
     {
       "id": "x-men-days-of-future-past",
@@ -106,7 +111,8 @@
         }
       ],
       "posterPath": "/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/tYfijzolzgoMOtegh1Y7j2Enorg.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
+      "kind": "movie"
     },
     {
       "id": "x-men-origins-wolverine",
@@ -122,7 +128,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/yj8LbTju1p7CUJg7US2unSBk33s.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/yj8LbTju1p7CUJg7US2unSBk33s.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/yj8LbTju1p7CUJg7US2unSBk33s.jpg",
+      "kind": "movie"
     },
     {
       "id": "x-men-apocalypse",
@@ -145,7 +152,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/ikA8UhYdTGpqbatFa93nIf6noSr.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/ikA8UhYdTGpqbatFa93nIf6noSr.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ikA8UhYdTGpqbatFa93nIf6noSr.jpg",
+      "kind": "movie"
     },
     {
       "id": "x-men-dark-phoenix",
@@ -167,7 +175,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/j9tbqv3NjNW7O6kUWrtF7jl5Hlh.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/j9tbqv3NjNW7O6kUWrtF7jl5Hlh.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/j9tbqv3NjNW7O6kUWrtF7jl5Hlh.jpg",
+      "kind": "movie"
     },
     {
       "id": "captain-marvel",
@@ -180,7 +189,8 @@
       ],
       "era": "1990s",
       "posterPath": "/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
+      "kind": "movie"
     },
     {
       "id": "x-men",
@@ -201,7 +211,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/bRDAc4GogyS9ci3ow7UnInOcriN.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/bRDAc4GogyS9ci3ow7UnInOcriN.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/bRDAc4GogyS9ci3ow7UnInOcriN.jpg",
+      "kind": "movie"
     },
     {
       "id": "x-men-2",
@@ -222,7 +233,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/bst4alFUXCxISwdRUKSMhhkrX1M.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/bst4alFUXCxISwdRUKSMhhkrX1M.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/bst4alFUXCxISwdRUKSMhhkrX1M.jpg",
+      "kind": "movie"
     },
     {
       "id": "x-men-last-stand",
@@ -243,7 +255,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg",
+      "kind": "movie"
     },
     {
       "id": "iron-man",
@@ -255,7 +268,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/78lPtwv72eTNqFW9COBYI0dWDJa.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
+      "kind": "movie"
     },
     {
       "id": "iron-man-2",
@@ -270,7 +284,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/6WBeq4fCfn7AN0o21W9qNcRF2l9.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/6WBeq4fCfn7AN0o21W9qNcRF2l9.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/6WBeq4fCfn7AN0o21W9qNcRF2l9.jpg",
+      "kind": "movie"
     },
     {
       "id": "incredible-hulk",
@@ -281,7 +296,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg",
+      "kind": "movie"
     },
     {
       "id": "one-shot-funny-thing-thor",
@@ -291,7 +307,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/njrOqsmFH4pxBrhcoslqLfw2OGk.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/njrOqsmFH4pxBrhcoslqLfw2OGk.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/njrOqsmFH4pxBrhcoslqLfw2OGk.jpg",
+      "kind": "movie"
     },
     {
       "id": "thor",
@@ -306,7 +323,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg",
+      "kind": "movie"
     },
     {
       "id": "one-shot-consultant",
@@ -318,7 +336,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/xqNLXUUvBnfVk6m3QFGGU0Grgs7.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/xqNLXUUvBnfVk6m3QFGGU0Grgs7.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/xqNLXUUvBnfVk6m3QFGGU0Grgs7.jpg",
+      "kind": "movie"
     },
     {
       "id": "the-avengers",
@@ -358,7 +377,8 @@
         }
       ],
       "posterPath": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+      "kind": "movie"
     },
     {
       "id": "the-wolverine",
@@ -370,7 +390,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/t2wVAcoRlKvEIVSbiYDb8d0QqqS.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/t2wVAcoRlKvEIVSbiYDb8d0QqqS.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/t2wVAcoRlKvEIVSbiYDb8d0QqqS.jpg",
+      "kind": "movie"
     },
     {
       "id": "one-shot-item-47",
@@ -381,7 +402,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/hnSxG8clwLuAXEkp9emc8HCUcHD.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/hnSxG8clwLuAXEkp9emc8HCUcHD.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/hnSxG8clwLuAXEkp9emc8HCUcHD.jpg",
+      "kind": "movie"
     },
     {
       "id": "thor-dark-world",
@@ -395,7 +417,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/wp6OxE4poJ4G7c0U2ZIXasTSMR7.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/wp6OxE4poJ4G7c0U2ZIXasTSMR7.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/wp6OxE4poJ4G7c0U2ZIXasTSMR7.jpg",
+      "kind": "movie"
     },
     {
       "id": "iron-man-3",
@@ -409,7 +432,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
+      "kind": "movie"
     },
     {
       "id": "one-shot-all-hail-king",
@@ -419,7 +443,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/y0QYZPWgeGKOvyrzi6Oz3aJPxJa.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/y0QYZPWgeGKOvyrzi6Oz3aJPxJa.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/y0QYZPWgeGKOvyrzi6Oz3aJPxJa.jpg",
+      "kind": "movie"
     },
     {
       "id": "winter-soldier",
@@ -434,7 +459,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg",
+      "kind": "movie"
     },
     {
       "id": "guardians-1",
@@ -448,7 +474,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg",
+      "kind": "movie"
     },
     {
       "id": "guardians-2",
@@ -464,7 +491,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/y4MBh0EjBlMuOzv9axM4qJlmhzz.jpg",
+      "kind": "movie"
     },
     {
       "id": "i-am-groot-s1",
@@ -474,7 +502,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg",
+      "kind": "tv"
     },
     {
       "id": "i-am-groot-s2",
@@ -484,7 +513,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg",
+      "kind": "tv"
     },
     {
       "id": "daredevil-s1",
@@ -498,7 +528,8 @@
       ],
       "era": "Street level",
       "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
+      "kind": "tv"
     },
     {
       "id": "jessica-jones-s1",
@@ -508,7 +539,8 @@
       ],
       "era": "Street level",
       "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
+      "kind": "tv"
     },
     {
       "id": "age-of-ultron",
@@ -530,7 +562,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/4ssDuvEDkSArWEdyBl2X5EHvYKU.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/4ssDuvEDkSArWEdyBl2X5EHvYKU.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4ssDuvEDkSArWEdyBl2X5EHvYKU.jpg",
+      "kind": "movie"
     },
     {
       "id": "ant-man",
@@ -542,7 +575,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/rQRnQfUl3kfp78nCWq8Ks04vnq1.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/rQRnQfUl3kfp78nCWq8Ks04vnq1.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/rQRnQfUl3kfp78nCWq8Ks04vnq1.jpg",
+      "kind": "movie"
     },
     {
       "id": "daredevil-s2",
@@ -556,7 +590,8 @@
       ],
       "era": "Street level",
       "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
+      "kind": "tv"
     },
     {
       "id": "luke-cage-s1",
@@ -566,7 +601,8 @@
       ],
       "era": "Street level",
       "posterPath": "/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/yzM1hMB3PUJqbISX0f421b3xOjB.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
+      "kind": "tv"
     },
     {
       "id": "deadpool",
@@ -579,7 +615,8 @@
       ],
       "era": "Mutant legacy",
       "posterPath": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      "kind": "movie"
     },
     {
       "id": "iron-fist-s1",
@@ -589,7 +626,8 @@
       ],
       "era": "Street level",
       "posterPath": "/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg",
+      "kind": "tv"
     },
     {
       "id": "the-defenders",
@@ -622,7 +660,8 @@
         }
       ],
       "posterPath": "/49XzINhH4LFsgz7cx6TOPcHUJUL.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/49XzINhH4LFsgz7cx6TOPcHUJUL.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/49XzINhH4LFsgz7cx6TOPcHUJUL.jpg",
+      "kind": "tv"
     },
     {
       "id": "civil-war",
@@ -659,7 +698,8 @@
         }
       ],
       "posterPath": "/rAGiXaUfPzY7CDEyNKUofk3Kw2e.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/rAGiXaUfPzY7CDEyNKUofk3Kw2e.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/rAGiXaUfPzY7CDEyNKUofk3Kw2e.jpg",
+      "kind": "movie"
     },
     {
       "id": "black-widow",
@@ -671,7 +711,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
+      "kind": "movie"
     },
     {
       "id": "black-panther",
@@ -687,7 +728,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/uxzzxijgPIY7slzFvMotPv8wjKA.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+      "kind": "movie"
     },
     {
       "id": "homecoming",
@@ -701,7 +743,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
+      "kind": "movie"
     },
     {
       "id": "punisher-s1",
@@ -714,7 +757,8 @@
       ],
       "era": "Street level",
       "posterPath": "/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg",
+      "kind": "tv"
     },
     {
       "id": "doctor-strange",
@@ -727,7 +771,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/uGBVj3bEbCoZbDjjl9wTxcygko1.jpg",
+      "kind": "movie"
     },
     {
       "id": "jessica-jones-s2",
@@ -737,7 +782,8 @@
       ],
       "era": "Street level",
       "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
+      "kind": "tv"
     },
     {
       "id": "luke-cage-s2",
@@ -747,7 +793,8 @@
       ],
       "era": "Street level",
       "posterPath": "/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/yzM1hMB3PUJqbISX0f421b3xOjB.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
+      "kind": "tv"
     },
     {
       "id": "iron-fist-s2",
@@ -757,7 +804,8 @@
       ],
       "era": "Street level",
       "posterPath": "/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4l6KD9HhtD6nCDEfg10Lp6C6zah.jpg",
+      "kind": "tv"
     },
     {
       "id": "daredevil-s3",
@@ -771,7 +819,8 @@
       ],
       "era": "Street level",
       "posterPath": "/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/QWbPaDxiB6LW2LjASknzYBvjMj.jpg",
+      "kind": "tv"
     },
     {
       "id": "ragnarok",
@@ -787,7 +836,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
+      "kind": "movie"
     },
     {
       "id": "punisher-s2",
@@ -800,7 +850,8 @@
       ],
       "era": "Street level",
       "posterPath": "/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg",
+      "kind": "tv"
     },
     {
       "id": "jessica-jones-s3",
@@ -810,7 +861,8 @@
       ],
       "era": "Street level",
       "posterPath": "/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/oxnWofiE9fHOgUfs9NJa6nG6NTR.jpg",
+      "kind": "tv"
     },
     {
       "id": "ant-man-wasp",
@@ -823,7 +875,8 @@
       ],
       "era": "Infinity Saga",
       "posterPath": "/cFQEO687n1K6umXbInzocxcnAQz.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/cFQEO687n1K6umXbInzocxcnAQz.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/cFQEO687n1K6umXbInzocxcnAQz.jpg",
+      "kind": "movie"
     },
     {
       "id": "infinity-war",
@@ -884,7 +937,8 @@
         }
       ],
       "posterPath": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+      "kind": "movie"
     },
     {
       "id": "deadpool-2",
@@ -906,7 +960,8 @@
         }
       ],
       "posterPath": "/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
+      "kind": "movie"
     },
     {
       "id": "endgame",
@@ -969,7 +1024,8 @@
         }
       ],
       "posterPath": "/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg",
+      "kind": "movie"
     },
     {
       "id": "loki-s1",
@@ -989,7 +1045,8 @@
         }
       ],
       "posterPath": "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
+      "kind": "tv"
     },
     {
       "id": "what-if-s1",
@@ -1001,7 +1058,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
+      "kind": "tv"
     },
     {
       "id": "marvel-zombies",
@@ -1015,7 +1073,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/mwKj9ERGFXsWot0nXgQ5yMQf9I7.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/mwKj9ERGFXsWot0nXgQ5yMQf9I7.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/mwKj9ERGFXsWot0nXgQ5yMQf9I7.jpg",
+      "kind": "tv"
     },
     {
       "id": "wandavision",
@@ -1035,7 +1094,8 @@
         }
       ],
       "posterPath": "/ijWWwINc8h71NQ8j1LTJMFSj5wr.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/ijWWwINc8h71NQ8j1LTJMFSj5wr.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ijWWwINc8h71NQ8j1LTJMFSj5wr.jpg",
+      "kind": "tv"
     },
     {
       "id": "shang-chi",
@@ -1051,7 +1111,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/9f2Q0U3IOsLgrI2HkvldwSABZy5.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/9f2Q0U3IOsLgrI2HkvldwSABZy5.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/9f2Q0U3IOsLgrI2HkvldwSABZy5.jpg",
+      "kind": "movie"
     },
     {
       "id": "falcon-winter-soldier",
@@ -1063,7 +1124,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/6kbAMLteGO8yyewYau6bJ683sw7.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/6kbAMLteGO8yyewYau6bJ683sw7.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/6kbAMLteGO8yyewYau6bJ683sw7.jpg",
+      "kind": "tv"
     },
     {
       "id": "far-from-home",
@@ -1084,7 +1146,8 @@
         }
       ],
       "posterPath": "/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg",
+      "kind": "movie"
     },
     {
       "id": "eternals",
@@ -1099,7 +1162,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/lFByFSLV5WDJEv3KabbdAF959F2.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/lFByFSLV5WDJEv3KabbdAF959F2.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/lFByFSLV5WDJEv3KabbdAF959F2.jpg",
+      "kind": "movie"
     },
     {
       "id": "no-way-home",
@@ -1129,7 +1193,8 @@
         }
       ],
       "posterPath": "/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+      "kind": "movie"
     },
     {
       "id": "multiverse-madness",
@@ -1158,7 +1223,8 @@
         }
       ],
       "posterPath": "/ddJcSKbcp4rKZTmuyWaMhuwcfMz.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/ddJcSKbcp4rKZTmuyWaMhuwcfMz.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ddJcSKbcp4rKZTmuyWaMhuwcfMz.jpg",
+      "kind": "movie"
     },
     {
       "id": "hawkeye",
@@ -1172,7 +1238,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/ct5pNE5dDHryHLDnxyZPYcqO1sz.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/ct5pNE5dDHryHLDnxyZPYcqO1sz.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/ct5pNE5dDHryHLDnxyZPYcqO1sz.jpg",
+      "kind": "tv"
     },
     {
       "id": "moon-knight",
@@ -1183,7 +1250,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/x6FsYvt33846IQnDSFxla9j0RX8.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/x6FsYvt33846IQnDSFxla9j0RX8.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/x6FsYvt33846IQnDSFxla9j0RX8.jpg",
+      "kind": "tv"
     },
     {
       "id": "wakanda-forever",
@@ -1199,7 +1267,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/sv1xJUazXeYqALzczSZ3O6nkH75.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
+      "kind": "movie"
     },
     {
       "id": "echo",
@@ -1211,7 +1280,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/vFyJH630cF68LohVYjQW49074Sy.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/vFyJH630cF68LohVYjQW49074Sy.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/vFyJH630cF68LohVYjQW49074Sy.jpg",
+      "kind": "tv"
     },
     {
       "id": "she-hulk",
@@ -1224,7 +1294,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/5xz2orV8f0usyrfGNshcoXHmiaV.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/5xz2orV8f0usyrfGNshcoXHmiaV.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/5xz2orV8f0usyrfGNshcoXHmiaV.jpg",
+      "kind": "tv"
     },
     {
       "id": "ms-marvel",
@@ -1234,7 +1305,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/3HWWh92kZbD7odwJX7nKmXNZsYo.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/3HWWh92kZbD7odwJX7nKmXNZsYo.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/3HWWh92kZbD7odwJX7nKmXNZsYo.jpg",
+      "kind": "tv"
     },
     {
       "id": "love-and-thunder",
@@ -1246,7 +1318,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+      "kind": "movie"
     },
     {
       "id": "ironheart",
@@ -1256,7 +1329,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/dOh6MJpdlQhYpLBhzhNQeYGKTZ5.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/dOh6MJpdlQhYpLBhzhNQeYGKTZ5.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/dOh6MJpdlQhYpLBhzhNQeYGKTZ5.jpg",
+      "kind": "tv"
     },
     {
       "id": "werewolf-by-night",
@@ -1267,7 +1341,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/mvIvNKRIJPPS7WSFarFhOAGIVnU.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/mvIvNKRIJPPS7WSFarFhOAGIVnU.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/mvIvNKRIJPPS7WSFarFhOAGIVnU.jpg",
+      "kind": "movie"
     },
     {
       "id": "gotg-holiday",
@@ -1282,7 +1357,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
+      "kind": "movie"
     },
     {
       "id": "quantumania",
@@ -1304,7 +1380,8 @@
         }
       ],
       "posterPath": "/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg",
+      "kind": "movie"
     },
     {
       "id": "gotg-3",
@@ -1331,7 +1408,8 @@
         }
       ],
       "posterPath": "/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
+      "kind": "movie"
     },
     {
       "id": "secret-invasion",
@@ -1342,7 +1420,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/3rINdUPSy9AklJg74jWHOyUXuZd.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/3rINdUPSy9AklJg74jWHOyUXuZd.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/3rINdUPSy9AklJg74jWHOyUXuZd.jpg",
+      "kind": "tv"
     },
     {
       "id": "the-marvels",
@@ -1371,7 +1450,8 @@
         }
       ],
       "posterPath": "/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg",
+      "kind": "movie"
     },
     {
       "id": "loki-s2",
@@ -1385,7 +1465,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
+      "kind": "tv"
     },
     {
       "id": "what-if-s2",
@@ -1397,7 +1478,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
+      "kind": "tv"
     },
     {
       "id": "logan-mid",
@@ -1411,7 +1493,8 @@
       "note": "Recommended here despite the 2029 setting — Deadpool & Wolverine spoils Logan if you watch out of order.",
       "era": "Mutant legacy",
       "posterPath": "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+      "kind": "movie"
     },
     {
       "id": "deadpool-wolverine",
@@ -1444,7 +1527,8 @@
         }
       ],
       "posterPath": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      "kind": "movie"
     },
     {
       "id": "agatha",
@@ -1455,7 +1539,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/mGsxKwXUjojitRv2E9qMTbxbBRd.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/mGsxKwXUjojitRv2E9qMTbxbBRd.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/mGsxKwXUjojitRv2E9qMTbxbBRd.jpg",
+      "kind": "tv"
     },
     {
       "id": "what-if-s3",
@@ -1467,7 +1552,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
+      "kind": "tv"
     },
     {
       "id": "born-again-s1",
@@ -1486,7 +1572,8 @@
         }
       ],
       "posterPath": "/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg",
+      "kind": "tv"
     },
     {
       "id": "brave-new-world",
@@ -1496,7 +1583,8 @@
       ],
       "era": "Multiverse Saga",
       "posterPath": "/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+      "kind": "movie"
     },
     {
       "id": "thunderbolts",
@@ -1520,7 +1608,8 @@
         }
       ],
       "posterPath": "/hqcexYHbiTBfDIdDWxrxPtVndBX.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/hqcexYHbiTBfDIdDWxrxPtVndBX.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/hqcexYHbiTBfDIdDWxrxPtVndBX.jpg",
+      "kind": "movie"
     },
     {
       "id": "ff-first-steps-official",
@@ -1543,7 +1632,8 @@
         }
       ],
       "posterPath": "/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg",
+      "kind": "movie"
     },
     {
       "id": "wonder-man",
@@ -1566,7 +1656,8 @@
         }
       ],
       "posterPath": "/6yy9nQlFt2l6UVWzrfhszFCaZ5C.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/6yy9nQlFt2l6UVWzrfhszFCaZ5C.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/6yy9nQlFt2l6UVWzrfhszFCaZ5C.jpg",
+      "kind": "tv"
     },
     {
       "id": "born-again-s2",
@@ -1585,7 +1676,8 @@
         }
       ],
       "posterPath": "/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/xDUoAsU8lQHOOoRkFiBuarmACDN.jpg",
+      "kind": "tv"
     },
     {
       "id": "punisher-one-last-kill",
@@ -1603,7 +1695,8 @@
         }
       ],
       "posterPath": "/qQclTgLMDvGBuUBFGHRipxkEwWR.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/qQclTgLMDvGBuUBFGHRipxkEwWR.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/qQclTgLMDvGBuUBFGHRipxkEwWR.jpg",
+      "kind": "movie"
     },
     {
       "id": "logan-final",
@@ -1617,7 +1710,8 @@
       "note": "Karan's closing placement — same film as the mid-list Logan entry above.",
       "era": "Mutant legacy",
       "posterPath": "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
-      "posterUrl": "https://image.tmdb.org/t/p/w342/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg"
+      "posterUrl": "https://image.tmdb.org/t/p/w342/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+      "kind": "movie"
     }
   ]
 }

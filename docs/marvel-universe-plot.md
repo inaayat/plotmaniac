@@ -13,6 +13,7 @@ Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templat
 - **Title filter:** `titleFilter: true` puts that search on the main chrome and focuses a matching chronology title (`?title=`).
 - **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` or clicking Marvel on the homepage gallery lands here (`plotChooserHref` adds `view=timeline`), not on the character web.
 - **Chronology view:** `?plot=marvel-universe&view=chronology` is the dedicated full story-order list. Watch Order keeps a compact chip strip of the same list at the top, with **Open full list** / the Chronology nav button.
+- **Include TV shows:** checkbox beside Title / Watch Order. Off by default (movies, One-Shots, and film-adjacent specials Karan already marks as `kind: "movie"`). On (`?tv=1`, remembered in localStorage for in-app plot opens) includes Disney+/Netflix/series already in the chronology (`kind: "tv"`). Filter applies to Watch Before / Watch Next, the chip strip, the chronology page, and the title picker.
 - **Center id:** `tony-stark`
 
 ### Primary view — watch-order focus

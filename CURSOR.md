@@ -10,7 +10,7 @@ Static single-page app: `index.html` at the repo root, ES modules in `app.js`, `
 | `app.js` | Boot, routing (`?plot=`, `?view=`), gallery. Homepage cards use `plotChooserHref` so Marvel opens Watch Order (`view=timeline`). |
 | `engine.js` | Shared plot engine (webs, timelines, country field, chronology helpers, `plotChooserHref`) |
 | `data/plots.json` | Plot registry |
-| `data/marvel-universe/chronology.json` | MCU + Mutant Legacy watch-order titles, cast, prereqs, optional TMDB `posterUrl` |
+| `data/marvel-universe/chronology.json` | MCU + Mutant Legacy watch-order titles, `kind` (`movie` \| `tv`), cast, prereqs, optional TMDB `posterUrl` |
 | `data/marvel-universe/character-index.md` | Wikipedia MCU character index (appearances used to overlay chronology casts) |
 | `scripts/marvel-character-index.mjs` | Parse the index and map appearances onto chronology titles + `people.json` ids |
 | `scripts/enrich-marvel-chronology-posters.mjs` | Bakes TMDB posters into chronology (`TMDB_API_KEY` env only; CI skips) |

@@ -82,9 +82,9 @@ export function filterEvents(events, filters = {}, peopleById = new Map()) {
 }
 
 /** Unique film/series labels for title filter suggestions, in display order. */
-export function titleFilterLabels(events = [], chronology = null) {
+export function titleFilterLabels(events = [], chronology = null, options = {}) {
   if (chronology?.titles?.length) {
-    return chronology.titles.map((entry) => chronologyFilterLabel(entry));
+    return filterChronologyTitles(chronology.titles, options).map((entry) => chronologyFilterLabel(entry));
   }
   const seen = new Set();
   const labels = [];
@@ -119,6 +119,64 @@ export function chronologyPosterUrl(entry, size = "w342") {
 
 export function chronologyTitles(chronology) {
   return chronology?.titles || [];
+}
+
+export function chronologyTitleKind(entry) {
+  const explicit = String(entry?.kind || entry?.type || "").toLowerCase();
+  if (explicit === "tv" || explicit === "series") return "tv";
+  if (explicit === "movie" || explicit === "film") return "movie";
+  const hay = `${entry?.id || ""} ${entry?.title || ""}`;
+  if (/\bs\d+\b/i.test(hay)) return "tv";
+  return "movie";
+}
+
+export function chronologyTitleIsTv(entry) {
+  return chronologyTitleKind(entry) === "tv";
+}
+
+/** Default Watch Order hides TV; `tv=1` includes Disney+/Netflix/series already in the chronology. */
+export const CHRONOLOGY_INCLUDE_TV_DEFAULT = false;
+
+export function parseChronologyIncludeTv(urlLike, fallback = CHRONOLOGY_INCLUDE_TV_DEFAULT) {
+  try {
+    const raw = new URL(urlLike, "https://plotmaniac.com/").searchParams.get("tv");
+    if (raw == null || raw === "") return Boolean(fallback);
+    const value = String(raw).toLowerCase();
+    if (value === "0" || value === "false" || value === "no" || value === "off") return false;
+    if (value === "1" || value === "true" || value === "yes" || value === "on") return true;
+    return Boolean(fallback);
+  } catch {
+    return Boolean(fallback);
+  }
+}
+
+export function filterChronologyTitles(titles = [], { includeTv = true } = {}) {
+  const list = Array.isArray(titles) ? titles : [];
+  if (includeTv) return list;
+  return list.filter((entry) => !chronologyTitleIsTv(entry));
+}
+
+export function filterChronology(chronology, options = {}) {
+  if (!chronology?.titles) return chronology;
+  if (options.includeTv !== false) return chronology;
+  return { ...chronology, titles: filterChronologyTitles(chronology.titles, options) };
+}
+
+export function chronologyNearestVisibleId(chronology, requestedId = "", options = {}) {
+  const visible = filterChronologyTitles(chronologyTitles(chronology), options);
+  if (!visible.length) return "";
+  if (requestedId && visible.some((entry) => entry.id === requestedId)) return requestedId;
+  const all = chronologyTitles(chronology);
+  const pos = all.findIndex((entry) => entry.id === requestedId);
+  if (pos >= 0) {
+    for (let i = pos; i >= 0; i -= 1) {
+      if (visible.some((entry) => entry.id === all[i].id)) return all[i].id;
+    }
+    for (let i = pos + 1; i < all.length; i += 1) {
+      if (visible.some((entry) => entry.id === all[i].id)) return all[i].id;
+    }
+  }
+  return visible[0].id;
 }
 
 export function chronologyById(chronology) {
@@ -215,6 +273,9 @@ export function validateChronology(chronology, peopleIds, expectedOrderIds = [])
   titles.forEach((entry) => {
     if (!entry.id || !entry.title) errors.push("title missing id/title");
     if (!entry.characters?.length) errors.push(`${entry.id} has no characters`);
+    const kind = chronologyTitleKind(entry);
+    if (kind !== "movie" && kind !== "tv") errors.push(`${entry.id} bad kind ${entry.kind || entry.type}`);
+    if (!entry.kind && !entry.type) errors.push(`${entry.id} missing kind`);
     (entry.characters || []).forEach((personId) => {
       if (!peopleIds.has(personId)) errors.push(`${entry.id} unknown character ${personId}`);
     });
@@ -643,6 +704,7 @@ export function parseState(urlLike, valid = {}) {
   const topicRaw = url.searchParams.get("topic") || "";
   const topic = valid.topics?.has(topicRaw) ? topicRaw : "";
   const chronologyTitle = url.searchParams.get("title") || "";
+  const includeTv = parseChronologyIncludeTv(url.href, CHRONOLOGY_INCLUDE_TV_DEFAULT);
   return {
     view,
     person,
@@ -653,6 +715,7 @@ export function parseState(urlLike, valid = {}) {
     hub,
     topic,
     chronologyTitle,
+    includeTv,
   };
 }
 
@@ -663,7 +726,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
     url.hash = "";
     return url.pathname || "/";
   }
-  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic", "criteria", "gun", "title"].forEach((key) => url.searchParams.delete(key));
+  ["view", "person", "era", "q", "plot", "year", "country", "hub", "from", "to", "kind", "state", "topic", "criteria", "gun", "title", "tv"].forEach((key) => url.searchParams.delete(key));
   if (state.plot) url.searchParams.set("plot", state.plot);
   if (PLOT_VIEWS.includes(state.view) && state.view !== "web") {
     url.searchParams.set("view", state.view);
@@ -686,6 +749,7 @@ export function stateUrl(currentUrl, state, eventId = "") {
   if (state.hub) url.searchParams.set("hub", state.hub);
   else if (state.defaultHub) url.searchParams.set("hub", "shared");
   if (state.chronologyTitle) url.searchParams.set("title", state.chronologyTitle);
+  if (state.includeTv) url.searchParams.set("tv", "1");
   url.hash = state.view === "person" || !eventId ? "" : encodeURIComponent(eventId);
   return `${url.pathname}${url.search}${url.hash}`;
 }

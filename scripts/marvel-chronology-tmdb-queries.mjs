@@ -75,3 +75,10 @@ export function guessTmdbType(title) {
   if (/Vision|Attorney at Law|Born Again|Zombies|Groot|What If/i.test(title)) return "tv";
   return "movie";
 }
+
+/** Canonical movie vs tv kind for a chronology id, preferring TMDB hints. */
+export function chronologyKindForId(id, title) {
+  const hinted = TMDB_CHRONOLOGY_HINTS[id]?.type;
+  if (hinted === "tv" || hinted === "movie") return hinted;
+  return guessTmdbType(title) === "tv" ? "tv" : "movie";
+}

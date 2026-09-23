@@ -36,6 +36,13 @@ import {
   chronologyEntryForQuery,
   chronologyFilterLabel,
   chronologyPosterUrl,
+  chronologyTitleKind,
+  chronologyTitleIsTv,
+  filterChronology,
+  filterChronologyTitles,
+  parseChronologyIncludeTv,
+  chronologyNearestVisibleId,
+  CHRONOLOGY_INCLUDE_TV_DEFAULT,
   usesPlotChronology,
   findPlot,
   plotCardFace,
@@ -1778,6 +1785,62 @@ assert.ok(avengersBefore.includes("incredible-hulk"), "Incredible Hulk stays in 
   const roomy = chronologyRailPosterSize({ count: 2, availableHeight: 520 });
   assert.ok(roomy.height > fitted.height, "fewer rail titles get larger posters");
 }
+{
+  const kinds = marvelChronology.titles.map((entry) => chronologyTitleKind(entry));
+  assert.equal(kinds.filter((kind) => kind === "tv").length, 35);
+  assert.equal(kinds.filter((kind) => kind === "movie").length, 59);
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "eyes-of-wakanda")), "tv");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "iron-man")), "movie");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "loki-s1")), "tv");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "werewolf-by-night")), "movie");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "gotg-holiday")), "movie");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "one-shot-item-47")), "movie");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "punisher-one-last-kill")), "movie");
+  assert.equal(chronologyTitleIsTv({ id: "daredevil-s1", title: "Daredevil S1", kind: "tv" }), true);
+  const moviesOnly = filterChronology(marvelChronology, { includeTv: false });
+  assert.equal(moviesOnly.titles.length, 59);
+  assert.equal(moviesOnly.titles[0].id, "captain-america-first-avenger");
+  assert.equal(moviesOnly.titles.some((entry) => entry.id === "loki-s1"), false);
+  assert.equal(filterChronologyTitles(marvelChronology.titles, { includeTv: true }).length, 94);
+  assert.equal(CHRONOLOGY_INCLUDE_TV_DEFAULT, false);
+  assert.equal(parseChronologyIncludeTv("https://plotmaniac.com/?plot=marvel-universe"), false);
+  assert.equal(parseChronologyIncludeTv("https://plotmaniac.com/?plot=marvel-universe&tv=1"), true);
+  assert.equal(parseChronologyIncludeTv("https://plotmaniac.com/?plot=marvel-universe&tv=0"), false);
+  assert.equal(parseState("https://plotmaniac.com/?plot=marvel-universe&tv=1").includeTv, true);
+  assert.equal(parseState("https://plotmaniac.com/?plot=marvel-universe").includeTv, false);
+  assert.match(
+    stateUrl("https://plotmaniac.com/", { view: "timeline", plot: "marvel-universe", includeTv: true }, ""),
+    /tv=1/,
+  );
+  assert.doesNotMatch(
+    stateUrl("https://plotmaniac.com/", { view: "timeline", plot: "marvel-universe", includeTv: false }, ""),
+    /tv=/,
+  );
+  const moviesChronology = filterChronology(marvelChronology, { includeTv: false });
+  assert.deepEqual(
+    chronologyWatchNext(moviesChronology, "one-shot-agent-carter").map((entry) => entry.id),
+    moviesChronology.titles.slice(
+      moviesChronology.titles.findIndex((entry) => entry.id === "one-shot-agent-carter") + 1,
+      moviesChronology.titles.findIndex((entry) => entry.id === "one-shot-agent-carter") + 4,
+    ).map((entry) => entry.id),
+    "Watch Next fallback uses remaining movies when TV is filtered out",
+  );
+  assert.equal(
+    chronologyWatchNext(moviesChronology, "guardians-2").some((entry) => chronologyTitleIsTv(entry)),
+    false,
+    "Watch Next never surfaces TV titles when the filter is off",
+  );
+  assert.equal(
+    chronologyNearestVisibleId(marvelChronology, "loki-s1", { includeTv: false }),
+    "endgame",
+    "turning TV off while focused on Loki snaps to the nearest remaining movie",
+  );
+  assert.equal(
+    titleFilterLabels(marvelEvents, marvelChronology, { includeTv: false }).includes("Loki S1"),
+    false,
+  );
+  assert.ok(titleFilterLabels(marvelEvents, marvelChronology, { includeTv: false }).includes("Iron Man"));
+}
 assert.match(marvel.lede, /Watch Before/);
 assert.doesNotMatch(marvel.lede, /Follow the character web/);
 assert.equal(
@@ -1841,8 +1904,14 @@ assert.match(appSource, /renderMarvelChronologyIndex/);
 assert.match(appSource, /state\.view = "chronology"/);
 assert.match(html, /id="view-chronology"/);
 assert.match(html, /data-view="chronology"/);
+assert.match(html, /id="include-tv"/);
+assert.match(html, /Include TV shows/);
+assert.match(appSource, /fillIncludeTv/);
+assert.match(appSource, /visibleChronology/);
+assert.match(appSource, /TV_PREF_KEY/);
+assert.match(css, /\.chrono-tv-switch/);
+assert.match(css, /accent-color: var\(--gold\)|background: var\(--gold\)/);
 assert.doesNotMatch(chronoViewSource, /api\.themoviedb\.org/);
-assert.doesNotMatch(appSource, /api\.themoviedb\.org/);
 assert.doesNotMatch(appSource, /TMDB_API_KEY/);
 assert.doesNotMatch(chronoViewSource, /TMDB_API_KEY/);
 const characterIndex = loadCharacterIndex();

@@ -14,6 +14,10 @@ import {
   usesPlotChronology,
   chronologyEntryForQuery,
   chronologyById,
+  filterChronology,
+  parseChronologyIncludeTv,
+  CHRONOLOGY_INCLUDE_TV_DEFAULT,
+  chronologyNearestVisibleId,
   findPlot,
   plotCardFace,
   plotMatchesQuery,
@@ -143,6 +147,7 @@ let partitionPortraits = {};
 let partitionMount = null;
 const COMPACT_MQ = `(max-width: ${COMPACT_MAX_WIDTH}px)`;
 const VIEW_PREF_KEY = "plotmaniac-view";
+const TV_PREF_KEY = "plotmaniac-marvel-tv";
 const PICK_LEDE = "Turn rabbit holes into clickable plots: maps, webs, lists, timelines.";
 let hubCamera = null;
 let webFitToken = "";
@@ -232,6 +237,25 @@ function labelViews() {
   timeline.hidden = false;
   web.textContent = history ? "Map + people" : "The web";
   timeline.textContent = "Full timeline";
+}
+
+function rememberTvPref(includeTv) {
+  try {
+    localStorage.setItem(TV_PREF_KEY, includeTv ? "1" : "0");
+  } catch {
+    /* private mode */
+  }
+}
+
+function readTvPref() {
+  try {
+    const raw = localStorage.getItem(TV_PREF_KEY);
+    if (raw === "1") return true;
+    if (raw === "0") return false;
+  } catch {
+    /* private mode */
+  }
+  return CHRONOLOGY_INCLUDE_TV_DEFAULT;
 }
 
 function rememberView(view) {
@@ -543,6 +567,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         gunLawCriteria: serializeGunStateLawFilters(gunLawFilters),
         gunLawGunType,
         chronologyTitle: parsed.chronologyTitle || "",
+        includeTv: parseChronologyIncludeTv(location.href, CHRONOLOGY_INCLUDE_TV_DEFAULT),
       };
       state.chronologyTitle = resolveChronologyTitle(state.chronologyTitle);
       applyWarSpan(state);
@@ -567,6 +592,7 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         gunLawCriteria: "",
         gunLawGunType: "handgun",
         chronologyTitle: "",
+        includeTv: usesPlotChronology(plot) ? readTvPref() : CHRONOLOGY_INCLUDE_TV_DEFAULT,
       };
       state.chronologyTitle = resolveChronologyTitle("");
       applyWarSpan(state, "");
@@ -619,6 +645,7 @@ function showPicker({ history = "push" } = {}) {
     exemplarState: "",
     checklistOpen: false,
     topic: "",
+    includeTv: CHRONOLOGY_INCLUDE_TV_DEFAULT,
   };
   document.title = "Plotmaniac";
   $("plot-title").textContent = "Plotmaniac";
@@ -639,6 +666,7 @@ function showPicker({ history = "push" } = {}) {
   $("view-timeline").classList.remove("is-active");
   $("view-chronology")?.classList.remove("is-active");
   labelViews();
+  fillIncludeTv();
   renderChooser();
   if (history === "push") writeUrl(false);
   if (history === "replace") writeUrl(true);
@@ -755,7 +783,7 @@ function initTitleFilter() {
     state.eventId = "";
     webFitToken = "";
     if (chronology) {
-      const entry = chronologyEntryForQuery(chronology, label);
+      const entry = chronologyEntryForQuery(visibleChronology(), label);
       state.chronologyTitle = entry?.id || "";
       if (usesPlotChronology(plot) && state.view !== "timeline") state.view = "timeline";
     }
@@ -798,7 +826,7 @@ function initTitleFilter() {
     state.eventId = "";
     webFitToken = "";
     if (chronology) {
-      const entry = chronologyEntryForQuery(chronology, input.value);
+      const entry = chronologyEntryForQuery(visibleChronology(), input.value);
       if (entry) {
         state.chronologyTitle = entry.id;
         if (usesPlotChronology(plot) && state.view !== "timeline") state.view = "timeline";
@@ -1028,6 +1056,24 @@ function bindChrome() {
     render({ push: true });
   });
   initTitleFilter();
+  const includeTv = $("include-tv");
+  if (includeTv) {
+    includeTv.addEventListener("change", () => {
+      if (!plot || !usesPlotChronology(plot)) return;
+      state.includeTv = includeTv.checked;
+      rememberTvPref(state.includeTv);
+      state.chronologyTitle = resolveChronologyTitle(state.chronologyTitle);
+      if (state.query) {
+        const match = chronologyEntryForQuery(visibleChronology(), state.query);
+        if (!match) {
+          state.query = "";
+          const titleInput = $("title-filter");
+          if (titleInput && document.activeElement !== titleInput) titleInput.value = "";
+        }
+      }
+      render({ push: true });
+    });
+  }
   $("home-link").addEventListener("click", () => {
     if (!plot || plots.length < 2) return;
     showPicker({ history: "push" });
@@ -1143,13 +1189,18 @@ function usesTitleFilter(activePlot = plot) {
   return Boolean(activePlot?.titleFilter);
 }
 
+function visibleChronology() {
+  return filterChronology(chronology, { includeTv: Boolean(state.includeTv) });
+}
+
 function resolveChronologyTitle(requested = "") {
   if (!chronology?.titles?.length) return "";
-  const index = chronologyById(chronology);
+  const pack = visibleChronology();
+  const index = chronologyById(pack);
   if (requested && index.has(requested)) return requested;
-  const fromQuery = state.query ? chronologyEntryForQuery(chronology, state.query) : null;
+  const fromQuery = state.query ? chronologyEntryForQuery(pack, state.query) : null;
   if (fromQuery) return fromQuery.id;
-  return chronology.titles[0].id;
+  return chronologyNearestVisibleId(chronology, requested, { includeTv: Boolean(state.includeTv) });
 }
 
 function fillTitleFilter() {
@@ -1163,8 +1214,18 @@ function fillTitleFilter() {
   }
   wrap.hidden = false;
   input.placeholder = plot.searchPlaceholder || "Film or series…";
-  titleFilterOptions = titleFilterLabels(events, chronology);
+  titleFilterOptions = titleFilterLabels(events, chronology, { includeTv: Boolean(state.includeTv) });
   if (document.activeElement !== input) input.value = state.query;
+}
+
+function fillIncludeTv() {
+  const wrap = $("tv-switch");
+  const input = $("include-tv");
+  if (!wrap || !input) return;
+  const show = Boolean(plot && usesPlotChronology(plot) && (state.view === "timeline" || state.view === "chronology"));
+  wrap.hidden = !show;
+  if (!show) return;
+  input.checked = Boolean(state.includeTv);
 }
 
 function fillHubSelect() {
@@ -1228,6 +1289,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   $("view-chronology")?.setAttribute("aria-pressed", String(state.view === "chronology"));
   fillHubSelect();
   fillTitleFilter();
+  fillIncludeTv();
   const plotSelect = $("plot-select");
   if (plotSelect && document.activeElement === plotSelect) plotSelect.blur();
   const hubSelect = $("hub-select");
@@ -3008,7 +3070,7 @@ function renderPerson() {
 
 function renderChronologyPage() {
   return renderMarvelChronologyIndex({
-    chronology,
+    chronology: visibleChronology(),
     focusId: resolveChronologyTitle(state.chronologyTitle),
     onFocus: (id) => {
       state.chronologyTitle = id;
@@ -3022,7 +3084,7 @@ function renderChronologyPage() {
 function renderTimeline() {
   if (usesPlotChronology(plot) && chronology?.titles?.length) {
     return renderMarvelChronology({
-      chronology,
+      chronology: visibleChronology(),
       peopleById,
       focusId: resolveChronologyTitle(state.chronologyTitle),
       onFocus: (id) => {

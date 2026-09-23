@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import { MARVEL_CHRONOLOGY_ORDER } from "./marvel-chronology-data.mjs";
 import { CHRONOLOGY_PREREQ_EDGES } from "./marvel-chronology-prereqs.mjs";
 import { loadCharacterIndex, overlayChronologyCast } from "./marvel-character-index.mjs";
+import { chronologyKindForId } from "./marvel-chronology-tmdb-queries.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const people = JSON.parse(fs.readFileSync(path.join(root, "data/marvel-universe/people.json"), "utf8"));
@@ -188,6 +189,7 @@ const titles = MARVEL_CHRONOLOGY_ORDER.map((entry) => {
   if (entry.note) row.note = entry.note;
   if (entry.era) row.era = entry.era;
   if (entry.essential) row.essential = true;
+  row.kind = chronologyKindForId(entry.id, entry.title);
   const prereqs = prereqsByTarget.get(entry.id);
   if (prereqs?.length) row.prereqs = prereqs;
   const poster = existingPosters.get(entry.id);
