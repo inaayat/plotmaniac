@@ -249,19 +249,22 @@ export function chronologyWatchNext(chronology, id, limit = CHRONOLOGY_WATCH_NEX
 }
 
 /**
- * Poster board for the Movie web. Eras are gathered into one cluster each,
- * in the order that era first appears. Edges mark prerequisites.
+ * Poster board for the Movie web. Eras sit side by side, in the order each
+ * era first appears, and the board grows to the right. `rows` is how many
+ * poster rows fit the viewport; a short era stays on one row. Edges mark
+ * prerequisites.
  */
 export function movieWebLayout(titles = [], options = {}) {
   const list = Array.isArray(titles) ? titles : [];
-  const posterW = options.posterW || 188;
-  const posterH = options.posterH || 282;
-  const labelH = 58;
-  const gapX = 56;
-  const gapY = 64;
-  const columns = Math.max(2, Number(options.columns) || 5);
-  const pad = 36;
-  const eraH = 52;
+  const posterW = options.posterW || 168;
+  const posterH = options.posterH || 220;
+  const labelH = options.labelH || 48;
+  const gapX = options.gapX || 36;
+  const gapY = options.gapY || 28;
+  const rows = Math.max(1, Math.round(Number(options.rows) || 2));
+  const pad = options.pad || 28;
+  const eraH = options.eraH || 44;
+  const eraGap = options.eraGap || 64;
   const colW = posterW + gapX;
   const rowStride = posterH + labelH + gapY;
   const nodes = [];
@@ -275,38 +278,40 @@ export function movieWebLayout(titles = [], options = {}) {
     }
     group.entries.push({ entry, order });
   });
-  let y = pad;
+  let x = pad;
+  let height = pad + eraH + pad;
   groups.forEach((group) => {
+    const count = group.entries.length;
+    const cols = Math.min(count, Math.max(rows, Math.ceil(count / rows)));
+    const blockW = Math.max(posterW, cols * colW - gapX);
     nodes.push({
       type: "era",
       id: `era-${nodes.length}`,
       era: group.era,
-      x: pad,
-      y,
-      w: Math.max(posterW, columns * colW - gapX),
+      x,
+      y: pad,
+      w: blockW,
       h: eraH,
     });
-    y += eraH;
-    let col = 0;
-    group.entries.forEach(({ entry, order }) => {
+    group.entries.forEach(({ entry, order }, index) => {
+      const col = index % cols;
+      const row = Math.floor(index / cols);
       nodes.push({
         type: "title",
         id: entry.id,
         title: chronologyFilterLabel(entry),
         era: group.era,
         order: order + 1,
-        x: pad + col * colW,
-        y,
+        x: x + col * colW,
+        y: pad + eraH + row * rowStride,
         w: posterW,
         h: posterH,
       });
-      col += 1;
-      if (col >= columns) {
-        col = 0;
-        y += rowStride;
-      }
     });
-    y += col === 0 ? gapY : rowStride;
+    const usedRows = Math.max(1, Math.ceil(count / cols));
+    const bottom = pad + eraH + (usedRows - 1) * rowStride + posterH + labelH + pad;
+    if (bottom > height) height = bottom;
+    x += blockW + eraGap;
   });
   const byId = new Map(nodes.filter((node) => node.type === "title").map((node) => [node.id, node]));
   const edges = [];
@@ -319,10 +324,11 @@ export function movieWebLayout(titles = [], options = {}) {
   return {
     nodes,
     edges,
-    width: pad * 2 + columns * colW - gapX,
-    height: y + pad,
+    width: groups.length ? x - eraGap + pad : pad * 2,
+    height,
     posterW,
     posterH,
+    rows,
   };
 }
 

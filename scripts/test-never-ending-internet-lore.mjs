@@ -1945,9 +1945,21 @@ assert.match(html, /id="view-movie-web"/);
     movieWeb.edges.some((edge) => edge.from === "captain-america-first-avenger" && edge.to === "the-avengers"),
     "Movie web ties Captain America to The Avengers",
   );
-  assert.ok(movieWeb.height < 8000, "movie web groups eras instead of leaving a sparse stack");
+  assert.ok(movieWeb.width > movieWeb.height, "movie web reads left to right");
+  assert.ok(movieWeb.height < 1200, "movie web fits a viewport height and grows to the right");
+  const eras = movieWeb.nodes.filter((node) => node.type === "era");
+  eras.slice(1).forEach((era, index) => {
+    assert.ok(era.x > eras[index].x, "movie web eras run left to right");
+  });
+  const origins = movieWeb.nodes.filter((node) => node.type === "title" && node.era === "Origins");
+  assert.equal(origins.length, 2);
+  assert.equal(origins[0].y, origins[1].y, "a short era sits on one row");
+  assert.ok(origins[1].x > origins[0].x);
   assert.equal(movieWeb.nodes.filter((node) => node.type === "era" && node.era === "Mutant legacy").length, 1);
 }
+assert.match(css, /\.movie-web-scroll\s*\{[^}]*overflow-x:\s*auto/, "movie web scrolls sideways");
+assert.match(css, /\.movie-web-scroll\s*\{[^}]*overflow-y:\s*hidden/);
+assert.match(chronoViewSource, /scrollLeft \+= event\.deltaY/, "a vertical wheel moves the movie web sideways");
 assert.equal(
   boardViewForPerson(marvel, "movie-web"),
   "movie-web",

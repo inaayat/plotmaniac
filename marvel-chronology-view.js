@@ -115,20 +115,40 @@ export function renderMarvelMovieWeb({
     section.appendChild(emptyBlock("No chronology titles loaded."));
     return section;
   }
-  const narrow = Boolean(window.matchMedia?.("(max-width: 720px)")?.matches);
-  const medium = Boolean(window.matchMedia?.("(max-width: 1100px)")?.matches);
-  const columns = narrow ? 2 : medium ? 3 : 5;
-  const layout = movieWebLayout(titles, {
-    columns,
-    posterW: narrow ? 168 : 188,
-    posterH: narrow ? 252 : 282,
-  });
-  const byId = new Map(layout.nodes.filter((node) => node.type === "title").map((node) => [node.id, node]));
   const note = document.createElement("p");
   note.className = "movie-web-note";
-  note.textContent = "How the films tie together. A line means the earlier title sets up the later one. Click a poster to open it in Watch Order.";
+  note.textContent = "Scroll sideways. A line means the earlier title sets up the later one. Click a poster to open it in Watch Order.";
   const scroller = document.createElement("div");
   scroller.className = "movie-web-scroll";
+  section.append(note, scroller);
+
+  const paint = () => {
+    const available = scroller.clientHeight;
+    if (available < 120) return;
+    const metrics = movieWebMetrics(available);
+    const key = `${metrics.rows}:${metrics.posterH}:${metrics.posterW}`;
+    if (scroller.dataset.fit === key && scroller.firstChild) return;
+    const left = scroller.scrollLeft;
+    scroller.dataset.fit = key;
+    scroller.replaceChildren(movieWebStage({ titles, metrics, focusId, onFocus }));
+    scroller.scrollLeft = left;
+  };
+  scroller.addEventListener("wheel", (event) => {
+    if (event.ctrlKey || event.metaKey) return;
+    if (scroller.scrollWidth <= scroller.clientWidth + 1) return;
+    if (Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
+    event.preventDefault();
+    scroller.scrollLeft += event.deltaY;
+  }, { passive: false });
+  const observer = new ResizeObserver(() => paint());
+  observer.observe(scroller);
+  requestAnimationFrame(paint);
+  return section;
+}
+
+function movieWebStage({ titles, metrics, focusId, onFocus }) {
+  const layout = movieWebLayout(titles, metrics);
+  const byId = new Map(layout.nodes.filter((node) => node.type === "title").map((node) => [node.id, node]));
   const stage = document.createElement("div");
   stage.className = "movie-web-stage";
   stage.style.width = `${layout.width}px`;
@@ -161,13 +181,13 @@ export function renderMarvelMovieWeb({
     if (!from || !to) return;
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("class", "movie-web-edge");
-    const x1 = from.x + from.w / 2;
-    const y1 = from.y + from.h;
-    const x2 = to.x + to.w / 2;
-    const y2 = to.y;
-    const bend = Math.max(36, Math.abs(y2 - y1) * 0.35);
+    const x1 = from.x + from.w;
+    const y1 = from.y + from.h / 2;
+    const x2 = to.x;
+    const y2 = to.y + to.h / 2;
+    const bend = Math.max(28, Math.abs(x2 - x1) * 0.35);
     path.setAttribute("marker-end", "url(#movie-web-arrow)");
-    path.setAttribute("d", `M${x1} ${y1} C ${x1} ${y1 + bend}, ${x2} ${y2 - bend}, ${x2} ${y2}`);
+    path.setAttribute("d", `M${x1} ${y1} C ${x1 + bend} ${y1}, ${x2 - bend} ${y2}, ${x2} ${y2}`);
     svg.appendChild(path);
   });
   stage.appendChild(svg);
@@ -179,6 +199,7 @@ export function renderMarvelMovieWeb({
       label.textContent = node.era;
       label.style.left = `${node.x}px`;
       label.style.top = `${node.y}px`;
+      label.style.width = `${node.w}px`;
       stage.appendChild(label);
       return;
     }
@@ -194,14 +215,48 @@ export function renderMarvelMovieWeb({
     const caption = document.createElement("span");
     caption.className = "movie-web-title";
     caption.textContent = node.title;
+    caption.title = node.title;
     button.appendChild(caption);
     button.addEventListener("click", () => onFocus(node.id));
     stage.appendChild(button);
   });
+  return stage;
+}
 
-  scroller.appendChild(stage);
-  section.append(note, scroller);
-  return section;
+/**
+ * Poster rows for a measured scroller height. More rows while posters stay
+ * readable, so the board fills the viewport and grows to the right.
+ */
+function movieWebMetrics(availableHeight) {
+  const narrow = Boolean(window.matchMedia?.("(max-width: 720px)")?.matches);
+  const pad = 20;
+  const eraH = 36;
+  const labelH = 44;
+  const gapY = 16;
+  const gapX = narrow ? 24 : 36;
+  const eraGap = narrow ? 40 : 64;
+  const maxPoster = narrow ? 210 : 280;
+  const comfortable = narrow ? 150 : 168;
+  const available = Math.max(240, Math.floor(availableHeight) - 16);
+  const inner = Math.max(140, available - eraH - pad * 2);
+  const posterFor = (rows) => (inner - (rows - 1) * gapY - rows * labelH) / rows;
+  let rows = 1;
+  for (let candidate = 2; candidate <= 4; candidate += 1) {
+    if (posterFor(candidate) < comfortable) break;
+    rows = candidate;
+  }
+  const posterH = Math.max(96, Math.min(maxPoster, Math.floor(posterFor(rows))));
+  return {
+    rows,
+    posterW: Math.round(posterH * 2 / 3),
+    posterH,
+    labelH,
+    gapX,
+    gapY,
+    pad,
+    eraH,
+    eraGap,
+  };
 }
 
 function renderChronologyLane({ titles, peopleById, focusId, onFocus, onOpenPerson, avatar }) {

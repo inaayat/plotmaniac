@@ -5641,9 +5641,9 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 .movie-web-scroll {
   flex: 1;
   min-height: 0;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
-  padding-bottom: 24px;
 }
 
 .movie-web-stage {
@@ -5669,6 +5669,8 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   font-family: "Fraunces", Georgia, serif;
   font-size: 1.35rem;
   letter-spacing: -0.03em;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 .movie-web-card {
@@ -5690,11 +5692,12 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 
 .movie-web-title {
   font-family: "Fraunces", Georgia, serif;
-  font-size: 0.98rem;
-  line-height: 1.25;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  max-height: 2.4em;
   color: var(--ink);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -5792,21 +5795,23 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   }
 
   body[data-view="movie-web"] {
-    height: auto;
-    min-height: 100dvh;
-    overflow-x: clip;
-    overflow-y: auto;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
   }
 
   body[data-view="movie-web"] .app {
-    flex: none;
-    display: block;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    padding: 0 0 8px;
+    padding: 0;
   }
 
   body[data-view="movie-web"] .movie-web {
-    min-height: 70dvh;
+    min-height: 0;
+    flex: 1;
   }
 
   body[data-view="movie-web"] .site-footer {

@@ -14,7 +14,7 @@ Static single-page app: `index.html` at the repo root, ES modules in `app.js`, `
 | `data/marvel-universe/character-index.md` | Wikipedia MCU character index (appearances used to overlay chronology casts) |
 | `scripts/marvel-character-index.mjs` | Parse the index and map appearances onto chronology titles + `people.json` ids |
 | `scripts/enrich-marvel-chronology-posters.mjs` | Bakes TMDB posters into chronology (`TMDB_API_KEY` env only; CI skips) |
-| `marvel-chronology-view.js` | Marvel default: Watch Before / Selected / Watch Next on a shared-row grid (fixed poster position, aligned headers). Chronology is `?view=chronology`. Movie web is `?view=movie-web`, posters tied by prerequisite lines. A Reset nav button returns the current Marvel view to defaults. Cast avatars open a character timeline; Marvel has no character-web screen |
+| `marvel-chronology-view.js` | Marvel default: Watch Before / Selected / Watch Next on a shared-row grid (fixed poster position, aligned headers). Chronology is `?view=chronology`. Movie web is `?view=movie-web`: eras run left to right across the full width, posters tied by prerequisite lines, and a vertical wheel scrolls sideways. A Reset nav button returns the current Marvel view to defaults. Cast avatars open a character timeline; Marvel has no character-web screen |
 | `presidential-doctrines-view.js` | Single-window comparison of presidential doctrines by decision |
 | `data/us-presidential-doctrines/` | Doctrine summary data (`arrangement: doctrine-summary` in `plots.json`) |
 | `data/gun-regulation/` | SCOTUS gun-rights board (federal timeline, checklist, exemplars) |

@@ -29,7 +29,7 @@ Clicking a left or right poster refocuses that title (center updates, sides reco
 
 The board is one grid whose three columns share rows: a header row, a fixed band above the poster, the poster, the same band below, then the title and cast. The Watch Before and Watch Next headers therefore always line up, and the selected poster sits in the same place for every title, centered on the page. A side stack that fits in the band is centered on the poster, so a single title’s arrow meets the poster’s midpoint. A longer stack starts at the top of the band and continues downward, and the Watch Order area scrolls like a page. Side posters shrink to fit the band, down to a readable floor.
 
-**Reset** (next to the view buttons) returns the current view to its defaults without leaving it: the first title in Watch Order, an empty title search, TV shows off, chronology zoom at 100% scrolled to the start, and the Movie web scrolled to the top.
+**Reset** (next to the view buttons) returns the current view to its defaults without leaving it: the first title in Watch Order, an empty title search, TV shows off, chronology zoom at 100% scrolled to the start, and the Movie web scrolled back to the first era.
 
 ### Chronology page
 
@@ -37,7 +37,7 @@ The board is one grid whose three columns share rows: a header row, a fixed band
 
 ### Movie web
 
-`?view=movie-web` (Movie web in the nav) lays the same titles out as a poster board. Each era is gathered into one cluster, in the order that era first appears, so a saga stays together. A gold arrow means the earlier title is a prerequisite of the later one. Clicking a poster opens it in Watch Order. Include TV shows filters this board the same way it filters Watch Order and Chronology.
+`?view=movie-web` (Movie web in the nav) lays the same titles out left to right across the full width. Each era is one cluster, in the order that era first appears, and the board grows sideways so a saga stays together. A vertical wheel scrolls the board horizontally. A gold arrow runs from an earlier poster to the title it sets up. Clicking a poster opens it in Watch Order. Include TV shows filters this board the same way it filters Watch Order and Chronology.
 
 ### Character timelines
 
