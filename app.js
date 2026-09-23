@@ -553,7 +553,10 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         countries: countryBySlug,
         hubs: new Set(hubs.map((hub) => hub.id)),
         defaultHub: plot.defaultHub || "",
-        topics: scotusTopicSet(),
+        topics: new Set([
+          ...scotusTopicSet(),
+          ...(doctrineSummary?.themes || []).map((theme) => theme.id),
+        ]),
       });
       const topic = parsed.topic || resolveScotusTopic(location.href, requestedPlotParam);
       const reg = parseRegulationParams(location.href, exemplarStates);
@@ -1415,17 +1418,12 @@ function renderDoctrineSummarySection() {
     summary: doctrineSummary,
     events,
     peopleById,
-    query: state.query,
-    onQueryChange: (value) => {
-      state.query = value;
+    themeId: state.topic,
+    personId: state.person,
+    onSelect: ({ themeId, personId }) => {
+      state.topic = themeId || "";
+      state.person = personId && personId !== ALL ? personId : ALL;
       render({ replace: true });
-      requestAnimationFrame(() => {
-        const next = document.querySelector(".doctrine-summary-search input[type=search]");
-        if (!next) return;
-        next.focus();
-        const end = next.value.length;
-        next.setSelectionRange(end, end);
-      });
     },
   });
 }

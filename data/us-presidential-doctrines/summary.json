@@ -1,34 +1,167 @@
 {
-  "eraLabels": {
-    "hemisphere": "Western Hemisphere (1823–1904)",
-    "cold-war": "Cold War (1947–1991)",
-    "post-cold-war": "Post–Cold War (1999–2021)"
-  },
-  "crossCuttingThemes": [
+  "themes": [
     {
-      "id": "regional-sphere",
-      "label": "Regional sphere",
-      "description": "Draw a geographic line—Americas, Middle East, Persian Gulf—and treat crossing it as a threat to U.S. peace or vital interests."
+      "id": "geographic-line",
+      "label": "The line",
+      "question": "Where does the doctrine draw a geographic line?",
+      "stances": [
+        {
+          "eventId": "monroe-doctrine-1823",
+          "contrast": "Europe stays out of the Americas. The United States stays out of Europe’s wars."
+        },
+        {
+          "eventId": "roosevelt-corollary-1904",
+          "contrast": "The line moves inside the hemisphere: the U.S. will police Latin America itself."
+        },
+        {
+          "eventId": "eisenhower-doctrine-1957",
+          "contrast": "The line shifts to the Middle East. A state under communist attack can request U.S. forces."
+        },
+        {
+          "eventId": "johnson-doctrine-1965",
+          "contrast": "Back to the Americas: another communist government in the hemisphere is not a local matter."
+        },
+        {
+          "eventId": "carter-doctrine-1980",
+          "contrast": "The Persian Gulf is the line. Outside control of it is an attack on vital U.S. interests."
+        }
+      ]
     },
     {
-      "id": "anti-communism",
-      "label": "Anti-communism & containment",
-      "description": "From Truman through Reagan, doctrines name communist expansion (often Soviet-linked) as the core threat and promise aid or force to stop it."
+      "id": "the-threat",
+      "label": "The threat",
+      "question": "Who or what is the doctrine aimed at?",
+      "stances": [
+        {
+          "eventId": "monroe-doctrine-1823",
+          "contrast": "European powers trying to colonize or control sovereign states in the Americas."
+        },
+        {
+          "eventId": "truman-doctrine-1947",
+          "contrast": "Communist armed minorities and outside pressure, starting with Greece and Turkey."
+        },
+        {
+          "eventId": "reagan-doctrine-1985",
+          "contrast": "Soviet-backed governments. The answer is to aid the insurgents fighting them."
+        },
+        {
+          "eventId": "clinton-doctrine-1999",
+          "contrast": "Conflicts left to spread, and mass killing of civilians, even in small or distant places."
+        },
+        {
+          "eventId": "bush-doctrine-2001",
+          "contrast": "Terrorists and the states that harbor them — not a rival superpower."
+        },
+        {
+          "eventId": "trump-doctrine-2017",
+          "contrast": "Free-riding allies, and U.S. fights that do not serve a clear national interest."
+        },
+        {
+          "eventId": "biden-doctrine-2021",
+          "contrast": "Open-ended wars that keep spending American lives after the original mission is done."
+        }
+      ]
     },
     {
-      "id": "intervention",
-      "label": "Intervention thresholds",
-      "description": "When revolutions, aggression, or instability cross a line—communist takeovers, outside control of oil routes, genocide—the U.S. claims a right to act."
+      "id": "who-fights",
+      "label": "Who fights",
+      "question": "Who is supposed to do the fighting?",
+      "stances": [
+        {
+          "eventId": "kennedy-inaugural-1961",
+          "contrast": "The United States will pay any price and bear any burden itself."
+        },
+        {
+          "eventId": "truman-doctrine-1947",
+          "contrast": "Local governments resist. Washington supplies the money, equipment, and backing."
+        },
+        {
+          "eventId": "eisenhower-doctrine-1957",
+          "contrast": "U.S. troops go in only if the threatened country asks."
+        },
+        {
+          "eventId": "nixon-doctrine-1969",
+          "contrast": "The ally supplies the manpower. The U.S. keeps its treaties and the nuclear shield."
+        },
+        {
+          "eventId": "reagan-doctrine-1985",
+          "contrast": "Local anti-communist guerrillas fight. The U.S. arms and funds them."
+        },
+        {
+          "eventId": "bush-doctrine-2001",
+          "contrast": "U.S. forces strike the attackers and the regimes that shelter them."
+        },
+        {
+          "eventId": "obama-doctrine-2009",
+          "contrast": "American power, used with partners, and stopped by practical limits."
+        },
+        {
+          "eventId": "biden-doctrine-2021",
+          "contrast": "Allies and partners carry more of it. Fewer large U.S. ground deployments."
+        }
+      ]
     },
     {
-      "id": "burden-sharing",
-      "label": "Burden-sharing & allies",
-      "description": "Nixon expects partners to supply manpower; later presidents press allies on costs (Trump) or consult before fighting (Biden)."
+      "id": "when-to-act",
+      "label": "When to act",
+      "question": "What crosses the line into U.S. action?",
+      "stances": [
+        {
+          "eventId": "kennedy-inaugural-1961",
+          "contrast": "The survival of liberty. The pledge is open-ended: any price, any burden."
+        },
+        {
+          "eventId": "johnson-doctrine-1965",
+          "contrast": "A revolution in the Americas whose object is a communist dictatorship."
+        },
+        {
+          "eventId": "carter-doctrine-1980",
+          "contrast": "Any outside force trying to gain control of the Persian Gulf."
+        },
+        {
+          "eventId": "clinton-doctrine-1999",
+          "contrast": "Where values and interests overlap and the U.S. can actually change the outcome."
+        },
+        {
+          "eventId": "bush-doctrine-2001",
+          "contrast": "A state harbors attackers, or a threat is still gathering and can be struck first."
+        },
+        {
+          "eventId": "obama-doctrine-2009",
+          "contrast": "When force can work inside real limits — not as a standing rule for every crisis."
+        }
+      ]
     },
     {
-      "id": "aid-and-force",
-      "label": "Aid, proxies, and force",
-      "description": "Military/economic assistance, regional “police” roles, and proxy insurgents appear before—or instead of—large U.S. ground wars."
+      "id": "the-tool",
+      "label": "The tool",
+      "question": "What instrument does the doctrine reach for first?",
+      "stances": [
+        {
+          "eventId": "truman-doctrine-1947",
+          "contrast": "Aid. About $400 million in military and economic help for Greece and Turkey."
+        },
+        {
+          "eventId": "eisenhower-doctrine-1957",
+          "contrast": "Aid first, then troops if invited — used in Lebanon in 1958."
+        },
+        {
+          "eventId": "nixon-doctrine-1969",
+          "contrast": "Arm regional partners, especially Iran and Saudi Arabia, so they keep order."
+        },
+        {
+          "eventId": "reagan-doctrine-1985",
+          "contrast": "Proxy war: covert and overt support for insurgents in Afghanistan, Nicaragua, and Angola."
+        },
+        {
+          "eventId": "bush-doctrine-2001",
+          "contrast": "Direct war, including invading a country before it can strike."
+        },
+        {
+          "eventId": "trump-doctrine-2017",
+          "contrast": "Leverage: economic pressure and renegotiated alliances before new deployments."
+        }
+      ]
     }
   ]
 }

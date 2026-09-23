@@ -2482,16 +2482,31 @@ const doctrinePlot = findPlot(plots.plots, "us-presidential-doctrines");
 assert.equal(doctrinePlot?.arrangement, "doctrine-summary");
 assert.ok(doctrinePlot?.paths?.summary);
 const doctrineSummary = readJson("../data/us-presidential-doctrines/summary.json");
-assert.ok(doctrineSummary.crossCuttingThemes.length >= 4);
+assert.ok(doctrineSummary.themes.length >= 5);
 const doctrineEvents = readJson("../data/us-presidential-doctrines/events.json");
 assert.equal(doctrineEvents.length, 14);
-assert.ok(doctrineEvents.every((event) => Array.isArray(event.themes) && event.themes.length));
+const doctrineEventIds = new Set(doctrineEvents.map((event) => event.id));
+const covered = new Set();
+for (const theme of doctrineSummary.themes) {
+  assert.ok(theme.question && theme.label && theme.stances.length >= 4, theme.id);
+  for (const stance of theme.stances) {
+    assert.ok(doctrineEventIds.has(stance.eventId), stance.eventId);
+    assert.ok(stance.contrast.length > 24, stance.eventId);
+    covered.add(stance.eventId);
+  }
+}
+assert.equal(covered.size, doctrineEvents.length, "every doctrine appears in at least one comparison");
 const doctrineView = fs.readFileSync(new URL("../presidential-doctrines-view.js", import.meta.url), "utf8");
-assert.ok(doctrineView.includes("renderPresidentialDoctrinesSummary"));
+assert.ok(doctrineView.includes("doctrine-compare"));
 assert.match(
   css,
-  /body\[data-board="doctrine-summary"\]\[data-view="web"\]\s*\{[^}]*overflow-y:\s*auto/,
-  "doctrine summary page scrolls as one document",
+  /body\[data-board="doctrine-summary"\]\[data-view="web"\] \.doctrine-compare\s*\{[^}]*min-height:\s*0/,
+  "doctrine comparison fills the single window",
+);
+assert.doesNotMatch(
+  css,
+  /body\[data-board="doctrine-summary"\][^{]*\{[^}]*overflow-y:\s*auto/,
+  "doctrine comparison does not scroll the whole page",
 );
 
 console.log("never-ending internet lore tests passed");
