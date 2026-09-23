@@ -1242,6 +1242,15 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   }
 }
 
+function scrollGunStateDetailIntoView() {
+  requestAnimationFrame(() => {
+    const detail = document.getElementById("gun-state-laws-detail");
+    if (!detail) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    detail.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+  });
+}
+
 function renderGunStateLawsSection() {
   if (!gunStatePack) {
     const empty = document.createElement("p");
@@ -1269,6 +1278,7 @@ function renderGunStateLawsSection() {
     onSelectState: (id) => {
       state.gunLawState = state.gunLawState === id ? "" : id;
       render({ replace: true });
+      if (state.gunLawState) scrollGunStateDetailIntoView();
     },
   });
 }

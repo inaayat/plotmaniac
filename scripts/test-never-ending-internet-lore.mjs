@@ -2156,7 +2156,14 @@ const mapIds = new Set(stateMap.states.map((row) => row.id));
 assert.ok(gunStateSnapshot.states.every((row) => mapIds.has(row.id) && row && stateMap.states.find((shape) => shape.id === row.id)?.d));
 const gunStateView = fs.readFileSync(new URL("../gun-laws-by-state-view.js", import.meta.url), "utf8");
 assert.ok(gunStateView.includes("gun-state-laws-split"));
+assert.ok(gunStateView.includes('panel.id = "gun-state-laws-detail"'));
 assert.equal(gunStateView.includes("Lit jurisdictions"), false);
+assert.match(
+  css,
+  /body\[data-board="gun-state-laws"\]\[data-view="web"\]\s*\{[^}]*overflow-y:\s*auto/,
+  "gun laws by state page scrolls to the selected state",
+);
+assert.match(appSource, /scrollGunStateDetailIntoView/, "selecting a state scrolls its checklist into view");
 const gunFilterConfig = readJson("../data/gun-laws-by-state/filter-criteria.json");
 assert.ok(gunFilterConfig.criteria.every((row) => typeof row.explanation === "string" && row.explanation.length > 40));
 assert.ok(gunFilterConfig.gunTypes.every((row) => row.explanation));

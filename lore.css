@@ -4488,6 +4488,42 @@ body[data-board="scotus"][data-view="web"] .app {
   color: #6ea3e8;
 }
 
+/* This board is a document (map, criteria, state checklist), so the page
+   scrolls. The shared web view otherwise locks the viewport and clips the
+   checklist that opens under the map. */
+body[data-board="gun-state-laws"][data-view="web"] {
+  height: auto;
+  min-height: 100dvh;
+  overflow-x: clip;
+  overflow-y: auto;
+}
+
+body[data-board="gun-state-laws"][data-view="web"] .app {
+  flex: none;
+  display: block;
+  height: auto;
+  overflow: visible;
+}
+
+body[data-board="gun-state-laws"][data-view="web"] .gun-state-laws {
+  display: block;
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+body[data-board="gun-state-laws"][data-view="web"] .site-footer {
+  position: static;
+  width: min(1280px, calc(100% - 32px));
+  margin: 12px auto 0;
+  padding: 8px 16px calc(28px + var(--safe-bottom));
+  text-align: center;
+}
+
+body[data-board="gun-state-laws"][data-view="web"] #footer-note {
+  display: block;
+}
+
 body[data-board="gun-state-laws"] .gun-state-laws {
   max-width: 1280px;
   margin: 0 auto;
@@ -4801,6 +4837,7 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 10px;
+  scroll-margin-top: 16px;
 }
 
 .gun-state-laws-detail-list dt {

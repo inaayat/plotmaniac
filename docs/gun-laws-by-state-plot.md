@@ -53,7 +53,7 @@ Federal baseline (dealer NICS, ages 18/21 from FFLs, prohibited persons, NFA tax
 
 ## Layout
 
-Desktop: criteria checkboxes on the left, U.S. map on the right. Each checkbox’s explanation appears on hover (and keyboard focus). Checked rules light states where that cell is **not required**. Unchecking a rule stops filtering on it. On a narrow screen the criteria stack above the map. The criteria column scrolls on a tall desktop window.
+Desktop: criteria checkboxes on the left, U.S. map on the right. Each checkbox’s explanation appears on hover (and keyboard focus). Checked rules light states where that cell is **not required**. Unchecking a rule stops filtering on it. On a narrow screen the criteria stack above the map. The criteria column scrolls on a tall desktop window. Clicking a state opens its checklist under the map, and the page scrolls so the full panel can be read.
 
 Map shapes: `data/gun-laws-by-state/us-states-paths.json` (Albers USA, 50 states + D.C.).
 

@@ -261,6 +261,7 @@ function highlightLabel(highlight) {
 
 function renderStateDetail(state, filterConfig, gunType) {
   const panel = document.createElement("aside");
+  panel.id = "gun-state-laws-detail";
   panel.className = "gun-state-laws-detail";
   const title = document.createElement("h3");
   title.textContent = `${state.name} (${state.postal}) · ${gunTypeLabel(gunType)}`;
