@@ -23,97 +23,243 @@
     "name": "James Monroe",
     "role": "5th president (1817–1825); Monroe Doctrine (1823).",
     "tags": ["doctrine", "hemisphere"],
-    "links": [{ "label": "Monroe Doctrine", "url": "https://en.wikipedia.org/wiki/Monroe_Doctrine" }]
+    "links": [
+      { "label": "James Monroe", "url": "https://en.wikipedia.org/wiki/James_Monroe" },
+      { "label": "Monroe Doctrine", "url": "https://en.wikipedia.org/wiki/Monroe_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/James%20Monroe%20White%20House%20portrait%201819.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:James_Monroe_White_House_portrait_1819.jpg",
+      "author": "Gilbert Stuart (after)",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "theodore-roosevelt",
     "name": "Theodore Roosevelt",
     "role": "26th president (1901–1909); Roosevelt Corollary (1904).",
     "tags": ["doctrine", "hemisphere"],
-    "links": [{ "label": "Roosevelt Corollary", "url": "https://en.wikipedia.org/wiki/Roosevelt_Corollary" }]
+    "links": [
+      { "label": "Theodore Roosevelt", "url": "https://en.wikipedia.org/wiki/Theodore_Roosevelt" },
+      { "label": "Roosevelt Corollary", "url": "https://en.wikipedia.org/wiki/Roosevelt_Corollary" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Theodore%20Roosevelt%2C%201904.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:President_Theodore_Roosevelt,_1904.jpg",
+      "author": "Pach Brothers",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "harry-truman",
     "name": "Harry S. Truman",
     "role": "33rd president (1945–1953); Truman Doctrine (1947).",
     "tags": ["doctrine", "cold-war"],
-    "links": [{ "label": "Truman Doctrine", "url": "https://en.wikipedia.org/wiki/Truman_Doctrine" }]
+    "links": [
+      { "label": "Harry S. Truman", "url": "https://en.wikipedia.org/wiki/Harry_S._Truman" },
+      { "label": "Truman Doctrine", "url": "https://en.wikipedia.org/wiki/Truman_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Harry%20S.%20Truman%20.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Harry_S._Truman_.jpg",
+      "author": "Unknown (U.S. government)",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "dwight-eisenhower",
     "name": "Dwight D. Eisenhower",
     "role": "34th president (1953–1961); Eisenhower Doctrine (1957).",
     "tags": ["doctrine", "cold-war", "middle-east"],
-    "links": [{ "label": "Eisenhower Doctrine", "url": "https://en.wikipedia.org/wiki/Eisenhower_Doctrine" }]
+    "links": [
+      { "label": "Dwight D. Eisenhower", "url": "https://en.wikipedia.org/wiki/Dwight_D._Eisenhower" },
+      { "label": "Eisenhower Doctrine", "url": "https://en.wikipedia.org/wiki/Eisenhower_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Dwight%20D.%20Eisenhower%2C%20official%20photo%20portrait%2C%20May%2029%2C%201959.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Dwight_D._Eisenhower,_official_photo_portrait,_May_29,_1959.jpg",
+      "author": "U.S. Army / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "john-kennedy",
     "name": "John F. Kennedy",
     "role": "35th president (1961–1963); Kennedy Doctrine (Western Hemisphere anti-communism).",
     "tags": ["doctrine", "cold-war"],
-    "links": [{ "label": "Kennedy Doctrine", "url": "https://en.wikipedia.org/wiki/Kennedy_Doctrine" }]
+    "links": [
+      { "label": "John F. Kennedy", "url": "https://en.wikipedia.org/wiki/John_F._Kennedy" },
+      { "label": "Kennedy Doctrine", "url": "https://en.wikipedia.org/wiki/Kennedy_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/John%20F.%20Kennedy%2C%20White%20House%20color%20photo%20portrait.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:John_F._Kennedy,_White_House_color_photo_portrait.jpg",
+      "author": "Cecil Stoughton / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "lyndon-johnson",
     "name": "Lyndon B. Johnson",
     "role": "36th president (1963–1969); Johnson Doctrine (1965).",
     "tags": ["doctrine", "cold-war", "hemisphere"],
-    "links": [{ "label": "Johnson Doctrine", "url": "https://en.wikipedia.org/wiki/Johnson_Doctrine" }]
+    "links": [
+      { "label": "Lyndon B. Johnson", "url": "https://en.wikipedia.org/wiki/Lyndon_B._Johnson" },
+      { "label": "Johnson Doctrine", "url": "https://en.wikipedia.org/wiki/Johnson_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lyndon%20B.%20Johnson%2C%20official%20photo%20portrait%2C%201968.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Lyndon_B._Johnson,_official_photo_portrait,_1968.jpg",
+      "author": "Yoichi R. Okamoto / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "richard-nixon",
     "name": "Richard Nixon",
     "role": "37th president (1969–1974); Nixon Doctrine (1969).",
     "tags": ["doctrine", "cold-war"],
-    "links": [{ "label": "Nixon Doctrine", "url": "https://en.wikipedia.org/wiki/Nixon_Doctrine" }]
+    "links": [
+      { "label": "Richard Nixon", "url": "https://en.wikipedia.org/wiki/Richard_Nixon" },
+      { "label": "Nixon Doctrine", "url": "https://en.wikipedia.org/wiki/Nixon_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Richard%20Nixon%20presidential%20portrait%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Richard_Nixon_presidential_portrait_(cropped).jpg",
+      "author": "Ollie Atkins / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "jimmy-carter",
     "name": "Jimmy Carter",
     "role": "39th president (1977–1981); Carter Doctrine (1980).",
     "tags": ["doctrine", "cold-war", "persian-gulf"],
-    "links": [{ "label": "Carter Doctrine", "url": "https://en.wikipedia.org/wiki/Carter_Doctrine" }]
+    "links": [
+      { "label": "Jimmy Carter", "url": "https://en.wikipedia.org/wiki/Jimmy_Carter" },
+      { "label": "Carter Doctrine", "url": "https://en.wikipedia.org/wiki/Carter_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jimmy%20Carter%20presidential%20portrait.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jimmy_Carter_presidential_portrait.jpg",
+      "author": "Unknown (U.S. government)",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "ronald-reagan",
     "name": "Ronald Reagan",
     "role": "40th president (1981–1989); Reagan Doctrine (1980s).",
     "tags": ["doctrine", "cold-war"],
-    "links": [{ "label": "Reagan Doctrine", "url": "https://en.wikipedia.org/wiki/Reagan_Doctrine" }]
+    "links": [
+      { "label": "Ronald Reagan", "url": "https://en.wikipedia.org/wiki/Ronald_Reagan" },
+      { "label": "Reagan Doctrine", "url": "https://en.wikipedia.org/wiki/Reagan_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Portrait%20of%20President%20Reagan%201981.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Official_Portrait_of_President_Reagan_1981.jpg",
+      "author": "Michael Evans / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "bill-clinton",
     "name": "Bill Clinton",
     "role": "42nd president (1993–2001); Clinton Doctrine (selective intervention).",
     "tags": ["doctrine", "post-cold-war"],
-    "links": [{ "label": "Clinton Doctrine", "url": "https://en.wikipedia.org/wiki/Clinton_Doctrine" }]
+    "links": [
+      { "label": "Bill Clinton", "url": "https://en.wikipedia.org/wiki/Bill_Clinton" },
+      { "label": "Clinton Doctrine", "url": "https://en.wikipedia.org/wiki/Clinton_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Bill%20Clinton.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Bill_Clinton.jpg",
+      "author": "Bob McNeely / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "george-w-bush",
     "name": "George W. Bush",
     "role": "43rd president (2001–2009); Bush Doctrine (post-9/11).",
     "tags": ["doctrine", "post-cold-war"],
-    "links": [{ "label": "Bush Doctrine", "url": "https://en.wikipedia.org/wiki/Bush_Doctrine" }]
+    "links": [
+      { "label": "George W. Bush", "url": "https://en.wikipedia.org/wiki/George_W._Bush" },
+      { "label": "Bush Doctrine", "url": "https://en.wikipedia.org/wiki/Bush_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/George-W-Bush.jpeg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg",
+      "author": "Eric Draper / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "barack-obama",
     "name": "Barack Obama",
     "role": "44th president (2009–2017); pragmatic realism (often called the Obama Doctrine).",
     "tags": ["doctrine", "post-cold-war"],
-    "links": [{ "label": "Obama Doctrine", "url": "https://en.wikipedia.org/wiki/Obama_Doctrine" }]
+    "links": [
+      { "label": "Barack Obama", "url": "https://en.wikipedia.org/wiki/Barack_Obama" },
+      { "label": "Obama Doctrine", "url": "https://en.wikipedia.org/wiki/Obama_Doctrine" }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Barack%20Obama.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:President_Barack_Obama.jpg",
+      "author": "Pete Souza / Official White House Photo",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "donald-trump",
     "name": "Donald Trump",
     "role": "45th president (2017–2021); America First foreign policy.",
     "tags": ["doctrine", "post-cold-war"],
-    "links": [{ "label": "Foreign policy of the Donald Trump administration", "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Donald_Trump_administration" }]
+    "links": [
+      { "label": "Donald Trump", "url": "https://en.wikipedia.org/wiki/Donald_Trump" },
+      {
+        "label": "Foreign policy of the Donald Trump administration",
+        "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Donald_Trump_administration"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Donald%20Trump%20official%20portrait.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Donald_Trump_official_portrait.jpg",
+      "author": "Shealah Craighead / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   },
   {
     "id": "joe-biden",
     "name": "Joe Biden",
     "role": "46th president (2021–2025); alliance repair and reduced forward deployments.",
     "tags": ["doctrine", "post-cold-war"],
-    "links": [{ "label": "Foreign policy of the Joe Biden administration", "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Joe_Biden_administration" }]
+    "links": [
+      { "label": "Joe Biden", "url": "https://en.wikipedia.org/wiki/Joe_Biden" },
+      {
+        "label": "Foreign policy of the Joe Biden administration",
+        "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Joe_Biden_administration"
+      }
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Joe%20Biden%20presidential%20portrait.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Joe_Biden_presidential_portrait.jpg",
+      "author": "Adam Schultz / White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
   }
 ]

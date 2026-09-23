@@ -58,7 +58,7 @@ export function resolvePlotView(parsed, { href = "", plot = null } = {}) {
 
 export function eventSearchText(event, peopleById = new Map()) {
   const people = (event.people || []).map((id) => peopleById.get(id)?.name || id);
-  return [event.title, event.tease, event.summary, event.era, ...people]
+  return [event.title, event.tease, event.summary, event.era, ...(event.themes || []), ...people]
     .filter(Boolean)
     .join(" ")
     .toLocaleLowerCase();

@@ -6,13 +6,21 @@
     "tease": "In his seventh State of the Union, Monroe says the Western Hemisphere is closed to new European colonization and meddling.",
     "summary": "President James Monroe tells Congress that the Americas are not open to future European colonization and that the United States will treat European efforts to control sovereign American states as dangerous to U.S. peace and safety. The United States also pledges neutrality in European wars unless European powers bring conflict into the hemisphere. The doctrine becomes the longest-lived U.S. regional principle and is later reinterpreted to justify U.S. influence in Latin America.",
     "era": "hemisphere",
-    "people": ["us-presidential-doctrines", "james-monroe"],
+    "people": [
+      "us-presidential-doctrines",
+      "james-monroe"
+    ],
     "links": [
       {
         "label": "Monroe Doctrine",
         "url": "https://en.wikipedia.org/wiki/Monroe_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "Western Hemisphere",
+      "non-colonization",
+      "regional sovereignty"
     ]
   },
   {
@@ -22,13 +30,21 @@
     "tease": "Theodore Roosevelt amends Monroe: chronic wrongdoing in Latin America may force U.S. intervention—\"speak softly and carry a big stick.\"",
     "summary": "In his annual message to Congress, Theodore Roosevelt adds the Roosevelt Corollary to the Monroe Doctrine. The United States may exercise an international police power in Latin America when chronic wrongdoing or impotence threatens foreign creditors or regional stability. The shift moves from keeping Europe out to asserting U.S. economic and military hegemony in the Caribbean and Central America, launching an era of big-stick diplomacy.",
     "era": "hemisphere",
-    "people": ["us-presidential-doctrines", "theodore-roosevelt"],
+    "people": [
+      "us-presidential-doctrines",
+      "theodore-roosevelt"
+    ],
     "links": [
       {
         "label": "Roosevelt Corollary",
         "url": "https://en.wikipedia.org/wiki/Roosevelt_Corollary",
         "type": "article"
       }
+    ],
+    "themes": [
+      "Western Hemisphere",
+      "U.S. hegemony",
+      "intervention"
     ]
   },
   {
@@ -38,13 +54,21 @@
     "tease": "Before Congress amid the Greek Civil War, Truman commits the U.S. to support free peoples resisting armed minorities or outside pressure.",
     "summary": "President Harry S. Truman asks Congress to aid Greece and Turkey as Britain can no longer afford to do so. He frames U.S. policy as supporting free peoples resisting attempted subjugation by armed minorities or outside pressures—the public face of George Kennan's containment strategy. Congress approves roughly $400 million in military and economic assistance in May 1947, extending the same logic to shoring up non-communist governments across Western Europe.",
     "era": "cold-war",
-    "people": ["us-presidential-doctrines", "harry-truman"],
+    "people": [
+      "us-presidential-doctrines",
+      "harry-truman"
+    ],
     "links": [
       {
         "label": "Truman Doctrine",
         "url": "https://en.wikipedia.org/wiki/Truman_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "containment",
+      "anti-communism",
+      "military and economic aid"
     ]
   },
   {
@@ -54,13 +78,21 @@
     "tease": "After Suez, Eisenhower authorizes economic and military help—and U.S. forces if needed—against aggression from communist-controlled states.",
     "summary": "President Dwight D. Eisenhower sends a special message to Congress proposing that countries in the Middle East threatened by armed aggression may request American economic assistance or military forces. The doctrine targets Soviet influence after the 1956 Suez Crisis and rising Arab nationalism under Egypt's Gamal Abdel Nasser. U.S. Marines land in Lebanon in 1958 at the Lebanese president's request—the doctrine's major military application.",
     "era": "cold-war",
-    "people": ["us-presidential-doctrines", "dwight-eisenhower"],
+    "people": [
+      "us-presidential-doctrines",
+      "dwight-eisenhower"
+    ],
     "links": [
       {
         "label": "Eisenhower Doctrine",
         "url": "https://en.wikipedia.org/wiki/Eisenhower_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "Middle East",
+      "anti-communism",
+      "military aid"
     ]
   },
   {
@@ -70,13 +102,21 @@
     "tease": "\"Pay any price, bear any burden\"—Kennedy commits the U.S. to containing and reversing communism, especially in the Western Hemisphere.",
     "summary": "In his inaugural address, President John F. Kennedy declares that the United States will pay any price and bear any burden to assure the survival and success of liberty, and will support any friend and oppose any foe. The speech anchors the Kennedy Doctrine: contain communism and roll back communist gains in Latin America and beyond. It frames foreign policy as a moral struggle against tyranny, poverty, disease, and war.",
     "era": "cold-war",
-    "people": ["us-presidential-doctrines", "john-kennedy"],
+    "people": [
+      "us-presidential-doctrines",
+      "john-kennedy"
+    ],
     "links": [
       {
         "label": "Kennedy Doctrine",
         "url": "https://en.wikipedia.org/wiki/Kennedy_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "anti-communism",
+      "Western Hemisphere",
+      "liberty"
     ]
   },
   {
@@ -86,13 +126,21 @@
     "tease": "After intervening in the Dominican Republic, Johnson says hemispheric revolutions aimed at communist dictatorships are no longer purely local.",
     "summary": "Following the 1965 U.S. intervention in the Dominican Republic, President Lyndon B. Johnson states that the United States will not permit another communist state in the Western Hemisphere. Domestic revolution becomes a matter of U.S. concern when the object is the establishment of a communist dictatorship. The doctrine extends Monroe-era hemisphere logic into the anti-communist internal-security campaigns of the 1960s.",
     "era": "cold-war",
-    "people": ["us-presidential-doctrines", "lyndon-johnson"],
+    "people": [
+      "us-presidential-doctrines",
+      "lyndon-johnson"
+    ],
     "links": [
       {
         "label": "Johnson Doctrine",
         "url": "https://en.wikipedia.org/wiki/Johnson_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "anti-communism",
+      "Western Hemisphere",
+      "intervention"
     ]
   },
   {
@@ -102,13 +150,21 @@
     "tease": "At Guam, Nixon says Asian allies should provide the manpower; the U.S. will honor treaties and shield against nuclear threats.",
     "summary": "President Richard Nixon announces at a press conference in Guam that the United States will expect allies to assume primary responsibility for their own conventional defense—the start of Vietnamization. In his November 1969 address on Vietnam he adds three pillars: honor treaty commitments, shield allies or vital states against nuclear threats, and furnish aid while the threatened nation supplies most of the manpower. The doctrine later shapes U.S. military aid to Iran and Saudi Arabia in the Persian Gulf.",
     "era": "cold-war",
-    "people": ["us-presidential-doctrines", "richard-nixon"],
+    "people": [
+      "us-presidential-doctrines",
+      "richard-nixon"
+    ],
     "links": [
       {
         "label": "Nixon Doctrine",
         "url": "https://en.wikipedia.org/wiki/Nixon_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "burden-sharing",
+      "alliances",
+      "Vietnamization"
     ]
   },
   {
@@ -118,13 +174,21 @@
     "tease": "After the Soviet invasion of Afghanistan, Carter vows to repel by any means necessary any outside force that seeks control of the Gulf.",
     "summary": "In his State of the Union address, President Jimmy Carter responds to the Soviet invasion of Afghanistan by declaring that an attempt by any outside force to gain control of the Persian Gulf region will be regarded as an assault on the vital interests of the United States and repelled by any means necessary, including military force. National Security Adviser Zbigniew Brzezinski modeled the wording on the Truman Doctrine. The line underwrites decades of U.S. military presence and rapid-deployment planning in the Gulf.",
     "era": "cold-war",
-    "people": ["us-presidential-doctrines", "jimmy-carter"],
+    "people": [
+      "us-presidential-doctrines",
+      "jimmy-carter"
+    ],
     "links": [
       {
         "label": "Carter Doctrine",
         "url": "https://en.wikipedia.org/wiki/Carter_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "Persian Gulf",
+      "vital interests",
+      "military force"
     ]
   },
   {
@@ -134,13 +198,21 @@
     "tease": "Reagan tells Congress that aiding freedom fighters from Afghanistan to Nicaragua is self-defense against Soviet aggression.",
     "summary": "In his 1985 State of the Union address, President Ronald Reagan argues the United States must not abandon people risking their lives on every continent to defy Soviet aggression. The Reagan Doctrine supplies covert and overt aid to anti-communist guerrillas fighting Soviet-backed regimes—notably the mujahideen in Afghanistan, the Contras in Nicaragua, and UNITA in Angola. It directly counters the Brezhnev Doctrine's claim that socialist gains are irreversible.",
     "era": "cold-war",
-    "people": ["us-presidential-doctrines", "ronald-reagan"],
+    "people": [
+      "us-presidential-doctrines",
+      "ronald-reagan"
+    ],
     "links": [
       {
         "label": "Reagan Doctrine",
         "url": "https://en.wikipedia.org/wiki/Reagan_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "anti-communism",
+      "proxy wars",
+      "containment"
     ]
   },
   {
@@ -150,13 +222,20 @@
     "tease": "Clinton argues that where values and interests align and the U.S. can make a difference, it must be prepared to act—even in small, distant places.",
     "summary": "In a speech on the eve of NATO action in Kosovo, President Bill Clinton rejects the idea that the United States has no stake in distant valleys because names are hard to pronounce. He defines the true measure of interests by the security consequences of letting conflicts fester and spread. Later statements extend the doctrine toward humanitarian intervention, treating genocide as a national interest when the U.S. has the power to stop it—a tension visible in debates over Rwanda and Bosnia.",
     "era": "post-cold-war",
-    "people": ["us-presidential-doctrines", "bill-clinton"],
+    "people": [
+      "us-presidential-doctrines",
+      "bill-clinton"
+    ],
     "links": [
       {
         "label": "Clinton Doctrine",
         "url": "https://en.wikipedia.org/wiki/Clinton_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "humanitarian intervention",
+      "selective engagement"
     ]
   },
   {
@@ -166,13 +245,21 @@
     "tease": "Nine days after 9/11, Bush tells Congress the U.S. will make no distinction between terrorists and states that shelter them.",
     "summary": "Addressing a joint session of Congress after the September 11 attacks, President George W. Bush declares that every nation must choose sides and that the United States will make no distinction between the terrorists who committed the acts and those who harbor them—groundwork for the invasion of Afghanistan. The broader Bush Doctrine later includes preventive war against potential aggressors before they can strike the United States, a rationale cited for the 2003 Iraq War and a break from Cold War–era deterrence-only framing.",
     "era": "post-cold-war",
-    "people": ["us-presidential-doctrines", "george-w-bush"],
+    "people": [
+      "us-presidential-doctrines",
+      "george-w-bush"
+    ],
     "links": [
       {
         "label": "Bush Doctrine",
         "url": "https://en.wikipedia.org/wiki/Bush_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "counterterrorism",
+      "preventive war",
+      "harboring states"
     ]
   },
   {
@@ -182,13 +269,21 @@
     "tease": "Commentators describe Obama's approach as realism willing to use power but tempered by practical limits and multilateralism.",
     "summary": "President Barack Obama resists a rigid doctrinaire label, emphasizing common security and prosperity with other nations. Analysts such as E. J. Dionne characterize the Obama Doctrine as realism unafraid to deploy American power but mindful of practical limits and self-awareness—multilateral where possible, selective on military intervention (Libya yes, Syria constrained). The approach contrasts with the Bush Doctrine's preventive-war emphasis while continuing counterterrorism operations.",
     "era": "post-cold-war",
-    "people": ["us-presidential-doctrines", "barack-obama"],
+    "people": [
+      "us-presidential-doctrines",
+      "barack-obama"
+    ],
     "links": [
       {
         "label": "Obama Doctrine",
         "url": "https://en.wikipedia.org/wiki/Obama_Doctrine",
         "type": "article"
       }
+    ],
+    "themes": [
+      "pragmatic realism",
+      "multilateralism",
+      "selective engagement"
     ]
   },
   {
@@ -198,13 +293,20 @@
     "tease": "Trump's foreign policy uses economic and military power for bilateral deals and presses allies to stop free-riding on U.S. protection.",
     "summary": "The Trump administration's foreign policy, often called the Trump Doctrine, follows the America First slogan: use U.S. economic and military strength to shift burdens onto allies and adversaries alike. President Donald Trump criticizes free riders who accept U.S. defense without reciprocal benefit and questions deployments where core national interests are unclear. Trade pressure, alliance renegotiation, and summit diplomacy with North Korea and Russia define the style more than a single congressional address.",
     "era": "post-cold-war",
-    "people": ["us-presidential-doctrines", "donald-trump"],
+    "people": [
+      "us-presidential-doctrines",
+      "donald-trump"
+    ],
     "links": [
       {
         "label": "Foreign policy of the Donald Trump administration",
         "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Donald_Trump_administration",
         "type": "article"
       }
+    ],
+    "themes": [
+      "America First",
+      "burden-sharing"
     ]
   },
   {
@@ -214,13 +316,21 @@
     "tease": "After completing the Afghanistan withdrawal, Biden frames foreign policy around allied consultation and fewer large ground wars.",
     "summary": "Observers describe President Joe Biden's foreign policy as repairing transatlantic alliances, avoiding aggressive forward deployments, and redirecting attention to domestic investment. Biden tells allies the United States is determined to consult and that the transatlantic alliance is back. The 2021 withdrawal from Afghanistan is defended as limiting risk to American lives and closing a long war—symbolizing a shift from counterinsurgency footprints toward competition with China and support for Ukraine through partners rather than full-scale U.S. occupation.",
     "era": "post-cold-war",
-    "people": ["us-presidential-doctrines", "joe-biden"],
+    "people": [
+      "us-presidential-doctrines",
+      "joe-biden"
+    ],
     "links": [
       {
         "label": "Foreign policy of the Joe Biden administration",
         "url": "https://en.wikipedia.org/wiki/Foreign_policy_of_the_Joe_Biden_administration",
         "type": "article"
       }
+    ],
+    "themes": [
+      "alliances",
+      "retrenchment",
+      "forever wars"
     ]
   }
 ]
