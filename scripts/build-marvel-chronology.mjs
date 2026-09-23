@@ -153,6 +153,22 @@ for (const edge of CHRONOLOGY_PREREQ_EDGES) {
   prereqsByTarget.get(edge.target).push({ id: edge.source, tier: edge.tier });
 }
 
+const outPath = path.join(root, "data/marvel-universe/chronology.json");
+const existingPosters = new Map();
+try {
+  const previous = JSON.parse(fs.readFileSync(outPath, "utf8"));
+  (previous.titles || []).forEach((row) => {
+    if (row.posterPath || row.posterUrl) {
+      existingPosters.set(row.id, {
+        posterPath: row.posterPath,
+        posterUrl: row.posterUrl,
+      });
+    }
+  });
+} catch {
+  /* first build */
+}
+
 const missing = new Set();
 const titles = MARVEL_CHRONOLOGY_ORDER.map((entry) => {
   const characters = CAST_BY_ID[entry.id];
@@ -173,6 +189,11 @@ const titles = MARVEL_CHRONOLOGY_ORDER.map((entry) => {
   if (entry.essential) row.essential = true;
   const prereqs = prereqsByTarget.get(entry.id);
   if (prereqs?.length) row.prereqs = prereqs;
+  const poster = existingPosters.get(entry.id);
+  if (poster?.posterPath) {
+    row.posterPath = poster.posterPath;
+    row.posterUrl = poster.posterUrl || `https://image.tmdb.org/t/p/w342${poster.posterPath}`;
+  }
   return row;
 });
 
@@ -188,6 +209,5 @@ const out = {
   titles,
 };
 
-const outPath = path.join(root, "data/marvel-universe/chronology.json");
 fs.writeFileSync(outPath, `${JSON.stringify(out, null, 2)}\n`);
 console.log(`Wrote ${titles.length} titles to ${outPath}`);

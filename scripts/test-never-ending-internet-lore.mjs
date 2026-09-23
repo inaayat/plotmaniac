@@ -30,6 +30,7 @@ import {
   chronologyFeedsInto,
   chronologyEntryForQuery,
   chronologyFilterLabel,
+  chronologyPosterUrl,
   usesPlotChronology,
   findPlot,
   plotCardFace,
@@ -1733,6 +1734,26 @@ assert.ok(infinityFeeds.includes("endgame"), "Infinity War feeds into Endgame");
 const dawPrereqs = marvelChronology.titles.find((entry) => entry.id === "deadpool-wolverine")?.prereqs || [];
 assert.ok(dawPrereqs.some((item) => item.id === "deadpool-2" && item.tier === "must"));
 assert.ok(dawPrereqs.some((item) => item.id === "logan-mid" && item.tier === "must"));
+let marvelPosterCount = 0;
+for (const entry of marvelChronology.titles) {
+  if (entry.posterUrl) {
+    assert.match(entry.posterUrl, /^https:\/\/image\.tmdb\.org\/t\/p\/w342\//, `${entry.id} posterUrl`);
+    marvelPosterCount += 1;
+  }
+  if (entry.posterPath) {
+    assert.match(entry.posterPath, /^\//, `${entry.id} posterPath`);
+    assert.equal(chronologyPosterUrl(entry), entry.posterUrl || chronologyPosterUrl(entry));
+  }
+}
+assert.ok(
+  marvelPosterCount === 0 || marvelPosterCount >= 40,
+  `when posters are baked, expect most titles to have TMDB URLs (got ${marvelPosterCount})`,
+);
+assert.equal(chronologyPosterUrl({ title: "Test" }), "");
+assert.match(
+  chronologyPosterUrl({ posterPath: "/abc.jpg" }),
+  /^https:\/\/image\.tmdb\.org\/t\/p\/w342\/abc\.jpg$/,
+);
 assert.deepEqual(
   filterTitleLabels(marvelTitles, "iro"),
   filterTitleLabels(marvelTitles, "iro").filter((label) => label.toLocaleLowerCase().includes("iro")),

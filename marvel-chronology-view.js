@@ -3,6 +3,7 @@ import {
   chronologyFeedsInto,
   chronologyFilterLabel,
   chronologyPrereqsGrouped,
+  chronologyPosterUrl,
 } from "./engine.js";
 
 const TIER_LABEL = {
@@ -284,10 +285,29 @@ function posterTile(entry, { size = "md" } = {}) {
   const tile = document.createElement("span");
   tile.className = `chrono-poster chrono-poster--${size}`;
   tile.setAttribute("aria-hidden", "true");
-  const mark = document.createElement("span");
-  mark.className = "chrono-poster-acronym";
-  mark.textContent = posterAcronym(entry.title);
-  tile.appendChild(mark);
+  const imageSize = size === "lg" ? "w342" : "w154";
+  const url = chronologyPosterUrl(entry, imageSize);
+
+  const showAcronym = () => {
+    tile.replaceChildren();
+    const mark = document.createElement("span");
+    mark.className = "chrono-poster-acronym";
+    mark.textContent = posterAcronym(entry.title);
+    tile.appendChild(mark);
+  };
+
+  if (url) {
+    const img = document.createElement("img");
+    img.className = "chrono-poster-img";
+    img.src = url;
+    img.alt = "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.addEventListener("error", showAcronym, { once: true });
+    tile.appendChild(img);
+  } else {
+    showAcronym();
+  }
   return tile;
 }
 

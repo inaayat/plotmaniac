@@ -91,6 +91,18 @@ export function chronologyFilterLabel(entry) {
   return String(entry?.filterLabel || entry?.title || "").trim();
 }
 
+/** Resolved TMDB poster URL baked at build/enrich time (no runtime API key). */
+export function chronologyPosterUrl(entry, size = "w342") {
+  const pathOnly = entry?.posterPath;
+  if (pathOnly) {
+    const normalized = String(pathOnly).startsWith("/") ? pathOnly : `/${pathOnly}`;
+    return `https://image.tmdb.org/t/p/${size}${normalized}`;
+  }
+  const url = String(entry?.posterUrl || "").trim();
+  if (url.startsWith("https://image.tmdb.org/")) return url;
+  return "";
+}
+
 export function chronologyTitles(chronology) {
   return chronology?.titles || [];
 }
