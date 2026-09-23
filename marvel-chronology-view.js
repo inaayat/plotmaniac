@@ -349,9 +349,9 @@ function buildFocusLayout({ entry, chronology, index, peopleById, onFocus, onOpe
 
   const inbound = document.createElement("aside");
   inbound.className = "chrono-rail chrono-rail--in";
+  inbound.appendChild(railHeading("Watch Before"));
   const inboundContent = document.createElement("div");
   inboundContent.className = "chrono-rail-content";
-  inboundContent.appendChild(railHeading("Watch Before"));
   inboundContent.appendChild(watchRail({
     items: before,
     empty: "Nothing required before this title.",
@@ -366,9 +366,9 @@ function buildFocusLayout({ entry, chronology, index, peopleById, onFocus, onOpe
 
   const outbound = document.createElement("aside");
   outbound.className = "chrono-rail chrono-rail--out";
+  outbound.appendChild(railHeading("Watch Next"));
   const outboundContent = document.createElement("div");
   outboundContent.className = "chrono-rail-content";
-  outboundContent.appendChild(railHeading("Watch Next"));
   outboundContent.appendChild(watchRail({
     items: next,
     empty: "This is a resting point — nothing follows directly.",
