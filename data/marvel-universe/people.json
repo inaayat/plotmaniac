@@ -1,322 +1,94 @@
 [
   {
-    "id": "tony-stark",
-    "name": "Tony Stark / Iron Man",
-    "role": "Genius inventor and founding Avenger",
+    "id": "adam-warlock",
+    "name": "Adam Warlock",
+    "role": "Artificial cosmic being and new Guardian",
     "tags": [
-      "avenger",
-      "founder"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert%20Downey%20Jr%202014%20Comic%20Con%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Robert_Downey_Jr_2014_Comic_Con_%28cropped%29.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "steve-rogers",
-    "name": "Steve Rogers / Captain America",
-    "role": "Super-soldier and founding Avenger",
-    "tags": [
-      "avenger",
-      "founder"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/ChrisEvans2023.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:ChrisEvans2023.jpg",
-      "author": "Philip Romano",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  {
-    "id": "thor",
-    "name": "Thor Odinson",
-    "role": "Asgardian god of thunder and founding Avenger",
-    "tags": [
-      "avenger",
+      "guardians",
       "cosmic"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chris%20Hemsworth%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Chris_Hemsworth_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Will%20Poulter%20at%20the%20Toronto%20International%20Film%20Festival%203%20%28Cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Will_Poulter_at_the_Toronto_International_Film_Festival_3_%28Cropped%29.jpg",
+      "author": "John Sears",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  {
+    "id": "agatha-harkness",
+    "name": "Agatha Harkness",
+    "role": "Witch, mentor, and antagonist",
+    "tags": [
+      "mystic",
+      "witch"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kathryn%20Hahn%20%E2%80%93%20T%27ruah%202016%20Benefit%20Gala%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Kathryn_Hahn_%E2%80%93_T%27ruah_2016_Benefit_Gala_%28cropped%29.jpg",
+      "author": "T'ruah",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "id": "alexei-shostakov",
+    "name": "Alexei Shostakov / Red Guardian",
+    "role": "Russian super-soldier and Thunderbolt",
+    "tags": [
+      "thunderbolts",
+      "family"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/David%20Harbour%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:David_Harbour_by_Gage_Skidmore.jpg",
       "author": "Gage Skidmore",
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
   },
   {
-    "id": "bruce-banner",
-    "name": "Bruce Banner / Hulk",
-    "role": "Scientist and founding Avenger",
+    "id": "america-chavez",
+    "name": "America Chavez",
+    "role": "Multiverse traveler",
     "tags": [
-      "avenger",
-      "scientist"
+      "mystic",
+      "multiverse"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mark%20Ruffalo%20%2836201774756%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Mark_Ruffalo_%2836201774756%29_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Xochitl%20Gomez%20-%202024%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Xochitl_Gomez_-_2024_%28cropped%29.jpg",
+      "author": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
     }
   },
   {
-    "id": "natasha-romanoff",
-    "name": "Natasha Romanoff / Black Widow",
-    "role": "Spy and founding Avenger",
+    "id": "apocalypse-fox",
+    "name": "En Sabah Nur / Apocalypse",
+    "role": "Ancient mutant antagonist",
     "tags": [
-      "avenger",
-      "spy"
+      "fox",
+      "villain"
     ],
     "universes": [
-      "mcu-main"
+      "fox"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Scarlett%20Johansson%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Scarlett_Johansson_by_Gage_Skidmore_2_%28cropped%29.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "clint-barton",
-    "name": "Clint Barton / Hawkeye",
-    "role": "Archer and founding Avenger",
-    "tags": [
-      "avenger",
-      "mentor"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeremy%20Renner%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Jeremy_Renner_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "nick-fury",
-    "name": "Nick Fury",
-    "role": "S.H.I.E.L.D. director and architect of the Avengers Initiative",
-    "tags": [
-      "shield",
-      "organizer"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Samuel%20L.%20Jackson%20%2828769136937%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Samuel_L._Jackson_%2828769136937%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "james-rhodes",
-    "name": "James Rhodes / War Machine",
-    "role": "Air Force officer in powered armor",
-    "tags": [
-      "avenger",
-      "military"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Don%20Cheadle%20%2846909540142%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Don_Cheadle_%2846909540142%29.jpg",
-      "author": "Greg2600",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "pepper-potts",
-    "name": "Pepper Potts / Rescue",
-    "role": "Stark Industries executive and armored ally",
-    "tags": [
-      "stark",
-      "ally"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/GwynethPaltrowByAndreaRaffin2011.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:GwynethPaltrowByAndreaRaffin2011.jpg",
-      "author": "Andrea Raffin at http://www.andrearaffin.com",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "sam-wilson",
-    "name": "Sam Wilson / Captain America",
-    "role": "Falcon and successor Captain America",
-    "tags": [
-      "avenger",
-      "successor"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Anthony%20Mackie%20%2848469212651%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Anthony_Mackie_%2848469212651%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "bucky-barnes",
-    "name": "Bucky Barnes / Winter Soldier",
-    "role": "Super-soldier and former HYDRA assassin",
-    "tags": [
-      "avenger",
-      "thunderbolts"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sebastian%20Stan%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Sebastian_Stan_by_Gage_Skidmore_2_%28cropped%29.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "peggy-carter",
-    "name": "Peggy Carter / Agent Carter",
-    "role": "SSR agent and S.H.I.E.L.D. founder",
-    "tags": [
-      "shield",
-      "founder"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hayley%20Atwell%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Hayley_Atwell_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "tchalla",
-    "name": "T'Challa / Black Panther",
-    "role": "King and protector of Wakanda",
-    "tags": [
-      "wakanda",
-      "avenger"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chadwick%20Boseman%20by%20Gage%20Skidmore%20July%202017%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Chadwick_Boseman_by_Gage_Skidmore_July_2017_%28cropped%29.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "shuri",
-    "name": "Shuri / Black Panther",
-    "role": "Wakandan scientist and successor Black Panther",
-    "tags": [
-      "wakanda",
-      "successor"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Letitia%20Wright%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Letitia_Wright_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "okoye",
-    "name": "Okoye",
-    "role": "General of the Dora Milaje",
-    "tags": [
-      "wakanda",
-      "warrior"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Danai%20Gurira%20%2843606261602%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Danai_Gurira_%2843606261602%29_%28cropped%29.jpg",
-      "author": "Gage - Flickr user Gage Skidmore",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "mbaku",
-    "name": "M'Baku",
-    "role": "Leader of the Jabari",
-    "tags": [
-      "wakanda",
-      "leader"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Winston%20Duke%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Winston_Duke_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "nakia",
-    "name": "Nakia",
-    "role": "Wakandan spy and humanitarian",
-    "tags": [
-      "wakanda",
-      "spy"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lupita%20Nyong%27o%20by%20Gage%20Skidmore%203.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Lupita_Nyong%27o_by_Gage_Skidmore_3.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Oscar%20Isaac%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Oscar_Isaac_by_Gage_Skidmore.jpg",
       "author": "Gage Skidmore",
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
@@ -342,117 +114,78 @@
     }
   },
   {
-    "id": "everett-ross",
-    "name": "Everett Ross",
-    "role": "CIA agent and Wakandan ally",
+    "id": "beast-fox",
+    "name": "Beast / Hank McCoy",
+    "role": "Mutant scientist in the Fox corridor",
     "tags": [
-      "wakanda",
-      "government"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Martin%20Freeman%202013%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Martin_Freeman_2013_%28cropped%29.jpg",
-      "author": "Sean Reynolds from Liverpool, United Kingdom",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
-    }
-  },
-  {
-    "id": "namor",
-    "name": "Namor",
-    "role": "Mutant ruler of Talokan",
-    "tags": [
-      "wakanda",
+      "fox",
       "mutant"
     ],
     "universes": [
-      "mcu-main"
+      "fox"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tenoch%20Huerta%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Tenoch_Huerta_%28cropped%29.jpg",
-      "author": "Milton Martínez / Secretaría de Cultura CDMX",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
-    }
-  },
-  {
-    "id": "riri-williams",
-    "name": "Riri Williams / Ironheart",
-    "role": "Young inventor in advanced armor",
-    "tags": [
-      "wakanda",
-      "inventor"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/DominiqueThorn-byPhilipRomano.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:DominiqueThorn-byPhilipRomano.jpg",
-      "author": "PhilipRomanoPhoto",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  {
-    "id": "yelena-belova",
-    "name": "Yelena Belova / Black Widow",
-    "role": "Red Room operative and Thunderbolt",
-    "tags": [
-      "thunderbolts",
-      "spy"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Florence%20Pugh%20%2848471761376%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Florence_Pugh_%2848471761376%29.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Nicholas%20Hoult%20%2846797398134%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Nicholas_Hoult_%2846797398134%29_%28cropped%29.jpg",
       "author": "Gage Skidmore from Peoria, AZ, United States of America",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
   },
   {
-    "id": "alexei-shostakov",
-    "name": "Alexei Shostakov / Red Guardian",
-    "role": "Russian super-soldier and Thunderbolt",
+    "id": "ben-grimm-first",
+    "name": "Ben Grimm / The Thing",
+    "role": "Rock-bodied Fantastic Four hero",
     "tags": [
-      "thunderbolts",
-      "family"
+      "fantastic-four",
+      "alternate"
     ],
     "universes": [
-      "mcu-main"
+      "first-steps"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/David%20Harbour%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:David_Harbour_by_Gage_Skidmore.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ebon%20Moss-Bachrach%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Ebon_Moss-Bachrach_by_Gage_Skidmore.jpg",
       "author": "Gage Skidmore",
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
   },
   {
-    "id": "valentina-fontaine",
-    "name": "Valentina Allegra de Fontaine",
-    "role": "Government power broker and Thunderbolts recruiter",
+    "id": "betty-ross",
+    "name": "Betty Ross",
+    "role": "Scientist and Bruce Banner ally",
     "tags": [
-      "thunderbolts",
-      "government"
+      "mcu-main"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Julia%20Louis-Dreyfus%20%2834178261844%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Julia_Louis-Dreyfus_%2834178261844%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Liv%20Tyler%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Liv_Tyler_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "billy-maximoff",
+    "name": "Billy Maximoff / Wiccan",
+    "role": "Magical son of Wanda whose soul is reborn",
+    "tags": [
+      "mystic",
+      "young-hero"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/JoeLocke%20technique01.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:JoeLocke_technique01.jpg",
+      "author": "Nadja von Massow",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
   },
   {
@@ -475,85 +208,178 @@
     }
   },
   {
-    "id": "peter-parker-mcu",
-    "name": "Peter Parker / Spider-Man (MCU)",
-    "role": "Teen hero and Avenger",
+    "id": "bruce-banner",
+    "name": "Bruce Banner / Hulk",
+    "role": "Scientist and founding Avenger",
     "tags": [
-      "spider-man",
-      "avenger"
+      "avenger",
+      "scientist"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Holland%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Tom_Holland_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "mj-mcu",
-    "name": "MJ / Michelle Jones-Watson",
-    "role": "Peter's friend and partner",
-    "tags": [
-      "spider-man",
-      "ally"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Zendaya%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Zendaya_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "ned-leeds",
-    "name": "Ned Leeds",
-    "role": "Peter's best friend with an affinity for sling-ring magic",
-    "tags": [
-      "spider-man",
-      "ally"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jacob%20Batalon%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Jacob_Batalon_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "may-parker",
-    "name": "May Parker",
-    "role": "Peter's aunt and moral guide",
-    "tags": [
-      "spider-man",
-      "family"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Marisa%20Tomei%20%2854584923007%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Marisa_Tomei_%2854584923007%29.jpg",
-      "author": "Gage Skidmore from Surprise, AZ, United States of America",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mark%20Ruffalo%20%2836201774756%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Mark_Ruffalo_%2836201774756%29_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
   },
   {
-    "id": "matt-murdock",
-    "name": "Matt Murdock / Daredevil",
-    "role": "Blind attorney and vigilante",
+    "id": "bucky-barnes",
+    "name": "Bucky Barnes / Winter Soldier",
+    "role": "Super-soldier and former HYDRA assassin",
+    "tags": [
+      "avenger",
+      "thunderbolts"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sebastian%20Stan%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Sebastian_Stan_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "cable-fox",
+    "name": "Cable",
+    "role": "Time-traveling soldier in Deadpool 2",
+    "tags": [
+      "fox"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Josh%20Brolin%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Josh_Brolin_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "carol-danvers",
+    "name": "Carol Danvers / Captain Marvel",
+    "role": "Cosmic-powered hero and Avenger",
+    "tags": [
+      "avenger",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Brie%20Larson%20%2827993599483%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Brie_Larson_%2827993599483%29_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "cassie-lang",
+    "name": "Cassie Lang / Stature",
+    "role": "Scott's daughter and young size-changing hero",
+    "tags": [
+      "quantum",
+      "young-hero"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kathryn%20Newton%20%2848017285797%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Kathryn_Newton_%2848017285797%29_%28cropped%29.jpg",
+      "author": "https://www.flickr.com/photos/greg2600/",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "charles-xavier-838",
+    "name": "Charles Xavier / Professor X (Earth-838)",
+    "role": "Illuminati telepath and Earth-838 variant",
+    "tags": [
+      "earth-838",
+      "illuminati"
+    ],
+    "universes": [
+      "earth-838"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Patrick%20Stewart%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Patrick_Stewart_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "charles-xavier-fox",
+    "name": "Charles Xavier / Professor X (Fox)",
+    "role": "Telepathic mutant leader",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Patrick%20Stewart%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Patrick_Stewart_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "claire-temple",
+    "name": "Claire Temple",
+    "role": "Night nurse connecting the street heroes",
+    "tags": [
+      "street"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rosario%20Dawson%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Rosario_Dawson_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "clint-barton",
+    "name": "Clint Barton / Hawkeye",
+    "role": "Archer and founding Avenger",
+    "tags": [
+      "avenger",
+      "mentor"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeremy%20Renner%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jeremy_Renner_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "colleen-wing",
+    "name": "Colleen Wing",
+    "role": "Sword master and Iron Fist ally",
     "tags": [
       "street",
       "defenders"
@@ -562,36 +388,74 @@
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Charlie%20Cox%20by%20Gage%20Skidmore%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Charlie_Cox_by_Gage_Skidmore_%28cropped%29.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jessica%20Henwick%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jessica_Henwick_by_Gage_Skidmore.jpg",
       "author": "Gage Skidmore",
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
   },
   {
-    "id": "wilson-fisk",
-    "name": "Wilson Fisk / Kingpin",
-    "role": "Crime boss and political power broker",
+    "id": "colossus-fox",
+    "name": "Colossus",
+    "role": "Metal-skinned X-Man ally of Deadpool",
     "tags": [
-      "street",
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Stefan%20Kapicic%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Stefan_Kapicic_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "curt-connors-webb",
+    "name": "Curt Connors / Lizard (Webb)",
+    "role": "Webb-universe Spider-Man antagonist",
+    "tags": [
+      "spider-man",
       "villain"
     ],
     "universes": [
-      "mcu-main"
+      "webb"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Vincent%20D%27Onofrio%20%2854585024457%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Vincent_D%27Onofrio_%2854585024457%29.jpg",
-      "author": "Gage Skidmore from Surprise, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhys%20Ifans%202011%20cropped.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Rhys_Ifans_2011_cropped.jpg",
+      "author": "Rhys_Ifans_2011.jpg: Rae Hanson derivative work: RanZag (talk)",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
     }
   },
   {
-    "id": "karen-page",
-    "name": "Karen Page",
-    "role": "Reporter and legal investigator",
+    "id": "cyclops-fox",
+    "name": "Scott Summers / Cyclops",
+    "role": "Optic-blast mutant leader",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/James%20Marsden%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:James_Marsden_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "danny-rand",
+    "name": "Danny Rand / Iron Fist",
+    "role": "K'un-Lun martial artist",
     "tags": [
       "street",
       "defenders"
@@ -600,11 +464,142 @@
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/20120714%20Deborah%20Ann%20Woll%20%40%20Comic-con%20cropped.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:20120714_Deborah_Ann_Woll_%40_Comic-con_cropped.jpg",
-      "author": "flickr user Gage Skidmore",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Finn%20Jones%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Finn_Jones_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "domino-fox",
+    "name": "Domino",
+    "role": "Luck-manipulating mercenary",
+    "tags": [
+      "fox"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Zazie%20Beetz%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Zazie_Beetz_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "drax",
+    "name": "Drax",
+    "role": "Warrior Guardian",
+    "tags": [
+      "guardians",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Dave%20Bautista%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Dave_Bautista_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "eddie-brock-venom",
+    "name": "Eddie Brock / Venom",
+    "role": "Symbiote host from Sony's Venom universe",
+    "tags": [
+      "sony",
+      "variant"
+    ],
+    "universes": [
+      "venom"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Hardy%20by%20Gage%20Skidmore%20in%202018.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tom_Hardy_by_Gage_Skidmore_in_2018.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "elektra-natchios",
+    "name": "Elektra Natchios",
+    "role": "Assassin tied to Daredevil",
+    "tags": [
+      "street"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%89lodie%20Yung%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:%C3%89lodie_Yung_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "elsa-bloodstone",
+    "name": "Elsa Bloodstone",
+    "role": "Monster hunter and Bloodstone heir",
+    "tags": [
+      "supernatural",
+      "hunter"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Laura%20Donnelly%202019%201%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Laura_Donnelly_2019_1_%28cropped%29.jpg",
+      "author": "The Tony Awards",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "emma-frost-fox",
+    "name": "Emma Frost",
+    "role": "Telepathic Hellfire Club mutant",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/January%20Jones%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:January_Jones_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "everett-ross",
+    "name": "Everett Ross",
+    "role": "CIA agent and Wakandan ally",
+    "tags": [
+      "wakanda",
+      "government"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Martin%20Freeman%202013%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Martin_Freeman_2013_%28cropped%29.jpg",
+      "author": "Sean Reynolds from Liverpool, United Kingdom",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
     }
   },
   {
@@ -621,6 +616,347 @@
     "portrait": {
       "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Crop%20of%20Jon%20Bernthal%20by%20Gage%20Skidmore%203.jpg?width=480",
       "page": "https://commons.wikimedia.org/wiki/File:Crop_of_Jon_Bernthal_by_Gage_Skidmore_3.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "galactus-first",
+    "name": "Galactus",
+    "role": "World-devouring cosmic entity",
+    "tags": [
+      "cosmic",
+      "villain"
+    ],
+    "universes": [
+      "first-steps"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/RalphHighRopes%20%286096494214%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:RalphHighRopes_%286096494214%29.jpg",
+      "author": "Sandwell Council",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "gamora",
+    "name": "Gamora",
+    "role": "Daughter of Thanos and Guardian",
+    "tags": [
+      "guardians",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Zoe%20Saldana%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Zoe_Saldana_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "groot",
+    "name": "Groot",
+    "role": "Flora colossus Guardian",
+    "tags": [
+      "guardians",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Vin%20Diesel%20cropped.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Vin_Diesel_cropped.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "hank-pym",
+    "name": "Hank Pym / Ant-Man",
+    "role": "Creator of Pym Particles",
+    "tags": [
+      "quantum",
+      "scientist"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Michael%20Douglas%2C%20seated%2C%201984.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Michael_Douglas%2C_seated%2C_1984.jpg",
+      "author": "Gary Friedman, Los Angeles Times",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  {
+    "id": "havok-fox",
+    "name": "Alex Summers / Havok",
+    "role": "Energy-blasting mutant",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lucas%20Till%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Lucas_Till_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "he-who-remains",
+    "name": "He Who Remains / Kang variants",
+    "role": "Multiversal variant and former TVA ruler",
+    "tags": [
+      "tva",
+      "villain"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jonathan%20Majors%20%2852664029642%29%20%28cropped%29.png?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jonathan_Majors_%2852664029642%29_%28cropped%29.png",
+      "author": "Eva Rinaldi from Abbotsford, Australia",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "heimdall",
+    "name": "Heimdall",
+    "role": "Asgardian sentry",
+    "tags": [
+      "mcu-main",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Idris%20Elba%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Idris_Elba_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "hope-van-dyne",
+    "name": "Hope van Dyne / Wasp",
+    "role": "Scientist and size-changing hero",
+    "tags": [
+      "avenger",
+      "quantum"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Evangeline%20Lilly%202014%20Comic%20Con%2001%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Evangeline_Lilly_2014_Comic_Con_01_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "howard-stark",
+    "name": "Howard Stark",
+    "role": "Inventor and founder of Stark Industries",
+    "tags": [
+      "mcu-main",
+      "founder"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/John%20Slattery%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:John_Slattery_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "hunter-b15",
+    "name": "Hunter B-15",
+    "role": "TVA hunter who helps reform the organization",
+    "tags": [
+      "tva",
+      "ally"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Wunmi%20Mosaku%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Wunmi_Mosaku_%28cropped%29.jpg",
+      "author": "jamie.minoprio",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "iceman-fox",
+    "name": "Bobby Drake / Iceman",
+    "role": "Ice-forming mutant",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Shawn%20Ashmore%20at%20the%202019%20San%20Diego%20Comic-Con%20International.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Shawn_Ashmore_at_the_2019_San_Diego_Comic-Con_International.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "ikaris",
+    "name": "Ikaris",
+    "role": "Eternal with cosmic energy",
+    "tags": [
+      "mcu-main",
+      "eternals"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Richard%20Madden%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Richard_Madden_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "jack-russell",
+    "name": "Jack Russell / Werewolf by Night",
+    "role": "Monster hunter and werewolf",
+    "tags": [
+      "supernatural",
+      "monster"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Gael%20Garcia%20Bernal%20%2816393547145%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Gael_Garcia_Bernal_%2816393547145%29.jpg",
+      "author": "Festival Ambulante",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "james-rhodes",
+    "name": "James Rhodes / War Machine",
+    "role": "Air Force officer in powered armor",
+    "tags": [
+      "avenger",
+      "military"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Don%20Cheadle%20%2846909540142%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Don_Cheadle_%2846909540142%29.jpg",
+      "author": "Greg2600",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "jane-foster",
+    "name": "Jane Foster",
+    "role": "Astrophysicist and Thor ally",
+    "tags": [
+      "mcu-main",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Natalie%20Portman%20Cannes%202015%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Natalie_Portman_Cannes_2015_2.jpg",
+      "author": "Georges Biard",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "janet-van-dyne",
+    "name": "Janet van Dyne / Wasp",
+    "role": "Original Wasp and Quantum Realm survivor",
+    "tags": [
+      "quantum",
+      "founder"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Michelle%20Pfeiffer90.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Michelle_Pfeiffer90.jpg",
+      "author": "Alan Light, edited by Blofeld",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "id": "jean-grey-fox",
+    "name": "Jean Grey / Phoenix",
+    "role": "Telepathic mutant in the Fox corridor",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sophie%20Turner%20%28Game%20of%20Thrones%29%20Red%20Carpet%20Comic%20Con%202014.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Sophie_Turner_(Game_of_Thrones)_Red_Carpet_Comic_Con_2014.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "jennifer-walters",
+    "name": "Jennifer Walters / She-Hulk",
+    "role": "Lawyer and gamma-powered hero",
+    "tags": [
+      "mcu-main"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tatiana%20Maslany%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tatiana_Maslany_by_Gage_Skidmore.jpg",
       "author": "Gage Skidmore",
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
@@ -646,9 +982,66 @@
     }
   },
   {
-    "id": "luke-cage",
-    "name": "Luke Cage",
-    "role": "Bulletproof Harlem protector",
+    "id": "johnny-storm-first",
+    "name": "Johnny Storm / Human Torch (First Steps)",
+    "role": "Flame-powered Fantastic Four hero",
+    "tags": [
+      "fantastic-four",
+      "alternate"
+    ],
+    "universes": [
+      "first-steps"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Joseph%20Quinn%20%2853673388589%29%20cropped.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Joseph_Quinn_%2853673388589%29_cropped.jpg",
+      "author": "Gage Skidmore from Surprise, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "johnny-storm-fox",
+    "name": "Johnny Storm / Human Torch (Fox)",
+    "role": "Flame-powered Fantastic Four variant",
+    "tags": [
+      "fox",
+      "variant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/ChrisEvans2023.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:ChrisEvans2023.jpg",
+      "author": "Philip Romano",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  {
+    "id": "kamala-khan",
+    "name": "Kamala Khan / Ms. Marvel",
+    "role": "Mutant light-energy hero",
+    "tags": [
+      "young-hero",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Iman%20Vellani%202022%20%281%29.png?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Iman_Vellani_2022_%281%29.png",
+      "author": "VOA Urdu",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
+    }
+  },
+  {
+    "id": "karen-page",
+    "name": "Karen Page",
+    "role": "Reporter and legal investigator",
     "tags": [
       "street",
       "defenders"
@@ -657,24 +1050,12 @@
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mike%20Colter%20%2836184601695%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Mike_Colter_%2836184601695%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/20120714%20Deborah%20Ann%20Woll%20%40%20Comic-con%20cropped.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:20120714_Deborah_Ann_Woll_%40_Comic-con_cropped.jpg",
+      "author": "flickr user Gage Skidmore",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
-  },
-  {
-    "id": "maya-lopez",
-    "name": "Maya Lopez / Echo",
-    "role": "Deaf fighter and former Fisk protégé",
-    "tags": [
-      "street",
-      "choctaw"
-    ],
-    "universes": [
-      "mcu-main"
-    ]
   },
   {
     "id": "kate-bishop",
@@ -696,247 +1077,76 @@
     }
   },
   {
-    "id": "stephen-strange",
-    "name": "Stephen Strange / Doctor Strange",
-    "role": "Master of the Mystic Arts",
+    "id": "katy-chen",
+    "name": "Katy Chen",
+    "role": "Archer and Shang-Chi's best friend",
     "tags": [
-      "mystic",
-      "avenger"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/BCumberbatch%20Comic-Con%202019.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:BCumberbatch_Comic-Con_2019.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "wong",
-    "name": "Wong",
-    "role": "Sorcerer Supreme and Kamar-Taj leader",
-    "tags": [
-      "mystic",
+      "hero",
       "ally"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Benedict%20Wong%2C%202016%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Benedict_Wong%2C_2016_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Awkwafina%2C%202018%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Awkwafina%2C_2018_%28cropped%29.jpg",
+      "author": "Casi Moss",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
   },
   {
-    "id": "wanda-maximoff",
-    "name": "Wanda Maximoff / Scarlet Witch",
-    "role": "Chaos-magic user and former Avenger",
+    "id": "kingo",
+    "name": "Kingo",
+    "role": "Eternal energy projector",
     "tags": [
-      "mystic",
-      "avenger"
+      "mcu-main",
+      "eternals"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Elizabeth%20Olsen%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Elizabeth_Olsen_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kumail%20Nanjiani%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Kumail_Nanjiani_by_Gage_Skidmore.jpg",
       "author": "Gage Skidmore",
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
   },
   {
-    "id": "vision",
-    "name": "Vision / White Vision",
-    "role": "Synthezoid created from JARVIS, vibranium, and the Mind Stone",
+    "id": "kitty-pride-fox",
+    "name": "Kitty Pryde",
+    "role": "Phasing mutant",
     "tags": [
-      "mystic",
-      "avenger"
+      "fox",
+      "mutant"
     ],
     "universes": [
-      "mcu-main"
+      "fox"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Paul%20Bettany%20%2848469131797%29%20%28cropped%29~2.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Paul_Bettany_%2848469131797%29_%28cropped%29~2.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "agatha-harkness",
-    "name": "Agatha Harkness",
-    "role": "Witch, mentor, and antagonist",
-    "tags": [
-      "mystic",
-      "witch"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kathryn%20Hahn%20%E2%80%93%20T%27ruah%202016%20Benefit%20Gala%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Kathryn_Hahn_%E2%80%93_T%27ruah_2016_Benefit_Gala_%28cropped%29.jpg",
-      "author": "T'ruah",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Elliot%20Page%20at%20TIFF%202015.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Elliot_Page_at_TIFF_2015.jpg",
+      "author": "George Pimentel",
       "license": "CC BY 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
     }
   },
   {
-    "id": "billy-maximoff",
-    "name": "Billy Maximoff / Wiccan",
-    "role": "Magical son of Wanda whose soul is reborn",
+    "id": "laura-fox",
+    "name": "Laura / X-23",
+    "role": "Cloned daughter of Wolverine",
     "tags": [
-      "mystic",
-      "young-hero"
+      "fox",
+      "mutant"
     ],
     "universes": [
-      "mcu-main"
+      "fox"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/JoeLocke%20technique01.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:JoeLocke_technique01.jpg",
-      "author": "Nadja von Massow",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  {
-    "id": "america-chavez",
-    "name": "America Chavez",
-    "role": "Multiverse traveler",
-    "tags": [
-      "mystic",
-      "multiverse"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Xochitl%20Gomez%20-%202024%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Xochitl_Gomez_-_2024_%28cropped%29.jpg",
-      "author": "The White House",
-      "license": "Public domain",
-      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
-    }
-  },
-  {
-    "id": "loki-tva",
-    "name": "Loki (TVA variant)",
-    "role": "Variant who becomes guardian of branching timelines",
-    "tags": [
-      "tva",
-      "variant"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Hiddleston%20%2848468962561%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Tom_Hiddleston_%2848468962561%29_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "sylvie",
-    "name": "Sylvie",
-    "role": "Loki variant who breaks the TVA's old order",
-    "tags": [
-      "tva",
-      "variant"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sophia%20Di%20Martino%20at%2082nd%20Venice%20International%20Film%20Festival-3%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Sophia_Di_Martino_at_82nd_Venice_International_Film_Festival-3_%28cropped%29.jpg",
-      "author": "LucaFazPhoto",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  {
-    "id": "mobius",
-    "name": "Mobius M. Mobius",
-    "role": "TVA analyst and Loki's guide",
-    "tags": [
-      "tva",
-      "ally"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Owen%20Wilson%20Cannes%202011%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Owen_Wilson_Cannes_2011_%28cropped%29.jpg",
-      "author": "Owen_Wilson_Cannes_2011.jpg: Georges Biard derivative work: César (talk)",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "hunter-b15",
-    "name": "Hunter B-15",
-    "role": "TVA hunter who helps reform the organization",
-    "tags": [
-      "tva",
-      "ally"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Wunmi%20Mosaku%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Wunmi_Mosaku_%28cropped%29.jpg",
-      "author": "jamie.minoprio",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "he-who-remains",
-    "name": "He Who Remains / Kang variants",
-    "role": "Multiversal variant and former TVA ruler",
-    "tags": [
-      "tva",
-      "villain"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jonathan%20Majors%20%2852664029642%29%20%28cropped%29.png?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Jonathan_Majors_%2852664029642%29_%28cropped%29.png",
-      "author": "Eva Rinaldi from Abbotsford, Australia",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "marc-spector",
-    "name": "Marc Spector / Moon Knight",
-    "role": "Avatar of Khonshu",
-    "tags": [
-      "supernatural",
-      "hero"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Oscar%20Isaac%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Oscar_Isaac_by_Gage_Skidmore.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Dafne%20Keen%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Dafne_Keen_by_Gage_Skidmore.jpg",
       "author": "Gage Skidmore",
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
@@ -962,41 +1172,887 @@
     }
   },
   {
-    "id": "jack-russell",
-    "name": "Jack Russell / Werewolf by Night",
-    "role": "Monster hunter and werewolf",
+    "id": "logan-wolverine",
+    "name": "Logan / Wolverine",
+    "role": "Mutant with adamantium claws",
     "tags": [
-      "supernatural",
-      "monster"
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hugh%20Jackman%20by%20Gage%20Skidmore%203.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Hugh_Jackman_by_Gage_Skidmore_3.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "loki-main",
+    "name": "Loki (main-timeline)",
+    "role": "Asgardian prince and former antagonist",
+    "tags": [
+      "asgard",
+      "variant"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Gael%20Garcia%20Bernal%20%2816393547145%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Gael_Garcia_Bernal_%2816393547145%29.jpg",
-      "author": "Festival Ambulante",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Hiddleston%20%2848468962561%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tom_Hiddleston_%2848468962561%29_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
   },
   {
-    "id": "elsa-bloodstone",
-    "name": "Elsa Bloodstone",
-    "role": "Monster hunter and Bloodstone heir",
+    "id": "loki-tva",
+    "name": "Loki (TVA variant)",
+    "role": "Variant who becomes guardian of branching timelines",
     "tags": [
-      "supernatural",
-      "hunter"
+      "tva",
+      "variant"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Laura%20Donnelly%202019%201%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Laura_Donnelly_2019_1_%28cropped%29.jpg",
-      "author": "The Tony Awards",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Hiddleston%20%2848468962561%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tom_Hiddleston_%2848468962561%29_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "luke-cage",
+    "name": "Luke Cage",
+    "role": "Bulletproof Harlem protector",
+    "tags": [
+      "street",
+      "defenders"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mike%20Colter%20%2836184601695%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Mike_Colter_%2836184601695%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "magneto-fox",
+    "name": "Erik Lehnsherr / Magneto",
+    "role": "Mutant leader in the Fox corridor",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Michael%20Fassbender%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Michael_Fassbender_(cropped).jpg",
+      "author": "Georges Biard",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "mantis",
+    "name": "Mantis",
+    "role": "Empathic Guardian and Quill's half-sister",
+    "tags": [
+      "guardians",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Pom%20Klementieff%20IMG%202106%20%2837440774086%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Pom_Klementieff_IMG_2106_%2837440774086%29.jpg",
+      "author": "Super Festivals from Ft. Lauderdale, USA",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "id": "marc-spector",
+    "name": "Marc Spector / Moon Knight",
+    "role": "Avatar of Khonshu",
+    "tags": [
+      "supernatural",
+      "hero"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Oscar%20Isaac%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Oscar_Isaac_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "matt-murdock",
+    "name": "Matt Murdock / Daredevil",
+    "role": "Blind attorney and vigilante",
+    "tags": [
+      "street",
+      "defenders"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Charlie%20Cox%20by%20Gage%20Skidmore%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Charlie_Cox_by_Gage_Skidmore_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "max-dillon-webb",
+    "name": "Max Dillon / Electro (Webb)",
+    "role": "Webb-universe Spider-Man antagonist",
+    "tags": [
+      "spider-man",
+      "villain"
+    ],
+    "universes": [
+      "webb"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jamie%20Foxx%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jamie_Foxx_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "may-parker",
+    "name": "May Parker",
+    "role": "Peter's aunt and moral guide",
+    "tags": [
+      "spider-man",
+      "family"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Marisa%20Tomei%20%2854584923007%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Marisa_Tomei_%2854584923007%29.jpg",
+      "author": "Gage Skidmore from Surprise, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "maya-lopez",
+    "name": "Maya Lopez / Echo",
+    "role": "Deaf fighter and former Fisk protégé",
+    "tags": [
+      "street",
+      "choctaw"
+    ],
+    "universes": [
+      "mcu-main"
+    ]
+  },
+  {
+    "id": "mbaku",
+    "name": "M'Baku",
+    "role": "Leader of the Jabari",
+    "tags": [
+      "wakanda",
+      "leader"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Winston%20Duke%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Winston_Duke_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "microchip",
+    "name": "David Lieberman / Micro",
+    "role": "Punisher's hacker ally",
+    "tags": [
+      "street"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ebon%20Moss-Bachrach%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Ebon_Moss-Bachrach_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "misty-knight",
+    "name": "Misty Knight",
+    "role": "Harlem detective",
+    "tags": [
+      "street"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Simone%20Missick%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Simone_Missick_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "mj-mcu",
+    "name": "MJ / Michelle Jones-Watson",
+    "role": "Peter's friend and partner",
+    "tags": [
+      "spider-man",
+      "ally"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Zendaya%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Zendaya_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "mobius",
+    "name": "Mobius M. Mobius",
+    "role": "TVA analyst and Loki's guide",
+    "tags": [
+      "tva",
+      "ally"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Owen%20Wilson%20Cannes%202011%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Owen_Wilson_Cannes_2011_%28cropped%29.jpg",
+      "author": "Owen_Wilson_Cannes_2011.jpg: Georges Biard derivative work: César (talk)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "monica-rambeau",
+    "name": "Monica Rambeau / Photon",
+    "role": "Energy-powered S.A.B.E.R. agent",
+    "tags": [
+      "cosmic",
+      "saber"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Teyonah%20Parris%20Marvel%20Studios%20panel%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Teyonah_Parris_Marvel_Studios_panel_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "mordo",
+    "name": "Karl Mordo",
+    "role": "Master of the Mystic Arts",
+    "tags": [
+      "mcu-main",
+      "magic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chiwetel%20Ejiofor%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Chiwetel_Ejiofor_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "mystique-fox",
+    "name": "Raven Darkhölme / Mystique",
+    "role": "Shapeshifting mutant in the Fox corridor",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jennifer%20Lawrence%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jennifer_Lawrence_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "nakia",
+    "name": "Nakia",
+    "role": "Wakandan spy and humanitarian",
+    "tags": [
+      "wakanda",
+      "spy"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lupita%20Nyong%27o%20by%20Gage%20Skidmore%203.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Lupita_Nyong%27o_by_Gage_Skidmore_3.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "namor",
+    "name": "Namor",
+    "role": "Mutant ruler of Talokan",
+    "tags": [
+      "wakanda",
+      "mutant"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tenoch%20Huerta%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tenoch_Huerta_%28cropped%29.jpg",
+      "author": "Milton Martínez / Secretaría de Cultura CDMX",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "id": "natasha-romanoff",
+    "name": "Natasha Romanoff / Black Widow",
+    "role": "Spy and founding Avenger",
+    "tags": [
+      "avenger",
+      "spy"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Scarlett%20Johansson%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Scarlett_Johansson_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "nebula",
+    "name": "Nebula",
+    "role": "Daughter of Thanos turned Guardian and Avenger ally",
+    "tags": [
+      "guardians",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Karen%20Gillan%20%2834609339830%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Karen_Gillan_%2834609339830%29_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "ned-leeds",
+    "name": "Ned Leeds",
+    "role": "Peter's best friend with an affinity for sling-ring magic",
+    "tags": [
+      "spider-man",
+      "ally"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jacob%20Batalon%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jacob_Batalon_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "negasonic-fox",
+    "name": "Negasonic Teenage Warhead",
+    "role": "Explosive mutant ally of Deadpool",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Brianna%20Hildebrand%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Brianna_Hildebrand_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "nick-fury",
+    "name": "Nick Fury",
+    "role": "S.H.I.E.L.D. director and architect of the Avengers Initiative",
+    "tags": [
+      "shield",
+      "organizer"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Samuel%20L.%20Jackson%20%2828769136937%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Samuel_L._Jackson_%2828769136937%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "nightcrawler-fox",
+    "name": "Kurt Wagner / Nightcrawler",
+    "role": "Teleporting mutant",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Alan%20Cumming%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Alan_Cumming_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "norman-osborn-raimi",
+    "name": "Norman Osborn / Green Goblin (Raimi)",
+    "role": "Raimi-universe Spider-Man antagonist",
+    "tags": [
+      "spider-man",
+      "villain"
+    ],
+    "universes": [
+      "raimi"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Willem%20Dafoe-63667%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Willem_Dafoe-63667_%28cropped%29.jpg",
+      "author": "Harald Krichel",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  {
+    "id": "odin-borson",
+    "name": "Odin",
+    "role": "King of Asgard",
+    "tags": [
+      "mcu-main",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Anthony%20Hopkins%20Cannes%202019.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Anthony_Hopkins_Cannes_2019.jpg",
+      "author": "Georges Biard",
       "license": "CC BY 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "okoye",
+    "name": "Okoye",
+    "role": "General of the Dora Milaje",
+    "tags": [
+      "wakanda",
+      "warrior"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Danai%20Gurira%20%2843606261602%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Danai_Gurira_%2843606261602%29_%28cropped%29.jpg",
+      "author": "Gage - Flickr user Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "otto-octavius-raimi",
+    "name": "Otto Octavius / Doctor Octopus (Raimi)",
+    "role": "Raimi-universe Spider-Man antagonist",
+    "tags": [
+      "spider-man",
+      "villain"
+    ],
+    "universes": [
+      "raimi"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Alfred%20Molina.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Alfred_Molina.jpg",
+      "author": "Kevin Tostado from San Diego, USA",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  },
+  {
+    "id": "peggy-carter",
+    "name": "Peggy Carter / Agent Carter",
+    "role": "SSR agent and S.H.I.E.L.D. founder",
+    "tags": [
+      "shield",
+      "founder"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hayley%20Atwell%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Hayley_Atwell_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "pepper-potts",
+    "name": "Pepper Potts / Rescue",
+    "role": "Stark Industries executive and armored ally",
+    "tags": [
+      "stark",
+      "ally"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/GwynethPaltrowByAndreaRaffin2011.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:GwynethPaltrowByAndreaRaffin2011.jpg",
+      "author": "Andrea Raffin at http://www.andrearaffin.com",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "peter-parker-mcu",
+    "name": "Peter Parker / Spider-Man (MCU)",
+    "role": "Teen hero and Avenger",
+    "tags": [
+      "spider-man",
+      "avenger"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Holland%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tom_Holland_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "peter-parker-raimi",
+    "name": "Peter Parker / Spider-Man (Raimi)",
+    "role": "Spider-Man variant from the Raimi universe",
+    "tags": [
+      "spider-man",
+      "variant"
+    ],
+    "universes": [
+      "raimi"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tobey%20Maguire%202014.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tobey_Maguire_2014.jpg",
+      "author": "gdcgraphics",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "peter-parker-webb",
+    "name": "Peter Parker / Spider-Man (Webb)",
+    "role": "Spider-Man variant from The Amazing Spider-Man universe",
+    "tags": [
+      "spider-man",
+      "variant"
+    ],
+    "universes": [
+      "webb"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Andrew%20Garfield%20by%20Gage%20Skidmore%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Andrew_Garfield_by_Gage_Skidmore_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "peter-quill",
+    "name": "Peter Quill / Star-Lord",
+    "role": "Human-Celestial hybrid and Guardian",
+    "tags": [
+      "guardians",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chris%20Pratt%20%2828556109022%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Chris_Pratt_%2828556109022%29_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "phastos",
+    "name": "Phastos",
+    "role": "Eternal inventor",
+    "tags": [
+      "mcu-main",
+      "eternals"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Brian%20Tyree%20Henry%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Brian_Tyree_Henry_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "phil-coulson",
+    "name": "Phil Coulson",
+    "role": "S.H.I.E.L.D. agent",
+    "tags": [
+      "mcu-main",
+      "shield"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Clark%20Gregg%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Clark_Gregg_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "quicksilver-fox",
+    "name": "Pietro Maximoff / Quicksilver (Fox)",
+    "role": "Speedster in the Fox corridor",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Evan%20Peters%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Evan_Peters_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "reed-richards-838",
+    "name": "Reed Richards / Mister Fantastic (Earth-838)",
+    "role": "Illuminati scientist and Earth-838 variant",
+    "tags": [
+      "earth-838",
+      "illuminati"
+    ],
+    "universes": [
+      "earth-838"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/John%20Krasinski%202022.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:John_Krasinski_2022.jpg",
+      "author": "Prime Video AU &amp; NZ",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  },
+  {
+    "id": "reed-richards-first",
+    "name": "Reed Richards / Mister Fantastic (First Steps)",
+    "role": "Elastic scientist and Fantastic Four leader",
+    "tags": [
+      "fantastic-four",
+      "alternate"
+    ],
+    "universes": [
+      "first-steps"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Pedro%20Pascal%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Pedro_Pascal_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "riri-williams",
+    "name": "Riri Williams / Ironheart",
+    "role": "Young inventor in advanced armor",
+    "tags": [
+      "wakanda",
+      "inventor"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/DominiqueThorn-byPhilipRomano.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:DominiqueThorn-byPhilipRomano.jpg",
+      "author": "PhilipRomanoPhoto",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  {
+    "id": "rocket",
+    "name": "Rocket",
+    "role": "Genetically engineered Guardian and later captain",
+    "tags": [
+      "guardians",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Festival%20Internacional%20de%20Cine%20de%20San%20Sebasti%C3%A1n%202018%2C%20Bradley%20Cooper%2003.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Festival_Internacional_de_Cine_de_San_Sebasti%C3%A1n_2018%2C_Bradley_Cooper_03.jpg",
+      "author": "Mario A. P.",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "rogue-fox",
+    "name": "Rogue",
+    "role": "Power-absorbing mutant",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Anna%20Paquin%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Anna_Paquin_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "sabretooth-fox",
+    "name": "Victor Creed / Sabretooth",
+    "role": "Wolverine's feral rival",
+    "tags": [
+      "fox",
+      "villain"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Liev%20Schreiber%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Liev_Schreiber_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "sam-wilson",
+    "name": "Sam Wilson / Captain America",
+    "role": "Falcon and successor Captain America",
+    "tags": [
+      "avenger",
+      "successor"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Anthony%20Mackie%20%2848469212651%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Anthony_Mackie_%2848469212651%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
   },
   {
@@ -1019,79 +2075,41 @@
     }
   },
   {
-    "id": "hope-van-dyne",
-    "name": "Hope van Dyne / Wasp",
-    "role": "Scientist and size-changing hero",
+    "id": "sersi",
+    "name": "Sersi",
+    "role": "Matter-transforming Eternal",
     "tags": [
-      "avenger",
-      "quantum"
+      "eternal",
+      "cosmic"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Evangeline%20Lilly%202014%20Comic%20Con%2001%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Evangeline_Lilly_2014_Comic_Con_01_%28cropped%29.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Gemma%20Chan%202019.png?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Gemma_Chan_2019.png",
+      "author": "MTV International",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
     }
   },
   {
-    "id": "hank-pym",
-    "name": "Hank Pym / Ant-Man",
-    "role": "Creator of Pym Particles",
+    "id": "shalla-bal",
+    "name": "Shalla-Bal / Silver Surfer",
+    "role": "Herald of Galactus",
     "tags": [
-      "quantum",
-      "scientist"
+      "cosmic",
+      "alternate"
     ],
     "universes": [
-      "mcu-main"
+      "first-steps"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Michael%20Douglas%2C%20seated%2C%201984.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Michael_Douglas%2C_seated%2C_1984.jpg",
-      "author": "Gary Friedman, Los Angeles Times",
-      "license": "CC BY 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
-    }
-  },
-  {
-    "id": "janet-van-dyne",
-    "name": "Janet van Dyne / Wasp",
-    "role": "Original Wasp and Quantum Realm survivor",
-    "tags": [
-      "quantum",
-      "founder"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Michelle%20Pfeiffer90.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Michelle_Pfeiffer90.jpg",
-      "author": "Alan Light, edited by Blofeld",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
-    }
-  },
-  {
-    "id": "cassie-lang",
-    "name": "Cassie Lang / Stature",
-    "role": "Scott's daughter and young size-changing hero",
-    "tags": [
-      "quantum",
-      "young-hero"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Kathryn%20Newton%20%2848017285797%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Kathryn_Newton_%2848017285797%29_%28cropped%29.jpg",
-      "author": "https://www.flickr.com/photos/greg2600/",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Julia%20Garner%20Berlinale%202020%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Julia_Garner_Berlinale_2020_%28cropped%29.jpg",
+      "author": "Harald Krichel",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
   },
   {
@@ -1114,20 +2132,527 @@
     }
   },
   {
-    "id": "katy-chen",
-    "name": "Katy Chen",
-    "role": "Archer and Shang-Chi's best friend",
+    "id": "shuri",
+    "name": "Shuri / Black Panther",
+    "role": "Wakandan scientist and successor Black Panther",
     "tags": [
-      "hero",
+      "wakanda",
+      "successor"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Letitia%20Wright%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Letitia_Wright_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "simon-williams",
+    "name": "Simon Williams / Wonder Man",
+    "role": "Actor and powered hero in development",
+    "tags": [
+      "mcu-main"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Yahya%20Abdul-Mateen%20II%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Yahya_Abdul-Mateen_II_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "sprite",
+    "name": "Sprite",
+    "role": "Eternal illusionist",
+    "tags": [
+      "mcu-main",
+      "eternals"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lia%20McHugh%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Lia_McHugh_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "stephen-strange",
+    "name": "Stephen Strange / Doctor Strange",
+    "role": "Master of the Mystic Arts",
+    "tags": [
+      "mystic",
+      "avenger"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/BCumberbatch%20Comic-Con%202019.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:BCumberbatch_Comic-Con_2019.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "steve-rogers",
+    "name": "Steve Rogers / Captain America",
+    "role": "Super-soldier and founding Avenger",
+    "tags": [
+      "avenger",
+      "founder"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/ChrisEvans2023.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:ChrisEvans2023.jpg",
+      "author": "Philip Romano",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  {
+    "id": "steven-grant",
+    "name": "Steven Grant",
+    "role": "Moon Knight alter",
+    "tags": [
+      "mcu-main"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Oscar%20Isaac%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Oscar_Isaac_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "storm-fox",
+    "name": "Ororo Munroe / Storm",
+    "role": "Weather-controlling mutant",
+    "tags": [
+      "fox",
+      "mutant"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Halle%20Berry%20by%20Gage%20Skidmore%202.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Halle_Berry_by_Gage_Skidmore_2.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "sue-storm-first",
+    "name": "Sue Storm / Invisible Woman",
+    "role": "Force-field and invisibility hero",
+    "tags": [
+      "fantastic-four",
+      "alternate"
+    ],
+    "universes": [
+      "first-steps"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Vanessa%20Kirby%20at%20the%202024%20Toronto%20International%20Film%20Festival%2008%20%28Cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Vanessa_Kirby_at_the_2024_Toronto_International_Film_Festival_08_%28Cropped%29.jpg",
+      "author": "Jay Dixit",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  {
+    "id": "sylvie",
+    "name": "Sylvie",
+    "role": "Loki variant who breaks the TVA's old order",
+    "tags": [
+      "tva",
+      "variant"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sophia%20Di%20Martino%20at%2082nd%20Venice%20International%20Film%20Festival-3%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Sophia_Di_Martino_at_82nd_Venice_International_Film_Festival-3_%28cropped%29.jpg",
+      "author": "LucaFazPhoto",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  {
+    "id": "talos",
+    "name": "Talos",
+    "role": "Skrull leader and Fury ally",
+    "tags": [
+      "skrull",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Mendelsohn%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Ben_Mendelsohn_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "tchalla",
+    "name": "T'Challa / Black Panther",
+    "role": "King and protector of Wakanda",
+    "tags": [
+      "wakanda",
+      "avenger"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chadwick%20Boseman%20by%20Gage%20Skidmore%20July%202017%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Chadwick_Boseman_by_Gage_Skidmore_July_2017_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "thaddeus-ross",
+    "name": "Thaddeus Ross",
+    "role": "General and later Secretary of State",
+    "tags": [
+      "mcu-main"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/William%20Hurt%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:William_Hurt_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "thanos",
+    "name": "Thanos",
+    "role": "Titan warlord who collects the Infinity Stones",
+    "tags": [
+      "cosmic",
+      "villain"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Josh%20Brolin%20SDCC%202014.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Josh_Brolin_SDCC_2014.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "the-ancient-one",
+    "name": "The Ancient One",
+    "role": "Sorcerer Supreme mentor",
+    "tags": [
+      "mcu-main",
+      "magic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tilda%20Swinton%20Cannes%202016.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tilda_Swinton_Cannes_2016.jpg",
+      "author": "Georges Biard",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "thena",
+    "name": "Thena",
+    "role": "Warrior Eternal",
+    "tags": [
+      "eternal",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Angelina%20Jolie%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Angelina_Jolie_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "thor",
+    "name": "Thor Odinson",
+    "role": "Asgardian god of thunder and founding Avenger",
+    "tags": [
+      "avenger",
+      "cosmic"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chris%20Hemsworth%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Chris_Hemsworth_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "titania",
+    "name": "Mary MacPherran / Titania",
+    "role": "Superhuman rival to She-Hulk",
+    "tags": [
+      "mcu-main"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jameela%20Jamil%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Jameela_Jamil_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "tony-stark",
+    "name": "Tony Stark / Iron Man",
+    "role": "Genius inventor and founding Avenger",
+    "tags": [
+      "avenger",
+      "founder"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert%20Downey%20Jr%202014%20Comic%20Con%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Robert_Downey_Jr_2014_Comic_Con_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "trevor-slattery",
+    "name": "Trevor Slattery",
+    "role": "Actor and former false Mandarin",
+    "tags": [
+      "ten-rings",
       "ally"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Awkwafina%2C%202018%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Awkwafina%2C_2018_%28cropped%29.jpg",
-      "author": "Casi Moss",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Kingsley%2C%20The%20Boxtrolls%2C%202014%20Comic-Con%201%20%28crop%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Ben_Kingsley%2C_The_Boxtrolls%2C_2014_Comic-Con_1_%28crop%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "trish-walker",
+    "name": "Trish Walker",
+    "role": "Talk-show host and Jessica Jones ally",
+    "tags": [
+      "street"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rachael%20Taylor%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Rachael_Taylor_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "valentina-fontaine",
+    "name": "Valentina Allegra de Fontaine",
+    "role": "Government power broker and Thunderbolts recruiter",
+    "tags": [
+      "thunderbolts",
+      "government"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Julia%20Louis-Dreyfus%20%2834178261844%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Julia_Louis-Dreyfus_%2834178261844%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "valkyrie",
+    "name": "Valkyrie",
+    "role": "Asgardian warrior and ruler of New Asgard",
+    "tags": [
+      "asgard",
+      "hero"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tessa%20Thompson%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Tessa_Thompson_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "vanessa-fox",
+    "name": "Vanessa Carlysle",
+    "role": "Deadpool's partner",
+    "tags": [
+      "fox"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Morena%20Baccarin%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Morena_Baccarin_by_Gage_Skidmore.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "vision",
+    "name": "Vision / White Vision",
+    "role": "Synthezoid created from JARVIS, vibranium, and the Mind Stone",
+    "tags": [
+      "mystic",
+      "avenger"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Paul%20Bettany%20%2848469131797%29%20%28cropped%29~2.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Paul_Bettany_%2848469131797%29_%28cropped%29~2.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "wade-wilson",
+    "name": "Wade Wilson / Deadpool",
+    "role": "Regenerating mercenary who crosses the TVA and Fox corridor",
+    "tags": [
+      "fox",
+      "multiverse"
+    ],
+    "universes": [
+      "fox"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ryan%20Reynolds%20%2843744817152%29%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Ryan_Reynolds_%2843744817152%29_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "wanda-maximoff",
+    "name": "Wanda Maximoff / Scarlet Witch",
+    "role": "Chaos-magic user and former Avenger",
+    "tags": [
+      "mystic",
+      "avenger"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Elizabeth%20Olsen%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Elizabeth_Olsen_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "author": "Gage Skidmore",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+  },
+  {
+    "id": "wilson-fisk",
+    "name": "Wilson Fisk / Kingpin",
+    "role": "Crime boss and political power broker",
+    "tags": [
+      "street",
+      "villain"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Vincent%20D%27Onofrio%20%2854585024457%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Vincent_D%27Onofrio_%2854585024457%29.jpg",
+      "author": "Gage Skidmore from Surprise, AZ, United States of America",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    }
+  },
+  {
+    "id": "wong",
+    "name": "Wong",
+    "role": "Sorcerer Supreme and Kamar-Taj leader",
+    "tags": [
+      "mystic",
+      "ally"
+    ],
+    "universes": [
+      "mcu-main"
+    ],
+    "portrait": {
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Benedict%20Wong%2C%202016%20%28cropped%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Benedict_Wong%2C_2016_%28cropped%29.jpg",
+      "author": "Gage Skidmore from Peoria, AZ, United States of America",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
@@ -1171,484 +2696,28 @@
     }
   },
   {
-    "id": "trevor-slattery",
-    "name": "Trevor Slattery",
-    "role": "Actor and former false Mandarin",
+    "id": "yelena-belova",
+    "name": "Yelena Belova / Black Widow",
+    "role": "Red Room operative and Thunderbolt",
     "tags": [
-      "ten-rings",
-      "ally"
+      "thunderbolts",
+      "spy"
     ],
     "universes": [
       "mcu-main"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Kingsley%2C%20The%20Boxtrolls%2C%202014%20Comic-Con%201%20%28crop%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Ben_Kingsley%2C_The_Boxtrolls%2C_2014_Comic-Con_1_%28crop%29.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "peter-quill",
-    "name": "Peter Quill / Star-Lord",
-    "role": "Human-Celestial hybrid and Guardian",
-    "tags": [
-      "guardians",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Chris%20Pratt%20%2828556109022%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Chris_Pratt_%2828556109022%29_%28cropped%29.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Florence%20Pugh%20%2848471761376%29.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Florence_Pugh_%2848471761376%29.jpg",
       "author": "Gage Skidmore from Peoria, AZ, United States of America",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
   },
   {
-    "id": "gamora",
-    "name": "Gamora",
-    "role": "Daughter of Thanos and Guardian",
-    "tags": [
-      "guardians",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Zoe%20Saldana%20by%20Gage%20Skidmore%202.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Zoe_Saldana_by_Gage_Skidmore_2.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "nebula",
-    "name": "Nebula",
-    "role": "Daughter of Thanos turned Guardian and Avenger ally",
-    "tags": [
-      "guardians",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Karen%20Gillan%20%2834609339830%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Karen_Gillan_%2834609339830%29_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "rocket",
-    "name": "Rocket",
-    "role": "Genetically engineered Guardian and later captain",
-    "tags": [
-      "guardians",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Festival%20Internacional%20de%20Cine%20de%20San%20Sebasti%C3%A1n%202018%2C%20Bradley%20Cooper%2003.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Festival_Internacional_de_Cine_de_San_Sebasti%C3%A1n_2018%2C_Bradley_Cooper_03.jpg",
-      "author": "Mario A. P.",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "groot",
-    "name": "Groot",
-    "role": "Flora colossus Guardian",
-    "tags": [
-      "guardians",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Vin%20Diesel%20cropped.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Vin_Diesel_cropped.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "drax",
-    "name": "Drax",
-    "role": "Warrior Guardian",
-    "tags": [
-      "guardians",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Dave%20Bautista%20by%20Gage%20Skidmore%202.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Dave_Bautista_by_Gage_Skidmore_2.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "mantis",
-    "name": "Mantis",
-    "role": "Empathic Guardian and Quill's half-sister",
-    "tags": [
-      "guardians",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Pom%20Klementieff%20IMG%202106%20%2837440774086%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Pom_Klementieff_IMG_2106_%2837440774086%29.jpg",
-      "author": "Super Festivals from Ft. Lauderdale, USA",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
-    }
-  },
-  {
-    "id": "adam-warlock",
-    "name": "Adam Warlock",
-    "role": "Artificial cosmic being and new Guardian",
-    "tags": [
-      "guardians",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Will%20Poulter%20at%20the%20Toronto%20International%20Film%20Festival%203%20%28Cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Will_Poulter_at_the_Toronto_International_Film_Festival_3_%28Cropped%29.jpg",
-      "author": "John Sears",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  {
-    "id": "thanos",
-    "name": "Thanos",
-    "role": "Titan warlord who collects the Infinity Stones",
-    "tags": [
-      "cosmic",
-      "villain"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Josh%20Brolin%20SDCC%202014.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Josh_Brolin_SDCC_2014.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "loki-main",
-    "name": "Loki (main-timeline)",
-    "role": "Asgardian prince and former antagonist",
-    "tags": [
-      "asgard",
-      "variant"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Hiddleston%20%2848468962561%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Tom_Hiddleston_%2848468962561%29_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "valkyrie",
-    "name": "Valkyrie",
-    "role": "Asgardian warrior and ruler of New Asgard",
-    "tags": [
-      "asgard",
-      "hero"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tessa%20Thompson%20by%20Gage%20Skidmore%202%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Tessa_Thompson_by_Gage_Skidmore_2_%28cropped%29.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "carol-danvers",
-    "name": "Carol Danvers / Captain Marvel",
-    "role": "Cosmic-powered hero and Avenger",
-    "tags": [
-      "avenger",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Brie%20Larson%20%2827993599483%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Brie_Larson_%2827993599483%29_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "monica-rambeau",
-    "name": "Monica Rambeau / Photon",
-    "role": "Energy-powered S.A.B.E.R. agent",
-    "tags": [
-      "cosmic",
-      "saber"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Teyonah%20Parris%20Marvel%20Studios%20panel%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Teyonah_Parris_Marvel_Studios_panel_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "kamala-khan",
-    "name": "Kamala Khan / Ms. Marvel",
-    "role": "Mutant light-energy hero",
-    "tags": [
-      "young-hero",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Iman%20Vellani%202022%20%281%29.png?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Iman_Vellani_2022_%281%29.png",
-      "author": "VOA Urdu",
-      "license": "Public domain",
-      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/"
-    }
-  },
-  {
-    "id": "talos",
-    "name": "Talos",
-    "role": "Skrull leader and Fury ally",
-    "tags": [
-      "skrull",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Mendelsohn%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Ben_Mendelsohn_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "sersi",
-    "name": "Sersi",
-    "role": "Matter-transforming Eternal",
-    "tags": [
-      "eternal",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Gemma%20Chan%202019.png?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Gemma_Chan_2019.png",
-      "author": "MTV International",
-      "license": "CC BY 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
-    }
-  },
-  {
-    "id": "thena",
-    "name": "Thena",
-    "role": "Warrior Eternal",
-    "tags": [
-      "eternal",
-      "cosmic"
-    ],
-    "universes": [
-      "mcu-main"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Angelina%20Jolie%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Angelina_Jolie_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "peter-parker-raimi",
-    "name": "Peter Parker / Spider-Man (Raimi)",
-    "role": "Spider-Man variant from the Raimi universe",
-    "tags": [
-      "spider-man",
-      "variant"
-    ],
-    "universes": [
-      "raimi"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tobey%20Maguire%202014.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Tobey_Maguire_2014.jpg",
-      "author": "gdcgraphics",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "norman-osborn-raimi",
-    "name": "Norman Osborn / Green Goblin (Raimi)",
-    "role": "Raimi-universe Spider-Man antagonist",
-    "tags": [
-      "spider-man",
-      "villain"
-    ],
-    "universes": [
-      "raimi"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Willem%20Dafoe-63667%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Willem_Dafoe-63667_%28cropped%29.jpg",
-      "author": "Harald Krichel",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  {
-    "id": "otto-octavius-raimi",
-    "name": "Otto Octavius / Doctor Octopus (Raimi)",
-    "role": "Raimi-universe Spider-Man antagonist",
-    "tags": [
-      "spider-man",
-      "villain"
-    ],
-    "universes": [
-      "raimi"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Alfred%20Molina.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Alfred_Molina.jpg",
-      "author": "Kevin Tostado from San Diego, USA",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
-    }
-  },
-  {
-    "id": "peter-parker-webb",
-    "name": "Peter Parker / Spider-Man (Webb)",
-    "role": "Spider-Man variant from The Amazing Spider-Man universe",
-    "tags": [
-      "spider-man",
-      "variant"
-    ],
-    "universes": [
-      "webb"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Andrew%20Garfield%20by%20Gage%20Skidmore%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Andrew_Garfield_by_Gage_Skidmore_%28cropped%29.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "curt-connors-webb",
-    "name": "Curt Connors / Lizard (Webb)",
-    "role": "Webb-universe Spider-Man antagonist",
-    "tags": [
-      "spider-man",
-      "villain"
-    ],
-    "universes": [
-      "webb"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhys%20Ifans%202011%20cropped.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Rhys_Ifans_2011_cropped.jpg",
-      "author": "Rhys_Ifans_2011.jpg: Rae Hanson derivative work: RanZag (talk)",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
-    }
-  },
-  {
-    "id": "max-dillon-webb",
-    "name": "Max Dillon / Electro (Webb)",
-    "role": "Webb-universe Spider-Man antagonist",
-    "tags": [
-      "spider-man",
-      "villain"
-    ],
-    "universes": [
-      "webb"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jamie%20Foxx%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Jamie_Foxx_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "wade-wilson",
-    "name": "Wade Wilson / Deadpool",
-    "role": "Regenerating mercenary who crosses the TVA and Fox corridor",
-    "tags": [
-      "fox",
-      "multiverse"
-    ],
-    "universes": [
-      "fox"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ryan%20Reynolds%20%2843744817152%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Ryan_Reynolds_%2843744817152%29_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "logan-wolverine",
-    "name": "Logan / Wolverine",
-    "role": "Mutant with adamantium claws",
+    "id": "yukio-fox",
+    "name": "Yukio",
+    "role": "Mutant ally in Japan",
     "tags": [
       "fox",
       "mutant"
@@ -1657,236 +2726,8 @@
       "fox"
     ],
     "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hugh%20Jackman%20by%20Gage%20Skidmore%203.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Hugh_Jackman_by_Gage_Skidmore_3.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "charles-xavier-fox",
-    "name": "Charles Xavier / Professor X (Fox)",
-    "role": "Telepathic mutant leader",
-    "tags": [
-      "fox",
-      "mutant"
-    ],
-    "universes": [
-      "fox"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Patrick%20Stewart%20by%20Gage%20Skidmore%202.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Patrick_Stewart_by_Gage_Skidmore_2.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "beast-fox",
-    "name": "Beast / Hank McCoy",
-    "role": "Mutant scientist in the Fox corridor",
-    "tags": [
-      "fox",
-      "mutant"
-    ],
-    "universes": [
-      "fox"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Nicholas%20Hoult%20%2846797398134%29%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Nicholas_Hoult_%2846797398134%29_%28cropped%29.jpg",
-      "author": "Gage Skidmore from Peoria, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "johnny-storm-fox",
-    "name": "Johnny Storm / Human Torch (Fox)",
-    "role": "Flame-powered Fantastic Four variant",
-    "tags": [
-      "fox",
-      "variant"
-    ],
-    "universes": [
-      "fox"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/ChrisEvans2023.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:ChrisEvans2023.jpg",
-      "author": "Philip Romano",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  {
-    "id": "reed-richards-838",
-    "name": "Reed Richards / Mister Fantastic (Earth-838)",
-    "role": "Illuminati scientist and Earth-838 variant",
-    "tags": [
-      "earth-838",
-      "illuminati"
-    ],
-    "universes": [
-      "earth-838"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/John%20Krasinski%202022.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:John_Krasinski_2022.jpg",
-      "author": "Prime Video AU &amp; NZ",
-      "license": "CC BY 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
-    }
-  },
-  {
-    "id": "charles-xavier-838",
-    "name": "Charles Xavier / Professor X (Earth-838)",
-    "role": "Illuminati telepath and Earth-838 variant",
-    "tags": [
-      "earth-838",
-      "illuminati"
-    ],
-    "universes": [
-      "earth-838"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Patrick%20Stewart%20by%20Gage%20Skidmore%202.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Patrick_Stewart_by_Gage_Skidmore_2.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "reed-richards-first",
-    "name": "Reed Richards / Mister Fantastic (First Steps)",
-    "role": "Elastic scientist and Fantastic Four leader",
-    "tags": [
-      "fantastic-four",
-      "alternate"
-    ],
-    "universes": [
-      "first-steps"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Pedro%20Pascal%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Pedro_Pascal_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "sue-storm-first",
-    "name": "Sue Storm / Invisible Woman",
-    "role": "Force-field and invisibility hero",
-    "tags": [
-      "fantastic-four",
-      "alternate"
-    ],
-    "universes": [
-      "first-steps"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Vanessa%20Kirby%20at%20the%202024%20Toronto%20International%20Film%20Festival%2008%20%28Cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Vanessa_Kirby_at_the_2024_Toronto_International_Film_Festival_08_%28Cropped%29.jpg",
-      "author": "Jay Dixit",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-  },
-  {
-    "id": "johnny-storm-first",
-    "name": "Johnny Storm / Human Torch (First Steps)",
-    "role": "Flame-powered Fantastic Four hero",
-    "tags": [
-      "fantastic-four",
-      "alternate"
-    ],
-    "universes": [
-      "first-steps"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Joseph%20Quinn%20%2853673388589%29%20cropped.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Joseph_Quinn_%2853673388589%29_cropped.jpg",
-      "author": "Gage Skidmore from Surprise, AZ, United States of America",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "ben-grimm-first",
-    "name": "Ben Grimm / The Thing",
-    "role": "Rock-bodied Fantastic Four hero",
-    "tags": [
-      "fantastic-four",
-      "alternate"
-    ],
-    "universes": [
-      "first-steps"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Ebon%20Moss-Bachrach%20by%20Gage%20Skidmore.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Ebon_Moss-Bachrach_by_Gage_Skidmore.jpg",
-      "author": "Gage Skidmore",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "shalla-bal",
-    "name": "Shalla-Bal / Silver Surfer",
-    "role": "Herald of Galactus",
-    "tags": [
-      "cosmic",
-      "alternate"
-    ],
-    "universes": [
-      "first-steps"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Julia%20Garner%20Berlinale%202020%20%28cropped%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Julia_Garner_Berlinale_2020_%28cropped%29.jpg",
-      "author": "Harald Krichel",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
-    }
-  },
-  {
-    "id": "galactus-first",
-    "name": "Galactus",
-    "role": "World-devouring cosmic entity",
-    "tags": [
-      "cosmic",
-      "villain"
-    ],
-    "universes": [
-      "first-steps"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/RalphHighRopes%20%286096494214%29.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:RalphHighRopes_%286096494214%29.jpg",
-      "author": "Sandwell Council",
-      "license": "CC BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
-    }
-  },
-  {
-    "id": "eddie-brock-venom",
-    "name": "Eddie Brock / Venom",
-    "role": "Symbiote host from Sony's Venom universe",
-    "tags": [
-      "sony",
-      "variant"
-    ],
-    "universes": [
-      "venom"
-    ],
-    "portrait": {
-      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Tom%20Hardy%20by%20Gage%20Skidmore%20in%202018.jpg?width=480",
-      "page": "https://commons.wikimedia.org/wiki/File:Tom_Hardy_by_Gage_Skidmore_in_2018.jpg",
+      "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Rila%20Fukushima%20by%20Gage%20Skidmore.jpg?width=480",
+      "page": "https://commons.wikimedia.org/wiki/File:Rila_Fukushima_by_Gage_Skidmore.jpg",
       "author": "Gage Skidmore",
       "license": "CC BY-SA 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"

@@ -4853,3 +4853,325 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   font-size: 0.82rem;
   line-height: 1.4;
 }
+
+/* Marvel watch-order chronology */
+::view-transition-old(chrono-focus),
+::view-transition-new(chrono-focus) {
+  animation-duration: 0.28s;
+}
+
+.marvel-chronology {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 48px;
+}
+
+.chrono-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.chrono-lede {
+  max-width: 42rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin: 8px 0 0;
+}
+
+.chrono-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.chrono-legend-item {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+.chrono-legend-item.tier-must,
+.chrono-tier-block.tier-must,
+.chrono-poster-button.tier-must {
+  border-color: rgba(232, 106, 106, 0.65);
+  color: #f5b4b4;
+}
+
+.chrono-legend-item.tier-should,
+.chrono-tier-block.tier-should,
+.chrono-poster-button.tier-should {
+  border-color: rgba(110, 163, 232, 0.65);
+  color: #b8d4f5;
+}
+
+.chrono-legend-item.tier-could,
+.chrono-tier-block.tier-could,
+.chrono-poster-button.tier-could {
+  border-color: rgba(120, 196, 142, 0.65);
+  color: #b8e6c4;
+}
+
+.chrono-legend-item.tier-unreleased,
+.chrono-tier-block.tier-unreleased,
+.chrono-poster-button.tier-unreleased {
+  border-style: dashed;
+  border-color: rgba(180, 180, 180, 0.55);
+  color: var(--muted);
+}
+
+.chrono-focus-host {
+  position: sticky;
+  top: 8px;
+  z-index: 2;
+}
+
+.chrono-focus-layout {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(260px, 1.6fr) minmax(140px, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(12, 11, 9, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.chrono-rail-heading {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+.chrono-rail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chrono-tier-block h4 {
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.chrono-poster-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chrono-poster-button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.chrono-poster-button:hover,
+.chrono-poster-button:focus-visible {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.chrono-poster-button.tier-outbound {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.chrono-poster {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(40, 36, 32, 0.95), rgba(18, 16, 14, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.chrono-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.chrono-poster--sm {
+  width: 40px;
+  height: 56px;
+  font-size: 0.62rem;
+}
+
+.chrono-poster--md {
+  width: 52px;
+  height: 72px;
+  font-size: 0.72rem;
+}
+
+.chrono-poster--lg {
+  width: 88px;
+  height: 120px;
+  font-size: 0.95rem;
+}
+
+.chrono-poster-acronym {
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.chrono-poster-caption {
+  font-size: 0.78rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.chrono-center-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chrono-center-hero {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.chrono-center-copy h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.chrono-center-sub,
+.chrono-era {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.chrono-note {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #d8d0c4;
+  padding: 10px 12px;
+  border-left: 3px solid rgba(110, 163, 232, 0.5);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 8px 8px 0;
+}
+
+.chrono-essential {
+  margin: 0;
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 106, 106, 0.55);
+  color: #f5b4b4;
+}
+
+.chrono-cast {
+  max-height: 220px;
+  overflow: auto;
+}
+
+.chrono-empty {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.chrono-spine {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chrono-spine-button {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+}
+
+.chrono-spine-item.is-active .chrono-spine-button {
+  border-color: rgba(110, 163, 232, 0.45);
+  background: rgba(110, 163, 232, 0.08);
+}
+
+.chrono-spine-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.chrono-spine-num {
+  font-family: var(--mono, "IBM Plex Mono", monospace);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.chrono-spine-title {
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .chrono-focus-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .chrono-rail--in {
+    order: 2;
+  }
+
+  .chrono-center {
+    order: 1;
+  }
+
+  .chrono-rail--out {
+    order: 3;
+  }
+
+  .chrono-focus-host {
+    position: static;
+  }
+}

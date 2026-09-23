@@ -11,6 +11,9 @@ import {
   filterTitleLabels,
   peopleForTitleSearch,
   titleFilterLabels,
+  usesPlotChronology,
+  chronologyEntryForQuery,
+  chronologyById,
   findPlot,
   plotCardFace,
   plotMatchesQuery,
@@ -91,6 +94,7 @@ import {
   serializeGunStateLawFilters,
 } from "./gun-laws-by-state-model.js";
 import { renderGunStateLawsBoard } from "./gun-laws-by-state-view.js";
+import { renderMarvelChronology } from "./marvel-chronology-view.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const peopleById = new Map();
@@ -98,6 +102,7 @@ let plots = [];
 let plot = null;
 let people = [];
 let events = [];
+let chronology = null;
 let relations = [];
 let countries = [];
 let countryBySlug = new Map();
@@ -127,6 +132,7 @@ let state = {
   gunLawState: "",
   gunLawCriteria: "",
   gunLawGunType: "handgun",
+  chronologyTitle: "",
 };
 let toastTimer = null;
 let loadToken = 0;
@@ -324,7 +330,9 @@ function onPop() {
     exemplarState: reg.exemplarState,
     checklistOpen: false,
     topic: parsed.topic || resolveScotusTopic(location.href, popPlotParam),
+    chronologyTitle: parsed.chronologyTitle || "",
   };
+  state.chronologyTitle = resolveChronologyTitle(state.chronologyTitle);
   applyWarSpan(state);
   rememberCountryRegion();
   render({ focusEvent: Boolean(state.eventId) });
@@ -412,20 +420,24 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       fetchJson(plot.paths.events),
       fetchJson(plot.paths.relations),
     ];
+    if (plot.paths.chronology) requests.push(fetchJson(plot.paths.chronology));
     if (plot.paths.countries) requests.push(fetchJson(plot.paths.countries));
     if (plot.paths.conflicts) requests.push(fetchJson(plot.paths.conflicts));
     if (plot.paths.world) requests.push(fetchJson(plot.paths.world));
     const loaded = await Promise.all(requests);
     if (token !== loadToken) return;
     const [peopleData, eventData, relationData, ...rest] = loaded;
+    let chronologyData = null;
     let countryData = [];
     let conflictData = null;
     let worldData = null;
     rest.forEach((payload) => {
-      if (payload?.conflicts && payload?.countries) conflictData = payload;
+      if (payload?.titles && payload?.version) chronologyData = payload;
+      else if (payload?.conflicts && payload?.countries) conflictData = payload;
       else if (payload?.type === "FeatureCollection") worldData = payload;
       else if (Array.isArray(payload)) countryData = payload;
     });
+    chronology = chronologyData;
     peopleById.clear();
     people = peopleData;
     events = eventData.slice().sort((a, b) => a.date.localeCompare(b.date));
@@ -510,7 +522,9 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         gunLawState: validGunStates.has(stateParam) ? stateParam : "",
         gunLawCriteria: serializeGunStateLawFilters(gunLawFilters),
         gunLawGunType,
+        chronologyTitle: parsed.chronologyTitle || "",
       };
+      state.chronologyTitle = resolveChronologyTitle(state.chronologyTitle);
       applyWarSpan(state);
       rememberCountryRegion();
     } else {
@@ -532,7 +546,9 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
         gunLawState: "",
         gunLawCriteria: "",
         gunLawGunType: "handgun",
+        chronologyTitle: "",
       };
+      state.chronologyTitle = resolveChronologyTitle("");
       applyWarSpan(state, "");
     }
     syncScotusChrome();
@@ -557,6 +573,7 @@ function showPicker({ history = "push" } = {}) {
   plot = null;
   people = [];
   events = [];
+  chronology = null;
   relations = [];
   countries = [];
   countryBySlug = new Map();
@@ -716,6 +733,11 @@ function initTitleFilter() {
     state.query = label;
     state.eventId = "";
     webFitToken = "";
+    if (chronology) {
+      const entry = chronologyEntryForQuery(chronology, label);
+      state.chronologyTitle = entry?.id || "";
+      if (usesPlotChronology(plot) && state.view !== "timeline") state.view = "timeline";
+    }
     closeMenu();
     render({ push: true });
   };
@@ -753,6 +775,14 @@ function initTitleFilter() {
     if (!plot || !usesTitleFilter()) return;
     state.query = input.value;
     state.eventId = "";
+    webFitToken = "";
+    if (chronology) {
+      const entry = chronologyEntryForQuery(chronology, input.value);
+      if (entry) {
+        state.chronologyTitle = entry.id;
+        if (usesPlotChronology(plot) && state.view !== "timeline") state.view = "timeline";
+      }
+    }
     webFitToken = "";
     paintMenu();
     render({ push: pushHistory });
@@ -1089,6 +1119,15 @@ function usesTitleFilter(activePlot = plot) {
   return Boolean(activePlot?.titleFilter);
 }
 
+function resolveChronologyTitle(requested = "") {
+  if (!chronology?.titles?.length) return "";
+  const index = chronologyById(chronology);
+  if (requested && index.has(requested)) return requested;
+  const fromQuery = state.query ? chronologyEntryForQuery(chronology, state.query) : null;
+  if (fromQuery) return fromQuery.id;
+  return chronology.titles[0].id;
+}
+
 function fillTitleFilter() {
   const wrap = $("title-switch");
   const input = $("title-filter");
@@ -1100,7 +1139,7 @@ function fillTitleFilter() {
   }
   wrap.hidden = false;
   input.placeholder = plot.searchPlaceholder || "Film or series…";
-  titleFilterOptions = titleFilterLabels(events);
+  titleFilterOptions = titleFilterLabels(events, chronology);
   if (document.activeElement !== input) input.value = state.query;
 }
 
@@ -2441,7 +2480,7 @@ function paintWeb(stage, { animate = true } = {}) {
     stage.style.width = "";
   }
   const titleScoped = usesTitleFilter()
-    ? peopleForTitleSearch(people, events, relations, { query: state.query, hub: state.hub }, peopleById)
+    ? peopleForTitleSearch(people, events, relations, { query: state.query, hub: state.hub }, peopleById, chronology)
     : { people, relations };
   const cast = personWebFocus
     ? webCastForPersonFocus(titleScoped.people, titleScoped.relations, state.person)
@@ -2919,6 +2958,19 @@ function renderPerson() {
 }
 
 function renderTimeline() {
+  if (usesPlotChronology(plot) && chronology?.titles?.length) {
+    return renderMarvelChronology({
+      chronology,
+      peopleById,
+      focusId: resolveChronologyTitle(state.chronologyTitle),
+      onFocus: (id) => {
+        state.chronologyTitle = id;
+        writeUrl(true);
+      },
+      onOpenPerson: (id) => openPerson(id),
+      avatar,
+    });
+  }
   const section = document.createElement("section");
   section.className = "focus timeline-focus lane-page";
   const head = document.createElement("div");

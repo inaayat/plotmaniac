@@ -1,0 +1,60 @@
+/**
+ * Direct prerequisite edges (chart-inspired, subjective).
+ * Each row: target title id must come after source id in Karan's order.
+ */
+export const CHRONOLOGY_PREREQ_EDGES = [
+  // Infinity Saga hubs
+  { target: "the-avengers", source: "iron-man", tier: "must" },
+  { target: "the-avengers", source: "thor", tier: "must" },
+  { target: "the-avengers", source: "captain-america-first-avenger", tier: "must" },
+  { target: "the-avengers", source: "iron-man-2", tier: "could" },
+  { target: "the-avengers", source: "incredible-hulk", tier: "could" },
+  { target: "civil-war", source: "age-of-ultron", tier: "must" },
+  { target: "civil-war", source: "winter-soldier", tier: "must" },
+  { target: "civil-war", source: "ant-man", tier: "should" },
+  { target: "infinity-war", source: "civil-war", tier: "must" },
+  { target: "infinity-war", source: "ragnarok", tier: "must" },
+  { target: "infinity-war", source: "guardians-2", tier: "should" },
+  { target: "infinity-war", source: "doctor-strange", tier: "should" },
+  { target: "infinity-war", source: "homecoming", tier: "should" },
+  { target: "infinity-war", source: "black-panther", tier: "should" },
+  { target: "endgame", source: "infinity-war", tier: "must" },
+  { target: "endgame", source: "ant-man-wasp", tier: "must" },
+  { target: "endgame", source: "captain-marvel", tier: "should" },
+  { target: "endgame", source: "deadpool-2", tier: "could" },
+  // Phase 4–5
+  { target: "loki-s1", source: "endgame", tier: "must" },
+  { target: "wandavision", source: "endgame", tier: "should" },
+  { target: "far-from-home", source: "endgame", tier: "should" },
+  { target: "no-way-home", source: "far-from-home", tier: "must" },
+  { target: "no-way-home", source: "doctor-strange", tier: "should" },
+  { target: "multiverse-madness", source: "wandavision", tier: "must" },
+  { target: "multiverse-madness", source: "no-way-home", tier: "must" },
+  { target: "multiverse-madness", source: "doctor-strange", tier: "should" },
+  { target: "the-marvels", source: "captain-marvel", tier: "must" },
+  { target: "the-marvels", source: "ms-marvel", tier: "must" },
+  { target: "the-marvels", source: "wandavision", tier: "should" },
+  { target: "quantumania", source: "ant-man-wasp", tier: "should" },
+  { target: "gotg-3", source: "gotg-holiday", tier: "should" },
+  { target: "gotg-3", source: "quantumania", tier: "could" },
+  // Mutant legacy corridor
+  { target: "x-men-days-of-future-past", source: "x-men-first-class", tier: "should" },
+  { target: "deadpool-2", source: "deadpool", tier: "must" },
+  { target: "deadpool-wolverine", source: "deadpool-2", tier: "must" },
+  { target: "deadpool-wolverine", source: "logan-mid", tier: "must" },
+  { target: "deadpool-wolverine", source: "loki-s1", tier: "should" },
+  // Street level / Born Again
+  { target: "the-defenders", source: "daredevil-s1", tier: "should" },
+  { target: "the-defenders", source: "jessica-jones-s1", tier: "should" },
+  { target: "the-defenders", source: "luke-cage-s1", tier: "should" },
+  { target: "the-defenders", source: "iron-fist-s1", tier: "should" },
+  { target: "born-again-s1", source: "daredevil-s3", tier: "should" },
+  { target: "born-again-s2", source: "born-again-s1", tier: "must" },
+  { target: "punisher-one-last-kill", source: "punisher-s2", tier: "should" },
+  // Doomsday setup (predicted / upcoming)
+  { target: "ff-first-steps-official", source: "ff-first-steps-1964", tier: "could" },
+  { target: "thunderbolts", source: "black-widow", tier: "should" },
+  { target: "thunderbolts", source: "brave-new-world", tier: "should" },
+  { target: "wonder-man", source: "wandavision", tier: "unreleased" },
+  { target: "wonder-man", source: "deadpool-wolverine", tier: "unreleased" },
+];
