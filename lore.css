@@ -5396,8 +5396,15 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-lane-hit strong {
-  font-size: clamp(1rem, 1.7vh, 1.2rem);
+  max-width: 220px;
+  color: var(--ink);
+  font-size: clamp(1.02rem, 1.8vh, 1.25rem);
   line-height: 1.25;
+  text-shadow: 0 1px 0 var(--bg);
+}
+
+.marvel-chronology-lane .side-above .chrono-lane-hit {
+  flex-direction: column-reverse;
 }
 
 .chrono-lane-event .lane-card {
