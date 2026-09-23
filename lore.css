@@ -5032,6 +5032,16 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   overflow: visible;
 }
 
+@media (min-width: 769px) {
+  .chrono-rail-body {
+    max-height: min(70vh, 620px);
+    overflow-y: auto;
+    scrollbar-color: var(--line-strong) transparent;
+    scrollbar-width: thin;
+    padding: 8px 6px;
+  }
+}
+
 .chrono-poster-stack {
   list-style: none;
   margin: 0;
@@ -5351,7 +5361,7 @@ body[data-board="gun-state-laws"] .gun-state-laws {
 }
 
 .chrono-lane-event .lane-card {
-  overflow: auto;
+  overflow: visible;
 }
 
 .chrono-lane-cast {
