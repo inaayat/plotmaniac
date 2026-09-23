@@ -28,6 +28,9 @@ import {
   titleFilterLabels,
   validateChronology,
   chronologyFeedsInto,
+  chronologyWatchBefore,
+  chronologyWatchNext,
+  chronologyById,
   chronologyEntryForQuery,
   chronologyFilterLabel,
   chronologyPosterUrl,
@@ -1734,6 +1737,60 @@ assert.ok(infinityFeeds.includes("endgame"), "Infinity War feeds into Endgame");
 const dawPrereqs = marvelChronology.titles.find((entry) => entry.id === "deadpool-wolverine")?.prereqs || [];
 assert.ok(dawPrereqs.some((item) => item.id === "deadpool-2" && item.tier === "must"));
 assert.ok(dawPrereqs.some((item) => item.id === "logan-mid" && item.tier === "must"));
+const chronoIndex = chronologyById(marvelChronology);
+const endgameBefore = chronologyWatchBefore(
+  marvelChronology.titles.find((entry) => entry.id === "endgame"),
+  chronoIndex,
+).map((entry) => entry.id);
+assert.deepEqual(endgameBefore.slice(0, 2), ["infinity-war", "ant-man-wasp"], "Watch Before keeps must-tier order");
+assert.ok(endgameBefore.includes("captain-marvel"), "Watch Before includes should-watch titles");
+assert.deepEqual(
+  chronologyWatchNext(marvelChronology, "infinity-war").map((entry) => entry.id),
+  infinityFeeds,
+  "Watch Next prefers direct feeds-into edges",
+);
+const firstTitleId = marvelChronology.titles[0].id;
+assert.equal(chronologyWatchBefore(marvelChronology.titles[0], chronoIndex).length, 0);
+assert.deepEqual(
+  chronologyWatchNext(marvelChronology, firstTitleId).map((entry) => entry.id),
+  marvelChronology.titles.slice(1, 4).map((entry) => entry.id),
+  "Watch Next falls back to chronological successors when nothing feeds out",
+);
+assert.match(marvel.lede, /Watch Before/);
+assert.doesNotMatch(marvel.lede, /Follow the character web/);
+assert.equal(
+  resolvePlotView(parseState("https://plotmaniac.com/?plot=marvel-universe"), {
+    href: "https://plotmaniac.com/?plot=marvel-universe",
+    plot: marvel,
+  }),
+  "timeline",
+);
+assert.equal(
+  resolvePlotView(parseState("https://plotmaniac.com/?plot=marvel-universe&view=web"), {
+    href: "https://plotmaniac.com/?plot=marvel-universe&view=web",
+    plot: marvel,
+  }),
+  "web",
+);
+const chronoViewSource = fs.readFileSync(new URL("../marvel-chronology-view.js", import.meta.url), "utf8");
+assert.match(chronoViewSource, /Watch Before/);
+assert.match(chronoViewSource, /Watch Next/);
+assert.match(chronoViewSource, /Selected Movie/);
+assert.match(chronoViewSource, /Characters/);
+assert.match(chronoViewSource, /chrono-cast-row/);
+assert.match(chronoViewSource, /chrono-cast-avatar/);
+assert.match(chronoViewSource, /Character web \(archived\)/);
+assert.match(chronoViewSource, /startViewTransition/);
+assert.match(css, /\.chrono-cast-row \.avatar/);
+assert.match(css, /\.chrono-arrow/);
+assert.match(css, /\.chrono-poster--xl/);
+assert.match(appSource, /Character web \(archived\)/);
+assert.match(appSource, /function renderMarvelWebOrDefault/);
+assert.match(appSource, /Watch order/);
+assert.doesNotMatch(chronoViewSource, /api\.themoviedb\.org/);
+assert.doesNotMatch(appSource, /api\.themoviedb\.org/);
+assert.doesNotMatch(appSource, /TMDB_API_KEY/);
+assert.doesNotMatch(chronoViewSource, /TMDB_API_KEY/);
 let marvelPosterCount = 0;
 for (const entry of marvelChronology.titles) {
   if (entry.posterUrl) {

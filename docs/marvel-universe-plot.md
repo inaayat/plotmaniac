@@ -8,12 +8,28 @@ Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templat
 - **Title:** Marvel Cinematic Universe
 - **Kicker:** `Marvel`
 - **Card line:** `Heroes, villains, timelines, and variant worlds`
-- **Lede:** `Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Follow the character web, read the MCU in story order, or focus a universe to see who belongs there. MCU main means the shared Sacred Timeline / Earth-616 screen continuity (often called Earth-199999 by fans); guest worlds remain separate.`
+- **Lede:** `Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Pick a title to study up: Watch Before on the left, Watch Next on the right, and the cast under the selected movie. MCU main means the shared Sacred Timeline / Earth-616 screen continuity (often called Earth-199999 by fans); guest worlds remain separate.`
 - **Search placeholder:** `Avengers, TVA, Wakanda, Spider-Man, a film…`
-- **Title filter:** `titleFilter: true` puts that search on the main chrome (next to Focus) and narrows the web to people on matching beats; the timeline uses the same query.
+- **Title filter:** `titleFilter: true` puts that search on the main chrome and focuses a matching chronology title (`?title=`).
+- **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` lands here, not on the character web.
 - **Center id:** `tony-stark`
 
-The plot uses the existing YouTubers-style hub field. Hubs are universe focus controls, not extra non-character nodes; each hub is anchored by a real character who appears in that universe. The hub’s `universe-member` relations are deliberately neutral, so focusing a hub reveals its exclusive membership without turning every member into a “friend” of the anchor. The plot sets the existing layout threshold to `minBeats: 1` and wires that option through the loader so one-film multiverse variants still appear in a universe focus; other plots retain the default two-beat web threshold.
+### Primary view — watch-order focus
+
+The main Marvel page is a three-column study-up board:
+
+- **Watch Before** (left): portrait posters for listed prerequisites, with arrows toward the selected title. Must / should / could tiers still order the stack, without extra tier chrome.
+- **Selected Movie** (center): large focal poster and title.
+- **Characters** (under center): a horizontal row of circular cast avatars (Commons portraits, initials if none).
+- **Watch Next** (right): titles this one feeds into, or the next chronological successors if there is no outbound edge.
+
+Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome and the collapsed “Full chronological list” also change focus.
+
+### Archived character web
+
+The universe-membership character web is kept, but it is not the default entry and is hidden from primary nav. Open it with `?plot=marvel-universe&view=web`, or the quiet **Character web (archived)** link on the watch-order page. Hub Focus remains on that archived view only.
+
+The web still uses the YouTubers-style hub field. Hubs are universe focus controls, not extra non-character nodes; each hub is anchored by a real character who appears in that universe. The hub’s `universe-member` relations are deliberately neutral, so focusing a hub reveals its exclusive membership without turning every member into a “friend” of the anchor. The plot sets the existing layout threshold to `minBeats: 1` and wires that option through the loader so one-film multiverse variants still appear in a universe focus; other plots retain the default two-beat web threshold.
 
 | Hub id | Label | Center character | Scope |
 | --- | --- | --- | --- |
