@@ -1108,6 +1108,7 @@ export function usesPolicyPanel(plot) {
 }
 
 export function usesHubWebPersonFocus(plot) {
+  if (usesPlotChronology(plot)) return false;
   return Boolean(plot?.titleFilter && plot?.includeOrbit && plotHubs(plot).length >= 2);
 }
 
@@ -1120,6 +1121,7 @@ export function webCastForPersonFocus(people, relations, personId) {
 }
 
 export function boardViewForPerson(plot, view) {
+  if (usesPlotChronology(plot)) return view === "web" ? "timeline" : view;
   if (plot?.arrangement === "wars") return "web";
   if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot)) return "web";
   if (usesPolicyPanel(plot) && view === "person") return "web";

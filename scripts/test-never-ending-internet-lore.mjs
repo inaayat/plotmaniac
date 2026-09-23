@@ -1851,11 +1851,31 @@ assert.equal(
   "timeline",
 );
 assert.equal(
-  resolvePlotView(parseState("https://plotmaniac.com/?plot=marvel-universe&view=web"), {
-    href: "https://plotmaniac.com/?plot=marvel-universe&view=web",
-    plot: marvel,
-  }),
-  "web",
+  boardViewForPerson(
+    marvel,
+    resolvePlotView(parseState("https://plotmaniac.com/?plot=marvel-universe&view=web"), {
+      href: "https://plotmaniac.com/?plot=marvel-universe&view=web",
+      plot: marvel,
+    }),
+  ),
+  "timeline",
+  "Marvel view=web opens Watch Order",
+);
+assert.equal(
+  boardViewForPerson(
+    marvel,
+    resolvePlotView(
+      parseState("https://plotmaniac.com/?plot=marvel-universe&view=person&person=steve-rogers", {
+        people: new Set(["steve-rogers"]),
+      }),
+      {
+        href: "https://plotmaniac.com/?plot=marvel-universe&view=person&person=steve-rogers",
+        plot: marvel,
+      },
+    ),
+  ),
+  "person",
+  "Marvel character links stay on that character timeline",
 );
 assert.equal(
   resolvePlotView(parseState("https://plotmaniac.com/?plot=marvel-universe&view=chronology"), {
@@ -1879,7 +1899,9 @@ assert.match(chronoViewSource, /Selected Movie/);
 assert.match(chronoViewSource, /Characters/);
 assert.match(chronoViewSource, /chrono-cast-row/);
 assert.match(chronoViewSource, /chrono-cast-avatar/);
-assert.match(chronoViewSource, /Character web \(archived\)/);
+assert.match(chronoViewSource, /Open their timeline/);
+assert.doesNotMatch(chronoViewSource, /Character web/);
+assert.doesNotMatch(chronoViewSource, /onOpenWeb/);
 assert.match(chronoViewSource, /startViewTransition/);
 assert.match(chronoViewSource, /Full chronological list/);
 assert.match(chronoViewSource, /chrono-arrow-shape/);
@@ -1900,8 +1922,10 @@ assert.doesNotMatch(css, /\.chrono-arrow \{[^}]*flex:\s*1/);
 assert.match(css, /\.marvel-chronology-lane/);
 assert.match(css, /\.chrono-story-card/);
 assert.match(appSource, /onOpenPerson: \(id\) => openPerson\(id\)/);
-assert.match(appSource, /Character web \(archived\)/);
-assert.match(appSource, /function renderMarvelWebOrDefault/);
+assert.match(appSource, /← Watch order/);
+assert.doesNotMatch(appSource, /Character web/);
+assert.doesNotMatch(appSource, /function renderMarvelWebOrDefault/);
+assert.doesNotMatch(appSource, /onOpenWeb/);
 assert.match(appSource, /Watch order/);
 assert.match(appSource, /plotChooserHref/);
 assert.match(appSource, /view: defaultPlotView\(\{ plot \}\)/);
@@ -2081,9 +2105,10 @@ assert.equal(boardViewForPerson(vance, "person"), "web");
 assert.equal(boardViewForPerson(obama, "timeline"), "timeline");
 assert.equal(boardViewForPerson(youtubers, "person"), "person");
 assert.equal(boardViewForPerson(youtubers, "web"), "web");
-assert.equal(usesHubWebPersonFocus(marvel), true);
+assert.equal(usesHubWebPersonFocus(marvel), false);
 assert.equal(usesHubWebPersonFocus(youtubers), false);
-assert.equal(boardViewForPerson(marvel, "person"), "web");
+assert.equal(boardViewForPerson(marvel, "person"), "person");
+assert.equal(boardViewForPerson(marvel, "web"), "timeline");
 const steveWebCast = webCastForPersonFocus(marvelPeople, marvelRelations, "steve-rogers");
 assert.ok(steveWebCast.people.some((person) => person.id === "steve-rogers"));
 assert.ok(steveWebCast.people.length < marvelPeople.length);

@@ -35,7 +35,6 @@ export function renderMarvelChronology({
   focusId,
   onFocus,
   onOpenPerson,
-  onOpenWeb,
   onOpenChronology,
   avatar,
 }) {
@@ -47,18 +46,6 @@ export function renderMarvelChronology({
   if (!activeId) {
     section.appendChild(emptyBlock("No chronology titles loaded."));
     return section;
-  }
-
-  const tools = document.createElement("p");
-  tools.className = "chrono-archive-tools";
-  if (typeof onOpenWeb === "function") {
-    const archived = document.createElement("button");
-    archived.type = "button";
-    archived.className = "chrono-archive-link";
-    archived.textContent = "Character web (archived)";
-    archived.addEventListener("click", () => onOpenWeb());
-    tools.appendChild(archived);
-    section.appendChild(tools);
   }
 
   if (typeof onOpenChronology === "function") {
@@ -422,7 +409,7 @@ function castRow(entry, { peopleById, onOpenPerson, avatar, compact = false }) {
     button.type = "button";
     button.className = "chrono-cast-avatar";
     button.title = person.name;
-    button.setAttribute("aria-label", `${person.name}. Open their neighborhood.`);
+    button.setAttribute("aria-label", `${person.name}. Open their timeline.`);
     if (typeof avatar === "function") button.appendChild(avatar(person, "sm"));
     const name = document.createElement("span");
     name.className = "chrono-cast-name";

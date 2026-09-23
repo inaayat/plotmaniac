@@ -5200,52 +5200,6 @@ body[data-board="gun-state-laws"] .gun-state-laws {
   max-width: 12rem;
 }
 
-.chrono-archive-tools {
-  margin: 0;
-  text-align: center;
-  flex: none;
-}
-
-.chrono-archive-link {
-  font-size: 0.72rem;
-  color: var(--muted);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  padding: 4px 8px;
-}
-
-.chrono-archive-link:hover,
-.chrono-archive-link:focus-visible {
-  color: var(--gold);
-}
-
-.marvel-web-archive {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-}
-
-.marvel-web-archive-banner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 8px 16px;
-  font-size: 0.78rem;
-  color: var(--muted);
-  border-bottom: 1px solid var(--line);
-  background: rgba(12, 11, 9, 0.92);
-}
-
-.marvel-web-archive-banner button {
-  color: var(--gold);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .chrono-order-strip {
   flex: none;
   width: 100%;

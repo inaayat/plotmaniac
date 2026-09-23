@@ -224,13 +224,7 @@ function labelViews() {
       chronologyBtn.hidden = false;
       chronologyBtn.textContent = "Chronology";
     }
-    if (state.view === "web") {
-      web.hidden = false;
-      web.textContent = "Character web (archived)";
-    } else {
-      web.hidden = true;
-      web.textContent = "The web";
-    }
+    web.hidden = true;
     return;
   }
   web.hidden = false;
@@ -1048,8 +1042,8 @@ function bindChrome() {
     state.hub = id;
     state.eventId = "";
     webFitToken = "";
-    if (usesHubWebPersonFocus()) state.person = ALL;
-    if (state.view === "person") {
+    if (usesHubWebPersonFocus(plot)) state.person = ALL;
+    if (state.view === "person" && !usesPlotChronology(plot)) {
       state.view = "web";
       state.person = ALL;
     }
@@ -1147,7 +1141,14 @@ function bindChrome() {
       document.querySelector(".regulation-checklist-open")?.focus();
       return;
     }
-    if (event.key === "Escape" && usesHubWebPersonFocus() && state.view === "web" && state.person !== ALL) {
+    if (event.key === "Escape" && usesPlotChronology(plot) && state.view === "person") {
+      state.view = "timeline";
+      state.person = ALL;
+      state.eventId = "";
+      render({ push: true });
+      return;
+    }
+    if (event.key === "Escape" && usesHubWebPersonFocus(plot) && state.view === "web" && state.person !== ALL) {
       state.person = ALL;
       hubCamera = null;
       webFitToken = "";
@@ -1358,7 +1359,10 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   else if (state.view === "person") app.appendChild(renderPerson());
   else if (state.view === "relation" && plot?.disclosure === "regions") app.appendChild(renderRelationPage());
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
-  else app.appendChild(renderMarvelWebOrDefault());
+  else if (usesPlotChronology(plot)) {
+    state.view = "timeline";
+    app.appendChild(renderTimeline());
+  } else app.appendChild(renderWeb());
   if (push || replace) writeUrl(replace);
   if (isCompact()) {
     const beatId = takeLaneFocus();
@@ -1478,28 +1482,6 @@ function renderRegulationSection() {
     },
   }));
   return shell;
-}
-
-function renderMarvelWebOrDefault() {
-  if (!usesPlotChronology(plot)) return renderWeb();
-  const wrap = document.createElement("div");
-  wrap.className = "marvel-web-archive";
-  const banner = document.createElement("p");
-  banner.className = "marvel-web-archive-banner";
-  const note = document.createElement("span");
-  note.textContent = "Character web (archived). Watch order is the main Marvel view.";
-  const back = document.createElement("button");
-  back.type = "button";
-  back.textContent = "Watch order";
-  back.addEventListener("click", () => {
-    state.view = "timeline";
-    state.person = ALL;
-    rememberView("timeline");
-    render({ push: true });
-  });
-  banner.append(note, back);
-  wrap.append(banner, renderWeb());
-  return wrap;
 }
 
 function renderWeb() {
@@ -2553,7 +2535,7 @@ function paintWeb(stage, { animate = true } = {}) {
   const camps = plot.arrangement === "camps";
   const topics = plot.arrangement === "topics";
   const bubbles = plot.images === "bubbles";
-  const personWebFocus = usesHubWebPersonFocus() && state.person && state.person !== ALL;
+  const personWebFocus = usesHubWebPersonFocus(plot) && state.person && state.person !== ALL;
   const hubField = Boolean(plot.includeOrbit && plotHubs(plot).length >= 2 && !camps && !topics && !personWebFocus);
   const hubCameraField = hubField || personWebFocus;
   let width;
@@ -2992,11 +2974,13 @@ function renderPerson() {
   const back = document.createElement("button");
   back.type = "button";
   back.className = "back";
-  back.textContent = "← The web";
+  const chronologyPerson = usesPlotChronology(plot);
+  back.textContent = chronologyPerson ? "← Watch order" : "← The web";
   back.addEventListener("click", () => {
-    state.view = "web";
+    state.view = chronologyPerson ? "timeline" : "web";
     state.person = ALL;
     state.eventId = "";
+    if (chronologyPerson) rememberView("timeline");
     render({ push: true });
   });
 
@@ -3095,12 +3079,6 @@ function renderTimeline() {
         writeUrl(true);
       },
       onOpenPerson: (id) => openPerson(id),
-      onOpenWeb: () => {
-        state.view = "web";
-        state.person = ALL;
-        rememberView("web");
-        render({ push: true });
-      },
       onOpenChronology: () => {
         state.view = "chronology";
         state.person = ALL;
@@ -3847,7 +3825,7 @@ function renderCredits() {
 
 function openPerson(id) {
   if (!peopleById.has(id)) return;
-  if (usesHubWebPersonFocus()) {
+  if (usesHubWebPersonFocus(plot)) {
     if (state.view === "web" && state.person === id) {
       state.person = ALL;
       hubCamera = null;

@@ -11,9 +11,9 @@ Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templat
 - **Lede:** `Spoilers through Daredevil: Born Again season 2 and The Punisher: One Last Kill. Pick a title to study up: Watch Before on the left, Watch Next on the right, and the cast under the selected movie. MCU main means the shared Sacred Timeline / Earth-616 screen continuity (often called Earth-199999 by fans); guest worlds remain separate.`
 - **Search placeholder:** `Avengers, TVA, Wakanda, Spider-Man, a film…`
 - **Title filter:** `titleFilter: true` puts that search on the main chrome and focuses a matching chronology title (`?title=`).
-- **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` or clicking Marvel on the homepage gallery lands here (`plotChooserHref` adds `view=timeline`), not on the character web.
+- **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` or clicking Marvel on the homepage gallery lands here (`plotChooserHref` adds `view=timeline`). `?view=web` resolves to Watch Order.
 - **Chronology view:** `?plot=marvel-universe&view=chronology` is the dedicated full story-order timeline (same horizontal lane as other plots on a wide screen, a vertical spine on a phone). Each title shows its poster and the characters in that title. **Full chronological list** on Watch Order, and Chronology in the nav, open that page. Choosing a title returns to Watch Order focused on that film.
-- **Include TV shows:** checkbox beside Title / Watch Order. Off by default (movies, One-Shots, and film-adjacent specials Karan already marks as `kind: "movie"`). On (`?tv=1`, remembered in localStorage for in-app plot opens) includes Disney+/Netflix/series already in the chronology (`kind: "tv"`). Filter applies to Watch Before / Watch Next, the chip strip, the chronology page, and the title picker.
+- **Include TV shows:** checkbox beside Title / Watch Order. Off by default (movies, One-Shots, and film-adjacent specials Karan already marks as `kind: "movie"`). On (`?tv=1`, remembered in localStorage for in-app plot opens) includes Disney+/Netflix/series already in the chronology (`kind: "tv"`). Filter applies to Watch Before / Watch Next, the chronology page, and the title picker.
 - **Center id:** `tony-stark`
 
 ### Primary view — watch-order focus
@@ -25,17 +25,17 @@ The main Marvel page is a three-column study-up board:
 - **Characters** (under center): a horizontal row of circular cast avatars (Commons portraits, initials if none).
 - **Watch Next** (right): titles this one feeds into, or the next chronological successors if there is no outbound edge.
 
-Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome and the compact chronological chip strip at the top also change focus. Side-rail posters scale with stack length so every Watch Before / Watch Next title stays on screen.
+Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome also changes focus. **Full chronological list** opens the chronology page. Side-rail posters scale with stack length so every Watch Before / Watch Next title stays on screen. Cast avatars open that character’s timeline.
 
 ### Chronology page
 
 `?view=chronology` (Chronology in the Marvel nav, or **Full chronological list** on Watch Order) is a scrollable story-order timeline: posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. Choosing a title returns to Watch Order focused on that film.
 
-### Archived character web
+### Character timelines
 
-The universe-membership character web is kept, but it is not the default entry and is hidden from primary nav. Open it with `?plot=marvel-universe&view=web`, or the quiet **Character web (archived)** link on the watch-order page. Hub Focus remains on that archived view only. Homepage gallery cards and the plot switcher must not land here.
+Cast avatars on Watch Order and the chronology page open that character’s timeline (`?view=person&person=<id>`): the sourced beats they appear in, with **← Watch order** (and Escape) back to the study-up board. Marvel does not render a character web. There is no Character web control, and `?view=web` opens Watch Order.
 
-The web still uses the YouTubers-style hub field. Hubs are universe focus controls, not extra non-character nodes; each hub is anchored by a real character who appears in that universe. The hub’s `universe-member` relations are deliberately neutral, so focusing a hub reveals its exclusive membership without turning every member into a “friend” of the anchor. The plot sets the existing layout threshold to `minBeats: 1` and wires that option through the loader so one-film multiverse variants still appear in a universe focus; other plots retain the default two-beat web threshold.
+Universe hubs stay in the plot data as membership anchors, not as a screen. Each hub is a real character who appears in that universe. `universe-member` relations are neutral, so a membership edge does not turn every member into a “friend” of the anchor. `minBeats: 1` keeps one-film multiverse variants in the data; other plots retain the default two-beat web threshold.
 
 | Hub id | Label | Center character | Scope |
 | --- | --- | --- | --- |
@@ -57,7 +57,7 @@ The relation ontology is intentionally small:
 
 The data prioritizes founding Avengers bonds and the Civil War fracture, the Guardians crew, Wakanda, Strange–Wanda–Wong, Daredevil–Kingpin–Punisher, Loki–Sylvie–Mobius and the TVA, the Thunderbolts cluster, and cross-universe Spider-Man, X-Men, Fantastic Four, and Venom variant links. No new rendering arrangement is required; the only engine-facing changes are passing the already-supported minimum-beat option from plot metadata and giving the seven-hub layout unique radial sectors instead of reusing the four cardinal slots.
 
-The Marvel plot specializes the hub chrome slightly: Focus opens on `All`, with `Shared web` still available for the common cast, and its accessible web description explains universe focus rather than calling the board a YouTuber web. Other plots keep their existing labels and copy. Hub names wrap in full, including after the camera zooms.
+Hub labels (`All`, `Shared web`) and the universe-focus description stay on the plot metadata. Marvel’s screens do not show that hub field. Other plots keep their existing web labels and copy.
 
 ### Cast
 
