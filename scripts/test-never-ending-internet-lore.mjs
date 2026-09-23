@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { MARVEL_CHRONOLOGY_ORDER } from "./marvel-chronology-data.mjs";
+import { chronologyKindForId, guessTmdbType } from "./marvel-chronology-tmdb-queries.mjs";
 import { loadCharacterIndex, overlayChronologyCast } from "./marvel-character-index.mjs";
 import {
   buildFrames,
@@ -1789,20 +1790,29 @@ assert.ok(avengersBefore.includes("incredible-hulk"), "Incredible Hulk stays in 
 }
 {
   const kinds = marvelChronology.titles.map((entry) => chronologyTitleKind(entry));
-  assert.equal(kinds.filter((kind) => kind === "tv").length, 35);
-  assert.equal(kinds.filter((kind) => kind === "movie").length, 59);
+  assert.equal(kinds.filter((kind) => kind === "tv").length, 43);
+  assert.equal(kinds.filter((kind) => kind === "movie").length, 51);
   assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "eyes-of-wakanda")), "tv");
   assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "iron-man")), "movie");
   assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "loki-s1")), "tv");
-  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "werewolf-by-night")), "movie");
-  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "gotg-holiday")), "movie");
-  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "one-shot-item-47")), "movie");
-  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "punisher-one-last-kill")), "movie");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "werewolf-by-night")), "tv");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "gotg-holiday")), "tv");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "one-shot-item-47")), "tv");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "one-shot-agent-carter")), "tv");
+  assert.equal(chronologyTitleKind(marvelChronology.titles.find((entry) => entry.id === "punisher-one-last-kill")), "tv");
+  assert.equal(chronologyKindForId("one-shot-item-47", "Marvel Studios One Shot: Item 47"), "tv");
+  assert.equal(chronologyKindForId("werewolf-by-night", "Werewolf By Night"), "tv");
+  assert.equal(chronologyKindForId("gotg-holiday", "The Guardians of the Galaxy Holiday Special"), "tv");
+  assert.equal(chronologyKindForId("punisher-one-last-kill", "The Punisher: One Last Kill"), "tv");
+  assert.equal(guessTmdbType("Marvel Studios One Shot: Item 47"), "movie", "One-Shot posters still search TMDB as movies");
   assert.equal(chronologyTitleIsTv({ id: "daredevil-s1", title: "Daredevil S1", kind: "tv" }), true);
   const moviesOnly = filterChronology(marvelChronology, { includeTv: false });
-  assert.equal(moviesOnly.titles.length, 59);
+  assert.equal(moviesOnly.titles.length, 51);
   assert.equal(moviesOnly.titles[0].id, "captain-america-first-avenger");
   assert.equal(moviesOnly.titles.some((entry) => entry.id === "loki-s1"), false);
+  assert.equal(moviesOnly.titles.some((entry) => entry.id === "one-shot-agent-carter"), false);
+  assert.equal(moviesOnly.titles.some((entry) => entry.id === "werewolf-by-night"), false);
+  assert.equal(moviesOnly.titles.some((entry) => entry.id === "gotg-holiday"), false);
   assert.equal(filterChronologyTitles(marvelChronology.titles, { includeTv: true }).length, 94);
   assert.equal(CHRONOLOGY_INCLUDE_TV_DEFAULT, false);
   assert.equal(parseChronologyIncludeTv("https://plotmaniac.com/?plot=marvel-universe"), false);
@@ -1820,12 +1830,17 @@ assert.ok(avengersBefore.includes("incredible-hulk"), "Incredible Hulk stays in 
   );
   const moviesChronology = filterChronology(marvelChronology, { includeTv: false });
   assert.deepEqual(
-    chronologyWatchNext(moviesChronology, "one-shot-agent-carter").map((entry) => entry.id),
+    chronologyWatchNext(moviesChronology, "thor-dark-world").map((entry) => entry.id),
     moviesChronology.titles.slice(
-      moviesChronology.titles.findIndex((entry) => entry.id === "one-shot-agent-carter") + 1,
-      moviesChronology.titles.findIndex((entry) => entry.id === "one-shot-agent-carter") + 4,
+      moviesChronology.titles.findIndex((entry) => entry.id === "thor-dark-world") + 1,
+      moviesChronology.titles.findIndex((entry) => entry.id === "thor-dark-world") + 4,
     ).map((entry) => entry.id),
-    "Watch Next fallback uses remaining movies when TV is filtered out",
+    "Watch Next fallback uses remaining movies when TV and shorts are filtered out",
+  );
+  assert.equal(
+    chronologyNearestVisibleId(marvelChronology, "one-shot-agent-carter", { includeTv: false }),
+    "captain-america-first-avenger",
+    "turning TV off while focused on a One-Shot snaps to the nearest movie",
   );
   assert.equal(
     chronologyWatchNext(moviesChronology, "guardians-2").some((entry) => chronologyTitleIsTv(entry)),
@@ -1940,7 +1955,12 @@ assert.match(appSource, /Movie web/);
 assert.match(html, /id="view-movie-web"/);
 {
   const movieWeb = movieWebLayout(filterChronology(marvelChronology, { includeTv: false }).titles);
-  assert.ok(movieWeb.nodes.filter((node) => node.type === "title").length >= 59);
+  assert.ok(movieWeb.nodes.filter((node) => node.type === "title").length >= 51);
+  assert.equal(
+    movieWeb.nodes.some((node) => node.id === "one-shot-item-47"),
+    false,
+    "movie web hides One-Shots unless TV is included",
+  );
   assert.ok(
     movieWeb.edges.some((edge) => edge.from === "captain-america-first-avenger" && edge.to === "the-avengers"),
     "Movie web ties Captain America to The Avengers",
@@ -1951,10 +1971,10 @@ assert.match(html, /id="view-movie-web"/);
   eras.slice(1).forEach((era, index) => {
     assert.ok(era.x > eras[index].x, "movie web eras run left to right");
   });
-  const origins = movieWeb.nodes.filter((node) => node.type === "title" && node.era === "Origins");
-  assert.equal(origins.length, 2);
-  assert.equal(origins[0].y, origins[1].y, "a short era sits on one row");
-  assert.ok(origins[1].x > origins[0].x);
+  const mutant = movieWeb.nodes.filter((node) => node.type === "title" && node.era === "Mutant legacy");
+  assert.ok(mutant.length >= 2);
+  assert.equal(mutant[0].y, mutant[1].y, "an era starts as a row, not a column");
+  assert.ok(mutant[1].x > mutant[0].x);
   assert.equal(movieWeb.nodes.filter((node) => node.type === "era" && node.era === "Mutant legacy").length, 1);
 }
 assert.match(css, /\.movie-web-scroll\s*\{[^}]*overflow-x:\s*auto/, "movie web scrolls sideways");

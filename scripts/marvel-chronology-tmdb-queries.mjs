@@ -68,7 +68,7 @@ export function defaultTmdbQuery(title) {
     .trim();
 }
 
-/** Guess media type from title text. */
+/** Guess TMDB media type from title text. One-Shots stay movies in TMDB search. */
 export function guessTmdbType(title) {
   if (/\bS\d+\b/i.test(title)) return "tv";
   if (/One Shot|Holiday Special|Werewolf By Night|One Last Kill/i.test(title)) return "movie";
@@ -76,8 +76,18 @@ export function guessTmdbType(title) {
   return "movie";
 }
 
-/** Canonical movie vs tv kind for a chronology id, preferring TMDB hints. */
+/** One-Shots and other short stories follow the TV filter, not the feature-film list. */
+export function chronologyTitleIsShort(id, title = "") {
+  if (/^one-shot-/.test(String(id || ""))) return true;
+  return /One Shot|Holiday Special|Werewolf By Night|One Last Kill/i.test(String(title || ""));
+}
+
+/**
+ * Watch-order kind. Shorts are `tv` so Include TV hides them by default.
+ * TMDB lookup type stays separate (`guessTmdbType`).
+ */
 export function chronologyKindForId(id, title) {
+  if (chronologyTitleIsShort(id, title)) return "tv";
   const hinted = TMDB_CHRONOLOGY_HINTS[id]?.type;
   if (hinted === "tv" || hinted === "movie") return hinted;
   return guessTmdbType(title) === "tv" ? "tv" : "movie";

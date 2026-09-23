@@ -140,7 +140,7 @@ export function chronologyTitleIsTv(entry) {
   return chronologyTitleKind(entry) === "tv";
 }
 
-/** Default Watch Order hides TV; `tv=1` includes Disney+/Netflix/series already in the chronology. */
+/** Default Watch Order hides TV and shorts; `tv=1` includes series, One-Shots, and short specials. */
 export const CHRONOLOGY_INCLUDE_TV_DEFAULT = false;
 
 export function parseChronologyIncludeTv(urlLike, fallback = CHRONOLOGY_INCLUDE_TV_DEFAULT) {

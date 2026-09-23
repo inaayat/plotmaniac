@@ -41,7 +41,7 @@
       "era": "Origins",
       "posterPath": "/4vFKKWPvCVDJTOWiwReBfpAMScP.jpg",
       "posterUrl": "https://image.tmdb.org/t/p/w342/4vFKKWPvCVDJTOWiwReBfpAMScP.jpg",
-      "kind": "movie"
+      "kind": "tv"
     },
     {
       "id": "x-men-first-class",
@@ -308,7 +308,7 @@
       "era": "Infinity Saga",
       "posterPath": "/njrOqsmFH4pxBrhcoslqLfw2OGk.jpg",
       "posterUrl": "https://image.tmdb.org/t/p/w342/njrOqsmFH4pxBrhcoslqLfw2OGk.jpg",
-      "kind": "movie"
+      "kind": "tv"
     },
     {
       "id": "thor",
@@ -337,7 +337,7 @@
       "era": "Infinity Saga",
       "posterPath": "/xqNLXUUvBnfVk6m3QFGGU0Grgs7.jpg",
       "posterUrl": "https://image.tmdb.org/t/p/w342/xqNLXUUvBnfVk6m3QFGGU0Grgs7.jpg",
-      "kind": "movie"
+      "kind": "tv"
     },
     {
       "id": "the-avengers",
@@ -403,7 +403,7 @@
       "era": "Infinity Saga",
       "posterPath": "/hnSxG8clwLuAXEkp9emc8HCUcHD.jpg",
       "posterUrl": "https://image.tmdb.org/t/p/w342/hnSxG8clwLuAXEkp9emc8HCUcHD.jpg",
-      "kind": "movie"
+      "kind": "tv"
     },
     {
       "id": "thor-dark-world",
@@ -444,7 +444,7 @@
       "era": "Infinity Saga",
       "posterPath": "/y0QYZPWgeGKOvyrzi6Oz3aJPxJa.jpg",
       "posterUrl": "https://image.tmdb.org/t/p/w342/y0QYZPWgeGKOvyrzi6Oz3aJPxJa.jpg",
-      "kind": "movie"
+      "kind": "tv"
     },
     {
       "id": "winter-soldier",
@@ -1342,7 +1342,7 @@
       "era": "Multiverse Saga",
       "posterPath": "/mvIvNKRIJPPS7WSFarFhOAGIVnU.jpg",
       "posterUrl": "https://image.tmdb.org/t/p/w342/mvIvNKRIJPPS7WSFarFhOAGIVnU.jpg",
-      "kind": "movie"
+      "kind": "tv"
     },
     {
       "id": "gotg-holiday",
@@ -1358,7 +1358,7 @@
       "era": "Multiverse Saga",
       "posterPath": "/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
       "posterUrl": "https://image.tmdb.org/t/p/w342/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
-      "kind": "movie"
+      "kind": "tv"
     },
     {
       "id": "quantumania",
@@ -1696,7 +1696,7 @@
       ],
       "posterPath": "/qQclTgLMDvGBuUBFGHRipxkEwWR.jpg",
       "posterUrl": "https://image.tmdb.org/t/p/w342/qQclTgLMDvGBuUBFGHRipxkEwWR.jpg",
-      "kind": "movie"
+      "kind": "tv"
     },
     {
       "id": "logan-final",

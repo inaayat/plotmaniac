@@ -13,7 +13,7 @@ Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templat
 - **Title filter:** `titleFilter: true` puts that search on the main chrome and focuses a matching chronology title (`?title=`).
 - **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` or clicking Marvel on the homepage gallery lands here (`plotChooserHref` adds `view=timeline`). `?view=web` resolves to Watch Order.
 - **Chronology view:** `?plot=marvel-universe&view=chronology` is the dedicated full story-order timeline (same horizontal lane as other plots on a wide screen, a vertical spine on a phone). Each title shows its poster and the characters in that title. Chronology in the nav opens that page. Choosing a title returns to Watch Order focused on that film.
-- **Include TV shows:** checkbox beside Title / Watch Order. Off by default (movies, One-Shots, and film-adjacent specials Karan already marks as `kind: "movie"`). On (`?tv=1`, remembered in localStorage for in-app plot opens) includes Disney+/Netflix/series already in the chronology (`kind: "tv"`). Filter applies to Watch Before / Watch Next, the chronology page, and the title picker.
+- **Include TV shows and shorts:** checkbox beside Title / Watch Order. Off by default, so only feature films (`kind: "movie"`) show. On (`?tv=1`, remembered in localStorage for in-app plot opens) includes Disney+/Netflix/series plus short stories (`kind: "tv"`): the Marvel One-Shots, Werewolf by Night, the Guardians of the Galaxy Holiday Special, and The Punisher: One Last Kill. Filter applies to Watch Before / Watch Next, the chronology page, the movie web, and the title picker.
 - **Center id:** `tony-stark`
 
 ### Primary view — watch-order focus
