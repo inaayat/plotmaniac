@@ -684,6 +684,7 @@ function showPicker({ history = "push" } = {}) {
   $("view-movie-web")?.classList.remove("is-active");
   labelViews();
   fillIncludeTv();
+  fillResetButton();
   renderChooser();
   if (history === "push") writeUrl(false);
   if (history === "replace") writeUrl(true);
@@ -1091,6 +1092,7 @@ function bindChrome() {
       render({ push: true });
     });
   }
+  $("view-reset")?.addEventListener("click", resetChronologyView);
   $("home-link").addEventListener("click", () => {
     if (!plot || plots.length < 2) return;
     showPicker({ history: "push" });
@@ -1252,6 +1254,30 @@ function fillIncludeTv() {
   input.checked = Boolean(state.includeTv);
 }
 
+function fillResetButton() {
+  const button = $("view-reset");
+  if (!button) return;
+  button.hidden = !(plot && usesPlotChronology(plot)
+    && (state.view === "timeline" || state.view === "chronology" || state.view === "movie-web"));
+}
+
+/** Put the current Marvel view back to its defaults without leaving it. */
+function resetChronologyView() {
+  if (!plot || !usesPlotChronology(plot)) return;
+  state.includeTv = CHRONOLOGY_INCLUDE_TV_DEFAULT;
+  rememberTvPref(state.includeTv);
+  state.query = "";
+  const titleInput = $("title-filter");
+  if (titleInput) titleInput.value = "";
+  state.person = ALL;
+  state.eventId = "";
+  state.chronologyTitle = resolveChronologyTitle("");
+  setLaneZoom(1);
+  render({ push: true });
+  queueLaneScroll({ left: 0, top: 0 });
+  document.querySelector(".movie-web-scroll")?.scrollTo(0, 0);
+}
+
 function fillHubSelect() {
   const wrap = $("hub-switch");
   const select = $("hub-select");
@@ -1316,6 +1342,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   fillHubSelect();
   fillTitleFilter();
   fillIncludeTv();
+  fillResetButton();
   const plotSelect = $("plot-select");
   if (plotSelect && document.activeElement === plotSelect) plotSelect.blur();
   const hubSelect = $("hub-select");

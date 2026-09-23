@@ -25,11 +25,15 @@ The main Marvel page is a three-column study-up board:
 - **Characters** (under center): a horizontal row of circular cast avatars (Commons portraits, initials if none).
 - **Watch Next** (right): titles this one feeds into, or the next chronological successors if there is no outbound edge.
 
-Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome also changes focus. Chronology in the nav opens the full poster timeline. Side-rail posters scale with stack length so every Watch Before / Watch Next title stays on screen, and the stacks sit beside the selected poster instead of starting under the nav. Skinny arrows point from Watch Before into the selected movie and from the center toward Watch Next. Cast avatars open that character’s timeline.
+Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome also changes focus. Chronology in the nav opens the full poster timeline. Skinny arrows point from Watch Before into the selected movie and from the center toward Watch Next. Cast avatars open that character’s timeline.
+
+The board is one grid whose three columns share rows: a header row, a fixed band above the poster, the poster, the same band below, then the title and cast. The Watch Before and Watch Next headers therefore always line up, and the selected poster sits in the same place for every title, centered on the page. A side stack that fits in the band is centered on the poster, so a single title’s arrow meets the poster’s midpoint. A longer stack starts at the top of the band and continues downward, and the Watch Order area scrolls like a page. Side posters shrink to fit the band, down to a readable floor.
+
+**Reset** (next to the view buttons) returns the current view to its defaults without leaving it: the first title in Watch Order, an empty title search, TV shows off, chronology zoom at 100% scrolled to the start, and the Movie web scrolled to the top.
 
 ### Chronology page
 
-`?view=chronology` (Chronology in the Marvel nav) is a scrollable story-order timeline: large posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. Choosing a title returns to Watch Order focused on that film.
+`?view=chronology` (Chronology in the Marvel nav) is a scrollable story-order timeline: large posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. On the wide lane each poster sits against the axis with its title on the outer side, and its cast sits across the axis in the gap the neighbouring titles leave. Poster height follows the lane height so titles are never cut off; long titles clamp to two lines with the full name on hover. Choosing a title returns to Watch Order focused on that film.
 
 ### Movie web
 

@@ -326,18 +326,21 @@ export function movieWebLayout(titles = [], options = {}) {
   };
 }
 
+export const CHRONOLOGY_RAIL_POSTER_MIN = 128;
+
 /**
- * Side-rail poster size so every Watch Before / Watch Next tile fits the host.
- * Shrinks posters and gaps together; never drops items.
+ * Side-rail poster size for the Watch Before / Watch Next stacks. Shrinks
+ * posters and gaps together to fit, down to a readable floor; never drops items.
  */
 export function chronologyRailPosterSize({ count = 1, availableHeight = 560 } = {}) {
   const n = Math.max(1, Math.round(Number(count) || 1));
-  const caption = 18;
+  // Up to three caption lines plus the gap above them.
+  const caption = 40;
   const gap = n >= 5 ? 6 : n >= 4 ? 8 : 10;
   const usable = Math.max(96, Number(availableHeight) || 0);
   // Keep the side rails readable. Long prerequisite lists scroll inside their
   // rail instead of collapsing into postage stamps.
-  const height = Math.max(128, Math.min(144, (usable - gap * (n - 1) - caption * n) / n));
+  const height = Math.max(CHRONOLOGY_RAIL_POSTER_MIN, Math.min(144, (usable - gap * (n - 1) - caption * n) / n));
   return {
     count: n,
     gap,

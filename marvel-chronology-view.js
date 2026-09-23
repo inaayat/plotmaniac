@@ -1,4 +1,5 @@
 import {
+  CHRONOLOGY_RAIL_POSTER_MIN,
   COMPACT_MAX_WIDTH,
   chronologyById,
   chronologyFilterLabel,
@@ -259,6 +260,7 @@ function chronologyLaneEvent(entry, { order, side, active, peopleById, onFocus, 
   rule.className = "lane-rule";
   const heading = document.createElement("strong");
   heading.textContent = chronologyFilterLabel(entry);
+  heading.title = chronologyFilterLabel(entry);
   hit.append(posterTile(entry, { size: "lane" }), num, rule, heading);
   if (entry.era) {
     const era = document.createElement("em");
@@ -267,12 +269,13 @@ function chronologyLaneEvent(entry, { order, side, active, peopleById, onFocus, 
   }
   hit.addEventListener("click", () => onFocus(entry.id));
   card.appendChild(hit);
-  card.appendChild(castRow(entry, { peopleById, onOpenPerson, avatar, compact: true }));
 
   const dot = document.createElement("span");
   dot.className = "lane-dot";
   dot.setAttribute("aria-hidden", "true");
-  item.append(card, dot);
+  // The cast sits across the axis from its poster, where the neighbouring
+  // columns leave room.
+  item.append(card, castRow(entry, { peopleById, onOpenPerson, avatar, compact: true }), dot);
   return item;
 }
 
@@ -362,7 +365,7 @@ function buildFocusLayout({ entry, chronology, index, peopleById, onFocus, onOpe
 
   const center = document.createElement("main");
   center.className = "chrono-center";
-  center.appendChild(centerDetail(entry, { peopleById, onOpenPerson, avatar }));
+  center.append(...centerDetail(entry, { peopleById, onOpenPerson, avatar }));
 
   const outbound = document.createElement("aside");
   outbound.className = "chrono-rail chrono-rail--out";
@@ -385,34 +388,56 @@ function fitChronoRails(layout) {
   if (!layout) return;
   const stacks = [...layout.querySelectorAll(".chrono-poster-stack")];
   const count = Math.max(1, ...stacks.map((stack) => stack.children.length), Number(layout.dataset.railCount) || 1);
-  const host = layout.closest(".chrono-focus-host") || layout.parentElement || layout;
-  const heading = layout.querySelector(".chrono-rail-heading");
-  const headingH = heading ? heading.getBoundingClientRect().height + 10 : 28;
-  const hostH = host.getBoundingClientRect().height || 0;
-  const reserve = Math.round(hostH * 0.22);
-  const size = chronologyRailPosterSize({
-    count,
-    availableHeight: Math.max(160, hostH - headingH - reserve),
-  });
+  const area = railArea(layout);
+  const size = chronologyRailPosterSize({ count, availableHeight: Math.max(160, area) });
   layout.dataset.railCount = String(count);
   layout.style.setProperty("--chrono-rail-count", String(count));
-  layout.style.setProperty("--chrono-md-h", `${size.height}px`);
-  layout.style.setProperty("--chrono-md-w", `${size.width}px`);
   layout.style.setProperty("--chrono-rail-gap", `${size.gap}px`);
+  applyRailPosterHeight(layout, size.height);
+  if (!area) return;
+
+  // Caption wrapping varies per title, so trim by the measured overflow of
+  // the band a stack centers in (reach above, poster, reach below).
+  let height = size.height;
+  for (let pass = 0; pass < 3 && height > CHRONOLOGY_RAIL_POSTER_MIN; pass += 1) {
+    let trim = 0;
+    layout.querySelectorAll(".chrono-rail-content").forEach((content) => {
+      const items = content.querySelectorAll(".chrono-poster-card").length;
+      const overflow = content.getBoundingClientRect().height - area;
+      if (items && overflow > 0) trim = Math.max(trim, Math.ceil(overflow / items) + 1);
+    });
+    if (!trim) break;
+    height = Math.max(CHRONOLOGY_RAIL_POSTER_MIN, height - trim);
+    applyRailPosterHeight(layout, height);
+  }
+}
+
+/** Height of grid rows 2–4, the band each side stack centers in. Zero on phones. */
+function railArea(layout) {
+  const style = getComputedStyle(layout);
+  if (style.display !== "grid") return 0;
+  const rows = style.gridTemplateRows.split(" ").map((value) => Number.parseFloat(value));
+  if (rows.length < 5 || rows.some((value) => !Number.isFinite(value))) return 0;
+  const gap = Number.parseFloat(style.rowGap) || 0;
+  return rows[1] + rows[2] + rows[3] + gap * 2;
+}
+
+function applyRailPosterHeight(layout, height) {
+  layout.style.setProperty("--chrono-md-h", `${height}px`);
+  layout.style.setProperty("--chrono-md-w", `${Math.round(height * 2 / 3)}px`);
 }
 
 function centerDetail(entry, { peopleById, onOpenPerson, avatar }) {
-  const wrap = document.createElement("article");
-  wrap.className = "chrono-center-card";
-  wrap.appendChild(railHeading("Selected Movie"));
+  const heading = railHeading("Selected Movie");
+  heading.classList.add("chrono-center-heading");
 
   const hero = document.createElement("div");
   hero.className = "chrono-selected";
-  hero.append(posterTile(entry, { size: "xl" }), centerTitles(entry));
-  wrap.appendChild(hero);
+  hero.appendChild(posterTile(entry, { size: "xl" }));
 
   const support = document.createElement("div");
   support.className = "chrono-center-support";
+  support.appendChild(centerTitles(entry));
   if (entry.note) {
     const note = document.createElement("p");
     note.className = "chrono-note";
@@ -431,8 +456,7 @@ function centerDetail(entry, { peopleById, onOpenPerson, avatar }) {
   castBlock.appendChild(railHeading("Characters"));
   castBlock.appendChild(castRow(entry, { peopleById, onOpenPerson, avatar }));
   support.appendChild(castBlock);
-  wrap.appendChild(support);
-  return wrap;
+  return [heading, hero, support];
 }
 
 function centerTitles(entry) {
