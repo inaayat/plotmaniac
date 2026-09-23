@@ -15,7 +15,8 @@ Static single-page app: `index.html` at the repo root, ES modules in `app.js`, `
 | `scripts/marvel-character-index.mjs` | Parse the index and map appearances onto chronology titles + `people.json` ids |
 | `scripts/enrich-marvel-chronology-posters.mjs` | Bakes TMDB posters into chronology (`TMDB_API_KEY` env only; CI skips) |
 | `marvel-chronology-view.js` | Marvel default: Watch Before / Selected / Watch Next focus layout with circular cast and block arrows. Chronology nav opens `?view=chronology`, a scrollable poster timeline. Cast avatars open that character’s timeline; Marvel has no character-web screen |
-| `data/us-presidential-doctrines/` | Timeline plot: named U.S. foreign-policy doctrines (Monroe through Biden) |
+| `presidential-doctrines-view.js` | Single-page scroll layout for U.S. presidential doctrines |
+| `data/us-presidential-doctrines/` | Doctrine summary data (`arrangement: doctrine-summary` in `plots.json`) |
 | `data/gun-regulation/` | SCOTUS gun-rights board (federal timeline, checklist, exemplars) |
 | `data/gun-laws-by-state/` | Separate state-law plot: Wikipedia snapshot, filter labels, Albers map paths |
 | `scripts/build-states-wikipedia-snapshot.mjs` | Wikipedia → `states-snapshot.json` + `docs/gun-laws-by-state-table.md` |

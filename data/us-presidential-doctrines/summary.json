@@ -1,0 +1,34 @@
+{
+  "eraLabels": {
+    "hemisphere": "Western Hemisphere (1823–1904)",
+    "cold-war": "Cold War (1947–1991)",
+    "post-cold-war": "Post–Cold War (1999–2021)"
+  },
+  "crossCuttingThemes": [
+    {
+      "id": "regional-sphere",
+      "label": "Regional sphere",
+      "description": "Draw a geographic line—Americas, Middle East, Persian Gulf—and treat crossing it as a threat to U.S. peace or vital interests."
+    },
+    {
+      "id": "anti-communism",
+      "label": "Anti-communism & containment",
+      "description": "From Truman through Reagan, doctrines name communist expansion (often Soviet-linked) as the core threat and promise aid or force to stop it."
+    },
+    {
+      "id": "intervention",
+      "label": "Intervention thresholds",
+      "description": "When revolutions, aggression, or instability cross a line—communist takeovers, outside control of oil routes, genocide—the U.S. claims a right to act."
+    },
+    {
+      "id": "burden-sharing",
+      "label": "Burden-sharing & allies",
+      "description": "Nixon expects partners to supply manpower; later presidents press allies on costs (Trump) or consult before fighting (Biden)."
+    },
+    {
+      "id": "aid-and-force",
+      "label": "Aid, proxies, and force",
+      "description": "Military/economic assistance, regional “police” roles, and proxy insurgents appear before—or instead of—large U.S. ground wars."
+    }
+  ]
+}

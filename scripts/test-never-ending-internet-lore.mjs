@@ -2458,4 +2458,20 @@ const gunFilterConfig = readJson("../data/gun-laws-by-state/filter-criteria.json
 assert.ok(gunFilterConfig.criteria.every((row) => typeof row.explanation === "string" && row.explanation.length > 40));
 assert.ok(gunFilterConfig.gunTypes.every((row) => row.explanation));
 
+const doctrinePlot = findPlot(plots.plots, "us-presidential-doctrines");
+assert.equal(doctrinePlot?.arrangement, "doctrine-summary");
+assert.ok(doctrinePlot?.paths?.summary);
+const doctrineSummary = readJson("../data/us-presidential-doctrines/summary.json");
+assert.ok(doctrineSummary.crossCuttingThemes.length >= 4);
+const doctrineEvents = readJson("../data/us-presidential-doctrines/events.json");
+assert.equal(doctrineEvents.length, 14);
+assert.ok(doctrineEvents.every((event) => Array.isArray(event.themes) && event.themes.length));
+const doctrineView = fs.readFileSync(new URL("../presidential-doctrines-view.js", import.meta.url), "utf8");
+assert.ok(doctrineView.includes("renderPresidentialDoctrinesSummary"));
+assert.match(
+  css,
+  /body\[data-board="doctrine-summary"\]\[data-view="web"\]\s*\{[^}]*overflow-y:\s*auto/,
+  "doctrine summary page scrolls as one document",
+);
+
 console.log("never-ending internet lore tests passed");

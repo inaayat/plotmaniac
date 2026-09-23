@@ -22,13 +22,19 @@ export function usesGunStateLawsPlot(plot) {
   return plot?.arrangement === "gun-state-laws";
 }
 
+export function usesDoctrineSummaryPlot(plot) {
+  return plot?.arrangement === "doctrine-summary";
+}
+
 export function usesRegulationBoard(plot, topicId = "") {
   if (plot?.arrangement === "regulation-board") return true;
   return usesScotusHub(plot) && topicId === "gun-rights";
 }
 
 export function defaultPlotView({ requested = "", eventId = "", plot = null } = {}) {
-  if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot)) return "web";
+  if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot) || usesDoctrineSummaryPlot(plot)) {
+    return "web";
+  }
   if (requested === "timeline" || requested === "web" || requested === "person" || requested === "chronology") {
     return requested;
   }
@@ -1123,7 +1129,9 @@ export function webCastForPersonFocus(people, relations, personId) {
 export function boardViewForPerson(plot, view) {
   if (usesPlotChronology(plot)) return view === "web" ? "timeline" : view;
   if (plot?.arrangement === "wars") return "web";
-  if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot)) return "web";
+  if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot) || usesDoctrineSummaryPlot(plot)) {
+    return "web";
+  }
   if (usesPolicyPanel(plot) && view === "person") return "web";
   if (usesHubWebPersonFocus(plot) && view === "person") return "web";
   return view;
