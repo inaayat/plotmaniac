@@ -44,7 +44,8 @@ export function resolvePlotView(parsed, { href = "", plot = null } = {}) {
 
 export function eventSearchText(event, peopleById = new Map()) {
   const people = (event.people || []).map((id) => peopleById.get(id)?.name || id);
-  return [event.title, event.tease, event.summary, event.era, ...people]
+  // Suggestions use the film/series link label, which often differs from the beat title.
+  return [event.title, event.tease, event.summary, event.era, eventMediaLabel(event), ...people]
     .filter(Boolean)
     .join(" ")
     .toLocaleLowerCase();

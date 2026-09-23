@@ -1771,6 +1771,31 @@ const ironManCast = peopleForTitleSearch(
 );
 assert.ok(ironManCast.people.some((person) => person.id === "tony-stark"), "title search keeps Iron Man cast");
 assert.ok(ironManCast.people.length < marvelPeople.length, "title search narrows the web");
+const marvelPeopleById = new Map(marvelPeople.map((person) => [person.id, person]));
+const braveNewWorld = filterEvents(
+  marvelEvents,
+  { query: "Captain America: Brave New World", hub: ALL },
+  marvelPeopleById,
+);
+assert.deepEqual(
+  braveNewWorld.map((event) => event.id),
+  ["brave-new-world"],
+  "film title search matches the Brave New World beat",
+);
+const braveCast = peopleForTitleSearch(
+  marvelPeople,
+  marvelEvents,
+  marvelRelations,
+  { query: "Captain America: Brave New World", hub: ALL },
+  marvelPeopleById,
+);
+assert.ok(braveCast.people.some((person) => person.id === "sam-wilson"), "Brave New World title search keeps Sam Wilson");
+for (const label of marvelTitles) {
+  assert.ok(
+    filterEvents(marvelEvents, { query: label, hub: ALL }, marvelPeopleById).length > 0,
+    `title search should match suggested label: ${label}`,
+  );
+}
 for (const event of marvelEvents) {
   assert.match(event.date, /^\d{4}-\d{2}-\d{2}$/, event.id);
   assert.ok(event.title && event.summary && event.era, event.id);
