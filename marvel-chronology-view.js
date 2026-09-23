@@ -35,7 +35,6 @@ export function renderMarvelChronology({
   focusId,
   onFocus,
   onOpenPerson,
-  onOpenChronology,
   avatar,
 }) {
   const section = document.createElement("section");
@@ -46,19 +45,6 @@ export function renderMarvelChronology({
   if (!activeId) {
     section.appendChild(emptyBlock("No chronology titles loaded."));
     return section;
-  }
-
-  if (typeof onOpenChronology === "function") {
-    const linkRow = document.createElement("p");
-    linkRow.className = "chrono-order-bar chrono-order-bar--link";
-    const open = document.createElement("button");
-    open.type = "button";
-    open.className = "chrono-order-open";
-    open.textContent = "Full chronological list";
-    open.setAttribute("aria-label", "Open the full chronological list on its own page");
-    open.addEventListener("click", () => onOpenChronology());
-    linkRow.appendChild(open);
-    section.appendChild(linkRow);
   }
 
   const focusHost = document.createElement("div");
@@ -124,7 +110,7 @@ function renderChronologyLane({ titles, peopleById, focusId, onFocus, onOpenPers
   }
   const { view, rail } = buildLaneChrome(
     "MCU + Mutant Legacy, oldest on the left. Scroll or drag. Pick a title to open it in Watch Order.",
-    { ariaLabel: "Full chronological list, oldest on the left. Drag to move. Hold Control and scroll to zoom." },
+    { ariaLabel: "Chronological timeline, oldest on the left. Drag to move. Hold Control and scroll to zoom." },
   );
   let era = "";
   let step = 0;
@@ -198,7 +184,7 @@ function renderChronologySpine({ titles, peopleById, focusId, onFocus, onOpenPer
   hint.textContent = "MCU + Mutant Legacy, oldest at the top. Pick a title to open it in Watch Order.";
   const rail = document.createElement("ol");
   rail.className = "spine chrono-story";
-  rail.setAttribute("aria-label", "Full chronological list, oldest at the top.");
+  rail.setAttribute("aria-label", "Chronological timeline, oldest at the top.");
   let era = "";
   titles.forEach((entry, order) => {
     if (entry.era && entry.era !== era) {
@@ -367,14 +353,14 @@ function watchRail({ items, empty, onFocus, side }) {
   }
   const list = document.createElement("ul");
   list.className = "chrono-poster-stack";
-  items.forEach((item, index) => {
-    list.appendChild(posterCard(item, onFocus, side, index, items.length));
+  items.forEach((item) => {
+    list.appendChild(posterCard(item, onFocus, side));
   });
   root.appendChild(list);
   return root;
 }
 
-function posterCard(entry, onFocus, side, index, total) {
+function posterCard(entry, onFocus, side) {
   const li = document.createElement("li");
   const button = document.createElement("button");
   button.type = "button";
@@ -383,19 +369,12 @@ function posterCard(entry, onFocus, side, index, total) {
   const bundle = document.createElement("span");
   bundle.className = "chrono-poster-bundle";
   bundle.append(posterTile(entry, { size: "md" }), posterCaption(entry));
-  const arrow = roundedArrow(side, arrowBend(index, total));
+  const arrow = blockArrow(side);
   if (side === "out") button.append(arrow, bundle);
   else button.append(bundle, arrow);
   button.addEventListener("click", () => onFocus(entry.id));
   li.appendChild(button);
   return li;
-}
-
-function arrowBend(index, total) {
-  if (total <= 1) return 0;
-  if (index === 0) return 1;
-  if (index === total - 1) return -1;
-  return 0;
 }
 
 function castRow(entry, { peopleById, onOpenPerson, avatar, compact = false }) {
@@ -425,25 +404,24 @@ function castRow(entry, { peopleById, onOpenPerson, avatar, compact = false }) {
   return cast;
 }
 
-function roundedArrow(side, bend) {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("class", `chrono-arrow chrono-arrow--${side}${bend ? ` chrono-arrow--bend-${bend < 0 ? "up" : "down"}` : ""}`);
-  svg.setAttribute("viewBox", "0 0 96 72");
-  svg.setAttribute("aria-hidden", "true");
-  svg.setAttribute("focusable", "false");
+function blockArrow(side) {
+  const arrow = document.createElement("span");
+  arrow.className = `chrono-arrow chrono-arrow--${side}`;
+  arrow.setAttribute("aria-hidden", "true");
+  const shaft = document.createElement("span");
+  shaft.className = "chrono-arrow-shaft";
+  const head = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  head.setAttribute("class", "chrono-arrow-head");
+  head.setAttribute("viewBox", "0 0 48 56");
+  head.setAttribute("focusable", "false");
   const shape = document.createElementNS("http://www.w3.org/2000/svg", "path");
   shape.setAttribute("class", "chrono-arrow-shape");
-  // Filled curved arrow, head on the right. Watch Next keeps this direction
-  // so the head points at the next poster; Watch Before points at the selected movie.
-  if (bend > 0) {
-    shape.setAttribute("d", "M8 64 C28 66 42 54 54 40 L88 34 L52 12 L50 34 C38 46 24 56 8 52 Z");
-  } else if (bend < 0) {
-    shape.setAttribute("d", "M8 8 C28 6 42 18 54 32 L88 38 L52 60 L50 38 C38 26 24 16 8 20 Z");
-  } else {
-    shape.setAttribute("d", "M6 46 C24 50 40 44 52 36 L90 32 L50 12 L48 32 C34 38 22 44 6 36 Z");
-  }
-  svg.appendChild(shape);
-  return svg;
+  // Chubby block head, tip on the right. Both rails use this direction:
+  // Watch Before points at the selected movie, Watch Next points at its poster.
+  shape.setAttribute("d", "M2 16 C2 9 8 7 13 12 L36 24 C44 28 44 30 36 34 L13 46 C8 51 2 49 2 42 Z");
+  head.appendChild(shape);
+  arrow.append(shaft, head);
+  return arrow;
 }
 
 function posterTile(entry, { size = "md" } = {}) {

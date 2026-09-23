@@ -251,7 +251,7 @@ export function chronologyRailPosterSize({ count = 1, availableHeight = 560 } = 
   const caption = 18;
   const gap = n >= 5 ? 6 : n >= 4 ? 8 : 10;
   const usable = Math.max(96, Number(availableHeight) || 0);
-  const height = Math.max(44, Math.min(132, (usable - gap * (n - 1) - caption * n) / n));
+  const height = Math.max(44, Math.min(168, (usable - gap * (n - 1) - caption * n) / n));
   return {
     count: n,
     gap,

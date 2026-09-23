@@ -3079,12 +3079,6 @@ function renderTimeline() {
         writeUrl(true);
       },
       onOpenPerson: (id) => openPerson(id),
-      onOpenChronology: () => {
-        state.view = "chronology";
-        state.person = ALL;
-        rememberView("chronology");
-        render({ push: true });
-      },
       avatar,
     });
   }

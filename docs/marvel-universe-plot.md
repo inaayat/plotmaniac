@@ -12,7 +12,7 @@ Reusable multi-hub mechanics (focus control, `minBeats`, event `hubs`): [templat
 - **Search placeholder:** `Avengers, TVA, Wakanda, Spider-Man, a film…`
 - **Title filter:** `titleFilter: true` puts that search on the main chrome and focuses a matching chronology title (`?title=`).
 - **Default view:** watch-order focus layout (`defaultView: "timeline"`). Opening `?plot=marvel-universe` or clicking Marvel on the homepage gallery lands here (`plotChooserHref` adds `view=timeline`). `?view=web` resolves to Watch Order.
-- **Chronology view:** `?plot=marvel-universe&view=chronology` is the dedicated full story-order timeline (same horizontal lane as other plots on a wide screen, a vertical spine on a phone). Each title shows its poster and the characters in that title. **Full chronological list** on Watch Order, and Chronology in the nav, open that page. Choosing a title returns to Watch Order focused on that film.
+- **Chronology view:** `?plot=marvel-universe&view=chronology` is the dedicated full story-order timeline (same horizontal lane as other plots on a wide screen, a vertical spine on a phone). Each title shows its poster and the characters in that title. Chronology in the nav opens that page. Choosing a title returns to Watch Order focused on that film.
 - **Include TV shows:** checkbox beside Title / Watch Order. Off by default (movies, One-Shots, and film-adjacent specials Karan already marks as `kind: "movie"`). On (`?tv=1`, remembered in localStorage for in-app plot opens) includes Disney+/Netflix/series already in the chronology (`kind: "tv"`). Filter applies to Watch Before / Watch Next, the chronology page, and the title picker.
 - **Center id:** `tony-stark`
 
@@ -25,11 +25,11 @@ The main Marvel page is a three-column study-up board:
 - **Characters** (under center): a horizontal row of circular cast avatars (Commons portraits, initials if none).
 - **Watch Next** (right): titles this one feeds into, or the next chronological successors if there is no outbound edge.
 
-Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome also changes focus. **Full chronological list** opens the chronology page. Side-rail posters scale with stack length so every Watch Before / Watch Next title stays on screen. Cast avatars open that character’s timeline.
+Clicking a left or right poster refocuses that title (center updates, sides recompute, View Transitions when the browser allows). Title search in the chrome also changes focus. Chronology in the nav opens the full poster timeline. Side-rail posters scale with stack length so every Watch Before / Watch Next title stays on screen. Block arrows sit between each side poster and the selected movie (Watch Before) or the next poster (Watch Next) and widen with the screen. Cast avatars open that character’s timeline.
 
 ### Chronology page
 
-`?view=chronology` (Chronology in the Marvel nav, or **Full chronological list** on Watch Order) is a scrollable story-order timeline: posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. Choosing a title returns to Watch Order focused on that film.
+`?view=chronology` (Chronology in the Marvel nav) is a scrollable story-order timeline: posters and the characters in each title, oldest on the left on a wide screen and top-to-bottom on a phone. Choosing a title returns to Watch Order focused on that film.
 
 ### Character timelines
 
