@@ -12,6 +12,7 @@ import {
   peopleForTitleSearch,
   titleFilterLabels,
   usesPlotChronology,
+  usesTonyStarkSaga,
   chronologyEntryForQuery,
   chronologyById,
   filterChronology,
@@ -103,6 +104,7 @@ import {
 } from "./gun-laws-by-state-model.js";
 import { renderGunStateLawsBoard } from "./gun-laws-by-state-view.js";
 import { renderMarvelChronology, renderMarvelChronologyIndex, renderMarvelMovieWeb } from "./marvel-chronology-view.js";
+import { renderTonyStarkSaga } from "./tony-stark-saga-view.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const peopleById = new Map();
@@ -111,6 +113,7 @@ let plot = null;
 let people = [];
 let events = [];
 let chronology = null;
+let tonySaga = null;
 let relations = [];
 let countries = [];
 let countryBySlug = new Map();
@@ -217,11 +220,13 @@ function labelViews() {
   const timeline = $("view-timeline");
   const chronologyBtn = $("view-chronology");
   const movieWebBtn = $("view-movie-web");
+  const ironManBtn = $("view-iron-man");
   if (!web || !timeline) return;
   web.hidden = scotus || doctrineSummaryBoard;
   timeline.hidden = scotus || doctrineSummaryBoard;
   if (chronologyBtn) chronologyBtn.hidden = scotus || doctrineSummaryBoard || !usesPlotChronology(plot);
   if (movieWebBtn) movieWebBtn.hidden = scotus || doctrineSummaryBoard || !usesPlotChronology(plot);
+  if (ironManBtn) ironManBtn.hidden = scotus || doctrineSummaryBoard || !usesTonyStarkSaga(plot);
   if (scotus || doctrineSummaryBoard) return;
   if (usesPlotChronology(plot)) {
     timeline.hidden = false;
@@ -233,6 +238,10 @@ function labelViews() {
     if (movieWebBtn) {
       movieWebBtn.hidden = false;
       movieWebBtn.textContent = "Movie web";
+    }
+    if (ironManBtn) {
+      ironManBtn.hidden = !usesTonyStarkSaga(plot);
+      ironManBtn.textContent = "Iron Man";
     }
     web.hidden = true;
     return;
@@ -263,7 +272,7 @@ function readTvPref() {
 }
 
 function rememberView(view) {
-  if (view !== "timeline" && view !== "web" && view !== "chronology" && view !== "movie-web") return;
+  if (view !== "timeline" && view !== "web" && view !== "chronology" && view !== "movie-web" && view !== "iron-man") return;
   try {
     localStorage.setItem(VIEW_PREF_KEY, view);
   } catch {
@@ -490,6 +499,8 @@ async function showPlot(id, { history = "push", fromUrl = false } = {}) {
       else if (Array.isArray(payload)) countryData = payload;
     });
     chronology = chronologyData;
+    tonySaga = plot.paths.tonySaga ? await fetchJson(plot.paths.tonySaga) : null;
+    if (token !== loadToken) return;
     peopleById.clear();
     people = peopleData;
     events = eventData.slice().sort((a, b) => a.date.localeCompare(b.date));
@@ -636,6 +647,7 @@ function showPicker({ history = "push" } = {}) {
   people = [];
   events = [];
   chronology = null;
+  tonySaga = null;
   relations = [];
   countries = [];
   countryBySlug = new Map();
@@ -1101,7 +1113,7 @@ function bindChrome() {
   if (plotSearch) plotSearch.addEventListener("input", filterGallery);
   document.querySelectorAll(".views > button[data-view]").forEach((button) => {
     button.addEventListener("click", () => {
-      const nextView = button.dataset.view === "timeline" || button.dataset.view === "chronology" || button.dataset.view === "movie-web"
+      const nextView = button.dataset.view === "timeline" || button.dataset.view === "chronology" || button.dataset.view === "movie-web" || button.dataset.view === "iron-man"
         ? button.dataset.view
         : "web";
       if (plot?.arrangement === "historical-map") {
@@ -1233,7 +1245,7 @@ function fillTitleFilter() {
   const wrap = $("title-switch");
   const input = $("title-filter");
   if (!wrap || !input) return;
-  if (!plot || !usesTitleFilter()) {
+  if (!plot || !usesTitleFilter() || state.view === "iron-man") {
     wrap.hidden = true;
     titleFilterOptions = [];
     return;
@@ -1335,10 +1347,12 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   $("view-timeline").classList.toggle("is-active", state.view === "timeline");
   $("view-chronology")?.classList.toggle("is-active", state.view === "chronology");
   $("view-movie-web")?.classList.toggle("is-active", state.view === "movie-web");
+  $("view-iron-man")?.classList.toggle("is-active", state.view === "iron-man");
   $("view-web").setAttribute("aria-pressed", String(state.view === "web"));
   $("view-timeline").setAttribute("aria-pressed", String(state.view === "timeline"));
   $("view-chronology")?.setAttribute("aria-pressed", String(state.view === "chronology"));
   $("view-movie-web")?.setAttribute("aria-pressed", String(state.view === "movie-web"));
+  $("view-iron-man")?.setAttribute("aria-pressed", String(state.view === "iron-man"));
   fillHubSelect();
   fillTitleFilter();
   fillIncludeTv();
@@ -1412,6 +1426,7 @@ function render({ push = false, replace = false, focusEvent = false } = {}) {
   else if (state.view === "timeline") app.appendChild(renderTimeline());
   else if (state.view === "chronology" && usesPlotChronology(plot)) app.appendChild(renderChronologyPage());
   else if (state.view === "movie-web" && usesPlotChronology(plot)) app.appendChild(renderMovieWebPage());
+  else if (state.view === "iron-man" && usesTonyStarkSaga(plot)) app.appendChild(renderTonyStarkSagaPage());
   else if (state.view === "person") app.appendChild(renderPerson());
   else if (state.view === "relation" && plot?.disclosure === "regions") app.appendChild(renderRelationPage());
   else if (plot?.disclosure === "regions") app.appendChild(renderRelations());
@@ -3122,6 +3137,23 @@ function renderPerson() {
         : `Beats with ${person.name}, oldest on the left.`),
   }));
   return section;
+}
+
+function renderTonyStarkSagaPage() {
+  return renderTonyStarkSaga({
+    saga: tonySaga,
+    chronology,
+    peopleById,
+    avatar,
+    onOpenPerson: (id) => openPerson(id),
+    onOpenTitle: (id) => {
+      state.chronologyTitle = id;
+      state.view = "timeline";
+      state.person = ALL;
+      rememberView("timeline");
+      render({ push: true });
+    },
+  });
 }
 
 function renderMovieWebPage() {

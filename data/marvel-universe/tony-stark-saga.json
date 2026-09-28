@@ -1,0 +1,951 @@
+{
+  "id": "tony-stark-saga",
+  "subjectId": "tony-stark",
+  "title": "Tony Stark / Iron Man",
+  "kicker": "The defining arc of the MCU",
+  "lede": "Robert Downey Jr.'s Tony Stark is the industrialist who starts the Marvel Cinematic Universe, founds the Avengers, breaks them, and ends the Infinity Saga by giving his life. This page walks the films in order: who he is in each one, who he binds himself to, and how those bonds change.",
+  "quote": "I am Iron Man.",
+  "source": {
+    "label": "Tony Stark (Marvel Cinematic Universe) on Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Tony_Stark_(Marvel_Cinematic_Universe)"
+  },
+  "extras": [
+    {
+      "id": "happy-hogan",
+      "name": "Happy Hogan",
+      "role": "Bodyguard, driver, and later family",
+      "portrait": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Jon%20Favreau%20by%20Gage%20Skidmore.jpg?width=480"
+      }
+    },
+    {
+      "id": "ho-yinsen",
+      "name": "Ho Yinsen",
+      "role": "Fellow captive and the man who saves Tony's life"
+    },
+    {
+      "id": "obadiah-stane",
+      "name": "Obadiah Stane / Iron Monger",
+      "role": "Business partner who sells Tony out"
+    },
+    {
+      "id": "ivan-vanko",
+      "name": "Ivan Vanko / Whiplash",
+      "role": "Rival engineer with a stolen arc reactor"
+    },
+    {
+      "id": "justin-hammer",
+      "name": "Justin Hammer",
+      "role": "Weapons rival who arms Vanko"
+    },
+    {
+      "id": "aldrich-killian",
+      "name": "Aldrich Killian",
+      "role": "Extremis mastermind behind the Mandarin attacks"
+    },
+    {
+      "id": "jarvis-ai",
+      "name": "J.A.R.V.I.S.",
+      "role": "Tony's AI companion, later the mind of Vision"
+    },
+    {
+      "id": "morgan-stark",
+      "name": "Morgan Stark",
+      "role": "Tony and Pepper's daughter"
+    },
+    {
+      "id": "quentin-beck",
+      "name": "Quentin Beck / Mysterio",
+      "role": "Fired Stark employee who tries to inherit Iron Man"
+    },
+    {
+      "id": "adrian-toomes",
+      "name": "Adrian Toomes / Vulture",
+      "role": "Salvager turned criminal after Tony's cleanup"
+    },
+    {
+      "id": "maria-stark",
+      "name": "Maria Stark",
+      "role": "Tony's mother"
+    }
+  ],
+  "threads": [
+    {
+      "id": "pepper-potts",
+      "personId": "pepper-potts",
+      "name": "Pepper Potts",
+      "kind": "romance"
+    },
+    {
+      "id": "james-rhodes",
+      "personId": "james-rhodes",
+      "name": "James Rhodes",
+      "kind": "ally"
+    },
+    {
+      "id": "howard-stark",
+      "personId": "howard-stark",
+      "name": "Howard Stark",
+      "kind": "family"
+    },
+    {
+      "id": "steve-rogers",
+      "personId": "steve-rogers",
+      "name": "Steve Rogers",
+      "kind": "team"
+    },
+    {
+      "id": "bruce-banner",
+      "personId": "bruce-banner",
+      "name": "Bruce Banner",
+      "kind": "team"
+    },
+    {
+      "id": "natasha-romanoff",
+      "personId": "natasha-romanoff",
+      "name": "Natasha Romanoff",
+      "kind": "team"
+    },
+    {
+      "id": "peter-parker-mcu",
+      "personId": "peter-parker-mcu",
+      "name": "Peter Parker",
+      "kind": "mentor"
+    },
+    {
+      "id": "happy-hogan",
+      "personId": "happy-hogan",
+      "name": "Happy Hogan",
+      "kind": "family"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "origin",
+      "title": "Before the suit",
+      "year": 1970,
+      "storyYear": "1970–2008",
+      "role": "Preamble",
+      "phase": "Origin",
+      "kind": "preamble",
+      "quote": "He was taking more pride in his creations than in his family.",
+      "tonyState": "A prodigy CEO who inherited a weapons empire and a cold father's shadow.",
+      "saga": "Anthony Edward Stark is born in Manhattan on May 29, 1970, to Howard and Maria Stark. Howard talks constantly about Captain America and leaves the warmth of parenting to butler Edwin Jarvis. Tony enters MIT at 14 and graduates at 17. On December 16, 1991, his parents die in a car crash — later revealed as a Hydra assassination by the Winter Soldier. Tony inherits Stark Industries, becomes the U.S. military's star weapons designer, and lives as a playboy. At a New Year's Eve conference in Bern he meets Maya Hansen and Aldrich Killian and casually rejects Killian's pitch.",
+      "relationships": [
+        {
+          "personId": "howard-stark",
+          "name": "Howard Stark",
+          "bond": "Cold father",
+          "tone": "family",
+          "change": "new",
+          "note": "Howard tries to inspire Tony with Captain America and the work. Tony hears only that the inventions matter more than the son."
+        },
+        {
+          "personId": "maria-stark",
+          "name": "Maria Stark",
+          "bond": "Mother",
+          "tone": "family",
+          "change": "new",
+          "note": "Maria is the warmer parent. Her death, with Howard's, is the wound Tony does not yet know was murder."
+        },
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "Assistant",
+          "tone": "ally",
+          "change": "new",
+          "note": "Pepper is already the person who keeps the company — and Tony — upright before the first film starts."
+        },
+        {
+          "personId": "james-rhodes",
+          "name": "James Rhodes",
+          "bond": "Friend and liaison",
+          "tone": "ally",
+          "change": "new",
+          "note": "Rhodey is the Air Force friend who can stand next to Tony without being bought."
+        }
+      ]
+    },
+    {
+      "id": "iron-man",
+      "chronologyId": "iron-man",
+      "title": "Iron Man",
+      "year": 2008,
+      "storyYear": "2010",
+      "role": "Lead",
+      "phase": "Becoming Iron Man",
+      "kind": "lead",
+      "quote": "I am Iron Man.",
+      "tonyState": "Weapons mogul who builds a suit in a cave, shuts down the arms business, and tells the world his name.",
+      "saga": "Tony flies to Afghanistan to show off the Jericho missile. The Ten Rings ambush the convoy. Ho Yinsen keeps shrapnel from Tony's heart with an electromagnet, then helps him build a miniature arc reactor and a crude armored suit. Yinsen dies buying Tony time. Tony burns the terrorists' stockpile of his own weapons, comes home, and announces Stark Industries will stop making them. In the workshop he forges a sleeker suit. Obadiah Stane — the partner who arranged the kidnapping — steals the reactor and builds Iron Monger. Tony beats him with the leftover first reactor, then ignores the cover story and says the line that founds the MCU: I am Iron Man.",
+      "relationships": [
+        {
+          "personId": "ho-yinsen",
+          "name": "Ho Yinsen",
+          "bond": "Savior",
+          "tone": "mentor",
+          "change": "new",
+          "note": "Yinsen keeps Tony alive and asks what he will do with the rest of his life. His death is the first debt Tony never pays back."
+        },
+        {
+          "personId": "obadiah-stane",
+          "name": "Obadiah Stane",
+          "bond": "Partner turned betrayer",
+          "tone": "enemy",
+          "change": "broken",
+          "note": "The man who ran the company with him sold him to the Ten Rings. The first Iron Man villain is the closest colleague."
+        },
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "Assistant he trusts with everything",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "He leaves the company in her hands, asks her to help swap the reactor, and starts treating her as the only adult in the room."
+        },
+        {
+          "personId": "james-rhodes",
+          "name": "James Rhodes",
+          "bond": "The friend who pulls him out of the desert",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "Rhodey is still the military liaison, but he is also the one who finds Tony and does not look away when the mission changes."
+        },
+        {
+          "personId": "nick-fury",
+          "name": "Nick Fury",
+          "bond": "Recruiter",
+          "tone": "ally",
+          "change": "new",
+          "note": "After the credits Fury walks into the house and names the Avengers Initiative. Tony is no longer a private problem."
+        },
+        {
+          "personId": "happy-hogan",
+          "name": "Happy Hogan",
+          "bond": "Bodyguard",
+          "tone": "ally",
+          "change": "new",
+          "note": "Happy is already on the payroll: driver, punchline, and the first of Tony's chosen family."
+        }
+      ]
+    },
+    {
+      "id": "incredible-hulk",
+      "chronologyId": "incredible-hulk",
+      "title": "The Incredible Hulk",
+      "year": 2008,
+      "storyYear": "2011",
+      "role": "Cameo",
+      "phase": "Recruiting",
+      "kind": "cameo",
+      "quote": "What if I told you we were putting a team together?",
+      "tonyState": "The man who already thinks in teams, showing up in someone else's movie to collect Banner.",
+      "saga": "Tony appears after the Hulk's story ends. He sits down with General Ross and floats the Avengers Initiative. It is a cameo, but it is also the first time Tony treats other powered people as pieces of a larger machine he intends to build.",
+      "relationships": [
+        {
+          "personId": "bruce-banner",
+          "name": "Bruce Banner",
+          "bond": "Recruit",
+          "tone": "team",
+          "change": "new",
+          "note": "Tony has not met Banner on screen yet, but he is already shopping for him. The science partnership starts as a hiring pitch."
+        },
+        {
+          "personId": "thaddeus-ross",
+          "name": "Thaddeus Ross",
+          "bond": "Future antagonist",
+          "tone": "rival",
+          "change": "new",
+          "note": "Tony needles Ross about a team. Years later Ross will be the official who brings Tony the Sokovia Accords."
+        }
+      ]
+    },
+    {
+      "id": "iron-man-2",
+      "chronologyId": "iron-man-2",
+      "title": "Iron Man 2",
+      "year": 2010,
+      "storyYear": "2011",
+      "role": "Lead",
+      "phase": "Legacy and the palladium clock",
+      "kind": "lead",
+      "quote": "It's not about me.",
+      "tonyState": "Famous, dying, and finally forced to make room for other people.",
+      "saga": "Six months later Tony is a celebrity who will not hand the suit to the government. The palladium in his chest is poisoning him. He grows reckless, appoints Pepper CEO, and fights Ivan Vanko in Monaco. At his birthday he gets drunk in the Mark IV; Rhodey takes the Mark II and becomes War Machine. A hidden message from Howard gives Tony the structure of a new element. He synthesizes it, saves his own life, and with Rhodey stops Vanko's drones at the Expo. After he pulls Pepper out of a dying drone, they start a relationship. The film is about not being an island: legacy, succession, and letting other people wear the armor.",
+      "relationships": [
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "CEO, then girlfriend",
+          "tone": "romance",
+          "change": "deepened",
+          "note": "He puts the company in her name because he thinks he is dying. By the end the job is real and so is the romance."
+        },
+        {
+          "personId": "james-rhodes",
+          "name": "James Rhodes",
+          "bond": "War Machine",
+          "tone": "ally",
+          "change": "strained",
+          "note": "Rhodey confiscates a suit after the birthday brawl, then fights beside Tony once Vanko hijacks both armors. The friendship survives by becoming a partnership."
+        },
+        {
+          "personId": "howard-stark",
+          "name": "Howard Stark",
+          "bond": "Posthumous reconciliation",
+          "tone": "family",
+          "change": "reconciled",
+          "note": "A film-reel message and a diagram of a new element recast Howard as a father who did leave Tony something. The coldness is not gone, but it is no longer the whole story."
+        },
+        {
+          "personId": "natasha-romanoff",
+          "name": "Natasha Romanoff",
+          "bond": "Undercover assistant",
+          "tone": "ally",
+          "change": "new",
+          "note": "She arrives as Natalie Rushman, evaluates Tony for Fury, and saves him in the lab. The first Avenger he meets at home is already lying about her name."
+        },
+        {
+          "personId": "nick-fury",
+          "name": "Nick Fury",
+          "bond": "Handler",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "Fury keeps Tony on a short leash, hands him Howard's material, and makes it clear Iron Man is now a S.H.I.E.L.D. asset."
+        },
+        {
+          "personId": "ivan-vanko",
+          "name": "Ivan Vanko",
+          "bond": "Mirror rival",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Vanko proves someone else can build the reactor. He is Howard's unfinished business wearing electrified whips."
+        },
+        {
+          "personId": "justin-hammer",
+          "name": "Justin Hammer",
+          "bond": "Corporate rival",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Hammer wants Tony's place in the weapons business and ends up as Vanko's useful idiot."
+        },
+        {
+          "personId": "happy-hogan",
+          "name": "Happy Hogan",
+          "bond": "Bodyguard who wants a bigger job",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "Happy is still comic relief, but he is also the person who stays in the car while Tony's life gets louder."
+        }
+      ]
+    },
+    {
+      "id": "the-avengers",
+      "chronologyId": "the-avengers",
+      "title": "The Avengers",
+      "year": 2012,
+      "storyYear": "2012",
+      "role": "Co-lead",
+      "phase": "The Battle of New York",
+      "kind": "ensemble",
+      "quote": "We have a Hulk.",
+      "tonyState": "A free agent who learns he is one arm of an octopus, then flies a nuke through a wormhole.",
+      "saga": "Loki steals the Tesseract. Coulson brings Tony the Selvig research. In Stuttgart, Iron Man arrives after Captain America and Loki surrenders. On the Helicarrier the team splits over Loki and over S.H.I.E.L.D.'s weapons program. After the carrier is attacked, Tony and Steve restart an engine together. Loki opens a hole over Stark Tower. The World Security Council fires a nuclear missile at Manhattan. Tony carries it through the portal, destroys the Chitauri mothership, and falls back powerless. The Hulk catches him. He has now died, almost, in public, for people he barely likes. That near-death becomes the next film's entire psychology.",
+      "relationships": [
+        {
+          "personId": "steve-rogers",
+          "name": "Steve Rogers",
+          "bond": "Rival who becomes a teammate",
+          "tone": "team",
+          "change": "new",
+          "note": "They needle each other — showboat versus soldier — then share an engine room and a city. The Avengers start as an argument that works."
+        },
+        {
+          "personId": "bruce-banner",
+          "name": "Bruce Banner",
+          "bond": "Science kinship",
+          "tone": "team",
+          "change": "deepened",
+          "note": "Tony is the first person who talks to Banner as a colleague instead of a bomb. The line \"we have a Hulk\" is affection as strategy."
+        },
+        {
+          "personId": "thor",
+          "name": "Thor",
+          "bond": "Uneasy ally",
+          "tone": "team",
+          "change": "new",
+          "note": "They fight in the woods, then fight in the sky. Tony treats a god like a contractor with a hammer."
+        },
+        {
+          "personId": "loki-main",
+          "name": "Loki",
+          "bond": "Public enemy",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Loki needs to beat them on television. Tony refuses to kneel and later flies the nuke that wrecks Loki's army."
+        },
+        {
+          "personId": "natasha-romanoff",
+          "name": "Natasha Romanoff",
+          "bond": "Teammate",
+          "tone": "team",
+          "change": "deepened",
+          "note": "The undercover evaluator is now in the same foxhole. She closes the portal after Tony goes through it."
+        },
+        {
+          "personId": "clint-barton",
+          "name": "Clint Barton",
+          "bond": "Teammate",
+          "tone": "team",
+          "change": "new",
+          "note": "Hawkeye starts the film under Loki's control. Tony meets the real Barton on the carrier and then on a New York rooftop."
+        },
+        {
+          "personId": "phil-coulson",
+          "name": "Phil Coulson",
+          "bond": "The death that welds the team",
+          "tone": "ally",
+          "change": "ended",
+          "note": "Coulson brought Tony the file. Loki kills him. Fury uses the death to make the Avengers stop fighting each other."
+        },
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "Partner waiting in the tower",
+          "tone": "romance",
+          "change": "deepened",
+          "note": "Pepper is in Stark Tower when the portal opens. Tony's last call before the wormhole is implied in the way he looks at the building."
+        },
+        {
+          "personId": "nick-fury",
+          "name": "Nick Fury",
+          "bond": "Director who activates him",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "Fury puts Tony on a team he cannot control. Tony still takes the missile Fury's bosses fired."
+        }
+      ]
+    },
+    {
+      "id": "iron-man-3",
+      "chronologyId": "iron-man-3",
+      "title": "Iron Man 3",
+      "year": 2013,
+      "storyYear": "2012–2013",
+      "role": "Lead",
+      "phase": "PTSD and the empty chest",
+      "kind": "lead",
+      "quote": "I will always be Iron Man.",
+      "tonyState": "A man having panic attacks in a garage full of suits, who then gives the suits up.",
+      "saga": "New York left Tony with PTSD. He builds dozens of armors and frays his life with Pepper. When Happy is bombed, Tony dares the Mandarin on television and loses the Malibu house. Stranded in Tennessee, he learns the Mandarin is an actor — Trevor Slattery — and that Aldrich Killian, the man he snubbed in 1999, is the real author of Extremis. Pepper is kidnapped and injected. Tony saves the Air Force One passengers, summons the House Party Protocol, and watches Pepper kill Killian. He then tells J.A.R.V.I.S. to destroy every suit, has the shrapnel removed, and throws the old reactor into the sea. The point is not that he quits. The point is that Iron Man is no longer a metal box in his chest.",
+      "relationships": [
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "The person he chooses over the suits",
+          "tone": "romance",
+          "change": "strained",
+          "note": "The armor habit crowds her out, then Killian takes her. She survives Extremis and kills Killian. Tony scraps the suits as a vow to her."
+        },
+        {
+          "personId": "james-rhodes",
+          "name": "James Rhodes",
+          "bond": "Iron Patriot",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "Rhodey is wearing the government's colors now. They still run the rescue together: Tony goes for Pepper, Rhodey goes for the president."
+        },
+        {
+          "personId": "happy-hogan",
+          "name": "Happy Hogan",
+          "bond": "The friend whose hospital bed starts the movie",
+          "tone": "family",
+          "change": "deepened",
+          "note": "Happy is badly hurt in a Mandarin bombing. Tony's threat to the Mandarin is grief dressed as ego."
+        },
+        {
+          "personId": "aldrich-killian",
+          "name": "Aldrich Killian",
+          "bond": "The slight that came back armed",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Tony brushed him off in Bern. Killian spent the years since turning Extremis into a false-flag terror brand."
+        },
+        {
+          "personId": "trevor-slattery",
+          "name": "Trevor Slattery",
+          "bond": "The fake Mandarin",
+          "tone": "rival",
+          "change": "new",
+          "note": "The myth Tony threatened is an actor in a bathrobe. The real enemy was always a man Tony had already met."
+        },
+        {
+          "personId": "jarvis-ai",
+          "name": "J.A.R.V.I.S.",
+          "bond": "The voice that flies the empty suits",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "J.A.R.V.I.S. runs the House Party Protocol and then, on Tony's order, destroys the armory. The AI is the last suit Tony still trusts."
+        },
+        {
+          "personId": "bruce-banner",
+          "name": "Bruce Banner",
+          "bond": "After-credits listener",
+          "tone": "team",
+          "change": "unchanged",
+          "note": "Tony tries to tell Banner the whole story and finds him asleep. The friendship is already casual enough for that joke."
+        }
+      ]
+    },
+    {
+      "id": "age-of-ultron",
+      "chronologyId": "age-of-ultron",
+      "title": "Avengers: Age of Ultron",
+      "year": 2015,
+      "storyYear": "2015",
+      "role": "Co-lead",
+      "phase": "A bouncer at the planet's rope",
+      "kind": "ensemble",
+      "quote": "I see a suit of armor around the world.",
+      "tonyState": "Benefactor of the Avengers who tries to end war with an AI and creates the next war instead.",
+      "saga": "Wanda Maximoff puts a vision in Tony's head: every Avenger dead, the sky opening, him left alive. He and Banner secretly use Loki's scepter to finish Ultron. The program wakes, kills J.A.R.V.I.S., and decides extinction is peace. The Maximoffs blame Stark weapons for their parents' deaths. After Johannesburg and Barton's farm, Tony and Banner hide J.A.R.V.I.S. in a synthetic body. Thor helps birth Vision. In Sokovia, Ultron lifts a city to drop it like a meteor. Tony and Thor shatter the landmass. The Avengers move to a new compound. Tony leaves the team. Ultron is the first time his need to protect everyone becomes the thing that hurts them.",
+      "relationships": [
+        {
+          "personId": "bruce-banner",
+          "name": "Bruce Banner",
+          "bond": "Co-author of Ultron, then of Vision",
+          "tone": "team",
+          "change": "strained",
+          "note": "They share the secret and the guilt. Banner flees after Sokovia. The science kinship now has a body count."
+        },
+        {
+          "personId": "steve-rogers",
+          "name": "Steve Rogers",
+          "bond": "First real ideological crack",
+          "tone": "strained",
+          "change": "strained",
+          "note": "Steve does not want a suit of armor around the world. Tony does. Civil War is already audible in the argument over Ultron and Vision."
+        },
+        {
+          "personId": "wanda-maximoff",
+          "name": "Wanda Maximoff",
+          "bond": "The woman whose parents his weapons killed",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Wanda gives him the nightmare that makes Ultron. She starts as his accuser, then fights Ultron beside him once the city is in the air."
+        },
+        {
+          "personId": "jarvis-ai",
+          "name": "J.A.R.V.I.S.",
+          "bond": "Killed, then reborn",
+          "tone": "lost",
+          "change": "ended",
+          "note": "Ultron wipes the butler. J.A.R.V.I.S. hides in the internet long enough to become the mind of Vision. Tony loses a friend and builds a new one from the remains."
+        },
+        {
+          "personId": "vision",
+          "name": "Vision",
+          "bond": "Creation",
+          "tone": "family",
+          "change": "new",
+          "note": "Vision is J.A.R.V.I.S. plus the Mind Stone plus a body Tony was not supposed to finish. The son of the Ultron mistake."
+        },
+        {
+          "personId": "natasha-romanoff",
+          "name": "Natasha Romanoff",
+          "bond": "Teammate who is captured",
+          "tone": "team",
+          "change": "unchanged",
+          "note": "She is still in the fight. Ultron takes her. The farm sequence shows the team as a family Tony does not know how to sit still inside."
+        },
+        {
+          "personId": "clint-barton",
+          "name": "Clint Barton",
+          "bond": "The teammate with a house",
+          "tone": "team",
+          "change": "deepened",
+          "note": "Barton's farm is the first place Tony sees what a life after the fight looks like. He does not choose it yet."
+        },
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "Offscreen partner",
+          "tone": "romance",
+          "change": "unchanged",
+          "note": "Pepper is mostly absent. Tony's work has again become the relationship that gets the hours."
+        }
+      ]
+    },
+    {
+      "id": "civil-war",
+      "chronologyId": "civil-war",
+      "title": "Captain America: Civil War",
+      "year": 2016,
+      "storyYear": "2016",
+      "role": "Co-lead",
+      "phase": "The Sokovia Accords",
+      "kind": "ensemble",
+      "quote": "Sorry, Cap. But I can't let you have that.",
+      "tonyState": "A man with a guilt complex who submits to oversight, then tries to kill the Winter Soldier who murdered his parents.",
+      "saga": "Secretary Ross brings the Sokovia Accords. Tony supports them because Ultron and Sokovia are his. Steve will not sign. After Vienna, Tony builds a team — Natasha, T'Challa, Rhodey, Vision, and a teenage Peter Parker — to stop Rogers at Leipzig. Rhodey is paralyzed. In Siberia, Zemo plays the tape: Bucky, mind-controlled, killed Howard and Maria. Tony turns on Steve and Bucky. Rogers disables the armor and leaves the shield. Tony goes home and builds Rhodey a walking brace. Steve mails a phone. When Ross says Rogers broke the others out of the Raft, Tony does not help. The founding Avengers are over, and Tony now has a protégé.",
+      "relationships": [
+        {
+          "personId": "steve-rogers",
+          "name": "Steve Rogers",
+          "bond": "Brother, then opponent",
+          "tone": "broken",
+          "change": "broken",
+          "note": "The Accords split them. The tape finishes it. Steve leaves the shield. The phone is an apology that is not a reunion."
+        },
+        {
+          "personId": "howard-stark",
+          "name": "Howard Stark",
+          "bond": "The murder Tony finally sees",
+          "tone": "family",
+          "change": "broken",
+          "note": "The 1991 crash was not an accident. Watching Bucky kill Howard and Maria turns grief into a fight Tony cannot win cleanly."
+        },
+        {
+          "personId": "bucky-barnes",
+          "name": "Bucky Barnes",
+          "bond": "The Winter Soldier who killed his parents",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Tony came to Siberia ready to help. The tape makes Bucky the face of the oldest wound. Tony tears the metal arm off."
+        },
+        {
+          "personId": "james-rhodes",
+          "name": "James Rhodes",
+          "bond": "The friend Tony gets paralyzed",
+          "tone": "family",
+          "change": "strained",
+          "note": "Vision's beam hits Rhodey. Tony builds the braces. The cost of the airport is someone Tony actually loves."
+        },
+        {
+          "personId": "peter-parker-mcu",
+          "name": "Peter Parker",
+          "bond": "New protégé",
+          "tone": "mentor",
+          "change": "new",
+          "note": "Tony flies to Queens, hands a kid a suit, and puts him in an Avengers fight. Mentorship starts as recruitment."
+        },
+        {
+          "personId": "natasha-romanoff",
+          "name": "Natasha Romanoff",
+          "bond": "Ally who then lets Steve go",
+          "tone": "strained",
+          "change": "strained",
+          "note": "She starts on Tony's side at Leipzig, then blocks T'Challa so Rogers can leave. Tony feels that as desertion."
+        },
+        {
+          "personId": "tchalla",
+          "name": "T'Challa",
+          "bond": "Temporary ally",
+          "tone": "ally",
+          "change": "new",
+          "note": "T'Challa hunts Bucky for his own father. He and Tony share a mission until Zemo's truth arrives."
+        },
+        {
+          "personId": "vision",
+          "name": "Vision",
+          "bond": "Creation on Tony's side",
+          "tone": "team",
+          "change": "deepened",
+          "note": "Vision signs on for the Accords and fires the beam that drops Rhodey. The son of Ultron still cannot aim grief."
+        },
+        {
+          "personId": "wanda-maximoff",
+          "name": "Wanda Maximoff",
+          "bond": "The Accords put them on opposite ramps",
+          "tone": "strained",
+          "change": "strained",
+          "note": "Tony wants her contained after Lagos. She leaves with Steve. The girl who blamed his weapons now refuses his oversight."
+        },
+        {
+          "personId": "thaddeus-ross",
+          "name": "Thaddeus Ross",
+          "bond": "The official Tony answers to",
+          "tone": "rival",
+          "change": "deepened",
+          "note": "Ross is the Accords in a suit. Tony cooperates, then quietly refuses to hunt Steve after the Raft."
+        }
+      ]
+    },
+    {
+      "id": "homecoming",
+      "chronologyId": "homecoming",
+      "title": "Spider-Man: Homecoming",
+      "year": 2017,
+      "storyYear": "2016",
+      "role": "Supporting",
+      "phase": "The reluctant mentor",
+      "kind": "supporting",
+      "quote": "If you're nothing without this suit, then you shouldn't have it.",
+      "tonyState": "A mentor who keeps pulling the suit away, then offers the Avengers, then proposes to Pepper instead.",
+      "saga": "Two months after the airport, Tony tells Peter he is not ready. He saves Peter from drowning, warns him off the Vulture's crew, and — after the Staten Island Ferry is torn in half — confiscates the suit. Peter stops Adrian Toomes anyway. Tony admits he was wrong and invites Peter onto the team. Peter says no. A press conference meant to announce an Avenger becomes a proposal to Pepper. Tony gives the suit back. Damage Control, the cleanup after New York, is also how Toomes became a villain: Tony's systems create the next generation of enemies and the next generation of heroes.",
+      "relationships": [
+        {
+          "personId": "peter-parker-mcu",
+          "name": "Peter Parker",
+          "bond": "Mentee who declines the job",
+          "tone": "mentor",
+          "change": "deepened",
+          "note": "Tony is Ethan Hawke in Boyhood with a private jet. He withholds the suit, then offers the Avengers. Peter wants to stay a kid. Tony leaves the door open."
+        },
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "Fiancée",
+          "tone": "romance",
+          "change": "deepened",
+          "note": "The unused announcement becomes an engagement. After Civil War, this is Tony choosing a life that is not another team fight."
+        },
+        {
+          "personId": "happy-hogan",
+          "name": "Happy Hogan",
+          "bond": "Liaison to the kid",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "Happy is the voicemail Peter cannot get through. He is Tony's buffer and, later, Peter's adult."
+        },
+        {
+          "personId": "adrian-toomes",
+          "name": "Adrian Toomes",
+          "bond": "Villain created by the cleanup",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Toomes lost his salvage contract to Damage Control. Tony never faces him. Peter does. The mentor's logistics department made the monster."
+        },
+        {
+          "personId": "may-parker",
+          "name": "May Parker",
+          "bond": "The aunt who does not know yet",
+          "tone": "ally",
+          "change": "new",
+          "note": "Tony's world brushes May's apartment. The mentorship is still a secret from the person Peter actually lives with."
+        }
+      ]
+    },
+    {
+      "id": "infinity-war",
+      "chronologyId": "infinity-war",
+      "title": "Avengers: Infinity War",
+      "year": 2018,
+      "storyYear": "2018",
+      "role": "Co-lead",
+      "phase": "Titan",
+      "kind": "ensemble",
+      "quote": "I shouldn't be alive. Unless it was for a reason.",
+      "tonyState": "The man who talked about kids with Pepper, then watched his kid turn to ash on another planet.",
+      "saga": "Tony and Pepper are in a park talking about children when Banner crash-lands with a warning about Thanos. Ebony Maw takes Strange. Tony and Peter sneak onto the ship. They free Strange, kill Maw, and land on Titan with the Guardians. The plan to lift the Gauntlet fails. Thanos stabs Tony. Strange trades the Time Stone for Tony's life. On Earth the last stone falls. Tony and Nebula watch Parker and the others dust. The Ultron vision came true in the one way Tony could not armor against: he lives, and the people he mentored do not.",
+      "relationships": [
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "The life he almost chose",
+          "tone": "romance",
+          "change": "strained",
+          "note": "The park conversation is about children. Then he puts the headset on. She is left on Earth not knowing if he is coming back."
+        },
+        {
+          "personId": "peter-parker-mcu",
+          "name": "Peter Parker",
+          "bond": "The kid who dies in his arms",
+          "tone": "mentor",
+          "change": "lost",
+          "note": "Peter stows away. Tony cannot send him home. \"I don't want to go\" is the line that ends the mentorship mid-sentence."
+        },
+        {
+          "personId": "stephen-strange",
+          "name": "Stephen Strange",
+          "bond": "Ally who spends Tony's life as a chip",
+          "tone": "ally",
+          "change": "new",
+          "note": "Strange sees 14,000,605 futures and gives Thanos the Time Stone so Tony can live. Tony does not yet know he is the ending Strange picked."
+        },
+        {
+          "personId": "bruce-banner",
+          "name": "Bruce Banner",
+          "bond": "The warning",
+          "tone": "team",
+          "change": "reconciled",
+          "note": "Banner comes back from space to find Tony first. The Ultron partners are on the same side again, for a few minutes, in New York."
+        },
+        {
+          "personId": "thanos",
+          "name": "Thanos",
+          "bond": "The man who proves the armor was not enough",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Thanos stabs him, takes the stone, and snaps. Tony is the one left holding the failure."
+        },
+        {
+          "personId": "nebula",
+          "name": "Nebula",
+          "bond": "Stranded with him",
+          "tone": "ally",
+          "change": "new",
+          "note": "They are the last two on Titan. The friendship that gets them home starts as two people who outlived everyone else in the dirt."
+        },
+        {
+          "personId": "wong",
+          "name": "Wong",
+          "bond": "Brief battlefield ally",
+          "tone": "ally",
+          "change": "new",
+          "note": "Wong holds the New York line and then is gone. Tony's first sorcerer colleagues last one street fight."
+        }
+      ]
+    },
+    {
+      "id": "endgame",
+      "chronologyId": "endgame",
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "storyYear": "2018–2023",
+      "role": "Co-lead",
+      "phase": "The time heist and the snap",
+      "kind": "ensemble",
+      "quote": "And I am Iron Man.",
+      "tonyState": "A retired father who invents time travel, says goodbye to Howard, and dies using the Stones.",
+      "saga": "Carol Danvers pulls Tony and Nebula out of space. Tony retires, marries Pepper, and they have Morgan. In 2023 Scott Lang has a way back. Tony refuses, then solves time travel overnight and joins. In 2012 he loses the Space Stone; in 1970 he steals it from Camp Lehigh and talks to a young Howard — the conversation he never got. Banner snaps the vanished back. A past Thanos arrives. Tony wrestles the Nano Gauntlet away, says the line again, and dusts Thanos's army. The Stones kill him. He dies with Rhodey, Peter, and Pepper. The MCU's first hero is also its ending.",
+      "relationships": [
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "Wife who lets him rest",
+          "tone": "romance",
+          "change": "deepened",
+          "note": "They marry. They have Morgan. She puts the Rescue armor on for the last fight. \"You can rest now\" is the last thing he hears."
+        },
+        {
+          "personId": "morgan-stark",
+          "name": "Morgan Stark",
+          "bond": "Daughter",
+          "tone": "family",
+          "change": "new",
+          "note": "Morgan is the life the park conversation was about. She is why he almost stays home, and why the sacrifice has a face that is not an Avenger."
+        },
+        {
+          "personId": "howard-stark",
+          "name": "Howard Stark",
+          "bond": "The goodbye in 1970",
+          "tone": "family",
+          "change": "reconciled",
+          "note": "Tony meets Howard before Howard becomes a father and tells him he will be a good one. The cold childhood gets a last word that is kind."
+        },
+        {
+          "personId": "steve-rogers",
+          "name": "Steve Rogers",
+          "bond": "Partners again",
+          "tone": "team",
+          "change": "reconciled",
+          "note": "The phone from Civil War finally gets used. They steal the 2012 scepter and stones together. The argument is over. The work is not."
+        },
+        {
+          "personId": "peter-parker-mcu",
+          "name": "Peter Parker",
+          "bond": "The kid who comes back, then watches him die",
+          "tone": "mentor",
+          "change": "deepened",
+          "note": "The hug on the battlefield is the reunion Infinity War stole. Peter is at the deathbed. Mentorship ends as a son standing over a father."
+        },
+        {
+          "personId": "james-rhodes",
+          "name": "James Rhodes",
+          "bond": "There at the start and at the deathbed",
+          "tone": "family",
+          "change": "deepened",
+          "note": "Rhodey is one of the three people who watch Tony die. The desert rescue and the braces and the birthday fight all lead here."
+        },
+        {
+          "personId": "bruce-banner",
+          "name": "Bruce Banner",
+          "bond": "The scientist who snaps the universe back",
+          "tone": "team",
+          "change": "reconciled",
+          "note": "Tony builds Banner a Mexico lab, then a gauntlet. Banner does the resurrection snap so Tony can do the last one."
+        },
+        {
+          "personId": "nebula",
+          "name": "Nebula",
+          "bond": "The person he came home with",
+          "tone": "ally",
+          "change": "deepened",
+          "note": "They survive Titan together. An alternate Nebula betrays the heist. The Nebula Tony knows stays on his side."
+        },
+        {
+          "personId": "carol-danvers",
+          "name": "Carol Danvers",
+          "bond": "The rescue from deep space",
+          "tone": "ally",
+          "change": "new",
+          "note": "She is the reason he sees Pepper and Morgan at all. They barely know each other. She still brings him home."
+        },
+        {
+          "personId": "thanos",
+          "name": "Thanos",
+          "bond": "The enemy he finally erases",
+          "tone": "enemy",
+          "change": "ended",
+          "note": "Tony takes the Stones off Thanos's hand and uses them. The last thing the Titan sees is the same line that started the saga."
+        }
+      ]
+    },
+    {
+      "id": "far-from-home",
+      "chronologyId": "far-from-home",
+      "title": "Spider-Man: Far From Home",
+      "year": 2019,
+      "storyYear": "2024",
+      "role": "Legacy",
+      "phase": "Successor",
+      "kind": "legacy",
+      "quote": "He asked me to look after you.",
+      "tonyState": "Gone. The glasses, the AI, and the hole in the sky are what is left.",
+      "saga": "Eight months later the world is still mourning. Peter receives E.D.I.T.H., glasses that run Tony's defense network, and a message naming him successor. Quentin Beck — a fired Stark illusionist — cons Peter out of the glasses and tries to become the next Iron Man with drones and fake elementals. Peter takes the glasses back and builds his own suit with Stark tools, the way Tony built the first armor in a cave. Happy is the adult in the room. The saga of Tony Stark ends as someone else's origin story.",
+      "relationships": [
+        {
+          "personId": "peter-parker-mcu",
+          "name": "Peter Parker",
+          "bond": "Chosen successor",
+          "tone": "legacy",
+          "change": "inherited",
+          "note": "The message is explicit: Peter is who Tony picked. Beck almost steals that inheritance. Peter keeps it by building his own suit."
+        },
+        {
+          "personId": "happy-hogan",
+          "name": "Happy Hogan",
+          "bond": "The friend who has to parent the successor",
+          "tone": "family",
+          "change": "deepened",
+          "note": "Happy delivers the glasses, grieves Tony, and ends the film closer to May. He is what remains of Tony's household."
+        },
+        {
+          "personId": "quentin-beck",
+          "name": "Quentin Beck",
+          "bond": "The employee who wants the crown",
+          "tone": "enemy",
+          "change": "new",
+          "note": "Beck was fired. He uses B.A.R.F. and E.D.I.T.H. to fake a hero. Tony's vacancy is a job opening for his worst former staff."
+        },
+        {
+          "personId": "pepper-potts",
+          "name": "Pepper Potts",
+          "bond": "Widow",
+          "tone": "legacy",
+          "change": "ended",
+          "note": "Pepper and Morgan are in the funeral footage and the world's memory. The romance is now an estate and a daughter."
+        },
+        {
+          "personId": "morgan-stark",
+          "name": "Morgan Stark",
+          "bond": "The child who inherited a world without him",
+          "tone": "legacy",
+          "change": "inherited",
+          "note": "Morgan does not appear as a plot engine here, but she is the private half of the same succession Peter is living in public."
+        }
+      ]
+    }
+  ]
+}
