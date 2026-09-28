@@ -1,7 +1,7 @@
 export const ALL = "all";
 export const COMPACT_MAX_WIDTH = 768;
 
-export const PLOT_VIEWS = ["web", "timeline", "person", "relation", "chronology", "movie-web"];
+export const PLOT_VIEWS = ["web", "timeline", "person", "relation", "chronology", "movie-web", "iron-man"];
 
 export function requestedView(urlLike) {
   try {
@@ -35,7 +35,7 @@ export function defaultPlotView({ requested = "", eventId = "", plot = null } = 
   if (usesScotusHub(plot) || usesRegulationBoard(plot) || usesGunStateLawsPlot(plot) || usesDoctrineSummaryPlot(plot)) {
     return "web";
   }
-  if (requested === "timeline" || requested === "web" || requested === "person" || requested === "chronology" || requested === "movie-web") {
+  if (requested === "timeline" || requested === "web" || requested === "person" || requested === "chronology" || requested === "movie-web" || requested === "iron-man") {
     return requested;
   }
   if (eventId) return "timeline";
@@ -105,6 +105,10 @@ export function titleFilterLabels(events = [], chronology = null, options = {}) 
 
 export function usesPlotChronology(plot) {
   return Boolean(plot?.paths?.chronology);
+}
+
+export function usesTonyStarkSaga(plot) {
+  return Boolean(plot?.paths?.tonySaga);
 }
 
 export function chronologyFilterLabel(entry) {

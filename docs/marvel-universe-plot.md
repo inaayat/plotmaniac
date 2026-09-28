@@ -39,6 +39,10 @@ The board is one grid whose three columns share rows: a header row, a fixed band
 
 `?view=movie-web` (Movie web in the nav) lays the same titles out left to right across the full width. Each era is one cluster, in the order that era first appears, and the board grows sideways so a saga stays together. A vertical wheel scrolls the board horizontally. A gold arrow runs from an earlier poster to the title it sets up. Clicking a poster opens it in Watch Order. Include TV shows filters this board the same way it filters Watch Order and Chronology.
 
+### Iron Man saga
+
+`?view=iron-man` (Iron Man in the Marvel nav) is a dedicated Tony Stark page: the films in order, who he is in each one, and how his relationships change. It is sourced from the Wikipedia MCU Tony Stark article. A sticky film strip jumps between chapters. A relationship matrix tracks Pepper, Rhodey, Howard, Steve, Banner, Natasha, Peter, and Happy across the films. Cast faces that exist in `people.json` open that character’s timeline; chapter posters open the title in Watch Order.
+
 ### Character timelines
 
 Cast avatars on Watch Order and the chronology page open that character’s timeline (`?view=person&person=<id>`): the sourced beats they appear in, with **← Watch order** (and Escape) back to the study-up board. Marvel does not render a character web. There is no Character web control, and `?view=web` opens Watch Order.

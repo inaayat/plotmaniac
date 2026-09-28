@@ -46,6 +46,7 @@ import {
   chronologyNearestVisibleId,
   CHRONOLOGY_INCLUDE_TV_DEFAULT,
   usesPlotChronology,
+  usesTonyStarkSaga,
   findPlot,
   plotCardFace,
   plotChooserHref,
@@ -2015,6 +2016,75 @@ assert.equal(
   boardViewForPerson(marvel, "movie-web"),
   "movie-web",
 );
+assert.ok(usesTonyStarkSaga(marvel), "Marvel registers the Tony Stark saga path");
+assert.equal(marvel.paths.tonySaga, "data/marvel-universe/tony-stark-saga.json");
+assert.equal(requestedView("https://plotmaniac.com/?view=iron-man"), "iron-man");
+assert.equal(
+  parseState("https://plotmaniac.com/?plot=marvel-universe&view=iron-man").view,
+  "iron-man",
+);
+assert.equal(
+  resolvePlotView(parseState("https://plotmaniac.com/?plot=marvel-universe&view=iron-man"), {
+    href: "https://plotmaniac.com/?plot=marvel-universe&view=iron-man",
+    plot: marvel,
+  }),
+  "iron-man",
+);
+assert.equal(boardViewForPerson(marvel, "iron-man"), "iron-man");
+assert.match(
+  stateUrl("https://plotmaniac.com/", { view: "iron-man", plot: "marvel-universe" }, ""),
+  /view=iron-man/,
+);
+assert.match(html, /id="view-iron-man"/);
+assert.match(html, /data-view="iron-man"/);
+assert.match(html, /tony-stark-saga.css/);
+assert.match(appSource, /renderTonyStarkSaga/);
+assert.match(appSource, /button\.dataset\.view === "iron-man"/);
+const saga = readJson("../data/marvel-universe/tony-stark-saga.json");
+const sagaView = fs.readFileSync(new URL("../tony-stark-saga-view.js", import.meta.url), "utf8");
+const sagaCss = fs.readFileSync(new URL("../tony-stark-saga.css", import.meta.url), "utf8");
+assert.equal(saga.subjectId, "tony-stark");
+assert.ok(saga.chapters.length >= 11, `Iron Man saga should walk the films, got ${saga.chapters.length}`);
+assert.deepEqual(
+  saga.chapters.filter((chapter) => chapter.kind !== "preamble").map((chapter) => chapter.chronologyId),
+  [
+    "iron-man",
+    "incredible-hulk",
+    "iron-man-2",
+    "the-avengers",
+    "iron-man-3",
+    "age-of-ultron",
+    "civil-war",
+    "homecoming",
+    "infinity-war",
+    "endgame",
+    "far-from-home",
+  ],
+);
+const sagaTitleIds = new Set(marvelChronology.titles.map((entry) => entry.id));
+const extraIds = new Set((saga.extras || []).map((person) => person.id));
+for (const chapter of saga.chapters) {
+  if (chapter.chronologyId) {
+    assert.ok(sagaTitleIds.has(chapter.chronologyId), `${chapter.chronologyId} must exist in chronology`);
+  }
+  assert.ok(chapter.tonyState, `${chapter.id} needs Tony's state`);
+  assert.ok(chapter.saga, `${chapter.id} needs the saga beat`);
+  assert.ok((chapter.relationships || []).length >= 2, `${chapter.id} should name relationships`);
+  for (const rel of chapter.relationships || []) {
+    assert.ok(rel.personId && rel.note && rel.change && rel.tone, `${chapter.id} relationship is incomplete`);
+    assert.ok(
+      marvelIds.has(rel.personId) || extraIds.has(rel.personId),
+      `${rel.personId} in ${chapter.id} is missing from people.json and saga extras`,
+    );
+  }
+}
+assert.ok(saga.threads.some((thread) => thread.personId === "pepper-potts"));
+assert.ok(saga.threads.some((thread) => thread.personId === "peter-parker-mcu"));
+assert.match(sagaView, /export function renderTonyStarkSaga/);
+assert.match(sagaView, /stark-thread-table/);
+assert.match(sagaView, /How the bonds move/);
+assert.match(sagaCss, /\.stark-saga/);
+assert.match(sagaCss, /body\[data-view="iron-man"\]/);
 assert.match(css, /\.marvel-chronology-lane/);
 assert.match(css, /\.chrono-story-card/);
 assert.match(appSource, /onOpenPerson: \(id\) => openPerson\(id\)/);

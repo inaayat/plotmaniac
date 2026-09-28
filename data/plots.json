@@ -60,7 +60,8 @@
         "people": "data/marvel-universe/people.json",
         "events": "data/marvel-universe/events.json",
         "relations": "data/marvel-universe/relations.json",
-        "chronology": "data/marvel-universe/chronology.json"
+        "chronology": "data/marvel-universe/chronology.json",
+        "tonySaga": "data/marvel-universe/tony-stark-saga.json"
       }
     },
     {

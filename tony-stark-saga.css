@@ -1,0 +1,552 @@
+/* Tony Stark / Iron Man saga — its own board, not the watch-order chrome. */
+
+body[data-view="iron-man"] {
+  --reactor: #4fd2e8;
+  --reactor-dim: rgba(79, 210, 232, 0.18);
+  --iron-red: #c23b2e;
+  --copper: #c4783a;
+  --plate: #d4a574;
+  --armor: #0a0c10;
+  --armor-panel: #141821;
+  overflow: auto;
+  background: #07080b;
+}
+
+body[data-view="iron-man"] .mast {
+  width: 100%;
+  padding: 10px 18px 0;
+}
+
+body[data-view="iron-man"] .status {
+  margin-bottom: 2px;
+  font-size: 0.62rem;
+}
+
+body[data-view="iron-man"] h1 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+body[data-view="iron-man"] .mark,
+body[data-view="iron-man"] .lede {
+  display: none;
+}
+
+body[data-view="iron-man"] .views {
+  margin-top: 6px;
+}
+
+body[data-view="iron-man"] .views > button {
+  min-height: 32px;
+  padding: 4px 12px;
+}
+
+body[data-view="iron-man"] .app {
+  width: min(1180px, calc(100% - 28px));
+  max-width: none;
+  margin: 0 auto;
+  padding: 8px 0 72px;
+}
+
+body[data-view="iron-man"] .site-footer {
+  width: min(1180px, calc(100% - 28px));
+  margin: 0 auto 24px;
+}
+
+body[data-view="iron-man"]::before {
+  background-image:
+    radial-gradient(ellipse at 50% -10%, rgba(79, 210, 232, 0.16), transparent 46%),
+    radial-gradient(ellipse at 90% 20%, rgba(194, 59, 46, 0.12), transparent 40%),
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+}
+
+.stark-saga {
+  display: grid;
+  gap: 42px;
+  color: #f3efe6;
+}
+
+.stark-empty {
+  padding: 48px 12px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.stark-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: center;
+  padding: 28px 8px 8px;
+}
+
+.stark-reactor {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(79, 210, 232, 0.35), transparent 42%),
+    radial-gradient(circle at 50% 50%, #0b1016, #07080b 70%);
+  box-shadow:
+    0 0 0 1px rgba(79, 210, 232, 0.35),
+    0 0 48px rgba(79, 210, 232, 0.18);
+}
+
+.stark-reactor::before,
+.stark-reactor::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(79, 210, 232, 0.28);
+  pointer-events: none;
+}
+
+.stark-reactor::after {
+  inset: 22px;
+  border-color: rgba(212, 165, 116, 0.35);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stark-reactor::before {
+    animation: stark-spin 18s linear infinite;
+    border-style: dashed;
+  }
+}
+
+@keyframes stark-spin {
+  to { transform: rotate(360deg); }
+}
+
+.stark-hero-face {
+  width: 112px;
+  height: 112px;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.stark-hero-face .avatar,
+.stark-hero-face img,
+.stark-hero-face .monogram {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+}
+
+.stark-hero-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.stark-kicker,
+.stark-chapter-eyebrow {
+  color: var(--reactor);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.stark-hero-title {
+  font-family: Oswald, "Fraunces", Georgia, serif;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.stark-quote,
+.stark-chapter-quote {
+  color: var(--plate);
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.stark-lede,
+.stark-chapter-saga,
+.stark-rel-note,
+.stark-hint,
+.stark-tony-state {
+  max-width: 68ch;
+  color: #c9c3b8;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.stark-source {
+  width: fit-content;
+  color: var(--plate);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.stark-filmstrip {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  margin: 0 -8px;
+  padding: 10px 8px;
+  background: rgba(7, 8, 11, 0.88);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(79, 210, 232, 0.12);
+  border-bottom: 1px solid rgba(79, 210, 232, 0.12);
+}
+
+.stark-filmstrip-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  list-style: none;
+  padding-bottom: 4px;
+}
+
+.stark-filmstrip-card {
+  display: grid;
+  gap: 6px;
+  width: 72px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.stark-filmstrip-meta {
+  display: grid;
+  gap: 2px;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9b9488;
+}
+
+.stark-filmstrip-meta span:last-child {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #f3efe6;
+}
+
+.stark-poster {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  background: #12151c;
+  border: 1px solid rgba(243, 239, 230, 0.12);
+}
+
+.stark-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stark-poster--strip {
+  width: 72px;
+  height: 108px;
+}
+
+.stark-poster--chapter {
+  width: 148px;
+  height: 222px;
+  flex: none;
+}
+
+.stark-poster--chapter.is-link {
+  cursor: pointer;
+}
+
+.stark-poster--chapter.is-link:hover {
+  box-shadow: 0 0 0 1px var(--reactor);
+}
+
+.stark-poster-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--plate);
+  font-family: Oswald, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.stark-threads,
+.stark-chapter-card {
+  padding: 22px;
+  background: rgba(20, 24, 33, 0.72);
+  border: 1px solid rgba(243, 239, 230, 0.08);
+}
+
+.stark-threads h3,
+.stark-chapter-card h3,
+.stark-chapter-card h4 {
+  font-family: Oswald, "Fraunces", Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stark-hint {
+  margin: 8px 0 16px;
+}
+
+.stark-thread-scroll {
+  overflow-x: auto;
+}
+
+.stark-thread-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
+  font-size: 0.68rem;
+}
+
+.stark-thread-table th,
+.stark-thread-table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 4px;
+}
+
+.stark-thread-table thead th {
+  color: #9b9488;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.stark-thread-table tbody th {
+  text-align: left;
+  min-width: 168px;
+}
+
+.stark-thread-who {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+}
+
+.stark-thread-who:disabled {
+  cursor: default;
+}
+
+.stark-thread-table td.is-empty {
+  color: #5c574f;
+}
+
+.stark-pip,
+.stark-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.tone-ally { background: rgba(232, 196, 122, 0.16); color: #e8c47a; border-color: rgba(232, 196, 122, 0.35); }
+.tone-romance { background: rgba(232, 140, 160, 0.16); color: #f0a3b4; border-color: rgba(232, 140, 160, 0.35); }
+.tone-family { background: rgba(196, 120, 58, 0.18); color: #e0a36a; border-color: rgba(196, 120, 58, 0.4); }
+.tone-mentor, .tone-protege { background: rgba(79, 210, 232, 0.12); color: #8fe4f2; border-color: rgba(79, 210, 232, 0.35); }
+.tone-team { background: rgba(243, 239, 230, 0.08); color: #f3efe6; border-color: rgba(243, 239, 230, 0.2); }
+.tone-strained { background: rgba(232, 176, 70, 0.14); color: #e8b446; border-color: rgba(232, 176, 70, 0.35); }
+.tone-broken { background: rgba(194, 59, 46, 0.18); color: #f07a6e; border-color: rgba(194, 59, 46, 0.4); }
+.tone-enemy, .tone-rival { background: rgba(194, 59, 46, 0.22); color: #ff8a7a; border-color: rgba(194, 59, 46, 0.5); }
+.tone-reconciled { background: rgba(120, 180, 110, 0.16); color: #9ed08f; border-color: rgba(120, 180, 110, 0.35); }
+.tone-lost { background: rgba(155, 148, 136, 0.12); color: #9b9488; border-color: rgba(155, 148, 136, 0.28); }
+.tone-legacy { background: rgba(243, 239, 230, 0.12); color: #f3efe6; border-color: rgba(212, 165, 116, 0.45); }
+
+.stark-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin-top: 16px;
+}
+
+.stark-chapters {
+  display: grid;
+  gap: 28px;
+  list-style: none;
+}
+
+.stark-chapter {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+}
+
+.stark-chapter-rail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.stark-chapter-rail::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  bottom: -28px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--reactor), rgba(194, 59, 46, 0.4));
+}
+
+.stark-chapter:last-child .stark-chapter-rail::before {
+  display: none;
+}
+
+.stark-chapter-num {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #0a0c10;
+  color: var(--reactor);
+  border: 1px solid rgba(79, 210, 232, 0.4);
+  font-size: 0.72rem;
+}
+
+.stark-chapter-head {
+  display: flex;
+  gap: 22px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+
+.stark-tony-state {
+  margin-top: 10px;
+  color: #f3efe6;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.stark-chapter-saga {
+  margin: 8px 0 22px;
+}
+
+.stark-chapter-card h4 {
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  color: var(--plate);
+}
+
+.stark-rels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  list-style: none;
+}
+
+.stark-rel {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  background: rgba(7, 8, 11, 0.45);
+  border: 1px solid rgba(243, 239, 230, 0.08);
+  border-left-width: 3px;
+}
+
+.stark-rel.tone-romance { border-left-color: #f0a3b4; }
+.stark-rel.tone-family { border-left-color: #e0a36a; }
+.stark-rel.tone-mentor, .stark-rel.tone-protege { border-left-color: #4fd2e8; }
+.stark-rel.tone-team, .stark-rel.tone-ally { border-left-color: #e8c47a; }
+.stark-rel.tone-strained { border-left-color: #e8b446; }
+.stark-rel.tone-broken, .stark-rel.tone-enemy, .stark-rel.tone-rival { border-left-color: #c23b2e; }
+.stark-rel.tone-lost { border-left-color: #9b9488; }
+.stark-rel.tone-legacy, .stark-rel.tone-reconciled { border-left-color: #d4a574; }
+
+.stark-rel-top {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.stark-rel-face {
+  padding: 0;
+}
+
+.stark-rel-face:disabled {
+  cursor: default;
+}
+
+.stark-rel-top strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.stark-rel-bond {
+  display: block;
+  color: #9b9488;
+  font-size: 0.78rem;
+}
+
+.stark-rel-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.change-new { background: rgba(79, 210, 232, 0.1); color: #8fe4f2; }
+.change-deepened { background: rgba(232, 196, 122, 0.12); color: #e8c47a; }
+.change-strained { background: rgba(232, 176, 70, 0.12); color: #e8b446; }
+.change-broken, .change-ended { background: rgba(194, 59, 46, 0.14); color: #f07a6e; }
+.change-reconciled { background: rgba(120, 180, 110, 0.12); color: #9ed08f; }
+.change-inherited { background: rgba(243, 239, 230, 0.1); color: #f3efe6; }
+.change-unchanged { background: rgba(155, 148, 136, 0.1); color: #9b9488; }
+
+.kind-cameo .stark-chapter-card,
+.kind-legacy .stark-chapter-card,
+.kind-preamble .stark-chapter-card {
+  background: rgba(20, 24, 33, 0.5);
+}
+
+.kind-preamble .stark-chapter-head {
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .stark-hero {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .stark-hero-copy {
+    justify-items: center;
+  }
+
+  .stark-chapter {
+    grid-template-columns: 1fr;
+  }
+
+  .stark-chapter-rail {
+    display: none;
+  }
+
+  .stark-chapter-head {
+    flex-direction: column;
+  }
+
+  .stark-poster--chapter {
+    width: 120px;
+    height: 180px;
+  }
+
+  body[data-view="iron-man"] .app {
+    width: calc(100% - 20px);
+  }
+}
