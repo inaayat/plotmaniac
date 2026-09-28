@@ -514,6 +514,10 @@ body[data-view="iron-man"]::before {
   background: rgba(20, 24, 33, 0.5);
 }
 
+.kind-preamble .stark-chapter-head {
+  align-items: stretch;
+}
+
 @media (max-width: 768px) {
   .stark-hero {
     grid-template-columns: 1fr;

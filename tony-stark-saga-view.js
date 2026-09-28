@@ -134,7 +134,7 @@ function buildFilmstrip(chapters, titles, onOpenTitle) {
     const num = document.createElement("span");
     num.textContent = String(index + 1).padStart(2, "0");
     const name = document.createElement("span");
-    name.textContent = chapter.title;
+    name.textContent = shortTitle(chapter.title);
     meta.append(num, name);
     link.append(poster, meta);
     item.appendChild(link);
@@ -185,7 +185,7 @@ function buildThreads(saga, filmChapters, lookup, avatar, onOpenPerson, knownIds
     const who = document.createElement("button");
     who.type = "button";
     who.className = "stark-thread-who";
-    who.append(avatar(person, "sm"), nameEl(person.name || thread.name));
+    who.append(avatar(person, "sm"), nameEl(thread.name || person.name));
     if (thread.personId && knownIds.has(thread.personId) && onOpenPerson) {
       who.addEventListener("click", () => onOpenPerson(thread.personId));
     } else {
@@ -265,16 +265,19 @@ function buildChapter({ chapter, index, titles, lookup, avatar, onOpenPerson, on
 
   const head = document.createElement("header");
   head.className = "stark-chapter-head";
-  const poster = posterNode(chapter, titles.get(chapter.chronologyId), "chapter");
-  if (chapter.chronologyId && onOpenTitle) {
-    poster.classList.add("is-link");
-    poster.addEventListener("click", () => onOpenTitle(chapter.chronologyId));
-    poster.setAttribute("aria-label", `Open ${chapter.title} in Watch Order`);
-  }
   const titlesBlock = document.createElement("div");
   const eyebrow = document.createElement("p");
   eyebrow.className = "stark-chapter-eyebrow";
-  eyebrow.textContent = [chapter.year, chapter.storyYear, chapter.role, chapter.phase].filter(Boolean).join(" · ");
+  eyebrow.textContent = chapterEyebrow(chapter);
+  if (chapter.kind !== "preamble") {
+    const poster = posterNode(chapter, titles.get(chapter.chronologyId), "chapter");
+    if (chapter.chronologyId && onOpenTitle) {
+      poster.classList.add("is-link");
+      poster.addEventListener("click", () => onOpenTitle(chapter.chronologyId));
+      poster.setAttribute("aria-label", `Open ${chapter.title} in Watch Order`);
+    }
+    head.appendChild(poster);
+  }
   const heading = document.createElement("h3");
   heading.textContent = chapter.title;
   const state = document.createElement("p");
@@ -287,7 +290,7 @@ function buildChapter({ chapter, index, titles, lookup, avatar, onOpenPerson, on
     quote.textContent = `“${chapter.quote}”`;
     titlesBlock.appendChild(quote);
   }
-  head.append(poster, titlesBlock);
+  head.appendChild(titlesBlock);
 
   const saga = document.createElement("p");
   saga.className = "stark-chapter-saga";
@@ -374,6 +377,15 @@ function posterAcronym(title) {
   if (!words.length) return "?";
   if (words.length === 1) return words[0].slice(0, 3).toUpperCase();
   return words.slice(0, 3).map((word) => word[0]).join("").toUpperCase();
+}
+
+function chapterEyebrow(chapter) {
+  const parts = [];
+  if (chapter.storyYear) parts.push(chapter.storyYear);
+  else if (chapter.year) parts.push(String(chapter.year));
+  if (chapter.role && chapter.kind !== "preamble") parts.push(chapter.role);
+  if (chapter.phase) parts.push(chapter.phase);
+  return parts.join(" · ");
 }
 
 function shortTitle(title) {
