@@ -158,6 +158,7 @@ const CLUE_SIZE_DESKTOP = 15;
 const CLUE_PAD_PHONE = 3;
 const CLUE_PAD_DESKTOP = 4;
 const CLUE_SIZE_FLOOR = 11;
+const CELL_H_PHONE = 42;
 
 const SLOT_FIT_GLYPH = 0.64;
 
@@ -202,7 +203,10 @@ function applySlotFit(slot) {
     fit.style.fontSize = "";
     return;
   }
-  const plan = slotFitPlan(input?.value || "", slot.clientWidth || 75, slot.clientHeight || 36);
+  const plan = slotFitPlan(input?.value || "", slot.clientWidth || 75, slot.clientHeight || 36, {
+    maxSize: isWidePlay() ? 16 : 13,
+    minSize: isWidePlay() ? 9 : 11,
+  });
   fit.textContent = plan.display;
   fit.style.fontSize = `${plan.fontSize}px`;
   fit.style.whiteSpace = plan.lines > 1 ? "pre-line" : "nowrap";
@@ -603,7 +607,41 @@ function shouldRefitLayout() {
   return !isTypingInGrid() && !keyboardIsOpen();
 }
 
+function syncTypingCompact() {
+  const board = document.querySelector(".board");
+  if (!board) return;
+  const on = !isWidePlay() && isTypingInGrid();
+  board.classList.toggle("is-typing-compact", on);
+  const root = document.documentElement;
+  if (on) syncTypingViewport();
+  else if (!notesSheetOpen()) root.style.removeProperty("--vv-height");
+}
+
+function syncTypingViewport() {
+  if (isWidePlay() || !isTypingInGrid()) return;
+  const root = document.documentElement;
+  const innerH = window.innerHeight || 720;
+  const vv = window.visualViewport;
+  const vvH = vv?.height || innerH;
+  root.style.setProperty("--vv-height", `${Math.round(vvH)}px`);
+}
+
+function pinHintsWhileTyping() {
+  if (isWidePlay() || !isTypingInGrid()) return;
+  const hints = document.querySelector(".hint-block");
+  if (!hints || typeof hints.scrollIntoView !== "function") return;
+  try {
+    hints.scrollIntoView({ block: "start", inline: "nearest" });
+  } catch {
+    hints.scrollIntoView();
+  }
+}
+
 function scrollFocusedTileIntoView() {
+  if (!isWidePlay() && isTypingInGrid()) {
+    pinHintsWhileTyping();
+    return;
+  }
   const slot =
     document.querySelector(".slot.is-editing") || document.activeElement?.closest?.(".slot");
   if (!slot || typeof slot.scrollIntoView !== "function") return;
@@ -955,7 +993,8 @@ function makeSlot(house, attr) {
     window.requestAnimationFrame(() => {
       sizeEditingSlot(slot);
       paintGhost(slot, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
-      scrollFocusedTileIntoView();
+      syncTypingCompact();
+      pinHintsWhileTyping();
     });
   });
   input.addEventListener("blur", () => {
@@ -965,6 +1004,7 @@ function makeSlot(house, attr) {
         clearEditingSlot(slot);
         setSlotVisual(slot, house, attr, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
       }
+      syncTypingCompact();
     }, 120);
   });
   input.addEventListener("input", () => handleTyped(house, attr, input.value, input));
@@ -1243,15 +1283,15 @@ export function fitPlayfield() {
   const standardCluePad = wide ? CLUE_PAD_DESKTOP : CLUE_PAD_PHONE;
   const px = (n) => `${Number(n.toFixed(2))}px`;
   const applyTiles = (t) => {
-    const cellH = 30 + t * 28;
-    const gap = 4 + t * 12;
+    const cellH = wide ? 30 + t * 28 : CELL_H_PHONE;
+    const gap = wide ? 4 + t * 12 : 6;
     const inputSize = !wide || isIOS ? 16 : Math.max(16, 13 + t * 7);
     const notesSize = isIOS ? 16 : Math.max(16, 13 + t * 4);
     root.style.setProperty("--cell-h", px(cellH));
     root.style.setProperty("--play-gap", px(gap));
     root.style.setProperty("--input-size", px(inputSize));
     root.style.setProperty("--notes-size", px(notesSize));
-    root.style.setProperty("--table-gap", px(2 + t * 4));
+    root.style.setProperty("--table-gap", px(wide ? 2 + t * 4 : 3));
   };
   const applyClues = (size, pad) => {
     root.style.setProperty("--clue-size", px(size));
@@ -1470,6 +1510,7 @@ function bind() {
   window.addEventListener("resize", () => {
     if (!shouldRefitLayout()) {
       if (notesSheetOpen()) syncNotesViewport();
+      else if (isTypingInGrid()) syncTypingViewport();
       scrollFocusedTileIntoView();
       return;
     }
@@ -1477,6 +1518,7 @@ function bind() {
   });
   window.visualViewport?.addEventListener("resize", () => {
     if (notesSheetOpen()) syncNotesViewport();
+    else if (isTypingInGrid()) syncTypingViewport();
     if (!shouldRefitLayout()) {
       scrollFocusedTileIntoView();
       return;
@@ -1485,7 +1527,18 @@ function bind() {
   });
   window.visualViewport?.addEventListener("scroll", () => {
     if (notesSheetOpen()) syncNotesViewport();
-    if (isTypingInGrid()) scrollFocusedTileIntoView();
+    if (isTypingInGrid()) {
+      syncTypingViewport();
+      scrollFocusedTileIntoView();
+    }
+  });
+  document.addEventListener("focusin", (event) => {
+    if (!event.target?.classList?.contains("slot-input")) return;
+    syncTypingCompact();
+    pinHintsWhileTyping();
+  });
+  document.addEventListener("focusout", () => {
+    window.requestAnimationFrame(() => syncTypingCompact());
   });
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMobileNotes();

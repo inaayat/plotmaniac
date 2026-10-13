@@ -516,8 +516,18 @@ if (typeof window.happyDOM?.setViewport === "function") {
     assert.equal(boardStyle.justifyContent, "flex-start", "mobile leftover space sits below the grid");
   }
   const cellH = document.documentElement.style.getPropertyValue("--cell-h");
+  const cellHpx = Number.parseFloat(cellH);
+  assert.ok(cellHpx >= 40 && cellHpx <= 44, `mobile tile height is wordle-ish 40–44px, got ${cellH}`);
   const firstSlot = document.querySelector("input.slot-input");
+  const overlay = document.querySelector(".slot-fit");
+  if (overlay) {
+    const overlaySize = Number.parseFloat(window.getComputedStyle(overlay).fontSize);
+    if (overlaySize) assert.ok(overlaySize <= 13, `visible tile label stays compact, got ${overlaySize}px`);
+  }
   firstSlot.focus();
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "typing-compact class on tile focus");
+  const focusedSize = window.getComputedStyle(firstSlot).fontSize;
+  if (focusedSize) assert.ok(Number.parseFloat(focusedSize) >= 16, `focused input stays ≥16px to avoid iOS zoom, got ${focusedSize}`);
   window.happyDOM.setViewport({ width: 390, height: 500 });
   window.dispatchEvent(new window.Event("resize"));
   assert.equal(
@@ -526,6 +536,14 @@ if (typeof window.happyDOM?.setViewport === "function") {
     "keyboard/resize must not refit while a tile is focused",
   );
   firstSlot.blur();
+  await new Promise((resolve) => setTimeout(resolve, 160));
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "typing-compact class clears on blur");
+  window.happyDOM.setViewport({ width: 1280, height: 720 });
+  fitPlayfield();
+  const desk = document.querySelector("input.slot-input");
+  desk.focus();
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "desktop does not use typing-compact");
+  desk.blur();
   window.happyDOM.setViewport({ width: 390, height: 844 });
 }
 

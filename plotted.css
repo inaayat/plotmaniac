@@ -887,6 +887,7 @@ h1 {
     align-items: center;
     justify-content: center;
     text-align: center;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0;
     text-transform: uppercase;
@@ -1065,6 +1066,38 @@ h1 {
     font-size: 16px;
     border-radius: 12px;
   }
+
+  .clue,
+  .word-bank-word,
+  .word-bank-cat,
+  .grid-table .attr-head,
+  .house-head,
+  .play {
+    transition:
+      font-size 180ms ease,
+      line-height 180ms ease,
+      padding 180ms ease,
+      gap 180ms ease;
+  }
+
+  .board.is-typing-compact {
+    --clue-size: 11px;
+    --clue-pad: 1px;
+    --play-gap: 4px;
+  }
+
+  .board.is-typing-compact .clue {
+    line-height: 1.2;
+  }
+
+  .board.is-typing-compact .house-head {
+    padding-block: 0;
+    font-size: 0.55rem;
+  }
+
+  .board.is-typing-compact .word-bank {
+    gap: 1px;
+  }
 }
 
 @media (min-width: 640px) {
@@ -1154,6 +1187,15 @@ h1 {
 
   .notes-panel > .notes-sheet,
   .notes-panel[open]:not(.is-closing) > .notes-sheet {
+    transition: none;
+  }
+
+  .clue,
+  .word-bank-word,
+  .word-bank-cat,
+  .grid-table .attr-head,
+  .house-head,
+  .play {
     transition: none;
   }
 }
