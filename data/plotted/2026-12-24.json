@@ -1,0 +1,189 @@
+{
+  "date": "2026-12-24",
+  "number": 73,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "treat": [
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      },
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ],
+    "gift": [
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "text": "Cam is with the evergreen."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "orange is with the medal."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "Eden is with the medal."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "text": "cocoa is next to the Gus."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "text": "cocoa is next to the Eden."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "immediate": false,
+      "text": "tea is somewhere left of the Cam."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cocoa?",
+    "givenAttr": "treat",
+    "givenItem": "cocoa",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "treat": "tea",
+      "gift": "balloon"
+    },
+    {
+      "person": "cam",
+      "treat": "cocoa",
+      "gift": "tree"
+    },
+    {
+      "person": "eden",
+      "treat": "orange",
+      "gift": "medal"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

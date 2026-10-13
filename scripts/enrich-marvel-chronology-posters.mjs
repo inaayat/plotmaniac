@@ -19,7 +19,7 @@ import {
 } from "./marvel-chronology-tmdb-queries.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-const chronologyPath = path.join(root, "data/marvel-universe/chronology.json");
+const chronologyPath = path.join(root, "archive/data/marvel-universe/chronology.json");
 const force = process.argv.includes("--force");
 const apiKey = process.env.TMDB_API_KEY?.trim();
 

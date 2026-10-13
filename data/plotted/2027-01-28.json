@@ -1,0 +1,189 @@
+{
+  "date": "2027-01-28",
+  "number": 108,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "loot": [
+      {
+        "id": "tent",
+        "label": "tent",
+        "icon": "tent"
+      },
+      {
+        "id": "pot",
+        "label": "cookpot",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "book",
+        "label": "guide",
+        "icon": "book"
+      }
+    ],
+    "pet": [
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "Io is with the rabbit."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "book"
+      },
+      "text": "Io is with the guide."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "pot"
+      },
+      "text": "Bo is with the cookpot."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Cam is with the cat."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "Cam is next to the rabbit."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "loot",
+        "item": "book"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "immediate": true,
+      "text": "guide is immediately left of the Bo."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "loot": "tent",
+      "pet": "cat"
+    },
+    {
+      "person": "io",
+      "loot": "book",
+      "pet": "rabbit"
+    },
+    {
+      "person": "bo",
+      "loot": "pot",
+      "pet": "dog"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

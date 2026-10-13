@@ -1,0 +1,222 @@
+{
+  "date": "2027-02-21",
+  "number": 132,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ],
+    "prize": [
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "trophy",
+        "label": "trophy",
+        "icon": "trophy"
+      },
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "text": "Io is with the balloon."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "trophy"
+      },
+      "text": "Ada is with the trophy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Gus is with the dog."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Hana is with the cat."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "prize",
+        "item": "cookie"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "cookie is next to the dog."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "text": "Gus is next to the balloon."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "immediate": true,
+      "text": "balloon is immediately left of the rabbit."
+    }
+  ],
+  "question": {
+    "text": "Who showed the butterfly?",
+    "givenAttr": "pet",
+    "givenItem": "butterfly",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "pet": "cat",
+      "prize": "cookie"
+    },
+    {
+      "person": "gus",
+      "pet": "dog",
+      "prize": "gift"
+    },
+    {
+      "person": "io",
+      "pet": "butterfly",
+      "prize": "balloon"
+    },
+    {
+      "person": "ada",
+      "pet": "rabbit",
+      "prize": "trophy"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

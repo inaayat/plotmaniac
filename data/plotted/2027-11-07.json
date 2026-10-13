@@ -1,0 +1,235 @@
+{
+  "date": "2027-11-07",
+  "number": 391,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "book": [
+      {
+        "id": "open",
+        "label": "open book",
+        "icon": "book-open"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      },
+      {
+        "id": "map",
+        "label": "field guide",
+        "icon": "magnifying-glass"
+      },
+      {
+        "id": "diary",
+        "label": "diary",
+        "icon": "pencil-simple"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "map"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "field guide is with the martini."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "text": "Gus is with the diary."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "book",
+        "item": "map"
+      },
+      "text": "Io is with the field guide."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "score"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "score is with the tea."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "right": {
+        "attr": "person",
+        "item": "io"
+      },
+      "text": "diary is next to the Io."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Eden is next to the martini."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Hana is next to the tea."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "immediate": false,
+      "text": "diary is somewhere left of the wine."
+    }
+  ],
+  "question": {
+    "text": "Who brought the diary?",
+    "givenAttr": "book",
+    "givenItem": "diary",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "book": "diary",
+      "drink": "brandy"
+    },
+    {
+      "person": "io",
+      "book": "map",
+      "drink": "martini"
+    },
+    {
+      "person": "eden",
+      "book": "score",
+      "drink": "tea"
+    },
+    {
+      "person": "hana",
+      "book": "open",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 17,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

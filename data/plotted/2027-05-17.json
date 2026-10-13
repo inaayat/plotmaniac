@@ -1,0 +1,178 @@
+{
+  "date": "2027-05-17",
+  "number": 217,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "pet": [
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "Cam is with the bird."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Fay is with the martini."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Drew is with the butterfly."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Drew is with the orange juice."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "pet",
+      "item": "bird",
+      "house": 0,
+      "text": "bird is in house 1."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "person",
+      "item": "drew",
+      "house": 1,
+      "text": "Drew is in house 2."
+    }
+  ],
+  "question": {
+    "text": "Who owns the butterfly?",
+    "givenAttr": "pet",
+    "givenItem": "butterfly",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "pet": "bird",
+      "drink": "wine"
+    },
+    {
+      "person": "drew",
+      "pet": "butterfly",
+      "drink": "orange"
+    },
+    {
+      "person": "fay",
+      "pet": "fish",
+      "drink": "martini"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

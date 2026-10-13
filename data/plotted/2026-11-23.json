@@ -1,0 +1,165 @@
+{
+  "date": "2026-11-23",
+  "number": 42,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "treat": [
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ],
+    "gift": [
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "text": "Eden is with the evergreen."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "crown"
+      },
+      "text": "tea is with the crown."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "text": "Bo is with the ice cream."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "person",
+      "item": "bo",
+      "house": 1,
+      "text": "Bo is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "treat",
+      "item": "orange",
+      "house": 2,
+      "text": "orange is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who brought the tea?",
+    "givenAttr": "treat",
+    "givenItem": "tea",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "treat": "tea",
+      "gift": "crown"
+    },
+    {
+      "person": "bo",
+      "treat": "ice",
+      "gift": "gift"
+    },
+    {
+      "person": "eden",
+      "treat": "orange",
+      "gift": "tree"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

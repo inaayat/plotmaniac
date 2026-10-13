@@ -1,0 +1,176 @@
+{
+  "date": "2027-06-04",
+  "number": 235,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "pet": [
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "horse is with the martini."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Fay is with the butterfly."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Fay is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "martini is next to the Fay."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "immediate": true,
+      "text": "coffee is immediately left of the Hana."
+    }
+  ],
+  "question": {
+    "text": "Who owns the horse?",
+    "givenAttr": "pet",
+    "givenItem": "horse",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "pet": "cat",
+      "drink": "coffee"
+    },
+    {
+      "person": "hana",
+      "pet": "horse",
+      "drink": "martini"
+    },
+    {
+      "person": "fay",
+      "pet": "butterfly",
+      "drink": "beer"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

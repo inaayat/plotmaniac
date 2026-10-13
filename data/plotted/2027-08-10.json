@@ -1,0 +1,170 @@
+{
+  "date": "2027-08-10",
+  "number": 302,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "pet": [
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Drew is with the martini."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "butterfly is with the brandy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Cam is with the butterfly."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "fish is next to the Drew."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "drew",
+      "house": 0,
+      "text": "Drew is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who owns the fish?",
+    "givenAttr": "pet",
+    "givenItem": "fish",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "pet": "dog",
+      "drink": "martini"
+    },
+    {
+      "person": "eden",
+      "pet": "fish",
+      "drink": "wine"
+    },
+    {
+      "person": "cam",
+      "pet": "butterfly",
+      "drink": "brandy"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

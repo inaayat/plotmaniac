@@ -1,0 +1,170 @@
+{
+  "date": "2027-09-07",
+  "number": 330,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "food": [
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      },
+      {
+        "id": "bowl",
+        "label": "bowl",
+        "icon": "bowl-food"
+      },
+      {
+        "id": "pot",
+        "label": "stew",
+        "icon": "cooking-pot"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "food",
+        "item": "bowl"
+      },
+      "text": "Eden is with the bowl."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "food",
+        "item": "carrot"
+      },
+      "text": "Jules is with the carrot."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Jules is with the coffee."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "stew is next to the wine."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "bo",
+      "house": 0,
+      "text": "Bo is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the stew?",
+    "givenAttr": "food",
+    "givenItem": "pot",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "food": "pot",
+      "drink": "orange"
+    },
+    {
+      "person": "eden",
+      "food": "bowl",
+      "drink": "wine"
+    },
+    {
+      "person": "jules",
+      "food": "carrot",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

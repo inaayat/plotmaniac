@@ -1,0 +1,165 @@
+{
+  "date": "2027-05-24",
+  "number": 224,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "loot": [
+      {
+        "id": "leaf",
+        "label": "leaf",
+        "icon": "leaf"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "pot",
+        "label": "cookpot",
+        "icon": "cooking-pot"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Eden is with the dog."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Hana is with the fish."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "leaf"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "leaf is with the fish."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "pet",
+      "item": "dog",
+      "house": 0,
+      "text": "dog is in house 1."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "loot",
+      "item": "key",
+      "house": 2,
+      "text": "key is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the fish?",
+    "givenAttr": "pet",
+    "givenItem": "fish",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "loot": "pot",
+      "pet": "dog"
+    },
+    {
+      "person": "hana",
+      "loot": "leaf",
+      "pet": "fish"
+    },
+    {
+      "person": "fay",
+      "loot": "key",
+      "pet": "cat"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

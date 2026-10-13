@@ -1,0 +1,165 @@
+{
+  "date": "2026-11-09",
+  "number": 28,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "loot": [
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      },
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "Eden is with the car."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "walk"
+      },
+      "text": "diamond is with the on foot."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "text": "Io is with the crown."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "loot",
+      "item": "diamond",
+      "house": 0,
+      "text": "diamond is in house 1."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "getaway",
+      "item": "moto",
+      "house": 2,
+      "text": "motorcycle is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who took the coins?",
+    "givenAttr": "loot",
+    "givenItem": "coins",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "loot": "diamond",
+      "getaway": "walk"
+    },
+    {
+      "person": "eden",
+      "loot": "coins",
+      "getaway": "car"
+    },
+    {
+      "person": "io",
+      "loot": "crown",
+      "getaway": "moto"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

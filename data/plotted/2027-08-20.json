@@ -1,0 +1,189 @@
+{
+  "date": "2027-08-20",
+  "number": 312,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "pet": [
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "Gus is with the wine."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Cam is with the butterfly."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "fish is with the coffee."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "butterfly is next to the coffee."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "bird is next to the Cam."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "immediate": false,
+      "text": "Gus is somewhere left of the coffee."
+    }
+  ],
+  "question": {
+    "text": "Who owns the butterfly?",
+    "givenAttr": "pet",
+    "givenItem": "butterfly",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "pet": "bird",
+      "drink": "wine"
+    },
+    {
+      "person": "cam",
+      "pet": "butterfly",
+      "drink": "orange"
+    },
+    {
+      "person": "eden",
+      "pet": "fish",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

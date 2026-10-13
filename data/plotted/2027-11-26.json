@@ -1,0 +1,176 @@
+{
+  "date": "2027-11-26",
+  "number": 410,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "treat": [
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      },
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      }
+    ],
+    "gift": [
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "text": "Hana is with the cocoa."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cookie"
+      },
+      "text": "Cam is with the cookie."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "Cam is with the medal."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "text": "Cam is next to the book."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "immediate": true,
+      "text": "cocoa is immediately left of the evergreen."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cookie?",
+    "givenAttr": "treat",
+    "givenItem": "cookie",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "treat": "cookie",
+      "gift": "medal"
+    },
+    {
+      "person": "hana",
+      "treat": "cocoa",
+      "gift": "book"
+    },
+    {
+      "person": "io",
+      "treat": "ice",
+      "gift": "tree"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

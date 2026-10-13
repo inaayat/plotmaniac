@@ -1,0 +1,176 @@
+{
+  "date": "2027-05-21",
+  "number": 221,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "book-open"
+      },
+      {
+        "id": "notes",
+        "label": "harmony",
+        "icon": "music-notes"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "harmony is with the tea."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Gus is with the brandy."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "text": "tea is next to the Hana."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "text": "Hana is next to the folio."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "immediate": false,
+      "text": "Gus is somewhere left of the tea."
+    }
+  ],
+  "question": {
+    "text": "Who plays the score?",
+    "givenAttr": "instrument",
+    "givenItem": "score",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "instrument": "folio",
+      "drink": "brandy"
+    },
+    {
+      "person": "hana",
+      "instrument": "score",
+      "drink": "wine"
+    },
+    {
+      "person": "eden",
+      "instrument": "notes",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "date": "2027-02-10",
+  "number": 121,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "pet": [
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      }
+    ],
+    "prize": [
+      {
+        "id": "trophy",
+        "label": "trophy",
+        "icon": "trophy"
+      },
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Eden is with the dog."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "trophy"
+      },
+      "text": "Eden is with the trophy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "Io is with the gift."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "Drew is with the bird."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "Eden is next to the gift."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "prize",
+      "item": "trophy",
+      "house": 2,
+      "text": "trophy is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who showed the bird?",
+    "givenAttr": "pet",
+    "givenItem": "bird",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "pet": "bird",
+      "prize": "medal"
+    },
+    {
+      "person": "io",
+      "pet": "horse",
+      "prize": "gift"
+    },
+    {
+      "person": "eden",
+      "pet": "dog",
+      "prize": "trophy"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

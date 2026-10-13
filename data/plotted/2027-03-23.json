@@ -1,0 +1,170 @@
+{
+  "date": "2027-03-23",
+  "number": 162,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "loot": [
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "lockbox",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "text": "Gus is with the crown."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "Jules is with the bicycle."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "lockbox"
+      },
+      "text": "Cam is with the lock."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "lockbox"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "text": "lock is next to the plane."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "getaway",
+      "item": "plane",
+      "house": 0,
+      "text": "plane is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who took the crown?",
+    "givenAttr": "loot",
+    "givenItem": "crown",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "loot": "crown",
+      "getaway": "plane"
+    },
+    {
+      "person": "cam",
+      "loot": "lockbox",
+      "getaway": "walk"
+    },
+    {
+      "person": "jules",
+      "loot": "medal",
+      "getaway": "bike"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

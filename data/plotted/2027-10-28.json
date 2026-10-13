@@ -1,0 +1,176 @@
+{
+  "date": "2027-10-28",
+  "number": 381,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "loot": [
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "diamond is with the motorcycle."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "crown is with the car."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "text": "Gus is next to the crown."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "text": "Fay is next to the crown."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "immediate": false,
+      "text": "motorcycle is somewhere left of the Fay."
+    }
+  ],
+  "question": {
+    "text": "Who took the crown?",
+    "givenAttr": "loot",
+    "givenItem": "crown",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "loot": "diamond",
+      "getaway": "moto"
+    },
+    {
+      "person": "eden",
+      "loot": "crown",
+      "getaway": "car"
+    },
+    {
+      "person": "fay",
+      "loot": "coins",
+      "getaway": "plane"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "date": "2027-10-05",
+  "number": 358,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "food": [
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "burger",
+        "label": "burger",
+        "icon": "hamburger"
+      },
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "burger"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "burger is with the tea."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "ice cream is with the orange juice."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Eden is with the orange juice."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "text": "Cam is next to the cake."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "cam",
+      "house": 0,
+      "text": "Cam is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the cake?",
+    "givenAttr": "food",
+    "givenItem": "cake",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "food": "burger",
+      "drink": "tea"
+    },
+    {
+      "person": "hana",
+      "food": "cake",
+      "drink": "martini"
+    },
+    {
+      "person": "eden",
+      "food": "ice",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

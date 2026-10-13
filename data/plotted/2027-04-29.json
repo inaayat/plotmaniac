@@ -1,0 +1,176 @@
+{
+  "date": "2027-04-29",
+  "number": 199,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      }
+    ],
+    "pet": [
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "on foot is with the butterfly."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Drew is with the cat."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "motorcycle is with the cat."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Hana is next to the butterfly."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "immediate": true,
+      "text": "on foot is immediately left of the Drew."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the cat?",
+    "givenAttr": "pet",
+    "givenItem": "cat",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "vehicle": "bike",
+      "pet": "horse"
+    },
+    {
+      "person": "gus",
+      "vehicle": "walk",
+      "pet": "butterfly"
+    },
+    {
+      "person": "drew",
+      "vehicle": "moto",
+      "pet": "cat"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

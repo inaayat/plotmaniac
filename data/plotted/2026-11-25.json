@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-25",
+  "number": 44,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "book": [
+      {
+        "id": "open",
+        "label": "open book",
+        "icon": "book-open"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      },
+      {
+        "id": "notes",
+        "label": "notes",
+        "icon": "note-pencil"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "notes is with the wine."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "score"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "score is with the brandy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Eden is with the brandy."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "text": "Jules is with the notes."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "notes is next to the brandy."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "person",
+      "item": "jules",
+      "house": 2,
+      "text": "Jules is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who brought the open book?",
+    "givenAttr": "book",
+    "givenItem": "open",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "book": "open",
+      "drink": "martini"
+    },
+    {
+      "person": "eden",
+      "book": "score",
+      "drink": "brandy"
+    },
+    {
+      "person": "jules",
+      "book": "notes",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

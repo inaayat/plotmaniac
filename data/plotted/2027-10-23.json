@@ -1,0 +1,189 @@
+{
+  "date": "2027-10-23",
+  "number": 376,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "book": [
+      {
+        "id": "diary",
+        "label": "diary",
+        "icon": "pencil-simple"
+      },
+      {
+        "id": "notes",
+        "label": "notes",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "diary is with the beer."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "score"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "score is with the orange juice."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Io is with the coffee."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Ada is next to the coffee."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "diary is next to the orange juice."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "book",
+        "item": "score"
+      },
+      "immediate": false,
+      "text": "Bo is somewhere left of the score."
+    }
+  ],
+  "question": {
+    "text": "Who brought the notes?",
+    "givenAttr": "book",
+    "givenItem": "notes",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "book": "diary",
+      "drink": "beer"
+    },
+    {
+      "person": "ada",
+      "book": "score",
+      "drink": "orange"
+    },
+    {
+      "person": "io",
+      "book": "notes",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

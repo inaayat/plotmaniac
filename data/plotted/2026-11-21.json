@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-21",
+  "number": 40,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "plant": [
+      {
+        "id": "tree",
+        "label": "tree",
+        "icon": "tree"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      },
+      {
+        "id": "flower",
+        "label": "flower",
+        "icon": "flower"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "tree"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "tree is with the tea."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "flower"
+      },
+      "text": "Jules is with the flower."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "beer is next to the Bo."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Jules is next to the beer."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "immediate": false,
+      "text": "cactus is somewhere left of the brandy."
+    }
+  ],
+  "question": {
+    "text": "Who tends the cactus?",
+    "givenAttr": "plant",
+    "givenItem": "cactus",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "plant": "tree",
+      "drink": "tea"
+    },
+    {
+      "person": "cam",
+      "plant": "cactus",
+      "drink": "beer"
+    },
+    {
+      "person": "jules",
+      "plant": "flower",
+      "drink": "brandy"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "date": "2026-12-04",
+  "number": 53,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "loot": [
+      {
+        "id": "lockbox",
+        "label": "lock",
+        "icon": "lock"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      },
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "text": "Hana is with the diamond."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "medal is with the motorcycle."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "Bo is with the motorcycle."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "Hana is next to the motorcycle."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "lockbox"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "lock is next to the bicycle."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "lockbox"
+      },
+      "immediate": false,
+      "text": "bicycle is somewhere left of the lock."
+    }
+  ],
+  "question": {
+    "text": "Who took the lock?",
+    "givenAttr": "loot",
+    "givenItem": "lockbox",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "loot": "medal",
+      "getaway": "moto"
+    },
+    {
+      "person": "hana",
+      "loot": "diamond",
+      "getaway": "bike"
+    },
+    {
+      "person": "ada",
+      "loot": "lockbox",
+      "getaway": "boat"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

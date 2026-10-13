@@ -1,0 +1,176 @@
+{
+  "date": "2027-11-11",
+  "number": 395,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "loot": [
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "medal is with the motorcycle."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "text": "Gus is with the plane."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "text": "Eden is next to the medal."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "text": "Gus is next to the key."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "immediate": false,
+      "text": "plane is somewhere left of the Eden."
+    }
+  ],
+  "question": {
+    "text": "Who took the key?",
+    "givenAttr": "loot",
+    "givenItem": "key",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "loot": "diamond",
+      "getaway": "plane"
+    },
+    {
+      "person": "eden",
+      "loot": "key",
+      "getaway": "car"
+    },
+    {
+      "person": "bo",
+      "loot": "medal",
+      "getaway": "moto"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "date": "2027-03-31",
+  "number": 170,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "plant": [
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      },
+      {
+        "id": "flower",
+        "label": "flower",
+        "icon": "flower"
+      },
+      {
+        "id": "tree",
+        "label": "tree",
+        "icon": "tree"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "text": "Fay is with the cactus."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Eden is with the orange juice."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "tree"
+      },
+      "text": "Drew is with the tree."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Drew is with the beer."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "orange juice is next to the Drew."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "plant",
+      "item": "flower",
+      "house": 0,
+      "text": "flower is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who tends the flower?",
+    "givenAttr": "plant",
+    "givenItem": "flower",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "plant": "flower",
+      "drink": "orange"
+    },
+    {
+      "person": "drew",
+      "plant": "tree",
+      "drink": "beer"
+    },
+    {
+      "person": "fay",
+      "plant": "cactus",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

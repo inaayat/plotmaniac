@@ -1,0 +1,183 @@
+{
+  "date": "2027-06-02",
+  "number": 233,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "treat": [
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      }
+    ],
+    "gift": [
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      },
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "text": "Drew is with the cake."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "text": "Gus is with the tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "balloon"
+      },
+      "text": "tea is with the balloon."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "text": "Drew is with the evergreen."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "balloon"
+      },
+      "text": "cake is next to the balloon."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "person",
+      "item": "drew",
+      "house": 0,
+      "text": "Drew is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cookie?",
+    "givenAttr": "treat",
+    "givenItem": "cookie",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "treat": "cake",
+      "gift": "tree"
+    },
+    {
+      "person": "gus",
+      "treat": "tea",
+      "gift": "balloon"
+    },
+    {
+      "person": "jules",
+      "treat": "cookie",
+      "gift": "book"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

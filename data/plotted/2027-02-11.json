@@ -1,0 +1,189 @@
+{
+  "date": "2027-02-11",
+  "number": 122,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "book-open"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "text": "Gus is with the melody."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "score"
+      },
+      "text": "Jules is with the score."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "score"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "score is with the wine."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "score"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "score is next to the coffee."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "melody is next to the coffee."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "charts"
+      },
+      "immediate": false,
+      "text": "wine is somewhere left of the charts."
+    }
+  ],
+  "question": {
+    "text": "Who plays the score?",
+    "givenAttr": "instrument",
+    "givenItem": "score",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "instrument": "score",
+      "drink": "wine"
+    },
+    {
+      "person": "eden",
+      "instrument": "charts",
+      "drink": "coffee"
+    },
+    {
+      "person": "gus",
+      "instrument": "note",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

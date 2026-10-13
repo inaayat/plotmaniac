@@ -10,7 +10,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-export const CHARACTER_INDEX_PATH = path.join(root, "data/marvel-universe/character-index.md");
+export const CHARACTER_INDEX_PATH = path.join(root, "archive/data/marvel-universe/character-index.md");
 
 const SEASON_SUFFIX = /^(.+) s\d+$/;
 
@@ -361,8 +361,8 @@ export function loadCharacterIndex(filePath = CHARACTER_INDEX_PATH) {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const people = JSON.parse(fs.readFileSync(path.join(root, "data/marvel-universe/people.json"), "utf8"));
-  const chronology = JSON.parse(fs.readFileSync(path.join(root, "data/marvel-universe/chronology.json"), "utf8"));
+  const people = JSON.parse(fs.readFileSync(path.join(root, "archive/data/marvel-universe/people.json"), "utf8"));
+  const chronology = JSON.parse(fs.readFileSync(path.join(root, "archive/data/marvel-universe/chronology.json"), "utf8"));
   const index = loadCharacterIndex();
   const { titles, report } = overlayChronologyCast(chronology.titles, people, index);
   console.log(`index characters: ${index.characters.length}`);

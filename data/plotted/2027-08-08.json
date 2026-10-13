@@ -1,0 +1,222 @@
+{
+  "date": "2027-08-08",
+  "number": 300,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "loot": [
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      },
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "lockbox",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "text": "Cam is with the key."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "Ada is with the motorcycle."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "boat"
+      },
+      "text": "diamond is with the sailboat."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "text": "bicycle is next to the Hana."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "text": "Eden is next to the coins."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "text": "Cam is next to the diamond."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "immediate": false,
+      "text": "Hana is somewhere left of the diamond."
+    }
+  ],
+  "question": {
+    "text": "Who took the key?",
+    "givenAttr": "loot",
+    "givenItem": "key",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "loot": "lockbox",
+      "getaway": "car"
+    },
+    {
+      "person": "cam",
+      "loot": "key",
+      "getaway": "bike"
+    },
+    {
+      "person": "eden",
+      "loot": "diamond",
+      "getaway": "boat"
+    },
+    {
+      "person": "ada",
+      "loot": "coins",
+      "getaway": "moto"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 16,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

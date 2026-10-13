@@ -1,0 +1,176 @@
+{
+  "date": "2027-04-02",
+  "number": 172,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "pet": [
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "Eden is with the wine."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "Cam is with the bird."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "wine is next to the cat."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Eden is next to the beer."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "immediate": false,
+      "text": "martini is somewhere left of the bird."
+    }
+  ],
+  "question": {
+    "text": "Who owns the cat?",
+    "givenAttr": "pet",
+    "givenItem": "cat",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "pet": "cat",
+      "drink": "martini"
+    },
+    {
+      "person": "eden",
+      "pet": "dog",
+      "drink": "wine"
+    },
+    {
+      "person": "cam",
+      "pet": "bird",
+      "drink": "beer"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

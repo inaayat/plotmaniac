@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-07",
+  "number": 26,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "treat": [
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ],
+    "gift": [
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      },
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "text": "cake is with the parcel."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "text": "Gus is with the tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "text": "Ada is with the cake."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "text": "book is next to the Gus."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "immediate": true,
+      "text": "evergreen is immediately left of the cake."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cake?",
+    "givenAttr": "treat",
+    "givenItem": "cake",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "treat": "ice",
+      "gift": "book"
+    },
+    {
+      "person": "gus",
+      "treat": "tea",
+      "gift": "tree"
+    },
+    {
+      "person": "ada",
+      "treat": "cake",
+      "gift": "gift"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

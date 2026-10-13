@@ -1,0 +1,255 @@
+{
+  "date": "2027-01-31",
+  "number": 111,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "food": [
+      {
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "pot",
+        "label": "stew",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "burger",
+        "label": "burger",
+        "icon": "hamburger"
+      },
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "food",
+        "item": "burger"
+      },
+      "text": "Jules is with the burger."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "cake is with the brandy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Fay is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "Gus is with the wine."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "food",
+        "item": "pizza"
+      },
+      "text": "orange juice is next to the pizza."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "stew is next to the Fay."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "cake is next to the beer."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "immediate": true,
+      "text": "Eden is immediately left of the cake."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the cake?",
+    "givenAttr": "food",
+    "givenItem": "cake",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "food": "burger",
+      "drink": "orange"
+    },
+    {
+      "person": "eden",
+      "food": "pizza",
+      "drink": "tea"
+    },
+    {
+      "person": "hana",
+      "food": "cake",
+      "drink": "brandy"
+    },
+    {
+      "person": "fay",
+      "food": "carrot",
+      "drink": "beer"
+    },
+    {
+      "person": "gus",
+      "food": "pot",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-five",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "date": "2027-04-21",
+  "number": 191,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Bo is with the dog."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "text": "Drew is with the motorcycle."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "plane is with the bird."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Io is next to the cat."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "pet",
+      "item": "cat",
+      "house": 0,
+      "text": "cat is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the cat?",
+    "givenAttr": "pet",
+    "givenItem": "cat",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "vehicle": "moto",
+      "pet": "cat"
+    },
+    {
+      "person": "io",
+      "vehicle": "plane",
+      "pet": "bird"
+    },
+    {
+      "person": "bo",
+      "vehicle": "car",
+      "pet": "dog"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

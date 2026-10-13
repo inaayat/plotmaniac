@@ -1,0 +1,235 @@
+{
+  "date": "2027-05-16",
+  "number": 216,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "loot": [
+      {
+        "id": "book",
+        "label": "guide",
+        "icon": "book"
+      },
+      {
+        "id": "tent",
+        "label": "tent",
+        "icon": "tent"
+      },
+      {
+        "id": "pot",
+        "label": "cookpot",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "lock",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "pet": [
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Eden is with the fish."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "cookpot is with the dog."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "Drew is with the bird."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "book"
+      },
+      "text": "Ada is with the guide."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "tent"
+      },
+      "text": "Ada is next to the tent."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "fish is next to the Drew."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "pot"
+      },
+      "text": "bird is next to the cookpot."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "immediate": false,
+      "text": "bird is somewhere left of the Ada."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the horse?",
+    "givenAttr": "pet",
+    "givenItem": "horse",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "loot": "pot",
+      "pet": "dog"
+    },
+    {
+      "person": "drew",
+      "loot": "lock",
+      "pet": "bird"
+    },
+    {
+      "person": "eden",
+      "loot": "tent",
+      "pet": "fish"
+    },
+    {
+      "person": "ada",
+      "loot": "book",
+      "pet": "horse"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

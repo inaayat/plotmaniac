@@ -1,0 +1,165 @@
+{
+  "date": "2027-10-04",
+  "number": 357,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "treat": [
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      },
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      }
+    ],
+    "gift": [
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      },
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      },
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "text": "Jules is with the orange."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "text": "Jules is with the parcel."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cookie"
+      },
+      "text": "Cam is with the cookie."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "person",
+      "item": "cam",
+      "house": 1,
+      "text": "Cam is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "gift",
+      "item": "book",
+      "house": 2,
+      "text": "book is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who brought the orange?",
+    "givenAttr": "treat",
+    "givenItem": "orange",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "treat": "orange",
+      "gift": "gift"
+    },
+    {
+      "person": "cam",
+      "treat": "cookie",
+      "gift": "balloon"
+    },
+    {
+      "person": "gus",
+      "treat": "cocoa",
+      "gift": "book"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

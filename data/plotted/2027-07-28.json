@@ -1,0 +1,170 @@
+{
+  "date": "2027-07-28",
+  "number": 289,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "loot": [
+      {
+        "id": "book",
+        "label": "guide",
+        "icon": "book"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "lock",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Drew is with the horse."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "key is with the rabbit."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "book"
+      },
+      "text": "Hana is with the guide."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "text": "dog is next to the Eden."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "hana",
+      "house": 0,
+      "text": "Hana is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "loot": "book",
+      "pet": "dog"
+    },
+    {
+      "person": "eden",
+      "loot": "key",
+      "pet": "rabbit"
+    },
+    {
+      "person": "drew",
+      "loot": "lock",
+      "pet": "horse"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 8,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

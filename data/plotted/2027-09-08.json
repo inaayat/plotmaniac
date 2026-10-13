@@ -1,0 +1,170 @@
+{
+  "date": "2027-09-08",
+  "number": 331,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      }
+    ],
+    "pet": [
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "text": "Ada is with the motorcycle."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "car"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "car is with the horse."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Io is with the cat."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Io is next to the horse."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "vehicle",
+      "item": "car",
+      "house": 0,
+      "text": "car is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "vehicle": "car",
+      "pet": "horse"
+    },
+    {
+      "person": "io",
+      "vehicle": "walk",
+      "pet": "cat"
+    },
+    {
+      "person": "ada",
+      "vehicle": "moto",
+      "pet": "rabbit"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

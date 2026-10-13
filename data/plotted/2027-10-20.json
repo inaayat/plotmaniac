@@ -1,0 +1,170 @@
+{
+  "date": "2027-10-20",
+  "number": 373,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "guitar is with the beer."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Bo is with the brandy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "charts"
+      },
+      "text": "Jules is with the charts."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "beer is next to the Jules."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "jules",
+      "house": 2,
+      "text": "Jules is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who plays the folio?",
+    "givenAttr": "instrument",
+    "givenItem": "folio",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "instrument": "folio",
+      "drink": "brandy"
+    },
+    {
+      "person": "eden",
+      "instrument": "guitar",
+      "drink": "beer"
+    },
+    {
+      "person": "jules",
+      "instrument": "charts",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

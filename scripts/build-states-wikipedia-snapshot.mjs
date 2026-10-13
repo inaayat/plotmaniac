@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
-const OUT = path.join(ROOT, "data/gun-laws-by-state/states-snapshot.json");
+const OUT = path.join(ROOT, "archive/data/gun-laws-by-state/states-snapshot.json");
 const DOC_OUT = path.join(ROOT, "docs/gun-laws-by-state-table.md");
 const CACHE = path.join(__dirname, ".cache/gun-laws-wikipedia.txt");
 const WIKI_PAGE = "Gun_laws_in_the_United_States_by_state";

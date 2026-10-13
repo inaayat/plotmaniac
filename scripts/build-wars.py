@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build data/wars/conflicts.json from the English Wikipedia war lists.
+"""Build archive/data/wars/conflicts.json from the English Wikipedia war lists.
 
 Direct belligerents only. Flags under Support / Supported by / Alleged, and
 countries tucked inside collapsible coalition lists, stay off the map.
@@ -12,8 +12,8 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "data" / "wars" / "conflicts.json"
-WORLD_OUT = ROOT / "data" / "world-countries.json"
+OUT = ROOT / "archive" / "data" / "wars" / "conflicts.json"
+WORLD_OUT = ROOT / "archive" / "data" / "world-countries.json"
 LISTS = [
     "List of wars: 1900–1944",
     "List of wars: 1945–1989",

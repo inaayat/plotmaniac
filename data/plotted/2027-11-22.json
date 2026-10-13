@@ -1,0 +1,178 @@
+{
+  "date": "2027-11-22",
+  "number": 406,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "treat": [
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      }
+    ],
+    "gift": [
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      },
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "cookie"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "text": "cookie is with the book."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "text": "ice cream is with the parcel."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cookie"
+      },
+      "text": "Io is with the cookie."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "text": "Fay is with the orange."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "treat",
+      "item": "ice",
+      "house": 0,
+      "text": "ice cream is in house 1."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "treat",
+      "item": "cookie",
+      "house": 1,
+      "text": "cookie is in house 2."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cookie?",
+    "givenAttr": "treat",
+    "givenItem": "cookie",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "treat": "ice",
+      "gift": "gift"
+    },
+    {
+      "person": "io",
+      "treat": "cookie",
+      "gift": "book"
+    },
+    {
+      "person": "fay",
+      "treat": "orange",
+      "gift": "balloon"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 4,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

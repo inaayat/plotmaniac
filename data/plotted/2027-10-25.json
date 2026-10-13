@@ -1,0 +1,165 @@
+{
+  "date": "2027-10-25",
+  "number": 378,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "loot": [
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "coins is with the car."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "text": "Ada is with the medal."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "Drew is with the bicycle."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "loot",
+      "item": "medal",
+      "house": 1,
+      "text": "medal is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "loot",
+      "item": "key",
+      "house": 0,
+      "text": "key is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who took the key?",
+    "givenAttr": "loot",
+    "givenItem": "key",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "loot": "key",
+      "getaway": "bike"
+    },
+    {
+      "person": "ada",
+      "loot": "medal",
+      "getaway": "walk"
+    },
+    {
+      "person": "jules",
+      "loot": "coins",
+      "getaway": "car"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

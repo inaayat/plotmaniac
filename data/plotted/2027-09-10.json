@@ -1,0 +1,189 @@
+{
+  "date": "2027-09-10",
+  "number": 333,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "plant": [
+      {
+        "id": "tree",
+        "label": "tree",
+        "icon": "tree"
+      },
+      {
+        "id": "tulip",
+        "label": "tulip",
+        "icon": "flower-tulip"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Eden is with the orange juice."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "text": "Hana is with the cactus."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "tulip"
+      },
+      "text": "Io is with the tulip."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "right": {
+        "attr": "person",
+        "item": "io"
+      },
+      "text": "coffee is next to the Io."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Eden is next to the martini."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "immediate": false,
+      "text": "Eden is somewhere left of the martini."
+    }
+  ],
+  "question": {
+    "text": "Who tends the tree?",
+    "givenAttr": "plant",
+    "givenItem": "tree",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "plant": "tree",
+      "drink": "orange"
+    },
+    {
+      "person": "io",
+      "plant": "tulip",
+      "drink": "martini"
+    },
+    {
+      "person": "hana",
+      "plant": "cactus",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

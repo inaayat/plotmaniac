@@ -1,0 +1,170 @@
+{
+  "date": "2027-11-17",
+  "number": 401,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      }
+    ],
+    "pet": [
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "car"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "car is with the cat."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "bike"
+      },
+      "text": "Drew is with the bicycle."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "boat"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "sailboat is with the butterfly."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "boat"
+      },
+      "text": "Eden is next to the sailboat."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "eden",
+      "house": 2,
+      "text": "Eden is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the butterfly?",
+    "givenAttr": "pet",
+    "givenItem": "butterfly",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "vehicle": "bike",
+      "pet": "fish"
+    },
+    {
+      "person": "hana",
+      "vehicle": "boat",
+      "pet": "butterfly"
+    },
+    {
+      "person": "eden",
+      "vehicle": "car",
+      "pet": "cat"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

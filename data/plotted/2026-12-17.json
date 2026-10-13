@@ -1,0 +1,176 @@
+{
+  "date": "2026-12-17",
+  "number": 66,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "loot": [
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "walk"
+      },
+      "text": "Cam is with the on foot."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "text": "Cam is with the crown."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "text": "Io is with the medal."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "boat"
+      },
+      "text": "Bo is next to the sailboat."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "boat"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "immediate": true,
+      "text": "sailboat is immediately left of the crown."
+    }
+  ],
+  "question": {
+    "text": "Who took the diamond?",
+    "givenAttr": "loot",
+    "givenItem": "diamond",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "loot": "diamond",
+      "getaway": "plane"
+    },
+    {
+      "person": "io",
+      "loot": "medal",
+      "getaway": "boat"
+    },
+    {
+      "person": "cam",
+      "loot": "crown",
+      "getaway": "walk"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

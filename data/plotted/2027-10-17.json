@@ -1,0 +1,235 @@
+{
+  "date": "2027-10-17",
+  "number": 370,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Io is with the dog."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "bike"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "bicycle is with the horse."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "on foot is with the fish."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "motorcycle is with the dog."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "Ada is with the rabbit."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "person",
+        "item": "io"
+      },
+      "text": "rabbit is next to the Io."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Hana is next to the fish."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "immediate": true,
+      "text": "fish is immediately left of the motorcycle."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the dog?",
+    "givenAttr": "pet",
+    "givenItem": "dog",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "vehicle": "bike",
+      "pet": "horse"
+    },
+    {
+      "person": "gus",
+      "vehicle": "walk",
+      "pet": "fish"
+    },
+    {
+      "person": "io",
+      "vehicle": "moto",
+      "pet": "dog"
+    },
+    {
+      "person": "ada",
+      "vehicle": "car",
+      "pet": "rabbit"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

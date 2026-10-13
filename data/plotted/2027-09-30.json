@@ -1,0 +1,176 @@
+{
+  "date": "2027-09-30",
+  "number": 353,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "text": "Jules is with the guitar."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Fay is with the tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "charts"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "charts is with the martini."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Fay is next to the martini."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "immediate": true,
+      "text": "Io is immediately left of the wine."
+    }
+  ],
+  "question": {
+    "text": "Who plays the charts?",
+    "givenAttr": "instrument",
+    "givenItem": "charts",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "instrument": "note",
+      "drink": "tea"
+    },
+    {
+      "person": "io",
+      "instrument": "charts",
+      "drink": "martini"
+    },
+    {
+      "person": "jules",
+      "instrument": "guitar",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 17,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

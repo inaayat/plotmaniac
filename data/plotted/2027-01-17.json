@@ -1,0 +1,222 @@
+{
+  "date": "2027-01-17",
+  "number": 97,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "plant": [
+      {
+        "id": "flower",
+        "label": "flower",
+        "icon": "flower"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      },
+      {
+        "id": "tulip",
+        "label": "tulip",
+        "icon": "flower-tulip"
+      },
+      {
+        "id": "tree",
+        "label": "tree",
+        "icon": "tree"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Fay is with the brandy."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Eden is with the tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "text": "Jules is with the cactus."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "flower"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "flower is with the brandy."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "plant",
+        "item": "tulip"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "tulip is next to the orange juice."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "cactus is next to the orange juice."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "immediate": true,
+      "text": "Fay is immediately left of the tea."
+    }
+  ],
+  "question": {
+    "text": "Who tends the cactus?",
+    "givenAttr": "plant",
+    "givenItem": "cactus",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "plant": "flower",
+      "drink": "brandy"
+    },
+    {
+      "person": "eden",
+      "plant": "tulip",
+      "drink": "tea"
+    },
+    {
+      "person": "ada",
+      "plant": "tree",
+      "drink": "orange"
+    },
+    {
+      "person": "jules",
+      "plant": "cactus",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "date": "2027-08-04",
+  "number": 296,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "food": [
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "bowl",
+        "label": "bowl",
+        "icon": "bowl-food"
+      },
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "ice cream is with the martini."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "carrot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "carrot is with the tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Eden is with the martini."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "beer is next to the Cam."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "food",
+      "item": "bowl",
+      "house": 2,
+      "text": "bowl is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the carrot?",
+    "givenAttr": "food",
+    "givenItem": "carrot",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "food": "ice",
+      "drink": "martini"
+    },
+    {
+      "person": "cam",
+      "food": "carrot",
+      "drink": "tea"
+    },
+    {
+      "person": "drew",
+      "food": "bowl",
+      "drink": "beer"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

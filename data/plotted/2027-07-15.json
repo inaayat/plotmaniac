@@ -1,0 +1,176 @@
+{
+  "date": "2027-07-15",
+  "number": 276,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "pet": [
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      }
+    ],
+    "prize": [
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "cookie"
+      },
+      "text": "cat is with the cookie."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Eden is with the horse."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Fay is with the cat."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "balloon is next to the rabbit."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "immediate": true,
+      "text": "gift is immediately left of the cat."
+    }
+  ],
+  "question": {
+    "text": "Who showed the horse?",
+    "givenAttr": "pet",
+    "givenItem": "horse",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "pet": "horse",
+      "prize": "balloon"
+    },
+    {
+      "person": "ada",
+      "pet": "rabbit",
+      "prize": "gift"
+    },
+    {
+      "person": "fay",
+      "pet": "cat",
+      "prize": "cookie"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

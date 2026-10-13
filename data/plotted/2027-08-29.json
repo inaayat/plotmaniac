@@ -1,0 +1,255 @@
+{
+  "date": "2027-08-29",
+  "number": 321,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "on foot is with the bird."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Fay is with the butterfly."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "bike"
+      },
+      "text": "Eden is with the bicycle."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "car"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "car is with the dog."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "motorcycle is next to the butterfly."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "vehicle",
+        "item": "boat"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "sailboat is next to the dog."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "car"
+      },
+      "text": "Gus is next to the car."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "immediate": true,
+      "text": "Ada is immediately left of the cat."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the butterfly?",
+    "givenAttr": "pet",
+    "givenItem": "butterfly",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "vehicle": "walk",
+      "pet": "bird"
+    },
+    {
+      "person": "drew",
+      "vehicle": "car",
+      "pet": "dog"
+    },
+    {
+      "person": "fay",
+      "vehicle": "boat",
+      "pet": "butterfly"
+    },
+    {
+      "person": "ada",
+      "vehicle": "moto",
+      "pet": "rabbit"
+    },
+    {
+      "person": "eden",
+      "vehicle": "bike",
+      "pet": "cat"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-five",
+    "steps": 16,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

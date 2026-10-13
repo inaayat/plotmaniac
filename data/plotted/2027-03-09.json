@@ -1,0 +1,170 @@
+{
+  "date": "2027-03-09",
+  "number": 148,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      }
+    ],
+    "pet": [
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "Gus is with the bird."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "bike"
+      },
+      "text": "Hana is with the bicycle."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "on foot is with the bird."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "vehicle",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "plane is next to the fish."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "pet",
+      "item": "fish",
+      "house": 0,
+      "text": "fish is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the bird?",
+    "givenAttr": "pet",
+    "givenItem": "bird",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "vehicle": "bike",
+      "pet": "fish"
+    },
+    {
+      "person": "cam",
+      "vehicle": "plane",
+      "pet": "cat"
+    },
+    {
+      "person": "gus",
+      "vehicle": "walk",
+      "pet": "bird"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

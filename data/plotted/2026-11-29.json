@@ -1,0 +1,255 @@
+{
+  "date": "2026-11-29",
+  "number": 48,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "pet": [
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      }
+    ],
+    "prize": [
+      {
+        "id": "trophy",
+        "label": "trophy",
+        "icon": "trophy"
+      },
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Io is with the dog."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "Bo is with the bird."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "Eden is with the gift."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "cookie"
+      },
+      "text": "rabbit is with the cookie."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "balloon is next to the Bo."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "medal"
+      },
+      "text": "cat is next to the medal."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "text": "cat is next to the balloon."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "immediate": true,
+      "text": "rabbit is immediately left of the Hana."
+    }
+  ],
+  "question": {
+    "text": "Who showed the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "pet": "rabbit",
+      "prize": "cookie"
+    },
+    {
+      "person": "hana",
+      "pet": "horse",
+      "prize": "medal"
+    },
+    {
+      "person": "eden",
+      "pet": "cat",
+      "prize": "gift"
+    },
+    {
+      "person": "io",
+      "pet": "dog",
+      "prize": "balloon"
+    },
+    {
+      "person": "bo",
+      "pet": "bird",
+      "prize": "trophy"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-five",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

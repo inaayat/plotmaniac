@@ -1,0 +1,235 @@
+{
+  "date": "2027-01-10",
+  "number": 90,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "loot": [
+      {
+        "id": "pot",
+        "label": "cookpot",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "tent",
+        "label": "tent",
+        "icon": "tent"
+      },
+      {
+        "id": "lock",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "pet": [
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Ada is with the butterfly."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "cookpot is with the cat."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Drew is with the cat."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "text": "Gus is with the key."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "pot"
+      },
+      "text": "Gus is next to the cookpot."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "bird is next to the Cam."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "tent"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "tent is next to the butterfly."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "immediate": false,
+      "text": "butterfly is somewhere left of the Gus."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the bird?",
+    "givenAttr": "pet",
+    "givenItem": "bird",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "loot": "lock",
+      "pet": "butterfly"
+    },
+    {
+      "person": "cam",
+      "loot": "tent",
+      "pet": "rabbit"
+    },
+    {
+      "person": "gus",
+      "loot": "key",
+      "pet": "bird"
+    },
+    {
+      "person": "drew",
+      "loot": "pot",
+      "pet": "cat"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 16,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

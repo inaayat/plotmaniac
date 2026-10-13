@@ -1,0 +1,235 @@
+{
+  "date": "2027-05-23",
+  "number": 223,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "pet": [
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Cam is with the horse."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Fay is with the tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "butterfly is with the brandy."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Eden is with the beer."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "butterfly is next to the Cam."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "rabbit is next to the Cam."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Fay is next to the dog."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "immediate": false,
+      "text": "rabbit is somewhere left of the Bo."
+    }
+  ],
+  "question": {
+    "text": "Who owns the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "pet": "dog",
+      "drink": "beer"
+    },
+    {
+      "person": "fay",
+      "pet": "rabbit",
+      "drink": "tea"
+    },
+    {
+      "person": "cam",
+      "pet": "horse",
+      "drink": "martini"
+    },
+    {
+      "person": "bo",
+      "pet": "butterfly",
+      "drink": "brandy"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 18,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "date": "2027-09-29",
+  "number": 352,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "loot": [
+      {
+        "id": "lockbox",
+        "label": "lock",
+        "icon": "lock"
+      },
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "lockbox"
+      },
+      "text": "Eden is with the lock."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "boat"
+      },
+      "text": "coins is with the sailboat."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "text": "Fay is with the plane."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "walk"
+      },
+      "text": "coins is next to the on foot."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "getaway",
+      "item": "walk",
+      "house": 2,
+      "text": "on foot is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who took the key?",
+    "givenAttr": "loot",
+    "givenItem": "key",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "loot": "key",
+      "getaway": "plane"
+    },
+    {
+      "person": "ada",
+      "loot": "coins",
+      "getaway": "boat"
+    },
+    {
+      "person": "eden",
+      "loot": "lockbox",
+      "getaway": "walk"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 7,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

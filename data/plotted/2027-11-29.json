@@ -1,0 +1,165 @@
+{
+  "date": "2027-11-29",
+  "number": 413,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "food": [
+      {
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
+      },
+      {
+        "id": "bowl",
+        "label": "bowl",
+        "icon": "bowl-food"
+      },
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "pizza"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "pizza is with the coffee."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "food",
+        "item": "carrot"
+      },
+      "text": "Ada is with the carrot."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Fay is with the martini."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "food",
+      "item": "bowl",
+      "house": 2,
+      "text": "bowl is in house 3."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "food",
+      "item": "carrot",
+      "house": 1,
+      "text": "carrot is in house 2."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the bowl?",
+    "givenAttr": "food",
+    "givenItem": "bowl",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "food": "pizza",
+      "drink": "coffee"
+    },
+    {
+      "person": "ada",
+      "food": "carrot",
+      "drink": "wine"
+    },
+    {
+      "person": "fay",
+      "food": "bowl",
+      "drink": "martini"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

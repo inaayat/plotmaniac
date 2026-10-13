@@ -1,0 +1,176 @@
+{
+  "date": "2027-11-19",
+  "number": 403,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "loot": [
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "lockbox",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "Bo is with the bicycle."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "lockbox"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "lock is with the bicycle."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "text": "car is next to the diamond."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "text": "bicycle is next to the diamond."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "immediate": false,
+      "text": "plane is somewhere left of the Drew."
+    }
+  ],
+  "question": {
+    "text": "Who took the lock?",
+    "givenAttr": "loot",
+    "givenItem": "lockbox",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "loot": "lockbox",
+      "getaway": "bike"
+    },
+    {
+      "person": "ada",
+      "loot": "diamond",
+      "getaway": "plane"
+    },
+    {
+      "person": "drew",
+      "loot": "crown",
+      "getaway": "car"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

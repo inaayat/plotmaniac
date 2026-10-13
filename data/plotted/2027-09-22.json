@@ -1,0 +1,170 @@
+{
+  "date": "2027-09-22",
+  "number": 345,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "pet": [
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Fay is with the tea."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "rabbit is with the coffee."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Ada is with the butterfly."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "text": "butterfly is next to the Gus."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "pet",
+      "item": "rabbit",
+      "house": 0,
+      "text": "rabbit is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who owns the fish?",
+    "givenAttr": "pet",
+    "givenItem": "fish",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "pet": "rabbit",
+      "drink": "coffee"
+    },
+    {
+      "person": "ada",
+      "pet": "butterfly",
+      "drink": "orange"
+    },
+    {
+      "person": "fay",
+      "pet": "fish",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 8,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

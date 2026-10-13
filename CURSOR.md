@@ -1,36 +1,41 @@
-# Plotmaniac — agent context
+# Plotmaniac / Plotted — agent context
 
-Static single-page app: `index.html` at the repo root, ES modules in `app.js`, `engine.js`, plot-specific views, and JSON under `data/`.
+**Plotted** is the site at the repo root: a daily logic-grid game (`index.html`, `plotted.js`, `plotted-engine.js`, JSON under `data/plotted/`). Display name: `GAME_NAME` in `plotted-config.js`.
+
+The older Plotmaniac field guide is archived (not deleted) under `archive/`: `archive/index.html`, ES modules, plot views, and JSON under `archive/data/`. Old `?plot=` URLs at the domain root redirect into `/archive/`.
 
 ## Layout
 
 | Path | Role |
 | --- | --- |
-| `index.html` | Shell, gallery, plot chrome |
-| `app.js` | Boot, routing (`?plot=`, `?view=`), gallery. Homepage cards use `plotChooserHref` so Marvel opens Watch Order (`view=timeline`). |
-| `engine.js` | Shared plot engine (webs, timelines, country field, chronology helpers, `plotChooserHref`) |
-| `data/plots.json` | Plot registry |
-| `data/marvel-universe/chronology.json` | MCU + Mutant Legacy watch-order titles, `kind` (`movie` \| `tv`), cast, prereqs, optional TMDB `posterUrl`. One-Shots and short specials are `tv`, so they stay hidden until Include TV is on. |
-| `data/marvel-universe/character-index.md` | Wikipedia MCU character index (appearances used to overlay chronology casts) |
-| `scripts/marvel-character-index.mjs` | Parse the index and map appearances onto chronology titles + `people.json` ids |
-| `scripts/enrich-marvel-chronology-posters.mjs` | Bakes TMDB posters into chronology (`TMDB_API_KEY` env only; CI skips) |
-| `marvel-chronology-view.js` | Marvel default: Watch Before / Selected / Watch Next on a shared-row grid (fixed poster position, aligned headers). Chronology is `?view=chronology`. Movie web is `?view=movie-web`: eras run left to right across the full width, posters tied by prerequisite lines, and a vertical wheel scrolls sideways. A Reset nav button returns the current Marvel view to defaults. Cast avatars open a character timeline; Marvel has no character-web screen |
-| `tony-stark-saga-view.js` | Marvel `?view=iron-man`: movie-by-movie Tony Stark / Iron Man saga, relationship matrix, and how each bond changes. Data in `data/marvel-universe/tony-stark-saga.json`; styles in `tony-stark-saga.css` |
-| `presidential-doctrines-view.js` | Single-window comparison of presidential doctrines by decision |
-| `data/us-presidential-doctrines/` | Doctrine summary data (`arrangement: doctrine-summary` in `plots.json`) |
-| `data/gun-regulation/` | SCOTUS gun-rights board (federal timeline, checklist, exemplars) |
-| `data/gun-laws-by-state/` | Separate state-law plot: Wikipedia snapshot, filter labels, Albers map paths |
-| `scripts/build-states-wikipedia-snapshot.mjs` | Wikipedia → `states-snapshot.json` + `docs/gun-laws-by-state-table.md` |
-| `scripts/test-never-ending-internet-lore.mjs` | Archive / UI regression checks |
-| `docs/templates/` | Plot authoring templates |
+| `index.html` | Plotted shell (theme boot, `?plot=` redirect, PWA) |
+| `plotted.js` | Game UI: grid, tray, clues, timer, hints, share text |
+| `plotted-engine.js` | CSP uniqueness solver, generator, share formatter |
+| `plotted-config.js` | `GAME_NAME` and storage keys |
+| `plotted-icons.js` | Vendored Phosphor duotone paths |
+| `plotted-themes.js` | Daily themes built from those icons |
+| `data/plotted/YYYY-MM-DD.json` | One puzzle per date |
+| `docs/plotted-plan.md` | Product plan |
+| `archive/index.html` | Plotmaniac gallery + plot chrome |
+| `archive/app.js` | Boot, routing (`?plot=`, `?view=`), gallery |
+| `archive/engine.js` | Shared plot engine |
+| `archive/data/plots.json` | Plot registry |
+| `scripts/test-plotted.mjs` | Solver, share text, icon, archive-path checks |
+| `scripts/generate-plotted.mjs` | Precompute a year of JSON |
+| `scripts/test-never-ending-internet-lore.mjs` | Plotmaniac archive / UI regression checks |
+
+Plotmaniac details (Marvel chronology, gun boards, templates) still apply to files under `archive/`. Templates live in `docs/templates/` and still describe `data/<id>/` paths relative to the **archive** app (those files are now `archive/data/<id>/`).
 
 ## Local dev
 
 ```bash
 python3 -m http.server 8000
+node scripts/test-plotted.mjs
 node scripts/test-never-ending-internet-lore.mjs
 ```
 
+Plotted: [http://localhost:8000/](http://localhost:8000/). Archive: [http://localhost:8000/archive/](http://localhost:8000/archive/).
+
 ## Deploy
 
-GitHub Pages from **`main`** via `.github/workflows/pages.yml`. Custom domain: `plotmaniac.com` (`CNAME`). Fallback URL: `https://inaayat.github.io/plotmaniac/`. Vercel is deprecated for hosting; no build step required.
+GitHub Pages from **`main`** via `.github/workflows/pages.yml`. Custom domain: `plotmaniac.com` (`CNAME`). Fallback URL: `https://inaayat.github.io/plotmaniac/`. No build step: the workflow uploads the repository root.

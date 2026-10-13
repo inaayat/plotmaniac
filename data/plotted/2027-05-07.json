@@ -1,0 +1,176 @@
+{
+  "date": "2027-05-07",
+  "number": 207,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "pet": [
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Gus is with the cat."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "rabbit is with the coffee."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Gus is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "text": "coffee is next to the Gus."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "immediate": true,
+      "text": "martini is immediately left of the Bo."
+    }
+  ],
+  "question": {
+    "text": "Who owns the butterfly?",
+    "givenAttr": "pet",
+    "givenItem": "butterfly",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "pet": "butterfly",
+      "drink": "martini"
+    },
+    {
+      "person": "bo",
+      "pet": "rabbit",
+      "drink": "coffee"
+    },
+    {
+      "person": "gus",
+      "pet": "cat",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

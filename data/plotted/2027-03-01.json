@@ -1,0 +1,165 @@
+{
+  "date": "2027-03-01",
+  "number": 140,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "treat": [
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      },
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      }
+    ],
+    "gift": [
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "orange is with the medal."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "crown"
+      },
+      "text": "Drew is with the crown."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "Gus is with the medal."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "treat",
+      "item": "cookie",
+      "house": 2,
+      "text": "cookie is in house 3."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "hana",
+      "house": 1,
+      "text": "Hana is in house 2."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cookie?",
+    "givenAttr": "treat",
+    "givenItem": "cookie",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "treat": "orange",
+      "gift": "medal"
+    },
+    {
+      "person": "hana",
+      "treat": "cake",
+      "gift": "gift"
+    },
+    {
+      "person": "drew",
+      "treat": "cookie",
+      "gift": "crown"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

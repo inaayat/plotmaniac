@@ -1,0 +1,176 @@
+{
+  "date": "2027-03-13",
+  "number": 152,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "loot": [
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "Fay is with the motorcycle."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "coins is with the bicycle."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "Eden is next to the bicycle."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "key is next to the car."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "immediate": false,
+      "text": "coins is somewhere left of the car."
+    }
+  ],
+  "question": {
+    "text": "Who took the key?",
+    "givenAttr": "loot",
+    "givenItem": "key",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "loot": "coins",
+      "getaway": "bike"
+    },
+    {
+      "person": "eden",
+      "loot": "crown",
+      "getaway": "car"
+    },
+    {
+      "person": "fay",
+      "loot": "key",
+      "getaway": "moto"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

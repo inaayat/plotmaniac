@@ -1,0 +1,176 @@
+{
+  "date": "2027-06-11",
+  "number": 242,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "treat": [
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      }
+    ],
+    "gift": [
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "text": "Ada is with the orange."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "tea is with the medal."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "text": "cocoa is next to the book."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "text": "crown is next to the tea."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "immediate": false,
+      "text": "cocoa is somewhere left of the Fay."
+    }
+  ],
+  "question": {
+    "text": "Who brought the tea?",
+    "givenAttr": "treat",
+    "givenItem": "tea",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "treat": "orange",
+      "gift": "book"
+    },
+    {
+      "person": "drew",
+      "treat": "cocoa",
+      "gift": "crown"
+    },
+    {
+      "person": "fay",
+      "treat": "tea",
+      "gift": "medal"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

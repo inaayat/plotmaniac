@@ -1,0 +1,170 @@
+{
+  "date": "2027-04-20",
+  "number": 190,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "food": [
+      {
+        "id": "pot",
+        "label": "stew",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "text": "Jules is with the stew."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "carrot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "carrot is with the orange juice."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Drew is with the martini."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Cam is next to the brandy."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "cam",
+      "house": 2,
+      "text": "Cam is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the stew?",
+    "givenAttr": "food",
+    "givenItem": "pot",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "food": "cake",
+      "drink": "martini"
+    },
+    {
+      "person": "jules",
+      "food": "pot",
+      "drink": "brandy"
+    },
+    {
+      "person": "cam",
+      "food": "carrot",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

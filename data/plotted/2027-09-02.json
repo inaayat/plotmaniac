@@ -1,0 +1,189 @@
+{
+  "date": "2027-09-02",
+  "number": 325,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "treat": [
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      }
+    ],
+    "gift": [
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "text": "Fay is with the evergreen."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "balloon"
+      },
+      "text": "Bo is with the balloon."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "text": "Bo is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "text": "parcel is next to the cake."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "balloon"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cookie"
+      },
+      "text": "balloon is next to the cookie."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "immediate": false,
+      "text": "cake is somewhere left of the parcel."
+    }
+  ],
+  "question": {
+    "text": "Who brought the tea?",
+    "givenAttr": "treat",
+    "givenItem": "tea",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "treat": "cake",
+      "gift": "tree"
+    },
+    {
+      "person": "hana",
+      "treat": "cookie",
+      "gift": "gift"
+    },
+    {
+      "person": "bo",
+      "treat": "tea",
+      "gift": "balloon"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

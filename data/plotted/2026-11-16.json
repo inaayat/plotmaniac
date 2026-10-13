@@ -1,0 +1,165 @@
+{
+  "date": "2026-11-16",
+  "number": 35,
+  "theme": {
+    "id": "dinner-party",
+    "title": "Dinner party",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "A small dinner. Someone still has to claim the fish."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "pet": [
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "Ada is with the rabbit."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Hana is with the coffee."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "fish is with the martini."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "pet",
+      "item": "rabbit",
+      "house": 1,
+      "text": "rabbit is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "drink",
+      "item": "coffee",
+      "house": 0,
+      "text": "coffee is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who owns the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "pet": "horse",
+      "drink": "coffee"
+    },
+    {
+      "person": "ada",
+      "pet": "rabbit",
+      "drink": "orange"
+    },
+    {
+      "person": "io",
+      "pet": "fish",
+      "drink": "martini"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 4,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

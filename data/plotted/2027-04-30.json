@@ -1,0 +1,189 @@
+{
+  "date": "2027-04-30",
+  "number": 200,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "food": [
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "bowl",
+        "label": "bowl",
+        "icon": "bowl-food"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "text": "Eden is with the cake."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "cake is with the martini."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "carrot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "carrot is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "text": "Hana is next to the cake."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "text": "tea is next to the Gus."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "immediate": false,
+      "text": "Gus is somewhere left of the tea."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the cake?",
+    "givenAttr": "food",
+    "givenItem": "cake",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "food": "bowl",
+      "drink": "beer"
+    },
+    {
+      "person": "hana",
+      "food": "carrot",
+      "drink": "tea"
+    },
+    {
+      "person": "eden",
+      "food": "cake",
+      "drink": "martini"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

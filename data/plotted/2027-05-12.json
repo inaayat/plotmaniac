@@ -1,0 +1,170 @@
+{
+  "date": "2027-05-12",
+  "number": 212,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "loot": [
+      {
+        "id": "tent",
+        "label": "tent",
+        "icon": "tent"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "lock",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "pet": [
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "key is with the rabbit."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "tent"
+      },
+      "text": "Drew is with the tent."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Drew is with the fish."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Gus is next to the horse."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "pet",
+      "item": "horse",
+      "house": 2,
+      "text": "horse is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "loot": "tent",
+      "pet": "fish"
+    },
+    {
+      "person": "gus",
+      "loot": "key",
+      "pet": "rabbit"
+    },
+    {
+      "person": "cam",
+      "loot": "lock",
+      "pet": "horse"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

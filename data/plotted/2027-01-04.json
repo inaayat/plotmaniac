@@ -1,0 +1,165 @@
+{
+  "date": "2027-01-04",
+  "number": 84,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "loot": [
+      {
+        "id": "leaf",
+        "label": "leaf",
+        "icon": "leaf"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "book",
+        "label": "guide",
+        "icon": "book"
+      }
+    ],
+    "pet": [
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "Ada is with the rabbit."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "book"
+      },
+      "text": "Cam is with the guide."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "key is with the cat."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "person",
+      "item": "cam",
+      "house": 1,
+      "text": "Cam is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "ada",
+      "house": 2,
+      "text": "Ada is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the bird?",
+    "givenAttr": "pet",
+    "givenItem": "bird",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "loot": "key",
+      "pet": "cat"
+    },
+    {
+      "person": "cam",
+      "loot": "book",
+      "pet": "bird"
+    },
+    {
+      "person": "ada",
+      "loot": "leaf",
+      "pet": "rabbit"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "date": "2027-07-23",
+  "number": 284,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "treat": [
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      },
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      }
+    ],
+    "gift": [
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      },
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "Drew is with the medal."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "orange is with the medal."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "text": "evergreen is next to the Gus."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "text": "medal is next to the Eden."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "cookie"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "immediate": false,
+      "text": "cookie is somewhere left of the Gus."
+    }
+  ],
+  "question": {
+    "text": "Who brought the orange?",
+    "givenAttr": "treat",
+    "givenItem": "orange",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "treat": "orange",
+      "gift": "medal"
+    },
+    {
+      "person": "eden",
+      "treat": "cookie",
+      "gift": "tree"
+    },
+    {
+      "person": "gus",
+      "treat": "cocoa",
+      "gift": "balloon"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

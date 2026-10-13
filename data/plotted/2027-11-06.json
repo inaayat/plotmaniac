@@ -1,0 +1,176 @@
+{
+  "date": "2027-11-06",
+  "number": 390,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      },
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "book-open"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "score"
+      },
+      "text": "Ada is with the score."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "charts"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "charts is with the orange juice."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Ada is next to the martini."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Gus is next to the orange juice."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "immediate": false,
+      "text": "brandy is somewhere left of the Gus."
+    }
+  ],
+  "question": {
+    "text": "Who plays the charts?",
+    "givenAttr": "instrument",
+    "givenItem": "charts",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "instrument": "score",
+      "drink": "brandy"
+    },
+    {
+      "person": "gus",
+      "instrument": "folio",
+      "drink": "martini"
+    },
+    {
+      "person": "hana",
+      "instrument": "charts",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

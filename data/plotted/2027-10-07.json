@@ -1,0 +1,189 @@
+{
+  "date": "2027-10-07",
+  "number": 360,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      }
+    ],
+    "treat": [
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      }
+    ],
+    "gift": [
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "text": "cake is with the parcel."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "text": "Ada is with the cocoa."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "text": "Gus is with the ice cream."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "text": "medal is next to the cake."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "text": "ice cream is next to the Ada."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "immediate": false,
+      "text": "ice cream is somewhere left of the medal."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cocoa?",
+    "givenAttr": "treat",
+    "givenItem": "cocoa",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "treat": "ice",
+      "gift": "book"
+    },
+    {
+      "person": "ada",
+      "treat": "cocoa",
+      "gift": "medal"
+    },
+    {
+      "person": "io",
+      "treat": "cake",
+      "gift": "gift"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

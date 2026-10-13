@@ -1,0 +1,176 @@
+{
+  "date": "2027-06-12",
+  "number": 243,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "loot": [
+      {
+        "id": "tent",
+        "label": "tent",
+        "icon": "tent"
+      },
+      {
+        "id": "leaf",
+        "label": "leaf",
+        "icon": "leaf"
+      },
+      {
+        "id": "lock",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "pet": [
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "tent"
+      },
+      "text": "Eden is with the tent."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "lock"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "lock is with the bird."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Cam is next to the horse."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "tent"
+      },
+      "text": "bird is next to the tent."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "immediate": false,
+      "text": "horse is somewhere left of the Eden."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the bird?",
+    "givenAttr": "pet",
+    "givenItem": "bird",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "loot": "leaf",
+      "pet": "horse"
+    },
+    {
+      "person": "cam",
+      "loot": "lock",
+      "pet": "bird"
+    },
+    {
+      "person": "eden",
+      "loot": "tent",
+      "pet": "rabbit"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

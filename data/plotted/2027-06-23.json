@@ -1,0 +1,170 @@
+{
+  "date": "2027-06-23",
+  "number": 254,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "food": [
+      {
+        "id": "pot",
+        "label": "stew",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      },
+      {
+        "id": "burger",
+        "label": "burger",
+        "icon": "hamburger"
+      }
+    ],
+    "drink": [
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "text": "Ada is with the stew."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "Bo is with the wine."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Hana is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "right": {
+        "attr": "food",
+        "item": "burger"
+      },
+      "text": "wine is next to the burger."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "food",
+      "item": "burger",
+      "house": 0,
+      "text": "burger is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the carrot?",
+    "givenAttr": "food",
+    "givenItem": "carrot",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "food": "burger",
+      "drink": "beer"
+    },
+    {
+      "person": "bo",
+      "food": "carrot",
+      "drink": "wine"
+    },
+    {
+      "person": "ada",
+      "food": "pot",
+      "drink": "brandy"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

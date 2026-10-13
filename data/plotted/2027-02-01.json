@@ -1,0 +1,165 @@
+{
+  "date": "2027-02-01",
+  "number": 112,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "treat": [
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      }
+    ],
+    "gift": [
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "text": "Fay is with the parcel."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "balloon"
+      },
+      "text": "cocoa is with the balloon."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "text": "Cam is with the cake."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "gift",
+      "item": "balloon",
+      "house": 2,
+      "text": "balloon is in house 3."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "treat",
+      "item": "cake",
+      "house": 1,
+      "text": "cake is in house 2."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cake?",
+    "givenAttr": "treat",
+    "givenItem": "cake",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "treat": "orange",
+      "gift": "gift"
+    },
+    {
+      "person": "cam",
+      "treat": "cake",
+      "gift": "tree"
+    },
+    {
+      "person": "io",
+      "treat": "cocoa",
+      "gift": "balloon"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

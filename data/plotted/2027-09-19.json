@@ -1,0 +1,235 @@
+{
+  "date": "2027-09-19",
+  "number": 342,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "book": [
+      {
+        "id": "notes",
+        "label": "notes",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      },
+      {
+        "id": "novel",
+        "label": "novel",
+        "icon": "book"
+      },
+      {
+        "id": "diary",
+        "label": "diary",
+        "icon": "pencil-simple"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Gus is with the brandy."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "novel"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "novel is with the orange juice."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "score"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "score is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "text": "Eden is with the diary."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "Cam is next to the wine."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "book",
+        "item": "score"
+      },
+      "text": "Bo is next to the score."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "book",
+        "item": "novel"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "novel is next to the brandy."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "immediate": false,
+      "text": "orange juice is somewhere left of the Gus."
+    }
+  ],
+  "question": {
+    "text": "Who brought the diary?",
+    "givenAttr": "book",
+    "givenItem": "diary",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "book": "diary",
+      "drink": "wine"
+    },
+    {
+      "person": "cam",
+      "book": "score",
+      "drink": "beer"
+    },
+    {
+      "person": "bo",
+      "book": "novel",
+      "drink": "orange"
+    },
+    {
+      "person": "gus",
+      "book": "notes",
+      "drink": "brandy"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

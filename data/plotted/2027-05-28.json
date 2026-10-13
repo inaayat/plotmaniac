@@ -1,0 +1,176 @@
+{
+  "date": "2027-05-28",
+  "number": 228,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "treat": [
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      }
+    ],
+    "gift": [
+      {
+        "id": "gift",
+        "label": "parcel",
+        "icon": "gift"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "cookie"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "text": "cookie is with the parcel."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "cocoa is with the medal."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "parcel is next to the Jules."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "gift"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "text": "parcel is next to the Hana."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "immediate": false,
+      "text": "Jules is somewhere left of the medal."
+    }
+  ],
+  "question": {
+    "text": "Who brought the ice cream?",
+    "givenAttr": "treat",
+    "givenItem": "ice",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "treat": "ice",
+      "gift": "balloon"
+    },
+    {
+      "person": "ada",
+      "treat": "cookie",
+      "gift": "gift"
+    },
+    {
+      "person": "hana",
+      "treat": "cocoa",
+      "gift": "medal"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

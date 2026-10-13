@@ -1,0 +1,170 @@
+{
+  "date": "2027-06-15",
+  "number": 246,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "loot": [
+      {
+        "id": "lockbox",
+        "label": "lock",
+        "icon": "lock"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "text": "diamond is with the plane."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "Cam is with the car."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "Drew is with the bicycle."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "key is next to the Drew."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "loot",
+      "item": "key",
+      "house": 2,
+      "text": "key is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who took the key?",
+    "givenAttr": "loot",
+    "givenItem": "key",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "loot": "diamond",
+      "getaway": "plane"
+    },
+    {
+      "person": "drew",
+      "loot": "lockbox",
+      "getaway": "bike"
+    },
+    {
+      "person": "cam",
+      "loot": "key",
+      "getaway": "car"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "date": "2027-06-18",
+  "number": 249,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      },
+      {
+        "id": "notes",
+        "label": "harmony",
+        "icon": "music-notes"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Cam is with the martini."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "guitar is with the coffee."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "text": "Fay is with the folio."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "text": "Fay is next to the harmony."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Cam is next to the coffee."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "immediate": false,
+      "text": "coffee is somewhere left of the Cam."
+    }
+  ],
+  "question": {
+    "text": "Who plays the harmony?",
+    "givenAttr": "instrument",
+    "givenItem": "notes",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "instrument": "guitar",
+      "drink": "coffee"
+    },
+    {
+      "person": "cam",
+      "instrument": "notes",
+      "drink": "martini"
+    },
+    {
+      "person": "fay",
+      "instrument": "folio",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

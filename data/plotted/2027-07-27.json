@@ -1,0 +1,170 @@
+{
+  "date": "2027-07-27",
+  "number": 288,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "loot": [
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "tent",
+        "label": "tent",
+        "icon": "tent"
+      },
+      {
+        "id": "pot",
+        "label": "cookpot",
+        "icon": "cooking-pot"
+      }
+    ],
+    "pet": [
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "text": "Hana is with the key."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "cookpot is with the cat."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Bo is with the butterfly."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "text": "butterfly is next to the key."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "pet",
+      "item": "butterfly",
+      "house": 2,
+      "text": "butterfly is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the fish?",
+    "givenAttr": "pet",
+    "givenItem": "fish",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "loot": "pot",
+      "pet": "cat"
+    },
+    {
+      "person": "hana",
+      "loot": "key",
+      "pet": "fish"
+    },
+    {
+      "person": "bo",
+      "loot": "tent",
+      "pet": "butterfly"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

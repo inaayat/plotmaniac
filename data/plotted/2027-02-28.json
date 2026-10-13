@@ -1,0 +1,250 @@
+{
+  "date": "2027-02-28",
+  "number": 139,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "book-open"
+      },
+      {
+        "id": "notes",
+        "label": "harmony",
+        "icon": "music-notes"
+      },
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Hana is with the coffee."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "score"
+      },
+      "text": "Fay is with the score."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Io is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "charts"
+      },
+      "text": "Cam is with the charts."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "folio is with the orange juice."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "text": "coffee is next to the melody."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "immediate": true,
+      "text": "martini is immediately left of the harmony."
+    },
+    {
+      "id": "c8",
+      "type": "at",
+      "attr": "instrument",
+      "item": "score",
+      "house": 3,
+      "text": "score is in house 4."
+    }
+  ],
+  "question": {
+    "text": "Who plays the charts?",
+    "givenAttr": "instrument",
+    "givenItem": "charts",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "instrument": "charts",
+      "drink": "martini"
+    },
+    {
+      "person": "hana",
+      "instrument": "notes",
+      "drink": "coffee"
+    },
+    {
+      "person": "io",
+      "instrument": "note",
+      "drink": "beer"
+    },
+    {
+      "person": "fay",
+      "instrument": "score",
+      "drink": "wine"
+    },
+    {
+      "person": "jules",
+      "instrument": "folio",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-five",
+    "steps": 16,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

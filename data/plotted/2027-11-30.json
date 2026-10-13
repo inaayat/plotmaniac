@@ -1,0 +1,170 @@
+{
+  "date": "2027-11-30",
+  "number": 414,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "book": [
+      {
+        "id": "notes",
+        "label": "notes",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "open",
+        "label": "open book",
+        "icon": "book-open"
+      },
+      {
+        "id": "diary",
+        "label": "diary",
+        "icon": "pencil-simple"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "notes is with the beer."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Ada is with the brandy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Io is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "book",
+        "item": "open"
+      },
+      "text": "Io is next to the open book."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "io",
+      "house": 0,
+      "text": "Io is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who brought the notes?",
+    "givenAttr": "book",
+    "givenItem": "notes",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "io",
+      "book": "diary",
+      "drink": "tea"
+    },
+    {
+      "person": "ada",
+      "book": "open",
+      "drink": "brandy"
+    },
+    {
+      "person": "bo",
+      "book": "notes",
+      "drink": "beer"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

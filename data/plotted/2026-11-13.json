@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-13",
+  "number": 32,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "loot": [
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "lockbox",
+        "label": "lock",
+        "icon": "lock"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "text": "Eden is with the plane."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "text": "Eden is with the medal."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "plane is next to the Fay."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "text": "Fay is next to the coins."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "immediate": false,
+      "text": "motorcycle is somewhere left of the Cam."
+    }
+  ],
+  "question": {
+    "text": "Who took the lock?",
+    "givenAttr": "loot",
+    "givenItem": "lockbox",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "loot": "medal",
+      "getaway": "plane"
+    },
+    {
+      "person": "fay",
+      "loot": "lockbox",
+      "getaway": "moto"
+    },
+    {
+      "person": "cam",
+      "loot": "coins",
+      "getaway": "walk"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

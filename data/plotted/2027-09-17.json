@@ -1,0 +1,176 @@
+{
+  "date": "2027-09-17",
+  "number": 340,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "loot": [
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "walk"
+      },
+      "text": "crown is with the on foot."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "walk"
+      },
+      "text": "Jules is with the on foot."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "medal is with the motorcycle."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "bicycle is next to the Jules."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "immediate": true,
+      "text": "motorcycle is immediately left of the Drew."
+    }
+  ],
+  "question": {
+    "text": "Who took the diamond?",
+    "givenAttr": "loot",
+    "givenItem": "diamond",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "loot": "medal",
+      "getaway": "moto"
+    },
+    {
+      "person": "drew",
+      "loot": "diamond",
+      "getaway": "bike"
+    },
+    {
+      "person": "jules",
+      "loot": "crown",
+      "getaway": "walk"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

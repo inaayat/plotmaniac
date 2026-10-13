@@ -1,0 +1,165 @@
+{
+  "date": "2027-01-18",
+  "number": 98,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "book": [
+      {
+        "id": "diary",
+        "label": "diary",
+        "icon": "pencil-simple"
+      },
+      {
+        "id": "map",
+        "label": "field guide",
+        "icon": "magnifying-glass"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "text": "Hana is with the diary."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "book",
+        "item": "map"
+      },
+      "text": "Cam is with the field guide."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "score"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "score is with the coffee."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "person",
+      "item": "cam",
+      "house": 1,
+      "text": "Cam is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "drink",
+      "item": "beer",
+      "house": 0,
+      "text": "beer is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who brought the field guide?",
+    "givenAttr": "book",
+    "givenItem": "map",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "book": "diary",
+      "drink": "beer"
+    },
+    {
+      "person": "cam",
+      "book": "map",
+      "drink": "orange"
+    },
+    {
+      "person": "jules",
+      "book": "score",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

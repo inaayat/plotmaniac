@@ -1,0 +1,235 @@
+{
+  "date": "2027-09-12",
+  "number": 335,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "pet": [
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      }
+    ],
+    "prize": [
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "trophy",
+        "label": "trophy",
+        "icon": "trophy"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "Fay is with the gift."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "fish is with the gift."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Drew is with the dog."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "crown"
+      },
+      "text": "Eden is with the crown."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "Drew is next to the gift."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "crown"
+      },
+      "text": "Fay is next to the crown."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "horse is next to the Drew."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "prize",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "immediate": false,
+      "text": "medal is somewhere left of the horse."
+    }
+  ],
+  "question": {
+    "text": "Who showed the cat?",
+    "givenAttr": "pet",
+    "givenItem": "cat",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "pet": "cat",
+      "prize": "crown"
+    },
+    {
+      "person": "fay",
+      "pet": "fish",
+      "prize": "gift"
+    },
+    {
+      "person": "drew",
+      "pet": "dog",
+      "prize": "medal"
+    },
+    {
+      "person": "gus",
+      "pet": "horse",
+      "prize": "trophy"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

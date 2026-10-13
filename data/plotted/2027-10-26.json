@@ -1,0 +1,170 @@
+{
+  "date": "2027-10-26",
+  "number": 379,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "food": [
+      {
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      }
+    ],
+    "drink": [
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Fay is with the brandy."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Jules is with the martini."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "pizza"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "pizza is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "cake is next to the Jules."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "food",
+      "item": "cake",
+      "house": 2,
+      "text": "cake is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the pizza?",
+    "givenAttr": "food",
+    "givenItem": "pizza",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "food": "pizza",
+      "drink": "beer"
+    },
+    {
+      "person": "jules",
+      "food": "ice",
+      "drink": "martini"
+    },
+    {
+      "person": "fay",
+      "food": "cake",
+      "drink": "brandy"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

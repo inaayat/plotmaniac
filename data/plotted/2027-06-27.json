@@ -1,0 +1,255 @@
+{
+  "date": "2027-06-27",
+  "number": 258,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      },
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "notes",
+        "label": "harmony",
+        "icon": "music-notes"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "melody is with the beer."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "text": "Jules is with the folio."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "harmony is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Gus is with the orange juice."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Hana is next to the coffee."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "text": "Cam is next to the guitar."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "text": "melody is next to the Gus."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "immediate": true,
+      "text": "melody is immediately left of the Cam."
+    }
+  ],
+  "question": {
+    "text": "Who plays the charts?",
+    "givenAttr": "instrument",
+    "givenItem": "charts",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "instrument": "charts",
+      "drink": "orange"
+    },
+    {
+      "person": "fay",
+      "instrument": "note",
+      "drink": "beer"
+    },
+    {
+      "person": "cam",
+      "instrument": "notes",
+      "drink": "tea"
+    },
+    {
+      "person": "hana",
+      "instrument": "guitar",
+      "drink": "brandy"
+    },
+    {
+      "person": "jules",
+      "instrument": "folio",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-five",
+    "steps": 16,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

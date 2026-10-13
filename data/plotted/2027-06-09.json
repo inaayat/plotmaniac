@@ -1,0 +1,170 @@
+{
+  "date": "2027-06-09",
+  "number": 240,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      },
+      {
+        "id": "notes",
+        "label": "harmony",
+        "icon": "music-notes"
+      },
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "text": "Io is with the melody."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "folio is with the wine."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "harmony is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "harmony is next to the Bo."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "bo",
+      "house": 0,
+      "text": "Bo is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who plays the folio?",
+    "givenAttr": "instrument",
+    "givenItem": "folio",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "instrument": "folio",
+      "drink": "wine"
+    },
+    {
+      "person": "jules",
+      "instrument": "notes",
+      "drink": "tea"
+    },
+    {
+      "person": "io",
+      "instrument": "note",
+      "drink": "beer"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

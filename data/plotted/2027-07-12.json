@@ -1,0 +1,178 @@
+{
+  "date": "2027-07-12",
+  "number": 273,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      },
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      }
+    ],
+    "drink": [
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Io is with the tea."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "charts"
+      },
+      "text": "Io is with the charts."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "text": "Jules is with the folio."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Gus is with the beer."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "drink",
+      "item": "orange",
+      "house": 0,
+      "text": "orange juice is in house 1."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "drink",
+      "item": "beer",
+      "house": 1,
+      "text": "beer is in house 2."
+    }
+  ],
+  "question": {
+    "text": "Who plays the melody?",
+    "givenAttr": "instrument",
+    "givenItem": "note",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "instrument": "folio",
+      "drink": "orange"
+    },
+    {
+      "person": "gus",
+      "instrument": "note",
+      "drink": "beer"
+    },
+    {
+      "person": "io",
+      "instrument": "charts",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

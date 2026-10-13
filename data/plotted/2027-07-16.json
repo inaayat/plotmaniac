@@ -1,0 +1,176 @@
+{
+  "date": "2027-07-16",
+  "number": 277,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "plant": [
+      {
+        "id": "pot",
+        "label": "potted plant",
+        "icon": "potted-plant"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      },
+      {
+        "id": "leaf",
+        "label": "leaf",
+        "icon": "leaf"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "text": "Hana is with the cactus."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "potted plant is with the brandy."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Ada is next to the tea."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "brandy is next to the Cam."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "immediate": false,
+      "text": "Hana is somewhere left of the orange juice."
+    }
+  ],
+  "question": {
+    "text": "Who tends the leaf?",
+    "givenAttr": "plant",
+    "givenItem": "leaf",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "plant": "cactus",
+      "drink": "tea"
+    },
+    {
+      "person": "ada",
+      "plant": "pot",
+      "drink": "brandy"
+    },
+    {
+      "person": "cam",
+      "plant": "leaf",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

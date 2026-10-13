@@ -1,0 +1,176 @@
+{
+  "date": "2027-06-05",
+  "number": 236,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "book": [
+      {
+        "id": "notes",
+        "label": "notes",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "open",
+        "label": "open book",
+        "icon": "book-open"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Gus is with the orange juice."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "open"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "open book is with the beer."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "text": "Hana is with the notes."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "text": "Gus is next to the notes."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "immediate": true,
+      "text": "beer is immediately left of the Gus."
+    }
+  ],
+  "question": {
+    "text": "Who brought the score?",
+    "givenAttr": "book",
+    "givenItem": "score",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "book": "open",
+      "drink": "beer"
+    },
+    {
+      "person": "gus",
+      "book": "score",
+      "drink": "orange"
+    },
+    {
+      "person": "hana",
+      "book": "notes",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

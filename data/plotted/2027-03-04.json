@@ -1,0 +1,176 @@
+{
+  "date": "2027-03-04",
+  "number": 143,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "loot": [
+      {
+        "id": "leaf",
+        "label": "leaf",
+        "icon": "leaf"
+      },
+      {
+        "id": "book",
+        "label": "guide",
+        "icon": "book"
+      },
+      {
+        "id": "pot",
+        "label": "cookpot",
+        "icon": "cooking-pot"
+      }
+    ],
+    "pet": [
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "book"
+      },
+      "text": "Drew is with the guide."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Fay is with the fish."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "book"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "guide is with the cat."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "book"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "guide is next to the Fay."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "loot",
+        "item": "leaf"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "immediate": true,
+      "text": "leaf is immediately left of the Eden."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the fish?",
+    "givenAttr": "pet",
+    "givenItem": "fish",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "loot": "book",
+      "pet": "cat"
+    },
+    {
+      "person": "fay",
+      "loot": "leaf",
+      "pet": "fish"
+    },
+    {
+      "person": "eden",
+      "loot": "pot",
+      "pet": "bird"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

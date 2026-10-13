@@ -1,0 +1,235 @@
+{
+  "date": "2027-01-24",
+  "number": 104,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "loot": [
+      {
+        "id": "leaf",
+        "label": "leaf",
+        "icon": "leaf"
+      },
+      {
+        "id": "pot",
+        "label": "cookpot",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "tent",
+        "label": "tent",
+        "icon": "tent"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      }
+    ],
+    "pet": [
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "cookpot is with the bird."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Io is with the cat."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "Fay is with the bird."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "leaf"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "leaf is with the fish."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "key is next to the rabbit."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "text": "fish is next to the Hana."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "text": "bird is next to the Ada."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "immediate": false,
+      "text": "Ada is somewhere left of the cat."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the fish?",
+    "givenAttr": "pet",
+    "givenItem": "fish",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "loot": "pot",
+      "pet": "bird"
+    },
+    {
+      "person": "ada",
+      "loot": "leaf",
+      "pet": "fish"
+    },
+    {
+      "person": "hana",
+      "loot": "tent",
+      "pet": "rabbit"
+    },
+    {
+      "person": "io",
+      "loot": "key",
+      "pet": "cat"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

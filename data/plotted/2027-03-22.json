@@ -1,0 +1,165 @@
+{
+  "date": "2027-03-22",
+  "number": 161,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "pet": [
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      }
+    ],
+    "prize": [
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "trophy",
+        "label": "trophy",
+        "icon": "trophy"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Eden is with the horse."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "trophy"
+      },
+      "text": "Gus is with the trophy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "cat is with the gift."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "prize",
+      "item": "cookie",
+      "house": 1,
+      "text": "cookie is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "prize",
+      "item": "gift",
+      "house": 0,
+      "text": "gift is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who showed the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "pet": "cat",
+      "prize": "gift"
+    },
+    {
+      "person": "eden",
+      "pet": "horse",
+      "prize": "cookie"
+    },
+    {
+      "person": "gus",
+      "pet": "rabbit",
+      "prize": "trophy"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

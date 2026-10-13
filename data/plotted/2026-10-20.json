@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-20",
+  "number": 8,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "treat": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      },
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      }
+    ],
+    "gift": [
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "balloon"
+      },
+      "text": "Jules is with the balloon."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "text": "Cam is with the book."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "text": "Cam is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "ice cream is next to the medal."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "treat",
+      "item": "ice",
+      "house": 0,
+      "text": "ice cream is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who brought the ice cream?",
+    "givenAttr": "treat",
+    "givenItem": "ice",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "treat": "ice",
+      "gift": "balloon"
+    },
+    {
+      "person": "fay",
+      "treat": "cocoa",
+      "gift": "medal"
+    },
+    {
+      "person": "cam",
+      "treat": "tea",
+      "gift": "book"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

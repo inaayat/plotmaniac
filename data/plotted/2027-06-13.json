@@ -1,0 +1,235 @@
+{
+  "date": "2027-06-13",
+  "number": 244,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "loot": [
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "diamond",
+        "label": "diamond",
+        "icon": "diamond"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "diamond"
+      },
+      "text": "Cam is with the diamond."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "text": "Fay is with the medal."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "coins is with the car."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "walk"
+      },
+      "text": "Jules is with the on foot."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "medal is next to the Bo."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "plane is next to the Fay."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "key is next to the car."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "immediate": false,
+      "text": "key is somewhere left of the car."
+    }
+  ],
+  "question": {
+    "text": "Who took the diamond?",
+    "givenAttr": "loot",
+    "givenItem": "diamond",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "loot": "key",
+      "getaway": "walk"
+    },
+    {
+      "person": "bo",
+      "loot": "coins",
+      "getaway": "car"
+    },
+    {
+      "person": "fay",
+      "loot": "medal",
+      "getaway": "bike"
+    },
+    {
+      "person": "cam",
+      "loot": "diamond",
+      "getaway": "plane"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 17,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

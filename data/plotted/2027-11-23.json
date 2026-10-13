@@ -1,0 +1,183 @@
+{
+  "date": "2027-11-23",
+  "number": 407,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "loot": [
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "Eden is with the car."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "text": "Eden is with the key."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "crown is with the bicycle."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "bike"
+      },
+      "text": "Ada is with the bicycle."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "crown is next to the car."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "getaway",
+      "item": "bike",
+      "house": 2,
+      "text": "bicycle is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who took the crown?",
+    "givenAttr": "loot",
+    "givenItem": "crown",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "io",
+      "loot": "medal",
+      "getaway": "moto"
+    },
+    {
+      "person": "eden",
+      "loot": "key",
+      "getaway": "car"
+    },
+    {
+      "person": "ada",
+      "loot": "crown",
+      "getaway": "bike"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

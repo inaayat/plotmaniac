@@ -1,0 +1,176 @@
+{
+  "date": "2026-12-26",
+  "number": 75,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "food": [
+      {
+        "id": "pot",
+        "label": "stew",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
+      },
+      {
+        "id": "burger",
+        "label": "burger",
+        "icon": "hamburger"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "food",
+        "item": "burger"
+      },
+      "text": "Bo is with the burger."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "burger"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "burger is with the coffee."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Eden is next to the coffee."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "text": "orange juice is next to the Eden."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "food",
+        "item": "pizza"
+      },
+      "right": {
+        "attr": "person",
+        "item": "io"
+      },
+      "immediate": false,
+      "text": "pizza is somewhere left of the Io."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the stew?",
+    "givenAttr": "food",
+    "givenItem": "pot",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "food": "burger",
+      "drink": "coffee"
+    },
+    {
+      "person": "eden",
+      "food": "pizza",
+      "drink": "tea"
+    },
+    {
+      "person": "io",
+      "food": "pot",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

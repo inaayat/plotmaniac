@@ -1,0 +1,255 @@
+{
+  "date": "2026-10-25",
+  "number": 13,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "pet": [
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      }
+    ],
+    "prize": [
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "trophy",
+        "label": "trophy",
+        "icon": "trophy"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "Jules is with the cat."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "crown"
+      },
+      "text": "rabbit is with the crown."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "trophy"
+      },
+      "text": "bird is with the trophy."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "text": "Drew is with the balloon."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "text": "horse is next to the Eden."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "prize",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "text": "crown is next to the Hana."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "prize",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "crown is next to the Jules."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "immediate": true,
+      "text": "gift is immediately left of the Jules."
+    }
+  ],
+  "question": {
+    "text": "Who showed the cat?",
+    "givenAttr": "pet",
+    "givenItem": "cat",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "pet": "horse",
+      "prize": "balloon"
+    },
+    {
+      "person": "eden",
+      "pet": "fish",
+      "prize": "gift"
+    },
+    {
+      "person": "jules",
+      "pet": "cat",
+      "prize": "medal"
+    },
+    {
+      "person": "fay",
+      "pet": "rabbit",
+      "prize": "crown"
+    },
+    {
+      "person": "hana",
+      "pet": "bird",
+      "prize": "trophy"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-five",
+    "steps": 16,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

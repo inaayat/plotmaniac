@@ -1,0 +1,178 @@
+{
+  "date": "2027-04-05",
+  "number": 175,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "plant": [
+      {
+        "id": "tulip",
+        "label": "tulip",
+        "icon": "flower-tulip"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      },
+      {
+        "id": "pot",
+        "label": "potted plant",
+        "icon": "potted-plant"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "potted plant is with the orange juice."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Jules is with the brandy."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Gus is with the orange juice."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "tulip"
+      },
+      "text": "Jules is with the tulip."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "jules",
+      "house": 2,
+      "text": "Jules is in house 3."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "drink",
+      "item": "orange",
+      "house": 1,
+      "text": "orange juice is in house 2."
+    }
+  ],
+  "question": {
+    "text": "Who tends the tulip?",
+    "givenAttr": "plant",
+    "givenItem": "tulip",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "plant": "cactus",
+      "drink": "martini"
+    },
+    {
+      "person": "gus",
+      "plant": "pot",
+      "drink": "orange"
+    },
+    {
+      "person": "jules",
+      "plant": "tulip",
+      "drink": "brandy"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 4,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

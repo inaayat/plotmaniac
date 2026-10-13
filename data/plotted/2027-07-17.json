@@ -1,0 +1,176 @@
+{
+  "date": "2027-07-17",
+  "number": 278,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "plant": [
+      {
+        "id": "tulip",
+        "label": "tulip",
+        "icon": "flower-tulip"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      },
+      {
+        "id": "flower",
+        "label": "flower",
+        "icon": "flower"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "cactus is with the brandy."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "tulip"
+      },
+      "text": "Gus is with the tulip."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "plant",
+        "item": "tulip"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "tulip is next to the brandy."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "flower"
+      },
+      "text": "wine is next to the flower."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "immediate": false,
+      "text": "tea is somewhere left of the Bo."
+    }
+  ],
+  "question": {
+    "text": "Who tends the tulip?",
+    "givenAttr": "plant",
+    "givenItem": "tulip",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "plant": "flower",
+      "drink": "tea"
+    },
+    {
+      "person": "gus",
+      "plant": "tulip",
+      "drink": "wine"
+    },
+    {
+      "person": "bo",
+      "plant": "cactus",
+      "drink": "brandy"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

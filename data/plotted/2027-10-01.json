@@ -1,0 +1,189 @@
+{
+  "date": "2027-10-01",
+  "number": 354,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "plant": [
+      {
+        "id": "tulip",
+        "label": "tulip",
+        "icon": "flower-tulip"
+      },
+      {
+        "id": "tree",
+        "label": "tree",
+        "icon": "tree"
+      },
+      {
+        "id": "pot",
+        "label": "potted plant",
+        "icon": "potted-plant"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "tree"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "tree is with the brandy."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "tree"
+      },
+      "text": "Cam is with the tree."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "potted plant is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Ada is next to the beer."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "plant",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "potted plant is next to the Cam."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "pot"
+      },
+      "immediate": false,
+      "text": "Cam is somewhere left of the potted plant."
+    }
+  ],
+  "question": {
+    "text": "Who tends the potted plant?",
+    "givenAttr": "plant",
+    "givenItem": "pot",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "plant": "tree",
+      "drink": "brandy"
+    },
+    {
+      "person": "jules",
+      "plant": "pot",
+      "drink": "beer"
+    },
+    {
+      "person": "ada",
+      "plant": "tulip",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

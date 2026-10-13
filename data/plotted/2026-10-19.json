@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-19",
+  "number": 7,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "book": [
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      },
+      {
+        "id": "open",
+        "label": "open book",
+        "icon": "book-open"
+      },
+      {
+        "id": "map",
+        "label": "field guide",
+        "icon": "magnifying-glass"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "Eden is with the wine."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "book",
+        "item": "open"
+      },
+      "text": "Io is with the open book."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Io is with the coffee."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "book",
+        "item": "map"
+      },
+      "text": "Eden is with the field guide."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "book",
+      "item": "map",
+      "house": 0,
+      "text": "field guide is in house 1."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "book",
+      "item": "open",
+      "house": 2,
+      "text": "open book is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who brought the score?",
+    "givenAttr": "book",
+    "givenItem": "score",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "book": "map",
+      "drink": "wine"
+    },
+    {
+      "person": "fay",
+      "book": "score",
+      "drink": "martini"
+    },
+    {
+      "person": "io",
+      "book": "open",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

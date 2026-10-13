@@ -1,0 +1,176 @@
+{
+  "date": "2027-09-24",
+  "number": 347,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "plant": [
+      {
+        "id": "pot",
+        "label": "potted plant",
+        "icon": "potted-plant"
+      },
+      {
+        "id": "leaf",
+        "label": "leaf",
+        "icon": "leaf"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Io is with the orange juice."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "text": "Cam is with the cactus."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "leaf"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "leaf is with the wine."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "pot"
+      },
+      "text": "wine is next to the potted plant."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "plant",
+        "item": "leaf"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "immediate": true,
+      "text": "leaf is immediately left of the Cam."
+    }
+  ],
+  "question": {
+    "text": "Who tends the leaf?",
+    "givenAttr": "plant",
+    "givenItem": "leaf",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "io",
+      "plant": "pot",
+      "drink": "orange"
+    },
+    {
+      "person": "ada",
+      "plant": "leaf",
+      "drink": "wine"
+    },
+    {
+      "person": "cam",
+      "plant": "cactus",
+      "drink": "martini"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

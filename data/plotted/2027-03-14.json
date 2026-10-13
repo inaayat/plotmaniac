@@ -1,0 +1,235 @@
+{
+  "date": "2027-03-14",
+  "number": 153,
+  "theme": {
+    "id": "garden",
+    "title": "Garden row",
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light. Someone is watering the cactus."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "plant": [
+      {
+        "id": "tree",
+        "label": "tree",
+        "icon": "tree"
+      },
+      {
+        "id": "pot",
+        "label": "potted plant",
+        "icon": "potted-plant"
+      },
+      {
+        "id": "flower",
+        "label": "flower",
+        "icon": "flower"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Hana is with the martini."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "cactus is with the tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "plant",
+        "item": "tree"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "tree is with the martini."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Cam is with the coffee."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "plant",
+        "item": "tree"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "tree is next to the Drew."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "plant",
+        "item": "flower"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "flower is next to the orange juice."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Cam is next to the martini."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "immediate": false,
+      "text": "tea is somewhere left of the Hana."
+    }
+  ],
+  "question": {
+    "text": "Who tends the potted plant?",
+    "givenAttr": "plant",
+    "givenItem": "pot",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "plant": "cactus",
+      "drink": "tea"
+    },
+    {
+      "person": "hana",
+      "plant": "tree",
+      "drink": "martini"
+    },
+    {
+      "person": "cam",
+      "plant": "flower",
+      "drink": "coffee"
+    },
+    {
+      "person": "io",
+      "plant": "pot",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 16,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "date": "2027-07-08",
+  "number": 269,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "pet": [
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ],
+    "prize": [
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Hana is with the horse."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "Drew is with the gift."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "text": "Hana is with the balloon."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "balloon is next to the Drew."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "prize",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "immediate": true,
+      "text": "medal is immediately left of the rabbit."
+    }
+  ],
+  "question": {
+    "text": "Who showed the horse?",
+    "givenAttr": "pet",
+    "givenItem": "horse",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "io",
+      "pet": "bird",
+      "prize": "medal"
+    },
+    {
+      "person": "drew",
+      "pet": "rabbit",
+      "prize": "gift"
+    },
+    {
+      "person": "hana",
+      "pet": "horse",
+      "prize": "balloon"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

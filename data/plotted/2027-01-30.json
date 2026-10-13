@@ -1,0 +1,176 @@
+{
+  "date": "2027-01-30",
+  "number": 110,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "treat": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      }
+    ],
+    "gift": [
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "crown"
+      },
+      "text": "Ada is with the crown."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "cocoa is with the medal."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "balloon"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "balloon is next to the Bo."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "balloon"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "text": "balloon is next to the tea."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "gift",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cocoa"
+      },
+      "immediate": false,
+      "text": "crown is somewhere left of the cocoa."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cookie?",
+    "givenAttr": "treat",
+    "givenItem": "cookie",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "treat": "tea",
+      "gift": "crown"
+    },
+    {
+      "person": "gus",
+      "treat": "cookie",
+      "gift": "balloon"
+    },
+    {
+      "person": "bo",
+      "treat": "cocoa",
+      "gift": "medal"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

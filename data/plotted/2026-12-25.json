@@ -1,0 +1,189 @@
+{
+  "date": "2026-12-25",
+  "number": 74,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "food": [
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      },
+      {
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "food",
+        "item": "carrot"
+      },
+      "text": "Bo is with the carrot."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "text": "Fay is with the cake."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Fay is with the orange juice."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "cake is next to the martini."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "pizza"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "pizza is next to the martini."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "food",
+        "item": "carrot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "immediate": false,
+      "text": "carrot is somewhere left of the orange juice."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the pizza?",
+    "givenAttr": "food",
+    "givenItem": "pizza",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "food": "pizza",
+      "drink": "tea"
+    },
+    {
+      "person": "bo",
+      "food": "carrot",
+      "drink": "martini"
+    },
+    {
+      "person": "fay",
+      "food": "cake",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

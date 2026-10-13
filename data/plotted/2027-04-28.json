@@ -1,0 +1,170 @@
+{
+  "date": "2027-04-28",
+  "number": 198,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      }
+    ],
+    "pet": [
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "plane"
+      },
+      "text": "Gus is with the plane."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "boat"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "sailboat is with the cat."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Fay is with the fish."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "vehicle",
+        "item": "boat"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "sailboat is next to the dog."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "vehicle",
+      "item": "plane",
+      "house": 2,
+      "text": "plane is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the dog?",
+    "givenAttr": "pet",
+    "givenItem": "dog",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "vehicle": "car",
+      "pet": "fish"
+    },
+    {
+      "person": "jules",
+      "vehicle": "boat",
+      "pet": "cat"
+    },
+    {
+      "person": "gus",
+      "vehicle": "plane",
+      "pet": "dog"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 8,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

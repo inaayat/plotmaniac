@@ -1,0 +1,170 @@
+{
+  "date": "2026-12-16",
+  "number": 65,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "book": [
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      },
+      {
+        "id": "map",
+        "label": "field guide",
+        "icon": "magnifying-glass"
+      },
+      {
+        "id": "diary",
+        "label": "diary",
+        "icon": "pencil-simple"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "book",
+        "item": "map"
+      },
+      "text": "Gus is with the field guide."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "diary is with the martini."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "Fay is with the wine."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "book",
+        "item": "score"
+      },
+      "text": "Bo is next to the score."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "book",
+      "item": "score",
+      "house": 0,
+      "text": "score is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who brought the score?",
+    "givenAttr": "book",
+    "givenItem": "score",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "book": "score",
+      "drink": "wine"
+    },
+    {
+      "person": "bo",
+      "book": "diary",
+      "drink": "martini"
+    },
+    {
+      "person": "gus",
+      "book": "map",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

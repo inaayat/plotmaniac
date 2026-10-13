@@ -1,0 +1,170 @@
+{
+  "date": "2027-12-01",
+  "number": 415,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      }
+    ],
+    "prize": [
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "gift",
+        "label": "gift",
+        "icon": "gift"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Ada is with the fish."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "crown"
+      },
+      "text": "dog is with the crown."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "gift"
+      },
+      "text": "Bo is with the gift."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "right": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "text": "cat is next to the Ada."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "prize",
+      "item": "gift",
+      "house": 0,
+      "text": "gift is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who showed the cat?",
+    "givenAttr": "pet",
+    "givenItem": "cat",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "pet": "cat",
+      "prize": "gift"
+    },
+    {
+      "person": "ada",
+      "pet": "fish",
+      "prize": "balloon"
+    },
+    {
+      "person": "fay",
+      "pet": "dog",
+      "prize": "crown"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 8,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

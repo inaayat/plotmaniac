@@ -1,0 +1,170 @@
+{
+  "date": "2027-01-06",
+  "number": 86,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "guitar is with the beer."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "text": "Bo is with the folio."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Fay is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "text": "tea is next to the guitar."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "drink",
+      "item": "beer",
+      "house": 0,
+      "text": "beer is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who plays the folio?",
+    "givenAttr": "instrument",
+    "givenItem": "folio",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "instrument": "guitar",
+      "drink": "beer"
+    },
+    {
+      "person": "fay",
+      "instrument": "charts",
+      "drink": "tea"
+    },
+    {
+      "person": "bo",
+      "instrument": "folio",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

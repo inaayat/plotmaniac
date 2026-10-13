@@ -1,0 +1,176 @@
+{
+  "date": "2027-07-01",
+  "number": 262,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "loot": [
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      },
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "text": "medal is with the plane."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "coins is with the car."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "text": "Drew is with the plane."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "car is next to the Cam."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "immediate": true,
+      "text": "plane is immediately left of the Gus."
+    }
+  ],
+  "question": {
+    "text": "Who took the crown?",
+    "givenAttr": "loot",
+    "givenItem": "crown",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "loot": "medal",
+      "getaway": "plane"
+    },
+    {
+      "person": "gus",
+      "loot": "coins",
+      "getaway": "car"
+    },
+    {
+      "person": "cam",
+      "loot": "crown",
+      "getaway": "boat"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

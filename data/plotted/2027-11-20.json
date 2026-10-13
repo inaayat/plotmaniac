@@ -1,0 +1,176 @@
+{
+  "date": "2027-11-20",
+  "number": 404,
+  "theme": {
+    "id": "pet-show",
+    "title": "Pet show",
+    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
+    "story": "Judging is over. The chart is not."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "prize",
+      "label": "Prize"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ],
+    "prize": [
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Eden is with the butterfly."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "text": "butterfly is with the balloon."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "prize",
+        "item": "crown"
+      },
+      "text": "Bo is with the crown."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "prize",
+        "item": "balloon"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "balloon is next to the bird."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "immediate": true,
+      "text": "dog is immediately left of the Bo."
+    }
+  ],
+  "question": {
+    "text": "Who showed the dog?",
+    "givenAttr": "pet",
+    "givenItem": "dog",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "pet": "dog",
+      "prize": "medal"
+    },
+    {
+      "person": "bo",
+      "pet": "bird",
+      "prize": "crown"
+    },
+    {
+      "person": "eden",
+      "pet": "butterfly",
+      "prize": "balloon"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

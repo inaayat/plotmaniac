@@ -1,0 +1,165 @@
+{
+  "date": "2027-05-31",
+  "number": 231,
+  "theme": {
+    "id": "neighborhood",
+    "title": "The block",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Someone parked beside the horse. That cannot be right."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      }
+    ],
+    "pet": [
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "boat"
+      },
+      "text": "Eden is with the sailboat."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Eden is with the fish."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "plane is with the horse."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "vehicle",
+      "item": "moto",
+      "house": 1,
+      "text": "motorcycle is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "io",
+      "house": 2,
+      "text": "Io is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the bird?",
+    "givenAttr": "pet",
+    "givenItem": "bird",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "vehicle": "boat",
+      "pet": "fish"
+    },
+    {
+      "person": "bo",
+      "vehicle": "moto",
+      "pet": "bird"
+    },
+    {
+      "person": "io",
+      "vehicle": "plane",
+      "pet": "horse"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 4,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

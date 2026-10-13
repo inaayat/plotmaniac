@@ -1,0 +1,235 @@
+{
+  "date": "2026-12-13",
+  "number": 62,
+  "theme": {
+    "id": "heist",
+    "title": "The heist",
+    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
+    "story": "One crew, one night, one getaway each."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "getaway",
+      "label": "Getaway"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "loot": [
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "coins",
+        "label": "coins",
+        "icon": "coins"
+      },
+      {
+        "id": "lockbox",
+        "label": "lock",
+        "icon": "lock"
+      },
+      {
+        "id": "crown",
+        "label": "crown",
+        "icon": "crown"
+      }
+    ],
+    "getaway": [
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "walk"
+      },
+      "text": "Bo is with the on foot."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "text": "Drew is with the crown."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "lockbox"
+      },
+      "text": "Ada is with the lock."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "text": "Drew is with the car."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "text": "Cam is with the motorcycle."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "getaway",
+        "item": "car"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "coins"
+      },
+      "text": "car is next to the coins."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "loot",
+        "item": "crown"
+      },
+      "right": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "text": "crown is next to the Ada."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "getaway",
+        "item": "moto"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "immediate": true,
+      "text": "motorcycle is immediately left of the key."
+    }
+  ],
+  "question": {
+    "text": "Who took the lock?",
+    "givenAttr": "loot",
+    "givenItem": "lockbox",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "loot": "lockbox",
+      "getaway": "boat"
+    },
+    {
+      "person": "drew",
+      "loot": "crown",
+      "getaway": "car"
+    },
+    {
+      "person": "cam",
+      "loot": "coins",
+      "getaway": "moto"
+    },
+    {
+      "person": "bo",
+      "loot": "key",
+      "getaway": "walk"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 17,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

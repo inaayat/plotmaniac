@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-17",
+  "number": 5,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      }
+    ],
+    "treat": [
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      }
+    ],
+    "gift": [
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      },
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "text": "Drew is with the book."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "text": "Io is with the orange."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "Io is next to the medal."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "text": "medal is next to the ice cream."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "immediate": false,
+      "text": "Io is somewhere left of the medal."
+    }
+  ],
+  "question": {
+    "text": "Who brought the ice cream?",
+    "givenAttr": "treat",
+    "givenItem": "ice",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "io",
+      "treat": "orange",
+      "gift": "balloon"
+    },
+    {
+      "person": "eden",
+      "treat": "cake",
+      "gift": "medal"
+    },
+    {
+      "person": "drew",
+      "treat": "ice",
+      "gift": "book"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

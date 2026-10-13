@@ -1,0 +1,176 @@
+{
+  "date": "2027-10-08",
+  "number": 361,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "book": [
+      {
+        "id": "notes",
+        "label": "notes",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "novel",
+        "label": "novel",
+        "icon": "book"
+      },
+      {
+        "id": "diary",
+        "label": "diary",
+        "icon": "pencil-simple"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "text": "Fay is with the notes."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "diary is with the tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "notes is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Jules is next to the tea."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "immediate": true,
+      "text": "notes is immediately left of the tea."
+    }
+  ],
+  "question": {
+    "text": "Who brought the notes?",
+    "givenAttr": "book",
+    "givenItem": "notes",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "book": "notes",
+      "drink": "beer"
+    },
+    {
+      "person": "ada",
+      "book": "diary",
+      "drink": "tea"
+    },
+    {
+      "person": "jules",
+      "book": "novel",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

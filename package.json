@@ -1,0 +1,9 @@
+{
+  "name": "plotted",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/test-plotted.mjs && node scripts/test-never-ending-internet-lore.mjs",
+    "generate": "node scripts/generate-plotted.mjs"
+  }
+}

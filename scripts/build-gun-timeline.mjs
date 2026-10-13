@@ -561,5 +561,5 @@ const timeline = [
   },
 ];
 
-fs.writeFileSync(new URL("../data/gun-regulation/timeline.json", import.meta.url), `${JSON.stringify(timeline, null, 2)}\n`);
+fs.writeFileSync(new URL("../archive/data/gun-regulation/timeline.json", import.meta.url), `${JSON.stringify(timeline, null, 2)}\n`);
 console.log(`Wrote ${timeline.length} beats`);

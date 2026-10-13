@@ -1,0 +1,235 @@
+{
+  "date": "2027-07-04",
+  "number": 265,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "treat": [
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      }
+    ],
+    "gift": [
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      },
+      {
+        "id": "balloon",
+        "label": "balloon",
+        "icon": "balloon"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "text": "ice cream is with the book."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "text": "tea is with the evergreen."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "text": "Eden is with the tea."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "text": "Drew is with the book."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "tea"
+      },
+      "text": "medal is next to the tea."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "text": "Hana is next to the cake."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "evergreen is next to the Drew."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "immediate": false,
+      "text": "medal is somewhere left of the cake."
+    }
+  ],
+  "question": {
+    "text": "Who brought the cake?",
+    "givenAttr": "treat",
+    "givenItem": "cake",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "treat": "ice",
+      "gift": "book"
+    },
+    {
+      "person": "eden",
+      "treat": "tea",
+      "gift": "tree"
+    },
+    {
+      "person": "hana",
+      "treat": "cocoa",
+      "gift": "medal"
+    },
+    {
+      "person": "bo",
+      "treat": "cake",
+      "gift": "balloon"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

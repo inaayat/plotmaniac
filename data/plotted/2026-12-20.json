@@ -1,0 +1,235 @@
+{
+  "date": "2026-12-20",
+  "number": 69,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 4,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "food": [
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
+      },
+      {
+        "id": "pot",
+        "label": "stew",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "bowl",
+        "label": "bowl",
+        "icon": "bowl-food"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Cam is with the tea."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Jules is with the orange juice."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "stew is with the coffee."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "bowl"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "bowl is with the wine."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "stew is next to the Fay."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "food",
+        "item": "ice"
+      },
+      "text": "Jules is next to the ice cream."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "bowl"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "bowl is next to the tea."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "immediate": false,
+      "text": "Jules is somewhere left of the stew."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the bowl?",
+    "givenAttr": "food",
+    "givenItem": "bowl",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "food": "pizza",
+      "drink": "orange"
+    },
+    {
+      "person": "cam",
+      "food": "ice",
+      "drink": "tea"
+    },
+    {
+      "person": "fay",
+      "food": "bowl",
+      "drink": "wine"
+    },
+    {
+      "person": "gus",
+      "food": "pot",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-tricky",
+    "steps": 16,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

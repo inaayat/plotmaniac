@@ -1,0 +1,176 @@
+{
+  "date": "2027-09-04",
+  "number": 327,
+  "theme": {
+    "id": "camp",
+    "title": "Camp street",
+    "blurb": "Tents in a line. Match camper, kit, and companion.",
+    "story": "The last lantern is still unclaimed."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "loot",
+      "label": "Loot"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "loot": [
+      {
+        "id": "lock",
+        "label": "lock",
+        "icon": "lock"
+      },
+      {
+        "id": "key",
+        "label": "key",
+        "icon": "key"
+      },
+      {
+        "id": "book",
+        "label": "guide",
+        "icon": "book"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "lock"
+      },
+      "text": "Drew is with the lock."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "loot",
+        "item": "lock"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "lock is with the fish."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "dog is next to the Drew."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "text": "dog is next to the key."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "loot",
+        "item": "key"
+      },
+      "immediate": false,
+      "text": "Ada is somewhere left of the key."
+    }
+  ],
+  "question": {
+    "text": "Who camped with the dog?",
+    "givenAttr": "pet",
+    "givenItem": "dog",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "loot": "lock",
+      "pet": "fish"
+    },
+    {
+      "person": "ada",
+      "loot": "book",
+      "pet": "dog"
+    },
+    {
+      "person": "bo",
+      "loot": "key",
+      "pet": "bird"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

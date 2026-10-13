@@ -1,0 +1,170 @@
+{
+  "date": "2027-04-27",
+  "number": 197,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      },
+      {
+        "id": "notes",
+        "label": "harmony",
+        "icon": "music-notes"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "book-open"
+      }
+    ],
+    "drink": [
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "harmony is with the beer."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Io is with the martini."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "score"
+      },
+      "text": "Ada is with the score."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "text": "martini is next to the harmony."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "drink",
+      "item": "beer",
+      "house": 2,
+      "text": "beer is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who plays the harmony?",
+    "givenAttr": "instrument",
+    "givenItem": "notes",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "instrument": "score",
+      "drink": "orange"
+    },
+    {
+      "person": "io",
+      "instrument": "folio",
+      "drink": "martini"
+    },
+    {
+      "person": "drew",
+      "instrument": "notes",
+      "drink": "beer"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 6,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}

@@ -14,8 +14,8 @@ import {
   playerAgreements,
   sourceRecords,
   statedPositions,
-} from "../partition-model.js";
-import { flows, markers, outlines, regions, seams } from "../partition-geography.js";
+} from "../archive/partition-model.js";
+import { flows, markers, outlines, regions, seams } from "../archive/partition-geography.js";
 import {
   ALL,
   campOf,
@@ -110,13 +110,13 @@ import {
   projectWarPoint,
   warMapSize,
   countryAnchors,
-} from "../engine.js";
+} from "../archive/engine.js";
 import {
   validateGunBoard,
   resolveChecklistAtYear,
   statsReadoutAtYear,
   filterRegulationBeats,
-} from "../gun-regulation-model.js";
+} from "../archive/gun-regulation-model.js";
 import {
   filterStatesByCriteria,
   getStateCriterionCell,
@@ -125,13 +125,13 @@ import {
   parseGunType,
   resolveStatusForGunType,
   validateGunStateSnapshot,
-} from "../gun-laws-by-state-model.js";
+} from "../archive/gun-laws-by-state-model.js";
 
 const readJson = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
-const plots = readJson("../data/plots.json");
-const people = readJson("../data/youtubers/people.json");
-const events = readJson("../data/youtubers/events.json");
-const relations = readJson("../data/youtubers/relations.json");
+const plots = readJson("../archive/data/plots.json");
+const people = readJson("../archive/data/youtubers/people.json");
+const events = readJson("../archive/data/youtubers/events.json");
+const relations = readJson("../archive/data/youtubers/relations.json");
 const ids = new Set(people.map((person) => person.id));
 const peopleById = new Map(people.map((person) => [person.id, person]));
 const h3Events = filterEvents(events, { hub: "h3" }, peopleById);
@@ -738,10 +738,10 @@ assert.equal(nodes.find((node) => node.id === "ethan-klein").central, true);
 assert.equal(youtubeId("https://www.youtube.com/watch?v=ZSUDHx-1_ww"), "ZSUDHx-1_ww");
 assert.equal(youtubeId("https://youtu.be/8UizTBc6FP8"), "8UizTBc6FP8");
 
-const usPeople = readJson("../data/united-states/people.json");
-const usEvents = readJson("../data/united-states/events.json");
-const usRelations = readJson("../data/united-states/relations.json");
-const usCountries = readJson("../data/united-states/countries.json");
+const usPeople = readJson("../archive/data/united-states/people.json");
+const usEvents = readJson("../archive/data/united-states/events.json");
+const usRelations = readJson("../archive/data/united-states/relations.json");
+const usCountries = readJson("../archive/data/united-states/countries.json");
 const us = plots.plots.find((item) => item.id === "united-states");
 const usIds = new Set(usPeople.map((person) => person.id));
 const yearRange = { min: 1776, max: 2026, initial: 2026 };
@@ -1051,14 +1051,14 @@ const europeStatus = groupCountriesByStatus(visibleRelationCountries(usCountries
 assert.ok(europeStatus.neutral.length > 0);
 assert.ok(europeStatus.friend.length > 0);
 
-const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
+const html = fs.readFileSync(new URL("../archive/index.html", import.meta.url), "utf8");
 assert.match(html, /viewport-fit=cover/, "mobile viewport should include safe-area");
 assert.match(html, /id="hub-select"/, "hub focus control");
 assert.match(html, /Gallery of obsessions/, "pick view eyebrow");
 assert.match(html, /id="plot-search"/, "homepage plot search");
 assert.match(html, /Turn rabbit holes into clickable plots: maps, webs, lists, timelines\./, "homepage tagline");
 assert.match(html, /viewBox="0 9 420 67"/, "homepage gold arc is cropped to the stroke");
-const css = fs.readFileSync(new URL("../lore.css", import.meta.url), "utf8");
+const css = fs.readFileSync(new URL("../archive/lore.css", import.meta.url), "utf8");
 assert.match(css, /max-width: 768px/, "compact layout breakpoint");
 assert.match(css, /\.gallery-search/, "homepage search is an underline field");
 assert.match(css, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, "desktop gallery is 3 columns");
@@ -1069,8 +1069,8 @@ assert.match(css, /body\[data-view="pick"\] h1 \{[\s\S]*?7\.2rem/, "pick view ke
 assert.match(css, /\.plot-card \{[\s\S]*?padding: 6px 12px;/, "plot cards keep a tight vertical pad");
 assert.match(css, /body\[data-view="pick"\] \.mark \{[\s\S]*?margin: 2px auto 4px/, "homepage title sits close to the lede");
 assert.match(css, /\.spine-event/, "vertical timeline cards");
-const appSource = fs.readFileSync(new URL("../app.js", import.meta.url), "utf8");
-const partitionViewSource = fs.readFileSync(new URL("../partition-view.js", import.meta.url), "utf8");
+const appSource = fs.readFileSync(new URL("../archive/app.js", import.meta.url), "utf8");
+const partitionViewSource = fs.readFileSync(new URL("../archive/partition-view.js", import.meta.url), "utf8");
 assert.match(appSource, /function renderSpine/, "compact timeline renders a vertical spine");
 assert.match(appSource, /function fillHubSelect/, "youtubers plot can switch timeline hubs");
 assert.match(appSource, /function filterGallery/, "homepage search filters plot cards");
@@ -1087,7 +1087,7 @@ assert.match(partitionViewSource, /Who wanted what — and who made the call/, "
 assert.match(partitionViewSource, /Show Kashmir claims overlay/, "claims control explains its effect");
 assert.match(partitionViewSource, /showPerson\(/, "person pages swap in place");
 assert.match(appSource, /partitionMount\.showPerson/, "opening another person keeps the person mount");
-const partitionCss = fs.readFileSync(new URL("../partition.css", import.meta.url), "utf8");
+const partitionCss = fs.readFileSync(new URL("../archive/partition.css", import.meta.url), "utf8");
 assert.match(partitionCss, /body\[data-board="history"\] h1 \{[\s\S]*?margin: 0 0 8px;/, "Partition title sits on the lede");
 assert.match(partitionCss, /body\[data-board="history"\] \.mark \{\s*display: none;/, "Partition drops the gold arc between title and lede");
 assert.match(partitionCss, /\.partition-beat li[\s\S]*?font-size: 0\.78rem/, "beat bullets match the moment copy");
@@ -1102,7 +1102,7 @@ assert.match(partitionViewSource, /partition-face-tip/, "hovering a face shows t
 assert.match(partitionViewSource, /onOpenPlayer\?\.\(member\.id\)/, "a face click opens the person page");
 assert.match(partitionCss, /\.partition-face \{[\s\S]*?width: 28px;/, "timeline faces stay small circle icons");
 assert.match(partitionViewSource, /COMPACT_MAX_WIDTH/, "Partition timeline follows the compact breakpoint");
-const laneSource = fs.readFileSync(new URL("../lane.js", import.meta.url), "utf8");
+const laneSource = fs.readFileSync(new URL("../archive/lane.js", import.meta.url), "utf8");
 assert.match(laneSource, /export function buildLaneChrome/, "shared lane chrome builds the horizontal rail");
 assert.match(appSource, /from "\.\/lane\.js"/, "other plots share the same lane chrome");
 assert.match(css, /\.web-stage\.is-hub-field/, "hub web can scale to the page");
@@ -1278,9 +1278,9 @@ assert.equal(
 );
 assert.equal(httpsSourceLinks(afghanistan.timeline[0]?.links).length, 0);
 
-const obamaPeople = readJson("../data/barack-obama/people.json");
-const obamaEvents = readJson("../data/barack-obama/events.json");
-const obamaRelations = readJson("../data/barack-obama/relations.json");
+const obamaPeople = readJson("../archive/data/barack-obama/people.json");
+const obamaEvents = readJson("../archive/data/barack-obama/events.json");
+const obamaRelations = readJson("../archive/data/barack-obama/relations.json");
 const obama = plots.plots.find((item) => item.id === "barack-obama");
 const obamaIds = new Set(obamaPeople.map((person) => person.id));
 assert.ok(obama, "barack obama plot is registered");
@@ -1472,9 +1472,9 @@ assert.match(
   /year=2012/,
 );
 
-const vancePeople = readJson("../data/jd-vance/people.json");
-const vanceEvents = readJson("../data/jd-vance/events.json");
-const vanceRelations = readJson("../data/jd-vance/relations.json");
+const vancePeople = readJson("../archive/data/jd-vance/people.json");
+const vanceEvents = readJson("../archive/data/jd-vance/events.json");
+const vanceRelations = readJson("../archive/data/jd-vance/relations.json");
 const vance = plots.plots.find((item) => item.id === "jd-vance");
 const vanceIds = new Set(vancePeople.map((person) => person.id));
 assert.ok(vance, "jd vance plot is registered");
@@ -1678,9 +1678,9 @@ assert.equal(usesPolicyPanel(obama), true);
 assert.equal(usesPolicyPanel(vance), true);
 assert.equal(usesPolicyPanel(youtubers), false);
 
-const marvelPeople = readJson("../data/marvel-universe/people.json");
-const marvelEvents = readJson("../data/marvel-universe/events.json");
-const marvelRelations = readJson("../data/marvel-universe/relations.json");
+const marvelPeople = readJson("../archive/data/marvel-universe/people.json");
+const marvelEvents = readJson("../archive/data/marvel-universe/events.json");
+const marvelRelations = readJson("../archive/data/marvel-universe/relations.json");
 const marvel = plots.plots.find((item) => item.id === "marvel-universe");
 const marvelIds = new Set(marvelPeople.map((person) => person.id));
 const marvelHubIds = new Set(marvel.hubs.map((hub) => hub.id));
@@ -1731,7 +1731,7 @@ assert.ok(marvelPortraits >= 140, `Marvel should have Commons portraits for almo
 assert.equal(marvelPeople.find((person) => person.id === "maya-lopez")?.portrait, undefined, "Echo has no free Commons still");
 assert.equal(eventMediaLabel(marvelEvents.find((event) => event.id === "iron-man")), "Iron Man");
 assert.equal(eventMediaLabel(marvelEvents.find((event) => event.id === "avengers-assemble")), "The Avengers");
-const marvelChronology = readJson("../data/marvel-universe/chronology.json");
+const marvelChronology = readJson("../archive/data/marvel-universe/chronology.json");
 assert.equal(usesPlotChronology(marvel), true);
 assert.equal(marvel.defaultView, "timeline");
 assert.equal(defaultPlotView({ plot: marvel }), "timeline");
@@ -1941,7 +1941,7 @@ assert.match(
   stateUrl("https://plotmaniac.com/", { view: "chronology", plot: "marvel-universe", chronologyTitle: "the-avengers" }, ""),
   /title=the-avengers/,
 );
-const chronoViewSource = fs.readFileSync(new URL("../marvel-chronology-view.js", import.meta.url), "utf8");
+const chronoViewSource = fs.readFileSync(new URL("../archive/marvel-chronology-view.js", import.meta.url), "utf8");
 assert.match(chronoViewSource, /Watch Before/);
 assert.match(chronoViewSource, /Watch Next/);
 assert.match(chronoViewSource, /Selected Movie/);
@@ -2040,9 +2040,9 @@ assert.match(html, /data-view="iron-man"/);
 assert.match(html, /tony-stark-saga.css/);
 assert.match(appSource, /renderTonyStarkSaga/);
 assert.match(appSource, /button\.dataset\.view === "iron-man"/);
-const saga = readJson("../data/marvel-universe/tony-stark-saga.json");
-const sagaView = fs.readFileSync(new URL("../tony-stark-saga-view.js", import.meta.url), "utf8");
-const sagaCss = fs.readFileSync(new URL("../tony-stark-saga.css", import.meta.url), "utf8");
+const saga = readJson("../archive/data/marvel-universe/tony-stark-saga.json");
+const sagaView = fs.readFileSync(new URL("../archive/tony-stark-saga-view.js", import.meta.url), "utf8");
+const sagaCss = fs.readFileSync(new URL("../archive/tony-stark-saga.css", import.meta.url), "utf8");
 assert.equal(saga.subjectId, "tony-stark");
 assert.ok(saga.chapters.length >= 11, `Iron Man saga should walk the films, got ${saga.chapters.length}`);
 assert.deepEqual(
@@ -2157,8 +2157,8 @@ assert.deepEqual(
   filterTitleLabels(marvelTitles, "iro").filter((label) => label.toLocaleLowerCase().includes("iro")),
 );
 assert.ok(filterTitleLabels(marvelTitles, "iro").includes("Iron Man"), "iro matches Iron Man");
-assert.match(fs.readFileSync(new URL("../index.html", import.meta.url), "utf8"), /title-suggestions/);
-assert.doesNotMatch(fs.readFileSync(new URL("../index.html", import.meta.url), "utf8"), /list="title-options"/);
+assert.match(fs.readFileSync(new URL("../archive/index.html", import.meta.url), "utf8"), /title-suggestions/);
+assert.doesNotMatch(fs.readFileSync(new URL("../archive/index.html", import.meta.url), "utf8"), /list="title-options"/);
 const ironManCast = peopleForTitleSearch(
   marvelPeople,
   marvelEvents,
@@ -2325,7 +2325,7 @@ assert.ok(vanceEvents.filter((event) => event.people.includes("donald-trump")).l
 const partition = plots.plots.find((item) => item.id === "partition-of-india");
 assert.equal(partition.arrangement, "historical-map");
 assert.match(partition.lede, /Click a region.*year slider/i);
-const partitionRef = readJson("../data/partition-of-india/reference.json");
+const partitionRef = readJson("../archive/data/partition-of-india/reference.json");
 assert.equal(partitionRef.schemaVersion, "1.1.0");
 assert.equal(partitionRef.keyPlayers.length, 36);
 assert.equal(partitionRef.timeline.length, 29);
@@ -2410,7 +2410,7 @@ for (const region of regions) {
   assert.ok(region.polygons[0][0].length >= 3, `${region.id} ring`);
 }
 
-const portraits = readJson("../data/partition-of-india/portraits.json");
+const portraits = readJson("../archive/data/partition-of-india/portraits.json");
 const portraitLicenses = new Set(["Public domain", "CC0", "CC BY 3.0", "CC BY-SA 3.0", "GODL-India"]);
 assert.ok(Object.keys(portraits).length >= 30, "most partition figures have a free portrait");
 for (const [id, portrait] of Object.entries(portraits)) {
@@ -2425,8 +2425,8 @@ for (const [id, portrait] of Object.entries(portraits)) {
 });
 
 const warsPlot = plots.plots.find((item) => item.id === "wars");
-const warArchive = readJson("../data/wars/conflicts.json");
-const world = readJson("../data/world-countries.json");
+const warArchive = readJson("../archive/data/wars/conflicts.json");
+const world = readJson("../archive/data/world-countries.json");
 assert.equal(warsPlot.arrangement, "wars");
 assert.equal(warsPlot.year.min, 1900);
 assert.equal(warsPlot.year.max, 2026);
@@ -2517,10 +2517,10 @@ assert.equal(findPlot(plots.plots, "gun-regulation")?.id, "scotus");
 assert.equal(scotusPlot.topics.length, 27);
 assert.equal(scotusPlot.topics.filter((topic) => topic.status === "live").length, 1);
 assert.equal(scotusPlot.topics.find((topic) => topic.status === "live")?.id, "gun-rights");
-const gunTimeline = readJson("../data/gun-regulation/timeline.json");
-const gunChecklist = readJson("../data/gun-regulation/checklist.json");
-const gunStates = readJson("../data/gun-regulation/states-exemplars.json");
-const gunStats = readJson("../data/gun-regulation/stats.json");
+const gunTimeline = readJson("../archive/data/gun-regulation/timeline.json");
+const gunChecklist = readJson("../archive/data/gun-regulation/checklist.json");
+const gunStates = readJson("../archive/data/gun-regulation/states-exemplars.json");
+const gunStats = readJson("../archive/data/gun-regulation/stats.json");
 const gunBoard = {
   timeline: gunTimeline,
   checklistRows: gunChecklist.rows,
@@ -2553,15 +2553,15 @@ assert.match(
   /kind=scotus/,
 );
 assert.equal(
-  fs.readFileSync(new URL("../app.js", import.meta.url), "utf8").includes("50-state picker"),
+  fs.readFileSync(new URL("../archive/app.js", import.meta.url), "utf8").includes("50-state picker"),
   false,
   "V1 must not ship a 50-state picker implementation",
 );
-const gunView = fs.readFileSync(new URL("../gun-regulation-view.js", import.meta.url), "utf8");
+const gunView = fs.readFileSync(new URL("../archive/gun-regulation-view.js", import.meta.url), "utf8");
 assert.equal(gunView.includes("State divergence"), false, "state divergence grid stays off the gun page");
 assert.equal(gunView.includes("relationRideLayoutForViewport"), true, "gun board uses the relation timeline ride");
 assert.match(appSource, /relationRideLayoutForViewport/, "country timelines pad to the first and last beats");
-const hubSource = fs.readFileSync(new URL("../scotus-hub-view.js", import.meta.url), "utf8");
+const hubSource = fs.readFileSync(new URL("../archive/scotus-hub-view.js", import.meta.url), "utf8");
 assert.match(hubSource, /scotus-topic-icon/, "SCOTUS topics include an icon");
 scotusPlot.topics.forEach((topic) => {
   assert.match(hubSource, new RegExp(`["']${topic.id}["']`), `${topic.id} has a topic icon`);
@@ -2581,7 +2581,7 @@ assert.match(
   "gun-laws-by-state gallery uses the live Commons states-only blank map",
 );
 assert.notEqual(findPlot(plots.plots, "gun-laws-by-state")?.id, "scotus");
-const gunStateSnapshot = readJson("../data/gun-laws-by-state/states-snapshot.json");
+const gunStateSnapshot = readJson("../archive/data/gun-laws-by-state/states-snapshot.json");
 assert.deepEqual(validateGunStateSnapshot(gunStateSnapshot), []);
 assert.ok(gunStateSnapshot.states.length >= 51);
 assert.equal(gunStateSnapshot.states.length, 51);
@@ -2602,11 +2602,11 @@ assert.equal(highlightForState(tx, {}, "handgun"), "lit");
 assert.equal(highlightForState(tx, { "carry-permit": "not_required" }, "handgun"), "lit");
 const ca = gunStateSnapshot.states.find((row) => row.id === "ca");
 assert.equal(highlightForState(ca, { "carry-permit": "not_required" }, "handgun"), "dim");
-const stateMap = readJson("../data/gun-laws-by-state/us-states-paths.json");
+const stateMap = readJson("../archive/data/gun-laws-by-state/us-states-paths.json");
 assert.equal(stateMap.states.length, 51);
 const mapIds = new Set(stateMap.states.map((row) => row.id));
 assert.ok(gunStateSnapshot.states.every((row) => mapIds.has(row.id) && row && stateMap.states.find((shape) => shape.id === row.id)?.d));
-const gunStateView = fs.readFileSync(new URL("../gun-laws-by-state-view.js", import.meta.url), "utf8");
+const gunStateView = fs.readFileSync(new URL("../archive/gun-laws-by-state-view.js", import.meta.url), "utf8");
 assert.ok(gunStateView.includes("gun-state-laws-split"));
 assert.ok(gunStateView.includes('panel.id = "gun-state-laws-detail"'));
 assert.equal(gunStateView.includes("Lit jurisdictions"), false);
@@ -2616,16 +2616,16 @@ assert.match(
   "gun laws by state page scrolls to the selected state",
 );
 assert.match(appSource, /scrollGunStateDetailIntoView/, "selecting a state scrolls its checklist into view");
-const gunFilterConfig = readJson("../data/gun-laws-by-state/filter-criteria.json");
+const gunFilterConfig = readJson("../archive/data/gun-laws-by-state/filter-criteria.json");
 assert.ok(gunFilterConfig.criteria.every((row) => typeof row.explanation === "string" && row.explanation.length > 40));
 assert.ok(gunFilterConfig.gunTypes.every((row) => row.explanation));
 
 const doctrinePlot = findPlot(plots.plots, "us-presidential-doctrines");
 assert.equal(doctrinePlot?.arrangement, "doctrine-summary");
 assert.ok(doctrinePlot?.paths?.summary);
-const doctrineSummary = readJson("../data/us-presidential-doctrines/summary.json");
+const doctrineSummary = readJson("../archive/data/us-presidential-doctrines/summary.json");
 assert.ok(doctrineSummary.themes.length >= 5);
-const doctrineEvents = readJson("../data/us-presidential-doctrines/events.json");
+const doctrineEvents = readJson("../archive/data/us-presidential-doctrines/events.json");
 assert.equal(doctrineEvents.length, 14);
 const doctrineEventIds = new Set(doctrineEvents.map((event) => event.id));
 const covered = new Set();
@@ -2638,7 +2638,7 @@ for (const theme of doctrineSummary.themes) {
   }
 }
 assert.equal(covered.size, doctrineEvents.length, "every doctrine appears in at least one comparison");
-const doctrineView = fs.readFileSync(new URL("../presidential-doctrines-view.js", import.meta.url), "utf8");
+const doctrineView = fs.readFileSync(new URL("../archive/presidential-doctrines-view.js", import.meta.url), "utf8");
 assert.ok(doctrineView.includes("doctrine-compare"));
 assert.match(
   css,

@@ -1,0 +1,170 @@
+{
+  "date": "2027-06-30",
+  "number": 261,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "book-open"
+      },
+      {
+        "id": "notes",
+        "label": "harmony",
+        "icon": "music-notes"
+      },
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      }
+    ],
+    "drink": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "text": "Jules is with the harmony."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "score"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "score is with the martini."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Hana is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "score"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "score is next to the Jules."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "instrument",
+      "item": "score",
+      "house": 2,
+      "text": "score is in house 3."
+    }
+  ],
+  "question": {
+    "text": "Who plays the melody?",
+    "givenAttr": "instrument",
+    "givenItem": "note",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "instrument": "note",
+      "drink": "beer"
+    },
+    {
+      "person": "jules",
+      "instrument": "notes",
+      "drink": "tea"
+    },
+    {
+      "person": "drew",
+      "instrument": "score",
+      "drink": "martini"
+    }
+  ],
+  "difficulty": {
+    "label": "wednesday",
+    "steps": 5,
+    "neededSearch": false,
+    "weekday": 3
+  }
+}

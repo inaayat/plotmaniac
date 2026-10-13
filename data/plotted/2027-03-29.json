@@ -1,0 +1,165 @@
+{
+  "date": "2027-03-29",
+  "number": 168,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "book-open"
+      },
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      }
+    ],
+    "drink": [
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "melody is with the beer."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "text": "Fay is with the melody."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Jules is with the martini."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "drink",
+      "item": "martini",
+      "house": 1,
+      "text": "martini is in house 2."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "instrument",
+      "item": "score",
+      "house": 0,
+      "text": "score is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who plays the score?",
+    "givenAttr": "instrument",
+    "givenItem": "score",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "instrument": "score",
+      "drink": "coffee"
+    },
+    {
+      "person": "jules",
+      "instrument": "guitar",
+      "drink": "martini"
+    },
+    {
+      "person": "fay",
+      "instrument": "note",
+      "drink": "beer"
+    }
+  ],
+  "difficulty": {
+    "label": "monday-direct",
+    "steps": 4,
+    "neededSearch": false,
+    "weekday": 1
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "date": "2027-05-30",
+  "number": 230,
+  "theme": {
+    "id": "music-night",
+    "title": "Music night",
+    "blurb": "A short set in the front rooms. Who plays what, and what do they sip?",
+    "story": "The last cue is still missing."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "charts",
+        "label": "charts",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "folio",
+        "label": "folio",
+        "icon": "book"
+      },
+      {
+        "id": "notes",
+        "label": "harmony",
+        "icon": "music-notes"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "book-open"
+      },
+      {
+        "id": "note",
+        "label": "melody",
+        "icon": "music-note"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "notes"
+      },
+      "text": "Eden is with the harmony."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Ada is with the martini."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "folio is with the orange juice."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Jules is with the beer."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "charts"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "charts is next to the coffee."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "right": {
+        "attr": "person",
+        "item": "io"
+      },
+      "text": "folio is next to the Io."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "folio"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "folio is next to the Jules."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "note"
+      },
+      "immediate": true,
+      "text": "beer is immediately left of the melody."
+    }
+  ],
+  "question": {
+    "text": "Who plays the score?",
+    "givenAttr": "instrument",
+    "givenItem": "score",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "instrument": "notes",
+      "drink": "coffee"
+    },
+    {
+      "person": "io",
+      "instrument": "charts",
+      "drink": "tea"
+    },
+    {
+      "person": "cam",
+      "instrument": "folio",
+      "drink": "orange"
+    },
+    {
+      "person": "jules",
+      "instrument": "score",
+      "drink": "beer"
+    },
+    {
+      "person": "ada",
+      "instrument": "note",
+      "drink": "martini"
+    }
+  ],
+  "difficulty": {
+    "label": "sunday-five",
+    "steps": 17,
+    "neededSearch": true,
+    "weekday": 0
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-05",
+  "number": 24,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "book": [
+      {
+        "id": "map",
+        "label": "field guide",
+        "icon": "magnifying-glass"
+      },
+      {
+        "id": "novel",
+        "label": "novel",
+        "icon": "book"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "Hana is with the martini."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "book",
+        "item": "score"
+      },
+      "text": "Eden is with the score."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "book",
+        "item": "map"
+      },
+      "text": "Hana is next to the field guide."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "right": {
+        "attr": "book",
+        "item": "score"
+      },
+      "text": "brandy is next to the score."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "right": {
+        "attr": "book",
+        "item": "map"
+      },
+      "immediate": false,
+      "text": "coffee is somewhere left of the field guide."
+    }
+  ],
+  "question": {
+    "text": "Who brought the novel?",
+    "givenAttr": "book",
+    "givenItem": "novel",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "book": "score",
+      "drink": "coffee"
+    },
+    {
+      "person": "gus",
+      "book": "map",
+      "drink": "brandy"
+    },
+    {
+      "person": "hana",
+      "book": "novel",
+      "drink": "martini"
+    }
+  ],
+  "difficulty": {
+    "label": "thursday",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4
+  }
+}

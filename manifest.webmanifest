@@ -1,0 +1,18 @@
+{
+  "name": "Plotted",
+  "short_name": "Plotted",
+  "description": "A daily logic grid. Same puzzle for everyone.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c0b09",
+  "theme_color": "#0c0b09",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

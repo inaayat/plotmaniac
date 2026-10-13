@@ -1,0 +1,176 @@
+{
+  "date": "2027-04-10",
+  "number": 180,
+  "theme": {
+    "id": "holiday",
+    "title": "Holiday row",
+    "blurb": "Treats and parcels down the lane.",
+    "story": "Someone hid the last gift beside the tree."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    },
+    {
+      "id": "gift",
+      "label": "Gift"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "treat": [
+      {
+        "id": "orange",
+        "label": "orange",
+        "icon": "orange"
+      },
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "cocoa",
+        "label": "cocoa",
+        "icon": "coffee"
+      }
+    ],
+    "gift": [
+      {
+        "id": "tree",
+        "label": "evergreen",
+        "icon": "tree-evergreen"
+      },
+      {
+        "id": "book",
+        "label": "book",
+        "icon": "book"
+      },
+      {
+        "id": "medal",
+        "label": "medal",
+        "icon": "medal"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "tree"
+      },
+      "text": "orange is with the evergreen."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "text": "Ada is with the book."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "treat",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "ice cream is next to the Bo."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "medal"
+      },
+      "text": "Cam is next to the medal."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "orange"
+      },
+      "right": {
+        "attr": "gift",
+        "item": "book"
+      },
+      "immediate": false,
+      "text": "orange is somewhere left of the book."
+    }
+  ],
+  "question": {
+    "text": "Who brought the orange?",
+    "givenAttr": "treat",
+    "givenItem": "orange",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "treat": "orange",
+      "gift": "tree"
+    },
+    {
+      "person": "bo",
+      "treat": "cocoa",
+      "gift": "medal"
+    },
+    {
+      "person": "ada",
+      "treat": "ice",
+      "gift": "book"
+    }
+  ],
+  "difficulty": {
+    "label": "saturday",
+    "steps": 15,
+    "neededSearch": true,
+    "weekday": 6
+  }
+}

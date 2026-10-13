@@ -1,0 +1,176 @@
+{
+  "date": "2027-05-14",
+  "number": 214,
+  "theme": {
+    "id": "brunch",
+    "title": "Brunch",
+    "blurb": "One table, several plates. Who ordered what?",
+    "story": "The check is coming. So is the question."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "food": [
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      },
+      {
+        "id": "pot",
+        "label": "stew",
+        "icon": "cooking-pot"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      }
+    ],
+    "drink": [
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "text": "Gus is with the stew."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "text": "Hana is with the cake."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "stew is with the orange juice."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "pot"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "text": "stew is next to the Hana."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "immediate": true,
+      "text": "beer is immediately left of the cake."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the stew?",
+    "givenAttr": "food",
+    "givenItem": "pot",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "food": "carrot",
+      "drink": "beer"
+    },
+    {
+      "person": "hana",
+      "food": "cake",
+      "drink": "wine"
+    },
+    {
+      "person": "gus",
+      "food": "pot",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "friday",
+    "steps": 13,
+    "neededSearch": true,
+    "weekday": 5
+  }
+}

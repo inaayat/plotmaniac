@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Builds data/marvel-universe/chronology.json from Karan's order + principal cast lists.
+ * Builds archive/data/marvel-universe/chronology.json from Karan's order + principal cast lists.
  * Run: node scripts/build-marvel-chronology.mjs
  */
 import fs from "node:fs";
@@ -12,7 +12,7 @@ import { loadCharacterIndex, overlayChronologyCast } from "./marvel-character-in
 import { chronologyKindForId } from "./marvel-chronology-tmdb-queries.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-const people = JSON.parse(fs.readFileSync(path.join(root, "data/marvel-universe/people.json"), "utf8"));
+const people = JSON.parse(fs.readFileSync(path.join(root, "archive/data/marvel-universe/people.json"), "utf8"));
 const peopleIds = new Set(people.map((p) => p.id));
 
 const FOX_CORE = [
@@ -167,7 +167,7 @@ for (const edge of CHRONOLOGY_PREREQ_EDGES) {
   prereqsByTarget.get(edge.target).push({ id: edge.source, tier: edge.tier });
 }
 
-const outPath = path.join(root, "data/marvel-universe/chronology.json");
+const outPath = path.join(root, "archive/data/marvel-universe/chronology.json");
 const existingPosters = new Map();
 try {
   const previous = JSON.parse(fs.readFileSync(outPath, "utf8"));

@@ -1,0 +1,170 @@
+{
+  "date": "2027-09-14",
+  "number": 337,
+  "theme": {
+    "id": "book-club",
+    "title": "Book club",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "The wine is open. The seating is not settled."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "book": [
+      {
+        "id": "notes",
+        "label": "notes",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "score",
+        "label": "score",
+        "icon": "music-notes"
+      },
+      {
+        "id": "novel",
+        "label": "novel",
+        "icon": "book"
+      }
+    ],
+    "drink": [
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "notes is with the wine."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "book",
+        "item": "novel"
+      },
+      "text": "Gus is with the novel."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Drew is with the beer."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "book",
+        "item": "score"
+      },
+      "text": "Gus is next to the score."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "drew",
+      "house": 0,
+      "text": "Drew is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who brought the novel?",
+    "givenAttr": "book",
+    "givenItem": "novel",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "book": "score",
+      "drink": "beer"
+    },
+    {
+      "person": "gus",
+      "book": "novel",
+      "drink": "martini"
+    },
+    {
+      "person": "bo",
+      "book": "notes",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "tuesday",
+    "steps": 8,
+    "neededSearch": false,
+    "weekday": 2
+  }
+}
