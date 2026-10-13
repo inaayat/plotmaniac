@@ -11,6 +11,7 @@ The older Plotmaniac field guide is archived (not deleted) under `archive/`: `ar
 | `index.html` | Plotted shell (theme boot, `?plot=` redirect, PWA) |
 | `plotted.js` | Game UI: typed slots, hint list, scratchpad notes, timer, share text |
 | `plotted-engine.js` | CSP uniqueness solver, generator, share formatter |
+| `plotted-human-solver.js` | Named human deduction techniques used to grade generated puzzles |
 | `plotted-config.js` | `GAME_NAME` and storage keys |
 | `plotted-icons.js` | Vendored Phosphor duotone paths |
 | `plotted-themes.js` | Daily themes built from those icons |

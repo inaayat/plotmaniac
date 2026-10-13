@@ -26,6 +26,7 @@ import {
   specForDate,
   pruneClues,
 } from "../plotted-engine.js";
+import { solveByHuman, solvePuzzleByHuman } from "../plotted-human-solver.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (rel) => fs.readFileSync(path.join(root, rel), "utf8");
@@ -145,6 +146,9 @@ const generatedCount = countSolutions(
 );
 assert.equal(generatedCount.count, 1);
 assert.deepEqual(generatedCount.solution, generated.solution);
+assert.equal(generated.difficulty.solvedByHuman, true);
+assert.ok(generated.difficulty.hardest);
+assert.ok(generated.difficulty.hardestTier >= 1);
 
 const sundayPuzzle = generatePuzzle("2026-10-18", { maxTries: 80 });
 assert.equal(sundayPuzzle.houseCount, 4);
@@ -227,7 +231,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v11/);
+assert.match(sw, /plotted-v12/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -498,9 +502,29 @@ assert.equal(
 for (const item of flattenItems(einstein.items)) {
   assert.ok(ICONS[item.icon], `Einstein missing Phosphor icon ${item.icon}`);
 }
+
+const einsteinHuman = solvePuzzleByHuman(einstein);
+assert.equal(einsteinHuman.solvedByHuman, true, "Einstein must solve by human techniques");
+assert.ok(einsteinHuman.steps.length >= 10, `Einstein should take several deductions, got ${einsteinHuman.steps.length}`);
+assert.equal(einsteinHuman.solution.find((house) => house.pet === "fish").nationality, "german");
+assert.ok(einsteinHuman.hardestTier >= 1);
+assert.ok(einsteinHuman.hardest);
+
+const guessItems = {
+  person: ["ada", "bo", "cam"],
+  pet: ["cat", "dog", "bird"],
+  drink: ["tea", "coffee", "wine"],
+};
+const guessClues = [{ id: "c1", type: "same", left: { attr: "person", item: "ada" }, right: { attr: "pet", item: "cat" } }];
+const guessUnique = countSolutions(3, ["person", "pet", "drink"], guessItems, guessClues, 3);
+assert.ok(guessUnique.count > 1, "underconstrained puzzle must still have more than one solution");
+const guessHuman = solveByHuman(3, ["person", "pet", "drink"], guessItems, guessClues);
+assert.equal(guessHuman.solvedByHuman, false, "a guess-requiring puzzle must not count as human-solved");
 const plottedDir = path.join(root, "data/plotted");
 const jsonFiles = fs.readdirSync(plottedDir).filter((name) => name.endsWith(".json"));
 assert.ok(jsonFiles.length >= 365, `expected a year of puzzles, got ${jsonFiles.length}`);
+let datedHumanFail = 0;
+let datedNeededSearch = 0;
 for (const name of jsonFiles) {
   const puzzle = JSON.parse(fs.readFileSync(path.join(plottedDir, name), "utf8"));
   for (const clue of puzzle.clues) {
@@ -510,6 +534,15 @@ for (const name of jsonFiles) {
       `${name} object-subject lives: ${clue.text}`,
     );
   }
+  const attrs = puzzle.attributes.map((attr) => attr.id);
+  const ids = Object.fromEntries(attrs.map((attr) => [attr, puzzle.items[attr].map((item) => item.id)]));
+  const unique = countSolutions(puzzle.houseCount, attrs, ids, puzzle.clues, 2);
+  assert.equal(unique.count, 1, `${name} must stay unique`);
+  if (unique.neededSearch) datedNeededSearch += 1;
+  const human = solvePuzzleByHuman(puzzle);
+  if (!human.solvedByHuman) datedHumanFail += 1;
 }
+assert.equal(datedHumanFail, 0, `${datedHumanFail} dated puzzles failed the human-technique solver`);
+console.log(`dated audit: ${jsonFiles.length} unique, ${datedNeededSearch} neededSearch, ${datedHumanFail} humanFail`);
 
 console.log("plotted tests ok");

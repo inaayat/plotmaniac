@@ -75,11 +75,12 @@ Holiday-dated JSON can swap the theme (New Year, Valentine, Halloween, Christmas
 2. Pick a theme and a random solution.
 3. Draw true clues of the day’s allowed types until a solver proves **exactly one** assignment.
 4. Prune clues that are not required for uniqueness, then clamp to 5–8.
-5. Rate difficulty by **constraint-propagation steps** (search beyond propagation counts as harder).
-6. Reject near-duplicate solutions and clue-type patterns seen earlier in the year.
-7. Hand-check samples; schedule **one JSON file per date** under `data/plotted/YYYY-MM-DD.json`. No backend.
+5. Keep uniqueness via the CSP solver, then require a **human-style** solve (direct placement, elimination, singles, pairs, same-house/next-to/left-of/not, edge cases, then contradiction chains of depth 1–2). No backtracking search. Reject puzzles that still need a guess.
+6. Rate difficulty by human step count plus the hardest technique tier. Prefer easier puzzles early in the week and harder ones on weekends.
+7. Reject near-duplicate solutions and clue-type patterns seen earlier in the year.
+8. Hand-check samples; schedule **one JSON file per date** under `data/plotted/YYYY-MM-DD.json`. No backend. Do not regenerate a dated file without checking it first.
 
-The solver is a domain-reduction CSP with all-different per attribute, then backtracking that stops at two solutions. It is shared by the generator, tests, and (for verification) the client.
+The uniqueness solver is a domain-reduction CSP with all-different per attribute, then backtracking that stops at two solutions. New generated puzzles also have to be finished by the human-technique solver. Existing dated JSON is left as published unless an audit finds a uniqueness failure.
 
 Precompute about a year at a time: `node scripts/generate-plotted.mjs`.
 
