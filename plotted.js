@@ -717,7 +717,7 @@ function paintBoard(opts = {}) {
   notesToggle.textContent = "Notes";
   const note = document.createElement("textarea");
   note.className = "notes";
-  note.placeholder = "Scratchpad";
+  note.placeholder = "Jot your deductions here...";
   note.rows = 16;
   note.setAttribute("aria-label", "Notes");
   note.autocomplete = "off";

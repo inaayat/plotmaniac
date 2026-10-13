@@ -155,6 +155,15 @@ assert.equal(document.querySelector(".notes-panel")?.open, true, "notes open on 
 
 const pad = document.querySelector("textarea.notes");
 assert.ok(pad, "scratchpad");
+assert.equal(pad.placeholder, "Jot your deductions here...");
+for (const head of document.querySelectorAll("tbody .attr-head")) {
+  const style = window.getComputedStyle(head);
+  if (style?.whiteSpace) {
+    assert.equal(style.whiteSpace, "nowrap", `${head.textContent} must stay on one line`);
+  }
+  assert.ok(head.querySelector("svg"), "row header has icon");
+  assert.ok(head.querySelector("span")?.textContent.trim(), "row header has label");
+}
 pad.value = "brit left of green";
 pad.dispatchEvent(new window.Event("input", { bubbles: true }));
 assert.equal(window.localStorage.getItem(`${NOTES_STORAGE_KEY}:2026-10-13`), "brit left of green");
