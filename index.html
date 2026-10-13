@@ -50,6 +50,7 @@
           <div class="mast-tools">
             <button type="button" class="icon-btn" id="btn-hint" aria-label="Reveal a cell"></button>
             <button type="button" class="icon-btn" id="btn-check" aria-label="Check the grid"></button>
+            <button type="button" class="icon-btn" id="btn-start-over" aria-label="Start over"></button>
             <button type="button" class="icon-btn" id="btn-share" aria-label="Share result" hidden></button>
             <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle color theme"></button>
           </div>
@@ -92,6 +93,17 @@
         <div class="actions">
           <button type="button" id="win-share">Share</button>
           <button type="button" id="win-close" class="ghost">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="win" id="start-over" hidden>
+      <div class="win-card" role="dialog" aria-labelledby="start-over-title" aria-modal="true">
+        <h2 id="start-over-title">Start over?</h2>
+        <p class="win-question">This clears the grid and resets the timer and hints. Notes stay unless you clear them too. Your streak is unchanged.</p>
+        <div class="actions">
+          <button type="button" id="start-over-grid">Reset grid</button>
+          <button type="button" id="start-over-all">Reset grid and notes</button>
+          <button type="button" id="start-over-cancel" class="ghost">Cancel</button>
         </div>
       </div>
     </div>

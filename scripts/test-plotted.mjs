@@ -202,6 +202,8 @@ for (const theme of THEMES) {
 
 assert.match(iconSvg("cat"), /viewBox="0 0 256 256"/);
 assert.match(iconSvg("house"), /opacity="0.2"/);
+assert.match(iconSvg("arrow-counter-clockwise"), /opacity="0.2"/);
+assert.ok(ICONS["arrow-counter-clockwise"]);
 
 const html = read("index.html");
 assert.match(html, /plotted.css/);
@@ -216,13 +218,16 @@ assert.match(html, /id="setup"/);
 assert.match(html, /How to play/);
 assert.match(html, /import \{ boot \}/);
 assert.match(html, /id="btn-help"/);
+assert.match(html, /id="btn-start-over"/);
+assert.match(html, /id="start-over"/);
+assert.match(html, /Reset grid and notes/);
 assert.match(html, /win-stats/);
 assert.doesNotMatch(html, /id="confetti"/);
 assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v10/);
+assert.match(sw, /plotted-v11/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -262,6 +267,8 @@ assert.match(css, /\.puzzle-col/);
 assert.match(css, /border-radius: 18px/);
 assert.match(css, /--notes-border/);
 assert.match(css, /\.notes::placeholder/);
+assert.doesNotMatch(css, /repeating-linear-gradient/);
+assert.doesNotMatch(css, /--notes-rule/);
 assert.match(css, /\.grid-table \.attr-head \{[^}]*white-space: nowrap/);
 assert.match(css, /min-width: 7rem/);
 assert.match(css, /--notes-size/);
@@ -308,6 +315,9 @@ assert.match(app, /notes-panel/);
 assert.match(app, /Jot your deductions here/);
 assert.match(app, /puzzle-col/);
 assert.match(app, /maybeFinishIfSolved/);
+assert.match(app, /startOver/);
+assert.match(app, /streakAwarded/);
+assert.match(app, /arrow-counter-clockwise/);
 assert.match(app, /gold dashed outline/);
 assert.doesNotMatch(app, /notes-grid/);
 assert.doesNotMatch(app, /datalist/);

@@ -81,7 +81,7 @@ window.localStorage.setItem(
   }),
 );
 
-const { boot, fitPlayfield, loadPuzzle, stopGameTimers } = await import("../plotted.js");
+const { boot, fitPlayfield, loadPuzzle, startOver, stopGameTimers } = await import("../plotted.js");
 
 function assertNoConsoleErrors(label) {
   assert.equal(errors.length, 0, `${label}: ${errors.join(" | ")}`);
@@ -150,6 +150,12 @@ assert.ok(play.querySelector(".puzzle-col .hint-block + .grid-wrap"), "grid foll
 assert.equal(document.querySelectorAll("datalist").length, 0, "no native datalist");
 assert.equal(document.querySelectorAll(".slot-suggest").length, 0, "no suggestion dropdown");
 assert.equal(document.querySelectorAll("textarea.notes").length, 1, "one scratchpad");
+assert.doesNotMatch(cssText, /repeating-linear-gradient/);
+assert.doesNotMatch(cssText, /--notes-rule/);
+const notesStyle = window.getComputedStyle(document.querySelector("textarea.notes"));
+if (notesStyle?.backgroundImage) {
+  assert.equal(notesStyle.backgroundImage, "none", "notes must be a flat surface");
+}
 assert.equal(document.querySelectorAll(".notes-grid").length, 0, "no per-house notes");
 assert.equal(document.querySelector(".notes-panel")?.open, true, "notes open on desktop");
 
@@ -262,6 +268,78 @@ assert.match(document.getElementById("meta-timer")?.textContent || "", /\d:\d\d/
 assert.equal(document.querySelectorAll(".slot.is-correct").length, 25);
 const saved = JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}");
 assert.equal(saved.solved, true);
+assert.equal(saved.streakAwarded, true);
+
+const startBtn = document.getElementById("btn-start-over");
+assert.ok(startBtn, "start over control");
+assert.ok(startBtn.closest(".mast-tools")?.querySelector("#btn-check"), "start over sits with Check/hint");
+assert.ok(startBtn.querySelector("svg"), "start over uses a Phosphor icon");
+assert.match(startBtn.innerHTML, /arrow-counter-clockwise|Start over/);
+const startStyle = window.getComputedStyle(startBtn);
+if (startStyle?.minHeight) {
+  assert.ok(Number.parseFloat(startStyle.minHeight) >= 36, "start over is tappable on mobile");
+}
+
+document.querySelector("textarea.notes").value = "keep these notes";
+document.querySelector("textarea.notes").dispatchEvent(new window.Event("input", { bubbles: true }));
+startBtn.click();
+assert.equal(document.getElementById("start-over")?.hidden, false, "start over asks for confirmation");
+assert.equal(document.getElementById("win")?.hidden, true, "confirm replaces the results card");
+document.getElementById("start-over-cancel").click();
+assert.equal(document.getElementById("start-over")?.hidden, true, "cancel closes the confirm");
+assert.equal(
+  document.querySelector('input[data-slot="0-color"]')?.value,
+  "yellow",
+  "cancel must keep the solved grid",
+);
+
+document.getElementById("btn-start-over").click();
+document.getElementById("start-over-grid").click();
+assert.equal(document.getElementById("start-over")?.hidden, true);
+assert.equal(document.getElementById("win")?.hidden, true);
+assert.equal(document.getElementById("btn-share")?.hidden, true);
+assert.equal(document.getElementById("meta-timer")?.textContent, "0:00");
+assert.equal(document.querySelector("textarea.notes")?.value, "keep these notes", "reset grid keeps notes");
+assert.equal(document.querySelector('input[data-slot="0-color"]')?.value, "", "reset grid clears entries");
+assert.equal(document.querySelectorAll("input.slot-input").length, 25);
+const resetSaved = JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}");
+assert.equal(resetSaved.solved, false);
+assert.equal(resetSaved.hints, 0);
+assert.equal(resetSaved.elapsedMs, 0);
+assert.equal(resetSaved.streakAwarded, true);
+assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
+
+document.getElementById("btn-hint").click();
+assert.ok(document.querySelector("input.slot-input")?.value, "hint fills a cell after restart");
+const hinted = JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}");
+assert.equal(hinted.hints, 1);
+
+startOver({ clearNotes: true });
+assert.equal(document.querySelector("textarea.notes")?.value, "", "reset grid and notes clears the pad");
+assert.equal(window.localStorage.getItem(`${NOTES_STORAGE_KEY}:2026-10-13`), "");
+assert.equal(document.getElementById("meta-timer")?.textContent, "0:00");
+const cleared = JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}");
+assert.equal(cleared.hints, 0);
+assert.equal(cleared.streakAwarded, true);
+
+if (typeof window.happyDOM?.setViewport === "function") {
+  window.happyDOM.setViewport({ width: 390, height: 844 });
+  fitPlayfield();
+  const mobileStart = document.getElementById("btn-start-over");
+  assert.ok(mobileStart, "start over stays in the header on mobile");
+  const mobileStyle = window.getComputedStyle(mobileStart);
+  if (mobileStyle?.minHeight) {
+    assert.ok(Number.parseFloat(mobileStyle.minHeight) >= 36, "start over stays tappable on a phone");
+  }
+  window.happyDOM.setViewport({ width: 1280, height: 720 });
+  fitPlayfield();
+}
+
+typeSolution(einstein);
+await new Promise((resolve) => setTimeout(resolve, 30));
+assert.equal(document.getElementById("win")?.hidden, false, "restarted puzzle can be solved again");
+assert.equal(document.getElementById("win-streak")?.textContent, "1", "solving again must not change the streak");
+assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
 
 stopGameTimers();
 console.error = origError;

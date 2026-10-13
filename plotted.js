@@ -43,6 +43,7 @@ let hints = 0;
 let completionOrder = [];
 let nextCompleteRank = 1;
 let solved = false;
+let streakAwarded = false;
 let toastTimer = 0;
 let bound = false;
 
@@ -257,6 +258,7 @@ function persist() {
         completionOrder,
         nextCompleteRank,
         solved,
+        streakAwarded,
       }),
     );
   } catch {
@@ -280,6 +282,7 @@ function resetPlayState() {
   completionOrder = Array(puzzle.houseCount).fill(0);
   nextCompleteRank = 1;
   solved = false;
+  streakAwarded = false;
   focused = null;
 }
 
@@ -312,6 +315,7 @@ function restore() {
           : Array(puzzle.houseCount).fill(0);
         nextCompleteRank = data.nextCompleteRank || 1;
         solved = Boolean(data.solved);
+        streakAwarded = Boolean(data.streakAwarded || data.solved);
       }
     }
   } catch {
@@ -445,15 +449,47 @@ function paintChrome() {
   const help = $("btn-help");
   const hint = $("btn-hint");
   const check = $("btn-check");
+  const startOverBtn = $("btn-start-over");
   const share = $("btn-share");
   if (help) help.innerHTML = iconSvg("chat-teardrop-text", { label: "How to play" });
   if (hint) hint.innerHTML = iconSvg("lightbulb", { label: "Reveal a cell" });
   if (check) check.innerHTML = iconSvg("check", { label: "Check the grid" });
+  if (startOverBtn) startOverBtn.innerHTML = iconSvg("arrow-counter-clockwise", { label: "Start over" });
   if (share) share.innerHTML = iconSvg("share", { label: "Share result" });
   const winShare = $("win-share");
   if (winShare) winShare.textContent = "Share";
   paintThemeToggle();
   paintMeta();
+}
+
+function showStartOverConfirm() {
+  if (!puzzle) return;
+  const win = $("win");
+  if (win) win.hidden = true;
+  const dialog = $("start-over");
+  if (dialog) dialog.hidden = false;
+}
+
+function hideStartOverConfirm() {
+  const dialog = $("start-over");
+  if (dialog) dialog.hidden = true;
+}
+
+export function startOver({ clearNotes = false } = {}) {
+  if (!puzzle) return;
+  const awarded = streakAwarded || solved;
+  const keptNotes = clearNotes ? "" : notes;
+  hideStartOverConfirm();
+  const share = $("btn-share");
+  if (share) share.hidden = true;
+  const win = $("win");
+  if (win) win.hidden = true;
+  resetPlayState();
+  notes = keptNotes;
+  streakAwarded = awarded;
+  persist();
+  paintChrome();
+  paintBoard();
 }
 
 function slotKey(house, attr) {
@@ -1009,8 +1045,18 @@ function bounceWinTiles() {
   });
 }
 
+function awardStreakIfNeeded() {
+  if (streakAwarded) {
+    const prev = readStreak();
+    return prev.count || 0;
+  }
+  streakAwarded = true;
+  persist();
+  return writeStreak();
+}
+
 function showWinModal() {
-  const streak = writeStreak();
+  const streak = awardStreakIfNeeded();
   const share = $("btn-share");
   if (share) share.hidden = false;
   const shareText = $("share-text");
@@ -1131,6 +1177,13 @@ function bind() {
   });
   $("btn-hint")?.addEventListener("click", useHint);
   $("btn-check")?.addEventListener("click", checkGrid);
+  $("btn-start-over")?.addEventListener("click", showStartOverConfirm);
+  $("start-over-grid")?.addEventListener("click", () => startOver({ clearNotes: false }));
+  $("start-over-all")?.addEventListener("click", () => startOver({ clearNotes: true }));
+  $("start-over-cancel")?.addEventListener("click", hideStartOverConfirm);
+  $("start-over")?.addEventListener("click", (event) => {
+    if (event.target === $("start-over")) hideStartOverConfirm();
+  });
   $("btn-share")?.addEventListener("click", copyShare);
   $("win-share")?.addEventListener("click", copyShare);
   $("win-close")?.addEventListener("click", () => {
