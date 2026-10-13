@@ -175,7 +175,7 @@ assert.ok(nat, "nationality input");
 nat.focus();
 nat.value = "Nor";
 nat.dispatchEvent(new window.Event("input", { bubbles: true }));
-assert.match(nat.closest(".slot")?.querySelector(".slot-ghost")?.textContent || "", /norwegian/i);
+assert.match(nat.closest(".slot")?.querySelector(".slot-ghost")?.textContent || "", /wegian/i);
 nat.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Tab", bubbles: true }));
 assert.equal(nat.value, "Norwegian");
 assertNoConsoleErrors("ghost completion");

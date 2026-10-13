@@ -24,8 +24,10 @@
   --input-size: 16px;
   --table-gap: 6px;
   --clue-cols: 1;
-  --play-max: 1120px;
+  --play-max: 1200px;
   --notes-size: 16px;
+  --mast-h: 8rem;
+  --footer-h: 2rem;
 }
 
 html[data-theme="light"] {
@@ -368,16 +370,18 @@ h1 {
   inset: 0;
   display: flex;
   align-items: center;
-  padding: 0 6px;
+  justify-content: flex-start;
+  padding: 0;
   font-size: var(--input-size, 16px);
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  text-align: left;
   color: var(--muted);
   pointer-events: none;
   overflow: hidden;
   white-space: nowrap;
-  line-height: 1.1;
+  line-height: calc(var(--cell-h) - 4px);
 }
 
 .slot-input {
@@ -392,10 +396,11 @@ h1 {
   font-size: var(--input-size, 16px);
   font-weight: 600;
   letter-spacing: 0.02em;
-  line-height: 1.1;
+  line-height: calc(var(--cell-h) - 4px);
   text-transform: uppercase;
+  text-align: center;
   color: var(--ink);
-  padding: 0 6px;
+  padding: 0 4px;
 }
 
 .slot.is-filled {
@@ -701,38 +706,54 @@ h1 {
 }
 
 @media (min-width: 640px) {
+  .board {
+    justify-content: stretch;
+  }
+
   .play {
+    flex: 1 1 auto;
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
     gap: 20px;
+    min-height: 0;
+    height: 100%;
   }
 
   .notes-panel {
     order: 0;
-    flex: 0 1 240px;
-    width: min(260px, 34%);
-    max-width: 280px;
+    flex: 1 1 28%;
+    width: 28%;
+    min-width: 260px;
+    max-width: 30%;
+    position: sticky;
+    top: calc(4px + var(--safe-top));
+    align-self: flex-start;
+    height: calc(100dvh - var(--mast-h, 8rem) - var(--footer-h, 2rem) - 8px);
+    max-height: calc(100dvh - var(--mast-h, 8rem) - var(--footer-h, 2rem) - 8px);
     display: flex;
     flex-direction: column;
     text-align: left;
-    min-height: 0;
   }
 
   .notes-toggle {
     pointer-events: none;
     cursor: default;
+    flex: 0 0 auto;
   }
 
   .notes {
     flex: 1 1 auto;
-    min-height: 0;
-    height: auto;
+    width: 100%;
+    min-height: 16rem;
+    height: calc(100dvh - var(--mast-h, 8rem) - var(--footer-h, 2rem) - 2.5rem);
+    max-height: calc(100dvh - var(--mast-h, 8rem) - var(--footer-h, 2rem) - 2.5rem);
+    overflow: auto;
   }
 
   .puzzle-col {
     order: 0;
-    flex: 1 1 auto;
+    flex: 1 1 70%;
     max-width: 840px;
     width: 100%;
     min-width: 0;

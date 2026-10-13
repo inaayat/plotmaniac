@@ -419,22 +419,34 @@ function setSlotVisual(slot, house, attr, typed, status) {
 
 function paintGhost(slot, typed, status) {
   const ghost = slot.querySelector(".slot-ghost");
+  const input = slot.querySelector(".slot-input");
   if (!ghost) return;
   const house = Number(slot.dataset.house);
   const attr = slot.dataset.attr;
   const focusedHere = focused?.house === house && focused?.attr === attr;
   const completion = bestTypedCompletion(puzzle.items[attr], typed);
   const show = focusedHere && status !== "match" && completion.status === "partial" && completion.rest;
-  ghost.textContent = show ? completion.item.label : "";
+  ghost.textContent = show ? completion.rest : "";
+  ghost.style.paddingLeft = "";
+  if (show && input) {
+    const typedWidth = typedPrefixWidth(input);
+    const width = input.clientWidth || slot.clientWidth || 0;
+    ghost.style.paddingLeft = `${Math.max(0, (width + typedWidth) / 2)}px`;
+  }
   slot.dataset.ghostItem = show ? completion.item.id : "";
 }
 
 function typedPrefixWidth(input) {
-  const style = window.getComputedStyle(input);
-  const canvas = typedPrefixWidth.canvas || (typedPrefixWidth.canvas = document.createElement("canvas"));
-  const ctx = canvas.getContext("2d");
-  ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-  return ctx.measureText(input.value).width;
+  try {
+    const style = window.getComputedStyle(input);
+    const canvas = typedPrefixWidth.canvas || (typedPrefixWidth.canvas = document.createElement("canvas"));
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return (input.value || "").length * 8;
+    ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+    return ctx.measureText(input.value).width;
+  } catch {
+    return (input.value || "").length * 8;
+  }
 }
 
 function acceptCompletion(house, attr, item, input) {
@@ -595,9 +607,9 @@ function makeSlot(house, attr) {
   input.addEventListener("pointerup", (event) => {
     const completion = bestTypedCompletion(puzzle.items[attr], input.value);
     if (completion.status !== "partial") return;
-    const style = window.getComputedStyle(input);
-    const pad = Number.parseFloat(style.paddingLeft) || 0;
-    if (event.offsetX > pad + typedPrefixWidth(input) + 2) {
+    const typedWidth = typedPrefixWidth(input);
+    const restStart = (input.clientWidth + typedWidth) / 2;
+    if (event.offsetX > restStart) {
       event.preventDefault();
       tryAcceptGhost(house, attr, input);
     }
@@ -706,6 +718,7 @@ function paintBoard(opts = {}) {
   const note = document.createElement("textarea");
   note.className = "notes";
   note.placeholder = "Scratchpad";
+  note.rows = 16;
   note.setAttribute("aria-label", "Notes");
   note.autocomplete = "off";
   note.spellcheck = true;
@@ -791,13 +804,11 @@ export function fitPlayfield() {
   const footer = document.querySelector(".site-footer");
   const notesPanel = play.querySelector(".notes-panel");
   const puzzleCol = play.querySelector(".puzzle-col");
-  const availH = Math.max(
-    220,
-    (window.innerHeight || 720) -
-      (mast?.getBoundingClientRect().height || 0) -
-      (footer?.getBoundingClientRect().height || 0) -
-      16,
-  );
+  const mastH = Math.round(mast?.getBoundingClientRect().height || 96);
+  const footerH = Math.round(footer?.getBoundingClientRect().height || 28);
+  root.style.setProperty("--mast-h", `${mastH}px`);
+  root.style.setProperty("--footer-h", `${footerH}px`);
+  const availH = Math.max(220, (window.innerHeight || 720) - mastH - footerH - 16);
   const wide = isWidePlay();
   if (notesPanel) {
     if (wide) {
@@ -832,7 +843,7 @@ export function fitPlayfield() {
   let lo = 0;
   let hi = 1;
   let best = 0;
-  const measureEl = wide ? play : puzzleCol || play;
+  const measureEl = puzzleCol || play;
   for (let i = 0; i < 14; i += 1) {
     const mid = (lo + hi) / 2;
     apply(mid);
