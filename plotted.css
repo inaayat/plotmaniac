@@ -11,7 +11,7 @@
   --correct-ink: #f4fff2;
   --wrong: #c94c4c;
   --wrong-ink: #fff6f6;
-  --unknown: #c94c4c;
+  --unknown: #e0b43a;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -47,7 +47,7 @@ html[data-theme="light"] {
   --correct-ink: #f4fff2;
   --wrong: #c94c4c;
   --wrong-ink: #fff6f6;
-  --unknown: #c94c4c;
+  --unknown: #b57a12;
   --notes-paper: #fffaf3;
   --notes-border: #d2a57a;
   --notes-rule: color-mix(in srgb, var(--ink) 12%, transparent);
@@ -431,6 +431,7 @@ h1 {
 }
 
 .slot.is-unknown {
+  border-style: dashed;
   border-color: var(--unknown);
 }
 
@@ -804,6 +805,13 @@ h1 {
     background: var(--wrong);
     border-color: var(--wrong);
     color: var(--wrong-ink);
+  }
+
+  .slot.is-editing.is-unknown .slot-input {
+    border-style: dashed;
+    border-color: var(--unknown);
+    color: var(--ink);
+    background: var(--tile);
   }
 
   .slot:not(.is-editing) .slot-ghost {

@@ -988,10 +988,10 @@ const EINSTEIN_ITEMS = {
     { id: "water", label: "water", icon: "wine" },
   ],
   cigar: [
-    { id: "pall-mall", label: "Pall Mall", aliases: ["pall mall", "pallmall"], icon: "leaf" },
+    { id: "pall-mall", label: "Pall Mall", aliases: ["pall mall", "pallmall", "pall-mall"], icon: "leaf" },
     { id: "dunhill", label: "Dunhill", icon: "pencil-simple" },
     { id: "blends", label: "Blends", aliases: ["blend", "blends"], icon: "note-pencil" },
-    { id: "bluemaster", label: "BlueMaster", aliases: ["blue master", "bluemaster"], icon: "briefcase" },
+    { id: "bluemaster", label: "BlueMaster", aliases: ["blue master", "bluemaster", "blue-master"], icon: "briefcase" },
     { id: "prince", label: "Prince", icon: "crown" },
   ],
   pet: [

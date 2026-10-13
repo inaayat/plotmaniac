@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { Window } from "happy-dom";
-import { NOTES_STORAGE_KEY, PROGRESS_STORAGE_KEY } from "../plotted-config.js";
+import { NOTES_STORAGE_KEY, PROGRESS_STORAGE_KEY, STREAK_STORAGE_KEY } from "../plotted-config.js";
 import { EINSTEIN_SETUP } from "../plotted-engine.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -213,6 +213,55 @@ for (const date of generatedDates) {
   assertNoConsoleErrors(date);
   assertPuzzlePainted(puzzle, { expectSetup: Boolean(puzzle.setup) });
 }
+
+window.localStorage.removeItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`);
+window.localStorage.removeItem(STREAK_STORAGE_KEY);
+window.matchMedia = (query) => ({
+  matches: String(query).includes("prefers-reduced-motion"),
+  media: String(query),
+  addEventListener() {},
+  removeEventListener() {},
+  addListener() {},
+  removeListener() {},
+});
+await loadPuzzle({ puzzle: einstein });
+assert.equal(document.getElementById("win")?.hidden, true);
+
+const colorHouse1 = document.querySelector('input[data-slot="0-color"]');
+assert.ok(colorHouse1, "house 1 color slot");
+colorHouse1.value = "Norwegian";
+colorHouse1.dispatchEvent(new window.Event("input", { bubbles: true }));
+const unknownSlot = colorHouse1.closest(".slot");
+assert.equal(unknownSlot?.classList.contains("is-unknown"), true, "Norwegian in COLOR is an invalid-row mark");
+assert.equal(unknownSlot?.classList.contains("is-wrong"), false, "invalid-row must not use Check-wrong");
+assert.equal(colorHouse1.getAttribute("aria-invalid"), "true");
+assert.match(cssText, /\.slot\.is-unknown \{[^}]*border-style: dashed/);
+assert.match(cssText, /--unknown: #e0b43a/);
+assert.doesNotMatch(cssText, /--unknown: #c94c4c/);
+colorHouse1.value = "";
+colorHouse1.dispatchEvent(new window.Event("input", { bubbles: true }));
+assert.equal(unknownSlot?.classList.contains("is-unknown"), false);
+
+function typeSolution(puzzle) {
+  for (let house = 0; house < puzzle.houseCount; house += 1) {
+    for (const attr of puzzle.attributes.map((entry) => entry.id)) {
+      const input = document.querySelector(`input[data-slot="${house}-${attr}"]`);
+      const item = puzzle.items[attr].find((entry) => entry.id === puzzle.solution[house][attr]);
+      assert.ok(input && item, `${puzzle.date} ${house} ${attr}`);
+      input.value = item.label;
+      input.dispatchEvent(new window.Event("input", { bubbles: true }));
+    }
+  }
+}
+
+typeSolution(einstein);
+await new Promise((resolve) => setTimeout(resolve, 30));
+assert.equal(document.getElementById("win")?.hidden, false, "auto-solve must open the results modal");
+assert.equal(document.getElementById("win-streak")?.textContent, "1");
+assert.match(document.getElementById("meta-timer")?.textContent || "", /\d:\d\d/);
+assert.equal(document.querySelectorAll(".slot.is-correct").length, 25);
+const saved = JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}");
+assert.equal(saved.solved, true);
 
 stopGameTimers();
 console.error = origError;

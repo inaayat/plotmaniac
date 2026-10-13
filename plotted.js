@@ -427,7 +427,7 @@ function paintChrome() {
   if (question) question.innerHTML = highlightItemWordsHtml(puzzle.question.text, allItems());
   if (howTo) {
     howTo.textContent =
-      "Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right.";
+      "Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right. A gold dashed outline means that word isn’t in this row.";
   }
   if (setup) {
     if (puzzle.setup) {
@@ -487,7 +487,13 @@ function setSlotVisual(slot, house, attr, typed, status) {
   const item = value ? itemById(attr, value) : null;
   slot.classList.toggle("is-empty", !item);
   slot.classList.toggle("is-filled", Boolean(item));
-  slot.classList.toggle("is-unknown", status === "unknown" && Boolean(String(typed || "").trim()));
+  const unknown = status === "unknown" && Boolean(String(typed || "").trim());
+  slot.classList.toggle("is-unknown", unknown);
+  const input = slot.querySelector(".slot-input");
+  if (input) {
+    if (unknown) input.setAttribute("aria-invalid", "true");
+    else input.removeAttribute("aria-invalid");
+  }
   const editing = !isWidePlay() && focused?.house === house && focused?.attr === attr;
   slot.classList.toggle("is-editing", editing);
   if (editing) sizeEditingSlot(slot);
@@ -572,6 +578,7 @@ function placeItem(house, attr, itemId, { bounce = true, silent = false } = {}) 
       if (slot) popSlot(slot);
     }
   }
+  maybeFinishIfSolved();
   return previous;
 }
 
@@ -971,7 +978,7 @@ function useHint() {
   hints += 1;
   focused = { house: cell.house, attr: cell.attr };
   placeItem(cell.house, cell.attr, cell.item);
-  showToast("One cell filled. Hint cost applied.");
+  if (!solved) showToast("One cell filled. Hint cost applied.");
 }
 
 function revealCheck() {
@@ -1023,7 +1030,16 @@ function showWinModal() {
   paintMeta();
 }
 
+function maybeFinishIfSolved() {
+  if (solved || !puzzle) return false;
+  if (!placementComplete(grid, puzzle.houseCount, attributes())) return false;
+  if (!gridMatchesSolution(grid, puzzle.solution)) return false;
+  finish();
+  return true;
+}
+
 function checkGrid() {
+  if (solved) return;
   ensureTimer();
   if (!placementComplete(grid, puzzle.houseCount, attributes())) {
     document.querySelectorAll(".slot.is-empty").forEach(shakeSlot);
@@ -1097,6 +1113,8 @@ export async function loadPuzzle({ date, puzzle: given } = {}) {
   if (solved) {
     const share = $("btn-share");
     if (share) share.hidden = false;
+  } else {
+    maybeFinishIfSolved();
   }
 }
 

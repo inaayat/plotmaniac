@@ -26,9 +26,9 @@ Each house has one **text input** per attribute. The player types the exact word
 - As the player types, the best matching valid word appears as **ghost** text inside the same input. Tab, Enter, right-arrow, or tapping the ghost remainder accepts it. There is no dropdown or datalist.
 - **All clues are hints:** a compact numbered list **above** the grid. Sortable item words are **plain bold** in the normal ink color (no per-item, per-attribute, or per-house coloring in clues or inputs). Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
 - If the puzzle has a **setup** paragraph (Einstein day), it lives inside a collapsible **How to play** block.
-- One-line helper: each house has one owner; type the bold words; next door means a neighboring house.
+- One-line helper: each house has one owner; type the bold words; next door means a neighboring house. A gold dashed outline means that word isn’t in this row.
 - **Hint** fills one empty cell with the correct item and costs score.
-- **Check** scores a mistake if the grid is full but wrong; it finishes the day if the grid matches the unique solution.
+- Completing the unique solution **solves immediately** (timer stops, tiles hop, results card, streak). **Check** is only for a full grid that might be wrong: it scores a mistake if it doesn’t match.
 - Score is `max(0, 1000 − seconds − 50×mistakes − 120×hints)`.
 - Streak calendar in `localStorage`. Timer starts on first type/hint/check.
 
