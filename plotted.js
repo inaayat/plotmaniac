@@ -9,6 +9,7 @@ import {
 import { iconSvg } from "./plotted-icons.js";
 import { ATTRIBUTES } from "./plotted-themes.js";
 import {
+  bestTypedCompletion,
   clueSatisfiedByGrid,
   firstHintCell,
   flattenPuzzleItems,
@@ -23,11 +24,8 @@ import {
   puzzleNumber,
   scoreFor,
 } from "./plotted-engine.js";
-
-const LONG_PRESS_MS = 500;
 const LIGHT_THEME_COLOR = "#fff6eb";
 const DARK_THEME_COLOR = "#1a1230";
-const CONFETTI_COLORS = ["#ff6b6b", "#12b5a8", "#f4c430", "#8b5cf6", "#34d399", "#ff8a7a", "#2ee6d0"];
 const $ = (id) => document.getElementById(id);
 
 let puzzle = null;
@@ -158,6 +156,10 @@ function persist() {
 }
 
 function resetPlayState() {
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = 0;
+  }
   grid = emptyGrid();
   notes = Array.from({ length: puzzle.houseCount }, () => "");
   ruledOut = emptyRuled();
@@ -170,6 +172,13 @@ function resetPlayState() {
   nextCompleteRank = 1;
   solved = false;
   focused = null;
+}
+
+export function stopGameTimers() {
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = 0;
+  }
 }
 
 function restore() {
@@ -285,12 +294,10 @@ function paintMeta() {
   const timerEl = $("meta-timer");
   const streakEl = $("meta-streak");
   if (dateEl) dateEl.textContent = puzzle.date;
-  if (timerEl) {
-    timerEl.innerHTML = `${iconSvg("clock")} ${formatTime(solved ? elapsedMs : startedAt ? Date.now() - startedAt : elapsedMs)}`;
-  }
+  if (timerEl) timerEl.textContent = formatTime(solved ? elapsedMs : startedAt ? Date.now() - startedAt : elapsedMs);
   if (streakEl) {
     const streak = readStreak();
-    streakEl.innerHTML = `${iconSvg("calendar-check")} ${streak.count || 0}`;
+    streakEl.textContent = `${streak.count || 0} streak`;
   }
 }
 
@@ -322,21 +329,31 @@ function paintChrome() {
   const archive = $("archive-link");
   if (archive) archive.href = ARCHIVE_HREF;
   const winTitle = $("win-title");
-  if (winTitle) winTitle.textContent = GAME_NAME;
+  if (winTitle) winTitle.textContent = "Solved";
+  const help = $("btn-help");
   const hint = $("btn-hint");
   const check = $("btn-check");
   const share = $("btn-share");
+  if (help) help.innerHTML = iconSvg("chat-teardrop-text", { label: "How to play" });
   if (hint) hint.innerHTML = iconSvg("lightbulb", { label: "Reveal a cell" });
   if (check) check.innerHTML = iconSvg("check", { label: "Check the grid" });
   if (share) share.innerHTML = iconSvg("share", { label: "Share result" });
   const winShare = $("win-share");
-  if (winShare) winShare.innerHTML = `${iconSvg("share")} Copy result`;
+  if (winShare) winShare.textContent = "Share";
   paintThemeToggle();
   paintMeta();
 }
 
 function slotKey(house, attr) {
   return `${house}-${attr}`;
+}
+
+function prefersReducedMotion() {
+  try {
+    return Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+  } catch {
+    return false;
+  }
 }
 
 function popSlot(slot) {
@@ -346,15 +363,54 @@ function popSlot(slot) {
   slot.classList.add("is-pop");
 }
 
+function shakeSlot(slot) {
+  if (!slot) return;
+  slot.classList.remove("is-shake");
+  void slot.offsetWidth;
+  slot.classList.add("is-shake");
+}
+
 function setSlotVisual(slot, house, attr, typed, status) {
   const value = grid[house]?.[attr];
   const item = value ? itemById(attr, value) : null;
-  const meta = attrMeta(attr);
-  const mark = slot.querySelector(".slot-mark");
-  if (mark) mark.innerHTML = iconSvg(item?.icon || meta.icon);
   slot.classList.toggle("is-empty", !item);
   slot.classList.toggle("is-filled", Boolean(item));
   slot.classList.toggle("is-unknown", status === "unknown" && Boolean(String(typed || "").trim()));
+  if (status !== "match") slot.classList.remove("is-correct", "is-wrong", "is-flip", "is-win");
+  paintGhost(slot, typed, status);
+}
+
+function paintGhost(slot, typed, status) {
+  const ghost = slot.querySelector(".slot-ghost");
+  if (!ghost) return;
+  const house = Number(slot.dataset.house);
+  const attr = slot.dataset.attr;
+  const focusedHere = focused?.house === house && focused?.attr === attr;
+  const completion = bestTypedCompletion(puzzle.items[attr], typed);
+  const show = focusedHere && status !== "match" && completion.status === "partial" && completion.rest;
+  ghost.textContent = show ? completion.item.label : "";
+  slot.dataset.ghostItem = show ? completion.item.id : "";
+}
+
+function typedPrefixWidth(input) {
+  const style = window.getComputedStyle(input);
+  const canvas = typedPrefixWidth.canvas || (typedPrefixWidth.canvas = document.createElement("canvas"));
+  const ctx = canvas.getContext("2d");
+  ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+  return ctx.measureText(input.value).width;
+}
+
+function acceptCompletion(house, attr, item, input) {
+  if (!item) return;
+  placeItem(house, attr, item.id, { silent: true });
+  if (input) input.value = item.label;
+  const slot = input?.closest(".slot") || document.querySelector(`[data-slot="${slotKey(house, attr)}"]`);
+  if (slot) {
+    setSlotVisual(slot, house, attr, item.label, "match");
+    popSlot(slot);
+  }
+  syncOtherInputs(attr, house);
+  refreshCluesAndHouses();
 }
 
 function nextEmptySlot(house, attr) {
@@ -396,78 +452,6 @@ function clearItem(house, attr) {
   persist();
 }
 
-function suggestBox() {
-  return document.querySelector(".slot-suggest");
-}
-
-function paintSuggestions(house, attr, typed) {
-  const box = suggestBox();
-  if (!box) return;
-  const items = matchTypedItem(puzzle.items[attr], typed).suggestions;
-  box.replaceChildren();
-  if (focused?.house !== house || focused?.attr !== attr) {
-    box.hidden = true;
-    return;
-  }
-  box.hidden = false;
-  for (const item of items) {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "suggest-chip";
-    btn.textContent = item.label;
-    if (ruledOut[house]?.[attr]?.includes(item.id)) btn.classList.add("is-out");
-    if (grid.some((row, other) => other !== house && row?.[attr] === item.id)) btn.classList.add("is-used");
-    bindSuggest(btn, house, attr, item);
-    box.appendChild(btn);
-  }
-}
-
-function bindSuggest(btn, house, attr, item) {
-  let timer = 0;
-  let long = false;
-  const start = (event) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-    long = false;
-    timer = window.setTimeout(() => {
-      long = true;
-      haptic(20);
-      toggleRuledOut(house, attr, item.id);
-    }, LONG_PRESS_MS);
-  };
-  const end = (event) => {
-    window.clearTimeout(timer);
-    if (long) {
-      event.preventDefault();
-      return;
-    }
-    if (event.type === "pointerup") {
-      haptic();
-      placeItem(house, attr, item.id);
-      const input = document.querySelector(`input[data-slot="${slotKey(house, attr)}"]`);
-      if (input) {
-        input.value = item.label;
-        input.focus();
-      }
-    }
-  };
-  btn.addEventListener("pointerdown", start);
-  btn.addEventListener("pointerup", end);
-  btn.addEventListener("pointerleave", () => window.clearTimeout(timer));
-  btn.addEventListener("pointercancel", () => window.clearTimeout(timer));
-  btn.addEventListener("contextmenu", (event) => event.preventDefault());
-}
-
-function toggleRuledOut(house, attr, itemId) {
-  const list = ruledOut[house]?.[attr];
-  if (!list) return;
-  const index = list.indexOf(itemId);
-  if (index >= 0) list.splice(index, 1);
-  else list.push(itemId);
-  persist();
-  const input = document.querySelector(`input[data-slot="${slotKey(house, attr)}"]`);
-  paintSuggestions(house, attr, input?.value || "");
-}
-
 function handleTyped(house, attr, typed, input) {
   if (solved) return;
   ensureTimer();
@@ -486,9 +470,9 @@ function handleTyped(house, attr, typed, input) {
       clearItem(house, attr);
       refreshCluesAndHouses();
     }
+    if (result.status === "unknown" && String(typed || "").trim()) shakeSlot(slot);
   }
   if (slot) setSlotVisual(slot, house, attr, typed, result.status);
-  paintSuggestions(house, attr, typed);
 }
 
 function syncOtherInputs(attr, exceptHouse) {
@@ -518,6 +502,13 @@ function refreshCluesAndHouses() {
   }
 }
 
+function tryAcceptGhost(house, attr, input) {
+  const completion = bestTypedCompletion(puzzle.items[attr], input.value);
+  if (completion.status !== "partial" || !completion.item) return false;
+  acceptCompletion(house, attr, completion.item, input);
+  return true;
+}
+
 function makeSlot(house, attr) {
   const meta = attrMeta(attr);
   const value = grid[house]?.[attr] || "";
@@ -529,15 +520,15 @@ function makeSlot(house, attr) {
   slot.dataset.attr = attr;
   if (!item) slot.classList.add("is-empty");
   if (item) slot.classList.add("is-filled");
-  const mark = document.createElement("span");
-  mark.className = "slot-mark";
-  mark.innerHTML = iconSvg(item?.icon || meta.icon);
-  slot.appendChild(mark);
+  if (solved && item && puzzle.solution[house]?.[attr] === item.id) slot.classList.add("is-correct");
+  const ghost = document.createElement("span");
+  ghost.className = "slot-ghost";
+  ghost.setAttribute("aria-hidden", "true");
   const input = document.createElement("input");
   input.className = "slot-input";
   input.type = "text";
   input.value = item ? item.label : "";
-  input.placeholder = meta.label;
+  input.placeholder = "";
   input.dataset.slot = slotKey(house, attr);
   input.dataset.house = String(house);
   input.dataset.attr = attr;
@@ -547,33 +538,54 @@ function makeSlot(house, attr) {
   input.setAttribute("spellcheck", "false");
   input.setAttribute("autocomplete", "off");
   input.setAttribute("inputmode", "text");
-  input.setAttribute("enterkeyhint", "next");
-  input.setAttribute("list", `list-${attr}`);
+  input.setAttribute("enterkeyhint", "enter");
+  input.setAttribute("data-1p-ignore", "true");
+  input.setAttribute("data-lpignore", "true");
   if (solved) input.readOnly = true;
   input.addEventListener("focus", () => {
     focused = { house, attr };
-    paintSuggestions(house, attr, input.value);
+    setSlotVisual(slot, house, attr, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
   });
   input.addEventListener("blur", () => {
     window.setTimeout(() => {
       if (focused?.house === house && focused?.attr === attr) {
-        const box = suggestBox();
-        if (box && !box.contains(document.activeElement)) {
-          focused = null;
-          box.hidden = true;
-        }
+        focused = null;
+        setSlotVisual(slot, house, attr, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
       }
     }, 120);
   });
   input.addEventListener("input", () => handleTyped(house, attr, input.value, input));
+  input.addEventListener("pointerup", (event) => {
+    const completion = bestTypedCompletion(puzzle.items[attr], input.value);
+    if (completion.status !== "partial") return;
+    const style = window.getComputedStyle(input);
+    const pad = Number.parseFloat(style.paddingLeft) || 0;
+    if (event.offsetX > pad + typedPrefixWidth(input) + 2) {
+      event.preventDefault();
+      tryAcceptGhost(house, attr, input);
+    }
+  });
   input.addEventListener("keydown", (event) => {
+    const atEnd = input.selectionStart === input.value.length && input.selectionEnd === input.value.length;
+    const acceptKey =
+      event.key === "Tab" ||
+      event.key === "Enter" ||
+      (event.key === "ArrowRight" && atEnd);
+    if (acceptKey && tryAcceptGhost(house, attr, input)) {
+      event.preventDefault();
+      if (event.key === "Enter") {
+        const next = nextEmptySlot(house, attr);
+        if (next) document.querySelector(`input[data-slot="${slotKey(next.house, next.attr)}"]`)?.focus();
+      }
+      return;
+    }
     if (event.key !== "Enter") return;
     event.preventDefault();
     const next = nextEmptySlot(house, attr);
     if (!next) return;
     document.querySelector(`input[data-slot="${slotKey(next.house, next.attr)}"]`)?.focus();
   });
-  slot.appendChild(input);
+  slot.append(ghost, input);
   return slot;
 }
 
@@ -618,7 +630,8 @@ function paintBoard(opts = {}) {
     th.dataset.house = String(house);
     th.dataset.tone = String((house % 5) + 1);
     if (solved && completionOrder[house]) th.classList.add("is-complete");
-    th.innerHTML = `${iconSvg("house")} <span>House ${house + 1}</span>`;
+    th.textContent = String(house + 1);
+    th.setAttribute("aria-label", `House ${house + 1}`);
     headRow.appendChild(th);
   }
   thead.appendChild(headRow);
@@ -644,52 +657,32 @@ function paintBoard(opts = {}) {
     }
     tbody.appendChild(tr);
   }
+  table.appendChild(tbody);
+  gridWrap.appendChild(table);
 
-  const notesRow = document.createElement("tr");
-  notesRow.className = "notes-row";
-  const notesHead = document.createElement("th");
-  notesHead.scope = "row";
-  notesHead.className = "attr-head";
-  notesHead.textContent = "Notes";
-  notesRow.appendChild(notesHead);
+  const notesBlock = document.createElement("details");
+  notesBlock.className = "notes-block";
+  const notesSummary = document.createElement("summary");
+  notesSummary.textContent = "Notes";
+  notesBlock.appendChild(notesSummary);
+  const notesGrid = document.createElement("div");
+  notesGrid.className = "notes-grid";
+  notesGrid.style.gridTemplateColumns = `repeat(${puzzle.houseCount}, minmax(0, 1fr))`;
   for (let house = 0; house < puzzle.houseCount; house += 1) {
-    const td = document.createElement("td");
-    td.dataset.house = String(house);
     const note = document.createElement("textarea");
     note.className = "notes";
     note.rows = 1;
-    note.placeholder = "notes";
+    note.placeholder = `House ${house + 1}`;
     note.value = notes[house] || "";
     note.setAttribute("aria-label", `Notes for house ${house + 1}`);
     note.addEventListener("input", () => {
       notes[house] = note.value;
       persist();
     });
-    td.appendChild(note);
-    notesRow.appendChild(td);
+    notesGrid.appendChild(note);
   }
-  tbody.appendChild(notesRow);
-  table.appendChild(tbody);
-
-  const lists = document.createElement("div");
-  lists.hidden = true;
-  for (const attr of attributes()) {
-    const list = document.createElement("datalist");
-    list.id = `list-${attr}`;
-    for (const item of puzzle.items[attr] || []) {
-      const option = document.createElement("option");
-      option.value = item.label;
-      list.appendChild(option);
-    }
-    lists.appendChild(list);
-  }
-
-  const suggest = document.createElement("div");
-  suggest.className = "slot-suggest";
-  suggest.hidden = true;
-
-  gridWrap.append(table, lists, suggest);
-  play.appendChild(gridWrap);
+  notesBlock.appendChild(notesGrid);
+  notesBlock.addEventListener("toggle", () => fitPlayfield());
 
   const hintBlock = document.createElement("section");
   hintBlock.className = "hint-block";
@@ -727,8 +720,9 @@ function paintBoard(opts = {}) {
     clues.appendChild(row);
   });
   hintBlock.appendChild(clues);
-  play.appendChild(hintBlock);
+  play.append(hintBlock, gridWrap, notesBlock);
   board.appendChild(play);
+  fitPlayfield();
 
   if (keep) {
     const input = document.querySelector(`input[data-slot="${slotKey(keep.house, keep.attr)}"]`);
@@ -742,9 +736,62 @@ function paintBoard(opts = {}) {
         /* some input types */
       }
       focused = keep;
-      paintSuggestions(keep.house, keep.attr, input.value);
+      const slot = input.closest(".slot");
+      if (slot) {
+        setSlotVisual(slot, keep.house, keep.attr, input.value, matchTypedItem(puzzle.items[keep.attr], input.value).status);
+      }
     }
   }
+}
+
+export function fitPlayfield() {
+  const play = document.querySelector(".play");
+  if (!play || !puzzle) return;
+  const root = document.documentElement;
+  const mast = document.querySelector(".mast");
+  const footer = document.querySelector(".site-footer");
+  const availH = Math.max(
+    220,
+    (window.innerHeight || 720) -
+      (mast?.getBoundingClientRect().height || 0) -
+      (footer?.getBoundingClientRect().height || 0) -
+      16,
+  );
+  const wide = (window.innerWidth || 390) >= 640;
+  root.style.setProperty("--clue-cols", wide && puzzle.clues.length >= 6 ? "2" : "1");
+  const ua = typeof navigator !== "undefined" ? navigator.userAgent || "" : "";
+  const isIOS = /iPhone|iPad|iPod/i.test(ua);
+  const apply = (t) => {
+    const clueSize = 11 + t * 7;
+    const cluePad = 1 + t * 5;
+    const cellH = 30 + t * 28;
+    const gap = 4 + t * 12;
+    const inputSize = isIOS ? 16 : Math.max(16, 13 + t * 7);
+    root.style.setProperty("--clue-size", `${clueSize.toFixed(2)}px`);
+    root.style.setProperty("--clue-pad", `${cluePad.toFixed(2)}px`);
+    root.style.setProperty("--cell-h", `${cellH.toFixed(2)}px`);
+    root.style.setProperty("--play-gap", `${gap.toFixed(2)}px`);
+    root.style.setProperty("--input-size", `${inputSize.toFixed(2)}px`);
+    root.style.setProperty("--table-gap", `${(2 + t * 4).toFixed(2)}px`);
+  };
+  apply(1);
+  let lo = 0;
+  let hi = 1;
+  let best = 0;
+  for (let i = 0; i < 14; i += 1) {
+    const mid = (lo + hi) / 2;
+    apply(mid);
+    const height = play.scrollHeight || play.getBoundingClientRect().height;
+    if (height <= availH) {
+      best = mid;
+      lo = mid;
+    } else {
+      hi = mid;
+    }
+  }
+  apply(best);
+  const leftover = availH - (play.scrollHeight || play.getBoundingClientRect().height);
+  play.style.paddingBlock = leftover > 16 ? `${Math.min(leftover / 3, 56)}px` : "0px";
 }
 
 function useHint() {
@@ -761,43 +808,78 @@ function useHint() {
   showToast("One cell filled. Hint cost applied.");
 }
 
+function revealCheck() {
+  const slots = [...document.querySelectorAll(".slot[data-slot]")];
+  const reduced = prefersReducedMotion();
+  slots.forEach((slot, index) => {
+    const house = Number(slot.dataset.house);
+    const attr = slot.dataset.attr;
+    const ok = Boolean(grid[house]?.[attr] && grid[house][attr] === puzzle.solution[house]?.[attr]);
+    const apply = () => {
+      slot.classList.remove("is-correct", "is-wrong", "is-flip", "is-win");
+      void slot.offsetWidth;
+      slot.classList.add(ok ? "is-correct" : "is-wrong");
+      if (!reduced) slot.classList.add("is-flip");
+    };
+    if (reduced) apply();
+    else window.setTimeout(apply, index * 45);
+  });
+  return reduced ? 0 : slots.length * 45 + 420;
+}
+
+function bounceWinTiles() {
+  document.querySelectorAll(".slot.is-correct").forEach((slot, index) => {
+    slot.classList.remove("is-win");
+    void slot.offsetWidth;
+    slot.style.animationDelay = prefersReducedMotion() ? "0ms" : `${index * 40}ms`;
+    slot.classList.add("is-win");
+  });
+}
+
+function showWinModal() {
+  const streak = writeStreak();
+  const share = $("btn-share");
+  if (share) share.hidden = false;
+  const shareText = $("share-text");
+  if (shareText) shareText.textContent = shareBody();
+  const winLede = $("win-lede");
+  if (winLede) winLede.textContent = puzzle.question?.text || "";
+  const time = $("win-time");
+  const streakEl = $("win-streak");
+  const hintsEl = $("win-hints");
+  const scoreEl = $("win-score");
+  if (time) time.textContent = formatTime(elapsedMs);
+  if (streakEl) streakEl.textContent = String(streak);
+  if (hintsEl) hintsEl.textContent = String(hints);
+  if (scoreEl) scoreEl.textContent = String(scoreFor({ elapsedMs, mistakes, hints }));
+  const win = $("win");
+  if (win) win.hidden = false;
+  paintMeta();
+}
+
 function checkGrid() {
   ensureTimer();
   if (!placementComplete(grid, puzzle.houseCount, attributes())) {
+    document.querySelectorAll(".slot.is-empty").forEach(shakeSlot);
     showToast("Fill every slot first.");
     return;
   }
-  if (!gridMatchesSolution(grid, puzzle.solution)) {
-    mistakes += 1;
-    persist();
-    haptic(30);
-    showToast("Not yet. That combination is off.");
-    return;
-  }
-  finish();
-}
-
-function burstConfetti() {
-  const root = $("confetti");
-  if (!root) return;
-  root.hidden = false;
-  root.replaceChildren();
-  for (let i = 0; i < 56; i += 1) {
-    const bit = document.createElement("i");
-    bit.style.left = `${Math.random() * 100}%`;
-    bit.style.background = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
-    bit.style.animationDelay = `${Math.random() * 0.45}s`;
-    bit.style.animationDuration = `${1.4 + Math.random() * 0.9}s`;
-    bit.style.transform = `rotate(${Math.random() * 180}deg)`;
-    root.appendChild(bit);
-  }
+  const ok = gridMatchesSolution(grid, puzzle.solution);
+  const delay = revealCheck();
   window.setTimeout(() => {
-    root.hidden = true;
-    root.replaceChildren();
-  }, 2600);
+    if (!ok) {
+      mistakes += 1;
+      persist();
+      haptic(30);
+      document.querySelectorAll(".slot.is-wrong").forEach(shakeSlot);
+      showToast("Not yet. That combination is off.");
+      return;
+    }
+    finish({ revealed: true });
+  }, delay);
 }
 
-function finish() {
+function finish({ revealed = false } = {}) {
   if (!solved) {
     solved = true;
     elapsedMs = startedAt ? Date.now() - startedAt : elapsedMs;
@@ -812,23 +894,19 @@ function finish() {
         nextCompleteRank += 1;
       }
     }
-    writeStreak();
     persist();
-    burstConfetti();
   }
   focused = null;
-  const share = $("btn-share");
-  if (share) share.hidden = false;
-  const shareText = $("share-text");
-  if (shareText) shareText.textContent = shareBody();
-  const winLede = $("win-lede");
-  if (winLede) {
-    winLede.textContent = `Solved in ${formatTime(elapsedMs)} · ${hints} hint${hints === 1 ? "" : "s"} · ${scoreFor({ elapsedMs, mistakes, hints })} pts`;
+  const afterReveal = () => {
+    bounceWinTiles();
+    showWinModal();
+  };
+  if (revealed) {
+    afterReveal();
+    return;
   }
-  const win = $("win");
-  if (win) win.hidden = false;
-  paintMeta();
-  paintBoard();
+  const delay = revealCheck();
+  window.setTimeout(afterReveal, delay);
 }
 
 export async function loadPuzzle({ date, puzzle: given } = {}) {
@@ -859,6 +937,11 @@ export async function loadPuzzle({ date, puzzle: given } = {}) {
 function bind() {
   if (bound) return;
   bound = true;
+  window.addEventListener("resize", () => fitPlayfield());
+  $("btn-help")?.addEventListener("click", () => {
+    const howto = $("howto");
+    if (howto) howto.open = !howto.open;
+  });
   $("theme-toggle")?.addEventListener("click", () => {
     applyTheme(currentTheme() === "light" ? "dark" : "light");
   });

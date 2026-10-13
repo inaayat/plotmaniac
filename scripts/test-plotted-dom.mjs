@@ -81,7 +81,7 @@ window.localStorage.setItem(
   }),
 );
 
-const { boot, loadPuzzle } = await import("../plotted.js");
+const { boot, loadPuzzle, stopGameTimers } = await import("../plotted.js");
 
 function assertNoConsoleErrors(label) {
   assert.equal(errors.length, 0, `${label}: ${errors.join(" | ")}`);
@@ -141,8 +141,23 @@ assert.equal(document.querySelectorAll("input.slot-input").length, 25);
 assert.equal(document.querySelectorAll(".clue").length, 15);
 assert.match(document.getElementById("setup").textContent, /five houses/i);
 assert.equal(document.getElementById("game-question").textContent, "Who owns the fish?");
-assert.ok(document.querySelector(".play"), "two-pane play layout");
-assert.ok(document.querySelector(".hint-block"), "clue list present");
+const play = document.querySelector(".play");
+assert.ok(play, "play layout");
+assert.equal(play.firstElementChild?.className, "hint-block", "clues must sit above the grid");
+assert.ok(play.querySelector(".hint-block + .grid-wrap"), "grid follows clues");
+assert.equal(document.querySelectorAll("datalist").length, 0, "no native datalist");
+assert.equal(document.querySelectorAll(".slot-suggest").length, 0, "no suggestion dropdown");
+assert.equal(document.querySelector(".notes-block")?.open, false, "notes collapsed");
+
+const nat = document.querySelector('input[data-attr="nationality"]');
+assert.ok(nat, "nationality input");
+nat.focus();
+nat.value = "Nor";
+nat.dispatchEvent(new window.Event("input", { bubbles: true }));
+assert.match(nat.closest(".slot")?.querySelector(".slot-ghost")?.textContent || "", /norwegian/i);
+nat.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Tab", bubbles: true }));
+assert.equal(nat.value, "Norwegian");
+assertNoConsoleErrors("ghost completion");
 
 const generatedDates = ["2026-10-14", "2026-10-18", "2026-10-25"];
 for (const date of generatedDates) {
@@ -152,6 +167,7 @@ for (const date of generatedDates) {
   assertPuzzlePainted(puzzle, { expectSetup: Boolean(puzzle.setup) });
 }
 
+stopGameTimers();
 console.error = origError;
 console.warn = origWarn;
 window.close();

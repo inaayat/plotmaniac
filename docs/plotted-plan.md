@@ -22,9 +22,10 @@ A bite-size daily version of Einstein’s Riddle / the zebra puzzle (“who owns
 Each house has one **text input** per attribute. The player types the exact word (for example `Bo`, `fish`, `Brit`, `Pall Mall`). Matching is case-insensitive and trims whitespace; light autocomplete lists that attribute’s valid words; unknown text gets a gentle highlight so typos are obvious. Placing the same word in another house on that attribute clears the old slot.
 
 - Phosphor icons stay as **decorative** attribute / item markers, not as the placement UI. There is no bottom-sheet icon picker.
-- Optional **tiny free-text notes** on each house. Suggestion chips can be long-pressed to rule a word out for that slot.
-- **All clues are hints:** a compact numbered list, shown in full, wrapping so nothing is cut off. Sortable item words are **plain bold** in the normal ink color (no per-item, per-attribute, or per-house coloring in clues or inputs). Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
-- If the puzzle has a **setup** paragraph (Einstein day), it lives inside a collapsible **How to play** block, not above the clue list.
+- Optional **Notes** sit in a collapsed details block so they do not steal space on a phone.
+- As the player types, the best matching valid word appears as **ghost** text inside the same input. Tab, Enter, right-arrow, or tapping the ghost remainder accepts it. There is no dropdown or datalist.
+- **All clues are hints:** a compact numbered list **above** the grid. Sortable item words are **plain bold** in the normal ink color (no per-item, per-attribute, or per-house coloring in clues or inputs). Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
+- If the puzzle has a **setup** paragraph (Einstein day), it lives inside a collapsible **How to play** block.
 - One-line helper: each house has one owner; type the bold words; next door means a neighboring house.
 - **Hint** fills one empty cell with the correct item and costs score.
 - **Check** scores a mistake if the grid is full but wrong; it finishes the day if the grid matches the unique solution.
@@ -100,13 +101,12 @@ The real constraint is **freshness**:
 
 ## 6. Aesthetic
 
-Keep **Fraunces** titles and **IBM Plex Mono** UI. The skin is colorful, not the old gold-on-charcoal field notes.
+Keep **Fraunces** titles and **IBM Plex Mono** UI. The skin is Wordle-like: clean, bold, minimal, confident. No gradients.
 
-- **House palette:** coral `#ff6b6b`, teal `#12b5a8`, sunny yellow `#f4c430`, violet `#8b5cf6`, mint `#34d399`. Color stays on house column headers, chips, and accents — not on clue text or typed answers.
-- **Light:** flat warm paper `#fff6eb`, ink `#2a1f18`. No gradient or blurred color-blob background.
-- **Dark** is a matching plum-navy (`#1a1230`, ink `#f8f1ff`) with brighter house accents (`#ff8a7a`, `#2ee6d0`, `#ffd54a`, `#c4a0ff`, `#5eead4`) — not an invert of light mode.
-- Phosphor duotone icons are decorative. Chips and header buttons keep house colors. Clue numbers and bold words stay in normal ink so they cannot leak the solution.
-- Timer and streak sit in colorful chips. Slots bounce on place/remove. Solving bursts CSS confetti (no emoji). Typed cells do not pick up house-matching colors that would leak correctness before **Check**.
+- **Light:** flat warm paper `#fff6eb`, ink `#2a1f18`. **Dark:** plum-navy `#1a1230`, ink `#f8f1ff`.
+- Square-ish tiles with crisp 2px solid borders and even gaps. Entries are bold uppercase. Color is reserved for **Check** feedback: correct `#6aaa64`, wrong `#c94c4c`.
+- Simple centered header bar with a thin divider. Clue bold words stay in normal ink so they cannot leak the solution.
+- Micro-interactions: pop when a word is committed, tile shake on an invalid word, Wordle-style flip on **Check**, celebratory bounce plus a results modal (time, streak, hints, score, Share) on solve. Honor `prefers-reduced-motion`.
 - **Toggle** in the header; default is `prefers-color-scheme`; stored in `localStorage` (`plotted-theme`).
 
 ## 7. Icons
@@ -122,9 +122,9 @@ Build themes around what those sets actually contain (cat, dog, coffee, wine, de
 
 ## 8. Mobile-first
 
-- Compact header (title, theme, reveal/check as icon buttons), **question prominent**, then a **compact table** (houses as columns, attributes as rows) and the full hint list.
-- Mobile-first portrait: 16px inputs (no zoom-on-focus), `autocapitalize=none`. Narrow screens: table on top, dense clue list below. Wide laptop (~1280×720): two columns — table on one side, two-column numbered clues on the other — so all Einstein slots and 15 clues fit without scrolling. No horizontal clue carousel.
-- Desktop: centered column up to ~1180px; header, grid, and clues share that column.
+- Compact centered header (title, reveal/check as icon buttons), **question prominent**, then **all clues above** a compact table (houses as columns, attributes as rows).
+- Dynamic sizing (`clamp` / a fit-to-viewport step) so clues plus the grid fill one screen on phones, tablets, and laptops, scaling up on a large display instead of hugging the top. Centered column ~720–900px.
+- Mobile-first portrait: 16px inputs (no zoom-on-focus), `autocapitalize=none`. Ghost completion stays inside the tile. No horizontal clue carousel.
 - Haptic feedback via `navigator.vibrate` where the OS allows it.
 - Installable **PWA** (`manifest.webmanifest` + `sw.js`) that can reload the shell and the day’s JSON offline after the first fetch.
 - Lightweight: static files, no bundler.

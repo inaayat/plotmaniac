@@ -20,6 +20,7 @@ import {
   highlightItemWordsHtml,
   houseIsCompleteAndCorrect,
   livesSubjectIsBareObject,
+  bestTypedCompletion,
   matchTypedItem,
   puzzleNumber,
   specForDate,
@@ -192,18 +193,17 @@ assert.match(html, /id="howto"/);
 assert.match(html, /id="setup"/);
 assert.match(html, /How to play/);
 assert.match(html, /import \{ boot \}/);
-assert.match(html, /id="confetti"/);
+assert.match(html, /id="btn-help"/);
+assert.match(html, /win-stats/);
+assert.doesNotMatch(html, /id="confetti"/);
 assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const css = read("plotted.css");
 assert.match(css, /--bg: #1a1230/);
 assert.match(css, /--bg: #fff6eb/);
-assert.match(css, /--house-1: #ff6b6b/);
-assert.match(css, /--house-2: #12b5a8/);
-assert.match(css, /--house-3: #f4c430/);
-assert.match(css, /--house-4: #8b5cf6/);
-assert.match(css, /--house-5: #34d399/);
+assert.match(css, /--correct: #6aaa64/);
+assert.match(css, /--wrong: #c94c4c/);
 assert.match(css, /IBM Plex Mono/);
 assert.match(css, /Fraunces/);
 assert.match(css, /html\[data-theme="light"\]/);
@@ -213,9 +213,12 @@ assert.match(css, /100dvh/);
 assert.match(css, /\.hint-block/);
 assert.match(css, /\.clue-num/);
 assert.match(css, /\.slot-input/);
+assert.match(css, /\.slot-ghost/);
 assert.match(css, /\.grid-table/);
-assert.match(css, /\.confetti/);
 assert.match(css, /@keyframes pop/);
+assert.match(css, /@keyframes flip/);
+assert.match(css, /@keyframes shake/);
+assert.match(css, /prefers-reduced-motion/);
 assert.match(css, /\.clue-text strong[\s\S]*color:\s*inherit/);
 assert.doesNotMatch(css, /scroll-snap/);
 assert.doesNotMatch(css, /\.sheet-panel/);
@@ -224,7 +227,7 @@ assert.doesNotMatch(css, /body::before/);
 assert.doesNotMatch(css, /radial-gradient/);
 assert.doesNotMatch(css, /\.clue:nth-child[^{]*strong/);
 assert.doesNotMatch(css, /\.slot\.is-match/);
-assert.doesNotMatch(css, /\.question strong[\s\S]{0,80}house-1/);
+assert.doesNotMatch(css, /grid-template-columns: minmax\(0, 1\.15fr\)/);
 
 const app = read("plotted.js");
 assert.match(app, /GAME_NAME/);
@@ -232,7 +235,10 @@ assert.match(app, /formatShare/);
 assert.match(app, /matchTypedItem/);
 assert.match(app, /highlightItemWordsHtml/);
 assert.match(app, /autocapitalize/);
-assert.match(app, /burstConfetti/);
+assert.match(app, /bestTypedCompletion/);
+assert.match(app, /fitPlayfield/);
+assert.match(app, /revealCheck/);
+assert.match(app, /slot-ghost/);
 assert.match(app, /navigator.clipboard/);
 assert.match(app, /navigator.share/);
 assert.match(app, /serviceWorker/);
@@ -240,6 +246,7 @@ assert.match(app, /Hints/);
 assert.match(app, /puzzle\.setup/);
 assert.match(app, /progressFitsPuzzle/);
 assert.match(app, /grid-table/);
+assert.doesNotMatch(app, /datalist/);
 assert.doesNotMatch(app, /openSheet/);
 assert.doesNotMatch(app, /Tap a slot/);
 assert.doesNotMatch(app, /[\u{1F300}-\u{1FAFF}]/u);
@@ -261,6 +268,8 @@ assert.match(plan, /Einstein/);
 assert.match(plan, /types the exact word/);
 assert.match(plan, /How to play/);
 assert.match(plan, /plain bold/);
+assert.match(plan, /Wordle/);
+assert.match(plan, /ghost/);
 assert.doesNotMatch(plan, /swipeable/);
 assert.doesNotMatch(plan, /share-card|share card/i);
 assert.doesNotMatch(plan, /tinted blob|soft grid background/);
@@ -311,6 +320,14 @@ assert.equal(matchTypedItem(einstein.items.cigar, "blend").item.id, "blends");
 assert.equal(matchTypedItem(einstein.items.cigar, "pall mall").item.id, "pall-mall");
 assert.equal(matchTypedItem(einstein.items.nationality, "GERMAN").item.id, "german");
 assert.equal(matchTypedItem(einstein.items.color, "purple").status, "unknown");
+const nor = bestTypedCompletion(einstein.items.nationality, "Nor");
+assert.equal(nor.status, "partial");
+assert.equal(nor.item.id, "norwegian");
+assert.equal(nor.rest, "wegian");
+assert.equal(bestTypedCompletion(einstein.items.nationality, "Norwegian").status, "match");
+assert.equal(bestTypedCompletion(einstein.items.nationality, "xyz").status, "unknown");
+assert.equal(bestTypedCompletion(einstein.items.cigar, "Pall").rest, " Mall");
+assert.equal(bestTypedCompletion(einstein.items.cigar, "Blue").item.id, "bluemaster");
 assert.match(
   highlightItemWordsHtml("The man who smokes blend has a neighbor who drinks water", flattenItems(einstein.items)),
   /<strong>blend<\/strong>/,

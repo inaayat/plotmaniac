@@ -45,7 +45,7 @@
     <div class="shell">
       <header class="mast">
         <div class="mast-bar">
-          <p class="eyebrow" id="game-eyebrow">Daily logic grid</p>
+          <button type="button" class="icon-btn" id="btn-help" aria-label="How to play"></button>
           <h1 id="game-title">Plotted</h1>
           <div class="mast-tools">
             <button type="button" class="icon-btn" id="btn-hint" aria-label="Reveal a cell"></button>
@@ -54,6 +54,7 @@
             <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle color theme"></button>
           </div>
         </div>
+        <p class="eyebrow" id="game-eyebrow">Daily logic grid</p>
         <p class="question" id="game-question"></p>
         <p class="lede" id="game-lede"></p>
         <details class="howto" id="howto">
@@ -62,9 +63,11 @@
           <p class="setup" id="setup"></p>
         </details>
         <p class="meta">
-          <span class="chip chip-date" id="meta-date"></span>
-          <span class="chip chip-timer" id="meta-timer"></span>
-          <span class="chip chip-streak" id="meta-streak"></span>
+          <span id="meta-date"></span>
+          <span aria-hidden="true">·</span>
+          <span id="meta-timer"></span>
+          <span aria-hidden="true">·</span>
+          <span id="meta-streak"></span>
         </p>
       </header>
       <main class="board" id="board">
@@ -75,15 +78,20 @@
       </footer>
     </div>
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-    <div class="confetti" id="confetti" hidden></div>
     <div class="win" id="win" hidden>
-      <div class="win-card">
-        <h2 id="win-title">Plotted</h2>
-        <p class="lede" id="win-lede"></p>
-        <pre id="share-text"></pre>
+      <div class="win-card" role="dialog" aria-labelledby="win-title" aria-modal="true">
+        <h2 id="win-title">Solved</h2>
+        <p class="win-question" id="win-lede"></p>
+        <ul class="win-stats">
+          <li><strong id="win-time"></strong><span>Time</span></li>
+          <li><strong id="win-streak"></strong><span>Streak</span></li>
+          <li><strong id="win-hints"></strong><span>Hints</span></li>
+          <li><strong id="win-score"></strong><span>Score</span></li>
+        </ul>
+        <pre id="share-text" hidden></pre>
         <div class="actions">
-          <button type="button" id="win-share">Copy result</button>
-          <button type="button" id="win-close">Keep looking</button>
+          <button type="button" id="win-share">Share</button>
+          <button type="button" id="win-close" class="ghost">Close</button>
         </div>
       </div>
     </div>

@@ -629,6 +629,66 @@ export function matchTypedItem(items, value) {
   return { status: "unknown", item: null, suggestions: [] };
 }
 
+export function completionRest(label, typed) {
+  const body = String(typed || "").replace(/^\s+/, "");
+  if (!label || !body) return "";
+  const lowerLabel = label.toLowerCase();
+  const lowerBody = body.toLowerCase();
+  if (lowerLabel.startsWith(lowerBody)) return label.slice(body.length);
+  const compactT = compactGuess(body);
+  if (!compactT) return "";
+  let consumed = 0;
+  let index = 0;
+  while (index < label.length && consumed < compactT.length) {
+    const ch = label[index];
+    if (/[\s'-]/.test(ch)) {
+      index += 1;
+      continue;
+    }
+    if (ch.toLowerCase() === compactT[consumed]) {
+      consumed += 1;
+      index += 1;
+      continue;
+    }
+    return "";
+  }
+  return consumed === compactT.length ? label.slice(index) : "";
+}
+
+export function bestTypedCompletion(items, value) {
+  const list = items || [];
+  const raw = String(value || "");
+  const needle = normalizeGuess(raw);
+  if (!needle) return { status: "empty", item: null, rest: "" };
+  const compact = compactGuess(needle);
+  const exact = list.find((item) => {
+    const needles = itemNeedles(item);
+    return needles.includes(needle) || needles.map(compactGuess).includes(compact);
+  });
+  if (exact) return { status: "match", item: exact, rest: "" };
+  const ranked = [];
+  for (const item of list) {
+    const sources = [item.label, item.id, ...(item.aliases || [])].filter(Boolean);
+    const hit = sources.some((source) => {
+      const n = normalizeGuess(source);
+      return n.startsWith(needle) || compactGuess(n).startsWith(compact);
+    });
+    if (!hit) continue;
+    const rest = completionRest(item.label, raw);
+    ranked.push({ item, rest, len: item.label.length });
+  }
+  if (!ranked.length) return { status: "unknown", item: null, rest: "" };
+  ranked.sort((a, b) => {
+    const aPrefix = a.item.label.toLowerCase().startsWith(needle) ? 0 : 1;
+    const bPrefix = b.item.label.toLowerCase().startsWith(needle) ? 0 : 1;
+    if (aPrefix !== bPrefix) return aPrefix - bPrefix;
+    if (a.len !== b.len) return a.len - b.len;
+    return a.item.label.localeCompare(b.item.label);
+  });
+  const best = ranked[0];
+  return { status: "partial", item: best.item, rest: best.rest };
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")

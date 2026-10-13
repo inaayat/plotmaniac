@@ -21,7 +21,7 @@ The older Plotmaniac field guide is archived (not deleted) under `archive/`: `ar
 | `archive/engine.js` | Shared plot engine |
 | `archive/data/plots.json` | Plot registry |
 | `scripts/test-plotted.mjs` | Solver, share text, icon, archive-path checks |
-| `scripts/test-plotted-dom.mjs` | happy-dom: index.html paints Einstein + generated days |
+| `scripts/test-plotted-dom.mjs` | happy-dom: index.html paints Einstein + generated days, ghost completion |
 | `scripts/generate-plotted.mjs` | Precompute a year of JSON |
 | `scripts/test-never-ending-internet-lore.mjs` | Plotmaniac archive / UI regression checks |
 
