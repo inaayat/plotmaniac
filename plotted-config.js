@@ -12,6 +12,16 @@ export const THEME_STORAGE_KEY = "plotted-theme";
 export const STREAK_STORAGE_KEY = "plotted-streak";
 export const NOTES_STORAGE_KEY = "plotted-notes";
 export const PROGRESS_STORAGE_KEY = "plotted-progress";
+export const PRACTICE_PROGRESS_KEY = "plotted-practice";
+export const PRACTICE_NOTES_KEY = "plotted-practice-notes";
+
+export const PRACTICE_PUZZLES = [
+  { id: "easy", label: "Easy" },
+  { id: "easy-medium", label: "Easy–medium" },
+  { id: "medium", label: "Medium" },
+  { id: "medium-hard", label: "Medium–hard" },
+  { id: "hard", label: "Hard" },
+];
 
 export const ARCHIVE_HREF = "./archive/";
 

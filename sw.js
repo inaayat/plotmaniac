@@ -1,10 +1,11 @@
-const CACHE = "plotted-v10";
+const CACHE = "plotted-v11";
 const SHELL = [
   "./",
   "./index.html",
   "./plotted.css",
   "./plotted.js",
   "./plotted-engine.js",
+  "./plotted-human-solver.js",
   "./plotted-config.js",
   "./plotted-icons.js",
   "./plotted-themes.js",

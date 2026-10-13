@@ -30,7 +30,6 @@
   --footer-h: 2rem;
   --notes-paper: #241832;
   --notes-border: #c4a07a;
-  --notes-rule: color-mix(in srgb, var(--ink) 14%, transparent);
   --notes-shadow: 0 8px 20px color-mix(in srgb, #000 32%, transparent);
 }
 
@@ -50,7 +49,6 @@ html[data-theme="light"] {
   --unknown: #b57a12;
   --notes-paper: #fffaf3;
   --notes-border: #d2a57a;
-  --notes-rule: color-mix(in srgb, var(--ink) 12%, transparent);
   --notes-shadow: 0 8px 18px color-mix(in srgb, #2a1f18 12%, transparent);
 }
 
@@ -256,6 +254,33 @@ h1 {
   vertical-align: -2px;
 }
 
+.practice-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 0 8px;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.practice-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2px;
+}
+
+.practice-nav a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 .actions {
   display: flex;
   justify-content: center;
@@ -277,7 +302,8 @@ h1 {
 }
 
 .actions button.ghost,
-.actions #win-close {
+.actions #win-close,
+.actions #start-over-cancel {
   background: transparent;
   color: var(--ink);
 }
@@ -518,14 +544,7 @@ h1 {
   width: 100%;
   min-height: 12rem;
   resize: none;
-  background-color: var(--notes-paper);
-  background-image: repeating-linear-gradient(
-    var(--notes-paper) 0,
-    var(--notes-paper) calc(1.5em - 1px),
-    var(--notes-rule) calc(1.5em - 1px),
-    var(--notes-rule) 1.5em
-  );
-  background-attachment: local;
+  background: var(--notes-paper);
   border: 2px solid var(--notes-border);
   border-radius: 18px;
   box-shadow: var(--notes-shadow);

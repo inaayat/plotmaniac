@@ -1,5 +1,6 @@
 import { GAME_NAME, HOUSE_EMOJI, KEYCAP_DIGITS, LAUNCH_DATE, SITE_URL } from "./plotted-config.js";
 import { ATTRIBUTES, HOLIDAY_THEME_BY_MD, THEMES, rolesForTheme, themeById } from "./plotted-themes.js";
+import { humanDifficulty, solveByHuman } from "./plotted-human-solver.js";
 
 export function hashString(value) {
   let hash = 2166136261;
@@ -793,9 +794,12 @@ export function generatePuzzle(iso, options = {}) {
   const holidayId = spec.holidayTheme;
   const themePool = holidayId ? [themeById(holidayId), ...THEMES] : THEMES;
   const maxTries = options.maxTries || (spec.houseCount >= 5 ? 180 : 80);
+  const requireHuman = options.requireHuman !== false;
 
   for (let attempt = 0; attempt < maxTries; attempt += 1) {
-    const theme = themePool[Math.floor(rng() * (holidayId && attempt === 0 ? 1 : themePool.length))];
+    const theme =
+      (options.themeId && themeById(options.themeId)) ||
+      themePool[Math.floor(rng() * (holidayId && attempt === 0 ? 1 : themePool.length))];
     const houseCount = spec.houseCount;
     const attributes = theme.attributes;
     const chosen = {};
@@ -852,16 +856,35 @@ export function generatePuzzle(iso, options = {}) {
       if (clues.length >= spec.minClues && clues.length <= 10) pruned = clues.slice(0, Math.min(8, clues.length));
       else if (!late) continue;
     }
-    if (pruned.length > 8 || pruned.length < 5) continue;
+    const minClues = spec.minClues || 5;
+    const maxClues = spec.maxClues || 8;
+    if (pruned.length > maxClues || pruned.length < minClues) continue;
     const rated = countSolutions(houseCount, attributes, items, pruned, 2);
     if (rated.count !== 1) continue;
-    const steps = rated.neededSearch ? rated.steps + 10 : rated.steps;
-    if (!late && steps < spec.minSteps) continue;
-    if (!late && steps > spec.maxSteps) continue;
+    const numbered = pruned.map((clue, index) => ({ id: `c${index + 1}`, ...clue }));
+    const human = requireHuman
+      ? solveByHuman(houseCount, attributes, items, numbered, { maxContradiction: spec.maxContradiction ?? 2 })
+      : { solvedByHuman: true, steps: [], hardest: "direct", hardestTier: 1, score: rated.steps };
+    if (requireHuman && !human.solvedByHuman) {
+      const fallback = solveByHuman(houseCount, attributes, items, clues.map((clue, index) => ({ id: `c${index + 1}`, ...clue })), {
+        maxContradiction: spec.maxContradiction ?? 2,
+      });
+      if (!fallback.solvedByHuman || clues.length > 8 || clues.length < 5) continue;
+      pruned = clues;
+      numbered.splice(0, numbered.length, ...pruned.map((clue, index) => ({ id: `c${index + 1}`, ...clue })));
+      Object.assign(human, fallback);
+    }
+    const humanInfo = humanDifficulty(human);
+    const steps = humanInfo.solvedByHuman ? humanInfo.steps : rated.neededSearch ? rated.steps + 10 : rated.steps;
+    if (!late && spec.minHumanSteps && steps < spec.minHumanSteps) continue;
+    if (!late && spec.maxHumanSteps && steps > spec.maxHumanSteps) continue;
+    if (!late && spec.maxHumanTier && humanInfo.hardestTier > spec.maxHumanTier) continue;
+    if (!late && !humanInfo.solvedByHuman) continue;
+    if (!late && steps < spec.minSteps && !humanInfo.solvedByHuman) continue;
+    if (!late && steps > spec.maxSteps && !requireHuman) continue;
     const pattern = `${houseCount}:${theme.id}:${cluePattern(pruned)}`;
     const catalog = itemCatalog(theme, attributes, chosen);
-    const numbered = pruned.map((clue, index) => ({
-      id: `c${index + 1}`,
+    const withText = numbered.map((clue) => ({
       ...clue,
       text: clueText(clue, catalog, theme.id),
     }));
@@ -879,14 +902,18 @@ export function generatePuzzle(iso, options = {}) {
       houseCount,
       attributes: attributes.map((id) => ({ id, label: ATTRIBUTES[id]?.label || id })),
       items: catalog,
-      clues: numbered,
+      clues: withText,
       question: buildQuestion(theme, solution, catalog, rng),
       solution,
       difficulty: {
-        label: spec.label,
+        label: humanInfo.label || spec.label,
         steps,
         neededSearch: Boolean(rated.neededSearch),
         weekday: weekdayUtc(iso),
+        solvedByHuman: Boolean(humanInfo.solvedByHuman),
+        hardest: humanInfo.hardest,
+        hardestTier: humanInfo.hardestTier,
+        score: humanInfo.score,
       },
     };
   }
@@ -941,6 +968,7 @@ export function firstHintCell(grid, solution, attributes) {
 export function formatShare({
   gameName = GAME_NAME,
   number,
+  heading,
   houseCount,
   completionOrder,
   elapsedMs,
@@ -948,13 +976,8 @@ export function formatShare({
 } = {}) {
   const houses = HOUSE_EMOJI.repeat(houseCount);
   const order = (completionOrder || []).map((rank) => KEYCAP_DIGITS[rank - 1] || "?").join("");
-  return [
-    `${gameName} #${number}`,
-    houses,
-    order,
-    `Solved in ${formatTime(elapsedMs)}`,
-    siteUrl,
-  ].join("\n");
+  const title = heading || `${gameName} #${number}`;
+  return [title, houses, order, `Solved in ${formatTime(elapsedMs)}`, siteUrl].join("\n");
 }
 
 export function scoreFor({ elapsedMs, mistakes, hints }) {
