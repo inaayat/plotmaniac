@@ -2,6 +2,7 @@ import {
   ARCHIVE_HREF,
   GAME_NAME,
   GAME_TAGLINE,
+  NOTES_STORAGE_KEY,
   PROGRESS_STORAGE_KEY,
   STREAK_STORAGE_KEY,
   THEME_STORAGE_KEY,
@@ -30,7 +31,7 @@ const $ = (id) => document.getElementById(id);
 
 let puzzle = null;
 let grid = [];
-let notes = [];
+let notes = "";
 let ruledOut = [];
 let focused = null;
 let crossed = new Set();
@@ -124,6 +125,38 @@ function storageKey() {
   return `${PROGRESS_STORAGE_KEY}:${puzzle.date}`;
 }
 
+function notesStorageKey() {
+  return `${NOTES_STORAGE_KEY}:${puzzle.date}`;
+}
+
+function isWidePlay() {
+  return (window.innerWidth || 390) >= 640;
+}
+
+export function normalizeNotes(value) {
+  if (typeof value === "string") return value;
+  if (Array.isArray(value)) return value.map((entry) => (entry == null ? "" : String(entry))).join("\n");
+  return "";
+}
+
+function readStoredNotes(progressNotes) {
+  try {
+    const raw = localStorage.getItem(notesStorageKey());
+    if (raw != null) return raw;
+  } catch {
+    /* private mode */
+  }
+  return normalizeNotes(progressNotes);
+}
+
+function persistNotes() {
+  try {
+    localStorage.setItem(notesStorageKey(), notes);
+  } catch {
+    /* private mode */
+  }
+}
+
 export function progressFitsPuzzle(data, puz = puzzle) {
   if (!data || !Array.isArray(data.grid) || data.grid.length !== puz.houseCount) return false;
   const attrs = puz.attributes.map((entry) => entry.id);
@@ -133,6 +166,7 @@ export function progressFitsPuzzle(data, puz = puzzle) {
 }
 
 function persist() {
+  persistNotes();
   try {
     localStorage.setItem(
       storageKey(),
@@ -161,7 +195,7 @@ function resetPlayState() {
     timerId = 0;
   }
   grid = emptyGrid();
-  notes = Array.from({ length: puzzle.houseCount }, () => "");
+  notes = "";
   ruledOut = emptyRuled();
   crossed = new Set();
   startedAt = 0;
@@ -182,31 +216,34 @@ export function stopGameTimers() {
 }
 
 function restore() {
+  let progressNotes;
   try {
     const raw = localStorage.getItem(storageKey());
-    if (!raw) return;
-    const data = JSON.parse(raw);
-    if (!progressFitsPuzzle(data)) return;
-    grid = data.grid;
-    notes = Array.isArray(data.notes) && data.notes.length === puzzle.houseCount
-      ? data.notes
-      : Array.from({ length: puzzle.houseCount }, () => "");
-    ruledOut = Array.isArray(data.ruledOut) && data.ruledOut.length === puzzle.houseCount
-      ? data.ruledOut
-      : emptyRuled();
-    crossed = new Set(data.crossed || []);
-    startedAt = data.startedAt || 0;
-    elapsedMs = data.elapsedMs || 0;
-    mistakes = data.mistakes || 0;
-    hints = data.hints || 0;
-    completionOrder = Array.isArray(data.completionOrder) && data.completionOrder.length === puzzle.houseCount
-      ? data.completionOrder
-      : Array(puzzle.houseCount).fill(0);
-    nextCompleteRank = data.nextCompleteRank || 1;
-    solved = Boolean(data.solved);
+    if (raw) {
+      const data = JSON.parse(raw);
+      if (progressFitsPuzzle(data)) {
+        grid = data.grid;
+        progressNotes = data.notes;
+        ruledOut = Array.isArray(data.ruledOut) && data.ruledOut.length === puzzle.houseCount
+          ? data.ruledOut
+          : emptyRuled();
+        crossed = new Set(data.crossed || []);
+        startedAt = data.startedAt || 0;
+        elapsedMs = data.elapsedMs || 0;
+        mistakes = data.mistakes || 0;
+        hints = data.hints || 0;
+        completionOrder = Array.isArray(data.completionOrder) && data.completionOrder.length === puzzle.houseCount
+          ? data.completionOrder
+          : Array(puzzle.houseCount).fill(0);
+        nextCompleteRank = data.nextCompleteRank || 1;
+        solved = Boolean(data.solved);
+      }
+    }
   } catch {
     resetPlayState();
   }
+  notes = readStoredNotes(progressNotes);
+  persistNotes();
 }
 
 function readStreak() {
@@ -660,29 +697,28 @@ function paintBoard(opts = {}) {
   table.appendChild(tbody);
   gridWrap.appendChild(table);
 
-  const notesBlock = document.createElement("details");
-  notesBlock.className = "notes-block";
-  const notesSummary = document.createElement("summary");
-  notesSummary.textContent = "Notes";
-  notesBlock.appendChild(notesSummary);
-  const notesGrid = document.createElement("div");
-  notesGrid.className = "notes-grid";
-  notesGrid.style.gridTemplateColumns = `repeat(${puzzle.houseCount}, minmax(0, 1fr))`;
-  for (let house = 0; house < puzzle.houseCount; house += 1) {
-    const note = document.createElement("textarea");
-    note.className = "notes";
-    note.rows = 1;
-    note.placeholder = `House ${house + 1}`;
-    note.value = notes[house] || "";
-    note.setAttribute("aria-label", `Notes for house ${house + 1}`);
-    note.addEventListener("input", () => {
-      notes[house] = note.value;
-      persist();
-    });
-    notesGrid.appendChild(note);
-  }
-  notesBlock.appendChild(notesGrid);
-  notesBlock.addEventListener("toggle", () => fitPlayfield());
+  const notesPanel = document.createElement("details");
+  notesPanel.className = "notes-panel";
+  notesPanel.open = isWidePlay();
+  const notesToggle = document.createElement("summary");
+  notesToggle.className = "notes-toggle";
+  notesToggle.textContent = "Notes";
+  const note = document.createElement("textarea");
+  note.className = "notes";
+  note.placeholder = "Scratchpad";
+  note.setAttribute("aria-label", "Notes");
+  note.autocomplete = "off";
+  note.spellcheck = true;
+  note.value = notes;
+  note.addEventListener("input", () => {
+    notes = note.value;
+    persist();
+  });
+  notesPanel.append(notesToggle, note);
+  notesPanel.addEventListener("toggle", () => {
+    if (isWidePlay()) notesPanel.open = true;
+    fitPlayfield();
+  });
 
   const hintBlock = document.createElement("section");
   hintBlock.className = "hint-block";
@@ -720,7 +756,10 @@ function paintBoard(opts = {}) {
     clues.appendChild(row);
   });
   hintBlock.appendChild(clues);
-  play.append(hintBlock, gridWrap, notesBlock);
+  const puzzleCol = document.createElement("div");
+  puzzleCol.className = "puzzle-col";
+  puzzleCol.append(hintBlock, gridWrap);
+  play.append(notesPanel, puzzleCol);
   board.appendChild(play);
   fitPlayfield();
 
@@ -750,6 +789,8 @@ export function fitPlayfield() {
   const root = document.documentElement;
   const mast = document.querySelector(".mast");
   const footer = document.querySelector(".site-footer");
+  const notesPanel = play.querySelector(".notes-panel");
+  const puzzleCol = play.querySelector(".puzzle-col");
   const availH = Math.max(
     220,
     (window.innerHeight || 720) -
@@ -757,7 +798,16 @@ export function fitPlayfield() {
       (footer?.getBoundingClientRect().height || 0) -
       16,
   );
-  const wide = (window.innerWidth || 390) >= 640;
+  const wide = isWidePlay();
+  if (notesPanel) {
+    if (wide) {
+      notesPanel.open = true;
+      notesPanel.dataset.desktop = "1";
+    } else if (notesPanel.dataset.desktop === "1") {
+      notesPanel.open = false;
+      notesPanel.dataset.desktop = "";
+    }
+  }
   root.style.setProperty("--clue-cols", wide && puzzle.clues.length >= 6 ? "2" : "1");
   const ua = typeof navigator !== "undefined" ? navigator.userAgent || "" : "";
   const isIOS = /iPhone|iPad|iPod/i.test(ua);
@@ -767,21 +817,26 @@ export function fitPlayfield() {
     const cellH = 30 + t * 28;
     const gap = 4 + t * 12;
     const inputSize = isIOS ? 16 : Math.max(16, 13 + t * 7);
+    const notesSize = isIOS ? 16 : Math.max(16, 13 + t * 4);
     root.style.setProperty("--clue-size", `${clueSize.toFixed(2)}px`);
     root.style.setProperty("--clue-pad", `${cluePad.toFixed(2)}px`);
     root.style.setProperty("--cell-h", `${cellH.toFixed(2)}px`);
     root.style.setProperty("--play-gap", `${gap.toFixed(2)}px`);
     root.style.setProperty("--input-size", `${inputSize.toFixed(2)}px`);
+    root.style.setProperty("--notes-size", `${notesSize.toFixed(2)}px`);
     root.style.setProperty("--table-gap", `${(2 + t * 4).toFixed(2)}px`);
   };
+  play.style.height = "auto";
+  play.style.paddingBlock = "0px";
   apply(1);
   let lo = 0;
   let hi = 1;
   let best = 0;
+  const measureEl = wide ? play : puzzleCol || play;
   for (let i = 0; i < 14; i += 1) {
     const mid = (lo + hi) / 2;
     apply(mid);
-    const height = play.scrollHeight || play.getBoundingClientRect().height;
+    const height = measureEl.scrollHeight || measureEl.getBoundingClientRect().height;
     if (height <= availH) {
       best = mid;
       lo = mid;
@@ -790,8 +845,13 @@ export function fitPlayfield() {
     }
   }
   apply(best);
-  const leftover = availH - (play.scrollHeight || play.getBoundingClientRect().height);
-  play.style.paddingBlock = leftover > 16 ? `${Math.min(leftover / 3, 56)}px` : "0px";
+  if (wide) {
+    play.style.height = `${availH}px`;
+    play.style.paddingBlock = "0px";
+  } else {
+    const leftover = availH - (measureEl.scrollHeight || measureEl.getBoundingClientRect().height);
+    play.style.paddingBlock = leftover > 16 ? `${Math.min(leftover / 3, 56)}px` : "0px";
+  }
 }
 
 function useHint() {

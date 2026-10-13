@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { Window } from "happy-dom";
-import { PROGRESS_STORAGE_KEY } from "../plotted-config.js";
+import { NOTES_STORAGE_KEY, PROGRESS_STORAGE_KEY } from "../plotted-config.js";
 import { EINSTEIN_SETUP } from "../plotted-engine.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -81,7 +81,7 @@ window.localStorage.setItem(
   }),
 );
 
-const { boot, loadPuzzle, stopGameTimers } = await import("../plotted.js");
+const { boot, fitPlayfield, loadPuzzle, stopGameTimers } = await import("../plotted.js");
 
 function assertNoConsoleErrors(label) {
   assert.equal(errors.length, 0, `${label}: ${errors.join(" | ")}`);
@@ -143,11 +143,32 @@ assert.match(document.getElementById("setup").textContent, /five houses/i);
 assert.equal(document.getElementById("game-question").textContent, "Who owns the fish?");
 const play = document.querySelector(".play");
 assert.ok(play, "play layout");
-assert.equal(play.firstElementChild?.className, "hint-block", "clues must sit above the grid");
-assert.ok(play.querySelector(".hint-block + .grid-wrap"), "grid follows clues");
+assert.equal(play.firstElementChild?.className, "notes-panel", "notes sit on the left");
+assert.ok(play.querySelector(".puzzle-col"), "puzzle column on the right");
+assert.equal(play.querySelector(".puzzle-col")?.firstElementChild?.className, "hint-block", "clues must sit above the grid");
+assert.ok(play.querySelector(".puzzle-col .hint-block + .grid-wrap"), "grid follows clues");
 assert.equal(document.querySelectorAll("datalist").length, 0, "no native datalist");
 assert.equal(document.querySelectorAll(".slot-suggest").length, 0, "no suggestion dropdown");
-assert.equal(document.querySelector(".notes-block")?.open, false, "notes collapsed");
+assert.equal(document.querySelectorAll("textarea.notes").length, 1, "one scratchpad");
+assert.equal(document.querySelectorAll(".notes-grid").length, 0, "no per-house notes");
+assert.equal(document.querySelector(".notes-panel")?.open, true, "notes open on desktop");
+
+const pad = document.querySelector("textarea.notes");
+assert.ok(pad, "scratchpad");
+pad.value = "brit left of green";
+pad.dispatchEvent(new window.Event("input", { bubbles: true }));
+assert.equal(window.localStorage.getItem(`${NOTES_STORAGE_KEY}:2026-10-13`), "brit left of green");
+await loadPuzzle({ puzzle: einstein });
+assert.equal(document.querySelector("textarea.notes")?.value, "brit left of green", "notes persist per date");
+
+if (typeof window.happyDOM?.setViewport === "function") {
+  window.happyDOM.setViewport({ width: 390, height: 844 });
+  fitPlayfield();
+  assert.equal(document.querySelector(".notes-panel")?.open, false, "notes collapsed on mobile");
+  window.happyDOM.setViewport({ width: 1280, height: 720 });
+  fitPlayfield();
+  assert.equal(document.querySelector(".notes-panel")?.open, true, "notes reopen on desktop");
+}
 
 const nat = document.querySelector('input[data-attr="nationality"]');
 assert.ok(nat, "nationality input");

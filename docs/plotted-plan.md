@@ -22,7 +22,7 @@ A bite-size daily version of Einstein’s Riddle / the zebra puzzle (“who owns
 Each house has one **text input** per attribute. The player types the exact word (for example `Bo`, `fish`, `Brit`, `Pall Mall`). Matching is case-insensitive and trims whitespace; light autocomplete lists that attribute’s valid words; unknown text gets a gentle highlight so typos are obvious. Placing the same word in another house on that attribute clears the old slot.
 
 - Phosphor icons stay as **decorative** attribute / item markers, not as the placement UI. There is no bottom-sheet icon picker.
-- Optional **Notes** sit in a collapsed details block so they do not steal space on a phone.
+- **Notes** are one free-form scratchpad (a single textarea, no per-house fields), saved per puzzle date in `localStorage`. On desktop the notes panel sits on the **left** and the puzzle (clues above the grid) on the **right**, both in the one-screen fit. On a phone the puzzle stays the main view and notes collapse into a toggle overlay.
 - As the player types, the best matching valid word appears as **ghost** text inside the same input. Tab, Enter, right-arrow, or tapping the ghost remainder accepts it. There is no dropdown or datalist.
 - **All clues are hints:** a compact numbered list **above** the grid. Sortable item words are **plain bold** in the normal ink color (no per-item, per-attribute, or per-house coloring in clues or inputs). Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
 - If the puzzle has a **setup** paragraph (Einstein day), it lives inside a collapsible **How to play** block.
