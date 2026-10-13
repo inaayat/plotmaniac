@@ -596,6 +596,43 @@ export function flattenPuzzleItems(items = {}) {
   return Object.values(items).flat();
 }
 
+export function puzzleOptionRows(puzzle) {
+  return (puzzle?.attributes || []).map((attr) => ({
+    attr: attr.id,
+    label: attr.label || attr.id,
+    items: puzzle.items?.[attr.id] || [],
+  }));
+}
+
+export function copyMentionsLabel(copy, item) {
+  const needles = [item.label, ...(item.aliases || [])].filter(Boolean);
+  return needles.some((needle) => new RegExp(`\\b${escapeRegExp(needle)}\\b`, "i").test(copy));
+}
+
+export function puzzleCopyText(puzzle) {
+  return [
+    puzzle?.setup,
+    puzzle?.question?.text,
+    ...(puzzle?.clues || []).map((clue) => clue.text),
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+/** Labels a person would never learn from clues, setup, or the question. */
+export function labelsMissingFromCopy(puzzle) {
+  const copy = puzzleCopyText(puzzle);
+  const missing = [];
+  for (const row of puzzleOptionRows(puzzle)) {
+    for (const item of row.items) {
+      if (!copyMentionsLabel(copy, item)) {
+        missing.push({ attr: row.attr, id: item.id, label: item.label });
+      }
+    }
+  }
+  return missing;
+}
+
 export function normalizeGuess(value) {
   return String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
 }

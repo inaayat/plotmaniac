@@ -26,6 +26,7 @@ import {
   matchTypedItem,
   placementComplete,
   puzzleNumber,
+  puzzleOptionRows,
   scoreFor,
 } from "./plotted-engine.js";
 const LIGHT_THEME_COLOR = "#fff6eb";
@@ -457,7 +458,7 @@ function paintChrome() {
   if (question) question.innerHTML = highlightItemWordsHtml(puzzle.question.text, allItems());
   if (howTo) {
     howTo.textContent =
-      "Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right. A gold dashed outline means that word isn’t in this row.";
+      "Each house has one owner. Type the bold words into the matching slots. The list above the grid is every word in that row. Next door means a neighboring house, left or right. A gold dashed outline means that word isn’t in this row.";
   }
   if (setup) {
     if (puzzle.setup) {
@@ -708,6 +709,70 @@ function syncOtherInputs(attr, exceptHouse) {
   }
 }
 
+function itemIsPlaced(attr, itemId) {
+  return grid.some((row) => row?.[attr] === itemId);
+}
+
+function syncWordBank(root = document) {
+  root.querySelectorAll(".word-bank-word").forEach((word) => {
+    word.classList.toggle("is-placed", itemIsPlaced(word.dataset.attr, word.dataset.item));
+  });
+}
+
+function makeWordBank() {
+  const bank = document.createElement("section");
+  bank.className = "word-bank";
+  bank.setAttribute("aria-label", "Words you can type");
+  for (const row of puzzleOptionRows(puzzle)) {
+    const line = document.createElement("div");
+    line.className = "word-bank-row";
+    line.dataset.attr = row.attr;
+    const cat = document.createElement("span");
+    cat.className = "word-bank-cat";
+    cat.textContent = row.label;
+    const list = document.createElement("span");
+    list.className = "word-bank-list";
+    for (const item of row.items) {
+      const word = document.createElement("span");
+      word.className = "word-bank-word";
+      word.dataset.attr = row.attr;
+      word.dataset.item = item.id;
+      word.textContent = item.label;
+      if (itemIsPlaced(row.attr, item.id)) word.classList.add("is-placed");
+      list.appendChild(word);
+    }
+    line.append(cat, list);
+    bank.appendChild(line);
+  }
+  return bank;
+}
+
+/** Options that are not shown in the on-screen word bank. */
+export function missingVisibleOptions(root = document, puz = puzzle) {
+  if (!puz) return [{ error: "no puzzle" }];
+  const bank = root.querySelector(".word-bank");
+  if (!bank) {
+    return puzzleOptionRows(puz).flatMap((row) =>
+      row.items.map((item) => ({ attr: row.attr, id: item.id, label: item.label })),
+    );
+  }
+  const shown = [...bank.querySelectorAll(".word-bank-word")].map((node) => ({
+    attr: node.dataset.attr,
+    id: node.dataset.item,
+    text: node.textContent.trim(),
+  }));
+  const missing = [];
+  for (const row of puzzleOptionRows(puz)) {
+    for (const item of row.items) {
+      const hit = shown.find((entry) => entry.attr === row.attr && entry.id === item.id);
+      if (!hit || hit.text !== item.label) {
+        missing.push({ attr: row.attr, id: item.id, label: item.label });
+      }
+    }
+  }
+  return missing;
+}
+
 function refreshCluesAndHouses() {
   puzzle.clues.forEach((clue) => {
     const auto = clueSatisfiedByGrid(clue, grid, puzzle.houseCount, attributes());
@@ -720,6 +785,7 @@ function refreshCluesAndHouses() {
       node.classList.toggle("is-complete", Boolean(solved && completionOrder[house]));
     });
   }
+  syncWordBank();
 }
 
 function tryAcceptGhost(house, attr, input) {
@@ -956,7 +1022,7 @@ function paintBoard(opts = {}) {
   hintBlock.appendChild(clues);
   const puzzleCol = document.createElement("div");
   puzzleCol.className = "puzzle-col";
-  puzzleCol.append(hintBlock, gridWrap);
+  puzzleCol.append(hintBlock, makeWordBank(), gridWrap);
   play.append(notesPanel, puzzleCol);
   board.appendChild(play);
   fitPlayfield();

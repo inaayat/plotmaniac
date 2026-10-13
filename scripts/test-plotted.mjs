@@ -19,6 +19,7 @@ import {
   gridMatchesSolution,
   highlightItemWordsHtml,
   houseIsCompleteAndCorrect,
+  labelsMissingFromCopy,
   livesSubjectIsBareObject,
   bestTypedCompletion,
   matchTypedItem,
@@ -233,6 +234,7 @@ assert.match(html, /archive\//);
 assert.match(html, /params.has\("plot"\)/);
 assert.match(html, /id="how-to"/);
 assert.match(html, /gold dashed outline/);
+assert.match(html, /list above the grid/);
 assert.match(html, /id="howto"/);
 assert.match(html, /id="setup"/);
 assert.match(html, /How to play/);
@@ -248,7 +250,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v13/);
+assert.match(sw, /plotted-v14/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -285,6 +287,9 @@ assert.match(css, /overflow: auto/);
 assert.match(css, /\.grid-table/);
 assert.match(css, /\.notes-panel/);
 assert.match(css, /\.puzzle-col/);
+assert.match(css, /\.word-bank/);
+assert.match(css, /\.word-bank-word\.is-placed \{[^}]*line-through/);
+assert.doesNotMatch(css, /\.word-bank[^{]*\{[^}]*gradient/);
 assert.match(css, /border-radius: 18px/);
 assert.match(css, /--notes-border/);
 assert.match(css, /\.notes::placeholder/);
@@ -341,6 +346,8 @@ assert.match(app, /PRACTICE_PROGRESS_KEY/);
 assert.match(app, /practiceId/);
 assert.match(app, /streakAwarded/);
 assert.match(app, /arrow-counter-clockwise/);
+assert.match(app, /makeWordBank/);
+assert.match(app, /missingVisibleOptions/);
 assert.match(app, /gold dashed outline/);
 assert.doesNotMatch(app, /notes-grid/);
 assert.doesNotMatch(app, /datalist/);
@@ -367,6 +374,7 @@ assert.match(plan, /How to play/);
 assert.match(plan, /plain bold/);
 assert.match(plan, /Wordle/);
 assert.match(plan, /ghost/);
+assert.match(plan, /word bank/i);
 assert.match(plan, /scratchpad/);
 assert.match(plan, /solves immediately/);
 assert.doesNotMatch(plan, /swipeable/);
@@ -493,6 +501,7 @@ assert.equal(daily.houseCount, 5);
 assert.equal(daily.clues.length, 15);
 assert.equal(daily.clues[0].text, "The Brit lives in the red house");
 assert.equal(daily.clues[14].text, "The man who smokes blend has a neighbor who drinks water");
+assert.deepEqual(labelsMissingFromCopy(daily), [], "Einstein names every option in the clues");
 assert.equal(
   countSolutions(
     daily.houseCount,
@@ -538,6 +547,13 @@ for (const id of practiceIds) {
   const human = solvePuzzleByHuman(practice);
   assert.equal(human.solvedByHuman, true, `${id} must solve by human techniques`);
   assert.ok(practice.clues.length >= 4);
+  if (id === "easy") {
+    const copyGaps = labelsMissingFromCopy(practice);
+    assert.ok(
+      copyGaps.some((entry) => entry.id === "butterfly" || entry.id === "beer"),
+      "easy practice still omits some pets/drinks from clue text; the word bank must cover them",
+    );
+  }
 }
 
 const einsteinHuman = solvePuzzleByHuman(einstein);
@@ -562,6 +578,7 @@ const jsonFiles = fs.readdirSync(plottedDir).filter((name) => name.endsWith(".js
 assert.ok(jsonFiles.length >= 365, `expected a year of puzzles, got ${jsonFiles.length}`);
 let datedHumanFail = 0;
 let datedNeededSearch = 0;
+let datedCopyGaps = 0;
 for (const name of jsonFiles) {
   const puzzle = JSON.parse(fs.readFileSync(path.join(plottedDir, name), "utf8"));
   for (const clue of puzzle.clues) {
@@ -578,8 +595,11 @@ for (const name of jsonFiles) {
   if (unique.neededSearch) datedNeededSearch += 1;
   const human = solvePuzzleByHuman(puzzle);
   if (!human.solvedByHuman) datedHumanFail += 1;
+  if (labelsMissingFromCopy(puzzle).length) datedCopyGaps += 1;
 }
 assert.equal(datedHumanFail, 0, `${datedHumanFail} dated puzzles failed the human-technique solver`);
-console.log(`dated audit: ${jsonFiles.length} unique, ${datedNeededSearch} neededSearch, ${datedHumanFail} humanFail`);
+console.log(
+  `dated audit: ${jsonFiles.length} unique, ${datedNeededSearch} neededSearch, ${datedHumanFail} humanFail, ${datedCopyGaps} missing options from clue text`,
+);
 
 console.log("plotted tests ok");

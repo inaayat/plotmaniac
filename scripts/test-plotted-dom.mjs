@@ -81,7 +81,7 @@ window.localStorage.setItem(
   }),
 );
 
-const { boot, fitPlayfield, loadPuzzle, startOver, stopGameTimers } = await import("../plotted.js");
+const { boot, fitPlayfield, loadPuzzle, missingVisibleOptions, startOver, stopGameTimers } = await import("../plotted.js");
 
 function assertNoConsoleErrors(label) {
   assert.equal(errors.length, 0, `${label}: ${errors.join(" | ")}`);
@@ -129,6 +129,14 @@ function assertPuzzlePainted(puzzle, { expectSetup = false } = {}) {
   }
   assert.equal(document.querySelectorAll(".slot.is-match").length, 0);
   assert.equal(document.querySelectorAll(".house-head.is-complete").length, 0);
+  const bank = document.querySelector(".word-bank");
+  assert.ok(bank, `${puzzle.date || puzzle.id} word bank`);
+  assert.equal(bank.getAttribute("aria-label"), "Words you can type");
+  assert.equal(
+    missingVisibleOptions(document, puzzle).length,
+    0,
+    `${puzzle.date || puzzle.id} every option must be visible in the word bank`,
+  );
 }
 
 const einstein = readJson("data/plotted/2026-10-13.json");
@@ -146,7 +154,8 @@ assert.ok(play, "play layout");
 assert.equal(play.firstElementChild?.className, "notes-panel", "notes sit on the left");
 assert.ok(play.querySelector(".puzzle-col"), "puzzle column on the right");
 assert.equal(play.querySelector(".puzzle-col")?.firstElementChild?.className, "hint-block", "clues must sit above the grid");
-assert.ok(play.querySelector(".puzzle-col .hint-block + .grid-wrap"), "grid follows clues");
+assert.ok(play.querySelector(".puzzle-col .hint-block + .word-bank"), "word bank follows clues");
+assert.ok(play.querySelector(".puzzle-col .word-bank + .grid-wrap"), "grid follows word bank");
 assert.equal(document.querySelectorAll("datalist").length, 0, "no native datalist");
 assert.equal(document.querySelectorAll(".slot-suggest").length, 0, "no suggestion dropdown");
 assert.equal(document.querySelectorAll("textarea.notes").length, 1, "one scratchpad");
@@ -343,6 +352,26 @@ const easy = readJson("data/practice/easy.json");
 await loadPuzzle({ puzzle: easy });
 assert.equal(document.getElementById("win")?.hidden, true);
 assert.match(document.getElementById("meta-date")?.textContent || "", /Practice · Easy/);
+assert.equal(missingVisibleOptions(document, easy).length, 0, "easy practice must show butterfly, beer, and every other option");
+assert.equal(
+  document.querySelector('.word-bank-word[data-item="butterfly"]')?.textContent,
+  "butterfly",
+);
+assert.equal(document.querySelector('.word-bank-word[data-item="beer"]')?.textContent, "beer");
+const petSlot = document.querySelector('input[data-attr="pet"]');
+petSlot.value = "butterfly";
+petSlot.dispatchEvent(new window.Event("input", { bubbles: true }));
+assert.equal(
+  document.querySelector('.word-bank-word[data-item="butterfly"]')?.classList.contains("is-placed"),
+  true,
+  "placed words are marked in the bank",
+);
+petSlot.value = "";
+petSlot.dispatchEvent(new window.Event("input", { bubbles: true }));
+assert.equal(
+  document.querySelector('.word-bank-word[data-item="butterfly"]')?.classList.contains("is-placed"),
+  false,
+);
 assert.equal(document.querySelector('.practice-nav a[data-practice="easy"]')?.getAttribute("aria-current"), "page");
 assert.equal(document.querySelectorAll("input.slot-input").length, easy.houseCount * easy.attributes.length);
 document.querySelector("textarea.notes").value = "practice scratch";
