@@ -4,7 +4,7 @@ A daily logic grid in the Plotmaniac field-guide look. Three (sometimes four or 
 
 Play it at [https://plotmaniac.com](https://plotmaniac.com). Product plan: [docs/plotted-plan.md](docs/plotted-plan.md). The display name is `GAME_NAME` in [`plotted-config.js`](plotted-config.js).
 
-Tap a slot, pick a Phosphor icon, long-press to rule a symbol out. Clues are swipeable cards. Score is time, mistakes, and hints. The share result is plain text (clipboard / Web Share), not an image:
+Tap a slot to open the icon picker, long-press to rule a symbol out. All clues show at once as a numbered hint list (tap to cross off). Score is time, mistakes, and hints. The share result is plain text (clipboard / Web Share), not an image:
 
 ```
 Plotted #12

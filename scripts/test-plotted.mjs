@@ -178,6 +178,7 @@ assert.match(html, /manifest.webmanifest/);
 assert.match(html, /plotted-theme/);
 assert.match(html, /archive\//);
 assert.match(html, /params.has\("plot"\)/);
+assert.match(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const css = read("plotted.css");
@@ -188,6 +189,10 @@ assert.match(css, /Fraunces/);
 assert.match(css, /html\[data-theme="light"\]/);
 assert.match(css, /min-height: var\(--tap\)/);
 assert.match(css, /100dvh/);
+assert.match(css, /\.hint-block/);
+assert.match(css, /\.clue-num/);
+assert.match(css, /\.sheet-panel/);
+assert.doesNotMatch(css, /scroll-snap/);
 assert.doesNotMatch(css, /Nunito|Fredoka/);
 
 const app = read("plotted.js");
@@ -197,6 +202,9 @@ assert.match(app, /LONG_PRESS_MS/);
 assert.match(app, /navigator.clipboard/);
 assert.match(app, /navigator.share/);
 assert.match(app, /serviceWorker/);
+assert.match(app, /Hints/);
+assert.match(app, /openSheet/);
+assert.doesNotMatch(app, /Tap a slot/);
 assert.doesNotMatch(app, /[\u{1F300}-\u{1FAFF}]/u);
 
 const archiveHtml = read("archive/index.html");
@@ -211,6 +219,8 @@ assert.match(plan, /Plotted/);
 assert.match(plan, /Plotmaniac archive/);
 assert.match(plan, /🏠/);
 assert.match(plan, /Solved in/);
+assert.match(plan, /All clues are hints/);
+assert.doesNotMatch(plan, /swipeable/);
 assert.doesNotMatch(plan, /share-card|share card/i);
 
 const dailyPath = path.join(root, "data/plotted/2026-10-13.json");

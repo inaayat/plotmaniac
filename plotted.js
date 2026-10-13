@@ -7,6 +7,7 @@ import {
   THEME_STORAGE_KEY,
 } from "./plotted-config.js";
 import { iconSvg } from "./plotted-icons.js";
+import { ATTRIBUTES } from "./plotted-themes.js";
 import {
   clueSatisfiedByGrid,
   firstHintCell,
@@ -82,6 +83,10 @@ function paintThemeToggle() {
 
 function attributes() {
   return puzzle.attributes.map((attr) => attr.id);
+}
+
+function attrMeta(attr) {
+  return ATTRIBUTES[attr] || puzzle.attributes.find((entry) => entry.id === attr) || { id: attr, label: attr, icon: "house" };
 }
 
 function itemById(attr, id) {
@@ -247,12 +252,45 @@ function paintChrome() {
   $("game-question").textContent = puzzle.question.text;
   $("archive-link").href = ARCHIVE_HREF;
   $("win-title").textContent = GAME_NAME;
-  $("btn-hint").innerHTML = `${iconSvg("lightbulb")} Hint`;
-  $("btn-check").innerHTML = `${iconSvg("check")} Check`;
-  $("btn-share").innerHTML = `${iconSvg("share")} Share`;
+  $("btn-hint").innerHTML = iconSvg("lightbulb", { label: "Reveal a cell" });
+  $("btn-check").innerHTML = iconSvg("check", { label: "Check the grid" });
+  $("btn-share").innerHTML = iconSvg("share", { label: "Share result" });
+  $("sheet-close").innerHTML = iconSvg("x", { label: "Close picker" });
   $("win-share").innerHTML = `${iconSvg("share")} Copy result`;
   paintThemeToggle();
   paintMeta();
+}
+
+function closeSheet() {
+  selected = null;
+  $("sheet").hidden = true;
+  document.body.classList.remove("is-sheet-open");
+  paintBoard();
+}
+
+function openSheet() {
+  const sheet = $("sheet");
+  const itemsEl = $("sheet-items");
+  if (!selected) {
+    sheet.hidden = true;
+    document.body.classList.remove("is-sheet-open");
+    return;
+  }
+  const attr = selected.attr;
+  const meta = attrMeta(attr);
+  $("sheet-label").textContent = `House ${selected.house + 1} · ${meta.label} · long-press to rule out`;
+  itemsEl.replaceChildren();
+  for (const item of puzzle.items[attr]) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "tray-item";
+    if (ruledOut[selected.house][attr].includes(item.id)) btn.classList.add("is-out");
+    btn.innerHTML = `${iconSvg(item.icon)}<span>${item.label}</span>`;
+    bindTrayItem(btn, item);
+    itemsEl.appendChild(btn);
+  }
+  sheet.hidden = false;
+  document.body.classList.add("is-sheet-open");
 }
 
 function paintBoard() {
@@ -276,17 +314,27 @@ function paintBoard() {
       slot.className = "slot";
       slot.dataset.house = String(house);
       slot.dataset.attr = attr;
+      const meta = attrMeta(attr);
+      slot.setAttribute("aria-label", `House ${house + 1} ${meta.label}`);
       if (selected && selected.house === house && selected.attr === attr) slot.classList.add("is-selected");
       const value = grid[house][attr];
       const item = value ? itemById(attr, value) : null;
-      slot.innerHTML = item
-        ? `${iconSvg(item.icon)}<span class="slot-label">${item.label}</span>`
-        : `<span class="slot-label">${puzzle.attributes.find((entry) => entry.id === attr).label}</span>`;
+      if (item) {
+        slot.innerHTML = `${iconSvg(item.icon)}<span class="slot-label">${item.label}</span>`;
+      } else {
+        slot.classList.add("is-empty");
+        slot.innerHTML = `${iconSvg(meta.icon)}<span class="slot-label">${meta.label}</span>`;
+      }
       slot.addEventListener("click", () => {
         haptic();
-        selected = { house, attr };
         ensureTimer();
+        if (selected && selected.house === house && selected.attr === attr) {
+          closeSheet();
+          return;
+        }
+        selected = { house, attr };
         paintBoard();
+        openSheet();
       });
       card.appendChild(slot);
     }
@@ -305,50 +353,48 @@ function paintBoard() {
   }
   board.appendChild(houses);
 
-  const clues = document.createElement("section");
+  const hintBlock = document.createElement("section");
+  hintBlock.className = "hint-block";
+  const hintLabel = document.createElement("p");
+  hintLabel.className = "hint-label";
+  hintLabel.textContent = "Hints";
+  hintBlock.appendChild(hintLabel);
+  const clues = document.createElement("div");
   clues.className = "clues";
-  clues.setAttribute("aria-label", "Clues");
-  for (const clue of puzzle.clues) {
+  clues.setAttribute("role", "list");
+  clues.setAttribute("aria-label", "Hints");
+  puzzle.clues.forEach((clue, index) => {
     const auto = clueSatisfiedByGrid(clue, grid, puzzle.houseCount, attributes());
     if (auto) crossed.add(clue.id);
-    const card = document.createElement("button");
-    card.type = "button";
-    card.className = "clue";
-    if (crossed.has(clue.id)) card.classList.add("is-used");
-    card.textContent = clue.text;
-    card.addEventListener("click", () => {
+    const row = document.createElement("button");
+    row.type = "button";
+    row.className = "clue";
+    row.setAttribute("role", "listitem");
+    if (crossed.has(clue.id)) row.classList.add("is-used");
+    const num = document.createElement("span");
+    num.className = "clue-num";
+    num.textContent = String(index + 1).padStart(2, "0");
+    const text = document.createElement("span");
+    text.className = "clue-text";
+    text.textContent = clue.text;
+    row.append(num, text);
+    row.addEventListener("click", () => {
       haptic();
       if (crossed.has(clue.id) && !auto) crossed.delete(clue.id);
       else crossed.add(clue.id);
       persist();
       paintBoard();
+      if (selected) openSheet();
     });
-    clues.appendChild(card);
+    clues.appendChild(row);
+  });
+  hintBlock.appendChild(clues);
+  board.appendChild(hintBlock);
+  if (selected) openSheet();
+  else {
+    $("sheet").hidden = true;
+    document.body.classList.remove("is-sheet-open");
   }
-  board.appendChild(clues);
-
-  const tray = document.createElement("section");
-  tray.className = "tray";
-  if (!selected) {
-    tray.innerHTML = `<p class="tray-label">Tap a slot</p>`;
-  } else {
-    const attr = selected.attr;
-    tray.innerHTML = `<p class="tray-label">Place · long-press to rule out</p>`;
-    const row = document.createElement("div");
-    row.className = "tray-items";
-    for (const item of puzzle.items[attr]) {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "tray-item";
-      const out = ruledOut[selected.house][attr].includes(item.id);
-      if (out) btn.classList.add("is-out");
-      btn.innerHTML = `${iconSvg(item.icon)}<span>${item.label}</span>`;
-      bindTrayItem(btn, item);
-      row.appendChild(btn);
-    }
-    tray.appendChild(row);
-  }
-  board.appendChild(tray);
 }
 
 function bindTrayItem(btn, item) {
@@ -385,7 +431,7 @@ function toggleRuledOut(itemId) {
   if (index >= 0) list.splice(index, 1);
   else list.push(itemId);
   persist();
-  paintBoard();
+  openSheet();
 }
 
 function placeItem(itemId) {
@@ -453,6 +499,9 @@ function finish() {
     writeStreak();
     persist();
   }
+  selected = null;
+  $("sheet").hidden = true;
+  document.body.classList.remove("is-sheet-open");
   $("btn-share").hidden = false;
   $("share-text").textContent = shareBody();
   $("win-lede").textContent = `Solved in ${formatTime(elapsedMs)} · ${hints} hint${hints === 1 ? "" : "s"} · ${scoreFor({ elapsedMs, mistakes, hints })} pts`;
@@ -488,6 +537,8 @@ function bind() {
   $("win-close").addEventListener("click", () => {
     $("win").hidden = true;
   });
+  $("sheet-close").addEventListener("click", closeSheet);
+  $("sheet-dismiss").addEventListener("click", closeSheet);
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
   }

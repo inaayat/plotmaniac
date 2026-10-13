@@ -21,11 +21,11 @@ A bite-size daily version of Einstein’s Riddle / the zebra puzzle (“who owns
 
 No typing in the grid. Each house has one slot per attribute.
 
-- **Tap** a slot to open a tray of Phosphor icons for that attribute (thumb reach, bottom of the screen).
+- **Tap** a slot to open a bottom-sheet picker of Phosphor icons for that attribute (no empty placeholder tray).
 - **Tap** an icon to place it. Placing the same item elsewhere on that attribute clears the old slot.
 - **Long-press** an icon to mark it ruled out for the selected slot (a gold slash through the icon, as a note). Long-press again to clear.
 - Optional **tiny free-text notes** field on each house.
-- Clues are **swipeable cards**. Tap a card to cross it off. A clue also **auto-crosses** when the current grid makes it true.
+- **All clues are hints:** a compact numbered list, shown in full, wrapping so nothing is cut off. Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
 - **Hint** fills one empty cell with the correct item and costs score.
 - **Check** scores a mistake if the grid is full but wrong; it finishes the day if the grid matches the unique solution.
 - Score is `max(0, 1000 − seconds − 50×mistakes − 120×hints)`.
@@ -117,8 +117,10 @@ Build themes around what those sets actually contain (cat, dog, coffee, wine, de
 
 ## 8. Mobile-first
 
-- One **portrait** screen during play: houses on top, swipeable clues in the middle, item tray at the bottom in thumb reach.
-- Page chrome uses `100dvh` and `overflow: hidden` so the grid does not scroll; clues scroll **sideways**.
+- Compact header (title, theme, reveal/check as icon buttons), **question prominent**, house grid, then the full hint list.
+- Mobile-first portrait: fit one screen where possible; the page may scroll if an 8-hint / 5-house day needs it. No horizontal clue carousel.
+- Desktop: constrained column (~560–640px), same stack, sensible use of space.
+- Icon picker is a **bottom sheet**, only while a slot is selected.
 - Tap targets **≥ 44px**.
 - Haptic feedback via `navigator.vibrate` where the OS allows it.
 - Installable **PWA** (`manifest.webmanifest` + `sw.js`) that can reload the shell and the day’s JSON offline after the first fetch.

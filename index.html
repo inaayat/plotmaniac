@@ -44,32 +44,23 @@
   <body>
     <div class="shell">
       <header class="mast">
-        <div class="mast-row">
+        <div class="mast-bar">
           <p class="eyebrow" id="game-eyebrow">Daily logic grid</p>
-          <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle color theme"></button>
+          <h1 id="game-title">Plotted</h1>
+          <div class="mast-tools">
+            <button type="button" class="icon-btn" id="btn-hint" aria-label="Reveal a cell"></button>
+            <button type="button" class="icon-btn" id="btn-check" aria-label="Check the grid"></button>
+            <button type="button" class="icon-btn" id="btn-share" aria-label="Share result" hidden></button>
+            <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle color theme"></button>
+          </div>
         </div>
-        <h1 id="game-title">Plotted</h1>
-        <svg class="mark" viewBox="0 9 420 67" role="img" aria-hidden="true">
-          <path
-            class="arc"
-            d="M8 70 C 70 70, 92 62, 126 48 S 186 18, 214 14 S 268 22, 302 40 S 368 70, 412 70"
-          />
-          <circle cx="8" cy="70" r="3.5" />
-          <circle cx="214" cy="14" r="3.5" />
-          <circle cx="412" cy="70" r="3.5" />
-        </svg>
-        <p class="lede" id="game-lede"></p>
         <p class="question" id="game-question"></p>
+        <p class="lede" id="game-lede"></p>
         <p class="meta">
           <span id="meta-date"></span>
           <span id="meta-timer"></span>
           <span id="meta-streak"></span>
         </p>
-        <div class="actions">
-          <button type="button" id="btn-hint">Hint</button>
-          <button type="button" id="btn-check">Check</button>
-          <button type="button" id="btn-share" hidden>Share</button>
-        </div>
       </header>
       <main class="board" id="board">
         <p class="empty" id="boot">Loading today’s grid…</p>
@@ -77,6 +68,16 @@
       <footer class="site-footer">
         <p><a id="archive-link" href="./archive/">Plotmaniac archive</a></p>
       </footer>
+    </div>
+    <div class="sheet" id="sheet" hidden>
+      <button type="button" class="sheet-backdrop" id="sheet-dismiss" aria-label="Close picker"></button>
+      <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheet-label">
+        <div class="sheet-head">
+          <p class="tray-label" id="sheet-label"></p>
+          <button type="button" class="icon-btn" id="sheet-close" aria-label="Close picker"></button>
+        </div>
+        <div class="tray-items" id="sheet-items"></div>
+      </div>
     </div>
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
     <div class="win" id="win" hidden>
