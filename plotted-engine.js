@@ -539,22 +539,37 @@ export function capitalizeClue(text) {
   return String(text).replace(/^(\s*)(\S)/, (_, space, ch) => space + ch.toUpperCase());
 }
 
+function isActorAttr(attr) {
+  return attr === "person" || attr === "nationality";
+}
+
 function occupantPhrase(catalog, roles, attr, itemId) {
   const label = labelOf(catalog, attr, itemId);
   const role = roles[attr] || ATTRIBUTES[attr];
   return role.occupant(label);
 }
 
+function actorLabel(catalog, roles, ref) {
+  if (ref.attr === "person") return labelOf(catalog, "person", ref.item);
+  return occupantPhrase(catalog, roles, ref.attr, ref.item);
+}
+
 function samePhrase(catalog, roles, left, right) {
-  const personSide = left.attr === "person" ? left : right.attr === "person" ? right : null;
+  const personSide = isActorAttr(left.attr) ? left : isActorAttr(right.attr) ? right : null;
   const otherSide = personSide === left ? right : personSide === right ? left : null;
   if (personSide && otherSide) {
-    const person = labelOf(catalog, "person", personSide.item);
+    const person = actorLabel(catalog, roles, personSide);
     const otherLabel = labelOf(catalog, otherSide.attr, otherSide.item);
     const role = roles[otherSide.attr] || ATTRIBUTES[otherSide.attr];
     return role.personSame(person, otherLabel);
   }
-  return `${occupantPhrase(catalog, roles, left.attr, left.item)} is ${occupantPhrase(catalog, roles, right.attr, right.item)}`;
+  const leftWho = occupantPhrase(catalog, roles, left.attr, left.item);
+  const rightLabel = labelOf(catalog, right.attr, right.item);
+  const rightRole = roles[right.attr] || ATTRIBUTES[right.attr];
+  if (typeof rightRole.personSame === "function") {
+    return rightRole.personSame(leftWho, rightLabel);
+  }
+  return `${leftWho} is ${occupantPhrase(catalog, roles, right.attr, right.item)}`;
 }
 
 export function clueText(clue, catalog, themeId = "") {
@@ -592,6 +607,12 @@ export function clueText(clue, catalog, themeId = "") {
   return capitalizeClue(text);
 }
 
+/** Live clue copy. Einstein keeps its classic wording; everything else is rendered. */
+export function displayClueText(puzzle, clue) {
+  if (puzzle?.theme?.id === "einstein" && clue?.text) return clue.text;
+  return clueText(clue, puzzle.items, puzzle.theme?.id || "");
+}
+
 export function flattenPuzzleItems(items = {}) {
   return Object.values(items).flat();
 }
@@ -613,7 +634,7 @@ export function puzzleCopyText(puzzle) {
   return [
     puzzle?.setup,
     puzzle?.question?.text,
-    ...(puzzle?.clues || []).map((clue) => clue.text),
+    ...(puzzle?.clues || []).map((clue) => displayClueText(puzzle, clue)),
   ]
     .filter(Boolean)
     .join("\n");

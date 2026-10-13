@@ -24,7 +24,7 @@ export const ATTRIBUTES = {
     id: "drink",
     label: "Drink",
     icon: "coffee",
-    occupant: (x) => `the person who drinks ${x}`,
+    occupant: (x) => `the ${x} drinker`,
     personSame: (person, x) => `${person} drinks ${x}`,
   },
   loot: {
@@ -115,7 +115,7 @@ export const ATTRIBUTES = {
     id: "beverage",
     label: "Drink",
     icon: "coffee",
-    occupant: (x) => `the person who drinks ${x}`,
+    occupant: (x) => `the ${x} drinker`,
     personSame: (person, x) => `${person} drinks ${x}`,
   },
   cigar: {

@@ -128,7 +128,7 @@ Build themes around what those sets actually contain (cat, dog, coffee, wine, de
 ## 8. Mobile-first
 
 - Compact centered header (title, reveal/check/start-over as icon buttons), **question prominent**, then **all clues**, the **word bank**, and a compact table (houses as columns, attributes as rows).
-- Clue, word-bank, and row-header type is a **fixed size** (about 13px mono on phones, a modest step up on desktop) no matter how many hints there are. The fit-to-viewport step sizes tiles to the leftover space and may shrink clue type only if the standard size cannot fit; leftover height becomes padding, not larger type. Centered column ~720–900px.
+- Clue, word-bank, and row-header type is a **fixed size** (about 13px mono on phones, a modest step up on desktop) no matter how many hints there are. The fit-to-viewport step sizes tiles to the leftover space and may shrink clue type only if the standard size cannot fit; leftover height stays below the grid, never as a gap above the hints. Centered column ~720–900px.
 - Mobile-first portrait: 16px inputs (no zoom-on-focus), `autocapitalize=none`. Ghost completion stays inside the tile. No horizontal clue carousel.
 - Haptic feedback via `navigator.vibrate` where the OS allows it.
 - Installable **PWA** (`manifest.webmanifest` + `sw.js`) that can reload the shell and the day’s JSON offline after the first fetch.

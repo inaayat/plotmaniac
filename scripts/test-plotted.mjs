@@ -9,6 +9,7 @@ import { PRACTICE_THEMES, THEMES } from "../plotted-themes.js";
 import {
   clueHolds,
   clueText,
+  displayClueText,
   countSolutions,
   einsteinPuzzle,
   EINSTEIN_SETUP,
@@ -258,6 +259,7 @@ assert.match(iconSvg("cat"), /viewBox="0 0 256 256"/);
 assert.match(iconSvg("house"), /opacity="0.2"/);
 assert.match(iconSvg("arrow-counter-clockwise"), /opacity="0.2"/);
 assert.ok(ICONS["arrow-counter-clockwise"]);
+assert.ok(ICONS["caret-down"]);
 
 const html = read("index.html");
 assert.match(html, /plotted.css/);
@@ -284,7 +286,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v18/);
+assert.match(sw, /plotted-v19/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -332,7 +334,13 @@ assert.match(css, /\.word-bank/);
 assert.match(css, /\.practice-nav \{[^}]*max-width: 100%/);
 assert.match(css, /\.practice-nav \{[^}]*overflow-x: hidden/);
 assert.match(css, /\.practice-nav select \{[^}]*width: 100%/);
-assert.match(css, /\.practice-nav select \{[^}]*font-size: var\(--clue-size/);
+assert.match(css, /\.practice-nav select \{[^}]*font-size: 16px/);
+assert.match(css, /\.practice-nav select \{[^}]*border-radius: 10px/);
+assert.match(css, /\.practice-nav select \{[^}]*appearance: none/);
+assert.match(css, /\.practice-nav select \{[^}]*min-height: 40px/);
+assert.match(css, /\.practice-select-caret \{[^}]*width: 16px/);
+assert.match(css, /\.practice-nav select option/);
+assert.match(css, /\.board \{[^}]*justify-content: flex-start/);
 assert.doesNotMatch(css, /\.practice-nav[^{]*\{[^}]*gradient/);
 assert.doesNotMatch(css, /\.practice-nav select[^{]*\{[^}]*gradient/);
 assert.match(css, /\.word-bank-word\.is-placed \{[^}]*line-through/);
@@ -376,6 +384,12 @@ assert.match(app, /highlightItemWordsHtml/);
 assert.match(app, /autocapitalize/);
 assert.match(app, /bestTypedCompletion/);
 assert.match(app, /fitPlayfield/);
+assert.match(app, /shouldRefitLayout/);
+assert.match(app, /isTypingInGrid/);
+assert.match(app, /scrollIntoView/);
+assert.match(app, /displayClueText/);
+assert.match(app, /practice-select-caret/);
+assert.doesNotMatch(app, /leftover \/ 3/);
 assert.match(app, /CLUE_SIZE_PHONE = 13/);
 assert.match(app, /CLUE_SIZE_DESKTOP = 15/);
 assert.match(app, /applyTiles/);
@@ -555,6 +569,52 @@ assert.equal(
   clueText({ type: "either_house", attr: "prize", item: "trophy", houses: [0, 2] }, catalog, "pet-show"),
   "The trophy winner lives in either house 1 or house 3.",
 );
+const pouringCatalog = {
+  person: [
+    { id: "jules", label: "Jules" },
+    { id: "eden", label: "Eden" },
+  ],
+  pet: [
+    { id: "dog", label: "dog" },
+    { id: "horse", label: "horse" },
+  ],
+  drink: [
+    { id: "wine", label: "wine" },
+    { id: "martini", label: "martini" },
+  ],
+};
+assert.equal(
+  clueText({ type: "same", left: { attr: "pet", item: "dog" }, right: { attr: "drink", item: "wine" } }, pouringCatalog, "dinner-party"),
+  "The dog owner drinks wine.",
+);
+assert.equal(
+  clueText(
+    { type: "next_to", left: { attr: "drink", item: "martini" }, right: { attr: "person", item: "jules" } },
+    pouringCatalog,
+    "dinner-party",
+  ),
+  "The martini drinker lives next door to Jules.",
+);
+assert.equal(
+  clueText({ type: "at", attr: "drink", item: "wine", house: 0 }, pouringCatalog, "dinner-party"),
+  "The wine drinker lives in house 1.",
+);
+assert.equal(
+  clueText({ type: "same", left: { attr: "person", item: "eden" }, right: { attr: "drink", item: "wine" } }, pouringCatalog, "dinner-party"),
+  "Eden drinks wine.",
+);
+for (const sample of [
+  clueText({ type: "same", left: { attr: "pet", item: "dog" }, right: { attr: "drink", item: "wine" } }, pouringCatalog, "dinner-party"),
+  clueText(
+    { type: "next_to", left: { attr: "drink", item: "martini" }, right: { attr: "person", item: "jules" } },
+    pouringCatalog,
+    "dinner-party",
+  ),
+  clueText({ type: "at", attr: "drink", item: "wine", house: 0 }, pouringCatalog, "dinner-party"),
+]) {
+  assert.match(sample, /^[A-Z]/);
+  assert.doesNotMatch(sample, /\bthe Jules\b/i);
+}
 assert.equal(
   livesSubjectIsBareObject("The balloon winner lives next door to the fish owner.", catalog),
   false,
@@ -625,11 +685,16 @@ for (const id of practiceIds) {
     assert.ok(ICONS[item.icon], `${id} missing Phosphor icon ${item.icon}`);
   }
   for (const clue of practice.clues) {
+    const copy = displayClueText(practice, clue);
+    assert.match(copy, /^[A-Z]/, `${id} clue must start with a capital: ${copy}`);
     assert.equal(
-      livesSubjectIsBareObject(clue.text, practice.items),
+      livesSubjectIsBareObject(copy, practice.items),
       false,
-      `${id} object-subject lives: ${clue.text}`,
+      `${id} object-subject lives: ${copy}`,
     );
+    for (const person of practice.items.person || []) {
+      assert.doesNotMatch(copy, new RegExp(`\\bthe ${person.label}\\b`, "i"), `${id} must not say the ${person.label}`);
+    }
   }
   if (id === "easy") {
     const copyGaps = labelsMissingFromCopy(practice);
@@ -688,11 +753,16 @@ let datedCopyGaps = 0;
 for (const name of jsonFiles) {
   const puzzle = JSON.parse(fs.readFileSync(path.join(plottedDir, name), "utf8"));
   for (const clue of puzzle.clues) {
+    const copy = displayClueText(puzzle, clue);
+    assert.match(copy, /^[A-Z]/, `${name} clue must start with a capital: ${copy}`);
     assert.equal(
-      livesSubjectIsBareObject(clue.text, puzzle.items),
+      livesSubjectIsBareObject(copy, puzzle.items),
       false,
-      `${name} object-subject lives: ${clue.text}`,
+      `${name} object-subject lives: ${copy}`,
     );
+    for (const person of puzzle.items.person || []) {
+      assert.doesNotMatch(copy, new RegExp(`\\bthe ${person.label}\\b`, "i"), `${name} must not say the ${person.label}`);
+    }
   }
   const attrs = puzzle.attributes.map((attr) => attr.id);
   const ids = Object.fromEntries(attrs.map((attr) => [attr, puzzle.items[attr].map((item) => item.id)]));

@@ -17,6 +17,7 @@ import { ATTRIBUTES } from "./plotted-themes.js";
 import {
   bestTypedCompletion,
   clueSatisfiedByGrid,
+  displayClueText,
   firstHintCell,
   flattenPuzzleItems,
   formatShare,
@@ -507,6 +508,8 @@ function paintPracticeNav() {
   const caption = document.createElement("span");
   caption.className = "practice-picker-label";
   caption.textContent = "Puzzle";
+  const wrap = document.createElement("span");
+  wrap.className = "practice-select-wrap";
   const select = document.createElement("select");
   select.id = "practice-select";
   select.setAttribute("aria-label", "Practice puzzles");
@@ -526,7 +529,12 @@ function paintPracticeNav() {
     select.appendChild(optgroup);
   }
   select.value = current;
-  picker.append(caption, select);
+  const caret = document.createElement("span");
+  caret.className = "practice-select-caret";
+  caret.setAttribute("aria-hidden", "true");
+  caret.innerHTML = iconSvg("caret-down");
+  wrap.append(select, caret);
+  picker.append(caption, wrap);
   nav.replaceChildren(picker);
 }
 
@@ -574,8 +582,48 @@ function prefersReducedMotion() {
 
 let notesCloseTimer = 0;
 
+function notesSheetOpen() {
+  const panel = document.querySelector(".notes-panel");
+  return Boolean(panel?.open && !isWidePlay());
+}
+
+function isTypingInGrid() {
+  return Boolean(document.activeElement?.classList?.contains("slot-input"));
+}
+
+function keyboardInsetPx() {
+  const innerH = window.innerHeight || 720;
+  const vv = window.visualViewport;
+  if (!vv) return 0;
+  return Math.max(0, Math.round(innerH - vv.height - (vv.offsetTop || 0)));
+}
+
+function keyboardIsOpen() {
+  return keyboardInsetPx() > 80;
+}
+
+function shouldRefitLayout() {
+  return !isTypingInGrid() && !keyboardIsOpen();
+}
+
+function scrollFocusedTileIntoView() {
+  const slot =
+    document.querySelector(".slot.is-editing") || document.activeElement?.closest?.(".slot");
+  if (!slot || typeof slot.scrollIntoView !== "function") return;
+  try {
+    slot.scrollIntoView({ block: "center", inline: "nearest" });
+  } catch {
+    slot.scrollIntoView();
+  }
+}
+
 export function syncNotesViewport() {
   const root = document.documentElement;
+  if (!notesSheetOpen()) {
+    root.style.setProperty("--keyboard-inset", "0px");
+    root.style.removeProperty("--vv-height");
+    return;
+  }
   const innerH = window.innerHeight || 720;
   const vv = window.visualViewport;
   const vvH = vv?.height || innerH;
@@ -910,6 +958,7 @@ function makeSlot(house, attr) {
     window.requestAnimationFrame(() => {
       sizeEditingSlot(slot);
       paintGhost(slot, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
+      scrollFocusedTileIntoView();
     });
   });
   input.addEventListener("blur", () => {
@@ -1117,7 +1166,7 @@ function paintBoard(opts = {}) {
     num.textContent = String(index + 1).padStart(2, "0");
     const text = document.createElement("span");
     text.className = "clue-text";
-    text.innerHTML = highlightItemWordsHtml(clue.text, allItems());
+    text.innerHTML = highlightItemWordsHtml(displayClueText(puzzle, clue), allItems());
     row.append(num, text);
     row.addEventListener("click", () => {
       haptic();
@@ -1157,6 +1206,7 @@ function paintBoard(opts = {}) {
 }
 
 export function fitPlayfield() {
+  if (isTypingInGrid()) return;
   const play = document.querySelector(".play");
   if (!play || !puzzle) return;
   const root = document.documentElement;
@@ -1168,7 +1218,11 @@ export function fitPlayfield() {
   const footerH = Math.round(footer?.getBoundingClientRect().height || 28);
   root.style.setProperty("--mast-h", `${mastH}px`);
   root.style.setProperty("--footer-h", `${footerH}px`);
-  syncNotesViewport();
+  if (notesSheetOpen()) syncNotesViewport();
+  else {
+    root.style.setProperty("--keyboard-inset", "0px");
+    root.style.removeProperty("--vv-height");
+  }
   let availH = Math.max(220, (window.innerHeight || 720) - mastH - footerH - 16);
   const wide = isWidePlay();
   if (notesPanel) {
@@ -1242,13 +1296,9 @@ export function fitPlayfield() {
     }
     applyClues(bestSize, standardCluePad * (bestSize / standardClueSize));
   }
-  if (wide) {
-    play.style.height = `${availH}px`;
-    play.style.paddingBlock = "0px";
-  } else {
-    const leftover = availH - (measureEl.scrollHeight || measureEl.getBoundingClientRect().height);
-    play.style.paddingBlock = leftover > 16 ? `${Math.min(leftover / 3, 56)}px` : "0px";
-  }
+  play.style.paddingBlock = "0px";
+  if (wide) play.style.height = `${availH}px`;
+  else play.style.height = "auto";
   fitAllSlots();
 }
 
@@ -1421,14 +1471,25 @@ function bind() {
   if (bound) return;
   bound = true;
   window.addEventListener("resize", () => {
-    syncNotesViewport();
+    if (!shouldRefitLayout()) {
+      if (notesSheetOpen()) syncNotesViewport();
+      scrollFocusedTileIntoView();
+      return;
+    }
     fitPlayfield();
   });
   window.visualViewport?.addEventListener("resize", () => {
-    syncNotesViewport();
+    if (notesSheetOpen()) syncNotesViewport();
+    if (!shouldRefitLayout()) {
+      scrollFocusedTileIntoView();
+      return;
+    }
     fitPlayfield();
   });
-  window.visualViewport?.addEventListener("scroll", () => syncNotesViewport());
+  window.visualViewport?.addEventListener("scroll", () => {
+    if (notesSheetOpen()) syncNotesViewport();
+    if (isTypingInGrid()) scrollFocusedTileIntoView();
+  });
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMobileNotes();
   });

@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { Window } from "happy-dom";
 import { NOTES_STORAGE_KEY, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, STREAK_STORAGE_KEY, PROGRESS_STORAGE_KEY } from "../plotted-config.js";
-import { EINSTEIN_SETUP } from "../plotted-engine.js";
+import { displayClueText, EINSTEIN_SETUP } from "../plotted-engine.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (rel) => fs.readFileSync(path.join(root, rel), "utf8");
@@ -104,7 +104,7 @@ function assertPuzzlePainted(puzzle, { expectSetup = false } = {}) {
   const clues = [...document.querySelectorAll(".clue")];
   assert.equal(clues.length, puzzle.clues.length, `${puzzle.date} clue count`);
   for (const [index, clue] of puzzle.clues.entries()) {
-    assert.equal(clues[index].querySelector(".clue-text")?.textContent, clue.text);
+    assert.equal(clues[index].querySelector(".clue-text")?.textContent, displayClueText(puzzle, clue));
   }
   const setup = document.getElementById("setup");
   if (expectSetup) {
@@ -500,8 +500,33 @@ if (typeof window.happyDOM?.setViewport === "function") {
   const pickerSelect = document.getElementById("practice-select");
   const selectStyle = window.getComputedStyle(pickerSelect);
   if (selectStyle?.fontSize) {
-    assert.ok(Number.parseFloat(selectStyle.fontSize) <= 16, "picker uses the standard type size");
+    assert.equal(selectStyle.fontSize, "16px", "picker stays 16px so iOS does not zoom");
   }
+  if (selectStyle?.minHeight) {
+    assert.ok(Number.parseFloat(selectStyle.minHeight) >= 40, "picker tap target is at least 40px");
+  }
+  if (selectStyle?.borderRadius) {
+    assert.ok(Number.parseFloat(selectStyle.borderRadius) >= 10, "picker corners are rounded");
+  }
+  assert.ok(document.querySelector(".practice-select-caret svg"), "native select uses a Phosphor caret");
+  const play = document.querySelector(".play");
+  assert.ok(!play?.style.paddingBlock || play.style.paddingBlock === "0px", "no leftover padding above hints");
+  const boardStyle = window.getComputedStyle(document.querySelector(".board"));
+  if (boardStyle?.justifyContent) {
+    assert.equal(boardStyle.justifyContent, "flex-start", "mobile leftover space sits below the grid");
+  }
+  const cellH = document.documentElement.style.getPropertyValue("--cell-h");
+  const firstSlot = document.querySelector("input.slot-input");
+  firstSlot.focus();
+  window.happyDOM.setViewport({ width: 390, height: 500 });
+  window.dispatchEvent(new window.Event("resize"));
+  assert.equal(
+    document.documentElement.style.getPropertyValue("--cell-h"),
+    cellH,
+    "keyboard/resize must not refit while a tile is focused",
+  );
+  firstSlot.blur();
+  window.happyDOM.setViewport({ width: 390, height: 844 });
 }
 
 stopGameTimers();
