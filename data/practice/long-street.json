@@ -1,0 +1,358 @@
+{
+  "id": "long-street",
+  "practice": true,
+  "practiceId": "long-street",
+  "label": "Expert",
+  "source": "expert-generated",
+  "theme": {
+    "id": "expert-street",
+    "title": "The long street",
+    "blurb": "Five painted houses. Who, color, pet, and drink.",
+    "story": "Five painted houses. Who, color, pet, and drink."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "color": [
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "pink",
+        "label": "pink",
+        "icon": "flower"
+      },
+      {
+        "id": "white",
+        "label": "white",
+        "icon": "house"
+      },
+      {
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
+      },
+      {
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
+      }
+    ],
+    "pet": [
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "not_at",
+      "attr": "color",
+      "item": "green",
+      "house": 2,
+      "text": "The resident of the green house does not live in house 3."
+    },
+    {
+      "id": "c2",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "immediate": false,
+      "text": "The fish owner lives somewhere left of Cam."
+    },
+    {
+      "id": "c3",
+      "type": "left_of",
+      "left": {
+        "attr": "color",
+        "item": "green"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "immediate": false,
+      "text": "The resident of the green house lives somewhere left of Jules."
+    },
+    {
+      "id": "c4",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "immediate": true,
+      "text": "The butterfly owner lives immediately left of Fay."
+    },
+    {
+      "id": "c5",
+      "type": "not_next_to",
+      "left": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "The person who drinks wine does not live next door to the bird owner."
+    },
+    {
+      "id": "c6",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Jules drinks brandy."
+    },
+    {
+      "id": "c7",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "green"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "The resident of the green house is the cat owner."
+    },
+    {
+      "id": "c8",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "The resident of the blue house is the person who drinks wine."
+    },
+    {
+      "id": "c9",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "The bird owner is the person who drinks tea."
+    },
+    {
+      "id": "c10",
+      "type": "either_house",
+      "attr": "color",
+      "item": "yellow",
+      "houses": [
+        0,
+        4
+      ],
+      "text": "The resident of the yellow house lives in either house 1 or house 5."
+    },
+    {
+      "id": "c11",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "color",
+        "item": "white"
+      },
+      "text": "Drew lives next door to the resident of the white house."
+    },
+    {
+      "id": "c12",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Fay owns the fish."
+    },
+    {
+      "id": "c13",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "color",
+        "item": "green"
+      },
+      "text": "The person who drinks martini lives next door to the resident of the green house."
+    }
+  ],
+  "question": {
+    "text": "Who owns the cat?",
+    "givenAttr": "pet",
+    "givenItem": "cat",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "drew",
+      "color": "green",
+      "pet": "cat",
+      "drink": "coffee"
+    },
+    {
+      "person": "hana",
+      "color": "white",
+      "pet": "butterfly",
+      "drink": "martini"
+    },
+    {
+      "person": "fay",
+      "color": "blue",
+      "pet": "fish",
+      "drink": "wine"
+    },
+    {
+      "person": "jules",
+      "color": "pink",
+      "pet": "rabbit",
+      "drink": "brandy"
+    },
+    {
+      "person": "cam",
+      "color": "yellow",
+      "pet": "bird",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "expert",
+    "steps": 18,
+    "neededSearch": true,
+    "weekday": 4,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 58
+  }
+}

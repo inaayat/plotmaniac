@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PRACTICE_PUZZLES, practiceGroupLabel } from "../plotted-config.js";
+import { generatePuzzle } from "../plotted-engine.js";
 import { humanDifficulty, solvePuzzleByHuman } from "../plotted-human-solver.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -88,6 +89,56 @@ const COPIES = [
   },
 ];
 
+/** Five-house Expert puzzles generated with contradiction-tier grading. */
+const EXPERT_SPECS = [
+  {
+    id: "long-street",
+    themeId: "expert-street",
+    seedDate: "2099-01-01",
+    story: "Five painted houses. Who, color, pet, and drink.",
+  },
+  {
+    id: "five-trades",
+    themeId: "expert-trades",
+    seedDate: "2099-01-02",
+    story: "Jobs, rides, and pets down the block.",
+  },
+  {
+    id: "five-cities",
+    themeId: "expert-cities",
+    seedDate: "2099-01-03",
+    story: "Visitors, drinks, and a treat each.",
+  },
+  {
+    id: "hobby-houses",
+    themeId: "expert-hobby",
+    seedDate: "2099-01-04",
+    story: "Hobbies, colors, and a drink on the street.",
+  },
+  {
+    id: "five-plates",
+    themeId: "expert-table",
+    seedDate: "2099-01-05",
+    story: "Five houses. Who ordered what, and what color is the door?",
+  },
+];
+
+const EXPERT_SPEC = {
+  houseCount: 5,
+  types: ["same", "next_to", "left_of", "not_at", "either_house", "not_next_to", "at"],
+  minClues: 8,
+  maxClues: 13,
+  minSteps: 6,
+  maxSteps: 80,
+  maxAtClues: 1,
+  minHumanTier: 8,
+  maxContradiction: 2,
+  preferHardTypes: true,
+  label: "expert",
+};
+
+const EXPERT_SALTS = [0, 1, 2, 5, 11];
+
 function packFromDaily(entry, daily) {
   const meta = PRACTICE_PUZZLES.find((puzzle) => puzzle.id === entry.id);
   if (!meta) throw new Error(`Unknown practice id ${entry.id}`);
@@ -127,10 +178,92 @@ function catalogRow(packed) {
     clueCount: packed.clues.length,
     difficulty: packed.difficulty.label,
     hardest: packed.difficulty.hardest,
+    hardestTier: packed.difficulty.hardestTier,
     steps: packed.difficulty.steps,
     categories: packed.attributes.map((attr) => attr.id),
     sourceDate: packed.difficulty.sourceDate || null,
   };
+}
+
+function harderTypeScore(puzzle) {
+  const types = puzzle.clues.map((clue) => clue.type);
+  let score = puzzle.difficulty.hardestTier || 0;
+  if (types.includes("not_next_to")) score += 4;
+  if (types.includes("either_house")) score += 4;
+  if (puzzle.clues.some((clue) => clue.type === "left_of" && !clue.immediate)) score += 4;
+  score += Math.max(0, 12 - puzzle.clues.length);
+  return score;
+}
+
+function isValidExpert(puzzle) {
+  if (!puzzle || puzzle.houseCount !== 5) return false;
+  if ((puzzle.attributes || []).length < 4) return false;
+  if (puzzle.clues.filter((clue) => clue.type === "at").length > 1) return false;
+  if (!puzzle.difficulty?.solvedByHuman) return false;
+  if ((puzzle.difficulty.hardestTier || 0) < 8) return false;
+  const hasHarder =
+    puzzle.clues.some((clue) => clue.type === "not_next_to") ||
+    puzzle.clues.some((clue) => clue.type === "either_house") ||
+    puzzle.clues.some((clue) => clue.type === "left_of" && !clue.immediate);
+  return hasHarder;
+}
+
+function packExpert(entry, puzzle) {
+  const meta = PRACTICE_PUZZLES.find((item) => item.id === entry.id);
+  if (!meta) throw new Error(`Unknown practice id ${entry.id}`);
+  const human = humanDifficulty(solvePuzzleByHuman(puzzle));
+  return {
+    id: entry.id,
+    practice: true,
+    practiceId: entry.id,
+    label: practiceGroupLabel(meta.group),
+    source: "expert-generated",
+    theme: {
+      ...puzzle.theme,
+      title: meta.title,
+      story: entry.story,
+    },
+    houseCount: puzzle.houseCount,
+    attributes: puzzle.attributes,
+    items: puzzle.items,
+    clues: puzzle.clues,
+    question: puzzle.question,
+    solution: puzzle.solution,
+    difficulty: {
+      ...puzzle.difficulty,
+      ...human,
+      label: meta.group,
+    },
+  };
+}
+
+function generateExpert(entry) {
+  let best = null;
+  let bestScore = -1;
+  let lastError = null;
+  for (const salt of EXPERT_SALTS) {
+    try {
+      const puzzle = generatePuzzle(entry.seedDate, {
+        spec: EXPERT_SPEC,
+        themeId: entry.themeId,
+        salt,
+        maxTries: 100,
+      });
+      if (!isValidExpert(puzzle)) continue;
+      const score = harderTypeScore(puzzle);
+      if (score > bestScore) {
+        best = puzzle;
+        bestScore = score;
+      }
+      if (score >= 16) break;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  if (!best) {
+    throw lastError || new Error(`Could not generate expert puzzle ${entry.id}`);
+  }
+  return packExpert(entry, best);
 }
 
 const byId = new Map();
@@ -149,6 +282,17 @@ for (const entry of COPIES) {
   byId.set(entry.id, packed);
   process.stdout.write(
     `${entry.id} ${entry.date} ${packed.theme.id} ${packed.houseCount}h ${packed.clues.length}c steps=${packed.difficulty.steps} ${packed.difficulty.hardest} tier=${packed.difficulty.hardestTier}\n`,
+  );
+}
+
+for (const entry of EXPERT_SPECS) {
+  const packed = generateExpert(entry);
+  fs.writeFileSync(path.join(outDir, `${entry.id}.json`), `${JSON.stringify(packed, null, 2)}\n`);
+  byId.set(entry.id, packed);
+  const types = [...new Set(packed.clues.map((clue) => clue.type))].join(",");
+  const atCount = packed.clues.filter((clue) => clue.type === "at").length;
+  process.stdout.write(
+    `${entry.id} ${packed.theme.id} ${packed.houseCount}h ${packed.attributes.length}a ${packed.clues.length}c at=${atCount} steps=${packed.difficulty.steps} ${packed.difficulty.hardest} tier=${packed.difficulty.hardestTier} types=${types}\n`,
   );
 }
 

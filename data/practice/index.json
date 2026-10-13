@@ -8,6 +8,7 @@
       "clueCount": 5,
       "difficulty": "easy",
       "hardest": "same_house",
+      "hardestTier": 5,
       "steps": 7,
       "categories": [
         "person",
@@ -24,6 +25,7 @@
       "clueCount": 5,
       "difficulty": "easy",
       "hardest": "same_house",
+      "hardestTier": 5,
       "steps": 7,
       "categories": [
         "person",
@@ -40,6 +42,7 @@
       "clueCount": 5,
       "difficulty": "easy",
       "hardest": "same_house",
+      "hardestTier": 5,
       "steps": 10,
       "categories": [
         "person",
@@ -56,6 +59,7 @@
       "clueCount": 5,
       "difficulty": "easy",
       "hardest": "same_house",
+      "hardestTier": 5,
       "steps": 8,
       "categories": [
         "person",
@@ -72,6 +76,7 @@
       "clueCount": 5,
       "difficulty": "easy-medium",
       "hardest": "next_to_edge",
+      "hardestTier": 6,
       "steps": 11,
       "categories": [
         "person",
@@ -88,6 +93,7 @@
       "clueCount": 5,
       "difficulty": "medium",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 5,
       "categories": [
         "person",
@@ -104,6 +110,7 @@
       "clueCount": 5,
       "difficulty": "medium",
       "hardest": "next_to_edge",
+      "hardestTier": 6,
       "steps": 13,
       "categories": [
         "person",
@@ -120,6 +127,7 @@
       "clueCount": 5,
       "difficulty": "medium",
       "hardest": "next_to_edge",
+      "hardestTier": 6,
       "steps": 12,
       "categories": [
         "person",
@@ -136,6 +144,7 @@
       "clueCount": 6,
       "difficulty": "medium",
       "hardest": "next_to_edge",
+      "hardestTier": 6,
       "steps": 12,
       "categories": [
         "person",
@@ -152,6 +161,7 @@
       "clueCount": 6,
       "difficulty": "medium-hard",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 5,
       "categories": [
         "person",
@@ -168,6 +178,7 @@
       "clueCount": 5,
       "difficulty": "medium-hard",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 6,
       "categories": [
         "person",
@@ -184,6 +195,7 @@
       "clueCount": 5,
       "difficulty": "medium-hard",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 4,
       "categories": [
         "person",
@@ -200,6 +212,7 @@
       "clueCount": 5,
       "difficulty": "medium-hard",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 3,
       "categories": [
         "person",
@@ -216,6 +229,7 @@
       "clueCount": 8,
       "difficulty": "hard",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 7,
       "categories": [
         "person",
@@ -232,6 +246,7 @@
       "clueCount": 8,
       "difficulty": "hard",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 7,
       "categories": [
         "person",
@@ -248,6 +263,7 @@
       "clueCount": 7,
       "difficulty": "hard",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 5,
       "categories": [
         "person",
@@ -264,6 +280,7 @@
       "clueCount": 7,
       "difficulty": "hard",
       "hardest": "contradiction",
+      "hardestTier": 8,
       "steps": 3,
       "categories": [
         "person",
@@ -271,6 +288,96 @@
         "drink"
       ],
       "sourceDate": "2027-11-14"
+    },
+    {
+      "id": "long-street",
+      "label": "Expert",
+      "title": "The long street",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 18,
+      "categories": [
+        "person",
+        "color",
+        "pet",
+        "drink"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "five-trades",
+      "label": "Expert",
+      "title": "Five trades",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 17,
+      "categories": [
+        "person",
+        "job",
+        "vehicle",
+        "pet"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "five-cities",
+      "label": "Expert",
+      "title": "Five cities",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 17,
+      "categories": [
+        "person",
+        "city",
+        "drink",
+        "treat"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "hobby-houses",
+      "label": "Expert",
+      "title": "Hobby houses",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 18,
+      "categories": [
+        "person",
+        "hobby",
+        "color",
+        "drink"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "five-plates",
+      "label": "Expert",
+      "title": "Five plates",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 11,
+      "categories": [
+        "person",
+        "color",
+        "food",
+        "drink"
+      ],
+      "sourceDate": null
     }
   ]
 }

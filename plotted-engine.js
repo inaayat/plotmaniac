@@ -570,7 +570,7 @@ export function clueText(clue, catalog, themeId = "") {
       text = `${who(clue.attr, clue.item)} does not live in house ${houseNo(clue.house)}.`;
       break;
     case "either_house":
-      text = `${who(clue.attr, clue.item)} lives in house ${houseNo(clue.houses[0])} or house ${houseNo(clue.houses[1])}.`;
+      text = `${who(clue.attr, clue.item)} lives in either house ${houseNo(clue.houses[0])} or house ${houseNo(clue.houses[1])}.`;
       break;
     case "same":
       text = `${samePhrase(catalog, roles, clue.left, clue.right)}.`;
@@ -855,47 +855,71 @@ export function generatePuzzle(iso, options = {}) {
     const solution = randomSolution(houseCount, attributes, items, rng);
     const sig = solutionSignature(solution);
     if (used.solutions.has(sig)) continue;
-    const rawPool = trueCluesFor(solution, spec.types, rng);
+    const maxAtClues = spec.maxAtClues ?? (spec.types.includes("at") ? (houseCount >= 5 ? 3 : 4) : 0);
+    const clueTypes = maxAtClues > 0 && !spec.types.includes("at") ? [...spec.types, "at"] : spec.types;
+    const rawPool = trueCluesFor(solution, clueTypes, rng);
     const byType = new Map();
     for (const clue of rawPool) {
       if (!byType.has(clue.type)) byType.set(clue.type, []);
       byType.get(clue.type).push(clue);
     }
     const take = (type, n) => shuffle(byType.get(type) || [], rng).slice(0, n);
-    const atBudget = spec.types.includes("at") ? (houseCount >= 5 ? 3 : 4) : 0;
-    const pool = [
-      ...take("same", 12),
-      ...take("next_to", 10),
-      ...take("left_of", 10),
-      ...take("at", atBudget),
-      ...take("either_house", 6),
-      ...take("not_at", 6),
-      ...take("not_next_to", 8),
-    ];
+    const wide = houseCount >= 5 || attributes.length >= 4;
+    const atBudget = spec.types.includes("at") ? maxAtClues : 0;
+    const minClues = spec.minClues || 5;
+    const maxClues = spec.maxClues || 8;
+    const hardMix = Boolean(spec.preferHardTypes);
+    const pool = hardMix
+      ? shuffle(
+          [
+            ...take("same", 12),
+            ...take("next_to", 10),
+            ...take("left_of", 12),
+            ...take("either_house", 8),
+            ...take("not_next_to", 8),
+            ...take("not_at", 6),
+            ...take("at", atBudget),
+          ],
+          rng,
+        )
+      : [
+          ...take("same", wide ? 20 : 12),
+          ...take("next_to", wide ? 16 : 10),
+          ...take("left_of", wide ? 16 : 10),
+          ...take("at", atBudget),
+          ...take("either_house", wide ? 10 : 6),
+          ...take("not_at", wide ? 10 : 6),
+          ...take("not_next_to", wide ? 12 : 8),
+        ];
     const clues = [];
     let unique = null;
+    const atCount = (list) => list.filter((clue) => clue.type === "at").length;
+    const gatherCap = Math.max(maxClues + 8, 16);
     for (const clue of pool) {
       clues.push(clue);
       unique = countSolutions(houseCount, attributes, items, clues, 2);
       if (unique.count === 1) break;
+      if (clues.length >= gatherCap) break;
     }
     if (!unique || unique.count !== 1) {
       for (const clue of take("at", 15)) {
+        if (atCount(clues) >= maxAtClues) break;
         clues.push(clue);
         unique = countSolutions(houseCount, attributes, items, clues, 2);
         if (unique.count === 1) break;
+        if (clues.length >= gatherCap) break;
       }
     }
     if (!unique || unique.count !== 1) continue;
     let pruned = pruneClues(houseCount, attributes, items, clues);
     const late = attempt >= maxTries - 15;
-    if (pruned.length < spec.minClues) {
-      if (clues.length >= spec.minClues && clues.length <= 10) pruned = clues.slice(0, Math.min(8, clues.length));
-      else if (!late) continue;
+    if (pruned.length < minClues) {
+      if (clues.length >= minClues && clues.length <= Math.max(10, maxClues)) {
+        pruned = clues.slice(0, Math.min(maxClues, clues.length));
+      } else if (!late) continue;
     }
-    const minClues = spec.minClues || 5;
-    const maxClues = spec.maxClues || 8;
     if (pruned.length > maxClues || pruned.length < minClues) continue;
+    if (atCount(pruned) > maxAtClues) continue;
     const rated = countSolutions(houseCount, attributes, items, pruned, 2);
     if (rated.count !== 1) continue;
     const numbered = pruned.map((clue, index) => ({ id: `c${index + 1}`, ...clue }));
@@ -906,7 +930,8 @@ export function generatePuzzle(iso, options = {}) {
       const fallback = solveByHuman(houseCount, attributes, items, clues.map((clue, index) => ({ id: `c${index + 1}`, ...clue })), {
         maxContradiction: spec.maxContradiction ?? 2,
       });
-      if (!fallback.solvedByHuman || clues.length > 8 || clues.length < 5) continue;
+      if (!fallback.solvedByHuman || clues.length > maxClues || clues.length < minClues) continue;
+      if (atCount(clues) > maxAtClues) continue;
       pruned = clues;
       numbered.splice(0, numbered.length, ...pruned.map((clue, index) => ({ id: `c${index + 1}`, ...clue })));
       Object.assign(human, fallback);
@@ -915,7 +940,8 @@ export function generatePuzzle(iso, options = {}) {
     const steps = humanInfo.solvedByHuman ? humanInfo.steps : rated.neededSearch ? rated.steps + 10 : rated.steps;
     if (!late && spec.minHumanSteps && steps < spec.minHumanSteps) continue;
     if (!late && spec.maxHumanSteps && steps > spec.maxHumanSteps) continue;
-    if (!late && spec.maxHumanTier && humanInfo.hardestTier > spec.maxHumanTier) continue;
+    if (spec.minHumanTier && humanInfo.hardestTier < spec.minHumanTier) continue;
+    if (spec.maxHumanTier && humanInfo.hardestTier > spec.maxHumanTier) continue;
     if (!late && !humanInfo.solvedByHuman) continue;
     if (!late && steps < spec.minSteps && !humanInfo.solvedByHuman) continue;
     if (!late && steps > spec.maxSteps && !requireHuman) continue;

@@ -1,0 +1,359 @@
+{
+  "id": "hobby-houses",
+  "practice": true,
+  "practiceId": "hobby-houses",
+  "label": "Expert",
+  "source": "expert-generated",
+  "theme": {
+    "id": "expert-hobby",
+    "title": "Hobby houses",
+    "blurb": "Hobbies, colors, and a drink on the street.",
+    "story": "Hobbies, colors, and a drink on the street."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "hobby",
+      "label": "Hobby"
+    },
+    {
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "hobby": [
+      {
+        "id": "camping",
+        "label": "camping",
+        "icon": "tent"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "painting",
+        "label": "painting",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "baking",
+        "label": "baking",
+        "icon": "cookie"
+      },
+      {
+        "id": "reading",
+        "label": "reading",
+        "icon": "book"
+      }
+    ],
+    "color": [
+      {
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
+      },
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "white",
+        "label": "white",
+        "icon": "house"
+      },
+      {
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "pink",
+        "label": "pink",
+        "icon": "flower"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "left_of",
+      "left": {
+        "attr": "hobby",
+        "item": "painting"
+      },
+      "right": {
+        "attr": "person",
+        "item": "io"
+      },
+      "immediate": true,
+      "text": "The person who likes painting lives immediately left of Io."
+    },
+    {
+      "id": "c2",
+      "type": "not_at",
+      "attr": "color",
+      "item": "red",
+      "house": 0,
+      "text": "The resident of the red house does not live in house 1."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "hobby",
+        "item": "guitar"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "The person who likes guitar is the person who drinks wine."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "pink"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "The resident of the pink house is the person who drinks wine."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "color",
+        "item": "white"
+      },
+      "right": {
+        "attr": "hobby",
+        "item": "reading"
+      },
+      "immediate": false,
+      "text": "The resident of the white house lives somewhere left of the person who likes reading."
+    },
+    {
+      "id": "c6",
+      "type": "same",
+      "left": {
+        "attr": "hobby",
+        "item": "painting"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "The person who likes painting is the person who drinks tea."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "color",
+        "item": "white"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "immediate": true,
+      "text": "The resident of the white house lives immediately left of Jules."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "right": {
+        "attr": "hobby",
+        "item": "camping"
+      },
+      "immediate": true,
+      "text": "The person who drinks brandy lives immediately left of the person who likes camping."
+    },
+    {
+      "id": "c9",
+      "type": "either_house",
+      "attr": "hobby",
+      "item": "guitar",
+      "houses": [
+        3,
+        4
+      ],
+      "text": "The person who likes guitar lives in either house 4 or house 5."
+    },
+    {
+      "id": "c10",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Io lives next door to the person who drinks orange juice."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "hobby",
+        "item": "painting"
+      },
+      "right": {
+        "attr": "color",
+        "item": "red"
+      },
+      "text": "The person who likes painting is the resident of the red house."
+    },
+    {
+      "id": "c12",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "The person who drinks brandy lives next door to Drew."
+    },
+    {
+      "id": "c13",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "color",
+        "item": "green"
+      },
+      "text": "Hana lives next door to the resident of the green house."
+    }
+  ],
+  "question": {
+    "text": "Who likes reading?",
+    "givenAttr": "hobby",
+    "givenItem": "reading",
+    "answerAttr": "person",
+    "answerItem": "io"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "hobby": "baking",
+      "color": "white",
+      "drink": "coffee"
+    },
+    {
+      "person": "jules",
+      "hobby": "painting",
+      "color": "red",
+      "drink": "tea"
+    },
+    {
+      "person": "io",
+      "hobby": "reading",
+      "color": "yellow",
+      "drink": "brandy"
+    },
+    {
+      "person": "drew",
+      "hobby": "camping",
+      "color": "green",
+      "drink": "orange"
+    },
+    {
+      "person": "hana",
+      "hobby": "guitar",
+      "color": "pink",
+      "drink": "wine"
+    }
+  ],
+  "difficulty": {
+    "label": "expert",
+    "steps": 18,
+    "neededSearch": true,
+    "weekday": 0,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 58
+  }
+}

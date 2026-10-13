@@ -1,0 +1,362 @@
+{
+  "id": "five-plates",
+  "practice": true,
+  "practiceId": "five-plates",
+  "label": "Expert",
+  "source": "expert-generated",
+  "theme": {
+    "id": "expert-table",
+    "title": "Five plates",
+    "blurb": "Colors, plates, and drinks on one street.",
+    "story": "Five houses. Who ordered what, and what color is the door?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "color": [
+      {
+        "id": "white",
+        "label": "white",
+        "icon": "house"
+      },
+      {
+        "id": "pink",
+        "label": "pink",
+        "icon": "flower"
+      },
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
+      },
+      {
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
+      }
+    ],
+    "food": [
+      {
+        "id": "burger",
+        "label": "burger",
+        "icon": "hamburger"
+      },
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      },
+      {
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
+      },
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "bowl",
+        "label": "bowl",
+        "icon": "bowl-food"
+      }
+    ],
+    "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "left_of",
+      "left": {
+        "attr": "food",
+        "item": "pizza"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "immediate": false,
+      "text": "The person who ordered pizza lives somewhere left of Fay."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "ice"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "The person who ordered ice cream is the person who drinks martini."
+    },
+    {
+      "id": "c3",
+      "type": "left_of",
+      "left": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "right": {
+        "attr": "food",
+        "item": "ice"
+      },
+      "immediate": false,
+      "text": "The resident of the blue house lives somewhere left of the person who ordered ice cream."
+    },
+    {
+      "id": "c4",
+      "type": "not_next_to",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "The person who drinks tea does not live next door to Drew."
+    },
+    {
+      "id": "c5",
+      "type": "either_house",
+      "attr": "color",
+      "item": "pink",
+      "houses": [
+        0,
+        2
+      ],
+      "text": "The resident of the pink house lives in either house 1 or house 3."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "Gus lives next door to the person who drinks orange juice."
+    },
+    {
+      "id": "c7",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "yellow"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "The resident of the yellow house is the person who drinks beer."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "food",
+        "item": "carrot"
+      },
+      "immediate": true,
+      "text": "Bo lives immediately left of the person who ordered carrot."
+    },
+    {
+      "id": "c9",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "text": "The person who drinks beer lives next door to Gus."
+    },
+    {
+      "id": "c10",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Fay drinks tea."
+    },
+    {
+      "id": "c11",
+      "type": "left_of",
+      "left": {
+        "attr": "color",
+        "item": "white"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "immediate": true,
+      "text": "The resident of the white house lives immediately left of Gus."
+    },
+    {
+      "id": "c12",
+      "type": "either_house",
+      "attr": "person",
+      "item": "eden",
+      "houses": [
+        3,
+        4
+      ],
+      "text": "Eden lives in either house 4 or house 5."
+    },
+    {
+      "id": "c13",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "bowl"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "The person who ordered bowl lives next door to Fay."
+    }
+  ],
+  "question": {
+    "text": "Who ordered the carrot?",
+    "givenAttr": "food",
+    "givenItem": "carrot",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "color": "blue",
+      "food": "pizza",
+      "drink": "wine"
+    },
+    {
+      "person": "drew",
+      "color": "white",
+      "food": "carrot",
+      "drink": "orange"
+    },
+    {
+      "person": "gus",
+      "color": "pink",
+      "food": "ice",
+      "drink": "martini"
+    },
+    {
+      "person": "eden",
+      "color": "yellow",
+      "food": "bowl",
+      "drink": "beer"
+    },
+    {
+      "person": "fay",
+      "color": "green",
+      "food": "burger",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "expert",
+    "steps": 11,
+    "neededSearch": true,
+    "weekday": 1,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 51
+  }
+}

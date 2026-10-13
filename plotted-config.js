@@ -21,6 +21,7 @@ export const PRACTICE_GROUPS = [
   { id: "medium", label: "Medium" },
   { id: "medium-hard", label: "Medium–hard" },
   { id: "hard", label: "Hard" },
+  { id: "expert", label: "Expert" },
 ];
 
 export const PRACTICE_PUZZLES = [
@@ -41,6 +42,11 @@ export const PRACTICE_PUZZLES = [
   { id: "five-copies", title: "Five copies", group: "hard" },
   { id: "parcel-row", title: "Parcel row", group: "hard" },
   { id: "four-plates", title: "Four plates", group: "hard" },
+  { id: "long-street", title: "The long street", group: "expert" },
+  { id: "five-trades", title: "Five trades", group: "expert" },
+  { id: "five-cities", title: "Five cities", group: "expert" },
+  { id: "hobby-houses", title: "Hobby houses", group: "expert" },
+  { id: "five-plates", title: "Five plates", group: "expert" },
 ];
 
 export function practiceGroupLabel(groupId) {

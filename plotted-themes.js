@@ -125,6 +125,27 @@ export const ATTRIBUTES = {
     occupant: (x) => `the person who smokes ${x}`,
     personSame: (person, x) => `${person} smokes ${x}`,
   },
+  job: {
+    id: "job",
+    label: "Job",
+    icon: "briefcase",
+    occupant: (x) => `the person who is a ${x}`,
+    personSame: (person, x) => `${person} is a ${x}`,
+  },
+  hobby: {
+    id: "hobby",
+    label: "Hobby",
+    icon: "lightbulb",
+    occupant: (x) => `the person who likes ${x}`,
+    personSame: (person, x) => `${person} likes ${x}`,
+  },
+  city: {
+    id: "city",
+    label: "City",
+    icon: "house",
+    occupant: (x) => `the person from ${x}`,
+    personSame: (person, x) => `${person} is from ${x}`,
+  },
 };
 
 const PEOPLE = [
@@ -158,6 +179,70 @@ const DRINKS = [
   { id: "martini", label: "martini", icon: "martini" },
   { id: "brandy", label: "brandy", icon: "brandy" },
   { id: "orange", label: "orange juice", icon: "orange" },
+];
+
+const COLORS = [
+  { id: "red", label: "red", icon: "paint-brush" },
+  { id: "green", label: "green", icon: "leaf" },
+  { id: "yellow", label: "yellow", icon: "sun" },
+  { id: "blue", label: "blue", icon: "house-simple" },
+  { id: "white", label: "white", icon: "house" },
+  { id: "pink", label: "pink", icon: "flower" },
+];
+
+const JOBS = [
+  { id: "chef", label: "chef", icon: "chef-hat" },
+  { id: "detective", label: "detective", icon: "detective" },
+  { id: "student", label: "student", icon: "student" },
+  { id: "painter", label: "painter", icon: "paint-brush" },
+  { id: "clerk", label: "clerk", icon: "briefcase" },
+  { id: "scout", label: "scout", icon: "magnifying-glass" },
+];
+
+const HOBBIES = [
+  { id: "guitar", label: "guitar", icon: "guitar" },
+  { id: "cycling", label: "cycling", icon: "bicycle" },
+  { id: "painting", label: "painting", icon: "paint-brush" },
+  { id: "reading", label: "reading", icon: "book" },
+  { id: "camping", label: "camping", icon: "tent" },
+  { id: "baking", label: "baking", icon: "cookie" },
+];
+
+const CITIES = [
+  { id: "paris", label: "Paris", icon: "house" },
+  { id: "rome", label: "Rome", icon: "house-simple" },
+  { id: "cairo", label: "Cairo", icon: "tent" },
+  { id: "tokyo", label: "Tokyo", icon: "sun" },
+  { id: "oslo", label: "Oslo", icon: "moon" },
+  { id: "lima", label: "Lima", icon: "flower" },
+];
+
+const VEHICLES = [
+  { id: "car", label: "car", icon: "car" },
+  { id: "bike", label: "bicycle", icon: "bicycle" },
+  { id: "moto", label: "motorcycle", icon: "motorcycle" },
+  { id: "plane", label: "plane", icon: "airplane" },
+  { id: "boat", label: "sailboat", icon: "sailboat" },
+  { id: "walk", label: "on foot", icon: "person-simple-walk" },
+];
+
+const TREATS = [
+  { id: "cookie", label: "cookie", icon: "cookie" },
+  { id: "cake", label: "cake", icon: "cake" },
+  { id: "ice", label: "ice cream", icon: "ice-cream" },
+  { id: "pizza", label: "pizza", icon: "pizza" },
+  { id: "burger", label: "burger", icon: "hamburger" },
+  { id: "carrot", label: "carrot", icon: "carrot" },
+];
+
+const FOODS = [
+  { id: "pizza", label: "pizza", icon: "pizza" },
+  { id: "burger", label: "burger", icon: "hamburger" },
+  { id: "bowl", label: "bowl", icon: "bowl-food" },
+  { id: "cake", label: "cake", icon: "cake" },
+  { id: "ice", label: "ice cream", icon: "ice-cream" },
+  { id: "carrot", label: "carrot", icon: "carrot" },
+  { id: "pot", label: "stew", icon: "cooking-pot" },
 ];
 
 export const THEMES = [
@@ -393,6 +478,65 @@ export const THEMES = [
   },
 ];
 
+/** Practice-only themes. Daily generation still draws from THEMES. */
+export const PRACTICE_THEMES = [
+  {
+    id: "expert-street",
+    title: "The long street",
+    blurb: "Five painted houses. Who, color, pet, and drink.",
+    story: "Five houses, four facts each.",
+    attributes: ["person", "color", "pet", "drink"],
+    items: { person: PEOPLE, color: COLORS, pet: PETS, drink: DRINKS },
+    question: (given, answer) => `Who owns the ${given.label}?`,
+    questionGiven: "pet",
+    questionAnswer: "person",
+  },
+  {
+    id: "expert-trades",
+    title: "Five trades",
+    blurb: "Jobs, rides, and pets down the block.",
+    story: "The clerk still has not parked.",
+    attributes: ["person", "job", "vehicle", "pet"],
+    items: { person: PEOPLE, job: JOBS, vehicle: VEHICLES, pet: PETS },
+    question: (given, answer) => `Who is the ${given.label}?`,
+    questionGiven: "job",
+    questionAnswer: "person",
+  },
+  {
+    id: "expert-cities",
+    title: "Five cities",
+    blurb: "Visitors, drinks, and a treat each.",
+    story: "Tokyo still has not ordered dessert.",
+    attributes: ["person", "city", "drink", "treat"],
+    items: { person: PEOPLE, city: CITIES, drink: DRINKS, treat: TREATS },
+    question: (given, answer) => `Who is from ${given.label}?`,
+    questionGiven: "city",
+    questionAnswer: "person",
+  },
+  {
+    id: "expert-hobby",
+    title: "Hobby houses",
+    blurb: "Hobbies, colors, and a drink on the street.",
+    story: "The pink house still needs a hobby.",
+    attributes: ["person", "hobby", "color", "drink"],
+    items: { person: PEOPLE, hobby: HOBBIES, color: COLORS, drink: DRINKS },
+    question: (given, answer) => `Who likes ${given.label}?`,
+    questionGiven: "hobby",
+    questionAnswer: "person",
+  },
+  {
+    id: "expert-table",
+    title: "Five plates",
+    blurb: "Colors, plates, and drinks on one street.",
+    story: "The pink house still has not ordered.",
+    attributes: ["person", "color", "food", "drink"],
+    items: { person: PEOPLE, color: COLORS, food: FOODS, drink: DRINKS },
+    question: (given, answer) => `Who ordered the ${given.label}?`,
+    questionGiven: "food",
+    questionAnswer: "person",
+  },
+];
+
 export const HOLIDAY_THEME_BY_MD = {
   "01-01": "holiday",
   "02-14": "brunch",
@@ -403,7 +547,7 @@ export const HOLIDAY_THEME_BY_MD = {
 };
 
 export function themeById(id) {
-  return THEMES.find((theme) => theme.id === id) || THEMES[0];
+  return THEMES.find((theme) => theme.id === id) || PRACTICE_THEMES.find((theme) => theme.id === id) || THEMES[0];
 }
 
 export function rolesForTheme(themeId) {

@@ -412,9 +412,10 @@ assert.equal(
 const practiceSelect = document.getElementById("practice-select");
 assert.ok(practiceSelect, "practice picker is a compact select");
 assert.equal(practiceSelect.value, "easy");
-assert.equal(practiceSelect.querySelectorAll("option").length, 18, "Today plus 17 practice puzzles");
-assert.equal(practiceSelect.querySelectorAll("optgroup").length, 5, "practice puzzles are grouped by difficulty");
+assert.equal(practiceSelect.querySelectorAll("option").length, 23, "Today plus 22 practice puzzles");
+assert.equal(practiceSelect.querySelectorAll("optgroup").length, 6, "practice puzzles are grouped by difficulty");
 assert.equal(practiceSelect.querySelectorAll("optgroup")[0].label, "Easy");
+assert.equal(practiceSelect.querySelectorAll("optgroup")[5].label, "Expert");
 assert.equal(document.querySelectorAll("input.slot-input").length, easy.houseCount * easy.attributes.length);
 assert.equal(easy.clues.length, 5, "practice Easy is the 5-clue fixture");
 assert.equal(einstein.clues.length, 15, "Einstein is the 15-clue fixture");
@@ -476,6 +477,16 @@ assert.equal(fiveCopies.houseCount, 5);
 assert.equal(missingVisibleOptions(document, fiveCopies).length, 0, "5-house practice still lists every option");
 assert.equal(document.getElementById("practice-select")?.value, "five-copies");
 assert.match(document.getElementById("meta-date")?.textContent || "", /Practice · Hard/);
+assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
+
+const longStreet = readJson("data/practice/long-street.json");
+await loadPuzzle({ puzzle: longStreet });
+assert.equal(document.getElementById("win")?.hidden, true, "expert switch hides the win card");
+assert.equal(longStreet.houseCount, 5);
+assert.ok(longStreet.attributes.length >= 4);
+assert.equal(missingVisibleOptions(document, longStreet).length, 0, "expert practice still lists every option");
+assert.equal(document.getElementById("practice-select")?.value, "long-street");
+assert.match(document.getElementById("meta-date")?.textContent || "", /Practice · Expert/);
 assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
 
 if (typeof window.happyDOM?.setViewport === "function") {

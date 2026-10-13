@@ -1,0 +1,363 @@
+{
+  "id": "five-cities",
+  "practice": true,
+  "practiceId": "five-cities",
+  "label": "Expert",
+  "source": "expert-generated",
+  "theme": {
+    "id": "expert-cities",
+    "title": "Five cities",
+    "blurb": "Visitors, drinks, and a treat each.",
+    "story": "Visitors, drinks, and a treat each."
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "city",
+      "label": "City"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    },
+    {
+      "id": "treat",
+      "label": "Treat"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      }
+    ],
+    "city": [
+      {
+        "id": "oslo",
+        "label": "Oslo",
+        "icon": "moon"
+      },
+      {
+        "id": "rome",
+        "label": "Rome",
+        "icon": "house-simple"
+      },
+      {
+        "id": "lima",
+        "label": "Lima",
+        "icon": "flower"
+      },
+      {
+        "id": "tokyo",
+        "label": "Tokyo",
+        "icon": "sun"
+      },
+      {
+        "id": "cairo",
+        "label": "Cairo",
+        "icon": "tent"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ],
+    "treat": [
+      {
+        "id": "cookie",
+        "label": "cookie",
+        "icon": "cookie"
+      },
+      {
+        "id": "ice",
+        "label": "ice cream",
+        "icon": "ice-cream"
+      },
+      {
+        "id": "burger",
+        "label": "burger",
+        "icon": "hamburger"
+      },
+      {
+        "id": "carrot",
+        "label": "carrot",
+        "icon": "carrot"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "carrot"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "immediate": true,
+      "text": "The person with the carrot lives immediately left of Bo."
+    },
+    {
+      "id": "c2",
+      "type": "not_next_to",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "city",
+        "item": "cairo"
+      },
+      "text": "The person who drinks martini does not live next door to the person from Cairo."
+    },
+    {
+      "id": "c3",
+      "type": "left_of",
+      "left": {
+        "attr": "city",
+        "item": "oslo"
+      },
+      "right": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "immediate": true,
+      "text": "The person from Oslo lives immediately left of Gus."
+    },
+    {
+      "id": "c4",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "burger"
+      },
+      "immediate": true,
+      "text": "The person who drinks tea lives immediately left of the person with the burger."
+    },
+    {
+      "id": "c5",
+      "type": "not_next_to",
+      "left": {
+        "attr": "treat",
+        "item": "burger"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "text": "The person with the burger does not live next door to Hana."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "treat",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "The person with the cake lives next door to the person who drinks wine."
+    },
+    {
+      "id": "c7",
+      "type": "either_house",
+      "attr": "city",
+      "item": "tokyo",
+      "houses": [
+        1,
+        2
+      ],
+      "text": "The person from Tokyo lives in either house 2 or house 3."
+    },
+    {
+      "id": "c8",
+      "type": "either_house",
+      "attr": "drink",
+      "item": "brandy",
+      "houses": [
+        1,
+        3
+      ],
+      "text": "The person who drinks brandy lives in either house 2 or house 4."
+    },
+    {
+      "id": "c9",
+      "type": "same",
+      "left": {
+        "attr": "city",
+        "item": "cairo"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "carrot"
+      },
+      "text": "The person from Cairo is the person with the carrot."
+    },
+    {
+      "id": "c10",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "cookie"
+      },
+      "right": {
+        "attr": "city",
+        "item": "cairo"
+      },
+      "immediate": false,
+      "text": "The person with the cookie lives somewhere left of the person from Cairo."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "city",
+        "item": "oslo"
+      },
+      "text": "Jules is from Oslo."
+    },
+    {
+      "id": "c12",
+      "type": "left_of",
+      "left": {
+        "attr": "treat",
+        "item": "burger"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "immediate": false,
+      "text": "The person with the burger lives somewhere left of Jules."
+    },
+    {
+      "id": "c13",
+      "type": "not_next_to",
+      "left": {
+        "attr": "city",
+        "item": "lima"
+      },
+      "right": {
+        "attr": "treat",
+        "item": "carrot"
+      },
+      "text": "The person from Lima does not live next door to the person with the carrot."
+    }
+  ],
+  "question": {
+    "text": "Who is from Tokyo?",
+    "givenAttr": "city",
+    "givenItem": "tokyo",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "city": "rome",
+      "drink": "coffee",
+      "treat": "cookie"
+    },
+    {
+      "person": "io",
+      "city": "cairo",
+      "drink": "tea",
+      "treat": "carrot"
+    },
+    {
+      "person": "bo",
+      "city": "tokyo",
+      "drink": "wine",
+      "treat": "burger"
+    },
+    {
+      "person": "jules",
+      "city": "oslo",
+      "drink": "brandy",
+      "treat": "cake"
+    },
+    {
+      "person": "gus",
+      "city": "lima",
+      "drink": "martini",
+      "treat": "ice"
+    }
+  ],
+  "difficulty": {
+    "label": "expert",
+    "steps": 17,
+    "neededSearch": true,
+    "weekday": 6,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 57
+  }
+}
