@@ -9,7 +9,7 @@ The older Plotmaniac field guide is archived (not deleted) under `archive/`: `ar
 | Path | Role |
 | --- | --- |
 | `index.html` | Plotted shell (theme boot, `?plot=` redirect, PWA) |
-| `plotted.js` | Game UI: grid, hint list, picker sheet, timer, share text |
+| `plotted.js` | Game UI: typed slots, hint list, timer, share text |
 | `plotted-engine.js` | CSP uniqueness solver, generator, share formatter |
 | `plotted-config.js` | `GAME_NAME` and storage keys |
 | `plotted-icons.js` | Vendored Phosphor duotone paths |

@@ -7,12 +7,19 @@ import { ICONS, iconSvg } from "../plotted-icons.js";
 import { THEMES } from "../plotted-themes.js";
 import {
   clueHolds,
+  clueText,
   countSolutions,
+  einsteinPuzzle,
+  EINSTEIN_SETUP,
+  EINSTEIN_SOLUTION,
   formatShare,
   formatTime,
   generatePuzzle,
   gridMatchesSolution,
+  highlightItemWordsHtml,
   houseIsCompleteAndCorrect,
+  livesSubjectIsBareObject,
+  matchTypedItem,
   puzzleNumber,
   specForDate,
   pruneClues,
@@ -20,6 +27,7 @@ import {
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (rel) => fs.readFileSync(path.join(root, rel), "utf8");
+const flattenItems = (items) => Object.values(items).flat();
 
 assert.equal(GAME_NAME, "Plotted");
 assert.equal(LAUNCH_DATE, "2026-10-13");
@@ -178,32 +186,47 @@ assert.match(html, /manifest.webmanifest/);
 assert.match(html, /plotted-theme/);
 assert.match(html, /archive\//);
 assert.match(html, /params.has\("plot"\)/);
-assert.match(html, /id="sheet"/);
+assert.match(html, /id="how-to"/);
+assert.match(html, /id="confetti"/);
+assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const css = read("plotted.css");
-assert.match(css, /--bg: #0c0b09/);
-assert.match(css, /--gold: #e8c47a/);
+assert.match(css, /--bg: #1a1230/);
+assert.match(css, /--bg: #fff6eb/);
+assert.match(css, /--house-1: #ff6b6b/);
+assert.match(css, /--house-2: #12b5a8/);
+assert.match(css, /--house-3: #f4c430/);
+assert.match(css, /--house-4: #8b5cf6/);
+assert.match(css, /--house-5: #34d399/);
 assert.match(css, /IBM Plex Mono/);
 assert.match(css, /Fraunces/);
 assert.match(css, /html\[data-theme="light"\]/);
 assert.match(css, /min-height: var\(--tap\)/);
+assert.match(css, /font-size: 16px/);
 assert.match(css, /100dvh/);
 assert.match(css, /\.hint-block/);
 assert.match(css, /\.clue-num/);
-assert.match(css, /\.sheet-panel/);
+assert.match(css, /\.slot-input/);
+assert.match(css, /\.confetti/);
+assert.match(css, /@keyframes pop/);
 assert.doesNotMatch(css, /scroll-snap/);
+assert.doesNotMatch(css, /\.sheet-panel/);
 assert.doesNotMatch(css, /Nunito|Fredoka/);
 
 const app = read("plotted.js");
 assert.match(app, /GAME_NAME/);
 assert.match(app, /formatShare/);
-assert.match(app, /LONG_PRESS_MS/);
+assert.match(app, /matchTypedItem/);
+assert.match(app, /highlightItemWordsHtml/);
+assert.match(app, /autocapitalize/);
+assert.match(app, /burstConfetti/);
 assert.match(app, /navigator.clipboard/);
 assert.match(app, /navigator.share/);
 assert.match(app, /serviceWorker/);
 assert.match(app, /Hints/);
-assert.match(app, /openSheet/);
+assert.match(app, /puzzle\.setup/);
+assert.doesNotMatch(app, /openSheet/);
 assert.doesNotMatch(app, /Tap a slot/);
 assert.doesNotMatch(app, /[\u{1F300}-\u{1FAFF}]/u);
 
@@ -220,14 +243,96 @@ assert.match(plan, /Plotmaniac archive/);
 assert.match(plan, /🏠/);
 assert.match(plan, /Solved in/);
 assert.match(plan, /All clues are hints/);
+assert.match(plan, /Einstein/);
+assert.match(plan, /types the exact word/);
 assert.doesNotMatch(plan, /swipeable/);
 assert.doesNotMatch(plan, /share-card|share card/i);
+
+const einstein = einsteinPuzzle("2026-10-13");
+assert.equal(einstein.houseCount, 5);
+assert.equal(einstein.clues.length, 15);
+assert.equal(einstein.question.text, "Who owns the fish?");
+assert.equal(einstein.question.answerItem, "german");
+assert.equal(einstein.setup, EINSTEIN_SETUP);
+assert.equal(einstein.clues[3].immediate, true);
+assert.equal(einstein.clues[3].text, "The green house is on the left of the white house");
+for (const clue of einstein.clues) {
+  assert.equal(clueHolds(clue, EINSTEIN_SOLUTION), true, clue.text);
+}
+const einsteinCount = countSolutions(
+  5,
+  einstein.attributes.map((attr) => attr.id),
+  Object.fromEntries(einstein.attributes.map((attr) => [attr.id, einstein.items[attr.id].map((item) => item.id)])),
+  einstein.clues,
+  2,
+);
+assert.equal(einsteinCount.count, 1, "Einstein riddle must be unique");
+assert.equal(einsteinCount.solution.find((house) => house.pet === "fish").nationality, "german");
+
+assert.equal(matchTypedItem(einstein.items.cigar, " blend ").status, "match");
+assert.equal(matchTypedItem(einstein.items.cigar, "blend").item.id, "blends");
+assert.equal(matchTypedItem(einstein.items.cigar, "pall mall").item.id, "pall-mall");
+assert.equal(matchTypedItem(einstein.items.nationality, "GERMAN").item.id, "german");
+assert.equal(matchTypedItem(einstein.items.color, "purple").status, "unknown");
+assert.match(
+  highlightItemWordsHtml("The man who smokes blend has a neighbor who drinks water", flattenItems(einstein.items)),
+  /<strong>blend<\/strong>/,
+);
+assert.match(
+  highlightItemWordsHtml("The person who smokes Pall Mall rears birds", flattenItems(einstein.items)),
+  /<strong>Pall Mall<\/strong>/,
+);
+
+const catalog = {
+  person: [
+    { id: "bo", label: "Bo" },
+    { id: "hana", label: "Hana" },
+  ],
+  pet: [
+    { id: "horse", label: "horse" },
+    { id: "cat", label: "cat" },
+    { id: "fish", label: "fish" },
+  ],
+  prize: [
+    { id: "balloon", label: "balloon" },
+    { id: "trophy", label: "trophy" },
+  ],
+};
+assert.equal(
+  clueText({ type: "next_to", left: { attr: "prize", item: "balloon" }, right: { attr: "pet", item: "fish" } }, catalog, "pet-show"),
+  "The balloon winner lives next door to the fish owner.",
+);
+assert.equal(
+  clueText({ type: "same", left: { attr: "person", item: "bo" }, right: { attr: "pet", item: "horse" } }, catalog, "pet-show"),
+  "Bo owns the horse.",
+);
+assert.equal(
+  clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show"),
+  "The trophy winner lives in house 1.",
+);
+assert.equal(
+  clueText(
+    { type: "left_of", immediate: true, left: { attr: "pet", item: "cat" }, right: { attr: "person", item: "hana" } },
+    catalog,
+    "pet-show",
+  ),
+  "The cat owner lives immediately left of Hana.",
+);
+assert.equal(
+  livesSubjectIsBareObject("The balloon winner lives next door to the fish owner.", catalog),
+  false,
+);
+assert.equal(livesSubjectIsBareObject("balloon lives next door to fish", catalog), true);
 
 const dailyPath = path.join(root, "data/plotted/2026-10-13.json");
 assert.ok(fs.existsSync(dailyPath), "launch-day puzzle JSON");
 const daily = JSON.parse(fs.readFileSync(dailyPath, "utf8"));
 assert.equal(daily.date, "2026-10-13");
-assert.ok(daily.clues.length >= 5 && daily.clues.length <= 8);
+assert.equal(daily.theme.id, "einstein");
+assert.equal(daily.houseCount, 5);
+assert.equal(daily.clues.length, 15);
+assert.equal(daily.clues[0].text, "The Brit lives in the red house");
+assert.equal(daily.clues[14].text, "The man who smokes blend has a neighbor who drinks water");
 assert.equal(
   countSolutions(
     daily.houseCount,
@@ -238,6 +343,9 @@ assert.equal(
   ).count,
   1,
 );
+assert.equal(daily.solution.find((house) => house.pet === "fish").nationality, "german");
+const later = JSON.parse(fs.readFileSync(path.join(root, "data/plotted/2026-10-14.json"), "utf8"));
+assert.notEqual(later.theme.id, "einstein");
 const fiveHouse = JSON.parse(fs.readFileSync(path.join(root, "data/plotted/2026-10-25.json"), "utf8"));
 assert.equal(fiveHouse.houseCount, 5);
 assert.equal(
@@ -250,7 +358,21 @@ assert.equal(
   ).count,
   1,
 );
-const jsonCount = fs.readdirSync(path.join(root, "data/plotted")).filter((name) => name.endsWith(".json")).length;
-assert.ok(jsonCount >= 365, `expected a year of puzzles, got ${jsonCount}`);
+for (const item of flattenItems(einstein.items)) {
+  assert.ok(ICONS[item.icon], `Einstein missing Phosphor icon ${item.icon}`);
+}
+const plottedDir = path.join(root, "data/plotted");
+const jsonFiles = fs.readdirSync(plottedDir).filter((name) => name.endsWith(".json"));
+assert.ok(jsonFiles.length >= 365, `expected a year of puzzles, got ${jsonFiles.length}`);
+for (const name of jsonFiles) {
+  const puzzle = JSON.parse(fs.readFileSync(path.join(plottedDir, name), "utf8"));
+  for (const clue of puzzle.clues) {
+    assert.equal(
+      livesSubjectIsBareObject(clue.text, puzzle.items),
+      false,
+      `${name} object-subject lives: ${clue.text}`,
+    );
+  }
+}
 
 console.log("plotted tests ok");

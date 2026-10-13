@@ -10,26 +10,30 @@ This is a planning note for the daily game. Implementation follows the existing 
 
 A bite-size daily version of Einstein’s Riddle / the zebra puzzle (“who owns the fish”).
 
-- **3 houses** on most days, **4** on harder days, **5** on occasional special Sundays.
-- Each house has **3 attributes** (for example person, pet, drink). Themes pick attributes from what Phosphor actually contains.
-- **5–8 clues** that always lead to **exactly one** solution.
+- **Launch day (`2026-10-13`) is the original Einstein riddle**, hand-authored: **5 houses**, **5 attributes** (color, nationality, beverage, cigar, pet), **15 classic clues**, setup paragraph, question **Who owns the fish?** (the German). Later dates keep the generated 3–5 house puzzles.
+- **3 houses** on most generated days, **4** on harder days, **5** on occasional special Sundays.
+- Generated days have **3 attributes** (for example person, pet, drink). Themes pick attributes from what Phosphor actually contains.
+- Generated puzzles have **5–8 clues** that always lead to **exactly one** solution; Einstein day has the classic 15.
 - **One question** to answer, while the player fills the whole grid.
-- **2–5 minutes** to solve.
 - **Same puzzle for everyone** each local calendar day, served as JSON keyed by date.
 
 ## 2. Gameplay
 
-No typing in the grid. Each house has one slot per attribute.
+Each house has one **text input** per attribute. The player types the exact word (for example `Bo`, `fish`, `Brit`, `Pall Mall`). Matching is case-insensitive and trims whitespace; light autocomplete lists that attribute’s valid words; unknown text gets a gentle highlight so typos are obvious. Placing the same word in another house on that attribute clears the old slot.
 
-- **Tap** a slot to open a bottom-sheet picker of Phosphor icons for that attribute (no empty placeholder tray).
-- **Tap** an icon to place it. Placing the same item elsewhere on that attribute clears the old slot.
-- **Long-press** an icon to mark it ruled out for the selected slot (a gold slash through the icon, as a note). Long-press again to clear.
-- Optional **tiny free-text notes** field on each house.
-- **All clues are hints:** a compact numbered list, shown in full, wrapping so nothing is cut off. Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
+- Phosphor icons stay as **decorative** attribute / item markers, not as the placement UI. There is no bottom-sheet icon picker.
+- Optional **tiny free-text notes** on each house. Suggestion chips can be long-pressed to rule a word out for that slot.
+- **All clues are hints:** a compact numbered list, shown in full, wrapping so nothing is cut off. Sortable item words are **bold**. Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
+- If the puzzle has a **setup** paragraph (Einstein day), it sits above the numbered clues.
+- One-line helper: each house has one owner; type the bold words; next door means a neighboring house.
 - **Hint** fills one empty cell with the correct item and costs score.
 - **Check** scores a mistake if the grid is full but wrong; it finishes the day if the grid matches the unique solution.
 - Score is `max(0, 1000 − seconds − 50×mistakes − 120×hints)`.
-- Streak calendar in `localStorage`. Timer starts on first place/hint/check.
+- Streak calendar in `localStorage`. Timer starts on first type/hint/check.
+
+### Generated clue voice
+
+Generated clues name the **person** who has each item (role nouns per attribute: pet → `X owner`, prize → `X winner`, drink → `the person who drinks X`, and so on). Objects never “live next door.” Adjacency is **next door** (neighboring house, left or right). Same-house with a named person uses a natural verb (`Bo owns the horse`). Immediate vs somewhere left is explicit. Each clue starts with a capital letter. Einstein day keeps the classic wording verbatim.
 
 ### Share result (plain text)
 
@@ -96,13 +100,14 @@ The real constraint is **freshness**:
 
 ## 6. Aesthetic
 
-Keep **Plotmaniac’s** field-guide look, not a pastel cottage skin.
+Keep **Fraunces** titles and **IBM Plex Mono** UI. The skin is colorful, not the old gold-on-charcoal field notes.
 
-- Dark cream ink on `#0c0b09`, gold `#e8c47a`, hairline grid overlay, Fraunces titles, IBM Plex Mono UI, Oswald available for labels.
-- Light mode inverts to cream paper and dark ink, with a darker gold so type still reads. **Toggle** in the header; default is `prefers-color-scheme`; the choice is stored in `localStorage` (`plotted-theme`).
-- Houses are numbered panels with the Phosphor house icon — the same bordered panels as Plotmaniac cards, not rounded cottages.
-- Motion stays small (selection underline, complete-house gold inset). No confetti requirement.
-- Each day still has a short themed lede (dinner party, heist, pet show) under the gold arc.
+- **House palette:** coral `#ff6b6b`, teal `#12b5a8`, sunny yellow `#f4c430`, violet `#8b5cf6`, mint `#34d399`. Each house uses its color on the card border, header, and placed icons.
+- **Light:** warm paper `#fff6eb`, ink `#2a1f18`, tinted blob + soft grid background.
+- **Dark** is a matching plum-navy (`#1a1230`, ink `#f8f1ff`) with brighter house glows (`#ff8a7a`, `#2ee6d0`, `#ffd54a`, `#c4a0ff`, `#5eead4`) — not an invert of light mode.
+- Phosphor duotone icons tint per house / attribute. Clue numbers, chips, buttons, and crossed-off hints cycle the house colors. Contrast stays high.
+- Timer and streak sit in colorful chips. Slots bounce on place/remove. Solving bursts CSS confetti (no emoji).
+- **Toggle** in the header; default is `prefers-color-scheme`; stored in `localStorage` (`plotted-theme`).
 
 ## 7. Icons
 
@@ -110,18 +115,16 @@ Keep **Plotmaniac’s** field-guide look, not a pastel cottage skin.
 
 Use existing libraries only:
 
-- **Phosphor Icons, duotone**, primary, vendored as SVG paths in `plotted-icons.js` and recolored with `currentColor` (gold/ink from the Plotmaniac tokens).
+- **Phosphor Icons, duotone**, primary, vendored as SVG paths in `plotted-icons.js` and recolored with `currentColor` (house and attribute tints).
 - **Tabler Icons** or **Lucide** as fallback if a future theme needs a glyph Phosphor lacks.
 
 Build themes around what those sets actually contain (cat, dog, coffee, wine, detective, bicycle, and so on). Do not invent pictograms.
 
 ## 8. Mobile-first
 
-- Compact header (title, theme, reveal/check as icon buttons), **question prominent**, house grid, then the full hint list.
-- Mobile-first portrait: fit one screen where possible; the page may scroll if an 8-hint / 5-house day needs it. No horizontal clue carousel.
-- Desktop: constrained column (~560–640px), same stack, sensible use of space.
-- Icon picker is a **bottom sheet**, only while a slot is selected.
-- Tap targets **≥ 44px**.
+- Compact header (title, theme, reveal/check as icon buttons), **question prominent**, house grid of text inputs, then the full hint list.
+- Mobile-first portrait: 16px inputs (no zoom-on-focus), `autocapitalize=none`, tap targets **≥ 44px**. Five-house days stack cards on a phone and go five-up on a wide screen. The page may scroll on Einstein / 5-house days. No horizontal clue carousel.
+- Desktop: constrained column (~560–720px), same stack.
 - Haptic feedback via `navigator.vibrate` where the OS allows it.
 - Installable **PWA** (`manifest.webmanifest` + `sw.js`) that can reload the shell and the day’s JSON offline after the first fetch.
 - Lightweight: static files, no bundler.

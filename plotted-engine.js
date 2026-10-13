@@ -1,5 +1,5 @@
 import { GAME_NAME, HOUSE_EMOJI, KEYCAP_DIGITS, LAUNCH_DATE, SITE_URL } from "./plotted-config.js";
-import { ATTRIBUTES, HOLIDAY_THEME_BY_MD, THEMES, themeById } from "./plotted-themes.js";
+import { ATTRIBUTES, HOLIDAY_THEME_BY_MD, THEMES, rolesForTheme, themeById } from "./plotted-themes.js";
 
 export function hashString(value) {
   let hash = 2166136261;
@@ -534,29 +534,155 @@ function labelOf(catalog, attr, itemId) {
   return catalog[attr].find((item) => item.id === itemId)?.label || itemId;
 }
 
-export function clueText(clue, catalog) {
-  const name = (side) => labelOf(catalog, side.attr, side.item);
+export function capitalizeClue(text) {
+  return String(text).replace(/^(\s*)(\S)/, (_, space, ch) => space + ch.toUpperCase());
+}
+
+function occupantPhrase(catalog, roles, attr, itemId) {
+  const label = labelOf(catalog, attr, itemId);
+  const role = roles[attr] || ATTRIBUTES[attr];
+  return role.occupant(label);
+}
+
+function samePhrase(catalog, roles, left, right) {
+  const personSide = left.attr === "person" ? left : right.attr === "person" ? right : null;
+  const otherSide = personSide === left ? right : personSide === right ? left : null;
+  if (personSide && otherSide) {
+    const person = labelOf(catalog, "person", personSide.item);
+    const otherLabel = labelOf(catalog, otherSide.attr, otherSide.item);
+    const role = roles[otherSide.attr] || ATTRIBUTES[otherSide.attr];
+    return role.personSame(person, otherLabel);
+  }
+  return `${occupantPhrase(catalog, roles, left.attr, left.item)} is ${occupantPhrase(catalog, roles, right.attr, right.item)}`;
+}
+
+export function clueText(clue, catalog, themeId = "") {
+  const roles = rolesForTheme(themeId);
+  const who = (attr, item) => occupantPhrase(catalog, roles, attr, item);
   const houseNo = (house) => house + 1;
+  let text = "";
   switch (clue.type) {
     case "at":
-      return `${labelOf(catalog, clue.attr, clue.item)} is in house ${houseNo(clue.house)}.`;
+      text = `${who(clue.attr, clue.item)} lives in house ${houseNo(clue.house)}.`;
+      break;
     case "not_at":
-      return `${labelOf(catalog, clue.attr, clue.item)} is not in house ${houseNo(clue.house)}.`;
+      text = `${who(clue.attr, clue.item)} does not live in house ${houseNo(clue.house)}.`;
+      break;
     case "either_house":
-      return `${labelOf(catalog, clue.attr, clue.item)} is in house ${houseNo(clue.houses[0])} or house ${houseNo(clue.houses[1])}.`;
+      text = `${who(clue.attr, clue.item)} lives in house ${houseNo(clue.houses[0])} or house ${houseNo(clue.houses[1])}.`;
+      break;
     case "same":
-      return `${name(clue.left)} is with the ${name(clue.right)}.`;
+      text = `${samePhrase(catalog, roles, clue.left, clue.right)}.`;
+      break;
     case "next_to":
-      return `${name(clue.left)} is next to the ${name(clue.right)}.`;
+      text = `${who(clue.left.attr, clue.left.item)} lives next door to ${who(clue.right.attr, clue.right.item)}.`;
+      break;
     case "left_of":
-      return clue.immediate
-        ? `${name(clue.left)} is immediately left of the ${name(clue.right)}.`
-        : `${name(clue.left)} is somewhere left of the ${name(clue.right)}.`;
+      text = clue.immediate
+        ? `${who(clue.left.attr, clue.left.item)} lives immediately left of ${who(clue.right.attr, clue.right.item)}.`
+        : `${who(clue.left.attr, clue.left.item)} lives somewhere left of ${who(clue.right.attr, clue.right.item)}.`;
+      break;
     case "not_next_to":
-      return `${name(clue.left)} is not next to the ${name(clue.right)}.`;
+      text = `${who(clue.left.attr, clue.left.item)} does not live next door to ${who(clue.right.attr, clue.right.item)}.`;
+      break;
     default:
       return "";
   }
+  return capitalizeClue(text);
+}
+
+export function flattenPuzzleItems(items = {}) {
+  return Object.values(items).flat();
+}
+
+export function normalizeGuess(value) {
+  return String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function itemNeedles(item) {
+  return [item.label, item.id, ...(item.aliases || [])].filter(Boolean).map(normalizeGuess);
+}
+
+function compactGuess(value) {
+  return normalizeGuess(value).replace(/[\s'-]+/g, "");
+}
+
+export function matchTypedItem(items, value) {
+  const list = items || [];
+  const needle = normalizeGuess(value);
+  if (!needle) return { status: "empty", item: null, suggestions: list };
+  const compact = compactGuess(needle);
+  const exact = list.find((item) => {
+    const needles = itemNeedles(item);
+    return needles.includes(needle) || needles.map(compactGuess).includes(compact);
+  });
+  if (exact) return { status: "match", item: exact, suggestions: list };
+  const suggestions = list.filter((item) =>
+    itemNeedles(item).some(
+      (label) =>
+        label.startsWith(needle) ||
+        compactGuess(label).startsWith(compact) ||
+        label.split(" ").some((word) => word.startsWith(needle)),
+    ),
+  );
+  if (suggestions.length) return { status: "partial", item: null, suggestions };
+  return { status: "unknown", item: null, suggestions: [] };
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export function highlightItemWordsHtml(text, items) {
+  const source = String(text || "");
+  const labels = [
+    ...new Set(
+      (items || []).flatMap((item) => [item.label, ...(item.aliases || [])].filter(Boolean)),
+    ),
+  ].sort((a, b) => b.length - a.length);
+  if (!labels.length) return escapeHtml(source);
+  const ranges = [];
+  for (const label of labels) {
+    const re = new RegExp(`\\b${escapeRegExp(label)}\\b`, "gi");
+    let match;
+    while ((match = re.exec(source))) {
+      const start = match.index;
+      const end = start + match[0].length;
+      if (ranges.some((range) => start < range.end && end > range.start)) continue;
+      ranges.push({ start, end, text: match[0] });
+    }
+  }
+  ranges.sort((a, b) => a.start - b.start);
+  let html = "";
+  let cursor = 0;
+  for (const range of ranges) {
+    html += escapeHtml(source.slice(cursor, range.start));
+    html += `<strong>${escapeHtml(range.text)}</strong>`;
+    cursor = range.end;
+  }
+  html += escapeHtml(source.slice(cursor));
+  return html;
+}
+
+export function livesSubjectIsBareObject(text, itemsByAttr) {
+  const match = String(text || "").match(/^(.+?)\s+(?:does not live|lives)\b/i);
+  if (!match) return false;
+  const subject = match[1].replace(/^the\s+/i, "").trim().toLowerCase();
+  for (const [attr, items] of Object.entries(itemsByAttr || {})) {
+    if (attr === "person" || attr === "nationality") continue;
+    for (const item of items) {
+      if (normalizeGuess(item.label) === subject || normalizeGuess(item.id) === subject) return true;
+    }
+  }
+  return false;
 }
 
 export function pruneClues(houseCount, attributes, items, clues) {
@@ -677,7 +803,7 @@ export function generatePuzzle(iso, options = {}) {
     const numbered = pruned.map((clue, index) => ({
       id: `c${index + 1}`,
       ...clue,
-      text: clueText(clue, catalog),
+      text: clueText(clue, catalog, theme.id),
     }));
     used.solutions.add(sig);
     used.patterns.add(pattern);
@@ -774,4 +900,182 @@ export function formatShare({
 export function scoreFor({ elapsedMs, mistakes, hints }) {
   const seconds = Math.floor(elapsedMs / 1000);
   return Math.max(0, 1000 - seconds - 50 * mistakes - 120 * hints);
+}
+
+export const EINSTEIN_SETUP =
+  "There are five houses, each painted a different color. In each house lives a person with a different nationality. These five owners drink a certain type of beverage, smoke a certain brand of cigar, and keep a certain pet. No owners have the same pet, smoke the same cigar, or drink the same beverage.";
+
+const EINSTEIN_ITEMS = {
+  color: [
+    { id: "red", label: "red", icon: "paint-brush" },
+    { id: "green", label: "green", icon: "leaf" },
+    { id: "white", label: "white", icon: "house" },
+    { id: "yellow", label: "yellow", icon: "sun" },
+    { id: "blue", label: "blue", icon: "house-simple" },
+  ],
+  nationality: [
+    { id: "brit", label: "Brit", icon: "user" },
+    { id: "swede", label: "Swede", icon: "user-circle" },
+    { id: "dane", label: "Dane", icon: "student" },
+    { id: "norwegian", label: "Norwegian", icon: "detective" },
+    { id: "german", label: "German", icon: "identification-badge" },
+  ],
+  beverage: [
+    { id: "tea", label: "tea", icon: "tea-bag" },
+    { id: "coffee", label: "coffee", icon: "coffee" },
+    { id: "milk", label: "milk", icon: "brandy" },
+    { id: "beer", label: "beer", icon: "beer-stein" },
+    { id: "water", label: "water", icon: "wine" },
+  ],
+  cigar: [
+    { id: "pall-mall", label: "Pall Mall", aliases: ["pall mall", "pallmall"], icon: "leaf" },
+    { id: "dunhill", label: "Dunhill", icon: "pencil-simple" },
+    { id: "blends", label: "Blends", aliases: ["blend", "blends"], icon: "note-pencil" },
+    { id: "bluemaster", label: "BlueMaster", aliases: ["blue master", "bluemaster"], icon: "briefcase" },
+    { id: "prince", label: "Prince", icon: "crown" },
+  ],
+  pet: [
+    { id: "dogs", label: "dogs", icon: "dog" },
+    { id: "birds", label: "birds", icon: "bird" },
+    { id: "cats", label: "cats", icon: "cat" },
+    { id: "horses", label: "horses", icon: "horse" },
+    { id: "fish", label: "fish", icon: "fish" },
+  ],
+};
+
+const EINSTEIN_CLUE_SPECS = [
+  {
+    type: "same",
+    left: { attr: "nationality", item: "brit" },
+    right: { attr: "color", item: "red" },
+    text: "The Brit lives in the red house",
+  },
+  {
+    type: "same",
+    left: { attr: "nationality", item: "swede" },
+    right: { attr: "pet", item: "dogs" },
+    text: "The Swede keeps dogs as pets",
+  },
+  {
+    type: "same",
+    left: { attr: "nationality", item: "dane" },
+    right: { attr: "beverage", item: "tea" },
+    text: "The Dane drinks tea",
+  },
+  {
+    type: "left_of",
+    immediate: true,
+    left: { attr: "color", item: "green" },
+    right: { attr: "color", item: "white" },
+    text: "The green house is on the left of the white house",
+  },
+  {
+    type: "same",
+    left: { attr: "color", item: "green" },
+    right: { attr: "beverage", item: "coffee" },
+    text: "The green house's owner drinks coffee",
+  },
+  {
+    type: "same",
+    left: { attr: "cigar", item: "pall-mall" },
+    right: { attr: "pet", item: "birds" },
+    text: "The person who smokes Pall Mall rears birds",
+  },
+  {
+    type: "same",
+    left: { attr: "color", item: "yellow" },
+    right: { attr: "cigar", item: "dunhill" },
+    text: "The owner of the yellow house smokes Dunhill",
+  },
+  {
+    type: "at",
+    attr: "beverage",
+    item: "milk",
+    house: 2,
+    text: "The man living in the center house drinks milk",
+  },
+  {
+    type: "at",
+    attr: "nationality",
+    item: "norwegian",
+    house: 0,
+    text: "The Norwegian lives in the first house",
+  },
+  {
+    type: "next_to",
+    left: { attr: "cigar", item: "blends" },
+    right: { attr: "pet", item: "cats" },
+    text: "The man who smokes blends lives next to the one who keeps cats",
+  },
+  {
+    type: "next_to",
+    left: { attr: "pet", item: "horses" },
+    right: { attr: "cigar", item: "dunhill" },
+    text: "The man who keeps horses lives next to the man who smokes Dunhill",
+  },
+  {
+    type: "same",
+    left: { attr: "cigar", item: "bluemaster" },
+    right: { attr: "beverage", item: "beer" },
+    text: "The owner who smokes BlueMaster drinks beer",
+  },
+  {
+    type: "same",
+    left: { attr: "nationality", item: "german" },
+    right: { attr: "cigar", item: "prince" },
+    text: "The German smokes Prince",
+  },
+  {
+    type: "next_to",
+    left: { attr: "nationality", item: "norwegian" },
+    right: { attr: "color", item: "blue" },
+    text: "The Norwegian lives next to the blue house",
+  },
+  {
+    type: "next_to",
+    left: { attr: "cigar", item: "blends" },
+    right: { attr: "beverage", item: "water" },
+    text: "The man who smokes blend has a neighbor who drinks water",
+  },
+];
+
+export const EINSTEIN_SOLUTION = [
+  { color: "yellow", nationality: "norwegian", beverage: "water", cigar: "dunhill", pet: "cats" },
+  { color: "blue", nationality: "dane", beverage: "tea", cigar: "blends", pet: "horses" },
+  { color: "red", nationality: "brit", beverage: "milk", cigar: "pall-mall", pet: "birds" },
+  { color: "green", nationality: "german", beverage: "coffee", cigar: "prince", pet: "fish" },
+  { color: "white", nationality: "swede", beverage: "beer", cigar: "bluemaster", pet: "dogs" },
+];
+
+export function einsteinPuzzle(date = LAUNCH_DATE) {
+  const attributes = ["color", "nationality", "beverage", "cigar", "pet"];
+  return {
+    date,
+    number: puzzleNumber(date),
+    theme: {
+      id: "einstein",
+      title: "Einstein's riddle",
+      blurb: "Five houses, five owners. Who owns the fish?",
+      story: "The classic street. Fifteen clues. One fish.",
+    },
+    setup: EINSTEIN_SETUP,
+    houseCount: 5,
+    attributes: attributes.map((id) => ({ id, label: ATTRIBUTES[id].label })),
+    items: EINSTEIN_ITEMS,
+    clues: EINSTEIN_CLUE_SPECS.map((clue, index) => ({ id: `c${index + 1}`, ...clue })),
+    question: {
+      text: "Who owns the fish?",
+      givenAttr: "pet",
+      givenItem: "fish",
+      answerAttr: "nationality",
+      answerItem: "german",
+    },
+    solution: EINSTEIN_SOLUTION,
+    difficulty: {
+      label: "einstein-classic",
+      steps: 0,
+      neededSearch: false,
+      weekday: weekdayUtc(date),
+    },
+  };
 }

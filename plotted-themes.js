@@ -1,19 +1,130 @@
 /** Themes are built only from Phosphor duotone icons in plotted-icons.js. */
 
+function onFoot(label) {
+  return label === "on foot";
+}
+
+/** Role nouns name the *person* who has an item, so clues never make objects “live”. */
 export const ATTRIBUTES = {
-  person: { id: "person", label: "Who", icon: "user" },
-  pet: { id: "pet", label: "Pet", icon: "paw-print" },
-  drink: { id: "drink", label: "Drink", icon: "coffee" },
-  loot: { id: "loot", label: "Loot", icon: "diamond" },
-  getaway: { id: "getaway", label: "Getaway", icon: "car" },
-  prize: { id: "prize", label: "Prize", icon: "trophy" },
-  plant: { id: "plant", label: "Plant", icon: "flower" },
-  vehicle: { id: "vehicle", label: "Ride", icon: "bicycle" },
-  instrument: { id: "instrument", label: "Music", icon: "music-note" },
-  book: { id: "book", label: "Book", icon: "book" },
-  treat: { id: "treat", label: "Treat", icon: "cookie" },
-  gift: { id: "gift", label: "Gift", icon: "gift" },
-  food: { id: "food", label: "Plate", icon: "fork-knife" },
+  person: {
+    id: "person",
+    label: "Who",
+    icon: "user",
+    occupant: (x) => x,
+    personSame: (person) => person,
+  },
+  pet: {
+    id: "pet",
+    label: "Pet",
+    icon: "paw-print",
+    occupant: (x) => `the ${x} owner`,
+    personSame: (person, x) => `${person} owns the ${x}`,
+  },
+  drink: {
+    id: "drink",
+    label: "Drink",
+    icon: "coffee",
+    occupant: (x) => `the person who drinks ${x}`,
+    personSame: (person, x) => `${person} drinks ${x}`,
+  },
+  loot: {
+    id: "loot",
+    label: "Loot",
+    icon: "diamond",
+    occupant: (x) => `the person with the ${x}`,
+    personSame: (person, x) => `${person} has the ${x}`,
+  },
+  getaway: {
+    id: "getaway",
+    label: "Getaway",
+    icon: "car",
+    occupant: (x) => (onFoot(x) ? "the person who left on foot" : `the person who left by ${x}`),
+    personSame: (person, x) => (onFoot(x) ? `${person} left on foot` : `${person} left by ${x}`),
+  },
+  prize: {
+    id: "prize",
+    label: "Prize",
+    icon: "trophy",
+    occupant: (x) => `the ${x} winner`,
+    personSame: (person, x) => `${person} won the ${x}`,
+  },
+  plant: {
+    id: "plant",
+    label: "Plant",
+    icon: "flower",
+    occupant: (x) => `the person who tends the ${x}`,
+    personSame: (person, x) => `${person} tends the ${x}`,
+  },
+  vehicle: {
+    id: "vehicle",
+    label: "Ride",
+    icon: "bicycle",
+    occupant: (x) => (onFoot(x) ? "the person on foot" : `the person with the ${x}`),
+    personSame: (person, x) => (onFoot(x) ? `${person} is on foot` : `${person} has the ${x}`),
+  },
+  instrument: {
+    id: "instrument",
+    label: "Music",
+    icon: "music-note",
+    occupant: (x) => `the ${x} player`,
+    personSame: (person, x) => `${person} plays the ${x}`,
+  },
+  book: {
+    id: "book",
+    label: "Book",
+    icon: "book",
+    occupant: (x) => `the person with the ${x}`,
+    personSame: (person, x) => `${person} brought the ${x}`,
+  },
+  treat: {
+    id: "treat",
+    label: "Treat",
+    icon: "cookie",
+    occupant: (x) => `the person with the ${x}`,
+    personSame: (person, x) => `${person} brought the ${x}`,
+  },
+  gift: {
+    id: "gift",
+    label: "Gift",
+    icon: "gift",
+    occupant: (x) => `the person with the ${x}`,
+    personSame: (person, x) => `${person} has the ${x}`,
+  },
+  food: {
+    id: "food",
+    label: "Plate",
+    icon: "fork-knife",
+    occupant: (x) => `the person who ordered ${x}`,
+    personSame: (person, x) => `${person} ordered the ${x}`,
+  },
+  color: {
+    id: "color",
+    label: "Color",
+    icon: "paint-brush",
+    occupant: (x) => `the resident of the ${x} house`,
+    personSame: (person, x) => `${person} lives in the ${x} house`,
+  },
+  nationality: {
+    id: "nationality",
+    label: "Who",
+    icon: "identification-badge",
+    occupant: (x) => `the ${x}`,
+    personSame: (person, x) => person,
+  },
+  beverage: {
+    id: "beverage",
+    label: "Drink",
+    icon: "coffee",
+    occupant: (x) => `the person who drinks ${x}`,
+    personSame: (person, x) => `${person} drinks ${x}`,
+  },
+  cigar: {
+    id: "cigar",
+    label: "Cigar",
+    icon: "leaf",
+    occupant: (x) => `the person who smokes ${x}`,
+    personSame: (person, x) => `${person} smokes ${x}`,
+  },
 };
 
 const PEOPLE = [
@@ -89,6 +200,12 @@ export const THEMES = [
     question: (given, answer) => `Who took the ${given.label}?`,
     questionGiven: "loot",
     questionAnswer: "person",
+    roles: {
+      loot: {
+        occupant: (x) => `the person who took the ${x}`,
+        personSame: (person, x) => `${person} took the ${x}`,
+      },
+    },
   },
   {
     id: "pet-show",
@@ -287,4 +404,17 @@ export const HOLIDAY_THEME_BY_MD = {
 
 export function themeById(id) {
   return THEMES.find((theme) => theme.id === id) || THEMES[0];
+}
+
+export function rolesForTheme(themeId) {
+  const theme = themeById(themeId);
+  const roles = {};
+  for (const [id, def] of Object.entries(ATTRIBUTES)) {
+    roles[id] = {
+      occupant: def.occupant,
+      personSame: def.personSame,
+      ...(theme.roles?.[id] || {}),
+    };
+  }
+  return roles;
 }

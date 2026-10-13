@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Plotted</title>
     <meta name="description" content="A daily logic grid. Same puzzle for everyone." />
-    <meta name="theme-color" content="#0c0b09" />
+    <meta name="theme-color" content="#1a1230" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Oswald:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Oswald:wght@500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="plotted.css" />
@@ -37,7 +37,7 @@
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme;
         var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute("content", theme === "light" ? "#f4efe6" : "#0c0b09");
+        if (meta) meta.setAttribute("content", theme === "light" ? "#fff6eb" : "#1a1230");
       })();
     </script>
   </head>
@@ -56,10 +56,11 @@
         </div>
         <p class="question" id="game-question"></p>
         <p class="lede" id="game-lede"></p>
+        <p class="how-to" id="how-to">Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right.</p>
         <p class="meta">
-          <span id="meta-date"></span>
-          <span id="meta-timer"></span>
-          <span id="meta-streak"></span>
+          <span class="chip chip-date" id="meta-date"></span>
+          <span class="chip chip-timer" id="meta-timer"></span>
+          <span class="chip chip-streak" id="meta-streak"></span>
         </p>
       </header>
       <main class="board" id="board">
@@ -69,17 +70,8 @@
         <p><a id="archive-link" href="./archive/">Plotmaniac archive</a></p>
       </footer>
     </div>
-    <div class="sheet" id="sheet" hidden>
-      <button type="button" class="sheet-backdrop" id="sheet-dismiss" aria-label="Close picker"></button>
-      <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheet-label">
-        <div class="sheet-head">
-          <p class="tray-label" id="sheet-label"></p>
-          <button type="button" class="icon-btn" id="sheet-close" aria-label="Close picker"></button>
-        </div>
-        <div class="tray-items" id="sheet-items"></div>
-      </div>
-    </div>
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <div class="confetti" id="confetti" hidden></div>
     <div class="win" id="win" hidden>
       <div class="win-card">
         <h2 id="win-title">Plotted</h2>

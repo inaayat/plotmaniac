@@ -1,10 +1,10 @@
 # Plotted
 
-A daily logic grid in the Plotmaniac field-guide look. Three (sometimes four or five) houses, three attributes, five to eight clues, one unique solution, one question. Everyone gets the same puzzle each local day.
+A daily logic grid. Launch day is the original Einstein riddle (five houses, fifteen clues, who owns the fish). Later days are generated: three (sometimes four or five) houses, three attributes, five to eight clues, one unique solution, one question. Everyone gets the same puzzle each local day.
 
 Play it at [https://plotmaniac.com](https://plotmaniac.com). Product plan: [docs/plotted-plan.md](docs/plotted-plan.md). The display name is `GAME_NAME` in [`plotted-config.js`](plotted-config.js).
 
-Tap a slot to open the icon picker, long-press to rule a symbol out. All clues show at once as a numbered hint list (tap to cross off). Score is time, mistakes, and hints. The share result is plain text (clipboard / Web Share), not an image:
+Type the exact bold word into each house slot (`Brit`, `fish`, `Pall Mall`). All clues show at once as a numbered hint list (tap to cross off). Score is time, mistakes, and hints. The share result is plain text (clipboard / Web Share), not an image:
 
 ```
 Plotted #12

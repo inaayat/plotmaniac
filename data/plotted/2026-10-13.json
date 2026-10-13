@@ -2,76 +2,181 @@
   "date": "2026-10-13",
   "number": 1,
   "theme": {
-    "id": "pet-show",
-    "title": "Pet show",
-    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
-    "story": "Judging is over. The chart is not."
+    "id": "einstein",
+    "title": "Einstein's riddle",
+    "blurb": "Five houses, five owners. Who owns the fish?",
+    "story": "The classic street. Fifteen clues. One fish."
   },
-  "houseCount": 3,
+  "setup": "There are five houses, each painted a different color. In each house lives a person with a different nationality. These five owners drink a certain type of beverage, smoke a certain brand of cigar, and keep a certain pet. No owners have the same pet, smoke the same cigar, or drink the same beverage.",
+  "houseCount": 5,
   "attributes": [
     {
-      "id": "person",
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "id": "nationality",
       "label": "Who"
+    },
+    {
+      "id": "beverage",
+      "label": "Drink"
+    },
+    {
+      "id": "cigar",
+      "label": "Cigar"
     },
     {
       "id": "pet",
       "label": "Pet"
-    },
-    {
-      "id": "prize",
-      "label": "Prize"
     }
   ],
   "items": {
-    "person": [
+    "color": [
       {
-        "id": "hana",
-        "label": "Hana",
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "white",
+        "label": "white",
+        "icon": "house"
+      },
+      {
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
+      },
+      {
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
+      }
+    ],
+    "nationality": [
+      {
+        "id": "brit",
+        "label": "Brit",
+        "icon": "user"
+      },
+      {
+        "id": "swede",
+        "label": "Swede",
         "icon": "user-circle"
       },
       {
-        "id": "bo",
-        "label": "Bo",
-        "icon": "chef-hat"
+        "id": "dane",
+        "label": "Dane",
+        "icon": "student"
       },
       {
-        "id": "ada",
-        "label": "Ada",
+        "id": "norwegian",
+        "label": "Norwegian",
         "icon": "detective"
+      },
+      {
+        "id": "german",
+        "label": "German",
+        "icon": "identification-badge"
+      }
+    ],
+    "beverage": [
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "milk",
+        "label": "milk",
+        "icon": "brandy"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "water",
+        "label": "water",
+        "icon": "wine"
+      }
+    ],
+    "cigar": [
+      {
+        "id": "pall-mall",
+        "label": "Pall Mall",
+        "aliases": [
+          "pall mall",
+          "pallmall"
+        ],
+        "icon": "leaf"
+      },
+      {
+        "id": "dunhill",
+        "label": "Dunhill",
+        "icon": "pencil-simple"
+      },
+      {
+        "id": "blends",
+        "label": "Blends",
+        "aliases": [
+          "blend",
+          "blends"
+        ],
+        "icon": "note-pencil"
+      },
+      {
+        "id": "bluemaster",
+        "label": "BlueMaster",
+        "aliases": [
+          "blue master",
+          "bluemaster"
+        ],
+        "icon": "briefcase"
+      },
+      {
+        "id": "prince",
+        "label": "Prince",
+        "icon": "crown"
       }
     ],
     "pet": [
       {
-        "id": "horse",
-        "label": "horse",
+        "id": "dogs",
+        "label": "dogs",
+        "icon": "dog"
+      },
+      {
+        "id": "birds",
+        "label": "birds",
+        "icon": "bird"
+      },
+      {
+        "id": "cats",
+        "label": "cats",
+        "icon": "cat"
+      },
+      {
+        "id": "horses",
+        "label": "horses",
         "icon": "horse"
       },
       {
         "id": "fish",
         "label": "fish",
         "icon": "fish"
-      },
-      {
-        "id": "butterfly",
-        "label": "butterfly",
-        "icon": "butterfly"
-      }
-    ],
-    "prize": [
-      {
-        "id": "balloon",
-        "label": "balloon",
-        "icon": "balloon"
-      },
-      {
-        "id": "trophy",
-        "label": "trophy",
-        "icon": "trophy"
-      },
-      {
-        "id": "medal",
-        "label": "medal",
-        "icon": "medal"
       }
     ]
   },
@@ -80,90 +185,236 @@
       "id": "c1",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "bo"
+        "attr": "nationality",
+        "item": "brit"
       },
       "right": {
-        "attr": "pet",
-        "item": "horse"
+        "attr": "color",
+        "item": "red"
       },
-      "text": "Bo is with the horse."
+      "text": "The Brit lives in the red house"
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "bo"
+        "attr": "nationality",
+        "item": "swede"
       },
       "right": {
-        "attr": "prize",
-        "item": "trophy"
+        "attr": "pet",
+        "item": "dogs"
       },
-      "text": "Bo is with the trophy."
+      "text": "The Swede keeps dogs as pets"
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "hana"
+        "attr": "nationality",
+        "item": "dane"
       },
       "right": {
-        "attr": "pet",
-        "item": "butterfly"
+        "attr": "beverage",
+        "item": "tea"
       },
-      "text": "Hana is with the butterfly."
+      "text": "The Dane drinks tea"
     },
     {
       "id": "c4",
-      "type": "next_to",
+      "type": "left_of",
+      "immediate": true,
       "left": {
-        "attr": "prize",
-        "item": "balloon"
+        "attr": "color",
+        "item": "green"
       },
       "right": {
-        "attr": "pet",
-        "item": "fish"
+        "attr": "color",
+        "item": "white"
       },
-      "text": "balloon is next to the fish."
+      "text": "The green house is on the left of the white house"
     },
     {
       "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "green"
+      },
+      "right": {
+        "attr": "beverage",
+        "item": "coffee"
+      },
+      "text": "The green house's owner drinks coffee"
+    },
+    {
+      "id": "c6",
+      "type": "same",
+      "left": {
+        "attr": "cigar",
+        "item": "pall-mall"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "birds"
+      },
+      "text": "The person who smokes Pall Mall rears birds"
+    },
+    {
+      "id": "c7",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "yellow"
+      },
+      "right": {
+        "attr": "cigar",
+        "item": "dunhill"
+      },
+      "text": "The owner of the yellow house smokes Dunhill"
+    },
+    {
+      "id": "c8",
       "type": "at",
-      "attr": "pet",
-      "item": "fish",
+      "attr": "beverage",
+      "item": "milk",
+      "house": 2,
+      "text": "The man living in the center house drinks milk"
+    },
+    {
+      "id": "c9",
+      "type": "at",
+      "attr": "nationality",
+      "item": "norwegian",
       "house": 0,
-      "text": "fish is in house 1."
+      "text": "The Norwegian lives in the first house"
+    },
+    {
+      "id": "c10",
+      "type": "next_to",
+      "left": {
+        "attr": "cigar",
+        "item": "blends"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cats"
+      },
+      "text": "The man who smokes blends lives next to the one who keeps cats"
+    },
+    {
+      "id": "c11",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "horses"
+      },
+      "right": {
+        "attr": "cigar",
+        "item": "dunhill"
+      },
+      "text": "The man who keeps horses lives next to the man who smokes Dunhill"
+    },
+    {
+      "id": "c12",
+      "type": "same",
+      "left": {
+        "attr": "cigar",
+        "item": "bluemaster"
+      },
+      "right": {
+        "attr": "beverage",
+        "item": "beer"
+      },
+      "text": "The owner who smokes BlueMaster drinks beer"
+    },
+    {
+      "id": "c13",
+      "type": "same",
+      "left": {
+        "attr": "nationality",
+        "item": "german"
+      },
+      "right": {
+        "attr": "cigar",
+        "item": "prince"
+      },
+      "text": "The German smokes Prince"
+    },
+    {
+      "id": "c14",
+      "type": "next_to",
+      "left": {
+        "attr": "nationality",
+        "item": "norwegian"
+      },
+      "right": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "text": "The Norwegian lives next to the blue house"
+    },
+    {
+      "id": "c15",
+      "type": "next_to",
+      "left": {
+        "attr": "cigar",
+        "item": "blends"
+      },
+      "right": {
+        "attr": "beverage",
+        "item": "water"
+      },
+      "text": "The man who smokes blend has a neighbor who drinks water"
     }
   ],
   "question": {
-    "text": "Who showed the butterfly?",
+    "text": "Who owns the fish?",
     "givenAttr": "pet",
-    "givenItem": "butterfly",
-    "answerAttr": "person",
-    "answerItem": "hana"
+    "givenItem": "fish",
+    "answerAttr": "nationality",
+    "answerItem": "german"
   },
   "solution": [
     {
-      "person": "ada",
-      "pet": "fish",
-      "prize": "medal"
+      "color": "yellow",
+      "nationality": "norwegian",
+      "beverage": "water",
+      "cigar": "dunhill",
+      "pet": "cats"
     },
     {
-      "person": "hana",
-      "pet": "butterfly",
-      "prize": "balloon"
+      "color": "blue",
+      "nationality": "dane",
+      "beverage": "tea",
+      "cigar": "blends",
+      "pet": "horses"
     },
     {
-      "person": "bo",
-      "pet": "horse",
-      "prize": "trophy"
+      "color": "red",
+      "nationality": "brit",
+      "beverage": "milk",
+      "cigar": "pall-mall",
+      "pet": "birds"
+    },
+    {
+      "color": "green",
+      "nationality": "german",
+      "beverage": "coffee",
+      "cigar": "prince",
+      "pet": "fish"
+    },
+    {
+      "color": "white",
+      "nationality": "swede",
+      "beverage": "beer",
+      "cigar": "bluemaster",
+      "pet": "dogs"
     }
   ],
   "difficulty": {
-    "label": "tuesday",
-    "steps": 5,
+    "label": "einstein-classic",
+    "steps": 0,
     "neededSearch": false,
     "weekday": 2
   }

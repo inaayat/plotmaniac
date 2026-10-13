@@ -11,24 +11,30 @@ import { ATTRIBUTES } from "./plotted-themes.js";
 import {
   clueSatisfiedByGrid,
   firstHintCell,
+  flattenPuzzleItems,
   formatShare,
   formatTime,
   gridMatchesSolution,
+  highlightItemWordsHtml,
   houseIsCompleteAndCorrect,
   localIsoDate,
+  matchTypedItem,
   placementComplete,
   puzzleNumber,
   scoreFor,
 } from "./plotted-engine.js";
 
 const LONG_PRESS_MS = 500;
+const LIGHT_THEME_COLOR = "#fff6eb";
+const DARK_THEME_COLOR = "#1a1230";
+const CONFETTI_COLORS = ["#ff6b6b", "#12b5a8", "#f4c430", "#8b5cf6", "#34d399", "#ff8a7a", "#2ee6d0"];
 const $ = (id) => document.getElementById(id);
 
 let puzzle = null;
 let grid = [];
 let notes = [];
 let ruledOut = [];
-let selected = null;
+let focused = null;
 let crossed = new Set();
 let startedAt = 0;
 let elapsedMs = 0;
@@ -66,7 +72,7 @@ function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute("content", theme === "light" ? "#f4efe6" : "#0c0b09");
+  if (meta) meta.setAttribute("content", theme === "light" ? LIGHT_THEME_COLOR : DARK_THEME_COLOR);
   try {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
   } catch {
@@ -91,6 +97,10 @@ function attrMeta(attr) {
 
 function itemById(attr, id) {
   return puzzle.items[attr].find((item) => item.id === id);
+}
+
+function allItems() {
+  return flattenPuzzleItems(puzzle.items);
 }
 
 function emptyGrid() {
@@ -249,95 +259,281 @@ function paintChrome() {
   $("game-title").textContent = GAME_NAME;
   $("game-eyebrow").textContent = puzzle.theme.title;
   $("game-lede").textContent = puzzle.theme.story || GAME_TAGLINE;
-  $("game-question").textContent = puzzle.question.text;
+  $("game-question").innerHTML = highlightItemWordsHtml(puzzle.question.text, allItems());
+  $("how-to").textContent =
+    "Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right.";
   $("archive-link").href = ARCHIVE_HREF;
   $("win-title").textContent = GAME_NAME;
   $("btn-hint").innerHTML = iconSvg("lightbulb", { label: "Reveal a cell" });
   $("btn-check").innerHTML = iconSvg("check", { label: "Check the grid" });
   $("btn-share").innerHTML = iconSvg("share", { label: "Share result" });
-  $("sheet-close").innerHTML = iconSvg("x", { label: "Close picker" });
   $("win-share").innerHTML = `${iconSvg("share")} Copy result`;
   paintThemeToggle();
   paintMeta();
 }
 
-function closeSheet() {
-  selected = null;
-  $("sheet").hidden = true;
-  document.body.classList.remove("is-sheet-open");
-  paintBoard();
+function slotKey(house, attr) {
+  return `${house}-${attr}`;
 }
 
-function openSheet() {
-  const sheet = $("sheet");
-  const itemsEl = $("sheet-items");
-  if (!selected) {
-    sheet.hidden = true;
-    document.body.classList.remove("is-sheet-open");
+function popSlot(slot) {
+  slot.classList.remove("is-pop");
+  void slot.offsetWidth;
+  slot.classList.add("is-pop");
+}
+
+function setSlotVisual(slot, house, attr, typed, status) {
+  const value = grid[house][attr];
+  const item = value ? itemById(attr, value) : null;
+  const meta = attrMeta(attr);
+  const mark = slot.querySelector(".slot-mark");
+  mark.innerHTML = iconSvg(item?.icon || meta.icon);
+  slot.classList.toggle("is-empty", !item);
+  slot.classList.toggle("is-match", Boolean(item));
+  slot.classList.toggle("is-unknown", status === "unknown" && Boolean(typed.trim()));
+}
+
+function nextEmptySlot(house, attr) {
+  const attrs = attributes();
+  let startHouse = house;
+  let startAttr = attrs.indexOf(attr) + 1;
+  for (let h = startHouse; h < puzzle.houseCount; h += 1) {
+    for (let i = h === startHouse ? startAttr : 0; i < attrs.length; i += 1) {
+      if (!grid[h][attrs[i]]) return { house: h, attr: attrs[i] };
+    }
+  }
+  return null;
+}
+
+function placeItem(house, attr, itemId, { bounce = true, silent = false } = {}) {
+  if (solved) return;
+  ensureTimer();
+  const previous = grid[house][attr];
+  for (let other = 0; other < puzzle.houseCount; other += 1) {
+    if (other !== house && grid[other][attr] === itemId) grid[other][attr] = "";
+  }
+  grid[house][attr] = itemId;
+  markHouseCompletion();
+  persist();
+  if (!silent) {
+    paintBoard({ focus: { house, attr }, typed: itemById(attr, itemId)?.label || "" });
+    if (bounce) {
+      const slot = document.querySelector(`[data-slot="${slotKey(house, attr)}"]`);
+      if (slot) popSlot(slot);
+    }
+  }
+  return previous;
+}
+
+function clearItem(house, attr) {
+  if (solved || !grid[house][attr]) return;
+  grid[house][attr] = "";
+  persist();
+}
+
+function paintSuggestions(house, attr, typed) {
+  const box = document.querySelector(`[data-suggest="${house}"]`);
+  if (!box) return;
+  const items = matchTypedItem(puzzle.items[attr], typed).suggestions;
+  box.replaceChildren();
+  if (focused?.house !== house || focused?.attr !== attr) {
+    box.hidden = true;
     return;
   }
-  const attr = selected.attr;
-  const meta = attrMeta(attr);
-  $("sheet-label").textContent = `House ${selected.house + 1} · ${meta.label} · long-press to rule out`;
-  itemsEl.replaceChildren();
-  for (const item of puzzle.items[attr]) {
+  box.hidden = false;
+  for (const item of items) {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "tray-item";
-    if (ruledOut[selected.house][attr].includes(item.id)) btn.classList.add("is-out");
-    btn.innerHTML = `${iconSvg(item.icon)}<span>${item.label}</span>`;
-    bindTrayItem(btn, item);
-    itemsEl.appendChild(btn);
+    btn.className = "suggest-chip";
+    btn.textContent = item.label;
+    if (ruledOut[house][attr].includes(item.id)) btn.classList.add("is-out");
+    if (grid.some((row, other) => other !== house && row[attr] === item.id)) btn.classList.add("is-used");
+    bindSuggest(btn, house, attr, item);
+    box.appendChild(btn);
   }
-  sheet.hidden = false;
-  document.body.classList.add("is-sheet-open");
 }
 
-function paintBoard() {
+function bindSuggest(btn, house, attr, item) {
+  let timer = 0;
+  let long = false;
+  const start = (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    long = false;
+    timer = window.setTimeout(() => {
+      long = true;
+      haptic(20);
+      toggleRuledOut(house, attr, item.id);
+    }, LONG_PRESS_MS);
+  };
+  const end = (event) => {
+    window.clearTimeout(timer);
+    if (long) {
+      event.preventDefault();
+      return;
+    }
+    if (event.type === "pointerup") {
+      haptic();
+      placeItem(house, attr, item.id);
+      const input = document.querySelector(`input[data-slot="${slotKey(house, attr)}"]`);
+      if (input) {
+        input.value = item.label;
+        input.focus();
+      }
+    }
+  };
+  btn.addEventListener("pointerdown", start);
+  btn.addEventListener("pointerup", end);
+  btn.addEventListener("pointerleave", () => window.clearTimeout(timer));
+  btn.addEventListener("pointercancel", () => window.clearTimeout(timer));
+  btn.addEventListener("contextmenu", (event) => event.preventDefault());
+}
+
+function toggleRuledOut(house, attr, itemId) {
+  const list = ruledOut[house][attr];
+  const index = list.indexOf(itemId);
+  if (index >= 0) list.splice(index, 1);
+  else list.push(itemId);
+  persist();
+  const input = document.querySelector(`input[data-slot="${slotKey(house, attr)}"]`);
+  paintSuggestions(house, attr, input?.value || "");
+}
+
+function handleTyped(house, attr, typed, input) {
+  if (solved) return;
+  ensureTimer();
+  const result = matchTypedItem(puzzle.items[attr], typed);
+  const slot = input.closest(".slot");
+  if (result.status === "match") {
+    if (grid[house][attr] !== result.item.id) {
+      placeItem(house, attr, result.item.id, { silent: true });
+      popSlot(slot);
+      syncOtherInputs(attr, house);
+      refreshCluesAndHouses();
+    }
+    input.value = result.item.label;
+  } else {
+    if (grid[house][attr]) {
+      clearItem(house, attr);
+      refreshCluesAndHouses();
+    }
+  }
+  setSlotVisual(slot, house, attr, typed, result.status);
+  paintSuggestions(house, attr, typed);
+}
+
+function syncOtherInputs(attr, exceptHouse) {
+  for (let house = 0; house < puzzle.houseCount; house += 1) {
+    if (house === exceptHouse) continue;
+    const input = document.querySelector(`input[data-slot="${slotKey(house, attr)}"]`);
+    const slot = input?.closest(".slot");
+    if (!input || document.activeElement === input) continue;
+    const value = grid[house][attr];
+    const item = value ? itemById(attr, value) : null;
+    input.value = item ? item.label : "";
+    if (slot) setSlotVisual(slot, house, attr, input.value, item ? "match" : "empty");
+  }
+}
+
+function refreshCluesAndHouses() {
+  puzzle.clues.forEach((clue) => {
+    const auto = clueSatisfiedByGrid(clue, grid, puzzle.houseCount, attributes());
+    if (auto) crossed.add(clue.id);
+    const row = document.querySelector(`[data-clue="${clue.id}"]`);
+    if (row) row.classList.toggle("is-used", crossed.has(clue.id));
+  });
+  for (let house = 0; house < puzzle.houseCount; house += 1) {
+    document.querySelector(`[data-house="${house}"]`)?.classList.toggle("is-complete", Boolean(completionOrder[house]));
+  }
+}
+
+function paintBoard(opts = {}) {
   const board = $("board");
+  const keep = opts.focus || focused;
+  const typedByFocus = opts.typed;
   board.replaceChildren();
   const houses = document.createElement("section");
   houses.className = "houses";
   houses.dataset.count = String(puzzle.houseCount);
   houses.setAttribute("aria-label", "Houses");
+  const stacked = puzzle.houseCount >= 5 || attributes().length >= 5;
   for (let house = 0; house < puzzle.houseCount; house += 1) {
     const card = document.createElement("article");
     card.className = "house";
+    card.dataset.tone = String((house % 5) + 1);
+    card.dataset.house = String(house);
     if (completionOrder[house]) card.classList.add("is-complete");
     const head = document.createElement("div");
     head.className = "house-head";
-    head.innerHTML = `${iconSvg("house")} ${house + 1}`;
+    head.innerHTML = `${iconSvg("house")} House ${house + 1}`;
     card.appendChild(head);
     for (const attr of attributes()) {
-      const slot = document.createElement("button");
-      slot.type = "button";
-      slot.className = "slot";
-      slot.dataset.house = String(house);
-      slot.dataset.attr = attr;
       const meta = attrMeta(attr);
-      slot.setAttribute("aria-label", `House ${house + 1} ${meta.label}`);
-      if (selected && selected.house === house && selected.attr === attr) slot.classList.add("is-selected");
       const value = grid[house][attr];
       const item = value ? itemById(attr, value) : null;
-      if (item) {
-        slot.innerHTML = `${iconSvg(item.icon)}<span class="slot-label">${item.label}</span>`;
-      } else {
-        slot.classList.add("is-empty");
-        slot.innerHTML = `${iconSvg(meta.icon)}<span class="slot-label">${meta.label}</span>`;
+      const slot = document.createElement("label");
+      slot.className = "slot";
+      slot.dataset.slot = slotKey(house, attr);
+      if (stacked) slot.classList.add("is-wide");
+      if (!item) slot.classList.add("is-empty");
+      if (item) slot.classList.add("is-match");
+      const mark = document.createElement("span");
+      mark.className = "slot-mark";
+      mark.innerHTML = iconSvg(item?.icon || meta.icon);
+      slot.appendChild(mark);
+      if (stacked) {
+        const name = document.createElement("span");
+        name.className = "slot-attr";
+        name.textContent = meta.label;
+        slot.appendChild(name);
       }
-      slot.addEventListener("click", () => {
-        haptic();
-        ensureTimer();
-        if (selected && selected.house === house && selected.attr === attr) {
-          closeSheet();
-          return;
-        }
-        selected = { house, attr };
-        paintBoard();
-        openSheet();
+      const input = document.createElement("input");
+      input.className = "slot-input";
+      input.type = "text";
+      input.value = item ? item.label : "";
+      input.placeholder = meta.label;
+      input.dataset.slot = slotKey(house, attr);
+      input.dataset.house = String(house);
+      input.dataset.attr = attr;
+      input.setAttribute("aria-label", `House ${house + 1} ${meta.label}`);
+      input.setAttribute("autocapitalize", "none");
+      input.setAttribute("autocorrect", "off");
+      input.setAttribute("spellcheck", "false");
+      input.setAttribute("autocomplete", "off");
+      input.setAttribute("inputmode", "text");
+      input.setAttribute("enterkeyhint", "next");
+      input.setAttribute("list", `list-${attr}`);
+      if (solved) input.readOnly = true;
+      input.addEventListener("focus", () => {
+        focused = { house, attr };
+        paintSuggestions(house, attr, input.value);
       });
+      input.addEventListener("blur", () => {
+        window.setTimeout(() => {
+          if (focused?.house === house && focused?.attr === attr) {
+            const box = document.querySelector(`[data-suggest="${house}"]`);
+            if (box && !box.contains(document.activeElement)) {
+              focused = null;
+              box.hidden = true;
+            }
+          }
+        }, 120);
+      });
+      input.addEventListener("input", () => handleTyped(house, attr, input.value, input));
+      input.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        const next = nextEmptySlot(house, attr);
+        if (!next) return;
+        document.querySelector(`input[data-slot="${slotKey(next.house, next.attr)}"]`)?.focus();
+      });
+      slot.appendChild(input);
       card.appendChild(slot);
     }
+    const suggest = document.createElement("div");
+    suggest.className = "slot-suggest";
+    suggest.dataset.suggest = String(house);
+    suggest.hidden = true;
+    card.appendChild(suggest);
     const note = document.createElement("textarea");
     note.className = "notes";
     note.rows = 1;
@@ -351,6 +547,19 @@ function paintBoard() {
     card.appendChild(note);
     houses.appendChild(card);
   }
+  const lists = document.createElement("div");
+  lists.hidden = true;
+  for (const attr of attributes()) {
+    const list = document.createElement("datalist");
+    list.id = `list-${attr}`;
+    for (const item of puzzle.items[attr]) {
+      const option = document.createElement("option");
+      option.value = item.label;
+      list.appendChild(option);
+    }
+    lists.appendChild(list);
+  }
+  houses.appendChild(lists);
   board.appendChild(houses);
 
   const hintBlock = document.createElement("section");
@@ -359,6 +568,12 @@ function paintBoard() {
   hintLabel.className = "hint-label";
   hintLabel.textContent = "Hints";
   hintBlock.appendChild(hintLabel);
+  if (puzzle.setup) {
+    const setup = document.createElement("p");
+    setup.className = "setup";
+    setup.textContent = puzzle.setup;
+    hintBlock.appendChild(setup);
+  }
   const clues = document.createElement("div");
   clues.className = "clues";
   clues.setAttribute("role", "list");
@@ -369,6 +584,7 @@ function paintBoard() {
     const row = document.createElement("button");
     row.type = "button";
     row.className = "clue";
+    row.dataset.clue = clue.id;
     row.setAttribute("role", "listitem");
     if (crossed.has(clue.id)) row.classList.add("is-used");
     const num = document.createElement("span");
@@ -376,76 +592,35 @@ function paintBoard() {
     num.textContent = String(index + 1).padStart(2, "0");
     const text = document.createElement("span");
     text.className = "clue-text";
-    text.textContent = clue.text;
+    text.innerHTML = highlightItemWordsHtml(clue.text, allItems());
     row.append(num, text);
     row.addEventListener("click", () => {
       haptic();
       if (crossed.has(clue.id) && !auto) crossed.delete(clue.id);
       else crossed.add(clue.id);
       persist();
-      paintBoard();
-      if (selected) openSheet();
+      row.classList.toggle("is-used", crossed.has(clue.id));
     });
     clues.appendChild(row);
   });
   hintBlock.appendChild(clues);
   board.appendChild(hintBlock);
-  if (selected) openSheet();
-  else {
-    $("sheet").hidden = true;
-    document.body.classList.remove("is-sheet-open");
-  }
-}
 
-function bindTrayItem(btn, item) {
-  let timer = 0;
-  let long = false;
-  const start = (event) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-    long = false;
-    timer = window.setTimeout(() => {
-      long = true;
-      haptic(20);
-      toggleRuledOut(item.id);
-    }, LONG_PRESS_MS);
-  };
-  const end = (event) => {
-    window.clearTimeout(timer);
-    if (long) {
-      event.preventDefault();
-      return;
+  if (keep) {
+    const input = document.querySelector(`input[data-slot="${slotKey(keep.house, keep.attr)}"]`);
+    if (input) {
+      if (typeof typedByFocus === "string") input.value = typedByFocus;
+      input.focus();
+      const end = input.value.length;
+      try {
+        input.setSelectionRange(end, end);
+      } catch {
+        /* some input types */
+      }
+      focused = keep;
+      paintSuggestions(keep.house, keep.attr, input.value);
     }
-    if (event.type === "pointerup") placeItem(item.id);
-  };
-  btn.addEventListener("pointerdown", start);
-  btn.addEventListener("pointerup", end);
-  btn.addEventListener("pointerleave", () => window.clearTimeout(timer));
-  btn.addEventListener("pointercancel", () => window.clearTimeout(timer));
-  btn.addEventListener("contextmenu", (event) => event.preventDefault());
-}
-
-function toggleRuledOut(itemId) {
-  if (!selected) return;
-  const list = ruledOut[selected.house][selected.attr];
-  const index = list.indexOf(itemId);
-  if (index >= 0) list.splice(index, 1);
-  else list.push(itemId);
-  persist();
-  openSheet();
-}
-
-function placeItem(itemId) {
-  if (!selected || solved) return;
-  haptic();
-  ensureTimer();
-  const { house, attr } = selected;
-  for (let other = 0; other < puzzle.houseCount; other += 1) {
-    if (other !== house && grid[other][attr] === itemId) grid[other][attr] = "";
   }
-  grid[house][attr] = grid[house][attr] === itemId ? "" : itemId;
-  markHouseCompletion();
-  persist();
-  paintBoard();
 }
 
 function useHint() {
@@ -457,11 +632,8 @@ function useHint() {
   }
   ensureTimer();
   hints += 1;
-  selected = { house: cell.house, attr: cell.attr };
-  grid[cell.house][cell.attr] = cell.item;
-  markHouseCompletion();
-  persist();
-  paintBoard();
+  focused = { house: cell.house, attr: cell.attr };
+  placeItem(cell.house, cell.attr, cell.item);
   showToast("One cell filled. Hint cost applied.");
 }
 
@@ -481,6 +653,25 @@ function checkGrid() {
   finish();
 }
 
+function burstConfetti() {
+  const root = $("confetti");
+  root.hidden = false;
+  root.replaceChildren();
+  for (let i = 0; i < 56; i += 1) {
+    const bit = document.createElement("i");
+    bit.style.left = `${Math.random() * 100}%`;
+    bit.style.background = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+    bit.style.animationDelay = `${Math.random() * 0.45}s`;
+    bit.style.animationDuration = `${1.4 + Math.random() * 0.9}s`;
+    bit.style.transform = `rotate(${Math.random() * 180}deg)`;
+    root.appendChild(bit);
+  }
+  window.setTimeout(() => {
+    root.hidden = true;
+    root.replaceChildren();
+  }, 2600);
+}
+
 function finish() {
   if (!solved) {
     solved = true;
@@ -498,15 +689,15 @@ function finish() {
     }
     writeStreak();
     persist();
+    burstConfetti();
   }
-  selected = null;
-  $("sheet").hidden = true;
-  document.body.classList.remove("is-sheet-open");
+  focused = null;
   $("btn-share").hidden = false;
   $("share-text").textContent = shareBody();
   $("win-lede").textContent = `Solved in ${formatTime(elapsedMs)} · ${hints} hint${hints === 1 ? "" : "s"} · ${scoreFor({ elapsedMs, mistakes, hints })} pts`;
   $("win").hidden = false;
   paintMeta();
+  paintBoard();
 }
 
 async function loadPuzzle() {
@@ -537,8 +728,6 @@ function bind() {
   $("win-close").addEventListener("click", () => {
     $("win").hidden = true;
   });
-  $("sheet-close").addEventListener("click", closeSheet);
-  $("sheet-dismiss").addEventListener("click", closeSheet);
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
   }
