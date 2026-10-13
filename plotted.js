@@ -1200,6 +1200,9 @@ export async function loadPuzzle({ date, puzzle: given, practiceId } = {}) {
   }
   resetPlayState();
   restore();
+  hideStartOverConfirm();
+  const win = $("win");
+  if (win) win.hidden = true;
   paintChrome();
   try {
     paintBoard();
@@ -1208,12 +1211,9 @@ export async function loadPuzzle({ date, puzzle: given, practiceId } = {}) {
     showBoardError("Couldn’t draw today’s grid.");
     throw error;
   }
-  if (solved) {
-    const share = $("btn-share");
-    if (share) share.hidden = false;
-  } else {
-    maybeFinishIfSolved();
-  }
+  const share = $("btn-share");
+  if (share) share.hidden = !solved;
+  if (!solved) maybeFinishIfSolved();
 }
 
 function bind() {
