@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, NOTES_STORAGE_KEY, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, PRACTICE_PUZZLES, SITE_URL } from "../plotted-config.js";
+import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, NOTES_STORAGE_KEY, PRACTICE_GROUPS, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, PRACTICE_PUZZLES, SITE_URL } from "../plotted-config.js";
 import { normalizeNotes, progressFitsPuzzle, slotFitPlan } from "../plotted.js";
 import { ICONS, iconSvg } from "../plotted-icons.js";
 import { THEMES } from "../plotted-themes.js";
@@ -38,10 +38,37 @@ assert.equal(LAUNCH_DATE, "2026-10-13");
 assert.equal(NOTES_STORAGE_KEY, "plotted-notes");
 assert.equal(PRACTICE_PROGRESS_KEY, "plotted-practice");
 assert.equal(PRACTICE_NOTES_KEY, "plotted-practice-notes");
+assert.equal(PRACTICE_PUZZLES.length, 17);
 assert.deepEqual(
-  PRACTICE_PUZZLES.map((entry) => entry.id),
+  PRACTICE_GROUPS.map((entry) => entry.id),
   ["easy", "easy-medium", "medium", "medium-hard", "hard"],
 );
+assert.deepEqual(
+  PRACTICE_PUZZLES.map((entry) => entry.id),
+  [
+    "easy",
+    "quiet-chapter",
+    "late-watering",
+    "short-stack",
+    "easy-medium",
+    "medium",
+    "whos-pouring",
+    "ribbon-aisle",
+    "walk-away",
+    "medium-hard",
+    "parked-pets",
+    "last-lantern",
+    "night-set",
+    "hard",
+    "five-copies",
+    "parcel-row",
+    "four-plates",
+  ],
+);
+assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "easy").length, 4);
+assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "medium").length, 4);
+assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "medium-hard").length, 4);
+assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "hard").length, 4);
 assert.equal(normalizeNotes("scratch"), "scratch");
 assert.equal(normalizeNotes(["Brit", "green"]), "Brit\ngreen");
 assert.equal(normalizeNotes(null), "");
@@ -250,7 +277,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v15/);
+assert.match(sw, /plotted-v16/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -293,6 +320,12 @@ assert.match(css, /\.grid-table/);
 assert.match(css, /\.notes-panel/);
 assert.match(css, /\.puzzle-col/);
 assert.match(css, /\.word-bank/);
+assert.match(css, /\.practice-nav \{[^}]*max-width: 100%/);
+assert.match(css, /\.practice-nav \{[^}]*overflow-x: hidden/);
+assert.match(css, /\.practice-nav select \{[^}]*width: 100%/);
+assert.match(css, /\.practice-nav select \{[^}]*font-size: var\(--clue-size/);
+assert.doesNotMatch(css, /\.practice-nav[^{]*\{[^}]*gradient/);
+assert.doesNotMatch(css, /\.practice-nav select[^{]*\{[^}]*gradient/);
 assert.match(css, /\.word-bank-word\.is-placed \{[^}]*line-through/);
 assert.doesNotMatch(css, /\.word-bank[^{]*\{[^}]*gradient/);
 assert.match(css, /border-radius: 18px/);
@@ -354,6 +387,8 @@ assert.match(app, /maybeFinishIfSolved/);
 assert.match(app, /startOver/);
 assert.match(app, /PRACTICE_PROGRESS_KEY/);
 assert.match(app, /practiceId/);
+assert.match(app, /practice-select/);
+assert.match(app, /PRACTICE_GROUPS/);
 assert.match(app, /streakAwarded/);
 assert.match(app, /arrow-counter-clockwise/);
 assert.match(app, /makeWordBank/);
@@ -544,12 +579,16 @@ for (const item of flattenItems(einstein.items)) {
 const practiceIds = PRACTICE_PUZZLES.map((entry) => entry.id);
 const practiceIndex = JSON.parse(fs.readFileSync(path.join(root, "data/practice/index.json"), "utf8"));
 assert.deepEqual(practiceIndex.puzzles.map((entry) => entry.id), practiceIds);
+const keptPractice = new Set(["easy", "easy-medium", "medium", "medium-hard", "hard"]);
+const newHard = ["five-copies", "parcel-row", "four-plates"];
 for (const id of practiceIds) {
   const practice = JSON.parse(fs.readFileSync(path.join(root, `data/practice/${id}.json`), "utf8"));
+  const catalog = PRACTICE_PUZZLES.find((entry) => entry.id === id);
   assert.equal(practice.practice, true);
   assert.equal(practice.practiceId, id);
   assert.equal(practice.difficulty.solvedByHuman, true);
   assert.ok(!practice.date, `${id} must not sit on the daily calendar`);
+  assert.equal(practice.theme.title, catalog.title, `${id} needs a fun title`);
   const attrs = practice.attributes.map((attr) => attr.id);
   const ids = Object.fromEntries(attrs.map((attr) => [attr, practice.items[attr].map((item) => item.id)]));
   const unique = countSolutions(practice.houseCount, attrs, ids, practice.clues, 2);
@@ -557,12 +596,24 @@ for (const id of practiceIds) {
   const human = solvePuzzleByHuman(practice);
   assert.equal(human.solvedByHuman, true, `${id} must solve by human techniques`);
   assert.ok(practice.clues.length >= 4);
+  for (const item of flattenItems(practice.items)) {
+    assert.ok(ICONS[item.icon], `${id} missing Phosphor icon ${item.icon}`);
+  }
   if (id === "easy") {
     const copyGaps = labelsMissingFromCopy(practice);
     assert.ok(
       copyGaps.some((entry) => entry.id === "butterfly" || entry.id === "beer"),
       "easy practice still omits some pets/drinks from clue text; the word bank must cover them",
     );
+  } else if (!keptPractice.has(id)) {
+    assert.ok(practice.houseCount >= 3);
+    assert.match(practice.source, /^daily-2027-1[12]-/, `${id} should copy a late-2027 daily`);
+    assert.ok(!practice.date, `${id} must not keep the daily date`);
+    if (id === "five-copies") {
+      assert.equal(practice.houseCount, 5, `${id} should be a 5-house hard puzzle`);
+    } else if (newHard.includes(id)) {
+      assert.ok(practice.houseCount >= 4, `${id} should prefer a larger hard grid`);
+    }
   }
 }
 

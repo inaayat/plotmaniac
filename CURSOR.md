@@ -16,7 +16,7 @@ The older Plotmaniac field guide is archived (not deleted) under `archive/`: `ar
 | `plotted-icons.js` | Vendored Phosphor duotone paths |
 | `plotted-themes.js` | Daily themes built from those icons |
 | `data/plotted/YYYY-MM-DD.json` | One puzzle per date |
-| `data/practice/` | Standalone easy→hard set (`?puzzle=<id>`), separate storage |
+| `data/practice/` | Standalone practice set of 17 (`?puzzle=<id>`), grouped by difficulty, separate storage |
 | `docs/plotted-plan.md` | Product plan |
 | `archive/index.html` | Plotmaniac gallery + plot chrome |
 | `archive/app.js` | Boot, routing (`?plot=`, `?view=`), gallery |
@@ -25,7 +25,7 @@ The older Plotmaniac field guide is archived (not deleted) under `archive/`: `ar
 | `scripts/test-plotted.mjs` | Solver, share text, icon, archive-path checks |
 | `scripts/test-plotted-dom.mjs` | happy-dom: index.html paints Einstein + generated days, ghost completion |
 | `scripts/generate-plotted.mjs` | Precompute a year of JSON |
-| `scripts/generate-practice.mjs` | Rebuild the five practice puzzles |
+| `scripts/generate-practice.mjs` | Copy twelve late-2027 dailies into the practice set (keeps the original five) |
 | `scripts/test-never-ending-internet-lore.mjs` | Plotmaniac archive / UI regression checks |
 
 Plotmaniac details (Marvel chronology, gun boards, templates) still apply to files under `archive/`. Templates live in `docs/templates/` and still describe `data/<id>/` paths relative to the **archive** app (those files are now `archive/data/<id>/`).

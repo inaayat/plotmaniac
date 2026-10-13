@@ -15,13 +15,37 @@ export const PROGRESS_STORAGE_KEY = "plotted-progress";
 export const PRACTICE_PROGRESS_KEY = "plotted-practice";
 export const PRACTICE_NOTES_KEY = "plotted-practice-notes";
 
-export const PRACTICE_PUZZLES = [
+export const PRACTICE_GROUPS = [
   { id: "easy", label: "Easy" },
   { id: "easy-medium", label: "Easy–medium" },
   { id: "medium", label: "Medium" },
   { id: "medium-hard", label: "Medium–hard" },
   { id: "hard", label: "Hard" },
 ];
+
+export const PRACTICE_PUZZLES = [
+  { id: "easy", title: "Pets and drinks", group: "easy" },
+  { id: "quiet-chapter", title: "Quiet chapter", group: "easy" },
+  { id: "late-watering", title: "Late watering", group: "easy" },
+  { id: "short-stack", title: "Short stack", group: "easy" },
+  { id: "easy-medium", title: "Garden row", group: "easy-medium" },
+  { id: "medium", title: "Music night", group: "medium" },
+  { id: "whos-pouring", title: "Who's pouring", group: "medium" },
+  { id: "ribbon-aisle", title: "Ribbon aisle", group: "medium" },
+  { id: "walk-away", title: "Walk away", group: "medium" },
+  { id: "medium-hard", title: "Brunch table", group: "medium-hard" },
+  { id: "parked-pets", title: "Parked pets", group: "medium-hard" },
+  { id: "last-lantern", title: "Last lantern", group: "medium-hard" },
+  { id: "night-set", title: "Night set", group: "medium-hard" },
+  { id: "hard", title: "The block", group: "hard" },
+  { id: "five-copies", title: "Five copies", group: "hard" },
+  { id: "parcel-row", title: "Parcel row", group: "hard" },
+  { id: "four-plates", title: "Four plates", group: "hard" },
+];
+
+export function practiceGroupLabel(groupId) {
+  return PRACTICE_GROUPS.find((group) => group.id === groupId)?.label || groupId;
+}
 
 export const ARCHIVE_HREF = "./archive/";
 

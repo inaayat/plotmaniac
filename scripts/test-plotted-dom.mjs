@@ -372,7 +372,12 @@ assert.equal(
   document.querySelector('.word-bank-word[data-item="butterfly"]')?.classList.contains("is-placed"),
   false,
 );
-assert.equal(document.querySelector('.practice-nav a[data-practice="easy"]')?.getAttribute("aria-current"), "page");
+const practiceSelect = document.getElementById("practice-select");
+assert.ok(practiceSelect, "practice picker is a compact select");
+assert.equal(practiceSelect.value, "easy");
+assert.equal(practiceSelect.querySelectorAll("option").length, 18, "Today plus 17 practice puzzles");
+assert.equal(practiceSelect.querySelectorAll("optgroup").length, 5, "practice puzzles are grouped by difficulty");
+assert.equal(practiceSelect.querySelectorAll("optgroup")[0].label, "Easy");
 assert.equal(document.querySelectorAll("input.slot-input").length, easy.houseCount * easy.attributes.length);
 assert.equal(easy.clues.length, 5, "practice Easy is the 5-clue fixture");
 assert.equal(einstein.clues.length, 15, "Einstein is the 15-clue fixture");
@@ -426,6 +431,30 @@ assert.doesNotMatch(document.getElementById("share-text")?.textContent || "", /P
 const practiceSaved = JSON.parse(window.localStorage.getItem(`${PRACTICE_PROGRESS_KEY}:easy`) || "{}");
 assert.equal(practiceSaved.solved, true);
 assert.equal(JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}").solved, true);
+
+const fiveCopies = readJson("data/practice/five-copies.json");
+await loadPuzzle({ puzzle: fiveCopies });
+assert.equal(document.getElementById("win")?.hidden, true, "practice switch hides the win card");
+assert.equal(fiveCopies.houseCount, 5);
+assert.equal(missingVisibleOptions(document, fiveCopies).length, 0, "5-house practice still lists every option");
+assert.equal(document.getElementById("practice-select")?.value, "five-copies");
+assert.match(document.getElementById("meta-date")?.textContent || "", /Practice · Hard/);
+assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
+
+if (typeof window.happyDOM?.setViewport === "function") {
+  window.happyDOM.setViewport({ width: 390, height: 844 });
+  fitPlayfield();
+  const nav = document.querySelector(".practice-nav");
+  const navStyle = window.getComputedStyle(nav);
+  if (navStyle?.overflowX) {
+    assert.equal(navStyle.overflowX, "hidden", "practice picker must not overflow on a phone");
+  }
+  const pickerSelect = document.getElementById("practice-select");
+  const selectStyle = window.getComputedStyle(pickerSelect);
+  if (selectStyle?.fontSize) {
+    assert.ok(Number.parseFloat(selectStyle.fontSize) <= 16, "picker uses the standard type size");
+  }
+}
 
 stopGameTimers();
 console.error = origError;

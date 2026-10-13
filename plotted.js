@@ -5,7 +5,9 @@ import {
   NOTES_STORAGE_KEY,
   PRACTICE_NOTES_KEY,
   PRACTICE_PROGRESS_KEY,
+  PRACTICE_GROUPS,
   PRACTICE_PUZZLES,
+  practiceGroupLabel,
   PROGRESS_STORAGE_KEY,
   STREAK_STORAGE_KEY,
   THEME_STORAGE_KEY,
@@ -440,7 +442,9 @@ function paintMeta() {
   const streakEl = $("meta-streak");
   if (dateEl) {
     dateEl.textContent = isPractice()
-      ? `Practice · ${puzzle.label || puzzle.theme?.title || "Practice"}`
+      ? `Practice · ${puzzle.label || practiceGroupLabel(puzzle.difficulty?.label) || "Practice"}${
+          puzzle.theme?.title ? ` · ${puzzle.theme.title}` : ""
+        }`
       : puzzle.date;
   }
   if (timerEl) timerEl.textContent = formatTime(solved ? elapsedMs : startedAt ? Date.now() - startedAt : elapsedMs);
@@ -500,21 +504,32 @@ function paintPracticeNav() {
   const nav = $("practice-nav");
   if (!nav) return;
   const current = isPractice() ? puzzleProgressId() : "";
-  const today = document.createElement("a");
-  today.href = "./";
-  today.dataset.practice = "";
+  const picker = document.createElement("label");
+  picker.className = "practice-picker";
+  const caption = document.createElement("span");
+  caption.className = "practice-picker-label";
+  caption.textContent = "Puzzle";
+  const select = document.createElement("select");
+  select.id = "practice-select";
+  select.setAttribute("aria-label", "Practice puzzles");
+  const today = document.createElement("option");
+  today.value = "";
   today.textContent = "Today";
-  if (!current) today.setAttribute("aria-current", "page");
-  const nodes = [today];
-  for (const entry of PRACTICE_PUZZLES) {
-    const link = document.createElement("a");
-    link.href = `./?puzzle=${encodeURIComponent(entry.id)}`;
-    link.dataset.practice = entry.id;
-    link.textContent = entry.label;
-    if (current === entry.id) link.setAttribute("aria-current", "page");
-    nodes.push(link);
+  select.appendChild(today);
+  for (const group of PRACTICE_GROUPS) {
+    const optgroup = document.createElement("optgroup");
+    optgroup.label = group.label;
+    for (const entry of PRACTICE_PUZZLES.filter((puzzleEntry) => puzzleEntry.group === group.id)) {
+      const option = document.createElement("option");
+      option.value = entry.id;
+      option.textContent = entry.title;
+      optgroup.appendChild(option);
+    }
+    select.appendChild(optgroup);
   }
-  nav.replaceChildren(...nodes);
+  select.value = current;
+  picker.append(caption, select);
+  nav.replaceChildren(picker);
 }
 
 function showStartOverConfirm() {
@@ -1334,11 +1349,10 @@ function bind() {
     const win = $("win");
     if (win) win.hidden = true;
   });
-  $("practice-nav")?.addEventListener("click", (event) => {
-    const link = event.target.closest("a[data-practice]");
-    if (!link) return;
-    event.preventDefault();
-    const id = link.dataset.practice || "";
+  $("practice-nav")?.addEventListener("change", (event) => {
+    const select = event.target.closest("#practice-select");
+    if (!select) return;
+    const id = select.value || "";
     const url = id ? `./?puzzle=${encodeURIComponent(id)}` : "./";
     history.pushState({ practiceId: id }, "", url);
     loadPuzzle(id ? { practiceId: id } : {}).catch((error) => {

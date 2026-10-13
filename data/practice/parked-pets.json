@@ -1,0 +1,184 @@
+{
+  "id": "parked-pets",
+  "practice": true,
+  "practiceId": "parked-pets",
+  "label": "Medium–hard",
+  "source": "daily-2027-11-25",
+  "theme": {
+    "id": "neighborhood",
+    "title": "Parked pets",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Rides and animals on a short block."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      },
+      {
+        "id": "plane",
+        "label": "plane",
+        "icon": "airplane"
+      }
+    ],
+    "pet": [
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "plane"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "plane is with the rabbit."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "text": "Cam is with the on foot."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "on foot is with the cat."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "rabbit is next to the Bo."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "immediate": true,
+      "text": "rabbit is immediately left of the on foot."
+    }
+  ],
+  "question": {
+    "text": "Who lives with the horse?",
+    "givenAttr": "pet",
+    "givenItem": "horse",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "vehicle": "boat",
+      "pet": "horse"
+    },
+    {
+      "person": "eden",
+      "vehicle": "plane",
+      "pet": "rabbit"
+    },
+    {
+      "person": "cam",
+      "vehicle": "walk",
+      "pet": "cat"
+    }
+  ],
+  "difficulty": {
+    "label": "medium-hard",
+    "steps": 6,
+    "neededSearch": true,
+    "weekday": 4,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 46,
+    "sourceDate": "2027-11-25"
+  }
+}

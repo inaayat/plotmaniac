@@ -1,0 +1,178 @@
+{
+  "id": "whos-pouring",
+  "practice": true,
+  "practiceId": "whos-pouring",
+  "label": "Medium",
+  "source": "daily-2027-11-03",
+  "theme": {
+    "id": "dinner-party",
+    "title": "Who's pouring",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "Three neighbors. Match who, pet, and drink."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "icon": "horse"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "Eden is with the coffee."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "Gus is with the rabbit."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "dog is with the wine."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "martini is next to the Jules."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "drink",
+      "item": "wine",
+      "house": 0,
+      "text": "wine is in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who owns the horse?",
+    "givenAttr": "pet",
+    "givenItem": "horse",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "jules",
+      "pet": "dog",
+      "drink": "wine"
+    },
+    {
+      "person": "gus",
+      "pet": "rabbit",
+      "drink": "martini"
+    },
+    {
+      "person": "eden",
+      "pet": "horse",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "medium",
+    "steps": 13,
+    "neededSearch": false,
+    "weekday": 3,
+    "solvedByHuman": true,
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 43,
+    "sourceDate": "2027-11-03"
+  }
+}

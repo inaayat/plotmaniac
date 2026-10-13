@@ -13,7 +13,56 @@
         "person",
         "pet",
         "drink"
-      ]
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "quiet-chapter",
+      "label": "Easy",
+      "title": "Quiet chapter",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "easy",
+      "hardest": "same_house",
+      "steps": 7,
+      "categories": [
+        "person",
+        "book",
+        "drink"
+      ],
+      "sourceDate": "2027-11-01"
+    },
+    {
+      "id": "late-watering",
+      "label": "Easy",
+      "title": "Late watering",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "easy",
+      "hardest": "same_house",
+      "steps": 10,
+      "categories": [
+        "person",
+        "plant",
+        "drink"
+      ],
+      "sourceDate": "2027-11-08"
+    },
+    {
+      "id": "short-stack",
+      "label": "Easy",
+      "title": "Short stack",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "easy",
+      "hardest": "same_house",
+      "steps": 8,
+      "categories": [
+        "person",
+        "food",
+        "drink"
+      ],
+      "sourceDate": "2027-11-29"
     },
     {
       "id": "easy-medium",
@@ -28,7 +77,8 @@
         "person",
         "plant",
         "drink"
-      ]
+      ],
+      "sourceDate": null
     },
     {
       "id": "medium",
@@ -43,7 +93,56 @@
         "person",
         "instrument",
         "drink"
-      ]
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "whos-pouring",
+      "label": "Medium",
+      "title": "Who's pouring",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "medium",
+      "hardest": "next_to_edge",
+      "steps": 13,
+      "categories": [
+        "person",
+        "pet",
+        "drink"
+      ],
+      "sourceDate": "2027-11-03"
+    },
+    {
+      "id": "ribbon-aisle",
+      "label": "Medium",
+      "title": "Ribbon aisle",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "medium",
+      "hardest": "next_to_edge",
+      "steps": 12,
+      "categories": [
+        "person",
+        "pet",
+        "prize"
+      ],
+      "sourceDate": "2027-11-02"
+    },
+    {
+      "id": "walk-away",
+      "label": "Medium",
+      "title": "Walk away",
+      "houseCount": 3,
+      "clueCount": 6,
+      "difficulty": "medium",
+      "hardest": "next_to_edge",
+      "steps": 12,
+      "categories": [
+        "person",
+        "loot",
+        "getaway"
+      ],
+      "sourceDate": "2027-11-23"
     },
     {
       "id": "medium-hard",
@@ -58,7 +157,56 @@
         "person",
         "food",
         "drink"
-      ]
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "parked-pets",
+      "label": "Medium–hard",
+      "title": "Parked pets",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "medium-hard",
+      "hardest": "contradiction",
+      "steps": 6,
+      "categories": [
+        "person",
+        "vehicle",
+        "pet"
+      ],
+      "sourceDate": "2027-11-25"
+    },
+    {
+      "id": "last-lantern",
+      "label": "Medium–hard",
+      "title": "Last lantern",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "medium-hard",
+      "hardest": "contradiction",
+      "steps": 4,
+      "categories": [
+        "person",
+        "loot",
+        "pet"
+      ],
+      "sourceDate": "2027-11-04"
+    },
+    {
+      "id": "night-set",
+      "label": "Medium–hard",
+      "title": "Night set",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "medium-hard",
+      "hardest": "contradiction",
+      "steps": 3,
+      "categories": [
+        "person",
+        "instrument",
+        "drink"
+      ],
+      "sourceDate": "2027-11-06"
     },
     {
       "id": "hard",
@@ -73,7 +221,56 @@
         "person",
         "vehicle",
         "pet"
-      ]
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "five-copies",
+      "label": "Hard",
+      "title": "Five copies",
+      "houseCount": 5,
+      "clueCount": 8,
+      "difficulty": "hard",
+      "hardest": "contradiction",
+      "steps": 7,
+      "categories": [
+        "person",
+        "book",
+        "drink"
+      ],
+      "sourceDate": "2027-11-28"
+    },
+    {
+      "id": "parcel-row",
+      "label": "Hard",
+      "title": "Parcel row",
+      "houseCount": 4,
+      "clueCount": 7,
+      "difficulty": "hard",
+      "hardest": "contradiction",
+      "steps": 5,
+      "categories": [
+        "person",
+        "treat",
+        "gift"
+      ],
+      "sourceDate": "2027-11-21"
+    },
+    {
+      "id": "four-plates",
+      "label": "Hard",
+      "title": "Four plates",
+      "houseCount": 4,
+      "clueCount": 7,
+      "difficulty": "hard",
+      "hardest": "contradiction",
+      "steps": 3,
+      "categories": [
+        "person",
+        "food",
+        "drink"
+      ],
+      "sourceDate": "2027-11-14"
     }
   ]
 }

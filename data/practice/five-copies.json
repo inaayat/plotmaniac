@@ -1,0 +1,263 @@
+{
+  "id": "five-copies",
+  "practice": true,
+  "practiceId": "five-copies",
+  "label": "Hard",
+  "source": "daily-2027-11-28",
+  "theme": {
+    "id": "book-club",
+    "title": "Five copies",
+    "blurb": "Same living room, different copies. Who brought which book?",
+    "story": "Five houses of readers. Who brought which book?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      }
+    ],
+    "book": [
+      {
+        "id": "novel",
+        "label": "novel",
+        "icon": "book"
+      },
+      {
+        "id": "diary",
+        "label": "diary",
+        "icon": "pencil-simple"
+      },
+      {
+        "id": "map",
+        "label": "field guide",
+        "icon": "magnifying-glass"
+      },
+      {
+        "id": "notes",
+        "label": "notes",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "open",
+        "label": "open book",
+        "icon": "book-open"
+      }
+    ],
+    "drink": [
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Ada is with the tea."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "map"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "field guide is with the wine."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "book",
+        "item": "notes"
+      },
+      "text": "Eden is with the notes."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "book",
+        "item": "diary"
+      },
+      "text": "Jules is with the diary."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "book",
+        "item": "map"
+      },
+      "text": "Gus is next to the field guide."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "book",
+        "item": "open"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "open book is next to the orange juice."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "text": "coffee is next to the Eden."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "immediate": true,
+      "text": "wine is immediately left of the Eden."
+    }
+  ],
+  "question": {
+    "text": "Who brought the novel?",
+    "givenAttr": "book",
+    "givenItem": "novel",
+    "answerAttr": "person",
+    "answerItem": "gus"
+  },
+  "solution": [
+    {
+      "person": "ada",
+      "book": "open",
+      "drink": "tea"
+    },
+    {
+      "person": "gus",
+      "book": "novel",
+      "drink": "orange"
+    },
+    {
+      "person": "fay",
+      "book": "map",
+      "drink": "wine"
+    },
+    {
+      "person": "eden",
+      "book": "notes",
+      "drink": "martini"
+    },
+    {
+      "person": "jules",
+      "book": "diary",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "hard",
+    "steps": 7,
+    "neededSearch": true,
+    "weekday": 0,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 47,
+    "sourceDate": "2027-11-28"
+  }
+}

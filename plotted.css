@@ -256,29 +256,50 @@ h1 {
 
 .practice-nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 6px 10px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 0 8px;
-  font-size: 0.58rem;
+  overflow-x: hidden;
+  color: var(--muted);
+}
+
+.practice-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 8px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.practice-picker-label {
+  flex: 0 0 auto;
+  font-size: var(--clue-size, 13px);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-.practice-nav a {
-  color: var(--muted);
-  text-decoration: none;
+.practice-nav select {
+  flex: 1 1 12rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
   min-height: var(--tap);
-  display: inline-flex;
-  align-items: center;
-  padding: 0 2px;
-}
-
-.practice-nav a[aria-current="page"] {
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--bg);
   color: var(--ink);
-  font-weight: 600;
+  font-size: var(--clue-size, 13px);
+  letter-spacing: 0;
+  text-transform: none;
+  appearance: auto;
 }
 
 .actions {
