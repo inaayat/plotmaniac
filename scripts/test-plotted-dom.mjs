@@ -279,7 +279,17 @@ assert.equal(saved.streakAwarded, true);
 
 const startBtn = document.getElementById("btn-start-over");
 assert.ok(startBtn, "start over control");
-assert.ok(startBtn.closest(".mast-tools")?.querySelector("#btn-check"), "start over sits with Check/hint");
+assert.ok(startBtn.closest(".mast-tools")?.querySelector("#btn-check"), "start over sits with Check");
+assert.equal(startBtn.closest(".mast-tools")?.querySelector("#btn-hint"), null, "hint bulb leaves the header");
+const hintBtn = document.getElementById("btn-hint");
+assert.ok(hintBtn, "hint control");
+assert.equal(hintBtn.getAttribute("aria-label"), "Reveal a cell");
+assert.ok(hintBtn.closest(".hint-heading")?.querySelector(".hint-label"), "hint bulb sits beside HINTS");
+assert.match(hintBtn.innerHTML, /lightbulb|Reveal a cell/);
+const hintStyle = window.getComputedStyle(hintBtn);
+if (hintStyle?.minHeight) {
+  assert.ok(Number.parseFloat(hintStyle.minHeight) >= 44, "hint bulb is a 44px tap target");
+}
 assert.ok(startBtn.querySelector("svg"), "start over uses a Phosphor icon");
 assert.match(startBtn.innerHTML, /arrow-counter-clockwise|Start over/);
 const startStyle = window.getComputedStyle(startBtn);

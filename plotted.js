@@ -484,12 +484,10 @@ function paintChrome() {
   const winTitle = $("win-title");
   if (winTitle) winTitle.textContent = "Solved";
   const help = $("btn-help");
-  const hint = $("btn-hint");
   const check = $("btn-check");
   const startOverBtn = $("btn-start-over");
   const share = $("btn-share");
   if (help) help.innerHTML = iconSvg("chat-teardrop-text", { label: "How to play" });
-  if (hint) hint.innerHTML = iconSvg("lightbulb", { label: "Reveal a cell" });
   if (check) check.innerHTML = iconSvg("check", { label: "Check the grid" });
   if (startOverBtn) startOverBtn.innerHTML = iconSvg("arrow-counter-clockwise", { label: "Start over" });
   if (share) share.innerHTML = iconSvg("share", { label: "Share result" });
@@ -1007,10 +1005,19 @@ function paintBoard(opts = {}) {
 
   const hintBlock = document.createElement("section");
   hintBlock.className = "hint-block";
+  const hintHeading = document.createElement("div");
+  hintHeading.className = "hint-heading";
   const hintLabel = document.createElement("p");
   hintLabel.className = "hint-label";
   hintLabel.textContent = "Hints";
-  hintBlock.appendChild(hintLabel);
+  const hintBtn = document.createElement("button");
+  hintBtn.type = "button";
+  hintBtn.id = "btn-hint";
+  hintBtn.className = "icon-btn hint-reveal";
+  hintBtn.setAttribute("aria-label", "Reveal a cell");
+  hintBtn.innerHTML = iconSvg("lightbulb", { label: "Reveal a cell" });
+  hintHeading.append(hintLabel, hintBtn);
+  hintBlock.appendChild(hintHeading);
   const clues = document.createElement("div");
   clues.className = "clues";
   clues.setAttribute("role", "list");
@@ -1334,7 +1341,9 @@ function bind() {
   $("theme-toggle")?.addEventListener("click", () => {
     applyTheme(currentTheme() === "light" ? "dark" : "light");
   });
-  $("btn-hint")?.addEventListener("click", useHint);
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("#btn-hint")) useHint();
+  });
   $("btn-check")?.addEventListener("click", checkGrid);
   $("btn-start-over")?.addEventListener("click", showStartOverConfirm);
   $("start-over-grid")?.addEventListener("click", () => startOver({ clearNotes: false }));

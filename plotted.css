@@ -642,12 +642,25 @@ h1 {
   gap: 2px;
 }
 
+.hint-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
 .hint-label {
   color: var(--muted);
   font-size: 0.58rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: center;
+}
+
+.hint-reveal {
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--muted);
 }
 
 .clues {
