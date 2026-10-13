@@ -1,0 +1,172 @@
+{
+  "id": "easy",
+  "practice": true,
+  "practiceId": "easy",
+  "label": "Easy",
+  "source": "original-generated",
+  "theme": {
+    "id": "dinner-party",
+    "title": "Pets and drinks",
+    "blurb": "Three neighbors cooked, poured, and brought a guest. Match the table.",
+    "story": "Three neighbors. Match who, pet, and drink."
+  },
+  "houseCount": 3,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "text": "Bo drinks brandy."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "Bo owns the rabbit."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Ada owns the dog."
+    },
+    {
+      "id": "c4",
+      "type": "at",
+      "attr": "drink",
+      "item": "orange",
+      "house": 2,
+      "text": "The person who drinks orange juice lives in house 3."
+    },
+    {
+      "id": "c5",
+      "type": "at",
+      "attr": "person",
+      "item": "fay",
+      "house": 0,
+      "text": "Fay lives in house 1."
+    }
+  ],
+  "question": {
+    "text": "Who owns the dog?",
+    "givenAttr": "pet",
+    "givenItem": "dog",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "fay",
+      "pet": "butterfly",
+      "drink": "beer"
+    },
+    {
+      "person": "bo",
+      "pet": "rabbit",
+      "drink": "brandy"
+    },
+    {
+      "person": "ada",
+      "pet": "dog",
+      "drink": "orange"
+    }
+  ],
+  "difficulty": {
+    "label": "easy",
+    "steps": 7,
+    "neededSearch": false,
+    "weekday": null,
+    "solvedByHuman": true,
+    "hardest": "same_house",
+    "hardestTier": 5,
+    "score": 32
+  }
+}

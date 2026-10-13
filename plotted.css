@@ -254,6 +254,33 @@ h1 {
   vertical-align: -2px;
 }
 
+.practice-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 0 8px;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.practice-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2px;
+}
+
+.practice-nav a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 .actions {
   display: flex;
   justify-content: center;

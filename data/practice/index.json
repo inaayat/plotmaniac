@@ -1,0 +1,79 @@
+{
+  "puzzles": [
+    {
+      "id": "easy",
+      "label": "Easy",
+      "title": "Pets and drinks",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "easy",
+      "hardest": "same_house",
+      "steps": 7,
+      "categories": [
+        "person",
+        "pet",
+        "drink"
+      ]
+    },
+    {
+      "id": "easy-medium",
+      "label": "Easy–medium",
+      "title": "Garden row",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "easy-medium",
+      "hardest": "next_to_edge",
+      "steps": 11,
+      "categories": [
+        "person",
+        "plant",
+        "drink"
+      ]
+    },
+    {
+      "id": "medium",
+      "label": "Medium",
+      "title": "Music night",
+      "houseCount": 3,
+      "clueCount": 5,
+      "difficulty": "medium",
+      "hardest": "contradiction",
+      "steps": 5,
+      "categories": [
+        "person",
+        "instrument",
+        "drink"
+      ]
+    },
+    {
+      "id": "medium-hard",
+      "label": "Medium–hard",
+      "title": "Brunch table",
+      "houseCount": 3,
+      "clueCount": 6,
+      "difficulty": "medium-hard",
+      "hardest": "contradiction",
+      "steps": 5,
+      "categories": [
+        "person",
+        "food",
+        "drink"
+      ]
+    },
+    {
+      "id": "hard",
+      "label": "Hard",
+      "title": "The block",
+      "houseCount": 4,
+      "clueCount": 8,
+      "difficulty": "hard",
+      "hardest": "contradiction",
+      "steps": 7,
+      "categories": [
+        "person",
+        "vehicle",
+        "pet"
+      ]
+    }
+  ]
+}

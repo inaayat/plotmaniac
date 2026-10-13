@@ -14,7 +14,7 @@ Solved in 2:45
 https://plotmaniac.com
 ```
 
-Light and dark follow the system unless you toggle them. The day’s puzzle is static JSON (`data/plotted/YYYY-MM-DD.json`) and the app is an installable PWA.
+Light and dark follow the system unless you toggle them. The day’s puzzle is static JSON (`data/plotted/YYYY-MM-DD.json`) and the app is an installable PWA. A separate easy→hard practice set lives under `data/practice/` (`?puzzle=easy`); it uses its own storage and does not change the daily streak.
 
 ## Plotmaniac archive
 

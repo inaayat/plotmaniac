@@ -84,6 +84,8 @@ The uniqueness solver is a domain-reduction CSP with all-different per attribute
 
 Precompute about a year at a time: `node scripts/generate-plotted.mjs`.
 
+A **standalone practice set** of five puzzles (easy → hard) lives under `data/practice/`. Pick one from the in-page list or `?puzzle=<id>`. Practice uses separate `localStorage` keys, is not assigned to a date, and does not change the daily streak or share numbering (`Plotted practice · Easy`). Rebuild with `node scripts/generate-practice.mjs`.
+
 ## 5. Variety / how long before running out
 
 Solution space:

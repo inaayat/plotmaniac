@@ -968,6 +968,7 @@ export function firstHintCell(grid, solution, attributes) {
 export function formatShare({
   gameName = GAME_NAME,
   number,
+  heading,
   houseCount,
   completionOrder,
   elapsedMs,
@@ -975,13 +976,8 @@ export function formatShare({
 } = {}) {
   const houses = HOUSE_EMOJI.repeat(houseCount);
   const order = (completionOrder || []).map((rank) => KEYCAP_DIGITS[rank - 1] || "?").join("");
-  return [
-    `${gameName} #${number}`,
-    houses,
-    order,
-    `Solved in ${formatTime(elapsedMs)}`,
-    siteUrl,
-  ].join("\n");
+  const title = heading || `${gameName} #${number}`;
+  return [title, houses, order, `Solved in ${formatTime(elapsedMs)}`, siteUrl].join("\n");
 }
 
 export function scoreFor({ elapsedMs, mistakes, hints }) {

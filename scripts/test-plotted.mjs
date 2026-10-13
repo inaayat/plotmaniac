@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, NOTES_STORAGE_KEY, SITE_URL } from "../plotted-config.js";
+import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, NOTES_STORAGE_KEY, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, PRACTICE_PUZZLES, SITE_URL } from "../plotted-config.js";
 import { normalizeNotes, progressFitsPuzzle, slotFitPlan } from "../plotted.js";
 import { ICONS, iconSvg } from "../plotted-icons.js";
 import { THEMES } from "../plotted-themes.js";
@@ -35,6 +35,12 @@ const flattenItems = (items) => Object.values(items).flat();
 assert.equal(GAME_NAME, "Plotted");
 assert.equal(LAUNCH_DATE, "2026-10-13");
 assert.equal(NOTES_STORAGE_KEY, "plotted-notes");
+assert.equal(PRACTICE_PROGRESS_KEY, "plotted-practice");
+assert.equal(PRACTICE_NOTES_KEY, "plotted-practice-notes");
+assert.deepEqual(
+  PRACTICE_PUZZLES.map((entry) => entry.id),
+  ["easy", "easy-medium", "medium", "medium-hard", "hard"],
+);
 assert.equal(normalizeNotes("scratch"), "scratch");
 assert.equal(normalizeNotes(["Brit", "green"]), "Brit\ngreen");
 assert.equal(normalizeNotes(null), "");
@@ -66,6 +72,7 @@ const repoFiles = [
   "plotted.css",
   "plotted-config.js",
   "plotted-engine.js",
+  "plotted-human-solver.js",
   "plotted-themes.js",
   "docs/plotted-plan.md",
   "README.md",
@@ -187,6 +194,15 @@ assert.match(share, /^Plotted #\d+/m);
 assert.equal(share.split("\n")[1], "🏠".repeat(5));
 assert.match(share, /Solved in 2:45/);
 
+const practiceShare = formatShare({
+  heading: `${GAME_NAME} practice · Easy`,
+  houseCount: 3,
+  completionOrder: [1, 2, 3],
+  elapsedMs: 61000,
+});
+assert.match(practiceShare, /^Plotted practice · Easy\n/);
+assert.doesNotMatch(practiceShare.split("\n")[0], /#\d/);
+
 const threeShare = formatShare({
   number: 1,
   houseCount: 3,
@@ -223,6 +239,7 @@ assert.match(html, /How to play/);
 assert.match(html, /import \{ boot \}/);
 assert.match(html, /id="btn-help"/);
 assert.match(html, /id="btn-start-over"/);
+assert.match(html, /id="practice-nav"/);
 assert.match(html, /id="start-over"/);
 assert.match(html, /Reset grid and notes/);
 assert.match(html, /win-stats/);
@@ -231,7 +248,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v12/);
+assert.match(sw, /plotted-v13/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -320,6 +337,8 @@ assert.match(app, /Jot your deductions here/);
 assert.match(app, /puzzle-col/);
 assert.match(app, /maybeFinishIfSolved/);
 assert.match(app, /startOver/);
+assert.match(app, /PRACTICE_PROGRESS_KEY/);
+assert.match(app, /practiceId/);
 assert.match(app, /streakAwarded/);
 assert.match(app, /arrow-counter-clockwise/);
 assert.match(app, /gold dashed outline/);
@@ -501,6 +520,24 @@ assert.equal(
 );
 for (const item of flattenItems(einstein.items)) {
   assert.ok(ICONS[item.icon], `Einstein missing Phosphor icon ${item.icon}`);
+}
+
+const practiceIds = PRACTICE_PUZZLES.map((entry) => entry.id);
+const practiceIndex = JSON.parse(fs.readFileSync(path.join(root, "data/practice/index.json"), "utf8"));
+assert.deepEqual(practiceIndex.puzzles.map((entry) => entry.id), practiceIds);
+for (const id of practiceIds) {
+  const practice = JSON.parse(fs.readFileSync(path.join(root, `data/practice/${id}.json`), "utf8"));
+  assert.equal(practice.practice, true);
+  assert.equal(practice.practiceId, id);
+  assert.equal(practice.difficulty.solvedByHuman, true);
+  assert.ok(!practice.date, `${id} must not sit on the daily calendar`);
+  const attrs = practice.attributes.map((attr) => attr.id);
+  const ids = Object.fromEntries(attrs.map((attr) => [attr, practice.items[attr].map((item) => item.id)]));
+  const unique = countSolutions(practice.houseCount, attrs, ids, practice.clues, 2);
+  assert.equal(unique.count, 1, `${id} must be unique`);
+  const human = solvePuzzleByHuman(practice);
+  assert.equal(human.solvedByHuman, true, `${id} must solve by human techniques`);
+  assert.ok(practice.clues.length >= 4);
 }
 
 const einsteinHuman = solvePuzzleByHuman(einstein);

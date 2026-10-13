@@ -3,6 +3,9 @@ import {
   GAME_NAME,
   GAME_TAGLINE,
   NOTES_STORAGE_KEY,
+  PRACTICE_NOTES_KEY,
+  PRACTICE_PROGRESS_KEY,
+  PRACTICE_PUZZLES,
   PROGRESS_STORAGE_KEY,
   STREAK_STORAGE_KEY,
   THEME_STORAGE_KEY,
@@ -122,12 +125,23 @@ function emptyRuled() {
   });
 }
 
+function isPractice() {
+  return Boolean(puzzle?.practice || puzzle?.practiceId);
+}
+
+function puzzleProgressId() {
+  if (isPractice()) return puzzle.practiceId || puzzle.id;
+  return puzzle.date;
+}
+
 function storageKey() {
-  return `${PROGRESS_STORAGE_KEY}:${puzzle.date}`;
+  const id = puzzleProgressId();
+  return isPractice() ? `${PRACTICE_PROGRESS_KEY}:${id}` : `${PROGRESS_STORAGE_KEY}:${id}`;
 }
 
 function notesStorageKey() {
-  return `${NOTES_STORAGE_KEY}:${puzzle.date}`;
+  const id = puzzleProgressId();
+  return isPractice() ? `${PRACTICE_NOTES_KEY}:${id}` : `${NOTES_STORAGE_KEY}:${id}`;
 }
 
 function isWidePlay() {
@@ -379,6 +393,14 @@ function markHouseCompletion() {
 }
 
 function shareBody() {
+  if (isPractice()) {
+    return formatShare({
+      heading: `${GAME_NAME} practice · ${puzzle.label || puzzle.theme?.title || "Practice"}`,
+      houseCount: puzzle.houseCount,
+      completionOrder: completionOrder.map((rank) => rank || 0),
+      elapsedMs,
+    });
+  }
   return formatShare({
     number: puzzle.number || puzzleNumber(puzzle.date),
     houseCount: puzzle.houseCount,
@@ -409,7 +431,11 @@ function paintMeta() {
   const dateEl = $("meta-date");
   const timerEl = $("meta-timer");
   const streakEl = $("meta-streak");
-  if (dateEl) dateEl.textContent = puzzle.date;
+  if (dateEl) {
+    dateEl.textContent = isPractice()
+      ? `Practice · ${puzzle.label || puzzle.theme?.title || "Practice"}`
+      : puzzle.date;
+  }
   if (timerEl) timerEl.textContent = formatTime(solved ? elapsedMs : startedAt ? Date.now() - startedAt : elapsedMs);
   if (streakEl) {
     const streak = readStreak();
@@ -458,8 +484,30 @@ function paintChrome() {
   if (share) share.innerHTML = iconSvg("share", { label: "Share result" });
   const winShare = $("win-share");
   if (winShare) winShare.textContent = "Share";
+  paintPracticeNav();
   paintThemeToggle();
   paintMeta();
+}
+
+function paintPracticeNav() {
+  const nav = $("practice-nav");
+  if (!nav) return;
+  const current = isPractice() ? puzzleProgressId() : "";
+  const today = document.createElement("a");
+  today.href = "./";
+  today.dataset.practice = "";
+  today.textContent = "Today";
+  if (!current) today.setAttribute("aria-current", "page");
+  const nodes = [today];
+  for (const entry of PRACTICE_PUZZLES) {
+    const link = document.createElement("a");
+    link.href = `./?puzzle=${encodeURIComponent(entry.id)}`;
+    link.dataset.practice = entry.id;
+    link.textContent = entry.label;
+    if (current === entry.id) link.setAttribute("aria-current", "page");
+    nodes.push(link);
+  }
+  nav.replaceChildren(...nodes);
 }
 
 function showStartOverConfirm() {
@@ -1046,7 +1094,7 @@ function bounceWinTiles() {
 }
 
 function awardStreakIfNeeded() {
-  if (streakAwarded) {
+  if (isPractice() || streakAwarded) {
     const prev = readStreak();
     return prev.count || 0;
   }
@@ -1137,9 +1185,13 @@ function finish({ revealed = false } = {}) {
   window.setTimeout(afterReveal, delay);
 }
 
-export async function loadPuzzle({ date, puzzle: given } = {}) {
+export async function loadPuzzle({ date, puzzle: given, practiceId } = {}) {
   if (given) {
     puzzle = given;
+  } else if (practiceId) {
+    const response = await fetch(`data/practice/${practiceId}.json`);
+    if (!response.ok) throw new Error(`No practice puzzle ${practiceId}`);
+    puzzle = await response.json();
   } else {
     const iso = date || localIsoDate();
     const response = await fetch(`data/plotted/${iso}.json`);
@@ -1190,6 +1242,25 @@ function bind() {
     const win = $("win");
     if (win) win.hidden = true;
   });
+  $("practice-nav")?.addEventListener("click", (event) => {
+    const link = event.target.closest("a[data-practice]");
+    if (!link) return;
+    event.preventDefault();
+    const id = link.dataset.practice || "";
+    const url = id ? `./?puzzle=${encodeURIComponent(id)}` : "./";
+    history.pushState({ practiceId: id }, "", url);
+    loadPuzzle(id ? { practiceId: id } : {}).catch((error) => {
+      console.error(error);
+      showBoardError(id ? "That practice puzzle isn’t on this build yet." : "Today’s puzzle isn’t on this build yet.");
+    });
+  });
+  window.addEventListener("popstate", () => {
+    const id = new URLSearchParams(window.location.search).get("puzzle");
+    loadPuzzle(id ? { practiceId: id } : {}).catch((error) => {
+      console.error(error);
+      showBoardError("Couldn’t load that puzzle.");
+    });
+  });
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
   }
@@ -1197,8 +1268,12 @@ function bind() {
 
 export async function boot(options = {}) {
   bind();
+  const params = new URLSearchParams(window.location.search);
+  const practiceId = options.practiceId || params.get("puzzle");
   try {
-    await loadPuzzle(options);
+    if (options.puzzle) await loadPuzzle(options);
+    else if (practiceId) await loadPuzzle({ practiceId });
+    else await loadPuzzle(options);
   } catch (error) {
     console.error(error);
     showBoardError("Today’s puzzle isn’t on this build yet.");

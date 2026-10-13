@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { Window } from "happy-dom";
-import { NOTES_STORAGE_KEY, PROGRESS_STORAGE_KEY, STREAK_STORAGE_KEY } from "../plotted-config.js";
+import { NOTES_STORAGE_KEY, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, STREAK_STORAGE_KEY, PROGRESS_STORAGE_KEY } from "../plotted-config.js";
 import { EINSTEIN_SETUP } from "../plotted-engine.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -338,6 +338,28 @@ await new Promise((resolve) => setTimeout(resolve, 30));
 assert.equal(document.getElementById("win")?.hidden, false, "restarted puzzle can be solved again");
 assert.equal(document.getElementById("win-streak")?.textContent, "1", "solving again must not change the streak");
 assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
+
+const easy = readJson("data/practice/easy.json");
+await loadPuzzle({ puzzle: easy });
+assert.equal(document.getElementById("win")?.hidden, true);
+assert.match(document.getElementById("meta-date")?.textContent || "", /Practice · Easy/);
+assert.equal(document.querySelector('.practice-nav a[data-practice="easy"]')?.getAttribute("aria-current"), "page");
+assert.equal(document.querySelectorAll("input.slot-input").length, easy.houseCount * easy.attributes.length);
+document.querySelector("textarea.notes").value = "practice scratch";
+document.querySelector("textarea.notes").dispatchEvent(new window.Event("input", { bubbles: true }));
+assert.equal(window.localStorage.getItem(`${PRACTICE_NOTES_KEY}:easy`), "practice scratch");
+assert.equal(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) != null, true, "daily progress stays put");
+
+typeSolution(easy);
+await new Promise((resolve) => setTimeout(resolve, 30));
+assert.equal(document.getElementById("win")?.hidden, false, "practice puzzle can be solved");
+assert.equal(document.getElementById("win-streak")?.textContent, "1", "practice must not change the daily streak");
+assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
+assert.match(document.getElementById("share-text")?.textContent || "", /Plotted practice · Easy/);
+assert.doesNotMatch(document.getElementById("share-text")?.textContent || "", /Plotted #\d/);
+const practiceSaved = JSON.parse(window.localStorage.getItem(`${PRACTICE_PROGRESS_KEY}:easy`) || "{}");
+assert.equal(practiceSaved.solved, true);
+assert.equal(JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}").solved, true);
 
 stopGameTimers();
 console.error = origError;
