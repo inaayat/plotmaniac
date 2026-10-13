@@ -133,6 +133,81 @@ function isWidePlay() {
   return (window.innerWidth || 390) >= 640;
 }
 
+const SLOT_FIT_GLYPH = 0.64;
+
+export function slotFitPlan(text, boxWidth, boxHeight = 36, opts = {}) {
+  const minSize = opts.minSize ?? 9;
+  const maxSize = opts.maxSize ?? 16;
+  const glyph = opts.glyph ?? SLOT_FIT_GLYPH;
+  const lineHeight = opts.lineHeight ?? 1.05;
+  const padding = opts.padding ?? 6;
+  const value = String(text || "").trim();
+  const innerW = Math.max(8, boxWidth - padding);
+  const innerH = Math.max(8, boxHeight - 4);
+  if (!value) return { fontSize: maxSize, lines: 1, display: "" };
+  const upper = value.toUpperCase();
+  const widthOf = (s, size) => s.length * glyph * size;
+  const fitsNowrap = (size) => widthOf(upper, size) <= innerW && size * lineHeight <= innerH + 0.5;
+  for (let size = maxSize; size >= minSize - 0.001; size -= 0.25) {
+    if (fitsNowrap(size)) return { fontSize: Number(size.toFixed(2)), lines: 1, display: upper };
+  }
+  const parts = upper.split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) {
+    for (let size = maxSize; size >= minSize - 0.001; size -= 0.25) {
+      if (size * lineHeight * 2 > innerH + 0.5) continue;
+      for (let i = 1; i < parts.length; i += 1) {
+        const a = parts.slice(0, i).join(" ");
+        const b = parts.slice(i).join(" ");
+        if (Math.max(widthOf(a, size), widthOf(b, size)) <= innerW) {
+          return { fontSize: Number(size.toFixed(2)), lines: 2, display: `${a}\n${b}` };
+        }
+      }
+    }
+  }
+  return { fontSize: minSize, lines: 1, display: upper };
+}
+
+function applySlotFit(slot) {
+  const fit = slot.querySelector(".slot-fit");
+  const input = slot.querySelector(".slot-input");
+  if (!fit) return;
+  if (slot.classList.contains("is-editing") || isWidePlay()) {
+    fit.textContent = "";
+    fit.style.fontSize = "";
+    return;
+  }
+  const plan = slotFitPlan(input?.value || "", slot.clientWidth || 75, slot.clientHeight || 36);
+  fit.textContent = plan.display;
+  fit.style.fontSize = `${plan.fontSize}px`;
+  fit.style.whiteSpace = plan.lines > 1 ? "pre-line" : "nowrap";
+}
+
+function fitAllSlots() {
+  document.querySelectorAll(".slot[data-slot]").forEach(applySlotFit);
+}
+
+function sizeEditingSlot(slot) {
+  const input = slot.querySelector(".slot-input");
+  if (!input || isWidePlay()) {
+    slot.style.removeProperty("--edit-w");
+    return;
+  }
+  const attr = slot.dataset.attr;
+  const typed = input.value || "";
+  const completion = bestTypedCompletion(puzzle.items[attr], typed);
+  const shown = `${typed}${completion.status === "partial" && completion.rest ? completion.rest : ""}` || "MMMMMMMM";
+  const width = Math.ceil(shown.toUpperCase().length * SLOT_FIT_GLYPH * 16 + 32);
+  const cap = Math.min((window.innerWidth || 390) - 16, Math.max(slot.clientWidth || 0, width, 72));
+  slot.style.setProperty("--edit-w", `${cap}px`);
+}
+
+function clearEditingSlot(slot) {
+  if (!slot) return;
+  slot.classList.remove("is-editing");
+  slot.style.removeProperty("--edit-w");
+  applySlotFit(slot);
+}
+
 export function normalizeNotes(value) {
   if (typeof value === "string") return value;
   if (Array.isArray(value)) return value.map((entry) => (entry == null ? "" : String(entry))).join("\n");
@@ -413,8 +488,13 @@ function setSlotVisual(slot, house, attr, typed, status) {
   slot.classList.toggle("is-empty", !item);
   slot.classList.toggle("is-filled", Boolean(item));
   slot.classList.toggle("is-unknown", status === "unknown" && Boolean(String(typed || "").trim()));
+  const editing = !isWidePlay() && focused?.house === house && focused?.attr === attr;
+  slot.classList.toggle("is-editing", editing);
+  if (editing) sizeEditingSlot(slot);
+  else slot.style.removeProperty("--edit-w");
   if (status !== "match") slot.classList.remove("is-correct", "is-wrong", "is-flip", "is-win");
   paintGhost(slot, typed, status);
+  applySlotFit(slot);
 }
 
 function paintGhost(slot, typed, status) {
@@ -570,6 +650,9 @@ function makeSlot(house, attr) {
   if (!item) slot.classList.add("is-empty");
   if (item) slot.classList.add("is-filled");
   if (solved && item && puzzle.solution[house]?.[attr] === item.id) slot.classList.add("is-correct");
+  const fit = document.createElement("span");
+  fit.className = "slot-fit";
+  fit.setAttribute("aria-hidden", "true");
   const ghost = document.createElement("span");
   ghost.className = "slot-ghost";
   ghost.setAttribute("aria-hidden", "true");
@@ -592,13 +675,21 @@ function makeSlot(house, attr) {
   input.setAttribute("data-lpignore", "true");
   if (solved) input.readOnly = true;
   input.addEventListener("focus", () => {
+    document.querySelectorAll(".slot.is-editing").forEach((node) => {
+      if (node !== slot) clearEditingSlot(node);
+    });
     focused = { house, attr };
     setSlotVisual(slot, house, attr, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
+    window.requestAnimationFrame(() => {
+      sizeEditingSlot(slot);
+      paintGhost(slot, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
+    });
   });
   input.addEventListener("blur", () => {
     window.setTimeout(() => {
       if (focused?.house === house && focused?.attr === attr) {
         focused = null;
+        clearEditingSlot(slot);
         setSlotVisual(slot, house, attr, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
       }
     }, 120);
@@ -634,7 +725,8 @@ function makeSlot(house, attr) {
     if (!next) return;
     document.querySelector(`input[data-slot="${slotKey(next.house, next.attr)}"]`)?.focus();
   });
-  slot.append(ghost, input);
+  slot.append(fit, ghost, input);
+  applySlotFit(slot);
   return slot;
 }
 
@@ -715,6 +807,7 @@ function paintBoard(opts = {}) {
   const notesToggle = document.createElement("summary");
   notesToggle.className = "notes-toggle";
   notesToggle.textContent = "Notes";
+  notesToggle.setAttribute("aria-expanded", notesPanel.open ? "true" : "false");
   const note = document.createElement("textarea");
   note.className = "notes";
   note.placeholder = "Jot your deductions here...";
@@ -730,6 +823,7 @@ function paintBoard(opts = {}) {
   notesPanel.append(notesToggle, note);
   notesPanel.addEventListener("toggle", () => {
     if (isWidePlay()) notesPanel.open = true;
+    notesToggle.setAttribute("aria-expanded", notesPanel.open ? "true" : "false");
     fitPlayfield();
   });
 
@@ -827,7 +921,7 @@ export function fitPlayfield() {
     const cluePad = 1 + t * 5;
     const cellH = 30 + t * 28;
     const gap = 4 + t * 12;
-    const inputSize = isIOS ? 16 : Math.max(16, 13 + t * 7);
+    const inputSize = !wide || isIOS ? 16 : Math.max(16, 13 + t * 7);
     const notesSize = isIOS ? 16 : Math.max(16, 13 + t * 4);
     root.style.setProperty("--clue-size", `${clueSize.toFixed(2)}px`);
     root.style.setProperty("--clue-pad", `${cluePad.toFixed(2)}px`);
@@ -863,6 +957,7 @@ export function fitPlayfield() {
     const leftover = availH - (measureEl.scrollHeight || measureEl.getBoundingClientRect().height);
     play.style.paddingBlock = leftover > 16 ? `${Math.min(leftover / 3, 56)}px` : "0px";
   }
+  fitAllSlots();
 }
 
 function useHint() {

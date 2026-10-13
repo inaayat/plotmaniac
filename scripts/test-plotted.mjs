@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, NOTES_STORAGE_KEY, SITE_URL } from "../plotted-config.js";
-import { normalizeNotes, progressFitsPuzzle } from "../plotted.js";
+import { normalizeNotes, progressFitsPuzzle, slotFitPlan } from "../plotted.js";
 import { ICONS, iconSvg } from "../plotted-icons.js";
 import { THEMES } from "../plotted-themes.js";
 import {
@@ -37,6 +37,23 @@ assert.equal(NOTES_STORAGE_KEY, "plotted-notes");
 assert.equal(normalizeNotes("scratch"), "scratch");
 assert.equal(normalizeNotes(["Brit", "green"]), "Brit\ngreen");
 assert.equal(normalizeNotes(null), "");
+
+const itemLabels = [
+  ...THEMES.flatMap((theme) => Object.values(theme.items || {}).flat().map((item) => item.label)),
+  ...Object.values(einsteinPuzzle("2026-10-13").items).flat().map((item) => item.label),
+];
+const longestLabel = itemLabels.reduce((best, label) => (String(label).length > best.length ? String(label) : best), "");
+assert.ok(longestLabel.length >= 10, `expected a long item label, got ${longestLabel}`);
+for (const label of ["Norwegian", "BlueMaster", "Pall Mall", "yellow", longestLabel]) {
+  const plan = slotFitPlan(label, 75, 36);
+  const lines = plan.display.split("\n");
+  const width = Math.max(...lines.map((line) => line.length * 0.64 * plan.fontSize));
+  assert.ok(width <= 75.5, `${label} is ${width.toFixed(1)}px at ${plan.fontSize}px in a 75px tile`);
+  assert.ok(plan.fontSize >= 9);
+  assert.ok(plan.lines <= 2);
+}
+assert.equal(slotFitPlan("", 75).display, "");
+assert.equal(slotFitPlan("tea", 200).fontSize, 16);
 assert.equal(puzzleNumber("2026-10-13"), 1);
 assert.equal(puzzleNumber("2026-10-14"), 2);
 assert.equal(formatTime(165000), "2:45");
@@ -219,6 +236,9 @@ assert.match(css, /\.clue-num/);
 assert.match(css, /\.slot-input/);
 assert.match(css, /\.slot-ghost/);
 assert.match(css, /\.slot-input \{[^}]*text-align: center/);
+assert.match(css, /\.slot-fit/);
+assert.match(css, /\.slot\.is-editing/);
+assert.match(css, /min-height: 40px/);
 assert.match(css, /min-width: 260px/);
 assert.match(css, /100dvh - var\(--mast-h/);
 assert.match(css, /overflow: auto/);
@@ -259,6 +279,9 @@ assert.match(app, /bestTypedCompletion/);
 assert.match(app, /fitPlayfield/);
 assert.match(app, /revealCheck/);
 assert.match(app, /slot-ghost/);
+assert.match(app, /slotFitPlan/);
+assert.match(app, /slot-fit/);
+assert.match(app, /is-editing/);
 assert.match(app, /navigator.clipboard/);
 assert.match(app, /navigator.share/);
 assert.match(app, /serviceWorker/);

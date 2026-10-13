@@ -367,6 +367,7 @@ h1 {
 }
 
 .grid-table td {
+  position: relative;
   vertical-align: middle;
   padding: 0;
   background: transparent;
@@ -381,6 +382,10 @@ h1 {
   border: 2px solid var(--tile-border);
   background: var(--tile);
   border-radius: 0;
+}
+
+.slot-fit {
+  display: none;
 }
 
 .slot-ghost {
@@ -430,14 +435,16 @@ h1 {
 }
 
 .slot.is-correct,
-.slot.is-correct .slot-input {
+.slot.is-correct .slot-input,
+.slot.is-correct .slot-fit {
   background: var(--correct);
   border-color: var(--correct);
   color: var(--correct-ink);
 }
 
 .slot.is-wrong,
-.slot.is-wrong .slot-input {
+.slot.is-wrong .slot-input,
+.slot.is-wrong .slot-fit {
   background: var(--wrong);
   border-color: var(--wrong);
   color: var(--wrong-ink);
@@ -729,6 +736,118 @@ h1 {
   .slot-ghost,
   .notes {
     font-size: 16px;
+  }
+
+  .slot {
+    overflow: hidden;
+  }
+
+  .slot.is-editing {
+    overflow: visible;
+    z-index: 6;
+  }
+
+  .slot-fit {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--ink);
+    pointer-events: none;
+    overflow: hidden;
+    line-height: 1.05;
+    padding: 2px;
+  }
+
+  .slot.is-editing .slot-fit {
+    visibility: hidden;
+  }
+
+  .slot-input {
+    color: transparent;
+    caret-color: transparent;
+    letter-spacing: 0;
+  }
+
+  .slot.is-editing .slot-input {
+    color: var(--ink);
+    caret-color: var(--ink);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--edit-w, 100%);
+    min-width: 100%;
+    min-height: 44px;
+    height: 44px;
+    font-size: 16px;
+    background: var(--tile);
+    border: 2px solid var(--ink);
+    box-shadow: var(--notes-shadow);
+    z-index: 3;
+    padding: 0 8px;
+  }
+
+  .slot.is-editing.is-correct .slot-input {
+    background: var(--correct);
+    border-color: var(--correct);
+    color: var(--correct-ink);
+  }
+
+  .slot.is-editing.is-wrong .slot-input {
+    background: var(--wrong);
+    border-color: var(--wrong);
+    color: var(--wrong-ink);
+  }
+
+  .slot:not(.is-editing) .slot-ghost {
+    display: none;
+  }
+
+  .slot.is-editing .slot-ghost {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--edit-w, 100%);
+    min-width: 100%;
+    min-height: 44px;
+    height: 44px;
+    font-size: 16px;
+    letter-spacing: 0;
+    z-index: 2;
+    line-height: 44px;
+  }
+
+  .notes-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    margin-top: 6px;
+    border: 2px solid var(--notes-border);
+    border-radius: 18px;
+    background: var(--notes-paper);
+    box-shadow: var(--notes-shadow);
+    color: var(--ink);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+  }
+
+  .notes-toggle::after {
+    content: " +";
+    font-weight: 600;
+  }
+
+  .notes-panel[open] .notes-toggle::after {
+    content: " ×";
   }
 
   .notes-panel[open] {

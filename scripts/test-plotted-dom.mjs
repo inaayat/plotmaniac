@@ -174,6 +174,23 @@ if (typeof window.happyDOM?.setViewport === "function") {
   window.happyDOM.setViewport({ width: 390, height: 844 });
   fitPlayfield();
   assert.equal(document.querySelector(".notes-panel")?.open, false, "notes collapsed on mobile");
+  const toggle = document.querySelector(".notes-toggle");
+  assert.ok(toggle, "mobile notes toggle");
+  assert.equal(toggle.getAttribute("aria-expanded"), "false");
+  const toggleStyle = window.getComputedStyle(toggle);
+  if (toggleStyle?.minHeight) {
+    assert.ok(Number.parseFloat(toggleStyle.minHeight) >= 36, "notes toggle is tappable");
+  }
+  const nor = document.querySelector('input[data-attr="nationality"]');
+  nor.value = "Norwegian";
+  nor.dispatchEvent(new window.Event("input", { bubbles: true }));
+  const norSlot = nor.closest(".slot");
+  assert.match(norSlot?.querySelector(".slot-fit")?.textContent || "", /NORWEGIAN/);
+  const inputSize = window.getComputedStyle(nor).fontSize;
+  if (inputSize) assert.equal(inputSize, "16px", "focused-ready input stays 16px on mobile");
+  nor.focus();
+  assert.equal(norSlot?.classList.contains("is-editing"), true, "focused tile expands on mobile");
+  nor.blur();
   window.happyDOM.setViewport({ width: 1280, height: 720 });
   fitPlayfield();
   assert.equal(document.querySelector(".notes-panel")?.open, true, "notes reopen on desktop");
