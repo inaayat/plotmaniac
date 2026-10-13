@@ -374,6 +374,43 @@ assert.equal(
 );
 assert.equal(document.querySelector('.practice-nav a[data-practice="easy"]')?.getAttribute("aria-current"), "page");
 assert.equal(document.querySelectorAll("input.slot-input").length, easy.houseCount * easy.attributes.length);
+assert.equal(easy.clues.length, 5, "practice Easy is the 5-clue fixture");
+assert.equal(einstein.clues.length, 15, "Einstein is the 15-clue fixture");
+
+if (typeof window.happyDOM?.setViewport === "function") {
+  const readClueSize = () => document.documentElement.style.getPropertyValue("--clue-size").trim();
+  const readCluePad = () => document.documentElement.style.getPropertyValue("--clue-pad").trim();
+  for (const viewport of [
+    { width: 390, height: 844, size: 13 },
+    { width: 1280, height: 720, size: 15 },
+  ]) {
+    window.happyDOM.setViewport({ width: viewport.width, height: viewport.height });
+    await loadPuzzle({ puzzle: easy });
+    fitPlayfield();
+    const easySize = readClueSize();
+    const easyPad = readCluePad();
+    await loadPuzzle({ puzzle: einstein });
+    fitPlayfield();
+    assert.equal(
+      readClueSize(),
+      easySize,
+      `clue font-size must match for 5-clue Easy and 15-clue Einstein at ${viewport.width}px (${easySize} vs ${readClueSize()})`,
+    );
+    assert.equal(
+      readCluePad(),
+      easyPad,
+      `clue padding must match for Easy and Einstein at ${viewport.width}px`,
+    );
+    assert.ok(
+      Math.abs(parseFloat(easySize) - viewport.size) < 0.05,
+      `standard clue size is ${viewport.size}px at ${viewport.width}px (got ${easySize})`,
+    );
+  }
+  window.happyDOM.setViewport({ width: 1280, height: 720 });
+  await loadPuzzle({ puzzle: easy });
+  fitPlayfield();
+}
+
 document.querySelector("textarea.notes").value = "practice scratch";
 document.querySelector("textarea.notes").dispatchEvent(new window.Event("input", { bubbles: true }));
 assert.equal(window.localStorage.getItem(`${PRACTICE_NOTES_KEY}:easy`), "practice scratch");

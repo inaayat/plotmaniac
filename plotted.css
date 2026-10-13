@@ -17,8 +17,8 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
   --tap: 36px;
-  --clue-size: 12px;
-  --clue-pad: 2px;
+  --clue-size: 13px;
+  --clue-pad: 3px;
   --cell-h: 36px;
   --play-gap: 8px;
   --input-size: 16px;
@@ -356,7 +356,7 @@ h1 {
 
 .word-bank-cat {
   flex: 0 0 4.6rem;
-  font-size: var(--clue-size, 12px);
+  font-size: var(--clue-size, 13px);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -372,7 +372,7 @@ h1 {
 }
 
 .word-bank-word {
-  font-size: var(--clue-size, 12px);
+  font-size: var(--clue-size, 13px);
   line-height: 1.2;
   color: var(--ink);
 }
@@ -393,7 +393,7 @@ h1 {
   width: 7rem;
   min-width: 7rem;
   padding: 0 8px 0 0;
-  font-size: 0.58rem;
+  font-size: var(--clue-size, 13px);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -406,8 +406,8 @@ h1 {
 
 .grid-table .attr-head svg {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 1em;
+  height: 1em;
   vertical-align: middle;
   margin-right: 6px;
 }
@@ -634,30 +634,33 @@ h1 {
   display: grid;
   grid-template-columns: repeat(var(--clue-cols, 1), minmax(0, 1fr));
   column-gap: 12px;
+  row-gap: 0;
 }
 
 .clue {
   display: grid;
-  grid-template-columns: 1.35rem minmax(0, 1fr);
+  grid-template-columns: 1.7em minmax(0, 1fr);
   align-items: start;
-  gap: 4px;
+  gap: 6px;
   width: 100%;
   min-height: 0;
-  padding: var(--clue-pad) 0;
+  padding: var(--clue-pad, 3px) 0;
   text-align: left;
   color: var(--ink);
-  font-size: var(--clue-size, 12px);
-  line-height: 1.3;
+  font-size: var(--clue-size, 13px);
+  line-height: 1.35;
   white-space: normal;
   border-bottom: 1px solid var(--line);
   background: transparent;
 }
 
 .clue-num {
-  font-size: 0.85em;
+  font-size: inherit;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
   font-weight: 600;
   color: var(--muted);
+  line-height: inherit;
 }
 
 .clue-text {
@@ -942,6 +945,11 @@ h1 {
 }
 
 @media (min-width: 640px) {
+  :root {
+    --clue-size: 15px;
+    --clue-pad: 4px;
+  }
+
   .board {
     justify-content: stretch;
   }

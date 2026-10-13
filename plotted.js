@@ -149,6 +149,12 @@ function isWidePlay() {
   return (window.innerWidth || 390) >= 640;
 }
 
+const CLUE_SIZE_PHONE = 13;
+const CLUE_SIZE_DESKTOP = 15;
+const CLUE_PAD_PHONE = 3;
+const CLUE_PAD_DESKTOP = 4;
+const CLUE_SIZE_FLOOR = 11;
+
 const SLOT_FIT_GLYPH = 0.64;
 
 export function slotFitPlan(text, boxWidth, boxHeight = 36, opts = {}) {
@@ -1073,40 +1079,60 @@ export function fitPlayfield() {
   root.style.setProperty("--clue-cols", wide && puzzle.clues.length >= 6 ? "2" : "1");
   const ua = typeof navigator !== "undefined" ? navigator.userAgent || "" : "";
   const isIOS = /iPhone|iPad|iPod/i.test(ua);
-  const apply = (t) => {
-    const clueSize = 11 + t * 7;
-    const cluePad = 1 + t * 5;
+  const standardClueSize = wide ? CLUE_SIZE_DESKTOP : CLUE_SIZE_PHONE;
+  const standardCluePad = wide ? CLUE_PAD_DESKTOP : CLUE_PAD_PHONE;
+  const px = (n) => `${Number(n.toFixed(2))}px`;
+  const applyTiles = (t) => {
     const cellH = 30 + t * 28;
     const gap = 4 + t * 12;
     const inputSize = !wide || isIOS ? 16 : Math.max(16, 13 + t * 7);
     const notesSize = isIOS ? 16 : Math.max(16, 13 + t * 4);
-    root.style.setProperty("--clue-size", `${clueSize.toFixed(2)}px`);
-    root.style.setProperty("--clue-pad", `${cluePad.toFixed(2)}px`);
-    root.style.setProperty("--cell-h", `${cellH.toFixed(2)}px`);
-    root.style.setProperty("--play-gap", `${gap.toFixed(2)}px`);
-    root.style.setProperty("--input-size", `${inputSize.toFixed(2)}px`);
-    root.style.setProperty("--notes-size", `${notesSize.toFixed(2)}px`);
-    root.style.setProperty("--table-gap", `${(2 + t * 4).toFixed(2)}px`);
+    root.style.setProperty("--cell-h", px(cellH));
+    root.style.setProperty("--play-gap", px(gap));
+    root.style.setProperty("--input-size", px(inputSize));
+    root.style.setProperty("--notes-size", px(notesSize));
+    root.style.setProperty("--table-gap", px(2 + t * 4));
+  };
+  const applyClues = (size, pad) => {
+    root.style.setProperty("--clue-size", px(size));
+    root.style.setProperty("--clue-pad", px(pad));
   };
   play.style.height = "auto";
   play.style.paddingBlock = "0px";
-  apply(1);
+  applyClues(standardClueSize, standardCluePad);
+  applyTiles(1);
   let lo = 0;
   let hi = 1;
   let best = 0;
   const measureEl = puzzleCol || play;
+  const measureHeight = () => measureEl.scrollHeight || measureEl.getBoundingClientRect().height;
   for (let i = 0; i < 14; i += 1) {
     const mid = (lo + hi) / 2;
-    apply(mid);
-    const height = measureEl.scrollHeight || measureEl.getBoundingClientRect().height;
-    if (height <= availH) {
+    applyTiles(mid);
+    if (measureHeight() <= availH) {
       best = mid;
       lo = mid;
     } else {
       hi = mid;
     }
   }
-  apply(best);
+  applyTiles(best);
+  if (best < 0.02 && measureHeight() > availH) {
+    let loSize = CLUE_SIZE_FLOOR;
+    let hiSize = standardClueSize;
+    let bestSize = CLUE_SIZE_FLOOR;
+    for (let i = 0; i < 12; i += 1) {
+      const mid = (loSize + hiSize) / 2;
+      applyClues(mid, standardCluePad * (mid / standardClueSize));
+      if (measureHeight() <= availH) {
+        bestSize = mid;
+        loSize = mid;
+      } else {
+        hiSize = mid;
+      }
+    }
+    applyClues(bestSize, standardCluePad * (bestSize / standardClueSize));
+  }
   if (wide) {
     play.style.height = `${availH}px`;
     play.style.paddingBlock = "0px";
