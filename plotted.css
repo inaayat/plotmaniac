@@ -1082,21 +1082,70 @@ h1 {
 
   .board.is-typing-compact {
     --clue-size: 11px;
-    --clue-pad: 1px;
-    --play-gap: 4px;
+    --clue-pad: 0px;
+    --play-gap: 2px;
+  }
+
+  .board.is-typing-compact .hint-heading,
+  .board.is-typing-compact .notes-toggle {
+    display: none;
   }
 
   .board.is-typing-compact .clue {
-    line-height: 1.2;
+    line-height: 1.12;
+    border-bottom-width: 0;
+    padding-block: var(--clue-pad, 0px);
   }
 
   .board.is-typing-compact .house-head {
     padding-block: 0;
-    font-size: 0.55rem;
+    font-size: 0.5rem;
+    line-height: 1;
   }
 
   .board.is-typing-compact .word-bank {
-    gap: 1px;
+    gap: 0;
+  }
+
+  .board.is-typing-compact .word-bank-row {
+    gap: 4px;
+  }
+
+  .board.is-typing-compact .word-bank-list {
+    gap: 0 6px;
+  }
+
+  .board.is-typing-compact .slot-fit {
+    font-size: 11px;
+  }
+
+  .board.is-typing-compact .slot.is-editing {
+    overflow: hidden;
+  }
+
+  .board.is-typing-compact .slot.is-editing .slot-input {
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    transform: translate(-50%, -50%) scale(0.72);
+    transform-origin: center center;
+    font-size: 16px;
+    border: 0;
+    box-shadow: none;
+    padding: 0 2px;
+  }
+
+  .board.is-fitting .clue,
+  .board.is-fitting .word-bank-word,
+  .board.is-fitting .word-bank-cat,
+  .board.is-fitting .grid-table .attr-head,
+  .board.is-fitting .house-head,
+  .board.is-fitting .play,
+  .board.is-fitting .slot {
+    transition: none;
   }
 }
 

@@ -81,7 +81,7 @@ window.localStorage.setItem(
   }),
 );
 
-const { boot, fitPlayfield, loadPuzzle, missingVisibleOptions, startOver, stopGameTimers } = await import("../plotted.js");
+const { boot, fitPlayfield, fitTypingPlayfield, loadPuzzle, missingVisibleOptions, startOver, stopGameTimers } = await import("../plotted.js");
 
 function assertNoConsoleErrors(label) {
   assert.equal(errors.length, 0, `${label}: ${errors.join(" | ")}`);
@@ -530,13 +530,6 @@ if (typeof window.happyDOM?.setViewport === "function") {
   assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "typing-compact class on tile focus");
   const focusedSize = window.getComputedStyle(firstSlot).fontSize;
   if (focusedSize) assert.ok(Number.parseFloat(focusedSize) >= 16, `focused input stays ≥16px to avoid iOS zoom, got ${focusedSize}`);
-  window.happyDOM.setViewport({ width: 390, height: 500 });
-  window.dispatchEvent(new window.Event("resize"));
-  assert.equal(
-    document.documentElement.style.getPropertyValue("--cell-h"),
-    cellH,
-    "keyboard/resize must not refit while a tile is focused",
-  );
   firstSlot.blur();
   await new Promise((resolve) => setTimeout(resolve, 160));
   assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "typing-compact class clears on blur");
@@ -547,6 +540,77 @@ if (typeof window.happyDOM?.setViewport === "function") {
   assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "desktop does not use typing-compact");
   desk.blur();
   window.happyDOM.setViewport({ width: 390, height: 844 });
+}
+
+function stubVisualViewport({ width, height, offsetTop = 0 }) {
+  const current = window.visualViewport;
+  if (!current) {
+    window.visualViewport = {
+      width,
+      height,
+      offsetTop,
+      offsetLeft: 0,
+      scale: 1,
+      addEventListener() {},
+      removeEventListener() {},
+    };
+    return;
+  }
+  Object.defineProperty(current, "width", { configurable: true, get: () => width });
+  Object.defineProperty(current, "height", { configurable: true, get: () => height });
+  Object.defineProperty(current, "offsetTop", { configurable: true, get: () => offsetTop });
+}
+
+if (typeof window.happyDOM?.setViewport === "function") {
+  await loadPuzzle({ puzzle: einstein });
+  window.happyDOM.setViewport({ width: 390, height: 844 });
+  fitPlayfield();
+  const idleH = Number.parseFloat(document.documentElement.style.getPropertyValue("--cell-h"));
+  assert.ok(idleH >= 40 && idleH <= 44, `idle phone tiles stay 40–44px, got ${idleH}`);
+  stubVisualViewport({ width: 390, height: 400, offsetTop: 0 });
+  const lastRow = document.querySelector('input.slot-input[data-house="4"]') || document.querySelector("input.slot-input");
+  lastRow.focus();
+  fitTypingPlayfield({ force: true });
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "Einstein typing uses compact layout");
+  const typingH = Number.parseFloat(document.documentElement.style.getPropertyValue("--cell-h"));
+  assert.ok(typingH >= 32 && typingH <= 36, `tiles shrink to 32–36px while typing, got ${typingH}`);
+  const clueSize = Number.parseFloat(document.documentElement.style.getPropertyValue("--clue-size"));
+  assert.ok(clueSize > 0 && clueSize <= 11.05, `clues compress to ~11px while typing, got ${clueSize}`);
+  const col = document.querySelector(".puzzle-col");
+  const colH = Math.ceil(col.scrollHeight || col.getBoundingClientRect().height);
+  assert.ok(colH <= 400, `clues + word bank + grid must fit in visualViewport 400px, got ${colH}`);
+  const hints = document.querySelector(".hint-block");
+  const bank = document.querySelector(".word-bank");
+  const grid = document.querySelector(".grid-wrap");
+  assert.ok(hints && bank && grid, "compact playfield still has clues, word bank, and grid");
+  const blockBottom = Math.max(
+    hints.getBoundingClientRect().bottom,
+    bank.getBoundingClientRect().bottom,
+    grid.getBoundingClientRect().bottom,
+  );
+  const blockTop = Math.min(
+    hints.getBoundingClientRect().top,
+    bank.getBoundingClientRect().top,
+    grid.getBoundingClientRect().top,
+  );
+  assert.ok(blockBottom - blockTop <= 400, `visible playfield block is ${blockBottom - blockTop}px`);
+  const typingInputSize = window.getComputedStyle(lastRow).fontSize;
+  if (typingInputSize) {
+    assert.ok(Number.parseFloat(typingInputSize) >= 16, `focused input stays ≥16px, got ${typingInputSize}`);
+  }
+  const beforeType = document.documentElement.style.getPropertyValue("--cell-h");
+  lastRow.value = "x";
+  lastRow.dispatchEvent(new window.Event("input", { bubbles: true }));
+  assert.equal(
+    document.documentElement.style.getPropertyValue("--cell-h"),
+    beforeType,
+    "keystroke must not relayout tiles",
+  );
+  lastRow.blur();
+  await new Promise((resolve) => setTimeout(resolve, 160));
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "blur restores normal layout");
+  const restoredH = Number.parseFloat(document.documentElement.style.getPropertyValue("--cell-h"));
+  assert.ok(restoredH >= 40 && restoredH <= 44, `blur restores 40–44px tiles, got ${restoredH}`);
 }
 
 stopGameTimers();

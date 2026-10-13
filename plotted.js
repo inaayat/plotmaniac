@@ -158,7 +158,11 @@ const CLUE_SIZE_DESKTOP = 15;
 const CLUE_PAD_PHONE = 3;
 const CLUE_PAD_DESKTOP = 4;
 const CLUE_SIZE_FLOOR = 11;
+const CLUE_SIZE_TYPING = 11;
+const CLUE_SIZE_TYPING_FLOOR = 9;
 const CELL_H_PHONE = 42;
+const CELL_H_PHONE_TYPING_MIN = 32;
+const CELL_H_PHONE_TYPING_MAX = 36;
 
 const SLOT_FIT_GLYPH = 0.64;
 
@@ -218,7 +222,7 @@ function fitAllSlots() {
 
 function sizeEditingSlot(slot) {
   const input = slot.querySelector(".slot-input");
-  if (!input || isWidePlay()) {
+  if (!input || isWidePlay() || document.querySelector(".board.is-typing-compact")) {
     slot.style.removeProperty("--edit-w");
     return;
   }
@@ -592,11 +596,22 @@ function isTypingInGrid() {
   return Boolean(document.activeElement?.classList?.contains("slot-input"));
 }
 
+function visualViewportBox() {
+  const vv = window.visualViewport;
+  const innerH = window.innerHeight || 720;
+  const innerW = window.innerWidth || 390;
+  return {
+    width: Math.round(vv?.width || innerW),
+    height: Math.round(vv?.height || innerH),
+    offsetTop: Math.round(vv?.offsetTop || 0),
+    offsetLeft: Math.round(vv?.offsetLeft || 0),
+  };
+}
+
 function keyboardInsetPx() {
   const innerH = window.innerHeight || 720;
-  const vv = window.visualViewport;
-  if (!vv) return 0;
-  return Math.max(0, Math.round(innerH - vv.height - (vv.offsetTop || 0)));
+  const box = visualViewportBox();
+  return Math.max(0, Math.round(innerH - box.height - box.offsetTop));
 }
 
 function keyboardIsOpen() {
@@ -607,39 +622,141 @@ function shouldRefitLayout() {
   return !isTypingInGrid() && !keyboardIsOpen();
 }
 
+let lastTypingFitKey = "";
+
+function typingFitKey() {
+  const box = visualViewportBox();
+  return `${box.width}x${box.height}`;
+}
+
+function applyPhoneTiles(cellH, gap = 6, tableGap = 3) {
+  const root = document.documentElement;
+  const px = (n) => `${Number(n.toFixed(2))}px`;
+  root.style.setProperty("--cell-h", px(cellH));
+  root.style.setProperty("--play-gap", px(gap));
+  root.style.setProperty("--table-gap", px(tableGap));
+  root.style.setProperty("--input-size", "16px");
+}
+
+function applyClueMetrics(size, pad) {
+  const root = document.documentElement;
+  root.style.setProperty("--clue-size", `${Number(size.toFixed(2))}px`);
+  root.style.setProperty("--clue-pad", `${Number(pad.toFixed(2))}px`);
+}
+
+function puzzleColHeight() {
+  const col = document.querySelector(".puzzle-col");
+  if (!col) return 0;
+  return Math.ceil(col.scrollHeight || col.getBoundingClientRect().height);
+}
+
+function typingLayoutFits(availH) {
+  return puzzleColHeight() <= availH + 1;
+}
+
+/** Compact clues, word bank, and tiles so the playfield fits in visualViewport.height. */
+export function fitTypingPlayfield({ force = false } = {}) {
+  if (isWidePlay() || !isTypingInGrid()) return false;
+  const board = document.querySelector(".board");
+  const play = document.querySelector(".play");
+  const col = document.querySelector(".puzzle-col");
+  if (!board || !play || !col || !puzzle) return false;
+  const box = visualViewportBox();
+  const key = typingFitKey();
+  const root = document.documentElement;
+  root.style.setProperty("--vv-height", `${box.height}px`);
+  board.classList.add("is-typing-compact");
+  if (!force && key === lastTypingFitKey && typingLayoutFits(box.height)) {
+    scrollTypingPlayfieldIntoView();
+    return true;
+  }
+  board.classList.add("is-fitting");
+  play.style.height = "auto";
+  play.style.paddingBlock = "0px";
+  applyClueMetrics(CLUE_SIZE_TYPING, 0);
+  let bestCell = CELL_H_PHONE_TYPING_MIN;
+  let fitted = false;
+  for (let cellH = CELL_H_PHONE_TYPING_MAX; cellH >= CELL_H_PHONE_TYPING_MIN - 0.001; cellH -= 1) {
+    applyPhoneTiles(cellH, 2, 2);
+    if (typingLayoutFits(box.height)) {
+      bestCell = cellH;
+      fitted = true;
+      break;
+    }
+  }
+  applyPhoneTiles(fitted ? bestCell : CELL_H_PHONE_TYPING_MIN, 2, 2);
+  if (!typingLayoutFits(box.height)) {
+    let lo = CLUE_SIZE_TYPING_FLOOR;
+    let hi = CLUE_SIZE_TYPING;
+    let bestSize = CLUE_SIZE_TYPING_FLOOR;
+    for (let i = 0; i < 10; i += 1) {
+      const mid = (lo + hi) / 2;
+      applyClueMetrics(mid, 0);
+      if (typingLayoutFits(box.height)) {
+        bestSize = mid;
+        lo = mid;
+      } else {
+        hi = mid;
+      }
+    }
+    applyClueMetrics(bestSize, 0);
+  }
+  lastTypingFitKey = key;
+  board.classList.remove("is-fitting");
+  fitAllSlots();
+  scrollTypingPlayfieldIntoView();
+  return typingLayoutFits(box.height);
+}
+
 function syncTypingCompact() {
   const board = document.querySelector(".board");
   if (!board) return;
   const on = !isWidePlay() && isTypingInGrid();
-  board.classList.toggle("is-typing-compact", on);
+  if (on) {
+    fitTypingPlayfield();
+    return;
+  }
+  board.classList.remove("is-typing-compact");
+  lastTypingFitKey = "";
   const root = document.documentElement;
-  if (on) syncTypingViewport();
-  else if (!notesSheetOpen()) root.style.removeProperty("--vv-height");
+  if (!notesSheetOpen()) root.style.removeProperty("--vv-height");
+  if (puzzle) fitPlayfield();
 }
 
 function syncTypingViewport() {
   if (isWidePlay() || !isTypingInGrid()) return;
-  const root = document.documentElement;
-  const innerH = window.innerHeight || 720;
-  const vv = window.visualViewport;
-  const vvH = vv?.height || innerH;
-  root.style.setProperty("--vv-height", `${Math.round(vvH)}px`);
+  fitTypingPlayfield();
+}
+
+function scrollTypingPlayfieldIntoView() {
+  if (isWidePlay() || !isTypingInGrid()) return;
+  const col = document.querySelector(".puzzle-col");
+  const box = visualViewportBox();
+  if (col) {
+    const top = col.getBoundingClientRect().top + (window.scrollY || 0) - box.offsetTop;
+    const nextTop = Math.max(0, Math.round(top));
+    if (typeof window.scrollTo === "function") window.scrollTo(0, nextTop);
+  }
+  const slot =
+    document.querySelector(".slot.is-editing") || document.activeElement?.closest?.(".slot");
+  if (!slot) return;
+  const rect = slot.getBoundingClientRect();
+  const vvTop = box.offsetTop;
+  const vvBottom = box.offsetTop + box.height;
+  if (rect.top < vvTop + 4) {
+    window.scrollBy?.(0, Math.round(rect.top - vvTop - 4));
+  } else if (rect.bottom > vvBottom - 4) {
+    window.scrollBy?.(0, Math.round(rect.bottom - vvBottom + 4));
+  }
 }
 
 function pinHintsWhileTyping() {
-  if (isWidePlay() || !isTypingInGrid()) return;
-  const hints = document.querySelector(".hint-block");
-  if (!hints || typeof hints.scrollIntoView !== "function") return;
-  try {
-    hints.scrollIntoView({ block: "start", inline: "nearest" });
-  } catch {
-    hints.scrollIntoView();
-  }
+  scrollTypingPlayfieldIntoView();
 }
 
 function scrollFocusedTileIntoView() {
   if (!isWidePlay() && isTypingInGrid()) {
-    pinHintsWhileTyping();
+    scrollTypingPlayfieldIntoView();
     return;
   }
   const slot =
@@ -994,7 +1111,6 @@ function makeSlot(house, attr) {
       sizeEditingSlot(slot);
       paintGhost(slot, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
       syncTypingCompact();
-      pinHintsWhileTyping();
     });
   });
   input.addEventListener("blur", () => {
@@ -1243,7 +1359,10 @@ function paintBoard(opts = {}) {
 }
 
 export function fitPlayfield() {
-  if (isTypingInGrid()) return;
+  if (!isWidePlay() && isTypingInGrid()) {
+    fitTypingPlayfield({ force: true });
+    return;
+  }
   const play = document.querySelector(".play");
   if (!play || !puzzle) return;
   const root = document.documentElement;
@@ -1535,7 +1654,6 @@ function bind() {
   document.addEventListener("focusin", (event) => {
     if (!event.target?.classList?.contains("slot-input")) return;
     syncTypingCompact();
-    pinHintsWhileTyping();
   });
   document.addEventListener("focusout", () => {
     window.requestAnimationFrame(() => syncTypingCompact());
