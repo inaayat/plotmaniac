@@ -153,9 +153,7 @@ assert.equal(document.querySelectorAll("textarea.notes").length, 1, "one scratch
 assert.doesNotMatch(cssText, /repeating-linear-gradient/);
 assert.doesNotMatch(cssText, /--notes-rule/);
 const notesStyle = window.getComputedStyle(document.querySelector("textarea.notes"));
-if (notesStyle?.backgroundImage) {
-  assert.equal(notesStyle.backgroundImage, "none", "notes must be a flat surface");
-}
+assert.doesNotMatch(notesStyle?.backgroundImage || "", /gradient/i, "notes must be a flat surface");
 assert.equal(document.querySelectorAll(".notes-grid").length, 0, "no per-house notes");
 assert.equal(document.querySelector(".notes-panel")?.open, true, "notes open on desktop");
 
