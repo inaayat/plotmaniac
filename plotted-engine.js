@@ -540,7 +540,7 @@ export function capitalizeClue(text) {
 }
 
 function isActorAttr(attr) {
-  return attr === "person" || attr === "nationality";
+  return attr === "person" || attr === "nationality" || attr === "job";
 }
 
 function occupantPhrase(catalog, roles, attr, itemId) {
@@ -551,6 +551,14 @@ function occupantPhrase(catalog, roles, attr, itemId) {
 
 function actorLabel(catalog, roles, ref) {
   if (ref.attr === "person") return labelOf(catalog, "person", ref.item);
+  return occupantPhrase(catalog, roles, ref.attr, ref.item);
+}
+
+function neighborPhrase(catalog, roles, ref) {
+  const label = labelOf(catalog, ref.attr, ref.item);
+  const role = roles[ref.attr] || ATTRIBUTES[ref.attr];
+  if (typeof role.neighbor === "function") return role.neighbor(label);
+  if (isActorAttr(ref.attr)) return actorLabel(catalog, roles, ref);
   return occupantPhrase(catalog, roles, ref.attr, ref.item);
 }
 
@@ -572,17 +580,82 @@ function samePhrase(catalog, roles, left, right) {
   return `${leftWho} is ${occupantPhrase(catalog, roles, right.attr, right.item)}`;
 }
 
-export function clueText(clue, catalog, themeId = "") {
+const HOUSE_COUNT_WORDS = ["one", "two", "three", "four", "five"];
+
+/** Einstein: first / center / last house, otherwise “house N”. */
+export function housePlaceName(house, houseCount) {
+  const n = Number(houseCount) || 0;
+  const index = Number(house);
+  if (n > 0 && index === 0) return "the first house";
+  if (n > 1 && index === n - 1) return "the last house";
+  if (n >= 3 && n % 2 === 1 && index === Math.floor(n / 2)) return "the center house";
+  return `house ${index + 1}`;
+}
+
+function joinEnglish(items) {
+  const list = items.filter(Boolean);
+  if (list.length <= 1) return list[0] || "";
+  if (list.length === 2) return `${list[0]} and ${list[1]}`;
+  return `${list.slice(0, -1).join(", ")}, and ${list[list.length - 1]}`;
+}
+
+const SETUP_NOUNS = {
+  person: "owner",
+  nationality: "nationality",
+  color: "color",
+  pet: "pet",
+  drink: "drink",
+  beverage: "beverage",
+  cigar: "cigar",
+  loot: "possession",
+  getaway: "ride",
+  prize: "prize",
+  plant: "plant",
+  vehicle: "ride",
+  instrument: "instrument",
+  book: "book",
+  treat: "treat",
+  gift: "gift",
+  food: "meal",
+  job: "job",
+  hobby: "hobby",
+  city: "city",
+};
+
+export function defaultPuzzleSetup(puzzle) {
+  const n = Number(puzzle?.houseCount) || 3;
+  const word = HOUSE_COUNT_WORDS[n - 1] || String(n);
+  const ids = (puzzle?.attributes || []).map((attr) => attr.id || attr);
+  const rest = ids
+    .filter((id) => id !== "person" && id !== "nationality" && id !== "color")
+    .map((id) => SETUP_NOUNS[id] || id);
+  if (ids.includes("color")) {
+    const extra = rest.length
+      ? `. Each house has a different owner and a different ${joinEnglish(rest)}`
+      : ". Each house has a different owner";
+    return `There are ${word} houses in a row, each a different color${extra}.`;
+  }
+  return `There are ${word} houses in a row. Each house has a different ${joinEnglish(["owner", ...rest])}.`;
+}
+
+export function puzzleSetup(puzzle) {
+  if (puzzle?.setup) return puzzle.setup;
+  return defaultPuzzleSetup(puzzle);
+}
+
+export function clueText(clue, catalog, themeId = "", houseCount = 0) {
   const roles = rolesForTheme(themeId);
   const who = (attr, item) => occupantPhrase(catalog, roles, attr, item);
+  const beside = (ref) => neighborPhrase(catalog, roles, ref);
+  const place = (house) => housePlaceName(house, houseCount);
   const houseNo = (house) => house + 1;
   let text = "";
   switch (clue.type) {
     case "at":
-      text = `${who(clue.attr, clue.item)} lives in house ${houseNo(clue.house)}.`;
+      text = `${who(clue.attr, clue.item)} lives in ${place(clue.house)}.`;
       break;
     case "not_at":
-      text = `${who(clue.attr, clue.item)} does not live in house ${houseNo(clue.house)}.`;
+      text = `${who(clue.attr, clue.item)} does not live in ${place(clue.house)}.`;
       break;
     case "either_house":
       text = `${who(clue.attr, clue.item)} lives in either house ${houseNo(clue.houses[0])} or house ${houseNo(clue.houses[1])}.`;
@@ -591,15 +664,23 @@ export function clueText(clue, catalog, themeId = "") {
       text = `${samePhrase(catalog, roles, clue.left, clue.right)}.`;
       break;
     case "next_to":
-      text = `${who(clue.left.attr, clue.left.item)} lives next door to ${who(clue.right.attr, clue.right.item)}.`;
+      text = `${who(clue.left.attr, clue.left.item)} lives next to ${beside(clue.right)}.`;
       break;
     case "left_of":
-      text = clue.immediate
-        ? `${who(clue.left.attr, clue.left.item)} lives immediately left of ${who(clue.right.attr, clue.right.item)}.`
-        : `${who(clue.left.attr, clue.left.item)} lives somewhere left of ${who(clue.right.attr, clue.right.item)}.`;
+      if (clue.left?.attr === "color" && clue.right?.attr === "color") {
+        const leftColor = labelOf(catalog, "color", clue.left.item);
+        const rightColor = labelOf(catalog, "color", clue.right.item);
+        text = clue.immediate
+          ? `The ${leftColor} house is directly left of the ${rightColor} house.`
+          : `The ${leftColor} house is somewhere left of the ${rightColor} house.`;
+      } else {
+        text = clue.immediate
+          ? `${who(clue.left.attr, clue.left.item)} lives directly left of ${beside(clue.right)}.`
+          : `${who(clue.left.attr, clue.left.item)} lives somewhere left of ${beside(clue.right)}.`;
+      }
       break;
     case "not_next_to":
-      text = `${who(clue.left.attr, clue.left.item)} does not live next door to ${who(clue.right.attr, clue.right.item)}.`;
+      text = `${who(clue.left.attr, clue.left.item)} does not live next to ${beside(clue.right)}.`;
       break;
     default:
       return "";
@@ -610,7 +691,70 @@ export function clueText(clue, catalog, themeId = "") {
 /** Live clue copy. Einstein keeps its classic wording; everything else is rendered. */
 export function displayClueText(puzzle, clue) {
   if (puzzle?.theme?.id === "einstein" && clue?.text) return clue.text;
-  return clueText(clue, puzzle.items, puzzle.theme?.id || "");
+  return clueText(clue, puzzle.items, puzzle.theme?.id || "", puzzle.houseCount || 0);
+}
+
+const EINSTEIN_BAD_PATTERNS = [
+  [/\bleft by\b/i, "left by"],
+  [/\btook the\b/i, "took the"],
+  [/\bis with the\b/i, "is with the"],
+  [/\bnext door\b/i, "next door"],
+  [/\bimmediately left\b/i, "immediately left"],
+  [/\bbrought the\b/i, "brought the"],
+  [/\bordered the\b/i, "ordered the"],
+  [/\bwon the\b/i, "won the"],
+];
+
+const EINSTEIN_TYPE_PATTERNS = {
+  at: /\blives in (?:the (?:first|center|last) house|house \d+)\.?$/i,
+  not_at: /\bdoes not live in (?:the (?:first|center|last) house|house \d+)\.?$/i,
+  either_house: /\blives in either house \d+ or house \d+\.?$/i,
+  next_to: /\blives next to\b/i,
+  not_next_to: /\bdoes not live next to\b/i,
+  left_of: /\b(?:lives directly left of|lives somewhere left of|is directly left of|is somewhere left of)\b/i,
+  same: /\b(?:lives in the|keeps|drinks|smokes|drives|rides|flies|sails|plays|is a |likes|eats|has the|tends the|is from|is on foot|owns)\b/i,
+};
+
+function lintEinsteinClue(puzzle, clue, text) {
+  const reasons = [];
+  if (!text) reasons.push("empty");
+  if (text && !/^[A-Z]/.test(text)) reasons.push("must start with a capital");
+  if (livesSubjectIsBareObject(text, puzzle.items)) reasons.push("bare object as subject");
+  for (const [re, name] of EINSTEIN_BAD_PATTERNS) {
+    if (re.test(text)) reasons.push(`bad pattern: ${name}`);
+  }
+  for (const person of puzzle.items?.person || []) {
+    if (new RegExp(`\\bthe ${escapeRegExp(person.label)}\\b`, "i").test(text)) {
+      reasons.push(`the ${person.label}`);
+    }
+  }
+  const classic = puzzle?.theme?.id === "einstein";
+  if (!classic) {
+    const typeRe = EINSTEIN_TYPE_PATTERNS[clue.type];
+    if (typeRe && !typeRe.test(text)) reasons.push(`not an approved ${clue.type} template`);
+    const rendered = clueText(clue, puzzle.items, puzzle.theme?.id || "", puzzle.houseCount || 0);
+    if (text !== rendered) reasons.push("not produced by the Einstein renderer");
+  }
+  return reasons;
+}
+
+/** Publish check: every clue must read like Einstein’s riddle. */
+export function validateEinsteinStyle(puzzle) {
+  const failures = [];
+  const setup = puzzleSetup(puzzle);
+  if (!setup || !/^There are /i.test(setup) || !/house/i.test(setup)) {
+    failures.push({
+      id: "setup",
+      text: setup || "",
+      reasons: ["setup must start with 'There are' and mention houses"],
+    });
+  }
+  for (const clue of puzzle?.clues || []) {
+    const text = displayClueText(puzzle, clue);
+    const reasons = lintEinsteinClue(puzzle, clue, text);
+    if (reasons.length) failures.push({ id: clue.id, type: clue.type, text, reasons });
+  }
+  return { ok: failures.length === 0, setup, failures };
 }
 
 export function flattenPuzzleItems(items = {}) {
@@ -632,7 +776,7 @@ export function copyMentionsLabel(copy, item) {
 
 export function puzzleCopyText(puzzle) {
   return [
-    puzzle?.setup,
+    puzzleSetup(puzzle),
     puzzle?.question?.text,
     ...(puzzle?.clues || []).map((clue) => displayClueText(puzzle, clue)),
   ]
@@ -796,7 +940,7 @@ export function livesSubjectIsBareObject(text, itemsByAttr) {
   if (!match) return false;
   const subject = match[1].replace(/^the\s+/i, "").trim().toLowerCase();
   for (const [attr, items] of Object.entries(itemsByAttr || {})) {
-    if (attr === "person" || attr === "nationality") continue;
+    if (isActorAttr(attr)) continue;
     for (const item of items) {
       if (normalizeGuess(item.label) === subject || normalizeGuess(item.id) === subject) return true;
     }
@@ -970,11 +1114,10 @@ export function generatePuzzle(iso, options = {}) {
     const catalog = itemCatalog(theme, attributes, chosen);
     const withText = numbered.map((clue) => ({
       ...clue,
-      text: clueText(clue, catalog, theme.id),
+      text: clueText(clue, catalog, theme.id, houseCount),
     }));
-    used.solutions.add(sig);
-    used.patterns.add(pattern);
-    return {
+    const packedAttrs = attributes.map((id) => ({ id, label: ATTRIBUTES[id]?.label || id }));
+    const draft = {
       date: iso,
       number: puzzleNumber(iso),
       theme: {
@@ -983,8 +1126,9 @@ export function generatePuzzle(iso, options = {}) {
         blurb: theme.blurb,
         story: theme.story,
       },
+      setup: defaultPuzzleSetup({ houseCount, attributes: packedAttrs, items: catalog, theme }),
       houseCount,
-      attributes: attributes.map((id) => ({ id, label: ATTRIBUTES[id]?.label || id })),
+      attributes: packedAttrs,
       items: catalog,
       clues: withText,
       question: buildQuestion(theme, solution, catalog, rng),
@@ -1000,6 +1144,11 @@ export function generatePuzzle(iso, options = {}) {
         score: humanInfo.score,
       },
     };
+    const style = validateEinsteinStyle(draft);
+    if (!style.ok) continue;
+    used.solutions.add(sig);
+    used.patterns.add(pattern);
+    return draft;
   }
   throw new Error(`Could not generate a unique puzzle for ${iso}`);
 }

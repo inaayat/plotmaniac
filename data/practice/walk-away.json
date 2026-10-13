@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "walk-away",
   "label": "Medium",
-  "source": "daily-2027-11-23",
+  "source": "daily-2027-11-13",
   "theme": {
-    "id": "heist",
+    "id": "neighborhood",
     "title": "Walk away",
-    "blurb": "A quiet job on one street. Who took what, and how did they leave?",
-    "story": "A quiet job. Who took what, and how did they leave?"
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Rides and pets down a short block. Someone still walked."
   },
   "houseCount": 3,
   "attributes": [
@@ -17,64 +17,64 @@
       "label": "Who"
     },
     {
-      "id": "loot",
-      "label": "Loot"
+      "id": "vehicle",
+      "label": "Ride"
     },
     {
-      "id": "getaway",
-      "label": "Getaway"
+      "id": "pet",
+      "label": "Pet"
     }
   ],
   "items": {
     "person": [
       {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
-      },
-      {
-        "id": "io",
-        "label": "Io",
-        "icon": "user-focus"
-      },
-      {
         "id": "ada",
         "label": "Ada",
         "icon": "detective"
-      }
-    ],
-    "loot": [
-      {
-        "id": "crown",
-        "label": "crown",
-        "icon": "crown"
       },
       {
-        "id": "medal",
-        "label": "medal",
-        "icon": "medal"
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
       },
       {
-        "id": "key",
-        "label": "key",
-        "icon": "key"
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
       }
     ],
-    "getaway": [
+    "vehicle": [
+      {
+        "id": "car",
+        "label": "car",
+        "icon": "car"
+      },
       {
         "id": "bike",
         "label": "bicycle",
         "icon": "bicycle"
       },
       {
-        "id": "moto",
-        "label": "motorcycle",
-        "icon": "motorcycle"
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog"
       },
       {
-        "id": "car",
-        "label": "car",
-        "icon": "car"
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird"
       }
     ]
   },
@@ -84,108 +84,114 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "eden"
+        "item": "bo"
       },
       "right": {
-        "attr": "getaway",
-        "item": "car"
+        "attr": "pet",
+        "item": "bird"
       },
-      "text": "Eden is with the car."
+      "text": "Bo is with the bird."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "eden"
+        "item": "bo"
       },
       "right": {
-        "attr": "loot",
-        "item": "key"
+        "attr": "vehicle",
+        "item": "boat"
       },
-      "text": "Eden is with the key."
+      "text": "Bo is with the sailboat."
     },
     {
       "id": "c3",
-      "type": "same",
-      "left": {
-        "attr": "loot",
-        "item": "crown"
-      },
-      "right": {
-        "attr": "getaway",
-        "item": "bike"
-      },
-      "text": "crown is with the bicycle."
-    },
-    {
-      "id": "c4",
       "type": "same",
       "left": {
         "attr": "person",
         "item": "ada"
       },
       "right": {
-        "attr": "getaway",
+        "attr": "vehicle",
         "item": "bike"
       },
       "text": "Ada is with the bicycle."
     },
     {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "Ada is next to the bird."
+    },
+    {
       "id": "c5",
       "type": "next_to",
       "left": {
-        "attr": "loot",
-        "item": "crown"
+        "attr": "person",
+        "item": "ada"
       },
       "right": {
-        "attr": "getaway",
-        "item": "car"
+        "attr": "pet",
+        "item": "rabbit"
       },
-      "text": "crown is next to the car."
+      "text": "Ada is next to the rabbit."
     },
     {
       "id": "c6",
-      "type": "at",
-      "attr": "getaway",
-      "item": "bike",
-      "house": 2,
-      "text": "bicycle is in house 3."
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "immediate": false,
+      "text": "Jules is somewhere left of the dog."
     }
   ],
   "question": {
-    "text": "Who took the crown?",
-    "givenAttr": "loot",
-    "givenItem": "crown",
+    "text": "Who lives with the rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
     "answerAttr": "person",
-    "answerItem": "ada"
+    "answerItem": "jules"
   },
   "solution": [
     {
-      "person": "io",
-      "loot": "medal",
-      "getaway": "moto"
-    },
-    {
-      "person": "eden",
-      "loot": "key",
-      "getaway": "car"
+      "person": "jules",
+      "vehicle": "car",
+      "pet": "rabbit"
     },
     {
       "person": "ada",
-      "loot": "crown",
-      "getaway": "bike"
+      "vehicle": "bike",
+      "pet": "dog"
+    },
+    {
+      "person": "bo",
+      "vehicle": "boat",
+      "pet": "bird"
     }
   ],
   "difficulty": {
     "label": "medium",
-    "steps": 12,
-    "neededSearch": false,
-    "weekday": 2,
+    "steps": 2,
+    "neededSearch": true,
+    "weekday": 6,
     "solvedByHuman": true,
-    "hardest": "next_to_edge",
-    "hardestTier": 6,
+    "hardest": "contradiction",
+    "hardestTier": 8,
     "score": 42,
-    "sourceDate": "2027-11-23"
+    "sourceDate": "2027-11-13"
   }
 }

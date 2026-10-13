@@ -143,15 +143,15 @@
       "houseCount": 3,
       "clueCount": 6,
       "difficulty": "medium",
-      "hardest": "next_to_edge",
-      "hardestTier": 6,
-      "steps": 12,
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 2,
       "categories": [
         "person",
-        "loot",
-        "getaway"
+        "vehicle",
+        "pet"
       ],
-      "sourceDate": "2027-11-23"
+      "sourceDate": "2027-11-13"
     },
     {
       "id": "medium-hard",
@@ -192,17 +192,17 @@
       "label": "Medium–hard",
       "title": "Last lantern",
       "houseCount": 3,
-      "clueCount": 5,
+      "clueCount": 6,
       "difficulty": "medium-hard",
       "hardest": "contradiction",
       "hardestTier": 8,
-      "steps": 4,
+      "steps": 2,
       "categories": [
         "person",
-        "loot",
-        "pet"
+        "plant",
+        "drink"
       ],
-      "sourceDate": "2027-11-04"
+      "sourceDate": "2027-11-12"
     },
     {
       "id": "night-set",

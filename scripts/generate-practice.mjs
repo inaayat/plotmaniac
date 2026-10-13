@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PRACTICE_PUZZLES, practiceGroupLabel } from "../plotted-config.js";
-import { generatePuzzle } from "../plotted-engine.js";
+import { generatePuzzle, validateEinsteinStyle } from "../plotted-engine.js";
 import { humanDifficulty, solvePuzzleByHuman } from "../plotted-human-solver.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -47,9 +47,9 @@ const COPIES = [
   },
   {
     id: "walk-away",
-    date: "2027-11-23",
+    date: "2027-11-13",
     title: "Walk away",
-    story: "A quiet job. Who took what, and how did they leave?",
+    story: "Rides and pets down a short block. Someone still walked.",
   },
   {
     id: "parked-pets",
@@ -59,9 +59,9 @@ const COPIES = [
   },
   {
     id: "last-lantern",
-    date: "2027-11-04",
+    date: "2027-11-12",
     title: "Last lantern",
-    story: "Campers, kit, and one companion each.",
+    story: "Late light in the plots. Who tends which plant?",
   },
   {
     id: "night-set",
@@ -169,6 +169,26 @@ function packFromDaily(entry, daily) {
   };
 }
 
+function requireEinsteinStyle(packed) {
+  const style = validateEinsteinStyle(packed);
+  if (!style.ok) {
+    const detail = style.failures.map((fail) => `${fail.id}: ${fail.reasons.join("; ")} (${fail.text})`).join(" | ");
+    throw new Error(`${packed.practiceId || packed.id} failed Einstein-style copy: ${detail}`);
+  }
+  const cats = (packed.attributes || []).map((attr) => attr.id);
+  if (cats.includes("loot") || cats.includes("getaway")) {
+    throw new Error(`${packed.practiceId || packed.id} must not use loot/getaway categories`);
+  }
+  return packed;
+}
+
+function keepExistingExpert(entry) {
+  const dest = path.join(outDir, `${entry.id}.json`);
+  if (!fs.existsSync(dest)) return null;
+  const packed = JSON.parse(fs.readFileSync(dest, "utf8"));
+  return isValidExpert(packed) ? packed : null;
+}
+
 function catalogRow(packed) {
   return {
     id: packed.practiceId,
@@ -268,7 +288,7 @@ function generateExpert(entry) {
 
 const byId = new Map();
 for (const id of KEEP_IDS) {
-  const packed = JSON.parse(fs.readFileSync(path.join(outDir, `${id}.json`), "utf8"));
+  const packed = requireEinsteinStyle(JSON.parse(fs.readFileSync(path.join(outDir, `${id}.json`), "utf8")));
   byId.set(id, packed);
   process.stdout.write(
     `${id} keep ${packed.theme.id} ${packed.houseCount}h ${packed.clues.length}c steps=${packed.difficulty.steps} ${packed.difficulty.hardest}\n`,
@@ -277,7 +297,7 @@ for (const id of KEEP_IDS) {
 
 for (const entry of COPIES) {
   const daily = JSON.parse(fs.readFileSync(path.join(plottedDir, `${entry.date}.json`), "utf8"));
-  const packed = packFromDaily(entry, daily);
+  const packed = requireEinsteinStyle(packFromDaily(entry, daily));
   fs.writeFileSync(path.join(outDir, `${entry.id}.json`), `${JSON.stringify(packed, null, 2)}\n`);
   byId.set(entry.id, packed);
   process.stdout.write(
@@ -286,8 +306,11 @@ for (const entry of COPIES) {
 }
 
 for (const entry of EXPERT_SPECS) {
-  const packed = generateExpert(entry);
-  fs.writeFileSync(path.join(outDir, `${entry.id}.json`), `${JSON.stringify(packed, null, 2)}\n`);
+  const existing = keepExistingExpert(entry);
+  const packed = requireEinsteinStyle(existing || generateExpert(entry));
+  if (!existing) {
+    fs.writeFileSync(path.join(outDir, `${entry.id}.json`), `${JSON.stringify(packed, null, 2)}\n`);
+  }
   byId.set(entry.id, packed);
   const types = [...new Set(packed.clues.map((clue) => clue.type))].join(",");
   const atCount = packed.clues.filter((clue) => clue.type === "at").length;

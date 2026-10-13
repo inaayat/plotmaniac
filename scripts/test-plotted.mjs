@@ -20,13 +20,16 @@ import {
   gridMatchesSolution,
   highlightItemWordsHtml,
   houseIsCompleteAndCorrect,
+  housePlaceName,
   labelsMissingFromCopy,
   livesSubjectIsBareObject,
   bestTypedCompletion,
   matchTypedItem,
   puzzleNumber,
+  puzzleSetup,
   specForDate,
   pruneClues,
+  validateEinsteinStyle,
 } from "../plotted-engine.js";
 import { solveByHuman, solvePuzzleByHuman } from "../plotted-human-solver.js";
 
@@ -191,6 +194,8 @@ assert.deepEqual(generatedCount.solution, generated.solution);
 assert.equal(generated.difficulty.solvedByHuman, true);
 assert.ok(generated.difficulty.hardest);
 assert.ok(generated.difficulty.hardestTier >= 1);
+assert.match(generated.setup, /^There are /);
+assert.equal(validateEinsteinStyle(generated).ok, true, JSON.stringify(validateEinsteinStyle(generated).failures));
 
 const sundayPuzzle = generatePuzzle("2026-10-18", { maxTries: 80 });
 assert.equal(sundayPuzzle.houseCount, 4);
@@ -204,6 +209,7 @@ assert.equal(
   ).count,
   1,
 );
+assert.equal(validateEinsteinStyle(sundayPuzzle).ok, true, JSON.stringify(validateEinsteinStyle(sundayPuzzle).failures));
 
 assert.ok(houseIsCompleteAndCorrect(solution, solution, 0));
 assert.equal(houseIsCompleteAndCorrect([{ person: "ada" }, {}, {}], solution, 0), false);
@@ -286,7 +292,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v19/);
+assert.match(sw, /plotted-v20/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -407,7 +413,7 @@ assert.match(app, /Hints/);
 assert.match(app, /hint-heading/);
 assert.match(app, /hint-reveal/);
 assert.match(app, /aria-label", "Reveal a cell"/);
-assert.match(app, /puzzle\.setup/);
+assert.match(app, /puzzleSetup/);
 assert.match(app, /progressFitsPuzzle/);
 assert.match(app, /grid-table/);
 assert.match(app, /NOTES_STORAGE_KEY/);
@@ -448,6 +454,7 @@ assert.match(plan, /🏠/);
 assert.match(plan, /Solved in/);
 assert.match(plan, /All clues are hints/);
 assert.match(plan, /Einstein/);
+assert.match(plan, /validateEinsteinStyle/);
 assert.match(plan, /types the exact word/);
 assert.match(plan, /How to play/);
 assert.match(plan, /plain bold/);
@@ -547,15 +554,27 @@ const catalog = {
 };
 assert.equal(
   clueText({ type: "next_to", left: { attr: "prize", item: "balloon" }, right: { attr: "pet", item: "fish" } }, catalog, "pet-show"),
-  "The balloon winner lives next door to the fish owner.",
+  "The person who has the balloon lives next to the one who keeps a fish.",
 );
 assert.equal(
   clueText({ type: "same", left: { attr: "person", item: "bo" }, right: { attr: "pet", item: "horse" } }, catalog, "pet-show"),
-  "Bo owns the horse.",
+  "Bo keeps a horse.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show"),
-  "The trophy winner lives in house 1.",
+  "The person who has the trophy lives in house 1.",
+);
+assert.equal(
+  clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show", 3),
+  "The person who has the trophy lives in the first house.",
+);
+assert.equal(
+  clueText({ type: "at", attr: "prize", item: "trophy", house: 1 }, catalog, "pet-show", 3),
+  "The person who has the trophy lives in the center house.",
+);
+assert.equal(
+  clueText({ type: "at", attr: "prize", item: "trophy", house: 2 }, catalog, "pet-show", 3),
+  "The person who has the trophy lives in the last house.",
 );
 assert.equal(
   clueText(
@@ -563,11 +582,11 @@ assert.equal(
     catalog,
     "pet-show",
   ),
-  "The cat owner lives immediately left of Hana.",
+  "The cat owner lives directly left of Hana.",
 );
 assert.equal(
   clueText({ type: "either_house", attr: "prize", item: "trophy", houses: [0, 2] }, catalog, "pet-show"),
-  "The trophy winner lives in either house 1 or house 3.",
+  "The person who has the trophy lives in either house 1 or house 3.",
 );
 const pouringCatalog = {
   person: [
@@ -593,7 +612,7 @@ assert.equal(
     pouringCatalog,
     "dinner-party",
   ),
-  "The martini drinker lives next door to Jules.",
+  "The martini drinker lives next to Jules.",
 );
 assert.equal(
   clueText({ type: "at", attr: "drink", item: "wine", house: 0 }, pouringCatalog, "dinner-party"),
@@ -616,10 +635,42 @@ for (const sample of [
   assert.doesNotMatch(sample, /\bthe Jules\b/i);
 }
 assert.equal(
-  livesSubjectIsBareObject("The balloon winner lives next door to the fish owner.", catalog),
+  livesSubjectIsBareObject("The person who has the balloon lives next to the one who keeps a fish.", catalog),
   false,
 );
-assert.equal(livesSubjectIsBareObject("balloon lives next door to fish", catalog), true);
+assert.equal(livesSubjectIsBareObject("balloon lives next to fish", catalog), true);
+assert.equal(housePlaceName(0, 5), "the first house");
+assert.equal(housePlaceName(2, 5), "the center house");
+assert.equal(housePlaceName(4, 5), "the last house");
+assert.equal(housePlaceName(1, 4), "house 2");
+assert.equal(
+  clueText(
+    { type: "left_of", immediate: true, left: { attr: "color", item: "green" }, right: { attr: "color", item: "white" } },
+    { color: [{ id: "green", label: "green" }, { id: "white", label: "white" }] },
+    "expert-street",
+  ),
+  "The green house is directly left of the white house.",
+);
+assert.equal(
+  clueText(
+    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "vehicle", item: "car" } },
+    {
+      person: [{ id: "bo", label: "Bo" }],
+      vehicle: [{ id: "car", label: "car" }],
+    },
+    "neighborhood",
+  ),
+  "Bo drives a car.",
+);
+assert.equal(validateEinsteinStyle(einsteinPuzzle()).ok, true, JSON.stringify(validateEinsteinStyle(einsteinPuzzle()).failures));
+assert.equal(
+  validateEinsteinStyle({
+    ...einsteinPuzzle(),
+    clues: [{ id: "c1", type: "same", text: "dog is with the wine" }],
+  }).ok,
+  false,
+);
+assert.equal(validateEinsteinStyle({ ...generated, setup: "Neighbors packed a bag." }).ok, false);
 
 const dailyPath = path.join(root, "data/plotted/2026-10-13.json");
 assert.ok(fs.existsSync(dailyPath), "launch-day puzzle JSON");
@@ -675,12 +726,20 @@ for (const id of practiceIds) {
   assert.ok(!practice.date, `${id} must not sit on the daily calendar`);
   assert.equal(practice.theme.title, catalog.title, `${id} needs a fun title`);
   const attrs = practice.attributes.map((attr) => attr.id);
+  assert.ok(!attrs.includes("loot") && !attrs.includes("getaway"), `${id} must not use loot/getaway`);
   const ids = Object.fromEntries(attrs.map((attr) => [attr, practice.items[attr].map((item) => item.id)]));
   const unique = countSolutions(practice.houseCount, attrs, ids, practice.clues, 2);
   assert.equal(unique.count, 1, `${id} must be unique`);
   const human = solvePuzzleByHuman(practice);
   assert.equal(human.solvedByHuman, true, `${id} must solve by human techniques`);
+  const style = validateEinsteinStyle(practice);
+  assert.equal(style.ok, true, `${id} Einstein-style: ${JSON.stringify(style.failures)}`);
+  assert.match(puzzleSetup(practice), /^There are /);
   assert.ok(practice.clues.length >= 4);
+  console.log(`\npractice clues (${id}):`);
+  for (const clue of practice.clues) {
+    console.log(`  ${clue.id}  ${displayClueText(practice, clue)}`);
+  }
   for (const item of flattenItems(practice.items)) {
     assert.ok(ICONS[item.icon], `${id} missing Phosphor icon ${item.icon}`);
   }
@@ -750,8 +809,14 @@ assert.ok(jsonFiles.length >= 365, `expected a year of puzzles, got ${jsonFiles.
 let datedHumanFail = 0;
 let datedNeededSearch = 0;
 let datedCopyGaps = 0;
+let datedStyleFail = 0;
 for (const name of jsonFiles) {
   const puzzle = JSON.parse(fs.readFileSync(path.join(plottedDir, name), "utf8"));
+  const style = validateEinsteinStyle(puzzle);
+  if (!style.ok) {
+    datedStyleFail += 1;
+    assert.equal(style.ok, true, `${name} Einstein-style: ${JSON.stringify(style.failures)}`);
+  }
   for (const clue of puzzle.clues) {
     const copy = displayClueText(puzzle, clue);
     assert.match(copy, /^[A-Z]/, `${name} clue must start with a capital: ${copy}`);
@@ -774,8 +839,9 @@ for (const name of jsonFiles) {
   if (labelsMissingFromCopy(puzzle).length) datedCopyGaps += 1;
 }
 assert.equal(datedHumanFail, 0, `${datedHumanFail} dated puzzles failed the human-technique solver`);
+assert.equal(datedStyleFail, 0, `${datedStyleFail} dated puzzles failed Einstein-style copy`);
 console.log(
-  `dated audit: ${jsonFiles.length} unique, ${datedNeededSearch} neededSearch, ${datedHumanFail} humanFail, ${datedCopyGaps} missing options from clue text`,
+  `dated audit: ${jsonFiles.length} unique, ${datedNeededSearch} neededSearch, ${datedHumanFail} humanFail, ${datedCopyGaps} missing options from clue text, ${jsonFiles.length - datedStyleFail} einstein-style, ${datedStyleFail} styleFail`,
 );
 
 console.log("plotted tests ok");

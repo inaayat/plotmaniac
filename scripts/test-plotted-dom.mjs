@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { Window } from "happy-dom";
 import { NOTES_STORAGE_KEY, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, STREAK_STORAGE_KEY, PROGRESS_STORAGE_KEY } from "../plotted-config.js";
-import { displayClueText, EINSTEIN_SETUP } from "../plotted-engine.js";
+import { displayClueText, EINSTEIN_SETUP, puzzleSetup } from "../plotted-engine.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (rel) => fs.readFileSync(path.join(root, rel), "utf8");
@@ -87,7 +87,7 @@ function assertNoConsoleErrors(label) {
   assert.equal(errors.length, 0, `${label}: ${errors.join(" | ")}`);
 }
 
-function assertPuzzlePainted(puzzle, { expectSetup = false } = {}) {
+function assertPuzzlePainted(puzzle, { expectSetup = true } = {}) {
   const houseCount = puzzle.houseCount;
   const attrCount = puzzle.attributes.length;
   const inputs = [...document.querySelectorAll("input.slot-input")];
@@ -108,7 +108,7 @@ function assertPuzzlePainted(puzzle, { expectSetup = false } = {}) {
   }
   const setup = document.getElementById("setup");
   if (expectSetup) {
-    assert.equal(setup?.textContent, puzzle.setup);
+    assert.equal(setup?.textContent, puzzleSetup(puzzle));
     assert.equal(setup?.hidden, false);
     assert.ok(document.getElementById("howto")?.contains(setup));
   } else {
@@ -251,7 +251,7 @@ for (const date of generatedDates) {
   const puzzle = readJson(`data/plotted/${date}.json`);
   await loadPuzzle({ puzzle });
   assertNoConsoleErrors(date);
-  assertPuzzlePainted(puzzle, { expectSetup: Boolean(puzzle.setup) });
+  assertPuzzlePainted(puzzle);
 }
 
 window.localStorage.removeItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`);

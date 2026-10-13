@@ -4,7 +4,51 @@ function onFoot(label) {
   return label === "on foot";
 }
 
-/** Role nouns name the *person* who has an item, so clues never make objects “live”. */
+function an(label) {
+  const word = String(label || "").trim();
+  if (!word || onFoot(word)) return word;
+  return /^[aeiou]/i.test(word) ? `an ${word}` : `a ${word}`;
+}
+
+/** Einstein says “keeps dogs”; generated pets are usually singular. */
+function keepPet(label) {
+  const word = String(label || "").trim();
+  if (!word) return word;
+  if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word;
+  return an(word);
+}
+
+function vehicleVerb(label) {
+  if (onFoot(label)) return "is on foot";
+  if (label === "bicycle") return "rides a bicycle";
+  if (label === "motorcycle") return "rides a motorcycle";
+  if (label === "plane") return "flies a plane";
+  if (label === "sailboat") return "sails a sailboat";
+  return `drives ${an(label)}`;
+}
+
+function vehicleNoun(label) {
+  if (onFoot(label)) return "the person on foot";
+  return `the person who ${vehicleVerb(label)}`;
+}
+
+function hasItem(label) {
+  return `has the ${label}`;
+}
+
+function eatFood(label) {
+  if (label === "ice cream" || label === "stew") return label;
+  return an(label);
+}
+
+const PLAYED_HOBBIES = new Set(["guitar"]);
+
+/**
+ * Einstein-style noun + verb for every category.
+ * occupant = person-first noun (“the dog owner”, “the owner of the red house”).
+ * personSame = verb (“Ada keeps a dog”, “Ada lives in the red house”).
+ * neighbor = how they appear after “lives next to”.
+ */
 export const ATTRIBUTES = {
   person: {
     id: "person",
@@ -12,13 +56,15 @@ export const ATTRIBUTES = {
     icon: "user",
     occupant: (x) => x,
     personSame: (person) => person,
+    neighbor: (x) => x,
   },
   pet: {
     id: "pet",
     label: "Pet",
     icon: "paw-print",
     occupant: (x) => `the ${x} owner`,
-    personSame: (person, x) => `${person} owns the ${x}`,
+    personSame: (person, x) => `${person} keeps ${keepPet(x)}`,
+    neighbor: (x) => `the one who keeps ${keepPet(x)}`,
   },
   drink: {
     id: "drink",
@@ -26,27 +72,31 @@ export const ATTRIBUTES = {
     icon: "coffee",
     occupant: (x) => `the ${x} drinker`,
     personSame: (person, x) => `${person} drinks ${x}`,
+    neighbor: (x) => `the one who drinks ${x}`,
   },
   loot: {
     id: "loot",
     label: "Loot",
     icon: "diamond",
-    occupant: (x) => `the person with the ${x}`,
-    personSame: (person, x) => `${person} has the ${x}`,
+    occupant: (x) => `the person who ${hasItem(x)}`,
+    personSame: (person, x) => `${person} ${hasItem(x)}`,
+    neighbor: (x) => `the one who ${hasItem(x)}`,
   },
   getaway: {
     id: "getaway",
     label: "Getaway",
     icon: "car",
-    occupant: (x) => (onFoot(x) ? "the person who left on foot" : `the person who left by ${x}`),
-    personSame: (person, x) => (onFoot(x) ? `${person} left on foot` : `${person} left by ${x}`),
+    occupant: vehicleNoun,
+    personSame: (person, x) => `${person} ${vehicleVerb(x)}`,
+    neighbor: (x) => (onFoot(x) ? "the one on foot" : `the one who ${vehicleVerb(x)}`),
   },
   prize: {
     id: "prize",
     label: "Prize",
     icon: "trophy",
-    occupant: (x) => `the ${x} winner`,
-    personSame: (person, x) => `${person} won the ${x}`,
+    occupant: (x) => `the person who ${hasItem(x)}`,
+    personSame: (person, x) => `${person} ${hasItem(x)}`,
+    neighbor: (x) => `the one who ${hasItem(x)}`,
   },
   plant: {
     id: "plant",
@@ -54,13 +104,15 @@ export const ATTRIBUTES = {
     icon: "flower",
     occupant: (x) => `the person who tends the ${x}`,
     personSame: (person, x) => `${person} tends the ${x}`,
+    neighbor: (x) => `the one who tends the ${x}`,
   },
   vehicle: {
     id: "vehicle",
     label: "Ride",
     icon: "bicycle",
-    occupant: (x) => (onFoot(x) ? "the person on foot" : `the person with the ${x}`),
-    personSame: (person, x) => (onFoot(x) ? `${person} is on foot` : `${person} has the ${x}`),
+    occupant: vehicleNoun,
+    personSame: (person, x) => `${person} ${vehicleVerb(x)}`,
+    neighbor: (x) => (onFoot(x) ? "the one on foot" : `the one who ${vehicleVerb(x)}`),
   },
   instrument: {
     id: "instrument",
@@ -68,48 +120,55 @@ export const ATTRIBUTES = {
     icon: "music-note",
     occupant: (x) => `the ${x} player`,
     personSame: (person, x) => `${person} plays the ${x}`,
+    neighbor: (x) => `the one who plays the ${x}`,
   },
   book: {
     id: "book",
     label: "Book",
     icon: "book",
-    occupant: (x) => `the person with the ${x}`,
-    personSame: (person, x) => `${person} brought the ${x}`,
+    occupant: (x) => `the person who ${hasItem(x)}`,
+    personSame: (person, x) => `${person} ${hasItem(x)}`,
+    neighbor: (x) => `the one who ${hasItem(x)}`,
   },
   treat: {
     id: "treat",
     label: "Treat",
     icon: "cookie",
-    occupant: (x) => `the person with the ${x}`,
-    personSame: (person, x) => `${person} brought the ${x}`,
+    occupant: (x) => `the person who ${hasItem(x)}`,
+    personSame: (person, x) => `${person} ${hasItem(x)}`,
+    neighbor: (x) => `the one who ${hasItem(x)}`,
   },
   gift: {
     id: "gift",
     label: "Gift",
     icon: "gift",
-    occupant: (x) => `the person with the ${x}`,
-    personSame: (person, x) => `${person} has the ${x}`,
+    occupant: (x) => `the person who ${hasItem(x)}`,
+    personSame: (person, x) => `${person} ${hasItem(x)}`,
+    neighbor: (x) => `the one who ${hasItem(x)}`,
   },
   food: {
     id: "food",
     label: "Plate",
     icon: "fork-knife",
-    occupant: (x) => `the person who ordered ${x}`,
-    personSame: (person, x) => `${person} ordered the ${x}`,
+    occupant: (x) => `the person who eats ${eatFood(x)}`,
+    personSame: (person, x) => `${person} eats ${eatFood(x)}`,
+    neighbor: (x) => `the one who eats ${eatFood(x)}`,
   },
   color: {
     id: "color",
     label: "Color",
     icon: "paint-brush",
-    occupant: (x) => `the resident of the ${x} house`,
+    occupant: (x) => `the owner of the ${x} house`,
     personSame: (person, x) => `${person} lives in the ${x} house`,
+    neighbor: (x) => `the ${x} house`,
   },
   nationality: {
     id: "nationality",
     label: "Who",
     icon: "identification-badge",
     occupant: (x) => `the ${x}`,
-    personSame: (person, x) => person,
+    personSame: (person) => person,
+    neighbor: (x) => `the ${x}`,
   },
   beverage: {
     id: "beverage",
@@ -117,6 +176,7 @@ export const ATTRIBUTES = {
     icon: "coffee",
     occupant: (x) => `the ${x} drinker`,
     personSame: (person, x) => `${person} drinks ${x}`,
+    neighbor: (x) => `the one who drinks ${x}`,
   },
   cigar: {
     id: "cigar",
@@ -124,20 +184,23 @@ export const ATTRIBUTES = {
     icon: "leaf",
     occupant: (x) => `the person who smokes ${x}`,
     personSame: (person, x) => `${person} smokes ${x}`,
+    neighbor: (x) => `the one who smokes ${x}`,
   },
   job: {
     id: "job",
     label: "Job",
     icon: "briefcase",
-    occupant: (x) => `the person who is a ${x}`,
+    occupant: (x) => `the ${x}`,
     personSame: (person, x) => `${person} is a ${x}`,
+    neighbor: (x) => `the ${x}`,
   },
   hobby: {
     id: "hobby",
     label: "Hobby",
     icon: "lightbulb",
-    occupant: (x) => `the person who likes ${x}`,
-    personSame: (person, x) => `${person} likes ${x}`,
+    occupant: (x) => (PLAYED_HOBBIES.has(x) ? `the ${x} player` : `the person who likes ${x}`),
+    personSame: (person, x) => (PLAYED_HOBBIES.has(x) ? `${person} plays ${x}` : `${person} likes ${x}`),
+    neighbor: (x) => (PLAYED_HOBBIES.has(x) ? `the one who plays ${x}` : `the one who likes ${x}`),
   },
   city: {
     id: "city",
@@ -145,6 +208,7 @@ export const ATTRIBUTES = {
     icon: "house",
     occupant: (x) => `the person from ${x}`,
     personSame: (person, x) => `${person} is from ${x}`,
+    neighbor: (x) => `the one from ${x}`,
   },
 };
 
@@ -282,15 +346,9 @@ export const THEMES = [
         { id: "walk", label: "on foot", icon: "person-simple-walk" },
       ],
     },
-    question: (given, answer) => `Who took the ${given.label}?`,
+    question: (given, answer) => `Who has the ${given.label}?`,
     questionGiven: "loot",
     questionAnswer: "person",
-    roles: {
-      loot: {
-        occupant: (x) => `the person who took the ${x}`,
-        personSame: (person, x) => `${person} took the ${x}`,
-      },
-    },
   },
   {
     id: "pet-show",
@@ -557,6 +615,7 @@ export function rolesForTheme(themeId) {
     roles[id] = {
       occupant: def.occupant,
       personSame: def.personSame,
+      neighbor: def.neighbor || def.occupant,
       ...(theme.roles?.[id] || {}),
     };
   }

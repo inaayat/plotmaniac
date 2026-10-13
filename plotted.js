@@ -19,6 +19,7 @@ import {
   clueSatisfiedByGrid,
   displayClueText,
   firstHintCell,
+  puzzleSetup,
   flattenPuzzleItems,
   formatShare,
   formatTime,
@@ -469,16 +470,12 @@ function paintChrome() {
   if (question) question.innerHTML = highlightItemWordsHtml(puzzle.question.text, allItems());
   if (howTo) {
     howTo.textContent =
-      "Each house has one owner. Type the bold words into the matching slots. The list above the grid is every word in that row. Next door means a neighboring house, left or right. A gold dashed outline means that word isn’t in this row.";
+      "Each house has one owner. Type the bold words into the matching slots. The list above the grid is every word in that row. Next to means a neighboring house, left or right. A gold dashed outline means that word isn’t in this row.";
   }
   if (setup) {
-    if (puzzle.setup) {
-      setup.textContent = puzzle.setup;
-      setup.hidden = false;
-    } else {
-      setup.textContent = "";
-      setup.hidden = true;
-    }
+    const setupLine = puzzleSetup(puzzle);
+    setup.textContent = setupLine;
+    setup.hidden = !setupLine;
   }
   const archive = $("archive-link");
   if (archive) archive.href = ARCHIVE_HREF;

@@ -27,8 +27,8 @@ Each house has one **text input** per attribute. The player types the exact word
 - A compact **word bank** sits above the grid, one line per category, listing every typeable word in IBM Plex Mono. Already-placed words are struck through. There is no picker sheet. The lists are flat (no gradients) and share the same standard type size as the clues and row headers.
 - As the player types, the best matching valid word appears as **ghost** text inside the same input. Tab, Enter, right-arrow, or tapping the ghost remainder accepts it. There is no dropdown or datalist.
 - **All clues are hints:** a compact numbered list **above** the grid. Sortable item words are **plain bold** in the normal ink color (no per-item, per-attribute, or per-house coloring in clues or inputs). Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
-- If the puzzle has a **setup** paragraph (Einstein day), it lives inside a collapsible **How to play** block.
-- One-line helper: each house has one owner; type the bold words; next door means a neighboring house. A gold dashed outline means that word isn’t in this row.
+- Every puzzle has a short **setup** line in the collapsible **How to play** block, in the Einstein vein (“There are five houses in a row…”). Einstein day keeps the classic paragraph.
+- One-line helper: each house has one owner; type the bold words; next to means a neighboring house. A gold dashed outline means that word isn’t in this row.
 - **Hint** fills one empty cell with the correct item and costs score.
 - Completing the unique solution **solves immediately** (timer stops, tiles hop, results card, streak). **Check** is only for a full grid that might be wrong: it scores a mistake if it doesn’t match.
 - Score is `max(0, 1000 − seconds − 50×mistakes − 120×hints)`.
@@ -36,7 +36,7 @@ Each house has one **text input** per attribute. The player types the exact word
 
 ### Generated clue voice
 
-Generated clues name the **person** who has each item (role nouns per attribute: pet → `X owner`, prize → `X winner`, drink → `the person who drinks X`, and so on). Objects never “live next door.” Adjacency is **next door** (neighboring house, left or right). Same-house with a named person uses a natural verb (`Bo owns the horse`). Immediate vs somewhere left is explicit. Each clue starts with a capital letter. Einstein day keeps the classic wording verbatim.
+Generated clues follow Einstein’s 15: person-first subjects, approved noun/verb templates per category (pets **keep**, drinks **drink**, colors **live in the red house**, rides **drive**, and so on), house places as **the first/center/last house** or **house N**, and adjacency as **lives next to** / **lives directly left of**. Objects never “live.” Each clue starts with a capital letter. `validateEinsteinStyle` is a required publish check with uniqueness and `solvedByHuman`. Einstein day keeps the classic wording verbatim.
 
 ### Share result (plain text)
 

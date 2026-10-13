@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "last-lantern",
   "label": "Medium–hard",
-  "source": "daily-2027-11-04",
+  "source": "daily-2027-11-12",
   "theme": {
-    "id": "camp",
+    "id": "garden",
     "title": "Last lantern",
-    "blurb": "Tents in a line. Match camper, kit, and companion.",
-    "story": "Campers, kit, and one companion each."
+    "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
+    "story": "Late light in the plots. Who tends which plant?"
   },
   "houseCount": 3,
   "attributes": [
@@ -17,20 +17,20 @@
       "label": "Who"
     },
     {
-      "id": "loot",
-      "label": "Loot"
+      "id": "plant",
+      "label": "Plant"
     },
     {
-      "id": "pet",
-      "label": "Pet"
+      "id": "drink",
+      "label": "Drink"
     }
   ],
   "items": {
     "person": [
       {
-        "id": "drew",
-        "label": "Drew",
-        "icon": "paint-brush"
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
       },
       {
         "id": "cam",
@@ -38,43 +38,43 @@
         "icon": "student"
       },
       {
-        "id": "io",
-        "label": "Io",
-        "icon": "user-focus"
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
       }
     ],
-    "loot": [
+    "plant": [
       {
-        "id": "lock",
-        "label": "lock",
-        "icon": "lock"
+        "id": "pot",
+        "label": "potted plant",
+        "icon": "potted-plant"
       },
       {
-        "id": "tent",
-        "label": "tent",
-        "icon": "tent"
+        "id": "flower",
+        "label": "flower",
+        "icon": "flower"
       },
       {
-        "id": "book",
-        "label": "guide",
-        "icon": "book"
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
       }
     ],
-    "pet": [
+    "drink": [
       {
-        "id": "bird",
-        "label": "bird",
-        "icon": "bird"
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
       },
       {
-        "id": "fish",
-        "label": "fish",
-        "icon": "fish"
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
       },
       {
-        "id": "rabbit",
-        "label": "rabbit",
-        "icon": "rabbit"
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
       }
     ]
   },
@@ -87,98 +87,111 @@
         "item": "cam"
       },
       "right": {
-        "attr": "pet",
-        "item": "bird"
+        "attr": "drink",
+        "item": "martini"
       },
-      "text": "Cam is with the bird."
+      "text": "Cam is with the martini."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "drew"
+        "item": "jules"
       },
       "right": {
-        "attr": "loot",
-        "item": "lock"
+        "attr": "drink",
+        "item": "brandy"
       },
-      "text": "Drew is with the lock."
+      "text": "Jules is with the brandy."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "cam"
+        "attr": "plant",
+        "item": "pot"
       },
       "right": {
-        "attr": "loot",
-        "item": "book"
+        "attr": "drink",
+        "item": "martini"
       },
-      "text": "Cam is with the guide."
+      "text": "potted plant is with the martini."
     },
     {
       "id": "c4",
       "type": "next_to",
       "left": {
-        "attr": "pet",
-        "item": "fish"
+        "attr": "drink",
+        "item": "martini"
       },
       "right": {
-        "attr": "loot",
-        "item": "lock"
+        "attr": "plant",
+        "item": "cactus"
       },
-      "text": "fish is next to the lock."
+      "text": "martini is next to the cactus."
     },
     {
       "id": "c5",
-      "type": "left_of",
+      "type": "next_to",
       "left": {
-        "attr": "pet",
-        "item": "rabbit"
+        "attr": "person",
+        "item": "cam"
       },
       "right": {
-        "attr": "loot",
-        "item": "book"
+        "attr": "drink",
+        "item": "brandy"
       },
-      "immediate": true,
-      "text": "rabbit is immediately left of the guide."
+      "text": "Cam is next to the brandy."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "plant",
+        "item": "flower"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "immediate": false,
+      "text": "flower is somewhere left of the wine."
     }
   ],
   "question": {
-    "text": "Who camped with the fish?",
-    "givenAttr": "pet",
-    "givenItem": "fish",
+    "text": "Who tends the cactus?",
+    "givenAttr": "plant",
+    "givenItem": "cactus",
     "answerAttr": "person",
     "answerItem": "io"
   },
   "solution": [
     {
-      "person": "io",
-      "loot": "tent",
-      "pet": "fish"
-    },
-    {
-      "person": "drew",
-      "loot": "lock",
-      "pet": "rabbit"
+      "person": "jules",
+      "plant": "flower",
+      "drink": "brandy"
     },
     {
       "person": "cam",
-      "loot": "book",
-      "pet": "bird"
+      "plant": "pot",
+      "drink": "martini"
+    },
+    {
+      "person": "io",
+      "plant": "cactus",
+      "drink": "wine"
     }
   ],
   "difficulty": {
     "label": "medium-hard",
-    "steps": 4,
+    "steps": 2,
     "neededSearch": true,
-    "weekday": 4,
+    "weekday": 5,
     "solvedByHuman": true,
     "hardest": "contradiction",
     "hardestTier": 8,
-    "score": 44,
-    "sourceDate": "2027-11-04"
+    "score": 42,
+    "sourceDate": "2027-11-12"
   }
 }

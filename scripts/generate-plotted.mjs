@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { addDaysIso, generatePuzzle, specForDate } from "../plotted-engine.js";
+import { addDaysIso, generatePuzzle, specForDate, validateEinsteinStyle } from "../plotted-engine.js";
 import { LAUNCH_DATE } from "../plotted-config.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -26,6 +26,10 @@ for (let i = 0; i < days; i += 1) {
     }
   }
   if (!puzzle) throw lastError;
+  const style = validateEinsteinStyle(puzzle);
+  if (!style.ok) {
+    throw new Error(`${date} failed Einstein-style copy: ${JSON.stringify(style.failures)}`);
+  }
   const dest = path.join(outDir, `${date}.json`);
   fs.writeFileSync(dest, `${JSON.stringify(puzzle, null, 2)}\n`);
   process.stdout.write(`${date} ${puzzle.theme.id} ${puzzle.houseCount}h ${puzzle.clues.length}c steps=${puzzle.difficulty.steps}\n`);
