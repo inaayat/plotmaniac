@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "hard",
   "label": "Hard",
-  "source": "original-generated",
+  "source": "practice-generated",
   "theme": {
     "id": "neighborhood",
     "title": "The block",
     "blurb": "Houses in a line. Match resident, ride, and animal.",
-    "story": "Four houses. Match resident, ride, and animal."
+    "story": "Rides and animals on a wider block."
   },
   "houseCount": 4,
   "attributes": [
@@ -28,14 +28,14 @@
   "items": {
     "person": [
       {
-        "id": "io",
-        "label": "Io",
-        "icon": "user-focus"
-      },
-      {
         "id": "cam",
         "label": "Cam",
         "icon": "student"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
       },
       {
         "id": "bo",
@@ -43,52 +43,52 @@
         "icon": "chef-hat"
       },
       {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
       }
     ],
     "vehicle": [
       {
-        "id": "boat",
-        "label": "sailboat",
-        "icon": "sailboat"
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
       },
       {
-        "id": "walk",
-        "label": "on foot",
-        "icon": "person-simple-walk"
+        "id": "van",
+        "label": "van",
+        "icon": "car"
       },
       {
-        "id": "moto",
-        "label": "motorcycle",
-        "icon": "motorcycle"
+        "id": "car",
+        "label": "car",
+        "icon": "car"
       },
       {
-        "id": "plane",
-        "label": "plane",
-        "icon": "airplane"
+        "id": "taxi",
+        "label": "taxi",
+        "icon": "car"
       }
     ],
     "pet": [
       {
-        "id": "butterfly",
-        "label": "butterfly",
-        "icon": "butterfly"
-      },
-      {
-        "id": "bird",
-        "label": "bird",
-        "icon": "bird"
-      },
-      {
         "id": "rabbit",
-        "label": "rabbit",
+        "label": "rabbits",
         "icon": "rabbit"
       },
       {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "bird",
+        "label": "birds",
+        "icon": "bird"
+      },
+      {
         "id": "dog",
-        "label": "dog",
+        "label": "dogs",
         "icon": "dog"
       }
     ]
@@ -98,145 +98,139 @@
       "id": "c1",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "cam"
+        "attr": "vehicle",
+        "item": "taxi"
       },
       "right": {
-        "attr": "vehicle",
-        "item": "walk"
+        "attr": "pet",
+        "item": "bird"
       },
-      "text": "Cam is on foot."
+      "text": "The person who drives a taxi keeps birds."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "cam"
+        "item": "eden"
       },
       "right": {
-        "attr": "pet",
-        "item": "dog"
+        "attr": "vehicle",
+        "item": "taxi"
       },
-      "text": "Cam owns the dog."
+      "text": "Eden drives a taxi."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "eden"
+        "item": "bo"
       },
       "right": {
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Eden owns the rabbit."
+      "text": "Bo keeps rabbits."
     },
     {
       "id": "c4",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "bo"
-      },
-      "right": {
         "attr": "vehicle",
-        "item": "moto"
-      },
-      "text": "Bo has the motorcycle."
-    },
-    {
-      "id": "c5",
-      "type": "next_to",
-      "left": {
-        "attr": "vehicle",
-        "item": "boat"
+        "item": "car"
       },
       "right": {
         "attr": "pet",
-        "item": "butterfly"
+        "item": "fish"
       },
-      "text": "The person with the sailboat lives next door to the butterfly owner."
+      "text": "The person who drives a car keeps fish."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "van"
+      },
+      "text": "Cam drives a van."
     },
     {
       "id": "c6",
       "type": "next_to",
       "left": {
-        "attr": "person",
-        "item": "bo"
+        "attr": "pet",
+        "item": "fish"
       },
       "right": {
-        "attr": "pet",
-        "item": "dog"
+        "attr": "vehicle",
+        "item": "bike"
       },
-      "text": "Bo lives next door to the dog owner."
+      "text": "The owner of the fish lives next to the one who rides a bicycle."
     },
     {
       "id": "c7",
       "type": "next_to",
       "left": {
         "attr": "vehicle",
-        "item": "plane"
+        "item": "bike"
       },
       "right": {
-        "attr": "person",
-        "item": "io"
+        "attr": "pet",
+        "item": "dog"
       },
-      "text": "The person with the plane lives next door to Io."
+      "text": "The person who rides a bicycle lives next to the one who keeps dogs."
     },
     {
       "id": "c8",
-      "type": "left_of",
-      "left": {
-        "attr": "vehicle",
-        "item": "walk"
-      },
-      "right": {
-        "attr": "person",
-        "item": "eden"
-      },
-      "immediate": false,
-      "text": "The person on foot lives somewhere left of Eden."
+      "type": "at",
+      "attr": "pet",
+      "item": "dog",
+      "house": 0,
+      "text": "The owner of the dogs lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the bird?",
+    "text": "Who keeps birds?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",
-    "answerItem": "io"
+    "answerItem": "eden"
   },
   "solution": [
     {
       "person": "cam",
-      "vehicle": "walk",
+      "vehicle": "van",
       "pet": "dog"
     },
     {
       "person": "bo",
-      "vehicle": "moto",
-      "pet": "butterfly"
+      "vehicle": "bike",
+      "pet": "rabbit"
     },
     {
-      "person": "io",
-      "vehicle": "boat",
-      "pet": "bird"
+      "person": "fay",
+      "vehicle": "car",
+      "pet": "fish"
     },
     {
       "person": "eden",
-      "vehicle": "plane",
-      "pet": "rabbit"
+      "vehicle": "taxi",
+      "pet": "bird"
     }
   ],
   "difficulty": {
     "label": "hard",
-    "steps": 7,
-    "neededSearch": true,
-    "weekday": null,
+    "steps": 21,
+    "neededSearch": false,
+    "weekday": 0,
     "solvedByHuman": true,
-    "hardest": "contradiction",
-    "hardestTier": 8,
-    "score": 47
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 51
   }
 }

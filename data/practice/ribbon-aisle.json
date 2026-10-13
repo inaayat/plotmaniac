@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "ribbon-aisle",
   "label": "Medium",
-  "source": "daily-2027-11-02",
+  "source": "practice-generated",
   "theme": {
     "id": "pet-show",
     "title": "Ribbon aisle",
-    "blurb": "Ribbons, paws, and a packed aisle. Who won which prize?",
-    "story": "A short aisle of pets and prizes."
+    "blurb": "Painted doors and a packed aisle. Who keeps which pet?",
+    "story": "Painted doors and a short aisle of pets."
   },
   "houseCount": 3,
   "attributes": [
@@ -21,60 +21,60 @@
       "label": "Pet"
     },
     {
-      "id": "prize",
-      "label": "Prize"
+      "id": "color",
+      "label": "Color"
     }
   ],
   "items": {
     "person": [
       {
-        "id": "io",
-        "label": "Io",
-        "icon": "user-focus"
-      },
-      {
-        "id": "gus",
-        "label": "Gus",
-        "icon": "briefcase"
-      },
-      {
         "id": "cam",
         "label": "Cam",
         "icon": "student"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
       }
     ],
     "pet": [
       {
-        "id": "butterfly",
-        "label": "butterfly",
-        "icon": "butterfly"
+        "id": "rabbit",
+        "label": "rabbits",
+        "icon": "rabbit"
       },
       {
         "id": "horse",
-        "label": "horse",
+        "label": "horses",
         "icon": "horse"
       },
       {
-        "id": "fish",
-        "label": "fish",
-        "icon": "fish"
+        "id": "cat",
+        "label": "cats",
+        "icon": "cat"
       }
     ],
-    "prize": [
+    "color": [
       {
-        "id": "cookie",
-        "label": "cookie",
-        "icon": "cookie"
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
       },
       {
-        "id": "gift",
-        "label": "gift",
-        "icon": "gift"
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
       },
       {
-        "id": "crown",
-        "label": "crown",
-        "icon": "crown"
+        "id": "white",
+        "label": "white",
+        "icon": "house"
       }
     ]
   },
@@ -83,96 +83,95 @@
       "id": "c1",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "cam"
+        "attr": "pet",
+        "item": "rabbit"
       },
       "right": {
-        "attr": "prize",
-        "item": "crown"
+        "attr": "color",
+        "item": "yellow"
       },
-      "text": "Cam is with the crown."
+      "text": "The owner of the rabbits lives in the yellow house."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "pet",
-        "item": "horse"
+        "item": "cat"
       },
       "right": {
-        "attr": "prize",
-        "item": "gift"
+        "attr": "color",
+        "item": "blue"
       },
-      "text": "horse is with the gift."
+      "text": "The owner of the cats lives in the blue house."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "io"
+        "item": "cam"
       },
       "right": {
         "attr": "pet",
-        "item": "fish"
+        "item": "horse"
       },
-      "text": "Io is with the fish."
+      "text": "Cam keeps horses."
     },
     {
       "id": "c4",
       "type": "next_to",
       "left": {
-        "attr": "prize",
-        "item": "cookie"
+        "attr": "pet",
+        "item": "cat"
       },
       "right": {
-        "attr": "pet",
-        "item": "butterfly"
+        "attr": "person",
+        "item": "fay"
       },
-      "text": "cookie is next to the butterfly."
+      "text": "The owner of the cats lives next to Fay."
     },
     {
       "id": "c5",
       "type": "at",
-      "attr": "prize",
-      "item": "cookie",
+      "attr": "color",
+      "item": "blue",
       "house": 0,
-      "text": "cookie is in house 1."
+      "text": "The owner of the blue house lives in the first house."
     }
   ],
   "question": {
-    "text": "Who showed the fish?",
+    "text": "Who keeps cats?",
     "givenAttr": "pet",
-    "givenItem": "fish",
+    "givenItem": "cat",
     "answerAttr": "person",
-    "answerItem": "io"
+    "answerItem": "jules"
   },
   "solution": [
     {
-      "person": "io",
-      "pet": "fish",
-      "prize": "cookie"
+      "person": "jules",
+      "pet": "cat",
+      "color": "blue"
+    },
+    {
+      "person": "fay",
+      "pet": "rabbit",
+      "color": "yellow"
     },
     {
       "person": "cam",
-      "pet": "butterfly",
-      "prize": "crown"
-    },
-    {
-      "person": "gus",
       "pet": "horse",
-      "prize": "gift"
+      "color": "white"
     }
   ],
   "difficulty": {
     "label": "medium",
-    "steps": 12,
+    "steps": 10,
     "neededSearch": false,
-    "weekday": 2,
+    "weekday": 3,
     "solvedByHuman": true,
     "hardest": "next_to_edge",
     "hardestTier": 6,
-    "score": 42,
-    "sourceDate": "2027-11-02"
+    "score": 40
   }
 }

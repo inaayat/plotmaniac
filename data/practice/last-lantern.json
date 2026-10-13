@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "last-lantern",
   "label": "Medium–hard",
-  "source": "daily-2027-11-12",
+  "source": "practice-generated",
   "theme": {
     "id": "garden",
     "title": "Last lantern",
     "blurb": "Each plot has a gardener, a plant, and a drink in the dirt.",
-    "story": "Late light in the plots. Who tends which plant?"
+    "story": "Late light in the plots. Who grows which plant?"
   },
   "houseCount": 3,
   "attributes": [
@@ -28,14 +28,14 @@
   "items": {
     "person": [
       {
-        "id": "io",
-        "label": "Io",
-        "icon": "user-focus"
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
       },
       {
-        "id": "cam",
-        "label": "Cam",
-        "icon": "student"
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
       },
       {
         "id": "jules",
@@ -45,13 +45,13 @@
     ],
     "plant": [
       {
-        "id": "pot",
-        "label": "potted plant",
-        "icon": "potted-plant"
+        "id": "trees",
+        "label": "trees",
+        "icon": "tree"
       },
       {
-        "id": "flower",
-        "label": "flower",
+        "id": "roses",
+        "label": "roses",
         "icon": "flower"
       },
       {
@@ -62,14 +62,14 @@
     ],
     "drink": [
       {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
         "id": "brandy",
         "label": "brandy",
         "icon": "brandy"
-      },
-      {
-        "id": "wine",
-        "label": "wine",
-        "icon": "wine"
       },
       {
         "id": "martini",
@@ -84,13 +84,13 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "cam"
+        "item": "hana"
       },
       "right": {
-        "attr": "drink",
-        "item": "martini"
+        "attr": "plant",
+        "item": "roses"
       },
-      "text": "Cam is with the martini."
+      "text": "Hana grows roses."
     },
     {
       "id": "c2",
@@ -100,98 +100,78 @@
         "item": "jules"
       },
       "right": {
-        "attr": "drink",
-        "item": "brandy"
+        "attr": "plant",
+        "item": "trees"
       },
-      "text": "Jules is with the brandy."
+      "text": "Jules grows trees."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
-        "attr": "plant",
-        "item": "pot"
+        "attr": "person",
+        "item": "hana"
       },
       "right": {
         "attr": "drink",
         "item": "martini"
       },
-      "text": "potted plant is with the martini."
+      "text": "Hana drinks a martini."
     },
     {
       "id": "c4",
       "type": "next_to",
       "left": {
-        "attr": "drink",
-        "item": "martini"
+        "attr": "person",
+        "item": "bo"
       },
       "right": {
-        "attr": "plant",
-        "item": "cactus"
+        "attr": "drink",
+        "item": "coffee"
       },
-      "text": "martini is next to the cactus."
+      "text": "Bo lives next to the one who drinks coffee."
     },
     {
       "id": "c5",
-      "type": "next_to",
-      "left": {
-        "attr": "person",
-        "item": "cam"
-      },
-      "right": {
-        "attr": "drink",
-        "item": "brandy"
-      },
-      "text": "Cam is next to the brandy."
-    },
-    {
-      "id": "c6",
-      "type": "left_of",
-      "left": {
-        "attr": "plant",
-        "item": "flower"
-      },
-      "right": {
-        "attr": "drink",
-        "item": "wine"
-      },
-      "immediate": false,
-      "text": "flower is somewhere left of the wine."
+      "type": "at",
+      "attr": "drink",
+      "item": "coffee",
+      "house": 0,
+      "text": "The coffee drinker lives in the first house."
     }
   ],
   "question": {
-    "text": "Who tends the cactus?",
+    "text": "Who grows roses?",
     "givenAttr": "plant",
-    "givenItem": "cactus",
+    "givenItem": "roses",
     "answerAttr": "person",
-    "answerItem": "io"
+    "answerItem": "hana"
   },
   "solution": [
     {
       "person": "jules",
-      "plant": "flower",
+      "plant": "trees",
+      "drink": "coffee"
+    },
+    {
+      "person": "bo",
+      "plant": "cactus",
       "drink": "brandy"
     },
     {
-      "person": "cam",
-      "plant": "pot",
+      "person": "hana",
+      "plant": "roses",
       "drink": "martini"
-    },
-    {
-      "person": "io",
-      "plant": "cactus",
-      "drink": "wine"
     }
   ],
   "difficulty": {
     "label": "medium-hard",
-    "steps": 2,
-    "neededSearch": true,
-    "weekday": 5,
+    "steps": 9,
+    "neededSearch": false,
+    "weekday": 6,
     "solvedByHuman": true,
-    "hardest": "contradiction",
-    "hardestTier": 8,
-    "score": 42,
-    "sourceDate": "2027-11-12"
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 39
   }
 }

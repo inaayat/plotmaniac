@@ -3,7 +3,7 @@
   "practice": true,
   "practiceId": "easy-medium",
   "label": "Easy–medium",
-  "source": "original-generated",
+  "source": "practice-generated",
   "theme": {
     "id": "garden",
     "title": "Garden row",
@@ -28,39 +28,44 @@
   "items": {
     "person": [
       {
-        "id": "ada",
-        "label": "Ada",
-        "icon": "detective"
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
       },
       {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
       },
       {
-        "id": "bo",
-        "label": "Bo",
-        "icon": "chef-hat"
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
       }
     ],
     "plant": [
       {
-        "id": "leaf",
-        "label": "leaf",
+        "id": "trees",
+        "label": "trees",
+        "icon": "tree"
+      },
+      {
+        "id": "roses",
+        "label": "roses",
+        "icon": "flower"
+      },
+      {
+        "id": "fern",
+        "label": "fern",
         "icon": "leaf"
-      },
-      {
-        "id": "pot",
-        "label": "potted plant",
-        "icon": "potted-plant"
-      },
-      {
-        "id": "tulip",
-        "label": "tulip",
-        "icon": "flower-tulip"
       }
     ],
     "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
       {
         "id": "brandy",
         "label": "brandy",
@@ -70,11 +75,6 @@
         "id": "tea",
         "label": "tea",
         "icon": "tea-bag"
-      },
-      {
-        "id": "orange",
-        "label": "orange juice",
-        "icon": "orange"
       }
     ]
   },
@@ -84,94 +84,107 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "eden"
+        "item": "cam"
       },
       "right": {
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Eden drinks brandy."
+      "text": "Cam drinks brandy."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "eden"
-      },
-      "right": {
-        "attr": "plant",
-        "item": "leaf"
-      },
-      "text": "Eden tends the leaf."
-    },
-    {
-      "id": "c3",
-      "type": "same",
-      "left": {
-        "attr": "plant",
-        "item": "pot"
+        "item": "jules"
       },
       "right": {
         "attr": "drink",
         "item": "orange"
       },
-      "text": "The person who tends the potted plant is the person who drinks orange juice."
+      "text": "Jules drinks orange juice."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "roses"
+      },
+      "text": "Drew grows roses."
     },
     {
       "id": "c4",
-      "type": "next_to",
+      "type": "same",
       "left": {
-        "attr": "plant",
-        "item": "pot"
+        "attr": "person",
+        "item": "jules"
       },
       "right": {
-        "attr": "person",
-        "item": "ada"
+        "attr": "plant",
+        "item": "trees"
       },
-      "text": "The person who tends the potted plant lives next door to Ada."
+      "text": "Jules grows trees."
     },
     {
       "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "roses"
+      },
+      "text": "Jules lives next to the one who grows roses."
+    },
+    {
+      "id": "c6",
       "type": "at",
       "attr": "drink",
       "item": "orange",
       "house": 2,
-      "text": "The person who drinks orange juice lives in house 3."
+      "text": "The orange juice drinker lives in the last house."
     }
   ],
   "question": {
-    "text": "Who tends the potted plant?",
+    "text": "Who grows roses?",
     "givenAttr": "plant",
-    "givenItem": "pot",
+    "givenItem": "roses",
     "answerAttr": "person",
-    "answerItem": "bo"
+    "answerItem": "drew"
   },
   "solution": [
     {
-      "person": "eden",
-      "plant": "leaf",
+      "person": "cam",
+      "plant": "fern",
       "drink": "brandy"
     },
     {
-      "person": "ada",
-      "plant": "tulip",
+      "person": "drew",
+      "plant": "roses",
       "drink": "tea"
     },
     {
-      "person": "bo",
-      "plant": "pot",
+      "person": "jules",
+      "plant": "trees",
       "drink": "orange"
     }
   ],
   "difficulty": {
     "label": "easy-medium",
-    "steps": 11,
+    "steps": 12,
     "neededSearch": false,
-    "weekday": null,
+    "weekday": 4,
     "solvedByHuman": true,
     "hardest": "next_to_edge",
     "hardestTier": 6,
-    "score": 41
+    "score": 42
   }
 }

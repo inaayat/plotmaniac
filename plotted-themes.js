@@ -10,12 +10,22 @@ function an(label) {
   return /^[aeiou]/i.test(word) ? `an ${word}` : `a ${word}`;
 }
 
-/** Einstein says “keeps dogs”; generated pets are usually singular. */
+/** Einstein says “keeps dogs”; singular labels keep an article except fish. */
 function keepPet(label) {
   const word = String(label || "").trim();
   if (!word) return word;
+  if (word.toLowerCase() === "fish") return word;
   if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word;
   return an(word);
+}
+
+function petOccupant(label) {
+  const word = String(label || "").trim();
+  if (!word) return word;
+  if (word.toLowerCase() === "fish" || (/s$/i.test(word) && !/(ss|us|is)$/i.test(word))) {
+    return `the owner of the ${word}`;
+  }
+  return `the ${word} owner`;
 }
 
 function vehicleVerb(label) {
@@ -32,28 +42,71 @@ function vehicleNoun(label) {
   return `the person who ${vehicleVerb(label)}`;
 }
 
-function hasItem(label) {
-  return `has the ${label}`;
+const MASS_DRINKS = new Set(["tea", "coffee", "wine", "beer", "brandy", "orange juice", "water", "milk", "cocoa"]);
+
+function drinkObject(label) {
+  const word = String(label || "").trim();
+  if (!word) return word;
+  if (MASS_DRINKS.has(word.toLowerCase())) return word;
+  if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word;
+  return an(word);
 }
 
-function eatFood(label) {
-  if (label === "ice cream" || label === "stew") return label;
-  return an(label);
+const LOVED_FOODS = new Set(["cake", "ice cream", "cookie"]);
+
+function foodPhrase(label) {
+  const word = String(label || "").trim();
+  if (LOVED_FOODS.has(word.toLowerCase())) return `loves ${word}`;
+  return `eats ${word}`;
+}
+
+const MASS_PLANTS = new Set(["basil"]);
+
+function growPlant(label) {
+  const word = String(label || "").trim();
+  if (!word) return word;
+  if (MASS_PLANTS.has(word.toLowerCase())) return word;
+  if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word;
+  return an(word);
+}
+
+function readBook(label) {
+  const word = String(label || "").trim();
+  if (!word) return word;
+  if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word;
+  if (/^(poetry|history|sci-fi)$/i.test(word)) return word;
+  return an(word);
+}
+
+const INSTRUMENT_TITLES = {
+  piano: "pianist",
+  guitar: "guitarist",
+  drums: "drummer",
+  violin: "violinist",
+  flute: "flutist",
+  cello: "cellist",
+};
+
+function instrumentOccupant(label) {
+  const title = INSTRUMENT_TITLES[label];
+  return title ? `the ${title}` : `the ${label} player`;
 }
 
 const PLAYED_HOBBIES = new Set(["guitar"]);
 
 /**
  * Einstein-style noun + verb for every category.
- * occupant = person-first noun (“the dog owner”, “the owner of the red house”).
- * personSame = verb (“Ada keeps a dog”, “Ada lives in the red house”).
+ * occupant = person-first noun (“the owner of the dogs”, “the pianist”).
+ * personSame = verb (“Ada keeps dogs”, “Ada plays the piano”).
  * neighbor = how they appear after “lives next to”.
+ * verb = curated verb; never a generic “has the”.
  */
 export const ATTRIBUTES = {
   person: {
     id: "person",
     label: "Who",
     icon: "user",
+    verb: null,
     occupant: (x) => x,
     personSame: (person) => person,
     neighbor: (x) => x,
@@ -62,7 +115,8 @@ export const ATTRIBUTES = {
     id: "pet",
     label: "Pet",
     icon: "paw-print",
-    occupant: (x) => `the ${x} owner`,
+    verb: "keeps",
+    occupant: petOccupant,
     personSame: (person, x) => `${person} keeps ${keepPet(x)}`,
     neighbor: (x) => `the one who keeps ${keepPet(x)}`,
   },
@@ -70,22 +124,25 @@ export const ATTRIBUTES = {
     id: "drink",
     label: "Drink",
     icon: "coffee",
+    verb: "drinks",
     occupant: (x) => `the ${x} drinker`,
-    personSame: (person, x) => `${person} drinks ${x}`,
-    neighbor: (x) => `the one who drinks ${x}`,
+    personSame: (person, x) => `${person} drinks ${drinkObject(x)}`,
+    neighbor: (x) => `the one who drinks ${drinkObject(x)}`,
   },
   loot: {
     id: "loot",
     label: "Loot",
     icon: "diamond",
-    occupant: (x) => `the person who ${hasItem(x)}`,
-    personSame: (person, x) => `${person} ${hasItem(x)}`,
-    neighbor: (x) => `the one who ${hasItem(x)}`,
+    verb: "keeps",
+    occupant: (x) => `the person who keeps ${an(x)}`,
+    personSame: (person, x) => `${person} keeps ${an(x)}`,
+    neighbor: (x) => `the one who keeps ${an(x)}`,
   },
   getaway: {
     id: "getaway",
     label: "Getaway",
     icon: "car",
+    verb: "drives",
     occupant: vehicleNoun,
     personSame: (person, x) => `${person} ${vehicleVerb(x)}`,
     neighbor: (x) => (onFoot(x) ? "the one on foot" : `the one who ${vehicleVerb(x)}`),
@@ -94,22 +151,25 @@ export const ATTRIBUTES = {
     id: "prize",
     label: "Prize",
     icon: "trophy",
-    occupant: (x) => `the person who ${hasItem(x)}`,
-    personSame: (person, x) => `${person} ${hasItem(x)}`,
-    neighbor: (x) => `the one who ${hasItem(x)}`,
+    verb: "keeps",
+    occupant: (x) => `the person who keeps ${an(x)}`,
+    personSame: (person, x) => `${person} keeps ${an(x)}`,
+    neighbor: (x) => `the one who keeps ${an(x)}`,
   },
   plant: {
     id: "plant",
     label: "Plant",
     icon: "flower",
-    occupant: (x) => `the person who tends the ${x}`,
-    personSame: (person, x) => `${person} tends the ${x}`,
-    neighbor: (x) => `the one who tends the ${x}`,
+    verb: "grows",
+    occupant: (x) => `the person who grows ${growPlant(x)}`,
+    personSame: (person, x) => `${person} grows ${growPlant(x)}`,
+    neighbor: (x) => `the one who grows ${growPlant(x)}`,
   },
   vehicle: {
     id: "vehicle",
     label: "Ride",
     icon: "bicycle",
+    verb: "drives",
     occupant: vehicleNoun,
     personSame: (person, x) => `${person} ${vehicleVerb(x)}`,
     neighbor: (x) => (onFoot(x) ? "the one on foot" : `the one who ${vehicleVerb(x)}`),
@@ -118,46 +178,52 @@ export const ATTRIBUTES = {
     id: "instrument",
     label: "Music",
     icon: "music-note",
-    occupant: (x) => `the ${x} player`,
+    verb: "plays",
+    occupant: instrumentOccupant,
     personSame: (person, x) => `${person} plays the ${x}`,
-    neighbor: (x) => `the one who plays the ${x}`,
+    neighbor: instrumentOccupant,
   },
   book: {
     id: "book",
     label: "Book",
     icon: "book",
-    occupant: (x) => `the person who ${hasItem(x)}`,
-    personSame: (person, x) => `${person} ${hasItem(x)}`,
-    neighbor: (x) => `the one who ${hasItem(x)}`,
+    verb: "reads",
+    occupant: (x) => `the person who reads ${readBook(x)}`,
+    personSame: (person, x) => `${person} reads ${readBook(x)}`,
+    neighbor: (x) => `the one who reads ${readBook(x)}`,
   },
   treat: {
     id: "treat",
     label: "Treat",
     icon: "cookie",
-    occupant: (x) => `the person who ${hasItem(x)}`,
-    personSame: (person, x) => `${person} ${hasItem(x)}`,
-    neighbor: (x) => `the one who ${hasItem(x)}`,
+    verb: "loves",
+    occupant: (x) => `the ${x} lover`,
+    personSame: (person, x) => `${person} loves ${x}`,
+    neighbor: (x) => `the ${x} lover`,
   },
   gift: {
     id: "gift",
     label: "Gift",
     icon: "gift",
-    occupant: (x) => `the person who ${hasItem(x)}`,
-    personSame: (person, x) => `${person} ${hasItem(x)}`,
-    neighbor: (x) => `the one who ${hasItem(x)}`,
+    verb: "keeps",
+    occupant: (x) => `the person who keeps ${an(x)}`,
+    personSame: (person, x) => `${person} keeps ${an(x)}`,
+    neighbor: (x) => `the one who keeps ${an(x)}`,
   },
   food: {
     id: "food",
     label: "Plate",
     icon: "fork-knife",
-    occupant: (x) => `the person who eats ${eatFood(x)}`,
-    personSame: (person, x) => `${person} eats ${eatFood(x)}`,
-    neighbor: (x) => `the one who eats ${eatFood(x)}`,
+    verb: "eats",
+    occupant: (x) => `the ${x} lover`,
+    personSame: (person, x) => `${person} ${foodPhrase(x)}`,
+    neighbor: (x) => `the ${x} lover`,
   },
   color: {
     id: "color",
     label: "Color",
     icon: "paint-brush",
+    verb: "lives in",
     occupant: (x) => `the owner of the ${x} house`,
     personSame: (person, x) => `${person} lives in the ${x} house`,
     neighbor: (x) => `the ${x} house`,
@@ -166,6 +232,7 @@ export const ATTRIBUTES = {
     id: "nationality",
     label: "Who",
     icon: "identification-badge",
+    verb: null,
     occupant: (x) => `the ${x}`,
     personSame: (person) => person,
     neighbor: (x) => `the ${x}`,
@@ -174,6 +241,7 @@ export const ATTRIBUTES = {
     id: "beverage",
     label: "Drink",
     icon: "coffee",
+    verb: "drinks",
     occupant: (x) => `the ${x} drinker`,
     personSame: (person, x) => `${person} drinks ${x}`,
     neighbor: (x) => `the one who drinks ${x}`,
@@ -182,6 +250,7 @@ export const ATTRIBUTES = {
     id: "cigar",
     label: "Cigar",
     icon: "leaf",
+    verb: "smokes",
     occupant: (x) => `the person who smokes ${x}`,
     personSame: (person, x) => `${person} smokes ${x}`,
     neighbor: (x) => `the one who smokes ${x}`,
@@ -190,6 +259,7 @@ export const ATTRIBUTES = {
     id: "job",
     label: "Job",
     icon: "briefcase",
+    verb: "is a",
     occupant: (x) => `the ${x}`,
     personSame: (person, x) => `${person} is a ${x}`,
     neighbor: (x) => `the ${x}`,
@@ -198,6 +268,7 @@ export const ATTRIBUTES = {
     id: "hobby",
     label: "Hobby",
     icon: "lightbulb",
+    verb: "likes",
     occupant: (x) => (PLAYED_HOBBIES.has(x) ? `the ${x} player` : `the person who likes ${x}`),
     personSame: (person, x) => (PLAYED_HOBBIES.has(x) ? `${person} plays ${x}` : `${person} likes ${x}`),
     neighbor: (x) => (PLAYED_HOBBIES.has(x) ? `the one who plays ${x}` : `the one who likes ${x}`),
@@ -206,6 +277,7 @@ export const ATTRIBUTES = {
     id: "city",
     label: "City",
     icon: "house",
+    verb: "is from",
     occupant: (x) => `the person from ${x}`,
     personSame: (person, x) => `${person} is from ${x}`,
     neighbor: (x) => `the one from ${x}`,
@@ -226,13 +298,12 @@ const PEOPLE = [
 ];
 
 const PETS = [
-  { id: "cat", label: "cat", icon: "cat" },
-  { id: "dog", label: "dog", icon: "dog" },
-  { id: "bird", label: "bird", icon: "bird" },
+  { id: "cat", label: "cats", icon: "cat" },
+  { id: "dog", label: "dogs", icon: "dog" },
+  { id: "bird", label: "birds", icon: "bird" },
   { id: "fish", label: "fish", icon: "fish" },
-  { id: "rabbit", label: "rabbit", icon: "rabbit" },
-  { id: "horse", label: "horse", icon: "horse" },
-  { id: "butterfly", label: "butterfly", icon: "butterfly" },
+  { id: "rabbit", label: "rabbits", icon: "rabbit" },
+  { id: "horse", label: "horses", icon: "horse" },
 ];
 
 const DRINKS = [
@@ -283,30 +354,47 @@ const CITIES = [
 
 const VEHICLES = [
   { id: "car", label: "car", icon: "car" },
+  { id: "taxi", label: "taxi", icon: "car" },
+  { id: "bus", label: "bus", icon: "car" },
+  { id: "van", label: "van", icon: "car" },
   { id: "bike", label: "bicycle", icon: "bicycle" },
   { id: "moto", label: "motorcycle", icon: "motorcycle" },
-  { id: "plane", label: "plane", icon: "airplane" },
-  { id: "boat", label: "sailboat", icon: "sailboat" },
-  { id: "walk", label: "on foot", icon: "person-simple-walk" },
 ];
 
-const TREATS = [
-  { id: "cookie", label: "cookie", icon: "cookie" },
-  { id: "cake", label: "cake", icon: "cake" },
-  { id: "ice", label: "ice cream", icon: "ice-cream" },
-  { id: "pizza", label: "pizza", icon: "pizza" },
-  { id: "burger", label: "burger", icon: "hamburger" },
-  { id: "carrot", label: "carrot", icon: "carrot" },
+const INSTRUMENTS = [
+  { id: "guitar", label: "guitar", icon: "guitar" },
+  { id: "piano", label: "piano", icon: "music-note" },
+  { id: "drums", label: "drums", icon: "music-notes" },
+  { id: "violin", label: "violin", icon: "guitar" },
+  { id: "flute", label: "flute", icon: "music-note" },
+  { id: "cello", label: "cello", icon: "music-notes" },
 ];
 
 const FOODS = [
   { id: "pizza", label: "pizza", icon: "pizza" },
-  { id: "burger", label: "burger", icon: "hamburger" },
-  { id: "bowl", label: "bowl", icon: "bowl-food" },
+  { id: "tacos", label: "tacos", icon: "hamburger" },
+  { id: "sushi", label: "sushi", icon: "bowl-food" },
+  { id: "pasta", label: "pasta", icon: "fork-knife" },
+  { id: "salad", label: "salad", icon: "leaf" },
   { id: "cake", label: "cake", icon: "cake" },
-  { id: "ice", label: "ice cream", icon: "ice-cream" },
-  { id: "carrot", label: "carrot", icon: "carrot" },
-  { id: "pot", label: "stew", icon: "cooking-pot" },
+];
+
+const PLANTS = [
+  { id: "roses", label: "roses", icon: "flower" },
+  { id: "tulips", label: "tulips", icon: "flower-tulip" },
+  { id: "cactus", label: "cactus", icon: "cactus" },
+  { id: "fern", label: "fern", icon: "leaf" },
+  { id: "basil", label: "basil", icon: "potted-plant" },
+  { id: "trees", label: "trees", icon: "tree" },
+];
+
+const BOOKS = [
+  { id: "mystery", label: "mysteries", icon: "magnifying-glass" },
+  { id: "comics", label: "comics", icon: "book-open" },
+  { id: "poetry", label: "poetry", icon: "note-pencil" },
+  { id: "history", label: "history", icon: "book" },
+  { id: "novels", label: "novels", icon: "book" },
+  { id: "travel", label: "travelogues", icon: "tent" },
 ];
 
 export const THEMES = [
@@ -317,58 +405,29 @@ export const THEMES = [
     story: "A small dinner. Someone still has to claim the fish.",
     attributes: ["person", "pet", "drink"],
     items: { person: PEOPLE, pet: PETS, drink: DRINKS },
-    question: (given, answer) => `Who owns the ${given.label}?`,
+    question: (given) => `Who keeps ${keepPet(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
   {
     id: "heist",
-    title: "The heist",
-    blurb: "A quiet job on one street. Who took what, and how did they leave?",
-    story: "One crew, one night, one getaway each.",
-    attributes: ["person", "loot", "getaway"],
-    items: {
-      person: PEOPLE,
-      loot: [
-        { id: "diamond", label: "diamond", icon: "diamond" },
-        { id: "coins", label: "coins", icon: "coins" },
-        { id: "key", label: "key", icon: "key" },
-        { id: "crown", label: "crown", icon: "crown" },
-        { id: "lockbox", label: "lock", icon: "lock" },
-        { id: "medal", label: "medal", icon: "medal" },
-      ],
-      getaway: [
-        { id: "car", label: "car", icon: "car" },
-        { id: "bike", label: "bicycle", icon: "bicycle" },
-        { id: "moto", label: "motorcycle", icon: "motorcycle" },
-        { id: "plane", label: "plane", icon: "airplane" },
-        { id: "boat", label: "sailboat", icon: "sailboat" },
-        { id: "walk", label: "on foot", icon: "person-simple-walk" },
-      ],
-    },
-    question: (given, answer) => `Who has the ${given.label}?`,
-    questionGiven: "loot",
+    title: "Night shift",
+    blurb: "Jobs and rides on one street. Who parked where?",
+    story: "One block, one job each, one ride each.",
+    attributes: ["person", "job", "vehicle"],
+    items: { person: PEOPLE, job: JOBS, vehicle: VEHICLES },
+    question: (given) => `Who is the ${given.label}?`,
+    questionGiven: "job",
     questionAnswer: "person",
   },
   {
     id: "pet-show",
     title: "Pet show",
-    blurb: "Ribbons, paws, and a packed aisle. Who won which prize?",
+    blurb: "Painted doors and a packed aisle. Who keeps which pet?",
     story: "Judging is over. The chart is not.",
-    attributes: ["person", "pet", "prize"],
-    items: {
-      person: PEOPLE,
-      pet: PETS,
-      prize: [
-        { id: "trophy", label: "trophy", icon: "trophy" },
-        { id: "crown", label: "crown", icon: "crown" },
-        { id: "medal", label: "medal", icon: "medal" },
-        { id: "gift", label: "gift", icon: "gift" },
-        { id: "balloon", label: "balloon", icon: "balloon" },
-        { id: "cookie", label: "cookie", icon: "cookie" },
-      ],
-    },
-    question: (given, answer) => `Who showed the ${given.label}?`,
+    attributes: ["person", "pet", "color"],
+    items: { person: PEOPLE, pet: PETS, color: COLORS },
+    question: (given) => `Who keeps ${keepPet(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -378,41 +437,19 @@ export const THEMES = [
     blurb: "Each plot has a gardener, a plant, and a drink in the dirt.",
     story: "Late light. Someone is watering the cactus.",
     attributes: ["person", "plant", "drink"],
-    items: {
-      person: PEOPLE,
-      plant: [
-        { id: "flower", label: "flower", icon: "flower" },
-        { id: "tulip", label: "tulip", icon: "flower-tulip" },
-        { id: "tree", label: "tree", icon: "tree" },
-        { id: "cactus", label: "cactus", icon: "cactus" },
-        { id: "pot", label: "potted plant", icon: "potted-plant" },
-        { id: "leaf", label: "leaf", icon: "leaf" },
-      ],
-      drink: DRINKS,
-    },
-    question: (given, answer) => `Who tends the ${given.label}?`,
+    items: { person: PEOPLE, plant: PLANTS, drink: DRINKS },
+    question: (given) => `Who grows ${growPlant(given.label)}?`,
     questionGiven: "plant",
     questionAnswer: "person",
   },
   {
     id: "book-club",
     title: "Book club",
-    blurb: "Same living room, different copies. Who brought which book?",
+    blurb: "Same living room, different copies. Who reads what?",
     story: "The wine is open. The seating is not settled.",
     attributes: ["person", "book", "drink"],
-    items: {
-      person: PEOPLE,
-      book: [
-        { id: "novel", label: "novel", icon: "book" },
-        { id: "open", label: "open book", icon: "book-open" },
-        { id: "notes", label: "notes", icon: "note-pencil" },
-        { id: "score", label: "score", icon: "music-notes" },
-        { id: "map", label: "field guide", icon: "magnifying-glass" },
-        { id: "diary", label: "diary", icon: "pencil-simple" },
-      ],
-      drink: DRINKS,
-    },
-    question: (given, answer) => `Who brought the ${given.label}?`,
+    items: { person: PEOPLE, book: BOOKS, drink: DRINKS },
+    question: (given) => `Who reads ${readBook(given.label)}?`,
     questionGiven: "book",
     questionAnswer: "person",
   },
@@ -420,21 +457,10 @@ export const THEMES = [
     id: "neighborhood",
     title: "The block",
     blurb: "Houses in a line. Match resident, ride, and animal.",
-    story: "Someone parked beside the horse. That cannot be right.",
+    story: "Someone parked beside the horses. That cannot be right.",
     attributes: ["person", "vehicle", "pet"],
-    items: {
-      person: PEOPLE,
-      vehicle: [
-        { id: "car", label: "car", icon: "car" },
-        { id: "bike", label: "bicycle", icon: "bicycle" },
-        { id: "moto", label: "motorcycle", icon: "motorcycle" },
-        { id: "plane", label: "plane", icon: "airplane" },
-        { id: "boat", label: "sailboat", icon: "sailboat" },
-        { id: "walk", label: "on foot", icon: "person-simple-walk" },
-      ],
-      pet: PETS,
-    },
-    question: (given, answer) => `Who lives with the ${given.label}?`,
+    items: { person: PEOPLE, vehicle: VEHICLES, pet: PETS },
+    question: (given) => `Who keeps ${keepPet(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -444,93 +470,41 @@ export const THEMES = [
     blurb: "A short set in the front rooms. Who plays what, and what do they sip?",
     story: "The last cue is still missing.",
     attributes: ["person", "instrument", "drink"],
-    items: {
-      person: PEOPLE,
-      instrument: [
-        { id: "guitar", label: "guitar", icon: "guitar" },
-        { id: "note", label: "melody", icon: "music-note" },
-        { id: "notes", label: "harmony", icon: "music-notes" },
-        { id: "score", label: "score", icon: "book-open" },
-        { id: "charts", label: "charts", icon: "note-pencil" },
-        { id: "folio", label: "folio", icon: "book" },
-      ],
-      drink: DRINKS,
-    },
-    question: (given, answer) => `Who plays the ${given.label}?`,
+    items: { person: PEOPLE, instrument: INSTRUMENTS, drink: DRINKS },
+    question: (given) => `Who plays the ${given.label}?`,
     questionGiven: "instrument",
     questionAnswer: "person",
   },
   {
     id: "brunch",
     title: "Brunch",
-    blurb: "One table, several plates. Who ordered what?",
+    blurb: "One table, several plates. Who eats what?",
     story: "The check is coming. So is the question.",
     attributes: ["person", "food", "drink"],
-    items: {
-      person: PEOPLE,
-      food: [
-        { id: "pizza", label: "pizza", icon: "pizza" },
-        { id: "burger", label: "burger", icon: "hamburger" },
-        { id: "bowl", label: "bowl", icon: "bowl-food" },
-        { id: "cake", label: "cake", icon: "cake" },
-        { id: "ice", label: "ice cream", icon: "ice-cream" },
-        { id: "carrot", label: "carrot", icon: "carrot" },
-        { id: "pot", label: "stew", icon: "cooking-pot" },
-      ],
-      drink: DRINKS,
-    },
-    question: (given, answer) => `Who ordered the ${given.label}?`,
+    items: { person: PEOPLE, food: FOODS, drink: DRINKS },
+    question: (given) => `Who is the ${given.label} lover?`,
     questionGiven: "food",
     questionAnswer: "person",
   },
   {
     id: "holiday",
     title: "Holiday row",
-    blurb: "Treats and parcels down the lane.",
-    story: "Someone hid the last gift beside the tree.",
-    attributes: ["person", "treat", "gift"],
-    items: {
-      person: PEOPLE,
-      treat: [
-        { id: "cookie", label: "cookie", icon: "cookie" },
-        { id: "cake", label: "cake", icon: "cake" },
-        { id: "ice", label: "ice cream", icon: "ice-cream" },
-        { id: "orange", label: "orange", icon: "orange" },
-        { id: "tea", label: "tea", icon: "tea-bag" },
-        { id: "cocoa", label: "cocoa", icon: "coffee" },
-      ],
-      gift: [
-        { id: "gift", label: "parcel", icon: "gift" },
-        { id: "balloon", label: "balloon", icon: "balloon" },
-        { id: "tree", label: "evergreen", icon: "tree-evergreen" },
-        { id: "crown", label: "crown", icon: "crown" },
-        { id: "medal", label: "medal", icon: "medal" },
-        { id: "book", label: "book", icon: "book" },
-      ],
-    },
-    question: (given, answer) => `Who brought the ${given.label}?`,
-    questionGiven: "treat",
+    blurb: "Painted doors and pets down the lane.",
+    story: "Someone still has not claimed the pink house.",
+    attributes: ["person", "color", "pet"],
+    items: { person: PEOPLE, color: COLORS, pet: PETS },
+    question: (given) => `Who keeps ${keepPet(given.label)}?`,
+    questionGiven: "pet",
     questionAnswer: "person",
   },
   {
     id: "camp",
     title: "Camp street",
-    blurb: "Tents in a line. Match camper, kit, and companion.",
+    blurb: "Tents in a line. Match camper, hobby, and companion.",
     story: "The last lantern is still unclaimed.",
-    attributes: ["person", "loot", "pet"],
-    items: {
-      person: PEOPLE,
-      loot: [
-        { id: "tent", label: "tent", icon: "tent" },
-        { id: "key", label: "key", icon: "key" },
-        { id: "lock", label: "lock", icon: "lock" },
-        { id: "pot", label: "cookpot", icon: "cooking-pot" },
-        { id: "book", label: "guide", icon: "book" },
-        { id: "leaf", label: "leaf", icon: "leaf" },
-      ],
-      pet: PETS,
-    },
-    question: (given, answer) => `Who camped with the ${given.label}?`,
+    attributes: ["person", "hobby", "pet"],
+    items: { person: PEOPLE, hobby: HOBBIES, pet: PETS },
+    question: (given) => `Who keeps ${keepPet(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -545,7 +519,7 @@ export const PRACTICE_THEMES = [
     story: "Five houses, four facts each.",
     attributes: ["person", "color", "pet", "drink"],
     items: { person: PEOPLE, color: COLORS, pet: PETS, drink: DRINKS },
-    question: (given, answer) => `Who owns the ${given.label}?`,
+    question: (given) => `Who keeps ${keepPet(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -556,18 +530,18 @@ export const PRACTICE_THEMES = [
     story: "The clerk still has not parked.",
     attributes: ["person", "job", "vehicle", "pet"],
     items: { person: PEOPLE, job: JOBS, vehicle: VEHICLES, pet: PETS },
-    question: (given, answer) => `Who is the ${given.label}?`,
+    question: (given) => `Who is the ${given.label}?`,
     questionGiven: "job",
     questionAnswer: "person",
   },
   {
     id: "expert-cities",
     title: "Five cities",
-    blurb: "Visitors, drinks, and a treat each.",
-    story: "Tokyo still has not ordered dessert.",
-    attributes: ["person", "city", "drink", "treat"],
-    items: { person: PEOPLE, city: CITIES, drink: DRINKS, treat: TREATS },
-    question: (given, answer) => `Who is from ${given.label}?`,
+    blurb: "Visitors, drinks, and a plate each.",
+    story: "Tokyo still has not ordered dinner.",
+    attributes: ["person", "city", "drink", "food"],
+    items: { person: PEOPLE, city: CITIES, drink: DRINKS, food: FOODS },
+    question: (given) => `Who is from ${given.label}?`,
     questionGiven: "city",
     questionAnswer: "person",
   },
@@ -578,7 +552,7 @@ export const PRACTICE_THEMES = [
     story: "The pink house still needs a hobby.",
     attributes: ["person", "hobby", "color", "drink"],
     items: { person: PEOPLE, hobby: HOBBIES, color: COLORS, drink: DRINKS },
-    question: (given, answer) => `Who likes ${given.label}?`,
+    question: (given) => `Who likes ${given.label}?`,
     questionGiven: "hobby",
     questionAnswer: "person",
   },
@@ -586,10 +560,10 @@ export const PRACTICE_THEMES = [
     id: "expert-table",
     title: "Five plates",
     blurb: "Colors, plates, and drinks on one street.",
-    story: "The pink house still has not ordered.",
+    story: "The pink house still has not eaten.",
     attributes: ["person", "color", "food", "drink"],
     items: { person: PEOPLE, color: COLORS, food: FOODS, drink: DRINKS },
-    question: (given, answer) => `Who ordered the ${given.label}?`,
+    question: (given) => `Who is the ${given.label} lover?`,
     questionGiven: "food",
     questionAnswer: "person",
   },

@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "five-copies",
   "label": "Hard",
-  "source": "daily-2027-11-28",
+  "source": "practice-generated",
   "theme": {
     "id": "book-club",
     "title": "Five copies",
-    "blurb": "Same living room, different copies. Who brought which book?",
-    "story": "Five houses of readers. Who brought which book?"
+    "blurb": "Same living room, different copies. Who reads what?",
+    "story": "Five houses of readers. Who reads what?"
   },
   "houseCount": 5,
   "attributes": [
@@ -28,9 +28,9 @@
   "items": {
     "person": [
       {
-        "id": "ada",
-        "label": "Ada",
-        "icon": "detective"
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
       },
       {
         "id": "fay",
@@ -38,58 +38,58 @@
         "icon": "sunglasses"
       },
       {
-        "id": "jules",
-        "label": "Jules",
-        "icon": "identification-badge"
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
       },
       {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
       },
       {
-        "id": "gus",
-        "label": "Gus",
-        "icon": "briefcase"
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
       }
     ],
     "book": [
       {
-        "id": "novel",
-        "label": "novel",
+        "id": "history",
+        "label": "history",
         "icon": "book"
       },
       {
-        "id": "diary",
-        "label": "diary",
-        "icon": "pencil-simple"
-      },
-      {
-        "id": "map",
-        "label": "field guide",
+        "id": "mystery",
+        "label": "mysteries",
         "icon": "magnifying-glass"
       },
       {
-        "id": "notes",
-        "label": "notes",
-        "icon": "note-pencil"
+        "id": "travel",
+        "label": "travelogues",
+        "icon": "tent"
       },
       {
-        "id": "open",
-        "label": "open book",
+        "id": "comics",
+        "label": "comics",
         "icon": "book-open"
+      },
+      {
+        "id": "novels",
+        "label": "novels",
+        "icon": "book"
       }
     ],
     "drink": [
       {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
         "id": "martini",
         "label": "martini",
         "icon": "martini"
-      },
-      {
-        "id": "orange",
-        "label": "orange juice",
-        "icon": "orange"
       },
       {
         "id": "tea",
@@ -97,14 +97,14 @@
         "icon": "tea-bag"
       },
       {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
         "id": "wine",
         "label": "wine",
         "icon": "wine"
-      },
-      {
-        "id": "coffee",
-        "label": "coffee",
-        "icon": "coffee"
       }
     ]
   },
@@ -114,42 +114,29 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "ada"
+        "item": "fay"
       },
       "right": {
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Ada is with the tea."
+      "text": "Fay drinks tea."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "book",
-        "item": "map"
+        "item": "travel"
       },
       "right": {
         "attr": "drink",
-        "item": "wine"
+        "item": "orange"
       },
-      "text": "field guide is with the wine."
+      "text": "The person who reads travelogues drinks orange juice."
     },
     {
       "id": "c3",
-      "type": "same",
-      "left": {
-        "attr": "person",
-        "item": "eden"
-      },
-      "right": {
-        "attr": "book",
-        "item": "notes"
-      },
-      "text": "Eden is with the notes."
-    },
-    {
-      "id": "c4",
       "type": "same",
       "left": {
         "attr": "person",
@@ -157,107 +144,139 @@
       },
       "right": {
         "attr": "book",
-        "item": "diary"
+        "item": "history"
       },
-      "text": "Jules is with the diary."
+      "text": "Jules reads history."
     },
     {
-      "id": "c5",
-      "type": "next_to",
+      "id": "c4",
+      "type": "same",
       "left": {
         "attr": "person",
-        "item": "gus"
-      },
-      "right": {
-        "attr": "book",
-        "item": "map"
-      },
-      "text": "Gus is next to the field guide."
-    },
-    {
-      "id": "c6",
-      "type": "next_to",
-      "left": {
-        "attr": "book",
-        "item": "open"
+        "item": "cam"
       },
       "right": {
         "attr": "drink",
-        "item": "orange"
+        "item": "wine"
       },
-      "text": "open book is next to the orange juice."
+      "text": "Cam drinks wine."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "book",
+        "item": "mystery"
+      },
+      "text": "Cam reads mysteries."
+    },
+    {
+      "id": "c6",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "novels"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "The person who reads novels drinks beer."
     },
     {
       "id": "c7",
       "type": "next_to",
       "left": {
         "attr": "drink",
-        "item": "coffee"
+        "item": "tea"
       },
       "right": {
         "attr": "person",
-        "item": "eden"
+        "item": "cam"
       },
-      "text": "coffee is next to the Eden."
+      "text": "The tea drinker lives next to Cam."
     },
     {
       "id": "c8",
-      "type": "left_of",
+      "type": "next_to",
       "left": {
         "attr": "drink",
-        "item": "wine"
+        "item": "orange"
       },
       "right": {
         "attr": "person",
-        "item": "eden"
+        "item": "bo"
       },
-      "immediate": true,
-      "text": "wine is immediately left of the Eden."
+      "text": "The orange juice drinker lives next to Bo."
+    },
+    {
+      "id": "c9",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "The tea drinker lives next to Bo."
+    },
+    {
+      "id": "c10",
+      "type": "at",
+      "attr": "book",
+      "item": "travel",
+      "house": 1,
+      "text": "The person who reads travelogues lives in house 2."
     }
   ],
   "question": {
-    "text": "Who brought the novel?",
+    "text": "Who reads travelogues?",
     "givenAttr": "book",
-    "givenItem": "novel",
+    "givenItem": "travel",
     "answerAttr": "person",
-    "answerItem": "gus"
+    "answerItem": "drew"
   },
   "solution": [
     {
-      "person": "ada",
-      "book": "open",
-      "drink": "tea"
-    },
-    {
-      "person": "gus",
-      "book": "novel",
-      "drink": "orange"
-    },
-    {
-      "person": "fay",
-      "book": "map",
-      "drink": "wine"
-    },
-    {
-      "person": "eden",
-      "book": "notes",
+      "person": "jules",
+      "book": "history",
       "drink": "martini"
     },
     {
-      "person": "jules",
-      "book": "diary",
-      "drink": "coffee"
+      "person": "drew",
+      "book": "travel",
+      "drink": "orange"
+    },
+    {
+      "person": "bo",
+      "book": "novels",
+      "drink": "beer"
+    },
+    {
+      "person": "fay",
+      "book": "comics",
+      "drink": "tea"
+    },
+    {
+      "person": "cam",
+      "book": "mystery",
+      "drink": "wine"
     }
   ],
   "difficulty": {
     "label": "hard",
-    "steps": 7,
-    "neededSearch": true,
-    "weekday": 0,
+    "steps": 24,
+    "neededSearch": false,
+    "weekday": 1,
     "solvedByHuman": true,
-    "hardest": "contradiction",
-    "hardestTier": 8,
-    "score": 47,
-    "sourceDate": "2027-11-28"
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 54
   }
 }

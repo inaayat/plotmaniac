@@ -3,7 +3,7 @@
   "practice": true,
   "practiceId": "parked-pets",
   "label": "Medium–hard",
-  "source": "daily-2027-11-25",
+  "source": "practice-generated",
   "theme": {
     "id": "neighborhood",
     "title": "Parked pets",
@@ -28,53 +28,53 @@
   "items": {
     "person": [
       {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
       },
       {
         "id": "bo",
         "label": "Bo",
         "icon": "chef-hat"
-      },
-      {
-        "id": "cam",
-        "label": "Cam",
-        "icon": "student"
       }
     ],
     "vehicle": [
       {
-        "id": "walk",
-        "label": "on foot",
-        "icon": "person-simple-walk"
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
       },
       {
-        "id": "boat",
-        "label": "sailboat",
-        "icon": "sailboat"
+        "id": "van",
+        "label": "van",
+        "icon": "car"
       },
       {
-        "id": "plane",
-        "label": "plane",
-        "icon": "airplane"
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
       }
     ],
     "pet": [
       {
-        "id": "rabbit",
-        "label": "rabbit",
-        "icon": "rabbit"
+        "id": "dog",
+        "label": "dogs",
+        "icon": "dog"
+      },
+      {
+        "id": "bird",
+        "label": "birds",
+        "icon": "bird"
       },
       {
         "id": "cat",
-        "label": "cat",
+        "label": "cats",
         "icon": "cat"
-      },
-      {
-        "id": "horse",
-        "label": "horse",
-        "icon": "horse"
       }
     ]
   },
@@ -84,101 +84,94 @@
       "type": "same",
       "left": {
         "attr": "vehicle",
-        "item": "plane"
+        "item": "van"
       },
       "right": {
         "attr": "pet",
-        "item": "rabbit"
+        "item": "dog"
       },
-      "text": "plane is with the rabbit."
+      "text": "The person who drives a van keeps dogs."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "cam"
+        "item": "jules"
       },
       "right": {
         "attr": "vehicle",
-        "item": "walk"
+        "item": "bike"
       },
-      "text": "Cam is with the on foot."
+      "text": "Jules rides a bicycle."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
-        "attr": "vehicle",
-        "item": "walk"
+        "attr": "person",
+        "item": "bo"
       },
       "right": {
         "attr": "pet",
-        "item": "cat"
+        "item": "bird"
       },
-      "text": "on foot is with the cat."
+      "text": "Bo keeps birds."
     },
     {
       "id": "c4",
       "type": "next_to",
       "left": {
-        "attr": "pet",
-        "item": "rabbit"
-      },
-      "right": {
         "attr": "person",
         "item": "bo"
       },
-      "text": "rabbit is next to the Bo."
+      "right": {
+        "attr": "vehicle",
+        "item": "bike"
+      },
+      "text": "Bo lives next to the one who rides a bicycle."
     },
     {
       "id": "c5",
-      "type": "left_of",
-      "left": {
-        "attr": "pet",
-        "item": "rabbit"
-      },
-      "right": {
-        "attr": "vehicle",
-        "item": "walk"
-      },
-      "immediate": true,
-      "text": "rabbit is immediately left of the on foot."
+      "type": "at",
+      "attr": "vehicle",
+      "item": "bike",
+      "house": 2,
+      "text": "The person who rides a bicycle lives in the last house."
     }
   ],
   "question": {
-    "text": "Who lives with the horse?",
+    "text": "Who keeps cats?",
     "givenAttr": "pet",
-    "givenItem": "horse",
+    "givenItem": "cat",
     "answerAttr": "person",
-    "answerItem": "bo"
+    "answerItem": "jules"
   },
   "solution": [
     {
+      "person": "io",
+      "vehicle": "van",
+      "pet": "dog"
+    },
+    {
       "person": "bo",
-      "vehicle": "boat",
-      "pet": "horse"
+      "vehicle": "moto",
+      "pet": "bird"
     },
     {
-      "person": "eden",
-      "vehicle": "plane",
-      "pet": "rabbit"
-    },
-    {
-      "person": "cam",
-      "vehicle": "walk",
+      "person": "jules",
+      "vehicle": "bike",
       "pet": "cat"
     }
   ],
   "difficulty": {
     "label": "medium-hard",
-    "steps": 6,
-    "neededSearch": true,
-    "weekday": 4,
+    "steps": 11,
+    "neededSearch": false,
+    "weekday": 5,
     "solvedByHuman": true,
-    "hardest": "contradiction",
-    "hardestTier": 8,
-    "score": 46,
-    "sourceDate": "2027-11-25"
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 41
   }
 }

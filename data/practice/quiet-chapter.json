@@ -3,11 +3,11 @@
   "practice": true,
   "practiceId": "quiet-chapter",
   "label": "Easy",
-  "source": "daily-2027-11-01",
+  "source": "practice-generated",
   "theme": {
     "id": "book-club",
     "title": "Quiet chapter",
-    "blurb": "Same living room, different copies. Who brought which book?",
+    "blurb": "Same living room, different copies. Who reads what?",
     "story": "Three readers. Match who, book, and drink."
   },
   "houseCount": 3,
@@ -28,53 +28,53 @@
   "items": {
     "person": [
       {
-        "id": "cam",
-        "label": "Cam",
-        "icon": "student"
-      },
-      {
         "id": "drew",
         "label": "Drew",
         "icon": "paint-brush"
       },
       {
-        "id": "io",
-        "label": "Io",
-        "icon": "user-focus"
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
       }
     ],
     "book": [
       {
-        "id": "notes",
-        "label": "notes",
+        "id": "comics",
+        "label": "comics",
+        "icon": "book-open"
+      },
+      {
+        "id": "poetry",
+        "label": "poetry",
         "icon": "note-pencil"
       },
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
-      },
-      {
-        "id": "map",
-        "label": "field guide",
+        "id": "mystery",
+        "label": "mysteries",
         "icon": "magnifying-glass"
       }
     ],
     "drink": [
       {
-        "id": "beer",
-        "label": "beer",
-        "icon": "beer-stein"
-      },
-      {
-        "id": "coffee",
-        "label": "coffee",
-        "icon": "coffee"
-      },
-      {
         "id": "orange",
         "label": "orange juice",
         "icon": "orange"
+      },
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
       }
     ]
   },
@@ -84,90 +84,89 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "cam"
+        "item": "drew"
       },
       "right": {
-        "attr": "drink",
-        "item": "beer"
+        "attr": "book",
+        "item": "comics"
       },
-      "text": "Cam is with the beer."
+      "text": "Drew reads comics."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "book",
-        "item": "novel"
+        "item": "poetry"
       },
       "right": {
         "attr": "drink",
-        "item": "beer"
+        "item": "brandy"
       },
-      "text": "novel is with the beer."
+      "text": "The person who reads poetry drinks brandy."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "drew"
+        "item": "hana"
       },
       "right": {
-        "attr": "book",
-        "item": "map"
+        "attr": "drink",
+        "item": "brandy"
       },
-      "text": "Drew is with the field guide."
+      "text": "Hana drinks brandy."
     },
     {
       "id": "c4",
       "type": "at",
-      "attr": "drink",
-      "item": "orange",
-      "house": 1,
-      "text": "orange juice is in house 2."
+      "attr": "person",
+      "item": "cam",
+      "house": 0,
+      "text": "Cam lives in the first house."
     },
     {
       "id": "c5",
       "type": "at",
-      "attr": "person",
-      "item": "drew",
-      "house": 0,
-      "text": "Drew is in house 1."
+      "attr": "drink",
+      "item": "orange",
+      "house": 2,
+      "text": "The orange juice drinker lives in the last house."
     }
   ],
   "question": {
-    "text": "Who brought the novel?",
+    "text": "Who reads comics?",
     "givenAttr": "book",
-    "givenItem": "novel",
+    "givenItem": "comics",
     "answerAttr": "person",
-    "answerItem": "cam"
+    "answerItem": "drew"
   },
   "solution": [
     {
-      "person": "drew",
-      "book": "map",
-      "drink": "coffee"
-    },
-    {
-      "person": "io",
-      "book": "notes",
-      "drink": "orange"
-    },
-    {
       "person": "cam",
-      "book": "novel",
-      "drink": "beer"
+      "book": "mystery",
+      "drink": "martini"
+    },
+    {
+      "person": "hana",
+      "book": "poetry",
+      "drink": "brandy"
+    },
+    {
+      "person": "drew",
+      "book": "comics",
+      "drink": "orange"
     }
   ],
   "difficulty": {
     "label": "easy",
-    "steps": 7,
+    "steps": 10,
     "neededSearch": false,
-    "weekday": 1,
+    "weekday": 6,
     "solvedByHuman": true,
     "hardest": "same_house",
     "hardestTier": 5,
-    "score": 32,
-    "sourceDate": "2027-11-01"
+    "score": 35
   }
 }

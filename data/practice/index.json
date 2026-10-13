@@ -26,13 +26,13 @@
       "difficulty": "easy",
       "hardest": "same_house",
       "hardestTier": 5,
-      "steps": 7,
+      "steps": 10,
       "categories": [
         "person",
         "book",
         "drink"
       ],
-      "sourceDate": "2027-11-01"
+      "sourceDate": null
     },
     {
       "id": "late-watering",
@@ -49,7 +49,7 @@
         "plant",
         "drink"
       ],
-      "sourceDate": "2027-11-08"
+      "sourceDate": null
     },
     {
       "id": "short-stack",
@@ -60,24 +60,24 @@
       "difficulty": "easy",
       "hardest": "same_house",
       "hardestTier": 5,
-      "steps": 8,
+      "steps": 10,
       "categories": [
         "person",
         "food",
         "drink"
       ],
-      "sourceDate": "2027-11-29"
+      "sourceDate": null
     },
     {
       "id": "easy-medium",
       "label": "Easy–medium",
       "title": "Garden row",
       "houseCount": 3,
-      "clueCount": 5,
+      "clueCount": 6,
       "difficulty": "easy-medium",
       "hardest": "next_to_edge",
       "hardestTier": 6,
-      "steps": 11,
+      "steps": 12,
       "categories": [
         "person",
         "plant",
@@ -90,11 +90,11 @@
       "label": "Medium",
       "title": "Music night",
       "houseCount": 3,
-      "clueCount": 5,
+      "clueCount": 6,
       "difficulty": "medium",
-      "hardest": "contradiction",
-      "hardestTier": 8,
-      "steps": 5,
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 13,
       "categories": [
         "person",
         "instrument",
@@ -107,17 +107,17 @@
       "label": "Medium",
       "title": "Who's pouring",
       "houseCount": 3,
-      "clueCount": 5,
+      "clueCount": 6,
       "difficulty": "medium",
       "hardest": "next_to_edge",
       "hardestTier": 6,
-      "steps": 13,
+      "steps": 11,
       "categories": [
         "person",
         "pet",
         "drink"
       ],
-      "sourceDate": "2027-11-03"
+      "sourceDate": null
     },
     {
       "id": "ribbon-aisle",
@@ -128,41 +128,41 @@
       "difficulty": "medium",
       "hardest": "next_to_edge",
       "hardestTier": 6,
-      "steps": 12,
+      "steps": 10,
       "categories": [
         "person",
         "pet",
-        "prize"
+        "color"
       ],
-      "sourceDate": "2027-11-02"
+      "sourceDate": null
     },
     {
       "id": "walk-away",
       "label": "Medium",
       "title": "Walk away",
       "houseCount": 3,
-      "clueCount": 6,
+      "clueCount": 5,
       "difficulty": "medium",
-      "hardest": "contradiction",
-      "hardestTier": 8,
-      "steps": 2,
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 10,
       "categories": [
         "person",
         "vehicle",
         "pet"
       ],
-      "sourceDate": "2027-11-13"
+      "sourceDate": null
     },
     {
       "id": "medium-hard",
       "label": "Medium–hard",
       "title": "Brunch table",
       "houseCount": 3,
-      "clueCount": 6,
+      "clueCount": 5,
       "difficulty": "medium-hard",
-      "hardest": "contradiction",
-      "hardestTier": 8,
-      "steps": 5,
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 10,
       "categories": [
         "person",
         "food",
@@ -177,32 +177,32 @@
       "houseCount": 3,
       "clueCount": 5,
       "difficulty": "medium-hard",
-      "hardest": "contradiction",
-      "hardestTier": 8,
-      "steps": 6,
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 11,
       "categories": [
         "person",
         "vehicle",
         "pet"
       ],
-      "sourceDate": "2027-11-25"
+      "sourceDate": null
     },
     {
       "id": "last-lantern",
       "label": "Medium–hard",
       "title": "Last lantern",
       "houseCount": 3,
-      "clueCount": 6,
+      "clueCount": 5,
       "difficulty": "medium-hard",
-      "hardest": "contradiction",
-      "hardestTier": 8,
-      "steps": 2,
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 9,
       "categories": [
         "person",
         "plant",
         "drink"
       ],
-      "sourceDate": "2027-11-12"
+      "sourceDate": null
     },
     {
       "id": "night-set",
@@ -213,13 +213,13 @@
       "difficulty": "medium-hard",
       "hardest": "contradiction",
       "hardestTier": 8,
-      "steps": 3,
+      "steps": 7,
       "categories": [
         "person",
         "instrument",
         "drink"
       ],
-      "sourceDate": "2027-11-06"
+      "sourceDate": null
     },
     {
       "id": "hard",
@@ -228,9 +228,9 @@
       "houseCount": 4,
       "clueCount": 8,
       "difficulty": "hard",
-      "hardest": "contradiction",
-      "hardestTier": 8,
-      "steps": 7,
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 21,
       "categories": [
         "person",
         "vehicle",
@@ -243,51 +243,51 @@
       "label": "Hard",
       "title": "Five copies",
       "houseCount": 5,
-      "clueCount": 8,
+      "clueCount": 10,
       "difficulty": "hard",
-      "hardest": "contradiction",
-      "hardestTier": 8,
-      "steps": 7,
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 24,
       "categories": [
         "person",
         "book",
         "drink"
       ],
-      "sourceDate": "2027-11-28"
+      "sourceDate": null
     },
     {
       "id": "parcel-row",
       "label": "Hard",
       "title": "Parcel row",
       "houseCount": 4,
-      "clueCount": 7,
+      "clueCount": 8,
       "difficulty": "hard",
       "hardest": "contradiction",
       "hardestTier": 8,
-      "steps": 5,
+      "steps": 13,
       "categories": [
         "person",
-        "treat",
-        "gift"
+        "color",
+        "pet"
       ],
-      "sourceDate": "2027-11-21"
+      "sourceDate": null
     },
     {
       "id": "four-plates",
       "label": "Hard",
       "title": "Four plates",
       "houseCount": 4,
-      "clueCount": 7,
+      "clueCount": 8,
       "difficulty": "hard",
-      "hardest": "contradiction",
-      "hardestTier": 8,
-      "steps": 3,
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 20,
       "categories": [
         "person",
         "food",
         "drink"
       ],
-      "sourceDate": "2027-11-14"
+      "sourceDate": null
     },
     {
       "id": "long-street",
@@ -298,7 +298,7 @@
       "difficulty": "expert",
       "hardest": "contradiction",
       "hardestTier": 8,
-      "steps": 18,
+      "steps": 10,
       "categories": [
         "person",
         "color",
@@ -316,7 +316,7 @@
       "difficulty": "expert",
       "hardest": "contradiction",
       "hardestTier": 8,
-      "steps": 17,
+      "steps": 20,
       "categories": [
         "person",
         "job",
@@ -339,7 +339,7 @@
         "person",
         "city",
         "drink",
-        "treat"
+        "food"
       ],
       "sourceDate": null
     },
@@ -370,7 +370,7 @@
       "difficulty": "expert",
       "hardest": "contradiction",
       "hardestTier": 8,
-      "steps": 11,
+      "steps": 27,
       "categories": [
         "person",
         "color",

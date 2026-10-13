@@ -3,7 +3,7 @@
   "practice": true,
   "practiceId": "night-set",
   "label": "Medium–hard",
-  "source": "daily-2027-11-06",
+  "source": "practice-generated",
   "theme": {
     "id": "music-night",
     "title": "Night set",
@@ -28,14 +28,14 @@
   "items": {
     "person": [
       {
-        "id": "ada",
-        "label": "Ada",
-        "icon": "detective"
-      },
-      {
         "id": "gus",
         "label": "Gus",
         "icon": "briefcase"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
       },
       {
         "id": "hana",
@@ -45,36 +45,36 @@
     ],
     "instrument": [
       {
-        "id": "folio",
-        "label": "folio",
-        "icon": "book"
+        "id": "piano",
+        "label": "piano",
+        "icon": "music-note"
       },
       {
-        "id": "charts",
-        "label": "charts",
-        "icon": "note-pencil"
+        "id": "cello",
+        "label": "cello",
+        "icon": "music-notes"
       },
       {
-        "id": "score",
-        "label": "score",
-        "icon": "book-open"
+        "id": "drums",
+        "label": "drums",
+        "icon": "music-notes"
       }
     ],
     "drink": [
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
       {
         "id": "orange",
         "label": "orange juice",
         "icon": "orange"
       },
       {
-        "id": "martini",
-        "label": "martini",
-        "icon": "martini"
-      },
-      {
-        "id": "brandy",
-        "label": "brandy",
-        "icon": "brandy"
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
       }
     ]
   },
@@ -84,101 +84,94 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "ada"
+        "item": "hana"
       },
       "right": {
         "attr": "instrument",
-        "item": "score"
+        "item": "drums"
       },
-      "text": "Ada is with the score."
+      "text": "Hana plays the drums."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "instrument",
-        "item": "charts"
+        "item": "cello"
       },
       "right": {
         "attr": "drink",
-        "item": "orange"
+        "item": "beer"
       },
-      "text": "charts is with the orange juice."
+      "text": "The cellist drinks beer."
     },
     {
       "id": "c3",
-      "type": "next_to",
+      "type": "same",
       "left": {
         "attr": "person",
-        "item": "ada"
+        "item": "bo"
       },
       "right": {
-        "attr": "drink",
-        "item": "martini"
+        "attr": "instrument",
+        "item": "cello"
       },
-      "text": "Ada is next to the martini."
+      "text": "Bo plays the cello."
     },
     {
       "id": "c4",
       "type": "next_to",
       "left": {
-        "attr": "person",
-        "item": "gus"
+        "attr": "instrument",
+        "item": "piano"
       },
       "right": {
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Gus is next to the orange juice."
+      "text": "The pianist lives next to the one who drinks orange juice."
     },
     {
       "id": "c5",
-      "type": "left_of",
-      "left": {
-        "attr": "drink",
-        "item": "brandy"
-      },
-      "right": {
-        "attr": "person",
-        "item": "gus"
-      },
-      "immediate": false,
-      "text": "brandy is somewhere left of the Gus."
+      "type": "at",
+      "attr": "instrument",
+      "item": "drums",
+      "house": 0,
+      "text": "The drummer lives in the first house."
     }
   ],
   "question": {
-    "text": "Who plays the charts?",
+    "text": "Who plays the cello?",
     "givenAttr": "instrument",
-    "givenItem": "charts",
+    "givenItem": "cello",
     "answerAttr": "person",
-    "answerItem": "hana"
+    "answerItem": "bo"
   },
   "solution": [
     {
-      "person": "ada",
-      "instrument": "score",
-      "drink": "brandy"
+      "person": "hana",
+      "instrument": "drums",
+      "drink": "orange"
     },
     {
       "person": "gus",
-      "instrument": "folio",
-      "drink": "martini"
+      "instrument": "piano",
+      "drink": "coffee"
     },
     {
-      "person": "hana",
-      "instrument": "charts",
-      "drink": "orange"
+      "person": "bo",
+      "instrument": "cello",
+      "drink": "beer"
     }
   ],
   "difficulty": {
     "label": "medium-hard",
-    "steps": 3,
+    "steps": 7,
     "neededSearch": true,
-    "weekday": 6,
+    "weekday": 0,
     "solvedByHuman": true,
     "hardest": "contradiction",
     "hardestTier": 8,
-    "score": 43,
-    "sourceDate": "2027-11-06"
+    "score": 47
   }
 }

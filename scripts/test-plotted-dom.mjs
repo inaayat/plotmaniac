@@ -389,24 +389,26 @@ const easy = readJson("data/practice/easy.json");
 await loadPuzzle({ puzzle: easy });
 assert.equal(document.getElementById("win")?.hidden, true);
 assert.match(document.getElementById("meta-date")?.textContent || "", /Practice · Easy/);
-assert.equal(missingVisibleOptions(document, easy).length, 0, "easy practice must show butterfly, beer, and every other option");
+assert.equal(missingVisibleOptions(document, easy).length, 0, "easy practice must show every option in the word bank");
+const samplePet = easy.items.pet[0];
+const sampleDrink = easy.items.drink[0];
 assert.equal(
-  document.querySelector('.word-bank-word[data-item="butterfly"]')?.textContent,
-  "butterfly",
+  document.querySelector(`.word-bank-word[data-item="${samplePet.id}"]`)?.textContent,
+  samplePet.label,
 );
-assert.equal(document.querySelector('.word-bank-word[data-item="beer"]')?.textContent, "beer");
+assert.equal(document.querySelector(`.word-bank-word[data-item="${sampleDrink.id}"]`)?.textContent, sampleDrink.label);
 const petSlot = document.querySelector('input[data-attr="pet"]');
-petSlot.value = "butterfly";
+petSlot.value = samplePet.label;
 petSlot.dispatchEvent(new window.Event("input", { bubbles: true }));
 assert.equal(
-  document.querySelector('.word-bank-word[data-item="butterfly"]')?.classList.contains("is-placed"),
+  document.querySelector(`.word-bank-word[data-item="${samplePet.id}"]`)?.classList.contains("is-placed"),
   true,
   "placed words are marked in the bank",
 );
 petSlot.value = "";
 petSlot.dispatchEvent(new window.Event("input", { bubbles: true }));
 assert.equal(
-  document.querySelector('.word-bank-word[data-item="butterfly"]')?.classList.contains("is-placed"),
+  document.querySelector(`.word-bank-word[data-item="${samplePet.id}"]`)?.classList.contains("is-placed"),
   false,
 );
 const practiceSelect = document.getElementById("practice-select");

@@ -3,93 +3,185 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PRACTICE_PUZZLES, practiceGroupLabel } from "../plotted-config.js";
-import { generatePuzzle, validateEinsteinStyle } from "../plotted-engine.js";
+import { GENERIC_HAS_ATTRS, generatePuzzle, validateEinsteinStyle } from "../plotted-engine.js";
+import { themeById } from "../plotted-themes.js";
 import { humanDifficulty, solvePuzzleByHuman } from "../plotted-human-solver.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = path.join(root, "data", "practice");
-const plottedDir = path.join(root, "data", "plotted");
 fs.mkdirSync(outDir, { recursive: true });
 
-const KEEP_IDS = new Set(["easy", "easy-medium", "medium", "medium-hard", "hard"]);
+const GROUP_SPECS = {
+  easy: {
+    houseCount: 3,
+    types: ["at", "same"],
+    minClues: 5,
+    maxClues: 5,
+    minSteps: 1,
+    maxSteps: 10,
+    maxAtClues: 3,
+    label: "easy",
+  },
+  "easy-medium": {
+    houseCount: 3,
+    types: ["at", "same", "next_to"],
+    minClues: 5,
+    maxClues: 7,
+    minSteps: 2,
+    maxSteps: 12,
+    label: "easy-medium",
+  },
+  medium: {
+    houseCount: 3,
+    types: ["at", "same", "next_to", "left_of"],
+    minClues: 5,
+    maxClues: 8,
+    minSteps: 3,
+    maxSteps: 14,
+    label: "medium",
+  },
+  "medium-hard": {
+    houseCount: 3,
+    types: ["at", "same", "next_to", "left_of", "not_at", "either_house"],
+    minClues: 5,
+    maxClues: 8,
+    minSteps: 3,
+    maxSteps: 18,
+    label: "medium-hard",
+  },
+  hard: {
+    houseCount: 4,
+    types: ["at", "same", "next_to", "left_of", "not_next_to", "either_house", "not_at"],
+    minClues: 6,
+    maxClues: 8,
+    minSteps: 4,
+    maxSteps: 28,
+    maxAtClues: 2,
+    label: "hard",
+  },
+};
 
-/** Late-2027 dailies copied into practice so they do not collide with upcoming days. */
+const KEEP = [
+  {
+    id: "easy",
+    themeId: "dinner-party",
+    seedDate: "2098-01-01",
+    story: "Three neighbors. Match who, pet, and drink.",
+  },
+  {
+    id: "easy-medium",
+    themeId: "garden",
+    seedDate: "2098-01-02",
+    story: "Gardeners, plants, and a drink in the dirt.",
+  },
+  {
+    id: "medium",
+    themeId: "music-night",
+    seedDate: "2098-01-03",
+    story: "A short set in the front rooms.",
+  },
+  {
+    id: "medium-hard",
+    themeId: "brunch",
+    seedDate: "2098-01-04",
+    story: "A tiny brunch. Who eats what?",
+  },
+  {
+    id: "hard",
+    themeId: "neighborhood",
+    seedDate: "2098-01-05",
+    story: "Rides and animals on a wider block.",
+    spec: { houseCount: 4 },
+  },
+];
+
 const COPIES = [
   {
     id: "quiet-chapter",
-    date: "2027-11-01",
-    title: "Quiet chapter",
+    themeId: "book-club",
+    seedDate: "2098-02-01",
     story: "Three readers. Match who, book, and drink.",
   },
   {
     id: "late-watering",
-    date: "2027-11-08",
-    title: "Late watering",
+    themeId: "garden",
+    seedDate: "2098-02-02",
     story: "Gardeners, plants, and a drink in the dirt.",
   },
   {
     id: "short-stack",
-    date: "2027-11-29",
-    title: "Short stack",
-    story: "A tiny brunch. Who ordered what?",
+    themeId: "brunch",
+    seedDate: "2098-02-03",
+    story: "A tiny brunch. Who eats what?",
   },
   {
     id: "whos-pouring",
-    date: "2027-11-03",
-    title: "Who's pouring",
+    themeId: "dinner-party",
+    seedDate: "2098-02-04",
     story: "Three neighbors. Match who, pet, and drink.",
   },
   {
     id: "ribbon-aisle",
-    date: "2027-11-02",
-    title: "Ribbon aisle",
-    story: "A short aisle of pets and prizes.",
+    themeId: "pet-show",
+    seedDate: "2098-02-05",
+    story: "Painted doors and a short aisle of pets.",
   },
   {
     id: "walk-away",
-    date: "2027-11-13",
-    title: "Walk away",
-    story: "Rides and pets down a short block. Someone still walked.",
+    themeId: "neighborhood",
+    seedDate: "2098-02-06",
+    story: "Rides and pets down a short block.",
   },
   {
     id: "parked-pets",
-    date: "2027-11-25",
-    title: "Parked pets",
+    themeId: "neighborhood",
+    seedDate: "2098-02-07",
     story: "Rides and animals on a short block.",
   },
   {
     id: "last-lantern",
-    date: "2027-11-12",
-    title: "Last lantern",
-    story: "Late light in the plots. Who tends which plant?",
+    themeId: "garden",
+    seedDate: "2098-02-08",
+    story: "Late light in the plots. Who grows which plant?",
   },
   {
     id: "night-set",
-    date: "2027-11-06",
-    title: "Night set",
+    themeId: "music-night",
+    seedDate: "2098-02-09",
     story: "A short set in the front rooms.",
   },
   {
     id: "five-copies",
-    date: "2027-11-28",
-    title: "Five copies",
-    story: "Five houses of readers. Who brought which book?",
+    themeId: "book-club",
+    seedDate: "2098-02-10",
+    story: "Five houses of readers. Who reads what?",
+    spec: {
+      houseCount: 5,
+      types: ["at", "same", "next_to", "left_of", "not_next_to", "either_house", "not_at"],
+      minClues: 6,
+      maxClues: 10,
+      minSteps: 4,
+      maxSteps: 40,
+      maxAtClues: 3,
+      label: "hard",
+    },
   },
   {
     id: "parcel-row",
-    date: "2027-11-21",
-    title: "Parcel row",
-    story: "Treats and parcels down a wider lane.",
+    themeId: "holiday",
+    seedDate: "2098-02-11",
+    story: "Painted doors and pets down a wider lane.",
+    spec: { houseCount: 4 },
   },
   {
     id: "four-plates",
-    date: "2027-11-14",
-    title: "Four plates",
-    story: "Four houses. Who ordered what?",
+    themeId: "brunch",
+    seedDate: "2098-02-12",
+    story: "Four houses. Who eats what?",
+    spec: { houseCount: 4 },
   },
 ];
 
-/** Five-house Expert puzzles generated with contradiction-tier grading. */
 const EXPERT_SPECS = [
   {
     id: "long-street",
@@ -107,7 +199,7 @@ const EXPERT_SPECS = [
     id: "five-cities",
     themeId: "expert-cities",
     seedDate: "2099-01-03",
-    story: "Visitors, drinks, and a treat each.",
+    story: "Visitors, drinks, and a plate each.",
   },
   {
     id: "hobby-houses",
@@ -119,7 +211,7 @@ const EXPERT_SPECS = [
     id: "five-plates",
     themeId: "expert-table",
     seedDate: "2099-01-05",
-    story: "Five houses. Who ordered what, and what color is the door?",
+    story: "Five houses. Who eats what, and what color is the door?",
   },
 ];
 
@@ -137,37 +229,7 @@ const EXPERT_SPEC = {
   label: "expert",
 };
 
-const EXPERT_SALTS = [0, 1, 2, 5, 11];
-
-function packFromDaily(entry, daily) {
-  const meta = PRACTICE_PUZZLES.find((puzzle) => puzzle.id === entry.id);
-  if (!meta) throw new Error(`Unknown practice id ${entry.id}`);
-  const human = humanDifficulty(solvePuzzleByHuman(daily));
-  return {
-    id: entry.id,
-    practice: true,
-    practiceId: entry.id,
-    label: practiceGroupLabel(meta.group),
-    source: `daily-${entry.date}`,
-    theme: {
-      ...daily.theme,
-      title: entry.title,
-      story: entry.story,
-    },
-    houseCount: daily.houseCount,
-    attributes: daily.attributes,
-    items: daily.items,
-    clues: daily.clues,
-    question: daily.question,
-    solution: daily.solution,
-    difficulty: {
-      ...daily.difficulty,
-      ...human,
-      label: meta.group,
-      sourceDate: entry.date,
-    },
-  };
-}
+const SALTS = [0, 1, 2, 5, 11, 17, 23, 31, 43, 59];
 
 function requireEinsteinStyle(packed) {
   const style = validateEinsteinStyle(packed);
@@ -176,17 +238,35 @@ function requireEinsteinStyle(packed) {
     throw new Error(`${packed.practiceId || packed.id} failed Einstein-style copy: ${detail}`);
   }
   const cats = (packed.attributes || []).map((attr) => attr.id);
-  if (cats.includes("loot") || cats.includes("getaway")) {
-    throw new Error(`${packed.practiceId || packed.id} must not use loot/getaway categories`);
+  const vague = cats.find((id) => GENERIC_HAS_ATTRS.has(id));
+  if (vague) {
+    throw new Error(`${packed.practiceId || packed.id} must not use ${vague} category`);
   }
   return packed;
 }
 
-function keepExistingExpert(entry) {
-  const dest = path.join(outDir, `${entry.id}.json`);
-  if (!fs.existsSync(dest)) return null;
-  const packed = JSON.parse(fs.readFileSync(dest, "utf8"));
-  return isValidExpert(packed) ? packed : null;
+function catalogMatchesTheme(packed) {
+  const theme = themeById(packed.theme?.id);
+  if (!theme) return false;
+  for (const attr of packed.attributes || []) {
+    const pool = theme.items[attr.id];
+    if (!pool) return false;
+    for (const item of packed.items?.[attr.id] || []) {
+      const current = pool.find((entry) => entry.id === item.id);
+      if (!current || current.label !== item.label) return false;
+    }
+  }
+  return true;
+}
+
+function isAcceptable(packed, extra = () => true) {
+  if (!packed) return false;
+  try {
+    requireEinsteinStyle(packed);
+  } catch {
+    return false;
+  }
+  return catalogMatchesTheme(packed) && extra(packed);
 }
 
 function catalogRow(packed) {
@@ -228,7 +308,7 @@ function isValidExpert(puzzle) {
   return hasHarder;
 }
 
-function packExpert(entry, puzzle) {
+function packPuzzle(entry, puzzle, source) {
   const meta = PRACTICE_PUZZLES.find((item) => item.id === entry.id);
   if (!meta) throw new Error(`Unknown practice id ${entry.id}`);
   const human = humanDifficulty(solvePuzzleByHuman(puzzle));
@@ -237,7 +317,7 @@ function packExpert(entry, puzzle) {
     practice: true,
     practiceId: entry.id,
     label: practiceGroupLabel(meta.group),
-    source: "expert-generated",
+    source,
     theme: {
       ...puzzle.theme,
       title: meta.title,
@@ -257,65 +337,91 @@ function packExpert(entry, puzzle) {
   };
 }
 
-function generateExpert(entry) {
+function readExisting(id) {
+  const dest = path.join(outDir, `${id}.json`);
+  if (!fs.existsSync(dest)) return null;
+  return JSON.parse(fs.readFileSync(dest, "utf8"));
+}
+
+function generateWithSpec(entry, spec, source, accept, { seekBest = false } = {}) {
   let best = null;
   let bestScore = -1;
   let lastError = null;
-  for (const salt of EXPERT_SALTS) {
+  for (const salt of SALTS) {
     try {
       const puzzle = generatePuzzle(entry.seedDate, {
-        spec: EXPERT_SPEC,
+        spec,
         themeId: entry.themeId,
         salt,
-        maxTries: 100,
+        maxTries: spec.houseCount >= 5 ? 300 : 160,
       });
-      if (!isValidExpert(puzzle)) continue;
-      const score = harderTypeScore(puzzle);
+      const packed = packPuzzle(entry, puzzle, source);
+      if (!isAcceptable(packed, accept)) continue;
+      const score = harderTypeScore(packed);
       if (score > bestScore) {
-        best = puzzle;
+        best = packed;
         bestScore = score;
       }
-      if (score >= 16) break;
+      if (!seekBest || score >= 16) break;
     } catch (error) {
       lastError = error;
     }
   }
   if (!best) {
-    throw lastError || new Error(`Could not generate expert puzzle ${entry.id}`);
+    throw lastError || new Error(`Could not generate practice puzzle ${entry.id}`);
   }
-  return packExpert(entry, best);
+  return best;
+}
+
+function generateStandard(entry) {
+  const meta = PRACTICE_PUZZLES.find((item) => item.id === entry.id);
+  const spec = { ...GROUP_SPECS[meta.group], ...(entry.spec || {}) };
+  return generateWithSpec(entry, spec, "practice-generated", () => true);
+}
+
+function generateExpert(entry) {
+  return generateWithSpec(entry, EXPERT_SPEC, "expert-generated", isValidExpert, { seekBest: true });
+}
+
+function writePacked(packed) {
+  fs.writeFileSync(path.join(outDir, `${packed.practiceId}.json`), `${JSON.stringify(packed, null, 2)}\n`);
 }
 
 const byId = new Map();
-for (const id of KEEP_IDS) {
-  const packed = requireEinsteinStyle(JSON.parse(fs.readFileSync(path.join(outDir, `${id}.json`), "utf8")));
-  byId.set(id, packed);
+
+function adopt(entry, packed, note) {
+  const accepted = requireEinsteinStyle(packed);
+  byId.set(entry.id, accepted);
   process.stdout.write(
-    `${id} keep ${packed.theme.id} ${packed.houseCount}h ${packed.clues.length}c steps=${packed.difficulty.steps} ${packed.difficulty.hardest}\n`,
+    `${entry.id} ${note} ${accepted.theme.id} ${accepted.houseCount}h ${accepted.clues.length}c steps=${accepted.difficulty.steps} ${accepted.difficulty.hardest}\n`,
   );
+  return accepted;
+}
+
+for (const entry of KEEP) {
+  const existing = readExisting(entry.id);
+  const packed = isAcceptable(existing) ? existing : generateStandard(entry);
+  if (packed !== existing) writePacked(packed);
+  adopt(entry, packed, packed === existing ? "keep" : "gen");
 }
 
 for (const entry of COPIES) {
-  const daily = JSON.parse(fs.readFileSync(path.join(plottedDir, `${entry.date}.json`), "utf8"));
-  const packed = requireEinsteinStyle(packFromDaily(entry, daily));
-  fs.writeFileSync(path.join(outDir, `${entry.id}.json`), `${JSON.stringify(packed, null, 2)}\n`);
-  byId.set(entry.id, packed);
-  process.stdout.write(
-    `${entry.id} ${entry.date} ${packed.theme.id} ${packed.houseCount}h ${packed.clues.length}c steps=${packed.difficulty.steps} ${packed.difficulty.hardest} tier=${packed.difficulty.hardestTier}\n`,
-  );
+  const existing = readExisting(entry.id);
+  const packed = isAcceptable(existing) ? existing : generateStandard(entry);
+  if (packed !== existing) writePacked(packed);
+  adopt(entry, packed, packed === existing ? "keep" : "gen");
 }
 
 for (const entry of EXPERT_SPECS) {
-  const existing = keepExistingExpert(entry);
-  const packed = requireEinsteinStyle(existing || generateExpert(entry));
-  if (!existing) {
-    fs.writeFileSync(path.join(outDir, `${entry.id}.json`), `${JSON.stringify(packed, null, 2)}\n`);
-  }
-  byId.set(entry.id, packed);
+  const existing = readExisting(entry.id);
+  const packed = isAcceptable(existing, isValidExpert) ? existing : generateExpert(entry);
+  if (packed !== existing) writePacked(packed);
   const types = [...new Set(packed.clues.map((clue) => clue.type))].join(",");
   const atCount = packed.clues.filter((clue) => clue.type === "at").length;
+  requireEinsteinStyle(packed);
+  byId.set(entry.id, packed);
   process.stdout.write(
-    `${entry.id} ${packed.theme.id} ${packed.houseCount}h ${packed.attributes.length}a ${packed.clues.length}c at=${atCount} steps=${packed.difficulty.steps} ${packed.difficulty.hardest} tier=${packed.difficulty.hardestTier} types=${types}\n`,
+    `${entry.id} ${packed === existing ? "keep" : "gen"} ${packed.theme.id} ${packed.houseCount}h ${packed.attributes.length}a ${packed.clues.length}c at=${atCount} steps=${packed.difficulty.steps} ${packed.difficulty.hardest} tier=${packed.difficulty.hardestTier} types=${types}\n`,
   );
 }
 

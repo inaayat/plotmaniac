@@ -3,7 +3,7 @@
   "practice": true,
   "practiceId": "medium",
   "label": "Medium",
-  "source": "original-generated",
+  "source": "practice-generated",
   "theme": {
     "id": "music-night",
     "title": "Music night",
@@ -28,9 +28,9 @@
   "items": {
     "person": [
       {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
       },
       {
         "id": "io",
@@ -38,43 +38,43 @@
         "icon": "user-focus"
       },
       {
-        "id": "drew",
-        "label": "Drew",
-        "icon": "paint-brush"
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
       }
     ],
     "instrument": [
       {
-        "id": "notes",
-        "label": "harmony",
+        "id": "drums",
+        "label": "drums",
         "icon": "music-notes"
       },
       {
-        "id": "charts",
-        "label": "charts",
-        "icon": "note-pencil"
+        "id": "piano",
+        "label": "piano",
+        "icon": "music-note"
       },
       {
-        "id": "guitar",
-        "label": "guitar",
-        "icon": "guitar"
+        "id": "flute",
+        "label": "flute",
+        "icon": "music-note"
       }
     ],
     "drink": [
       {
-        "id": "orange",
-        "label": "orange juice",
-        "icon": "orange"
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
       },
       {
-        "id": "wine",
-        "label": "wine",
-        "icon": "wine"
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
       },
       {
-        "id": "tea",
-        "label": "tea",
-        "icon": "tea-bag"
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
       }
     ]
   },
@@ -83,101 +83,108 @@
       "id": "c1",
       "type": "same",
       "left": {
-        "attr": "instrument",
-        "item": "charts"
+        "attr": "person",
+        "item": "fay"
       },
       "right": {
-        "attr": "drink",
-        "item": "orange"
+        "attr": "instrument",
+        "item": "drums"
       },
-      "text": "The charts player is the person who drinks orange juice."
+      "text": "Fay plays the drums."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "io"
+        "item": "ada"
       },
       "right": {
         "attr": "drink",
-        "item": "tea"
+        "item": "martini"
       },
-      "text": "Io drinks tea."
+      "text": "Ada drinks a martini."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "drew"
+        "item": "io"
       },
       "right": {
-        "attr": "instrument",
-        "item": "charts"
+        "attr": "drink",
+        "item": "brandy"
       },
-      "text": "Drew plays the charts."
+      "text": "Io drinks brandy."
     },
     {
       "id": "c4",
-      "type": "next_to",
+      "type": "same",
       "left": {
-        "attr": "drink",
-        "item": "tea"
+        "attr": "person",
+        "item": "ada"
       },
       "right": {
         "attr": "instrument",
-        "item": "guitar"
+        "item": "flute"
       },
-      "text": "The person who drinks tea lives next door to the guitar player."
+      "text": "Ada plays the flute."
     },
     {
       "id": "c5",
-      "type": "left_of",
+      "type": "next_to",
       "left": {
-        "attr": "instrument",
-        "item": "charts"
+        "attr": "drink",
+        "item": "brandy"
       },
       "right": {
         "attr": "person",
-        "item": "io"
+        "item": "ada"
       },
-      "immediate": true,
-      "text": "The charts player lives immediately left of Io."
+      "text": "The brandy drinker lives next to Ada."
+    },
+    {
+      "id": "c6",
+      "type": "at",
+      "attr": "person",
+      "item": "io",
+      "house": 0,
+      "text": "Io lives in the first house."
     }
   ],
   "question": {
-    "text": "Who plays the harmony?",
+    "text": "Who plays the piano?",
     "givenAttr": "instrument",
-    "givenItem": "notes",
+    "givenItem": "piano",
     "answerAttr": "person",
     "answerItem": "io"
   },
   "solution": [
     {
-      "person": "drew",
-      "instrument": "charts",
-      "drink": "orange"
-    },
-    {
       "person": "io",
-      "instrument": "notes",
-      "drink": "tea"
+      "instrument": "piano",
+      "drink": "brandy"
     },
     {
-      "person": "eden",
-      "instrument": "guitar",
-      "drink": "wine"
+      "person": "ada",
+      "instrument": "flute",
+      "drink": "martini"
+    },
+    {
+      "person": "fay",
+      "instrument": "drums",
+      "drink": "beer"
     }
   ],
   "difficulty": {
     "label": "medium",
-    "steps": 5,
-    "neededSearch": true,
-    "weekday": null,
+    "steps": 13,
+    "neededSearch": false,
+    "weekday": 5,
     "solvedByHuman": true,
-    "hardest": "contradiction",
-    "hardestTier": 8,
-    "score": 45
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 43
   }
 }

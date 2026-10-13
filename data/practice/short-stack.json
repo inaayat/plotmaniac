@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "short-stack",
   "label": "Easy",
-  "source": "daily-2027-11-29",
+  "source": "practice-generated",
   "theme": {
     "id": "brunch",
     "title": "Short stack",
-    "blurb": "One table, several plates. Who ordered what?",
-    "story": "A tiny brunch. Who ordered what?"
+    "blurb": "One table, several plates. Who eats what?",
+    "story": "A tiny brunch. Who eats what?"
   },
   "houseCount": 3,
   "attributes": [
@@ -28,14 +28,14 @@
   "items": {
     "person": [
       {
-        "id": "gus",
-        "label": "Gus",
-        "icon": "briefcase"
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
       },
       {
-        "id": "ada",
-        "label": "Ada",
-        "icon": "detective"
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
       },
       {
         "id": "fay",
@@ -45,36 +45,36 @@
     ],
     "food": [
       {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
         "id": "pizza",
         "label": "pizza",
         "icon": "pizza"
       },
       {
-        "id": "bowl",
-        "label": "bowl",
-        "icon": "bowl-food"
-      },
-      {
-        "id": "carrot",
-        "label": "carrot",
-        "icon": "carrot"
+        "id": "tacos",
+        "label": "tacos",
+        "icon": "hamburger"
       }
     ],
     "drink": [
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
       {
         "id": "coffee",
         "label": "coffee",
         "icon": "coffee"
       },
       {
-        "id": "martini",
-        "label": "martini",
-        "icon": "martini"
-      },
-      {
-        "id": "wine",
-        "label": "wine",
-        "icon": "wine"
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
       }
     ]
   },
@@ -83,27 +83,27 @@
       "id": "c1",
       "type": "same",
       "left": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "right": {
         "attr": "food",
         "item": "pizza"
       },
-      "right": {
-        "attr": "drink",
-        "item": "coffee"
-      },
-      "text": "pizza is with the coffee."
+      "text": "Bo eats pizza."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "ada"
+        "item": "fay"
       },
       "right": {
         "attr": "food",
-        "item": "carrot"
+        "item": "cake"
       },
-      "text": "Ada is with the carrot."
+      "text": "Fay loves cake."
     },
     {
       "id": "c3",
@@ -114,60 +114,59 @@
       },
       "right": {
         "attr": "drink",
-        "item": "martini"
+        "item": "beer"
       },
-      "text": "Fay is with the martini."
+      "text": "Fay drinks beer."
     },
     {
       "id": "c4",
       "type": "at",
-      "attr": "food",
-      "item": "bowl",
-      "house": 2,
-      "text": "bowl is in house 3."
+      "attr": "person",
+      "item": "bo",
+      "house": 0,
+      "text": "Bo lives in the first house."
     },
     {
       "id": "c5",
       "type": "at",
-      "attr": "food",
-      "item": "carrot",
+      "attr": "drink",
+      "item": "wine",
       "house": 1,
-      "text": "carrot is in house 2."
+      "text": "The wine drinker lives in the center house."
     }
   ],
   "question": {
-    "text": "Who ordered the bowl?",
+    "text": "Who is the cake lover?",
     "givenAttr": "food",
-    "givenItem": "bowl",
+    "givenItem": "cake",
     "answerAttr": "person",
     "answerItem": "fay"
   },
   "solution": [
     {
-      "person": "gus",
+      "person": "bo",
       "food": "pizza",
       "drink": "coffee"
     },
     {
-      "person": "ada",
-      "food": "carrot",
+      "person": "drew",
+      "food": "tacos",
       "drink": "wine"
     },
     {
       "person": "fay",
-      "food": "bowl",
-      "drink": "martini"
+      "food": "cake",
+      "drink": "beer"
     }
   ],
   "difficulty": {
     "label": "easy",
-    "steps": 8,
+    "steps": 10,
     "neededSearch": false,
     "weekday": 1,
     "solvedByHuman": true,
     "hardest": "same_house",
     "hardestTier": 5,
-    "score": 33,
-    "sourceDate": "2027-11-29"
+    "score": 35
   }
 }

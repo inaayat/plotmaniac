@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "parcel-row",
   "label": "Hard",
-  "source": "daily-2027-11-21",
+  "source": "practice-generated",
   "theme": {
     "id": "holiday",
     "title": "Parcel row",
-    "blurb": "Treats and parcels down the lane.",
-    "story": "Treats and parcels down a wider lane."
+    "blurb": "Painted doors and pets down the lane.",
+    "story": "Painted doors and pets down a wider lane."
   },
   "houseCount": 4,
   "attributes": [
@@ -17,25 +17,25 @@
       "label": "Who"
     },
     {
-      "id": "treat",
-      "label": "Treat"
+      "id": "color",
+      "label": "Color"
     },
     {
-      "id": "gift",
-      "label": "Gift"
+      "id": "pet",
+      "label": "Pet"
     }
   ],
   "items": {
     "person": [
       {
-        "id": "io",
-        "label": "Io",
-        "icon": "user-focus"
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
       },
       {
-        "id": "fay",
-        "label": "Fay",
-        "icon": "sunglasses"
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
       },
       {
         "id": "eden",
@@ -43,53 +43,53 @@
         "icon": "graduation-cap"
       },
       {
-        "id": "cam",
-        "label": "Cam",
-        "icon": "student"
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
       }
     ],
-    "treat": [
+    "color": [
       {
-        "id": "cookie",
-        "label": "cookie",
-        "icon": "cookie"
+        "id": "white",
+        "label": "white",
+        "icon": "house"
       },
       {
-        "id": "ice",
-        "label": "ice cream",
-        "icon": "ice-cream"
+        "id": "pink",
+        "label": "pink",
+        "icon": "flower"
       },
       {
-        "id": "cake",
-        "label": "cake",
-        "icon": "cake"
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
       },
       {
-        "id": "tea",
-        "label": "tea",
-        "icon": "tea-bag"
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
       }
     ],
-    "gift": [
+    "pet": [
       {
-        "id": "gift",
-        "label": "parcel",
-        "icon": "gift"
+        "id": "dog",
+        "label": "dogs",
+        "icon": "dog"
       },
       {
-        "id": "balloon",
-        "label": "balloon",
-        "icon": "balloon"
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
       },
       {
-        "id": "book",
-        "label": "book",
-        "icon": "book"
+        "id": "bird",
+        "label": "birds",
+        "icon": "bird"
       },
       {
-        "id": "tree",
-        "label": "evergreen",
-        "icon": "tree-evergreen"
+        "id": "rabbit",
+        "label": "rabbits",
+        "icon": "rabbit"
       }
     ]
   },
@@ -98,133 +98,139 @@
       "id": "c1",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "fay"
+        "attr": "color",
+        "item": "green"
       },
       "right": {
-        "attr": "treat",
-        "item": "cookie"
+        "attr": "pet",
+        "item": "dog"
       },
-      "text": "Fay is with the cookie."
+      "text": "The owner of the green house keeps dogs."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "io"
+        "item": "eden"
       },
       "right": {
-        "attr": "gift",
-        "item": "tree"
+        "attr": "color",
+        "item": "green"
       },
-      "text": "Io is with the evergreen."
+      "text": "Eden lives in the green house."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
-        "attr": "treat",
-        "item": "ice"
+        "attr": "person",
+        "item": "bo"
       },
       "right": {
-        "attr": "gift",
-        "item": "book"
+        "attr": "color",
+        "item": "red"
       },
-      "text": "ice cream is with the book."
+      "text": "Bo lives in the red house."
     },
     {
       "id": "c4",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "cam"
+        "item": "hana"
       },
       "right": {
-        "attr": "gift",
-        "item": "balloon"
+        "attr": "pet",
+        "item": "fish"
       },
-      "text": "Cam is with the balloon."
+      "text": "Hana keeps fish."
     },
     {
       "id": "c5",
-      "type": "next_to",
+      "type": "same",
       "left": {
-        "attr": "treat",
-        "item": "cake"
+        "attr": "person",
+        "item": "bo"
       },
       "right": {
-        "attr": "gift",
-        "item": "tree"
+        "attr": "pet",
+        "item": "bird"
       },
-      "text": "cake is next to the evergreen."
+      "text": "Bo keeps birds."
     },
     {
       "id": "c6",
       "type": "next_to",
       "left": {
-        "attr": "treat",
-        "item": "cookie"
+        "attr": "color",
+        "item": "pink"
       },
       "right": {
         "attr": "person",
-        "item": "cam"
+        "item": "hana"
       },
-      "text": "cookie is next to the Cam."
+      "text": "The owner of the pink house lives next to Hana."
     },
     {
       "id": "c7",
-      "type": "left_of",
+      "type": "next_to",
       "left": {
-        "attr": "gift",
-        "item": "tree"
+        "attr": "color",
+        "item": "red"
       },
       "right": {
         "attr": "person",
-        "item": "eden"
+        "item": "jules"
       },
-      "immediate": true,
-      "text": "evergreen is immediately left of the Eden."
+      "text": "The owner of the red house lives next to Jules."
+    },
+    {
+      "id": "c8",
+      "type": "at",
+      "attr": "person",
+      "item": "bo",
+      "house": 1,
+      "text": "Bo lives in house 2."
     }
   ],
   "question": {
-    "text": "Who brought the tea?",
-    "givenAttr": "treat",
-    "givenItem": "tea",
+    "text": "Who keeps birds?",
+    "givenAttr": "pet",
+    "givenItem": "bird",
     "answerAttr": "person",
-    "answerItem": "io"
+    "answerItem": "bo"
   },
   "solution": [
     {
-      "person": "fay",
-      "treat": "cookie",
-      "gift": "gift"
-    },
-    {
-      "person": "cam",
-      "treat": "cake",
-      "gift": "balloon"
-    },
-    {
-      "person": "io",
-      "treat": "tea",
-      "gift": "tree"
-    },
-    {
       "person": "eden",
-      "treat": "ice",
-      "gift": "book"
+      "color": "green",
+      "pet": "dog"
+    },
+    {
+      "person": "bo",
+      "color": "red",
+      "pet": "bird"
+    },
+    {
+      "person": "jules",
+      "color": "pink",
+      "pet": "rabbit"
+    },
+    {
+      "person": "hana",
+      "color": "white",
+      "pet": "fish"
     }
   ],
   "difficulty": {
     "label": "hard",
-    "steps": 5,
+    "steps": 13,
     "neededSearch": true,
-    "weekday": 0,
+    "weekday": 2,
     "solvedByHuman": true,
     "hardest": "contradiction",
     "hardestTier": 8,
-    "score": 45,
-    "sourceDate": "2027-11-21"
+    "score": 53
   }
 }

@@ -3,7 +3,7 @@
   "practice": true,
   "practiceId": "easy",
   "label": "Easy",
-  "source": "original-generated",
+  "source": "practice-generated",
   "theme": {
     "id": "dinner-party",
     "title": "Pets and drinks",
@@ -33,48 +33,48 @@
         "icon": "chef-hat"
       },
       {
-        "id": "fay",
-        "label": "Fay",
-        "icon": "sunglasses"
-      },
-      {
         "id": "ada",
         "label": "Ada",
         "icon": "detective"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
       }
     ],
     "pet": [
       {
+        "id": "cat",
+        "label": "cats",
+        "icon": "cat"
+      },
+      {
         "id": "dog",
-        "label": "dog",
+        "label": "dogs",
         "icon": "dog"
       },
       {
-        "id": "butterfly",
-        "label": "butterfly",
-        "icon": "butterfly"
-      },
-      {
-        "id": "rabbit",
-        "label": "rabbit",
-        "icon": "rabbit"
+        "id": "horse",
+        "label": "horses",
+        "icon": "horse"
       }
     ],
     "drink": [
       {
-        "id": "orange",
-        "label": "orange juice",
-        "icon": "orange"
-      },
-      {
-        "id": "beer",
-        "label": "beer",
-        "icon": "beer-stein"
-      },
-      {
         "id": "brandy",
         "label": "brandy",
         "icon": "brandy"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
       }
     ]
   },
@@ -84,86 +84,86 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "bo"
+        "item": "drew"
       },
       "right": {
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Bo drinks brandy."
+      "text": "Drew drinks brandy."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "bo"
+        "item": "drew"
       },
       "right": {
         "attr": "pet",
-        "item": "rabbit"
+        "item": "cat"
       },
-      "text": "Bo owns the rabbit."
+      "text": "Drew keeps cats."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "ada"
+        "item": "bo"
       },
       "right": {
         "attr": "pet",
-        "item": "dog"
+        "item": "horse"
       },
-      "text": "Ada owns the dog."
+      "text": "Bo keeps horses."
     },
     {
       "id": "c4",
       "type": "at",
-      "attr": "drink",
-      "item": "orange",
-      "house": 2,
-      "text": "The person who drinks orange juice lives in house 3."
+      "attr": "person",
+      "item": "bo",
+      "house": 1,
+      "text": "Bo lives in the center house."
     },
     {
       "id": "c5",
       "type": "at",
-      "attr": "person",
-      "item": "fay",
+      "attr": "drink",
+      "item": "martini",
       "house": 0,
-      "text": "Fay lives in house 1."
+      "text": "The martini drinker lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the dog?",
+    "text": "Who keeps cats?",
     "givenAttr": "pet",
-    "givenItem": "dog",
+    "givenItem": "cat",
     "answerAttr": "person",
-    "answerItem": "ada"
+    "answerItem": "drew"
   },
   "solution": [
     {
-      "person": "fay",
-      "pet": "butterfly",
-      "drink": "beer"
+      "person": "ada",
+      "pet": "dog",
+      "drink": "martini"
     },
     {
       "person": "bo",
-      "pet": "rabbit",
-      "drink": "brandy"
+      "pet": "horse",
+      "drink": "wine"
     },
     {
-      "person": "ada",
-      "pet": "dog",
-      "drink": "orange"
+      "person": "drew",
+      "pet": "cat",
+      "drink": "brandy"
     }
   ],
   "difficulty": {
     "label": "easy",
     "steps": 7,
     "neededSearch": false,
-    "weekday": null,
+    "weekday": 3,
     "solvedByHuman": true,
     "hardest": "same_house",
     "hardestTier": 5,

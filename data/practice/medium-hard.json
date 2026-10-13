@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "medium-hard",
   "label": "Medium–hard",
-  "source": "original-generated",
+  "source": "practice-generated",
   "theme": {
     "id": "brunch",
     "title": "Brunch table",
-    "blurb": "One table, several plates. Who ordered what?",
-    "story": "Plates, drinks, and one check."
+    "blurb": "One table, several plates. Who eats what?",
+    "story": "A tiny brunch. Who eats what?"
   },
   "houseCount": 3,
   "attributes": [
@@ -33,43 +33,43 @@
         "icon": "sunglasses"
       },
       {
-        "id": "bo",
-        "label": "Bo",
-        "icon": "chef-hat"
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
       },
       {
-        "id": "drew",
-        "label": "Drew",
-        "icon": "paint-brush"
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
       }
     ],
     "food": [
       {
-        "id": "pot",
-        "label": "stew",
-        "icon": "cooking-pot"
+        "id": "salad",
+        "label": "salad",
+        "icon": "leaf"
       },
       {
-        "id": "bowl",
-        "label": "bowl",
-        "icon": "bowl-food"
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
       },
       {
-        "id": "burger",
-        "label": "burger",
+        "id": "tacos",
+        "label": "tacos",
         "icon": "hamburger"
       }
     ],
     "drink": [
       {
-        "id": "beer",
-        "label": "beer",
-        "icon": "beer-stein"
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
       },
       {
-        "id": "brandy",
-        "label": "brandy",
-        "icon": "brandy"
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
       },
       {
         "id": "martini",
@@ -84,113 +84,94 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "bo"
+        "item": "fay"
       },
       "right": {
         "attr": "drink",
-        "item": "beer"
+        "item": "tea"
       },
-      "text": "Bo drinks beer."
+      "text": "Fay drinks tea."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "drew"
+        "item": "gus"
       },
       "right": {
         "attr": "drink",
-        "item": "brandy"
+        "item": "martini"
       },
-      "text": "Drew drinks brandy."
+      "text": "Gus drinks a martini."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "drew"
+        "attr": "food",
+        "item": "tacos"
       },
       "right": {
-        "attr": "food",
-        "item": "pot"
+        "attr": "drink",
+        "item": "wine"
       },
-      "text": "Drew ordered the stew."
+      "text": "The tacos lover drinks wine."
     },
     {
       "id": "c4",
       "type": "next_to",
       "left": {
-        "attr": "food",
-        "item": "bowl"
+        "attr": "person",
+        "item": "gus"
       },
       "right": {
-        "attr": "person",
-        "item": "fay"
+        "attr": "food",
+        "item": "salad"
       },
-      "text": "The person who ordered bowl lives next door to Fay."
+      "text": "Gus lives next to the salad lover."
     },
     {
       "id": "c5",
-      "type": "next_to",
-      "left": {
-        "attr": "person",
-        "item": "drew"
-      },
-      "right": {
-        "attr": "drink",
-        "item": "beer"
-      },
-      "text": "Drew lives next door to the person who drinks beer."
-    },
-    {
-      "id": "c6",
-      "type": "left_of",
-      "left": {
-        "attr": "drink",
-        "item": "beer"
-      },
-      "right": {
-        "attr": "food",
-        "item": "pot"
-      },
-      "immediate": false,
-      "text": "The person who drinks beer lives somewhere left of the person who ordered stew."
+      "type": "at",
+      "attr": "person",
+      "item": "gus",
+      "house": 0,
+      "text": "Gus lives in the first house."
     }
   ],
   "question": {
-    "text": "Who ordered the stew?",
+    "text": "Who is the tacos lover?",
     "givenAttr": "food",
-    "givenItem": "pot",
+    "givenItem": "tacos",
     "answerAttr": "person",
-    "answerItem": "drew"
+    "answerItem": "jules"
   },
   "solution": [
     {
-      "person": "fay",
-      "food": "burger",
+      "person": "gus",
+      "food": "pizza",
       "drink": "martini"
     },
     {
-      "person": "bo",
-      "food": "bowl",
-      "drink": "beer"
+      "person": "fay",
+      "food": "salad",
+      "drink": "tea"
     },
     {
-      "person": "drew",
-      "food": "pot",
-      "drink": "brandy"
+      "person": "jules",
+      "food": "tacos",
+      "drink": "wine"
     }
   ],
   "difficulty": {
     "label": "medium-hard",
-    "steps": 5,
-    "neededSearch": true,
-    "weekday": null,
+    "steps": 10,
+    "neededSearch": false,
+    "weekday": 6,
     "solvedByHuman": true,
-    "hardest": "contradiction",
-    "hardestTier": 8,
-    "score": 45
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 40
   }
 }

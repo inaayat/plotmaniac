@@ -703,6 +703,33 @@ const EINSTEIN_BAD_PATTERNS = [
   [/\bbrought the\b/i, "brought the"],
   [/\bordered the\b/i, "ordered the"],
   [/\bwon the\b/i, "won the"],
+  [/\bhas the\b/i, "has the"],
+  [/\btends the\b/i, "tends the"],
+];
+
+/** Odd item words. Skipped when a dated catalog still stores that label. */
+export const EINSTEIN_BANNED_VOCAB = [
+  [/\bcharts\b/i, "charts"],
+  [/\bscore\b/i, "score"],
+  [/\bfolio\b/i, "folio"],
+  [/\bmelody\b/i, "melody"],
+  [/\bharmony\b/i, "harmony"],
+  [/\bbowl\b/i, "bowl"],
+  [/\bstew\b/i, "stew"],
+  [/\bleaf\b/i, "leaf"],
+  [/\bpotted plant\b/i, "potted plant"],
+  [/\bfield guide\b/i, "field guide"],
+  [/\bopen book\b/i, "open book"],
+  [/\bnotes\b/i, "notes"],
+  [/\bdiary\b/i, "diary"],
+  [/\bnovel\b/i, "novel"],
+  [/\bcrown\b/i, "crown"],
+  [/\bballoon\b/i, "balloon"],
+  [/\bevergreen\b/i, "evergreen"],
+  [/\bparcel\b/i, "parcel"],
+  [/\bcookpot\b/i, "cookpot"],
+  [/\bgift\b/i, "gift"],
+  [/\bcookie\b/i, "cookie"],
 ];
 
 const EINSTEIN_TYPE_PATTERNS = {
@@ -712,8 +739,15 @@ const EINSTEIN_TYPE_PATTERNS = {
   next_to: /\blives next to\b/i,
   not_next_to: /\bdoes not live next to\b/i,
   left_of: /\b(?:lives directly left of|lives somewhere left of|is directly left of|is somewhere left of)\b/i,
-  same: /\b(?:lives in the|keeps|drinks|smokes|drives|rides|flies|sails|plays|is a |likes|eats|has the|tends the|is from|is on foot|owns)\b/i,
+  same: /\b(?:lives in the|keeps|drinks|smokes|drives|rides|flies|sails|plays|is a |likes|eats|loves|grows|reads|is from|is on foot|owns)\b/i,
 };
+
+const ACTOR_ATTRS = new Set(["person", "nationality"]);
+export const GENERIC_HAS_ATTRS = new Set(["loot", "prize", "gift", "treat", "getaway"]);
+
+function catalogLabels(puzzle) {
+  return flattenPuzzleItems(puzzle?.items || {}).map((item) => String(item.label || ""));
+}
 
 function lintEinsteinClue(puzzle, clue, text) {
   const reasons = [];
@@ -722,6 +756,11 @@ function lintEinsteinClue(puzzle, clue, text) {
   if (livesSubjectIsBareObject(text, puzzle.items)) reasons.push("bare object as subject");
   for (const [re, name] of EINSTEIN_BAD_PATTERNS) {
     if (re.test(text)) reasons.push(`bad pattern: ${name}`);
+  }
+  const labels = catalogLabels(puzzle);
+  for (const [re, name] of EINSTEIN_BANNED_VOCAB) {
+    if (labels.some((label) => re.test(label))) continue;
+    if (re.test(text)) reasons.push(`banned vocab: ${name}`);
   }
   for (const person of puzzle.items?.person || []) {
     if (new RegExp(`\\bthe ${escapeRegExp(person.label)}\\b`, "i").test(text)) {
@@ -738,6 +777,41 @@ function lintEinsteinClue(puzzle, clue, text) {
   return reasons;
 }
 
+function lintEinsteinCategories(puzzle) {
+  const failures = [];
+  for (const attr of puzzle?.attributes || []) {
+    const id = attr.id || attr;
+    if (ACTOR_ATTRS.has(id)) continue;
+    const def = ATTRIBUTES[id];
+    if (!def?.verb) {
+      failures.push({
+        id: `attr:${id}`,
+        text: id,
+        reasons: ["category must have a curated verb"],
+      });
+    }
+  }
+  return failures;
+}
+
+function lintEinsteinItemVocab(puzzle) {
+  if (puzzle?.theme?.id === "einstein") return [];
+  const failures = [];
+  for (const item of flattenPuzzleItems(puzzle?.items || {})) {
+    const label = String(item.label || "");
+    for (const [re, name] of EINSTEIN_BANNED_VOCAB) {
+      if (re.test(label)) {
+        failures.push({
+          id: `item:${item.id || label}`,
+          text: label,
+          reasons: [`banned vocab: ${name}`],
+        });
+      }
+    }
+  }
+  return failures;
+}
+
 /** Publish check: every clue must read like Einstein’s riddle. */
 export function validateEinsteinStyle(puzzle) {
   const failures = [];
@@ -749,6 +823,10 @@ export function validateEinsteinStyle(puzzle) {
       reasons: ["setup must start with 'There are' and mention houses"],
     });
   }
+  failures.push(...lintEinsteinCategories(puzzle));
+  const classic = puzzle?.theme?.id === "einstein";
+  const enforceItemVocab = Boolean(puzzle?.practice) || (!puzzle?.date && !classic);
+  if (enforceItemVocab) failures.push(...lintEinsteinItemVocab(puzzle));
   for (const clue of puzzle?.clues || []) {
     const text = displayClueText(puzzle, clue);
     const reasons = lintEinsteinClue(puzzle, clue, text);

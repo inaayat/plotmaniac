@@ -32,6 +32,16 @@
   "items": {
     "person": [
       {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
         "id": "io",
         "label": "Io",
         "icon": "user-focus"
@@ -42,36 +52,16 @@
         "icon": "chef-hat"
       },
       {
-        "id": "hana",
-        "label": "Hana",
-        "icon": "user-circle"
-      },
-      {
-        "id": "fay",
-        "label": "Fay",
-        "icon": "sunglasses"
-      },
-      {
-        "id": "drew",
-        "label": "Drew",
-        "icon": "paint-brush"
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
       }
     ],
     "job": [
       {
-        "id": "student",
-        "label": "student",
-        "icon": "student"
-      },
-      {
-        "id": "detective",
-        "label": "detective",
-        "icon": "detective"
-      },
-      {
-        "id": "scout",
-        "label": "scout",
-        "icon": "magnifying-glass"
+        "id": "chef",
+        "label": "chef",
+        "icon": "chef-hat"
       },
       {
         "id": "painter",
@@ -79,21 +69,36 @@
         "icon": "paint-brush"
       },
       {
+        "id": "scout",
+        "label": "scout",
+        "icon": "magnifying-glass"
+      },
+      {
         "id": "clerk",
         "label": "clerk",
         "icon": "briefcase"
+      },
+      {
+        "id": "student",
+        "label": "student",
+        "icon": "student"
       }
     ],
     "vehicle": [
+      {
+        "id": "van",
+        "label": "van",
+        "icon": "car"
+      },
       {
         "id": "moto",
         "label": "motorcycle",
         "icon": "motorcycle"
       },
       {
-        "id": "bike",
-        "label": "bicycle",
-        "icon": "bicycle"
+        "id": "bus",
+        "label": "bus",
+        "icon": "car"
       },
       {
         "id": "car",
@@ -101,36 +106,31 @@
         "icon": "car"
       },
       {
-        "id": "boat",
-        "label": "sailboat",
-        "icon": "sailboat"
-      },
-      {
-        "id": "plane",
-        "label": "plane",
-        "icon": "airplane"
+        "id": "taxi",
+        "label": "taxi",
+        "icon": "car"
       }
     ],
     "pet": [
       {
+        "id": "horse",
+        "label": "horses",
+        "icon": "horse"
+      },
+      {
+        "id": "cat",
+        "label": "cats",
+        "icon": "cat"
+      },
+      {
         "id": "dog",
-        "label": "dog",
+        "label": "dogs",
         "icon": "dog"
       },
       {
         "id": "rabbit",
-        "label": "rabbit",
+        "label": "rabbits",
         "icon": "rabbit"
-      },
-      {
-        "id": "bird",
-        "label": "bird",
-        "icon": "bird"
-      },
-      {
-        "id": "butterfly",
-        "label": "butterfly",
-        "icon": "butterfly"
       },
       {
         "id": "fish",
@@ -142,54 +142,46 @@
   "clues": [
     {
       "id": "c1",
-      "type": "left_of",
-      "left": {
-        "attr": "person",
-        "item": "fay"
-      },
-      "right": {
-        "attr": "vehicle",
-        "item": "moto"
-      },
-      "immediate": true,
-      "text": "Fay lives immediately left of the person with the motorcycle."
-    },
-    {
-      "id": "c2",
       "type": "next_to",
       "left": {
         "attr": "job",
-        "item": "painter"
+        "item": "student"
       },
       "right": {
         "attr": "vehicle",
-        "item": "boat"
+        "item": "van"
       },
-      "text": "The person who is a painter lives next door to the person with the sailboat."
+      "text": "The student lives next to the one who drives a van."
+    },
+    {
+      "id": "c2",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "job",
+        "item": "clerk"
+      },
+      "immediate": false,
+      "text": "The owner of the rabbits lives somewhere left of the clerk."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
-        "attr": "vehicle",
-        "item": "boat"
+        "attr": "person",
+        "item": "gus"
       },
       "right": {
-        "attr": "pet",
-        "item": "fish"
+        "attr": "vehicle",
+        "item": "moto"
       },
-      "text": "The person with the sailboat is the fish owner."
+      "text": "Gus rides a motorcycle."
     },
     {
       "id": "c4",
-      "type": "at",
-      "attr": "person",
-      "item": "bo",
-      "house": 4,
-      "text": "Bo lives in house 5."
-    },
-    {
-      "id": "c5",
       "type": "same",
       "left": {
         "attr": "job",
@@ -197,102 +189,114 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "moto"
+        "item": "van"
       },
-      "text": "The person who is a painter is the person with the motorcycle."
+      "text": "The painter drives a van."
+    },
+    {
+      "id": "c5",
+      "type": "either_house",
+      "attr": "pet",
+      "item": "dog",
+      "houses": [
+        3,
+        4
+      ],
+      "text": "The owner of the dogs lives in either house 4 or house 5."
     },
     {
       "id": "c6",
-      "type": "next_to",
+      "type": "left_of",
       "left": {
         "attr": "vehicle",
-        "item": "plane"
+        "item": "bus"
       },
       "right": {
-        "attr": "pet",
-        "item": "fish"
+        "attr": "person",
+        "item": "bo"
       },
-      "text": "The person with the plane lives next door to the fish owner."
+      "immediate": false,
+      "text": "The person who drives a bus lives somewhere left of Bo."
     },
     {
       "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "job",
+        "item": "chef"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "immediate": true,
+      "text": "The chef lives directly left of the one who keeps cats."
+    },
+    {
+      "id": "c8",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Gus keeps horses."
+    },
+    {
+      "id": "c9",
       "type": "next_to",
       "left": {
         "attr": "person",
         "item": "io"
       },
       "right": {
-        "attr": "job",
-        "item": "detective"
-      },
-      "text": "Io lives next door to the person who is a detective."
-    },
-    {
-      "id": "c8",
-      "type": "not_next_to",
-      "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "bus"
       },
-      "right": {
-        "attr": "job",
-        "item": "detective"
-      },
-      "text": "The person with the car does not live next door to the person who is a detective."
-    },
-    {
-      "id": "c9",
-      "type": "left_of",
-      "left": {
-        "attr": "vehicle",
-        "item": "car"
-      },
-      "right": {
-        "attr": "pet",
-        "item": "dog"
-      },
-      "immediate": false,
-      "text": "The person with the car lives somewhere left of the dog owner."
+      "text": "Io lives next to the one who drives a bus."
     },
     {
       "id": "c10",
-      "type": "same",
+      "type": "next_to",
       "left": {
-        "attr": "person",
-        "item": "hana"
+        "attr": "job",
+        "item": "chef"
       },
       "right": {
-        "attr": "job",
-        "item": "student"
+        "attr": "pet",
+        "item": "rabbit"
       },
-      "text": "Hana is a student."
+      "text": "The chef lives next to the one who keeps rabbits."
     },
     {
       "id": "c11",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "fay"
+        "item": "jules"
       },
       "right": {
-        "attr": "pet",
-        "item": "dog"
+        "attr": "vehicle",
+        "item": "taxi"
       },
-      "text": "Fay owns the dog."
+      "text": "Jules drives a taxi."
     },
     {
       "id": "c12",
       "type": "left_of",
       "left": {
         "attr": "pet",
-        "item": "butterfly"
+        "item": "dog"
       },
       "right": {
-        "attr": "person",
-        "item": "fay"
+        "attr": "vehicle",
+        "item": "moto"
       },
-      "immediate": true,
-      "text": "The butterfly owner lives immediately left of Fay."
+      "immediate": false,
+      "text": "The owner of the dogs lives somewhere left of the one who rides a motorcycle."
     },
     {
       "id": "c13",
@@ -302,59 +306,59 @@
         "item": "clerk"
       },
       "right": {
-        "attr": "pet",
-        "item": "bird"
+        "attr": "vehicle",
+        "item": "bus"
       },
-      "text": "The person who is a clerk is the bird owner."
+      "text": "The clerk drives a bus."
     }
   ],
   "question": {
-    "text": "Who is the painter?",
+    "text": "Who is the scout?",
     "givenAttr": "job",
-    "givenItem": "painter",
+    "givenItem": "scout",
     "answerAttr": "person",
-    "answerItem": "io"
+    "answerItem": "jules"
   },
   "solution": [
     {
-      "person": "hana",
-      "job": "student",
-      "vehicle": "car",
-      "pet": "butterfly"
-    },
-    {
-      "person": "fay",
+      "person": "jules",
       "job": "scout",
-      "vehicle": "bike",
-      "pet": "dog"
-    },
-    {
-      "person": "io",
-      "job": "painter",
-      "vehicle": "moto",
+      "vehicle": "taxi",
       "pet": "rabbit"
     },
     {
-      "person": "drew",
-      "job": "detective",
-      "vehicle": "boat",
+      "person": "io",
+      "job": "chef",
+      "vehicle": "car",
       "pet": "fish"
     },
     {
-      "person": "bo",
+      "person": "fay",
       "job": "clerk",
-      "vehicle": "plane",
-      "pet": "bird"
+      "vehicle": "bus",
+      "pet": "cat"
+    },
+    {
+      "person": "bo",
+      "job": "painter",
+      "vehicle": "van",
+      "pet": "dog"
+    },
+    {
+      "person": "gus",
+      "job": "student",
+      "vehicle": "moto",
+      "pet": "horse"
     }
   ],
   "difficulty": {
     "label": "expert",
-    "steps": 17,
+    "steps": 20,
     "neededSearch": true,
     "weekday": 5,
     "solvedByHuman": true,
     "hardest": "contradiction",
     "hardestTier": 8,
-    "score": 57
+    "score": 60
   }
 }

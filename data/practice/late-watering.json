@@ -3,7 +3,7 @@
   "practice": true,
   "practiceId": "late-watering",
   "label": "Easy",
-  "source": "daily-2027-11-08",
+  "source": "practice-generated",
   "theme": {
     "id": "garden",
     "title": "Late watering",
@@ -28,26 +28,26 @@
   "items": {
     "person": [
       {
-        "id": "hana",
-        "label": "Hana",
-        "icon": "user-circle"
-      },
-      {
-        "id": "bo",
-        "label": "Bo",
-        "icon": "chef-hat"
-      },
-      {
         "id": "fay",
         "label": "Fay",
         "icon": "sunglasses"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
       }
     ],
     "plant": [
       {
-        "id": "tulip",
-        "label": "tulip",
-        "icon": "flower-tulip"
+        "id": "trees",
+        "label": "trees",
+        "icon": "tree"
       },
       {
         "id": "cactus",
@@ -55,26 +55,26 @@
         "icon": "cactus"
       },
       {
-        "id": "leaf",
-        "label": "leaf",
-        "icon": "leaf"
+        "id": "basil",
+        "label": "basil",
+        "icon": "potted-plant"
       }
     ],
     "drink": [
       {
-        "id": "wine",
-        "label": "wine",
-        "icon": "wine"
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
       },
       {
         "id": "coffee",
         "label": "coffee",
         "icon": "coffee"
-      },
-      {
-        "id": "martini",
-        "label": "martini",
-        "icon": "martini"
       }
     ]
   },
@@ -84,90 +84,89 @@
       "type": "same",
       "left": {
         "attr": "plant",
-        "item": "leaf"
+        "item": "basil"
       },
       "right": {
         "attr": "drink",
-        "item": "wine"
+        "item": "orange"
       },
-      "text": "leaf is with the wine."
+      "text": "The person who grows basil drinks orange juice."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "bo"
-      },
-      "right": {
         "attr": "plant",
         "item": "cactus"
       },
-      "text": "Bo is with the cactus."
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "The person who grows a cactus drinks coffee."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "hana"
+        "item": "gus"
       },
       "right": {
-        "attr": "drink",
-        "item": "wine"
+        "attr": "plant",
+        "item": "basil"
       },
-      "text": "Hana is with the wine."
+      "text": "Gus grows basil."
     },
     {
       "id": "c4",
       "type": "at",
-      "attr": "person",
-      "item": "fay",
-      "house": 0,
-      "text": "Fay is in house 1."
+      "attr": "drink",
+      "item": "tea",
+      "house": 1,
+      "text": "The tea drinker lives in the center house."
     },
     {
       "id": "c5",
       "type": "at",
-      "attr": "drink",
-      "item": "martini",
-      "house": 2,
-      "text": "martini is in house 3."
+      "attr": "person",
+      "item": "io",
+      "house": 0,
+      "text": "Io lives in the first house."
     }
   ],
   "question": {
-    "text": "Who tends the cactus?",
+    "text": "Who grows basil?",
     "givenAttr": "plant",
-    "givenItem": "cactus",
+    "givenItem": "basil",
     "answerAttr": "person",
-    "answerItem": "bo"
+    "answerItem": "gus"
   },
   "solution": [
     {
-      "person": "fay",
-      "plant": "tulip",
+      "person": "io",
+      "plant": "cactus",
       "drink": "coffee"
     },
     {
-      "person": "hana",
-      "plant": "leaf",
-      "drink": "wine"
+      "person": "fay",
+      "plant": "trees",
+      "drink": "tea"
     },
     {
-      "person": "bo",
-      "plant": "cactus",
-      "drink": "martini"
+      "person": "gus",
+      "plant": "basil",
+      "drink": "orange"
     }
   ],
   "difficulty": {
     "label": "easy",
     "steps": 10,
     "neededSearch": false,
-    "weekday": 1,
+    "weekday": 0,
     "solvedByHuman": true,
     "hardest": "same_house",
     "hardestTier": 5,
-    "score": 35,
-    "sourceDate": "2027-11-08"
+    "score": 35
   }
 }

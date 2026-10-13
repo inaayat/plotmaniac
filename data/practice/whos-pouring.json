@@ -3,7 +3,7 @@
   "practice": true,
   "practiceId": "whos-pouring",
   "label": "Medium",
-  "source": "daily-2027-11-03",
+  "source": "practice-generated",
   "theme": {
     "id": "dinner-party",
     "title": "Who's pouring",
@@ -28,48 +28,48 @@
   "items": {
     "person": [
       {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
         "id": "gus",
         "label": "Gus",
         "icon": "briefcase"
       },
       {
-        "id": "jules",
-        "label": "Jules",
-        "icon": "identification-badge"
-      },
-      {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
       }
     ],
     "pet": [
       {
         "id": "dog",
-        "label": "dog",
+        "label": "dogs",
         "icon": "dog"
       },
       {
         "id": "horse",
-        "label": "horse",
+        "label": "horses",
         "icon": "horse"
       },
       {
-        "id": "rabbit",
-        "label": "rabbit",
-        "icon": "rabbit"
+        "id": "bird",
+        "label": "birds",
+        "icon": "bird"
       }
     ],
     "drink": [
       {
-        "id": "martini",
-        "label": "martini",
-        "icon": "martini"
-      },
-      {
         "id": "coffee",
         "label": "coffee",
         "icon": "coffee"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
       },
       {
         "id": "wine",
@@ -83,32 +83,6 @@
       "id": "c1",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "eden"
-      },
-      "right": {
-        "attr": "drink",
-        "item": "coffee"
-      },
-      "text": "Eden is with the coffee."
-    },
-    {
-      "id": "c2",
-      "type": "same",
-      "left": {
-        "attr": "person",
-        "item": "gus"
-      },
-      "right": {
-        "attr": "pet",
-        "item": "rabbit"
-      },
-      "text": "Gus is with the rabbit."
-    },
-    {
-      "id": "c3",
-      "type": "same",
-      "left": {
         "attr": "pet",
         "item": "dog"
       },
@@ -116,63 +90,101 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "dog is with the wine."
+      "text": "The owner of the dogs drinks wine."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "Drew keeps dogs."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "text": "The owner of the birds drinks a martini."
     },
     {
       "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "text": "Gus keeps horses."
+    },
+    {
+      "id": "c5",
       "type": "next_to",
       "left": {
         "attr": "drink",
         "item": "martini"
       },
       "right": {
-        "attr": "person",
-        "item": "jules"
+        "attr": "pet",
+        "item": "dog"
       },
-      "text": "martini is next to the Jules."
+      "text": "The martini drinker lives next to the one who keeps dogs."
     },
     {
-      "id": "c5",
+      "id": "c6",
       "type": "at",
-      "attr": "drink",
-      "item": "wine",
+      "attr": "person",
+      "item": "drew",
       "house": 0,
-      "text": "wine is in house 1."
+      "text": "Drew lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the horse?",
+    "text": "Who keeps birds?",
     "givenAttr": "pet",
-    "givenItem": "horse",
+    "givenItem": "bird",
     "answerAttr": "person",
-    "answerItem": "eden"
+    "answerItem": "fay"
   },
   "solution": [
     {
-      "person": "jules",
+      "person": "drew",
       "pet": "dog",
       "drink": "wine"
     },
     {
-      "person": "gus",
-      "pet": "rabbit",
+      "person": "fay",
+      "pet": "bird",
       "drink": "martini"
     },
     {
-      "person": "eden",
+      "person": "gus",
       "pet": "horse",
       "drink": "coffee"
     }
   ],
   "difficulty": {
     "label": "medium",
-    "steps": 13,
+    "steps": 11,
     "neededSearch": false,
-    "weekday": 3,
+    "weekday": 2,
     "solvedByHuman": true,
     "hardest": "next_to_edge",
     "hardestTier": 6,
-    "score": 43,
-    "sourceDate": "2027-11-03"
+    "score": 41
   }
 }

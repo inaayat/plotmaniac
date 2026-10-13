@@ -32,41 +32,36 @@
   "items": {
     "person": [
       {
-        "id": "fay",
-        "label": "Fay",
-        "icon": "sunglasses"
-      },
-      {
-        "id": "hana",
-        "label": "Hana",
-        "icon": "user-circle"
-      },
-      {
-        "id": "drew",
-        "label": "Drew",
-        "icon": "paint-brush"
-      },
-      {
         "id": "jules",
         "label": "Jules",
         "icon": "identification-badge"
       },
       {
-        "id": "cam",
-        "label": "Cam",
-        "icon": "student"
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
       }
     ],
     "color": [
       {
-        "id": "green",
-        "label": "green",
-        "icon": "leaf"
-      },
-      {
-        "id": "pink",
-        "label": "pink",
-        "icon": "flower"
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
       },
       {
         "id": "white",
@@ -79,43 +74,48 @@
         "icon": "sun"
       },
       {
-        "id": "blue",
-        "label": "blue",
-        "icon": "house-simple"
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
       }
     ],
     "pet": [
       {
-        "id": "cat",
-        "label": "cat",
-        "icon": "cat"
+        "id": "dog",
+        "label": "dogs",
+        "icon": "dog"
       },
       {
         "id": "bird",
-        "label": "bird",
+        "label": "birds",
         "icon": "bird"
       },
       {
+        "id": "cat",
+        "label": "cats",
+        "icon": "cat"
+      },
+      {
         "id": "rabbit",
-        "label": "rabbit",
+        "label": "rabbits",
         "icon": "rabbit"
       },
       {
         "id": "fish",
         "label": "fish",
         "icon": "fish"
-      },
-      {
-        "id": "butterfly",
-        "label": "butterfly",
-        "icon": "butterfly"
       }
     ],
     "drink": [
       {
-        "id": "brandy",
-        "label": "brandy",
-        "icon": "brandy"
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
       },
       {
         "id": "tea",
@@ -128,231 +128,237 @@
         "icon": "martini"
       },
       {
-        "id": "wine",
-        "label": "wine",
-        "icon": "wine"
-      },
-      {
         "id": "coffee",
         "label": "coffee",
         "icon": "coffee"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
       }
     ]
   },
   "clues": [
     {
       "id": "c1",
-      "type": "not_at",
-      "attr": "color",
-      "item": "green",
-      "house": 2,
-      "text": "The resident of the green house does not live in house 3."
+      "type": "either_house",
+      "attr": "drink",
+      "item": "tea",
+      "houses": [
+        1,
+        4
+      ],
+      "text": "The tea drinker lives in either house 2 or house 5."
     },
     {
       "id": "c2",
-      "type": "left_of",
+      "type": "not_next_to",
       "left": {
-        "attr": "pet",
-        "item": "fish"
+        "attr": "drink",
+        "item": "orange"
       },
       "right": {
         "attr": "person",
-        "item": "cam"
+        "item": "eden"
       },
-      "immediate": false,
-      "text": "The fish owner lives somewhere left of Cam."
+      "text": "The orange juice drinker does not live next to Eden."
     },
     {
       "id": "c3",
-      "type": "left_of",
+      "type": "same",
       "left": {
-        "attr": "color",
-        "item": "green"
-      },
-      "right": {
         "attr": "person",
         "item": "jules"
       },
-      "immediate": false,
-      "text": "The resident of the green house lives somewhere left of Jules."
+      "right": {
+        "attr": "color",
+        "item": "red"
+      },
+      "text": "Jules lives in the red house."
     },
     {
       "id": "c4",
       "type": "left_of",
       "left": {
         "attr": "pet",
-        "item": "butterfly"
+        "item": "fish"
       },
       "right": {
-        "attr": "person",
-        "item": "fay"
+        "attr": "color",
+        "item": "yellow"
       },
       "immediate": true,
-      "text": "The butterfly owner lives immediately left of Fay."
+      "text": "The owner of the fish lives directly left of the yellow house."
     },
     {
       "id": "c5",
-      "type": "not_next_to",
+      "type": "same",
       "left": {
-        "attr": "drink",
-        "item": "wine"
+        "attr": "person",
+        "item": "io"
       },
       "right": {
         "attr": "pet",
         "item": "bird"
       },
-      "text": "The person who drinks wine does not live next door to the bird owner."
+      "text": "Io keeps birds."
     },
     {
       "id": "c6",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "jules"
-      },
-      "right": {
-        "attr": "drink",
-        "item": "brandy"
-      },
-      "text": "Jules drinks brandy."
-    },
-    {
-      "id": "c7",
-      "type": "same",
-      "left": {
         "attr": "color",
-        "item": "green"
+        "item": "yellow"
       },
       "right": {
         "attr": "pet",
-        "item": "cat"
+        "item": "dog"
       },
-      "text": "The resident of the green house is the cat owner."
+      "text": "The owner of the yellow house keeps dogs."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "color",
+        "item": "red"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "immediate": true,
+      "text": "The owner of the red house lives directly left of Bo."
     },
     {
       "id": "c8",
-      "type": "same",
+      "type": "next_to",
       "left": {
-        "attr": "color",
-        "item": "blue"
+        "attr": "drink",
+        "item": "beer"
       },
       "right": {
-        "attr": "drink",
-        "item": "wine"
+        "attr": "person",
+        "item": "jules"
       },
-      "text": "The resident of the blue house is the person who drinks wine."
+      "text": "The beer drinker lives next to Jules."
     },
     {
       "id": "c9",
       "type": "same",
       "left": {
-        "attr": "pet",
-        "item": "bird"
+        "attr": "person",
+        "item": "io"
       },
       "right": {
         "attr": "drink",
         "item": "tea"
       },
-      "text": "The bird owner is the person who drinks tea."
+      "text": "Io drinks tea."
     },
     {
       "id": "c10",
-      "type": "either_house",
-      "attr": "color",
-      "item": "yellow",
-      "houses": [
-        0,
-        4
-      ],
-      "text": "The resident of the yellow house lives in either house 1 or house 5."
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "immediate": false,
+      "text": "Jules lives somewhere left of the one who keeps cats."
     },
     {
       "id": "c11",
       "type": "next_to",
       "left": {
-        "attr": "person",
-        "item": "drew"
+        "attr": "drink",
+        "item": "coffee"
       },
       "right": {
         "attr": "color",
         "item": "white"
       },
-      "text": "Drew lives next door to the resident of the white house."
+      "text": "The coffee drinker lives next to the white house."
     },
     {
       "id": "c12",
-      "type": "same",
+      "type": "left_of",
       "left": {
-        "attr": "person",
-        "item": "fay"
+        "attr": "color",
+        "item": "red"
       },
       "right": {
-        "attr": "pet",
-        "item": "fish"
+        "attr": "drink",
+        "item": "orange"
       },
-      "text": "Fay owns the fish."
+      "immediate": true,
+      "text": "The owner of the red house lives directly left of the one who drinks orange juice."
     },
     {
       "id": "c13",
-      "type": "next_to",
+      "type": "same",
       "left": {
-        "attr": "drink",
-        "item": "martini"
-      },
-      "right": {
         "attr": "color",
         "item": "green"
       },
-      "text": "The person who drinks martini lives next door to the resident of the green house."
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "The owner of the green house keeps rabbits."
     }
   ],
   "question": {
-    "text": "Who owns the cat?",
+    "text": "Who keeps fish?",
     "givenAttr": "pet",
-    "givenItem": "cat",
+    "givenItem": "fish",
     "answerAttr": "person",
-    "answerItem": "drew"
+    "answerItem": "jules"
   },
   "solution": [
     {
-      "person": "drew",
+      "person": "eden",
       "color": "green",
-      "pet": "cat",
-      "drink": "coffee"
+      "pet": "rabbit",
+      "drink": "beer"
     },
     {
-      "person": "hana",
-      "color": "white",
-      "pet": "butterfly",
+      "person": "jules",
+      "color": "red",
+      "pet": "fish",
       "drink": "martini"
+    },
+    {
+      "person": "bo",
+      "color": "yellow",
+      "pet": "dog",
+      "drink": "orange"
     },
     {
       "person": "fay",
       "color": "blue",
-      "pet": "fish",
-      "drink": "wine"
+      "pet": "cat",
+      "drink": "coffee"
     },
     {
-      "person": "jules",
-      "color": "pink",
-      "pet": "rabbit",
-      "drink": "brandy"
-    },
-    {
-      "person": "cam",
-      "color": "yellow",
+      "person": "io",
+      "color": "white",
       "pet": "bird",
       "drink": "tea"
     }
   ],
   "difficulty": {
     "label": "expert",
-    "steps": 18,
+    "steps": 10,
     "neededSearch": true,
     "weekday": 4,
     "solvedByHuman": true,
     "hardest": "contradiction",
     "hardestTier": 8,
-    "score": 58
+    "score": 50
   }
 }

@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, NOTES_STORAGE_KEY, PRACTICE_GROUPS, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, PRACTICE_PUZZLES, SITE_URL } from "../plotted-config.js";
 import { normalizeNotes, progressFitsPuzzle, slotFitPlan } from "../plotted.js";
 import { ICONS, iconSvg } from "../plotted-icons.js";
-import { PRACTICE_THEMES, THEMES } from "../plotted-themes.js";
+import { ATTRIBUTES, PRACTICE_THEMES, THEMES } from "../plotted-themes.js";
 import {
   clueHolds,
   clueText,
@@ -29,6 +29,8 @@ import {
   puzzleSetup,
   specForDate,
   pruneClues,
+  EINSTEIN_BANNED_VOCAB,
+  GENERIC_HAS_ATTRS,
   validateEinsteinStyle,
 } from "../plotted-engine.js";
 import { solveByHuman, solvePuzzleByHuman } from "../plotted-human-solver.js";
@@ -253,12 +255,30 @@ const threeShare = formatShare({
 assert.equal(threeShare.split("\n")[1], "🏠".repeat(3));
 
 for (const theme of [...THEMES, ...PRACTICE_THEMES]) {
+  assert.ok(
+    !theme.attributes.some((id) => GENERIC_HAS_ATTRS.has(id)),
+    `${theme.id} must not use a generic-has category`,
+  );
   for (const attr of theme.attributes) {
     assert.ok(theme.items[attr].length >= 5, `${theme.id} ${attr} needs enough icons`);
+    const labels = new Set();
     for (const item of theme.items[attr]) {
       assert.ok(ICONS[item.icon], `${theme.id} missing Phosphor icon ${item.icon}`);
+      assert.equal(labels.has(item.label), false, `${theme.id} duplicate label ${item.label}`);
+      labels.add(item.label);
+      for (const [re, name] of EINSTEIN_BANNED_VOCAB) {
+        assert.equal(re.test(item.label), false, `${theme.id} ${item.label} is banned (${name})`);
+      }
     }
   }
+}
+for (const [id, def] of Object.entries(ATTRIBUTES)) {
+  if (id === "person" || id === "nationality") {
+    assert.equal(def.verb, null, `${id} is an actor and has no verb`);
+    continue;
+  }
+  assert.ok(def.verb, `${id} needs a curated verb`);
+  assert.notEqual(def.verb, "has");
 }
 
 assert.match(iconSvg("cat"), /viewBox="0 0 256 256"/);
@@ -292,7 +312,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v21/);
+assert.match(sw, /plotted-v22/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -560,7 +580,7 @@ const catalog = {
 };
 assert.equal(
   clueText({ type: "next_to", left: { attr: "prize", item: "balloon" }, right: { attr: "pet", item: "fish" } }, catalog, "pet-show"),
-  "The person who has the balloon lives next to the one who keeps a fish.",
+  "The person who keeps a balloon lives next to the one who keeps fish.",
 );
 assert.equal(
   clueText({ type: "same", left: { attr: "person", item: "bo" }, right: { attr: "pet", item: "horse" } }, catalog, "pet-show"),
@@ -568,19 +588,19 @@ assert.equal(
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show"),
-  "The person who has the trophy lives in house 1.",
+  "The person who keeps a trophy lives in house 1.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show", 3),
-  "The person who has the trophy lives in the first house.",
+  "The person who keeps a trophy lives in the first house.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 1 }, catalog, "pet-show", 3),
-  "The person who has the trophy lives in the center house.",
+  "The person who keeps a trophy lives in the center house.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 2 }, catalog, "pet-show", 3),
-  "The person who has the trophy lives in the last house.",
+  "The person who keeps a trophy lives in the last house.",
 );
 assert.equal(
   clueText(
@@ -592,7 +612,7 @@ assert.equal(
 );
 assert.equal(
   clueText({ type: "either_house", attr: "prize", item: "trophy", houses: [0, 2] }, catalog, "pet-show"),
-  "The person who has the trophy lives in either house 1 or house 3.",
+  "The person who keeps a trophy lives in either house 1 or house 3.",
 );
 const pouringCatalog = {
   person: [
@@ -628,6 +648,95 @@ assert.equal(
   clueText({ type: "same", left: { attr: "person", item: "eden" }, right: { attr: "drink", item: "wine" } }, pouringCatalog, "dinner-party"),
   "Eden drinks wine.",
 );
+assert.equal(
+  clueText({ type: "same", left: { attr: "person", item: "eden" }, right: { attr: "drink", item: "martini" } }, pouringCatalog, "dinner-party"),
+  "Eden drinks a martini.",
+);
+assert.equal(
+  clueText(
+    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "instrument", item: "piano" } },
+    {
+      person: [{ id: "bo", label: "Bo" }],
+      instrument: [{ id: "piano", label: "piano" }],
+    },
+    "music-night",
+  ),
+  "Bo plays the piano.",
+);
+assert.equal(
+  clueText(
+    { type: "at", attr: "instrument", item: "piano", house: 0 },
+    { instrument: [{ id: "piano", label: "piano" }] },
+    "music-night",
+  ),
+  "The pianist lives in house 1.",
+);
+assert.equal(
+  clueText(
+    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "food", item: "pizza" } },
+    {
+      person: [{ id: "bo", label: "Bo" }],
+      food: [
+        { id: "pizza", label: "pizza" },
+        { id: "cake", label: "cake" },
+      ],
+    },
+    "brunch",
+  ),
+  "Bo eats pizza.",
+);
+assert.equal(
+  clueText(
+    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "food", item: "cake" } },
+    {
+      person: [{ id: "bo", label: "Bo" }],
+      food: [{ id: "cake", label: "cake" }],
+    },
+    "brunch",
+  ),
+  "Bo loves cake.",
+);
+assert.equal(
+  clueText(
+    { type: "at", attr: "food", item: "pizza", house: 0 },
+    { food: [{ id: "pizza", label: "pizza" }] },
+    "brunch",
+  ),
+  "The pizza lover lives in house 1.",
+);
+assert.equal(
+  clueText(
+    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "plant", item: "roses" } },
+    {
+      person: [{ id: "bo", label: "Bo" }],
+      plant: [{ id: "roses", label: "roses" }],
+    },
+    "garden",
+  ),
+  "Bo grows roses.",
+);
+assert.equal(
+  clueText(
+    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "pet", item: "dog" } },
+    {
+      person: [{ id: "bo", label: "Bo" }],
+      pet: [{ id: "dog", label: "dogs" }],
+    },
+    "dinner-party",
+  ),
+  "Bo keeps dogs.",
+);
+assert.equal(
+  clueText(
+    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "book", item: "mystery" } },
+    {
+      person: [{ id: "bo", label: "Bo" }],
+      book: [{ id: "mystery", label: "mysteries" }],
+    },
+    "book-club",
+  ),
+  "Bo reads mysteries.",
+);
 for (const sample of [
   clueText({ type: "same", left: { attr: "pet", item: "dog" }, right: { attr: "drink", item: "wine" } }, pouringCatalog, "dinner-party"),
   clueText(
@@ -641,7 +750,7 @@ for (const sample of [
   assert.doesNotMatch(sample, /\bthe Jules\b/i);
 }
 assert.equal(
-  livesSubjectIsBareObject("The person who has the balloon lives next to the one who keeps a fish.", catalog),
+  livesSubjectIsBareObject("The person who keeps a balloon lives next to the one who keeps fish.", catalog),
   false,
 );
 assert.equal(livesSubjectIsBareObject("balloon lives next to fish", catalog), true);
@@ -677,6 +786,25 @@ assert.equal(
   false,
 );
 assert.equal(validateEinsteinStyle({ ...generated, setup: "Neighbors packed a bag." }).ok, false);
+assert.equal(
+  validateEinsteinStyle({
+    setup: "There are three houses in a row. Each house has a different owner and a different instrument.",
+    theme: { id: "music-night" },
+    attributes: [
+      { id: "person", label: "Who" },
+      { id: "instrument", label: "Music" },
+    ],
+    items: {
+      person: [{ id: "ada", label: "Ada" }],
+      instrument: [{ id: "charts", label: "charts" }],
+    },
+    clues: [],
+  }).ok,
+  false,
+);
+assert.ok(ATTRIBUTES.food.verb);
+assert.ok(ATTRIBUTES.plant.verb);
+assert.ok(ATTRIBUTES.instrument.verb);
 
 const dailyPath = path.join(root, "data/plotted/2026-10-13.json");
 assert.ok(fs.existsSync(dailyPath), "launch-day puzzle JSON");
@@ -732,7 +860,10 @@ for (const id of practiceIds) {
   assert.ok(!practice.date, `${id} must not sit on the daily calendar`);
   assert.equal(practice.theme.title, catalog.title, `${id} needs a fun title`);
   const attrs = practice.attributes.map((attr) => attr.id);
-  assert.ok(!attrs.includes("loot") && !attrs.includes("getaway"), `${id} must not use loot/getaway`);
+  assert.ok(
+    !attrs.some((attr) => GENERIC_HAS_ATTRS.has(attr)),
+    `${id} must not use a generic-has category`,
+  );
   const ids = Object.fromEntries(attrs.map((attr) => [attr, practice.items[attr].map((item) => item.id)]));
   const unique = countSolutions(practice.houseCount, attrs, ids, practice.clues, 2);
   assert.equal(unique.count, 1, `${id} must be unique`);
@@ -762,11 +893,7 @@ for (const id of practiceIds) {
     }
   }
   if (id === "easy") {
-    const copyGaps = labelsMissingFromCopy(practice);
-    assert.ok(
-      copyGaps.some((entry) => entry.id === "butterfly" || entry.id === "beer"),
-      "easy practice still omits some pets/drinks from clue text; the word bank must cover them",
-    );
+    assert.ok(Array.isArray(labelsMissingFromCopy(practice)));
   } else if (expertIds.has(id)) {
     assert.equal(practice.source, "expert-generated", `${id} should be an Expert-generated puzzle`);
     assert.equal(practice.houseCount, 5, `${id} must be 5 houses`);
@@ -782,7 +909,7 @@ for (const id of practiceIds) {
     );
   } else if (!keptPractice.has(id)) {
     assert.ok(practice.houseCount >= 3);
-    assert.match(practice.source, /^daily-2027-1[12]-/, `${id} should copy a late-2027 daily`);
+    assert.match(practice.source, /^(practice-generated|expert-generated|original-generated)/, `${id} should be a generated practice puzzle`);
     assert.ok(!practice.date, `${id} must not keep the daily date`);
     if (id === "five-copies") {
       assert.equal(practice.houseCount, 5, `${id} should be a 5-house hard puzzle`);

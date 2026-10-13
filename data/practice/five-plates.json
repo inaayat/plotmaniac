@@ -8,7 +8,7 @@
     "id": "expert-table",
     "title": "Five plates",
     "blurb": "Colors, plates, and drinks on one street.",
-    "story": "Five houses. Who ordered what, and what color is the door?"
+    "story": "Five houses. Who eats what, and what color is the door?"
   },
   "houseCount": 5,
   "attributes": [
@@ -32,29 +32,29 @@
   "items": {
     "person": [
       {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
-      },
-      {
-        "id": "bo",
-        "label": "Bo",
-        "icon": "chef-hat"
-      },
-      {
-        "id": "gus",
-        "label": "Gus",
-        "icon": "briefcase"
-      },
-      {
-        "id": "drew",
-        "label": "Drew",
-        "icon": "paint-brush"
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
       },
       {
         "id": "fay",
         "label": "Fay",
         "icon": "sunglasses"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
       }
     ],
     "color": [
@@ -64,36 +64,31 @@
         "icon": "house"
       },
       {
-        "id": "pink",
-        "label": "pink",
-        "icon": "flower"
-      },
-      {
         "id": "green",
         "label": "green",
         "icon": "leaf"
       },
       {
+        "id": "pink",
+        "label": "pink",
+        "icon": "flower"
+      },
+      {
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
+      },
+      {
         "id": "blue",
         "label": "blue",
         "icon": "house-simple"
-      },
-      {
-        "id": "yellow",
-        "label": "yellow",
-        "icon": "sun"
       }
     ],
     "food": [
       {
-        "id": "burger",
-        "label": "burger",
-        "icon": "hamburger"
-      },
-      {
-        "id": "carrot",
-        "label": "carrot",
-        "icon": "carrot"
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
       },
       {
         "id": "pizza",
@@ -101,32 +96,22 @@
         "icon": "pizza"
       },
       {
-        "id": "ice",
-        "label": "ice cream",
-        "icon": "ice-cream"
+        "id": "sushi",
+        "label": "sushi",
+        "icon": "bowl-food"
       },
       {
-        "id": "bowl",
-        "label": "bowl",
-        "icon": "bowl-food"
+        "id": "tacos",
+        "label": "tacos",
+        "icon": "hamburger"
+      },
+      {
+        "id": "salad",
+        "label": "salad",
+        "icon": "leaf"
       }
     ],
     "drink": [
-      {
-        "id": "wine",
-        "label": "wine",
-        "icon": "wine"
-      },
-      {
-        "id": "beer",
-        "label": "beer",
-        "icon": "beer-stein"
-      },
-      {
-        "id": "martini",
-        "label": "martini",
-        "icon": "martini"
-      },
       {
         "id": "orange",
         "label": "orange juice",
@@ -136,227 +121,236 @@
         "id": "tea",
         "label": "tea",
         "icon": "tea-bag"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
       }
     ]
   },
   "clues": [
     {
       "id": "c1",
-      "type": "left_of",
+      "type": "next_to",
       "left": {
-        "attr": "food",
-        "item": "pizza"
+        "attr": "color",
+        "item": "pink"
       },
       "right": {
-        "attr": "person",
-        "item": "fay"
+        "attr": "food",
+        "item": "salad"
       },
-      "immediate": false,
-      "text": "The person who ordered pizza lives somewhere left of Fay."
+      "text": "The owner of the pink house lives next to the salad lover."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
-        "attr": "food",
-        "item": "ice"
+        "attr": "person",
+        "item": "hana"
       },
       "right": {
-        "attr": "drink",
-        "item": "martini"
+        "attr": "food",
+        "item": "sushi"
       },
-      "text": "The person who ordered ice cream is the person who drinks martini."
+      "text": "Hana eats sushi."
     },
     {
       "id": "c3",
       "type": "left_of",
       "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "immediate": true,
+      "text": "Io lives directly left of the one who drinks coffee."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
         "attr": "color",
         "item": "blue"
       },
       "right": {
-        "attr": "food",
-        "item": "ice"
+        "attr": "drink",
+        "item": "orange"
       },
-      "immediate": false,
-      "text": "The resident of the blue house lives somewhere left of the person who ordered ice cream."
+      "text": "The owner of the blue house drinks orange juice."
     },
     {
-      "id": "c4",
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "green"
+      },
+      "right": {
+        "attr": "food",
+        "item": "tacos"
+      },
+      "text": "The owner of the green house eats tacos."
+    },
+    {
+      "id": "c6",
+      "type": "either_house",
+      "attr": "food",
+      "item": "tacos",
+      "houses": [
+        0,
+        3
+      ],
+      "text": "The tacos lover lives in either house 1 or house 4."
+    },
+    {
+      "id": "c7",
       "type": "not_next_to",
       "left": {
         "attr": "drink",
         "item": "tea"
       },
       "right": {
-        "attr": "person",
-        "item": "drew"
-      },
-      "text": "The person who drinks tea does not live next door to Drew."
-    },
-    {
-      "id": "c5",
-      "type": "either_house",
-      "attr": "color",
-      "item": "pink",
-      "houses": [
-        0,
-        2
-      ],
-      "text": "The resident of the pink house lives in either house 1 or house 3."
-    },
-    {
-      "id": "c6",
-      "type": "next_to",
-      "left": {
-        "attr": "person",
-        "item": "gus"
-      },
-      "right": {
-        "attr": "drink",
-        "item": "orange"
-      },
-      "text": "Gus lives next door to the person who drinks orange juice."
-    },
-    {
-      "id": "c7",
-      "type": "same",
-      "left": {
         "attr": "color",
-        "item": "yellow"
+        "item": "red"
       },
-      "right": {
-        "attr": "drink",
-        "item": "beer"
-      },
-      "text": "The resident of the yellow house is the person who drinks beer."
+      "text": "The tea drinker does not live next to the red house."
     },
     {
       "id": "c8",
-      "type": "left_of",
-      "left": {
-        "attr": "person",
-        "item": "bo"
-      },
-      "right": {
-        "attr": "food",
-        "item": "carrot"
-      },
-      "immediate": true,
-      "text": "Bo lives immediately left of the person who ordered carrot."
+      "type": "either_house",
+      "attr": "person",
+      "item": "fay",
+      "houses": [
+        1,
+        2
+      ],
+      "text": "Fay lives in either house 2 or house 3."
     },
     {
       "id": "c9",
       "type": "next_to",
       "left": {
         "attr": "drink",
-        "item": "beer"
-      },
-      "right": {
-        "attr": "person",
-        "item": "gus"
-      },
-      "text": "The person who drinks beer lives next door to Gus."
-    },
-    {
-      "id": "c10",
-      "type": "same",
-      "left": {
-        "attr": "person",
-        "item": "fay"
-      },
-      "right": {
-        "attr": "drink",
         "item": "tea"
       },
-      "text": "Fay drinks tea."
-    },
-    {
-      "id": "c11",
-      "type": "left_of",
-      "left": {
+      "right": {
         "attr": "color",
         "item": "white"
       },
+      "text": "The tea drinker lives next to the white house."
+    },
+    {
+      "id": "c10",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "orange"
+      },
       "right": {
         "attr": "person",
-        "item": "gus"
+        "item": "ada"
       },
-      "immediate": true,
-      "text": "The resident of the white house lives immediately left of Gus."
+      "immediate": false,
+      "text": "The orange juice drinker lives somewhere left of Ada."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "red"
+      },
+      "right": {
+        "attr": "food",
+        "item": "pizza"
+      },
+      "text": "The owner of the red house eats pizza."
     },
     {
       "id": "c12",
       "type": "either_house",
       "attr": "person",
-      "item": "eden",
+      "item": "ada",
       "houses": [
-        3,
-        4
+        0,
+        2
       ],
-      "text": "Eden lives in either house 4 or house 5."
+      "text": "Ada lives in either house 1 or house 3."
     },
     {
       "id": "c13",
-      "type": "next_to",
-      "left": {
-        "attr": "food",
-        "item": "bowl"
-      },
-      "right": {
-        "attr": "person",
-        "item": "fay"
-      },
-      "text": "The person who ordered bowl lives next door to Fay."
+      "type": "either_house",
+      "attr": "drink",
+      "item": "wine",
+      "houses": [
+        1,
+        4
+      ],
+      "text": "The wine drinker lives in either house 2 or house 5."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the tacos lover?",
     "givenAttr": "food",
-    "givenItem": "carrot",
+    "givenItem": "tacos",
     "answerAttr": "person",
-    "answerItem": "drew"
+    "answerItem": "io"
   },
   "solution": [
     {
-      "person": "bo",
+      "person": "hana",
       "color": "blue",
-      "food": "pizza",
-      "drink": "wine"
-    },
-    {
-      "person": "drew",
-      "color": "white",
-      "food": "carrot",
+      "food": "sushi",
       "drink": "orange"
     },
     {
-      "person": "gus",
-      "color": "pink",
-      "food": "ice",
-      "drink": "martini"
+      "person": "fay",
+      "color": "white",
+      "food": "salad",
+      "drink": "wine"
     },
     {
-      "person": "eden",
-      "color": "yellow",
-      "food": "bowl",
+      "person": "ada",
+      "color": "pink",
+      "food": "cake",
+      "drink": "tea"
+    },
+    {
+      "person": "io",
+      "color": "green",
+      "food": "tacos",
       "drink": "beer"
     },
     {
-      "person": "fay",
-      "color": "green",
-      "food": "burger",
-      "drink": "tea"
+      "person": "cam",
+      "color": "red",
+      "food": "pizza",
+      "drink": "coffee"
     }
   ],
   "difficulty": {
     "label": "expert",
-    "steps": 11,
+    "steps": 27,
     "neededSearch": true,
     "weekday": 1,
     "solvedByHuman": true,
     "hardest": "contradiction",
     "hardestTier": 8,
-    "score": 51
+    "score": 67
   }
 }

@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "four-plates",
   "label": "Hard",
-  "source": "daily-2027-11-14",
+  "source": "practice-generated",
   "theme": {
     "id": "brunch",
     "title": "Four plates",
-    "blurb": "One table, several plates. Who ordered what?",
-    "story": "Four houses. Who ordered what?"
+    "blurb": "One table, several plates. Who eats what?",
+    "story": "Four houses. Who eats what?"
   },
   "houseCount": 4,
   "attributes": [
@@ -28,68 +28,68 @@
   "items": {
     "person": [
       {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
         "id": "ada",
         "label": "Ada",
         "icon": "detective"
       },
       {
-        "id": "cam",
-        "label": "Cam",
-        "icon": "student"
-      },
-      {
-        "id": "eden",
-        "label": "Eden",
-        "icon": "graduation-cap"
-      },
-      {
-        "id": "io",
-        "label": "Io",
-        "icon": "user-focus"
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
       }
     ],
     "food": [
       {
-        "id": "bowl",
-        "label": "bowl",
+        "id": "salad",
+        "label": "salad",
+        "icon": "leaf"
+      },
+      {
+        "id": "tacos",
+        "label": "tacos",
+        "icon": "hamburger"
+      },
+      {
+        "id": "pasta",
+        "label": "pasta",
+        "icon": "fork-knife"
+      },
+      {
+        "id": "sushi",
+        "label": "sushi",
         "icon": "bowl-food"
-      },
-      {
-        "id": "cake",
-        "label": "cake",
-        "icon": "cake"
-      },
-      {
-        "id": "carrot",
-        "label": "carrot",
-        "icon": "carrot"
-      },
-      {
-        "id": "ice",
-        "label": "ice cream",
-        "icon": "ice-cream"
       }
     ],
     "drink": [
-      {
-        "id": "martini",
-        "label": "martini",
-        "icon": "martini"
-      },
       {
         "id": "wine",
         "label": "wine",
         "icon": "wine"
       },
       {
-        "id": "coffee",
-        "label": "coffee",
-        "icon": "coffee"
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
       },
       {
         "id": "beer",
         "label": "beer",
         "icon": "beer-stein"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
       }
     ]
   },
@@ -99,132 +99,138 @@
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "cam"
+        "item": "drew"
       },
       "right": {
-        "attr": "drink",
-        "item": "beer"
+        "attr": "food",
+        "item": "salad"
       },
-      "text": "Cam is with the beer."
+      "text": "Drew eats salad."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
         "attr": "food",
-        "item": "ice"
+        "item": "salad"
       },
       "right": {
         "attr": "drink",
-        "item": "martini"
+        "item": "orange"
       },
-      "text": "ice cream is with the martini."
+      "text": "The salad lover drinks orange juice."
     },
     {
       "id": "c3",
       "type": "same",
       "left": {
         "attr": "person",
-        "item": "io"
+        "item": "ada"
       },
       "right": {
-        "attr": "food",
-        "item": "cake"
-      },
-      "text": "Io is with the cake."
-    },
-    {
-      "id": "c4",
-      "type": "next_to",
-      "left": {
         "attr": "drink",
         "item": "coffee"
       },
-      "right": {
-        "attr": "food",
-        "item": "bowl"
-      },
-      "text": "coffee is next to the bowl."
+      "text": "Ada drinks coffee."
     },
     {
-      "id": "c5",
-      "type": "next_to",
+      "id": "c4",
+      "type": "same",
       "left": {
-        "attr": "person",
-        "item": "cam"
+        "attr": "food",
+        "item": "sushi"
       },
       "right": {
         "attr": "drink",
-        "item": "wine"
+        "item": "beer"
       },
-      "text": "Cam is next to the wine."
+      "text": "The sushi lover drinks beer."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "Hana drinks beer."
     },
     {
       "id": "c6",
       "type": "next_to",
       "left": {
-        "attr": "person",
-        "item": "eden"
+        "attr": "drink",
+        "item": "orange"
       },
       "right": {
         "attr": "food",
-        "item": "ice"
+        "item": "sushi"
       },
-      "text": "Eden is next to the ice cream."
+      "text": "The orange juice drinker lives next to the sushi lover."
     },
     {
       "id": "c7",
-      "type": "left_of",
+      "type": "next_to",
       "left": {
         "attr": "drink",
         "item": "wine"
       },
       "right": {
-        "attr": "person",
-        "item": "io"
+        "attr": "food",
+        "item": "sushi"
       },
-      "immediate": false,
-      "text": "wine is somewhere left of the Io."
+      "text": "The wine drinker lives next to the sushi lover."
+    },
+    {
+      "id": "c8",
+      "type": "at",
+      "attr": "food",
+      "item": "tacos",
+      "house": 1,
+      "text": "The tacos lover lives in house 2."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the salad lover?",
     "givenAttr": "food",
-    "givenItem": "carrot",
+    "givenItem": "salad",
     "answerAttr": "person",
-    "answerItem": "eden"
+    "answerItem": "drew"
   },
   "solution": [
     {
       "person": "ada",
-      "food": "ice",
-      "drink": "martini"
+      "food": "pasta",
+      "drink": "coffee"
     },
     {
-      "person": "eden",
-      "food": "carrot",
+      "person": "gus",
+      "food": "tacos",
       "drink": "wine"
     },
     {
-      "person": "cam",
-      "food": "bowl",
+      "person": "hana",
+      "food": "sushi",
       "drink": "beer"
     },
     {
-      "person": "io",
-      "food": "cake",
-      "drink": "coffee"
+      "person": "drew",
+      "food": "salad",
+      "drink": "orange"
     }
   ],
   "difficulty": {
     "label": "hard",
-    "steps": 3,
-    "neededSearch": true,
-    "weekday": 0,
+    "steps": 20,
+    "neededSearch": false,
+    "weekday": 3,
     "solvedByHuman": true,
-    "hardest": "contradiction",
-    "hardestTier": 8,
-    "score": 43,
-    "sourceDate": "2027-11-14"
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 50
   }
 }

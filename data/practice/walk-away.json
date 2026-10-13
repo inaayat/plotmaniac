@@ -3,12 +3,12 @@
   "practice": true,
   "practiceId": "walk-away",
   "label": "Medium",
-  "source": "daily-2027-11-13",
+  "source": "practice-generated",
   "theme": {
     "id": "neighborhood",
     "title": "Walk away",
     "blurb": "Houses in a line. Match resident, ride, and animal.",
-    "story": "Rides and pets down a short block. Someone still walked."
+    "story": "Rides and pets down a short block."
   },
   "houseCount": 3,
   "attributes": [
@@ -33,48 +33,48 @@
         "icon": "detective"
       },
       {
-        "id": "jules",
-        "label": "Jules",
-        "icon": "identification-badge"
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
       },
       {
-        "id": "bo",
-        "label": "Bo",
-        "icon": "chef-hat"
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
       }
     ],
     "vehicle": [
       {
-        "id": "car",
-        "label": "car",
+        "id": "van",
+        "label": "van",
         "icon": "car"
       },
       {
-        "id": "bike",
-        "label": "bicycle",
-        "icon": "bicycle"
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
       },
       {
-        "id": "boat",
-        "label": "sailboat",
-        "icon": "sailboat"
+        "id": "bus",
+        "label": "bus",
+        "icon": "car"
       }
     ],
     "pet": [
       {
-        "id": "dog",
-        "label": "dog",
-        "icon": "dog"
-      },
-      {
-        "id": "rabbit",
-        "label": "rabbit",
-        "icon": "rabbit"
+        "id": "horse",
+        "label": "horses",
+        "icon": "horse"
       },
       {
         "id": "bird",
-        "label": "bird",
+        "label": "birds",
         "icon": "bird"
+      },
+      {
+        "id": "cat",
+        "label": "cats",
+        "icon": "cat"
       }
     ]
   },
@@ -83,27 +83,27 @@
       "id": "c1",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "bo"
+        "attr": "vehicle",
+        "item": "bus"
       },
       "right": {
         "attr": "pet",
-        "item": "bird"
+        "item": "horse"
       },
-      "text": "Bo is with the bird."
+      "text": "The person who drives a bus keeps horses."
     },
     {
       "id": "c2",
       "type": "same",
       "left": {
-        "attr": "person",
-        "item": "bo"
+        "attr": "vehicle",
+        "item": "moto"
       },
       "right": {
-        "attr": "vehicle",
-        "item": "boat"
+        "attr": "pet",
+        "item": "bird"
       },
-      "text": "Bo is with the sailboat."
+      "text": "The person who rides a motorcycle keeps birds."
     },
     {
       "id": "c3",
@@ -113,85 +113,65 @@
         "item": "ada"
       },
       "right": {
-        "attr": "vehicle",
-        "item": "bike"
+        "attr": "pet",
+        "item": "cat"
       },
-      "text": "Ada is with the bicycle."
+      "text": "Ada keeps cats."
     },
     {
       "id": "c4",
       "type": "next_to",
       "left": {
-        "attr": "person",
-        "item": "ada"
+        "attr": "pet",
+        "item": "horse"
       },
       "right": {
-        "attr": "pet",
-        "item": "bird"
+        "attr": "person",
+        "item": "drew"
       },
-      "text": "Ada is next to the bird."
+      "text": "The owner of the horses lives next to Drew."
     },
     {
       "id": "c5",
-      "type": "next_to",
-      "left": {
-        "attr": "person",
-        "item": "ada"
-      },
-      "right": {
-        "attr": "pet",
-        "item": "rabbit"
-      },
-      "text": "Ada is next to the rabbit."
-    },
-    {
-      "id": "c6",
-      "type": "left_of",
-      "left": {
-        "attr": "person",
-        "item": "jules"
-      },
-      "right": {
-        "attr": "pet",
-        "item": "dog"
-      },
-      "immediate": false,
-      "text": "Jules is somewhere left of the dog."
+      "type": "at",
+      "attr": "vehicle",
+      "item": "bus",
+      "house": 0,
+      "text": "The person who drives a bus lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the rabbit?",
+    "text": "Who keeps birds?",
     "givenAttr": "pet",
-    "givenItem": "rabbit",
+    "givenItem": "bird",
     "answerAttr": "person",
-    "answerItem": "jules"
+    "answerItem": "drew"
   },
   "solution": [
     {
-      "person": "jules",
-      "vehicle": "car",
-      "pet": "rabbit"
+      "person": "io",
+      "vehicle": "bus",
+      "pet": "horse"
+    },
+    {
+      "person": "drew",
+      "vehicle": "moto",
+      "pet": "bird"
     },
     {
       "person": "ada",
-      "vehicle": "bike",
-      "pet": "dog"
-    },
-    {
-      "person": "bo",
-      "vehicle": "boat",
-      "pet": "bird"
+      "vehicle": "van",
+      "pet": "cat"
     }
   ],
   "difficulty": {
     "label": "medium",
-    "steps": 2,
-    "neededSearch": true,
-    "weekday": 6,
+    "steps": 10,
+    "neededSearch": false,
+    "weekday": 4,
     "solvedByHuman": true,
-    "hardest": "contradiction",
-    "hardestTier": 8,
-    "score": 42,
-    "sourceDate": "2027-11-13"
+    "hardest": "next_to_edge",
+    "hardestTier": 6,
+    "score": 40
   }
 }
