@@ -56,7 +56,11 @@
         </div>
         <p class="question" id="game-question"></p>
         <p class="lede" id="game-lede"></p>
-        <p class="how-to" id="how-to">Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right.</p>
+        <details class="howto" id="howto">
+          <summary>How to play</summary>
+          <p id="how-to">Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right.</p>
+          <p class="setup" id="setup"></p>
+        </details>
         <p class="meta">
           <span class="chip chip-date" id="meta-date"></span>
           <span class="chip chip-timer" id="meta-timer"></span>
@@ -83,6 +87,9 @@
         </div>
       </div>
     </div>
-    <script type="module" src="./plotted.js"></script>
+    <script type="module">
+      import { boot } from "./plotted.js";
+      boot();
+    </script>
   </body>
 </html>

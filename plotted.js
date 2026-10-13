@@ -45,6 +45,7 @@ let completionOrder = [];
 let nextCompleteRank = 1;
 let solved = false;
 let toastTimer = 0;
+let bound = false;
 
 function haptic(ms = 10) {
   try {
@@ -56,6 +57,7 @@ function haptic(ms = 10) {
 
 function showToast(message) {
   const toast = $("toast");
+  if (!toast) return;
   toast.textContent = message;
   toast.hidden = false;
   clearTimeout(toastTimer);
@@ -83,6 +85,7 @@ function applyTheme(theme) {
 
 function paintThemeToggle() {
   const btn = $("theme-toggle");
+  if (!btn) return;
   const light = currentTheme() === "light";
   btn.innerHTML = iconSvg(light ? "moon" : "sun", { label: light ? "Switch to dark" : "Switch to light" });
 }
@@ -96,7 +99,7 @@ function attrMeta(attr) {
 }
 
 function itemById(attr, id) {
-  return puzzle.items[attr].find((item) => item.id === id);
+  return puzzle.items[attr]?.find((item) => item.id === id) || null;
 }
 
 function allItems() {
@@ -123,6 +126,14 @@ function storageKey() {
   return `${PROGRESS_STORAGE_KEY}:${puzzle.date}`;
 }
 
+export function progressFitsPuzzle(data, puz = puzzle) {
+  if (!data || !Array.isArray(data.grid) || data.grid.length !== puz.houseCount) return false;
+  const attrs = puz.attributes.map((entry) => entry.id);
+  return data.grid.every(
+    (row) => row && typeof row === "object" && attrs.every((attr) => typeof row[attr] === "string"),
+  );
+}
+
 function persist() {
   try {
     localStorage.setItem(
@@ -146,24 +157,46 @@ function persist() {
   }
 }
 
+function resetPlayState() {
+  grid = emptyGrid();
+  notes = Array.from({ length: puzzle.houseCount }, () => "");
+  ruledOut = emptyRuled();
+  crossed = new Set();
+  startedAt = 0;
+  elapsedMs = 0;
+  mistakes = 0;
+  hints = 0;
+  completionOrder = Array(puzzle.houseCount).fill(0);
+  nextCompleteRank = 1;
+  solved = false;
+  focused = null;
+}
+
 function restore() {
   try {
     const raw = localStorage.getItem(storageKey());
     if (!raw) return;
     const data = JSON.parse(raw);
-    grid = data.grid || emptyGrid();
-    notes = data.notes || Array.from({ length: puzzle.houseCount }, () => "");
-    ruledOut = data.ruledOut || emptyRuled();
+    if (!progressFitsPuzzle(data)) return;
+    grid = data.grid;
+    notes = Array.isArray(data.notes) && data.notes.length === puzzle.houseCount
+      ? data.notes
+      : Array.from({ length: puzzle.houseCount }, () => "");
+    ruledOut = Array.isArray(data.ruledOut) && data.ruledOut.length === puzzle.houseCount
+      ? data.ruledOut
+      : emptyRuled();
     crossed = new Set(data.crossed || []);
     startedAt = data.startedAt || 0;
     elapsedMs = data.elapsedMs || 0;
     mistakes = data.mistakes || 0;
     hints = data.hints || 0;
-    completionOrder = data.completionOrder || Array(puzzle.houseCount).fill(0);
+    completionOrder = Array.isArray(data.completionOrder) && data.completionOrder.length === puzzle.houseCount
+      ? data.completionOrder
+      : Array(puzzle.houseCount).fill(0);
     nextCompleteRank = data.nextCompleteRank || 1;
     solved = Boolean(data.solved);
   } catch {
-    /* ignore */
+    resetPlayState();
   }
 }
 
@@ -248,26 +281,56 @@ async function copyShare() {
 }
 
 function paintMeta() {
-  $("meta-date").textContent = puzzle.date;
-  $("meta-timer").innerHTML = `${iconSvg("clock")} ${formatTime(solved ? elapsedMs : startedAt ? Date.now() - startedAt : elapsedMs)}`;
-  const streak = readStreak();
-  $("meta-streak").innerHTML = `${iconSvg("calendar-check")} ${streak.count || 0}`;
+  const dateEl = $("meta-date");
+  const timerEl = $("meta-timer");
+  const streakEl = $("meta-streak");
+  if (dateEl) dateEl.textContent = puzzle.date;
+  if (timerEl) {
+    timerEl.innerHTML = `${iconSvg("clock")} ${formatTime(solved ? elapsedMs : startedAt ? Date.now() - startedAt : elapsedMs)}`;
+  }
+  if (streakEl) {
+    const streak = readStreak();
+    streakEl.innerHTML = `${iconSvg("calendar-check")} ${streak.count || 0}`;
+  }
 }
 
 function paintChrome() {
   document.title = GAME_NAME;
-  $("game-title").textContent = GAME_NAME;
-  $("game-eyebrow").textContent = puzzle.theme.title;
-  $("game-lede").textContent = puzzle.theme.story || GAME_TAGLINE;
-  $("game-question").innerHTML = highlightItemWordsHtml(puzzle.question.text, allItems());
-  $("how-to").textContent =
-    "Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right.";
-  $("archive-link").href = ARCHIVE_HREF;
-  $("win-title").textContent = GAME_NAME;
-  $("btn-hint").innerHTML = iconSvg("lightbulb", { label: "Reveal a cell" });
-  $("btn-check").innerHTML = iconSvg("check", { label: "Check the grid" });
-  $("btn-share").innerHTML = iconSvg("share", { label: "Share result" });
-  $("win-share").innerHTML = `${iconSvg("share")} Copy result`;
+  const title = $("game-title");
+  const eyebrow = $("game-eyebrow");
+  const lede = $("game-lede");
+  const question = $("game-question");
+  const howTo = $("how-to");
+  const setup = $("setup");
+  if (title) title.textContent = GAME_NAME;
+  if (eyebrow) eyebrow.textContent = puzzle.theme.title;
+  if (lede) lede.textContent = puzzle.theme.story || GAME_TAGLINE;
+  if (question) question.innerHTML = highlightItemWordsHtml(puzzle.question.text, allItems());
+  if (howTo) {
+    howTo.textContent =
+      "Each house has one owner. Type the bold words into the matching slots. Next door means a neighboring house, left or right.";
+  }
+  if (setup) {
+    if (puzzle.setup) {
+      setup.textContent = puzzle.setup;
+      setup.hidden = false;
+    } else {
+      setup.textContent = "";
+      setup.hidden = true;
+    }
+  }
+  const archive = $("archive-link");
+  if (archive) archive.href = ARCHIVE_HREF;
+  const winTitle = $("win-title");
+  if (winTitle) winTitle.textContent = GAME_NAME;
+  const hint = $("btn-hint");
+  const check = $("btn-check");
+  const share = $("btn-share");
+  if (hint) hint.innerHTML = iconSvg("lightbulb", { label: "Reveal a cell" });
+  if (check) check.innerHTML = iconSvg("check", { label: "Check the grid" });
+  if (share) share.innerHTML = iconSvg("share", { label: "Share result" });
+  const winShare = $("win-share");
+  if (winShare) winShare.innerHTML = `${iconSvg("share")} Copy result`;
   paintThemeToggle();
   paintMeta();
 }
@@ -277,20 +340,21 @@ function slotKey(house, attr) {
 }
 
 function popSlot(slot) {
+  if (!slot) return;
   slot.classList.remove("is-pop");
   void slot.offsetWidth;
   slot.classList.add("is-pop");
 }
 
 function setSlotVisual(slot, house, attr, typed, status) {
-  const value = grid[house][attr];
+  const value = grid[house]?.[attr];
   const item = value ? itemById(attr, value) : null;
   const meta = attrMeta(attr);
   const mark = slot.querySelector(".slot-mark");
-  mark.innerHTML = iconSvg(item?.icon || meta.icon);
+  if (mark) mark.innerHTML = iconSvg(item?.icon || meta.icon);
   slot.classList.toggle("is-empty", !item);
-  slot.classList.toggle("is-match", Boolean(item));
-  slot.classList.toggle("is-unknown", status === "unknown" && Boolean(typed.trim()));
+  slot.classList.toggle("is-filled", Boolean(item));
+  slot.classList.toggle("is-unknown", status === "unknown" && Boolean(String(typed || "").trim()));
 }
 
 function nextEmptySlot(house, attr) {
@@ -299,7 +363,7 @@ function nextEmptySlot(house, attr) {
   let startAttr = attrs.indexOf(attr) + 1;
   for (let h = startHouse; h < puzzle.houseCount; h += 1) {
     for (let i = h === startHouse ? startAttr : 0; i < attrs.length; i += 1) {
-      if (!grid[h][attrs[i]]) return { house: h, attr: attrs[i] };
+      if (!grid[h]?.[attrs[i]]) return { house: h, attr: attrs[i] };
     }
   }
   return null;
@@ -308,10 +372,11 @@ function nextEmptySlot(house, attr) {
 function placeItem(house, attr, itemId, { bounce = true, silent = false } = {}) {
   if (solved) return;
   ensureTimer();
-  const previous = grid[house][attr];
+  const previous = grid[house]?.[attr];
   for (let other = 0; other < puzzle.houseCount; other += 1) {
-    if (other !== house && grid[other][attr] === itemId) grid[other][attr] = "";
+    if (other !== house && grid[other]?.[attr] === itemId) grid[other][attr] = "";
   }
+  if (!grid[house]) return previous;
   grid[house][attr] = itemId;
   markHouseCompletion();
   persist();
@@ -326,13 +391,17 @@ function placeItem(house, attr, itemId, { bounce = true, silent = false } = {}) 
 }
 
 function clearItem(house, attr) {
-  if (solved || !grid[house][attr]) return;
+  if (solved || !grid[house]?.[attr]) return;
   grid[house][attr] = "";
   persist();
 }
 
+function suggestBox() {
+  return document.querySelector(".slot-suggest");
+}
+
 function paintSuggestions(house, attr, typed) {
-  const box = document.querySelector(`[data-suggest="${house}"]`);
+  const box = suggestBox();
   if (!box) return;
   const items = matchTypedItem(puzzle.items[attr], typed).suggestions;
   box.replaceChildren();
@@ -346,8 +415,8 @@ function paintSuggestions(house, attr, typed) {
     btn.type = "button";
     btn.className = "suggest-chip";
     btn.textContent = item.label;
-    if (ruledOut[house][attr].includes(item.id)) btn.classList.add("is-out");
-    if (grid.some((row, other) => other !== house && row[attr] === item.id)) btn.classList.add("is-used");
+    if (ruledOut[house]?.[attr]?.includes(item.id)) btn.classList.add("is-out");
+    if (grid.some((row, other) => other !== house && row?.[attr] === item.id)) btn.classList.add("is-used");
     bindSuggest(btn, house, attr, item);
     box.appendChild(btn);
   }
@@ -389,7 +458,8 @@ function bindSuggest(btn, house, attr, item) {
 }
 
 function toggleRuledOut(house, attr, itemId) {
-  const list = ruledOut[house][attr];
+  const list = ruledOut[house]?.[attr];
+  if (!list) return;
   const index = list.indexOf(itemId);
   if (index >= 0) list.splice(index, 1);
   else list.push(itemId);
@@ -404,20 +474,20 @@ function handleTyped(house, attr, typed, input) {
   const result = matchTypedItem(puzzle.items[attr], typed);
   const slot = input.closest(".slot");
   if (result.status === "match") {
-    if (grid[house][attr] !== result.item.id) {
+    if (grid[house]?.[attr] !== result.item.id) {
       placeItem(house, attr, result.item.id, { silent: true });
-      popSlot(slot);
+      if (slot) popSlot(slot);
       syncOtherInputs(attr, house);
       refreshCluesAndHouses();
     }
     input.value = result.item.label;
   } else {
-    if (grid[house][attr]) {
+    if (grid[house]?.[attr]) {
       clearItem(house, attr);
       refreshCluesAndHouses();
     }
   }
-  setSlotVisual(slot, house, attr, typed, result.status);
+  if (slot) setSlotVisual(slot, house, attr, typed, result.status);
   paintSuggestions(house, attr, typed);
 }
 
@@ -427,7 +497,7 @@ function syncOtherInputs(attr, exceptHouse) {
     const input = document.querySelector(`input[data-slot="${slotKey(house, attr)}"]`);
     const slot = input?.closest(".slot");
     if (!input || document.activeElement === input) continue;
-    const value = grid[house][attr];
+    const value = grid[house]?.[attr];
     const item = value ? itemById(attr, value) : null;
     input.value = item ? item.label : "";
     if (slot) setSlotVisual(slot, house, attr, input.value, item ? "match" : "empty");
@@ -442,8 +512,79 @@ function refreshCluesAndHouses() {
     if (row) row.classList.toggle("is-used", crossed.has(clue.id));
   });
   for (let house = 0; house < puzzle.houseCount; house += 1) {
-    document.querySelector(`[data-house="${house}"]`)?.classList.toggle("is-complete", Boolean(completionOrder[house]));
+    document.querySelectorAll(`[data-house="${house}"]`).forEach((node) => {
+      node.classList.toggle("is-complete", Boolean(solved && completionOrder[house]));
+    });
   }
+}
+
+function makeSlot(house, attr) {
+  const meta = attrMeta(attr);
+  const value = grid[house]?.[attr] || "";
+  const item = value ? itemById(attr, value) : null;
+  const slot = document.createElement("label");
+  slot.className = "slot";
+  slot.dataset.slot = slotKey(house, attr);
+  slot.dataset.house = String(house);
+  slot.dataset.attr = attr;
+  if (!item) slot.classList.add("is-empty");
+  if (item) slot.classList.add("is-filled");
+  const mark = document.createElement("span");
+  mark.className = "slot-mark";
+  mark.innerHTML = iconSvg(item?.icon || meta.icon);
+  slot.appendChild(mark);
+  const input = document.createElement("input");
+  input.className = "slot-input";
+  input.type = "text";
+  input.value = item ? item.label : "";
+  input.placeholder = meta.label;
+  input.dataset.slot = slotKey(house, attr);
+  input.dataset.house = String(house);
+  input.dataset.attr = attr;
+  input.setAttribute("aria-label", `House ${house + 1} ${meta.label}`);
+  input.setAttribute("autocapitalize", "none");
+  input.setAttribute("autocorrect", "off");
+  input.setAttribute("spellcheck", "false");
+  input.setAttribute("autocomplete", "off");
+  input.setAttribute("inputmode", "text");
+  input.setAttribute("enterkeyhint", "next");
+  input.setAttribute("list", `list-${attr}`);
+  if (solved) input.readOnly = true;
+  input.addEventListener("focus", () => {
+    focused = { house, attr };
+    paintSuggestions(house, attr, input.value);
+  });
+  input.addEventListener("blur", () => {
+    window.setTimeout(() => {
+      if (focused?.house === house && focused?.attr === attr) {
+        const box = suggestBox();
+        if (box && !box.contains(document.activeElement)) {
+          focused = null;
+          box.hidden = true;
+        }
+      }
+    }, 120);
+  });
+  input.addEventListener("input", () => handleTyped(house, attr, input.value, input));
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    const next = nextEmptySlot(house, attr);
+    if (!next) return;
+    document.querySelector(`input[data-slot="${slotKey(next.house, next.attr)}"]`)?.focus();
+  });
+  slot.appendChild(input);
+  return slot;
+}
+
+function showBoardError(message) {
+  const board = $("board");
+  if (!board) return;
+  const p = document.createElement("p");
+  p.className = "empty";
+  p.id = "boot";
+  p.textContent = message;
+  board.replaceChildren(p);
 }
 
 function paintBoard(opts = {}) {
@@ -451,89 +592,69 @@ function paintBoard(opts = {}) {
   const keep = opts.focus || focused;
   const typedByFocus = opts.typed;
   board.replaceChildren();
-  const houses = document.createElement("section");
-  houses.className = "houses";
-  houses.dataset.count = String(puzzle.houseCount);
-  houses.setAttribute("aria-label", "Houses");
-  const stacked = puzzle.houseCount >= 5 || attributes().length >= 5;
+
+  const play = document.createElement("div");
+  play.className = "play";
+
+  const gridWrap = document.createElement("section");
+  gridWrap.className = "grid-wrap";
+  gridWrap.setAttribute("aria-label", "Houses");
+
+  const table = document.createElement("table");
+  table.className = "grid-table";
+  table.dataset.count = String(puzzle.houseCount);
+
+  const thead = document.createElement("thead");
+  const headRow = document.createElement("tr");
+  const corner = document.createElement("th");
+  corner.scope = "col";
+  corner.className = "attr-head";
+  corner.textContent = "";
+  headRow.appendChild(corner);
   for (let house = 0; house < puzzle.houseCount; house += 1) {
-    const card = document.createElement("article");
-    card.className = "house";
-    card.dataset.tone = String((house % 5) + 1);
-    card.dataset.house = String(house);
-    if (completionOrder[house]) card.classList.add("is-complete");
-    const head = document.createElement("div");
-    head.className = "house-head";
-    head.innerHTML = `${iconSvg("house")} House ${house + 1}`;
-    card.appendChild(head);
-    for (const attr of attributes()) {
-      const meta = attrMeta(attr);
-      const value = grid[house][attr];
-      const item = value ? itemById(attr, value) : null;
-      const slot = document.createElement("label");
-      slot.className = "slot";
-      slot.dataset.slot = slotKey(house, attr);
-      if (stacked) slot.classList.add("is-wide");
-      if (!item) slot.classList.add("is-empty");
-      if (item) slot.classList.add("is-match");
-      const mark = document.createElement("span");
-      mark.className = "slot-mark";
-      mark.innerHTML = iconSvg(item?.icon || meta.icon);
-      slot.appendChild(mark);
-      if (stacked) {
-        const name = document.createElement("span");
-        name.className = "slot-attr";
-        name.textContent = meta.label;
-        slot.appendChild(name);
-      }
-      const input = document.createElement("input");
-      input.className = "slot-input";
-      input.type = "text";
-      input.value = item ? item.label : "";
-      input.placeholder = meta.label;
-      input.dataset.slot = slotKey(house, attr);
-      input.dataset.house = String(house);
-      input.dataset.attr = attr;
-      input.setAttribute("aria-label", `House ${house + 1} ${meta.label}`);
-      input.setAttribute("autocapitalize", "none");
-      input.setAttribute("autocorrect", "off");
-      input.setAttribute("spellcheck", "false");
-      input.setAttribute("autocomplete", "off");
-      input.setAttribute("inputmode", "text");
-      input.setAttribute("enterkeyhint", "next");
-      input.setAttribute("list", `list-${attr}`);
-      if (solved) input.readOnly = true;
-      input.addEventListener("focus", () => {
-        focused = { house, attr };
-        paintSuggestions(house, attr, input.value);
-      });
-      input.addEventListener("blur", () => {
-        window.setTimeout(() => {
-          if (focused?.house === house && focused?.attr === attr) {
-            const box = document.querySelector(`[data-suggest="${house}"]`);
-            if (box && !box.contains(document.activeElement)) {
-              focused = null;
-              box.hidden = true;
-            }
-          }
-        }, 120);
-      });
-      input.addEventListener("input", () => handleTyped(house, attr, input.value, input));
-      input.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter") return;
-        event.preventDefault();
-        const next = nextEmptySlot(house, attr);
-        if (!next) return;
-        document.querySelector(`input[data-slot="${slotKey(next.house, next.attr)}"]`)?.focus();
-      });
-      slot.appendChild(input);
-      card.appendChild(slot);
+    const th = document.createElement("th");
+    th.scope = "col";
+    th.className = "house-head";
+    th.dataset.house = String(house);
+    th.dataset.tone = String((house % 5) + 1);
+    if (solved && completionOrder[house]) th.classList.add("is-complete");
+    th.innerHTML = `${iconSvg("house")} <span>House ${house + 1}</span>`;
+    headRow.appendChild(th);
+  }
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+  for (const attr of attributes()) {
+    const tr = document.createElement("tr");
+    tr.dataset.attr = attr;
+    const th = document.createElement("th");
+    th.scope = "row";
+    th.className = "attr-head";
+    const meta = attrMeta(attr);
+    th.innerHTML = `${iconSvg(meta.icon)} <span>${meta.label}</span>`;
+    tr.appendChild(th);
+    for (let house = 0; house < puzzle.houseCount; house += 1) {
+      const td = document.createElement("td");
+      td.dataset.house = String(house);
+      td.dataset.tone = String((house % 5) + 1);
+      if (solved && completionOrder[house]) td.classList.add("is-complete");
+      td.appendChild(makeSlot(house, attr));
+      tr.appendChild(td);
     }
-    const suggest = document.createElement("div");
-    suggest.className = "slot-suggest";
-    suggest.dataset.suggest = String(house);
-    suggest.hidden = true;
-    card.appendChild(suggest);
+    tbody.appendChild(tr);
+  }
+
+  const notesRow = document.createElement("tr");
+  notesRow.className = "notes-row";
+  const notesHead = document.createElement("th");
+  notesHead.scope = "row";
+  notesHead.className = "attr-head";
+  notesHead.textContent = "Notes";
+  notesRow.appendChild(notesHead);
+  for (let house = 0; house < puzzle.houseCount; house += 1) {
+    const td = document.createElement("td");
+    td.dataset.house = String(house);
     const note = document.createElement("textarea");
     note.className = "notes";
     note.rows = 1;
@@ -544,23 +665,31 @@ function paintBoard(opts = {}) {
       notes[house] = note.value;
       persist();
     });
-    card.appendChild(note);
-    houses.appendChild(card);
+    td.appendChild(note);
+    notesRow.appendChild(td);
   }
+  tbody.appendChild(notesRow);
+  table.appendChild(tbody);
+
   const lists = document.createElement("div");
   lists.hidden = true;
   for (const attr of attributes()) {
     const list = document.createElement("datalist");
     list.id = `list-${attr}`;
-    for (const item of puzzle.items[attr]) {
+    for (const item of puzzle.items[attr] || []) {
       const option = document.createElement("option");
       option.value = item.label;
       list.appendChild(option);
     }
     lists.appendChild(list);
   }
-  houses.appendChild(lists);
-  board.appendChild(houses);
+
+  const suggest = document.createElement("div");
+  suggest.className = "slot-suggest";
+  suggest.hidden = true;
+
+  gridWrap.append(table, lists, suggest);
+  play.appendChild(gridWrap);
 
   const hintBlock = document.createElement("section");
   hintBlock.className = "hint-block";
@@ -568,12 +697,6 @@ function paintBoard(opts = {}) {
   hintLabel.className = "hint-label";
   hintLabel.textContent = "Hints";
   hintBlock.appendChild(hintLabel);
-  if (puzzle.setup) {
-    const setup = document.createElement("p");
-    setup.className = "setup";
-    setup.textContent = puzzle.setup;
-    hintBlock.appendChild(setup);
-  }
   const clues = document.createElement("div");
   clues.className = "clues";
   clues.setAttribute("role", "list");
@@ -604,7 +727,8 @@ function paintBoard(opts = {}) {
     clues.appendChild(row);
   });
   hintBlock.appendChild(clues);
-  board.appendChild(hintBlock);
+  play.appendChild(hintBlock);
+  board.appendChild(play);
 
   if (keep) {
     const input = document.querySelector(`input[data-slot="${slotKey(keep.house, keep.attr)}"]`);
@@ -655,6 +779,7 @@ function checkGrid() {
 
 function burstConfetti() {
   const root = $("confetti");
+  if (!root) return;
   root.hidden = false;
   root.replaceChildren();
   for (let i = 0; i < 56; i += 1) {
@@ -692,49 +817,70 @@ function finish() {
     burstConfetti();
   }
   focused = null;
-  $("btn-share").hidden = false;
-  $("share-text").textContent = shareBody();
-  $("win-lede").textContent = `Solved in ${formatTime(elapsedMs)} · ${hints} hint${hints === 1 ? "" : "s"} · ${scoreFor({ elapsedMs, mistakes, hints })} pts`;
-  $("win").hidden = false;
+  const share = $("btn-share");
+  if (share) share.hidden = false;
+  const shareText = $("share-text");
+  if (shareText) shareText.textContent = shareBody();
+  const winLede = $("win-lede");
+  if (winLede) {
+    winLede.textContent = `Solved in ${formatTime(elapsedMs)} · ${hints} hint${hints === 1 ? "" : "s"} · ${scoreFor({ elapsedMs, mistakes, hints })} pts`;
+  }
+  const win = $("win");
+  if (win) win.hidden = false;
   paintMeta();
   paintBoard();
 }
 
-async function loadPuzzle() {
-  const date = localIsoDate();
-  const response = await fetch(`data/plotted/${date}.json`);
-  if (!response.ok) throw new Error(`No puzzle for ${date}`);
-  puzzle = await response.json();
-  grid = emptyGrid();
-  notes = Array.from({ length: puzzle.houseCount }, () => "");
-  ruledOut = emptyRuled();
-  completionOrder = Array(puzzle.houseCount).fill(0);
+export async function loadPuzzle({ date, puzzle: given } = {}) {
+  if (given) {
+    puzzle = given;
+  } else {
+    const iso = date || localIsoDate();
+    const response = await fetch(`data/plotted/${iso}.json`);
+    if (!response.ok) throw new Error(`No puzzle for ${iso}`);
+    puzzle = await response.json();
+  }
+  resetPlayState();
   restore();
   paintChrome();
-  paintBoard();
+  try {
+    paintBoard();
+  } catch (error) {
+    console.error(error);
+    showBoardError("Couldn’t draw today’s grid.");
+    throw error;
+  }
   if (solved) {
-    $("btn-share").hidden = false;
+    const share = $("btn-share");
+    if (share) share.hidden = false;
   }
 }
 
 function bind() {
-  $("theme-toggle").addEventListener("click", () => {
+  if (bound) return;
+  bound = true;
+  $("theme-toggle")?.addEventListener("click", () => {
     applyTheme(currentTheme() === "light" ? "dark" : "light");
   });
-  $("btn-hint").addEventListener("click", useHint);
-  $("btn-check").addEventListener("click", checkGrid);
-  $("btn-share").addEventListener("click", copyShare);
-  $("win-share").addEventListener("click", copyShare);
-  $("win-close").addEventListener("click", () => {
-    $("win").hidden = true;
+  $("btn-hint")?.addEventListener("click", useHint);
+  $("btn-check")?.addEventListener("click", checkGrid);
+  $("btn-share")?.addEventListener("click", copyShare);
+  $("win-share")?.addEventListener("click", copyShare);
+  $("win-close")?.addEventListener("click", () => {
+    const win = $("win");
+    if (win) win.hidden = true;
   });
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
   }
 }
 
-bind();
-loadPuzzle().catch((error) => {
-  console.error(error);
-  $("boot").textContent = "Today’s puzzle isn’t on this build yet.";
-});
+export async function boot(options = {}) {
+  bind();
+  try {
+    await loadPuzzle(options);
+  } catch (error) {
+    console.error(error);
+    showBoardError("Today’s puzzle isn’t on this build yet.");
+  }
+}

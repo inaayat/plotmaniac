@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, SITE_URL } from "../plotted-config.js";
+import { progressFitsPuzzle } from "../plotted.js";
 import { ICONS, iconSvg } from "../plotted-icons.js";
 import { THEMES } from "../plotted-themes.js";
 import {
@@ -187,6 +188,10 @@ assert.match(html, /plotted-theme/);
 assert.match(html, /archive\//);
 assert.match(html, /params.has\("plot"\)/);
 assert.match(html, /id="how-to"/);
+assert.match(html, /id="howto"/);
+assert.match(html, /id="setup"/);
+assert.match(html, /How to play/);
+assert.match(html, /import \{ boot \}/);
 assert.match(html, /id="confetti"/);
 assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
@@ -208,11 +213,18 @@ assert.match(css, /100dvh/);
 assert.match(css, /\.hint-block/);
 assert.match(css, /\.clue-num/);
 assert.match(css, /\.slot-input/);
+assert.match(css, /\.grid-table/);
 assert.match(css, /\.confetti/);
 assert.match(css, /@keyframes pop/);
+assert.match(css, /\.clue-text strong[\s\S]*color:\s*inherit/);
 assert.doesNotMatch(css, /scroll-snap/);
 assert.doesNotMatch(css, /\.sheet-panel/);
 assert.doesNotMatch(css, /Nunito|Fredoka/);
+assert.doesNotMatch(css, /body::before/);
+assert.doesNotMatch(css, /radial-gradient/);
+assert.doesNotMatch(css, /\.clue:nth-child[^{]*strong/);
+assert.doesNotMatch(css, /\.slot\.is-match/);
+assert.doesNotMatch(css, /\.question strong[\s\S]{0,80}house-1/);
 
 const app = read("plotted.js");
 assert.match(app, /GAME_NAME/);
@@ -226,6 +238,8 @@ assert.match(app, /navigator.share/);
 assert.match(app, /serviceWorker/);
 assert.match(app, /Hints/);
 assert.match(app, /puzzle\.setup/);
+assert.match(app, /progressFitsPuzzle/);
+assert.match(app, /grid-table/);
 assert.doesNotMatch(app, /openSheet/);
 assert.doesNotMatch(app, /Tap a slot/);
 assert.doesNotMatch(app, /[\u{1F300}-\u{1FAFF}]/u);
@@ -245,8 +259,31 @@ assert.match(plan, /Solved in/);
 assert.match(plan, /All clues are hints/);
 assert.match(plan, /Einstein/);
 assert.match(plan, /types the exact word/);
+assert.match(plan, /How to play/);
+assert.match(plan, /plain bold/);
 assert.doesNotMatch(plan, /swipeable/);
 assert.doesNotMatch(plan, /share-card|share card/i);
+assert.doesNotMatch(plan, /tinted blob|soft grid background/);
+
+assert.equal(
+  progressFitsPuzzle(
+    { grid: [{ person: "ada" }, { person: "bo" }, { person: "cam" }] },
+    { houseCount: 5, attributes: [{ id: "color" }, { id: "nationality" }] },
+  ),
+  false,
+);
+assert.equal(
+  progressFitsPuzzle(
+    {
+      grid: [
+        { color: "", nationality: "" },
+        { color: "", nationality: "" },
+      ],
+    },
+    { houseCount: 2, attributes: [{ id: "color" }, { id: "nationality" }] },
+  ),
+  true,
+);
 
 const einstein = einsteinPuzzle("2026-10-13");
 assert.equal(einstein.houseCount, 5);

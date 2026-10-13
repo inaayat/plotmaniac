@@ -23,8 +23,8 @@ Each house has one **text input** per attribute. The player types the exact word
 
 - Phosphor icons stay as **decorative** attribute / item markers, not as the placement UI. There is no bottom-sheet icon picker.
 - Optional **tiny free-text notes** on each house. Suggestion chips can be long-pressed to rule a word out for that slot.
-- **All clues are hints:** a compact numbered list, shown in full, wrapping so nothing is cut off. Sortable item words are **bold**. Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
-- If the puzzle has a **setup** paragraph (Einstein day), it sits above the numbered clues.
+- **All clues are hints:** a compact numbered list, shown in full, wrapping so nothing is cut off. Sortable item words are **plain bold** in the normal ink color (no per-item, per-attribute, or per-house coloring in clues or inputs). Tap a line to cross it off. A hint also **auto-crosses** when the current grid makes it true.
+- If the puzzle has a **setup** paragraph (Einstein day), it lives inside a collapsible **How to play** block, not above the clue list.
 - One-line helper: each house has one owner; type the bold words; next door means a neighboring house.
 - **Hint** fills one empty cell with the correct item and costs score.
 - **Check** scores a mistake if the grid is full but wrong; it finishes the day if the grid matches the unique solution.
@@ -102,11 +102,11 @@ The real constraint is **freshness**:
 
 Keep **Fraunces** titles and **IBM Plex Mono** UI. The skin is colorful, not the old gold-on-charcoal field notes.
 
-- **House palette:** coral `#ff6b6b`, teal `#12b5a8`, sunny yellow `#f4c430`, violet `#8b5cf6`, mint `#34d399`. Each house uses its color on the card border, header, and placed icons.
-- **Light:** warm paper `#fff6eb`, ink `#2a1f18`, tinted blob + soft grid background.
-- **Dark** is a matching plum-navy (`#1a1230`, ink `#f8f1ff`) with brighter house glows (`#ff8a7a`, `#2ee6d0`, `#ffd54a`, `#c4a0ff`, `#5eead4`) — not an invert of light mode.
-- Phosphor duotone icons tint per house / attribute. Clue numbers, chips, buttons, and crossed-off hints cycle the house colors. Contrast stays high.
-- Timer and streak sit in colorful chips. Slots bounce on place/remove. Solving bursts CSS confetti (no emoji).
+- **House palette:** coral `#ff6b6b`, teal `#12b5a8`, sunny yellow `#f4c430`, violet `#8b5cf6`, mint `#34d399`. Color stays on house column headers, chips, and accents — not on clue text or typed answers.
+- **Light:** flat warm paper `#fff6eb`, ink `#2a1f18`. No gradient or blurred color-blob background.
+- **Dark** is a matching plum-navy (`#1a1230`, ink `#f8f1ff`) with brighter house accents (`#ff8a7a`, `#2ee6d0`, `#ffd54a`, `#c4a0ff`, `#5eead4`) — not an invert of light mode.
+- Phosphor duotone icons are decorative. Chips and header buttons keep house colors. Clue numbers and bold words stay in normal ink so they cannot leak the solution.
+- Timer and streak sit in colorful chips. Slots bounce on place/remove. Solving bursts CSS confetti (no emoji). Typed cells do not pick up house-matching colors that would leak correctness before **Check**.
 - **Toggle** in the header; default is `prefers-color-scheme`; stored in `localStorage` (`plotted-theme`).
 
 ## 7. Icons
@@ -122,9 +122,9 @@ Build themes around what those sets actually contain (cat, dog, coffee, wine, de
 
 ## 8. Mobile-first
 
-- Compact header (title, theme, reveal/check as icon buttons), **question prominent**, house grid of text inputs, then the full hint list.
-- Mobile-first portrait: 16px inputs (no zoom-on-focus), `autocapitalize=none`, tap targets **≥ 44px**. Five-house days stack cards on a phone and go five-up on a wide screen. The page may scroll on Einstein / 5-house days. No horizontal clue carousel.
-- Desktop: constrained column (~560–720px), same stack.
+- Compact header (title, theme, reveal/check as icon buttons), **question prominent**, then a **compact table** (houses as columns, attributes as rows) and the full hint list.
+- Mobile-first portrait: 16px inputs (no zoom-on-focus), `autocapitalize=none`. Narrow screens: table on top, dense clue list below. Wide laptop (~1280×720): two columns — table on one side, two-column numbered clues on the other — so all Einstein slots and 15 clues fit without scrolling. No horizontal clue carousel.
+- Desktop: centered column up to ~1180px; header, grid, and clues share that column.
 - Haptic feedback via `navigator.vibrate` where the OS allows it.
 - Installable **PWA** (`manifest.webmanifest` + `sw.js`) that can reload the shell and the day’s JSON offline after the first fetch.
 - Lightweight: static files, no bundler.
@@ -144,7 +144,7 @@ Git history is kept (`git mv`). Rebuild scripts under `scripts/` now write into 
 
 ## 10. Build steps
 
-1. Generator + uniqueness solver in JS (`plotted-engine.js`) with tests (`scripts/test-plotted.mjs`).
+1. Generator + uniqueness solver in JS (`plotted-engine.js`) with tests (`scripts/test-plotted.mjs`, `scripts/test-plotted-dom.mjs`).
 2. Small web app: grid, clues, timer, hint, check, plain-text share.
 3. Daily puzzle JSON by date (`data/plotted/YYYY-MM-DD.json`).
 4. Playtest with ~10 friends and tune the weekday curve.

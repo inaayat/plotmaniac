@@ -21,6 +21,7 @@ The older Plotmaniac field guide is archived (not deleted) under `archive/`: `ar
 | `archive/engine.js` | Shared plot engine |
 | `archive/data/plots.json` | Plot registry |
 | `scripts/test-plotted.mjs` | Solver, share text, icon, archive-path checks |
+| `scripts/test-plotted-dom.mjs` | happy-dom: index.html paints Einstein + generated days |
 | `scripts/generate-plotted.mjs` | Precompute a year of JSON |
 | `scripts/test-never-ending-internet-lore.mjs` | Plotmaniac archive / UI regression checks |
 
@@ -31,6 +32,7 @@ Plotmaniac details (Marvel chronology, gun boards, templates) still apply to fil
 ```bash
 python3 -m http.server 8000
 node scripts/test-plotted.mjs
+node scripts/test-plotted-dom.mjs
 node scripts/test-never-ending-internet-lore.mjs
 ```
 

@@ -32,6 +32,7 @@ Then [http://localhost:8000](http://localhost:8000) for Plotted and [http://loca
 
 ```bash
 node scripts/test-plotted.mjs
+node scripts/test-plotted-dom.mjs
 node scripts/test-never-ending-internet-lore.mjs
 node scripts/generate-plotted.mjs
 ```

@@ -3,7 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node scripts/test-plotted.mjs && node scripts/test-never-ending-internet-lore.mjs",
+    "test": "node scripts/test-plotted.mjs && node scripts/test-plotted-dom.mjs && node scripts/test-never-ending-internet-lore.mjs",
     "generate": "node scripts/generate-plotted.mjs"
+  },
+  "devDependencies": {
+    "happy-dom": "^21.0.1"
   }
 }
