@@ -957,24 +957,81 @@ h1 {
     content: " ×";
   }
 
-  .notes-panel[open] {
-    position: fixed;
-    inset: calc(8px + var(--safe-top)) 8px calc(8px + var(--safe-bottom));
-    z-index: 7;
-    display: flex;
+  .notes-panel > .notes-sheet {
+    display: flex !important;
     flex-direction: column;
-    gap: 8px;
-    background: var(--bg);
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    bottom: calc(var(--keyboard-inset, 0px) + var(--safe-bottom));
+    z-index: 7;
+    width: auto;
+    height: min(50dvh, calc(var(--vv-height, 50dvh) * 0.5));
+    max-height: min(50dvh, calc(var(--vv-height, 100dvh) - var(--keyboard-inset, 0px)));
+    margin: 0;
+    padding: 8px 8px 10px;
+    overflow: hidden;
+    background: var(--notes-paper);
     border: 2px solid var(--notes-border);
-    border-radius: 18px;
+    border-radius: 18px 18px 0 0;
     box-shadow: var(--notes-shadow);
-    padding: 12px;
+    transform: translateY(calc(100% + 16px));
+    transition: transform 400ms ease-in;
+    pointer-events: none;
   }
 
-  .notes-panel[open] .notes {
+  .notes-panel[open]:not(.is-closing) > .notes-sheet {
+    transform: translateY(0);
+    transition: transform 300ms ease-out;
+    pointer-events: auto;
+  }
+
+  .notes-sheet-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex: 0 0 auto;
+    min-height: 28px;
+  }
+
+  .notes-sheet-handle {
+    width: 48px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+  }
+
+  .notes-sheet-handle::before {
+    content: "";
+    width: 44px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--notes-border);
+  }
+
+  .notes-sheet-close {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    min-width: 44px;
+    min-height: 44px;
+    color: var(--ink);
+  }
+
+  .notes-panel .notes {
     flex: 1 1 auto;
     min-height: 0;
     height: auto;
+    padding: 8px 10px;
+    line-height: 1.25;
+    font-size: 16px;
+    border-radius: 12px;
   }
 }
 
@@ -1020,6 +1077,19 @@ h1 {
     flex: 0 0 auto;
   }
 
+  .notes-sheet {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .notes-sheet-bar,
+  .notes-sheet-handle,
+  .notes-sheet-close {
+    display: none;
+  }
+
   .notes {
     flex: 1 1 auto;
     width: 100%;
@@ -1048,5 +1118,10 @@ h1 {
   .slot.is-shake,
   .slot.is-win {
     animation: none;
+  }
+
+  .notes-panel > .notes-sheet,
+  .notes-panel[open]:not(.is-closing) > .notes-sheet {
+    transition: none;
   }
 }

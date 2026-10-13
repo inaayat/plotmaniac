@@ -572,6 +572,57 @@ function prefersReducedMotion() {
   }
 }
 
+let notesCloseTimer = 0;
+
+export function syncNotesViewport() {
+  const root = document.documentElement;
+  const innerH = window.innerHeight || 720;
+  const vv = window.visualViewport;
+  const vvH = vv?.height || innerH;
+  const vvTop = vv?.offsetTop || 0;
+  const keyboard = Math.max(0, Math.round(innerH - vvH - vvTop));
+  root.style.setProperty("--vv-height", `${Math.round(vvH)}px`);
+  root.style.setProperty("--keyboard-inset", `${keyboard}px`);
+}
+
+export function closeMobileNotes(panel = document.querySelector(".notes-panel")) {
+  if (!panel || isWidePlay() || !panel.open) return;
+  const finish = () => {
+    panel.open = false;
+    panel.classList.remove("is-closing");
+    const sheet = panel.querySelector(".notes-sheet");
+    if (sheet) sheet.setAttribute("aria-hidden", "true");
+    const toggle = panel.querySelector(".notes-toggle");
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+    panel.querySelector("textarea.notes")?.blur();
+    fitPlayfield();
+  };
+  if (prefersReducedMotion()) {
+    finish();
+    return;
+  }
+  panel.classList.add("is-closing");
+  clearTimeout(notesCloseTimer);
+  notesCloseTimer = setTimeout(finish, 400);
+}
+
+function bindNotesHandle(handle, panel) {
+  let startY = 0;
+  let dragging = false;
+  handle.addEventListener("pointerdown", (event) => {
+    if (isWidePlay() || !panel.open) return;
+    dragging = true;
+    startY = event.clientY;
+    handle.setPointerCapture?.(event.pointerId);
+  });
+  handle.addEventListener("pointerup", (event) => {
+    if (!dragging) return;
+    dragging = false;
+    if (event.clientY - startY >= 36) closeMobileNotes(panel);
+    else closeMobileNotes(panel);
+  });
+}
+
 function popSlot(slot) {
   if (!slot) return;
   slot.classList.remove("is-pop");
@@ -984,6 +1035,21 @@ function paintBoard(opts = {}) {
   notesToggle.className = "notes-toggle";
   notesToggle.textContent = "Notes";
   notesToggle.setAttribute("aria-expanded", notesPanel.open ? "true" : "false");
+  const sheet = document.createElement("div");
+  sheet.className = "notes-sheet";
+  sheet.setAttribute("aria-hidden", notesPanel.open ? "false" : "true");
+  const sheetBar = document.createElement("div");
+  sheetBar.className = "notes-sheet-bar";
+  const handle = document.createElement("button");
+  handle.type = "button";
+  handle.className = "notes-sheet-handle";
+  handle.setAttribute("aria-label", "Close notes");
+  const closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "icon-btn notes-sheet-close";
+  closeBtn.setAttribute("aria-label", "Close notes");
+  closeBtn.innerHTML = iconSvg("x", { label: "Close notes" });
+  sheetBar.append(handle, closeBtn);
   const note = document.createElement("textarea");
   note.className = "notes";
   note.placeholder = "Jot your deductions here...";
@@ -996,12 +1062,27 @@ function paintBoard(opts = {}) {
     notes = note.value;
     persist();
   });
-  notesPanel.append(notesToggle, note);
+  sheet.append(sheetBar, note);
+  notesPanel.append(notesToggle, sheet);
   notesPanel.addEventListener("toggle", () => {
     if (isWidePlay()) notesPanel.open = true;
     notesToggle.setAttribute("aria-expanded", notesPanel.open ? "true" : "false");
+    sheet.setAttribute("aria-hidden", notesPanel.open || isWidePlay() ? "false" : "true");
+    if (notesPanel.open) notesPanel.classList.remove("is-closing");
+    syncNotesViewport();
     fitPlayfield();
   });
+  notesToggle.addEventListener("click", (event) => {
+    if (isWidePlay() || !notesPanel.open) return;
+    event.preventDefault();
+    closeMobileNotes(notesPanel);
+  });
+  closeBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    closeMobileNotes(notesPanel);
+  });
+  bindNotesHandle(handle, notesPanel);
 
   const hintBlock = document.createElement("section");
   hintBlock.className = "hint-block";
@@ -1087,7 +1168,8 @@ export function fitPlayfield() {
   const footerH = Math.round(footer?.getBoundingClientRect().height || 28);
   root.style.setProperty("--mast-h", `${mastH}px`);
   root.style.setProperty("--footer-h", `${footerH}px`);
-  const availH = Math.max(220, (window.innerHeight || 720) - mastH - footerH - 16);
+  syncNotesViewport();
+  let availH = Math.max(220, (window.innerHeight || 720) - mastH - footerH - 16);
   const wide = isWidePlay();
   if (notesPanel) {
     if (wide) {
@@ -1097,6 +1179,11 @@ export function fitPlayfield() {
       notesPanel.open = false;
       notesPanel.dataset.desktop = "";
     }
+  }
+  if (!wide && notesPanel?.open) {
+    const sheet = notesPanel.querySelector(".notes-sheet");
+    const sheetH = Math.round(sheet?.getBoundingClientRect().height || (window.innerHeight || 720) * 0.5);
+    availH = Math.max(160, availH - sheetH - 8);
   }
   root.style.setProperty("--clue-cols", wide && puzzle.clues.length >= 6 ? "2" : "1");
   const ua = typeof navigator !== "undefined" ? navigator.userAgent || "" : "";
@@ -1333,7 +1420,18 @@ export async function loadPuzzle({ date, puzzle: given, practiceId } = {}) {
 function bind() {
   if (bound) return;
   bound = true;
-  window.addEventListener("resize", () => fitPlayfield());
+  window.addEventListener("resize", () => {
+    syncNotesViewport();
+    fitPlayfield();
+  });
+  window.visualViewport?.addEventListener("resize", () => {
+    syncNotesViewport();
+    fitPlayfield();
+  });
+  window.visualViewport?.addEventListener("scroll", () => syncNotesViewport());
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMobileNotes();
+  });
   $("btn-help")?.addEventListener("click", () => {
     const howto = $("howto");
     if (howto) howto.open = !howto.open;

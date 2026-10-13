@@ -194,6 +194,33 @@ if (typeof window.happyDOM?.setViewport === "function") {
   if (toggleStyle?.minHeight) {
     assert.ok(Number.parseFloat(toggleStyle.minHeight) >= 36, "notes toggle is tappable");
   }
+  assert.ok(document.querySelector(".notes-sheet"), "mobile notes live in a bottom sheet");
+  assert.ok(document.querySelector(".notes-sheet-handle"), "sheet has a grab handle");
+  assert.ok(document.querySelector(".notes-sheet-close"), "sheet has a close button");
+  toggle.click();
+  assert.equal(document.querySelector(".notes-panel")?.open, true, "NOTES opens the sheet");
+  const sheetNote = document.querySelector("textarea.notes");
+  const sheetNoteStyle = window.getComputedStyle(sheetNote);
+  if (sheetNoteStyle?.fontSize) {
+    assert.equal(sheetNoteStyle.fontSize, "16px", "sheet textarea stays 16px to avoid iOS zoom");
+  }
+  if (sheetNoteStyle?.paddingTop) {
+    assert.ok(Number.parseFloat(sheetNoteStyle.paddingTop) <= 10, "sheet padding is tighter than the desktop pad");
+  }
+  const restoreMedia = window.matchMedia;
+  window.matchMedia = (query) => ({
+    matches: String(query).includes("prefers-reduced-motion"),
+    media: String(query),
+    addEventListener() {},
+    removeEventListener() {},
+  });
+  document.querySelector(".notes-sheet-close").click();
+  assert.equal(document.querySelector(".notes-panel")?.open, false, "close returns the sheet");
+  document.querySelector(".notes-toggle").click();
+  assert.equal(document.querySelector(".notes-panel")?.open, true);
+  window.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+  assert.equal(document.querySelector(".notes-panel")?.open, false, "Escape closes the sheet");
+  window.matchMedia = restoreMedia;
   const nor = document.querySelector('input[data-attr="nationality"]');
   nor.value = "Norwegian";
   nor.dispatchEvent(new window.Event("input", { bubbles: true }));
