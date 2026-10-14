@@ -18,7 +18,7 @@
   --safe-left: env(safe-area-inset-left, 0px);
   --tap: 36px;
   --clue-size: 13px;
-  --clue-pad: 3px;
+  --clue-pad: 1px;
   --cell-h: 36px;
   --play-gap: 8px;
   --input-size: 16px;
@@ -122,7 +122,7 @@ summary:focus-visible {
   min-height: 100dvh;
   width: min(var(--play-max), calc(100% - 16px));
   margin: 0 auto;
-  padding: calc(4px + var(--safe-top)) 8px calc(8px + var(--safe-bottom));
+  padding: calc(2px + var(--safe-top)) 8px calc(6px + var(--safe-bottom));
   gap: 0;
   text-align: center;
 }
@@ -135,7 +135,7 @@ summary:focus-visible {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  min-height: 42px;
+  min-height: 36px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -164,7 +164,7 @@ h1 {
   font-optical-sizing: auto;
   font-weight: 600;
   letter-spacing: 0.12em;
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   line-height: 1;
   text-transform: uppercase;
   color: var(--ink);
@@ -175,7 +175,7 @@ h1 {
   font-size: 0.58rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-top: 8px;
+  margin-top: 3px;
 }
 
 .question {
@@ -183,7 +183,7 @@ h1 {
   font-size: clamp(1.15rem, 2.4vw, 1.55rem);
   letter-spacing: -0.03em;
   line-height: 1.15;
-  margin: 4px 0 2px;
+  margin: 2px 0 0;
   color: var(--ink);
   font-weight: 600;
 }
@@ -212,7 +212,7 @@ h1 {
 
 .howto {
   max-width: 62ch;
-  margin: 4px auto 0;
+  margin: 2px auto 0;
   text-align: left;
   color: var(--ink);
 }
@@ -249,7 +249,7 @@ h1 {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: 0.62rem;
-  margin: 6px 0 8px;
+  margin: 2px 0 3px;
   color: var(--muted);
 }
 
@@ -263,10 +263,10 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 4px;
+  gap: 2px;
   width: 100%;
   max-width: 100%;
-  margin: 0 0 6px;
+  margin: 0 0 2px;
   overflow-x: hidden;
   color: var(--muted);
 }
@@ -276,7 +276,7 @@ h1 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 4px 8px;
+  gap: 2px 6px;
   min-width: 0;
   width: 100%;
   max-width: 100%;
@@ -302,8 +302,9 @@ h1 {
   display: block;
   width: 100%;
   max-width: 100%;
-  min-height: 40px;
-  padding: 0 36px 0 10px;
+  min-height: 32px;
+  height: 32px;
+  padding: 0 32px 0 8px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--bg);
@@ -692,28 +693,42 @@ h1 {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
 }
 
 .hint-heading {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4px;
+  margin: 0 0 1px;
+  min-height: 0;
+  line-height: 1;
 }
 
 .hint-label {
   color: var(--muted);
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   text-align: center;
+  margin: 0;
+  line-height: 1;
 }
 
-.hint-reveal {
-  min-width: 44px;
-  min-height: 44px;
+.icon-btn.hint-reveal {
+  min-width: 28px;
+  min-height: 28px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
   color: var(--muted);
+}
+
+.hint-reveal svg {
+  width: 16px;
+  height: 16px;
 }
 
 .clues {
@@ -728,16 +743,16 @@ h1 {
   display: grid;
   grid-template-columns: 1.7em minmax(0, 1fr);
   align-items: start;
-  gap: 6px;
+  gap: 4px;
   width: 100%;
   min-height: 0;
-  padding: var(--clue-pad, 3px) 0;
+  padding: var(--clue-pad, 1px) 0;
   text-align: left;
   color: var(--ink);
   font-size: var(--clue-size, 13px);
-  line-height: 1.35;
+  line-height: 1.25;
   white-space: normal;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 0;
   background: transparent;
 }
 
@@ -829,7 +844,27 @@ html.is-osk .lede {
 
 html.is-osk .question {
   font-size: 1.05rem;
-  margin: 2px 0;
+  margin: 1px 0 0;
+}
+
+html.is-osk h1 {
+  font-size: 1.12rem;
+}
+
+html.is-osk .eyebrow {
+  margin-top: 2px;
+}
+
+html.is-osk .howto {
+  margin: 1px auto 0;
+}
+
+html.is-osk .meta {
+  margin: 1px 0 2px;
+}
+
+html.is-osk .practice-nav {
+  margin: 0 0 1px;
 }
 
 .osk-row {

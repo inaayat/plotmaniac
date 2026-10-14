@@ -159,7 +159,7 @@ function isWidePlay() {
 
 const CLUE_SIZE_PHONE = 13;
 const CLUE_SIZE_DESKTOP = 15;
-const CLUE_PAD_PHONE = 3;
+const CLUE_PAD_PHONE = 1;
 const CLUE_PAD_DESKTOP = 4;
 const CLUE_SIZE_FLOOR = 11;
 const CELL_H_PHONE = 42;
@@ -1326,7 +1326,7 @@ function paintBoard(opts = {}) {
   hintBlock.className = "hint-block";
   const hintHeading = document.createElement("div");
   hintHeading.className = "hint-heading";
-  const hintLabel = document.createElement("p");
+  const hintLabel = document.createElement("span");
   hintLabel.className = "hint-label";
   hintLabel.textContent = "Hints";
   const hintBtn = document.createElement("button");
