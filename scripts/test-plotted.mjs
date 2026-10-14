@@ -346,7 +346,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v29/);
+assert.match(sw, /plotted-v30/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -384,6 +384,9 @@ assert.match(css, /\.slot-input \{[^}]*text-align: center/);
 assert.match(css, /\.slot-fit/);
 assert.match(css, /\.slot\.is-editing/);
 assert.match(css, /\.slot\.is-selected/);
+assert.match(css, /\.slot\.is-selected,\s*\n\.slot:focus-within \{[^}]*transform:\s*scale\(1\.06\)/);
+assert.match(css, /\.slot \{[^}]*transition:\s*transform 140ms ease/);
+assert.match(css, /prefers-reduced-motion: reduce[\s\S]*\.slot\.is-selected[\s\S]*transform:\s*none/);
 assert.match(css, /\.osk/);
 assert.match(css, /\.osk-key/);
 assert.match(css, /\.osk-key \{[^}]*border-radius:\s*8px/);

@@ -716,6 +716,15 @@ if (typeof window.happyDOM?.setViewport === "function") {
   assert.notEqual(document.activeElement, nat, "tapping a coarse tile must not focus the native input");
   assert.equal(natSlot.classList.contains("is-selected"), true, "tapped tile is highlighted");
   assert.equal(natSlot.classList.contains("is-editing"), false, "coarse tiles do not expand a native editor");
+  const selectedStyle = window.getComputedStyle(natSlot);
+  const selectedTransform = selectedStyle?.transform || "";
+  assert.ok(
+    selectedTransform.includes("scale(1.06)") || /matrix\(1\.06/.test(selectedTransform),
+    `selected tile scales up, got transform ${selectedTransform || "(empty)"}`,
+  );
+  if (selectedStyle?.zIndex && selectedStyle.zIndex !== "auto") {
+    assert.ok(Number.parseFloat(selectedStyle.zIndex) >= 5, `selected tile sits above neighbors, z-index ${selectedStyle.zIndex}`);
+  }
 
   pressOsk("n");
   assert.equal(nat.value, "n", "letter key fills the selected tile");
@@ -774,6 +783,15 @@ if (typeof window.happyDOM?.setViewport === "function") {
   const deskInput = document.querySelector("input.slot-input");
   assert.equal(deskInput.getAttribute("inputmode"), "text");
   assert.equal(deskInput.readOnly, false);
+  deskInput.focus();
+  const deskSlot = deskInput.closest(".slot");
+  assert.equal(deskSlot?.classList.contains("is-selected"), true, "desktop focus marks the tile selected");
+  const deskTransform = window.getComputedStyle(deskSlot)?.transform || "";
+  assert.ok(
+    deskTransform.includes("scale(1.06)") || /matrix\(1\.06/.test(deskTransform),
+    `desktop focused tile scales up, got transform ${deskTransform || "(empty)"}`,
+  );
+  deskInput.blur();
 }
 
 stopGameTimers();

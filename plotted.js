@@ -862,7 +862,7 @@ function setSlotVisual(slot, house, attr, typed, status) {
   }
   const selected = focused?.house === house && focused?.attr === attr;
   const osk = useOnScreenKeyboard();
-  slot.classList.toggle("is-selected", Boolean(selected && !isWidePlay()));
+  slot.classList.toggle("is-selected", Boolean(selected));
   slot.classList.toggle("is-editing", Boolean(selected && !isWidePlay() && !osk));
   if (selected && !isWidePlay() && !osk) sizeEditingSlot(slot);
   else slot.style.removeProperty("--edit-w");

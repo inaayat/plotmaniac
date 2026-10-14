@@ -511,6 +511,20 @@ h1 {
   border: 2px solid var(--tile-border);
   background: var(--tile);
   border-radius: 0;
+  transform: scale(1);
+  transition: transform 140ms ease;
+}
+
+.slot.is-selected,
+.slot:focus-within {
+  z-index: 5;
+  border-color: var(--ink);
+  transform: scale(1.06);
+}
+
+.grid-table td:has(.slot.is-selected),
+.grid-table td:has(.slot:focus-within) {
+  z-index: 5;
 }
 
 .slot-fit {
@@ -975,9 +989,9 @@ html.is-osk .question {
     overflow: hidden;
   }
 
-  .slot.is-selected {
-    z-index: 4;
-    border-color: var(--ink);
+  .slot.is-selected,
+  .slot:focus-within {
+    overflow: visible;
   }
 
   .slot.is-selected .slot-fit {
@@ -1272,6 +1286,13 @@ html.is-osk .question {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .slot,
+  .slot.is-selected,
+  .slot:focus-within {
+    transform: none;
+    transition: none;
+  }
+
   .slot.is-pop,
   .slot.is-flip,
   .slot.is-shake,
