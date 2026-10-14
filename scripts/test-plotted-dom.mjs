@@ -639,7 +639,7 @@ if (typeof window.happyDOM?.setViewport === "function") {
     assert.equal(selectStyle.fontSize, "16px", "picker stays 16px so iOS does not zoom");
   }
   if (selectStyle?.minHeight) {
-    assert.ok(Number.parseFloat(selectStyle.minHeight) >= 40, "picker tap target is at least 40px");
+    assert.equal(Number.parseFloat(selectStyle.minHeight), 32, "picker is a compact 32px control");
   }
   if (selectStyle?.borderRadius) {
     assert.ok(Number.parseFloat(selectStyle.borderRadius) >= 10, "picker corners are rounded");
