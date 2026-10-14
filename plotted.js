@@ -162,11 +162,14 @@ const CLUE_SIZE_DESKTOP = 15;
 const CLUE_PAD_PHONE = 3;
 const CLUE_PAD_DESKTOP = 4;
 const CLUE_SIZE_FLOOR = 11;
-const CLUE_SIZE_TYPING = 11;
-const CLUE_SIZE_TYPING_FLOOR = 9;
 const CELL_H_PHONE = 42;
-const CELL_H_PHONE_TYPING_MIN = 32;
-const CELL_H_PHONE_TYPING_MAX = 36;
+const CELL_H_PHONE_FLOOR = 32;
+const OSK_H = 168;
+const OSK_ROWS = [
+  ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+  ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+  ["ENTER", "z", "x", "c", "v", "b", "n", "m", "BACKSPACE"],
+];
 
 const SLOT_FIT_GLYPH = 0.64;
 
@@ -206,7 +209,7 @@ function applySlotFit(slot) {
   const fit = slot.querySelector(".slot-fit");
   const input = slot.querySelector(".slot-input");
   if (!fit) return;
-  if (slot.classList.contains("is-editing") || isWidePlay()) {
+  if (slot.classList.contains("is-editing") || slot.classList.contains("is-selected") || isWidePlay()) {
     fit.textContent = "";
     fit.style.fontSize = "";
     return;
@@ -226,7 +229,7 @@ function fitAllSlots() {
 
 function sizeEditingSlot(slot) {
   const input = slot.querySelector(".slot-input");
-  if (!input || isWidePlay() || document.querySelector(".board.is-typing-compact")) {
+  if (!input || isWidePlay() || useOnScreenKeyboard()) {
     slot.style.removeProperty("--edit-w");
     return;
   }
@@ -241,7 +244,7 @@ function sizeEditingSlot(slot) {
 
 function clearEditingSlot(slot) {
   if (!slot) return;
-  slot.classList.remove("is-editing");
+  slot.classList.remove("is-editing", "is-selected");
   slot.style.removeProperty("--edit-w");
   applySlotFit(slot);
 }
@@ -501,6 +504,11 @@ function paintChrome() {
   if (help) help.innerHTML = iconSvg("chat-teardrop-text", { label: "How to play" });
   if (check) check.innerHTML = iconSvg("check", { label: "Check the grid" });
   if (startOverBtn) startOverBtn.innerHTML = iconSvg("arrow-counter-clockwise", { label: "Start over" });
+  const notesBtn = $("btn-notes");
+  if (notesBtn) {
+    notesBtn.innerHTML = iconSvg("note-pencil", { label: "Notes" });
+    notesBtn.hidden = isWidePlay();
+  }
   if (share) share.innerHTML = iconSvg("share", { label: "Share result" });
   const winShare = $("win-share");
   if (winShare) winShare.textContent = "Share";
@@ -597,8 +605,16 @@ function notesSheetOpen() {
   return Boolean(panel?.open && !isWidePlay());
 }
 
-function isTypingInGrid() {
-  return Boolean(document.activeElement?.classList?.contains("slot-input"));
+function isCoarsePointer() {
+  try {
+    return Boolean(window.matchMedia?.("(pointer: coarse)")?.matches);
+  } catch {
+    return false;
+  }
+}
+
+export function useOnScreenKeyboard() {
+  return !isWidePlay() && isCoarsePointer();
 }
 
 function visualViewportBox() {
@@ -613,50 +629,6 @@ function visualViewportBox() {
   };
 }
 
-function keyboardInsetPx() {
-  const innerH = window.innerHeight || 720;
-  const box = visualViewportBox();
-  return Math.max(0, Math.round(innerH - box.height - box.offsetTop));
-}
-
-function keyboardIsOpen() {
-  return keyboardInsetPx() > 80;
-}
-
-function shouldRefitLayout() {
-  return !isTypingInGrid() && !keyboardIsOpen();
-}
-
-const TYPING_RESIZE_DELTA = 40;
-const TYPING_RESIZE_DEBOUNCE_MS = 100;
-const TYPING_BLUR_DELAY_MS = 150;
-
-const typingLayoutStats = {
-  layoutPasses: 0,
-  scrollCalls: 0,
-};
-
-let typingLayoutBusy = false;
-let typingCompactOn = false;
-let lastTypingHeight = 0;
-let focusedScrollToken = "";
-let leaveTypingTimer = 0;
-let typingResizeTimer = 0;
-let typingResizeRaf = 0;
-
-export function getTypingLayoutStats() {
-  return { layoutPasses: typingLayoutStats.layoutPasses, scrollCalls: typingLayoutStats.scrollCalls };
-}
-
-export function resetTypingLayoutStats() {
-  typingLayoutStats.layoutPasses = 0;
-  typingLayoutStats.scrollCalls = 0;
-}
-
-function isSlotInput(el) {
-  return Boolean(el?.classList?.contains("slot-input"));
-}
-
 function safeHandler(fn) {
   return (...args) => {
     try {
@@ -667,244 +639,144 @@ function safeHandler(fn) {
   };
 }
 
-function resetTypingLayoutState() {
-  typingCompactOn = false;
-  lastTypingHeight = 0;
-  focusedScrollToken = "";
-  if (leaveTypingTimer) {
-    window.clearTimeout(leaveTypingTimer);
-    leaveTypingTimer = 0;
+function syncOskMode() {
+  const on = useOnScreenKeyboard();
+  document.documentElement.classList.toggle("is-osk", on);
+  const osk = document.querySelector(".osk");
+  if (osk) {
+    osk.hidden = !on;
+    osk.setAttribute("aria-hidden", on ? "false" : "true");
   }
+  const notesBtn = $("btn-notes");
+  if (notesBtn) notesBtn.hidden = isWidePlay();
 }
 
-function applyTypingVar(el, name, value) {
-  if (!el) return;
-  el.style.setProperty(name, value);
+function keyboardHeight() {
+  if (!useOnScreenKeyboard()) return 0;
+  const osk = document.querySelector(".osk");
+  const measured = Math.round(osk?.getBoundingClientRect().height || 0);
+  return measured > 0 ? measured : OSK_H;
 }
 
-function applyPhoneTiles(cellH, gap = 6, tableGap = 3) {
-  const px = (n) => `${Number(n.toFixed(2))}px`;
-  const targets = [document.documentElement, document.querySelector(".board")];
-  for (const el of targets) {
-    applyTypingVar(el, "--cell-h", px(cellH));
-    applyTypingVar(el, "--play-gap", px(gap));
-    applyTypingVar(el, "--table-gap", px(tableGap));
-    applyTypingVar(el, "--input-size", "16px");
+function selectedSlotInput() {
+  if (!focused) return null;
+  return document.querySelector(`input[data-slot="${slotKey(focused.house, focused.attr)}"]`);
+}
+
+function firstEmptySlot() {
+  if (!puzzle) return null;
+  const attrs = attributes();
+  for (let house = 0; house < puzzle.houseCount; house += 1) {
+    for (const attr of attrs) {
+      if (!grid[house]?.[attr]) return { house, attr };
+    }
   }
+  return null;
 }
 
-function applyClueMetrics(size, pad) {
-  const targets = [document.documentElement, document.querySelector(".board")];
-  for (const el of targets) {
-    applyTypingVar(el, "--clue-size", `${Number(size.toFixed(2))}px`);
-    applyTypingVar(el, "--clue-pad", `${Number(pad.toFixed(2))}px`);
+function selectSlot(house, attr, { acceptGhost = false } = {}) {
+  if (solved || !puzzle) return;
+  const input = document.querySelector(`input[data-slot="${slotKey(house, attr)}"]`);
+  const slot = input?.closest(".slot");
+  if (!input || !slot) return;
+  if (acceptGhost && focused?.house === house && focused?.attr === attr && tryAcceptGhost(house, attr, input)) {
+    return;
   }
-}
-
-function clearBoardTypingMetrics() {
-  const board = document.querySelector(".board");
-  if (!board) return;
-  for (const name of ["--cell-h", "--play-gap", "--table-gap", "--input-size", "--clue-size", "--clue-pad"]) {
-    board.style.removeProperty(name);
+  document.querySelectorAll(".slot.is-editing, .slot.is-selected").forEach((node) => {
+    if (node !== slot) clearEditingSlot(node);
+  });
+  focused = { house, attr };
+  setSlotVisual(slot, house, attr, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
+  if (useOnScreenKeyboard()) {
+    if (document.activeElement === input) input.blur();
+    return;
   }
+  if (document.activeElement !== input) input.focus();
 }
 
-function puzzleColHeight() {
-  const col = document.querySelector(".puzzle-col");
-  if (!col) return 0;
-  return Math.ceil(col.scrollHeight || col.getBoundingClientRect().height);
-}
-
-function typingLayoutFits(availH) {
-  return puzzleColHeight() <= availH + 1;
-}
-
-/** Compact clues, word bank, and tiles so the playfield fits in visualViewport.height. */
-export function fitTypingPlayfield({ force = false } = {}) {
-  if (typingLayoutBusy) return typingCompactOn;
-  if (isWidePlay() || !isTypingInGrid()) return false;
-  const board = document.querySelector(".board");
-  const play = document.querySelector(".play");
-  const col = document.querySelector(".puzzle-col");
-  if (!board || !play || !col || !puzzle) return false;
-  const box = visualViewportBox();
-  if (!force && typingCompactOn && Math.abs(box.height - lastTypingHeight) <= TYPING_RESIZE_DELTA) {
-    return true;
+export function typeOnScreenKey(key) {
+  if (solved || !puzzle) return;
+  const token = String(key || "");
+  if (!focused) {
+    const start = firstEmptySlot() || (attributes()[0] ? { house: 0, attr: attributes()[0] } : null);
+    if (start) selectSlot(start.house, start.attr);
   }
-  typingLayoutBusy = true;
-  try {
-    typingLayoutStats.layoutPasses += 1;
-    const root = document.documentElement;
-    root.style.setProperty("--vv-height", `${box.height}px`);
-    board.classList.add("is-typing-compact");
-    play.style.height = "auto";
-    play.style.paddingBlock = "0px";
-    applyClueMetrics(CLUE_SIZE_TYPING, 0);
-    let bestCell = CELL_H_PHONE_TYPING_MIN;
-    let fitted = false;
-    for (let cellH = CELL_H_PHONE_TYPING_MAX; cellH >= CELL_H_PHONE_TYPING_MIN - 0.001; cellH -= 1) {
-      applyPhoneTiles(cellH, 2, 2);
-      if (typingLayoutFits(box.height)) {
-        bestCell = cellH;
-        fitted = true;
-        break;
+  const input = selectedSlotInput();
+  if (!input || !focused) return;
+  const { house, attr } = focused;
+  if (token === "ENTER") {
+    if (tryAcceptGhost(house, attr, input)) {
+      const next = nextEmptySlot(house, attr);
+      if (next) selectSlot(next.house, next.attr);
+      return;
+    }
+    const next = nextEmptySlot(house, attr);
+    if (next) selectSlot(next.house, next.attr);
+    return;
+  }
+  if (token === "BACKSPACE") {
+    if (!input.value) return;
+    input.value = input.value.slice(0, -1);
+    handleTyped(house, attr, input.value, input);
+    return;
+  }
+  if (!/^[a-z]$/i.test(token)) return;
+  input.value = `${input.value}${token}`;
+  handleTyped(house, attr, input.value, input);
+}
+
+function makeOnScreenKeyboard() {
+  const wrap = document.createElement("div");
+  wrap.className = "osk";
+  wrap.id = "osk";
+  wrap.setAttribute("role", "group");
+  wrap.setAttribute("aria-label", "Keyboard");
+  const show = useOnScreenKeyboard();
+  wrap.hidden = !show;
+  wrap.setAttribute("aria-hidden", show ? "false" : "true");
+  for (const keys of OSK_ROWS) {
+    const row = document.createElement("div");
+    row.className = "osk-row";
+    for (const key of keys) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "osk-key";
+      btn.dataset.key = key;
+      if (key === "ENTER" || key === "BACKSPACE") btn.classList.add("is-wide");
+      if (key === "BACKSPACE") {
+        btn.setAttribute("aria-label", "Backspace");
+        btn.innerHTML = iconSvg("backspace", { label: "Backspace" });
+      } else {
+        btn.textContent = key === "ENTER" ? "ENTER" : key.toUpperCase();
+        if (key === "ENTER") btn.setAttribute("aria-label", "Enter");
       }
+      btn.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        haptic();
+        typeOnScreenKey(key);
+      });
+      row.appendChild(btn);
     }
-    applyPhoneTiles(fitted ? bestCell : CELL_H_PHONE_TYPING_MIN, 2, 2);
-    if (!typingLayoutFits(box.height)) {
-      let lo = CLUE_SIZE_TYPING_FLOOR;
-      let hi = CLUE_SIZE_TYPING;
-      let bestSize = CLUE_SIZE_TYPING_FLOOR;
-      for (let i = 0; i < 10; i += 1) {
-        const mid = (lo + hi) / 2;
-        applyClueMetrics(mid, 0);
-        if (typingLayoutFits(box.height)) {
-          bestSize = mid;
-          lo = mid;
-        } else {
-          hi = mid;
-        }
-      }
-      applyClueMetrics(bestSize, 0);
-    }
-    lastTypingHeight = box.height;
-    typingCompactOn = true;
-    fitAllSlots();
-    return typingLayoutFits(box.height);
-  } catch (error) {
-    console.error(error);
-    board.classList.add("is-typing-compact");
-    applyPhoneTiles(CELL_H_PHONE_TYPING_MIN, 2, 2);
-    applyClueMetrics(CLUE_SIZE_TYPING_FLOOR, 0);
-    typingCompactOn = true;
-    lastTypingHeight = box.height;
-    return false;
-  } finally {
-    typingLayoutBusy = false;
+    wrap.appendChild(row);
   }
+  return wrap;
 }
 
-function enterTypingCompact() {
-  if (typingLayoutBusy || isWidePlay() || !isTypingInGrid()) return;
-  if (leaveTypingTimer) {
-    window.clearTimeout(leaveTypingTimer);
-    leaveTypingTimer = 0;
-  }
-  const already = typingCompactOn;
-  fitTypingPlayfield({ force: !already });
-  scrollFocusedTileOnce();
+function openMobileNotes(panel = document.querySelector(".notes-panel")) {
+  if (!panel || isWidePlay()) return;
+  panel.open = true;
+  panel.classList.remove("is-closing");
+  const sheet = panel.querySelector(".notes-sheet");
+  if (sheet) sheet.setAttribute("aria-hidden", "false");
+  panel.querySelector(".notes-toggle")?.setAttribute("aria-expanded", "true");
+  $("btn-notes")?.setAttribute("aria-expanded", "true");
+  syncNotesViewport();
+  fitPlayfield();
 }
 
-function leaveTypingCompactSoon(relatedTarget) {
-  if (isSlotInput(relatedTarget)) return;
-  if (leaveTypingTimer) window.clearTimeout(leaveTypingTimer);
-  leaveTypingTimer = window.setTimeout(() => {
-    leaveTypingTimer = 0;
-    if (isTypingInGrid() || isSlotInput(document.activeElement)) return;
-    if (typingLayoutBusy) return;
-    typingLayoutBusy = true;
-    try {
-      const board = document.querySelector(".board");
-      board?.classList.remove("is-typing-compact");
-      clearBoardTypingMetrics();
-      typingCompactOn = false;
-      lastTypingHeight = 0;
-      focusedScrollToken = "";
-      const root = document.documentElement;
-      if (!notesSheetOpen()) root.style.removeProperty("--vv-height");
-      if (puzzle) fitPlayfield();
-    } catch (error) {
-      console.error(error);
-    } finally {
-      typingLayoutBusy = false;
-    }
-  }, TYPING_BLUR_DELAY_MS);
-}
-
-function syncTypingCompact(event) {
-  if (event?.type === "focusout") {
-    leaveTypingCompactSoon(event.relatedTarget);
-    return;
-  }
-  enterTypingCompact();
-}
-
-function scheduleTypingResize() {
-  if (isWidePlay() || (!isTypingInGrid() && !typingCompactOn)) return;
-  const height = visualViewportBox().height;
-  if (typingCompactOn && Math.abs(height - lastTypingHeight) <= TYPING_RESIZE_DELTA) return;
-  if (typingResizeTimer) window.clearTimeout(typingResizeTimer);
-  typingResizeTimer = window.setTimeout(() => {
-    typingResizeTimer = 0;
-    if (typingResizeRaf) return;
-    typingResizeRaf = window.requestAnimationFrame(() => {
-      typingResizeRaf = 0;
-      try {
-        if (!isTypingInGrid()) return;
-        const next = visualViewportBox().height;
-        if (typingCompactOn && Math.abs(next - lastTypingHeight) <= TYPING_RESIZE_DELTA) return;
-        fitTypingPlayfield();
-      } catch (error) {
-        console.error(error);
-      }
-    });
-  }, TYPING_RESIZE_DEBOUNCE_MS);
-}
-
-function onTypingViewportResize() {
-  if (notesSheetOpen()) {
-    syncNotesViewport();
-    return;
-  }
-  if (isTypingInGrid() || typingCompactOn) {
-    scheduleTypingResize();
-    return;
-  }
-  if (shouldRefitLayout()) fitPlayfield();
-}
-
-function onVisualViewportScroll() {
-  if (notesSheetOpen()) syncNotesViewport();
-}
-
-function scrollFocusedTileOnce() {
-  if (isWidePlay() || !isTypingInGrid()) return;
-  const input = document.activeElement;
-  if (!isSlotInput(input)) return;
-  const token = input.dataset?.slot || "";
-  if (token && token === focusedScrollToken) return;
-  focusedScrollToken = token;
-  typingLayoutStats.scrollCalls += 1;
-  const slot = input.closest?.(".slot") || document.querySelector(".slot.is-editing");
-  if (!slot || typeof slot.scrollIntoView !== "function") return;
-  try {
-    slot.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "auto" });
-  } catch {
-    try {
-      slot.scrollIntoView();
-    } catch {
-      /* ignore */
-    }
-  }
-}
-
-function scrollFocusedTileIntoView() {
-  if (!isWidePlay() && isTypingInGrid()) {
-    scrollFocusedTileOnce();
-    return;
-  }
-  const slot =
-    document.querySelector(".slot.is-editing") || document.activeElement?.closest?.(".slot");
-  if (!slot || typeof slot.scrollIntoView !== "function") return;
-  try {
-    slot.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "auto" });
-  } catch {
-    try {
-      slot.scrollIntoView();
-    } catch {
-      /* ignore */
-    }
-  }
+function toggleMobileNotes() {
+  if (notesSheetOpen()) closeMobileNotes();
+  else openMobileNotes();
 }
 
 export function syncNotesViewport() {
@@ -932,6 +804,7 @@ export function closeMobileNotes(panel = document.querySelector(".notes-panel"))
     if (sheet) sheet.setAttribute("aria-hidden", "true");
     const toggle = panel.querySelector(".notes-toggle");
     if (toggle) toggle.setAttribute("aria-expanded", "false");
+    $("btn-notes")?.setAttribute("aria-expanded", "false");
     panel.querySelector("textarea.notes")?.blur();
     fitPlayfield();
   };
@@ -987,9 +860,11 @@ function setSlotVisual(slot, house, attr, typed, status) {
     if (unknown) input.setAttribute("aria-invalid", "true");
     else input.removeAttribute("aria-invalid");
   }
-  const editing = !isWidePlay() && focused?.house === house && focused?.attr === attr;
-  slot.classList.toggle("is-editing", editing);
-  if (editing) sizeEditingSlot(slot);
+  const selected = focused?.house === house && focused?.attr === attr;
+  const osk = useOnScreenKeyboard();
+  slot.classList.toggle("is-selected", Boolean(selected && !isWidePlay()));
+  slot.classList.toggle("is-editing", Boolean(selected && !isWidePlay() && !osk));
+  if (selected && !isWidePlay() && !osk) sizeEditingSlot(slot);
   else slot.style.removeProperty("--edit-w");
   if (status !== "match") slot.classList.remove("is-correct", "is-wrong", "is-flip", "is-win");
   paintGhost(slot, typed, status);
@@ -1234,13 +1109,35 @@ function makeSlot(house, attr) {
   input.setAttribute("autocorrect", "off");
   input.setAttribute("spellcheck", "false");
   input.setAttribute("autocomplete", "off");
-  input.setAttribute("inputmode", "text");
   input.setAttribute("enterkeyhint", "enter");
   input.setAttribute("data-1p-ignore", "true");
   input.setAttribute("data-lpignore", "true");
-  if (solved) input.readOnly = true;
-  input.addEventListener("focus", () => {
-    document.querySelectorAll(".slot.is-editing").forEach((node) => {
+  const osk = useOnScreenKeyboard();
+  input.setAttribute("inputmode", osk ? "none" : "text");
+  if (osk) {
+    input.readOnly = true;
+    input.tabIndex = -1;
+  } else if (solved) {
+    input.readOnly = true;
+  }
+  slot.addEventListener("pointerdown", (event) => {
+    if (!useOnScreenKeyboard() || solved) return;
+    event.preventDefault();
+    selectSlot(house, attr, { acceptGhost: true });
+  });
+  slot.addEventListener("click", (event) => {
+    if (!useOnScreenKeyboard() || solved) return;
+    event.preventDefault();
+    selectSlot(house, attr, { acceptGhost: true });
+  });
+  input.addEventListener("focus", (event) => {
+    if (useOnScreenKeyboard()) {
+      event.preventDefault();
+      input.blur();
+      selectSlot(house, attr);
+      return;
+    }
+    document.querySelectorAll(".slot.is-editing, .slot.is-selected").forEach((node) => {
       if (node !== slot) clearEditingSlot(node);
     });
     focused = { house, attr };
@@ -1251,7 +1148,9 @@ function makeSlot(house, attr) {
     });
   });
   input.addEventListener("blur", () => {
+    if (useOnScreenKeyboard()) return;
     window.setTimeout(() => {
+      if (useOnScreenKeyboard()) return;
       if (focused?.house === house && focused?.attr === attr) {
         focused = null;
         clearEditingSlot(slot);
@@ -1309,7 +1208,6 @@ function paintBoard(opts = {}) {
   const board = $("board");
   const keep = opts.focus || focused;
   const typedByFocus = opts.typed;
-  resetTypingLayoutState();
   board.replaceChildren();
 
   const play = document.createElement("div");
@@ -1408,6 +1306,7 @@ function paintBoard(opts = {}) {
     notesToggle.setAttribute("aria-expanded", notesPanel.open ? "true" : "false");
     sheet.setAttribute("aria-hidden", notesPanel.open || isWidePlay() ? "false" : "true");
     if (notesPanel.open) notesPanel.classList.remove("is-closing");
+    $("btn-notes")?.setAttribute("aria-expanded", notesPanel.open && !isWidePlay() ? "true" : "false");
     syncNotesViewport();
     fitPlayfield();
   });
@@ -1472,35 +1371,37 @@ function paintBoard(opts = {}) {
   puzzleCol.className = "puzzle-col";
   puzzleCol.append(hintBlock, makeWordBank(), gridWrap);
   play.append(notesPanel, puzzleCol);
-  board.appendChild(play);
+  board.append(play, makeOnScreenKeyboard());
   fitPlayfield();
 
   if (keep) {
     const input = document.querySelector(`input[data-slot="${slotKey(keep.house, keep.attr)}"]`);
     if (input) {
       if (typeof typedByFocus === "string") input.value = typedByFocus;
-      input.focus();
-      const end = input.value.length;
-      try {
-        input.setSelectionRange(end, end);
-      } catch {
-        /* some input types */
-      }
       focused = keep;
       const slot = input.closest(".slot");
       if (slot) {
         setSlotVisual(slot, keep.house, keep.attr, input.value, matchTypedItem(puzzle.items[keep.attr], input.value).status);
+      }
+      if (useOnScreenKeyboard()) {
+        if (document.activeElement === input) input.blur();
+      } else {
+        input.focus();
+        const end = input.value.length;
+        try {
+          input.setSelectionRange(end, end);
+        } catch {
+          /* some input types */
+        }
       }
     }
   }
 }
 
 export function fitPlayfield() {
-  if (!isWidePlay() && (isTypingInGrid() || typingCompactOn)) {
-    return;
-  }
   const play = document.querySelector(".play");
   if (!play || !puzzle) return;
+  syncOskMode();
   const root = document.documentElement;
   const mast = document.querySelector(".mast");
   const footer = document.querySelector(".site-footer");
@@ -1508,14 +1409,16 @@ export function fitPlayfield() {
   const puzzleCol = play.querySelector(".puzzle-col");
   const mastH = Math.round(mast?.getBoundingClientRect().height || 96);
   const footerH = Math.round(footer?.getBoundingClientRect().height || 28);
+  const kbdH = keyboardHeight();
   root.style.setProperty("--mast-h", `${mastH}px`);
   root.style.setProperty("--footer-h", `${footerH}px`);
+  root.style.setProperty("--kbd-h", `${kbdH}px`);
   if (notesSheetOpen()) syncNotesViewport();
   else {
     root.style.setProperty("--keyboard-inset", "0px");
     root.style.removeProperty("--vv-height");
   }
-  let availH = Math.max(220, (window.innerHeight || 720) - mastH - footerH - 16);
+  let availH = Math.max(220, (window.innerHeight || 720) - mastH - footerH - kbdH - 16);
   const wide = isWidePlay();
   if (notesPanel) {
     if (wide) {
@@ -1538,15 +1441,15 @@ export function fitPlayfield() {
   const standardCluePad = wide ? CLUE_PAD_DESKTOP : CLUE_PAD_PHONE;
   const px = (n) => `${Number(n.toFixed(2))}px`;
   const applyTiles = (t) => {
-    const cellH = wide ? 30 + t * 28 : CELL_H_PHONE;
-    const gap = wide ? 4 + t * 12 : 6;
+    const cellH = wide ? 30 + t * 28 : CELL_H_PHONE_FLOOR + t * (CELL_H_PHONE - CELL_H_PHONE_FLOOR);
+    const gap = wide ? 4 + t * 12 : 2 + t * 4;
     const inputSize = !wide || isIOS ? 16 : Math.max(16, 13 + t * 7);
     const notesSize = isIOS ? 16 : Math.max(16, 13 + t * 4);
     root.style.setProperty("--cell-h", px(cellH));
     root.style.setProperty("--play-gap", px(gap));
     root.style.setProperty("--input-size", px(inputSize));
     root.style.setProperty("--notes-size", px(notesSize));
-    root.style.setProperty("--table-gap", px(wide ? 2 + t * 4 : 3));
+    root.style.setProperty("--table-gap", px(wide ? 2 + t * 4 : 2 + t));
   };
   const applyClues = (size, pad) => {
     root.style.setProperty("--clue-size", px(size));
@@ -1767,25 +1670,38 @@ function bind() {
       syncNotesViewport();
       return;
     }
-    if (isTypingInGrid() || typingCompactOn) {
-      scheduleTypingResize();
-      return;
-    }
-    if (!shouldRefitLayout()) return;
     fitPlayfield();
   }));
-  window.visualViewport?.addEventListener("resize", safeHandler(onTypingViewportResize));
-  window.visualViewport?.addEventListener("scroll", safeHandler(onVisualViewportScroll));
-  document.addEventListener("focusin", safeHandler((event) => {
-    if (!isSlotInput(event.target)) return;
-    syncTypingCompact(event);
+  window.visualViewport?.addEventListener("resize", safeHandler(() => {
+    if (notesSheetOpen()) syncNotesViewport();
+    else fitPlayfield();
   }));
-  document.addEventListener("focusout", safeHandler((event) => {
-    if (!isSlotInput(event.target)) return;
-    syncTypingCompact(event);
+  window.visualViewport?.addEventListener("scroll", safeHandler(() => {
+    if (notesSheetOpen()) syncNotesViewport();
   }));
+  $("btn-notes")?.addEventListener("click", () => {
+    if (isWidePlay()) return;
+    toggleMobileNotes();
+  });
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMobileNotes();
+    if (!useOnScreenKeyboard() || solved) return;
+    if (event.target?.closest?.("textarea, input:not(.slot-input), select, .notes")) return;
+    const key = event.key;
+    if (key === "Enter") {
+      event.preventDefault();
+      typeOnScreenKey("ENTER");
+      return;
+    }
+    if (key === "Backspace") {
+      event.preventDefault();
+      typeOnScreenKey("BACKSPACE");
+      return;
+    }
+    if (key.length === 1 && /[a-z]/i.test(key) && !event.metaKey && !event.ctrlKey && !event.altKey) {
+      event.preventDefault();
+      typeOnScreenKey(key);
+    }
   });
   $("btn-help")?.addEventListener("click", () => {
     const howto = $("howto");

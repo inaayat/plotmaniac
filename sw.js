@@ -1,4 +1,4 @@
-const CACHE = "plotted-v28";
+const CACHE = "plotted-v29";
 const SHELL = [
   "./",
   "./index.html",

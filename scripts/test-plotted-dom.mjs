@@ -125,16 +125,35 @@ window.visualViewport = {
   },
 };
 
+let pointerKind = "fine";
+let reducedMotion = false;
+window.matchMedia = (query) => {
+  const q = String(query);
+  return {
+    matches: q.includes("pointer: coarse")
+      ? pointerKind === "coarse"
+      : q.includes("pointer: fine")
+        ? pointerKind === "fine"
+        : q.includes("prefers-reduced-motion")
+          ? reducedMotion
+          : false,
+    media: q,
+    addEventListener() {},
+    removeEventListener() {},
+    addListener() {},
+    removeListener() {},
+  };
+};
+
 const {
   boot,
   fitPlayfield,
-  fitTypingPlayfield,
-  getTypingLayoutStats,
   loadPuzzle,
   missingVisibleOptions,
-  resetTypingLayoutStats,
   startOver,
   stopGameTimers,
+  typeOnScreenKey,
+  useOnScreenKeyboard,
 } = await import("../plotted.js");
 
 function assertNoConsoleErrors(label) {
@@ -263,18 +282,19 @@ if (typeof window.happyDOM?.setViewport === "function") {
   window.happyDOM.setViewport({ width: 390, height: 844 });
   fitPlayfield();
   assert.equal(document.querySelector(".notes-panel")?.open, false, "notes collapsed on mobile");
-  const toggle = document.querySelector(".notes-toggle");
-  assert.ok(toggle, "mobile notes toggle");
-  assert.equal(toggle.getAttribute("aria-expanded"), "false");
-  const toggleStyle = window.getComputedStyle(toggle);
-  if (toggleStyle?.minHeight) {
-    assert.ok(Number.parseFloat(toggleStyle.minHeight) >= 36, "notes toggle is tappable");
+  const notesBtn = document.getElementById("btn-notes");
+  assert.ok(notesBtn, "mobile notes live on a header icon");
+  assert.equal(notesBtn.hidden, false, "notes header button shows on a phone");
+  assert.equal(notesBtn.getAttribute("aria-expanded"), "false");
+  const notesBtnStyle = window.getComputedStyle(notesBtn);
+  if (notesBtnStyle?.minHeight) {
+    assert.ok(Number.parseFloat(notesBtnStyle.minHeight) >= 36, "notes header button is tappable");
   }
   assert.ok(document.querySelector(".notes-sheet"), "mobile notes live in a bottom sheet");
   assert.ok(document.querySelector(".notes-sheet-handle"), "sheet has a grab handle");
   assert.ok(document.querySelector(".notes-sheet-close"), "sheet has a close button");
-  toggle.click();
-  assert.equal(document.querySelector(".notes-panel")?.open, true, "NOTES opens the sheet");
+  notesBtn.click();
+  assert.equal(document.querySelector(".notes-panel")?.open, true, "header Notes opens the sheet");
   const sheetNote = document.querySelector("textarea.notes");
   const sheetNoteStyle = window.getComputedStyle(sheetNote);
   if (sheetNoteStyle?.fontSize) {
@@ -283,20 +303,14 @@ if (typeof window.happyDOM?.setViewport === "function") {
   if (sheetNoteStyle?.paddingTop) {
     assert.ok(Number.parseFloat(sheetNoteStyle.paddingTop) <= 10, "sheet padding is tighter than the desktop pad");
   }
-  const restoreMedia = window.matchMedia;
-  window.matchMedia = (query) => ({
-    matches: String(query).includes("prefers-reduced-motion"),
-    media: String(query),
-    addEventListener() {},
-    removeEventListener() {},
-  });
+  reducedMotion = true;
   document.querySelector(".notes-sheet-close").click();
   assert.equal(document.querySelector(".notes-panel")?.open, false, "close returns the sheet");
-  document.querySelector(".notes-toggle").click();
+  document.getElementById("btn-notes").click();
   assert.equal(document.querySelector(".notes-panel")?.open, true);
   window.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
   assert.equal(document.querySelector(".notes-panel")?.open, false, "Escape closes the sheet");
-  window.matchMedia = restoreMedia;
+  reducedMotion = false;
   const nor = document.querySelector('input[data-attr="nationality"]');
   nor.value = "Norwegian";
   nor.dispatchEvent(new window.Event("input", { bubbles: true }));
@@ -332,14 +346,8 @@ for (const date of generatedDates) {
 
 window.localStorage.removeItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`);
 window.localStorage.removeItem(STREAK_STORAGE_KEY);
-window.matchMedia = (query) => ({
-  matches: String(query).includes("prefers-reduced-motion"),
-  media: String(query),
-  addEventListener() {},
-  removeEventListener() {},
-  addListener() {},
-  removeListener() {},
-});
+reducedMotion = true;
+pointerKind = "fine";
 await loadPuzzle({ puzzle: einstein });
 assert.equal(document.getElementById("win")?.hidden, true);
 
@@ -652,151 +660,120 @@ if (typeof window.happyDOM?.setViewport === "function") {
     if (overlaySize) assert.ok(overlaySize <= 13, `visible tile label stays compact, got ${overlaySize}px`);
   }
   firstSlot.focus();
-  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "typing-compact class on tile focus");
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "fine pointer does not use typing-compact");
+  assert.equal(useOnScreenKeyboard(), false, "fine pointer keeps the physical keyboard");
+  assert.equal(document.querySelector(".osk")?.hidden, true, "on-screen keyboard is hidden on fine pointers");
   const focusedSize = window.getComputedStyle(firstSlot).fontSize;
   if (focusedSize) assert.ok(Number.parseFloat(focusedSize) >= 16, `focused input stays ≥16px to avoid iOS zoom, got ${focusedSize}`);
   firstSlot.blur();
-  await new Promise((resolve) => setTimeout(resolve, 250));
-  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "typing-compact class clears on blur");
   window.happyDOM.setViewport({ width: 1280, height: 720 });
   fitPlayfield();
   const desk = document.querySelector("input.slot-input");
   desk.focus();
-  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "desktop does not use typing-compact");
+  assert.equal(document.documentElement.classList.contains("is-osk"), false, "desktop does not pin an on-screen keyboard");
   desk.blur();
   window.happyDOM.setViewport({ width: 390, height: 844 });
 }
 
-function stubVisualViewport({ width, height, offsetTop = 0 }) {
-  vvState.width = width;
-  vvState.height = height;
-  vvState.offsetTop = offsetTop;
+function pressOsk(key) {
+  const btn = document.querySelector(`.osk-key[data-key="${key}"]`);
+  assert.ok(btn, `on-screen key ${key}`);
+  btn.dispatchEvent(new window.Event("pointerdown", { bubbles: true, cancelable: true }));
 }
 
-function dispatchVisualViewport(type) {
-  window.visualViewport.dispatchEvent(new window.Event(type));
-}
-
-async function flushTypingViewport(extraMs = 180) {
-  await new Promise((resolve) => setTimeout(resolve, extraMs));
-  if (typeof window.happyDOM?.waitUntilComplete === "function") {
-    await window.happyDOM.waitUntilComplete();
-  }
+function tapSlot(slot) {
+  assert.ok(slot, "slot to tap");
+  slot.dispatchEvent(new window.Event("pointerdown", { bubbles: true, cancelable: true }));
+  slot.dispatchEvent(new window.Event("click", { bubbles: true, cancelable: true }));
 }
 
 if (typeof window.happyDOM?.setViewport === "function") {
+  pointerKind = "coarse";
+  window.localStorage.removeItem(`${PROGRESS_STORAGE_KEY}:${LAUNCH_DATE}`);
+  window.localStorage.removeItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`);
+  window.happyDOM.setViewport({ width: 390, height: 844 });
+  window.innerWidth = 390;
+  window.innerHeight = 844;
   await loadPuzzle({ puzzle: einstein });
-  window.happyDOM.setViewport({ width: 390, height: 844 });
+  startOver({ clearNotes: false });
   fitPlayfield();
-  const idleH = Number.parseFloat(document.documentElement.style.getPropertyValue("--cell-h"));
-  assert.ok(idleH >= 40 && idleH <= 44, `idle phone tiles stay 40–44px, got ${idleH}`);
-  stubVisualViewport({ width: 390, height: 400, offsetTop: 0 });
-  const lastRow = document.querySelector('input.slot-input[data-house="4"]') || document.querySelector("input.slot-input");
-  lastRow.focus();
-  fitTypingPlayfield({ force: true });
-  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "Einstein typing uses compact layout");
-  const typingH = Number.parseFloat(document.documentElement.style.getPropertyValue("--cell-h"));
-  assert.ok(typingH >= 32 && typingH <= 36, `tiles shrink to 32–36px while typing, got ${typingH}`);
-  const clueSize = Number.parseFloat(document.documentElement.style.getPropertyValue("--clue-size"));
-  assert.ok(clueSize > 0 && clueSize <= 11.05, `clues compress to ~11px while typing, got ${clueSize}`);
+  assert.equal(document.getElementById("win")?.hidden, true, "OSK tests run on an unsolved grid");
+  assert.ok(document.querySelector(".slot.is-empty"), "fresh Einstein grid has empty tiles");
+  assert.equal(useOnScreenKeyboard(), true, "coarse phone uses the on-screen keyboard");
+  assert.equal(document.documentElement.classList.contains("is-osk"), true, "html.is-osk on a coarse phone");
+  const osk = document.querySelector(".osk");
+  assert.ok(osk, "Wordle-style keyboard is in the DOM");
+  assert.equal(osk.hidden, false, "on-screen keyboard is visible on coarse pointers");
+  assert.equal(document.querySelectorAll(".osk-key").length, 28, "QWERTY has 26 letters plus ENTER and backspace");
+  assert.equal(document.querySelector(".osk-key[data-key='ENTER']")?.textContent, "ENTER");
+  assert.ok(document.querySelector(".osk-key[data-key='BACKSPACE'] svg"), "backspace uses a Phosphor icon");
+  assert.equal(document.querySelector(".osk-row:first-child .osk-key[data-key='q']")?.textContent, "Q");
+  const nat = document.querySelector('input[data-slot="0-nationality"]');
+  const natSlot = nat.closest(".slot");
+  assert.equal(nat.getAttribute("inputmode"), "none", "coarse tiles do not request a native keyboard");
+  assert.equal(nat.readOnly, true, "coarse tiles are readonly so iOS will not focus a real input");
+  tapSlot(natSlot);
+  assert.notEqual(document.activeElement, nat, "tapping a coarse tile must not focus the native input");
+  assert.equal(natSlot.classList.contains("is-selected"), true, "tapped tile is highlighted");
+  assert.equal(natSlot.classList.contains("is-editing"), false, "coarse tiles do not expand a native editor");
+
+  pressOsk("n");
+  assert.equal(nat.value, "n", "letter key fills the selected tile");
+  pressOsk("BACKSPACE");
+  assert.equal(nat.value, "", "backspace deletes");
+  pressOsk("n");
+  pressOsk("o");
+  pressOsk("r");
+  assert.equal(nat.value, "nor");
+  assert.match(natSlot.querySelector(".slot-ghost")?.textContent || "", /wegian/i, "unique prefix shows a ghost completion");
+  pressOsk("ENTER");
+  assert.equal(nat.value, "Norwegian", "ENTER accepts the ghost");
+  const beverage = document.querySelector('input[data-slot="0-beverage"]');
+  assert.equal(beverage?.closest(".slot")?.classList.contains("is-selected"), true, "ENTER moves to the next empty tile");
+
+  const color = document.querySelector('input[data-slot="0-color"]');
+  tapSlot(color.closest(".slot"));
+  pressOsk("y");
+  pressOsk("e");
+  pressOsk("l");
+  assert.match(color.closest(".slot")?.querySelector(".slot-ghost")?.textContent || "", /low/i);
+  tapSlot(color.closest(".slot"));
+  assert.equal(color.value, "yellow", "a second tap accepts the ghost");
+
+  typeOnScreenKey("BACKSPACE");
+  typeOnScreenKey("BACKSPACE");
+  assert.ok(color.value.length < "Yellow".length, "backspace still works after autocomplete");
+
   const col = document.querySelector(".puzzle-col");
+  const mast = document.querySelector(".mast");
+  const footer = document.querySelector(".site-footer");
   const colH = Math.ceil(col.scrollHeight || col.getBoundingClientRect().height);
-  assert.ok(colH <= 400, `clues + word bank + grid must fit in visualViewport 400px, got ${colH}`);
-  const hints = document.querySelector(".hint-block");
-  const bank = document.querySelector(".word-bank");
-  const grid = document.querySelector(".grid-wrap");
-  assert.ok(hints && bank && grid, "compact playfield still has clues, word bank, and grid");
-  const blockBottom = Math.max(
-    hints.getBoundingClientRect().bottom,
-    bank.getBoundingClientRect().bottom,
-    grid.getBoundingClientRect().bottom,
+  const kbdH = Math.max(
+    Math.round(osk.getBoundingClientRect().height || 0),
+    Number.parseFloat(document.documentElement.style.getPropertyValue("--kbd-h")) || 0,
+    168,
   );
-  const blockTop = Math.min(
-    hints.getBoundingClientRect().top,
-    bank.getBoundingClientRect().top,
-    grid.getBoundingClientRect().top,
-  );
-  assert.ok(blockBottom - blockTop <= 400, `visible playfield block is ${blockBottom - blockTop}px`);
-  const typingInputSize = window.getComputedStyle(lastRow).fontSize;
-  if (typingInputSize) {
-    assert.ok(Number.parseFloat(typingInputSize) >= 16, `focused input stays ≥16px, got ${typingInputSize}`);
-  }
-  const beforeType = document.documentElement.style.getPropertyValue("--cell-h");
-  lastRow.value = "x";
-  lastRow.dispatchEvent(new window.Event("input", { bubbles: true }));
-  assert.equal(
-    document.documentElement.style.getPropertyValue("--cell-h"),
-    beforeType,
-    "keystroke must not relayout tiles",
-  );
-  lastRow.blur();
-  await new Promise((resolve) => setTimeout(resolve, 250));
-  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "blur restores normal layout");
-  const restoredH = Number.parseFloat(document.documentElement.style.getPropertyValue("--cell-h"));
-  assert.ok(restoredH >= 40 && restoredH <= 44, `blur restores 40–44px tiles, got ${restoredH}`);
+  const mastH = Math.round(mast?.getBoundingClientRect().height || 0);
+  const footerH = Math.round(footer?.getBoundingClientRect().height || 0);
+  const used = mastH + colH + kbdH + footerH;
+  assert.ok(used <= 844, `clues, word bank, grid, and keyboard must fit in 390x844, used ${used}px (mast ${mastH} col ${colH} kbd ${kbdH} footer ${footerH})`);
+  assert.ok(document.querySelector(".hint-block") && document.querySelector(".word-bank") && document.querySelector(".grid-wrap"), "playfield still has clues, word bank, and grid");
+  const cellH = Number.parseFloat(document.documentElement.style.getPropertyValue("--cell-h"));
+  assert.ok(cellH >= 32 && cellH <= 42, `phone tiles stay between the standard 32–42px sizes, got ${cellH}`);
+  const clueSize = Number.parseFloat(document.documentElement.style.getPropertyValue("--clue-size"));
+  assert.ok(clueSize >= 11 && clueSize <= 13, `phone clues stay between the standard 11–13px sizes, got ${clueSize}`);
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false);
 
-  const parked = readJson("data/practice/parked-pets.json");
-  await loadPuzzle({ puzzle: parked });
-  window.happyDOM.setViewport({ width: 390, height: 844 });
-  fitPlayfield();
-  stubVisualViewport({ width: 390, height: 400, offsetTop: 0 });
-  resetTypingLayoutStats();
-  const tileA = document.querySelector("input.slot-input");
-  const tileB =
-    document.querySelector('input.slot-input[data-house="0"][data-attr]:not([data-slot="' + (tileA?.dataset.slot || "") + '"])') ||
-    document.querySelectorAll("input.slot-input")[1];
-  tileA.focus();
-  await flushTypingViewport(40);
-  const afterFocus = getTypingLayoutStats();
-  assert.ok(afterFocus.layoutPasses <= 2, `focus should layout at most twice, got ${afterFocus.layoutPasses}`);
-  assert.ok(afterFocus.scrollCalls <= 1, `focus should scroll at most once, got ${afterFocus.scrollCalls}`);
-  const cellBeforeStorm = document.documentElement.style.getPropertyValue("--cell-h");
-  for (let i = 0; i < 40; i += 1) {
-    vvState.height = 400 + (i % 3) - 1;
-    vvState.offsetTop = i % 4;
-    dispatchVisualViewport("scroll");
-    dispatchVisualViewport("resize");
-  }
-  await flushTypingViewport(220);
-  const afterStorm = getTypingLayoutStats();
-  assert.ok(
-    afterStorm.layoutPasses - afterFocus.layoutPasses <= 1,
-    `tiny visualViewport jitter must not relayout, extra passes ${afterStorm.layoutPasses - afterFocus.layoutPasses}`,
-  );
-  assert.equal(
-    afterStorm.scrollCalls,
-    afterFocus.scrollCalls,
-    "visualViewport scroll/resize must not call scrollIntoView",
-  );
-  assert.equal(
-    document.documentElement.style.getPropertyValue("--cell-h"),
-    cellBeforeStorm,
-    "typing layout must not oscillate during viewport jitter",
-  );
-  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "compact stays on through jitter");
-
-  vvState.height = 300;
-  dispatchVisualViewport("resize");
-  await flushTypingViewport(220);
-  const afterBigResize = getTypingLayoutStats();
-  assert.ok(
-    afterBigResize.layoutPasses - afterStorm.layoutPasses <= 1,
-    `height change >40px should recompute at most once, extra ${afterBigResize.layoutPasses - afterStorm.layoutPasses}`,
-  );
-  assert.equal(afterBigResize.scrollCalls, afterStorm.scrollCalls, "resize must not scroll");
-
-  tileB.focus();
-  await flushTypingViewport(40);
-  const afterTileHop = getTypingLayoutStats();
-  assert.equal(afterTileHop.layoutPasses, afterBigResize.layoutPasses, "moving between tiles must not relayout");
-  assert.ok(
-    afterTileHop.scrollCalls - afterBigResize.scrollCalls <= 1,
-    `tile hop scrolls at most once, extra ${afterTileHop.scrollCalls - afterBigResize.scrollCalls}`,
-  );
-  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "compact stays on between tiles");
-  tileB.blur();
-  await new Promise((resolve) => setTimeout(resolve, 250));
-  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "compact clears after leaving tiles");
+  pointerKind = "fine";
+  window.happyDOM.setViewport({ width: 1280, height: 720 });
+  window.innerWidth = 1280;
+  window.innerHeight = 720;
+  await loadPuzzle({ puzzle: einstein });
+  assert.equal(useOnScreenKeyboard(), false, "desktop hides the on-screen keyboard");
+  assert.equal(document.querySelector(".osk")?.hidden, true);
+  const deskInput = document.querySelector("input.slot-input");
+  assert.equal(deskInput.getAttribute("inputmode"), "text");
+  assert.equal(deskInput.readOnly, false);
 }
 
 stopGameTimers();
