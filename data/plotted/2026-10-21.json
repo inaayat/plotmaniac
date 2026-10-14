@@ -87,7 +87,7 @@
         "attr": "loot",
         "item": "coins"
       },
-      "text": "Jules is with the coins."
+      "text": "Jules holds a coins."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "coins is with the on foot."
+      "text": "The person who holds a coins is on foot."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Hana is with the key."
+      "text": "Hana holds a key."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Hana is with the motorcycle."
+      "text": "Hana rides a motorcycle."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Jules is next to the key."
+      "text": "Jules lives next to the person who holds a key."
     },
     {
       "id": "c6",
@@ -147,7 +147,7 @@
       "attr": "getaway",
       "item": "moto",
       "house": 2,
-      "text": "motorcycle is in house 3."
+      "text": "The person who rides a motorcycle lives in the last house."
     }
   ],
   "question": {

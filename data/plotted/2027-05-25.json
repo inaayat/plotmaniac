@@ -61,17 +61,26 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Io is with the rabbit."
+      "text": "Io has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "truck is with the horse."
+      "text": "The person who drives a truck has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Io is with the sailboat."
+      "text": "Io sails a sailboat."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Drew is next to the cat."
+      "text": "Drew lives next to the cat owner."
     },
     {
       "id": "c5",
@@ -134,11 +143,11 @@
       "attr": "pet",
       "item": "cat",
       "house": 0,
-      "text": "cat is in house 1."
+      "text": "The cat owner lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

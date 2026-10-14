@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Jules is with the martini."
+      "text": "Jules drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Eden is with the score."
+      "text": "Eden reads a score."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "diary is next to the Jules."
+      "text": "The person who reads a diary lives next to Jules."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Eden is next to the wine."
+      "text": "Eden lives next to the wine drinker."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "score"
       },
       "immediate": false,
-      "text": "martini is somewhere left of the score."
+      "text": "The martini drinker lives somewhere left of the person who reads a score."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

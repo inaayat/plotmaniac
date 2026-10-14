@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "tree is with the brandy."
+      "text": "The person who grows a tree drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "tree"
       },
-      "text": "Cam is with the tree."
+      "text": "Cam grows a tree."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "potted plant is with the beer."
+      "text": "The person who grows a potted plant drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Ada is next to the beer."
+      "text": "Ada lives next to the beer drinker."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "potted plant is next to the Cam."
+      "text": "The person who grows a potted plant lives next to Cam."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "pot"
       },
       "immediate": false,
-      "text": "Cam is somewhere left of the potted plant."
+      "text": "Cam lives somewhere left of the person who grows a potted plant."
     }
   ],
   "question": {
-    "text": "Who tends the potted plant?",
+    "text": "Who grows a potted plant?",
     "givenAttr": "plant",
     "givenItem": "pot",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "guitar"
       },
-      "text": "Bo is with the guitar."
+      "text": "Bo plays the guitar."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Cam is with the harmony."
+      "text": "Cam plays the harmony."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Cam is with the brandy."
+      "text": "Cam drinks brandy."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "drink",
       "item": "wine",
       "house": 1,
-      "text": "wine is in house 2."
+      "text": "The wine drinker lives in the center house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "person",
       "item": "bo",
       "house": 0,
-      "text": "Bo is in house 1."
+      "text": "Bo lives in the first house."
     }
   ],
   "question": {

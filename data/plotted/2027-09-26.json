@@ -86,12 +86,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "butterfly",
@@ -101,7 +107,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -117,7 +126,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Cam is with the cat."
+      "text": "Cam has a cat."
     },
     {
       "id": "c2",
@@ -130,7 +139,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "plane is with the fish."
+      "text": "The person who flies a plane has a fish."
     },
     {
       "id": "c3",
@@ -143,7 +152,7 @@
         "attr": "vehicle",
         "item": "moto"
       },
-      "text": "Ada is with the motorcycle."
+      "text": "Ada rides a motorcycle."
     },
     {
       "id": "c4",
@@ -156,7 +165,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Drew is with the horse."
+      "text": "Drew has a horse."
     },
     {
       "id": "c5",
@@ -169,7 +178,7 @@
         "attr": "vehicle",
         "item": "walk"
       },
-      "text": "cat is next to the on foot."
+      "text": "The cat owner lives next to the person on foot."
     },
     {
       "id": "c6",
@@ -182,7 +191,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "truck is next to the Bo."
+      "text": "The person who drives a truck lives next to Bo."
     },
     {
       "id": "c7",
@@ -195,7 +204,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "butterfly is next to the Ada."
+      "text": "The butterfly owner lives next to Ada."
     },
     {
       "id": "c8",
@@ -209,11 +218,11 @@
         "item": "ada"
       },
       "immediate": true,
-      "text": "cat is immediately left of the Ada."
+      "text": "The cat owner lives directly left of Ada."
     }
   ],
   "question": {
-    "text": "Who lives with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

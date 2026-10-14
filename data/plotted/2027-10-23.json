@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "diary is with the beer."
+      "text": "The person who reads a diary drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "score is with the orange juice."
+      "text": "The person who reads a score drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Io is with the coffee."
+      "text": "Io drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Ada is next to the coffee."
+      "text": "Ada lives next to the coffee drinker."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "diary is next to the orange juice."
+      "text": "The person who reads a diary lives next to the orange juice drinker."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "score"
       },
       "immediate": false,
-      "text": "Bo is somewhere left of the score."
+      "text": "Bo lives somewhere left of the person who reads a score."
     }
   ],
   "question": {
-    "text": "Who brought the notes?",
+    "text": "Who reads notes?",
     "givenAttr": "book",
     "givenItem": "notes",
     "answerAttr": "person",

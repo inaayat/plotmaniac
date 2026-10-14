@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Drew is with the coffee."
+      "text": "Drew drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "pizza is with the brandy."
+      "text": "The pizza lover drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "food",
         "item": "carrot"
       },
-      "text": "Cam is with the carrot."
+      "text": "Cam eats carrot."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Cam is next to the brandy."
+      "text": "Cam lives next to the brandy drinker."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "food",
       "item": "carrot",
       "house": 2,
-      "text": "carrot is in house 3."
+      "text": "The carrot lover lives in the last house."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the carrot lover?",
     "givenAttr": "food",
     "givenItem": "carrot",
     "answerAttr": "person",

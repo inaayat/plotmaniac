@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "guitar is with the wine."
+      "text": "The guitarist drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Io is with the harmony."
+      "text": "Io plays the harmony."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "guitar"
       },
-      "text": "Fay is with the guitar."
+      "text": "Fay plays the guitar."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Io is next to the brandy."
+      "text": "Io lives next to the brandy drinker."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Fay is next to the harmony."
+      "text": "Fay lives next to the harmony player."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "jules"
       },
       "immediate": false,
-      "text": "coffee is somewhere left of the Jules."
+      "text": "The coffee drinker lives somewhere left of Jules."
     }
   ],
   "question": {

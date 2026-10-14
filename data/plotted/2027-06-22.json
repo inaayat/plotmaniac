@@ -61,7 +61,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -71,7 +74,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Bo is with the dog."
+      "text": "Bo has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "loot",
         "item": "lock"
       },
-      "text": "Cam is with the lock."
+      "text": "Cam holds a lock."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "guide is with the dog."
+      "text": "The person who holds a guide has a dog."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "fish is next to the Io."
+      "text": "The fish owner lives next to Io."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "loot",
       "item": "pot",
       "house": 0,
-      "text": "cookpot is in house 1."
+      "text": "The person who holds a cookpot lives in the first house."
     }
   ],
   "question": {
-    "text": "Who camped with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

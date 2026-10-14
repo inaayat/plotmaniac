@@ -46,18 +46,27 @@
     "pet": [
       {
         "id": "cat",
-        "label": "cats",
-        "icon": "cat"
+        "label": "cat",
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
-        "label": "dogs",
-        "icon": "dog"
+        "label": "dog",
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "horse",
-        "label": "horses",
-        "icon": "horse"
+        "label": "horse",
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ],
     "drink": [
@@ -103,7 +112,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Drew keeps cats."
+      "text": "Drew has a cat."
     },
     {
       "id": "c3",
@@ -116,7 +125,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Bo keeps horses."
+      "text": "Bo has a horse."
     },
     {
       "id": "c4",
@@ -136,7 +145,7 @@
     }
   ],
   "question": {
-    "text": "Who keeps cats?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Jules is with the brandy."
+      "text": "Jules drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "leaf"
       },
-      "text": "Io is with the leaf."
+      "text": "Io grows a leaf."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Io is with the wine."
+      "text": "Io drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "tulip is with the brandy."
+      "text": "The person who grows a tulip drinks brandy."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "drink",
       "item": "brandy",
       "house": 1,
-      "text": "brandy is in house 2."
+      "text": "The brandy drinker lives in the center house."
     },
     {
       "id": "c6",
@@ -142,11 +142,11 @@
       "attr": "drink",
       "item": "orange",
       "house": 0,
-      "text": "orange juice is in house 1."
+      "text": "The orange juice drinker lives in the first house."
     }
   ],
   "question": {
-    "text": "Who tends the cactus?",
+    "text": "Who grows a cactus?",
     "givenAttr": "plant",
     "givenItem": "cactus",
     "answerAttr": "person",

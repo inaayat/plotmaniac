@@ -49,7 +49,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -59,12 +62,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "drink": [
@@ -102,7 +111,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "fish is with the martini."
+      "text": "The fish owner drinks a martini."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Cam is with the tea."
+      "text": "Cam drinks tea."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "rabbit is with the brandy."
+      "text": "The rabbit owner drinks brandy."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Gus is with the coffee."
+      "text": "Gus drinks coffee."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Fay is next to the brandy."
+      "text": "Fay lives next to the brandy drinker."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "rabbit is next to the Cam."
+      "text": "The rabbit owner lives next to Cam."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Gus is next to the bird."
+      "text": "Gus lives next to the bird owner."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "fay"
       },
       "immediate": false,
-      "text": "coffee is somewhere left of the Fay."
+      "text": "The coffee drinker lives somewhere left of Fay."
     }
   ],
   "question": {
-    "text": "Who owns the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

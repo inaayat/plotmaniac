@@ -44,7 +44,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +90,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Gus is with the fish."
+      "text": "Gus has a fish."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "dog is with the cookie."
+      "text": "The dog owner holds a cookie."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Io is with the dog."
+      "text": "Io has a dog."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "dog is next to the trophy."
+      "text": "The dog owner lives next to the person who holds a trophy."
     },
     {
       "id": "c5",
@@ -139,7 +142,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "gift is next to the Gus."
+      "text": "The person who holds a gift lives next to Gus."
     },
     {
       "id": "c6",
@@ -153,11 +156,11 @@
         "item": "io"
       },
       "immediate": false,
-      "text": "trophy is somewhere left of the Io."
+      "text": "The person who holds a trophy lives somewhere left of Io."
     }
   ],
   "question": {
-    "text": "Who showed the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

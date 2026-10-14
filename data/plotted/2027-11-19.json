@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "Bo is with the bicycle."
+      "text": "Bo rides a bicycle."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "lock is with the bicycle."
+      "text": "The person who holds a lock rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "truck is next to the diamond."
+      "text": "The person who drives a truck lives next to the person who holds a diamond."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "bicycle is next to the diamond."
+      "text": "The person who rides a bicycle lives next to the person who holds a diamond."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "drew"
       },
       "immediate": false,
-      "text": "plane is somewhere left of the Drew."
+      "text": "The person who flies a plane lives somewhere left of Drew."
     }
   ],
   "question": {

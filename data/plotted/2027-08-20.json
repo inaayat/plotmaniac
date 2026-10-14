@@ -54,7 +54,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +90,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Gus is with the wine."
+      "text": "Gus drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Cam is with the butterfly."
+      "text": "Cam has a butterfly."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "fish is with the coffee."
+      "text": "The fish owner drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "butterfly is next to the coffee."
+      "text": "The butterfly owner lives next to the coffee drinker."
     },
     {
       "id": "c5",
@@ -139,7 +142,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "bird is next to the Cam."
+      "text": "The bird owner lives next to Cam."
     },
     {
       "id": "c6",
@@ -153,11 +156,11 @@
         "item": "coffee"
       },
       "immediate": false,
-      "text": "Gus is somewhere left of the coffee."
+      "text": "Gus lives somewhere left of the coffee drinker."
     }
   ],
   "question": {
-    "text": "Who owns the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

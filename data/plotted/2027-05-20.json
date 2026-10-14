@@ -87,7 +87,7 @@
         "attr": "book",
         "item": "notes"
       },
-      "text": "Fay is with the notes."
+      "text": "Fay reads notes."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "field guide is with the coffee."
+      "text": "The person who reads a field guide drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "open book is next to the brandy."
+      "text": "The person who reads an open book lives next to the brandy drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Jules is next to the wine."
+      "text": "Jules lives next to the wine drinker."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "jules"
       },
       "immediate": false,
-      "text": "wine is somewhere left of the Jules."
+      "text": "The wine drinker lives somewhere left of Jules."
     }
   ],
   "question": {
-    "text": "Who brought the field guide?",
+    "text": "Who reads a field guide?",
     "givenAttr": "book",
     "givenItem": "map",
     "answerAttr": "person",

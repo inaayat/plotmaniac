@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "harmony is with the coffee."
+      "text": "The harmony player drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Eden is with the harmony."
+      "text": "Eden plays the harmony."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Hana is with the brandy."
+      "text": "Hana drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "guitar is next to the brandy."
+      "text": "The guitarist lives next to the brandy drinker."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "hana",
       "house": 0,
-      "text": "Hana is in house 1."
+      "text": "Hana lives in the first house."
     }
   ],
   "question": {

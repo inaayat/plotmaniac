@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "folio"
       },
-      "text": "Bo is with the folio."
+      "text": "Bo plays the folio."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "folio is with the coffee."
+      "text": "The folio player drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "guitar is next to the wine."
+      "text": "The guitarist lives next to the wine drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "instrument",
         "item": "charts"
       },
-      "text": "Bo is next to the charts."
+      "text": "Bo lives next to the charts player."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "beer"
       },
       "immediate": false,
-      "text": "Fay is somewhere left of the beer."
+      "text": "Fay lives somewhere left of the beer drinker."
     }
   ],
   "question": {

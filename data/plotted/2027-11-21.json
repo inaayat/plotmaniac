@@ -102,7 +102,7 @@
         "attr": "treat",
         "item": "cookie"
       },
-      "text": "Fay is with the cookie."
+      "text": "Fay loves cookie."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "Io is with the evergreen."
+      "text": "Io holds an evergreen."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "ice cream is with the book."
+      "text": "The ice cream lover holds a book."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "Cam is with the balloon."
+      "text": "Cam holds a balloon."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "cake is next to the evergreen."
+      "text": "The cake lover lives next to the person who holds an evergreen."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "cookie is next to the Cam."
+      "text": "The cookie lover lives next to Cam."
     },
     {
       "id": "c7",
@@ -181,7 +181,7 @@
         "item": "eden"
       },
       "immediate": true,
-      "text": "evergreen is immediately left of the Eden."
+      "text": "The person who holds an evergreen lives directly left of Eden."
     }
   ],
   "question": {

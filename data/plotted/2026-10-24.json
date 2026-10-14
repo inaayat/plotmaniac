@@ -44,12 +44,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "Jules is with the balloon."
+      "text": "Jules holds a balloon."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Io is with the cat."
+      "text": "Io has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "Jules is next to the medal."
+      "text": "Jules lives next to the person who holds a medal."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "cookie is next to the fish."
+      "text": "The person who holds a cookie lives next to the fish owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "ada"
       },
       "immediate": false,
-      "text": "horse is somewhere left of the Ada."
+      "text": "The horse owner lives somewhere left of Ada."
     }
   ],
   "question": {
-    "text": "Who showed the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

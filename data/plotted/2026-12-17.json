@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "Cam is with the on foot."
+      "text": "Cam is on foot."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Cam is with the crown."
+      "text": "Cam holds a crown."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "medal"
       },
-      "text": "Io is with the medal."
+      "text": "Io holds a medal."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "boat"
       },
-      "text": "Bo is next to the sailboat."
+      "text": "Bo lives next to the person who sails a sailboat."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "crown"
       },
       "immediate": true,
-      "text": "sailboat is immediately left of the crown."
+      "text": "The person who sails a sailboat lives directly left of the person who holds a crown."
     }
   ],
   "question": {

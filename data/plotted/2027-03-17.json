@@ -61,12 +61,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "sailboat is with the cat."
+      "text": "The person who sails a sailboat has a cat."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Bo is with the butterfly."
+      "text": "Bo has a butterfly."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "motorcycle is with the horse."
+      "text": "The person who rides a motorcycle has a horse."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Ada is next to the sailboat."
+      "text": "Ada lives next to the person who sails a sailboat."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "pet",
       "item": "cat",
       "house": 0,
-      "text": "cat is in house 1."
+      "text": "The cat owner lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

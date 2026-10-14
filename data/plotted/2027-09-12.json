@@ -54,17 +54,26 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "prize": [
@@ -102,7 +111,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Fay is with the gift."
+      "text": "Fay holds a gift."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "fish is with the gift."
+      "text": "The fish owner holds a gift."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Drew is with the dog."
+      "text": "Drew has a dog."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "Eden is with the crown."
+      "text": "Eden holds a crown."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Drew is next to the gift."
+      "text": "Drew lives next to the person who holds a gift."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "Fay is next to the crown."
+      "text": "Fay lives next to the person who holds a crown."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "horse is next to the Drew."
+      "text": "The horse owner lives next to Drew."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "horse"
       },
       "immediate": false,
-      "text": "medal is somewhere left of the horse."
+      "text": "The person who holds a medal lives somewhere left of the horse owner."
     }
   ],
   "question": {
-    "text": "Who showed the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

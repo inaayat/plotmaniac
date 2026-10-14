@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "Drew is with the medal."
+      "text": "Drew holds a medal."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "orange is with the medal."
+      "text": "The orange lover holds a medal."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "evergreen is next to the Gus."
+      "text": "The person who holds an evergreen lives next to Gus."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "medal is next to the Eden."
+      "text": "The person who holds a medal lives next to Eden."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "gus"
       },
       "immediate": false,
-      "text": "cookie is somewhere left of the Gus."
+      "text": "The cookie lover lives somewhere left of Gus."
     }
   ],
   "question": {

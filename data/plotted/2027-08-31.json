@@ -71,7 +71,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +90,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "leaf is with the fish."
+      "text": "The person who holds a leaf has a fish."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Io is with the rabbit."
+      "text": "Io has a rabbit."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "loot",
         "item": "leaf"
       },
-      "text": "Drew is with the leaf."
+      "text": "Drew holds a leaf."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "loot",
         "item": "pot"
       },
-      "text": "rabbit is next to the cookpot."
+      "text": "The rabbit owner lives next to the person who holds a cookpot."
     },
     {
       "id": "c5",
@@ -134,11 +137,11 @@
       "attr": "person",
       "item": "io",
       "house": 2,
-      "text": "Io is in house 3."
+      "text": "Io lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

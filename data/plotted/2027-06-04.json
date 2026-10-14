@@ -44,12 +44,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "horse is with the martini."
+      "text": "The horse owner drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Fay is with the butterfly."
+      "text": "Fay has a butterfly."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Fay is with the beer."
+      "text": "Fay drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "martini is next to the Fay."
+      "text": "The martini drinker lives next to Fay."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "hana"
       },
       "immediate": true,
-      "text": "coffee is immediately left of the Hana."
+      "text": "The coffee drinker lives directly left of Hana."
     }
   ],
   "question": {
-    "text": "Who owns the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Fay is with the orange."
+      "text": "Fay loves orange."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "ice cream is with the parcel."
+      "text": "The ice cream lover holds a parcel."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "ice"
       },
-      "text": "Fay is next to the ice cream."
+      "text": "Fay lives next to the ice cream lover."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "medal is next to the orange."
+      "text": "The person who holds a medal lives next to the orange lover."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "hana"
       },
       "immediate": false,
-      "text": "medal is somewhere left of the Hana."
+      "text": "The person who holds a medal lives somewhere left of Hana."
     }
   ],
   "question": {

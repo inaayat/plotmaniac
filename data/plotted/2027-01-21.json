@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "leaf is with the beer."
+      "text": "The person who grows a leaf drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "tulip"
       },
-      "text": "Jules is with the tulip."
+      "text": "Jules grows a tulip."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Cam is with the coffee."
+      "text": "Cam drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "plant",
         "item": "tree"
       },
-      "text": "beer is next to the tree."
+      "text": "The beer drinker lives next to the person who grows a tree."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "plant",
         "item": "tulip"
       },
-      "text": "Hana is next to the tulip."
+      "text": "Hana lives next to the person who grows a tulip."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "leaf"
       },
       "immediate": false,
-      "text": "Jules is somewhere left of the leaf."
+      "text": "Jules lives somewhere left of the person who grows a leaf."
     }
   ],
   "question": {
-    "text": "Who tends the tree?",
+    "text": "Who grows a tree?",
     "givenAttr": "plant",
     "givenItem": "tree",
     "answerAttr": "person",

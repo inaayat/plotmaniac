@@ -44,7 +44,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "fish",
@@ -54,7 +57,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Io is with the martini."
+      "text": "Io drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "dog is with the brandy."
+      "text": "The dog owner drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Gus is with the brandy."
+      "text": "Gus drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "cat is next to the Jules."
+      "text": "The cat owner lives next to Jules."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "pet",
       "item": "cat",
       "house": 2,
-      "text": "cat is in house 3."
+      "text": "The cat owner lives in the last house."
     }
   ],
   "question": {
-    "text": "Who owns the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

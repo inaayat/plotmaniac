@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "melody is with the beer."
+      "text": "The melody player drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Fay is with the melody."
+      "text": "Fay plays the melody."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Jules is with the martini."
+      "text": "Jules drinks a martini."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "drink",
       "item": "martini",
       "house": 1,
-      "text": "martini is in house 2."
+      "text": "The martini drinker lives in the center house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "instrument",
       "item": "score",
       "house": 0,
-      "text": "score is in house 1."
+      "text": "The score player lives in the first house."
     }
   ],
   "question": {

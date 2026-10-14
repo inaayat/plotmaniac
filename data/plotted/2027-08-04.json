@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "ice cream is with the martini."
+      "text": "The ice cream lover drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "carrot is with the tea."
+      "text": "The carrot lover drinks tea."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Eden is with the martini."
+      "text": "Eden drinks a martini."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "beer is next to the Cam."
+      "text": "The beer drinker lives next to Cam."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "food",
       "item": "bowl",
       "house": 2,
-      "text": "bowl is in house 3."
+      "text": "The bowl lover lives in the last house."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the carrot lover?",
     "givenAttr": "food",
     "givenItem": "carrot",
     "answerAttr": "person",

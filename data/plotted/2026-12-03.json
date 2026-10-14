@@ -66,12 +66,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Hana is with the guide."
+      "text": "Hana holds a guide."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Jules is with the horse."
+      "text": "Jules has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "tent is next to the rabbit."
+      "text": "The person who holds a tent lives next to the rabbit owner."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "horse is next to the Hana."
+      "text": "The horse owner lives next to Hana."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "horse"
       },
       "immediate": false,
-      "text": "tent is somewhere left of the horse."
+      "text": "The person who holds a tent lives somewhere left of the horse owner."
     }
   ],
   "question": {
-    "text": "Who camped with the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

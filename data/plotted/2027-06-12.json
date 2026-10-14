@@ -61,17 +61,26 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "loot",
         "item": "tent"
       },
-      "text": "Eden is with the tent."
+      "text": "Eden holds a tent."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "lock is with the bird."
+      "text": "The person who holds a lock has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Cam is next to the horse."
+      "text": "Cam lives next to the horse owner."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "loot",
         "item": "tent"
       },
-      "text": "bird is next to the tent."
+      "text": "The bird owner lives next to the person who holds a tent."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "eden"
       },
       "immediate": false,
-      "text": "horse is somewhere left of the Eden."
+      "text": "The horse owner lives somewhere left of Eden."
     }
   ],
   "question": {
-    "text": "Who camped with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

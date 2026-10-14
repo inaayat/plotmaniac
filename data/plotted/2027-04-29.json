@@ -66,12 +66,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "on foot is with the butterfly."
+      "text": "The person on foot has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Drew is with the cat."
+      "text": "Drew has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "motorcycle is with the cat."
+      "text": "The person who rides a motorcycle has a cat."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Hana is next to the butterfly."
+      "text": "Hana lives next to the butterfly owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "drew"
       },
       "immediate": true,
-      "text": "on foot is immediately left of the Drew."
+      "text": "The person on foot lives directly left of Drew."
     }
   ],
   "question": {
-    "text": "Who lives with the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

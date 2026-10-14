@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Eden is with the wine."
+      "text": "Eden drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "open"
       },
-      "text": "Io is with the open book."
+      "text": "Io reads an open book."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Io is with the coffee."
+      "text": "Io drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "map"
       },
-      "text": "Eden is with the field guide."
+      "text": "Eden reads a field guide."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "book",
       "item": "map",
       "house": 0,
-      "text": "field guide is in house 1."
+      "text": "The person who reads a field guide lives in the first house."
     },
     {
       "id": "c6",
@@ -142,11 +142,11 @@
       "attr": "book",
       "item": "open",
       "house": 2,
-      "text": "open book is in house 3."
+      "text": "The person who reads an open book lives in the last house."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

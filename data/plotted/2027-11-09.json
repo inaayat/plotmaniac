@@ -87,7 +87,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "Drew is with the cake."
+      "text": "Drew loves cake."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "ice"
       },
-      "text": "Fay is with the ice cream."
+      "text": "Fay loves ice cream."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "cake is with the beer."
+      "text": "The cake lover drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Gus is next to the wine."
+      "text": "Gus lives next to the wine drinker."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "food",
       "item": "carrot",
       "house": 0,
-      "text": "carrot is in house 1."
+      "text": "The carrot lover lives in the first house."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the carrot lover?",
     "givenAttr": "food",
     "givenItem": "carrot",
     "answerAttr": "person",

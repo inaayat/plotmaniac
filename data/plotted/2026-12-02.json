@@ -44,7 +44,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "fish",
@@ -54,7 +57,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "bird is with the wine."
+      "text": "The bird owner drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Fay is with the bird."
+      "text": "Fay has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Eden is with the beer."
+      "text": "Eden drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "fish is next to the martini."
+      "text": "The fish owner lives next to the martini drinker."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "drink",
       "item": "martini",
       "house": 0,
-      "text": "martini is in house 1."
+      "text": "The martini drinker lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

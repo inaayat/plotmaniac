@@ -102,7 +102,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "Bo is with the on foot."
+      "text": "Bo is on foot."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Drew is with the crown."
+      "text": "Drew holds a crown."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "loot",
         "item": "lockbox"
       },
-      "text": "Ada is with the lock."
+      "text": "Ada holds a lock."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "Drew is with the truck."
+      "text": "Drew drives a truck."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Cam is with the motorcycle."
+      "text": "Cam rides a motorcycle."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "loot",
         "item": "coins"
       },
-      "text": "truck is next to the coins."
+      "text": "The person who drives a truck lives next to the person who holds a coins."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "crown is next to the Ada."
+      "text": "The person who holds a crown lives next to Ada."
     },
     {
       "id": "c8",
@@ -194,7 +194,7 @@
         "item": "key"
       },
       "immediate": true,
-      "text": "motorcycle is immediately left of the key."
+      "text": "The person who rides a motorcycle lives directly left of the person who holds a key."
     }
   ],
   "question": {

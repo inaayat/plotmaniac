@@ -66,12 +66,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "on foot is with the butterfly."
+      "text": "The person on foot has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Fay is with the horse."
+      "text": "Fay has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Cam is with the bicycle."
+      "text": "Cam rides a bicycle."
     },
     {
       "id": "c4",
@@ -121,7 +127,7 @@
       "attr": "pet",
       "item": "horse",
       "house": 0,
-      "text": "horse is in house 1."
+      "text": "The horse owner lives in the first house."
     },
     {
       "id": "c5",
@@ -129,11 +135,11 @@
       "attr": "vehicle",
       "item": "walk",
       "house": 2,
-      "text": "on foot is in house 3."
+      "text": "The person on foot lives in the last house."
     }
   ],
   "question": {
-    "text": "Who lives with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

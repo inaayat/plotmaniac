@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "coins is with the bicycle."
+      "text": "The person who holds a coins rides a bicycle."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "Io is with the bicycle."
+      "text": "Io rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "key is with the on foot."
+      "text": "The person who holds a key is on foot."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "Fay is with the plane."
+      "text": "Fay flies a plane."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "Fay is next to the bicycle."
+      "text": "Fay lives next to the person who rides a bicycle."
     },
     {
       "id": "c6",
@@ -147,7 +147,7 @@
       "attr": "loot",
       "item": "medal",
       "house": 0,
-      "text": "medal is in house 1."
+      "text": "The person who holds a medal lives in the first house."
     }
   ],
   "question": {

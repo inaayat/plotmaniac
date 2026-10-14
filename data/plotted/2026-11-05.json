@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Hana is with the martini."
+      "text": "Hana drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Eden is with the score."
+      "text": "Eden reads a score."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "book",
         "item": "map"
       },
-      "text": "Hana is next to the field guide."
+      "text": "Hana lives next to the person who reads a field guide."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "brandy is next to the score."
+      "text": "The brandy drinker lives next to the person who reads a score."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "map"
       },
       "immediate": false,
-      "text": "coffee is somewhere left of the field guide."
+      "text": "The coffee drinker lives somewhere left of the person who reads a field guide."
     }
   ],
   "question": {
-    "text": "Who brought the sci-fi?",
+    "text": "Who reads sci-fi?",
     "givenAttr": "book",
     "givenItem": "scifi",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "cactus is with the brandy."
+      "text": "The person who grows a cactus drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "tulip"
       },
-      "text": "Gus is with the tulip."
+      "text": "Gus grows a tulip."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "tulip is next to the brandy."
+      "text": "The person who grows a tulip lives next to the brandy drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "plant",
         "item": "flower"
       },
-      "text": "wine is next to the flower."
+      "text": "The wine drinker lives next to the person who grows a flower."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "bo"
       },
       "immediate": false,
-      "text": "tea is somewhere left of the Bo."
+      "text": "The tea drinker lives somewhere left of Bo."
     }
   ],
   "question": {
-    "text": "Who tends the tulip?",
+    "text": "Who grows a tulip?",
     "givenAttr": "plant",
     "givenItem": "tulip",
     "answerAttr": "person",

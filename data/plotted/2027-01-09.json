@@ -66,12 +66,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Gus is with the bird."
+      "text": "Gus has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "vehicle",
         "item": "walk"
       },
-      "text": "Bo is with the on foot."
+      "text": "Bo is on foot."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "horse is next to the Gus."
+      "text": "The horse owner lives next to Gus."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Bo is next to the butterfly."
+      "text": "Bo lives next to the butterfly owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "gus"
       },
       "immediate": false,
-      "text": "truck is somewhere left of the Gus."
+      "text": "The person who drives a truck lives somewhere left of Gus."
     }
   ],
   "question": {
-    "text": "Who lives with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

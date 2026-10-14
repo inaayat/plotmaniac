@@ -54,22 +54,34 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "fish",
@@ -117,7 +129,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Jules is with the cat."
+      "text": "Jules has a cat."
     },
     {
       "id": "c2",
@@ -130,7 +142,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "rabbit is with the crown."
+      "text": "The rabbit owner holds a crown."
     },
     {
       "id": "c3",
@@ -143,7 +155,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "bird is with the trophy."
+      "text": "The bird owner holds a trophy."
     },
     {
       "id": "c4",
@@ -156,7 +168,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "Drew is with the balloon."
+      "text": "Drew holds a balloon."
     },
     {
       "id": "c5",
@@ -169,7 +181,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "horse is next to the Eden."
+      "text": "The horse owner lives next to Eden."
     },
     {
       "id": "c6",
@@ -182,7 +194,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "crown is next to the Hana."
+      "text": "The person who holds a crown lives next to Hana."
     },
     {
       "id": "c7",
@@ -195,7 +207,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "crown is next to the Jules."
+      "text": "The person who holds a crown lives next to Jules."
     },
     {
       "id": "c8",
@@ -209,11 +221,11 @@
         "item": "jules"
       },
       "immediate": true,
-      "text": "gift is immediately left of the Jules."
+      "text": "The person who holds a gift lives directly left of Jules."
     }
   ],
   "question": {
-    "text": "Who showed the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

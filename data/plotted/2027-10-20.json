@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "guitar is with the beer."
+      "text": "The guitarist drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Bo is with the brandy."
+      "text": "Bo drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "charts"
       },
-      "text": "Jules is with the charts."
+      "text": "Jules plays the charts."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "beer is next to the Jules."
+      "text": "The beer drinker lives next to Jules."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "jules",
       "house": 2,
-      "text": "Jules is in house 3."
+      "text": "Jules lives in the last house."
     }
   ],
   "question": {

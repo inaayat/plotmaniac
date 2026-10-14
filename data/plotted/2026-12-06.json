@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Hana is with the tea."
+      "text": "Hana drinks tea."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "food",
         "item": "burger"
       },
-      "text": "Drew is with the burger."
+      "text": "Drew eats burger."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "food",
         "item": "pizza"
       },
-      "text": "Bo is with the pizza."
+      "text": "Bo eats pizza."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "cake is with the brandy."
+      "text": "The cake lover drinks brandy."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "food",
         "item": "ice"
       },
-      "text": "Drew is next to the ice cream."
+      "text": "Drew lives next to the ice cream lover."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "wine is next to the Bo."
+      "text": "The wine drinker lives next to Bo."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "tea is next to the cake."
+      "text": "The tea drinker lives next to the cake lover."
     },
     {
       "id": "c8",
@@ -194,11 +194,11 @@
         "item": "drew"
       },
       "immediate": false,
-      "text": "martini is somewhere left of the Drew."
+      "text": "The martini drinker lives somewhere left of Drew."
     }
   ],
   "question": {
-    "text": "Who ordered the burger?",
+    "text": "Who is the burger lover?",
     "givenAttr": "food",
     "givenItem": "burger",
     "answerAttr": "person",

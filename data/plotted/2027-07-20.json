@@ -44,7 +44,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "butterfly",
@@ -54,7 +57,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "Io is with the medal."
+      "text": "Io holds a medal."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Jules is with the bird."
+      "text": "Jules has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "butterfly is with the crown."
+      "text": "The butterfly owner holds a crown."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "crown is next to the Io."
+      "text": "The person who holds a crown lives next to Io."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "person",
       "item": "io",
       "house": 0,
-      "text": "Io is in house 1."
+      "text": "Io lives in the first house."
     }
   ],
   "question": {
-    "text": "Who showed the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

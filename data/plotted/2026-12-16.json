@@ -87,7 +87,7 @@
         "attr": "book",
         "item": "map"
       },
-      "text": "Gus is with the field guide."
+      "text": "Gus reads a field guide."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "diary is with the martini."
+      "text": "The person who reads a diary drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Fay is with the wine."
+      "text": "Fay drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Bo is next to the score."
+      "text": "Bo lives next to the person who reads a score."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "book",
       "item": "score",
       "house": 0,
-      "text": "score is in house 1."
+      "text": "The person who reads a score lives in the first house."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

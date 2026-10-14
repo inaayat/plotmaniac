@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "crown"
       },
-      "text": "Drew is with the crown."
+      "text": "Drew holds a crown."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "tea is with the medal."
+      "text": "The tea lover holds a medal."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "tea"
       },
-      "text": "Hana is with the tea."
+      "text": "Hana loves tea."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "ice cream is next to the Hana."
+      "text": "The ice cream lover lives next to Hana."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "crown is next to the Hana."
+      "text": "The person who holds a crown lives next to Hana."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "fay"
       },
       "immediate": false,
-      "text": "cookie is somewhere left of the Fay."
+      "text": "The cookie lover lives somewhere left of Fay."
     }
   ],
   "question": {

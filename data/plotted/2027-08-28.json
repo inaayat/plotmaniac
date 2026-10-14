@@ -87,7 +87,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "Eden is with the cake."
+      "text": "Eden loves cake."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "pizza is with the martini."
+      "text": "The pizza lover drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Eden is with the wine."
+      "text": "Eden drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "food",
         "item": "pizza"
       },
-      "text": "wine is next to the pizza."
+      "text": "The wine drinker lives next to the pizza lover."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Cam is next to the coffee."
+      "text": "Cam lives next to the coffee drinker."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "pizza"
       },
       "immediate": false,
-      "text": "wine is somewhere left of the pizza."
+      "text": "The wine drinker lives somewhere left of the pizza lover."
     }
   ],
   "question": {
-    "text": "Who ordered the cake?",
+    "text": "Who is the cake lover?",
     "givenAttr": "food",
     "givenItem": "cake",
     "answerAttr": "person",

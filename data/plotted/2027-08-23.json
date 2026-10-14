@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Ada is with the martini."
+      "text": "Ada drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Drew is with the score."
+      "text": "Drew reads a score."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "field guide is with the beer."
+      "text": "The person who reads a field guide drinks beer."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "person",
       "item": "drew",
       "house": 1,
-      "text": "Drew is in house 2."
+      "text": "Drew lives in the center house."
     },
     {
       "id": "c5",
@@ -129,11 +129,11 @@
       "attr": "drink",
       "item": "beer",
       "house": 2,
-      "text": "beer is in house 3."
+      "text": "The beer drinker lives in the last house."
     }
   ],
   "question": {
-    "text": "Who brought the diary?",
+    "text": "Who reads a diary?",
     "givenAttr": "book",
     "givenItem": "diary",
     "answerAttr": "person",

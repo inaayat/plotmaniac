@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "Ada is with the plane."
+      "text": "Ada flies a plane."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "boat"
       },
-      "text": "crown is with the sailboat."
+      "text": "The person who holds a crown sails a sailboat."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "boat"
       },
-      "text": "Fay is with the sailboat."
+      "text": "Fay sails a sailboat."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "loot",
         "item": "coins"
       },
-      "text": "on foot is next to the coins."
+      "text": "The person on foot lives next to the person who holds a coins."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "boat"
       },
       "immediate": true,
-      "text": "coins is immediately left of the sailboat."
+      "text": "The person who holds a coins lives directly left of the person who sails a sailboat."
     }
   ],
   "question": {

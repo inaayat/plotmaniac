@@ -61,7 +61,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "fish",
@@ -71,7 +74,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Cam is with the bird."
+      "text": "Cam has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "loot",
         "item": "lock"
       },
-      "text": "Drew is with the lock."
+      "text": "Drew holds a lock."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Cam is with the guide."
+      "text": "Cam holds a guide."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "loot",
         "item": "lock"
       },
-      "text": "fish is next to the lock."
+      "text": "The fish owner lives next to the person who holds a lock."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "book"
       },
       "immediate": true,
-      "text": "rabbit is immediately left of the guide."
+      "text": "The rabbit owner lives directly left of the person who holds a guide."
     }
   ],
   "question": {
-    "text": "Who camped with the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

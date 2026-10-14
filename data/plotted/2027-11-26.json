@@ -87,7 +87,7 @@
         "attr": "treat",
         "item": "cocoa"
       },
-      "text": "Hana is with the cocoa."
+      "text": "Hana loves cocoa."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "treat",
         "item": "cookie"
       },
-      "text": "Cam is with the cookie."
+      "text": "Cam loves cookie."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "Cam is with the medal."
+      "text": "Cam holds a medal."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "Cam is next to the book."
+      "text": "Cam lives next to the person who holds a book."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "tree"
       },
       "immediate": true,
-      "text": "cocoa is immediately left of the evergreen."
+      "text": "The cocoa lover lives directly left of the person who holds an evergreen."
     }
   ],
   "question": {

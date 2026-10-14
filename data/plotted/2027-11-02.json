@@ -49,7 +49,10 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +90,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "Cam is with the crown."
+      "text": "Cam holds a crown."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "horse is with the gift."
+      "text": "The horse owner holds a gift."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Io is with the fish."
+      "text": "Io has a fish."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "cookie is next to the butterfly."
+      "text": "The person who holds a cookie lives next to the butterfly owner."
     },
     {
       "id": "c5",
@@ -134,11 +137,11 @@
       "attr": "prize",
       "item": "cookie",
       "house": 0,
-      "text": "cookie is in house 1."
+      "text": "The person who holds a cookie lives in the first house."
     }
   ],
   "question": {
-    "text": "Who showed the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

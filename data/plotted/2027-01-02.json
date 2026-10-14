@@ -66,12 +66,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Cam is with the fish."
+      "text": "Cam has a fish."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "leaf is with the fish."
+      "text": "The person who holds a leaf has a fish."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Io is with the guide."
+      "text": "Io holds a guide."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Io is next to the bird."
+      "text": "Io lives next to the bird owner."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "cat is next to the Cam."
+      "text": "The cat owner lives next to Cam."
     },
     {
       "id": "c6",
@@ -153,11 +159,11 @@
         "item": "book"
       },
       "immediate": false,
-      "text": "Cam is somewhere left of the guide."
+      "text": "Cam lives somewhere left of the person who holds a guide."
     }
   ],
   "question": {
-    "text": "Who camped with the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

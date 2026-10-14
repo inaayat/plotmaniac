@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Fay is with the tea."
+      "text": "Fay drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "Io is with the diary."
+      "text": "Io reads a diary."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "field guide is with the tea."
+      "text": "The person who reads a field guide drinks tea."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "field guide is next to the martini."
+      "text": "The person who reads a field guide lives next to the martini drinker."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "martini is next to the Bo."
+      "text": "The martini drinker lives next to Bo."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "diary"
       },
       "immediate": false,
-      "text": "Fay is somewhere left of the diary."
+      "text": "Fay lives somewhere left of the person who reads a diary."
     }
   ],
   "question": {
-    "text": "Who brought the diary?",
+    "text": "Who reads a diary?",
     "givenAttr": "book",
     "givenItem": "diary",
     "answerAttr": "person",

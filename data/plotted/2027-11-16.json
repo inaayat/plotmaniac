@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Jules is with the harmony."
+      "text": "Jules plays the harmony."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Hana is with the martini."
+      "text": "Hana drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "score is with the brandy."
+      "text": "The score player drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "martini is next to the score."
+      "text": "The martini drinker lives next to the score player."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "hana",
       "house": 0,
-      "text": "Hana is in house 1."
+      "text": "Hana lives in the first house."
     }
   ],
   "question": {

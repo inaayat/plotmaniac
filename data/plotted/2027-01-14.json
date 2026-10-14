@@ -61,12 +61,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "tent is with the butterfly."
+      "text": "The person who holds a tent has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Hana is with the bird."
+      "text": "Hana has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "loot",
         "item": "tent"
       },
-      "text": "Drew is with the tent."
+      "text": "Drew holds a tent."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "guide is next to the Hana."
+      "text": "The person who holds a guide lives next to Hana."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "butterfly"
       },
       "immediate": true,
-      "text": "key is immediately left of the butterfly."
+      "text": "The person who holds a key lives directly left of the butterfly owner."
     }
   ],
   "question": {
-    "text": "Who camped with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

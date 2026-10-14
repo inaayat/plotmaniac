@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Io is with the tea."
+      "text": "Io drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "charts"
       },
-      "text": "Io is with the charts."
+      "text": "Io plays the charts."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "folio"
       },
-      "text": "Jules is with the folio."
+      "text": "Jules plays the folio."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Gus is with the beer."
+      "text": "Gus drinks beer."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "drink",
       "item": "orange",
       "house": 0,
-      "text": "orange juice is in house 1."
+      "text": "The orange juice drinker lives in the first house."
     },
     {
       "id": "c6",
@@ -142,7 +142,7 @@
       "attr": "drink",
       "item": "beer",
       "house": 1,
-      "text": "beer is in house 2."
+      "text": "The beer drinker lives in the center house."
     }
   ],
   "question": {

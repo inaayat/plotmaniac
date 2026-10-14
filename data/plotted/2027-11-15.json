@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "Hana is with the medal."
+      "text": "Hana holds a medal."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "treat",
         "item": "cookie"
       },
-      "text": "Bo is with the cookie."
+      "text": "Bo loves cookie."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "ice"
       },
-      "text": "Drew is with the ice cream."
+      "text": "Drew loves ice cream."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "person",
       "item": "bo",
       "house": 2,
-      "text": "Bo is in house 3."
+      "text": "Bo lives in the last house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "gift",
       "item": "tree",
       "house": 0,
-      "text": "evergreen is in house 1."
+      "text": "The person who holds an evergreen lives in the first house."
     }
   ],
   "question": {

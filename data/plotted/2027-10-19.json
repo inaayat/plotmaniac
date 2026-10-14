@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Hana is with the melody."
+      "text": "Hana plays the melody."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "charts"
       },
-      "text": "Bo is with the charts."
+      "text": "Bo plays the charts."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "melody is with the beer."
+      "text": "The melody player drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Bo is next to the wine."
+      "text": "Bo lives next to the wine drinker."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "instrument",
       "item": "charts",
       "house": 0,
-      "text": "charts is in house 1."
+      "text": "The charts player lives in the first house."
     }
   ],
   "question": {

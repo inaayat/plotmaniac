@@ -49,12 +49,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "cat is with the orange juice."
+      "text": "The cat owner drinks orange juice."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "dog is with the beer."
+      "text": "The dog owner drinks beer."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Gus is with the beer."
+      "text": "Gus drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Bo is next to the wine."
+      "text": "Bo lives next to the wine drinker."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "person",
       "item": "bo",
       "house": 2,
-      "text": "Bo is in house 3."
+      "text": "Bo lives in the last house."
     }
   ],
   "question": {
-    "text": "Who owns the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

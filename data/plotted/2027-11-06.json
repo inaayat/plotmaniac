@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Ada is with the score."
+      "text": "Ada plays the score."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "charts is with the orange juice."
+      "text": "The charts player drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Ada is next to the martini."
+      "text": "Ada lives next to the martini drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Gus is next to the orange juice."
+      "text": "Gus lives next to the orange juice drinker."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "gus"
       },
       "immediate": false,
-      "text": "brandy is somewhere left of the Gus."
+      "text": "The brandy drinker lives somewhere left of Gus."
     }
   ],
   "question": {

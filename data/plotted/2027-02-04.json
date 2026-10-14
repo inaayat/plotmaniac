@@ -66,12 +66,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "vehicle",
         "item": "moto"
       },
-      "text": "Hana is with the motorcycle."
+      "text": "Hana rides a motorcycle."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Ada is with the horse."
+      "text": "Ada has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "vehicle",
         "item": "truck"
       },
-      "text": "Eden is with the truck."
+      "text": "Eden drives a truck."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "bird is next to the Ada."
+      "text": "The bird owner lives next to Ada."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "bird is next to the Eden."
+      "text": "The bird owner lives next to Eden."
     },
     {
       "id": "c6",
@@ -153,11 +159,11 @@
         "item": "eden"
       },
       "immediate": false,
-      "text": "bird is somewhere left of the Eden."
+      "text": "The bird owner lives somewhere left of Eden."
     }
   ],
   "question": {
-    "text": "Who lives with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

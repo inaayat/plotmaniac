@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Ada is with the beer."
+      "text": "Ada drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Bo is with the brandy."
+      "text": "Bo drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "stew is with the beer."
+      "text": "The stew lover drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "food",
         "item": "bowl"
       },
-      "text": "Io is next to the bowl."
+      "text": "Io lives next to the bowl lover."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "brandy is next to the Ada."
+      "text": "The brandy drinker lives next to Ada."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "brandy"
       },
       "immediate": false,
-      "text": "stew is somewhere left of the brandy."
+      "text": "The stew lover lives somewhere left of the brandy drinker."
     }
   ],
   "question": {
-    "text": "Who ordered the stew?",
+    "text": "Who is the stew lover?",
     "givenAttr": "food",
     "givenItem": "pot",
     "answerAttr": "person",

@@ -66,12 +66,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "sailboat is with the bird."
+      "text": "The person who sails a sailboat has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Cam is with the fish."
+      "text": "Cam has a fish."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Cam is next to the bicycle."
+      "text": "Cam lives next to the person who rides a bicycle."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "bird is next to the Gus."
+      "text": "The bird owner lives next to Gus."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "boat"
       },
       "immediate": false,
-      "text": "horse is somewhere left of the sailboat."
+      "text": "The horse owner lives somewhere left of the person who sails a sailboat."
     }
   ],
   "question": {
-    "text": "Who lives with the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

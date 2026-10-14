@@ -44,12 +44,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Io is with the gift."
+      "text": "Io holds a gift."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Hana is with the horse."
+      "text": "Hana has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "bird is with the trophy."
+      "text": "The bird owner holds a trophy."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Hana is next to the fish."
+      "text": "Hana lives next to the fish owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "bird"
       },
       "immediate": true,
-      "text": "Io is immediately left of the bird."
+      "text": "Io lives directly left of the bird owner."
     }
   ],
   "question": {
-    "text": "Who showed the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

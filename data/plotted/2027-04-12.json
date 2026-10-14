@@ -44,17 +44,26 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Fay is with the rabbit."
+      "text": "Fay has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Gus is with the cat."
+      "text": "Gus has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Jules is with the gift."
+      "text": "Jules holds a gift."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "Fay is with the medal."
+      "text": "Fay holds a medal."
     },
     {
       "id": "c5",
@@ -134,7 +143,7 @@
       "attr": "person",
       "item": "fay",
       "house": 0,
-      "text": "Fay is in house 1."
+      "text": "Fay lives in the first house."
     },
     {
       "id": "c6",
@@ -142,11 +151,11 @@
       "attr": "prize",
       "item": "gift",
       "house": 1,
-      "text": "gift is in house 2."
+      "text": "The person who holds a gift lives in the center house."
     }
   ],
   "question": {
-    "text": "Who showed the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

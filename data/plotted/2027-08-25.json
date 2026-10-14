@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "crown"
       },
-      "text": "cookie is with the crown."
+      "text": "The cookie lover holds a crown."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "treat",
         "item": "tea"
       },
-      "text": "Ada is with the tea."
+      "text": "Ada loves tea."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "Drew is with the balloon."
+      "text": "Drew holds a balloon."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "cocoa"
       },
-      "text": "parcel is next to the cocoa."
+      "text": "The person who holds a parcel lives next to the cocoa lover."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "ada",
       "house": 0,
-      "text": "Ada is in house 1."
+      "text": "Ada lives in the first house."
     }
   ],
   "question": {

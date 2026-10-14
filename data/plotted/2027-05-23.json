@@ -49,17 +49,26 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -102,7 +111,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Cam is with the horse."
+      "text": "Cam has a horse."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Fay is with the tea."
+      "text": "Fay drinks tea."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "butterfly is with the brandy."
+      "text": "The butterfly owner drinks brandy."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Eden is with the beer."
+      "text": "Eden drinks beer."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "butterfly is next to the Cam."
+      "text": "The butterfly owner lives next to Cam."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "rabbit is next to the Cam."
+      "text": "The rabbit owner lives next to Cam."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Fay is next to the dog."
+      "text": "Fay lives next to the dog owner."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "bo"
       },
       "immediate": false,
-      "text": "rabbit is somewhere left of the Bo."
+      "text": "The rabbit owner lives somewhere left of Bo."
     }
   ],
   "question": {
-    "text": "Who owns the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "ice cream is with the tea."
+      "text": "The ice cream lover drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Gus is with the martini."
+      "text": "Gus drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Jules is with the wine."
+      "text": "Jules drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "cake is next to the Jules."
+      "text": "The cake lover lives next to Jules."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "jules",
       "house": 0,
-      "text": "Jules is in house 1."
+      "text": "Jules lives in the first house."
     }
   ],
   "question": {
-    "text": "Who ordered the cake?",
+    "text": "Who is the cake lover?",
     "givenAttr": "food",
     "givenItem": "cake",
     "answerAttr": "person",

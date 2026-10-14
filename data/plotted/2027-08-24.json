@@ -44,17 +44,26 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Gus is with the dog."
+      "text": "Gus has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "horse is with the wine."
+      "text": "The horse owner drinks wine."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Hana is with the coffee."
+      "text": "Hana drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Drew is next to the bird."
+      "text": "Drew lives next to the bird owner."
     },
     {
       "id": "c5",
@@ -134,11 +143,11 @@
       "attr": "drink",
       "item": "coffee",
       "house": 0,
-      "text": "coffee is in house 1."
+      "text": "The coffee drinker lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

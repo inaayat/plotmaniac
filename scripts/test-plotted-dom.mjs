@@ -469,6 +469,18 @@ assert.equal(
   document.querySelector(`.word-bank-word[data-item="${samplePet.id}"]`)?.classList.contains("is-placed"),
   false,
 );
+const petAlias = (samplePet.aliases || []).find((alias) => alias !== samplePet.label);
+assert.ok(petAlias, "practice pets keep plural aliases for saved progress");
+petSlot.value = petAlias;
+petSlot.dispatchEvent(new window.Event("input", { bubbles: true }));
+assert.equal(petSlot.value, samplePet.label, "plural pet alias snaps to the singular word-bank form");
+assert.equal(
+  document.querySelector(`.word-bank-word[data-item="${samplePet.id}"]`)?.classList.contains("is-placed"),
+  true,
+  "plural alias still places the pet",
+);
+petSlot.value = "";
+petSlot.dispatchEvent(new window.Event("input", { bubbles: true }));
 const practiceSelect = document.getElementById("practice-select");
 assert.ok(practiceSelect, "practice picker is a compact select");
 assert.equal(practiceSelect.value, "easy");

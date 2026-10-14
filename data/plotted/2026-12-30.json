@@ -87,7 +87,7 @@
         "attr": "treat",
         "item": "tea"
       },
-      "text": "Drew is with the tea."
+      "text": "Drew loves tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "tea is with the parcel."
+      "text": "The tea lover holds a parcel."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Cam is with the orange."
+      "text": "Cam loves orange."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "crown is next to the Cam."
+      "text": "The person who holds a crown lives next to Cam."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "gift",
       "item": "crown",
       "house": 2,
-      "text": "crown is in house 3."
+      "text": "The person who holds a crown lives in the last house."
     }
   ],
   "question": {

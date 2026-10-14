@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Fay is with the martini."
+      "text": "Fay drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "notes is with the martini."
+      "text": "The person who reads notes drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "wine is next to the Io."
+      "text": "The wine drinker lives next to Io."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "tea is next to the Fay."
+      "text": "The tea drinker lives next to Fay."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "map"
       },
       "immediate": false,
-      "text": "Ada is somewhere left of the field guide."
+      "text": "Ada lives somewhere left of the person who reads a field guide."
     }
   ],
   "question": {
-    "text": "Who brought the notes?",
+    "text": "Who reads notes?",
     "givenAttr": "book",
     "givenItem": "notes",
     "answerAttr": "person",

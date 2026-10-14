@@ -61,7 +61,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -71,7 +74,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "tent is with the butterfly."
+      "text": "The person who holds a tent has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Eden is with the rabbit."
+      "text": "Eden has a rabbit."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Eden is with the guide."
+      "text": "Eden holds a guide."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Ada is next to the key."
+      "text": "Ada lives next to the person who holds a key."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "loot",
       "item": "key",
       "house": 2,
-      "text": "key is in house 3."
+      "text": "The person who holds a key lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

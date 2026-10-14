@@ -114,23 +114,35 @@
     "pet": [
       {
         "id": "horse",
-        "label": "horses",
-        "icon": "horse"
+        "label": "horse",
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "cat",
-        "label": "cats",
-        "icon": "cat"
+        "label": "cat",
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
-        "label": "dogs",
-        "icon": "dog"
+        "label": "dog",
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "rabbit",
-        "label": "rabbits",
-        "icon": "rabbit"
+        "label": "rabbit",
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -151,7 +163,7 @@
         "attr": "vehicle",
         "item": "van"
       },
-      "text": "The student lives next to the one who drives a van."
+      "text": "The student lives next to the person who drives a van."
     },
     {
       "id": "c2",
@@ -165,7 +177,7 @@
         "item": "clerk"
       },
       "immediate": false,
-      "text": "The owner of the rabbits lives somewhere left of the clerk."
+      "text": "The rabbit owner lives somewhere left of the clerk."
     },
     {
       "id": "c3",
@@ -202,7 +214,7 @@
         3,
         4
       ],
-      "text": "The owner of the dogs lives in either house 4 or house 5."
+      "text": "The dog owner lives in either the fourth house or the last house."
     },
     {
       "id": "c6",
@@ -230,7 +242,7 @@
         "item": "cat"
       },
       "immediate": true,
-      "text": "The chef lives directly left of the one who keeps cats."
+      "text": "The chef lives directly left of the cat owner."
     },
     {
       "id": "c8",
@@ -243,7 +255,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Gus keeps horses."
+      "text": "Gus has a horse."
     },
     {
       "id": "c9",
@@ -256,7 +268,7 @@
         "attr": "vehicle",
         "item": "bus"
       },
-      "text": "Io lives next to the one who drives a bus."
+      "text": "Io lives next to the person who drives a bus."
     },
     {
       "id": "c10",
@@ -269,7 +281,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "The chef lives next to the one who keeps rabbits."
+      "text": "The chef lives next to the rabbit owner."
     },
     {
       "id": "c11",
@@ -296,7 +308,7 @@
         "item": "moto"
       },
       "immediate": false,
-      "text": "The owner of the dogs lives somewhere left of the one who rides a motorcycle."
+      "text": "The dog owner lives somewhere left of the person who rides a motorcycle."
     },
     {
       "id": "c13",

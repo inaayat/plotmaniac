@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Cam is with the coffee."
+      "text": "Cam drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "pot"
       },
-      "text": "Gus is with the potted plant."
+      "text": "Gus grows a potted plant."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Gus is with the martini."
+      "text": "Gus drinks a martini."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "potted plant is next to the Cam."
+      "text": "The person who grows a potted plant lives next to Cam."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "cam"
       },
       "immediate": true,
-      "text": "cactus is immediately left of the Cam."
+      "text": "The person who grows a cactus lives directly left of Cam."
     }
   ],
   "question": {
-    "text": "Who tends the potted plant?",
+    "text": "Who grows a potted plant?",
     "givenAttr": "plant",
     "givenItem": "pot",
     "answerAttr": "person",

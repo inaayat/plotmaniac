@@ -102,7 +102,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "Cam is with the diamond."
+      "text": "Cam holds a diamond."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "loot",
         "item": "medal"
       },
-      "text": "Fay is with the medal."
+      "text": "Fay holds a medal."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "coins is with the truck."
+      "text": "The person who holds a coins drives a truck."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "Jules is with the on foot."
+      "text": "Jules is on foot."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "medal is next to the Bo."
+      "text": "The person who holds a medal lives next to Bo."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "plane is next to the Fay."
+      "text": "The person who flies a plane lives next to Fay."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "key is next to the truck."
+      "text": "The person who holds a key lives next to the person who drives a truck."
     },
     {
       "id": "c8",
@@ -194,7 +194,7 @@
         "item": "truck"
       },
       "immediate": false,
-      "text": "key is somewhere left of the truck."
+      "text": "The person who holds a key lives somewhere left of the person who drives a truck."
     }
   ],
   "question": {

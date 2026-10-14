@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "harmony is with the beer."
+      "text": "The harmony player drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Io is with the martini."
+      "text": "Io drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Ada is with the score."
+      "text": "Ada plays the score."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "martini is next to the harmony."
+      "text": "The martini drinker lives next to the harmony player."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "drink",
       "item": "beer",
       "house": 2,
-      "text": "beer is in house 3."
+      "text": "The beer drinker lives in the last house."
     }
   ],
   "question": {

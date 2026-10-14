@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "burger is with the beer."
+      "text": "The burger lover drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Bo is with the orange juice."
+      "text": "Bo drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Gus is with the stew."
+      "text": "Gus eats stew."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "stew is next to the beer."
+      "text": "The stew lover lives next to the beer drinker."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "gus",
       "house": 0,
-      "text": "Gus is in house 1."
+      "text": "Gus lives in the first house."
     }
   ],
   "question": {
-    "text": "Who ordered the cake?",
+    "text": "Who is the cake lover?",
     "givenAttr": "food",
     "givenItem": "cake",
     "answerAttr": "person",

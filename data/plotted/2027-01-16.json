@@ -44,12 +44,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "rabbit is with the balloon."
+      "text": "The rabbit owner holds a balloon."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Drew is with the gift."
+      "text": "Drew holds a gift."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "fish is next to the gift."
+      "text": "The fish owner lives next to the person who holds a gift."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "cookie is next to the Hana."
+      "text": "The person who holds a cookie lives next to Hana."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "balloon"
       },
       "immediate": false,
-      "text": "horse is somewhere left of the balloon."
+      "text": "The horse owner lives somewhere left of the person who holds a balloon."
     }
   ],
   "question": {
-    "text": "Who showed the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

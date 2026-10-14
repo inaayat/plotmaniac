@@ -61,7 +61,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +90,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "truck is with the cat."
+      "text": "The person who drives a truck has a cat."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Drew is with the bicycle."
+      "text": "Drew rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "sailboat is with the butterfly."
+      "text": "The person who sails a sailboat has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Eden is next to the sailboat."
+      "text": "Eden lives next to the person who sails a sailboat."
     },
     {
       "id": "c5",
@@ -134,11 +137,11 @@
       "attr": "person",
       "item": "eden",
       "house": 2,
-      "text": "Eden is in house 3."
+      "text": "Eden lives in the last house."
     }
   ],
   "question": {
-    "text": "Who lives with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

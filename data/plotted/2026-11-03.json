@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "Fay is with the truck."
+      "text": "Fay drives a truck."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Cam is with the key."
+      "text": "Cam holds a key."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "key is with the plane."
+      "text": "The person who holds a key flies a plane."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "coins is with the truck."
+      "text": "The person who holds a coins drives a truck."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "Fay is next to the plane."
+      "text": "Fay lives next to the person who flies a plane."
     },
     {
       "id": "c6",
@@ -147,7 +147,7 @@
       "attr": "loot",
       "item": "key",
       "house": 2,
-      "text": "key is in house 3."
+      "text": "The person who holds a key lives in the last house."
     }
   ],
   "question": {

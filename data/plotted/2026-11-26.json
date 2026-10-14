@@ -49,12 +49,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "Eden is with the medal."
+      "text": "Eden holds a medal."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Bo is with the rabbit."
+      "text": "Bo has a rabbit."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "trophy is next to the dog."
+      "text": "The person who holds a trophy lives next to the dog owner."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "rabbit is next to the trophy."
+      "text": "The rabbit owner lives next to the person who holds a trophy."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "io"
       },
       "immediate": false,
-      "text": "cookie is somewhere left of the Io."
+      "text": "The person who holds a cookie lives somewhere left of Io."
     }
   ],
   "question": {
-    "text": "Who showed the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

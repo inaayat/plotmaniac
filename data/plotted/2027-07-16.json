@@ -87,7 +87,7 @@
         "attr": "plant",
         "item": "cactus"
       },
-      "text": "Hana is with the cactus."
+      "text": "Hana grows a cactus."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "potted plant is with the brandy."
+      "text": "The person who grows a potted plant drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Ada is next to the tea."
+      "text": "Ada lives next to the tea drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "brandy is next to the Cam."
+      "text": "The brandy drinker lives next to Cam."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "orange"
       },
       "immediate": false,
-      "text": "Hana is somewhere left of the orange juice."
+      "text": "Hana lives somewhere left of the orange juice drinker."
     }
   ],
   "question": {
-    "text": "Who tends the leaf?",
+    "text": "Who grows a leaf?",
     "givenAttr": "plant",
     "givenItem": "leaf",
     "answerAttr": "person",

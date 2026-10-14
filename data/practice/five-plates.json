@@ -178,7 +178,7 @@
         "item": "coffee"
       },
       "immediate": true,
-      "text": "Io lives directly left of the one who drinks coffee."
+      "text": "Io lives directly left of the coffee drinker."
     },
     {
       "id": "c4",
@@ -215,7 +215,7 @@
         0,
         3
       ],
-      "text": "The tacos lover lives in either house 1 or house 4."
+      "text": "The taco lover lives in either the first house or the fourth house."
     },
     {
       "id": "c7",
@@ -239,7 +239,7 @@
         1,
         2
       ],
-      "text": "Fay lives in either house 2 or house 3."
+      "text": "Fay lives in either the second house or the center house."
     },
     {
       "id": "c9",
@@ -290,7 +290,7 @@
         0,
         2
       ],
-      "text": "Ada lives in either house 1 or house 3."
+      "text": "Ada lives in either the first house or the center house."
     },
     {
       "id": "c13",
@@ -301,7 +301,7 @@
         1,
         4
       ],
-      "text": "The wine drinker lives in either house 2 or house 5."
+      "text": "The wine drinker lives in either the second house or the last house."
     }
   ],
   "question": {

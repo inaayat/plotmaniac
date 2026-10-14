@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Gus is with the brandy."
+      "text": "Gus drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Eden is with the wine."
+      "text": "Eden drinks wine."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Eden is with the score."
+      "text": "Eden plays the score."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Gus is with the harmony."
+      "text": "Gus plays the harmony."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "harmony is next to the Eden."
+      "text": "The harmony player lives next to Eden."
     },
     {
       "id": "c6",
@@ -147,7 +147,7 @@
       "attr": "drink",
       "item": "brandy",
       "house": 2,
-      "text": "brandy is in house 3."
+      "text": "The brandy drinker lives in the last house."
     }
   ],
   "question": {

@@ -66,12 +66,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "sailboat is with the cat."
+      "text": "The person who sails a sailboat has a cat."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Fay is with the dog."
+      "text": "Fay has a dog."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "truck is with the dog."
+      "text": "The person who drives a truck has a dog."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Gus is with the cat."
+      "text": "Gus has a cat."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Fay is next to the sailboat."
+      "text": "Fay lives next to the person who sails a sailboat."
     },
     {
       "id": "c6",
@@ -147,11 +153,11 @@
       "attr": "vehicle",
       "item": "truck",
       "house": 2,
-      "text": "truck is in house 3."
+      "text": "The person who drives a truck lives in the last house."
     }
   ],
   "question": {
-    "text": "Who lives with the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

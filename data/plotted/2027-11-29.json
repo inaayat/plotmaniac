@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "pizza is with the coffee."
+      "text": "The pizza lover drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "carrot"
       },
-      "text": "Ada is with the carrot."
+      "text": "Ada eats carrot."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Fay is with the martini."
+      "text": "Fay drinks a martini."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "food",
       "item": "bowl",
       "house": 2,
-      "text": "bowl is in house 3."
+      "text": "The bowl lover lives in the last house."
     },
     {
       "id": "c5",
@@ -129,11 +129,11 @@
       "attr": "food",
       "item": "carrot",
       "house": 1,
-      "text": "carrot is in house 2."
+      "text": "The carrot lover lives in the center house."
     }
   ],
   "question": {
-    "text": "Who ordered the bowl?",
+    "text": "Who is the bowl lover?",
     "givenAttr": "food",
     "givenItem": "bowl",
     "answerAttr": "person",

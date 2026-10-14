@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "crown is with the on foot."
+      "text": "The person who holds a crown is on foot."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "Jules is with the on foot."
+      "text": "Jules is on foot."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "medal is with the motorcycle."
+      "text": "The person who holds a medal rides a motorcycle."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "bicycle is next to the Jules."
+      "text": "The person who rides a bicycle lives next to Jules."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "drew"
       },
       "immediate": true,
-      "text": "motorcycle is immediately left of the Drew."
+      "text": "The person who rides a motorcycle lives directly left of Drew."
     }
   ],
   "question": {

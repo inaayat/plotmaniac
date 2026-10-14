@@ -117,7 +117,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Hana is with the coffee."
+      "text": "Hana drinks coffee."
     },
     {
       "id": "c2",
@@ -130,7 +130,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "folio is with the tea."
+      "text": "The folio player drinks tea."
     },
     {
       "id": "c3",
@@ -143,7 +143,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Bo is with the score."
+      "text": "Bo plays the score."
     },
     {
       "id": "c4",
@@ -156,7 +156,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Fay is with the melody."
+      "text": "Fay plays the melody."
     },
     {
       "id": "c5",
@@ -169,7 +169,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "beer is next to the Gus."
+      "text": "The beer drinker lives next to Gus."
     },
     {
       "id": "c6",
@@ -183,7 +183,7 @@
         "item": "martini"
       },
       "immediate": true,
-      "text": "Ada is immediately left of the martini."
+      "text": "Ada lives directly left of the martini drinker."
     },
     {
       "id": "c7",
@@ -197,7 +197,7 @@
         "item": "tea"
       },
       "immediate": false,
-      "text": "melody is somewhere left of the tea."
+      "text": "The melody player lives somewhere left of the tea drinker."
     },
     {
       "id": "c8",
@@ -211,7 +211,7 @@
         "item": "coffee"
       },
       "immediate": true,
-      "text": "harmony is immediately left of the coffee."
+      "text": "The harmony player lives directly left of the coffee drinker."
     }
   ],
   "question": {

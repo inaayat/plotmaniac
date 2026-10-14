@@ -44,7 +44,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -54,7 +57,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Eden is with the rabbit."
+      "text": "Eden has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Eden is with the brandy."
+      "text": "Eden drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "dog is with the beer."
+      "text": "The dog owner drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Fay is with the beer."
+      "text": "Fay drinks beer."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Eden is next to the beer."
+      "text": "Eden lives next to the beer drinker."
     },
     {
       "id": "c6",
@@ -147,11 +153,11 @@
       "attr": "drink",
       "item": "beer",
       "house": 2,
-      "text": "beer is in house 3."
+      "text": "The beer drinker lives in the last house."
     }
   ],
   "question": {
-    "text": "Who owns the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

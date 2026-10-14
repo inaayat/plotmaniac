@@ -71,12 +71,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -86,7 +92,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -102,7 +111,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Hana is with the key."
+      "text": "Hana holds a key."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "loot",
         "item": "lock"
       },
-      "text": "Jules is with the lock."
+      "text": "Jules holds a lock."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Hana is with the horse."
+      "text": "Hana has a horse."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "tent is with the fish."
+      "text": "The person who holds a tent has a fish."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Ada is next to the cat."
+      "text": "Ada lives next to the cat owner."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "loot",
         "item": "tent"
       },
-      "text": "Hana is next to the tent."
+      "text": "Hana lives next to the person who holds a tent."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Io is next to the dog."
+      "text": "Io lives next to the dog owner."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "book"
       },
       "immediate": false,
-      "text": "cat is somewhere left of the guide."
+      "text": "The cat owner lives somewhere left of the person who holds a guide."
     }
   ],
   "question": {
-    "text": "Who camped with the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

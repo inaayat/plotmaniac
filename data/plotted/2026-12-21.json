@@ -61,17 +61,26 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "tent is with the horse."
+      "text": "The person who holds a tent has a horse."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "key is with the bird."
+      "text": "The person who holds a key has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Gus is with the cat."
+      "text": "Gus has a cat."
     },
     {
       "id": "c4",
@@ -121,7 +130,7 @@
       "attr": "pet",
       "item": "horse",
       "house": 2,
-      "text": "horse is in house 3."
+      "text": "The horse owner lives in the last house."
     },
     {
       "id": "c5",
@@ -129,11 +138,11 @@
       "attr": "person",
       "item": "jules",
       "house": 1,
-      "text": "Jules is in house 2."
+      "text": "Jules lives in the center house."
     }
   ],
   "question": {
-    "text": "Who camped with the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Drew is with the tea."
+      "text": "Drew drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "open"
       },
-      "text": "Io is with the open book."
+      "text": "Io reads an open book."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Drew is with the score."
+      "text": "Drew reads a score."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Cam is next to the beer."
+      "text": "Cam lives next to the beer drinker."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "cam",
       "house": 2,
-      "text": "Cam is in house 3."
+      "text": "Cam lives in the last house."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

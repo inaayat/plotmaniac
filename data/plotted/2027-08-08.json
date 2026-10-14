@@ -102,7 +102,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Cam is with the key."
+      "text": "Cam holds a key."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Ada is with the motorcycle."
+      "text": "Ada rides a motorcycle."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "getaway",
         "item": "boat"
       },
-      "text": "diamond is with the sailboat."
+      "text": "The person who holds a diamond sails a sailboat."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "bicycle is next to the Hana."
+      "text": "The person who rides a bicycle lives next to Hana."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "loot",
         "item": "coins"
       },
-      "text": "Eden is next to the coins."
+      "text": "Eden lives next to the person who holds a coins."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "Cam is next to the diamond."
+      "text": "Cam lives next to the person who holds a diamond."
     },
     {
       "id": "c7",
@@ -181,7 +181,7 @@
         "item": "diamond"
       },
       "immediate": false,
-      "text": "Hana is somewhere left of the diamond."
+      "text": "Hana lives somewhere left of the person who holds a diamond."
     }
   ],
   "question": {

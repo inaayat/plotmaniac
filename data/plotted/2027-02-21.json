@@ -49,17 +49,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -102,7 +111,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "Io is with the balloon."
+      "text": "Io holds a balloon."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "Ada is with the trophy."
+      "text": "Ada holds a trophy."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Gus is with the dog."
+      "text": "Gus has a dog."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Hana is with the cat."
+      "text": "Hana has a cat."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "cookie is next to the dog."
+      "text": "The person who holds a cookie lives next to the dog owner."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "Gus is next to the balloon."
+      "text": "Gus lives next to the person who holds a balloon."
     },
     {
       "id": "c7",
@@ -181,11 +190,11 @@
         "item": "rabbit"
       },
       "immediate": true,
-      "text": "balloon is immediately left of the rabbit."
+      "text": "The person who holds a balloon lives directly left of the rabbit owner."
     }
   ],
   "question": {
-    "text": "Who showed the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

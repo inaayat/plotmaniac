@@ -63,18 +63,27 @@
     "pet": [
       {
         "id": "dog",
-        "label": "dogs",
-        "icon": "dog"
+        "label": "dog",
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "bird",
-        "label": "birds",
-        "icon": "bird"
+        "label": "bird",
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
-        "label": "cats",
-        "icon": "cat"
+        "label": "cat",
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -90,7 +99,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "The person who drives a van keeps dogs."
+      "text": "The person who drives a van has a dog."
     },
     {
       "id": "c2",
@@ -116,7 +125,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Bo keeps birds."
+      "text": "Bo has a bird."
     },
     {
       "id": "c4",
@@ -129,7 +138,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Bo lives next to the one who rides a bicycle."
+      "text": "Bo lives next to the person who rides a bicycle."
     },
     {
       "id": "c5",
@@ -141,7 +150,7 @@
     }
   ],
   "question": {
-    "text": "Who keeps cats?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

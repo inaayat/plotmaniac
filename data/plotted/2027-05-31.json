@@ -61,7 +61,10 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "fish",
@@ -71,7 +74,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Eden is with the sailboat."
+      "text": "Eden sails a sailboat."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Eden is with the fish."
+      "text": "Eden has a fish."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "plane is with the horse."
+      "text": "The person who flies a plane has a horse."
     },
     {
       "id": "c4",
@@ -121,7 +127,7 @@
       "attr": "vehicle",
       "item": "moto",
       "house": 1,
-      "text": "motorcycle is in house 2."
+      "text": "The person who rides a motorcycle lives in the center house."
     },
     {
       "id": "c5",
@@ -129,11 +135,11 @@
       "attr": "person",
       "item": "io",
       "house": 2,
-      "text": "Io is in house 3."
+      "text": "Io lives in the last house."
     }
   ],
   "question": {
-    "text": "Who lives with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

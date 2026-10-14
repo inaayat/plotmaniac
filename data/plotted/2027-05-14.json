@@ -87,7 +87,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Gus is with the stew."
+      "text": "Gus eats stew."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "Hana is with the cake."
+      "text": "Hana loves cake."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "stew is with the orange juice."
+      "text": "The stew lover drinks orange juice."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "stew is next to the Hana."
+      "text": "The stew lover lives next to Hana."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "cake"
       },
       "immediate": true,
-      "text": "beer is immediately left of the cake."
+      "text": "The beer drinker lives directly left of the cake lover."
     }
   ],
   "question": {
-    "text": "Who ordered the stew?",
+    "text": "Who is the stew lover?",
     "givenAttr": "food",
     "givenItem": "pot",
     "answerAttr": "person",

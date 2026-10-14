@@ -61,17 +61,26 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "tent is with the dog."
+      "text": "The person who holds a tent has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Bo is with the guide."
+      "text": "Bo holds a guide."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "loot",
         "item": "leaf"
       },
-      "text": "Fay is with the leaf."
+      "text": "Fay holds a leaf."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "loot",
         "item": "leaf"
       },
-      "text": "rabbit is next to the leaf."
+      "text": "The rabbit owner lives next to the person who holds a leaf."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "loot",
         "item": "tent"
       },
-      "text": "rabbit is next to the tent."
+      "text": "The rabbit owner lives next to the person who holds a tent."
     },
     {
       "id": "c6",
@@ -153,11 +162,11 @@
         "item": "bo"
       },
       "immediate": false,
-      "text": "horse is somewhere left of the Bo."
+      "text": "The horse owner lives somewhere left of Bo."
     }
   ],
   "question": {
-    "text": "Who camped with the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "food",
         "item": "ice"
       },
-      "text": "Gus is with the ice cream."
+      "text": "Gus loves ice cream."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "pizza is with the tea."
+      "text": "The pizza lover drinks tea."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Ada is with the beer."
+      "text": "Ada drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "tea is next to the Gus."
+      "text": "The tea drinker lives next to Gus."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "tea is next to the Ada."
+      "text": "The tea drinker lives next to Ada."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "tea"
       },
       "immediate": false,
-      "text": "Gus is somewhere left of the tea."
+      "text": "Gus lives somewhere left of the tea drinker."
     }
   ],
   "question": {
-    "text": "Who ordered the bowl?",
+    "text": "Who is the bowl lover?",
     "givenAttr": "food",
     "givenItem": "bowl",
     "answerAttr": "person",

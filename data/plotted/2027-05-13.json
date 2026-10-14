@@ -61,17 +61,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "on foot is with the dog."
+      "text": "The person on foot has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Ada is with the bird."
+      "text": "Ada has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "rabbit is next to the Ada."
+      "text": "The rabbit owner lives next to Ada."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "on foot is next to the Fay."
+      "text": "The person on foot lives next to Fay."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "fay"
       },
       "immediate": false,
-      "text": "bicycle is somewhere left of the Fay."
+      "text": "The person who rides a bicycle lives somewhere left of Fay."
     }
   ],
   "question": {
-    "text": "Who lives with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

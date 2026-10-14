@@ -61,12 +61,18 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "guide is with the dog."
+      "text": "The person who holds a guide has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Io is with the dog."
+      "text": "Io has a dog."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "loot",
         "item": "pot"
       },
-      "text": "Cam is with the cookpot."
+      "text": "Cam holds a cookpot."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "cookpot is with the butterfly."
+      "text": "The person who holds a cookpot has a butterfly."
     },
     {
       "id": "c5",
@@ -134,7 +140,7 @@
       "attr": "person",
       "item": "io",
       "house": 0,
-      "text": "Io is in house 1."
+      "text": "Io lives in the first house."
     },
     {
       "id": "c6",
@@ -142,11 +148,11 @@
       "attr": "pet",
       "item": "butterfly",
       "house": 2,
-      "text": "butterfly is in house 3."
+      "text": "The butterfly owner lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

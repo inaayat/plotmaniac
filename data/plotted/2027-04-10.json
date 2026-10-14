@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "orange is with the evergreen."
+      "text": "The orange lover holds an evergreen."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "Ada is with the book."
+      "text": "Ada holds a book."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "ice cream is next to the Bo."
+      "text": "The ice cream lover lives next to Bo."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "Cam is next to the medal."
+      "text": "Cam lives next to the person who holds a medal."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "book"
       },
       "immediate": false,
-      "text": "orange is somewhere left of the book."
+      "text": "The orange lover lives somewhere left of the person who holds a book."
     }
   ],
   "question": {

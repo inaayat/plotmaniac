@@ -87,7 +87,7 @@
         "attr": "treat",
         "item": "cocoa"
       },
-      "text": "Drew is with the cocoa."
+      "text": "Drew loves cocoa."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "crown"
       },
-      "text": "orange is with the crown."
+      "text": "The orange lover holds a crown."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "Cam is with the balloon."
+      "text": "Cam holds a balloon."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "Fay is next to the book."
+      "text": "Fay lives next to the person who holds a book."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "treat",
       "item": "cocoa",
       "house": 2,
-      "text": "cocoa is in house 3."
+      "text": "The cocoa lover lives in the last house."
     }
   ],
   "question": {

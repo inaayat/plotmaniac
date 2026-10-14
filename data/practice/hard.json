@@ -73,8 +73,11 @@
     "pet": [
       {
         "id": "rabbit",
-        "label": "rabbits",
-        "icon": "rabbit"
+        "label": "rabbit",
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -83,13 +86,19 @@
       },
       {
         "id": "bird",
-        "label": "birds",
-        "icon": "bird"
+        "label": "bird",
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "dog",
-        "label": "dogs",
-        "icon": "dog"
+        "label": "dog",
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ]
   },
@@ -105,7 +114,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "The person who drives a taxi keeps birds."
+      "text": "The person who drives a taxi has a bird."
     },
     {
       "id": "c2",
@@ -131,7 +140,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Bo keeps rabbits."
+      "text": "Bo has a rabbit."
     },
     {
       "id": "c4",
@@ -144,7 +153,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "The person who drives a truck keeps fish."
+      "text": "The person who drives a truck has a fish."
     },
     {
       "id": "c5",
@@ -170,7 +179,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "The owner of the fish lives next to the one who rides a bicycle."
+      "text": "The fish owner lives next to the person who rides a bicycle."
     },
     {
       "id": "c7",
@@ -183,7 +192,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "The person who rides a bicycle lives next to the one who keeps dogs."
+      "text": "The person who rides a bicycle lives next to the dog owner."
     },
     {
       "id": "c8",
@@ -191,11 +200,11 @@
       "attr": "pet",
       "item": "dog",
       "house": 0,
-      "text": "The owner of the dogs lives in the first house."
+      "text": "The dog owner lives in the first house."
     }
   ],
   "question": {
-    "text": "Who keeps birds?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

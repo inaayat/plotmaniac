@@ -44,17 +44,26 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "cat is with the cookie."
+      "text": "The cat owner holds a cookie."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Eden is with the horse."
+      "text": "Eden has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Fay is with the cat."
+      "text": "Fay has a cat."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "balloon is next to the rabbit."
+      "text": "The person who holds a balloon lives next to the rabbit owner."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "cat"
       },
       "immediate": true,
-      "text": "gift is immediately left of the cat."
+      "text": "The person who holds a gift lives directly left of the cat owner."
     }
   ],
   "question": {
-    "text": "Who showed the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

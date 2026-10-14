@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "Bo is with the on foot."
+      "text": "Bo is on foot."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "medal"
       },
-      "text": "Io is with the medal."
+      "text": "Io holds a medal."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "medal is with the plane."
+      "text": "The person who holds a medal flies a plane."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "coins is with the on foot."
+      "text": "The person who holds a coins is on foot."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "getaway",
       "item": "plane",
       "house": 0,
-      "text": "plane is in house 1."
+      "text": "The person who flies a plane lives in the first house."
     },
     {
       "id": "c6",
@@ -142,7 +142,7 @@
       "attr": "getaway",
       "item": "walk",
       "house": 1,
-      "text": "on foot is in house 2."
+      "text": "The person on foot lives in the center house."
     }
   ],
   "question": {

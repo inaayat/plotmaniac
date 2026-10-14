@@ -87,7 +87,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Io is with the score."
+      "text": "Io reads a score."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Cam is with the brandy."
+      "text": "Cam drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Fay is with the wine."
+      "text": "Fay drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "brandy is next to the diary."
+      "text": "The brandy drinker lives next to the person who reads a diary."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "cam",
       "house": 0,
-      "text": "Cam is in house 1."
+      "text": "Cam lives in the first house."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

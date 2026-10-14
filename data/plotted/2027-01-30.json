@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "crown"
       },
-      "text": "Ada is with the crown."
+      "text": "Ada holds a crown."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "cocoa is with the medal."
+      "text": "The cocoa lover holds a medal."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "balloon is next to the Bo."
+      "text": "The person who holds a balloon lives next to Bo."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "tea"
       },
-      "text": "balloon is next to the tea."
+      "text": "The person who holds a balloon lives next to the tea lover."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "cocoa"
       },
       "immediate": false,
-      "text": "crown is somewhere left of the cocoa."
+      "text": "The person who holds a crown lives somewhere left of the cocoa lover."
     }
   ],
   "question": {

@@ -61,7 +61,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -71,7 +74,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Eden is with the dog."
+      "text": "Eden has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Hana is with the fish."
+      "text": "Hana has a fish."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "leaf is with the fish."
+      "text": "The person who holds a leaf has a fish."
     },
     {
       "id": "c4",
@@ -121,7 +127,7 @@
       "attr": "pet",
       "item": "dog",
       "house": 0,
-      "text": "dog is in house 1."
+      "text": "The dog owner lives in the first house."
     },
     {
       "id": "c5",
@@ -129,11 +135,11 @@
       "attr": "loot",
       "item": "key",
       "house": 2,
-      "text": "key is in house 3."
+      "text": "The person who holds a key lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

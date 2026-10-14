@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Gus is with the martini."
+      "text": "Gus drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "cactus is with the martini."
+      "text": "The person who grows a cactus drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Hana is with the tea."
+      "text": "Hana drinks tea."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "plant",
       "item": "leaf",
       "house": 0,
-      "text": "leaf is in house 1."
+      "text": "The person who grows a leaf lives in the first house."
     },
     {
       "id": "c5",
@@ -129,11 +129,11 @@
       "attr": "person",
       "item": "hana",
       "house": 1,
-      "text": "Hana is in house 2."
+      "text": "Hana lives in the center house."
     }
   ],
   "question": {
-    "text": "Who tends the flower?",
+    "text": "Who grows a flower?",
     "givenAttr": "plant",
     "givenItem": "flower",
     "answerAttr": "person",

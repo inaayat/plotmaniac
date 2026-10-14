@@ -49,7 +49,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +90,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Cam is with the bird."
+      "text": "Cam has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Fay is with the martini."
+      "text": "Fay drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Drew is with the butterfly."
+      "text": "Drew has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Drew is with the orange juice."
+      "text": "Drew drinks orange juice."
     },
     {
       "id": "c5",
@@ -134,7 +137,7 @@
       "attr": "pet",
       "item": "bird",
       "house": 0,
-      "text": "bird is in house 1."
+      "text": "The bird owner lives in the first house."
     },
     {
       "id": "c6",
@@ -142,11 +145,11 @@
       "attr": "person",
       "item": "drew",
       "house": 1,
-      "text": "Drew is in house 2."
+      "text": "Drew lives in the center house."
     }
   ],
   "question": {
-    "text": "Who owns the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

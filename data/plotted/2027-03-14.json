@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Hana is with the martini."
+      "text": "Hana drinks a martini."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "cactus is with the tea."
+      "text": "The person who grows a cactus drinks tea."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "tree is with the martini."
+      "text": "The person who grows a tree drinks a martini."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Cam is with the coffee."
+      "text": "Cam drinks coffee."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "tree is next to the Drew."
+      "text": "The person who grows a tree lives next to Drew."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "flower is next to the orange juice."
+      "text": "The person who grows a flower lives next to the orange juice drinker."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Cam is next to the martini."
+      "text": "Cam lives next to the martini drinker."
     },
     {
       "id": "c8",
@@ -194,11 +194,11 @@
         "item": "hana"
       },
       "immediate": false,
-      "text": "tea is somewhere left of the Hana."
+      "text": "The tea drinker lives somewhere left of Hana."
     }
   ],
   "question": {
-    "text": "Who tends the potted plant?",
+    "text": "Who grows a potted plant?",
     "givenAttr": "plant",
     "givenItem": "pot",
     "answerAttr": "person",

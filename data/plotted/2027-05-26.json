@@ -61,7 +61,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -71,7 +74,10 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Drew is with the key."
+      "text": "Drew holds a key."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "key is with the butterfly."
+      "text": "The person who holds a key has a butterfly."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Jules is with the rabbit."
+      "text": "Jules has a rabbit."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Jules is with the guide."
+      "text": "Jules holds a guide."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Drew is next to the guide."
+      "text": "Drew lives next to the person who holds a guide."
     },
     {
       "id": "c6",
@@ -147,11 +153,11 @@
       "attr": "loot",
       "item": "book",
       "house": 0,
-      "text": "guide is in house 1."
+      "text": "The person who holds a guide lives in the first house."
     }
   ],
   "question": {
-    "text": "Who camped with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

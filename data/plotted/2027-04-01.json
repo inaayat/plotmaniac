@@ -87,7 +87,7 @@
         "attr": "loot",
         "item": "coins"
       },
-      "text": "Drew is with the coins."
+      "text": "Drew holds a coins."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "lock is with the on foot."
+      "text": "The person who holds a lock is on foot."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "on foot is next to the Jules."
+      "text": "The person on foot lives next to Jules."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "Drew is next to the on foot."
+      "text": "Drew lives next to the person on foot."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "crown"
       },
       "immediate": false,
-      "text": "motorcycle is somewhere left of the crown."
+      "text": "The person who rides a motorcycle lives somewhere left of the person who holds a crown."
     }
   ],
   "question": {

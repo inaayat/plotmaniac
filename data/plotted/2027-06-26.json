@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Hana is with the martini."
+      "text": "Hana drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Gus is with the tea."
+      "text": "Gus drinks tea."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "cake is with the martini."
+      "text": "The cake lover drinks a martini."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "burger is next to the Gus."
+      "text": "The burger lover lives next to Gus."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "tea"
       },
       "immediate": true,
-      "text": "cake is immediately left of the tea."
+      "text": "The cake lover lives directly left of the tea drinker."
     }
   ],
   "question": {
-    "text": "Who ordered the burger?",
+    "text": "Who is the burger lover?",
     "givenAttr": "food",
     "givenItem": "burger",
     "answerAttr": "person",

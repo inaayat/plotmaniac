@@ -87,7 +87,7 @@
         "attr": "treat",
         "item": "cookie"
       },
-      "text": "Bo is with the cookie."
+      "text": "Bo loves cookie."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "treat",
         "item": "ice"
       },
-      "text": "Fay is with the ice cream."
+      "text": "Fay loves ice cream."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "Fay is with the medal."
+      "text": "Fay holds a medal."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "book is next to the Bo."
+      "text": "The person who holds a book lives next to Bo."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "Bo is next to the medal."
+      "text": "Bo lives next to the person who holds a medal."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "gift"
       },
       "immediate": false,
-      "text": "Gus is somewhere left of the parcel."
+      "text": "Gus lives somewhere left of the person who holds a parcel."
     }
   ],
   "question": {

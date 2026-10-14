@@ -87,7 +87,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Jules is with the orange."
+      "text": "Jules loves orange."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "Jules is with the parcel."
+      "text": "Jules holds a parcel."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "cookie"
       },
-      "text": "Cam is with the cookie."
+      "text": "Cam loves cookie."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "person",
       "item": "cam",
       "house": 1,
-      "text": "Cam is in house 2."
+      "text": "Cam lives in the center house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "gift",
       "item": "book",
       "house": 2,
-      "text": "book is in house 3."
+      "text": "The person who holds a book lives in the last house."
     }
   ],
   "question": {

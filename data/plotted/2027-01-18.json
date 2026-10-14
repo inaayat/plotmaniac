@@ -87,7 +87,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "Hana is with the diary."
+      "text": "Hana reads a diary."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "map"
       },
-      "text": "Cam is with the field guide."
+      "text": "Cam reads a field guide."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "score is with the coffee."
+      "text": "The person who reads a score drinks coffee."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "person",
       "item": "cam",
       "house": 1,
-      "text": "Cam is in house 2."
+      "text": "Cam lives in the center house."
     },
     {
       "id": "c5",
@@ -129,11 +129,11 @@
       "attr": "drink",
       "item": "beer",
       "house": 0,
-      "text": "beer is in house 1."
+      "text": "The beer drinker lives in the first house."
     }
   ],
   "question": {
-    "text": "Who brought the field guide?",
+    "text": "Who reads a field guide?",
     "givenAttr": "book",
     "givenItem": "map",
     "answerAttr": "person",

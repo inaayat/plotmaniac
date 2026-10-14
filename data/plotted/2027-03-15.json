@@ -61,7 +61,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "butterfly",
@@ -71,7 +74,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "lock is with the butterfly."
+      "text": "The person who holds a lock has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Io is with the bird."
+      "text": "Io has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "loot",
         "item": "leaf"
       },
-      "text": "Drew is with the leaf."
+      "text": "Drew holds a leaf."
     },
     {
       "id": "c4",
@@ -121,7 +127,7 @@
       "attr": "pet",
       "item": "bird",
       "house": 1,
-      "text": "bird is in house 2."
+      "text": "The bird owner lives in the center house."
     },
     {
       "id": "c5",
@@ -129,11 +135,11 @@
       "attr": "person",
       "item": "drew",
       "house": 0,
-      "text": "Drew is in house 1."
+      "text": "Drew lives in the first house."
     }
   ],
   "question": {
-    "text": "Who camped with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

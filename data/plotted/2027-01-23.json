@@ -44,7 +44,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "fish",
@@ -54,7 +57,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Drew is with the coffee."
+      "text": "Drew drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Gus is with the fish."
+      "text": "Gus has a fish."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "cat is with the coffee."
+      "text": "The cat owner drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "fish is next to the orange juice."
+      "text": "The fish owner lives next to the orange juice drinker."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "coffee"
       },
       "immediate": true,
-      "text": "Gus is immediately left of the coffee."
+      "text": "Gus lives directly left of the coffee drinker."
     }
   ],
   "question": {
-    "text": "Who owns the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "burger is with the tea."
+      "text": "The burger lover drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Drew is with the tea."
+      "text": "Drew drinks tea."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Ada is with the brandy."
+      "text": "Ada drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "food",
         "item": "ice"
       },
-      "text": "Eden is next to the ice cream."
+      "text": "Eden lives next to the ice cream lover."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "ada"
       },
       "immediate": true,
-      "text": "burger is immediately left of the Ada."
+      "text": "The burger lover lives directly left of Ada."
     }
   ],
   "question": {
-    "text": "Who ordered the burger?",
+    "text": "Who is the burger lover?",
     "givenAttr": "food",
     "givenItem": "burger",
     "answerAttr": "person",

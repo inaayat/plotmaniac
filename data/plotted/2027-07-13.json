@@ -44,17 +44,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Fay is with the horse."
+      "text": "Fay has a horse."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "cat is with the orange juice."
+      "text": "The cat owner drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Ada is with the orange juice."
+      "text": "Ada drinks orange juice."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "horse is with the martini."
+      "text": "The horse owner drinks a martini."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "orange juice is next to the horse."
+      "text": "The orange juice drinker lives next to the horse owner."
     },
     {
       "id": "c6",
@@ -147,11 +156,11 @@
       "attr": "pet",
       "item": "horse",
       "house": 0,
-      "text": "horse is in house 1."
+      "text": "The horse owner lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

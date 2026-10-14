@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "cookie is with the parcel."
+      "text": "The cookie lover holds a parcel."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "cocoa is with the medal."
+      "text": "The cocoa lover holds a medal."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "parcel is next to the Jules."
+      "text": "The person who holds a parcel lives next to Jules."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "parcel is next to the Hana."
+      "text": "The person who holds a parcel lives next to Hana."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "medal"
       },
       "immediate": false,
-      "text": "Jules is somewhere left of the medal."
+      "text": "Jules lives somewhere left of the person who holds a medal."
     }
   ],
   "question": {

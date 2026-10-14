@@ -61,12 +61,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "vehicle",
         "item": "truck"
       },
-      "text": "Drew is with the truck."
+      "text": "Drew drives a truck."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Bo is with the sailboat."
+      "text": "Bo sails a sailboat."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Bo is with the cat."
+      "text": "Bo has a cat."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "vehicle",
         "item": "truck"
       },
-      "text": "fish is next to the truck."
+      "text": "The fish owner lives next to the person who drives a truck."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "vehicle",
       "item": "truck",
       "house": 2,
-      "text": "truck is in house 3."
+      "text": "The person who drives a truck lives in the last house."
     }
   ],
   "question": {
-    "text": "Who lives with the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

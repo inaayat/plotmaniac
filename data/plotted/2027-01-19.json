@@ -66,12 +66,18 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "bicycle is with the fish."
+      "text": "The person who rides a bicycle has a fish."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Io is with the cat."
+      "text": "Io has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Jules is with the dog."
+      "text": "Jules has a dog."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "truck is next to the Io."
+      "text": "The person who drives a truck lives next to Io."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "vehicle",
       "item": "truck",
       "house": 0,
-      "text": "truck is in house 1."
+      "text": "The person who drives a truck lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

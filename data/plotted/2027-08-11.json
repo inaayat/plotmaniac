@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "ice cream is with the coffee."
+      "text": "The ice cream lover drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "Ada is with the cake."
+      "text": "Ada loves cake."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Hana is with the beer."
+      "text": "Hana drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "cake is next to the coffee."
+      "text": "The cake lover lives next to the coffee drinker."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "food",
       "item": "cake",
       "house": 2,
-      "text": "cake is in house 3."
+      "text": "The cake lover lives in the last house."
     }
   ],
   "question": {
-    "text": "Who ordered the cake?",
+    "text": "Who is the cake lover?",
     "givenAttr": "food",
     "givenItem": "cake",
     "answerAttr": "person",

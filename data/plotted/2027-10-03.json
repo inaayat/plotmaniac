@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Bo is with the tea."
+      "text": "Bo drinks tea."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Io is with the score."
+      "text": "Io reads a score."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Jules is with the orange juice."
+      "text": "Jules drinks orange juice."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "Bo is with the diary."
+      "text": "Bo reads a diary."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "book",
         "item": "notes"
       },
-      "text": "Jules is next to the notes."
+      "text": "Jules lives next to the person who reads notes."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "beer is next to the Bo."
+      "text": "The beer drinker lives next to Bo."
     },
     {
       "id": "c7",
@@ -181,11 +181,11 @@
         "item": "notes"
       },
       "immediate": true,
-      "text": "beer is immediately left of the notes."
+      "text": "The beer drinker lives directly left of the person who reads notes."
     }
   ],
   "question": {
-    "text": "Who brought the notes?",
+    "text": "Who reads notes?",
     "givenAttr": "book",
     "givenItem": "notes",
     "answerAttr": "person",

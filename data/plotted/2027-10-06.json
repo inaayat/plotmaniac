@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Cam is with the brandy."
+      "text": "Cam drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "pizza is with the brandy."
+      "text": "The pizza lover drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Drew is with the coffee."
+      "text": "Drew drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "bowl is with the beer."
+      "text": "The bowl lover drinks beer."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "bowl is next to the brandy."
+      "text": "The bowl lover lives next to the brandy drinker."
     },
     {
       "id": "c6",
@@ -147,11 +147,11 @@
       "attr": "food",
       "item": "pizza",
       "house": 0,
-      "text": "pizza is in house 1."
+      "text": "The pizza lover lives in the first house."
     }
   ],
   "question": {
-    "text": "Who ordered the pizza?",
+    "text": "Who is the pizza lover?",
     "givenAttr": "food",
     "givenItem": "pizza",
     "answerAttr": "person",

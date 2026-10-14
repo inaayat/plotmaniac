@@ -117,7 +117,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Ada is with the tea."
+      "text": "Ada drinks tea."
     },
     {
       "id": "c2",
@@ -130,7 +130,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "field guide is with the wine."
+      "text": "The person who reads a field guide drinks wine."
     },
     {
       "id": "c3",
@@ -143,7 +143,7 @@
         "attr": "book",
         "item": "notes"
       },
-      "text": "Eden is with the notes."
+      "text": "Eden reads notes."
     },
     {
       "id": "c4",
@@ -156,7 +156,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "Jules is with the diary."
+      "text": "Jules reads a diary."
     },
     {
       "id": "c5",
@@ -169,7 +169,7 @@
         "attr": "book",
         "item": "map"
       },
-      "text": "Gus is next to the field guide."
+      "text": "Gus lives next to the person who reads a field guide."
     },
     {
       "id": "c6",
@@ -182,7 +182,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "open book is next to the orange juice."
+      "text": "The person who reads an open book lives next to the orange juice drinker."
     },
     {
       "id": "c7",
@@ -195,7 +195,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "coffee is next to the Eden."
+      "text": "The coffee drinker lives next to Eden."
     },
     {
       "id": "c8",
@@ -209,11 +209,11 @@
         "item": "eden"
       },
       "immediate": true,
-      "text": "wine is immediately left of the Eden."
+      "text": "The wine drinker lives directly left of Eden."
     }
   ],
   "question": {
-    "text": "Who brought the sci-fi?",
+    "text": "Who reads sci-fi?",
     "givenAttr": "book",
     "givenItem": "scifi",
     "answerAttr": "person",

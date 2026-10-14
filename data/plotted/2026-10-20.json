@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "Jules is with the balloon."
+      "text": "Jules holds a balloon."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "Cam is with the book."
+      "text": "Cam holds a book."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "tea"
       },
-      "text": "Cam is with the tea."
+      "text": "Cam loves tea."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "ice cream is next to the medal."
+      "text": "The ice cream lover lives next to the person who holds a medal."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "treat",
       "item": "ice",
       "house": 0,
-      "text": "ice cream is in house 1."
+      "text": "The ice cream lover lives in the first house."
     }
   ],
   "question": {

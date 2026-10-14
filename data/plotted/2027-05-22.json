@@ -61,7 +61,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "fish",
@@ -71,7 +74,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "cookpot is with the dog."
+      "text": "The person who holds a cookpot has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "tent is with the fish."
+      "text": "The person who holds a tent has a fish."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Drew is with the dog."
+      "text": "Drew has a dog."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "bird is next to the Hana."
+      "text": "The bird owner lives next to Hana."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "fish"
       },
       "immediate": true,
-      "text": "Drew is immediately left of the fish."
+      "text": "Drew lives directly left of the fish owner."
     }
   ],
   "question": {
-    "text": "Who camped with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

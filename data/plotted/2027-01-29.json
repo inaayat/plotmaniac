@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Drew is with the beer."
+      "text": "Drew drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "bowl"
       },
-      "text": "Fay is with the bowl."
+      "text": "Fay eats bowl."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "coffee is next to the Drew."
+      "text": "The coffee drinker lives next to Drew."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "burger is next to the Drew."
+      "text": "The burger lover lives next to Drew."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "hana"
       },
       "immediate": false,
-      "text": "coffee is somewhere left of the Hana."
+      "text": "The coffee drinker lives somewhere left of Hana."
     }
   ],
   "question": {
-    "text": "Who ordered the bowl?",
+    "text": "Who is the bowl lover?",
     "givenAttr": "food",
     "givenItem": "bowl",
     "answerAttr": "person",

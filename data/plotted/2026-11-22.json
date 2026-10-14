@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "charts is with the coffee."
+      "text": "The charts player drinks coffee."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Bo is with the wine."
+      "text": "Bo drinks wine."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "harmony is with the brandy."
+      "text": "The harmony player drinks brandy."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Drew is with the brandy."
+      "text": "Drew drinks brandy."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "guitar is next to the tea."
+      "text": "The guitarist lives next to the tea drinker."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "brandy is next to the Jules."
+      "text": "The brandy drinker lives next to Jules."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Bo is next to the brandy."
+      "text": "Bo lives next to the brandy drinker."
     },
     {
       "id": "c8",
@@ -194,7 +194,7 @@
         "item": "guitar"
       },
       "immediate": false,
-      "text": "coffee is somewhere left of the guitar."
+      "text": "The coffee drinker lives somewhere left of the guitarist."
     }
   ],
   "question": {

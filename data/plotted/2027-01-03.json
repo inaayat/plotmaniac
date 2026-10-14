@@ -49,7 +49,10 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "butterfly",
@@ -59,12 +62,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "drink": [
@@ -102,7 +111,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Bo is with the butterfly."
+      "text": "Bo has a butterfly."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Eden is with the dog."
+      "text": "Eden has a dog."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "butterfly is with the orange juice."
+      "text": "The butterfly owner drinks orange juice."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Jules is with the beer."
+      "text": "Jules drinks beer."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "horse is next to the orange juice."
+      "text": "The horse owner lives next to the orange juice drinker."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "dog is next to the orange juice."
+      "text": "The dog owner lives next to the orange juice drinker."
     },
     {
       "id": "c7",
@@ -181,11 +190,11 @@
         "item": "eden"
       },
       "immediate": true,
-      "text": "wine is immediately left of the Eden."
+      "text": "The wine drinker lives directly left of Eden."
     }
   ],
   "question": {
-    "text": "Who owns the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

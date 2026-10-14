@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "flower is with the coffee."
+      "text": "The person who grows a flower drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "flower"
       },
-      "text": "Eden is with the flower."
+      "text": "Eden grows a flower."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "plant",
         "item": "leaf"
       },
-      "text": "Ada is with the leaf."
+      "text": "Ada grows a leaf."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "leaf is next to the orange juice."
+      "text": "The person who grows a leaf lives next to the orange juice drinker."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "drink",
       "item": "orange",
       "house": 0,
-      "text": "orange juice is in house 1."
+      "text": "The orange juice drinker lives in the first house."
     }
   ],
   "question": {
-    "text": "Who tends the leaf?",
+    "text": "Who grows a leaf?",
     "givenAttr": "plant",
     "givenItem": "leaf",
     "answerAttr": "person",

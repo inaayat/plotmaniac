@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "Eden is with the truck."
+      "text": "Eden drives a truck."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "diamond is with the on foot."
+      "text": "The person who holds a diamond is on foot."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Io is with the crown."
+      "text": "Io holds a crown."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "loot",
       "item": "diamond",
       "house": 0,
-      "text": "diamond is in house 1."
+      "text": "The person who holds a diamond lives in the first house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "getaway",
       "item": "moto",
       "house": 2,
-      "text": "motorcycle is in house 3."
+      "text": "The person who rides a motorcycle lives in the last house."
     }
   ],
   "question": {

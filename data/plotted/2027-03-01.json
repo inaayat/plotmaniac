@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "orange is with the medal."
+      "text": "The orange lover holds a medal."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "crown"
       },
-      "text": "Drew is with the crown."
+      "text": "Drew holds a crown."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "Gus is with the medal."
+      "text": "Gus holds a medal."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "treat",
       "item": "cookie",
       "house": 2,
-      "text": "cookie is in house 3."
+      "text": "The cookie lover lives in the last house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "person",
       "item": "hana",
       "house": 1,
-      "text": "Hana is in house 2."
+      "text": "Hana lives in the center house."
     }
   ],
   "question": {

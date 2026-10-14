@@ -61,17 +61,26 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Bo is with the bird."
+      "text": "Bo has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "lock is with the bird."
+      "text": "The person who holds a lock has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "tent is with the rabbit."
+      "text": "The person who holds a tent has a rabbit."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Gus is with the rabbit."
+      "text": "Gus has a rabbit."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "rabbit is next to the Bo."
+      "text": "The rabbit owner lives next to Bo."
     },
     {
       "id": "c6",
@@ -147,11 +156,11 @@
       "attr": "loot",
       "item": "lock",
       "house": 2,
-      "text": "lock is in house 3."
+      "text": "The person who holds a lock lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

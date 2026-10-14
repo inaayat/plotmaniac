@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Gus is with the orange juice."
+      "text": "Gus drinks orange juice."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "open book is with the beer."
+      "text": "The person who reads an open book drinks beer."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "book",
         "item": "notes"
       },
-      "text": "Hana is with the notes."
+      "text": "Hana reads notes."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "notes"
       },
-      "text": "Gus is next to the notes."
+      "text": "Gus lives next to the person who reads notes."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "gus"
       },
       "immediate": true,
-      "text": "beer is immediately left of the Gus."
+      "text": "The beer drinker lives directly left of Gus."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

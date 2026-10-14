@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "cake is with the parcel."
+      "text": "The cake lover holds a parcel."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "treat",
         "item": "tea"
       },
-      "text": "Gus is with the tea."
+      "text": "Gus loves tea."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "cake"
       },
-      "text": "Ada is with the cake."
+      "text": "Ada loves cake."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "book is next to the Gus."
+      "text": "The person who holds a book lives next to Gus."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "cake"
       },
       "immediate": true,
-      "text": "evergreen is immediately left of the cake."
+      "text": "The person who holds an evergreen lives directly left of the cake lover."
     }
   ],
   "question": {

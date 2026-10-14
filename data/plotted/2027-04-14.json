@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Gus is with the orange juice."
+      "text": "Gus drinks orange juice."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "melody is with the coffee."
+      "text": "The melody player drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Bo is with the score."
+      "text": "Bo plays the score."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Gus is next to the coffee."
+      "text": "Gus lives next to the coffee drinker."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "instrument",
       "item": "note",
       "house": 2,
-      "text": "melody is in house 3."
+      "text": "The melody player lives in the last house."
     }
   ],
   "question": {

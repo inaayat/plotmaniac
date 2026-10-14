@@ -44,12 +44,18 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Ada is with the fish."
+      "text": "Ada has a fish."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "dog is with the crown."
+      "text": "The dog owner holds a crown."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Bo is with the gift."
+      "text": "Bo holds a gift."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "cat is next to the Ada."
+      "text": "The cat owner lives next to Ada."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "prize",
       "item": "gift",
       "house": 0,
-      "text": "gift is in house 1."
+      "text": "The person who holds a gift lives in the first house."
     }
   ],
   "question": {
-    "text": "Who showed the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

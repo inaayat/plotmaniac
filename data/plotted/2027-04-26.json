@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Ada is with the harmony."
+      "text": "Ada plays the harmony."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Fay is with the melody."
+      "text": "Fay plays the melody."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "harmony is with the wine."
+      "text": "The harmony player drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Fay is with the brandy."
+      "text": "Fay drinks brandy."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "ada",
       "house": 1,
-      "text": "Ada is in house 2."
+      "text": "Ada lives in the center house."
     },
     {
       "id": "c6",
@@ -142,7 +142,7 @@
       "attr": "drink",
       "item": "brandy",
       "house": 2,
-      "text": "brandy is in house 3."
+      "text": "The brandy drinker lives in the last house."
     }
   ],
   "question": {

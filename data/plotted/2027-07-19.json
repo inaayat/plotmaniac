@@ -54,7 +54,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +90,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "butterfly is with the crown."
+      "text": "The butterfly owner holds a crown."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Fay is with the butterfly."
+      "text": "Fay has a butterfly."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Drew is with the fish."
+      "text": "Drew has a fish."
     },
     {
       "id": "c4",
@@ -121,7 +124,7 @@
       "attr": "person",
       "item": "io",
       "house": 1,
-      "text": "Io is in house 2."
+      "text": "Io lives in the center house."
     },
     {
       "id": "c5",
@@ -129,11 +132,11 @@
       "attr": "prize",
       "item": "gift",
       "house": 0,
-      "text": "gift is in house 1."
+      "text": "The person who holds a gift lives in the first house."
     }
   ],
   "question": {
-    "text": "Who showed the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

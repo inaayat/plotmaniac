@@ -49,12 +49,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "butterfly",
@@ -64,7 +70,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "prize": [
@@ -102,7 +111,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Hana is with the horse."
+      "text": "Hana has a horse."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Ada is with the rabbit."
+      "text": "Ada has a rabbit."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "horse is with the medal."
+      "text": "The horse owner holds a medal."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "cat is with the crown."
+      "text": "The cat owner holds a crown."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "medal is next to the butterfly."
+      "text": "The person who holds a medal lives next to the butterfly owner."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "balloon is next to the Cam."
+      "text": "The person who holds a balloon lives next to Cam."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Drew is next to the cat."
+      "text": "Drew lives next to the cat owner."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "butterfly"
       },
       "immediate": false,
-      "text": "balloon is somewhere left of the butterfly."
+      "text": "The person who holds a balloon lives somewhere left of the butterfly owner."
     }
   ],
   "question": {
-    "text": "Who showed the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

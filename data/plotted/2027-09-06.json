@@ -44,12 +44,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Cam is with the wine."
+      "text": "Cam drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "butterfly is with the orange juice."
+      "text": "The butterfly owner drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "rabbit is with the wine."
+      "text": "The rabbit owner drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Gus is with the butterfly."
+      "text": "Gus has a butterfly."
     },
     {
       "id": "c5",
@@ -134,7 +140,7 @@
       "attr": "drink",
       "item": "brandy",
       "house": 0,
-      "text": "brandy is in house 1."
+      "text": "The brandy drinker lives in the first house."
     },
     {
       "id": "c6",
@@ -142,11 +148,11 @@
       "attr": "drink",
       "item": "wine",
       "house": 2,
-      "text": "wine is in house 3."
+      "text": "The wine drinker lives in the last house."
     }
   ],
   "question": {
-    "text": "Who owns the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

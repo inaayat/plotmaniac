@@ -44,17 +44,26 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +96,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Eden is with the wine."
+      "text": "Eden drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Cam is with the bird."
+      "text": "Cam has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "wine is next to the cat."
+      "text": "The wine drinker lives next to the cat owner."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Eden is next to the beer."
+      "text": "Eden lives next to the beer drinker."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "bird"
       },
       "immediate": false,
-      "text": "martini is somewhere left of the bird."
+      "text": "The martini drinker lives somewhere left of the bird owner."
     }
   ],
   "question": {
-    "text": "Who owns the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

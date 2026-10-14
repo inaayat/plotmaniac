@@ -44,17 +44,26 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +96,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Bo is with the brandy."
+      "text": "Bo drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Fay is with the coffee."
+      "text": "Fay drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Bo is with the bird."
+      "text": "Bo has a bird."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Fay is with the horse."
+      "text": "Fay has a horse."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Bo is next to the horse."
+      "text": "Bo lives next to the horse owner."
     },
     {
       "id": "c6",
@@ -147,11 +156,11 @@
       "attr": "person",
       "item": "fay",
       "house": 0,
-      "text": "Fay is in house 1."
+      "text": "Fay lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "book",
         "item": "open"
       },
-      "text": "Bo is with the open book."
+      "text": "Bo reads an open book."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "map"
       },
-      "text": "Jules is with the field guide."
+      "text": "Jules reads a field guide."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Bo is with the tea."
+      "text": "Bo drinks tea."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "person",
       "item": "fay",
       "house": 0,
-      "text": "Fay is in house 1."
+      "text": "Fay lives in the first house."
     },
     {
       "id": "c5",
@@ -129,11 +129,11 @@
       "attr": "drink",
       "item": "wine",
       "house": 2,
-      "text": "wine is in house 3."
+      "text": "The wine drinker lives in the last house."
     }
   ],
   "question": {
-    "text": "Who brought the open book?",
+    "text": "Who reads an open book?",
     "givenAttr": "book",
     "givenItem": "open",
     "answerAttr": "person",

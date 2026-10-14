@@ -61,17 +61,26 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Io is with the rabbit."
+      "text": "Io has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Io is with the guide."
+      "text": "Io holds a guide."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "loot",
         "item": "pot"
       },
-      "text": "Bo is with the cookpot."
+      "text": "Bo holds a cookpot."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Cam is with the cat."
+      "text": "Cam has a cat."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Cam is next to the rabbit."
+      "text": "Cam lives next to the rabbit owner."
     },
     {
       "id": "c6",
@@ -153,11 +162,11 @@
         "item": "bo"
       },
       "immediate": true,
-      "text": "guide is immediately left of the Bo."
+      "text": "The person who holds a guide lives directly left of Bo."
     }
   ],
   "question": {
-    "text": "Who camped with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

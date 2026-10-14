@@ -61,12 +61,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Gus is with the bird."
+      "text": "Gus has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Hana is with the bicycle."
+      "text": "Hana rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "on foot is with the bird."
+      "text": "The person on foot has a bird."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "plane is next to the fish."
+      "text": "The person who flies a plane lives next to the fish owner."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "pet",
       "item": "fish",
       "house": 0,
-      "text": "fish is in house 1."
+      "text": "The fish owner lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

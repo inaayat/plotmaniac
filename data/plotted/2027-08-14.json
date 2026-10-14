@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "Gus is with the truck."
+      "text": "Gus drives a truck."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "lockbox"
       },
-      "text": "Fay is with the lock."
+      "text": "Fay holds a lock."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "Gus is next to the diamond."
+      "text": "Gus lives next to the person who holds a diamond."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "loot",
         "item": "lockbox"
       },
-      "text": "motorcycle is next to the lock."
+      "text": "The person who rides a motorcycle lives next to the person who holds a lock."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "walk"
       },
       "immediate": false,
-      "text": "diamond is somewhere left of the on foot."
+      "text": "The person who holds a diamond lives somewhere left of the person on foot."
     }
   ],
   "question": {

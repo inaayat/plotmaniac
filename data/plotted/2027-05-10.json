@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "crown is with the truck."
+      "text": "The person who holds a crown drives a truck."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "Drew is with the diamond."
+      "text": "Drew holds a diamond."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "diamond is with the bicycle."
+      "text": "The person who holds a diamond rides a bicycle."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Gus is with the crown."
+      "text": "Gus holds a crown."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "bo",
       "house": 1,
-      "text": "Bo is in house 2."
+      "text": "Bo lives in the center house."
     },
     {
       "id": "c6",
@@ -142,7 +142,7 @@
       "attr": "person",
       "item": "gus",
       "house": 0,
-      "text": "Gus is in house 1."
+      "text": "Gus lives in the first house."
     }
   ],
   "question": {

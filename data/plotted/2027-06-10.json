@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Io is with the wine."
+      "text": "Io drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "score is with the tea."
+      "text": "The person who reads a score drinks tea."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Bo is next to the coffee."
+      "text": "Bo lives next to the coffee drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "open book is next to the coffee."
+      "text": "The person who reads an open book lives next to the coffee drinker."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "io"
       },
       "immediate": false,
-      "text": "score is somewhere left of the Io."
+      "text": "The person who reads a score lives somewhere left of Io."
     }
   ],
   "question": {
-    "text": "Who brought the sci-fi?",
+    "text": "Who reads sci-fi?",
     "givenAttr": "book",
     "givenItem": "scifi",
     "answerAttr": "person",

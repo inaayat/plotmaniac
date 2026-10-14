@@ -87,7 +87,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "Drew is with the diamond."
+      "text": "Drew holds a diamond."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "Ada is with the truck."
+      "text": "Ada drives a truck."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "key is with the bicycle."
+      "text": "The person who holds a key rides a bicycle."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "key is next to the truck."
+      "text": "The person who holds a key lives next to the person who drives a truck."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "loot",
       "item": "key",
       "house": 0,
-      "text": "key is in house 1."
+      "text": "The person who holds a key lives in the first house."
     }
   ],
   "question": {

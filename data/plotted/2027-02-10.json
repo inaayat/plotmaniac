@@ -44,17 +44,26 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Eden is with the dog."
+      "text": "Eden has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "Eden is with the trophy."
+      "text": "Eden holds a trophy."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Io is with the gift."
+      "text": "Io holds a gift."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Drew is with the bird."
+      "text": "Drew has a bird."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Eden is next to the gift."
+      "text": "Eden lives next to the person who holds a gift."
     },
     {
       "id": "c6",
@@ -147,11 +156,11 @@
       "attr": "prize",
       "item": "trophy",
       "house": 2,
-      "text": "trophy is in house 3."
+      "text": "The person who holds a trophy lives in the last house."
     }
   ],
   "question": {
-    "text": "Who showed the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

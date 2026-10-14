@@ -59,12 +59,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "drink": [
@@ -102,7 +108,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Eden is with the martini."
+      "text": "Eden drinks a martini."
     },
     {
       "id": "c2",
@@ -115,7 +121,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Fay is with the beer."
+      "text": "Fay drinks beer."
     },
     {
       "id": "c3",
@@ -128,7 +134,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "horse is with the martini."
+      "text": "The horse owner drinks a martini."
     },
     {
       "id": "c4",
@@ -141,7 +147,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Gus is with the orange juice."
+      "text": "Gus drinks orange juice."
     },
     {
       "id": "c5",
@@ -154,7 +160,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Gus is with the fish."
+      "text": "Gus has a fish."
     },
     {
       "id": "c6",
@@ -167,7 +173,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Gus is next to the martini."
+      "text": "Gus lives next to the martini drinker."
     },
     {
       "id": "c7",
@@ -180,7 +186,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Io is next to the butterfly."
+      "text": "Io lives next to the butterfly owner."
     },
     {
       "id": "c8",
@@ -194,11 +200,11 @@
         "item": "horse"
       },
       "immediate": true,
-      "text": "Fay is immediately left of the horse."
+      "text": "Fay lives directly left of the horse owner."
     }
   ],
   "question": {
-    "text": "Who owns the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

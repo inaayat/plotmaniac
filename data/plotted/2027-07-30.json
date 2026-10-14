@@ -87,7 +87,7 @@
         "attr": "loot",
         "item": "medal"
       },
-      "text": "Eden is with the medal."
+      "text": "Eden holds a medal."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "Fay is with the on foot."
+      "text": "Fay is on foot."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "boat"
       },
-      "text": "coins is with the sailboat."
+      "text": "The person who holds a coins sails a sailboat."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "coins is next to the Fay."
+      "text": "The person who holds a coins lives next to Fay."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "medal is next to the Ada."
+      "text": "The person who holds a medal lives next to Ada."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "coins"
       },
       "immediate": false,
-      "text": "on foot is somewhere left of the coins."
+      "text": "The person on foot lives somewhere left of the person who holds a coins."
     }
   ],
   "question": {

@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Fay is with the brandy."
+      "text": "Fay drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Jules is with the martini."
+      "text": "Jules drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "pizza is with the beer."
+      "text": "The pizza lover drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "cake is next to the Jules."
+      "text": "The cake lover lives next to Jules."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "food",
       "item": "cake",
       "house": 2,
-      "text": "cake is in house 3."
+      "text": "The cake lover lives in the last house."
     }
   ],
   "question": {
-    "text": "Who ordered the pizza?",
+    "text": "Who is the pizza lover?",
     "givenAttr": "food",
     "givenItem": "pizza",
     "answerAttr": "person",

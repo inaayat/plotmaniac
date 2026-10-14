@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "open book is with the wine."
+      "text": "The person who reads an open book drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "open"
       },
-      "text": "Eden is with the open book."
+      "text": "Eden reads an open book."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "diary is with the orange juice."
+      "text": "The person who reads a diary drinks orange juice."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "wine is next to the diary."
+      "text": "The wine drinker lives next to the person who reads a diary."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "wine is next to the Hana."
+      "text": "The wine drinker lives next to Hana."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "martini"
       },
       "immediate": false,
-      "text": "Fay is somewhere left of the martini."
+      "text": "Fay lives somewhere left of the martini drinker."
     }
   ],
   "question": {
-    "text": "Who brought the diary?",
+    "text": "Who reads a diary?",
     "givenAttr": "book",
     "givenItem": "diary",
     "answerAttr": "person",

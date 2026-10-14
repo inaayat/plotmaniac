@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "burger is with the tea."
+      "text": "The burger lover drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "ice cream is with the orange juice."
+      "text": "The ice cream lover drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Eden is with the orange juice."
+      "text": "Eden drinks orange juice."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "Cam is next to the cake."
+      "text": "Cam lives next to the cake lover."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "cam",
       "house": 0,
-      "text": "Cam is in house 1."
+      "text": "Cam lives in the first house."
     }
   ],
   "question": {
-    "text": "Who ordered the cake?",
+    "text": "Who is the cake lover?",
     "givenAttr": "food",
     "givenItem": "cake",
     "answerAttr": "person",

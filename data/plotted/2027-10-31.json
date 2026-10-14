@@ -117,7 +117,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "Drew is with the diamond."
+      "text": "Drew holds a diamond."
     },
     {
       "id": "c2",
@@ -130,7 +130,7 @@
         "attr": "getaway",
         "item": "boat"
       },
-      "text": "key is with the sailboat."
+      "text": "The person who holds a key sails a sailboat."
     },
     {
       "id": "c3",
@@ -143,7 +143,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "Io is with the plane."
+      "text": "Io flies a plane."
     },
     {
       "id": "c4",
@@ -156,7 +156,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Bo is with the crown."
+      "text": "Bo holds a crown."
     },
     {
       "id": "c5",
@@ -169,7 +169,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "truck is next to the Drew."
+      "text": "The person who drives a truck lives next to Drew."
     },
     {
       "id": "c6",
@@ -182,7 +182,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "bicycle is next to the Gus."
+      "text": "The person who rides a bicycle lives next to Gus."
     },
     {
       "id": "c7",
@@ -195,7 +195,7 @@
         "attr": "loot",
         "item": "medal"
       },
-      "text": "truck is next to the medal."
+      "text": "The person who drives a truck lives next to the person who holds a medal."
     },
     {
       "id": "c8",
@@ -209,7 +209,7 @@
         "item": "medal"
       },
       "immediate": true,
-      "text": "plane is immediately left of the medal."
+      "text": "The person who flies a plane lives directly left of the person who holds a medal."
     }
   ],
   "question": {

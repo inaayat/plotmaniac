@@ -49,12 +49,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "cat is with the beer."
+      "text": "The cat owner drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Eden is with the horse."
+      "text": "Eden has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Eden is with the brandy."
+      "text": "Eden drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "beer is next to the Ada."
+      "text": "The beer drinker lives next to Ada."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "person",
       "item": "ada",
       "house": 2,
-      "text": "Ada is in house 3."
+      "text": "Ada lives in the last house."
     }
   ],
   "question": {
-    "text": "Who owns the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

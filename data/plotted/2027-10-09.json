@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "guitar is with the brandy."
+      "text": "The guitarist drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "charts is with the martini."
+      "text": "The charts player drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Cam is with the brandy."
+      "text": "Cam drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Bo is next to the martini."
+      "text": "Bo lives next to the martini drinker."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "guitar"
       },
       "immediate": true,
-      "text": "martini is immediately left of the guitar."
+      "text": "The martini drinker lives directly left of the guitarist."
     }
   ],
   "question": {

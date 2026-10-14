@@ -117,7 +117,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Eden is with the harmony."
+      "text": "Eden plays the harmony."
     },
     {
       "id": "c2",
@@ -130,7 +130,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Ada is with the martini."
+      "text": "Ada drinks a martini."
     },
     {
       "id": "c3",
@@ -143,7 +143,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "folio is with the orange juice."
+      "text": "The folio player drinks orange juice."
     },
     {
       "id": "c4",
@@ -156,7 +156,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Jules is with the beer."
+      "text": "Jules drinks beer."
     },
     {
       "id": "c5",
@@ -169,7 +169,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "charts is next to the coffee."
+      "text": "The charts player lives next to the coffee drinker."
     },
     {
       "id": "c6",
@@ -182,7 +182,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "folio is next to the Io."
+      "text": "The folio player lives next to Io."
     },
     {
       "id": "c7",
@@ -195,7 +195,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "folio is next to the Jules."
+      "text": "The folio player lives next to Jules."
     },
     {
       "id": "c8",
@@ -209,7 +209,7 @@
         "item": "note"
       },
       "immediate": true,
-      "text": "beer is immediately left of the melody."
+      "text": "The beer drinker lives directly left of the melody player."
     }
   ],
   "question": {

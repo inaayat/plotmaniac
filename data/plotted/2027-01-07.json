@@ -87,7 +87,7 @@
         "attr": "treat",
         "item": "cocoa"
       },
-      "text": "Bo is with the cocoa."
+      "text": "Bo loves cocoa."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "tea is with the book."
+      "text": "The tea lover holds a book."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "crown"
       },
-      "text": "cake is with the crown."
+      "text": "The cake lover holds a crown."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "tea"
       },
-      "text": "crown is next to the tea."
+      "text": "The person who holds a crown lives next to the tea lover."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "tea is next to the Bo."
+      "text": "The tea lover lives next to Bo."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "cake"
       },
       "immediate": false,
-      "text": "Fay is somewhere left of the cake."
+      "text": "Fay lives somewhere left of the cake lover."
     }
   ],
   "question": {

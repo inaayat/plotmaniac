@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "potted plant is with the orange juice."
+      "text": "The person who grows a potted plant drinks orange juice."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Gus is with the beer."
+      "text": "Gus drinks beer."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "plant",
         "item": "pot"
       },
-      "text": "Bo is with the potted plant."
+      "text": "Bo grows a potted plant."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "plant",
         "item": "tulip"
       },
-      "text": "tea is next to the tulip."
+      "text": "The tea drinker lives next to the person who grows a tulip."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "eden",
       "house": 0,
-      "text": "Eden is in house 1."
+      "text": "Eden lives in the first house."
     }
   ],
   "question": {
-    "text": "Who tends the tulip?",
+    "text": "Who grows a tulip?",
     "givenAttr": "plant",
     "givenItem": "tulip",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "guitar"
       },
-      "text": "Jules is with the guitar."
+      "text": "Jules plays the guitar."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Fay is with the tea."
+      "text": "Fay drinks tea."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "charts is with the martini."
+      "text": "The charts player drinks a martini."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Fay is next to the martini."
+      "text": "Fay lives next to the martini drinker."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "wine"
       },
       "immediate": true,
-      "text": "Io is immediately left of the wine."
+      "text": "Io lives directly left of the wine drinker."
     }
   ],
   "question": {

@@ -44,7 +44,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -54,7 +57,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Fay is with the rabbit."
+      "text": "Fay has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "Cam is with the crown."
+      "text": "Cam holds a crown."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Fay is next to the fish."
+      "text": "Fay lives next to the fish owner."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "gift is next to the Jules."
+      "text": "The person who holds a gift lives next to Jules."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "fish"
       },
       "immediate": false,
-      "text": "Jules is somewhere left of the fish."
+      "text": "Jules lives somewhere left of the fish owner."
     }
   ],
   "question": {
-    "text": "Who showed the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

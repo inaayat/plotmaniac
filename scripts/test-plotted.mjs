@@ -275,14 +275,35 @@ for (const theme of [...THEMES, ...PRACTICE_THEMES]) {
     }
   }
 }
+const dinnerPets = THEMES.find((theme) => theme.id === "dinner-party").items.pet;
+assert.deepEqual(
+  dinnerPets.map((item) => item.label).sort(),
+  ["bird", "cat", "dog", "fish", "horse", "rabbit"],
+);
+assert.equal(matchTypedItem(dinnerPets, "dogs").item.id, "dog");
+assert.equal(matchTypedItem(dinnerPets, "cats").item.id, "cat");
+assert.equal(matchTypedItem(dinnerPets, "horses").item.id, "horse");
+assert.equal(matchTypedItem(dinnerPets, "birds").item.id, "bird");
+assert.equal(matchTypedItem(dinnerPets, "rabbits").item.id, "rabbit");
+assert.equal(matchTypedItem(dinnerPets, "dog").item.id, "dog");
 for (const [id, def] of Object.entries(ATTRIBUTES)) {
   if (id === "person" || id === "nationality") {
     assert.equal(def.verb, null, `${id} is an actor and has no verb`);
     continue;
   }
   assert.ok(def.verb, `${id} needs a curated verb`);
-  assert.notEqual(def.verb, "has");
+  if (id === "pet") {
+    assert.equal(def.verb, "has", "pets use has, never keeps");
+    continue;
+  }
+  assert.notEqual(def.verb, "has", `${id} must not use generic has`);
+  assert.notEqual(def.verb, "keeps", `${id} must not use keeps`);
 }
+assert.equal(ATTRIBUTES.pet.occupant("dog"), "the dog owner");
+assert.equal(ATTRIBUTES.pet.occupant("dogs"), "the dog owner");
+assert.equal(ATTRIBUTES.pet.personSame("Drew", "dog"), "Drew has a dog");
+assert.equal(ATTRIBUTES.pet.personSame("Gus", "horse"), "Gus has a horse");
+assert.equal(ATTRIBUTES.pet.personSame("Ada", "fish"), "Ada has a fish");
 
 assert.match(iconSvg("cat"), /viewBox="0 0 256 256"/);
 assert.match(iconSvg("house"), /opacity="0.2"/);
@@ -315,7 +336,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v26/);
+assert.match(sw, /plotted-v27/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -546,6 +567,17 @@ assert.equal(einstein.clues.length, 15);
 assert.equal(einstein.question.text, "Who owns the fish?");
 assert.equal(einstein.question.answerItem, "german");
 assert.equal(einstein.setup, EINSTEIN_SETUP);
+assert.match(einstein.setup, /have a certain pet/);
+assert.doesNotMatch(einstein.setup, /\bkeeps\b/);
+assert.equal(einstein.clues[1].text, "The Swede has a dog");
+assert.equal(einstein.clues[5].text, "The person who smokes Pall Mall has a bird");
+assert.equal(einstein.clues[9].text, "The man who smokes blends lives next to the cat owner");
+assert.equal(einstein.clues[10].text, "The horse owner lives next to the man who smokes Dunhill");
+assert.equal(einstein.items.pet.find((item) => item.id === "dogs")?.label, "dog");
+assert.equal(matchTypedItem(einstein.items.pet, "dog").item.id, "dogs");
+assert.equal(matchTypedItem(einstein.items.pet, "dogs").item.id, "dogs");
+assert.equal(matchTypedItem(einstein.items.pet, "cats").item.id, "cats");
+assert.equal(matchTypedItem(einstein.items.pet, "horse").item.id, "horses");
 assert.equal(einstein.clues[3].immediate, true);
 assert.equal(einstein.clues[3].text, "The green house is on the left of the white house");
 for (const clue of einstein.clues) {
@@ -586,8 +618,12 @@ assert.match(
   /<strong>blend<\/strong>/,
 );
 assert.match(
-  highlightItemWordsHtml("The person who smokes Pall Mall rears birds", flattenItems(einstein.items)),
+  highlightItemWordsHtml("The person who smokes Pall Mall has a bird", flattenItems(einstein.items)),
   /<strong>Pall Mall<\/strong>/,
+);
+assert.match(
+  highlightItemWordsHtml("The person who smokes Pall Mall has a bird", flattenItems(einstein.items)),
+  /<strong>bird<\/strong>/,
 );
 
 const catalog = {
@@ -607,27 +643,27 @@ const catalog = {
 };
 assert.equal(
   clueText({ type: "next_to", left: { attr: "prize", item: "balloon" }, right: { attr: "pet", item: "fish" } }, catalog, "pet-show"),
-  "The person who keeps a balloon lives next to the person who keeps fish.",
+  "The person who holds a balloon lives next to the fish owner.",
 );
 assert.equal(
   clueText({ type: "same", left: { attr: "person", item: "bo" }, right: { attr: "pet", item: "horse" } }, catalog, "pet-show"),
-  "Bo keeps a horse.",
+  "Bo has a horse.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show"),
-  "The person who keeps a trophy lives in the first house.",
+  "The person who holds a trophy lives in the first house.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show", 3),
-  "The person who keeps a trophy lives in the first house.",
+  "The person who holds a trophy lives in the first house.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 1 }, catalog, "pet-show", 3),
-  "The person who keeps a trophy lives in the center house.",
+  "The person who holds a trophy lives in the center house.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 2 }, catalog, "pet-show", 3),
-  "The person who keeps a trophy lives in the last house.",
+  "The person who holds a trophy lives in the last house.",
 );
 assert.equal(
   clueText(
@@ -635,11 +671,11 @@ assert.equal(
     catalog,
     "pet-show",
   ),
-  "The person who keeps a cat lives directly left of Hana.",
+  "The cat owner lives directly left of Hana.",
 );
 assert.equal(
   clueText({ type: "either_house", attr: "prize", item: "trophy", houses: [0, 2] }, catalog, "pet-show"),
-  "The person who keeps a trophy lives in either the first house or the third house.",
+  "The person who holds a trophy lives in either the first house or the third house.",
 );
 const pouringCatalog = {
   person: [
@@ -657,7 +693,15 @@ const pouringCatalog = {
 };
 assert.equal(
   clueText({ type: "same", left: { attr: "pet", item: "dog" }, right: { attr: "drink", item: "wine" } }, pouringCatalog, "dinner-party"),
-  "The person who keeps a dog drinks wine.",
+  "The dog owner drinks wine.",
+);
+assert.equal(
+  clueText(
+    { type: "next_to", left: { attr: "drink", item: "martini" }, right: { attr: "pet", item: "dog" } },
+    pouringCatalog,
+    "dinner-party",
+  ),
+  "The martini drinker lives next to the dog owner.",
 );
 assert.equal(
   clueText(
@@ -747,11 +791,11 @@ assert.equal(
     { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "pet", item: "dog" } },
     {
       person: [{ id: "bo", label: "Bo" }],
-      pet: [{ id: "dog", label: "dogs" }],
+      pet: [{ id: "dog", label: "dogs", aliases: ["dog"] }],
     },
     "dinner-party",
   ),
-  "Bo keeps dogs.",
+  "Bo has a dog.",
 );
 assert.equal(
   clueText(
@@ -777,7 +821,7 @@ for (const sample of [
   assert.doesNotMatch(sample, /\bthe Jules\b/i);
 }
 assert.equal(
-  livesSubjectIsBareObject("The person who keeps a balloon lives next to the one who keeps fish.", catalog),
+  livesSubjectIsBareObject("The person who holds a balloon lives next to the fish owner.", catalog),
   false,
 );
 assert.equal(livesSubjectIsBareObject("balloon lives next to fish", catalog), true);
@@ -838,6 +882,10 @@ assert.equal(
 assert.equal(Object.keys(CLUE_STYLE_TEMPLATES).sort().join(","), "at,either_house,left_of,next_to,not_at,not_next_to,not_same,same");
 assert.ok(CLUE_STYLE_BANS.some(([re]) => re.test("tacos lover")));
 assert.ok(CLUE_STYLE_BANS.some(([re]) => re.test("novels")));
+assert.ok(CLUE_STYLE_BANS.some(([re]) => re.test("keeps")));
+assert.ok(CLUE_STYLE_BANS.some(([re]) => re.test("the person who keeps")));
+assert.ok(CLUE_STYLE_BANS.some(([re]) => re.test("Drew keeps a dog")));
+assert.equal(CLUE_STYLE_BANS.some(([re]) => re.test("Drew has a dog")), false);
 assert.equal(
   validateClueStyle({
     theme: { id: "neighborhood" },
@@ -958,6 +1006,11 @@ for (const id of practiceIds) {
   const style = validateEinsteinStyle(practice);
   assert.equal(style.ok, true, `${id} Einstein-style: ${JSON.stringify(style.failures)}`);
   assert.match(puzzleSetup(practice), /^There are /);
+  assert.doesNotMatch(puzzleSetup(practice), /\bkeeps\b/);
+  assert.doesNotMatch(practice.question?.text || "", /\bkeeps\b/);
+  for (const pet of practice.items.pet || []) {
+    assert.doesNotMatch(pet.label, /^(cats|dogs|horses|birds|rabbits)$/, `${id} pet ${pet.id} must be singular`);
+  }
   assert.ok(practice.clues.length >= 4);
   console.log(`\npractice clues (${id}):`);
   for (const clue of practice.clues) {

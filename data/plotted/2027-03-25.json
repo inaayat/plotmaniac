@@ -44,17 +44,26 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "dog is with the trophy."
+      "text": "The dog owner holds a trophy."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "horse is with the crown."
+      "text": "The horse owner holds a crown."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "Jules is with the trophy."
+      "text": "Jules holds a trophy."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "crown is next to the Bo."
+      "text": "The person who holds a crown lives next to Bo."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "cookie"
       },
       "immediate": true,
-      "text": "Jules is immediately left of the cookie."
+      "text": "Jules lives directly left of the person who holds a cookie."
     }
   ],
   "question": {
-    "text": "Who showed the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

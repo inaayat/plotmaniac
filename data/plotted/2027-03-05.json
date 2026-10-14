@@ -61,17 +61,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Cam is with the bird."
+      "text": "Cam has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "key is with the dog."
+      "text": "The person who holds a key has a dog."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Hana is next to the key."
+      "text": "Hana lives next to the person who holds a key."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "cat is next to the Cam."
+      "text": "The cat owner lives next to Cam."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "tent"
       },
       "immediate": false,
-      "text": "Hana is somewhere left of the tent."
+      "text": "Hana lives somewhere left of the person who holds a tent."
     }
   ],
   "question": {
-    "text": "Who camped with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

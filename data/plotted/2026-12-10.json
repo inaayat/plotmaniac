@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Fay is with the coffee."
+      "text": "Fay drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "carrot"
       },
-      "text": "Hana is with the carrot."
+      "text": "Hana eats carrot."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "martini is next to the Io."
+      "text": "The martini drinker lives next to Io."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "burger is next to the coffee."
+      "text": "The burger lover lives next to the coffee drinker."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "io"
       },
       "immediate": false,
-      "text": "ice cream is somewhere left of the Io."
+      "text": "The ice cream lover lives somewhere left of Io."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the carrot lover?",
     "givenAttr": "food",
     "givenItem": "carrot",
     "answerAttr": "person",

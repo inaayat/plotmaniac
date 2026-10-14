@@ -102,7 +102,7 @@
         "attr": "treat",
         "item": "cocoa"
       },
-      "text": "Hana is with the cocoa."
+      "text": "Hana loves cocoa."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "ice cream is with the book."
+      "text": "The ice cream lover holds a book."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "cake is with the evergreen."
+      "text": "The cake lover holds an evergreen."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "Eden is with the evergreen."
+      "text": "Eden holds an evergreen."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "treat",
         "item": "ice"
       },
-      "text": "Ada is next to the ice cream."
+      "text": "Ada lives next to the ice cream lover."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "Gus is next to the evergreen."
+      "text": "Gus lives next to the person who holds an evergreen."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "treat",
         "item": "cake"
       },
-      "text": "crown is next to the cake."
+      "text": "The person who holds a crown lives next to the cake lover."
     },
     {
       "id": "c8",
@@ -194,7 +194,7 @@
         "item": "crown"
       },
       "immediate": false,
-      "text": "cake is somewhere left of the crown."
+      "text": "The cake lover lives somewhere left of the person who holds a crown."
     }
   ],
   "question": {

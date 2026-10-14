@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "lock is with the truck."
+      "text": "The person who holds a lock drives a truck."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "key is with the bicycle."
+      "text": "The person who holds a key rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "medal"
       },
-      "text": "Jules is with the medal."
+      "text": "Jules holds a medal."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "person",
       "item": "gus",
       "house": 2,
-      "text": "Gus is in house 3."
+      "text": "Gus lives in the last house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "getaway",
       "item": "truck",
       "house": 0,
-      "text": "truck is in house 1."
+      "text": "The person who drives a truck lives in the first house."
     }
   ],
   "question": {

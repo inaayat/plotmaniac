@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "Io is with the evergreen."
+      "text": "Io holds an evergreen."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "cocoa is with the balloon."
+      "text": "The cocoa lover holds a balloon."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Gus is with the orange."
+      "text": "Gus loves orange."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "cocoa"
       },
-      "text": "crown is next to the cocoa."
+      "text": "The person who holds a crown lives next to the cocoa lover."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "gus",
       "house": 0,
-      "text": "Gus is in house 1."
+      "text": "Gus lives in the first house."
     }
   ],
   "question": {

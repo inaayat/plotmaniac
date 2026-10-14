@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Cam is with the beer."
+      "text": "Cam drinks beer."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "ice cream is with the martini."
+      "text": "The ice cream lover drinks a martini."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "Io is with the cake."
+      "text": "Io loves cake."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "food",
         "item": "bowl"
       },
-      "text": "coffee is next to the bowl."
+      "text": "The coffee drinker lives next to the bowl lover."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Cam is next to the wine."
+      "text": "Cam lives next to the wine drinker."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "food",
         "item": "ice"
       },
-      "text": "Eden is next to the ice cream."
+      "text": "Eden lives next to the ice cream lover."
     },
     {
       "id": "c7",
@@ -181,11 +181,11 @@
         "item": "io"
       },
       "immediate": false,
-      "text": "wine is somewhere left of the Io."
+      "text": "The wine drinker lives somewhere left of Io."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the carrot lover?",
     "givenAttr": "food",
     "givenItem": "carrot",
     "answerAttr": "person",

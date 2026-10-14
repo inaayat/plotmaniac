@@ -102,7 +102,7 @@
         "attr": "food",
         "item": "pizza"
       },
-      "text": "Io is with the pizza."
+      "text": "Io eats pizza."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "bowl is with the brandy."
+      "text": "The bowl lover drinks brandy."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "food",
         "item": "bowl"
       },
-      "text": "Hana is with the bowl."
+      "text": "Hana eats bowl."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "stew is with the beer."
+      "text": "The stew lover drinks beer."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "martini is next to the Hana."
+      "text": "The martini drinker lives next to Hana."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "food",
         "item": "bowl"
       },
-      "text": "Eden is next to the bowl."
+      "text": "Eden lives next to the bowl lover."
     },
     {
       "id": "c7",
@@ -181,11 +181,11 @@
         "item": "beer"
       },
       "immediate": true,
-      "text": "Gus is immediately left of the beer."
+      "text": "Gus lives directly left of the beer drinker."
     }
   ],
   "question": {
-    "text": "Who ordered the pizza?",
+    "text": "Who is the pizza lover?",
     "givenAttr": "food",
     "givenItem": "pizza",
     "answerAttr": "person",

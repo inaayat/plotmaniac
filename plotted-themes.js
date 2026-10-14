@@ -10,13 +10,23 @@ function an(label) {
   return /^[aeiou]/i.test(word) ? `an ${word}` : `a ${word}`;
 }
 
-/** Einstein says “keeps dogs”; singular labels keep an article except fish. */
-function keepPet(label) {
+/** Singular pet noun: dogs → dog, fish stays fish. */
+function singularPet(label) {
   const word = String(label || "").trim();
   if (!word) return word;
-  if (word.toLowerCase() === "fish") return word;
-  if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word;
-  return an(word);
+  if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word.replace(/s$/i, "");
+  return word;
+}
+
+/** Verb object: “a dog”, “a horse”, “a fish”. */
+function petObject(label) {
+  return an(singularPet(label));
+}
+
+/** Subject: “the dog owner”. */
+function petOwner(label) {
+  const noun = singularPet(label);
+  return noun ? `the ${noun} owner` : noun;
 }
 
 function vehicleVerb(label) {
@@ -95,8 +105,8 @@ const PLAYED_HOBBIES = new Set(["guitar"]);
 
 /**
  * Einstein-style noun + verb for every category.
- * occupant = person-first noun (“the owner of the dogs”, “the pianist”).
- * personSame = verb (“Ada keeps dogs”, “Ada plays the piano”).
+ * occupant = person-first noun (“the dog owner”, “the pianist”).
+ * personSame = verb (“Ada has a dog”, “Ada plays the piano”).
  * neighbor = how they appear after “lives next to”.
  * verb = curated verb; never a generic “has the”.
  */
@@ -114,9 +124,9 @@ export const ATTRIBUTES = {
     id: "pet",
     label: "Pet",
     icon: "paw-print",
-    verb: "keeps",
-    occupant: (x) => `the person who keeps ${keepPet(x)}`,
-    personSame: (person, x) => `${person} keeps ${keepPet(x)}`,
+    verb: "has",
+    occupant: (x) => petOwner(x),
+    personSame: (person, x) => `${person} has ${petObject(x)}`,
   },
   drink: {
     id: "drink",
@@ -130,9 +140,9 @@ export const ATTRIBUTES = {
     id: "loot",
     label: "Loot",
     icon: "diamond",
-    verb: "keeps",
-    occupant: (x) => `the person who keeps ${an(x)}`,
-    personSame: (person, x) => `${person} keeps ${an(x)}`,
+    verb: "holds",
+    occupant: (x) => `the person who holds ${an(x)}`,
+    personSame: (person, x) => `${person} holds ${an(x)}`,
   },
   getaway: {
     id: "getaway",
@@ -146,9 +156,9 @@ export const ATTRIBUTES = {
     id: "prize",
     label: "Prize",
     icon: "trophy",
-    verb: "keeps",
-    occupant: (x) => `the person who keeps ${an(x)}`,
-    personSame: (person, x) => `${person} keeps ${an(x)}`,
+    verb: "holds",
+    occupant: (x) => `the person who holds ${an(x)}`,
+    personSame: (person, x) => `${person} holds ${an(x)}`,
   },
   plant: {
     id: "plant",
@@ -195,9 +205,9 @@ export const ATTRIBUTES = {
     id: "gift",
     label: "Gift",
     icon: "gift",
-    verb: "keeps",
-    occupant: (x) => `the person who keeps ${an(x)}`,
-    personSame: (person, x) => `${person} keeps ${an(x)}`,
+    verb: "holds",
+    occupant: (x) => `the person who holds ${an(x)}`,
+    personSame: (person, x) => `${person} holds ${an(x)}`,
   },
   food: {
     id: "food",
@@ -282,12 +292,12 @@ const PEOPLE = [
 ];
 
 const PETS = [
-  { id: "cat", label: "cats", icon: "cat" },
-  { id: "dog", label: "dogs", icon: "dog" },
-  { id: "bird", label: "birds", icon: "bird" },
+  { id: "cat", label: "cat", aliases: ["cats"], icon: "cat" },
+  { id: "dog", label: "dog", aliases: ["dogs"], icon: "dog" },
+  { id: "bird", label: "bird", aliases: ["birds"], icon: "bird" },
   { id: "fish", label: "fish", icon: "fish" },
-  { id: "rabbit", label: "rabbits", icon: "rabbit" },
-  { id: "horse", label: "horses", icon: "horse" },
+  { id: "rabbit", label: "rabbit", aliases: ["rabbits"], icon: "rabbit" },
+  { id: "horse", label: "horse", aliases: ["horses"], icon: "horse" },
 ];
 
 const DRINKS = [
@@ -387,7 +397,7 @@ export const THEMES = [
     story: "A small dinner. Someone still has to claim the fish.",
     attributes: ["person", "pet", "drink"],
     items: { person: PEOPLE, pet: PETS, drink: DRINKS },
-    question: (given) => `Who keeps ${keepPet(given.label)}?`,
+    question: (given) => `Who has ${petObject(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -405,11 +415,11 @@ export const THEMES = [
   {
     id: "pet-show",
     title: "Pet show",
-    blurb: "Painted doors and a packed aisle. Who keeps which pet?",
+    blurb: "Painted doors and a packed aisle. Who has which pet?",
     story: "Judging is over. The chart is not.",
     attributes: ["person", "pet", "color"],
     items: { person: PEOPLE, pet: PETS, color: COLORS },
-    question: (given) => `Who keeps ${keepPet(given.label)}?`,
+    question: (given) => `Who has ${petObject(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -439,10 +449,10 @@ export const THEMES = [
     id: "neighborhood",
     title: "The block",
     blurb: "Houses in a line. Match resident, ride, and animal.",
-    story: "Someone parked beside the horses. That cannot be right.",
+    story: "Someone parked beside the horse. That cannot be right.",
     attributes: ["person", "vehicle", "pet"],
     items: { person: PEOPLE, vehicle: VEHICLES, pet: PETS },
-    question: (given) => `Who keeps ${keepPet(given.label)}?`,
+    question: (given) => `Who has ${petObject(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -475,7 +485,7 @@ export const THEMES = [
     story: "Someone still has not claimed the pink house.",
     attributes: ["person", "color", "pet"],
     items: { person: PEOPLE, color: COLORS, pet: PETS },
-    question: (given) => `Who keeps ${keepPet(given.label)}?`,
+    question: (given) => `Who has ${petObject(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -486,7 +496,7 @@ export const THEMES = [
     story: "The last lantern is still unclaimed.",
     attributes: ["person", "hobby", "pet"],
     items: { person: PEOPLE, hobby: HOBBIES, pet: PETS },
-    question: (given) => `Who keeps ${keepPet(given.label)}?`,
+    question: (given) => `Who has ${petObject(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },
@@ -501,7 +511,7 @@ export const PRACTICE_THEMES = [
     story: "Five houses, four facts each.",
     attributes: ["person", "color", "pet", "drink"],
     items: { person: PEOPLE, color: COLORS, pet: PETS, drink: DRINKS },
-    question: (given) => `Who keeps ${keepPet(given.label)}?`,
+    question: (given) => `Who has ${petObject(given.label)}?`,
     questionGiven: "pet",
     questionAnswer: "person",
   },

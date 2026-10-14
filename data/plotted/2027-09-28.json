@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "notes is with the wine."
+      "text": "The person who reads notes drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "scifi"
       },
-      "text": "Bo is with the sci-fi."
+      "text": "Bo reads sci-fi."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Io is with the beer."
+      "text": "Io drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "notes is next to the orange juice."
+      "text": "The person who reads notes lives next to the orange juice drinker."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "book",
       "item": "scifi",
       "house": 0,
-      "text": "sci-fi is in house 1."
+      "text": "The person who reads sci-fi lives in the first house."
     }
   ],
   "question": {
-    "text": "Who brought the sci-fi?",
+    "text": "Who reads sci-fi?",
     "givenAttr": "book",
     "givenItem": "scifi",
     "answerAttr": "person",

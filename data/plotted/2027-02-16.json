@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Fay is with the wine."
+      "text": "Fay drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Eden is with the orange juice."
+      "text": "Eden drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Eden is with the score."
+      "text": "Eden plays the score."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Gus is with the melody."
+      "text": "Gus plays the melody."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "wine is next to the Eden."
+      "text": "The wine drinker lives next to Eden."
     },
     {
       "id": "c6",
@@ -147,7 +147,7 @@
       "attr": "person",
       "item": "fay",
       "house": 2,
-      "text": "Fay is in house 3."
+      "text": "Fay lives in the last house."
     }
   ],
   "question": {

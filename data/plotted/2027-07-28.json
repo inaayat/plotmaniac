@@ -61,17 +61,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Drew is with the horse."
+      "text": "Drew has a horse."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "key is with the rabbit."
+      "text": "The person who holds a key has a rabbit."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Hana is with the guide."
+      "text": "Hana holds a guide."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "dog is next to the Eden."
+      "text": "The dog owner lives next to Eden."
     },
     {
       "id": "c5",
@@ -134,11 +143,11 @@
       "attr": "person",
       "item": "hana",
       "house": 0,
-      "text": "Hana is in house 1."
+      "text": "Hana lives in the first house."
     }
   ],
   "question": {
-    "text": "Who camped with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

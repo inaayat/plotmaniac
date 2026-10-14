@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "guitar"
       },
-      "text": "Jules is with the guitar."
+      "text": "Jules plays the guitar."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "score is with the wine."
+      "text": "The score player drinks wine."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Jules is with the coffee."
+      "text": "Jules drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Drew is next to the orange juice."
+      "text": "Drew lives next to the orange juice drinker."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "instrument",
       "item": "folio",
       "house": 0,
-      "text": "folio is in house 1."
+      "text": "The folio player lives in the first house."
     }
   ],
   "question": {

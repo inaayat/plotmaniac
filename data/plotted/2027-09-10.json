@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Eden is with the orange juice."
+      "text": "Eden drinks orange juice."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "cactus"
       },
-      "text": "Hana is with the cactus."
+      "text": "Hana grows a cactus."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "plant",
         "item": "tulip"
       },
-      "text": "Io is with the tulip."
+      "text": "Io grows a tulip."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "coffee is next to the Io."
+      "text": "The coffee drinker lives next to Io."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Eden is next to the martini."
+      "text": "Eden lives next to the martini drinker."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "martini"
       },
       "immediate": false,
-      "text": "Eden is somewhere left of the martini."
+      "text": "Eden lives somewhere left of the martini drinker."
     }
   ],
   "question": {
-    "text": "Who tends the tree?",
+    "text": "Who grows a tree?",
     "givenAttr": "plant",
     "givenItem": "tree",
     "answerAttr": "person",

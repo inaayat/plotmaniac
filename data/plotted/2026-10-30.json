@@ -61,7 +61,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -71,7 +74,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Jules is with the guide."
+      "text": "Jules holds a guide."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Gus is with the bird."
+      "text": "Gus has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Io is next to the fish."
+      "text": "Io lives next to the fish owner."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "tent is next to the rabbit."
+      "text": "The person who holds a tent lives next to the rabbit owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "io"
       },
       "immediate": false,
-      "text": "bird is somewhere left of the Io."
+      "text": "The bird owner lives somewhere left of Io."
     }
   ],
   "question": {
-    "text": "Who camped with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

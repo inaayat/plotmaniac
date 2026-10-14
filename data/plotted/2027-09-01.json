@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Io is with the melody."
+      "text": "Io plays the melody."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "charts is with the orange juice."
+      "text": "The charts player drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Io is with the brandy."
+      "text": "Io drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Eden is with the orange juice."
+      "text": "Eden drinks orange juice."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "brandy is next to the Eden."
+      "text": "The brandy drinker lives next to Eden."
     },
     {
       "id": "c6",
@@ -147,7 +147,7 @@
       "attr": "drink",
       "item": "orange",
       "house": 2,
-      "text": "orange juice is in house 3."
+      "text": "The orange juice drinker lives in the last house."
     }
   ],
   "question": {

@@ -733,6 +733,8 @@ export const CLUE_STYLE_BANS = [
   [/\bcar\b/i, "car"],
   [/\btacos lover\b/i, "tacos lover"],
   [/\bhas the\b/i, "has the"],
+  [/\bkeeps\b/i, "keeps"],
+  [/\bthe person who keeps\b/i, "the person who keeps"],
 ];
 
 /** Odd item words. Dated catalogs may still store these labels. */
@@ -769,7 +771,7 @@ const PLACE_RE = "the (?:first|second|third|center|fourth|fifth|last) house";
 /** Closed sentence templates. Each published clue must match exactly one. */
 export const CLUE_STYLE_TEMPLATES = {
   same: [
-    /^.+ (?:keeps|drinks|smokes|grows|reads|eats|loves|plays the|is a|is from|likes|plays|lives in the \S+ house|drives|rides|flies|sails|is on foot)(?: .+)?\.$/,
+    /^.+ (?:has|holds|drinks|smokes|grows|reads|eats|loves|plays the|is a|is from|likes|plays|lives in the \S+ house|drives|rides|flies|sails|is on foot)(?: .+)?\.$/,
   ],
   next_to: [/^.+ lives next to .+\.$/],
   not_next_to: [/^.+ does not live next to .+\.$/],
@@ -884,19 +886,44 @@ function puzzleAttrIds(puzzle) {
   return (puzzle?.attributes || []).map((attr) => attr.id || attr);
 }
 
+function styleBansFor(puzzle) {
+  const classic = puzzle?.theme?.id === "einstein";
+  const dated = Boolean(puzzle?.date) && !puzzle?.practice;
+  return dated || classic ? CLUE_STYLE_BANS : [...CLUE_STYLE_BANS, ...EINSTEIN_BANNED_VOCAB];
+}
+
+function bannedVocabReasons(puzzle, text) {
+  const reasons = [];
+  const classic = puzzle?.theme?.id === "einstein";
+  const labels = catalogLabels(puzzle);
+  for (const [re, name] of styleBansFor(puzzle)) {
+    if (classic && labels.some((label) => re.test(label))) continue;
+    if (re.test(text || "")) reasons.push(`banned vocab: ${name}`);
+  }
+  return reasons;
+}
+
 function lintSetupStyle(puzzle, setup) {
   const classic = puzzle?.theme?.id === "einstein";
   if (!setup || !/^There are /i.test(setup) || !/house/i.test(setup)) {
     return ["setup must start with 'There are' and mention houses"];
   }
-  if (classic) return [];
-  const canonical = defaultPuzzleSetup(puzzle);
-  if (setup !== canonical) return ["setup must use the canonical category list"];
-  if (!SETUP_STYLE_RE.test(setup)) return ["setup must list every category with commas"];
-  const ids = puzzleAttrIds(puzzle);
-  if (ids.includes("food") && /\bmeal\b/i.test(canonical)) return ["setup must say food"];
-  if (ids.includes("vehicle") && /\bride\b/i.test(canonical)) return ["setup must say vehicle"];
-  return [];
+  if (!classic) {
+    const canonical = defaultPuzzleSetup(puzzle);
+    if (setup !== canonical) return ["setup must use the canonical category list"];
+    if (!SETUP_STYLE_RE.test(setup)) return ["setup must list every category with commas"];
+    const ids = puzzleAttrIds(puzzle);
+    if (ids.includes("food") && /\bmeal\b/i.test(canonical)) return ["setup must say food"];
+    if (ids.includes("vehicle") && /\bride\b/i.test(canonical)) return ["setup must say vehicle"];
+  }
+  return bannedVocabReasons(puzzle, setup);
+}
+
+function lintQuestionStyle(puzzle) {
+  const text = puzzle?.question?.text || "";
+  if (!text) return [];
+  const reasons = bannedVocabReasons(puzzle, text);
+  return reasons.length ? [{ id: "question", text, reasons }] : [];
 }
 
 /** Publish check: closed clue templates, canonical subjects, setup, and ban list. */
@@ -909,6 +936,7 @@ export function validateClueStyle(puzzle) {
   }
   failures.push(...lintEinsteinCategories(puzzle));
   failures.push(...lintEinsteinItemVocab(puzzle));
+  failures.push(...lintQuestionStyle(puzzle));
   for (const clue of puzzle?.clues || []) {
     const text = displayClueText(puzzle, clue);
     const reasons = lintEinsteinClue(puzzle, clue, text);
@@ -1384,7 +1412,7 @@ export function scoreFor({ elapsedMs, mistakes, hints }) {
 }
 
 export const EINSTEIN_SETUP =
-  "There are five houses, each painted a different color. In each house lives a person with a different nationality. These five owners drink a certain type of beverage, smoke a certain brand of cigar, and keep a certain pet. No owners have the same pet, smoke the same cigar, or drink the same beverage.";
+  "There are five houses, each painted a different color. In each house lives a person with a different nationality. These five owners drink a certain type of beverage, smoke a certain brand of cigar, and have a certain pet. No owners have the same pet, smoke the same cigar, or drink the same beverage.";
 
 const EINSTEIN_ITEMS = {
   color: [
@@ -1416,10 +1444,10 @@ const EINSTEIN_ITEMS = {
     { id: "prince", label: "Prince", icon: "crown" },
   ],
   pet: [
-    { id: "dogs", label: "dogs", icon: "dog" },
-    { id: "birds", label: "birds", icon: "bird" },
-    { id: "cats", label: "cats", icon: "cat" },
-    { id: "horses", label: "horses", icon: "horse" },
+    { id: "dogs", label: "dog", aliases: ["dogs"], icon: "dog" },
+    { id: "birds", label: "bird", aliases: ["birds"], icon: "bird" },
+    { id: "cats", label: "cat", aliases: ["cats"], icon: "cat" },
+    { id: "horses", label: "horse", aliases: ["horses"], icon: "horse" },
     { id: "fish", label: "fish", icon: "fish" },
   ],
 };
@@ -1435,7 +1463,7 @@ const EINSTEIN_CLUE_SPECS = [
     type: "same",
     left: { attr: "nationality", item: "swede" },
     right: { attr: "pet", item: "dogs" },
-    text: "The Swede keeps dogs as pets",
+    text: "The Swede has a dog",
   },
   {
     type: "same",
@@ -1460,7 +1488,7 @@ const EINSTEIN_CLUE_SPECS = [
     type: "same",
     left: { attr: "cigar", item: "pall-mall" },
     right: { attr: "pet", item: "birds" },
-    text: "The person who smokes Pall Mall rears birds",
+    text: "The person who smokes Pall Mall has a bird",
   },
   {
     type: "same",
@@ -1486,13 +1514,13 @@ const EINSTEIN_CLUE_SPECS = [
     type: "next_to",
     left: { attr: "cigar", item: "blends" },
     right: { attr: "pet", item: "cats" },
-    text: "The man who smokes blends lives next to the one who keeps cats",
+    text: "The man who smokes blends lives next to the cat owner",
   },
   {
     type: "next_to",
     left: { attr: "pet", item: "horses" },
     right: { attr: "cigar", item: "dunhill" },
-    text: "The man who keeps horses lives next to the man who smokes Dunhill",
+    text: "The horse owner lives next to the man who smokes Dunhill",
   },
   {
     type: "same",

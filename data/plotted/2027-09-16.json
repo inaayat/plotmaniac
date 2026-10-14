@@ -44,12 +44,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "Eden is with the cookie."
+      "text": "Eden holds a cookie."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "Ada is with the balloon."
+      "text": "Ada holds a balloon."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "bird is next to the Ada."
+      "text": "The bird owner lives next to Ada."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Hana is next to the bird."
+      "text": "Hana lives next to the bird owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "fish"
       },
       "immediate": false,
-      "text": "Hana is somewhere left of the fish."
+      "text": "Hana lives somewhere left of the fish owner."
     }
   ],
   "question": {
-    "text": "Who showed the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

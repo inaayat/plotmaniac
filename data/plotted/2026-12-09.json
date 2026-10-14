@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "stew is with the brandy."
+      "text": "The stew lover drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "bowl is with the coffee."
+      "text": "The bowl lover drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Io is with the coffee."
+      "text": "Io drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Eden is with the martini."
+      "text": "Eden drinks a martini."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "bowl is next to the brandy."
+      "text": "The bowl lover lives next to the brandy drinker."
     },
     {
       "id": "c6",
@@ -147,11 +147,11 @@
       "attr": "food",
       "item": "bowl",
       "house": 0,
-      "text": "bowl is in house 1."
+      "text": "The bowl lover lives in the first house."
     }
   ],
   "question": {
-    "text": "Who ordered the stew?",
+    "text": "Who is the stew lover?",
     "givenAttr": "food",
     "givenItem": "pot",
     "answerAttr": "person",

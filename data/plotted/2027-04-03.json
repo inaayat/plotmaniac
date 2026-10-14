@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "Gus is with the on foot."
+      "text": "Gus is on foot."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "boat"
       },
-      "text": "Eden is with the sailboat."
+      "text": "Eden sails a sailboat."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "boat"
       },
-      "text": "diamond is with the sailboat."
+      "text": "The person who holds a diamond sails a sailboat."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "crown is next to the Fay."
+      "text": "The person who holds a crown lives next to Fay."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "sailboat is next to the Gus."
+      "text": "The person who sails a sailboat lives next to Gus."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "diamond"
       },
       "immediate": false,
-      "text": "motorcycle is somewhere left of the diamond."
+      "text": "The person who rides a motorcycle lives somewhere left of the person who holds a diamond."
     }
   ],
   "question": {

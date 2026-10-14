@@ -102,7 +102,7 @@
         "attr": "treat",
         "item": "cake"
       },
-      "text": "Io is with the cake."
+      "text": "Io loves cake."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "Eden is with the evergreen."
+      "text": "Eden holds an evergreen."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "Drew is with the balloon."
+      "text": "Drew holds a balloon."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "orange is with the parcel."
+      "text": "The orange lover holds a parcel."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "tea is next to the Io."
+      "text": "The tea lover lives next to Io."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "Io is next to the parcel."
+      "text": "Io lives next to the person who holds a parcel."
     },
     {
       "id": "c7",
@@ -181,7 +181,7 @@
         "item": "orange"
       },
       "immediate": true,
-      "text": "Drew is immediately left of the orange."
+      "text": "Drew lives directly left of the orange lover."
     }
   ],
   "question": {

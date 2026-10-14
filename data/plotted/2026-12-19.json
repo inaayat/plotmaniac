@@ -87,7 +87,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Gus is with the score."
+      "text": "Gus reads a score."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Io is with the brandy."
+      "text": "Io drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Ada is with the orange juice."
+      "text": "Ada drinks orange juice."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "score is next to the Io."
+      "text": "The person who reads a score lives next to Io."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "book",
         "item": "notes"
       },
-      "text": "orange juice is next to the notes."
+      "text": "The orange juice drinker lives next to the person who reads notes."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "ada"
       },
       "immediate": false,
-      "text": "notes is somewhere left of the Ada."
+      "text": "The person who reads notes lives somewhere left of Ada."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

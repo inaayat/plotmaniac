@@ -44,12 +44,18 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Gus is with the cat."
+      "text": "Gus has a cat."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "rabbit is with the coffee."
+      "text": "The rabbit owner drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Gus is with the tea."
+      "text": "Gus drinks tea."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "coffee is next to the Gus."
+      "text": "The coffee drinker lives next to Gus."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "bo"
       },
       "immediate": true,
-      "text": "martini is immediately left of the Bo."
+      "text": "The martini drinker lives directly left of Bo."
     }
   ],
   "question": {
-    "text": "Who owns the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

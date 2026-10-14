@@ -7,7 +7,7 @@
   "theme": {
     "id": "pet-show",
     "title": "Ribbon aisle",
-    "blurb": "Painted doors and a packed aisle. Who keeps which pet?",
+    "blurb": "Painted doors and a packed aisle. Who has which pet?",
     "story": "Painted doors and a short aisle of pets."
   },
   "houseCount": 3,
@@ -46,18 +46,27 @@
     "pet": [
       {
         "id": "rabbit",
-        "label": "rabbits",
-        "icon": "rabbit"
+        "label": "rabbit",
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
-        "label": "horses",
-        "icon": "horse"
+        "label": "horse",
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "cat",
-        "label": "cats",
-        "icon": "cat"
+        "label": "cat",
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "color": [
@@ -90,7 +99,7 @@
         "attr": "color",
         "item": "yellow"
       },
-      "text": "The owner of the rabbits lives in the yellow house."
+      "text": "The rabbit owner lives in the yellow house."
     },
     {
       "id": "c2",
@@ -103,7 +112,7 @@
         "attr": "color",
         "item": "blue"
       },
-      "text": "The owner of the cats lives in the blue house."
+      "text": "The cat owner lives in the blue house."
     },
     {
       "id": "c3",
@@ -116,7 +125,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Cam keeps horses."
+      "text": "Cam has a horse."
     },
     {
       "id": "c4",
@@ -129,7 +138,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "The owner of the cats lives next to Fay."
+      "text": "The cat owner lives next to Fay."
     },
     {
       "id": "c5",
@@ -137,11 +146,11 @@
       "attr": "color",
       "item": "blue",
       "house": 0,
-      "text": "The owner of the blue house lives in the first house."
+      "text": "The blue house is the first house."
     }
   ],
   "question": {
-    "text": "Who keeps cats?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

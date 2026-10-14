@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "cake is with the balloon."
+      "text": "The cake lover holds a balloon."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "Jules is with the book."
+      "text": "Jules holds a book."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Ada is with the orange."
+      "text": "Ada loves orange."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "cake"
       },
-      "text": "Jules is next to the cake."
+      "text": "Jules lives next to the cake lover."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Jules is next to the orange."
+      "text": "Jules lives next to the orange lover."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "cake"
       },
       "immediate": false,
-      "text": "book is somewhere left of the cake."
+      "text": "The person who holds a book lives somewhere left of the cake lover."
     }
   ],
   "question": {

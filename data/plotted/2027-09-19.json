@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Gus is with the brandy."
+      "text": "Gus drinks brandy."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "sci-fi is with the orange juice."
+      "text": "The person who reads sci-fi drinks orange juice."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "score is with the beer."
+      "text": "The person who reads a score drinks beer."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "Eden is with the diary."
+      "text": "Eden reads a diary."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Cam is next to the wine."
+      "text": "Cam lives next to the wine drinker."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Bo is next to the score."
+      "text": "Bo lives next to the person who reads a score."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "sci-fi is next to the brandy."
+      "text": "The person who reads sci-fi lives next to the brandy drinker."
     },
     {
       "id": "c8",
@@ -194,11 +194,11 @@
         "item": "gus"
       },
       "immediate": false,
-      "text": "orange juice is somewhere left of the Gus."
+      "text": "The orange juice drinker lives somewhere left of Gus."
     }
   ],
   "question": {
-    "text": "Who brought the diary?",
+    "text": "Who reads a diary?",
     "givenAttr": "book",
     "givenItem": "diary",
     "answerAttr": "person",

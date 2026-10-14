@@ -44,12 +44,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "butterfly is with the beer."
+      "text": "The butterfly owner drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Bo is with the dog."
+      "text": "Bo has a dog."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "butterfly is next to the Bo."
+      "text": "The butterfly owner lives next to Bo."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "rabbit is next to the Cam."
+      "text": "The rabbit owner lives next to Cam."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "brandy"
       },
       "immediate": false,
-      "text": "rabbit is somewhere left of the brandy."
+      "text": "The rabbit owner lives somewhere left of the brandy drinker."
     }
   ],
   "question": {
-    "text": "Who owns the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

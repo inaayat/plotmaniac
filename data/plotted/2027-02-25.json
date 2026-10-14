@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Eden is with the brandy."
+      "text": "Eden drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "Fay is with the diary."
+      "text": "Fay reads a diary."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Fay is with the tea."
+      "text": "Fay drinks tea."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "open book is next to the Eden."
+      "text": "The person who reads an open book lives next to Eden."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "diary"
       },
       "immediate": true,
-      "text": "brandy is immediately left of the diary."
+      "text": "The brandy drinker lives directly left of the person who reads a diary."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

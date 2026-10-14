@@ -61,12 +61,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "motorcycle is with the dog."
+      "text": "The person who rides a motorcycle has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Fay is with the butterfly."
+      "text": "Fay has a butterfly."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Io is with the dog."
+      "text": "Io has a dog."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "motorcycle is next to the bird."
+      "text": "The person who rides a motorcycle lives next to the bird owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "bird"
       },
       "immediate": true,
-      "text": "plane is immediately left of the bird."
+      "text": "The person who flies a plane lives directly left of the bird owner."
     }
   ],
   "question": {
-    "text": "Who lives with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

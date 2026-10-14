@@ -66,12 +66,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "key is with the rabbit."
+      "text": "The person who holds a key has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "loot",
         "item": "tent"
       },
-      "text": "Drew is with the tent."
+      "text": "Drew holds a tent."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Drew is with the fish."
+      "text": "Drew has a fish."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Gus is next to the horse."
+      "text": "Gus lives next to the horse owner."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "pet",
       "item": "horse",
       "house": 2,
-      "text": "horse is in house 3."
+      "text": "The horse owner lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

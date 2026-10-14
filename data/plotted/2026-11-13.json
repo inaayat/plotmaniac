@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "Eden is with the plane."
+      "text": "Eden flies a plane."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "medal"
       },
-      "text": "Eden is with the medal."
+      "text": "Eden holds a medal."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "plane is next to the Fay."
+      "text": "The person who flies a plane lives next to Fay."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "loot",
         "item": "coins"
       },
-      "text": "Fay is next to the coins."
+      "text": "Fay lives next to the person who holds a coins."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "cam"
       },
       "immediate": false,
-      "text": "motorcycle is somewhere left of the Cam."
+      "text": "The person who rides a motorcycle lives somewhere left of Cam."
     }
   ],
   "question": {

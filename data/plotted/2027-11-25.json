@@ -61,17 +61,26 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "plane is with the rabbit."
+      "text": "The person who flies a plane has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "vehicle",
         "item": "walk"
       },
-      "text": "Cam is with the on foot."
+      "text": "Cam is on foot."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "on foot is with the cat."
+      "text": "The person on foot has a cat."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "rabbit is next to the Bo."
+      "text": "The rabbit owner lives next to Bo."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "walk"
       },
       "immediate": true,
-      "text": "rabbit is immediately left of the on foot."
+      "text": "The rabbit owner lives directly left of the person on foot."
     }
   ],
   "question": {
-    "text": "Who lives with the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

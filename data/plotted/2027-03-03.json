@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "diary is with the coffee."
+      "text": "The person who reads a diary drinks coffee."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "score is with the orange juice."
+      "text": "The person who reads a score drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Fay is with the martini."
+      "text": "Fay drinks a martini."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Eden is next to the score."
+      "text": "Eden lives next to the person who reads a score."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "drink",
       "item": "orange",
       "house": 2,
-      "text": "orange juice is in house 3."
+      "text": "The orange juice drinker lives in the last house."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

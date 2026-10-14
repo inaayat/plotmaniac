@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Io is with the orange juice."
+      "text": "Io drinks orange juice."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "stew is with the brandy."
+      "text": "The stew lover drinks brandy."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Ada is with the stew."
+      "text": "Ada eats stew."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "food",
         "item": "bowl"
       },
-      "text": "Drew is with the bowl."
+      "text": "Drew eats bowl."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "bowl is next to the beer."
+      "text": "The bowl lover lives next to the beer drinker."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "food",
         "item": "bowl"
       },
-      "text": "Ada is next to the bowl."
+      "text": "Ada lives next to the bowl lover."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "burger is next to the beer."
+      "text": "The burger lover lives next to the beer drinker."
     },
     {
       "id": "c8",
@@ -194,11 +194,11 @@
         "item": "orange"
       },
       "immediate": false,
-      "text": "Fay is somewhere left of the orange juice."
+      "text": "Fay lives somewhere left of the orange juice drinker."
     }
   ],
   "question": {
-    "text": "Who ordered the bowl?",
+    "text": "Who is the bowl lover?",
     "givenAttr": "food",
     "givenItem": "bowl",
     "answerAttr": "person",

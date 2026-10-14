@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "stew is with the tea."
+      "text": "The stew lover drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Hana is with the martini."
+      "text": "Hana drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "food",
         "item": "pizza"
       },
-      "text": "Cam is with the pizza."
+      "text": "Cam eats pizza."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "martini is next to the Cam."
+      "text": "The martini drinker lives next to Cam."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "cam",
       "house": 2,
-      "text": "Cam is in house 3."
+      "text": "Cam lives in the last house."
     }
   ],
   "question": {
-    "text": "Who ordered the stew?",
+    "text": "Who is the stew lover?",
     "givenAttr": "food",
     "givenItem": "pot",
     "answerAttr": "person",

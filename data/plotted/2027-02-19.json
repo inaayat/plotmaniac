@@ -49,12 +49,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Io is with the wine."
+      "text": "Io drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "fish is with the wine."
+      "text": "The fish owner drinks wine."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Cam is with the bird."
+      "text": "Cam has a bird."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "wine is next to the Cam."
+      "text": "The wine drinker lives next to Cam."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "beer is next to the bird."
+      "text": "The beer drinker lives next to the bird owner."
     },
     {
       "id": "c6",
@@ -153,11 +159,11 @@
         "item": "rabbit"
       },
       "immediate": false,
-      "text": "coffee is somewhere left of the rabbit."
+      "text": "The coffee drinker lives somewhere left of the rabbit owner."
     }
   ],
   "question": {
-    "text": "Who owns the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

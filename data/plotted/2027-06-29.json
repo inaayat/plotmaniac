@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Bo is with the tea."
+      "text": "Bo drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Jules is with the orange juice."
+      "text": "Jules drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "sci-fi is with the brandy."
+      "text": "The person who reads sci-fi drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "Bo is next to the diary."
+      "text": "Bo lives next to the person who reads a diary."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "bo",
       "house": 0,
-      "text": "Bo is in house 1."
+      "text": "Bo lives in the first house."
     }
   ],
   "question": {
-    "text": "Who brought the diary?",
+    "text": "Who reads a diary?",
     "givenAttr": "book",
     "givenItem": "diary",
     "answerAttr": "person",

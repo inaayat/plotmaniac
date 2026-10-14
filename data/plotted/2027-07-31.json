@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "potted plant is with the martini."
+      "text": "The person who grows a potted plant drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "leaf"
       },
-      "text": "Ada is with the leaf."
+      "text": "Ada grows a leaf."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "leaf is with the coffee."
+      "text": "The person who grows a leaf drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "coffee is next to the Hana."
+      "text": "The coffee drinker lives next to Hana."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "potted plant is next to the Eden."
+      "text": "The person who grows a potted plant lives next to Eden."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "leaf"
       },
       "immediate": false,
-      "text": "martini is somewhere left of the leaf."
+      "text": "The martini drinker lives somewhere left of the person who grows a leaf."
     }
   ],
   "question": {
-    "text": "Who tends the potted plant?",
+    "text": "Who grows a potted plant?",
     "givenAttr": "plant",
     "givenItem": "pot",
     "answerAttr": "person",

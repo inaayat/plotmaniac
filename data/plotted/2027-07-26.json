@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "pizza is with the martini."
+      "text": "The pizza lover drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "Jules is with the cake."
+      "text": "Jules loves cake."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Hana is with the orange juice."
+      "text": "Hana drinks orange juice."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "drink",
       "item": "martini",
       "house": 0,
-      "text": "martini is in house 1."
+      "text": "The martini drinker lives in the first house."
     },
     {
       "id": "c5",
@@ -129,11 +129,11 @@
       "attr": "food",
       "item": "bowl",
       "house": 1,
-      "text": "bowl is in house 2."
+      "text": "The bowl lover lives in the center house."
     }
   ],
   "question": {
-    "text": "Who ordered the cake?",
+    "text": "Who is the cake lover?",
     "givenAttr": "food",
     "givenItem": "cake",
     "answerAttr": "person",

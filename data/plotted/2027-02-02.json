@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "ice cream is with the wine."
+      "text": "The ice cream lover drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Hana is with the stew."
+      "text": "Hana eats stew."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "stew is with the martini."
+      "text": "The stew lover drinks a martini."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Drew is with the wine."
+      "text": "Drew drinks wine."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Drew is next to the stew."
+      "text": "Drew lives next to the stew lover."
     },
     {
       "id": "c6",
@@ -147,11 +147,11 @@
       "attr": "drink",
       "item": "wine",
       "house": 2,
-      "text": "wine is in house 3."
+      "text": "The wine drinker lives in the last house."
     }
   ],
   "question": {
-    "text": "Who ordered the stew?",
+    "text": "Who is the stew lover?",
     "givenAttr": "food",
     "givenItem": "pot",
     "answerAttr": "person",

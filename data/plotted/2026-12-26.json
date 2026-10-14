@@ -87,7 +87,7 @@
         "attr": "food",
         "item": "burger"
       },
-      "text": "Bo is with the burger."
+      "text": "Bo eats burger."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "burger is with the coffee."
+      "text": "The burger lover drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Eden is next to the coffee."
+      "text": "Eden lives next to the coffee drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "orange juice is next to the Eden."
+      "text": "The orange juice drinker lives next to Eden."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "io"
       },
       "immediate": false,
-      "text": "pizza is somewhere left of the Io."
+      "text": "The pizza lover lives somewhere left of Io."
     }
   ],
   "question": {
-    "text": "Who ordered the stew?",
+    "text": "Who is the stew lover?",
     "givenAttr": "food",
     "givenItem": "pot",
     "answerAttr": "person",

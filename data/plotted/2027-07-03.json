@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Cam is with the motorcycle."
+      "text": "Cam rides a motorcycle."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "lockbox"
       },
-      "text": "Cam is with the lock."
+      "text": "Cam holds a lock."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Hana is with the crown."
+      "text": "Hana holds a crown."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "loot",
         "item": "lockbox"
       },
-      "text": "plane is next to the lock."
+      "text": "The person who flies a plane lives next to the person who holds a lock."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "diamond is next to the plane."
+      "text": "The person who holds a diamond lives next to the person who flies a plane."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "hana"
       },
       "immediate": false,
-      "text": "lock is somewhere left of the Hana."
+      "text": "The person who holds a lock lives somewhere left of Hana."
     }
   ],
   "question": {

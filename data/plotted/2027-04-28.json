@@ -66,12 +66,18 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "vehicle",
         "item": "plane"
       },
-      "text": "Gus is with the plane."
+      "text": "Gus flies a plane."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "sailboat is with the cat."
+      "text": "The person who sails a sailboat has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Fay is with the fish."
+      "text": "Fay has a fish."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "sailboat is next to the dog."
+      "text": "The person who sails a sailboat lives next to the dog owner."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "vehicle",
       "item": "plane",
       "house": 2,
-      "text": "plane is in house 3."
+      "text": "The person who flies a plane lives in the last house."
     }
   ],
   "question": {
-    "text": "Who lives with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

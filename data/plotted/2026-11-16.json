@@ -49,12 +49,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Ada is with the rabbit."
+      "text": "Ada has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Hana is with the coffee."
+      "text": "Hana drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "fish is with the martini."
+      "text": "The fish owner drinks a martini."
     },
     {
       "id": "c4",
@@ -121,7 +127,7 @@
       "attr": "pet",
       "item": "rabbit",
       "house": 1,
-      "text": "rabbit is in house 2."
+      "text": "The rabbit owner lives in the center house."
     },
     {
       "id": "c5",
@@ -129,11 +135,11 @@
       "attr": "drink",
       "item": "coffee",
       "house": 0,
-      "text": "coffee is in house 1."
+      "text": "The coffee drinker lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "Io is with the balloon."
+      "text": "Io holds a balloon."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "tea is with the balloon."
+      "text": "The tea lover holds a balloon."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "ice"
       },
-      "text": "Hana is next to the ice cream."
+      "text": "Hana lives next to the ice cream lover."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "cookie"
       },
-      "text": "balloon is next to the cookie."
+      "text": "The person who holds a balloon lives next to the cookie lover."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "ice"
       },
       "immediate": false,
-      "text": "parcel is somewhere left of the ice cream."
+      "text": "The person who holds a parcel lives somewhere left of the ice cream lover."
     }
   ],
   "question": {

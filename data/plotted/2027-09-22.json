@@ -49,7 +49,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +90,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Fay is with the tea."
+      "text": "Fay drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "rabbit is with the coffee."
+      "text": "The rabbit owner drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Ada is with the butterfly."
+      "text": "Ada has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "butterfly is next to the Gus."
+      "text": "The butterfly owner lives next to Gus."
     },
     {
       "id": "c5",
@@ -134,11 +137,11 @@
       "attr": "pet",
       "item": "rabbit",
       "house": 0,
-      "text": "rabbit is in house 1."
+      "text": "The rabbit owner lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

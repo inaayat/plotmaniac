@@ -44,17 +44,26 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +96,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Io is with the orange juice."
+      "text": "Io drinks orange juice."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "rabbit is with the brandy."
+      "text": "The rabbit owner drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "brandy is next to the bird."
+      "text": "The brandy drinker lives next to the bird owner."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "bird is next to the Ada."
+      "text": "The bird owner lives next to Ada."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "ada"
       },
       "immediate": false,
-      "text": "brandy is somewhere left of the Ada."
+      "text": "The brandy drinker lives somewhere left of Ada."
     }
   ],
   "question": {
-    "text": "Who owns the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

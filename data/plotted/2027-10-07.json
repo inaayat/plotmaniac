@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "cake is with the parcel."
+      "text": "The cake lover holds a parcel."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "treat",
         "item": "cocoa"
       },
-      "text": "Ada is with the cocoa."
+      "text": "Ada loves cocoa."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "ice"
       },
-      "text": "Gus is with the ice cream."
+      "text": "Gus loves ice cream."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "cake"
       },
-      "text": "medal is next to the cake."
+      "text": "The person who holds a medal lives next to the cake lover."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "ice cream is next to the Ada."
+      "text": "The ice cream lover lives next to Ada."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "medal"
       },
       "immediate": false,
-      "text": "ice cream is somewhere left of the medal."
+      "text": "The ice cream lover lives somewhere left of the person who holds a medal."
     }
   ],
   "question": {

@@ -44,7 +44,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -54,7 +57,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Eden is with the wine."
+      "text": "Eden drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "fish is with the brandy."
+      "text": "The fish owner drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Bo is with the dog."
+      "text": "Bo has a dog."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "orange juice is next to the bird."
+      "text": "The orange juice drinker lives next to the bird owner."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "person",
       "item": "bo",
       "house": 0,
-      "text": "Bo is in house 1."
+      "text": "Bo lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Eden is with the brandy."
+      "text": "Eden drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "carrot"
       },
-      "text": "Hana is with the carrot."
+      "text": "Hana eats carrot."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "stew is next to the tea."
+      "text": "The stew lover lives next to the tea drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Hana is next to the tea."
+      "text": "Hana lives next to the tea drinker."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "eden"
       },
       "immediate": false,
-      "text": "tea is somewhere left of the Eden."
+      "text": "The tea drinker lives somewhere left of Eden."
     }
   ],
   "question": {
-    "text": "Who ordered the ice cream?",
+    "text": "Who is the ice cream lover?",
     "givenAttr": "food",
     "givenItem": "ice",
     "answerAttr": "person",

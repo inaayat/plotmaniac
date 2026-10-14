@@ -49,7 +49,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -59,12 +62,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "prize": [
@@ -102,7 +111,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "Jules is with the trophy."
+      "text": "Jules holds a trophy."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Jules is with the rabbit."
+      "text": "Jules has a rabbit."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Eden is with the dog."
+      "text": "Eden has a dog."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "Gus is with the cookie."
+      "text": "Gus holds a cookie."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "Eden is next to the crown."
+      "text": "Eden lives next to the person who holds a crown."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "cookie is next to the fish."
+      "text": "The person who holds a cookie lives next to the fish owner."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Jules is next to the dog."
+      "text": "Jules lives next to the dog owner."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "medal"
       },
       "immediate": false,
-      "text": "Drew is somewhere left of the medal."
+      "text": "Drew lives somewhere left of the person who holds a medal."
     }
   ],
   "question": {
-    "text": "Who showed the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

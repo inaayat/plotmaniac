@@ -165,7 +165,7 @@
         "attr": "city",
         "item": "cairo"
       },
-      "text": "The martini drinker does not live next to the one from Cairo."
+      "text": "The martini drinker does not live next to the person from Cairo."
     },
     {
       "id": "c3",
@@ -219,7 +219,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "The tacos lover lives next to the one who drinks wine."
+      "text": "The taco lover lives next to the wine drinker."
     },
     {
       "id": "c7",
@@ -230,7 +230,7 @@
         1,
         2
       ],
-      "text": "The person from Tokyo lives in either house 2 or house 3."
+      "text": "The person from Tokyo lives in either the second house or the center house."
     },
     {
       "id": "c8",
@@ -241,7 +241,7 @@
         1,
         3
       ],
-      "text": "The brandy drinker lives in either house 2 or house 4."
+      "text": "The brandy drinker lives in either the second house or the fourth house."
     },
     {
       "id": "c9",
@@ -268,7 +268,7 @@
         "item": "cairo"
       },
       "immediate": false,
-      "text": "The pizza lover lives somewhere left of the one from Cairo."
+      "text": "The pizza lover lives somewhere left of the person from Cairo."
     },
     {
       "id": "c11",

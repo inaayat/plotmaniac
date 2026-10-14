@@ -87,7 +87,7 @@
         "attr": "loot",
         "item": "diamond"
       },
-      "text": "Hana is with the diamond."
+      "text": "Hana holds a diamond."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "medal is with the motorcycle."
+      "text": "The person who holds a medal rides a motorcycle."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Bo is with the motorcycle."
+      "text": "Bo rides a motorcycle."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Hana is next to the motorcycle."
+      "text": "Hana lives next to the person who rides a motorcycle."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "lock is next to the bicycle."
+      "text": "The person who holds a lock lives next to the person who rides a bicycle."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "lockbox"
       },
       "immediate": false,
-      "text": "bicycle is somewhere left of the lock."
+      "text": "The person who rides a bicycle lives somewhere left of the person who holds a lock."
     }
   ],
   "question": {

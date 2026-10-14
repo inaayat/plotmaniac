@@ -71,7 +71,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +90,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Hana is with the key."
+      "text": "Hana holds a key."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "cookpot is with the cat."
+      "text": "The person who holds a cookpot has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Bo is with the butterfly."
+      "text": "Bo has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "butterfly is next to the key."
+      "text": "The butterfly owner lives next to the person who holds a key."
     },
     {
       "id": "c5",
@@ -134,11 +137,11 @@
       "attr": "pet",
       "item": "butterfly",
       "house": 2,
-      "text": "butterfly is in house 3."
+      "text": "The butterfly owner lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

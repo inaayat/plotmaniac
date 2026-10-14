@@ -102,7 +102,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "medal is with the plane."
+      "text": "The person who holds a medal flies a plane."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Io is with the motorcycle."
+      "text": "Io rides a motorcycle."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Jules is with the key."
+      "text": "Jules holds a key."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "Fay is with the bicycle."
+      "text": "Fay rides a bicycle."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Eden is next to the key."
+      "text": "Eden lives next to the person who holds a key."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "diamond is next to the plane."
+      "text": "The person who holds a diamond lives next to the person who flies a plane."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Fay is next to the motorcycle."
+      "text": "Fay lives next to the person who rides a motorcycle."
     },
     {
       "id": "c8",
@@ -194,7 +194,7 @@
         "item": "coins"
       },
       "immediate": false,
-      "text": "Io is somewhere left of the coins."
+      "text": "Io lives somewhere left of the person who holds a coins."
     }
   ],
   "question": {

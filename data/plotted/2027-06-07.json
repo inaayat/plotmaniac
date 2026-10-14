@@ -44,17 +44,26 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "Ada is with the trophy."
+      "text": "Ada holds a trophy."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Jules is with the rabbit."
+      "text": "Jules has a rabbit."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Ada is with the bird."
+      "text": "Ada has a bird."
     },
     {
       "id": "c4",
@@ -121,7 +130,7 @@
       "attr": "prize",
       "item": "gift",
       "house": 0,
-      "text": "gift is in house 1."
+      "text": "The person who holds a gift lives in the first house."
     },
     {
       "id": "c5",
@@ -129,11 +138,11 @@
       "attr": "person",
       "item": "eden",
       "house": 1,
-      "text": "Eden is in house 2."
+      "text": "Eden lives in the center house."
     }
   ],
   "question": {
-    "text": "Who showed the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

@@ -61,7 +61,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "butterfly",
@@ -71,7 +74,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Hana is with the butterfly."
+      "text": "Hana has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Bo is with the bicycle."
+      "text": "Bo rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "cat is next to the bicycle."
+      "text": "The cat owner lives next to the person who rides a bicycle."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "butterfly is next to the sailboat."
+      "text": "The butterfly owner lives next to the person who sails a sailboat."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "butterfly"
       },
       "immediate": false,
-      "text": "sailboat is somewhere left of the butterfly."
+      "text": "The person who sails a sailboat lives somewhere left of the butterfly owner."
     }
   ],
   "question": {
-    "text": "Who lives with the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

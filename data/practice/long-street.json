@@ -87,23 +87,35 @@
     "pet": [
       {
         "id": "dog",
-        "label": "dogs",
-        "icon": "dog"
+        "label": "dog",
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "bird",
-        "label": "birds",
-        "icon": "bird"
+        "label": "bird",
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
-        "label": "cats",
-        "icon": "cat"
+        "label": "cat",
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "rabbit",
-        "label": "rabbits",
-        "icon": "rabbit"
+        "label": "rabbit",
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -149,7 +161,7 @@
         1,
         4
       ],
-      "text": "The tea drinker lives in either house 2 or house 5."
+      "text": "The tea drinker lives in either the second house or the last house."
     },
     {
       "id": "c2",
@@ -189,7 +201,7 @@
         "item": "yellow"
       },
       "immediate": true,
-      "text": "The owner of the fish lives directly left of the yellow house."
+      "text": "The fish owner lives directly left of the yellow house."
     },
     {
       "id": "c5",
@@ -202,7 +214,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Io keeps birds."
+      "text": "Io has a bird."
     },
     {
       "id": "c6",
@@ -215,7 +227,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "The owner of the yellow house keeps dogs."
+      "text": "The owner of the yellow house has a dog."
     },
     {
       "id": "c7",
@@ -269,7 +281,7 @@
         "item": "cat"
       },
       "immediate": false,
-      "text": "Jules lives somewhere left of the one who keeps cats."
+      "text": "Jules lives somewhere left of the cat owner."
     },
     {
       "id": "c11",
@@ -296,7 +308,7 @@
         "item": "orange"
       },
       "immediate": true,
-      "text": "The owner of the red house lives directly left of the one who drinks orange juice."
+      "text": "The owner of the red house lives directly left of the orange juice drinker."
     },
     {
       "id": "c13",
@@ -309,11 +321,11 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "The owner of the green house keeps rabbits."
+      "text": "The owner of the green house has a rabbit."
     }
   ],
   "question": {
-    "text": "Who keeps fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

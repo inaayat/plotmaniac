@@ -44,7 +44,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "butterfly",
@@ -54,7 +57,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Eden is with the butterfly."
+      "text": "Eden has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "butterfly is with the balloon."
+      "text": "The butterfly owner holds a balloon."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "Bo is with the crown."
+      "text": "Bo holds a crown."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "balloon is next to the bird."
+      "text": "The person who holds a balloon lives next to the bird owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "bo"
       },
       "immediate": true,
-      "text": "dog is immediately left of the Bo."
+      "text": "The dog owner lives directly left of Bo."
     }
   ],
   "question": {
-    "text": "Who showed the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

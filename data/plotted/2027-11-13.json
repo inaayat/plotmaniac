@@ -61,17 +61,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Bo is with the bird."
+      "text": "Bo has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Bo is with the sailboat."
+      "text": "Bo sails a sailboat."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Ada is with the bicycle."
+      "text": "Ada rides a bicycle."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Ada is next to the bird."
+      "text": "Ada lives next to the bird owner."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Ada is next to the rabbit."
+      "text": "Ada lives next to the rabbit owner."
     },
     {
       "id": "c6",
@@ -153,11 +162,11 @@
         "item": "dog"
       },
       "immediate": false,
-      "text": "Jules is somewhere left of the dog."
+      "text": "Jules lives somewhere left of the dog owner."
     }
   ],
   "question": {
-    "text": "Who lives with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

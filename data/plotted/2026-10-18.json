@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Cam is with the brandy."
+      "text": "Cam drinks brandy."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "score is with the coffee."
+      "text": "The score player drinks coffee."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "charts is with the brandy."
+      "text": "The charts player drinks brandy."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Eden is with the orange juice."
+      "text": "Eden drinks orange juice."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "melody is with the beer."
+      "text": "The melody player drinks beer."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Jules is next to the melody."
+      "text": "Jules lives next to the melody player."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "brandy is next to the Eden."
+      "text": "The brandy drinker lives next to Eden."
     },
     {
       "id": "c8",
@@ -194,7 +194,7 @@
         "item": "beer"
       },
       "immediate": true,
-      "text": "charts is immediately left of the beer."
+      "text": "The charts player lives directly left of the beer drinker."
     }
   ],
   "question": {

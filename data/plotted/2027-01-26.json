@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "crown is with the truck."
+      "text": "The person who holds a crown drives a truck."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "coins"
       },
-      "text": "Cam is with the coins."
+      "text": "Cam holds a coins."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "Drew is with the plane."
+      "text": "Drew flies a plane."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "coins is next to the Eden."
+      "text": "The person who holds a coins lives next to Eden."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "cam",
       "house": 0,
-      "text": "Cam is in house 1."
+      "text": "Cam lives in the first house."
     }
   ],
   "question": {

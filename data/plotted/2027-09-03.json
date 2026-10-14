@@ -44,7 +44,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -54,7 +57,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Ada is with the bird."
+      "text": "Ada has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Drew is with the wine."
+      "text": "Drew drinks wine."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Ada is next to the coffee."
+      "text": "Ada lives next to the coffee drinker."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "fish is next to the brandy."
+      "text": "The fish owner lives next to the brandy drinker."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "drew"
       },
       "immediate": false,
-      "text": "rabbit is somewhere left of the Drew."
+      "text": "The rabbit owner lives somewhere left of Drew."
     }
   ],
   "question": {
-    "text": "Who owns the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

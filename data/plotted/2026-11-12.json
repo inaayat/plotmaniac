@@ -87,7 +87,7 @@
         "attr": "book",
         "item": "open"
       },
-      "text": "Hana is with the open book."
+      "text": "Hana reads an open book."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Bo is with the coffee."
+      "text": "Bo drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "open book is with the wine."
+      "text": "The person who reads an open book drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Bo is next to the score."
+      "text": "Bo lives next to the person who reads a score."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "coffee is next to the Hana."
+      "text": "The coffee drinker lives next to Hana."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "bo"
       },
       "immediate": false,
-      "text": "wine is somewhere left of the Bo."
+      "text": "The wine drinker lives somewhere left of Bo."
     }
   ],
   "question": {
-    "text": "Who brought the open book?",
+    "text": "Who reads an open book?",
     "givenAttr": "book",
     "givenItem": "open",
     "answerAttr": "person",

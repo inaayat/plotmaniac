@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "Eden is with the book."
+      "text": "Eden holds a book."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "cocoa is with the balloon."
+      "text": "The cocoa lover holds a balloon."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "crown"
       },
-      "text": "Jules is with the crown."
+      "text": "Jules holds a crown."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "person",
       "item": "eden",
       "house": 0,
-      "text": "Eden is in house 1."
+      "text": "Eden lives in the first house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "treat",
       "item": "cake",
       "house": 1,
-      "text": "cake is in house 2."
+      "text": "The cake lover lives in the center house."
     }
   ],
   "question": {

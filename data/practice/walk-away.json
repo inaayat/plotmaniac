@@ -63,18 +63,27 @@
     "pet": [
       {
         "id": "horse",
-        "label": "horses",
-        "icon": "horse"
+        "label": "horse",
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "bird",
-        "label": "birds",
-        "icon": "bird"
+        "label": "bird",
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
-        "label": "cats",
-        "icon": "cat"
+        "label": "cat",
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -90,7 +99,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "The person who drives a bus keeps horses."
+      "text": "The person who drives a bus has a horse."
     },
     {
       "id": "c2",
@@ -103,7 +112,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "The person who rides a motorcycle keeps birds."
+      "text": "The person who rides a motorcycle has a bird."
     },
     {
       "id": "c3",
@@ -116,7 +125,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Ada keeps cats."
+      "text": "Ada has a cat."
     },
     {
       "id": "c4",
@@ -129,7 +138,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "The owner of the horses lives next to Drew."
+      "text": "The horse owner lives next to Drew."
     },
     {
       "id": "c5",
@@ -141,7 +150,7 @@
     }
   ],
   "question": {
-    "text": "Who keeps birds?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

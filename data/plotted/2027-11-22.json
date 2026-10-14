@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "cookie is with the book."
+      "text": "The cookie lover holds a book."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "ice cream is with the parcel."
+      "text": "The ice cream lover holds a parcel."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "cookie"
       },
-      "text": "Io is with the cookie."
+      "text": "Io loves cookie."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Fay is with the orange."
+      "text": "Fay loves orange."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "treat",
       "item": "ice",
       "house": 0,
-      "text": "ice cream is in house 1."
+      "text": "The ice cream lover lives in the first house."
     },
     {
       "id": "c6",
@@ -142,7 +142,7 @@
       "attr": "treat",
       "item": "cookie",
       "house": 1,
-      "text": "cookie is in house 2."
+      "text": "The cookie lover lives in the center house."
     }
   ],
   "question": {

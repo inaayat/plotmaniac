@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "diamond is with the motorcycle."
+      "text": "The person who holds a diamond rides a motorcycle."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "crown is with the truck."
+      "text": "The person who holds a crown drives a truck."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Gus is next to the crown."
+      "text": "Gus lives next to the person who holds a crown."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Fay is next to the crown."
+      "text": "Fay lives next to the person who holds a crown."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "fay"
       },
       "immediate": false,
-      "text": "motorcycle is somewhere left of the Fay."
+      "text": "The person who rides a motorcycle lives somewhere left of Fay."
     }
   ],
   "question": {

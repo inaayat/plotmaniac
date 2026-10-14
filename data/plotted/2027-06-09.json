@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Io is with the melody."
+      "text": "Io plays the melody."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "folio is with the wine."
+      "text": "The folio player drinks wine."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "harmony is with the tea."
+      "text": "The harmony player drinks tea."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "harmony is next to the Bo."
+      "text": "The harmony player lives next to Bo."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "person",
       "item": "bo",
       "house": 0,
-      "text": "Bo is in house 1."
+      "text": "Bo lives in the first house."
     }
   ],
   "question": {

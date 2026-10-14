@@ -87,7 +87,7 @@
         "attr": "food",
         "item": "carrot"
       },
-      "text": "Ada is with the carrot."
+      "text": "Ada eats carrot."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Ada is with the martini."
+      "text": "Ada drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Cam is with the stew."
+      "text": "Cam eats stew."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Ada is next to the orange juice."
+      "text": "Ada lives next to the orange juice drinker."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "orange"
       },
       "immediate": true,
-      "text": "Cam is immediately left of the orange juice."
+      "text": "Cam lives directly left of the orange juice drinker."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the carrot lover?",
     "givenAttr": "food",
     "givenItem": "carrot",
     "answerAttr": "person",

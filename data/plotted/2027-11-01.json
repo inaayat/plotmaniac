@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Cam is with the beer."
+      "text": "Cam drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "sci-fi is with the beer."
+      "text": "The person who reads sci-fi drinks beer."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "book",
         "item": "map"
       },
-      "text": "Drew is with the field guide."
+      "text": "Drew reads a field guide."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "drink",
       "item": "orange",
       "house": 1,
-      "text": "orange juice is in house 2."
+      "text": "The orange juice drinker lives in the center house."
     },
     {
       "id": "c5",
@@ -129,11 +129,11 @@
       "attr": "person",
       "item": "drew",
       "house": 0,
-      "text": "Drew is in house 1."
+      "text": "Drew lives in the first house."
     }
   ],
   "question": {
-    "text": "Who brought the sci-fi?",
+    "text": "Who reads sci-fi?",
     "givenAttr": "book",
     "givenItem": "scifi",
     "answerAttr": "person",

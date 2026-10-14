@@ -46,18 +46,27 @@
     "pet": [
       {
         "id": "dog",
-        "label": "dogs",
-        "icon": "dog"
+        "label": "dog",
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "horse",
-        "label": "horses",
-        "icon": "horse"
+        "label": "horse",
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "bird",
-        "label": "birds",
-        "icon": "bird"
+        "label": "bird",
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "drink": [
@@ -90,7 +99,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "The owner of the dogs drinks wine."
+      "text": "The dog owner drinks wine."
     },
     {
       "id": "c2",
@@ -103,7 +112,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Drew keeps dogs."
+      "text": "Drew has a dog."
     },
     {
       "id": "c3",
@@ -116,7 +125,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "The owner of the birds drinks a martini."
+      "text": "The bird owner drinks a martini."
     },
     {
       "id": "c4",
@@ -129,7 +138,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Gus keeps horses."
+      "text": "Gus has a horse."
     },
     {
       "id": "c5",
@@ -142,7 +151,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "The martini drinker lives next to the one who keeps dogs."
+      "text": "The martini drinker lives next to the dog owner."
     },
     {
       "id": "c6",
@@ -154,7 +163,7 @@
     }
   ],
   "question": {
-    "text": "Who keeps birds?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

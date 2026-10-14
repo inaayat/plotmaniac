@@ -61,12 +61,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Drew is with the butterfly."
+      "text": "Drew has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Eden is with the sailboat."
+      "text": "Eden sails a sailboat."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "on foot is with the butterfly."
+      "text": "The person on foot has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "dog is next to the Gus."
+      "text": "The dog owner lives next to Gus."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "horse is next to the Drew."
+      "text": "The horse owner lives next to Drew."
     },
     {
       "id": "c6",
@@ -153,11 +159,11 @@
         "item": "gus"
       },
       "immediate": false,
-      "text": "dog is somewhere left of the Gus."
+      "text": "The dog owner lives somewhere left of Gus."
     }
   ],
   "question": {
-    "text": "Who lives with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

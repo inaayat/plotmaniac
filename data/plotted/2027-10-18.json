@@ -44,17 +44,26 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "Jules is with the cookie."
+      "text": "Jules holds a cookie."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "Hana is with the crown."
+      "text": "Hana holds a crown."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "cat is with the balloon."
+      "text": "The cat owner holds a balloon."
     },
     {
       "id": "c4",
@@ -121,7 +130,7 @@
       "attr": "pet",
       "item": "dog",
       "house": 1,
-      "text": "dog is in house 2."
+      "text": "The dog owner lives in the center house."
     },
     {
       "id": "c5",
@@ -129,11 +138,11 @@
       "attr": "person",
       "item": "jules",
       "house": 2,
-      "text": "Jules is in house 3."
+      "text": "Jules lives in the last house."
     }
   ],
   "question": {
-    "text": "Who showed the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

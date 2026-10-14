@@ -49,12 +49,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Io is with the bird."
+      "text": "Io has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Hana is with the butterfly."
+      "text": "Hana has a butterfly."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "crown is next to the Jules."
+      "text": "The person who holds a crown lives next to Jules."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "medal is next to the rabbit."
+      "text": "The person who holds a medal lives next to the rabbit owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "crown"
       },
       "immediate": false,
-      "text": "bird is somewhere left of the crown."
+      "text": "The bird owner lives somewhere left of the person who holds a crown."
     }
   ],
   "question": {
-    "text": "Who showed the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

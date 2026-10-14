@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "notes is with the wine."
+      "text": "The person who reads notes drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "score is with the brandy."
+      "text": "The person who reads a score drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Eden is with the brandy."
+      "text": "Eden drinks brandy."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "notes"
       },
-      "text": "Jules is with the notes."
+      "text": "Jules reads notes."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "notes is next to the brandy."
+      "text": "The person who reads notes lives next to the brandy drinker."
     },
     {
       "id": "c6",
@@ -147,11 +147,11 @@
       "attr": "person",
       "item": "jules",
       "house": 2,
-      "text": "Jules is in house 3."
+      "text": "Jules lives in the last house."
     }
   ],
   "question": {
-    "text": "Who brought the open book?",
+    "text": "Who reads an open book?",
     "givenAttr": "book",
     "givenItem": "open",
     "answerAttr": "person",

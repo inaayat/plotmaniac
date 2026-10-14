@@ -87,7 +87,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Jules is with the stew."
+      "text": "Jules eats stew."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "carrot is with the orange juice."
+      "text": "The carrot lover drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Drew is with the martini."
+      "text": "Drew drinks a martini."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Cam is next to the brandy."
+      "text": "Cam lives next to the brandy drinker."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "cam",
       "house": 2,
-      "text": "Cam is in house 3."
+      "text": "Cam lives in the last house."
     }
   ],
   "question": {
-    "text": "Who ordered the stew?",
+    "text": "Who is the stew lover?",
     "givenAttr": "food",
     "givenItem": "pot",
     "answerAttr": "person",

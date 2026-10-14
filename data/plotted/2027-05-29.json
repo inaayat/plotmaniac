@@ -61,7 +61,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "fish",
@@ -71,7 +74,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Jules is with the fish."
+      "text": "Jules has a fish."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Gus is with the cat."
+      "text": "Gus has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "vehicle",
         "item": "boat"
       },
-      "text": "Jules is with the sailboat."
+      "text": "Jules sails a sailboat."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "bicycle is next to the fish."
+      "text": "The person who rides a bicycle lives next to the fish owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "io"
       },
       "immediate": true,
-      "text": "bicycle is immediately left of the Io."
+      "text": "The person who rides a bicycle lives directly left of Io."
     }
   ],
   "question": {
-    "text": "Who lives with the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

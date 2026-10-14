@@ -117,7 +117,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Hana is with the coffee."
+      "text": "Hana drinks coffee."
     },
     {
       "id": "c2",
@@ -130,7 +130,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Fay is with the score."
+      "text": "Fay plays the score."
     },
     {
       "id": "c3",
@@ -143,7 +143,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Io is with the beer."
+      "text": "Io drinks beer."
     },
     {
       "id": "c4",
@@ -156,7 +156,7 @@
         "attr": "instrument",
         "item": "charts"
       },
-      "text": "Cam is with the charts."
+      "text": "Cam plays the charts."
     },
     {
       "id": "c5",
@@ -169,7 +169,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "folio is with the orange juice."
+      "text": "The folio player drinks orange juice."
     },
     {
       "id": "c6",
@@ -182,7 +182,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "coffee is next to the melody."
+      "text": "The coffee drinker lives next to the melody player."
     },
     {
       "id": "c7",
@@ -196,7 +196,7 @@
         "item": "notes"
       },
       "immediate": true,
-      "text": "martini is immediately left of the harmony."
+      "text": "The martini drinker lives directly left of the harmony player."
     },
     {
       "id": "c8",
@@ -204,7 +204,7 @@
       "attr": "instrument",
       "item": "score",
       "house": 3,
-      "text": "score is in house 4."
+      "text": "The score player lives in the fourth house."
     }
   ],
   "question": {

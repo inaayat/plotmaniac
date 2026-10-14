@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Ada is with the brandy."
+      "text": "Ada drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "guitar"
       },
-      "text": "Io is with the guitar."
+      "text": "Io plays the guitar."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "brandy is next to the score."
+      "text": "The brandy drinker lives next to the score player."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "coffee is next to the score."
+      "text": "The coffee drinker lives next to the score player."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "score"
       },
       "immediate": false,
-      "text": "Io is somewhere left of the score."
+      "text": "Io lives somewhere left of the score player."
     }
   ],
   "question": {

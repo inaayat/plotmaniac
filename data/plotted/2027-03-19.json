@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "burger is with the brandy."
+      "text": "The burger lover drinks brandy."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "cake"
       },
-      "text": "Drew is with the cake."
+      "text": "Drew loves cake."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "food",
         "item": "carrot"
       },
-      "text": "orange juice is next to the carrot."
+      "text": "The orange juice drinker lives next to the carrot lover."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Jules is next to the brandy."
+      "text": "Jules lives next to the brandy drinker."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "beer"
       },
       "immediate": false,
-      "text": "cake is somewhere left of the beer."
+      "text": "The cake lover lives somewhere left of the beer drinker."
     }
   ],
   "question": {
-    "text": "Who ordered the cake?",
+    "text": "Who is the cake lover?",
     "givenAttr": "food",
     "givenItem": "cake",
     "answerAttr": "person",

@@ -44,12 +44,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Hana is with the gift."
+      "text": "Hana holds a gift."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Ada is with the fish."
+      "text": "Ada has a fish."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "crown is next to the Bo."
+      "text": "The person who holds a crown lives next to Bo."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Bo is next to the gift."
+      "text": "Bo lives next to the person who holds a gift."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "hana"
       },
       "immediate": false,
-      "text": "cat is somewhere left of the Hana."
+      "text": "The cat owner lives somewhere left of Hana."
     }
   ],
   "question": {
-    "text": "Who showed the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

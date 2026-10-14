@@ -44,12 +44,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +93,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Eden is with the beer."
+      "text": "Eden drinks beer."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "rabbit is with the coffee."
+      "text": "The rabbit owner drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Eden is with the butterfly."
+      "text": "Eden has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Jules is next to the horse."
+      "text": "Jules lives next to the horse owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "eden"
       },
       "immediate": true,
-      "text": "coffee is immediately left of the Eden."
+      "text": "The coffee drinker lives directly left of Eden."
     }
   ],
   "question": {
-    "text": "Who owns the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

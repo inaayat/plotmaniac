@@ -44,7 +44,10 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "butterfly",
@@ -54,7 +57,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "Hana is with the cookie."
+      "text": "Hana holds a cookie."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Eden is with the horse."
+      "text": "Eden has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "butterfly is with the balloon."
+      "text": "The butterfly owner holds a balloon."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "cat is next to the balloon."
+      "text": "The cat owner lives next to the person who holds a balloon."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "person",
       "item": "hana",
       "house": 2,
-      "text": "Hana is in house 3."
+      "text": "Hana lives in the last house."
     }
   ],
   "question": {
-    "text": "Who showed the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

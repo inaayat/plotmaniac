@@ -71,7 +71,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -81,12 +84,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -102,7 +111,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Io is with the dog."
+      "text": "Io has a dog."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "bicycle is with the horse."
+      "text": "The person who rides a bicycle has a horse."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "on foot is with the fish."
+      "text": "The person on foot has a fish."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "motorcycle is with the dog."
+      "text": "The person who rides a motorcycle has a dog."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "Ada is with the rabbit."
+      "text": "Ada has a rabbit."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "rabbit is next to the Io."
+      "text": "The rabbit owner lives next to Io."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Hana is next to the fish."
+      "text": "Hana lives next to the fish owner."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "moto"
       },
       "immediate": true,
-      "text": "fish is immediately left of the motorcycle."
+      "text": "The fish owner lives directly left of the person who rides a motorcycle."
     }
   ],
   "question": {
-    "text": "Who lives with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

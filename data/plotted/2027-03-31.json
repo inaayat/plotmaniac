@@ -87,7 +87,7 @@
         "attr": "plant",
         "item": "cactus"
       },
-      "text": "Fay is with the cactus."
+      "text": "Fay grows a cactus."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Eden is with the orange juice."
+      "text": "Eden drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "plant",
         "item": "tree"
       },
-      "text": "Drew is with the tree."
+      "text": "Drew grows a tree."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Drew is with the beer."
+      "text": "Drew drinks beer."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "orange juice is next to the Drew."
+      "text": "The orange juice drinker lives next to Drew."
     },
     {
       "id": "c6",
@@ -147,11 +147,11 @@
       "attr": "plant",
       "item": "flower",
       "house": 0,
-      "text": "flower is in house 1."
+      "text": "The person who grows a flower lives in the first house."
     }
   ],
   "question": {
-    "text": "Who tends the flower?",
+    "text": "Who grows a flower?",
     "givenAttr": "plant",
     "givenItem": "flower",
     "answerAttr": "person",

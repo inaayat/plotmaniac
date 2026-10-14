@@ -61,7 +61,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "butterfly",
@@ -87,7 +90,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Fay is with the bird."
+      "text": "Fay has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "loot",
         "item": "pot"
       },
-      "text": "Gus is with the cookpot."
+      "text": "Gus holds a cookpot."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "cookpot is with the fish."
+      "text": "The person who holds a cookpot has a fish."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "leaf is with the bird."
+      "text": "The person who holds a leaf has a bird."
     },
     {
       "id": "c5",
@@ -134,7 +137,7 @@
       "attr": "pet",
       "item": "butterfly",
       "house": 2,
-      "text": "butterfly is in house 3."
+      "text": "The butterfly owner lives in the last house."
     },
     {
       "id": "c6",
@@ -142,11 +145,11 @@
       "attr": "pet",
       "item": "fish",
       "house": 1,
-      "text": "fish is in house 2."
+      "text": "The fish owner lives in the center house."
     }
   ],
   "question": {
-    "text": "Who camped with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

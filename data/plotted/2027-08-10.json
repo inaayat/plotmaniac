@@ -54,7 +54,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +90,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Drew is with the martini."
+      "text": "Drew drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "butterfly is with the brandy."
+      "text": "The butterfly owner drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Cam is with the butterfly."
+      "text": "Cam has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "fish is next to the Drew."
+      "text": "The fish owner lives next to Drew."
     },
     {
       "id": "c5",
@@ -134,11 +137,11 @@
       "attr": "person",
       "item": "drew",
       "house": 0,
-      "text": "Drew is in house 1."
+      "text": "Drew lives in the first house."
     }
   ],
   "question": {
-    "text": "Who owns the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

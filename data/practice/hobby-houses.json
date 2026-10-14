@@ -152,7 +152,7 @@
         "item": "io"
       },
       "immediate": true,
-      "text": "The person who likes painting lives immediately left of Io."
+      "text": "The person who likes painting lives directly left of Io."
     },
     {
       "id": "c2",
@@ -160,7 +160,7 @@
       "attr": "color",
       "item": "red",
       "house": 0,
-      "text": "The resident of the red house does not live in house 1."
+      "text": "The red house is not the first house."
     },
     {
       "id": "c3",
@@ -173,7 +173,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "The person who likes guitar is the person who drinks wine."
+      "text": "The guitar player drinks wine."
     },
     {
       "id": "c4",
@@ -186,7 +186,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "The resident of the pink house is the person who drinks wine."
+      "text": "The owner of the pink house drinks wine."
     },
     {
       "id": "c5",
@@ -200,7 +200,7 @@
         "item": "reading"
       },
       "immediate": false,
-      "text": "The resident of the white house lives somewhere left of the person who likes reading."
+      "text": "The owner of the white house lives somewhere left of the person who likes reading."
     },
     {
       "id": "c6",
@@ -213,7 +213,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "The person who likes painting is the person who drinks tea."
+      "text": "The person who likes painting drinks tea."
     },
     {
       "id": "c7",
@@ -227,7 +227,7 @@
         "item": "jules"
       },
       "immediate": true,
-      "text": "The resident of the white house lives immediately left of Jules."
+      "text": "The owner of the white house lives directly left of Jules."
     },
     {
       "id": "c8",
@@ -241,7 +241,7 @@
         "item": "camping"
       },
       "immediate": true,
-      "text": "The person who drinks brandy lives immediately left of the person who likes camping."
+      "text": "The brandy drinker lives directly left of the person who likes camping."
     },
     {
       "id": "c9",
@@ -252,7 +252,7 @@
         3,
         4
       ],
-      "text": "The person who likes guitar lives in either house 4 or house 5."
+      "text": "The guitar player lives in either the fourth house or the last house."
     },
     {
       "id": "c10",
@@ -265,7 +265,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Io lives next door to the person who drinks orange juice."
+      "text": "Io lives next to the orange juice drinker."
     },
     {
       "id": "c11",
@@ -278,7 +278,7 @@
         "attr": "color",
         "item": "red"
       },
-      "text": "The person who likes painting is the resident of the red house."
+      "text": "The person who likes painting lives in the red house."
     },
     {
       "id": "c12",
@@ -291,7 +291,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "The person who drinks brandy lives next door to Drew."
+      "text": "The brandy drinker lives next to Drew."
     },
     {
       "id": "c13",
@@ -304,7 +304,7 @@
         "attr": "color",
         "item": "green"
       },
-      "text": "Hana lives next door to the resident of the green house."
+      "text": "Hana lives next to the green house."
     }
   ],
   "question": {

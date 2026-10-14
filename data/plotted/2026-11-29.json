@@ -54,27 +54,42 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "prize": [
@@ -117,7 +132,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Io is with the dog."
+      "text": "Io has a dog."
     },
     {
       "id": "c2",
@@ -130,7 +145,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Bo is with the bird."
+      "text": "Bo has a bird."
     },
     {
       "id": "c3",
@@ -143,7 +158,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Eden is with the gift."
+      "text": "Eden holds a gift."
     },
     {
       "id": "c4",
@@ -156,7 +171,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "rabbit is with the cookie."
+      "text": "The rabbit owner holds a cookie."
     },
     {
       "id": "c5",
@@ -169,7 +184,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "balloon is next to the Bo."
+      "text": "The person who holds a balloon lives next to Bo."
     },
     {
       "id": "c6",
@@ -182,7 +197,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "cat is next to the medal."
+      "text": "The cat owner lives next to the person who holds a medal."
     },
     {
       "id": "c7",
@@ -195,7 +210,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "cat is next to the balloon."
+      "text": "The cat owner lives next to the person who holds a balloon."
     },
     {
       "id": "c8",
@@ -209,11 +224,11 @@
         "item": "hana"
       },
       "immediate": true,
-      "text": "rabbit is immediately left of the Hana."
+      "text": "The rabbit owner lives directly left of Hana."
     }
   ],
   "question": {
-    "text": "Who showed the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

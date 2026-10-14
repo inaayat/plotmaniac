@@ -44,12 +44,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "Gus is with the medal."
+      "text": "Gus holds a medal."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Io is with the dog."
+      "text": "Io has a dog."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Ada is with the fish."
+      "text": "Ada has a fish."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Io is with the gift."
+      "text": "Io holds a gift."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "Io is next to the medal."
+      "text": "Io lives next to the person who holds a medal."
     },
     {
       "id": "c6",
@@ -147,11 +153,11 @@
       "attr": "person",
       "item": "gus",
       "house": 2,
-      "text": "Gus is in house 3."
+      "text": "Gus lives in the last house."
     }
   ],
   "question": {
-    "text": "Who showed the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "lock is with the on foot."
+      "text": "The person who holds a lock is on foot."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "coins"
       },
-      "text": "Drew is with the coins."
+      "text": "Drew holds a coins."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "Hana is with the plane."
+      "text": "Hana flies a plane."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "coins is next to the Hana."
+      "text": "The person who holds a coins lives next to Hana."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "getaway",
         "item": "walk"
       },
-      "text": "key is next to the on foot."
+      "text": "The person who holds a key lives next to the person on foot."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "key"
       },
       "immediate": false,
-      "text": "on foot is somewhere left of the key."
+      "text": "The person on foot lives somewhere left of the person who holds a key."
     }
   ],
   "question": {

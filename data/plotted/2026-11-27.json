@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "stew is with the martini."
+      "text": "The stew lover drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Ada is with the stew."
+      "text": "Ada eats stew."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Fay is next to the martini."
+      "text": "Fay lives next to the martini drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "burger is next to the Drew."
+      "text": "The burger lover lives next to Drew."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "burger"
       },
       "immediate": false,
-      "text": "coffee is somewhere left of the burger."
+      "text": "The coffee drinker lives somewhere left of the burger lover."
     }
   ],
   "question": {
-    "text": "Who ordered the burger?",
+    "text": "Who is the burger lover?",
     "givenAttr": "food",
     "givenItem": "burger",
     "answerAttr": "person",

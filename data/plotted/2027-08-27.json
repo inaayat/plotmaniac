@@ -87,7 +87,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Drew is with the key."
+      "text": "Drew holds a key."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "lock is with the truck."
+      "text": "The person who holds a lock drives a truck."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "coins is next to the truck."
+      "text": "The person who holds a coins lives next to the person who drives a truck."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "coins is next to the motorcycle."
+      "text": "The person who holds a coins lives next to the person who rides a motorcycle."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "eden"
       },
       "immediate": false,
-      "text": "lock is somewhere left of the Eden."
+      "text": "The person who holds a lock lives somewhere left of Eden."
     }
   ],
   "question": {

@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "Cam is with the evergreen."
+      "text": "Cam holds an evergreen."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "orange is with the medal."
+      "text": "The orange lover holds a medal."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "medal"
       },
-      "text": "Eden is with the medal."
+      "text": "Eden holds a medal."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "cocoa is next to the Gus."
+      "text": "The cocoa lover lives next to Gus."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "cocoa is next to the Eden."
+      "text": "The cocoa lover lives next to Eden."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "cam"
       },
       "immediate": false,
-      "text": "tea is somewhere left of the Cam."
+      "text": "The tea lover lives somewhere left of Cam."
     }
   ],
   "question": {

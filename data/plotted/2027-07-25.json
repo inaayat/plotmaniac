@@ -117,7 +117,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Bo is with the coffee."
+      "text": "Bo drinks coffee."
     },
     {
       "id": "c2",
@@ -130,7 +130,7 @@
         "attr": "plant",
         "item": "pot"
       },
-      "text": "Io is with the potted plant."
+      "text": "Io grows a potted plant."
     },
     {
       "id": "c3",
@@ -143,7 +143,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Hana is with the wine."
+      "text": "Hana drinks wine."
     },
     {
       "id": "c4",
@@ -156,7 +156,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "flower is with the beer."
+      "text": "The person who grows a flower drinks beer."
     },
     {
       "id": "c5",
@@ -169,7 +169,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "flower is next to the Bo."
+      "text": "The person who grows a flower lives next to Bo."
     },
     {
       "id": "c6",
@@ -182,7 +182,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "tulip is next to the tea."
+      "text": "The person who grows a tulip lives next to the tea drinker."
     },
     {
       "id": "c7",
@@ -195,7 +195,7 @@
         "attr": "plant",
         "item": "tree"
       },
-      "text": "Gus is next to the tree."
+      "text": "Gus lives next to the person who grows a tree."
     },
     {
       "id": "c8",
@@ -209,11 +209,11 @@
         "item": "coffee"
       },
       "immediate": true,
-      "text": "tree is immediately left of the coffee."
+      "text": "The person who grows a tree lives directly left of the coffee drinker."
     }
   ],
   "question": {
-    "text": "Who tends the potted plant?",
+    "text": "Who grows a potted plant?",
     "givenAttr": "plant",
     "givenItem": "pot",
     "answerAttr": "person",

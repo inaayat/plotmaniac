@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "Eden is with the truck."
+      "text": "Eden drives a truck."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "Eden is with the key."
+      "text": "Eden holds a key."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "crown is with the bicycle."
+      "text": "The person who holds a crown rides a bicycle."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "Ada is with the bicycle."
+      "text": "Ada rides a bicycle."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "crown is next to the truck."
+      "text": "The person who holds a crown lives next to the person who drives a truck."
     },
     {
       "id": "c6",
@@ -147,7 +147,7 @@
       "attr": "getaway",
       "item": "bike",
       "house": 2,
-      "text": "bicycle is in house 3."
+      "text": "The person who rides a bicycle lives in the last house."
     }
   ],
   "question": {

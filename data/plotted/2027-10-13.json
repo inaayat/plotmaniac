@@ -44,17 +44,26 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "rabbit is with the cookie."
+      "text": "The rabbit owner holds a cookie."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Hana is with the cat."
+      "text": "Hana has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "cat is with the crown."
+      "text": "The cat owner holds a crown."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "eden"
       },
-      "text": "medal is next to the Eden."
+      "text": "The person who holds a medal lives next to Eden."
     },
     {
       "id": "c5",
@@ -134,11 +143,11 @@
       "attr": "prize",
       "item": "medal",
       "house": 2,
-      "text": "medal is in house 3."
+      "text": "The person who holds a medal lives in the last house."
     }
   ],
   "question": {
-    "text": "Who showed the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

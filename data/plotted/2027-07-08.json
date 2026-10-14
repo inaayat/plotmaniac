@@ -44,17 +44,26 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Hana is with the horse."
+      "text": "Hana has a horse."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Drew is with the gift."
+      "text": "Drew holds a gift."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "Hana is with the balloon."
+      "text": "Hana holds a balloon."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "balloon is next to the Drew."
+      "text": "The person who holds a balloon lives next to Drew."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "rabbit"
       },
       "immediate": true,
-      "text": "medal is immediately left of the rabbit."
+      "text": "The person who holds a medal lives directly left of the rabbit owner."
     }
   ],
   "question": {
-    "text": "Who showed the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

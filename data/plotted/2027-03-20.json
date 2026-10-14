@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Fay is with the tea."
+      "text": "Fay drinks tea."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "Eden is with the harmony."
+      "text": "Eden plays the harmony."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "guitar is with the beer."
+      "text": "The guitarist drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "instrument",
         "item": "notes"
       },
-      "text": "beer is next to the harmony."
+      "text": "The beer drinker lives next to the harmony player."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Fay is next to the martini."
+      "text": "Fay lives next to the martini drinker."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "tea"
       },
       "immediate": false,
-      "text": "Eden is somewhere left of the tea."
+      "text": "Eden lives somewhere left of the tea drinker."
     }
   ],
   "question": {

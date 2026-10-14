@@ -61,17 +61,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "key is with the horse."
+      "text": "The person who holds a key has a horse."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Ada is with the cat."
+      "text": "Ada has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Drew is with the dog."
+      "text": "Drew has a dog."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "lock is with the dog."
+      "text": "The person who holds a lock has a dog."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "loot",
         "item": "lock"
       },
-      "text": "horse is next to the lock."
+      "text": "The horse owner lives next to the person who holds a lock."
     },
     {
       "id": "c6",
@@ -147,11 +156,11 @@
       "attr": "person",
       "item": "gus",
       "house": 2,
-      "text": "Gus is in house 3."
+      "text": "Gus lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

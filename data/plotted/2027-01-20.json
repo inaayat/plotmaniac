@@ -66,12 +66,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "plane is with the bird."
+      "text": "The person who flies a plane has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Bo is with the bird."
+      "text": "Bo has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "vehicle",
         "item": "truck"
       },
-      "text": "Io is with the truck."
+      "text": "Io drives a truck."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "truck is next to the rabbit."
+      "text": "The person who drives a truck lives next to the rabbit owner."
     },
     {
       "id": "c5",
@@ -134,11 +140,11 @@
       "attr": "vehicle",
       "item": "truck",
       "house": 0,
-      "text": "truck is in house 1."
+      "text": "The person who drives a truck lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

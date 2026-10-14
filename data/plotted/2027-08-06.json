@@ -44,17 +44,26 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +96,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "Fay is with the cookie."
+      "text": "Fay holds a cookie."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "dog is with the cookie."
+      "text": "The dog owner holds a cookie."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "prize",
         "item": "trophy"
       },
-      "text": "rabbit is with the trophy."
+      "text": "The rabbit owner holds a trophy."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "rabbit is next to the Fay."
+      "text": "The rabbit owner lives next to Fay."
     },
     {
       "id": "c5",
@@ -139,7 +148,7 @@
         "attr": "person",
         "item": "ada"
       },
-      "text": "balloon is next to the Ada."
+      "text": "The person who holds a balloon lives next to Ada."
     },
     {
       "id": "c6",
@@ -153,11 +162,11 @@
         "item": "balloon"
       },
       "immediate": false,
-      "text": "Ada is somewhere left of the balloon."
+      "text": "Ada lives somewhere left of the person who holds a balloon."
     }
   ],
   "question": {
-    "text": "Who showed the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "gift"
       },
-      "text": "Fay is with the parcel."
+      "text": "Fay holds a parcel."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "cocoa is with the balloon."
+      "text": "The cocoa lover holds a balloon."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "cake"
       },
-      "text": "Cam is with the cake."
+      "text": "Cam loves cake."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "gift",
       "item": "balloon",
       "house": 2,
-      "text": "balloon is in house 3."
+      "text": "The person who holds a balloon lives in the last house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "treat",
       "item": "cake",
       "house": 1,
-      "text": "cake is in house 2."
+      "text": "The cake lover lives in the center house."
     }
   ],
   "question": {

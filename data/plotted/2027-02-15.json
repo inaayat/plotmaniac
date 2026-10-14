@@ -66,12 +66,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Eden is with the bird."
+      "text": "Eden has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "loot",
         "item": "pot"
       },
-      "text": "Eden is with the cookpot."
+      "text": "Eden holds a cookpot."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "loot",
         "item": "leaf"
       },
-      "text": "Gus is with the leaf."
+      "text": "Gus holds a leaf."
     },
     {
       "id": "c4",
@@ -121,7 +127,7 @@
       "attr": "pet",
       "item": "fish",
       "house": 0,
-      "text": "fish is in house 1."
+      "text": "The fish owner lives in the first house."
     },
     {
       "id": "c5",
@@ -129,11 +135,11 @@
       "attr": "loot",
       "item": "leaf",
       "house": 2,
-      "text": "leaf is in house 3."
+      "text": "The person who holds a leaf lives in the last house."
     }
   ],
   "question": {
-    "text": "Who camped with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

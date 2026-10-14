@@ -49,12 +49,18 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "medal"
       },
-      "text": "Bo is with the medal."
+      "text": "Bo holds a medal."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Bo is with the horse."
+      "text": "Bo has a horse."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "dog is with the gift."
+      "text": "The dog owner holds a gift."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "horse is next to the gift."
+      "text": "The horse owner lives next to the person who holds a gift."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "dog"
       },
       "immediate": true,
-      "text": "Eden is immediately left of the dog."
+      "text": "Eden lives directly left of the dog owner."
     }
   ],
   "question": {
-    "text": "Who showed the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

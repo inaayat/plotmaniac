@@ -61,7 +61,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "fish",
@@ -71,7 +74,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "loot",
         "item": "lock"
       },
-      "text": "Drew is with the lock."
+      "text": "Drew holds a lock."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "lock is with the fish."
+      "text": "The person who holds a lock has a fish."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "dog is next to the Drew."
+      "text": "The dog owner lives next to Drew."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "loot",
         "item": "key"
       },
-      "text": "dog is next to the key."
+      "text": "The dog owner lives next to the person who holds a key."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "key"
       },
       "immediate": false,
-      "text": "Ada is somewhere left of the key."
+      "text": "Ada lives somewhere left of the person who holds a key."
     }
   ],
   "question": {
-    "text": "Who camped with the dog?",
+    "text": "Who has a dog?",
     "givenAttr": "pet",
     "givenItem": "dog",
     "answerAttr": "person",

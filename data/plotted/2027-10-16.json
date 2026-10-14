@@ -44,17 +44,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ],
     "drink": [
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Cam is with the dog."
+      "text": "Cam has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "Eden is with the orange juice."
+      "text": "Eden drinks orange juice."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "bird is next to the orange juice."
+      "text": "The bird owner lives next to the orange juice drinker."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Hana is next to the brandy."
+      "text": "Hana lives next to the brandy drinker."
     },
     {
       "id": "c5",
@@ -140,11 +149,11 @@
         "item": "martini"
       },
       "immediate": false,
-      "text": "dog is somewhere left of the martini."
+      "text": "The dog owner lives somewhere left of the martini drinker."
     }
   ],
   "question": {
-    "text": "Who owns the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

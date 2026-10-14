@@ -87,7 +87,7 @@
         "attr": "plant",
         "item": "cactus"
       },
-      "text": "Cam is with the cactus."
+      "text": "Cam grows a cactus."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Drew is with the coffee."
+      "text": "Drew drinks coffee."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "potted plant is with the orange juice."
+      "text": "The person who grows a potted plant drinks orange juice."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "cactus is next to the Drew."
+      "text": "The person who grows a cactus lives next to Drew."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "person",
       "item": "cam",
       "house": 2,
-      "text": "Cam is in house 3."
+      "text": "Cam lives in the last house."
     }
   ],
   "question": {
-    "text": "Who tends the tulip?",
+    "text": "Who grows a tulip?",
     "givenAttr": "plant",
     "givenItem": "tulip",
     "answerAttr": "person",

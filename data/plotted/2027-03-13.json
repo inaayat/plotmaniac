@@ -87,7 +87,7 @@
         "attr": "getaway",
         "item": "moto"
       },
-      "text": "Fay is with the motorcycle."
+      "text": "Fay rides a motorcycle."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "coins is with the bicycle."
+      "text": "The person who holds a coins rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "Eden is next to the bicycle."
+      "text": "Eden lives next to the person who rides a bicycle."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "truck"
       },
-      "text": "key is next to the truck."
+      "text": "The person who holds a key lives next to the person who drives a truck."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "truck"
       },
       "immediate": false,
-      "text": "coins is somewhere left of the truck."
+      "text": "The person who holds a coins lives somewhere left of the person who drives a truck."
     }
   ],
   "question": {

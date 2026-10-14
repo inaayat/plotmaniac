@@ -87,7 +87,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Cam is with the orange."
+      "text": "Cam loves orange."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "crown"
       },
-      "text": "cake is with the crown."
+      "text": "The cake lover holds a crown."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "gift",
         "item": "book"
       },
-      "text": "Cam is with the book."
+      "text": "Cam holds a book."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "orange"
       },
-      "text": "Gus is next to the orange."
+      "text": "Gus lives next to the orange lover."
     },
     {
       "id": "c5",
@@ -140,7 +140,7 @@
         "item": "bo"
       },
       "immediate": true,
-      "text": "cake is immediately left of the Bo."
+      "text": "The cake lover lives directly left of Bo."
     }
   ],
   "question": {

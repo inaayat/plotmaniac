@@ -61,17 +61,26 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "Fay is with the horse."
+      "text": "Fay has a horse."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "truck is with the cat."
+      "text": "The person who drives a truck has a cat."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "vehicle",
         "item": "plane"
       },
-      "text": "Bo is with the plane."
+      "text": "Bo flies a plane."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "person",
         "item": "bo"
       },
-      "text": "truck is next to the Bo."
+      "text": "The person who drives a truck lives next to Bo."
     },
     {
       "id": "c5",
@@ -134,11 +143,11 @@
       "attr": "vehicle",
       "item": "truck",
       "house": 0,
-      "text": "truck is in house 1."
+      "text": "The person who drives a truck lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

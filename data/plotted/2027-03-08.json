@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Gus is with the martini."
+      "text": "Gus drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Hana is with the brandy."
+      "text": "Hana drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Gus is with the score."
+      "text": "Gus plays the score."
     },
     {
       "id": "c4",
@@ -121,7 +121,7 @@
       "attr": "person",
       "item": "jules",
       "house": 1,
-      "text": "Jules is in house 2."
+      "text": "Jules lives in the center house."
     },
     {
       "id": "c5",
@@ -129,7 +129,7 @@
       "attr": "instrument",
       "item": "note",
       "house": 2,
-      "text": "melody is in house 3."
+      "text": "The melody player lives in the last house."
     }
   ],
   "question": {

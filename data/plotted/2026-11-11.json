@@ -49,12 +49,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "butterfly is with the cookie."
+      "text": "The butterfly owner holds a cookie."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "Bo is with the balloon."
+      "text": "Bo holds a balloon."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "Gus is with the cookie."
+      "text": "Gus holds a cookie."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Bo is with the cat."
+      "text": "Bo has a cat."
     },
     {
       "id": "c5",
@@ -139,7 +145,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "cat is next to the cookie."
+      "text": "The cat owner lives next to the person who holds a cookie."
     },
     {
       "id": "c6",
@@ -147,11 +153,11 @@
       "attr": "pet",
       "item": "cat",
       "house": 2,
-      "text": "cat is in house 3."
+      "text": "The cat owner lives in the last house."
     }
   ],
   "question": {
-    "text": "Who showed the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

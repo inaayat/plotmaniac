@@ -66,12 +66,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "key is with the butterfly."
+      "text": "The person who holds a key has a butterfly."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Hana is with the bird."
+      "text": "Hana has a bird."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "loot",
         "item": "pot"
       },
-      "text": "Fay is next to the cookpot."
+      "text": "Fay lives next to the person who holds a cookpot."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "loot",
         "item": "pot"
       },
-      "text": "butterfly is next to the cookpot."
+      "text": "The butterfly owner lives next to the person who holds a cookpot."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "butterfly"
       },
       "immediate": false,
-      "text": "Fay is somewhere left of the butterfly."
+      "text": "Fay lives somewhere left of the butterfly owner."
     }
   ],
   "question": {
-    "text": "Who camped with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

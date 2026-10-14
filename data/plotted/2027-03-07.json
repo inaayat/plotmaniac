@@ -76,17 +76,26 @@
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -102,7 +111,7 @@
         "attr": "pet",
         "item": "horse"
       },
-      "text": "cookpot is with the horse."
+      "text": "The person who holds a cookpot has a horse."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "loot",
         "item": "leaf"
       },
-      "text": "Gus is with the leaf."
+      "text": "Gus holds a leaf."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "loot",
         "item": "tent"
       },
-      "text": "Hana is with the tent."
+      "text": "Hana holds a tent."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Fay is with the guide."
+      "text": "Fay holds a guide."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "guide is with the butterfly."
+      "text": "The person who holds a guide has a butterfly."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "cookpot is next to the butterfly."
+      "text": "The person who holds a cookpot lives next to the butterfly owner."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "loot",
         "item": "leaf"
       },
-      "text": "rabbit is next to the leaf."
+      "text": "The rabbit owner lives next to the person who holds a leaf."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "hana"
       },
       "immediate": true,
-      "text": "butterfly is immediately left of the Hana."
+      "text": "The butterfly owner lives directly left of Hana."
     }
   ],
   "question": {
-    "text": "Who camped with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "diary is with the wine."
+      "text": "The person who reads a diary drinks wine."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "book",
         "item": "score"
       },
-      "text": "Cam is with the score."
+      "text": "Cam reads a score."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "score is with the tea."
+      "text": "The person who reads a score drinks tea."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "book",
         "item": "notes"
       },
-      "text": "Hana is next to the notes."
+      "text": "Hana lives next to the person who reads notes."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "wine"
       },
       "immediate": true,
-      "text": "Cam is immediately left of the wine."
+      "text": "Cam lives directly left of the wine drinker."
     }
   ],
   "question": {
-    "text": "Who brought the notes?",
+    "text": "Who reads notes?",
     "givenAttr": "book",
     "givenItem": "notes",
     "answerAttr": "person",

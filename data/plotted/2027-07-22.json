@@ -66,12 +66,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "plane is with the rabbit."
+      "text": "The person who flies a plane has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Io is with the bicycle."
+      "text": "Io rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "vehicle",
         "item": "walk"
       },
-      "text": "horse is next to the on foot."
+      "text": "The horse owner lives next to the person on foot."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "vehicle",
         "item": "plane"
       },
-      "text": "Fay is next to the plane."
+      "text": "Fay lives next to the person who flies a plane."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "eden"
       },
       "immediate": false,
-      "text": "butterfly is somewhere left of the Eden."
+      "text": "The butterfly owner lives somewhere left of Eden."
     }
   ],
   "question": {
-    "text": "Who lives with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

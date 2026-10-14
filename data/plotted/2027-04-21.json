@@ -61,17 +61,26 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -87,7 +96,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Bo is with the dog."
+      "text": "Bo has a dog."
     },
     {
       "id": "c2",
@@ -100,7 +109,7 @@
         "attr": "vehicle",
         "item": "moto"
       },
-      "text": "Drew is with the motorcycle."
+      "text": "Drew rides a motorcycle."
     },
     {
       "id": "c3",
@@ -113,7 +122,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "plane is with the bird."
+      "text": "The person who flies a plane has a bird."
     },
     {
       "id": "c4",
@@ -126,7 +135,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Io is next to the cat."
+      "text": "Io lives next to the cat owner."
     },
     {
       "id": "c5",
@@ -134,11 +143,11 @@
       "attr": "pet",
       "item": "cat",
       "house": 0,
-      "text": "cat is in house 1."
+      "text": "The cat owner lives in the first house."
     }
   ],
   "question": {
-    "text": "Who lives with the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

@@ -81,22 +81,34 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -117,7 +129,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "on foot is with the bird."
+      "text": "The person on foot has a bird."
     },
     {
       "id": "c2",
@@ -130,7 +142,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Fay is with the butterfly."
+      "text": "Fay has a butterfly."
     },
     {
       "id": "c3",
@@ -143,7 +155,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Eden is with the bicycle."
+      "text": "Eden rides a bicycle."
     },
     {
       "id": "c4",
@@ -156,7 +168,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "truck is with the dog."
+      "text": "The person who drives a truck has a dog."
     },
     {
       "id": "c5",
@@ -169,7 +181,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "motorcycle is next to the butterfly."
+      "text": "The person who rides a motorcycle lives next to the butterfly owner."
     },
     {
       "id": "c6",
@@ -182,7 +194,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "sailboat is next to the dog."
+      "text": "The person who sails a sailboat lives next to the dog owner."
     },
     {
       "id": "c7",
@@ -195,7 +207,7 @@
         "attr": "vehicle",
         "item": "truck"
       },
-      "text": "Gus is next to the truck."
+      "text": "Gus lives next to the person who drives a truck."
     },
     {
       "id": "c8",
@@ -209,11 +221,11 @@
         "item": "cat"
       },
       "immediate": true,
-      "text": "Ada is immediately left of the cat."
+      "text": "Ada lives directly left of the cat owner."
     }
   ],
   "question": {
-    "text": "Who lives with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

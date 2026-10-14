@@ -71,12 +71,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       },
       {
         "id": "fish",
@@ -86,7 +92,10 @@
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       }
     ]
   },
@@ -102,7 +111,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Eden is with the fish."
+      "text": "Eden has a fish."
     },
     {
       "id": "c2",
@@ -115,7 +124,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "cookpot is with the dog."
+      "text": "The person who holds a cookpot has a dog."
     },
     {
       "id": "c3",
@@ -128,7 +137,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Drew is with the bird."
+      "text": "Drew has a bird."
     },
     {
       "id": "c4",
@@ -141,7 +150,7 @@
         "attr": "loot",
         "item": "book"
       },
-      "text": "Ada is with the guide."
+      "text": "Ada holds a guide."
     },
     {
       "id": "c5",
@@ -154,7 +163,7 @@
         "attr": "loot",
         "item": "tent"
       },
-      "text": "Ada is next to the tent."
+      "text": "Ada lives next to the person who holds a tent."
     },
     {
       "id": "c6",
@@ -167,7 +176,7 @@
         "attr": "person",
         "item": "drew"
       },
-      "text": "fish is next to the Drew."
+      "text": "The fish owner lives next to Drew."
     },
     {
       "id": "c7",
@@ -180,7 +189,7 @@
         "attr": "loot",
         "item": "pot"
       },
-      "text": "bird is next to the cookpot."
+      "text": "The bird owner lives next to the person who holds a cookpot."
     },
     {
       "id": "c8",
@@ -194,11 +203,11 @@
         "item": "ada"
       },
       "immediate": false,
-      "text": "bird is somewhere left of the Ada."
+      "text": "The bird owner lives somewhere left of Ada."
     }
   ],
   "question": {
-    "text": "Who camped with the horse?",
+    "text": "Who has a horse?",
     "givenAttr": "pet",
     "givenItem": "horse",
     "answerAttr": "person",

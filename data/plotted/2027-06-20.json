@@ -81,12 +81,18 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       }
     ]
   },
@@ -102,7 +108,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "plane is with the fish."
+      "text": "The person who flies a plane has a fish."
     },
     {
       "id": "c2",
@@ -115,7 +121,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "sailboat is with the bird."
+      "text": "The person who sails a sailboat has a bird."
     },
     {
       "id": "c3",
@@ -128,7 +134,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Io is with the cat."
+      "text": "Io has a cat."
     },
     {
       "id": "c4",
@@ -141,7 +147,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Fay is with the bird."
+      "text": "Fay has a bird."
     },
     {
       "id": "c5",
@@ -154,7 +160,7 @@
         "attr": "vehicle",
         "item": "walk"
       },
-      "text": "Io is with the on foot."
+      "text": "Io is on foot."
     },
     {
       "id": "c6",
@@ -167,7 +173,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "truck is next to the Gus."
+      "text": "The person who drives a truck lives next to Gus."
     },
     {
       "id": "c7",
@@ -180,7 +186,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "on foot is next to the Fay."
+      "text": "The person on foot lives next to Fay."
     },
     {
       "id": "c8",
@@ -194,11 +200,11 @@
         "item": "cam"
       },
       "immediate": true,
-      "text": "sailboat is immediately left of the Cam."
+      "text": "The person who sails a sailboat lives directly left of Cam."
     }
   ],
   "question": {
-    "text": "Who lives with the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

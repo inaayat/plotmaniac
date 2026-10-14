@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "score is with the martini."
+      "text": "The person who reads a score drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Ada is with the martini."
+      "text": "Ada drinks a martini."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "open book is next to the martini."
+      "text": "The person who reads an open book lives next to the martini drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Eden is next to the tea."
+      "text": "Eden lives next to the tea drinker."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "scifi"
       },
       "immediate": false,
-      "text": "tea is somewhere left of the sci-fi."
+      "text": "The tea drinker lives somewhere left of the person who reads sci-fi."
     }
   ],
   "question": {
-    "text": "Who brought the sci-fi?",
+    "text": "Who reads sci-fi?",
     "givenAttr": "book",
     "givenItem": "scifi",
     "answerAttr": "person",

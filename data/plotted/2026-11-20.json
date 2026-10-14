@@ -49,12 +49,18 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       }
     ],
     "prize": [
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "fish"
       },
-      "text": "Fay is with the fish."
+      "text": "Fay has a fish."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "prize",
         "item": "cookie"
       },
-      "text": "fish is with the cookie."
+      "text": "The fish owner holds a cookie."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "person",
         "item": "jules"
       },
-      "text": "medal is next to the Jules."
+      "text": "The person who holds a medal lives next to Jules."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "medal is next to the Fay."
+      "text": "The person who holds a medal lives next to Fay."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "rabbit"
       },
       "immediate": false,
-      "text": "Jules is somewhere left of the rabbit."
+      "text": "Jules lives somewhere left of the rabbit owner."
     }
   ],
   "question": {
-    "text": "Who showed the fish?",
+    "text": "Who has a fish?",
     "givenAttr": "pet",
     "givenItem": "fish",
     "answerAttr": "person",

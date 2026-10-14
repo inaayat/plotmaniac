@@ -59,22 +59,34 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "dog",
         "label": "dog",
-        "icon": "dog"
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
       },
       {
         "id": "horse",
         "label": "horse",
-        "icon": "horse"
+        "icon": "horse",
+        "aliases": [
+          "horses"
+        ]
       }
     ],
     "prize": [
@@ -117,7 +129,7 @@
         "attr": "prize",
         "item": "balloon"
       },
-      "text": "horse is with the balloon."
+      "text": "The horse owner holds a balloon."
     },
     {
       "id": "c2",
@@ -130,7 +142,7 @@
         "attr": "pet",
         "item": "dog"
       },
-      "text": "Hana is with the dog."
+      "text": "Hana has a dog."
     },
     {
       "id": "c3",
@@ -143,7 +155,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "Gus is with the cat."
+      "text": "Gus has a cat."
     },
     {
       "id": "c4",
@@ -156,7 +168,7 @@
         "attr": "prize",
         "item": "gift"
       },
-      "text": "Io is with the gift."
+      "text": "Io holds a gift."
     },
     {
       "id": "c5",
@@ -169,7 +181,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "crown is next to the cat."
+      "text": "The person who holds a crown lives next to the cat owner."
     },
     {
       "id": "c6",
@@ -182,7 +194,7 @@
         "attr": "prize",
         "item": "crown"
       },
-      "text": "Bo is next to the crown."
+      "text": "Bo lives next to the person who holds a crown."
     },
     {
       "id": "c7",
@@ -195,7 +207,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "cookie is next to the Gus."
+      "text": "The person who holds a cookie lives next to Gus."
     },
     {
       "id": "c8",
@@ -209,11 +221,11 @@
         "item": "fish"
       },
       "immediate": true,
-      "text": "Ada is immediately left of the fish."
+      "text": "Ada lives directly left of the fish owner."
     }
   ],
   "question": {
-    "text": "Who showed the cat?",
+    "text": "Who has a cat?",
     "givenAttr": "pet",
     "givenItem": "cat",
     "answerAttr": "person",

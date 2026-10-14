@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Cam is with the martini."
+      "text": "Cam drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Jules is with the brandy."
+      "text": "Jules drinks brandy."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "potted plant is with the martini."
+      "text": "The person who grows a potted plant drinks a martini."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "plant",
         "item": "cactus"
       },
-      "text": "martini is next to the cactus."
+      "text": "The martini drinker lives next to the person who grows a cactus."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "brandy"
       },
-      "text": "Cam is next to the brandy."
+      "text": "Cam lives next to the brandy drinker."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "wine"
       },
       "immediate": false,
-      "text": "flower is somewhere left of the wine."
+      "text": "The person who grows a flower lives somewhere left of the wine drinker."
     }
   ],
   "question": {
-    "text": "Who tends the cactus?",
+    "text": "Who grows a cactus?",
     "givenAttr": "plant",
     "givenItem": "cactus",
     "answerAttr": "person",

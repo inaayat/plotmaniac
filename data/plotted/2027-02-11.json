@@ -87,7 +87,7 @@
         "attr": "instrument",
         "item": "note"
       },
-      "text": "Gus is with the melody."
+      "text": "Gus plays the melody."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "instrument",
         "item": "score"
       },
-      "text": "Jules is with the score."
+      "text": "Jules plays the score."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "score is with the wine."
+      "text": "The score player drinks wine."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "score is next to the coffee."
+      "text": "The score player lives next to the coffee drinker."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "melody is next to the coffee."
+      "text": "The melody player lives next to the coffee drinker."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "charts"
       },
       "immediate": false,
-      "text": "wine is somewhere left of the charts."
+      "text": "The wine drinker lives somewhere left of the charts player."
     }
   ],
   "question": {

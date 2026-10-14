@@ -71,7 +71,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "fish",
@@ -81,7 +84,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       },
       {
         "id": "butterfly",
@@ -102,7 +108,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "bicycle is with the rabbit."
+      "text": "The person who rides a bicycle has a rabbit."
     },
     {
       "id": "c2",
@@ -115,7 +121,7 @@
         "attr": "vehicle",
         "item": "moto"
       },
-      "text": "Fay is with the motorcycle."
+      "text": "Fay rides a motorcycle."
     },
     {
       "id": "c3",
@@ -128,7 +134,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "motorcycle is with the butterfly."
+      "text": "The person who rides a motorcycle has a butterfly."
     },
     {
       "id": "c4",
@@ -141,7 +147,7 @@
         "attr": "vehicle",
         "item": "walk"
       },
-      "text": "Io is with the on foot."
+      "text": "Io is on foot."
     },
     {
       "id": "c5",
@@ -154,7 +160,7 @@
         "attr": "person",
         "item": "hana"
       },
-      "text": "butterfly is next to the Hana."
+      "text": "The butterfly owner lives next to Hana."
     },
     {
       "id": "c6",
@@ -167,7 +173,7 @@
         "attr": "vehicle",
         "item": "walk"
       },
-      "text": "fish is next to the on foot."
+      "text": "The fish owner lives next to the person on foot."
     },
     {
       "id": "c7",
@@ -180,7 +186,7 @@
         "attr": "person",
         "item": "fay"
       },
-      "text": "on foot is next to the Fay."
+      "text": "The person on foot lives next to Fay."
     },
     {
       "id": "c8",
@@ -194,11 +200,11 @@
         "item": "plane"
       },
       "immediate": false,
-      "text": "Hana is somewhere left of the plane."
+      "text": "Hana lives somewhere left of the person who flies a plane."
     }
   ],
   "question": {
-    "text": "Who lives with the bird?",
+    "text": "Who has a bird?",
     "givenAttr": "pet",
     "givenItem": "bird",
     "answerAttr": "person",

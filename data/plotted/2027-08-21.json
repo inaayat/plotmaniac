@@ -87,7 +87,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Cam is with the martini."
+      "text": "Cam drinks a martini."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "score is with the wine."
+      "text": "The person who reads a score drinks wine."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "score is next to the martini."
+      "text": "The person who reads a score lives next to the martini drinker."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "person",
         "item": "gus"
       },
-      "text": "score is next to the Gus."
+      "text": "The person who reads a score lives next to Gus."
     },
     {
       "id": "c5",
@@ -140,11 +140,11 @@
         "item": "cam"
       },
       "immediate": false,
-      "text": "notes is somewhere left of the Cam."
+      "text": "The person who reads notes lives somewhere left of Cam."
     }
   ],
   "question": {
-    "text": "Who brought the score?",
+    "text": "Who reads a score?",
     "givenAttr": "book",
     "givenItem": "score",
     "answerAttr": "person",

@@ -87,7 +87,7 @@
         "attr": "gift",
         "item": "tree"
       },
-      "text": "Fay is with the evergreen."
+      "text": "Fay holds an evergreen."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "gift",
         "item": "balloon"
       },
-      "text": "Bo is with the balloon."
+      "text": "Bo holds a balloon."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "treat",
         "item": "tea"
       },
-      "text": "Bo is with the tea."
+      "text": "Bo loves tea."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "treat",
         "item": "cake"
       },
-      "text": "parcel is next to the cake."
+      "text": "The person who holds a parcel lives next to the cake lover."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "treat",
         "item": "cookie"
       },
-      "text": "balloon is next to the cookie."
+      "text": "The person who holds a balloon lives next to the cookie lover."
     },
     {
       "id": "c6",
@@ -153,7 +153,7 @@
         "item": "gift"
       },
       "immediate": false,
-      "text": "cake is somewhere left of the parcel."
+      "text": "The cake lover lives somewhere left of the person who holds a parcel."
     }
   ],
   "question": {

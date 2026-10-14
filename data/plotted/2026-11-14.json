@@ -61,7 +61,10 @@
       {
         "id": "bird",
         "label": "bird",
-        "icon": "bird"
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
       },
       {
         "id": "butterfly",
@@ -71,7 +74,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "truck is with the bird."
+      "text": "The person who drives a truck has a bird."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "vehicle",
         "item": "walk"
       },
-      "text": "Bo is with the on foot."
+      "text": "Bo is on foot."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Fay is with the butterfly."
+      "text": "Fay has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "pet",
         "item": "bird"
       },
-      "text": "Bo is next to the bird."
+      "text": "Bo lives next to the bird owner."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "butterfly"
       },
       "immediate": true,
-      "text": "Bo is immediately left of the butterfly."
+      "text": "Bo lives directly left of the butterfly owner."
     }
   ],
   "question": {
-    "text": "Who lives with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

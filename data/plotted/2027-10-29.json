@@ -61,7 +61,10 @@
       {
         "id": "cat",
         "label": "cat",
-        "icon": "cat"
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
       },
       {
         "id": "butterfly",
@@ -71,7 +74,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +93,7 @@
         "attr": "pet",
         "item": "cat"
       },
-      "text": "plane is with the cat."
+      "text": "The person who flies a plane has a cat."
     },
     {
       "id": "c2",
@@ -100,7 +106,7 @@
         "attr": "vehicle",
         "item": "plane"
       },
-      "text": "Eden is with the plane."
+      "text": "Eden flies a plane."
     },
     {
       "id": "c3",
@@ -113,7 +119,7 @@
         "attr": "vehicle",
         "item": "bike"
       },
-      "text": "Fay is with the bicycle."
+      "text": "Fay rides a bicycle."
     },
     {
       "id": "c4",
@@ -126,7 +132,7 @@
         "attr": "person",
         "item": "cam"
       },
-      "text": "butterfly is next to the Cam."
+      "text": "The butterfly owner lives next to Cam."
     },
     {
       "id": "c5",
@@ -140,11 +146,11 @@
         "item": "plane"
       },
       "immediate": true,
-      "text": "butterfly is immediately left of the plane."
+      "text": "The butterfly owner lives directly left of the person who flies a plane."
     }
   ],
   "question": {
-    "text": "Who lives with the rabbit?",
+    "text": "Who has a rabbit?",
     "givenAttr": "pet",
     "givenItem": "rabbit",
     "answerAttr": "person",

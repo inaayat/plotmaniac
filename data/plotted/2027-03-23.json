@@ -87,7 +87,7 @@
         "attr": "loot",
         "item": "crown"
       },
-      "text": "Gus is with the crown."
+      "text": "Gus holds a crown."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "getaway",
         "item": "bike"
       },
-      "text": "Jules is with the bicycle."
+      "text": "Jules rides a bicycle."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "loot",
         "item": "lockbox"
       },
-      "text": "Cam is with the lock."
+      "text": "Cam holds a lock."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "getaway",
         "item": "plane"
       },
-      "text": "lock is next to the plane."
+      "text": "The person who holds a lock lives next to the person who flies a plane."
     },
     {
       "id": "c5",
@@ -134,7 +134,7 @@
       "attr": "getaway",
       "item": "plane",
       "house": 0,
-      "text": "plane is in house 1."
+      "text": "The person who flies a plane lives in the first house."
     }
   ],
   "question": {

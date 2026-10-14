@@ -102,7 +102,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "field guide is with the martini."
+      "text": "The person who reads a field guide drinks a martini."
     },
     {
       "id": "c2",
@@ -115,7 +115,7 @@
         "attr": "book",
         "item": "diary"
       },
-      "text": "Gus is with the diary."
+      "text": "Gus reads a diary."
     },
     {
       "id": "c3",
@@ -128,7 +128,7 @@
         "attr": "book",
         "item": "map"
       },
-      "text": "Io is with the field guide."
+      "text": "Io reads a field guide."
     },
     {
       "id": "c4",
@@ -141,7 +141,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "score is with the tea."
+      "text": "The person who reads a score drinks tea."
     },
     {
       "id": "c5",
@@ -154,7 +154,7 @@
         "attr": "person",
         "item": "io"
       },
-      "text": "diary is next to the Io."
+      "text": "The person who reads a diary lives next to Io."
     },
     {
       "id": "c6",
@@ -167,7 +167,7 @@
         "attr": "drink",
         "item": "martini"
       },
-      "text": "Eden is next to the martini."
+      "text": "Eden lives next to the martini drinker."
     },
     {
       "id": "c7",
@@ -180,7 +180,7 @@
         "attr": "drink",
         "item": "tea"
       },
-      "text": "Hana is next to the tea."
+      "text": "Hana lives next to the tea drinker."
     },
     {
       "id": "c8",
@@ -194,11 +194,11 @@
         "item": "wine"
       },
       "immediate": false,
-      "text": "diary is somewhere left of the wine."
+      "text": "The person who reads a diary lives somewhere left of the wine drinker."
     }
   ],
   "question": {
-    "text": "Who brought the diary?",
+    "text": "Who reads a diary?",
     "givenAttr": "book",
     "givenItem": "diary",
     "answerAttr": "person",

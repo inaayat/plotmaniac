@@ -71,7 +71,10 @@
       {
         "id": "rabbit",
         "label": "rabbit",
-        "icon": "rabbit"
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
       }
     ]
   },
@@ -87,7 +90,7 @@
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "tent is with the rabbit."
+      "text": "The person who holds a tent has a rabbit."
     },
     {
       "id": "c2",
@@ -100,7 +103,7 @@
         "attr": "loot",
         "item": "leaf"
       },
-      "text": "Drew is with the leaf."
+      "text": "Drew holds a leaf."
     },
     {
       "id": "c3",
@@ -113,7 +116,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Gus is with the butterfly."
+      "text": "Gus has a butterfly."
     },
     {
       "id": "c4",
@@ -126,7 +129,7 @@
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "Drew is next to the butterfly."
+      "text": "Drew lives next to the butterfly owner."
     },
     {
       "id": "c5",
@@ -134,11 +137,11 @@
       "attr": "person",
       "item": "gus",
       "house": 0,
-      "text": "Gus is in house 1."
+      "text": "Gus lives in the first house."
     }
   ],
   "question": {
-    "text": "Who camped with the butterfly?",
+    "text": "Who has a butterfly?",
     "givenAttr": "pet",
     "givenItem": "butterfly",
     "answerAttr": "person",

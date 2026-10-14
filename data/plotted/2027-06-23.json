@@ -87,7 +87,7 @@
         "attr": "food",
         "item": "pot"
       },
-      "text": "Ada is with the stew."
+      "text": "Ada eats stew."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "drink",
         "item": "wine"
       },
-      "text": "Bo is with the wine."
+      "text": "Bo drinks wine."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "beer"
       },
-      "text": "Hana is with the beer."
+      "text": "Hana drinks beer."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "food",
         "item": "burger"
       },
-      "text": "wine is next to the burger."
+      "text": "The wine drinker lives next to the burger lover."
     },
     {
       "id": "c5",
@@ -134,11 +134,11 @@
       "attr": "food",
       "item": "burger",
       "house": 0,
-      "text": "burger is in house 1."
+      "text": "The burger lover lives in the first house."
     }
   ],
   "question": {
-    "text": "Who ordered the carrot?",
+    "text": "Who is the carrot lover?",
     "givenAttr": "food",
     "givenItem": "carrot",
     "answerAttr": "person",

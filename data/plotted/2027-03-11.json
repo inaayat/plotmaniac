@@ -87,7 +87,7 @@
         "attr": "plant",
         "item": "tulip"
       },
-      "text": "Jules is with the tulip."
+      "text": "Jules grows a tulip."
     },
     {
       "id": "c2",
@@ -100,7 +100,7 @@
         "attr": "plant",
         "item": "tree"
       },
-      "text": "Ada is with the tree."
+      "text": "Ada grows a tree."
     },
     {
       "id": "c3",
@@ -113,7 +113,7 @@
         "attr": "drink",
         "item": "coffee"
       },
-      "text": "Ada is with the coffee."
+      "text": "Ada drinks coffee."
     },
     {
       "id": "c4",
@@ -126,7 +126,7 @@
         "attr": "drink",
         "item": "orange"
       },
-      "text": "tulip is next to the orange juice."
+      "text": "The person who grows a tulip lives next to the orange juice drinker."
     },
     {
       "id": "c5",
@@ -139,7 +139,7 @@
         "attr": "plant",
         "item": "tree"
       },
-      "text": "beer is next to the tree."
+      "text": "The beer drinker lives next to the person who grows a tree."
     },
     {
       "id": "c6",
@@ -153,11 +153,11 @@
         "item": "orange"
       },
       "immediate": false,
-      "text": "tulip is somewhere left of the orange juice."
+      "text": "The person who grows a tulip lives somewhere left of the orange juice drinker."
     }
   ],
   "question": {
-    "text": "Who tends the tulip?",
+    "text": "Who grows a tulip?",
     "givenAttr": "plant",
     "givenItem": "tulip",
     "answerAttr": "person",
