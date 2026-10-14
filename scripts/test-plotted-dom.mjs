@@ -192,6 +192,28 @@ assert.ok(play.querySelector(".puzzle-col"), "puzzle column on the right");
 assert.equal(play.querySelector(".puzzle-col")?.firstElementChild?.className, "hint-block", "clues must sit above the grid");
 assert.ok(play.querySelector(".puzzle-col .hint-block + .word-bank"), "word bank follows clues");
 assert.ok(play.querySelector(".puzzle-col .word-bank + .grid-wrap"), "grid follows word bank");
+const bankRow = document.querySelector(".word-bank-row");
+const bankCat = document.querySelector(".word-bank-cat");
+const bankList = document.querySelector(".word-bank-list");
+assert.ok(bankRow && bankCat && bankList, "word bank has label + words");
+const bankRowStyle = window.getComputedStyle(bankRow);
+const bankCatStyle = window.getComputedStyle(bankCat);
+const bankListStyle = window.getComputedStyle(bankList);
+assert.equal(bankRowStyle.display, "grid", "label column uses a two-column grid");
+assert.match(
+  bankRowStyle.gridTemplateColumns || "",
+  /max-content|1fr|\d+(\.\d+)?px\s+\d+(\.\d+)?px/,
+  `label column is auto-width, got ${bankRowStyle.gridTemplateColumns}`,
+);
+assert.match(
+  bankRowStyle.columnGap || bankRowStyle.gap || "",
+  /0\.75em|\d+(\.\d+)?px/,
+  `word-bank gap should be ~0.75em, got ${bankRowStyle.columnGap || bankRowStyle.gap}`,
+);
+assert.equal(bankCatStyle.whiteSpace, "nowrap");
+assert.notEqual(bankCatStyle.flexBasis, "4.6rem");
+assert.equal(bankListStyle.flexWrap, "wrap");
+assert.equal(bankListStyle.justifyContent, "flex-start");
 assert.equal(document.querySelectorAll("datalist").length, 0, "no native datalist");
 assert.equal(document.querySelectorAll(".slot-suggest").length, 0, "no suggestion dropdown");
 assert.equal(document.querySelectorAll("textarea.notes").length, 1, "one scratchpad");

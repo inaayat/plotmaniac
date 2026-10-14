@@ -401,14 +401,15 @@ h1 {
 }
 
 .word-bank-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 0.75em;
   align-items: baseline;
-  gap: 8px;
   min-width: 0;
 }
 
 .word-bank-cat {
-  flex: 0 0 4.6rem;
+  white-space: nowrap;
   font-size: var(--clue-size, 13px);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -420,6 +421,7 @@ h1 {
 .word-bank-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 2px 10px;
   min-width: 0;
 }
@@ -1110,7 +1112,7 @@ h1 {
   }
 
   .board.is-typing-compact .word-bank-row {
-    gap: 4px;
+    column-gap: 0.75em;
   }
 
   .board.is-typing-compact .word-bank-list {
