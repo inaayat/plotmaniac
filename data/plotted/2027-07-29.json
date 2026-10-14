@@ -52,8 +52,8 @@
         "icon": "sailboat"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ],
@@ -98,9 +98,9 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Io is with the car."
+      "text": "Io is with the truck."
     },
     {
       "id": "c3",
@@ -166,7 +166,7 @@
   "solution": [
     {
       "person": "io",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "butterfly"
     },
     {

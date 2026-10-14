@@ -47,8 +47,8 @@
         "icon": "bicycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -111,9 +111,9 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Eden is with the car."
+      "text": "Eden is with the truck."
     },
     {
       "id": "c4",
@@ -176,7 +176,7 @@
     },
     {
       "person": "eden",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "butterfly"
     }
   ],

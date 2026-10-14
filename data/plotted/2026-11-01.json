@@ -57,8 +57,8 @@
         "icon": "sailboat"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -135,13 +135,13 @@
       "type": "same",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "pet",
         "item": "butterfly"
       },
-      "text": "car is with the butterfly."
+      "text": "truck is with the butterfly."
     },
     {
       "id": "c5",
@@ -207,7 +207,7 @@
   "solution": [
     {
       "person": "fay",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "butterfly"
     },
     {

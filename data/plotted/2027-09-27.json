@@ -47,9 +47,9 @@
         "icon": "magnifying-glass"
       },
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       },
       {
         "id": "open",
@@ -142,7 +142,7 @@
   "solution": [
     {
       "person": "fay",
-      "book": "novel",
+      "book": "scifi",
       "drink": "beer"
     },
     {

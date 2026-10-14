@@ -69,8 +69,8 @@
         "icon": "bicycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ]
@@ -98,9 +98,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Ada is with the car."
+      "text": "Ada is with the truck."
     },
     {
       "id": "c3",
@@ -124,9 +124,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "key is next to the car."
+      "text": "key is next to the truck."
     },
     {
       "id": "c5",
@@ -153,7 +153,7 @@
     {
       "person": "ada",
       "loot": "coins",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "drew",

@@ -31,7 +31,10 @@ import {
   pruneClues,
   EINSTEIN_BANNED_VOCAB,
   GENERIC_HAS_ATTRS,
+  validateClueStyle,
   validateEinsteinStyle,
+  CLUE_STYLE_BANS,
+  CLUE_STYLE_TEMPLATES,
 } from "../plotted-engine.js";
 import { solveByHuman, solvePuzzleByHuman } from "../plotted-human-solver.js";
 
@@ -312,7 +315,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v24/);
+assert.match(sw, /plotted-v25/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -495,6 +498,8 @@ assert.match(plan, /Solved in/);
 assert.match(plan, /All clues are hints/);
 assert.match(plan, /Einstein/);
 assert.match(plan, /validateEinsteinStyle/);
+assert.match(plan, /validateClueStyle/);
+assert.match(plan, /CLUE_STYLE_TEMPLATES/);
 assert.match(plan, /types the exact word/);
 assert.match(plan, /How to play/);
 assert.match(plan, /plain bold/);
@@ -594,7 +599,7 @@ const catalog = {
 };
 assert.equal(
   clueText({ type: "next_to", left: { attr: "prize", item: "balloon" }, right: { attr: "pet", item: "fish" } }, catalog, "pet-show"),
-  "The person who keeps a balloon lives next to the one who keeps fish.",
+  "The person who keeps a balloon lives next to the person who keeps fish.",
 );
 assert.equal(
   clueText({ type: "same", left: { attr: "person", item: "bo" }, right: { attr: "pet", item: "horse" } }, catalog, "pet-show"),
@@ -602,7 +607,7 @@ assert.equal(
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show"),
-  "The person who keeps a trophy lives in house 1.",
+  "The person who keeps a trophy lives in the first house.",
 );
 assert.equal(
   clueText({ type: "at", attr: "prize", item: "trophy", house: 0 }, catalog, "pet-show", 3),
@@ -622,11 +627,11 @@ assert.equal(
     catalog,
     "pet-show",
   ),
-  "The cat owner lives directly left of Hana.",
+  "The person who keeps a cat lives directly left of Hana.",
 );
 assert.equal(
   clueText({ type: "either_house", attr: "prize", item: "trophy", houses: [0, 2] }, catalog, "pet-show"),
-  "The person who keeps a trophy lives in either house 1 or house 3.",
+  "The person who keeps a trophy lives in either the first house or the third house.",
 );
 const pouringCatalog = {
   person: [
@@ -644,7 +649,7 @@ const pouringCatalog = {
 };
 assert.equal(
   clueText({ type: "same", left: { attr: "pet", item: "dog" }, right: { attr: "drink", item: "wine" } }, pouringCatalog, "dinner-party"),
-  "The dog owner drinks wine.",
+  "The person who keeps a dog drinks wine.",
 );
 assert.equal(
   clueText(
@@ -656,7 +661,7 @@ assert.equal(
 );
 assert.equal(
   clueText({ type: "at", attr: "drink", item: "wine", house: 0 }, pouringCatalog, "dinner-party"),
-  "The wine drinker lives in house 1.",
+  "The wine drinker lives in the first house.",
 );
 assert.equal(
   clueText({ type: "same", left: { attr: "person", item: "eden" }, right: { attr: "drink", item: "wine" } }, pouringCatalog, "dinner-party"),
@@ -683,7 +688,7 @@ assert.equal(
     { instrument: [{ id: "piano", label: "piano" }] },
     "music-night",
   ),
-  "The pianist lives in house 1.",
+  "The pianist lives in the first house.",
 );
 assert.equal(
   clueText(
@@ -716,7 +721,7 @@ assert.equal(
     { food: [{ id: "pizza", label: "pizza" }] },
     "brunch",
   ),
-  "The pizza lover lives in house 1.",
+  "The pizza lover lives in the first house.",
 );
 assert.equal(
   clueText(
@@ -769,9 +774,13 @@ assert.equal(
 );
 assert.equal(livesSubjectIsBareObject("balloon lives next to fish", catalog), true);
 assert.equal(housePlaceName(0, 5), "the first house");
+assert.equal(housePlaceName(1, 5), "the second house");
 assert.equal(housePlaceName(2, 5), "the center house");
+assert.equal(housePlaceName(3, 5), "the fourth house");
 assert.equal(housePlaceName(4, 5), "the last house");
-assert.equal(housePlaceName(1, 4), "house 2");
+assert.equal(housePlaceName(1, 4), "the second house");
+assert.equal(housePlaceName(2, 4), "the third house");
+assert.doesNotMatch(housePlaceName(1, 4), /house \d+/);
 assert.equal(
   clueText(
     { type: "left_of", immediate: true, left: { attr: "color", item: "green" }, right: { attr: "color", item: "white" } },
@@ -782,14 +791,69 @@ assert.equal(
 );
 assert.equal(
   clueText(
-    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "vehicle", item: "car" } },
+    { type: "same", left: { attr: "person", item: "bo" }, right: { attr: "vehicle", item: "truck" } },
     {
       person: [{ id: "bo", label: "Bo" }],
-      vehicle: [{ id: "car", label: "car" }],
+      vehicle: [{ id: "truck", label: "truck" }],
     },
     "neighborhood",
   ),
-  "Bo drives a car.",
+  "Bo drives a truck.",
+);
+assert.equal(
+  clueText(
+    { type: "at", attr: "food", item: "tacos", house: 0 },
+    { food: [{ id: "tacos", label: "tacos" }] },
+    "brunch",
+    3,
+  ),
+  "The taco lover lives in the first house.",
+);
+assert.equal(
+  clueText(
+    { type: "at", attr: "color", item: "blue", house: 0 },
+    { color: [{ id: "blue", label: "blue" }] },
+    "pet-show",
+    3,
+  ),
+  "The blue house is the first house.",
+);
+assert.equal(
+  clueText(
+    { type: "either_house", attr: "drink", item: "tea", houses: [1, 4] },
+    { drink: [{ id: "tea", label: "tea" }] },
+    "dinner-party",
+    5,
+  ),
+  "The tea drinker lives in either the second house or the last house.",
+);
+assert.equal(Object.keys(CLUE_STYLE_TEMPLATES).sort().join(","), "at,either_house,left_of,next_to,not_at,not_next_to,not_same,same");
+assert.ok(CLUE_STYLE_BANS.some(([re]) => re.test("tacos lover")));
+assert.ok(CLUE_STYLE_BANS.some(([re]) => re.test("novels")));
+assert.equal(
+  validateClueStyle({
+    theme: { id: "neighborhood" },
+    houseCount: 3,
+    attributes: [{ id: "person" }, { id: "vehicle" }, { id: "pet" }],
+    items: {
+      person: [{ id: "ada", label: "Ada" }],
+      vehicle: [{ id: "car", label: "car" }],
+      pet: [{ id: "dog", label: "dogs" }],
+    },
+    clues: [],
+  }).ok,
+  false,
+);
+assert.doesNotMatch(
+  clueText(
+    { type: "same", left: { attr: "food", item: "tacos" }, right: { attr: "drink", item: "wine" } },
+    {
+      food: [{ id: "tacos", label: "tacos" }],
+      drink: [{ id: "wine", label: "wine" }],
+    },
+    "brunch",
+  ),
+  /tacos lover/,
 );
 assert.equal(validateEinsteinStyle(einsteinPuzzle()).ok, true, JSON.stringify(validateEinsteinStyle(einsteinPuzzle()).failures));
 assert.equal(
@@ -799,7 +863,7 @@ assert.equal(
   }).ok,
   false,
 );
-assert.equal(validateEinsteinStyle({ ...generated, setup: "Neighbors packed a bag." }).ok, false);
+assert.equal(validateEinsteinStyle({ ...einsteinPuzzle(), setup: "Neighbors packed a bag." }).ok, false);
 assert.equal(
   validateEinsteinStyle({
     setup: "There are three houses in a row. Each house has a different owner and a different instrument.",

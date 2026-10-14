@@ -47,9 +47,9 @@
         "icon": "magnifying-glass"
       },
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       },
       {
         "id": "score",
@@ -144,9 +144,9 @@
     }
   ],
   "question": {
-    "text": "Who brought the novel?",
+    "text": "Who brought the sci-fi?",
     "givenAttr": "book",
-    "givenItem": "novel",
+    "givenItem": "scifi",
     "answerAttr": "person",
     "answerItem": "hana"
   },
@@ -163,7 +163,7 @@
     },
     {
       "person": "hana",
-      "book": "novel",
+      "book": "scifi",
       "drink": "martini"
     }
   ],

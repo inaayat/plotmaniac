@@ -101,8 +101,8 @@
         "icon": "car"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -329,7 +329,7 @@
     {
       "person": "io",
       "job": "chef",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "fish"
     },
     {

@@ -42,8 +42,8 @@
     ],
     "vehicle": [
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -111,9 +111,9 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Bo is with the car."
+      "text": "Bo is with the truck."
     },
     {
       "id": "c4",
@@ -124,9 +124,9 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Jules is next to the car."
+      "text": "Jules is next to the truck."
     },
     {
       "id": "c5",
@@ -163,7 +163,7 @@
     },
     {
       "person": "bo",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "butterfly"
     }
   ],

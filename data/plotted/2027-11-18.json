@@ -64,8 +64,8 @@
         "icon": "person-simple-walk"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -159,7 +159,7 @@
     {
       "person": "ada",
       "loot": "coins",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "drew",

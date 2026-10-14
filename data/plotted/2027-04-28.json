@@ -47,8 +47,8 @@
         "icon": "sailboat"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -147,7 +147,7 @@
   "solution": [
     {
       "person": "fay",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "fish"
     },
     {

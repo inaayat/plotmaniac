@@ -62,8 +62,8 @@
         "icon": "airplane"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ],
@@ -161,13 +161,13 @@
       "type": "next_to",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "person",
         "item": "gus"
       },
-      "text": "car is next to the Gus."
+      "text": "truck is next to the Gus."
     },
     {
       "id": "c7",
@@ -217,7 +217,7 @@
     },
     {
       "person": "cam",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "butterfly"
     },
     {

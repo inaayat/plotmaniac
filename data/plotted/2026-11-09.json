@@ -69,8 +69,8 @@
         "icon": "person-simple-walk"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ]
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Eden is with the car."
+      "text": "Eden is with the truck."
     },
     {
       "id": "c2",
@@ -148,7 +148,7 @@
     {
       "person": "eden",
       "loot": "coins",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "io",

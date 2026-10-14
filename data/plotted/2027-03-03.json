@@ -42,9 +42,9 @@
     ],
     "book": [
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       },
       {
         "id": "score",
@@ -147,7 +147,7 @@
   "solution": [
     {
       "person": "fay",
-      "book": "novel",
+      "book": "scifi",
       "drink": "martini"
     },
     {

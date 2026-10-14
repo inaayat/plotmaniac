@@ -52,8 +52,8 @@
         "icon": "motorcycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ],
@@ -111,30 +111,30 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Io is with the car."
+      "text": "Io is with the truck."
     },
     {
       "id": "c4",
       "type": "next_to",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "pet",
         "item": "rabbit"
       },
-      "text": "car is next to the rabbit."
+      "text": "truck is next to the rabbit."
     },
     {
       "id": "c5",
       "type": "at",
       "attr": "vehicle",
-      "item": "car",
+      "item": "truck",
       "house": 0,
-      "text": "car is in house 1."
+      "text": "truck is in house 1."
     }
   ],
   "question": {
@@ -147,7 +147,7 @@
   "solution": [
     {
       "person": "io",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "butterfly"
     },
     {

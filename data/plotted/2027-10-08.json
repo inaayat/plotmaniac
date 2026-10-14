@@ -47,9 +47,9 @@
         "icon": "note-pencil"
       },
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       },
       {
         "id": "diary",
@@ -163,7 +163,7 @@
     },
     {
       "person": "jules",
-      "book": "novel",
+      "book": "scifi",
       "drink": "wine"
     }
   ],

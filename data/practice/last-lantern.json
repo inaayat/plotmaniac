@@ -45,9 +45,9 @@
     ],
     "plant": [
       {
-        "id": "trees",
-        "label": "trees",
-        "icon": "tree"
+        "id": "tulips",
+        "label": "tulips",
+        "icon": "flower-tulip"
       },
       {
         "id": "roses",
@@ -101,9 +101,9 @@
       },
       "right": {
         "attr": "plant",
-        "item": "trees"
+        "item": "tulips"
       },
-      "text": "Jules grows trees."
+      "text": "Jules grows tulips."
     },
     {
       "id": "c3",
@@ -150,7 +150,7 @@
   "solution": [
     {
       "person": "jules",
-      "plant": "trees",
+      "plant": "tulips",
       "drink": "coffee"
     },
     {

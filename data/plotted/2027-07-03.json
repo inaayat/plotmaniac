@@ -64,8 +64,8 @@
         "icon": "airplane"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -177,7 +177,7 @@
     {
       "person": "jules",
       "loot": "diamond",
-      "getaway": "car"
+      "getaway": "truck"
     }
   ],
   "difficulty": {

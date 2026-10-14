@@ -79,8 +79,8 @@
         "icon": "airplane"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -126,9 +126,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "coins is with the car."
+      "text": "coins is with the truck."
     },
     {
       "id": "c4",
@@ -178,9 +178,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "key is next to the car."
+      "text": "key is next to the truck."
     },
     {
       "id": "c8",
@@ -191,10 +191,10 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
       "immediate": false,
-      "text": "key is somewhere left of the car."
+      "text": "key is somewhere left of the truck."
     }
   ],
   "question": {
@@ -213,7 +213,7 @@
     {
       "person": "bo",
       "loot": "coins",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "fay",

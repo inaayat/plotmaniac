@@ -64,8 +64,8 @@
         "icon": "airplane"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Ada is with the car."
+      "text": "Ada is with the truck."
     },
     {
       "id": "c2",
@@ -111,9 +111,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "diamond is with the car."
+      "text": "diamond is with the truck."
     },
     {
       "id": "c4",
@@ -148,7 +148,7 @@
     {
       "person": "ada",
       "loot": "diamond",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "cam",

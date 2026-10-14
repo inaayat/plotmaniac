@@ -47,8 +47,8 @@
         "icon": "motorcycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -157,7 +157,7 @@
     },
     {
       "person": "bo",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "dog"
     }
   ],

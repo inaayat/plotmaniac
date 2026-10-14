@@ -47,8 +47,8 @@
         "icon": "airplane"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -94,13 +94,13 @@
       "type": "same",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "pet",
         "item": "cat"
       },
-      "text": "car is with the cat."
+      "text": "truck is with the cat."
     },
     {
       "id": "c3",
@@ -120,21 +120,21 @@
       "type": "next_to",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "person",
         "item": "bo"
       },
-      "text": "car is next to the Bo."
+      "text": "truck is next to the Bo."
     },
     {
       "id": "c5",
       "type": "at",
       "attr": "vehicle",
-      "item": "car",
+      "item": "truck",
       "house": 0,
-      "text": "car is in house 1."
+      "text": "truck is in house 1."
     }
   ],
   "question": {
@@ -147,7 +147,7 @@
   "solution": [
     {
       "person": "io",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "cat"
     },
     {

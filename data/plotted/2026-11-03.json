@@ -59,8 +59,8 @@
     ],
     "getaway": [
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Fay is with the car."
+      "text": "Fay is with the truck."
     },
     {
       "id": "c2",
@@ -124,9 +124,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "coins is with the car."
+      "text": "coins is with the truck."
     },
     {
       "id": "c5",
@@ -166,7 +166,7 @@
     {
       "person": "fay",
       "loot": "coins",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "cam",

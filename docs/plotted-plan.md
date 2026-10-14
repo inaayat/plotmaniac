@@ -36,7 +36,7 @@ Each house has one **text input** per attribute. The player types the exact word
 
 ### Generated clue voice
 
-Generated clues follow Einstein’s 15: person-first subjects, approved noun/verb templates per category (pets **keep**, drinks **drink**, colors **live in the red house**, rides **drive**, and so on), house places as **the first/center/last house** or **house N**, and adjacency as **lives next to** / **lives directly left of**. Objects never “live.” Each clue starts with a capital letter. `validateEinsteinStyle` is a required publish check with uniqueness and `solvedByHuman`. Einstein day keeps the classic wording verbatim.
+Generated clues follow Einstein’s 15: person-first subjects, a closed set of `CLUE_STYLE_TEMPLATES` per relation (same, next-to, directly-left, somewhere-left, position, either-or, not-next-to, not-same), and canonical subjects/verbs per category (pets **keep**, drinks **drink**, colors **the owner of the X house** or **the X house** on position clues, vehicles **drive/ride**, food **the X lover** in the singular). House places are always **the first/second/center/fourth/last house**, never **house N**. Objects never “live.” Each clue starts with a capital letter and one ending period. `validateClueStyle` (also exposed as `validateEinsteinStyle`) is a required publish check with uniqueness and `solvedByHuman`. Einstein day keeps the classic wording verbatim.
 
 ### Share result (plain text)
 

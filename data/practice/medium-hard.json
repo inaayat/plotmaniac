@@ -141,7 +141,7 @@
     }
   ],
   "question": {
-    "text": "Who is the tacos lover?",
+    "text": "Who is the taco lover?",
     "givenAttr": "food",
     "givenItem": "tacos",
     "answerAttr": "person",

@@ -42,9 +42,9 @@
     ],
     "book": [
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       },
       {
         "id": "open",
@@ -94,13 +94,13 @@
       "type": "same",
       "left": {
         "attr": "book",
-        "item": "novel"
+        "item": "scifi"
       },
       "right": {
         "attr": "drink",
         "item": "tea"
       },
-      "text": "novel is with the tea."
+      "text": "sci-fi is with the tea."
     },
     {
       "id": "c3",
@@ -138,9 +138,9 @@
     }
   ],
   "question": {
-    "text": "Who brought the novel?",
+    "text": "Who brought the sci-fi?",
     "givenAttr": "book",
-    "givenItem": "novel",
+    "givenItem": "scifi",
     "answerAttr": "person",
     "answerItem": "jules"
   },
@@ -152,7 +152,7 @@
     },
     {
       "person": "jules",
-      "book": "novel",
+      "book": "scifi",
       "drink": "tea"
     },
     {

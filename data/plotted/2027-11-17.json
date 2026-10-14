@@ -42,8 +42,8 @@
     ],
     "vehicle": [
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -81,13 +81,13 @@
       "type": "same",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "pet",
         "item": "cat"
       },
-      "text": "car is with the cat."
+      "text": "truck is with the cat."
     },
     {
       "id": "c2",
@@ -157,7 +157,7 @@
     },
     {
       "person": "eden",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "cat"
     }
   ],

@@ -52,9 +52,9 @@
         "icon": "magnifying-glass"
       },
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       }
     ],
     "drink": [
@@ -98,9 +98,9 @@
       },
       "right": {
         "attr": "book",
-        "item": "novel"
+        "item": "scifi"
       },
-      "text": "Bo is with the novel."
+      "text": "Bo is with the sci-fi."
     },
     {
       "id": "c3",
@@ -132,22 +132,22 @@
       "id": "c5",
       "type": "at",
       "attr": "book",
-      "item": "novel",
+      "item": "scifi",
       "house": 0,
-      "text": "novel is in house 1."
+      "text": "sci-fi is in house 1."
     }
   ],
   "question": {
-    "text": "Who brought the novel?",
+    "text": "Who brought the sci-fi?",
     "givenAttr": "book",
-    "givenItem": "novel",
+    "givenItem": "scifi",
     "answerAttr": "person",
     "answerItem": "bo"
   },
   "solution": [
     {
       "person": "bo",
-      "book": "novel",
+      "book": "scifi",
       "drink": "orange"
     },
     {

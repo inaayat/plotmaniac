@@ -69,8 +69,8 @@
     ],
     "getaway": [
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -139,9 +139,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Drew is with the car."
+      "text": "Drew is with the truck."
     },
     {
       "id": "c5",
@@ -161,13 +161,13 @@
       "type": "next_to",
       "left": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "loot",
         "item": "coins"
       },
-      "text": "car is next to the coins."
+      "text": "truck is next to the coins."
     },
     {
       "id": "c7",
@@ -213,7 +213,7 @@
     {
       "person": "drew",
       "loot": "crown",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "cam",

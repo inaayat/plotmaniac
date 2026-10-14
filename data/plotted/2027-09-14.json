@@ -52,9 +52,9 @@
         "icon": "music-notes"
       },
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       }
     ],
     "drink": [
@@ -98,9 +98,9 @@
       },
       "right": {
         "attr": "book",
-        "item": "novel"
+        "item": "scifi"
       },
-      "text": "Gus is with the novel."
+      "text": "Gus is with the sci-fi."
     },
     {
       "id": "c3",
@@ -138,9 +138,9 @@
     }
   ],
   "question": {
-    "text": "Who brought the novel?",
+    "text": "Who brought the sci-fi?",
     "givenAttr": "book",
-    "givenItem": "novel",
+    "givenItem": "scifi",
     "answerAttr": "person",
     "answerItem": "gus"
   },
@@ -152,7 +152,7 @@
     },
     {
       "person": "gus",
-      "book": "novel",
+      "book": "scifi",
       "drink": "martini"
     },
     {

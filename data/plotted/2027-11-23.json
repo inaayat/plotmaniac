@@ -69,8 +69,8 @@
         "icon": "motorcycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ]
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Eden is with the car."
+      "text": "Eden is with the truck."
     },
     {
       "id": "c2",
@@ -137,9 +137,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "crown is next to the car."
+      "text": "crown is next to the truck."
     },
     {
       "id": "c6",
@@ -166,7 +166,7 @@
     {
       "person": "eden",
       "loot": "key",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "ada",

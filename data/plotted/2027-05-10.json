@@ -64,8 +64,8 @@
         "icon": "bicycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "crown is with the car."
+      "text": "crown is with the truck."
     },
     {
       "id": "c2",
@@ -156,7 +156,7 @@
     {
       "person": "gus",
       "loot": "crown",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "bo",

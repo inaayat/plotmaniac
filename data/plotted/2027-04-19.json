@@ -69,8 +69,8 @@
         "icon": "person-simple-walk"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ]
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "lock is with the car."
+      "text": "lock is with the truck."
     },
     {
       "id": "c2",
@@ -127,9 +127,9 @@
       "id": "c5",
       "type": "at",
       "attr": "getaway",
-      "item": "car",
+      "item": "truck",
       "house": 0,
-      "text": "car is in house 1."
+      "text": "truck is in house 1."
     }
   ],
   "question": {
@@ -143,7 +143,7 @@
     {
       "person": "fay",
       "loot": "lockbox",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "jules",

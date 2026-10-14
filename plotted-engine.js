@@ -582,14 +582,17 @@ function samePhrase(catalog, roles, left, right) {
 
 const HOUSE_COUNT_WORDS = ["one", "two", "three", "four", "five"];
 
-/** Einstein: first / center / last house, otherwise “house N”. */
+const HOUSE_ORDINALS = ["first", "second", "third", "fourth", "fifth"];
+
+/** Always an ordinal phrase: the first/second/center/fourth/last house. */
 export function housePlaceName(house, houseCount) {
   const n = Number(houseCount) || 0;
   const index = Number(house);
-  if (n > 0 && index === 0) return "the first house";
+  if (index === 0) return "the first house";
   if (n > 1 && index === n - 1) return "the last house";
   if (n >= 3 && n % 2 === 1 && index === Math.floor(n / 2)) return "the center house";
-  return `house ${index + 1}`;
+  const ordinal = HOUSE_ORDINALS[index] || HOUSE_ORDINALS[HOUSE_ORDINALS.length - 1];
+  return `the ${ordinal} house`;
 }
 
 function joinEnglish(items) {
@@ -608,15 +611,15 @@ const SETUP_NOUNS = {
   beverage: "beverage",
   cigar: "cigar",
   loot: "possession",
-  getaway: "ride",
+  getaway: "vehicle",
   prize: "prize",
   plant: "plant",
-  vehicle: "ride",
+  vehicle: "vehicle",
   instrument: "instrument",
   book: "book",
   treat: "treat",
   gift: "gift",
-  food: "meal",
+  food: "food",
   job: "job",
   hobby: "hobby",
   city: "city",
@@ -626,21 +629,23 @@ export function defaultPuzzleSetup(puzzle) {
   const n = Number(puzzle?.houseCount) || 3;
   const word = HOUSE_COUNT_WORDS[n - 1] || String(n);
   const ids = (puzzle?.attributes || []).map((attr) => attr.id || attr);
-  const rest = ids
-    .filter((id) => id !== "person" && id !== "nationality" && id !== "color")
-    .map((id) => SETUP_NOUNS[id] || id);
-  if (ids.includes("color")) {
-    const extra = rest.length
-      ? `. Each house has a different owner and a different ${joinEnglish(rest)}`
-      : ". Each house has a different owner";
-    return `There are ${word} houses in a row, each a different color${extra}.`;
+  const nouns = [];
+  if (ids.includes("color")) nouns.push("color");
+  if (ids.includes("person") || ids.includes("nationality") || !ids.length) nouns.push("owner");
+  for (const id of ids) {
+    if (id === "person" || id === "nationality" || id === "color") continue;
+    nouns.push(SETUP_NOUNS[id] || id);
   }
-  return `There are ${word} houses in a row. Each house has a different ${joinEnglish(["owner", ...rest])}.`;
+  return `There are ${word} houses in a row. Each house has a different ${joinEnglish(nouns)}.`;
 }
 
 export function puzzleSetup(puzzle) {
-  if (puzzle?.setup) return puzzle.setup;
+  if (puzzle?.theme?.id === "einstein" && puzzle?.setup) return puzzle.setup;
   return defaultPuzzleSetup(puzzle);
+}
+
+function colorHouseName(catalog, itemId) {
+  return `the ${labelOf(catalog, "color", itemId)} house`;
 }
 
 export function clueText(clue, catalog, themeId = "", houseCount = 0) {
@@ -648,18 +653,29 @@ export function clueText(clue, catalog, themeId = "", houseCount = 0) {
   const who = (attr, item) => occupantPhrase(catalog, roles, attr, item);
   const beside = (ref) => neighborPhrase(catalog, roles, ref);
   const place = (house) => housePlaceName(house, houseCount);
-  const houseNo = (house) => house + 1;
   let text = "";
   switch (clue.type) {
     case "at":
-      text = `${who(clue.attr, clue.item)} lives in ${place(clue.house)}.`;
+      text =
+        clue.attr === "color"
+          ? `${capitalizeClue(colorHouseName(catalog, clue.item))} is ${place(clue.house)}.`
+          : `${who(clue.attr, clue.item)} lives in ${place(clue.house)}.`;
       break;
     case "not_at":
-      text = `${who(clue.attr, clue.item)} does not live in ${place(clue.house)}.`;
+      text =
+        clue.attr === "color"
+          ? `${capitalizeClue(colorHouseName(catalog, clue.item))} is not ${place(clue.house)}.`
+          : `${who(clue.attr, clue.item)} does not live in ${place(clue.house)}.`;
       break;
-    case "either_house":
-      text = `${who(clue.attr, clue.item)} lives in either house ${houseNo(clue.houses[0])} or house ${houseNo(clue.houses[1])}.`;
+    case "either_house": {
+      const leftPlace = place(clue.houses[0]);
+      const rightPlace = place(clue.houses[1]);
+      text =
+        clue.attr === "color"
+          ? `${capitalizeClue(colorHouseName(catalog, clue.item))} is either ${leftPlace} or ${rightPlace}.`
+          : `${who(clue.attr, clue.item)} lives in either ${leftPlace} or ${rightPlace}.`;
       break;
+    }
     case "same":
       text = `${samePhrase(catalog, roles, clue.left, clue.right)}.`;
       break;
@@ -668,11 +684,9 @@ export function clueText(clue, catalog, themeId = "", houseCount = 0) {
       break;
     case "left_of":
       if (clue.left?.attr === "color" && clue.right?.attr === "color") {
-        const leftColor = labelOf(catalog, "color", clue.left.item);
-        const rightColor = labelOf(catalog, "color", clue.right.item);
         text = clue.immediate
-          ? `The ${leftColor} house is directly left of the ${rightColor} house.`
-          : `The ${leftColor} house is somewhere left of the ${rightColor} house.`;
+          ? `${capitalizeClue(colorHouseName(catalog, clue.left.item))} is directly left of ${colorHouseName(catalog, clue.right.item)}.`
+          : `${capitalizeClue(colorHouseName(catalog, clue.left.item))} is somewhere left of ${colorHouseName(catalog, clue.right.item)}.`;
       } else {
         text = clue.immediate
           ? `${who(clue.left.attr, clue.left.item)} lives directly left of ${beside(clue.right)}.`
@@ -681,6 +695,9 @@ export function clueText(clue, catalog, themeId = "", houseCount = 0) {
       break;
     case "not_next_to":
       text = `${who(clue.left.attr, clue.left.item)} does not live next to ${beside(clue.right)}.`;
+      break;
+    case "not_same":
+      text = `${who(clue.left.attr, clue.left.item)} does not live in the same house as ${beside(clue.right)}.`;
       break;
     default:
       return "";
@@ -707,7 +724,18 @@ const EINSTEIN_BAD_PATTERNS = [
   [/\btends the\b/i, "tends the"],
 ];
 
-/** Odd item words. Skipped when a dated catalog still stores that label. */
+/** Always banned in rendered clues and in practice/new catalogs. */
+export const CLUE_STYLE_BANS = [
+  [/\bnovels?\b/i, "novels"],
+  [/\bhistory\b/i, "history"],
+  [/\btravelogues\b/i, "travelogues"],
+  [/\btrees\b/i, "trees"],
+  [/\bcar\b/i, "car"],
+  [/\btacos lover\b/i, "tacos lover"],
+  [/\bhas the\b/i, "has the"],
+];
+
+/** Odd item words. Dated catalogs may still store these labels. */
 export const EINSTEIN_BANNED_VOCAB = [
   [/\bcharts\b/i, "charts"],
   [/\bscore\b/i, "score"],
@@ -721,8 +749,12 @@ export const EINSTEIN_BANNED_VOCAB = [
   [/\bfield guide\b/i, "field guide"],
   [/\bopen book\b/i, "open book"],
   [/\bnotes\b/i, "notes"],
-  [/\bdiary\b/i, "diary"],
-  [/\bnovel\b/i, "novel"],
+  [/\bnovels?\b/i, "novels"],
+  [/\bhistory\b/i, "history"],
+  [/\btravelogues\b/i, "travelogues"],
+  [/\btrees\b/i, "trees"],
+  [/\bcar\b/i, "car"],
+  [/\btacos lover\b/i, "tacos lover"],
   [/\bcrown\b/i, "crown"],
   [/\bballoon\b/i, "balloon"],
   [/\bevergreen\b/i, "evergreen"],
@@ -732,15 +764,38 @@ export const EINSTEIN_BANNED_VOCAB = [
   [/\bcookie\b/i, "cookie"],
 ];
 
-const EINSTEIN_TYPE_PATTERNS = {
-  at: /\blives in (?:the (?:first|center|last) house|house \d+)\.?$/i,
-  not_at: /\bdoes not live in (?:the (?:first|center|last) house|house \d+)\.?$/i,
-  either_house: /\blives in either house \d+ or house \d+\.?$/i,
-  next_to: /\blives next to\b/i,
-  not_next_to: /\bdoes not live next to\b/i,
-  left_of: /\b(?:lives directly left of|lives somewhere left of|is directly left of|is somewhere left of)\b/i,
-  same: /\b(?:lives in the|keeps|drinks|smokes|drives|rides|flies|sails|plays|is a |likes|eats|loves|grows|reads|is from|is on foot|owns)\b/i,
+const PLACE_RE = "the (?:first|second|third|center|fourth|fifth|last) house";
+
+/** Closed sentence templates. Each published clue must match exactly one. */
+export const CLUE_STYLE_TEMPLATES = {
+  same: [
+    /^.+ (?:keeps|drinks|smokes|grows|reads|eats|loves|plays the|is a|is from|likes|plays|lives in the \S+ house|drives|rides|flies|sails|is on foot)(?: .+)?\.$/,
+  ],
+  next_to: [/^.+ lives next to .+\.$/],
+  not_next_to: [/^.+ does not live next to .+\.$/],
+  left_of: [
+    /^.+ lives directly left of .+\.$/,
+    /^The \S+ house is directly left of the \S+ house\.$/,
+    /^.+ lives somewhere left of .+\.$/,
+    /^The \S+ house is somewhere left of the \S+ house\.$/,
+  ],
+  at: [
+    new RegExp(`^.+ lives in ${PLACE_RE}\\.$`),
+    new RegExp(`^The \\S+ house is ${PLACE_RE}\\.$`),
+  ],
+  not_at: [
+    new RegExp(`^.+ does not live in ${PLACE_RE}\\.$`),
+    new RegExp(`^The \\S+ house is not ${PLACE_RE}\\.$`),
+  ],
+  either_house: [
+    new RegExp(`^.+ lives in either ${PLACE_RE} or ${PLACE_RE}\\.$`),
+    new RegExp(`^The \\S+ house is either ${PLACE_RE} or ${PLACE_RE}\\.$`),
+  ],
+  not_same: [/^.+ does not live in the same house as .+\.$/],
 };
+
+const SETUP_STYLE_RE =
+  /^There are (?:one|two|three|four|five|\d+) houses in a row\. Each house has a different [a-z]+(?:, [a-z]+)*, and [a-z]+\.$|^There are (?:one|two|three|four|five|\d+) houses in a row\. Each house has a different [a-z]+ and [a-z]+\.$/;
 
 const ACTOR_ATTRS = new Set(["person", "nationality"]);
 export const GENERIC_HAS_ATTRS = new Set(["loot", "prize", "gift", "treat", "getaway"]);
@@ -749,17 +804,29 @@ function catalogLabels(puzzle) {
   return flattenPuzzleItems(puzzle?.items || {}).map((item) => String(item.label || ""));
 }
 
+function matchingClueTemplates(type, text) {
+  return (CLUE_STYLE_TEMPLATES[type] || []).filter((re) => re.test(text));
+}
+
 function lintEinsteinClue(puzzle, clue, text) {
   const reasons = [];
+  const classic = puzzle?.theme?.id === "einstein";
   if (!text) reasons.push("empty");
   if (text && !/^[A-Z]/.test(text)) reasons.push("must start with a capital");
+  if (!classic) {
+    if (text && !/\.$/.test(text)) reasons.push("must end with a period");
+    if (text && (text.match(/\./g) || []).length !== 1) reasons.push("must have a single ending period");
+    if (/\bhouse \d+\b/i.test(text)) reasons.push("must use ordinal house names");
+  }
   if (livesSubjectIsBareObject(text, puzzle.items)) reasons.push("bare object as subject");
   for (const [re, name] of EINSTEIN_BAD_PATTERNS) {
     if (re.test(text)) reasons.push(`bad pattern: ${name}`);
   }
   const labels = catalogLabels(puzzle);
-  for (const [re, name] of EINSTEIN_BANNED_VOCAB) {
-    if (labels.some((label) => re.test(label))) continue;
+  const dated = Boolean(puzzle?.date) && !puzzle?.practice;
+  const bans = dated || classic ? CLUE_STYLE_BANS : [...CLUE_STYLE_BANS, ...EINSTEIN_BANNED_VOCAB];
+  for (const [re, name] of bans) {
+    if (classic && labels.some((label) => re.test(label))) continue;
     if (re.test(text)) reasons.push(`banned vocab: ${name}`);
   }
   for (const person of puzzle.items?.person || []) {
@@ -767,12 +834,11 @@ function lintEinsteinClue(puzzle, clue, text) {
       reasons.push(`the ${person.label}`);
     }
   }
-  const classic = puzzle?.theme?.id === "einstein";
   if (!classic) {
-    const typeRe = EINSTEIN_TYPE_PATTERNS[clue.type];
-    if (typeRe && !typeRe.test(text)) reasons.push(`not an approved ${clue.type} template`);
     const rendered = clueText(clue, puzzle.items, puzzle.theme?.id || "", puzzle.houseCount || 0);
-    if (text !== rendered) reasons.push("not produced by the Einstein renderer");
+    if (text !== rendered) reasons.push("not produced by the canonical renderer");
+    const hits = matchingClueTemplates(clue.type, text);
+    if (hits.length !== 1) reasons.push(`must match exactly one ${clue.type} template`);
   }
   return reasons;
 }
@@ -796,10 +862,12 @@ function lintEinsteinCategories(puzzle) {
 
 function lintEinsteinItemVocab(puzzle) {
   if (puzzle?.theme?.id === "einstein") return [];
+  const dated = Boolean(puzzle?.date) && !puzzle?.practice;
+  const bans = dated ? CLUE_STYLE_BANS : [...CLUE_STYLE_BANS, ...EINSTEIN_BANNED_VOCAB];
   const failures = [];
   for (const item of flattenPuzzleItems(puzzle?.items || {})) {
     const label = String(item.label || "");
-    for (const [re, name] of EINSTEIN_BANNED_VOCAB) {
+    for (const [re, name] of bans) {
       if (re.test(label)) {
         failures.push({
           id: `item:${item.id || label}`,
@@ -812,27 +880,46 @@ function lintEinsteinItemVocab(puzzle) {
   return failures;
 }
 
-/** Publish check: every clue must read like Einstein’s riddle. */
-export function validateEinsteinStyle(puzzle) {
+function puzzleAttrIds(puzzle) {
+  return (puzzle?.attributes || []).map((attr) => attr.id || attr);
+}
+
+function lintSetupStyle(puzzle, setup) {
+  const classic = puzzle?.theme?.id === "einstein";
+  if (!setup || !/^There are /i.test(setup) || !/house/i.test(setup)) {
+    return ["setup must start with 'There are' and mention houses"];
+  }
+  if (classic) return [];
+  const canonical = defaultPuzzleSetup(puzzle);
+  if (setup !== canonical) return ["setup must use the canonical category list"];
+  if (!SETUP_STYLE_RE.test(setup)) return ["setup must list every category with commas"];
+  const ids = puzzleAttrIds(puzzle);
+  if (ids.includes("food") && /\bmeal\b/i.test(canonical)) return ["setup must say food"];
+  if (ids.includes("vehicle") && /\bride\b/i.test(canonical)) return ["setup must say vehicle"];
+  return [];
+}
+
+/** Publish check: closed clue templates, canonical subjects, setup, and ban list. */
+export function validateClueStyle(puzzle) {
   const failures = [];
   const setup = puzzleSetup(puzzle);
-  if (!setup || !/^There are /i.test(setup) || !/house/i.test(setup)) {
-    failures.push({
-      id: "setup",
-      text: setup || "",
-      reasons: ["setup must start with 'There are' and mention houses"],
-    });
+  const setupReasons = lintSetupStyle(puzzle, setup);
+  if (setupReasons.length) {
+    failures.push({ id: "setup", text: setup || "", reasons: setupReasons });
   }
   failures.push(...lintEinsteinCategories(puzzle));
-  const classic = puzzle?.theme?.id === "einstein";
-  const enforceItemVocab = Boolean(puzzle?.practice) || (!puzzle?.date && !classic);
-  if (enforceItemVocab) failures.push(...lintEinsteinItemVocab(puzzle));
+  failures.push(...lintEinsteinItemVocab(puzzle));
   for (const clue of puzzle?.clues || []) {
     const text = displayClueText(puzzle, clue);
     const reasons = lintEinsteinClue(puzzle, clue, text);
     if (reasons.length) failures.push({ id: clue.id, type: clue.type, text, reasons });
   }
   return { ok: failures.length === 0, setup, failures };
+}
+
+/** Publish check: every clue must read like Einstein’s riddle. */
+export function validateEinsteinStyle(puzzle) {
+  return validateClueStyle(puzzle);
 }
 
 export function flattenPuzzleItems(items = {}) {

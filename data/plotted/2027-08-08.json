@@ -79,8 +79,8 @@
         "icon": "bicycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -195,7 +195,7 @@
     {
       "person": "hana",
       "loot": "lockbox",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "cam",

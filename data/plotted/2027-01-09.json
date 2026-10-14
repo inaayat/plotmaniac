@@ -47,8 +47,8 @@
         "icon": "sailboat"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -133,14 +133,14 @@
       "type": "left_of",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "person",
         "item": "gus"
       },
       "immediate": false,
-      "text": "car is somewhere left of the Gus."
+      "text": "truck is somewhere left of the Gus."
     }
   ],
   "question": {
@@ -153,7 +153,7 @@
   "solution": [
     {
       "person": "io",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "butterfly"
     },
     {

@@ -47,8 +47,8 @@
         "icon": "bicycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -153,7 +153,7 @@
   "solution": [
     {
       "person": "cam",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "rabbit"
     },
     {

@@ -69,8 +69,8 @@
         "icon": "sailboat"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ]
@@ -98,9 +98,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "coins is with the car."
+      "text": "coins is with the truck."
     },
     {
       "id": "c3",
@@ -120,13 +120,13 @@
       "type": "next_to",
       "left": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "person",
         "item": "cam"
       },
-      "text": "car is next to the Cam."
+      "text": "truck is next to the Cam."
     },
     {
       "id": "c5",
@@ -159,7 +159,7 @@
     {
       "person": "gus",
       "loot": "coins",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "cam",

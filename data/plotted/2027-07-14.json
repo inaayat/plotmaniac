@@ -52,8 +52,8 @@
         "icon": "sailboat"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ],
@@ -107,13 +107,13 @@
       "type": "same",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "pet",
         "item": "dog"
       },
-      "text": "car is with the dog."
+      "text": "truck is with the dog."
     },
     {
       "id": "c4",
@@ -145,9 +145,9 @@
       "id": "c6",
       "type": "at",
       "attr": "vehicle",
-      "item": "car",
+      "item": "truck",
       "house": 2,
-      "text": "car is in house 3."
+      "text": "truck is in house 3."
     }
   ],
   "question": {
@@ -170,7 +170,7 @@
     },
     {
       "person": "fay",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "dog"
     }
   ],

@@ -67,8 +67,8 @@
         "icon": "bicycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -150,13 +150,13 @@
       "type": "same",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "pet",
         "item": "dog"
       },
-      "text": "car is with the dog."
+      "text": "truck is with the dog."
     },
     {
       "id": "c5",
@@ -193,9 +193,9 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Gus is next to the car."
+      "text": "Gus is next to the truck."
     },
     {
       "id": "c8",
@@ -227,7 +227,7 @@
     },
     {
       "person": "drew",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "dog"
     },
     {

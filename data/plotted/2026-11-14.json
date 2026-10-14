@@ -52,8 +52,8 @@
         "icon": "person-simple-walk"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ],
@@ -81,13 +81,13 @@
       "type": "same",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "pet",
         "item": "bird"
       },
-      "text": "car is with the bird."
+      "text": "truck is with the bird."
     },
     {
       "id": "c2",
@@ -153,7 +153,7 @@
   "solution": [
     {
       "person": "io",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "bird"
     },
     {

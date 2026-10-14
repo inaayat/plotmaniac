@@ -42,9 +42,9 @@
     ],
     "book": [
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       },
       {
         "id": "open",
@@ -137,16 +137,16 @@
       },
       "right": {
         "attr": "book",
-        "item": "novel"
+        "item": "scifi"
       },
       "immediate": false,
-      "text": "tea is somewhere left of the novel."
+      "text": "tea is somewhere left of the sci-fi."
     }
   ],
   "question": {
-    "text": "Who brought the novel?",
+    "text": "Who brought the sci-fi?",
     "givenAttr": "book",
-    "givenItem": "novel",
+    "givenItem": "scifi",
     "answerAttr": "person",
     "answerItem": "eden"
   },
@@ -163,7 +163,7 @@
     },
     {
       "person": "eden",
-      "book": "novel",
+      "book": "scifi",
       "drink": "brandy"
     }
   ],

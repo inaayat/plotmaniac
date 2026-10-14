@@ -69,8 +69,8 @@
         "icon": "airplane"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ]
@@ -98,9 +98,9 @@
       },
       "right": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Cam is with the car."
+      "text": "Cam is with the truck."
     },
     {
       "id": "c3",
@@ -158,7 +158,7 @@
     {
       "person": "cam",
       "loot": "key",
-      "getaway": "car"
+      "getaway": "truck"
     }
   ],
   "difficulty": {

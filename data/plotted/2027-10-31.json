@@ -84,8 +84,8 @@
         "icon": "bicycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -163,13 +163,13 @@
       "type": "next_to",
       "left": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "person",
         "item": "drew"
       },
-      "text": "car is next to the Drew."
+      "text": "truck is next to the Drew."
     },
     {
       "id": "c6",
@@ -189,13 +189,13 @@
       "type": "next_to",
       "left": {
         "attr": "getaway",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "loot",
         "item": "medal"
       },
-      "text": "car is next to the medal."
+      "text": "truck is next to the medal."
     },
     {
       "id": "c8",
@@ -233,7 +233,7 @@
     {
       "person": "bo",
       "loot": "crown",
-      "getaway": "car"
+      "getaway": "truck"
     },
     {
       "person": "drew",

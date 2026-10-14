@@ -45,9 +45,9 @@
     ],
     "plant": [
       {
-        "id": "trees",
-        "label": "trees",
-        "icon": "tree"
+        "id": "tulips",
+        "label": "tulips",
+        "icon": "flower-tulip"
       },
       {
         "id": "cactus",
@@ -150,7 +150,7 @@
     },
     {
       "person": "fay",
-      "plant": "trees",
+      "plant": "tulips",
       "drink": "tea"
     },
     {

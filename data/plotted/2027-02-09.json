@@ -42,8 +42,8 @@
     ],
     "vehicle": [
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Drew is with the car."
+      "text": "Drew is with the truck."
     },
     {
       "id": "c2",
@@ -124,17 +124,17 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "fish is next to the car."
+      "text": "fish is next to the truck."
     },
     {
       "id": "c5",
       "type": "at",
       "attr": "vehicle",
-      "item": "car",
+      "item": "truck",
       "house": 2,
-      "text": "car is in house 3."
+      "text": "truck is in house 3."
     }
   ],
   "question": {
@@ -157,7 +157,7 @@
     },
     {
       "person": "drew",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "rabbit"
     }
   ],

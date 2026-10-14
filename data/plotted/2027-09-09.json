@@ -42,8 +42,8 @@
     ],
     "vehicle": [
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
-      "text": "Gus is with the car."
+      "text": "Gus is with the truck."
     },
     {
       "id": "c2",
@@ -163,7 +163,7 @@
     },
     {
       "person": "gus",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "dog"
     }
   ],

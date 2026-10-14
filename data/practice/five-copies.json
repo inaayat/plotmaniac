@@ -55,8 +55,8 @@
     ],
     "book": [
       {
-        "id": "history",
-        "label": "history",
+        "id": "cookbook",
+        "label": "cookbooks",
         "icon": "book"
       },
       {
@@ -65,9 +65,9 @@
         "icon": "magnifying-glass"
       },
       {
-        "id": "travel",
-        "label": "travelogues",
-        "icon": "tent"
+        "id": "poetry",
+        "label": "poetry",
+        "icon": "note-pencil"
       },
       {
         "id": "comics",
@@ -75,9 +75,9 @@
         "icon": "book-open"
       },
       {
-        "id": "novels",
-        "label": "novels",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       }
     ],
     "drink": [
@@ -127,13 +127,13 @@
       "type": "same",
       "left": {
         "attr": "book",
-        "item": "travel"
+        "item": "poetry"
       },
       "right": {
         "attr": "drink",
         "item": "orange"
       },
-      "text": "The person who reads travelogues drinks orange juice."
+      "text": "The person who reads poetry drinks orange juice."
     },
     {
       "id": "c3",
@@ -144,9 +144,9 @@
       },
       "right": {
         "attr": "book",
-        "item": "history"
+        "item": "cookbook"
       },
-      "text": "Jules reads history."
+      "text": "Jules reads cookbooks."
     },
     {
       "id": "c4",
@@ -179,13 +179,13 @@
       "type": "same",
       "left": {
         "attr": "book",
-        "item": "novels"
+        "item": "scifi"
       },
       "right": {
         "attr": "drink",
         "item": "beer"
       },
-      "text": "The person who reads novels drinks beer."
+      "text": "The person who reads sci-fi drinks beer."
     },
     {
       "id": "c7",
@@ -230,32 +230,32 @@
       "id": "c10",
       "type": "at",
       "attr": "book",
-      "item": "travel",
+      "item": "poetry",
       "house": 1,
-      "text": "The person who reads travelogues lives in house 2."
+      "text": "The person who reads poetry lives in house 2."
     }
   ],
   "question": {
-    "text": "Who reads travelogues?",
+    "text": "Who reads poetry?",
     "givenAttr": "book",
-    "givenItem": "travel",
+    "givenItem": "poetry",
     "answerAttr": "person",
     "answerItem": "drew"
   },
   "solution": [
     {
       "person": "jules",
-      "book": "history",
+      "book": "cookbook",
       "drink": "martini"
     },
     {
       "person": "drew",
-      "book": "travel",
+      "book": "poetry",
       "drink": "orange"
     },
     {
       "person": "bo",
-      "book": "novels",
+      "book": "scifi",
       "drink": "beer"
     },
     {

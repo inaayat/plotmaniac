@@ -47,9 +47,9 @@
         "icon": "note-pencil"
       },
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       },
       {
         "id": "map",
@@ -94,13 +94,13 @@
       "type": "same",
       "left": {
         "attr": "book",
-        "item": "novel"
+        "item": "scifi"
       },
       "right": {
         "attr": "drink",
         "item": "beer"
       },
-      "text": "novel is with the beer."
+      "text": "sci-fi is with the beer."
     },
     {
       "id": "c3",
@@ -133,9 +133,9 @@
     }
   ],
   "question": {
-    "text": "Who brought the novel?",
+    "text": "Who brought the sci-fi?",
     "givenAttr": "book",
-    "givenItem": "novel",
+    "givenItem": "scifi",
     "answerAttr": "person",
     "answerItem": "cam"
   },
@@ -152,7 +152,7 @@
     },
     {
       "person": "cam",
-      "book": "novel",
+      "book": "scifi",
       "drink": "beer"
     }
   ],

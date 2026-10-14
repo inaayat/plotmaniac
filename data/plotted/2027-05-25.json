@@ -52,8 +52,8 @@
         "icon": "sailboat"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ],
@@ -94,13 +94,13 @@
       "type": "same",
       "left": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "right": {
         "attr": "pet",
         "item": "horse"
       },
-      "text": "car is with the horse."
+      "text": "truck is with the horse."
     },
     {
       "id": "c3",
@@ -152,7 +152,7 @@
     },
     {
       "person": "drew",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "horse"
     },
     {

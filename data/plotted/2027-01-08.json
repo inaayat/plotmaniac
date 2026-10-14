@@ -52,9 +52,9 @@
         "icon": "music-notes"
       },
       {
-        "id": "novel",
-        "label": "novel",
-        "icon": "book"
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
       }
     ],
     "drink": [
@@ -85,9 +85,9 @@
       },
       "right": {
         "attr": "book",
-        "item": "novel"
+        "item": "scifi"
       },
-      "text": "Io is with the novel."
+      "text": "Io is with the sci-fi."
     },
     {
       "id": "c2",
@@ -158,7 +158,7 @@
     },
     {
       "person": "io",
-      "book": "novel",
+      "book": "scifi",
       "drink": "wine"
     },
     {

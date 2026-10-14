@@ -62,8 +62,8 @@
         "icon": "motorcycle"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       }
     ],
@@ -222,7 +222,7 @@
     },
     {
       "person": "ada",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "rabbit"
     }
   ],

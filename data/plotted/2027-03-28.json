@@ -57,8 +57,8 @@
         "icon": "person-simple-walk"
       },
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -206,10 +206,10 @@
       },
       "right": {
         "attr": "vehicle",
-        "item": "car"
+        "item": "truck"
       },
       "immediate": true,
-      "text": "horse is immediately left of the car."
+      "text": "horse is immediately left of the truck."
     }
   ],
   "question": {
@@ -242,7 +242,7 @@
     },
     {
       "person": "cam",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "butterfly"
     }
   ],

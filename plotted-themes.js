@@ -19,15 +19,6 @@ function keepPet(label) {
   return an(word);
 }
 
-function petOccupant(label) {
-  const word = String(label || "").trim();
-  if (!word) return word;
-  if (word.toLowerCase() === "fish" || (/s$/i.test(word) && !/(ss|us|is)$/i.test(word))) {
-    return `the owner of the ${word}`;
-  }
-  return `the ${word} owner`;
-}
-
 function vehicleVerb(label) {
   if (onFoot(label)) return "is on foot";
   if (label === "bicycle") return "rides a bicycle";
@@ -35,6 +26,14 @@ function vehicleVerb(label) {
   if (label === "plane") return "flies a plane";
   if (label === "sailboat") return "sails a sailboat";
   return `drives ${an(label)}`;
+}
+
+/** Singular noun for “the X lover” (“tacos” → “taco”). */
+export function loverNoun(label) {
+  const word = String(label || "").trim();
+  if (!word) return word;
+  if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word.replace(/s$/i, "");
+  return word;
 }
 
 function vehicleNoun(label) {
@@ -74,7 +73,7 @@ function readBook(label) {
   const word = String(label || "").trim();
   if (!word) return word;
   if (/s$/i.test(word) && !/(ss|us|is)$/i.test(word)) return word;
-  if (/^(poetry|history|sci-fi)$/i.test(word)) return word;
+  if (/^(poetry|sci-fi)$/i.test(word)) return word;
   return an(word);
 }
 
@@ -116,9 +115,8 @@ export const ATTRIBUTES = {
     label: "Pet",
     icon: "paw-print",
     verb: "keeps",
-    occupant: petOccupant,
+    occupant: (x) => `the person who keeps ${keepPet(x)}`,
     personSame: (person, x) => `${person} keeps ${keepPet(x)}`,
-    neighbor: (x) => `the one who keeps ${keepPet(x)}`,
   },
   drink: {
     id: "drink",
@@ -127,7 +125,6 @@ export const ATTRIBUTES = {
     verb: "drinks",
     occupant: (x) => `the ${x} drinker`,
     personSame: (person, x) => `${person} drinks ${drinkObject(x)}`,
-    neighbor: (x) => `the one who drinks ${drinkObject(x)}`,
   },
   loot: {
     id: "loot",
@@ -136,7 +133,6 @@ export const ATTRIBUTES = {
     verb: "keeps",
     occupant: (x) => `the person who keeps ${an(x)}`,
     personSame: (person, x) => `${person} keeps ${an(x)}`,
-    neighbor: (x) => `the one who keeps ${an(x)}`,
   },
   getaway: {
     id: "getaway",
@@ -145,7 +141,6 @@ export const ATTRIBUTES = {
     verb: "drives",
     occupant: vehicleNoun,
     personSame: (person, x) => `${person} ${vehicleVerb(x)}`,
-    neighbor: (x) => (onFoot(x) ? "the one on foot" : `the one who ${vehicleVerb(x)}`),
   },
   prize: {
     id: "prize",
@@ -154,7 +149,6 @@ export const ATTRIBUTES = {
     verb: "keeps",
     occupant: (x) => `the person who keeps ${an(x)}`,
     personSame: (person, x) => `${person} keeps ${an(x)}`,
-    neighbor: (x) => `the one who keeps ${an(x)}`,
   },
   plant: {
     id: "plant",
@@ -163,16 +157,14 @@ export const ATTRIBUTES = {
     verb: "grows",
     occupant: (x) => `the person who grows ${growPlant(x)}`,
     personSame: (person, x) => `${person} grows ${growPlant(x)}`,
-    neighbor: (x) => `the one who grows ${growPlant(x)}`,
   },
   vehicle: {
     id: "vehicle",
-    label: "Ride",
+    label: "Vehicle",
     icon: "bicycle",
     verb: "drives",
     occupant: vehicleNoun,
     personSame: (person, x) => `${person} ${vehicleVerb(x)}`,
-    neighbor: (x) => (onFoot(x) ? "the one on foot" : `the one who ${vehicleVerb(x)}`),
   },
   instrument: {
     id: "instrument",
@@ -190,16 +182,14 @@ export const ATTRIBUTES = {
     verb: "reads",
     occupant: (x) => `the person who reads ${readBook(x)}`,
     personSame: (person, x) => `${person} reads ${readBook(x)}`,
-    neighbor: (x) => `the one who reads ${readBook(x)}`,
   },
   treat: {
     id: "treat",
     label: "Treat",
     icon: "cookie",
     verb: "loves",
-    occupant: (x) => `the ${x} lover`,
+    occupant: (x) => `the ${loverNoun(x)} lover`,
     personSame: (person, x) => `${person} loves ${x}`,
-    neighbor: (x) => `the ${x} lover`,
   },
   gift: {
     id: "gift",
@@ -208,16 +198,14 @@ export const ATTRIBUTES = {
     verb: "keeps",
     occupant: (x) => `the person who keeps ${an(x)}`,
     personSame: (person, x) => `${person} keeps ${an(x)}`,
-    neighbor: (x) => `the one who keeps ${an(x)}`,
   },
   food: {
     id: "food",
     label: "Plate",
     icon: "fork-knife",
     verb: "eats",
-    occupant: (x) => `the ${x} lover`,
+    occupant: (x) => `the ${loverNoun(x)} lover`,
     personSame: (person, x) => `${person} ${foodPhrase(x)}`,
-    neighbor: (x) => `the ${x} lover`,
   },
   color: {
     id: "color",
@@ -244,7 +232,6 @@ export const ATTRIBUTES = {
     verb: "drinks",
     occupant: (x) => `the ${x} drinker`,
     personSame: (person, x) => `${person} drinks ${x}`,
-    neighbor: (x) => `the one who drinks ${x}`,
   },
   cigar: {
     id: "cigar",
@@ -253,7 +240,6 @@ export const ATTRIBUTES = {
     verb: "smokes",
     occupant: (x) => `the person who smokes ${x}`,
     personSame: (person, x) => `${person} smokes ${x}`,
-    neighbor: (x) => `the one who smokes ${x}`,
   },
   job: {
     id: "job",
@@ -271,7 +257,6 @@ export const ATTRIBUTES = {
     verb: "likes",
     occupant: (x) => (PLAYED_HOBBIES.has(x) ? `the ${x} player` : `the person who likes ${x}`),
     personSame: (person, x) => (PLAYED_HOBBIES.has(x) ? `${person} plays ${x}` : `${person} likes ${x}`),
-    neighbor: (x) => (PLAYED_HOBBIES.has(x) ? `the one who plays ${x}` : `the one who likes ${x}`),
   },
   city: {
     id: "city",
@@ -280,7 +265,6 @@ export const ATTRIBUTES = {
     verb: "is from",
     occupant: (x) => `the person from ${x}`,
     personSame: (person, x) => `${person} is from ${x}`,
-    neighbor: (x) => `the one from ${x}`,
   },
 };
 
@@ -353,7 +337,7 @@ const CITIES = [
 ];
 
 const VEHICLES = [
-  { id: "car", label: "car", icon: "car" },
+  { id: "truck", label: "truck", icon: "car" },
   { id: "taxi", label: "taxi", icon: "car" },
   { id: "bus", label: "bus", icon: "car" },
   { id: "van", label: "van", icon: "car" },
@@ -385,16 +369,14 @@ const PLANTS = [
   { id: "cactus", label: "cactus", icon: "cactus" },
   { id: "fern", label: "fern", icon: "leaf" },
   { id: "basil", label: "basil", icon: "potted-plant" },
-  { id: "trees", label: "trees", icon: "tree" },
 ];
 
 const BOOKS = [
   { id: "mystery", label: "mysteries", icon: "magnifying-glass" },
   { id: "comics", label: "comics", icon: "book-open" },
   { id: "poetry", label: "poetry", icon: "note-pencil" },
-  { id: "history", label: "history", icon: "book" },
-  { id: "novels", label: "novels", icon: "book" },
-  { id: "travel", label: "travelogues", icon: "tent" },
+  { id: "cookbook", label: "cookbooks", icon: "book" },
+  { id: "scifi", label: "sci-fi", icon: "moon-stars" },
 ];
 
 export const THEMES = [
@@ -482,7 +464,7 @@ export const THEMES = [
     story: "The check is coming. So is the question.",
     attributes: ["person", "food", "drink"],
     items: { person: PEOPLE, food: FOODS, drink: DRINKS },
-    question: (given) => `Who is the ${given.label} lover?`,
+    question: (given) => `Who is the ${loverNoun(given.label)} lover?`,
     questionGiven: "food",
     questionAnswer: "person",
   },
@@ -563,7 +545,7 @@ export const PRACTICE_THEMES = [
     story: "The pink house still has not eaten.",
     attributes: ["person", "color", "food", "drink"],
     items: { person: PEOPLE, color: COLORS, food: FOODS, drink: DRINKS },
-    question: (given) => `Who is the ${given.label} lover?`,
+    question: (given) => `Who is the ${loverNoun(given.label)} lover?`,
     questionGiven: "food",
     questionAnswer: "person",
   },

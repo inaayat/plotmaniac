@@ -42,8 +42,8 @@
     ],
     "vehicle": [
       {
-        "id": "car",
-        "label": "car",
+        "id": "truck",
+        "label": "truck",
         "icon": "car"
       },
       {
@@ -166,7 +166,7 @@
   "solution": [
     {
       "person": "jules",
-      "vehicle": "car",
+      "vehicle": "truck",
       "pet": "rabbit"
     },
     {
