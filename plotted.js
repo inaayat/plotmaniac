@@ -10,7 +10,6 @@ import {
   PRACTICE_PUZZLES,
   practiceGroupLabel,
   PROGRESS_STORAGE_KEY,
-  SITE_URL,
   STREAK_STORAGE_KEY,
   THEME_STORAGE_KEY,
   TODAY_OVERRIDE,
@@ -32,7 +31,6 @@ import {
   houseIsCompleteAndCorrect,
   matchTypedItem,
   placementComplete,
-  puzzleNumber,
   puzzleOptionRows,
   scoreFor,
 } from "./plotted-engine.js";
@@ -419,20 +417,26 @@ function markHouseCompletion() {
   }
 }
 
+function shareElapsedMs() {
+  return solved ? elapsedMs : startedAt ? Date.now() - startedAt : elapsedMs;
+}
+
 function shareBody() {
   if (isPractice()) {
     return formatShare({
       heading: `${GAME_NAME} practice · ${puzzle.label || puzzle.theme?.title || "Practice"}`,
       houseCount: puzzle.houseCount,
       completionOrder: completionOrder.map((rank) => rank || 0),
-      elapsedMs,
+      elapsedMs: shareElapsedMs(),
+      hints,
     });
   }
   return formatShare({
-    number: puzzle.number || puzzleNumber(puzzle.date),
+    date: puzzle.date,
     houseCount: puzzle.houseCount,
     completionOrder: completionOrder.map((rank) => rank || 0),
-    elapsedMs,
+    elapsedMs: shareElapsedMs(),
+    hints,
   });
 }
 
@@ -440,7 +444,7 @@ async function copyShare() {
   const text = shareBody();
   try {
     if (navigator.share) {
-      await navigator.share({ title: GAME_NAME, text, url: SITE_URL });
+      await navigator.share({ text });
       return;
     }
   } catch {

@@ -1394,16 +1394,21 @@ export function firstHintCell(grid, solution, attributes) {
 export function formatShare({
   gameName = GAME_NAME,
   number,
+  date,
   heading,
   houseCount,
   completionOrder,
   elapsedMs,
+  hints = 0,
   siteUrl = SITE_URL,
 } = {}) {
   const houses = HOUSE_EMOJI.repeat(houseCount);
   const order = (completionOrder || []).map((rank) => KEYCAP_DIGITS[rank - 1] || "?").join("");
-  const title = heading || `${gameName} #${number}`;
-  return [title, houses, order, `Solved in ${formatTime(elapsedMs)}`, siteUrl].join("\n");
+  const title = heading || (date ? `${gameName} ${date}` : `${gameName} #${number}`);
+  const lines = [title, houses, order, `Solved in ${formatTime(elapsedMs)}`];
+  if (hints > 0) lines.push(hints === 1 ? "1 hint" : `${hints} hints`);
+  lines.push(siteUrl);
+  return lines.join("\n");
 }
 
 export function scoreFor({ elapsedMs, mistakes, hints }) {

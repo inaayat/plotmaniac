@@ -225,7 +225,7 @@ assert.equal(houseIsCompleteAndCorrect([{ person: "ada" }, {}, {}], solution, 0)
 assert.ok(gridMatchesSolution(solution, solution));
 
 const share = formatShare({
-  number: 12,
+  date: "2026-10-13",
   houseCount: 5,
   completionOrder: [2, 3, 1, 5, 4],
   elapsedMs: 165000,
@@ -233,17 +233,37 @@ const share = formatShare({
 assert.equal(
   share,
   [
-    `${GAME_NAME} #12`,
+    `${GAME_NAME} 2026-10-13`,
     "🏠🏠🏠🏠🏠",
     `${KEYCAP_DIGITS[1]}${KEYCAP_DIGITS[2]}${KEYCAP_DIGITS[0]}${KEYCAP_DIGITS[4]}${KEYCAP_DIGITS[3]}`,
     "Solved in 2:45",
     SITE_URL,
   ].join("\n"),
 );
-assert.match(share, /^Plotted #\d+/m);
+assert.match(share, /^Plotted 2026-10-13\n/);
 assert.equal(share.split("\n")[1], "🏠".repeat(5));
 assert.match(share, /Solved in 2:45/);
 assert.equal(share.split("\n").at(-1), SITE_URL);
+assert.doesNotMatch(share, /hint/i);
+
+const hintedShare = formatShare({
+  date: "2026-10-13",
+  houseCount: 5,
+  completionOrder: [2, 3, 1, 5, 4],
+  elapsedMs: 222000,
+  hints: 1,
+});
+assert.equal(
+  hintedShare,
+  [
+    `${GAME_NAME} 2026-10-13`,
+    "🏠🏠🏠🏠🏠",
+    `${KEYCAP_DIGITS[1]}${KEYCAP_DIGITS[2]}${KEYCAP_DIGITS[0]}${KEYCAP_DIGITS[4]}${KEYCAP_DIGITS[3]}`,
+    "Solved in 3:42",
+    "1 hint",
+    SITE_URL,
+  ].join("\n"),
+);
 
 const practiceShare = formatShare({
   heading: `${GAME_NAME} practice · Easy`,
@@ -253,10 +273,11 @@ const practiceShare = formatShare({
 });
 assert.match(practiceShare, /^Plotted practice · Easy\n/);
 assert.doesNotMatch(practiceShare.split("\n")[0], /#\d/);
+assert.match(practiceShare, /Solved in 1:01/);
 assert.equal(practiceShare.split("\n").at(-1), SITE_URL);
 
 const threeShare = formatShare({
-  number: 1,
+  date: LAUNCH_DATE,
   houseCount: 3,
   completionOrder: [1, 2, 3],
   elapsedMs: 61000,
@@ -346,7 +367,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v31/);
+assert.match(sw, /plotted-v32/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -501,7 +522,9 @@ assert.match(app, /slot-fit/);
 assert.match(app, /is-editing/);
 assert.match(app, /navigator.clipboard/);
 assert.match(app, /navigator.share/);
-assert.match(app, /navigator\.share\(\{ title: GAME_NAME, text, url: SITE_URL \}\)/);
+assert.match(app, /navigator\.share\(\{\s*text\s*\}\)/);
+assert.doesNotMatch(app, /navigator\.share\(\{[^}]*url/);
+assert.match(app, /shareElapsedMs/);
 assert.match(app, /dailyPuzzleDate/);
 assert.match(app, /TODAY_OVERRIDE/);
 assert.match(app, /serviceWorker/);

@@ -388,8 +388,13 @@ const saved = JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:20
 assert.equal(saved.solved, true);
 assert.equal(saved.streakAwarded, true);
 const shareText = document.getElementById("share-text")?.textContent || "";
+const winTime = document.getElementById("win-time")?.textContent || "";
 assert.equal(shareText.split("\n").at(-1), SITE_URL, "share text ends with the site link");
-assert.match(shareText, /^Plotted #1\n/);
+assert.match(shareText, /^Plotted 2026-10-13\n/);
+assert.match(shareText, /🏠🏠🏠🏠🏠/);
+assert.match(shareText, /Solved in \d+:\d{2}/);
+assert.match(shareText, new RegExp(`Solved in ${winTime.replace(":", "\\:")}`), "share time matches the final timer");
+assert.equal(shareText.split("\n")[1], "🏠".repeat(5), "share includes the house emoji row");
 const sharePayloads = [];
 navigator.share = async (payload) => {
   sharePayloads.push(payload);
@@ -397,7 +402,11 @@ navigator.share = async (payload) => {
 document.getElementById("win-share")?.click();
 await new Promise((resolve) => setTimeout(resolve, 0));
 assert.equal(sharePayloads.length, 1, "Web Share is used when navigator.share exists");
-assert.equal(sharePayloads[0].url, SITE_URL);
+assert.equal("url" in sharePayloads[0], false, "iOS drops text when url is passed separately");
+assert.equal("title" in sharePayloads[0], false, "share payload is text-only");
+assert.equal(sharePayloads[0].text, shareText);
+assert.match(sharePayloads[0].text, /Solved in \d+:\d{2}/);
+assert.match(sharePayloads[0].text, /🏠🏠🏠🏠🏠/);
 assert.equal(sharePayloads[0].text.split("\n").at(-1), SITE_URL);
 delete navigator.share;
 const clipboardWrites = [];
@@ -408,6 +417,8 @@ navigator.clipboard = {
 };
 document.getElementById("btn-share")?.click();
 await new Promise((resolve) => setTimeout(resolve, 0));
+assert.equal(clipboardWrites[0], shareText, "clipboard fallback copies the same share text");
+assert.match(clipboardWrites[0], /Solved in \d+:\d{2}/);
 assert.equal(clipboardWrites[0]?.split("\n").at(-1), SITE_URL, "clipboard share ends with the site link");
 
 const startBtn = document.getElementById("btn-start-over");
@@ -585,10 +596,14 @@ await new Promise((resolve) => setTimeout(resolve, 30));
 assert.equal(document.getElementById("win")?.hidden, false, "practice puzzle can be solved");
 assert.equal(document.getElementById("win-streak")?.textContent, "1", "practice must not change the daily streak");
 assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
-assert.match(document.getElementById("share-text")?.textContent || "", /Plotted practice · Easy/);
-assert.doesNotMatch(document.getElementById("share-text")?.textContent || "", /Plotted #\d/);
+const practiceShareText = document.getElementById("share-text")?.textContent || "";
+const practiceWinTime = document.getElementById("win-time")?.textContent || "";
+assert.match(practiceShareText, /Plotted practice · Easy/);
+assert.doesNotMatch(practiceShareText, /Plotted #\d/);
+assert.match(practiceShareText, /🏠🏠🏠/);
+assert.match(practiceShareText, new RegExp(`Solved in ${practiceWinTime.replace(":", "\\:")}`), "practice share uses the final timer");
 assert.equal(
-  (document.getElementById("share-text")?.textContent || "").split("\n").at(-1),
+  practiceShareText.split("\n").at(-1),
   SITE_URL,
   "practice share still ends with the site link",
 );
