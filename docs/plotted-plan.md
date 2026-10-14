@@ -11,6 +11,7 @@ This is a planning note for the daily game. Implementation follows the existing 
 A bite-size daily version of Einstein’s Riddle / the zebra puzzle (“who owns the fish”).
 
 - **Launch day (`2026-10-13`) is the original Einstein riddle**, hand-authored: **5 houses**, **5 attributes** (color, nationality, beverage, cigar, pet), **15 classic clues**, setup paragraph, question **Who owns the fish?** (the German). Later dates keep the generated 3–5 house puzzles.
+- **Today is pinned to Einstein** via `TODAY_OVERRIDE = "einstein"` in `plotted-config.js` while we iterate. Progress, notes, and streak key off that puzzle’s date (`LAUNCH_DATE`), so they do not reset at midnight. Set the flag to `""` to restore calendar dailies. Dated JSON under `data/plotted/` is unchanged.
 - **3 houses** on most generated days, **4** on harder days, **5** on occasional special Sundays.
 - Generated days have **3 attributes** (for example person, pet, drink). Themes pick attributes from what Phosphor actually contains.
 - Generated puzzles have **5–8 clues** that always lead to **exactly one** solution; Einstein day has the classic 15.

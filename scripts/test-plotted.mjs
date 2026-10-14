@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, NOTES_STORAGE_KEY, PRACTICE_GROUPS, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, PRACTICE_PUZZLES, SITE_URL } from "../plotted-config.js";
+import { GAME_NAME, KEYCAP_DIGITS, LAUNCH_DATE, NOTES_STORAGE_KEY, PRACTICE_GROUPS, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, PRACTICE_PUZZLES, SITE_URL, TODAY_OVERRIDE, dailyPuzzleDate } from "../plotted-config.js";
 import { normalizeNotes, progressFitsPuzzle, slotFitPlan } from "../plotted.js";
 import { ICONS, iconSvg } from "../plotted-icons.js";
 import { ATTRIBUTES, PRACTICE_THEMES, THEMES } from "../plotted-themes.js";
@@ -44,6 +44,10 @@ const flattenItems = (items) => Object.values(items).flat();
 
 assert.equal(GAME_NAME, "Plotted");
 assert.equal(LAUNCH_DATE, "2026-10-13");
+assert.equal(TODAY_OVERRIDE, "einstein");
+assert.equal(dailyPuzzleDate(new Date("2026-11-01T15:00:00")), LAUNCH_DATE);
+assert.equal(dailyPuzzleDate(new Date("2027-04-22T08:00:00")), LAUNCH_DATE);
+assert.equal(SITE_URL, "https://plotmaniac.com");
 assert.equal(NOTES_STORAGE_KEY, "plotted-notes");
 assert.equal(PRACTICE_PROGRESS_KEY, "plotted-practice");
 assert.equal(PRACTICE_NOTES_KEY, "plotted-practice-notes");
@@ -239,6 +243,7 @@ assert.equal(
 assert.match(share, /^Plotted #\d+/m);
 assert.equal(share.split("\n")[1], "🏠".repeat(5));
 assert.match(share, /Solved in 2:45/);
+assert.equal(share.split("\n").at(-1), SITE_URL);
 
 const practiceShare = formatShare({
   heading: `${GAME_NAME} practice · Easy`,
@@ -248,6 +253,7 @@ const practiceShare = formatShare({
 });
 assert.match(practiceShare, /^Plotted practice · Easy\n/);
 assert.doesNotMatch(practiceShare.split("\n")[0], /#\d/);
+assert.equal(practiceShare.split("\n").at(-1), SITE_URL);
 
 const threeShare = formatShare({
   number: 1,
@@ -256,6 +262,7 @@ const threeShare = formatShare({
   elapsedMs: 61000,
 });
 assert.equal(threeShare.split("\n")[1], "🏠".repeat(3));
+assert.equal(threeShare.split("\n").at(-1), SITE_URL);
 
 for (const theme of [...THEMES, ...PRACTICE_THEMES]) {
   assert.ok(
@@ -336,7 +343,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v27/);
+assert.match(sw, /plotted-v28/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -480,6 +487,9 @@ assert.match(app, /slot-fit/);
 assert.match(app, /is-editing/);
 assert.match(app, /navigator.clipboard/);
 assert.match(app, /navigator.share/);
+assert.match(app, /navigator\.share\(\{ title: GAME_NAME, text, url: SITE_URL \}\)/);
+assert.match(app, /dailyPuzzleDate/);
+assert.match(app, /TODAY_OVERRIDE/);
 assert.match(app, /serviceWorker/);
 assert.match(app, /Hints/);
 assert.match(app, /hint-heading/);
@@ -528,6 +538,7 @@ assert.match(plan, /All clues are hints/);
 assert.match(plan, /Einstein/);
 assert.match(plan, /validateEinsteinStyle/);
 assert.match(plan, /validateClueStyle/);
+assert.match(plan, /TODAY_OVERRIDE/);
 assert.match(plan, /CLUE_STYLE_TEMPLATES/);
 assert.match(plan, /types the exact word/);
 assert.match(plan, /How to play/);

@@ -8,6 +8,27 @@ export const SITE_URL = "https://plotmaniac.com";
 /** First published puzzle date (local calendar, YYYY-MM-DD). Puzzle #1. */
 export const LAUNCH_DATE = "2026-10-13";
 
+/**
+ * Pin Today to a named puzzle. `"einstein"` always serves launch-day Einstein,
+ * regardless of calendar date. Progress, notes, and streak use that puzzle's
+ * date key (`LAUNCH_DATE`) so they do not reset at midnight. Set to `""` to
+ * restore calendar dailies. Dated JSON under `data/plotted/` is unchanged.
+ */
+export const TODAY_OVERRIDE = "einstein";
+
+function isoLocalDate(now = new Date()) {
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+/** ISO date of the puzzle Today should load. */
+export function dailyPuzzleDate(now = new Date()) {
+  if (TODAY_OVERRIDE === "einstein") return LAUNCH_DATE;
+  return isoLocalDate(now);
+}
+
 export const THEME_STORAGE_KEY = "plotted-theme";
 export const STREAK_STORAGE_KEY = "plotted-streak";
 export const NOTES_STORAGE_KEY = "plotted-notes";

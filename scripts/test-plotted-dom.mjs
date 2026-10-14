@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { Window } from "happy-dom";
-import { NOTES_STORAGE_KEY, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, STREAK_STORAGE_KEY, PROGRESS_STORAGE_KEY } from "../plotted-config.js";
+import { LAUNCH_DATE, NOTES_STORAGE_KEY, PRACTICE_NOTES_KEY, PRACTICE_PROGRESS_KEY, SITE_URL, STREAK_STORAGE_KEY, PROGRESS_STORAGE_KEY } from "../plotted-config.js";
 import { displayClueText, EINSTEIN_SETUP, puzzleSetup } from "../plotted-engine.js";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -35,6 +35,24 @@ document.write(indexHtml);
 const style = document.createElement("style");
 style.textContent = cssText;
 document.head.appendChild(style);
+
+window.fetch = async (url) => {
+  const href = String(url);
+  const plotted = href.match(/data\/plotted\/(\d{4}-\d{2}-\d{2})\.json/);
+  if (plotted) {
+    const file = path.join(root, "data/plotted", `${plotted[1]}.json`);
+    if (!fs.existsSync(file)) return { ok: false };
+    return { ok: true, json: async () => JSON.parse(fs.readFileSync(file, "utf8")) };
+  }
+  const practice = href.match(/data\/practice\/([^/?]+)\.json/);
+  if (practice) {
+    const file = path.join(root, "data/practice", `${practice[1]}.json`);
+    if (!fs.existsSync(file)) return { ok: false };
+    return { ok: true, json: async () => JSON.parse(fs.readFileSync(file, "utf8")) };
+  }
+  return { ok: false };
+};
+globalThis.fetch = window.fetch;
 
 globalThis.window = window;
 globalThis.document = document;
@@ -361,6 +379,28 @@ assert.equal(document.querySelectorAll(".slot.is-correct").length, 25);
 const saved = JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}");
 assert.equal(saved.solved, true);
 assert.equal(saved.streakAwarded, true);
+const shareText = document.getElementById("share-text")?.textContent || "";
+assert.equal(shareText.split("\n").at(-1), SITE_URL, "share text ends with the site link");
+assert.match(shareText, /^Plotted #1\n/);
+const sharePayloads = [];
+navigator.share = async (payload) => {
+  sharePayloads.push(payload);
+};
+document.getElementById("win-share")?.click();
+await new Promise((resolve) => setTimeout(resolve, 0));
+assert.equal(sharePayloads.length, 1, "Web Share is used when navigator.share exists");
+assert.equal(sharePayloads[0].url, SITE_URL);
+assert.equal(sharePayloads[0].text.split("\n").at(-1), SITE_URL);
+delete navigator.share;
+const clipboardWrites = [];
+navigator.clipboard = {
+  writeText: async (text) => {
+    clipboardWrites.push(text);
+  },
+};
+document.getElementById("btn-share")?.click();
+await new Promise((resolve) => setTimeout(resolve, 0));
+assert.equal(clipboardWrites[0]?.split("\n").at(-1), SITE_URL, "clipboard share ends with the site link");
 
 const startBtn = document.getElementById("btn-start-over");
 assert.ok(startBtn, "start over control");
@@ -538,6 +578,21 @@ assert.equal(document.getElementById("win-streak")?.textContent, "1", "practice 
 assert.equal(JSON.parse(window.localStorage.getItem(STREAK_STORAGE_KEY) || "{}").count, 1);
 assert.match(document.getElementById("share-text")?.textContent || "", /Plotted practice · Easy/);
 assert.doesNotMatch(document.getElementById("share-text")?.textContent || "", /Plotted #\d/);
+assert.equal(
+  (document.getElementById("share-text")?.textContent || "").split("\n").at(-1),
+  SITE_URL,
+  "practice share still ends with the site link",
+);
+await loadPuzzle();
+assert.equal(document.getElementById("game-question")?.textContent, "Who owns the fish?", "Today stays pinned to Einstein");
+assert.equal(document.querySelectorAll(".clue").length, 15);
+assert.equal(document.getElementById("meta-date")?.textContent, LAUNCH_DATE);
+assert.equal(document.getElementById("practice-select")?.value, "", "Today option is selected");
+assert.equal(
+  JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:${LAUNCH_DATE}`) || "{}").solved,
+  true,
+  "pinned Einstein progress must not reset when returning to Today",
+);
 const practiceSaved = JSON.parse(window.localStorage.getItem(`${PRACTICE_PROGRESS_KEY}:easy`) || "{}");
 assert.equal(practiceSaved.solved, true);
 assert.equal(JSON.parse(window.localStorage.getItem(`${PROGRESS_STORAGE_KEY}:2026-10-13`) || "{}").solved, true);

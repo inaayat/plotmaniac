@@ -2,6 +2,7 @@ import {
   ARCHIVE_HREF,
   GAME_NAME,
   GAME_TAGLINE,
+  LAUNCH_DATE,
   NOTES_STORAGE_KEY,
   PRACTICE_NOTES_KEY,
   PRACTICE_PROGRESS_KEY,
@@ -9,8 +10,11 @@ import {
   PRACTICE_PUZZLES,
   practiceGroupLabel,
   PROGRESS_STORAGE_KEY,
+  SITE_URL,
   STREAK_STORAGE_KEY,
   THEME_STORAGE_KEY,
+  TODAY_OVERRIDE,
+  dailyPuzzleDate,
 } from "./plotted-config.js";
 import { iconSvg } from "./plotted-icons.js";
 import { ATTRIBUTES } from "./plotted-themes.js";
@@ -26,7 +30,6 @@ import {
   gridMatchesSolution,
   highlightItemWordsHtml,
   houseIsCompleteAndCorrect,
-  localIsoDate,
   matchTypedItem,
   placementComplete,
   puzzleNumber,
@@ -136,6 +139,7 @@ function isPractice() {
 
 function puzzleProgressId() {
   if (isPractice()) return puzzle.practiceId || puzzle.id;
+  if (TODAY_OVERRIDE === "einstein" && puzzle?.theme?.id === "einstein") return LAUNCH_DATE;
   return puzzle.date;
 }
 
@@ -369,20 +373,21 @@ function readStreak() {
 function writeStreak() {
   const prev = readStreak();
   const days = { ...(prev.days || {}) };
-  days[puzzle.date] = { time: elapsedMs, hints, mistakes };
+  const recordDate = puzzleProgressId();
+  days[recordDate] = { time: elapsedMs, hints, mistakes };
   let count = 1;
-  if (prev.lastDate && prev.lastDate !== puzzle.date) {
+  if (prev.lastDate && prev.lastDate !== recordDate) {
     const prevDay = new Date(`${prev.lastDate}T12:00:00`);
-    const cur = new Date(`${puzzle.date}T12:00:00`);
+    const cur = new Date(`${recordDate}T12:00:00`);
     const gap = Math.round((cur - prevDay) / 86400000);
     count = gap === 1 ? (prev.count || 1) + 1 : 1;
-  } else if (prev.lastDate === puzzle.date) {
+  } else if (prev.lastDate === recordDate) {
     count = prev.count || 1;
   }
   try {
     localStorage.setItem(
       STREAK_STORAGE_KEY,
-      JSON.stringify({ lastDate: puzzle.date, count, days }),
+      JSON.stringify({ lastDate: recordDate, count, days }),
     );
   } catch {
     /* private mode */
@@ -432,7 +437,7 @@ async function copyShare() {
   const text = shareBody();
   try {
     if (navigator.share) {
-      await navigator.share({ title: GAME_NAME, text });
+      await navigator.share({ title: GAME_NAME, text, url: SITE_URL });
       return;
     }
   } catch {
@@ -1731,7 +1736,7 @@ export async function loadPuzzle({ date, puzzle: given, practiceId } = {}) {
     if (!response.ok) throw new Error(`No practice puzzle ${practiceId}`);
     puzzle = await response.json();
   } else {
-    const iso = date || localIsoDate();
+    const iso = date || dailyPuzzleDate();
     const response = await fetch(`data/plotted/${iso}.json`);
     if (!response.ok) throw new Error(`No puzzle for ${iso}`);
     puzzle = await response.json();
