@@ -1081,9 +1081,11 @@ h1 {
   }
 
   .board.is-typing-compact {
+    --cell-h: 34px;
     --clue-size: 11px;
     --clue-pad: 0px;
     --play-gap: 2px;
+    --table-gap: 2px;
   }
 
   .board.is-typing-compact .hint-heading,
@@ -1138,6 +1140,14 @@ h1 {
     padding: 0 2px;
   }
 
+  .board.is-typing-compact .clue,
+  .board.is-typing-compact .word-bank-word,
+  .board.is-typing-compact .word-bank-cat,
+  .board.is-typing-compact .grid-table .attr-head,
+  .board.is-typing-compact .house-head,
+  .board.is-typing-compact .play,
+  .board.is-typing-compact .puzzle-col,
+  .board.is-typing-compact .slot,
   .board.is-fitting .clue,
   .board.is-fitting .word-bank-word,
   .board.is-fitting .word-bank-cat,

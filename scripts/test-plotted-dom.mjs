@@ -81,7 +81,43 @@ window.localStorage.setItem(
   }),
 );
 
-const { boot, fitPlayfield, fitTypingPlayfield, loadPuzzle, missingVisibleOptions, startOver, stopGameTimers } = await import("../plotted.js");
+const vvState = { width: 1280, height: 720, offsetTop: 0 };
+const vvListeners = { resize: new Set(), scroll: new Set() };
+window.visualViewport = {
+  get width() {
+    return vvState.width;
+  },
+  get height() {
+    return vvState.height;
+  },
+  get offsetTop() {
+    return vvState.offsetTop;
+  },
+  offsetLeft: 0,
+  scale: 1,
+  addEventListener(type, fn) {
+    vvListeners[type]?.add(fn);
+  },
+  removeEventListener(type, fn) {
+    vvListeners[type]?.delete(fn);
+  },
+  dispatchEvent(event) {
+    for (const fn of vvListeners[event.type] || []) fn(event);
+    return true;
+  },
+};
+
+const {
+  boot,
+  fitPlayfield,
+  fitTypingPlayfield,
+  getTypingLayoutStats,
+  loadPuzzle,
+  missingVisibleOptions,
+  resetTypingLayoutStats,
+  startOver,
+  stopGameTimers,
+} = await import("../plotted.js");
 
 function assertNoConsoleErrors(label) {
   assert.equal(errors.length, 0, `${label}: ${errors.join(" | ")}`);
@@ -531,7 +567,7 @@ if (typeof window.happyDOM?.setViewport === "function") {
   const focusedSize = window.getComputedStyle(firstSlot).fontSize;
   if (focusedSize) assert.ok(Number.parseFloat(focusedSize) >= 16, `focused input stays ≥16px to avoid iOS zoom, got ${focusedSize}`);
   firstSlot.blur();
-  await new Promise((resolve) => setTimeout(resolve, 160));
+  await new Promise((resolve) => setTimeout(resolve, 250));
   assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "typing-compact class clears on blur");
   window.happyDOM.setViewport({ width: 1280, height: 720 });
   fitPlayfield();
@@ -543,22 +579,20 @@ if (typeof window.happyDOM?.setViewport === "function") {
 }
 
 function stubVisualViewport({ width, height, offsetTop = 0 }) {
-  const current = window.visualViewport;
-  if (!current) {
-    window.visualViewport = {
-      width,
-      height,
-      offsetTop,
-      offsetLeft: 0,
-      scale: 1,
-      addEventListener() {},
-      removeEventListener() {},
-    };
-    return;
+  vvState.width = width;
+  vvState.height = height;
+  vvState.offsetTop = offsetTop;
+}
+
+function dispatchVisualViewport(type) {
+  window.visualViewport.dispatchEvent(new window.Event(type));
+}
+
+async function flushTypingViewport(extraMs = 180) {
+  await new Promise((resolve) => setTimeout(resolve, extraMs));
+  if (typeof window.happyDOM?.waitUntilComplete === "function") {
+    await window.happyDOM.waitUntilComplete();
   }
-  Object.defineProperty(current, "width", { configurable: true, get: () => width });
-  Object.defineProperty(current, "height", { configurable: true, get: () => height });
-  Object.defineProperty(current, "offsetTop", { configurable: true, get: () => offsetTop });
 }
 
 if (typeof window.happyDOM?.setViewport === "function") {
@@ -607,10 +641,73 @@ if (typeof window.happyDOM?.setViewport === "function") {
     "keystroke must not relayout tiles",
   );
   lastRow.blur();
-  await new Promise((resolve) => setTimeout(resolve, 160));
+  await new Promise((resolve) => setTimeout(resolve, 250));
   assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "blur restores normal layout");
   const restoredH = Number.parseFloat(document.documentElement.style.getPropertyValue("--cell-h"));
   assert.ok(restoredH >= 40 && restoredH <= 44, `blur restores 40–44px tiles, got ${restoredH}`);
+
+  const parked = readJson("data/practice/parked-pets.json");
+  await loadPuzzle({ puzzle: parked });
+  window.happyDOM.setViewport({ width: 390, height: 844 });
+  fitPlayfield();
+  stubVisualViewport({ width: 390, height: 400, offsetTop: 0 });
+  resetTypingLayoutStats();
+  const tileA = document.querySelector("input.slot-input");
+  const tileB =
+    document.querySelector('input.slot-input[data-house="0"][data-attr]:not([data-slot="' + (tileA?.dataset.slot || "") + '"])') ||
+    document.querySelectorAll("input.slot-input")[1];
+  tileA.focus();
+  await flushTypingViewport(40);
+  const afterFocus = getTypingLayoutStats();
+  assert.ok(afterFocus.layoutPasses <= 2, `focus should layout at most twice, got ${afterFocus.layoutPasses}`);
+  assert.ok(afterFocus.scrollCalls <= 1, `focus should scroll at most once, got ${afterFocus.scrollCalls}`);
+  const cellBeforeStorm = document.documentElement.style.getPropertyValue("--cell-h");
+  for (let i = 0; i < 40; i += 1) {
+    vvState.height = 400 + (i % 3) - 1;
+    vvState.offsetTop = i % 4;
+    dispatchVisualViewport("scroll");
+    dispatchVisualViewport("resize");
+  }
+  await flushTypingViewport(220);
+  const afterStorm = getTypingLayoutStats();
+  assert.ok(
+    afterStorm.layoutPasses - afterFocus.layoutPasses <= 1,
+    `tiny visualViewport jitter must not relayout, extra passes ${afterStorm.layoutPasses - afterFocus.layoutPasses}`,
+  );
+  assert.equal(
+    afterStorm.scrollCalls,
+    afterFocus.scrollCalls,
+    "visualViewport scroll/resize must not call scrollIntoView",
+  );
+  assert.equal(
+    document.documentElement.style.getPropertyValue("--cell-h"),
+    cellBeforeStorm,
+    "typing layout must not oscillate during viewport jitter",
+  );
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "compact stays on through jitter");
+
+  vvState.height = 300;
+  dispatchVisualViewport("resize");
+  await flushTypingViewport(220);
+  const afterBigResize = getTypingLayoutStats();
+  assert.ok(
+    afterBigResize.layoutPasses - afterStorm.layoutPasses <= 1,
+    `height change >40px should recompute at most once, extra ${afterBigResize.layoutPasses - afterStorm.layoutPasses}`,
+  );
+  assert.equal(afterBigResize.scrollCalls, afterStorm.scrollCalls, "resize must not scroll");
+
+  tileB.focus();
+  await flushTypingViewport(40);
+  const afterTileHop = getTypingLayoutStats();
+  assert.equal(afterTileHop.layoutPasses, afterBigResize.layoutPasses, "moving between tiles must not relayout");
+  assert.ok(
+    afterTileHop.scrollCalls - afterBigResize.scrollCalls <= 1,
+    `tile hop scrolls at most once, extra ${afterTileHop.scrollCalls - afterBigResize.scrollCalls}`,
+  );
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), true, "compact stays on between tiles");
+  tileB.blur();
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  assert.equal(document.querySelector(".board")?.classList.contains("is-typing-compact"), false, "compact clears after leaving tiles");
 }
 
 stopGameTimers();

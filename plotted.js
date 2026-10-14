@@ -622,26 +622,86 @@ function shouldRefitLayout() {
   return !isTypingInGrid() && !keyboardIsOpen();
 }
 
-let lastTypingFitKey = "";
+const TYPING_RESIZE_DELTA = 40;
+const TYPING_RESIZE_DEBOUNCE_MS = 100;
+const TYPING_BLUR_DELAY_MS = 150;
 
-function typingFitKey() {
-  const box = visualViewportBox();
-  return `${box.width}x${box.height}`;
+const typingLayoutStats = {
+  layoutPasses: 0,
+  scrollCalls: 0,
+};
+
+let typingLayoutBusy = false;
+let typingCompactOn = false;
+let lastTypingHeight = 0;
+let focusedScrollToken = "";
+let leaveTypingTimer = 0;
+let typingResizeTimer = 0;
+let typingResizeRaf = 0;
+
+export function getTypingLayoutStats() {
+  return { layoutPasses: typingLayoutStats.layoutPasses, scrollCalls: typingLayoutStats.scrollCalls };
+}
+
+export function resetTypingLayoutStats() {
+  typingLayoutStats.layoutPasses = 0;
+  typingLayoutStats.scrollCalls = 0;
+}
+
+function isSlotInput(el) {
+  return Boolean(el?.classList?.contains("slot-input"));
+}
+
+function safeHandler(fn) {
+  return (...args) => {
+    try {
+      fn(...args);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+function resetTypingLayoutState() {
+  typingCompactOn = false;
+  lastTypingHeight = 0;
+  focusedScrollToken = "";
+  if (leaveTypingTimer) {
+    window.clearTimeout(leaveTypingTimer);
+    leaveTypingTimer = 0;
+  }
+}
+
+function applyTypingVar(el, name, value) {
+  if (!el) return;
+  el.style.setProperty(name, value);
 }
 
 function applyPhoneTiles(cellH, gap = 6, tableGap = 3) {
-  const root = document.documentElement;
   const px = (n) => `${Number(n.toFixed(2))}px`;
-  root.style.setProperty("--cell-h", px(cellH));
-  root.style.setProperty("--play-gap", px(gap));
-  root.style.setProperty("--table-gap", px(tableGap));
-  root.style.setProperty("--input-size", "16px");
+  const targets = [document.documentElement, document.querySelector(".board")];
+  for (const el of targets) {
+    applyTypingVar(el, "--cell-h", px(cellH));
+    applyTypingVar(el, "--play-gap", px(gap));
+    applyTypingVar(el, "--table-gap", px(tableGap));
+    applyTypingVar(el, "--input-size", "16px");
+  }
 }
 
 function applyClueMetrics(size, pad) {
-  const root = document.documentElement;
-  root.style.setProperty("--clue-size", `${Number(size.toFixed(2))}px`);
-  root.style.setProperty("--clue-pad", `${Number(pad.toFixed(2))}px`);
+  const targets = [document.documentElement, document.querySelector(".board")];
+  for (const el of targets) {
+    applyTypingVar(el, "--clue-size", `${Number(size.toFixed(2))}px`);
+    applyTypingVar(el, "--clue-pad", `${Number(pad.toFixed(2))}px`);
+  }
+}
+
+function clearBoardTypingMetrics() {
+  const board = document.querySelector(".board");
+  if (!board) return;
+  for (const name of ["--cell-h", "--play-gap", "--table-gap", "--input-size", "--clue-size", "--clue-pad"]) {
+    board.style.removeProperty(name);
+  }
 }
 
 function puzzleColHeight() {
@@ -656,116 +716,189 @@ function typingLayoutFits(availH) {
 
 /** Compact clues, word bank, and tiles so the playfield fits in visualViewport.height. */
 export function fitTypingPlayfield({ force = false } = {}) {
+  if (typingLayoutBusy) return typingCompactOn;
   if (isWidePlay() || !isTypingInGrid()) return false;
   const board = document.querySelector(".board");
   const play = document.querySelector(".play");
   const col = document.querySelector(".puzzle-col");
   if (!board || !play || !col || !puzzle) return false;
   const box = visualViewportBox();
-  const key = typingFitKey();
-  const root = document.documentElement;
-  root.style.setProperty("--vv-height", `${box.height}px`);
-  board.classList.add("is-typing-compact");
-  if (!force && key === lastTypingFitKey && typingLayoutFits(box.height)) {
-    scrollTypingPlayfieldIntoView();
+  if (!force && typingCompactOn && Math.abs(box.height - lastTypingHeight) <= TYPING_RESIZE_DELTA) {
     return true;
   }
-  board.classList.add("is-fitting");
-  play.style.height = "auto";
-  play.style.paddingBlock = "0px";
-  applyClueMetrics(CLUE_SIZE_TYPING, 0);
-  let bestCell = CELL_H_PHONE_TYPING_MIN;
-  let fitted = false;
-  for (let cellH = CELL_H_PHONE_TYPING_MAX; cellH >= CELL_H_PHONE_TYPING_MIN - 0.001; cellH -= 1) {
-    applyPhoneTiles(cellH, 2, 2);
-    if (typingLayoutFits(box.height)) {
-      bestCell = cellH;
-      fitted = true;
-      break;
-    }
-  }
-  applyPhoneTiles(fitted ? bestCell : CELL_H_PHONE_TYPING_MIN, 2, 2);
-  if (!typingLayoutFits(box.height)) {
-    let lo = CLUE_SIZE_TYPING_FLOOR;
-    let hi = CLUE_SIZE_TYPING;
-    let bestSize = CLUE_SIZE_TYPING_FLOOR;
-    for (let i = 0; i < 10; i += 1) {
-      const mid = (lo + hi) / 2;
-      applyClueMetrics(mid, 0);
+  typingLayoutBusy = true;
+  try {
+    typingLayoutStats.layoutPasses += 1;
+    const root = document.documentElement;
+    root.style.setProperty("--vv-height", `${box.height}px`);
+    board.classList.add("is-typing-compact");
+    play.style.height = "auto";
+    play.style.paddingBlock = "0px";
+    applyClueMetrics(CLUE_SIZE_TYPING, 0);
+    let bestCell = CELL_H_PHONE_TYPING_MIN;
+    let fitted = false;
+    for (let cellH = CELL_H_PHONE_TYPING_MAX; cellH >= CELL_H_PHONE_TYPING_MIN - 0.001; cellH -= 1) {
+      applyPhoneTiles(cellH, 2, 2);
       if (typingLayoutFits(box.height)) {
-        bestSize = mid;
-        lo = mid;
-      } else {
-        hi = mid;
+        bestCell = cellH;
+        fitted = true;
+        break;
       }
     }
-    applyClueMetrics(bestSize, 0);
+    applyPhoneTiles(fitted ? bestCell : CELL_H_PHONE_TYPING_MIN, 2, 2);
+    if (!typingLayoutFits(box.height)) {
+      let lo = CLUE_SIZE_TYPING_FLOOR;
+      let hi = CLUE_SIZE_TYPING;
+      let bestSize = CLUE_SIZE_TYPING_FLOOR;
+      for (let i = 0; i < 10; i += 1) {
+        const mid = (lo + hi) / 2;
+        applyClueMetrics(mid, 0);
+        if (typingLayoutFits(box.height)) {
+          bestSize = mid;
+          lo = mid;
+        } else {
+          hi = mid;
+        }
+      }
+      applyClueMetrics(bestSize, 0);
+    }
+    lastTypingHeight = box.height;
+    typingCompactOn = true;
+    fitAllSlots();
+    return typingLayoutFits(box.height);
+  } catch (error) {
+    console.error(error);
+    board.classList.add("is-typing-compact");
+    applyPhoneTiles(CELL_H_PHONE_TYPING_MIN, 2, 2);
+    applyClueMetrics(CLUE_SIZE_TYPING_FLOOR, 0);
+    typingCompactOn = true;
+    lastTypingHeight = box.height;
+    return false;
+  } finally {
+    typingLayoutBusy = false;
   }
-  lastTypingFitKey = key;
-  board.classList.remove("is-fitting");
-  fitAllSlots();
-  scrollTypingPlayfieldIntoView();
-  return typingLayoutFits(box.height);
 }
 
-function syncTypingCompact() {
-  const board = document.querySelector(".board");
-  if (!board) return;
-  const on = !isWidePlay() && isTypingInGrid();
-  if (on) {
-    fitTypingPlayfield();
+function enterTypingCompact() {
+  if (typingLayoutBusy || isWidePlay() || !isTypingInGrid()) return;
+  if (leaveTypingTimer) {
+    window.clearTimeout(leaveTypingTimer);
+    leaveTypingTimer = 0;
+  }
+  const already = typingCompactOn;
+  fitTypingPlayfield({ force: !already });
+  scrollFocusedTileOnce();
+}
+
+function leaveTypingCompactSoon(relatedTarget) {
+  if (isSlotInput(relatedTarget)) return;
+  if (leaveTypingTimer) window.clearTimeout(leaveTypingTimer);
+  leaveTypingTimer = window.setTimeout(() => {
+    leaveTypingTimer = 0;
+    if (isTypingInGrid() || isSlotInput(document.activeElement)) return;
+    if (typingLayoutBusy) return;
+    typingLayoutBusy = true;
+    try {
+      const board = document.querySelector(".board");
+      board?.classList.remove("is-typing-compact");
+      clearBoardTypingMetrics();
+      typingCompactOn = false;
+      lastTypingHeight = 0;
+      focusedScrollToken = "";
+      const root = document.documentElement;
+      if (!notesSheetOpen()) root.style.removeProperty("--vv-height");
+      if (puzzle) fitPlayfield();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      typingLayoutBusy = false;
+    }
+  }, TYPING_BLUR_DELAY_MS);
+}
+
+function syncTypingCompact(event) {
+  if (event?.type === "focusout") {
+    leaveTypingCompactSoon(event.relatedTarget);
     return;
   }
-  board.classList.remove("is-typing-compact");
-  lastTypingFitKey = "";
-  const root = document.documentElement;
-  if (!notesSheetOpen()) root.style.removeProperty("--vv-height");
-  if (puzzle) fitPlayfield();
+  enterTypingCompact();
 }
 
-function syncTypingViewport() {
-  if (isWidePlay() || !isTypingInGrid()) return;
-  fitTypingPlayfield();
+function scheduleTypingResize() {
+  if (isWidePlay() || (!isTypingInGrid() && !typingCompactOn)) return;
+  const height = visualViewportBox().height;
+  if (typingCompactOn && Math.abs(height - lastTypingHeight) <= TYPING_RESIZE_DELTA) return;
+  if (typingResizeTimer) window.clearTimeout(typingResizeTimer);
+  typingResizeTimer = window.setTimeout(() => {
+    typingResizeTimer = 0;
+    if (typingResizeRaf) return;
+    typingResizeRaf = window.requestAnimationFrame(() => {
+      typingResizeRaf = 0;
+      try {
+        if (!isTypingInGrid()) return;
+        const next = visualViewportBox().height;
+        if (typingCompactOn && Math.abs(next - lastTypingHeight) <= TYPING_RESIZE_DELTA) return;
+        fitTypingPlayfield();
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  }, TYPING_RESIZE_DEBOUNCE_MS);
 }
 
-function scrollTypingPlayfieldIntoView() {
-  if (isWidePlay() || !isTypingInGrid()) return;
-  const col = document.querySelector(".puzzle-col");
-  const box = visualViewportBox();
-  if (col) {
-    const top = col.getBoundingClientRect().top + (window.scrollY || 0) - box.offsetTop;
-    const nextTop = Math.max(0, Math.round(top));
-    if (typeof window.scrollTo === "function") window.scrollTo(0, nextTop);
+function onTypingViewportResize() {
+  if (notesSheetOpen()) {
+    syncNotesViewport();
+    return;
   }
-  const slot =
-    document.querySelector(".slot.is-editing") || document.activeElement?.closest?.(".slot");
-  if (!slot) return;
-  const rect = slot.getBoundingClientRect();
-  const vvTop = box.offsetTop;
-  const vvBottom = box.offsetTop + box.height;
-  if (rect.top < vvTop + 4) {
-    window.scrollBy?.(0, Math.round(rect.top - vvTop - 4));
-  } else if (rect.bottom > vvBottom - 4) {
-    window.scrollBy?.(0, Math.round(rect.bottom - vvBottom + 4));
+  if (isTypingInGrid() || typingCompactOn) {
+    scheduleTypingResize();
+    return;
   }
+  if (shouldRefitLayout()) fitPlayfield();
 }
 
-function pinHintsWhileTyping() {
-  scrollTypingPlayfieldIntoView();
+function onVisualViewportScroll() {
+  if (notesSheetOpen()) syncNotesViewport();
+}
+
+function scrollFocusedTileOnce() {
+  if (isWidePlay() || !isTypingInGrid()) return;
+  const input = document.activeElement;
+  if (!isSlotInput(input)) return;
+  const token = input.dataset?.slot || "";
+  if (token && token === focusedScrollToken) return;
+  focusedScrollToken = token;
+  typingLayoutStats.scrollCalls += 1;
+  const slot = input.closest?.(".slot") || document.querySelector(".slot.is-editing");
+  if (!slot || typeof slot.scrollIntoView !== "function") return;
+  try {
+    slot.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "auto" });
+  } catch {
+    try {
+      slot.scrollIntoView();
+    } catch {
+      /* ignore */
+    }
+  }
 }
 
 function scrollFocusedTileIntoView() {
   if (!isWidePlay() && isTypingInGrid()) {
-    scrollTypingPlayfieldIntoView();
+    scrollFocusedTileOnce();
     return;
   }
   const slot =
     document.querySelector(".slot.is-editing") || document.activeElement?.closest?.(".slot");
   if (!slot || typeof slot.scrollIntoView !== "function") return;
   try {
-    slot.scrollIntoView({ block: "center", inline: "nearest" });
+    slot.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "auto" });
   } catch {
-    slot.scrollIntoView();
+    try {
+      slot.scrollIntoView();
+    } catch {
+      /* ignore */
+    }
   }
 }
 
@@ -1110,7 +1243,6 @@ function makeSlot(house, attr) {
     window.requestAnimationFrame(() => {
       sizeEditingSlot(slot);
       paintGhost(slot, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
-      syncTypingCompact();
     });
   });
   input.addEventListener("blur", () => {
@@ -1120,7 +1252,6 @@ function makeSlot(house, attr) {
         clearEditingSlot(slot);
         setSlotVisual(slot, house, attr, input.value, matchTypedItem(puzzle.items[attr], input.value).status);
       }
-      syncTypingCompact();
     }, 120);
   });
   input.addEventListener("input", () => handleTyped(house, attr, input.value, input));
@@ -1173,6 +1304,7 @@ function paintBoard(opts = {}) {
   const board = $("board");
   const keep = opts.focus || focused;
   const typedByFocus = opts.typed;
+  resetTypingLayoutState();
   board.replaceChildren();
 
   const play = document.createElement("div");
@@ -1359,8 +1491,7 @@ function paintBoard(opts = {}) {
 }
 
 export function fitPlayfield() {
-  if (!isWidePlay() && isTypingInGrid()) {
-    fitTypingPlayfield({ force: true });
+  if (!isWidePlay() && (isTypingInGrid() || typingCompactOn)) {
     return;
   }
   const play = document.querySelector(".play");
@@ -1626,38 +1757,28 @@ export async function loadPuzzle({ date, puzzle: given, practiceId } = {}) {
 function bind() {
   if (bound) return;
   bound = true;
-  window.addEventListener("resize", () => {
-    if (!shouldRefitLayout()) {
-      if (notesSheetOpen()) syncNotesViewport();
-      else if (isTypingInGrid()) syncTypingViewport();
-      scrollFocusedTileIntoView();
+  window.addEventListener("resize", safeHandler(() => {
+    if (notesSheetOpen()) {
+      syncNotesViewport();
       return;
     }
-    fitPlayfield();
-  });
-  window.visualViewport?.addEventListener("resize", () => {
-    if (notesSheetOpen()) syncNotesViewport();
-    else if (isTypingInGrid()) syncTypingViewport();
-    if (!shouldRefitLayout()) {
-      scrollFocusedTileIntoView();
+    if (isTypingInGrid() || typingCompactOn) {
+      scheduleTypingResize();
       return;
     }
+    if (!shouldRefitLayout()) return;
     fitPlayfield();
-  });
-  window.visualViewport?.addEventListener("scroll", () => {
-    if (notesSheetOpen()) syncNotesViewport();
-    if (isTypingInGrid()) {
-      syncTypingViewport();
-      scrollFocusedTileIntoView();
-    }
-  });
-  document.addEventListener("focusin", (event) => {
-    if (!event.target?.classList?.contains("slot-input")) return;
-    syncTypingCompact();
-  });
-  document.addEventListener("focusout", () => {
-    window.requestAnimationFrame(() => syncTypingCompact());
-  });
+  }));
+  window.visualViewport?.addEventListener("resize", safeHandler(onTypingViewportResize));
+  window.visualViewport?.addEventListener("scroll", safeHandler(onVisualViewportScroll));
+  document.addEventListener("focusin", safeHandler((event) => {
+    if (!isSlotInput(event.target)) return;
+    syncTypingCompact(event);
+  }));
+  document.addEventListener("focusout", safeHandler((event) => {
+    if (!isSlotInput(event.target)) return;
+    syncTypingCompact(event);
+  }));
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMobileNotes();
   });
