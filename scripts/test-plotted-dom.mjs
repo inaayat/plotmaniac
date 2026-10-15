@@ -229,6 +229,7 @@ assert.ok(play.querySelector(".puzzle-col"), "puzzle column on the right");
 assert.equal(play.querySelector(".puzzle-col")?.firstElementChild?.className, "hint-block", "clues must sit above the grid");
 assert.ok(play.querySelector(".puzzle-col .hint-block + .word-bank"), "word bank follows clues");
 assert.ok(play.querySelector(".puzzle-col .word-bank + .grid-wrap"), "grid follows word bank");
+assert.ok(play.querySelector(".puzzle-col .grid-wrap + .notes-swap"), "mobile notes swap follows the grid");
 const bankRow = document.querySelector(".word-bank-row");
 const bankCat = document.querySelector(".word-bank-cat");
 const bankList = document.querySelector(".word-bank-list");
@@ -280,37 +281,68 @@ assert.equal(document.querySelector("textarea.notes")?.value, "brit left of gree
 
 if (typeof window.happyDOM?.setViewport === "function") {
   window.happyDOM.setViewport({ width: 390, height: 844 });
+  startOver({ clearNotes: true });
   fitPlayfield();
-  assert.equal(document.querySelector(".notes-panel")?.open, false, "notes collapsed on mobile");
+  assert.equal(document.querySelector(".notes-panel")?.open, false, "desktop notes column stays closed on a phone");
+  assert.equal(document.querySelector(".mast-tools")?.querySelector("#btn-notes"), null, "notes leave the header");
   const notesBtn = document.getElementById("btn-notes");
-  assert.ok(notesBtn, "mobile notes live on a header icon");
-  assert.equal(notesBtn.hidden, false, "notes header button shows on a phone");
+  assert.ok(notesBtn, "mobile notes sit in the hints row");
+  assert.ok(notesBtn.closest(".hint-heading")?.querySelector(".hint-label"), "notes icon sits beside HINTS");
+  assert.equal(notesBtn.hidden, false, "notes button shows on a phone");
   assert.equal(notesBtn.getAttribute("aria-expanded"), "false");
   const notesBtnStyle = window.getComputedStyle(notesBtn);
   if (notesBtnStyle?.minHeight) {
-    assert.ok(Number.parseFloat(notesBtnStyle.minHeight) >= 36, "notes header button is tappable");
+    assert.ok(Number.parseFloat(notesBtnStyle.minHeight) <= 28, "notes icon stays compact in the hints row");
   }
-  assert.ok(document.querySelector(".notes-sheet"), "mobile notes live in a bottom sheet");
-  assert.ok(document.querySelector(".notes-sheet-handle"), "sheet has a grab handle");
-  assert.ok(document.querySelector(".notes-sheet-close"), "sheet has a close button");
+  assert.equal(document.querySelectorAll(".notes-sheet-handle").length, 0, "no bottom-sheet handle");
+  assert.equal(document.querySelectorAll(".notes-sheet-close").length, 0, "no bottom-sheet close");
+  const swap = document.querySelector(".notes-swap");
+  const grid = document.querySelector(".grid-wrap");
+  const clues = document.querySelector(".clues");
+  const bank = document.querySelector(".word-bank");
+  assert.ok(swap, "notes swap panel exists");
+  assert.equal(swap.hidden, true, "notes start as the grid");
+  assert.equal(grid?.hidden, false);
   notesBtn.click();
-  assert.equal(document.querySelector(".notes-panel")?.open, true, "header Notes opens the sheet");
-  const sheetNote = document.querySelector("textarea.notes");
-  const sheetNoteStyle = window.getComputedStyle(sheetNote);
-  if (sheetNoteStyle?.fontSize) {
-    assert.equal(sheetNoteStyle.fontSize, "16px", "sheet textarea stays 16px to avoid iOS zoom");
-  }
-  if (sheetNoteStyle?.paddingTop) {
-    assert.ok(Number.parseFloat(sheetNoteStyle.paddingTop) <= 10, "sheet padding is tighter than the desktop pad");
-  }
-  reducedMotion = true;
-  document.querySelector(".notes-sheet-close").click();
-  assert.equal(document.querySelector(".notes-panel")?.open, false, "close returns the sheet");
+  assert.equal(document.documentElement.classList.contains("is-notes"), true, "html.is-notes while notes replace the grid");
+  assert.equal(notesBtn.classList.contains("is-open"), true, "notes icon is filled while open");
+  assert.equal(notesBtn.getAttribute("aria-expanded"), "true");
+  assert.equal(swap.hidden, false, "notes take the grid footprint");
+  assert.equal(grid.hidden, true, "grid hides while notes are open");
+  assert.equal(clues?.hidden, false, "clues stay visible");
+  assert.equal(bank?.hidden, false, "word bank stays visible");
+  assert.ok(swap.querySelector(".notes-swap-label")?.textContent.toLowerCase().includes("notes"));
+  assert.ok(document.getElementById("btn-notes-back"), "Back to grid pill");
+  assert.match(document.getElementById("btn-notes-back")?.textContent || "", /Back to grid/i);
+  const pad = document.getElementById("notes-pad");
+  assert.ok(pad, "custom notes pad");
+  assert.equal(pad.getAttribute("inputmode"), "none");
+  pad.dispatchEvent(new window.Event("pointerdown", { bubbles: true, cancelable: true }));
+  assert.notEqual(document.activeElement, document.querySelector("textarea.notes"), "notes pad does not focus the desktop textarea");
+  typeOnScreenKey("b");
+  typeOnScreenKey("r");
+  typeOnScreenKey("i");
+  typeOnScreenKey("t");
+  typeOnScreenKey("ENTER");
+  typeOnScreenKey("g");
+  assert.equal(
+    `${document.querySelector(".notes-pad-before")?.textContent || ""}${document.querySelector(".notes-pad-after")?.textContent || ""}`,
+    "brit\ng",
+  );
+  assert.equal(window.localStorage.getItem(`${NOTES_STORAGE_KEY}:2026-10-13`), "brit\ng");
+  typeOnScreenKey("BACKSPACE");
+  assert.equal(window.localStorage.getItem(`${NOTES_STORAGE_KEY}:2026-10-13`), "brit\n");
+  document.getElementById("btn-notes-back").click();
+  assert.equal(swap.hidden, true, "Back to grid restores the grid");
+  assert.equal(grid.hidden, false);
+  assert.equal(notesBtn.classList.contains("is-open"), false);
   document.getElementById("btn-notes").click();
-  assert.equal(document.querySelector(".notes-panel")?.open, true);
+  assert.equal(swap.hidden, false);
   window.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
-  assert.equal(document.querySelector(".notes-panel")?.open, false, "Escape closes the sheet");
-  reducedMotion = false;
+  assert.equal(swap.hidden, true, "Escape returns to the grid");
+  document.getElementById("btn-notes").click();
+  document.getElementById("btn-notes").click();
+  assert.equal(swap.hidden, true, "tapping notes again returns to the grid");
   const nor = document.querySelector('input[data-attr="nationality"]');
   nor.value = "Norwegian";
   nor.dispatchEvent(new window.Event("input", { bubbles: true }));
@@ -711,7 +743,7 @@ if (typeof window.happyDOM?.setViewport === "function") {
   window.innerWidth = 390;
   window.innerHeight = 844;
   await loadPuzzle({ puzzle: einstein });
-  startOver({ clearNotes: false });
+  startOver({ clearNotes: true });
   fitPlayfield();
   assert.equal(document.getElementById("win")?.hidden, true, "OSK tests run on an unsolved grid");
   assert.ok(document.querySelector(".slot.is-empty"), "fresh Einstein grid has empty tiles");
@@ -720,9 +752,11 @@ if (typeof window.happyDOM?.setViewport === "function") {
   const osk = document.querySelector(".osk");
   assert.ok(osk, "Wordle-style keyboard is in the DOM");
   assert.equal(osk.hidden, false, "on-screen keyboard is visible on coarse pointers");
-  assert.equal(document.querySelectorAll(".osk-key").length, 28, "QWERTY has 26 letters plus ENTER and backspace");
+  assert.equal(document.querySelectorAll(".osk-key").length, 29, "QWERTY has 26 letters plus ENTER, space, and backspace");
   assert.equal(document.querySelector(".osk-key[data-key='ENTER']")?.textContent, "ENTER");
   assert.ok(document.querySelector(".osk-key[data-key='BACKSPACE'] svg"), "backspace uses a Phosphor icon");
+  assert.ok(document.querySelector(".osk-key[data-key='SPACE']"), "space key exists for notes");
+  assert.equal(document.querySelector(".osk-row.is-space")?.hidden, true, "space row stays hidden while typing tiles");
   assert.equal(document.querySelector(".osk-row:first-child .osk-key[data-key='q']")?.textContent, "Q");
   const nat = document.querySelector('input[data-slot="0-nationality"]');
   const natSlot = nat.closest(".slot");
@@ -768,6 +802,38 @@ if (typeof window.happyDOM?.setViewport === "function") {
   typeOnScreenKey("BACKSPACE");
   typeOnScreenKey("BACKSPACE");
   assert.ok(color.value.length < "Yellow".length, "backspace still works after autocomplete");
+
+  const tileBeforeNotes = color.value;
+  const notesBtn = document.getElementById("btn-notes");
+  assert.ok(notesBtn?.closest(".hint-heading"), "coarse notes live beside HINTS, not in the header");
+  notesBtn.click();
+  assert.equal(document.querySelector(".notes-swap")?.hidden, false, "notes swap with the grid");
+  assert.equal(document.querySelector(".grid-wrap")?.hidden, true);
+  assert.equal(document.querySelector(".clues")?.hidden, false, "clues stay up while notes are open");
+  assert.equal(document.querySelector(".word-bank")?.hidden, false, "word bank stays up while notes are open");
+  assert.equal(document.querySelector(".osk-row.is-space")?.hidden, false, "space row appears for notes");
+  const pad = document.getElementById("notes-pad");
+  pad.dispatchEvent(new window.Event("pointerdown", { bubbles: true, cancelable: true }));
+  assert.notEqual(document.activeElement, pad, "notes pad does not take native focus");
+  assert.notEqual(document.activeElement, document.querySelector("textarea.notes"));
+  assert.equal(document.querySelector("textarea.notes")?.readOnly, false);
+  pressOsk("a");
+  pressOsk("SPACE");
+  pressOsk("b");
+  pressOsk("ENTER");
+  pressOsk("c");
+  const notesNow = `${document.querySelector(".notes-pad-before")?.textContent || ""}${document.querySelector(".notes-pad-after")?.textContent || ""}`;
+  assert.equal(notesNow, "a b\nc", "OSK letters, space, and ENTER go into notes");
+  assert.equal(color.value, tileBeforeNotes, "notes typing does not change tiles");
+  pressOsk("BACKSPACE");
+  const notesAfterBs = `${document.querySelector(".notes-pad-before")?.textContent || ""}${document.querySelector(".notes-pad-after")?.textContent || ""}`;
+  assert.equal(notesAfterBs, "a b\n", "notes backspace deletes");
+  assert.equal(window.localStorage.getItem(`${NOTES_STORAGE_KEY}:2026-10-13`), "a b\n", "notes persist per puzzle");
+  notesBtn.click();
+  assert.equal(document.querySelector(".notes-swap")?.hidden, true, "notes icon toggles back to the grid");
+  assert.equal(document.querySelector(".grid-wrap")?.hidden, false);
+  pressOsk("BACKSPACE");
+  assert.ok(color.value.length < tileBeforeNotes.length, "keys return to tiles after closing notes");
 
   const col = document.querySelector(".puzzle-col");
   const mast = document.querySelector(".mast");
