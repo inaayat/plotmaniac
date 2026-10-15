@@ -1,0 +1,275 @@
+{
+  "id": "sail-lane",
+  "practice": true,
+  "practiceId": "sail-lane",
+  "label": "Expert",
+  "source": "practice-generated",
+  "theme": {
+    "id": "neighborhood",
+    "title": "Sail lane",
+    "blurb": "Houses in a line. Match resident, ride, and animal.",
+    "story": "Five houses of rides and pets. Who has a rabbit?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "vehicle",
+      "label": "Ride"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "walk",
+        "label": "on foot",
+        "icon": "person-simple-walk"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      },
+      {
+        "id": "truck",
+        "label": "truck",
+        "icon": "car"
+      },
+      {
+        "id": "boat",
+        "label": "sailboat",
+        "icon": "sailboat"
+      }
+    ],
+    "pet": [
+      {
+        "id": "dog",
+        "label": "dog",
+        "icon": "dog",
+        "aliases": [
+          "dogs"
+        ]
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "icon": "bird",
+        "aliases": [
+          "birds"
+        ]
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "icon": "cat",
+        "aliases": [
+          "cats"
+        ]
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "icon": "rabbit",
+        "aliases": [
+          "rabbits"
+        ]
+      },
+      {
+        "id": "butterfly",
+        "label": "butterfly",
+        "icon": "butterfly"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "walk"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "text": "The person on foot has a bird."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "Fay has a butterfly."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "bike"
+      },
+      "text": "Eden rides a bicycle."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "truck"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "The person who drives a truck has a dog."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "butterfly"
+      },
+      "text": "The person who rides a motorcycle lives next to the butterfly owner."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "vehicle",
+        "item": "boat"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "The person who sails a sailboat lives next to the dog owner."
+    },
+    {
+      "id": "c7",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "truck"
+      },
+      "text": "Gus lives next to the person who drives a truck."
+    },
+    {
+      "id": "c8",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "immediate": true,
+      "text": "Ada lives directly left of the cat owner."
+    }
+  ],
+  "question": {
+    "text": "Who has a rabbit?",
+    "givenAttr": "pet",
+    "givenItem": "rabbit",
+    "answerAttr": "person",
+    "answerItem": "ada"
+  },
+  "solution": [
+    {
+      "person": "gus",
+      "vehicle": "walk",
+      "pet": "bird"
+    },
+    {
+      "person": "drew",
+      "vehicle": "truck",
+      "pet": "dog"
+    },
+    {
+      "person": "fay",
+      "vehicle": "boat",
+      "pet": "butterfly"
+    },
+    {
+      "person": "ada",
+      "vehicle": "moto",
+      "pet": "rabbit"
+    },
+    {
+      "person": "eden",
+      "vehicle": "bike",
+      "pet": "cat"
+    }
+  ],
+  "difficulty": {
+    "label": "expert",
+    "steps": 7,
+    "neededSearch": true,
+    "weekday": 0,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 47,
+    "sourceDate": "2027-08-29"
+  }
+}

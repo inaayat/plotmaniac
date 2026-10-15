@@ -182,6 +182,22 @@ const COPIES = [
   },
 ];
 
+/** Last-Sunday dailies that already meet the Hard/Expert practice bar. */
+const DAILY_COPIES = [
+  {
+    id: "sail-lane",
+    sourceDate: "2027-08-29",
+    story: "Five houses of rides and pets. Who has a rabbit?",
+    question: {
+      text: "Who has a rabbit?",
+      givenAttr: "pet",
+      givenItem: "rabbit",
+      answerAttr: "person",
+      answerItem: "ada",
+    },
+  },
+];
+
 const EXPERT_SPECS = [
   {
     id: "long-street",
@@ -327,14 +343,35 @@ function packPuzzle(entry, puzzle, source) {
     attributes: puzzle.attributes,
     items: puzzle.items,
     clues: puzzle.clues,
-    question: puzzle.question,
+    question: entry.question || puzzle.question,
     solution: puzzle.solution,
     difficulty: {
       ...puzzle.difficulty,
       ...human,
       label: meta.group,
+      ...(entry.sourceDate ? { sourceDate: entry.sourceDate } : {}),
     },
   };
+}
+
+function readDaily(iso) {
+  return JSON.parse(fs.readFileSync(path.join(root, "data", "plotted", `${iso}.json`), "utf8"));
+}
+
+function packDailyCopy(entry) {
+  return packPuzzle(entry, readDaily(entry.sourceDate), "practice-generated");
+}
+
+function isAcceptableDaily(packed) {
+  if (!packed || packed.date) return false;
+  if (packed.houseCount !== 5) return false;
+  if ((packed.difficulty?.hardestTier || 0) < 6) return false;
+  try {
+    requireEinsteinStyle(packed);
+  } catch {
+    return false;
+  }
+  return Boolean(packed.difficulty?.solvedByHuman);
 }
 
 function readExisting(id) {
@@ -410,6 +447,13 @@ for (const entry of COPIES) {
   const packed = isAcceptable(existing) ? existing : generateStandard(entry);
   if (packed !== existing) writePacked(packed);
   adopt(entry, packed, packed === existing ? "keep" : "gen");
+}
+
+for (const entry of DAILY_COPIES) {
+  const existing = readExisting(entry.id);
+  const packed = isAcceptableDaily(existing) ? existing : packDailyCopy(entry);
+  if (packed !== existing) writePacked(packed);
+  adopt(entry, packed, packed === existing ? "keep" : `daily:${entry.sourceDate}`);
 }
 
 for (const entry of EXPERT_SPECS) {

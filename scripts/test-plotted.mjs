@@ -51,7 +51,7 @@ assert.equal(SITE_URL, "https://plotmaniac.com");
 assert.equal(NOTES_STORAGE_KEY, "plotted-notes");
 assert.equal(PRACTICE_PROGRESS_KEY, "plotted-practice");
 assert.equal(PRACTICE_NOTES_KEY, "plotted-practice-notes");
-assert.equal(PRACTICE_PUZZLES.length, 22);
+assert.equal(PRACTICE_PUZZLES.length, 23);
 assert.deepEqual(
   PRACTICE_GROUPS.map((entry) => entry.id),
   ["easy", "easy-medium", "medium", "medium-hard", "hard", "expert"],
@@ -81,13 +81,14 @@ assert.deepEqual(
     "five-cities",
     "hobby-houses",
     "five-plates",
+    "sail-lane",
   ],
 );
 assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "easy").length, 4);
 assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "medium").length, 4);
 assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "medium-hard").length, 4);
 assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "hard").length, 4);
-assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "expert").length, 5);
+assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "expert").length, 6);
 assert.equal(normalizeNotes("scratch"), "scratch");
 assert.equal(normalizeNotes(["Brit", "green"]), "Brit\ngreen");
 assert.equal(normalizeNotes(null), "");
@@ -369,7 +370,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v33/);
+assert.match(sw, /plotted-v34/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -1042,6 +1043,26 @@ assert.deepEqual(practiceIndex.puzzles.map((entry) => entry.id), practiceIds);
 const keptPractice = new Set(["easy", "easy-medium", "medium", "medium-hard", "hard"]);
 const newHard = ["five-copies", "parcel-row", "four-plates"];
 const expertIds = new Set(["long-street", "five-trades", "five-cities", "hobby-houses", "five-plates"]);
+const dailyCopyIds = new Map([["sail-lane", "2027-08-29"]]);
+function personItemGiveaways(practice) {
+  return practice.clues.filter((clue) => {
+    if (clue.type !== "same") return false;
+    return clue.left?.attr === "person" || clue.right?.attr === "person";
+  });
+}
+function questionAnsweredBySameClue(practice) {
+  const q = practice.question;
+  if (!q?.givenItem || !q?.answerItem) return false;
+  return practice.clues.some((clue) => {
+    if (clue.type !== "same") return false;
+    const left = clue.left;
+    const right = clue.right;
+    return (
+      (left.attr === q.givenAttr && left.item === q.givenItem && right.attr === q.answerAttr && right.item === q.answerItem) ||
+      (right.attr === q.givenAttr && right.item === q.givenItem && left.attr === q.answerAttr && left.item === q.answerItem)
+    );
+  });
+}
 for (const id of practiceIds) {
   const practice = JSON.parse(fs.readFileSync(path.join(root, `data/practice/${id}.json`), "utf8"));
   const catalog = PRACTICE_PUZZLES.find((entry) => entry.id === id);
@@ -1103,6 +1124,14 @@ for (const id of practiceIds) {
         practice.clues.some((clue) => clue.type === "left_of" && !clue.immediate),
       `${id} should use a harder clue type`,
     );
+  } else if (dailyCopyIds.has(id)) {
+    assert.equal(practice.source, "practice-generated", `${id} should be copied from a daily`);
+    assert.equal(practice.houseCount, 5, `${id} must be 5 houses`);
+    assert.ok(human.hardestTier >= 6, `${id} hardest step must be tier 6+ (got ${human.hardest} t${human.hardestTier})`);
+    assert.ok(personItemGiveaways(practice).length <= 2, `${id} may have at most 2 name-verb-item clues`);
+    assert.equal(questionAnsweredBySameClue(practice), false, `${id} question must need deduction`);
+    assert.equal(practice.difficulty.sourceDate, dailyCopyIds.get(id), `${id} should remember its daily source`);
+    assert.ok(!practice.date, `${id} must not keep the daily date`);
   } else if (!keptPractice.has(id)) {
     assert.ok(practice.houseCount >= 3);
     assert.match(practice.source, /^(practice-generated|expert-generated|original-generated)/, `${id} should be a generated practice puzzle`);

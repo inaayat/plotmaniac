@@ -86,7 +86,7 @@ The uniqueness solver is a domain-reduction CSP with all-different per attribute
 
 Precompute about a year at a time: `node scripts/generate-plotted.mjs`.
 
-A **standalone practice set** of 22 puzzles lives under `data/practice/`, grouped by difficulty (easy through Expert). Twelve of them are late-2027 dailies copied in with new titles so they do not collide with upcoming days; the hard copies prefer 4–5 house grids. Five Expert puzzles are generated 5-house / 4-category grids whose hardest human step is contradiction. Pick one from the in-page menu or `?puzzle=<id>`. Practice uses separate `localStorage` keys, is not assigned to a date, and does not change the daily streak or share numbering (`Plotted practice · Easy`). Refresh with `node scripts/generate-practice.mjs`; the original five files are kept.
+A **standalone practice set** of 23 puzzles lives under `data/practice/`, grouped by difficulty (easy through Expert). Twelve of them are late-2027 dailies copied in with new titles so they do not collide with upcoming days; the hard copies prefer 4–5 house grids. Five Expert puzzles are generated 5-house / 4-category grids whose hardest human step is contradiction. One more Expert copy (`sail-lane`) is a 5-house last-Sunday daily that already met the Hard/Expert bar. Pick one from the in-page menu or `?puzzle=<id>`. Practice uses separate `localStorage` keys, is not assigned to a date, and does not change the daily streak or share numbering (`Plotted practice · Easy`). Refresh with `node scripts/generate-practice.mjs`; the original five files are kept.
 
 ## 5. Variety / how long before running out
 

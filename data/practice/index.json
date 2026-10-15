@@ -378,6 +378,23 @@
         "drink"
       ],
       "sourceDate": null
+    },
+    {
+      "id": "sail-lane",
+      "label": "Expert",
+      "title": "Sail lane",
+      "houseCount": 5,
+      "clueCount": 8,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 7,
+      "categories": [
+        "person",
+        "vehicle",
+        "pet"
+      ],
+      "sourceDate": "2027-08-29"
     }
   ]
 }

@@ -576,7 +576,7 @@ petSlot.dispatchEvent(new window.Event("input", { bubbles: true }));
 const practiceSelect = document.getElementById("practice-select");
 assert.ok(practiceSelect, "practice picker is a compact select");
 assert.equal(practiceSelect.value, "easy");
-assert.equal(practiceSelect.querySelectorAll("option").length, 23, "Today plus 22 practice puzzles");
+assert.equal(practiceSelect.querySelectorAll("option").length, 24, "Today plus 23 practice puzzles");
 assert.equal(practiceSelect.querySelectorAll("optgroup").length, 6, "practice puzzles are grouped by difficulty");
 assert.equal(practiceSelect.querySelectorAll("optgroup")[0].label, "Easy");
 assert.equal(practiceSelect.querySelectorAll("optgroup")[5].label, "Expert");

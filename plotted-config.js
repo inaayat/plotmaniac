@@ -68,6 +68,7 @@ export const PRACTICE_PUZZLES = [
   { id: "five-cities", title: "Five cities", group: "expert" },
   { id: "hobby-houses", title: "Hobby houses", group: "expert" },
   { id: "five-plates", title: "Five plates", group: "expert" },
+  { id: "sail-lane", title: "Sail lane", group: "expert" },
 ];
 
 export function practiceGroupLabel(groupId) {
