@@ -3,7 +3,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PRACTICE_PUZZLES, practiceGroupLabel } from "../plotted-config.js";
-import { GENERIC_HAS_ATTRS, generatePuzzle, validateEinsteinStyle } from "../plotted-engine.js";
+import {
+  GENERIC_HAS_ATTRS,
+  generatePuzzle,
+  isPersonItemClue,
+  sameClueMatchesQuestion,
+  validateEinsteinStyle,
+} from "../plotted-engine.js";
 import { themeById } from "../plotted-themes.js";
 import { humanDifficulty, solvePuzzleByHuman } from "../plotted-human-solver.js";
 
@@ -245,7 +251,110 @@ const EXPERT_SPEC = {
   label: "expert",
 };
 
+const HARD_FIVE_SPEC = {
+  houseCount: 5,
+  types: ["at", "same", "next_to", "left_of", "not_next_to", "either_house", "not_at"],
+  minClues: 9,
+  maxClues: 13,
+  minSteps: 4,
+  maxSteps: 80,
+  maxAtClues: 3,
+  maxPersonSame: 2,
+  minHumanTier: 6,
+  maxHumanTier: 7,
+  requireIndirectQuestion: true,
+  preferHardTypes: true,
+  label: "hard",
+};
+
+const NEW_EXPERT_SPEC = {
+  ...EXPERT_SPEC,
+  maxPersonSame: 2,
+  requireIndirectQuestion: true,
+};
+
+const FIVE_CAT_EXPERT_SPEC = {
+  ...NEW_EXPERT_SPEC,
+  minClues: 12,
+  maxClues: 15,
+  maxAtClues: 2,
+};
+
+const HARD_FIVE_SPECS = [
+  {
+    id: "five-plots",
+    themeId: "hard-plots",
+    seedDate: "2099-03-01",
+    story: "Five gardens. Who grows which plant?",
+  },
+  {
+    id: "late-set",
+    themeId: "hard-set",
+    seedDate: "2099-03-02",
+    story: "Five rooms. Who plays what?",
+  },
+  {
+    id: "desk-row",
+    themeId: "hard-desk",
+    seedDate: "2099-03-03",
+    story: "Five desks. Who parked where?",
+  },
+  {
+    id: "quiet-shelf",
+    themeId: "hard-shelf",
+    seedDate: "2099-03-04",
+    story: "Five readers. Who reads what?",
+  },
+  {
+    id: "painted-pets",
+    themeId: "hard-pets",
+    seedDate: "2099-03-05",
+    story: "Five houses. Who has which pet?",
+  },
+  {
+    id: "city-plates",
+    themeId: "hard-cities",
+    seedDate: "2099-03-06",
+    story: "Five kitchens. Who is from where?",
+  },
+];
+
+const NEW_EXPERT_SPECS = [
+  {
+    id: "five-doors",
+    themeId: "expert-doors",
+    seedDate: "2099-04-01",
+    story: "Five houses, five facts each. Who has which pet?",
+    attrCount: 5,
+  },
+  {
+    id: "house-band",
+    themeId: "expert-band",
+    seedDate: "2099-04-02",
+    story: "Five houses, a band on the block. Who plays what?",
+    attrCount: 5,
+  },
+  {
+    id: "parked-books",
+    themeId: "expert-shelf",
+    seedDate: "2099-04-03",
+    story: "Five houses. Who reads what?",
+    attrCount: 4,
+  },
+  {
+    id: "camp-cities",
+    themeId: "expert-camp",
+    seedDate: "2099-04-04",
+    story: "Five plots. Who likes what?",
+    attrCount: 4,
+  },
+];
+
 const SALTS = [0, 1, 2, 5, 11, 17, 23, 31, 43, 59];
+const SEEK_SALTS = [
+  0, 1, 2, 3, 5, 7, 8, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107,
+  109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211,
+];
 
 function requireEinsteinStyle(packed) {
   const style = validateEinsteinStyle(packed);
@@ -311,10 +420,12 @@ function harderTypeScore(puzzle) {
   return score;
 }
 
-function isValidExpert(puzzle) {
+function isValidExpert(puzzle, { attrCount, maxAt = 1, maxClues = 13 } = {}) {
   if (!puzzle || puzzle.houseCount !== 5) return false;
   if ((puzzle.attributes || []).length < 4) return false;
-  if (puzzle.clues.filter((clue) => clue.type === "at").length > 1) return false;
+  if (attrCount != null && (puzzle.attributes || []).length !== attrCount) return false;
+  if ((puzzle.clues || []).length > maxClues) return false;
+  if (puzzle.clues.filter((clue) => clue.type === "at").length > maxAt) return false;
   if (!puzzle.difficulty?.solvedByHuman) return false;
   if ((puzzle.difficulty.hardestTier || 0) < 8) return false;
   const hasHarder =
@@ -322,6 +433,27 @@ function isValidExpert(puzzle) {
     puzzle.clues.some((clue) => clue.type === "either_house") ||
     puzzle.clues.some((clue) => clue.type === "left_of" && !clue.immediate);
   return hasHarder;
+}
+
+function questionIsDirect(puzzle) {
+  return (puzzle.clues || []).some((clue) => sameClueMatchesQuestion(clue, puzzle.question));
+}
+
+function isValidHardFive(puzzle) {
+  if (!puzzle || puzzle.houseCount !== 5) return false;
+  if ((puzzle.attributes || []).length !== 4) return false;
+  if ((puzzle.clues || []).filter((clue) => isPersonItemClue(clue)).length > 2) return false;
+  if (!puzzle.difficulty?.solvedByHuman) return false;
+  const tier = puzzle.difficulty.hardestTier || 0;
+  if (tier < 6 || tier > 7) return false;
+  return !questionIsDirect(puzzle);
+}
+
+function isValidLeanExpert(puzzle, attrCount) {
+  const five = attrCount >= 5;
+  if (!isValidExpert(puzzle, { attrCount, maxAt: five ? 2 : 1, maxClues: five ? 15 : 13 })) return false;
+  if ((puzzle.clues || []).filter((clue) => isPersonItemClue(clue)).length > 2) return false;
+  return !questionIsDirect(puzzle);
 }
 
 function packPuzzle(entry, puzzle, source) {
@@ -380,17 +512,19 @@ function readExisting(id) {
   return JSON.parse(fs.readFileSync(dest, "utf8"));
 }
 
-function generateWithSpec(entry, spec, source, accept, { seekBest = false } = {}) {
+function generateWithSpec(entry, spec, source, accept, { seekBest = false, salts = SALTS, maxTries, used } = {}) {
   let best = null;
   let bestScore = -1;
   let lastError = null;
-  for (const salt of SALTS) {
+  const tries = maxTries || (spec.houseCount >= 5 ? 300 : 160);
+  for (const salt of salts) {
     try {
       const puzzle = generatePuzzle(entry.seedDate, {
         spec,
         themeId: entry.themeId,
         salt,
-        maxTries: spec.houseCount >= 5 ? 300 : 160,
+        maxTries: tries,
+        used,
       });
       const packed = packPuzzle(entry, puzzle, source);
       if (!isAcceptable(packed, accept)) continue;
@@ -456,6 +590,26 @@ for (const entry of DAILY_COPIES) {
   adopt(entry, packed, packed === existing ? "keep" : `daily:${entry.sourceDate}`);
 }
 
+const usedNew = { solutions: new Set(), patterns: new Set() };
+
+for (const entry of HARD_FIVE_SPECS) {
+  const existing = readExisting(entry.id);
+  const packed = isAcceptable(existing, isValidHardFive)
+    ? existing
+    : generateWithSpec(entry, HARD_FIVE_SPEC, "practice-generated", isValidHardFive, {
+        salts: SEEK_SALTS,
+        maxTries: 300,
+        used: usedNew,
+      });
+  if (packed !== existing) writePacked(packed);
+  const giveaways = packed.clues.filter((clue) => isPersonItemClue(clue)).length;
+  adopt(
+    entry,
+    packed,
+    `${packed === existing ? "keep" : "gen"} ${packed.attributes.length}a giveaways=${giveaways} tier=${packed.difficulty.hardestTier}`,
+  );
+}
+
 for (const entry of EXPERT_SPECS) {
   const existing = readExisting(entry.id);
   const packed = isAcceptable(existing, isValidExpert) ? existing : generateExpert(entry);
@@ -466,6 +620,28 @@ for (const entry of EXPERT_SPECS) {
   byId.set(entry.id, packed);
   process.stdout.write(
     `${entry.id} ${packed === existing ? "keep" : "gen"} ${packed.theme.id} ${packed.houseCount}h ${packed.attributes.length}a ${packed.clues.length}c at=${atCount} steps=${packed.difficulty.steps} ${packed.difficulty.hardest} tier=${packed.difficulty.hardestTier} types=${types}\n`,
+  );
+}
+
+for (const entry of NEW_EXPERT_SPECS) {
+  const accept = (puzzle) => isValidLeanExpert(puzzle, entry.attrCount);
+  const spec = entry.attrCount >= 5 ? FIVE_CAT_EXPERT_SPEC : NEW_EXPERT_SPEC;
+  const existing = readExisting(entry.id);
+  const packed = isAcceptable(existing, accept)
+    ? existing
+    : generateWithSpec(entry, spec, "expert-generated", accept, {
+        salts: SEEK_SALTS,
+        maxTries: entry.attrCount >= 5 ? 400 : 250,
+        used: usedNew,
+      });
+  if (packed !== existing) writePacked(packed);
+  const types = [...new Set(packed.clues.map((clue) => clue.type))].join(",");
+  const atCount = packed.clues.filter((clue) => clue.type === "at").length;
+  const giveaways = packed.clues.filter((clue) => isPersonItemClue(clue)).length;
+  requireEinsteinStyle(packed);
+  byId.set(entry.id, packed);
+  process.stdout.write(
+    `${entry.id} ${packed === existing ? "keep" : "gen"} ${packed.theme.id} ${packed.houseCount}h ${packed.attributes.length}a ${packed.clues.length}c at=${atCount} giveaways=${giveaways} steps=${packed.difficulty.steps} ${packed.difficulty.hardest} tier=${packed.difficulty.hardestTier} types=${types}\n`,
   );
 }
 

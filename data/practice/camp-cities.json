@@ -1,0 +1,367 @@
+{
+  "id": "camp-cities",
+  "practice": true,
+  "practiceId": "camp-cities",
+  "label": "Expert",
+  "source": "expert-generated",
+  "theme": {
+    "id": "expert-camp",
+    "title": "Camp cities",
+    "blurb": "Visitors, hobbies, and a plant each.",
+    "story": "Five plots. Who likes what?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "city",
+      "label": "City"
+    },
+    {
+      "id": "hobby",
+      "label": "Hobby"
+    },
+    {
+      "id": "plant",
+      "label": "Plant"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "city": [
+      {
+        "id": "cairo",
+        "label": "Cairo",
+        "icon": "tent"
+      },
+      {
+        "id": "paris",
+        "label": "Paris",
+        "icon": "house"
+      },
+      {
+        "id": "rome",
+        "label": "Rome",
+        "icon": "house-simple"
+      },
+      {
+        "id": "oslo",
+        "label": "Oslo",
+        "icon": "moon"
+      },
+      {
+        "id": "lima",
+        "label": "Lima",
+        "icon": "flower"
+      }
+    ],
+    "hobby": [
+      {
+        "id": "camping",
+        "label": "camping",
+        "icon": "tent"
+      },
+      {
+        "id": "painting",
+        "label": "painting",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "reading",
+        "label": "reading",
+        "icon": "book"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "cycling",
+        "label": "cycling",
+        "icon": "bicycle"
+      }
+    ],
+    "plant": [
+      {
+        "id": "tulips",
+        "label": "tulips",
+        "icon": "flower-tulip"
+      },
+      {
+        "id": "fern",
+        "label": "fern",
+        "icon": "leaf"
+      },
+      {
+        "id": "cactus",
+        "label": "cactus",
+        "icon": "cactus"
+      },
+      {
+        "id": "basil",
+        "label": "basil",
+        "icon": "potted-plant"
+      },
+      {
+        "id": "roses",
+        "label": "roses",
+        "icon": "flower"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "hobby",
+        "item": "reading"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "roses"
+      },
+      "text": "The person who likes reading grows roses."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "hobby",
+        "item": "painting"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "text": "The person who likes painting grows a cactus."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "city",
+        "item": "lima"
+      },
+      "right": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "text": "The person from Lima lives next to Cam."
+    },
+    {
+      "id": "c4",
+      "type": "next_to",
+      "left": {
+        "attr": "plant",
+        "item": "roses"
+      },
+      "right": {
+        "attr": "hobby",
+        "item": "guitar"
+      },
+      "text": "The person who grows roses lives next to the guitar player."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "city",
+        "item": "rome"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "roses"
+      },
+      "text": "The person from Rome grows roses."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "gus"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "cactus"
+      },
+      "text": "Gus lives next to the person who grows a cactus."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "fern"
+      },
+      "immediate": false,
+      "text": "Eden lives somewhere left of the person who grows a fern."
+    },
+    {
+      "id": "c8",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "hobby",
+        "item": "cycling"
+      },
+      "text": "Cam lives next to the person who likes cycling."
+    },
+    {
+      "id": "c9",
+      "type": "same",
+      "left": {
+        "attr": "city",
+        "item": "oslo"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "fern"
+      },
+      "text": "The person from Oslo grows a fern."
+    },
+    {
+      "id": "c10",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "plant",
+        "item": "fern"
+      },
+      "immediate": false,
+      "text": "Hana lives somewhere left of the person who grows a fern."
+    },
+    {
+      "id": "c11",
+      "type": "left_of",
+      "left": {
+        "attr": "plant",
+        "item": "fern"
+      },
+      "right": {
+        "attr": "hobby",
+        "item": "painting"
+      },
+      "immediate": true,
+      "text": "The person who grows a fern lives directly left of the person who likes painting."
+    },
+    {
+      "id": "c12",
+      "type": "left_of",
+      "left": {
+        "attr": "plant",
+        "item": "tulips"
+      },
+      "right": {
+        "attr": "city",
+        "item": "cairo"
+      },
+      "immediate": true,
+      "text": "The person who grows tulips lives directly left of the person from Cairo."
+    },
+    {
+      "id": "c13",
+      "type": "left_of",
+      "left": {
+        "attr": "city",
+        "item": "rome"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "immediate": false,
+      "text": "The person from Rome lives somewhere left of Eden."
+    }
+  ],
+  "question": {
+    "text": "Who is from Cairo?",
+    "givenAttr": "city",
+    "givenItem": "cairo",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "hana",
+      "city": "rome",
+      "hobby": "reading",
+      "plant": "roses"
+    },
+    {
+      "person": "eden",
+      "city": "lima",
+      "hobby": "guitar",
+      "plant": "tulips"
+    },
+    {
+      "person": "cam",
+      "city": "cairo",
+      "hobby": "camping",
+      "plant": "basil"
+    },
+    {
+      "person": "gus",
+      "city": "oslo",
+      "hobby": "cycling",
+      "plant": "fern"
+    },
+    {
+      "person": "jules",
+      "city": "paris",
+      "hobby": "painting",
+      "plant": "cactus"
+    }
+  ],
+  "difficulty": {
+    "label": "expert",
+    "steps": 24,
+    "neededSearch": true,
+    "weekday": 6,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 64
+  }
+}

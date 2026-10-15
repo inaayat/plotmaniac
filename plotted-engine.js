@@ -1159,6 +1159,29 @@ function cluePattern(clues) {
   return clues.map((clue) => clue.type + (clue.immediate ? "-imm" : "")).sort().join(",");
 }
 
+export function isPersonItemClue(clue) {
+  if (clue?.type !== "same") return false;
+  const left = clue.left?.attr;
+  const right = clue.right?.attr;
+  return left === "person" || right === "person" || left === "nationality" || right === "nationality";
+}
+
+export function sameClueMatchesQuestion(clue, question) {
+  if (clue?.type !== "same" || !question?.givenItem || !question?.answerItem) return false;
+  const left = clue.left;
+  const right = clue.right;
+  return (
+    (left.attr === question.givenAttr &&
+      left.item === question.givenItem &&
+      right.attr === question.answerAttr &&
+      right.item === question.answerItem) ||
+    (right.attr === question.givenAttr &&
+      right.item === question.givenItem &&
+      left.attr === question.answerAttr &&
+      left.item === question.answerItem)
+  );
+}
+
 export function buildQuestion(theme, solution, catalog, rng) {
   const givenAttr = theme.questionGiven;
   const answerAttr = theme.questionAnswer;
@@ -1172,6 +1195,24 @@ export function buildQuestion(theme, solution, catalog, rng) {
     answerAttr,
     answerItem: answerItem.id,
   };
+}
+
+export function buildIndirectQuestion(theme, solution, catalog, clues, rng) {
+  const givenAttr = theme.questionGiven;
+  const answerAttr = theme.questionAnswer;
+  for (const house of shuffle(solution.map((_, index) => index), rng)) {
+    const givenItem = catalog[givenAttr].find((item) => item.id === solution[house][givenAttr]);
+    const answerItem = catalog[answerAttr].find((item) => item.id === solution[house][answerAttr]);
+    const question = {
+      text: theme.question(givenItem, answerItem),
+      givenAttr,
+      givenItem: givenItem.id,
+      answerAttr,
+      answerItem: answerItem.id,
+    };
+    if (!clues.some((clue) => sameClueMatchesQuestion(clue, question))) return question;
+  }
+  return null;
 }
 
 function itemCatalog(theme, attributes, chosen) {
@@ -1227,10 +1268,22 @@ export function generatePuzzle(iso, options = {}) {
     const minClues = spec.minClues || 5;
     const maxClues = spec.maxClues || 8;
     const hardMix = Boolean(spec.preferHardTypes);
+    const maxPersonSame = spec.maxPersonSame;
+    const sameAll = shuffle(byType.get("same") || [], rng);
+    const samePicked =
+      maxPersonSame == null
+        ? sameAll.slice(0, hardMix ? 12 : wide ? 20 : 12)
+        : shuffle(
+            [
+              ...sameAll.filter((clue) => isPersonItemClue(clue)).slice(0, maxPersonSame),
+              ...sameAll.filter((clue) => !isPersonItemClue(clue)).slice(0, hardMix ? 16 : 24),
+            ],
+            rng,
+          );
     const pool = hardMix
       ? shuffle(
           [
-            ...take("same", 12),
+            ...samePicked,
             ...take("next_to", 10),
             ...take("left_of", 12),
             ...take("either_house", 8),
@@ -1241,7 +1294,7 @@ export function generatePuzzle(iso, options = {}) {
           rng,
         )
       : [
-          ...take("same", wide ? 20 : 12),
+          ...samePicked,
           ...take("next_to", wide ? 16 : 10),
           ...take("left_of", wide ? 16 : 10),
           ...take("at", atBudget),
@@ -1278,6 +1331,7 @@ export function generatePuzzle(iso, options = {}) {
     }
     if (pruned.length > maxClues || pruned.length < minClues) continue;
     if (atCount(pruned) > maxAtClues) continue;
+    if (maxPersonSame != null && pruned.filter((clue) => isPersonItemClue(clue)).length > maxPersonSame) continue;
     const rated = countSolutions(houseCount, attributes, items, pruned, 2);
     if (rated.count !== 1) continue;
     const numbered = pruned.map((clue, index) => ({ id: `c${index + 1}`, ...clue }));
@@ -1290,6 +1344,7 @@ export function generatePuzzle(iso, options = {}) {
       });
       if (!fallback.solvedByHuman || clues.length > maxClues || clues.length < minClues) continue;
       if (atCount(clues) > maxAtClues) continue;
+      if (maxPersonSame != null && clues.filter((clue) => isPersonItemClue(clue)).length > maxPersonSame) continue;
       pruned = clues;
       numbered.splice(0, numbered.length, ...pruned.map((clue, index) => ({ id: `c${index + 1}`, ...clue })));
       Object.assign(human, fallback);
@@ -1309,6 +1364,10 @@ export function generatePuzzle(iso, options = {}) {
       ...clue,
       text: clueText(clue, catalog, theme.id, houseCount),
     }));
+    const question = spec.requireIndirectQuestion
+      ? buildIndirectQuestion(theme, solution, catalog, withText, rng)
+      : buildQuestion(theme, solution, catalog, rng);
+    if (!question) continue;
     const packedAttrs = attributes.map((id) => ({ id, label: ATTRIBUTES[id]?.label || id }));
     const draft = {
       date: iso,
@@ -1324,7 +1383,7 @@ export function generatePuzzle(iso, options = {}) {
       attributes: packedAttrs,
       items: catalog,
       clues: withText,
-      question: buildQuestion(theme, solution, catalog, rng),
+      question,
       solution,
       difficulty: {
         label: humanInfo.label || spec.label,

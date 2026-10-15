@@ -1,0 +1,438 @@
+{
+  "id": "house-band",
+  "practice": true,
+  "practiceId": "house-band",
+  "label": "Expert",
+  "source": "expert-generated",
+  "theme": {
+    "id": "expert-band",
+    "title": "House band",
+    "blurb": "Five painted houses. Who, color, pet, drink, and instrument.",
+    "story": "Five houses, a band on the block. Who plays what?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      }
+    ],
+    "color": [
+      {
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
+      },
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "pink",
+        "label": "pink",
+        "icon": "flower"
+      },
+      {
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
+      },
+      {
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
+      }
+    ],
+    "pet": [
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "aliases": [
+          "cats"
+        ],
+        "icon": "cat"
+      },
+      {
+        "id": "bird",
+        "label": "bird",
+        "aliases": [
+          "birds"
+        ],
+        "icon": "bird"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "aliases": [
+          "dogs"
+        ],
+        "icon": "dog"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "aliases": [
+          "horses"
+        ],
+        "icon": "horse"
+      }
+    ],
+    "drink": [
+      {
+        "id": "brandy",
+        "label": "brandy",
+        "icon": "brandy"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "piano",
+        "label": "piano",
+        "icon": "music-note"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "violin",
+        "label": "violin",
+        "icon": "guitar"
+      },
+      {
+        "id": "cello",
+        "label": "cello",
+        "icon": "music-notes"
+      },
+      {
+        "id": "flute",
+        "label": "flute",
+        "icon": "music-note"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "color",
+        "item": "green"
+      },
+      "immediate": true,
+      "text": "Cam lives directly left of the green house."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "right": {
+        "attr": "color",
+        "item": "yellow"
+      },
+      "text": "Hana lives in the yellow house."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "cello"
+      },
+      "text": "The dog owner plays the cello."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "red"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "piano"
+      },
+      "text": "The owner of the red house plays the piano."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "pink"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "text": "The owner of the pink house plays the guitar."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "The fish owner lives next to the coffee drinker."
+    },
+    {
+      "id": "c7",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "yellow"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "The owner of the yellow house has a fish."
+    },
+    {
+      "id": "c8",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "The owner of the blue house drinks wine."
+    },
+    {
+      "id": "c9",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "violin"
+      },
+      "immediate": true,
+      "text": "Drew lives directly left of the violinist."
+    },
+    {
+      "id": "c10",
+      "type": "either_house",
+      "attr": "pet",
+      "item": "dog",
+      "houses": [
+        2,
+        3
+      ],
+      "text": "The dog owner lives in either the center house or the fourth house."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "horse"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "The horse owner drinks coffee."
+    },
+    {
+      "id": "c12",
+      "type": "left_of",
+      "left": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "brandy"
+      },
+      "immediate": true,
+      "text": "The guitarist lives directly left of the brandy drinker."
+    },
+    {
+      "id": "c13",
+      "type": "left_of",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "immediate": false,
+      "text": "The bird owner lives somewhere left of the beer drinker."
+    },
+    {
+      "id": "c14",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "pink"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "The owner of the pink house has a cat."
+    },
+    {
+      "id": "c15",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "flute"
+      },
+      "text": "Ada lives next to the flutist."
+    }
+  ],
+  "question": {
+    "text": "Who plays the piano?",
+    "givenAttr": "instrument",
+    "givenItem": "piano",
+    "answerAttr": "person",
+    "answerItem": "drew"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "color": "pink",
+      "pet": "cat",
+      "drink": "tea",
+      "instrument": "guitar"
+    },
+    {
+      "person": "fay",
+      "color": "green",
+      "pet": "bird",
+      "drink": "brandy",
+      "instrument": "flute"
+    },
+    {
+      "person": "ada",
+      "color": "blue",
+      "pet": "dog",
+      "drink": "wine",
+      "instrument": "cello"
+    },
+    {
+      "person": "drew",
+      "color": "red",
+      "pet": "horse",
+      "drink": "coffee",
+      "instrument": "piano"
+    },
+    {
+      "person": "hana",
+      "color": "yellow",
+      "pet": "fish",
+      "drink": "beer",
+      "instrument": "violin"
+    }
+  ],
+  "difficulty": {
+    "label": "expert",
+    "steps": 14,
+    "neededSearch": true,
+    "weekday": 4,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 54
+  }
+}

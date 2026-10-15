@@ -290,6 +290,114 @@
       "sourceDate": null
     },
     {
+      "id": "five-plots",
+      "label": "Hard",
+      "title": "Five plots",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "hard",
+      "hardest": "next_to_edge",
+      "hardestTier": 6,
+      "steps": 33,
+      "categories": [
+        "person",
+        "color",
+        "plant",
+        "drink"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "late-set",
+      "label": "Hard",
+      "title": "Late set",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "hard",
+      "hardest": "naked_pair",
+      "hardestTier": 7,
+      "steps": 37,
+      "categories": [
+        "person",
+        "color",
+        "instrument",
+        "drink"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "desk-row",
+      "label": "Hard",
+      "title": "Desk row",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "hard",
+      "hardest": "left_of_edge",
+      "hardestTier": 6,
+      "steps": 39,
+      "categories": [
+        "person",
+        "job",
+        "vehicle",
+        "drink"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "quiet-shelf",
+      "label": "Hard",
+      "title": "Quiet shelf",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "hard",
+      "hardest": "naked_pair",
+      "hardestTier": 7,
+      "steps": 30,
+      "categories": [
+        "person",
+        "book",
+        "hobby",
+        "drink"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "painted-pets",
+      "label": "Hard",
+      "title": "Painted pets",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "hard",
+      "hardest": "naked_pair",
+      "hardestTier": 7,
+      "steps": 34,
+      "categories": [
+        "person",
+        "color",
+        "pet",
+        "food"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "city-plates",
+      "label": "Hard",
+      "title": "City plates",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "hard",
+      "hardest": "naked_pair",
+      "hardestTier": 7,
+      "steps": 36,
+      "categories": [
+        "person",
+        "city",
+        "food",
+        "color"
+      ],
+      "sourceDate": null
+    },
+    {
       "id": "long-street",
       "label": "Expert",
       "title": "The long street",
@@ -395,6 +503,80 @@
         "pet"
       ],
       "sourceDate": "2027-08-29"
+    },
+    {
+      "id": "five-doors",
+      "label": "Expert",
+      "title": "Five doors",
+      "houseCount": 5,
+      "clueCount": 15,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 22,
+      "categories": [
+        "person",
+        "color",
+        "pet",
+        "drink",
+        "job"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "house-band",
+      "label": "Expert",
+      "title": "House band",
+      "houseCount": 5,
+      "clueCount": 15,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 14,
+      "categories": [
+        "person",
+        "color",
+        "pet",
+        "drink",
+        "instrument"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "parked-books",
+      "label": "Expert",
+      "title": "Parked books",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 12,
+      "categories": [
+        "person",
+        "vehicle",
+        "book",
+        "color"
+      ],
+      "sourceDate": null
+    },
+    {
+      "id": "camp-cities",
+      "label": "Expert",
+      "title": "Camp cities",
+      "houseCount": 5,
+      "clueCount": 13,
+      "difficulty": "expert",
+      "hardest": "contradiction",
+      "hardestTier": 8,
+      "steps": 24,
+      "categories": [
+        "person",
+        "city",
+        "hobby",
+        "plant"
+      ],
+      "sourceDate": null
     }
   ]
 }

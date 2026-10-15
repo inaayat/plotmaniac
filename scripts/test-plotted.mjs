@@ -51,7 +51,7 @@ assert.equal(SITE_URL, "https://plotmaniac.com");
 assert.equal(NOTES_STORAGE_KEY, "plotted-notes");
 assert.equal(PRACTICE_PROGRESS_KEY, "plotted-practice");
 assert.equal(PRACTICE_NOTES_KEY, "plotted-practice-notes");
-assert.equal(PRACTICE_PUZZLES.length, 23);
+assert.equal(PRACTICE_PUZZLES.length, 33);
 assert.deepEqual(
   PRACTICE_GROUPS.map((entry) => entry.id),
   ["easy", "easy-medium", "medium", "medium-hard", "hard", "expert"],
@@ -76,19 +76,29 @@ assert.deepEqual(
     "five-copies",
     "parcel-row",
     "four-plates",
+    "five-plots",
+    "late-set",
+    "desk-row",
+    "quiet-shelf",
+    "painted-pets",
+    "city-plates",
     "long-street",
     "five-trades",
     "five-cities",
     "hobby-houses",
     "five-plates",
     "sail-lane",
+    "five-doors",
+    "house-band",
+    "parked-books",
+    "camp-cities",
   ],
 );
 assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "easy").length, 4);
 assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "medium").length, 4);
 assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "medium-hard").length, 4);
-assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "hard").length, 4);
-assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "expert").length, 6);
+assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "hard").length, 10);
+assert.equal(PRACTICE_PUZZLES.filter((entry) => entry.group === "expert").length, 10);
 assert.equal(normalizeNotes("scratch"), "scratch");
 assert.equal(normalizeNotes(["Brit", "green"]), "Brit\ngreen");
 assert.equal(normalizeNotes(null), "");
@@ -370,7 +380,7 @@ assert.doesNotMatch(html, /id="sheet"/);
 assert.doesNotMatch(html, /Nunito|Fredoka|peach|lavender/);
 
 const sw = read("sw.js");
-assert.match(sw, /plotted-v34/);
+assert.match(sw, /plotted-v35/);
 assert.match(sw, /skipWaiting/);
 assert.match(sw, /clients\.claim/);
 assert.match(sw, /isShellRequest/);
@@ -1042,7 +1052,19 @@ const practiceIndex = JSON.parse(fs.readFileSync(path.join(root, "data/practice/
 assert.deepEqual(practiceIndex.puzzles.map((entry) => entry.id), practiceIds);
 const keptPractice = new Set(["easy", "easy-medium", "medium", "medium-hard", "hard"]);
 const newHard = ["five-copies", "parcel-row", "four-plates"];
-const expertIds = new Set(["long-street", "five-trades", "five-cities", "hobby-houses", "five-plates"]);
+const hardFiveIds = new Set(["five-plots", "late-set", "desk-row", "quiet-shelf", "painted-pets", "city-plates"]);
+const expertIds = new Set([
+  "long-street",
+  "five-trades",
+  "five-cities",
+  "hobby-houses",
+  "five-plates",
+  "five-doors",
+  "house-band",
+  "parked-books",
+  "camp-cities",
+]);
+const fiveCategoryIds = new Set(["five-doors", "house-band"]);
 const dailyCopyIds = new Map([["sail-lane", "2027-08-29"]]);
 function personItemGiveaways(practice) {
   return practice.clues.filter((clue) => {
@@ -1115,8 +1137,14 @@ for (const id of practiceIds) {
     assert.equal(practice.source, "expert-generated", `${id} should be an Expert-generated puzzle`);
     assert.equal(practice.houseCount, 5, `${id} must be 5 houses`);
     assert.ok(practice.attributes.length >= 4, `${id} needs at least 4 categories`);
-    assert.ok(practice.clues.length <= 13, `${id} should stay leaner than Einstein`);
-    assert.ok(practice.clues.filter((clue) => clue.type === "at").length <= 1, `${id} may have at most one house-N clue`);
+    if (fiveCategoryIds.has(id)) {
+      assert.equal(practice.attributes.length, 5, `${id} should be a 5-category Einstein-style grid`);
+      assert.ok(practice.clues.length <= 15, `${id} should stay at Einstein length or leaner`);
+      assert.ok(practice.clues.filter((clue) => clue.type === "at").length <= 2, `${id} may have at most two house clues`);
+    } else {
+      assert.ok(practice.clues.length <= 13, `${id} should stay leaner than Einstein`);
+      assert.ok(practice.clues.filter((clue) => clue.type === "at").length <= 1, `${id} may have at most one house-N clue`);
+    }
     assert.ok(human.hardestTier >= 8, `${id} hardest step must be contradiction (got ${human.hardest} t${human.hardestTier})`);
     assert.ok(
       practice.clues.some((clue) => clue.type === "not_next_to") ||
@@ -1124,6 +1152,18 @@ for (const id of practiceIds) {
         practice.clues.some((clue) => clue.type === "left_of" && !clue.immediate),
       `${id} should use a harder clue type`,
     );
+    if (fiveCategoryIds.has(id) || id === "parked-books" || id === "camp-cities") {
+      assert.ok(personItemGiveaways(practice).length <= 2, `${id} may have at most 2 name-verb-item clues`);
+      assert.equal(questionAnsweredBySameClue(practice), false, `${id} question must need deduction`);
+    }
+  } else if (hardFiveIds.has(id)) {
+    assert.equal(practice.source, "practice-generated", `${id} should be a generated Hard puzzle`);
+    assert.equal(practice.houseCount, 5, `${id} must be 5 houses`);
+    assert.equal(practice.attributes.length, 4, `${id} must have 4 categories`);
+    assert.ok(human.hardestTier >= 6 && human.hardestTier <= 7, `${id} hardest step must be tier 6–7 (got ${human.hardest} t${human.hardestTier})`);
+    assert.ok(personItemGiveaways(practice).length <= 2, `${id} may have at most 2 name-verb-item clues`);
+    assert.equal(questionAnsweredBySameClue(practice), false, `${id} question must need deduction`);
+    assert.ok(!practice.date, `${id} must not keep the daily date`);
   } else if (dailyCopyIds.has(id)) {
     assert.equal(practice.source, "practice-generated", `${id} should be copied from a daily`);
     assert.equal(practice.houseCount, 5, `${id} must be 5 houses`);

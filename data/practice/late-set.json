@@ -1,0 +1,350 @@
+{
+  "id": "late-set",
+  "practice": true,
+  "practiceId": "late-set",
+  "label": "Hard",
+  "source": "practice-generated",
+  "theme": {
+    "id": "hard-set",
+    "title": "Late set",
+    "blurb": "Painted rooms, a short set, and a drink each.",
+    "story": "Five rooms. Who plays what?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "id": "instrument",
+      "label": "Music"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "hana",
+        "label": "Hana",
+        "icon": "user-circle"
+      }
+    ],
+    "color": [
+      {
+        "id": "white",
+        "label": "white",
+        "icon": "house"
+      },
+      {
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
+      },
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
+      },
+      {
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
+      }
+    ],
+    "instrument": [
+      {
+        "id": "flute",
+        "label": "flute",
+        "icon": "music-note"
+      },
+      {
+        "id": "drums",
+        "label": "drums",
+        "icon": "music-notes"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "piano",
+        "label": "piano",
+        "icon": "music-note"
+      },
+      {
+        "id": "cello",
+        "label": "cello",
+        "icon": "music-notes"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "at",
+      "attr": "person",
+      "item": "gus",
+      "house": 4,
+      "text": "Gus lives in the last house."
+    },
+    {
+      "id": "c2",
+      "type": "left_of",
+      "left": {
+        "attr": "instrument",
+        "item": "cello"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "immediate": false,
+      "text": "The cellist lives somewhere left of Drew."
+    },
+    {
+      "id": "c3",
+      "type": "left_of",
+      "left": {
+        "attr": "drink",
+        "item": "martini"
+      },
+      "right": {
+        "attr": "person",
+        "item": "io"
+      },
+      "immediate": true,
+      "text": "The martini drinker lives directly left of Io."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "red"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "text": "The owner of the red house drinks wine."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "flute"
+      },
+      "text": "The owner of the blue house plays the flute."
+    },
+    {
+      "id": "c6",
+      "type": "next_to",
+      "left": {
+        "attr": "instrument",
+        "item": "flute"
+      },
+      "right": {
+        "attr": "person",
+        "item": "hana"
+      },
+      "text": "The flutist lives next to Hana."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "color",
+        "item": "white"
+      },
+      "immediate": true,
+      "text": "Cam lives directly left of the white house."
+    },
+    {
+      "id": "c8",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "white"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "guitar"
+      },
+      "text": "The owner of the white house plays the guitar."
+    },
+    {
+      "id": "c9",
+      "type": "not_next_to",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "instrument",
+        "item": "drums"
+      },
+      "text": "Drew does not live next to the drummer."
+    },
+    {
+      "id": "c10",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "The owner of the blue house drinks tea."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "instrument",
+        "item": "cello"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "The cellist drinks beer."
+    },
+    {
+      "id": "c12",
+      "type": "not_at",
+      "attr": "color",
+      "item": "yellow",
+      "house": 3,
+      "text": "The yellow house is not the fourth house."
+    },
+    {
+      "id": "c13",
+      "type": "at",
+      "attr": "color",
+      "item": "red",
+      "house": 2,
+      "text": "The red house is the center house."
+    }
+  ],
+  "question": {
+    "text": "Who plays the drums?",
+    "givenAttr": "instrument",
+    "givenItem": "drums",
+    "answerAttr": "person",
+    "answerItem": "hana"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "color": "yellow",
+      "instrument": "cello",
+      "drink": "beer"
+    },
+    {
+      "person": "drew",
+      "color": "white",
+      "instrument": "guitar",
+      "drink": "martini"
+    },
+    {
+      "person": "io",
+      "color": "red",
+      "instrument": "piano",
+      "drink": "wine"
+    },
+    {
+      "person": "hana",
+      "color": "green",
+      "instrument": "drums",
+      "drink": "coffee"
+    },
+    {
+      "person": "gus",
+      "color": "blue",
+      "instrument": "flute",
+      "drink": "tea"
+    }
+  ],
+  "difficulty": {
+    "label": "hard",
+    "steps": 37,
+    "neededSearch": true,
+    "weekday": 1,
+    "solvedByHuman": true,
+    "hardest": "naked_pair",
+    "hardestTier": 7,
+    "score": 72
+  }
+}

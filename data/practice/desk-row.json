@@ -1,0 +1,357 @@
+{
+  "id": "desk-row",
+  "practice": true,
+  "practiceId": "desk-row",
+  "label": "Hard",
+  "source": "practice-generated",
+  "theme": {
+    "id": "hard-desk",
+    "title": "Desk row",
+    "blurb": "Jobs, rides, and a drink on the way in.",
+    "story": "Five desks. Who parked where?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "job",
+      "label": "Job"
+    },
+    {
+      "id": "vehicle",
+      "label": "Vehicle"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      }
+    ],
+    "job": [
+      {
+        "id": "clerk",
+        "label": "clerk",
+        "icon": "briefcase"
+      },
+      {
+        "id": "painter",
+        "label": "painter",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "scout",
+        "label": "scout",
+        "icon": "magnifying-glass"
+      },
+      {
+        "id": "student",
+        "label": "student",
+        "icon": "student"
+      },
+      {
+        "id": "detective",
+        "label": "detective",
+        "icon": "detective"
+      }
+    ],
+    "vehicle": [
+      {
+        "id": "van",
+        "label": "van",
+        "icon": "car"
+      },
+      {
+        "id": "taxi",
+        "label": "taxi",
+        "icon": "car"
+      },
+      {
+        "id": "truck",
+        "label": "truck",
+        "icon": "car"
+      },
+      {
+        "id": "moto",
+        "label": "motorcycle",
+        "icon": "motorcycle"
+      },
+      {
+        "id": "bike",
+        "label": "bicycle",
+        "icon": "bicycle"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "taxi"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "orange"
+      },
+      "text": "The person who drives a taxi drinks orange juice."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "job",
+        "item": "detective"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "The detective drinks tea."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "job",
+        "item": "detective"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "text": "The detective rides a motorcycle."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "text": "Fay drinks tea."
+    },
+    {
+      "id": "c5",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "moto"
+      },
+      "immediate": true,
+      "text": "Drew lives directly left of the person who rides a motorcycle."
+    },
+    {
+      "id": "c6",
+      "type": "either_house",
+      "attr": "job",
+      "item": "painter",
+      "houses": [
+        1,
+        3
+      ],
+      "text": "The painter lives in either the second house or the fourth house."
+    },
+    {
+      "id": "c7",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "job",
+        "item": "student"
+      },
+      "text": "Eden is a student."
+    },
+    {
+      "id": "c8",
+      "type": "at",
+      "attr": "vehicle",
+      "item": "van",
+      "house": 2,
+      "text": "The person who drives a van lives in the center house."
+    },
+    {
+      "id": "c9",
+      "type": "not_next_to",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "job",
+        "item": "detective"
+      },
+      "text": "The beer drinker does not live next to the detective."
+    },
+    {
+      "id": "c10",
+      "type": "same",
+      "left": {
+        "attr": "vehicle",
+        "item": "truck"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "The person who drives a truck drinks coffee."
+    },
+    {
+      "id": "c11",
+      "type": "next_to",
+      "left": {
+        "attr": "job",
+        "item": "scout"
+      },
+      "right": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "text": "The scout lives next to Jules."
+    },
+    {
+      "id": "c12",
+      "type": "left_of",
+      "left": {
+        "attr": "job",
+        "item": "painter"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "immediate": true,
+      "text": "The painter lives directly left of Drew."
+    },
+    {
+      "id": "c13",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "vehicle",
+        "item": "taxi"
+      },
+      "text": "Eden lives next to the person who drives a taxi."
+    }
+  ],
+  "question": {
+    "text": "Who is the detective?",
+    "givenAttr": "job",
+    "givenItem": "detective",
+    "answerAttr": "person",
+    "answerItem": "fay"
+  },
+  "solution": [
+    {
+      "person": "eden",
+      "job": "student",
+      "vehicle": "bike",
+      "drink": "beer"
+    },
+    {
+      "person": "jules",
+      "job": "painter",
+      "vehicle": "taxi",
+      "drink": "orange"
+    },
+    {
+      "person": "drew",
+      "job": "scout",
+      "vehicle": "van",
+      "drink": "martini"
+    },
+    {
+      "person": "fay",
+      "job": "detective",
+      "vehicle": "moto",
+      "drink": "tea"
+    },
+    {
+      "person": "gus",
+      "job": "clerk",
+      "vehicle": "truck",
+      "drink": "coffee"
+    }
+  ],
+  "difficulty": {
+    "label": "hard",
+    "steps": 39,
+    "neededSearch": false,
+    "weekday": 2,
+    "solvedByHuman": true,
+    "hardest": "left_of_edge",
+    "hardestTier": 6,
+    "score": 69
+  }
+}

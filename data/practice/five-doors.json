@@ -1,0 +1,428 @@
+{
+  "id": "five-doors",
+  "practice": true,
+  "practiceId": "five-doors",
+  "label": "Expert",
+  "source": "expert-generated",
+  "theme": {
+    "id": "expert-doors",
+    "title": "Five doors",
+    "blurb": "Five painted houses. Who, color, pet, drink, and job.",
+    "story": "Five houses, five facts each. Who has which pet?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    },
+    {
+      "id": "job",
+      "label": "Job"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      }
+    ],
+    "color": [
+      {
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
+      },
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "white",
+        "label": "white",
+        "icon": "house"
+      },
+      {
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
+      },
+      {
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
+      }
+    ],
+    "pet": [
+      {
+        "id": "bird",
+        "label": "bird",
+        "aliases": [
+          "birds"
+        ],
+        "icon": "bird"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "aliases": [
+          "horses"
+        ],
+        "icon": "horse"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "aliases": [
+          "rabbits"
+        ],
+        "icon": "rabbit"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "aliases": [
+          "dogs"
+        ],
+        "icon": "dog"
+      },
+      {
+        "id": "cat",
+        "label": "cat",
+        "aliases": [
+          "cats"
+        ],
+        "icon": "cat"
+      }
+    ],
+    "drink": [
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "martini",
+        "label": "martini",
+        "icon": "martini"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      }
+    ],
+    "job": [
+      {
+        "id": "chef",
+        "label": "chef",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "detective",
+        "label": "detective",
+        "icon": "detective"
+      },
+      {
+        "id": "clerk",
+        "label": "clerk",
+        "icon": "briefcase"
+      },
+      {
+        "id": "scout",
+        "label": "scout",
+        "icon": "magnifying-glass"
+      },
+      {
+        "id": "painter",
+        "label": "painter",
+        "icon": "paint-brush"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "bird"
+      },
+      "right": {
+        "attr": "job",
+        "item": "scout"
+      },
+      "text": "The scout has a bird."
+    },
+    {
+      "id": "c2",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "The owner of the blue house has a rabbit."
+    },
+    {
+      "id": "c3",
+      "type": "same",
+      "left": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "right": {
+        "attr": "job",
+        "item": "detective"
+      },
+      "text": "The detective drinks beer."
+    },
+    {
+      "id": "c4",
+      "type": "left_of",
+      "left": {
+        "attr": "job",
+        "item": "scout"
+      },
+      "right": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "immediate": true,
+      "text": "The scout lives directly left of Eden."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "right": {
+        "attr": "job",
+        "item": "scout"
+      },
+      "text": "The wine drinker lives next to the scout."
+    },
+    {
+      "id": "c6",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "right": {
+        "attr": "job",
+        "item": "painter"
+      },
+      "text": "The painter has a cat."
+    },
+    {
+      "id": "c7",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "cam"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "text": "Cam has a rabbit."
+    },
+    {
+      "id": "c8",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "yellow"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "The owner of the yellow house drinks coffee."
+    },
+    {
+      "id": "c9",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "The tea drinker lives next to Fay."
+    },
+    {
+      "id": "c10",
+      "type": "next_to",
+      "left": {
+        "attr": "color",
+        "item": "green"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "cat"
+      },
+      "text": "The owner of the green house lives next to the cat owner."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "The dog owner drinks coffee."
+    },
+    {
+      "id": "c12",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "white"
+      },
+      "right": {
+        "attr": "job",
+        "item": "chef"
+      },
+      "text": "The chef lives in the white house."
+    },
+    {
+      "id": "c13",
+      "type": "either_house",
+      "attr": "person",
+      "item": "bo",
+      "houses": [
+        2,
+        3
+      ],
+      "text": "Bo lives in either the center house or the fourth house."
+    },
+    {
+      "id": "c14",
+      "type": "at",
+      "attr": "person",
+      "item": "gus",
+      "house": 3,
+      "text": "Gus lives in the fourth house."
+    },
+    {
+      "id": "c15",
+      "type": "at",
+      "attr": "color",
+      "item": "white",
+      "house": 4,
+      "text": "The white house is the last house."
+    }
+  ],
+  "question": {
+    "text": "Who has a cat?",
+    "givenAttr": "pet",
+    "givenItem": "cat",
+    "answerAttr": "person",
+    "answerItem": "bo"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "color": "blue",
+      "pet": "rabbit",
+      "drink": "beer",
+      "job": "detective"
+    },
+    {
+      "person": "fay",
+      "color": "yellow",
+      "pet": "dog",
+      "drink": "coffee",
+      "job": "clerk"
+    },
+    {
+      "person": "bo",
+      "color": "red",
+      "pet": "cat",
+      "drink": "tea",
+      "job": "painter"
+    },
+    {
+      "person": "gus",
+      "color": "green",
+      "pet": "bird",
+      "drink": "martini",
+      "job": "scout"
+    },
+    {
+      "person": "eden",
+      "color": "white",
+      "pet": "horse",
+      "drink": "wine",
+      "job": "chef"
+    }
+  ],
+  "difficulty": {
+    "label": "expert",
+    "steps": 22,
+    "neededSearch": true,
+    "weekday": 3,
+    "solvedByHuman": true,
+    "hardest": "contradiction",
+    "hardestTier": 8,
+    "score": 62
+  }
+}

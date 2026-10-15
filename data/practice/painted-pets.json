@@ -1,0 +1,362 @@
+{
+  "id": "painted-pets",
+  "practice": true,
+  "practiceId": "painted-pets",
+  "label": "Hard",
+  "source": "practice-generated",
+  "theme": {
+    "id": "hard-pets",
+    "title": "Painted pets",
+    "blurb": "Painted doors, a pet, and a plate each.",
+    "story": "Five houses. Who has which pet?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "id": "pet",
+      "label": "Pet"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "eden",
+        "label": "Eden",
+        "icon": "graduation-cap"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      }
+    ],
+    "color": [
+      {
+        "id": "yellow",
+        "label": "yellow",
+        "icon": "sun"
+      },
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "white",
+        "label": "white",
+        "icon": "house"
+      },
+      {
+        "id": "pink",
+        "label": "pink",
+        "icon": "flower"
+      },
+      {
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
+      }
+    ],
+    "pet": [
+      {
+        "id": "bird",
+        "label": "bird",
+        "aliases": [
+          "birds"
+        ],
+        "icon": "bird"
+      },
+      {
+        "id": "fish",
+        "label": "fish",
+        "icon": "fish"
+      },
+      {
+        "id": "rabbit",
+        "label": "rabbit",
+        "aliases": [
+          "rabbits"
+        ],
+        "icon": "rabbit"
+      },
+      {
+        "id": "horse",
+        "label": "horse",
+        "aliases": [
+          "horses"
+        ],
+        "icon": "horse"
+      },
+      {
+        "id": "dog",
+        "label": "dog",
+        "aliases": [
+          "dogs"
+        ],
+        "icon": "dog"
+      }
+    ],
+    "food": [
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "salad",
+        "label": "salad",
+        "icon": "leaf"
+      },
+      {
+        "id": "pizza",
+        "label": "pizza",
+        "icon": "pizza"
+      },
+      {
+        "id": "tacos",
+        "label": "tacos",
+        "icon": "hamburger"
+      },
+      {
+        "id": "sushi",
+        "label": "sushi",
+        "icon": "bowl-food"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "next_to",
+      "left": {
+        "attr": "color",
+        "item": "yellow"
+      },
+      "right": {
+        "attr": "food",
+        "item": "pizza"
+      },
+      "text": "The owner of the yellow house lives next to the pizza lover."
+    },
+    {
+      "id": "c2",
+      "type": "at",
+      "attr": "person",
+      "item": "cam",
+      "house": 0,
+      "text": "Cam lives in the first house."
+    },
+    {
+      "id": "c3",
+      "type": "left_of",
+      "left": {
+        "attr": "color",
+        "item": "green"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "immediate": true,
+      "text": "The owner of the green house lives directly left of the dog owner."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "right": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "text": "The dog owner loves cake."
+    },
+    {
+      "id": "c5",
+      "type": "next_to",
+      "left": {
+        "attr": "pet",
+        "item": "rabbit"
+      },
+      "right": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "text": "The rabbit owner lives next to Fay."
+    },
+    {
+      "id": "c6",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "yellow"
+      },
+      "right": {
+        "attr": "food",
+        "item": "salad"
+      },
+      "text": "The owner of the yellow house eats salad."
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "eden"
+      },
+      "right": {
+        "attr": "food",
+        "item": "sushi"
+      },
+      "immediate": true,
+      "text": "Eden lives directly left of the sushi lover."
+    },
+    {
+      "id": "c8",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "white"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "dog"
+      },
+      "text": "The owner of the white house has a dog."
+    },
+    {
+      "id": "c9",
+      "type": "at",
+      "attr": "pet",
+      "item": "horse",
+      "house": 0,
+      "text": "The horse owner lives in the first house."
+    },
+    {
+      "id": "c10",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "pet",
+        "item": "fish"
+      },
+      "text": "Ada has a fish."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "right": {
+        "attr": "food",
+        "item": "tacos"
+      },
+      "text": "The owner of the blue house eats tacos."
+    },
+    {
+      "id": "c12",
+      "type": "either_house",
+      "attr": "pet",
+      "item": "rabbit",
+      "houses": [
+        0,
+        3
+      ],
+      "text": "The rabbit owner lives in either the first house or the fourth house."
+    },
+    {
+      "id": "c13",
+      "type": "either_house",
+      "attr": "food",
+      "item": "pizza",
+      "houses": [
+        2,
+        4
+      ],
+      "text": "The pizza lover lives in either the center house or the last house."
+    }
+  ],
+  "question": {
+    "text": "Who has a bird?",
+    "givenAttr": "pet",
+    "givenItem": "bird",
+    "answerAttr": "person",
+    "answerItem": "eden"
+  },
+  "solution": [
+    {
+      "person": "cam",
+      "color": "blue",
+      "pet": "horse",
+      "food": "tacos"
+    },
+    {
+      "person": "ada",
+      "color": "yellow",
+      "pet": "fish",
+      "food": "salad"
+    },
+    {
+      "person": "eden",
+      "color": "pink",
+      "pet": "bird",
+      "food": "pizza"
+    },
+    {
+      "person": "io",
+      "color": "green",
+      "pet": "rabbit",
+      "food": "sushi"
+    },
+    {
+      "person": "fay",
+      "color": "white",
+      "pet": "dog",
+      "food": "cake"
+    }
+  ],
+  "difficulty": {
+    "label": "hard",
+    "steps": 34,
+    "neededSearch": false,
+    "weekday": 4,
+    "solvedByHuman": true,
+    "hardest": "naked_pair",
+    "hardestTier": 7,
+    "score": 69
+  }
+}

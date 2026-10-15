@@ -63,12 +63,22 @@ export const PRACTICE_PUZZLES = [
   { id: "five-copies", title: "Five copies", group: "hard" },
   { id: "parcel-row", title: "Parcel row", group: "hard" },
   { id: "four-plates", title: "Four plates", group: "hard" },
+  { id: "five-plots", title: "Five plots", group: "hard" },
+  { id: "late-set", title: "Late set", group: "hard" },
+  { id: "desk-row", title: "Desk row", group: "hard" },
+  { id: "quiet-shelf", title: "Quiet shelf", group: "hard" },
+  { id: "painted-pets", title: "Painted pets", group: "hard" },
+  { id: "city-plates", title: "City plates", group: "hard" },
   { id: "long-street", title: "The long street", group: "expert" },
   { id: "five-trades", title: "Five trades", group: "expert" },
   { id: "five-cities", title: "Five cities", group: "expert" },
   { id: "hobby-houses", title: "Hobby houses", group: "expert" },
   { id: "five-plates", title: "Five plates", group: "expert" },
   { id: "sail-lane", title: "Sail lane", group: "expert" },
+  { id: "five-doors", title: "Five doors", group: "expert" },
+  { id: "house-band", title: "House band", group: "expert" },
+  { id: "parked-books", title: "Parked books", group: "expert" },
+  { id: "camp-cities", title: "Camp cities", group: "expert" },
 ];
 
 export function practiceGroupLabel(groupId) {

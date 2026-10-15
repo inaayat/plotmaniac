@@ -1,0 +1,350 @@
+{
+  "id": "quiet-shelf",
+  "practice": true,
+  "practiceId": "quiet-shelf",
+  "label": "Hard",
+  "source": "practice-generated",
+  "theme": {
+    "id": "hard-shelf",
+    "title": "Quiet shelf",
+    "blurb": "Books, hobbies, and a drink by the lamp.",
+    "story": "Five readers. Who reads what?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "book",
+      "label": "Book"
+    },
+    {
+      "id": "hobby",
+      "label": "Hobby"
+    },
+    {
+      "id": "drink",
+      "label": "Drink"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "io",
+        "label": "Io",
+        "icon": "user-focus"
+      },
+      {
+        "id": "ada",
+        "label": "Ada",
+        "icon": "detective"
+      },
+      {
+        "id": "drew",
+        "label": "Drew",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      }
+    ],
+    "book": [
+      {
+        "id": "poetry",
+        "label": "poetry",
+        "icon": "note-pencil"
+      },
+      {
+        "id": "cookbook",
+        "label": "cookbooks",
+        "icon": "book"
+      },
+      {
+        "id": "comics",
+        "label": "comics",
+        "icon": "book-open"
+      },
+      {
+        "id": "mystery",
+        "label": "mysteries",
+        "icon": "magnifying-glass"
+      },
+      {
+        "id": "scifi",
+        "label": "sci-fi",
+        "icon": "moon-stars"
+      }
+    ],
+    "hobby": [
+      {
+        "id": "painting",
+        "label": "painting",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "baking",
+        "label": "baking",
+        "icon": "cookie"
+      },
+      {
+        "id": "cycling",
+        "label": "cycling",
+        "icon": "bicycle"
+      },
+      {
+        "id": "guitar",
+        "label": "guitar",
+        "icon": "guitar"
+      },
+      {
+        "id": "reading",
+        "label": "reading",
+        "icon": "book"
+      }
+    ],
+    "drink": [
+      {
+        "id": "orange",
+        "label": "orange juice",
+        "icon": "orange"
+      },
+      {
+        "id": "tea",
+        "label": "tea",
+        "icon": "tea-bag"
+      },
+      {
+        "id": "wine",
+        "label": "wine",
+        "icon": "wine"
+      },
+      {
+        "id": "coffee",
+        "label": "coffee",
+        "icon": "coffee"
+      },
+      {
+        "id": "beer",
+        "label": "beer",
+        "icon": "beer-stein"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "either_house",
+      "attr": "hobby",
+      "item": "reading",
+      "houses": [
+        2,
+        3
+      ],
+      "text": "The person who likes reading lives in either the center house or the fourth house."
+    },
+    {
+      "id": "c2",
+      "type": "left_of",
+      "left": {
+        "attr": "hobby",
+        "item": "cycling"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "immediate": true,
+      "text": "The person who likes cycling lives directly left of the wine drinker."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "hobby",
+        "item": "baking"
+      },
+      "text": "The tea drinker lives next to the person who likes baking."
+    },
+    {
+      "id": "c4",
+      "type": "same",
+      "left": {
+        "attr": "hobby",
+        "item": "painting"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "beer"
+      },
+      "text": "The person who likes painting drinks beer."
+    },
+    {
+      "id": "c5",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "io"
+      },
+      "right": {
+        "attr": "hobby",
+        "item": "baking"
+      },
+      "text": "Io likes baking."
+    },
+    {
+      "id": "c6",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "scifi"
+      },
+      "right": {
+        "attr": "hobby",
+        "item": "reading"
+      },
+      "text": "The person who reads sci-fi likes reading."
+    },
+    {
+      "id": "c7",
+      "type": "either_house",
+      "attr": "book",
+      "item": "cookbook",
+      "houses": [
+        1,
+        2
+      ],
+      "text": "The person who reads cookbooks lives in either the second house or the center house."
+    },
+    {
+      "id": "c8",
+      "type": "next_to",
+      "left": {
+        "attr": "hobby",
+        "item": "reading"
+      },
+      "right": {
+        "attr": "person",
+        "item": "drew"
+      },
+      "text": "The person who likes reading lives next to Drew."
+    },
+    {
+      "id": "c9",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "ada"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "wine"
+      },
+      "immediate": false,
+      "text": "Ada lives somewhere left of the wine drinker."
+    },
+    {
+      "id": "c10",
+      "type": "at",
+      "attr": "person",
+      "item": "cam",
+      "house": 4,
+      "text": "Cam lives in the last house."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "book",
+        "item": "poetry"
+      },
+      "right": {
+        "attr": "drink",
+        "item": "coffee"
+      },
+      "text": "The person who reads poetry drinks coffee."
+    },
+    {
+      "id": "c12",
+      "type": "at",
+      "attr": "book",
+      "item": "poetry",
+      "house": 3,
+      "text": "The person who reads poetry lives in the fourth house."
+    },
+    {
+      "id": "c13",
+      "type": "next_to",
+      "left": {
+        "attr": "drink",
+        "item": "tea"
+      },
+      "right": {
+        "attr": "book",
+        "item": "comics"
+      },
+      "text": "The tea drinker lives next to the person who reads comics."
+    }
+  ],
+  "question": {
+    "text": "Who reads mysteries?",
+    "givenAttr": "book",
+    "givenItem": "mystery",
+    "answerAttr": "person",
+    "answerItem": "cam"
+  },
+  "solution": [
+    {
+      "person": "io",
+      "book": "comics",
+      "hobby": "baking",
+      "drink": "orange"
+    },
+    {
+      "person": "ada",
+      "book": "cookbook",
+      "hobby": "cycling",
+      "drink": "tea"
+    },
+    {
+      "person": "bo",
+      "book": "scifi",
+      "hobby": "reading",
+      "drink": "wine"
+    },
+    {
+      "person": "drew",
+      "book": "poetry",
+      "hobby": "guitar",
+      "drink": "coffee"
+    },
+    {
+      "person": "cam",
+      "book": "mystery",
+      "hobby": "painting",
+      "drink": "beer"
+    }
+  ],
+  "difficulty": {
+    "label": "hard",
+    "steps": 30,
+    "neededSearch": false,
+    "weekday": 3,
+    "solvedByHuman": true,
+    "hardest": "naked_pair",
+    "hardestTier": 7,
+    "score": 65
+  }
+}

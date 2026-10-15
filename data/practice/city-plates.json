@@ -1,0 +1,353 @@
+{
+  "id": "city-plates",
+  "practice": true,
+  "practiceId": "city-plates",
+  "label": "Hard",
+  "source": "practice-generated",
+  "theme": {
+    "id": "hard-cities",
+    "title": "City plates",
+    "blurb": "Visitors, a plate, and a painted door.",
+    "story": "Five kitchens. Who is from where?"
+  },
+  "houseCount": 5,
+  "attributes": [
+    {
+      "id": "person",
+      "label": "Who"
+    },
+    {
+      "id": "city",
+      "label": "City"
+    },
+    {
+      "id": "food",
+      "label": "Plate"
+    },
+    {
+      "id": "color",
+      "label": "Color"
+    }
+  ],
+  "items": {
+    "person": [
+      {
+        "id": "jules",
+        "label": "Jules",
+        "icon": "identification-badge"
+      },
+      {
+        "id": "gus",
+        "label": "Gus",
+        "icon": "briefcase"
+      },
+      {
+        "id": "bo",
+        "label": "Bo",
+        "icon": "chef-hat"
+      },
+      {
+        "id": "fay",
+        "label": "Fay",
+        "icon": "sunglasses"
+      },
+      {
+        "id": "cam",
+        "label": "Cam",
+        "icon": "student"
+      }
+    ],
+    "city": [
+      {
+        "id": "cairo",
+        "label": "Cairo",
+        "icon": "tent"
+      },
+      {
+        "id": "oslo",
+        "label": "Oslo",
+        "icon": "moon"
+      },
+      {
+        "id": "tokyo",
+        "label": "Tokyo",
+        "icon": "sun"
+      },
+      {
+        "id": "rome",
+        "label": "Rome",
+        "icon": "house-simple"
+      },
+      {
+        "id": "lima",
+        "label": "Lima",
+        "icon": "flower"
+      }
+    ],
+    "food": [
+      {
+        "id": "salad",
+        "label": "salad",
+        "icon": "leaf"
+      },
+      {
+        "id": "tacos",
+        "label": "tacos",
+        "icon": "hamburger"
+      },
+      {
+        "id": "sushi",
+        "label": "sushi",
+        "icon": "bowl-food"
+      },
+      {
+        "id": "cake",
+        "label": "cake",
+        "icon": "cake"
+      },
+      {
+        "id": "pasta",
+        "label": "pasta",
+        "icon": "fork-knife"
+      }
+    ],
+    "color": [
+      {
+        "id": "green",
+        "label": "green",
+        "icon": "leaf"
+      },
+      {
+        "id": "white",
+        "label": "white",
+        "icon": "house"
+      },
+      {
+        "id": "blue",
+        "label": "blue",
+        "icon": "house-simple"
+      },
+      {
+        "id": "red",
+        "label": "red",
+        "icon": "paint-brush"
+      },
+      {
+        "id": "pink",
+        "label": "pink",
+        "icon": "flower"
+      }
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "either_house",
+      "attr": "person",
+      "item": "cam",
+      "houses": [
+        1,
+        2
+      ],
+      "text": "Cam lives in either the second house or the center house."
+    },
+    {
+      "id": "c2",
+      "type": "next_to",
+      "left": {
+        "attr": "person",
+        "item": "fay"
+      },
+      "right": {
+        "attr": "color",
+        "item": "blue"
+      },
+      "text": "Fay lives next to the blue house."
+    },
+    {
+      "id": "c3",
+      "type": "next_to",
+      "left": {
+        "attr": "food",
+        "item": "salad"
+      },
+      "right": {
+        "attr": "person",
+        "item": "bo"
+      },
+      "text": "The salad lover lives next to Bo."
+    },
+    {
+      "id": "c4",
+      "type": "not_next_to",
+      "left": {
+        "attr": "food",
+        "item": "pasta"
+      },
+      "right": {
+        "attr": "city",
+        "item": "oslo"
+      },
+      "text": "The pasta lover does not live next to the person from Oslo."
+    },
+    {
+      "id": "c5",
+      "type": "not_at",
+      "attr": "city",
+      "item": "rome",
+      "house": 0,
+      "text": "The person from Rome does not live in the first house."
+    },
+    {
+      "id": "c6",
+      "type": "left_of",
+      "left": {
+        "attr": "food",
+        "item": "cake"
+      },
+      "right": {
+        "attr": "color",
+        "item": "red"
+      },
+      "immediate": false,
+      "text": "The cake lover lives somewhere left of the red house."
+    },
+    {
+      "id": "c7",
+      "type": "same",
+      "left": {
+        "attr": "city",
+        "item": "cairo"
+      },
+      "right": {
+        "attr": "color",
+        "item": "white"
+      },
+      "text": "The person from Cairo lives in the white house."
+    },
+    {
+      "id": "c8",
+      "type": "same",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "color",
+        "item": "pink"
+      },
+      "text": "Jules lives in the pink house."
+    },
+    {
+      "id": "c9",
+      "type": "left_of",
+      "left": {
+        "attr": "person",
+        "item": "jules"
+      },
+      "right": {
+        "attr": "food",
+        "item": "tacos"
+      },
+      "immediate": true,
+      "text": "Jules lives directly left of the taco lover."
+    },
+    {
+      "id": "c10",
+      "type": "same",
+      "left": {
+        "attr": "city",
+        "item": "tokyo"
+      },
+      "right": {
+        "attr": "color",
+        "item": "green"
+      },
+      "text": "The person from Tokyo lives in the green house."
+    },
+    {
+      "id": "c11",
+      "type": "same",
+      "left": {
+        "attr": "food",
+        "item": "tacos"
+      },
+      "right": {
+        "attr": "color",
+        "item": "green"
+      },
+      "text": "The taco lover lives in the green house."
+    },
+    {
+      "id": "c12",
+      "type": "left_of",
+      "left": {
+        "attr": "food",
+        "item": "salad"
+      },
+      "right": {
+        "attr": "color",
+        "item": "white"
+      },
+      "immediate": true,
+      "text": "The salad lover lives directly left of the white house."
+    },
+    {
+      "id": "c13",
+      "type": "at",
+      "attr": "city",
+      "item": "oslo",
+      "house": 1,
+      "text": "The person from Oslo lives in the second house."
+    }
+  ],
+  "question": {
+    "text": "Who is from Rome?",
+    "givenAttr": "city",
+    "givenItem": "rome",
+    "answerAttr": "person",
+    "answerItem": "jules"
+  },
+  "solution": [
+    {
+      "person": "bo",
+      "city": "lima",
+      "food": "cake",
+      "color": "blue"
+    },
+    {
+      "person": "fay",
+      "city": "oslo",
+      "food": "salad",
+      "color": "red"
+    },
+    {
+      "person": "cam",
+      "city": "cairo",
+      "food": "sushi",
+      "color": "white"
+    },
+    {
+      "person": "jules",
+      "city": "rome",
+      "food": "pasta",
+      "color": "pink"
+    },
+    {
+      "person": "gus",
+      "city": "tokyo",
+      "food": "tacos",
+      "color": "green"
+    }
+  ],
+  "difficulty": {
+    "label": "hard",
+    "steps": 36,
+    "neededSearch": false,
+    "weekday": 5,
+    "solvedByHuman": true,
+    "hardest": "naked_pair",
+    "hardestTier": 7,
+    "score": 71
+  }
+}
